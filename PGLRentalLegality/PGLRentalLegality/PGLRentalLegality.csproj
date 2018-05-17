@@ -145,8 +145,8 @@
     <Compile Include="ZXing\WriterException.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\text\pokemonAbilities.csv" />
-    <None Include="Resources\text\pokemonFormAbilities.csv" />
+    <EmbeddedResource Include="Resources\text\pokemonAbilities.csv" />
+    <EmbeddedResource Include="Resources\text\pokemonFormAbilities.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

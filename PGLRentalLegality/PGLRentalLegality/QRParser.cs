@@ -127,7 +127,7 @@ namespace PKHeX.WinForms.Misc
         private static string[] getCSV(string loc)
         {
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            var resourceName = "PKHeX.WinForms.PGLRentalLegality.Resources.text." + loc + ".csv";
+            var resourceName = "PGLRentalLegality.Resources.text." + loc + ".csv";
             System.IO.Stream stream = assembly.GetManifestResourceStream(resourceName);
             System.IO.StreamReader file = new System.IO.StreamReader(stream);
             var txt = file.ReadToEnd();

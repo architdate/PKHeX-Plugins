@@ -46,6 +46,7 @@ namespace PGLRentalLegality
             }
 
             Clipboard.SetText(data.TrimEnd());
+            MessageBox.Show("Showdown Text of the PGL Rental Team set to the clipboard. Autolegality functionality to be added soon.");
         }
 
         public void NotifySaveLoaded()
