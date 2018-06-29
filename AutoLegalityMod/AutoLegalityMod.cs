@@ -49,12 +49,13 @@ namespace AutoLegalityMod
             var items = menuStrip.Items;
             var tools = items.Find("Menu_Tools", false)[0] as ToolStripDropDownItem;
             var toolsitems = tools.DropDownItems;
-            var modmenusearch = toolsitems.Find("Auto Legality Mod", false);
+            var modmenusearch = toolsitems.Find("Menu_AutoLegality", false);
             if (modmenusearch.Length == 0)
             {
                 var mod = new ToolStripMenuItem("Auto Legality Mod");
                 tools.DropDownItems.Insert(0, mod);
                 mod.Image = AutoLegalityResources.menuautolegality;
+                mod.Name = "Menu_AutoLegality";
                 var modmenu = mod;
                 AddPluginControl(modmenu);
             }
