@@ -6,13 +6,15 @@ namespace PGLRentalLegality
 {
     public class PGLRentalLegality : IPlugin
     {
-        public string Name => nameof(PGLRentalLegality);
+        public string Name => "Import PGL QR code";
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
+        public object[] arguments { get; private set; }
 
         public void Initialize(params object[] args)
         {
-            Console.WriteLine($"Loading {Name}...");
+            arguments = args;
+            Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
@@ -25,7 +27,22 @@ namespace PGLRentalLegality
         {
             var items = menuStrip.Items;
             var tools = items.Find("Menu_Tools", false)[0] as ToolStripDropDownItem;
-            AddPluginControl(tools);
+            var toolsitems = tools.DropDownItems;
+            var modmenusearch = toolsitems.Find("Menu_AutoLegality", false);
+            if (modmenusearch.Length == 0)
+            {
+                var mod = new ToolStripMenuItem("Auto Legality Mod");
+                tools.DropDownItems.Insert(0, mod);
+                mod.Image = PGLRentalLegalityResources.menuautolegality;
+                mod.Name = "Menu_AutoLegality";
+                var modmenu = mod;
+                AddPluginControl(modmenu);
+            }
+            else
+            {
+                var modmenu = modmenusearch[0] as ToolStripMenuItem;
+                AddPluginControl(modmenu);
+            }
         }
 
         private void AddPluginControl(ToolStripDropDownItem tools)
@@ -33,6 +50,8 @@ namespace PGLRentalLegality
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
             ctrl.Click += new EventHandler(PGLShowdownSet);
+            ctrl.Image = PGLRentalLegalityResources.pglqrcode;
+            ctrl.ShortcutKeys = (Keys.Alt | Keys.Q);
         }
 
         private void PGLShowdownSet(object sender, EventArgs e)
@@ -42,11 +61,16 @@ namespace PGLRentalLegality
             string data = "";
             foreach (PKHeX.WinForms.Misc.Pokemon p in rentalTeam.team)
             {
-                data += p.ToShowdownFormat(false) + "\n\r";
+                data += p.ToShowdownFormat(false) + Environment.NewLine + Environment.NewLine;
             }
 
             Clipboard.SetText(data.TrimEnd());
-            MessageBox.Show("Showdown Text of the PGL Rental Team set to the clipboard. Autolegality functionality to be added soon.");
+            AutoLegalityMod.AutoLegalityMod alm = new AutoLegalityMod.AutoLegalityMod();
+            alm.Initialize(arguments);
+            alm.SAV = SaveFileEditor.SAV;
+            EventHandler genmons = new EventHandler(alm.ClickShowdownImportPKMModded);
+            genmons(sender,e);
+            MessageBox.Show("Exported OwO","Alert");
         }
 
         public void NotifySaveLoaded()
