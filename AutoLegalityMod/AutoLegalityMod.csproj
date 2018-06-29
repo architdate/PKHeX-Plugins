@@ -45,6 +45,11 @@
     <Compile Include="APILegality.cs" />
     <Compile Include="ArchitMod.cs" />
     <Compile Include="AutoLegalityMod.cs" />
+    <Compile Include="AutoLegalityResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoLegalityResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ConstData.cs" />
     <Compile Include="EdgeCaseLegality.cs" />
     <Compile Include="IVtoPIDGenerator.cs" />
@@ -56,6 +61,17 @@
       <Project>{279e59f2-50ea-475d-8ba4-fa69f0578c0d}</Project>
       <Name>PKHeX.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\img\autolegalitymod.png" />
+    <Content Include="Resources\img\menuautolegality.png" />
+    <EmbeddedResource Include="Resources\txt\evolutions.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AutoLegalityResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AutoLegalityResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

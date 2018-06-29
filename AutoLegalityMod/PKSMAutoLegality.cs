@@ -1363,7 +1363,7 @@ namespace AutoLegalityMod
             List<List<string>> evoList = new List<List<string>>();
             List<string> blankList = new List<string>();
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "PKHeX.WinForms.AutoLegality.Resources.text.evolutions.txt";
+            var resourceName = "AutoLegalityMod.Resources.text.evolutions.txt";
             System.IO.Stream stream = assembly.GetManifestResourceStream(resourceName);
             System.IO.StreamReader file = new System.IO.StreamReader(stream);
             while ((line = file.ReadLine()) != null)

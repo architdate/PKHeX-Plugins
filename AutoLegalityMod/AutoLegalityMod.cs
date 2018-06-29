@@ -48,14 +48,30 @@ namespace AutoLegalityMod
         {
             var items = menuStrip.Items;
             var tools = items.Find("Menu_Tools", false)[0] as ToolStripDropDownItem;
-            AddPluginControl(tools);
+            var toolsitems = tools.DropDownItems;
+            var modmenusearch = toolsitems.Find("Auto Legality Mod", false);
+            if (modmenusearch.Length == 0)
+            {
+                var mod = new ToolStripMenuItem("Auto Legality Mod");
+                tools.DropDownItems.Insert(0, mod);
+                mod.Image = AutoLegalityResources.menuautolegality;
+                var modmenu = mod;
+                AddPluginControl(modmenu);
+            }
+            else
+            {
+                var modmenu = modmenusearch[0] as ToolStripMenuItem;
+                AddPluginControl(modmenu);
+            }
         }
 
-        private void AddPluginControl(ToolStripDropDownItem tools)
+        private void AddPluginControl(ToolStripDropDownItem modmenu)
         {
             var ctrl = new ToolStripMenuItem(Name);
-            tools.DropDownItems.Add(ctrl);
+            modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += new EventHandler(ClickShowdownImportPKMModded);
+            ctrl.Image = AutoLegalityResources.autolegalitymod;
+            ctrl.ShortcutKeys = (Keys.Control | Keys.I);
         }
 
         public void NotifySaveLoaded()
