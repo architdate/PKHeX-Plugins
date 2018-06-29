@@ -10,14 +10,14 @@ namespace MGDBDownloader
 {
     public class MGDBDownloader : IPlugin
     {
-        public string Name => nameof(MGDBDownloader);
+        public string Name => "Download MGDB";
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public static string MGDatabasePath => Path.Combine(Directory.GetCurrentDirectory(), "mgdb");
 
         public void Initialize(params object[] args)
         {
-            Console.WriteLine($"Loading {Name}...");
+            Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
@@ -30,7 +30,22 @@ namespace MGDBDownloader
         {
             var items = menuStrip.Items;
             var tools = items.Find("Menu_Tools", false)[0] as ToolStripDropDownItem;
-            AddPluginControl(tools);
+            var toolsitems = tools.DropDownItems;
+            var modmenusearch = toolsitems.Find("Menu_AutoLegality", false);
+            if (modmenusearch.Length == 0)
+            {
+                var mod = new ToolStripMenuItem("Auto Legality Mod");
+                tools.DropDownItems.Insert(0, mod);
+                mod.Image = MGDBDownloaderResources.menuautolegality;
+                mod.Name = "Menu_AutoLegality";
+                var modmenu = mod;
+                AddPluginControl(modmenu);
+            }
+            else
+            {
+                var modmenu = modmenusearch[0] as ToolStripMenuItem;
+                AddPluginControl(modmenu);
+            }
         }
 
         private void AddPluginControl(ToolStripDropDownItem tools)
@@ -38,6 +53,7 @@ namespace MGDBDownloader
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
             ctrl.Click += new EventHandler(DownloadMGDB);
+            ctrl.Image = MGDBDownloaderResources.mgdbdownload;
         }
 
         public void DownloadMGDB(object o, EventArgs e)
