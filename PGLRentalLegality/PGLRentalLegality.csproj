@@ -30,15 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoLegalityMod, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\AutoLegalityMod.dll</HintPath>
-    </Reference>
     <Reference Include="BouncyCastle.CryptoExt">
       <HintPath>.\BouncyCastle.CryptoExt.dll</HintPath>
     </Reference>
     <Reference Include="PKHeX.Core">
-      <HintPath>.\PKHeX.Core.dll</HintPath>
+      <HintPath>..\PKHeX.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -164,6 +160,12 @@
   <ItemGroup>
     <Content Include="Resources\img\menuautolegality.png" />
     <Content Include="Resources\img\pglqrcode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoLegalityMod\AutoLegalityMod.csproj">
+      <Project>{8ed04749-56cc-488c-9d85-b1be83ef8f0c}</Project>
+      <Name>AutoLegalityMod</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
