@@ -16,7 +16,7 @@ namespace ExportQRCodes
 
         public void Initialize(params object[] args)
         {
-            Console.WriteLine($"Loading {Name}...");
+            Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
