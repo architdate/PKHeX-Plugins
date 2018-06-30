@@ -10,7 +10,7 @@ namespace ExportQRCodes
 {
     public class ExportQRCodes : IPlugin
     {
-        public string Name => nameof(ExportQRCodes);
+        public string Name => "Export QR Codes";
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
 
@@ -29,7 +29,22 @@ namespace ExportQRCodes
         {
             var items = menuStrip.Items;
             var tools = items.Find("Menu_Tools", false)[0] as ToolStripDropDownItem;
-            AddPluginControl(tools);
+            var toolsitems = tools.DropDownItems;
+            var modmenusearch = toolsitems.Find("Menu_AutoLegality", false);
+            if (modmenusearch.Length == 0)
+            {
+                var mod = new ToolStripMenuItem("Auto Legality Mod");
+                tools.DropDownItems.Insert(0, mod);
+                mod.Image = ExportQRCodesResources.menuautolegality;
+                mod.Name = "Menu_AutoLegality";
+                var modmenu = mod;
+                AddPluginControl(modmenu);
+            }
+            else
+            {
+                var modmenu = modmenusearch[0] as ToolStripMenuItem;
+                AddPluginControl(modmenu);
+            }
         }
 
         private void AddPluginControl(ToolStripDropDownItem tools)
@@ -37,6 +52,7 @@ namespace ExportQRCodes
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
             ctrl.Click += new EventHandler(ExportQRs);
+            ctrl.Image = ExportQRCodesResources.exportqrcode;
         }
 
         private void ExportQRs(object sender, EventArgs e)

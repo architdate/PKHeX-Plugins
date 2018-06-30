@@ -5,23 +5,9 @@ Uses the Plugin Interface in the base PKHeX repository.
 ## Building
 This needs any IDE that supports compiling .NET based code (Ideally 4.6+). Recommended IDE is Visual Studio 2017
 
-First Clone this repository using: `$ git clone https://github.com/architdate/PKHeX-Plugins.git`
-
-**To compile Auto Legality Mod Plugin**
-- Clone the base PKHeX repository and open in Visual Studio 2017
-- Right click on the solution and add an existing project
-- Add the `AutoLegalityMod` folder as the project
-- Right click the `References` in `AutoLegalityMod` project and add the `PKHeX.Core` project as a dependancy
-- Right click the solution and click `Rebuild All`
-- The build should be available in the `AutoLegalityMod/bin/` folder
-
-**To compile other plugins**
-- Other plugins are independent solutions on their own, however they can be added on to the PKHeX repository for building with the latest `PKHeX.Core.dll` file.
-To compile: 
-- Just open the plugin solution file in Visual Studio 2017
-- Add any dependency DLL's by right clicking `References` and adding the reference to the DLL files
-- Build the solution by right clicking the solution and clicking `Rebuild All`
-- The build will be available in the `/bin/` folder within the plugin solution
+- First Clone this repository using: `$ git clone https://github.com/architdate/PKHeX-Plugins.git`
+- Right click on the solution and click `Rebuild All`
+- All the compiled DLL's will be present in the `*/bin` folder where `*` represents the mod name
 
 ## Usage
 To use the plugins:
