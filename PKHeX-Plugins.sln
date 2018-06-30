@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalizeBoxes", "LegalizeBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportTrainerData", "ExportTrainerData\ExportTrainerData.csproj", "{A1B265C1-AA64-4652-9B65-F31A3BE949A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmogonGenner", "SmogonGenner\SmogonGenner.csproj", "{B766A951-9871-45AA-B92D-4E78A7F53BD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{A1B265C1-AA64-4652-9B65-F31A3BE949A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1B265C1-AA64-4652-9B65-F31A3BE949A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1B265C1-AA64-4652-9B65-F31A3BE949A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B766A951-9871-45AA-B92D-4E78A7F53BD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B766A951-9871-45AA-B92D-4E78A7F53BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B766A951-9871-45AA-B92D-4E78A7F53BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B766A951-9871-45AA-B92D-4E78A7F53BD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
