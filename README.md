@@ -16,7 +16,7 @@ First Clone this repository using: `$ git clone https://github.com/architdate/PK
 - The build should be available in the `AutoLegalityMod/bin/` folder
 
 **To compile other plugins**
-Other plugins are independent solutions on their own, however they can be added on to the PKHeX repository for building with the latest `PKHeX.Core.dll` file.
+- Other plugins are independent solutions on their own, however they can be added on to the PKHeX repository for building with the latest `PKHeX.Core.dll` file.
 To compile: 
 - Just open the plugin solution file in Visual Studio 2017
 - Add any dependency DLL's by right clicking `References` and adding the reference to the DLL files
