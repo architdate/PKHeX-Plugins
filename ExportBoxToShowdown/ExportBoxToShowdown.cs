@@ -1,16 +1,16 @@
-﻿using System;
+﻿using PKHeX.Core;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
-using PKHeX.Core;
 
-namespace PGLRentalLegality
+namespace ExportBoxToShowdown
 {
-    public class PGLRentalLegality : IPlugin
+    public class ExportBoxToShowdown : IPlugin
     {
-        public string Name => "Import PGL QR code";
+        public string Name => "Export Box to Showdown";
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
-        public object[] arguments { get; private set; }
-        public ToolStripMenuItem ModMenu;
+        public object[] arguments;
 
         public void Initialize(params object[] args)
         {
@@ -34,16 +34,14 @@ namespace PGLRentalLegality
             {
                 var mod = new ToolStripMenuItem("Auto Legality Mod");
                 tools.DropDownItems.Insert(0, mod);
-                mod.Image = PGLRentalLegalityResources.menuautolegality;
+                mod.Image = ExportBoxToShowdownResources.menuautolegality;
                 mod.Name = "Menu_AutoLegality";
                 var modmenu = mod;
-                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
             else
             {
                 var modmenu = modmenusearch[0] as ToolStripMenuItem;
-                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
         }
@@ -52,29 +50,8 @@ namespace PGLRentalLegality
         {
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
-            ctrl.Click += new EventHandler(PGLShowdownSet);
-            ctrl.Image = PGLRentalLegalityResources.pglqrcode;
-            ctrl.ShortcutKeys = (Keys.Alt | Keys.Q);
-        }
-
-        private void PGLShowdownSet(object sender, EventArgs e)
-        {
-            if (!Clipboard.ContainsImage()) return;
-            PKHeX.WinForms.Misc.RentalTeam rentalTeam = new PKHeX.WinForms.Misc.QRParser().decryptQRCode(Clipboard.GetImage());
-            string data = "";
-            foreach (PKHeX.WinForms.Misc.Pokemon p in rentalTeam.team)
-            {
-                data += p.ToShowdownFormat(false) + Environment.NewLine + Environment.NewLine;
-            }
-
-            Clipboard.SetText(data.TrimEnd());
-            AutoLegalityMod.AutoLegalityMod alm = new AutoLegalityMod.AutoLegalityMod();
-            alm.Initialize(arguments);
-            alm.SAV = SaveFileEditor.SAV;
-            EventHandler genmons = new EventHandler(alm.ClickShowdownImportPKMModded);
-            genmons(sender,e);
-            ModMenu.DropDownItems.Remove(alm.menuinstance);
-            MessageBox.Show("Exported OwO","Alert");
+            ctrl.Click += new EventHandler(BoxToShowdown);
+            ctrl.Image = ExportBoxToShowdownResources.exportboxtoshowdown;
         }
 
         public void NotifySaveLoaded()
@@ -86,6 +63,20 @@ namespace PGLRentalLegality
         {
             Console.WriteLine($"{Name} was provided with the file path, but chose to do nothing with it.");
             return false; // no action taken
+        }
+        private void BoxToShowdown(object sender, EventArgs e)
+        {
+            try
+            {
+                IList<PKM> BoxData = SaveFileEditor.SAV.BoxData;
+                List<PKM> BoxList = new List<PKM>(BoxData);
+                List<PKM> CurrBox = BoxList.GetRange(SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount, SaveFileEditor.SAV.BoxSlotCount);
+                var str = ShowdownSet.GetShowdownSets(CurrBox, Environment.NewLine + Environment.NewLine);
+                if (string.IsNullOrWhiteSpace(str)) return;
+                Clipboard.SetText(str);
+            }
+            catch { }
+            MessageBox.Show("Exported the active box to Showdown format");
         }
     }
 }

@@ -12,6 +12,7 @@ namespace LegalizeBoxes
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments;
+        public ToolStripMenuItem ModMenu;
 
         public void Initialize(params object[] args)
         {
@@ -38,11 +39,13 @@ namespace LegalizeBoxes
                 mod.Image = LegalizeBoxesResources.menuautolegality;
                 mod.Name = "Menu_AutoLegality";
                 var modmenu = mod;
+                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
             else
             {
                 var modmenu = modmenusearch[0] as ToolStripMenuItem;
+                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
         }
@@ -113,6 +116,7 @@ namespace LegalizeBoxes
             }
             SaveFileEditor.SAV.BoxData = BoxData;
             SaveFileEditor.ReloadSlots();
+            ModMenu.DropDownItems.Remove(alm.menuinstance);
             MessageBox.Show("Legalized Box Pokemon");
         }
     }

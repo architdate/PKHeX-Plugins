@@ -19,6 +19,7 @@ namespace AutoLegalityMod
         public string Name => "Import with Auto-Legality Mod";
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
+        public ToolStripItem menuinstance;
 
         /// <summary>
         /// Global Variables for Auto Legality Mod
@@ -73,6 +74,7 @@ namespace AutoLegalityMod
             ctrl.Click += new EventHandler(ClickShowdownImportPKMModded);
             ctrl.Image = AutoLegalityResources.autolegalitymod;
             ctrl.ShortcutKeys = (Keys.Control | Keys.I);
+            menuinstance = ctrl;
         }
 
         public void NotifySaveLoaded()

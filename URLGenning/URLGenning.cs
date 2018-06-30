@@ -13,6 +13,7 @@ namespace URLGenning
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments;
+        public ToolStripMenuItem ModMenu;
 
         public void Initialize(params object[] args)
         {
@@ -39,11 +40,13 @@ namespace URLGenning
                 mod.Image = URLGenningResources.menuautolegality;
                 mod.Name = "Menu_AutoLegality";
                 var modmenu = mod;
+                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
             else
             {
                 var modmenu = modmenusearch[0] as ToolStripMenuItem;
+                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
         }
@@ -91,6 +94,7 @@ namespace URLGenning
                 alm.Initialize(arguments);
                 alm.SAV = SaveFileEditor.SAV;
                 alm.ClickShowdownImportPKMModded(sender, e);
+                ModMenu.DropDownItems.Remove(alm.menuinstance);
             }
             catch { MessageBox.Show("The data inside the URL are not valid Showdown Sets"); }
             Dictionary<string, string> metadata = GetMetadata(MetaDataURL(url));

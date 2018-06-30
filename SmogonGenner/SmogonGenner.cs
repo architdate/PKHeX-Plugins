@@ -14,6 +14,7 @@ namespace SmogonGenner
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments;
+        public ToolStripMenuItem ModMenu;
 
         public void Initialize(params object[] args)
         {
@@ -40,11 +41,13 @@ namespace SmogonGenner
                 mod.Image = SmogonGennerResources.menuautolegality;
                 mod.Name = "Menu_AutoLegality";
                 var modmenu = mod;
+                ModMenu = mod;
                 AddPluginControl(modmenu);
             }
             else
             {
                 var modmenu = modmenusearch[0] as ToolStripMenuItem;
+                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
         }
@@ -109,6 +112,7 @@ namespace SmogonGenner
                 alm.Initialize(arguments);
                 alm.SAV = SaveFileEditor.SAV;
                 alm.ClickShowdownImportPKMModded(sender, e);
+                ModMenu.DropDownItems.Remove(alm.menuinstance);
             }
             catch { MessageBox.Show("Something went wrong"); }
             MessageBox.Show(alertText(showdownSpec, sets.Count, GetTitles(smogonPage)));
