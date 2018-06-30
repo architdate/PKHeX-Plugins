@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PKHeX.Core">
+      <HintPath>..\PKHeX.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -55,12 +58,6 @@
     <Compile Include="IVtoPIDGenerator.cs" />
     <Compile Include="PKSMAutoLegality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PKHeX.Core\PKHeX.Core.csproj">
-      <Project>{279e59f2-50ea-475d-8ba4-fa69f0578c0d}</Project>
-      <Name>PKHeX.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\autolegalitymod.png" />
