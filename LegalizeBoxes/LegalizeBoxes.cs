@@ -9,6 +9,7 @@ namespace LegalizeBoxes
     public class LegalizeBoxes : IPlugin
     {
         public string Name => "Legalize Active Pokemon";
+        public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments;

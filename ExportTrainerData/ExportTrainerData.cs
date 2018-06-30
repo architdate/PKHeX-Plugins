@@ -7,6 +7,7 @@ namespace ExportTrainerData
     public class ExportTrainerData : IPlugin
     {
         public string Name => "Export Trainer Data";
+        public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
 

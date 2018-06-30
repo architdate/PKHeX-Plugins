@@ -8,6 +8,7 @@ namespace ExportBoxToShowdown
     public class ExportBoxToShowdown : IPlugin
     {
         public string Name => "Export Box to Showdown";
+        public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments;

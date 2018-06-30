@@ -11,6 +11,7 @@ namespace MGDBDownloader
     public class MGDBDownloader : IPlugin
     {
         public string Name => "Download MGDB";
+        public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public static string MGDatabasePath => Path.Combine(Directory.GetCurrentDirectory(), "mgdb");

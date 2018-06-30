@@ -7,6 +7,7 @@ namespace PGLRentalLegality
     public class PGLRentalLegality : IPlugin
     {
         public string Name => "Import PGL QR code";
+        public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments { get; private set; }
@@ -68,12 +69,10 @@ namespace PGLRentalLegality
             }
 
             Clipboard.SetText(data.TrimEnd());
-            AutoLegalityMod.AutoLegalityMod alm = new AutoLegalityMod.AutoLegalityMod();
-            alm.Initialize(arguments);
-            alm.SAV = SaveFileEditor.SAV;
-            EventHandler genmons = new EventHandler(alm.ClickShowdownImportPKMModded);
-            genmons(sender,e);
-            ModMenu.DropDownItems.Remove(alm.menuinstance);
+            var alm = ModMenu.DropDownItems.Find("Menu_AutoLegalityMod", false);
+            if (alm.Length == 0)
+            { MessageBox.Show("Auto Legality Mod Plugin missing."); return; }
+            else alm[0].PerformClick();
             MessageBox.Show("Exported OwO","Alert");
         }
 

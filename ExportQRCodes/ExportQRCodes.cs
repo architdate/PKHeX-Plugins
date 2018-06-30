@@ -11,6 +11,7 @@ namespace ExportQRCodes
     public class ExportQRCodes : IPlugin
     {
         public string Name => "Export QR Codes";
+        public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
 

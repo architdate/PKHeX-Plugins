@@ -10,6 +10,7 @@ namespace URLGenning
     public class URLGenning : IPlugin
     {
         public string Name => "Gen from URL";
+        public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments;
@@ -90,11 +91,10 @@ namespace URLGenning
             if (sets.StartsWith("Error :")) return;
             Clipboard.SetText(sets);
             try {
-                AutoLegalityMod.AutoLegalityMod alm = new AutoLegalityMod.AutoLegalityMod();
-                alm.Initialize(arguments);
-                alm.SAV = SaveFileEditor.SAV;
-                alm.ClickShowdownImportPKMModded(sender, e);
-                ModMenu.DropDownItems.Remove(alm.menuinstance);
+                var alm = ModMenu.DropDownItems.Find("Menu_AutoLegalityMod", false);
+                if (alm.Length == 0)
+                { MessageBox.Show("Auto Legality Mod Plugin missing."); return; }
+                else alm[0].PerformClick();
             }
             catch { MessageBox.Show("The data inside the URL are not valid Showdown Sets"); }
             Dictionary<string, string> metadata = GetMetadata(MetaDataURL(url));

@@ -11,6 +11,7 @@ namespace SmogonGenner
     public class SmogonGenner : IPlugin
     {
         public string Name => "Gen Smogon Sets";
+        public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments;
@@ -108,11 +109,10 @@ namespace SmogonGenner
             }
             Clipboard.SetText(showdownsets);
             try {
-                AutoLegalityMod.AutoLegalityMod alm = new AutoLegalityMod.AutoLegalityMod();
-                alm.Initialize(arguments);
-                alm.SAV = SaveFileEditor.SAV;
-                alm.ClickShowdownImportPKMModded(sender, e);
-                ModMenu.DropDownItems.Remove(alm.menuinstance);
+                var alm = ModMenu.DropDownItems.Find("Menu_AutoLegalityMod", false);
+                if (alm.Length == 0)
+                { MessageBox.Show("Auto Legality Mod Plugin missing."); return; }
+                else alm[0].PerformClick();
             }
             catch { MessageBox.Show("Something went wrong"); }
             MessageBox.Show(alertText(showdownSpec, sets.Count, GetTitles(smogonPage)));

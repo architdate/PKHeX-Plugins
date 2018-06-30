@@ -17,6 +17,7 @@ namespace AutoLegalityMod
         /// Main Plugin Variables
         /// </summary>
         public string Name => "Import with Auto-Legality Mod";
+        public int Priority => 0;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public ToolStripItem menuinstance;
@@ -72,6 +73,7 @@ namespace AutoLegalityMod
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += new EventHandler(ClickShowdownImportPKMModded);
+            ctrl.Name = "Menu_AutoLegalityMod";
             ctrl.Image = AutoLegalityResources.autolegalitymod;
             ctrl.ShortcutKeys = (Keys.Control | Keys.I);
             menuinstance = ctrl;
@@ -94,7 +96,9 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ClickShowdownImportPKMModded(object sender, EventArgs e)
+        public void ClickShowdownImportPKMModded(object sender, EventArgs e) => ImportModded();
+
+        public void ImportModded()
         {
             Stopwatch timer = Stopwatch.StartNew();
             // TODO: Check for Auto Legality Mod Updates
