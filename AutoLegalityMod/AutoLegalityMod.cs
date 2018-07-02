@@ -13,20 +13,16 @@ namespace AutoLegalityMod
         public string Name => "Import with Auto-Legality Mod";
         public int Priority => 0;
         public ISaveFileProvider SaveFileEditor { get; private set; }
-        public static ISaveFileProvider SFE { get; private set; }
         public IPKMView PKMEditor { get; private set; }
-        public static IPKMView PE { get; private set; }
         public ToolStripItem menuinstance;
 
         public void Initialize(params object[] args)
         {
             Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null) return;
-            SFE = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
-            PE = (IPKMView)Array.Find(args, z => z is IPKMView);
-            SAV = SFE.SAV;
-            PKMEditor = PE;
-            SaveFileEditor = SFE;
+            SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
+            PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);
+            SAV = SaveFileEditor.SAV;
             var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);
             LoadMenuStrip(menu);
         }
@@ -81,10 +77,10 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public static void ClickShowdownImportPKMModded(object sender, EventArgs e)
+        public void ClickShowdownImportPKMModded(object sender, EventArgs e)
         {
-            AutomaticLegality.PKMEditor = PE;
-            AutomaticLegality.SaveFileEditor = SFE;
+            AutomaticLegality.PKMEditor = PKMEditor;
+            AutomaticLegality.SaveFileEditor = SaveFileEditor;
             AutomaticLegality.ImportModded();
         }
         
