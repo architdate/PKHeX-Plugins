@@ -13,7 +13,6 @@ namespace LegalizeBoxes
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments;
-        public ToolStripMenuItem ModMenu;
 
         public void Initialize(params object[] args)
         {
@@ -40,13 +39,11 @@ namespace LegalizeBoxes
                 mod.Image = LegalizeBoxesResources.menuautolegality;
                 mod.Name = "Menu_AutoLegality";
                 var modmenu = mod;
-                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
             else
             {
                 var modmenu = modmenusearch[0] as ToolStripMenuItem;
-                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
         }
@@ -72,9 +69,9 @@ namespace LegalizeBoxes
 
         private void Legalize(object sender, EventArgs e)
         {
-            AutoLegalityMod.AutoLegalityMod alm = new AutoLegalityMod.AutoLegalityMod();
-            alm.Initialize(arguments);
-            alm.SAV = SaveFileEditor.SAV;
+            AutomaticLegality.PKMEditor = PKMEditor;
+            AutomaticLegality.SaveFileEditor = SaveFileEditor;
+            AutoLegalityMod.AutoLegalityMod.SAV = SaveFileEditor.SAV;
             IList<PKM> BoxData = SaveFileEditor.SAV.BoxData;
             for (int i = 0; i < 30; i++)
             {
@@ -96,7 +93,7 @@ namespace LegalizeBoxes
                     PKM legal;
                     PKM APIGenerated = SaveFileEditor.SAV.BlankPKM;
                     bool satisfied = false;
-                    try { APIGenerated = alm.APILegality(illegalPK, Set, out satisfied); }
+                    try { APIGenerated = AutoLegalityMod.AutoLegalityMod.APILegality(illegalPK, Set, out satisfied); }
                     catch { satisfied = false; }
                     if (!satisfied)
                     {
@@ -105,7 +102,7 @@ namespace LegalizeBoxes
                         legal = b.LoadShowdownSetModded_PKSM(illegalPK, Set, resetForm, illegalPK.TID, illegalPK.SID, illegalPK.OT_Name, illegalPK.OT_Gender);
                     }
                     else legal = APIGenerated;
-                    legal = alm.SetTrainerData(illegalPK.OT_Name, illegalPK.TID, illegalPK.SID, illegalPK.OT_Gender, legal, satisfied);
+                    legal = AutoLegalityMod.AutoLegalityMod.SetTrainerData(illegalPK.OT_Name, illegalPK.TID, illegalPK.SID, illegalPK.OT_Gender, legal, satisfied);
                     if (box) BoxData[SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount + i] = legal;
                     else
                     {
@@ -117,7 +114,6 @@ namespace LegalizeBoxes
             }
             SaveFileEditor.SAV.BoxData = BoxData;
             SaveFileEditor.ReloadSlots();
-            ModMenu.DropDownItems.Remove(alm.menuinstance);
             MessageBox.Show("Legalized Box Pokemon");
         }
     }

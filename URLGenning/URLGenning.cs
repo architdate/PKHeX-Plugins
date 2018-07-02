@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using PKHeX.Core;
+using AutoLegalityMod;
 
 namespace URLGenning
 {
@@ -14,7 +15,6 @@ namespace URLGenning
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments;
-        public ToolStripMenuItem ModMenu;
 
         public void Initialize(params object[] args)
         {
@@ -41,13 +41,11 @@ namespace URLGenning
                 mod.Image = URLGenningResources.menuautolegality;
                 mod.Name = "Menu_AutoLegality";
                 var modmenu = mod;
-                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
             else
             {
                 var modmenu = modmenusearch[0] as ToolStripMenuItem;
-                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
         }
@@ -90,12 +88,7 @@ namespace URLGenning
             string sets = GetText(url).TrimStart().TrimEnd();
             if (sets.StartsWith("Error :")) return;
             Clipboard.SetText(sets);
-            try {
-                var alm = ModMenu.DropDownItems.Find("Menu_AutoLegalityMod", false);
-                if (alm.Length == 0)
-                { MessageBox.Show("Auto Legality Mod Plugin missing."); return; }
-                else alm[0].PerformClick();
-            }
+            try { AutomaticLegality.ImportModded(); }
             catch { MessageBox.Show("The data inside the URL are not valid Showdown Sets"); }
             Dictionary<string, string> metadata = GetMetadata(MetaDataURL(url));
             string typeOfBin = (CheckPasteBin(url)) ? "Pastebin" : "PokePaste";

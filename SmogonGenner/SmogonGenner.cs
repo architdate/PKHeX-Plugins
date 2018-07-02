@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
+using AutoLegalityMod;
 using PKHeX.Core;
 
 namespace SmogonGenner
@@ -15,7 +16,6 @@ namespace SmogonGenner
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments;
-        public ToolStripMenuItem ModMenu;
 
         public void Initialize(params object[] args)
         {
@@ -42,13 +42,11 @@ namespace SmogonGenner
                 mod.Image = SmogonGennerResources.menuautolegality;
                 mod.Name = "Menu_AutoLegality";
                 var modmenu = mod;
-                ModMenu = mod;
                 AddPluginControl(modmenu);
             }
             else
             {
                 var modmenu = modmenusearch[0] as ToolStripMenuItem;
-                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
         }
@@ -108,12 +106,7 @@ namespace SmogonGenner
                 return;
             }
             Clipboard.SetText(showdownsets);
-            try {
-                var alm = ModMenu.DropDownItems.Find("Menu_AutoLegalityMod", false);
-                if (alm.Length == 0)
-                { MessageBox.Show("Auto Legality Mod Plugin missing."); return; }
-                else alm[0].PerformClick();
-            }
+            try { AutomaticLegality.ImportModded(); }
             catch { MessageBox.Show("Something went wrong"); }
             MessageBox.Show(alertText(showdownSpec, sets.Count, GetTitles(smogonPage)));
         }

@@ -53,6 +53,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AutoLegalityResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="AutomaticLegality.cs" />
     <Compile Include="ConstData.cs" />
     <Compile Include="EdgeCaseLegality.cs" />
     <Compile Include="IVtoPIDGenerator.cs" />

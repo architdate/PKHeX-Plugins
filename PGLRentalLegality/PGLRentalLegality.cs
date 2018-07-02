@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using PKHeX.Core;
+using AutoLegalityMod;
 
 namespace PGLRentalLegality
 {
@@ -11,7 +13,6 @@ namespace PGLRentalLegality
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public object[] arguments { get; private set; }
-        public ToolStripMenuItem ModMenu;
 
         public void Initialize(params object[] args)
         {
@@ -38,13 +39,11 @@ namespace PGLRentalLegality
                 mod.Image = PGLRentalLegalityResources.menuautolegality;
                 mod.Name = "Menu_AutoLegality";
                 var modmenu = mod;
-                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
             else
             {
                 var modmenu = modmenusearch[0] as ToolStripMenuItem;
-                ModMenu = modmenu;
                 AddPluginControl(modmenu);
             }
         }
@@ -67,12 +66,8 @@ namespace PGLRentalLegality
             {
                 data += p.ToShowdownFormat(false) + Environment.NewLine + Environment.NewLine;
             }
-
             Clipboard.SetText(data.TrimEnd());
-            var alm = ModMenu.DropDownItems.Find("Menu_AutoLegalityMod", false);
-            if (alm.Length == 0)
-            { MessageBox.Show("Auto Legality Mod Plugin missing."); return; }
-            else alm[0].PerformClick();
+            AutomaticLegality.ImportModded();
             MessageBox.Show("Exported OwO","Alert");
         }
 

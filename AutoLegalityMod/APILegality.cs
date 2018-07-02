@@ -9,7 +9,7 @@ namespace AutoLegalityMod
 {
     public partial class AutoLegalityMod
     {
-        public SaveFile SAV;
+        public static SaveFile SAV;
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -18,7 +18,7 @@ namespace AutoLegalityMod
         /// <param name="SSet">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use current auto legality functionality</param>
         /// <returns></returns>
-        public PKM APILegality(PKM roughPK, ShowdownSet SSet, out bool satisfied)
+        public static PKM APILegality(PKM roughPK, ShowdownSet SSet, out bool satisfied)
         {
             bool changedForm = false;
             if(SSet.Form != null) changedForm = FixFormes(SSet, out SSet);
@@ -75,7 +75,7 @@ namespace AutoLegalityMod
         /// Set a valid Pokeball incase of an incorrect ball issue arising with GeneratePKM
         /// </summary>
         /// <param name="pk"></param>
-        public void SetSpeciesBall(PKM pk)
+        public static void SetSpeciesBall(PKM pk)
         {
             if (!new LegalityAnalysis(pk).Report().Contains(V118)) return;
             if (pk.GenNumber == 5 && pk.Met_Location == 75) pk.Ball = 25;
@@ -86,7 +86,7 @@ namespace AutoLegalityMod
         /// Debugging tool
         /// </summary>
         /// <param name="pk">PKM whose legality must be printed</param>
-        public void PrintLegality(PKM pk)
+        public static void PrintLegality(PKM pk)
         {
             Console.WriteLine(new LegalityAnalysis(pk).Report());
         }
@@ -95,7 +95,7 @@ namespace AutoLegalityMod
         /// Validate and Set the gender if needed
         /// </summary>
         /// <param name="pkm">PKM to modify</param>
-        public void ValidateGender(PKM pkm)
+        public static void ValidateGender(PKM pkm)
         {
             bool genderValid = pkm.IsGenderValid();
             if (!genderValid)
@@ -140,7 +140,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="pk">Return PKM</param>
         /// <param name="pkmn">Generated PKM</param>
-        public void SetVersion(PKM pk, PKM pkmn)
+        public static void SetVersion(PKM pk, PKM pkmn)
         {
             if (pkmn.Version == (int)GameVersion.RBY) pk.Version = (int)GameVersion.RD;
             else if (pkmn.Version == (int)GameVersion.GSC) pk.Version = (int)GameVersion.C;
@@ -148,7 +148,7 @@ namespace AutoLegalityMod
             else pk.Version = pkmn.Version;
         }
 
-        public void CheckAndSetFateful(PKM pk)
+        public static void CheckAndSetFateful(PKM pk)
         {
             LegalityAnalysis la = new LegalityAnalysis(pk);
             string Report = la.Report();
@@ -162,7 +162,7 @@ namespace AutoLegalityMod
         /// <param name="SSet">Original Showdown Set</param>
         /// <param name="changedSet">Edited Showdown Set</param>
         /// <returns>boolen that checks if a form is fixed or not</returns>
-        public bool FixFormes(ShowdownSet SSet, out ShowdownSet changedSet)
+        public static bool FixFormes(ShowdownSet SSet, out ShowdownSet changedSet)
         {
             changedSet = SSet;
             if (SSet.Form.Contains("Mega") || SSet.Form == "Primal" || SSet.Form == "Busted") {
@@ -178,7 +178,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="SSet">SSet to modify</param>
-        public void SetSpeciesLevel(PKM pk, ShowdownSet SSet, int Form)
+        public static void SetSpeciesLevel(PKM pk, ShowdownSet SSet, int Form)
         {
             pk.Species = SSet.Species;
             if (SSet.Gender != null) pk.Gender = (SSet.Gender == "M") ? 0 : 1;
@@ -194,7 +194,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="SSet">Showdown Set to refer</param>
-        public void SetMovesEVsItems(PKM pk, ShowdownSet SSet)
+        public static void SetMovesEVsItems(PKM pk, ShowdownSet SSet)
         {
             pk.SetMoves(SSet.Moves, true);
             pk.EVs = SSet.EVs;
@@ -210,7 +210,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="RelearnInfo">CheckResult List of relearn moves</param>
         /// <returns>If an invalid relearn move exists</returns>
-        public bool CheckInvalidRelearn(CheckResult[] RelearnInfo)
+        public static bool CheckInvalidRelearn(CheckResult[] RelearnInfo)
         {
             foreach(CheckResult r in RelearnInfo)
             {
@@ -223,7 +223,7 @@ namespace AutoLegalityMod
         /// Set Trainer data (TID, SID, OT) for a given PKM
         /// </summary>
         /// <param name="pk">PKM to modify</param>
-        public void SetTrainerDataAndMemories(PKM pk)
+        public static void SetTrainerDataAndMemories(PKM pk)
         {
             if (!(pk.WasEvent || pk.WasIngameTrade))
             {
@@ -243,7 +243,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <returns>Modified PKM file</returns>
-        private PKM FixMemoriesPKM(PKM pk)
+        private static PKM FixMemoriesPKM(PKM pk)
         {
             if (SAV.PKMType == typeof(PK7))
             {
@@ -265,7 +265,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="SSet">Showdown Set to refer</param>
-        public void SetNatureAbility(PKM pk, ShowdownSet SSet)
+        public static void SetNatureAbility(PKM pk, ShowdownSet SSet)
         {
             // Values that are must for showdown set to work, IVs should be adjusted to account for this
             pk.Nature = SSet.Nature;
@@ -277,7 +277,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="isShiny">Shiny value that needs to be set</param>
-        public void SetShinyBoolean(PKM pk, bool isShiny)
+        public static void SetShinyBoolean(PKM pk, bool isShiny)
         {
             if (!isShiny)
             {
@@ -296,7 +296,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="pk"></param>
         /// <param name="SSet"></param>
-        public void SetIVsPID(PKM pk, ShowdownSet SSet, PIDType Method, int HPType, PKM originalPKMN)
+        public static void SetIVsPID(PKM pk, ShowdownSet SSet, PIDType Method, int HPType, PKM originalPKMN)
         {
             // Useful Values for computation
             int Species = pk.Species;
@@ -335,7 +335,7 @@ namespace AutoLegalityMod
         /// <param name="satisfied"></param>
         /// <param name="OptionalGame"></param>
         /// <returns></returns>
-        public PKM DebugReturn(PKM pk, out bool satisfied, int OptionalGame = -1)
+        public static PKM DebugReturn(PKM pk, out bool satisfied, int OptionalGame = -1)
         {
             satisfied = false;
             if (OptionalGame > 0)
@@ -354,7 +354,7 @@ namespace AutoLegalityMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="Method">Given Method</param>
         /// <param name="HPType">HPType INT for preserving Hidden powers</param>
-        public void FindPIDIV(PKM pk, PIDType Method, int HPType, PKM originalPKMN)
+        public static void FindPIDIV(PKM pk, PIDType Method, int HPType, PKM originalPKMN)
         {
             if (Method == PIDType.None)
             {
@@ -380,7 +380,7 @@ namespace AutoLegalityMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="pkmn">Original PKM</param>
         /// <returns>PIDType that is likely used</returns>
-        public PIDType FindLikelyPIDType(PKM pk, PKM pkmn)
+        public static PIDType FindLikelyPIDType(PKM pk, PKM pkmn)
         {
             BruteForce b = new BruteForce();
             if (b.usesEventBasedMethod(pk.Species, pk.Moves, "BACD_R"))
@@ -427,7 +427,7 @@ namespace AutoLegalityMod
         /// Quick Gender Toggle
         /// </summary>
         /// <param name="pk">PKM whose gender needs to be toggled</param>
-        public void FixGender(PKM pk)
+        public static void FixGender(PKM pk)
         {
             LegalityAnalysis la = new LegalityAnalysis(pk);
             string Report = la.Report();
@@ -443,7 +443,7 @@ namespace AutoLegalityMod
         /// Set Encryption Constant based on PKM GenNumber
         /// </summary>
         /// <param name="pk"></param>
-        public void SetEncryptionConstant(PKM pk)
+        public static void SetEncryptionConstant(PKM pk)
         {
             if (pk.GenNumber > 5 || pk.VC)
             {
@@ -458,7 +458,7 @@ namespace AutoLegalityMod
         /// Colosseum/XD pokemon need to be fixed. Fix Gender further in logic using <see cref="FixGender(PKM)"/>
         /// </summary>
         /// <param name="pkm">PKM to apply the fix to</param>
-        public void ColosseumFixes(PKM pkm)
+        public static void ColosseumFixes(PKM pkm)
         {
             if(pkm.Version == 15)
             {
@@ -479,7 +479,7 @@ namespace AutoLegalityMod
         /// Fix invalid and missing ribbons. (V600 and V601)
         /// </summary>
         /// <param name="pk">PKM whose ribbons need to be fixed</param>
-        public void FixRibbons(PKM pk)
+        public static void FixRibbons(PKM pk)
         {
             string Report = new LegalityAnalysis(pk).Report();
             if (Report.Contains(String.Format(V600, "")))
@@ -520,7 +520,7 @@ namespace AutoLegalityMod
         /// Makes Happiness 255 unless carrying frustration in which case it is set at 0
         /// </summary>
         /// <param name="pk"></param>
-        private void SetHappiness(PKM pk)
+        private static void SetHappiness(PKM pk)
         {
             if (pk.Moves.Contains(218)) pk.CurrentFriendship = 0;
             else pk.CurrentFriendship = 255;

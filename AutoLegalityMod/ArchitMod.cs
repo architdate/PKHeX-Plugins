@@ -14,7 +14,7 @@ namespace AutoLegalityMod
         /// Helper function to print out a byte array as a string that can be used within code
         /// </summary>
         /// <param name="bytes">byte array</param>
-        public void PrintByteArray(byte[] bytes)
+        public static void PrintByteArray(byte[] bytes)
         {
             var sb = new System.Text.StringBuilder("new byte[] { ");
             foreach (var b in bytes)
@@ -31,7 +31,7 @@ namespace AutoLegalityMod
         /// <param name="Country">String denoting the exact country</param>
         /// <param name="SubRegion">String denoting the exact sub region</param>
         /// <param name="ConsoleRegion">String denoting the exact console region</param>
-        public void SetRegions(string Country, string SubRegion, string ConsoleRegion, PKM pk)
+        public static void SetRegions(string Country, string SubRegion, string ConsoleRegion, PKM pk)
         {
             pk.Country = Util.GetCBList("countries", "en").FirstOrDefault(z => z.Text == Country).Value;
             pk.Region = Util.GetCBList($"sr_{pk.Country:000}", "en").FirstOrDefault(z => z.Text == SubRegion).Value;
@@ -46,7 +46,7 @@ namespace AutoLegalityMod
         /// <param name="ConsoleRegion">INT value corresponding to the index of the console region</param>
         /// <param name="pk"></param>
         /// <returns></returns>
-        public PKM SetPKMRegions(int Country, int SubRegion, int ConsoleRegion, PKM pk)
+        public static PKM SetPKMRegions(int Country, int SubRegion, int ConsoleRegion, PKM pk)
         {
             pk.Country = Country;
             pk.Region = SubRegion;
@@ -62,7 +62,7 @@ namespace AutoLegalityMod
         /// <param name="SID">INT value of SID</param>
         /// <param name="pk"></param>
         /// <returns></returns>
-        public PKM SetTrainerData(string OT, int TID, int SID, int gender, PKM pk, bool APILegalized = false)
+        public static PKM SetTrainerData(string OT, int TID, int SID, int gender, PKM pk, bool APILegalized = false)
         {
             if (APILegalized)
             {
@@ -73,8 +73,7 @@ namespace AutoLegalityMod
                     pk.SID = SID;
                     pk.OT_Name = OT;
                     pk.OT_Gender = gender;
-                    AutoLegalityMod m = new AutoLegalityMod();
-                    m.SetShinyBoolean(pk, Shiny);
+                    SetShinyBoolean(pk, Shiny);
                 }
                 return pk;
             }
@@ -89,7 +88,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="jsonstring">string form of trainerdata.json</param>
         /// <returns></returns>
-        public string checkMode(string jsonstring = "")
+        public static string checkMode(string jsonstring = "")
         {
             if(jsonstring != "")
             {
@@ -121,7 +120,7 @@ namespace AutoLegalityMod
         /// <param name="Game">int value of the game</param>
         /// <param name="jsonvalue">internal json: trainerdata[Game]</param>
         /// <returns></returns>
-        public bool checkIfGameExists(string jsonstring, int Game, out string jsonvalue)
+        public static bool checkIfGameExists(string jsonstring, int Game, out string jsonvalue)
         {
             jsonvalue = "";
             if (checkMode(jsonstring) == "auto")
@@ -148,7 +147,7 @@ namespace AutoLegalityMod
         /// <param name="key"></param>
         /// <param name="finaljson"></param>
         /// <returns></returns>
-        public string getValueFromKey(string key, string finaljson)
+        public static string getValueFromKey(string key, string finaljson)
         {
             return finaljson.Split(new string[] { key }, StringSplitOptions.None)[1].Split('"')[2].Trim();
         }
@@ -159,7 +158,7 @@ namespace AutoLegalityMod
         /// <param name="tid7">TID7 value</param>
         /// <param name="sid7">SID7 value</param>
         /// <returns></returns>
-        public int[] ConvertTIDSID7toTIDSID(int tid7, int sid7)
+        public static int[] ConvertTIDSID7toTIDSID(int tid7, int sid7)
         {
             var repack = (long)sid7 * 1_000_000 + tid7;
             int sid = (ushort)(repack >> 16);
@@ -173,7 +172,7 @@ namespace AutoLegalityMod
         /// <param name="C_SAV">Current Save Editor</param>
         /// <param name="Game">optional Game value in case of mode being game</param>
         /// <returns></returns>
-        public string[] parseTrainerJSON(SaveFile C_SAV, int Game = -1)
+        public static string[] parseTrainerJSON(SaveFile C_SAV, int Game = -1)
         {
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\trainerdata.json"))
             {
@@ -204,7 +203,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="C_SAV">SAVEditor of the current save file</param>
         /// <returns></returns>
-        public string[] parseTrainerData(SaveFile C_SAV, bool auto = false)
+        public static string[] parseTrainerData(SaveFile C_SAV, bool auto = false)
         {
             // Defaults
             string TID = "23456";
