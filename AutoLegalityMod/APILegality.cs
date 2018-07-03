@@ -201,7 +201,7 @@ namespace AutoLegalityMod
             pk.CurrentFriendship = SSet.Friendship;
             pk.ApplyHeldItem(SSet.HeldItem, SSet.Format);
             var legal = new LegalityAnalysis(pk);
-            if (legal.Parsed && CheckInvalidRelearn(legal.Info.Relearn) && !pk.WasEvent)
+            if (legal.Parsed && !CheckInvalidRelearn(legal.Info.Relearn) && !pk.WasEvent)
                 pk.RelearnMoves = pk.GetSuggestedRelearnMoves(legal);
         }
 
