@@ -54,8 +54,8 @@ namespace AutoLegalityMod
                     ColosseumFixes(pk);
                     pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
                     SetEncryptionConstant(pk);
-                    CheckAndSetFateful(pk);
                     SetShinyBoolean(pk, SSet.Shiny);
+                    CheckAndSetFateful(pk);
                     FixGender(pk);
                     FixRibbons(pk);
                     FixMemoriesPKM(pk);
