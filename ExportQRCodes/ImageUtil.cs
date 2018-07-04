@@ -21,6 +21,7 @@ namespace PKHeX.WinForms
             }
             return img;
         }
+
         public static Bitmap ChangeOpacity(Image img, double trans)
         {
             if (img == null)
@@ -38,6 +39,7 @@ namespace PKHeX.WinForms
 
             return bmp;
         }
+
         public static Bitmap ChangeAllColorTo(Image img, Color c)
         {
             if (img == null)
@@ -55,6 +57,7 @@ namespace PKHeX.WinForms
 
             return bmp;
         }
+
         public static Bitmap ToGrayscale(Image img)
         {
             if (img == null)
@@ -72,18 +75,21 @@ namespace PKHeX.WinForms
 
             return bmp;
         }
+
         private static void GetBitmapData(Bitmap bmp, out BitmapData bmpData, out IntPtr ptr, out byte[] data)
         {
             bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
             ptr = bmpData.Scan0;
             data = new byte[bmp.Width * bmp.Height * 4];
         }
+
         public static Bitmap GetBitmap(byte[] data, int width, int height, int stride = -1, PixelFormat format = PixelFormat.Format32bppArgb)
         {
             if (stride == -1 && format == PixelFormat.Format32bppArgb)
                 stride = 4 * width; // defaults
             return new Bitmap(width, height, stride, format, Marshal.UnsafeAddrOfPinnedArrayElement(data, 0));
         }
+
         public static byte[] GetPixelData(Bitmap bitmap)
         {
             var argbData = new byte[bitmap.Width * bitmap.Height * 4];
@@ -92,11 +98,13 @@ namespace PKHeX.WinForms
             bitmap.UnlockBits(bd);
             return argbData;
         }
+
         private static void SetAllTransparencyTo(byte[] data, double trans)
         {
             for (int i = 0; i < data.Length; i += 4)
                 data[i + 3] = (byte)(data[i + 3] * trans);
         }
+
         private static void SetAllColorTo(byte[] data, Color c)
         {
             byte R = c.R;
@@ -111,13 +119,14 @@ namespace PKHeX.WinForms
                 data[i + 2] = R;
             }
         }
+
         private static void SetAllColorToGrayScale(byte[] data)
         {
             for (int i = 0; i < data.Length; i += 4)
             {
                 if (data[i + 3] == 0)
                     continue;
-                byte greyS = (byte)((0.3 * data[i + 2] + 0.59 * data[i + 1] + 0.11 * data[i + 0]) / 3);
+                byte greyS = (byte)(((0.3 * data[i + 2]) + (0.59 * data[i + 1]) + (0.11 * data[i + 0])) / 3);
                 data[i + 0] = greyS;
                 data[i + 1] = greyS;
                 data[i + 2] = greyS;

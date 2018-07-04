@@ -55,7 +55,7 @@ namespace SmogonGenner
         {
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
-            ctrl.Click += new EventHandler(SmogonGenning);
+            ctrl.Click += SmogonGenning;
             ctrl.Image = SmogonGennerResources.smogongenner;
         }
 
@@ -75,14 +75,9 @@ namespace SmogonGenner
             PKM rough = PKMEditor.PreparePKM();
             string speciesName = Util.GetSpeciesList("en")[rough.Species];
             string form = new ShowdownSet(ShowdownSet.GetShowdownText(rough)).Form;
-            string url = "";
-            if (form != null)
-            {
-                string urlSpecies = ConvertSpeciesToURLSpecies(speciesName);
-                if (form != "Mega" || form != "") url = String.Format("https://www.smogon.com/dex/sm/pokemon/{0}-{1}/", urlSpecies.ToLower(), ConvertFormToURLForm(form, urlSpecies).ToLower());
-            }
-            else url = String.Format("https://www.smogon.com/dex/sm/pokemon/{0}/", ConvertSpeciesToURLSpecies(speciesName).ToLower());
+            string url = GetURL(speciesName, form);
             string smogonPage = GetSmogonPage(url);
+
             string[] split1 = smogonPage.Split(new string[] { "\",\"abilities\":" }, StringSplitOptions.None);
             List<string> sets = new List<string>();
             for (int i = 1; i < split1.Length; i++)
@@ -100,7 +95,7 @@ namespace SmogonGenner
                 showdownsets = showdownsets + ConvertSetToShowdown(set, showdownSpec) + Environment.NewLine + Environment.NewLine;
             }
             showdownsets.TrimEnd();
-            if (showdownsets == "")
+            if (showdownsets.Length == 0)
             {
                 MessageBox.Show("No movesets available. Perhaps you could help out? Check the Contributions & Corrections forum.\n\nForum: https://www.smogon.com/forums/forums/contributions-corrections.388/");
                 return;
@@ -108,7 +103,19 @@ namespace SmogonGenner
             Clipboard.SetText(showdownsets);
             try { AutomaticLegality.ImportModded(); }
             catch { MessageBox.Show("Something went wrong"); }
-            MessageBox.Show(alertText(showdownSpec, sets.Count, GetTitles(smogonPage)));
+            MessageBox.Show(AlertText(showdownSpec, sets.Count, GetTitles(smogonPage)));
+        }
+
+        private static string GetURL(string speciesName, string form)
+        {
+            if (form == null)
+                return string.Format("https://www.smogon.com/dex/sm/pokemon/{0}/", ConvertSpeciesToURLSpecies(speciesName).ToLower());
+
+            string urlSpecies = ConvertSpeciesToURLSpecies(speciesName);
+            if (form != "Mega" || form != "")
+                return string.Format("https://www.smogon.com/dex/sm/pokemon/{0}-{1}/", urlSpecies.ToLower(), ConvertFormToURLForm(form, urlSpecies).ToLower());
+
+            return string.Empty;
         }
 
         private Dictionary<string, List<string>> GetTitles(string smogonPage)
@@ -121,7 +128,7 @@ namespace SmogonGenner
                 string key = format.Split('"')[1];
                 List<string> values = new List<string>();
                 string[] Names = format.Split(new string[] { "\"name\"" }, StringSplitOptions.None);
-                for (int i = 1; i < Names.Count(); i++)
+                for (int i = 1; i < Names.Length; i++)
                 {
                     values.Add(Names[i].Split('"')[1]);
                 }
@@ -130,7 +137,7 @@ namespace SmogonGenner
             return titles;
         }
 
-        private string alertText(string showdownSpec, int count, Dictionary<string, List<string>> titles)
+        private string AlertText(string showdownSpec, int count, Dictionary<string, List<string>> titles)
         {
             string alertText = showdownSpec + ":" + String.Concat(Enumerable.Repeat(Environment.NewLine, 2));
             foreach (KeyValuePair<string, List<string>> entry in titles)
@@ -152,8 +159,9 @@ namespace SmogonGenner
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: " + e.ToString() + "\nURL tried to access: " + url);
-                return "Error :" + e.ToString();
+                MessageBox.Show(
+                    $"An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: {e}\nURL tried to access: {url}");
+                return "Error :" + e;
             }
         }
 
@@ -170,8 +178,8 @@ namespace SmogonGenner
             if (splitmoves.Length > 3) moves.Add(splitmoves[3].Split('"')[0]);
             if (splitmoves.Length > 4) moves.Add(splitmoves[4].Split('"')[0]);
             string nature = set.Split(new string[] { "\"natures\":[\"" }, StringSplitOptions.None)[1].Split('"')[0];
-            string[] evs = parseEVIVs(set.Split(new string[] { "\"evconfigs\":" }, StringSplitOptions.None)[1].Split(new string[] { ",\"ivconfigs\":" }, StringSplitOptions.None)[0], false);
-            string[] ivs = parseEVIVs(set.Split(new string[] { "\"ivconfigs\":" }, StringSplitOptions.None)[1].Split(new string[] { ",\"natures\":" }, StringSplitOptions.None)[0], true);
+            string[] evs = ParseEVIVs(set.Split(new string[] { "\"evconfigs\":" }, StringSplitOptions.None)[1].Split(new string[] { ",\"ivconfigs\":" }, StringSplitOptions.None)[0], false);
+            string[] ivs = ParseEVIVs(set.Split(new string[] { "\"ivconfigs\":" }, StringSplitOptions.None)[1].Split(new string[] { ",\"natures\":" }, StringSplitOptions.None)[0], true);
             var result = new List<string>();
             if (item != "") result.Add(species + " @ " + item);
             else result.Add(species);
@@ -186,7 +194,7 @@ namespace SmogonGenner
             return string.Join(Environment.NewLine, result);
         }
 
-        private string[] parseEVIVs(string liststring, bool iv)
+        private string[] ParseEVIVs(string liststring, bool iv)
         {
             string[] ivdefault = new string[] { "31", "31", "31", "31", "31", "31" };
             string[] evdefault = new string[] { "0", "0", "0", "0", "0", "0" };

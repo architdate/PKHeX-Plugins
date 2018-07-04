@@ -54,7 +54,7 @@ namespace URLGenning
         {
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
-            ctrl.Click += new EventHandler(URLGen);
+            ctrl.Click += URLGen;
             ctrl.Image = URLGenningResources.urlimport;
         }
 
@@ -113,14 +113,12 @@ namespace URLGenning
 
         private bool CheckPokePaste(string url)
         {
-            if (url.Contains("pokepast.es/")) return true;
-            return false;
+            return url.Contains("pokepast.es/");
         }
 
         private bool CheckPasteBin(string url)
         {
-            if (url.Contains("pastebin.com/")) return true;
-            return false;
+            return url.Contains("pastebin.com/");
         }
 
         private Dictionary<string, string> GetMetadata(string url)
@@ -156,13 +154,12 @@ namespace URLGenning
             {
                 var request = (HttpWebRequest)WebRequest.Create(url);
                 var response = (HttpWebResponse)request.GetResponse();
-                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                return responseString;
+                return new StreamReader(response.GetResponseStream()).ReadToEnd();
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: " + e.ToString());
-                return "Error :" + e.ToString();
+                MessageBox.Show("An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: " + e);
+                return "Error :" + e;
             }
         }
     }

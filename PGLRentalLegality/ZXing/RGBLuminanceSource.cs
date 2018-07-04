@@ -6,7 +6,6 @@ using System;
 
 public class RGBLuminanceSource : LuminanceSource
 {
-
     private sbyte[] luminances;
     private bool isRotated = false;
     private bool __isRegionSelect = false;
@@ -76,7 +75,7 @@ public class RGBLuminanceSource : LuminanceSource
         luminances = new sbyte[W * H];
         Buffer.BlockCopy(d,0, luminances,0, W * H);
     }
-    
+
     public RGBLuminanceSource(byte[] d, int W, int H, bool Is8Bit,Rectangle Region)
         : base(W, H)
     {

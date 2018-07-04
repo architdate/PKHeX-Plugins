@@ -8,7 +8,7 @@ namespace PKHeX.WinForms
     {
         private Image finalqr;
         private readonly PKM pkm;
-        private Image qr;
+        private readonly Image qr;
 
         public QR(Image qr, PKM pk)
         {
@@ -35,6 +35,7 @@ namespace PKHeX.WinForms
             byte[] data = QR7.GenerateQRData(pk7, box, slot, num_copies);
             return GenerateQRCode(data, ppm: 4);
         }
+
         private static Image GenerateQRCode(byte[] data, int ppm = 4)
         {
             using (var generator = new QRCodeGenerator())

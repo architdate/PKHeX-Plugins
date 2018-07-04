@@ -11,11 +11,10 @@ namespace AutoLegalityMod
 {
     public partial class BruteForce
     {
-        PKM backup;
-        bool requestedShiny = false;
-        public event EventHandler LegalityChanged;
+        private PKM backup;
+        private bool requestedShiny;
         public SaveFile SAV;
-        bool legalized = false;
+        private bool legalized;
 
         /// <summary>
         /// Try to generate every a legal PKM from a showdown set using bruteforce. This should generally never be needed.
@@ -32,7 +31,7 @@ namespace AutoLegalityMod
         {
             backup = Set;
             bool trainerinfo = TID > 0;
-            List<List<string>> evoChart = generateEvoLists2();
+            List<List<string>> evoChart = GenerateEvoLists2();
             int abilitynum = Set.AbilityNumber < 6 ? Set.AbilityNumber >> 1 : 0;
             if (resetForm)
             {
@@ -114,9 +113,9 @@ namespace AutoLegalityMod
                         Set.Met_Location = 30001;
                         Set.Met_Level = 100;
                     }
-                    else { Set = clickMetLocationModPKSM(Set); }
+                    else { Set = ClickMetLocationModPKSM(Set); }
                     if (Set.GenNumber > 4) Set.Met_Level = 1;
-                    setMarkings(Set);
+                    SetMarkings(Set);
                     try
                     {
                         Set.CurrentHandler = 1;
@@ -142,7 +141,7 @@ namespace AutoLegalityMod
                         if (Set.GenNumber < 6 && !legalized) Set.EncryptionConstant = Set.PID;
                         if (new LegalityAnalysis(Set).Valid && SAV.Generation >= Set.GenNumber)
                         {
-                            setHappiness(Set);
+                            SetHappiness(Set);
                             if (shiny && !Set.IsShiny) Set.SetShinySID();
                             return Set;
                         }
@@ -155,7 +154,7 @@ namespace AutoLegalityMod
                     catch { continue; }
                 }
             }
-            
+
             if (!new LegalityAnalysis(Set).Valid && !eventMon)
             {
                 for (int i = 0; i < GameVersionList.Length; i++)
@@ -187,12 +186,10 @@ namespace AutoLegalityMod
                     {
                         Set.SID = 0;
                         if (OT.Length > 6)
-                        {
                             Set.OT_Name = "ARCH";
-                        }
                     }
                     Set.MetDate = DateTime.Today;
-                    setMarkings(Set);
+                    SetMarkings(Set);
                     try
                     {
                         Set.RelearnMove1 = 0;
@@ -216,7 +213,7 @@ namespace AutoLegalityMod
                         }
                         else
                         {
-                            clickMetLocationModPKSM(Set);
+                            ClickMetLocationModPKSM(Set);
                         }
                         Set = SetSuggestedRelearnMoves_PKSM(Set);
                         Set.CurrentHandler = 1;
@@ -226,39 +223,52 @@ namespace AutoLegalityMod
                         if (Set.PID == 0)
                         {
                             Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
-                            if (shiny) Set.SetShinyPID();
+                            if (shiny)
+                                Set.SetShinyPID();
                         }
+
                         Set.RefreshAbility(abilitynum);
                         Set = FixMemoriesPKM(Set);
-                        if (Set.GenNumber < 6) Set.EncryptionConstant = Set.PID;
+                        if (Set.GenNumber < 6)
+                            Set.EncryptionConstant = Set.PID;
+
                         if (CommonErrorHandling2(Set))
                         {
                             HyperTrain(Set);
                             if (shiny) Set.SetShinyPID();
                             return Set;
                         }
+
                         HyperTrain(Set);
-                        if (new LegalityAnalysis(Set).Valid) legalized = true;
+                        if (new LegalityAnalysis(Set).Valid)
+                            legalized = true;
+
                         AlternateAbilityRefresh(Set);
-                        if (Set.GenNumber < 6 && !legalized) Set.EncryptionConstant = Set.PID;
+                        if (Set.GenNumber < 6 && !legalized)
+                            Set.EncryptionConstant = Set.PID;
+
                         if (new LegalityAnalysis(Set).Valid && SAV.Generation >= Set.GenNumber)
                         {
-                            setHappiness(Set);
+                            SetHappiness(Set);
                             PKM returnval = Set;
-                            if (shiny && Set.IsShiny) return Set;
-                            if (shiny && !Set.IsShiny)
-                            {
-                                Set.SetShinySID();
-                                if (new LegalityAnalysis(Set).Valid) return Set;
-                                Set = returnval;
-                                Set.SetShinyPID();
-                                if (new LegalityAnalysis(Set).Valid) return Set;
-                            }
-                            else return returnval;
+                            if (shiny && Set.IsShiny)
+                                return Set;
+                            if (!shiny || Set.IsShiny)
+                                return returnval;
+
+                            Set.SetShinySID();
+                            if (new LegalityAnalysis(Set).Valid)
+                                return Set;
+
+                            Set = returnval;
+                            Set.SetShinyPID();
+
+                            if (new LegalityAnalysis(Set).Valid)
+                                return Set;
                         }
                         else
                         {
-                            List<EncounterStatic> edgeLegality = edgeMons(Set.Version, Set);
+                            var edgeLegality = EdgeMons(Set.Version, Set);
                             foreach (EncounterStatic el in edgeLegality)
                             {
                                 Set.Met_Location = el.Location;
@@ -301,11 +311,11 @@ namespace AutoLegalityMod
                     }
                 }
                 if (chain.Count == 0 && Set.Species != 0) chain.Add(PKMNList[Set.Species]);
-                foreach (string file in System.IO.Directory.GetFiles(fpath, "*.*", System.IO.SearchOption.AllDirectories))
+                foreach (string file in Directory.GetFiles(fpath, "*.*", SearchOption.AllDirectories))
                 {
                     foreach (string mon in chain)
                     {
-                        if (file.ToLower().Contains(mon.ToLower()) || Path.GetExtension(file) == ".pl6")
+                        if (file.IndexOf(mon, StringComparison.OrdinalIgnoreCase) >= 0 || Path.GetExtension(file) == ".pl6")
                         {
                             fileList.Add(file);
                             Console.WriteLine(file);
@@ -321,9 +331,9 @@ namespace AutoLegalityMod
                     int AbilityType = -1;
                     uint fixedPID = 0;
                     int form = Set.AltForm;
-                    if (System.IO.Path.GetExtension(file) == ".wc7" || System.IO.Path.GetExtension(file) == ".wc7full")
+                    if (Path.GetExtension(file) == ".wc7" || Path.GetExtension(file) == ".wc7full")
                     {
-                        var mg = (WC7)MysteryGift.GetMysteryGift(System.IO.File.ReadAllBytes(file), System.IO.Path.GetExtension(file));
+                        var mg = (WC7)MysteryGift.GetMysteryGift(File.ReadAllBytes(file), Path.GetExtension(file));
                         PIDType = (int)mg.PIDType;
                         AbilityType = mg.AbilityType;
                         Generation = 7;
@@ -332,9 +342,9 @@ namespace AutoLegalityMod
                         var temp = mg.ConvertToPKM(SAV);
                         eventpk = PKMConverter.ConvertToType(temp, SAV.PKMType, out string c);
                     }
-                    else if (System.IO.Path.GetExtension(file) == ".wc6" || System.IO.Path.GetExtension(file) == ".wc6full")
+                    else if (Path.GetExtension(file) == ".wc6" || Path.GetExtension(file) == ".wc6full")
                     {
-                        var mg = (WC6)MysteryGift.GetMysteryGift(System.IO.File.ReadAllBytes(file), System.IO.Path.GetExtension(file));
+                        var mg = (WC6)MysteryGift.GetMysteryGift(File.ReadAllBytes(file), Path.GetExtension(file));
                         PIDType = (int)mg.PIDType;
                         AbilityType = mg.AbilityType;
                         Generation = 6;
@@ -343,64 +353,72 @@ namespace AutoLegalityMod
                         var temp = mg.ConvertToPKM(SAV);
                         eventpk = PKMConverter.ConvertToType(temp, SAV.PKMType, out string c);
                     }
-                    else if (System.IO.Path.GetExtension(file) == ".pl6") // Pokemon Link
+                    else if (Path.GetExtension(file) == ".pl6") // Pokemon Link
                     {
                         PL6_PKM[] LinkPokemon = new PL6(File.ReadAllBytes(file)).Pokes;
                         bool ExistsEligible = false;
                         PL6_PKM Eligible = new PL6_PKM();
                         foreach (PL6_PKM i in LinkPokemon)
                         {
-                            if (i.Species != Set.Species) continue;
-                            else
-                            {
-                                Eligible = i;
-                                ExistsEligible = true;
-                                PIDType = i.PIDType;
-                                AbilityType = i.AbilityType;
-                                Generation = 6;
-                                fixedPID = i.PID;
-                                break;
-                            }
+                            if (i.Species != Set.Species)
+                                continue;
+
+                            Eligible = i;
+                            ExistsEligible = true;
+                            PIDType = i.PIDType;
+                            AbilityType = i.AbilityType;
+                            Generation = 6;
+                            fixedPID = i.PID;
+
+                            break;
                         }
                         if (ExistsEligible) eventpk = PKMConverter.ConvertToType(ConvertPL6ToPKM(Eligible), SAV.PKMType, out string c);
                     }
-                    else if (System.IO.Path.GetExtension(file) == ".pgf")
+                    else if (Path.GetExtension(file) == ".pgf")
                     {
-                        var mg = (PGF)MysteryGift.GetMysteryGift(System.IO.File.ReadAllBytes(file), System.IO.Path.GetExtension(file));
+                        var mg = (PGF)MysteryGift.GetMysteryGift(File.ReadAllBytes(file), Path.GetExtension(file));
                         PIDType = mg.PIDType;
                         AbilityType = mg.AbilityType;
                         Generation = 5;
                         fixedPID = mg.PID;
-                        if (!ValidShiny(mg.PIDType, shiny)) continue;
+                        if (!ValidShiny(mg.PIDType, shiny))
+                            continue;
+
                         var temp = mg.ConvertToPKM(SAV);
                         eventpk = PKMConverter.ConvertToType(temp, SAV.PKMType, out string c);
                     }
-                    else if (System.IO.Path.GetExtension(file) == ".pgt" || System.IO.Path.GetExtension(file) == ".pcd" || System.IO.Path.GetExtension(file) == ".wc4")
+                    else if (Path.GetExtension(file) == ".pgt" || Path.GetExtension(file) == ".pcd" || Path.GetExtension(file) == ".wc4")
                     {
                         try
                         {
-                            var mg = (PCD)MysteryGift.GetMysteryGift(System.IO.File.ReadAllBytes(file), System.IO.Path.GetExtension(file));
+                            var mg = (PCD)MysteryGift.GetMysteryGift(File.ReadAllBytes(file), Path.GetExtension(file));
                             Generation = 4;
-                            if (shiny != mg.IsShiny) continue;
+                            if (shiny != mg.IsShiny)
+                                continue;
+
                             var temp = mg.ConvertToPKM(SAV);
                             eventpk = PKMConverter.ConvertToType(temp, SAV.PKMType, out string c);
                             fixedPID = eventpk.PID;
                         }
                         catch
                         {
-                            var mg = (PGT)MysteryGift.GetMysteryGift(System.IO.File.ReadAllBytes(file), System.IO.Path.GetExtension(file));
+                            var mg = (PGT)MysteryGift.GetMysteryGift(File.ReadAllBytes(file), Path.GetExtension(file));
                             Generation = 4;
-                            if (shiny != mg.IsShiny) continue;
+                            if (shiny != mg.IsShiny)
+                                continue;
+
                             var temp = mg.ConvertToPKM(SAV);
                             eventpk = PKMConverter.ConvertToType(temp, SAV.PKMType, out string c);
                             fixedPID = eventpk.PID;
                         }
                     }
-                    else if (System.IO.Path.GetExtension(file) == ".pk3")
+                    else if (Path.GetExtension(file) == ".pk3")
                     {
                         Generation = 3;
                         var pk = PKMConverter.GetPKMfromBytes(File.ReadAllBytes(file), prefer: Path.GetExtension(file).Length > 0 ? (Path.GetExtension(file).Last() - '0') & 0xF : SAV.Generation);
-                        if (pk == null) break;
+                        if (pk == null)
+                            break;
+
                         eventpk = PKMConverter.ConvertToType(pk, SAV.PKMType, out string c);
                     }
 
@@ -418,16 +436,21 @@ namespace AutoLegalityMod
                     }
                     try
                     {
-                        if ((PIDType == 0 && eventpk.IsShiny && shiny == false && Generation > 4) || (PIDType == 0 && !eventpk.IsShiny && shiny == true && Generation > 4)) continue;
-                        if (shiny == true && !eventpk.IsShiny && Generation > 4)
+                        if ((PIDType == 0 && eventpk.IsShiny && !shiny && Generation > 4) || (PIDType == 0 && !eventpk.IsShiny && shiny && Generation > 4))
+                            continue;
+
+                        if (shiny && !eventpk.IsShiny && Generation > 4)
                         {
-                            if (PIDType == 1) eventpk.SetShinyPID();
-                            else if (PIDType == 3) continue;
+                            if (PIDType == 1)
+                                eventpk.SetShinyPID();
+                            else if (PIDType == 3)
+                                continue;
                         }
-                        if (shiny == false && eventpk.IsShiny && Generation > 4)
+                        if (!shiny && eventpk.IsShiny && Generation > 4)
                         {
                             if (PIDType == 1) eventpk.PID ^= 0x10000000;
-                            else if (PIDType == 2) continue;
+                            else if (PIDType == 2)
+                                continue;
                         }
                         eventpk.Species = Set.Species;
                         eventpk.AltForm = form;
@@ -452,7 +475,6 @@ namespace AutoLegalityMod
                         eventpk.EV_SPD = Set.EVs[5];
                         eventpk.EV_SPE = Set.EVs[3];
 
-
                         eventpk.CurrentLevel = 100;
                         eventpk.Move1 = SSet.Moves[0];
                         eventpk.Move2 = SSet.Moves[1];
@@ -470,20 +492,20 @@ namespace AutoLegalityMod
                         eventpk.Move3_PP = eventpk.GetMovePP(eventpk.Move3, eventpk.Move3_PPUps);
                         eventpk.Move4_PP = eventpk.GetMovePP(eventpk.Move4, eventpk.Move4_PPUps);
 
-                        setMarkings(eventpk);
-                        setHappiness(eventpk);
+                        SetMarkings(eventpk);
+                        SetHappiness(eventpk);
                         HyperTrain(eventpk);
 
                         if (new LegalityAnalysis(eventpk).Valid) return eventpk;
 
-                        eventpk = SetWCXPID(eventpk, PIDType, Generation, AbilityType, shiny);
+                        eventpk = SetWCXPID(eventpk, PIDType, Generation, AbilityType);
                         LegalityAnalysis la2 = new LegalityAnalysis(eventpk);
                         if (!la2.Valid)
                         {
                             Console.WriteLine(la2.Report(false));
                             AlternateAbilityRefresh(eventpk);
                             if (new LegalityAnalysis(eventpk).Valid) return eventpk;
-                            if (eventErrorHandling(eventpk, PIDType, AbilityType, Generation, fixedPID)) return eventpk;
+                            if (EventErrorHandling(eventpk, Generation, fixedPID)) return eventpk;
                             prevevent = eventpk;
                             continue;
                         }
@@ -499,7 +521,7 @@ namespace AutoLegalityMod
             return Set;
         }
 
-        private void setMarkings(PKM pk)
+        private void SetMarkings(PKM pk)
         {
             if (pk.IV_HP == 31) pk.MarkCircle = 1;
             if (pk.IV_ATK == 31) pk.MarkTriangle = 1;
@@ -521,39 +543,37 @@ namespace AutoLegalityMod
             if (pk.IV_SPE < 29) pk.MarkDiamond = 1;
         }
 
-        private void setHappiness(PKM pk)
+        private static void SetHappiness(PKM pk)
         {
             if (pk.Moves.Contains(218)) pk.CurrentFriendship = 0;
             else pk.CurrentFriendship = 255;
         }
 
-        private List<EncounterStatic> edgeMons(int Game, PKM pk)
+        private static List<EncounterStatic> EdgeMons(int Game, PKM pk)
         {
-            List<EncounterStatic> edgecase = new List<EncounterStatic>();
-            EdgeCaseLegality el = new EdgeCaseLegality();
-            var edgecasearray = new EncounterStatic[] { };
-            if (Game == (int)GameVersion.B || Game == (int)GameVersion.W)
-            {
-                edgecasearray = el.BWEntreeForest;
-            }
-            else if (Game == (int)GameVersion.B2 || Game == (int)GameVersion.W2)
-            {
-                edgecasearray = el.B2W2EntreeForest;
-            }
-            else if (Game == (int)GameVersion.US || Game == (int)GameVersion.UM)
-            {
-                edgecasearray = el.USUMEdgeEnc;
-            }
-            foreach (EncounterStatic e in edgecasearray) {
-                if (e.Species == pk.Species)
-                {
-                    edgecase.Add(e);
-                }
-            }
-            return edgecase;
+            var edgecasearray = GetEdgeCaseArray(Game);
+            return new List<EncounterStatic>(edgecasearray.Where(e => e.Species == pk.Species));
         }
 
-        private bool eventErrorHandling(PKM pk, int PIDType, int AbilityType, int Generation, uint fixedPID)
+        private static EncounterStatic[] GetEdgeCaseArray(int Game)
+        {
+            switch (Game)
+            {
+                case (int)GameVersion.B:
+                case (int)GameVersion.W:
+                    return EdgeCaseLegality.BWEntreeForest;
+                case (int)GameVersion.B2:
+                case (int)GameVersion.W2:
+                    return EdgeCaseLegality.B2W2EntreeForest;
+                case (int)GameVersion.US:
+                case (int)GameVersion.UM:
+                    return EdgeCaseLegality.USUMEdgeEnc;
+            }
+
+            return new EncounterStatic[] { };
+        }
+
+        private bool EventErrorHandling(PKM pk, int Generation, uint fixedPID)
         {
             LegalityAnalysis la = new LegalityAnalysis(pk);
             var report = la.Report(false);
@@ -589,7 +609,7 @@ namespace AutoLegalityMod
             }
             if (report.Contains(V411)) // V411 = Encounter type PID mismatch
             {
-                if ((usesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.FR) || (usesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.LG))
+                if ((UsesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.FR) || (UsesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.LG))
                 {
                     bool shiny = pk.IsShiny;
                     pk = M2EventFix(pk, shiny);
@@ -597,7 +617,7 @@ namespace AutoLegalityMod
                     report = UpdateReport(pk);
                 }
 
-                if (usesEventBasedMethod(pk.Species, pk.Moves, "BACD_R") && pk.Version == (int)GameVersion.R)
+                if (UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R") && pk.Version == (int)GameVersion.R)
                 {
                     bool shiny = pk.IsShiny;
                     pk = BACD_REventFix(pk, pk.IsShiny);
@@ -610,7 +630,7 @@ namespace AutoLegalityMod
             return false;
         }
 
-        private PKM SetWCXPID(PKM pk, int PIDType, int Generation, int AbilityType, bool shiny)
+        private PKM SetWCXPID(PKM pk, int PIDType, int Generation, int AbilityType)
         {
             if (Generation == 6 || Generation == 7)
             {
@@ -649,27 +669,30 @@ namespace AutoLegalityMod
                         break;
                 }
                 if (pk.PID != 0)
-                    pk.PID = pk.PID;
-                else
                 {
-                    pk.PID = Util.Rand32();
+                    pk.PID = pk.PID;
+                    return pk;
+                }
 
-                    // Force Gender
-                    do { pk.PID = (pk.PID & 0xFFFFFF00) | Util.Rand32() & 0xFF; } while (!pk.IsGenderValid());
+                pk.PID = Util.Rand32();
 
-                    // Force Ability
-                    if (av == 1) pk.PID |= 0x10000; else pk.PID &= 0xFFFEFFFF;
+                // Force Gender
+                do { pk.PID = (pk.PID & 0xFFFFFF00) | (Util.Rand32() & 0xFF); }
+                while (!pk.IsGenderValid());
 
-                    if (PIDType == 2) // Force Shiny
-                    {
-                        uint gb = pk.PID & 0xFF;
-                        pk.PID = PIDGenerator.GetMG5ShinyPID(gb, (uint)av, pk.TID, pk.SID);
-                    }
-                    else if (PIDType != 1) // Force Not Shiny
-                    {
-                        if (pk.IsShiny)
-                            pk.PID ^= 0x10000000;
-                    }
+                // Force Ability
+                if (av == 1)
+                    pk.PID |= 0x10000; else pk.PID &= 0xFFFEFFFF;
+
+                if (PIDType == 2) // Force Shiny
+                {
+                    uint gb = pk.PID & 0xFF;
+                    pk.PID = PIDGenerator.GetMG5ShinyPID(gb, (uint)av, pk.TID, pk.SID);
+                }
+                else if (PIDType != 1) // Force Not Shiny
+                {
+                    if (pk.IsShiny)
+                        pk.PID ^= 0x10000000;
                 }
                 return pk;
             }
@@ -730,8 +753,8 @@ namespace AutoLegalityMod
 
         private bool ValidShiny(int PIDType, bool shiny)
         {
-            if ((PIDType == 0 && shiny == true) || (PIDType == 1 && shiny == true) || (PIDType == 2 && shiny == true)) return true;
-            if ((PIDType == 0 && shiny == false) || (PIDType == 1 && shiny == false) || (PIDType == 3 && shiny == false)) return true;
+            if ((PIDType == 0 && shiny) || (PIDType == 1 && shiny) || (PIDType == 2 && shiny)) return true;
+            if ((PIDType == 0 && !shiny) || (PIDType == 1 && !shiny) || (PIDType == 3 && !shiny)) return true;
             return false;
         }
 
@@ -747,6 +770,7 @@ namespace AutoLegalityMod
 
             int[] m = Legality.GetSuggestedRelearn();
             if (m.All(z => z == 0))
+            {
                 if (!Set.WasEgg && !Set.WasEvent && !Set.WasEventEgg && !Set.WasLink)
                 {
                     if (Set.Version != (int)GameVersion.CXD)
@@ -756,6 +780,7 @@ namespace AutoLegalityMod
                             m = encounter.Relearn;
                     }
                 }
+            }
 
             if (Set.RelearnMoves.SequenceEqual(m))
                 return Set;
@@ -770,8 +795,7 @@ namespace AutoLegalityMod
         private void AlternateAbilityRefresh(PKM pk)
         {
             int abilityID = pk.Ability;
-            int abilityNum = pk.AbilityNumber;
-            int finalabilitynum = abilityNum;
+            int finalabilitynum = pk.AbilityNumber;
             int[] abilityNumList = new int[] { 1, 2, 4 };
             for (int i = 0; i < 3; i++)
             {
@@ -791,6 +815,7 @@ namespace AutoLegalityMod
             pk.AbilityNumber = finalabilitynum;
             pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
         }
+
         private PKM FixMemoriesPKM(PKM pk)
         {
             if (SAV.PKMType == typeof(PK7))
@@ -805,6 +830,7 @@ namespace AutoLegalityMod
             }
             return pk;
         }
+
         public bool CommonErrorHandling2(PKM pk)
         {
             string hp = pk.IV_HP.ToString();
@@ -817,13 +843,13 @@ namespace AutoLegalityMod
             var report = la.Report(false);
 
             // fucking M2
-            if ((usesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.FR) || (usesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.LG))
+            if ((UsesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.FR) || (UsesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.LG))
             {
                 pk = M2EventFix(pk, pk.IsShiny);
                 report = UpdateReport(pk);
             }
 
-            if (usesEventBasedMethod(pk.Species, pk.Moves, "BACD_R") && pk.Version == (int)GameVersion.R)
+            if (UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R") && pk.Version == (int)GameVersion.R)
             {
                 pk = BACD_REventFix(pk, pk.IsShiny);
                 report = UpdateReport(pk);
@@ -887,14 +913,7 @@ namespace AutoLegalityMod
             }
             if (report.Contains(V251)) //V251 = PID-Gender mismatch.
             {
-                if (pk.Gender == 0)
-                {
-                    pk.Gender = 1;
-                }
-                else
-                {
-                    pk.Gender = 0;
-                }
+                pk.Gender = pk.Gender == 0 ? 1 : 0;
                 report = UpdateReport(pk);
             }
             if (report.Contains(V407) || report.Contains(V408)) //V407 = OT from Colosseum/XD cannot be female. V408 = Female OT from Generation 1 / 2 is invalid.
@@ -1012,9 +1031,10 @@ namespace AutoLegalityMod
                 // All eggs have encounter type none, even if they are from static encounters
                 if (pk.Gen4 && !pk.WasEgg)
                 {
+                    // If there is more than one slot, the get wild encounter have filter for the pkm type encounter like safari/sports ball
                     if (EncounterMatch is EncounterSlot w)
-                        // If there is more than one slot, the get wild encounter have filter for the pkm type encounter like safari/sports ball
                         type = w.TypeEncounter;
+
                     if (EncounterMatch is EncounterStaticTyped s)
                         type = s.TypeEncounter;
                 }
@@ -1027,51 +1047,34 @@ namespace AutoLegalityMod
             }
             if (report.Contains(V86)) //V86 = Evolution not valid (or level/trade evolution unsatisfied).
             {
-                pk.Met_Level = pk.Met_Level - 1;
+                pk.Met_Level--;
                 report = UpdateReport(pk);
             }
             if (report.Contains(V411)) //V411 = Encounter Type PID mismatch.
             {
-                if (pk.Version == (int)GameVersion.CXD)
-                { pk = setPIDSID(pk, pk.IsShiny, true); }
-                else pk = setPIDSID(pk, pk.IsShiny);
+                if (pk.Version == (int) GameVersion.CXD)
+                    pk = SetPIDSID(pk, pk.IsShiny, true);
+                else
+                    pk = SetPIDSID(pk, pk.IsShiny);
+
                 if (new LegalityAnalysis(pk).Valid)
-                {
                     return false;
-                }
+
                 report = UpdateReport(pk);
                 if (report.Equals(V411)) // V411 = Encounter Type PID mismatch.
-                {
                     return true;
-                }
-                else if (report.Contains(V251)) // V251 = PID-Gender mismatch.
+
+                if (report.Contains(V251)) // V251 = PID-Gender mismatch.
                 {
-                    if (pk.Gender == 0)
-                    {
-                        pk.Gender = 1;
-                    }
-                    else
-                    {
-                        pk.Gender = 0;
-                    }
+                    pk.Gender = pk.Gender == 0 ? 1 : 0;
                     report = UpdateReport(pk);
                     if (new LegalityAnalysis(pk).Valid)
-                    {
                         return false;
-                    }
                 }
             }
             if (report.Contains(V41)) // V41 = Can't Hyper Train a Pokémon with perfect IVs.
             {
-                if (pk is IHyperTrain h)
-                {
-                    h.HT_HP = false;
-                    h.HT_ATK = false;
-                    h.HT_DEF = false;
-                    h.HT_SPA = false;
-                    h.HT_SPD = false;
-                    h.HT_SPE = false;
-                }
+                ((IHyperTrain)pk).HyperTrainClear();
                 report = UpdateReport(pk);
             }
             if (report.Contains(V42)) // V42 = Can't Hyper Train a perfect IV.
@@ -1090,8 +1093,8 @@ namespace AutoLegalityMod
 
             /* Uncomment to automatically override specified IVs.
              * Default Behaviour would be to ignore this fix if IVs are specified to be of such values
-             * 
-             * 
+             *
+             *
             if (report.Contains(string.Format(V28, 3))) //V28 = Should have at least {0} IVs = 31.
             {
                 PKM temp = pk;
@@ -1123,7 +1126,7 @@ namespace AutoLegalityMod
             return report;
         }
 
-        private PKM setPIDSID(PKM pk, bool shiny, bool XD = false)
+        private PKM SetPIDSID(PKM pk, bool shiny, bool XD = false)
         {
             uint hp = (uint)pk.IV_HP;
             uint atk = (uint)pk.IV_ATK;
@@ -1156,7 +1159,7 @@ namespace AutoLegalityMod
             {
                 string[] hpower = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
                 string hiddenpower = hpower[pk.HPType];
-                string[] NatureHPIVs = Misc.IVtoPIDGenerator.getIVPID(nature, hiddenpower, XD);
+                string[] NatureHPIVs = Misc.IVtoPIDGenerator.GetIVPID(nature, hiddenpower, XD);
                 Console.WriteLine(XD);
                 pk.PID = Util.GetHexValue(NatureHPIVs[0]);
                 if (pk.GenNumber < 5) pk.EncryptionConstant = pk.PID;
@@ -1186,14 +1189,7 @@ namespace AutoLegalityMod
                 updatedReport = recheckLA.Report(false);
                 if (updatedReport.Contains("PID-Gender mismatch."))
                 {
-                    if (pk.Gender == 0)
-                    {
-                        pk.Gender = 1;
-                    }
-                    else
-                    {
-                        pk.Gender = 0;
-                    }
+                    pk.Gender = pk.Gender == 0 ? 1 : 0;
                     LegalityAnalysis recheckLA2 = new LegalityAnalysis(pk);
                     updatedReport = recheckLA2.Report(false);
                 }
@@ -1205,18 +1201,18 @@ namespace AutoLegalityMod
                 }
                 LegalityAnalysis Legality = new LegalityAnalysis(pk);
                 if (Legality.Valid) return pk;
-                // Fix Moves if a slot is empty 
+                // Fix Moves if a slot is empty
                 pk.FixMoves();
 
                 // PKX is now filled
                 pk.RefreshChecksum();
                 pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
-                if (updatedReport.Contains("Invalid: Encounter Type PID mismatch.") || usesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+                if (updatedReport.Contains("Invalid: Encounter Type PID mismatch.") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
                 {
-                    if (pk.GenNumber == 3 || usesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+                    if (pk.GenNumber == 3 || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
                     {
                         pk = M2EventFix(pk, shiny);
-                        if (!new LegalityAnalysis(pk).Report(false).Contains("PID mismatch") || usesEventBasedMethod(pk.Species, pk.Moves, "M2")) return pk;
+                        if (!new LegalityAnalysis(pk).Report(false).Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2")) return pk;
                     }
                     pk.IV_HP = (int)hp;
                     pk.IV_ATK = (int)atk;
@@ -1237,7 +1233,7 @@ namespace AutoLegalityMod
             pk.FatefulEncounter = true;
             string[] hpower = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
             string hiddenpower = hpower[pk.HPType];
-            string[] NatureHPIVs = Misc.IVtoPIDGenerator.getIVPID((uint)pk.Nature, hiddenpower, false, "M2");
+            string[] NatureHPIVs = Misc.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, hiddenpower, false, "M2");
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5) pk.EncryptionConstant = pk.PID;
             Console.WriteLine(NatureHPIVs[0]);
@@ -1252,18 +1248,11 @@ namespace AutoLegalityMod
             string updatedReport = recheckLA.Report(false);
             if (updatedReport.Contains("PID-Gender mismatch"))
             {
-                if (pk.Gender == 0)
-                {
-                    pk.Gender = 1;
-                }
-                else
-                {
-                    pk.Gender = 0;
-                }
+                pk.Gender = pk.Gender == 0 ? 1 : 0;
                 LegalityAnalysis recheckLA2 = new LegalityAnalysis(pk);
                 updatedReport = recheckLA2.Report(false);
             }
-            if (!updatedReport.Contains("PID mismatch") || usesEventBasedMethod(pk.Species, pk.Moves, "M2")) return pk;
+            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2")) return pk;
             Console.WriteLine(UpdateReport(pk));
             pk.FatefulEncounter = feFlag;
             pk.Egg_Location = eggloc;
@@ -1278,7 +1267,7 @@ namespace AutoLegalityMod
             pk.FatefulEncounter = false;
             string[] hpower = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
             string hiddenpower = hpower[pk.HPType];
-            string[] NatureHPIVs = Misc.IVtoPIDGenerator.getIVPID((uint)pk.Nature, hiddenpower, false, "BACD_R");
+            string[] NatureHPIVs = Misc.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, hiddenpower, false, "BACD_R");
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5) pk.EncryptionConstant = pk.PID;
             Console.WriteLine(NatureHPIVs[0]);
@@ -1293,28 +1282,21 @@ namespace AutoLegalityMod
             string updatedReport = recheckLA.Report(false);
             if (updatedReport.Contains("PID-Gender mismatch"))
             {
-                if (pk.Gender == 0)
-                {
-                    pk.Gender = 1;
-                }
-                else
-                {
-                    pk.Gender = 0;
-                }
+                pk.Gender = pk.Gender == 0 ? 1 : 0;
                 LegalityAnalysis recheckLA2 = new LegalityAnalysis(pk);
                 updatedReport = recheckLA2.Report(false);
             }
-            if (!updatedReport.Contains("PID mismatch") || usesEventBasedMethod(pk.Species, pk.Moves, "BACD_R")) return pk;
+            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R")) return pk;
             Console.WriteLine(UpdateReport(pk));
             pk.FatefulEncounter = feFlag;
             pk.Egg_Location = eggloc;
             return pk;
         }
 
-        public bool usesEventBasedMethod(int Species, int[] Moves, string method)
+        public bool UsesEventBasedMethod(int Species, int[] Moves, string method)
         {
             Dictionary<int, int[]> RNGList = new Dictionary<int, int[]>();
-            if (getRNGListIndex(method) != -1) RNGList = WC3RNGList[getRNGListIndex(method)];
+            if (GetRNGListIndex(method) != -1) RNGList = WC3RNGList[GetRNGListIndex(method)];
             else return false;
             if (!RNGList.Keys.Contains(Species)) return false;
             foreach (int i in Moves)
@@ -1324,22 +1306,26 @@ namespace AutoLegalityMod
             return false;
         }
 
-        int getRNGListIndex(string Method)
+        private int GetRNGListIndex(string Method)
         {
-            if (Method == "M2") return 0;
-            else if (Method == "BACD_R") return 1;
-            else return -1;
+            switch (Method)
+            {
+                case "M2":
+                    return 0;
+                case "BACD_R":
+                    return 1;
+                default:
+                    return -1;
+            }
         }
 
-        private PKM clickMetLocationModPKSM(PKM p)
+        private PKM ClickMetLocationModPKSM(PKM p)
         {
             LegalityAnalysis Legality = new LegalityAnalysis(p);
 
             var encounter = Legality.GetSuggestedMetInfo();
             if (encounter == null || (p.Format >= 3 && encounter.Location < 0))
-            {
                 return p;
-            }
 
             int level = encounter.Level;
             int location = encounter.Location;
@@ -1356,26 +1342,27 @@ namespace AutoLegalityMod
             return p;
         }
 
-        private List<List<string>> generateEvoLists2()
+        private List<List<string>> GenerateEvoLists2()
         {
             int counter = 0;
             string line;
             List<List<string>> evoList = new List<List<string>>();
             List<string> blankList = new List<string>();
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "AutoLegalityMod.Resources.txt.evolutions.txt";
-            System.IO.Stream stream = assembly.GetManifestResourceStream(resourceName);
-            System.IO.StreamReader file = new System.IO.StreamReader(stream);
+            const string resourceName = "AutoLegalityMod.Resources.txt.evolutions.txt";
+            var stream = assembly.GetManifestResourceStream(resourceName);
+            StreamReader file = new StreamReader(stream);
             while ((line = file.ReadLine()) != null)
             {
-                if (line.Trim() == "")
+                var trim = line.Trim();
+                if (trim.Length == 0)
                 {
                     evoList.Add(blankList);
                     blankList = new List<string>();
                 }
                 else
                 {
-                    blankList.Add(line.Trim());
+                    blankList.Add(trim);
                 }
                 counter++;
             }
@@ -1406,8 +1393,7 @@ namespace AutoLegalityMod
                 if (i == 31) flawless++;
                 if (i == 0 || i == 1) minIVs++; //ignore IV value = 0/1 for intentional IV values (1 for hidden power cases)
             }
-            if (flawless + minIVs == 6) return false;
-            return true;
+            return flawless + minIVs != 6;
         }
 
         private void HyperTrain(PKM pk)
@@ -1423,34 +1409,6 @@ namespace AutoLegalityMod
                 if (pk.IV_SPD != 0 && pk.IV_SPD != 1 && pk.IV_SPD != 31) h.HT_SPD = true;
                 if (pk.IV_SPE != 0 && pk.IV_SPE != 1 && pk.IV_SPE != 31) h.HT_SPE = true;
             }
-        }
-
-        private void UpdateLegality(PKM pkm, bool skipMoveRepop = false)
-        {
-            LegalityAnalysis Legality = new LegalityAnalysis(pkm);
-            Console.WriteLine(Legality.Report(true));
-            // Refresh Move Legality
-            bool[] validmoves = new bool[] { false, false, false, false };
-            for (int i = 0; i < 4; i++)
-                validmoves[i] = !Legality.Info?.Moves[i].Valid ?? false;
-
-            bool[] validrelearn = new bool[] { false, false, false, false };
-            if (pkm.Format >= 6)
-                for (int i = 0; i < 4; i++)
-                    validrelearn[i] = !Legality.Info?.Relearn[i].Valid ?? false;
-
-            if (skipMoveRepop)
-                return;
-            // Resort moves
-            bool fieldsLoaded = true;
-            bool tmp = fieldsLoaded;
-            fieldsLoaded = false;
-            var cb = new[] { pkm.Move1, pkm.Move2, pkm.Move3, pkm.Move4 };
-            var moves = Legality.AllSuggestedMovesAndRelearn;
-            var moveList = GameInfo.MoveDataSource.OrderByDescending(m => moves.Contains(m.Value)).ToArray();
-
-            fieldsLoaded |= tmp;
-            LegalityChanged?.Invoke(Legality.Valid, null);
         }
 
         private PKM ConvertPL6ToPKM(PL6_PKM pk)
@@ -1504,7 +1462,7 @@ namespace AutoLegalityMod
                 IV_SPA = pk.IV_SPA,
                 IV_SPD = pk.IV_SPD,
                 IV_SPE = pk.IV_SPE,
-                
+
                 // Ribbons
                 RibbonCountry = pk.RibbonCountry,
                 RibbonNational = pk.RibbonNational,
@@ -1579,6 +1537,7 @@ namespace AutoLegalityMod
             eventpk.AbilityNumber = 1 << av;
 
             if (!pk.IsEgg)
+            {
                 if (eventpk.CurrentHandler == 0) // OT
                 {
                     eventpk.OT_Memory = 3;
@@ -1594,6 +1553,8 @@ namespace AutoLegalityMod
                     eventpk.HT_Feeling = Util.Rand.Next(0, 10); // 0-9
                     eventpk.HT_Friendship = eventpk.OT_Friendship;
                 }
+            }
+
             eventpk.IsNicknamed = false;
             eventpk.Nickname = eventpk.IsNicknamed ? eventpk.Nickname : PKX.GetSpeciesNameGeneration(pk.Species, eventpk.Language, SAV.Generation);
             eventpk.CurrentFriendship = eventpk.IsEgg ? pi.HatchCycles : pi.BaseFriendship;
@@ -1626,7 +1587,7 @@ namespace AutoLegalityMod
                 {108, new[]{273, 215}}, // Lickitung with Wish & Heal Bell
                 {463, new[]{273, 215}},
                 {113, new[]{273, 230}}, // Chansey with Wish & Sweet Scent
-                {242, new[]{273, 230}}, 
+                {242, new[]{273, 230}},
                 {115, new[]{273, 281}}, // Kangaskhan with Wish & Yawn
                 {054, new[]{300}}, // Psyduck with Mud Sport
                 {055, new[]{300}},
@@ -1673,7 +1634,7 @@ namespace AutoLegalityMod
                 {280, new[]{204, 273} }, // Ralts with Charm
                 {281, new[]{204, 273} },
                 {282, new[]{204, 273} },
-                {475, new[]{204, 273} }, 
+                {475, new[]{204, 273} },
                 {359, new[]{180, 273} }, // Absol with Spite
                 {371, new[]{334, 273} }, // Bagon with Iron Defense
                 {372, new[]{334, 273} },

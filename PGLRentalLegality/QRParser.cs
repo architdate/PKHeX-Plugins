@@ -14,186 +14,45 @@ using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Parameters;
 
-namespace PKHeX.WinForms.Misc
+using PKHeX.Core;
+
+namespace PGLRentalLegality
 {
-    public partial class DataFetch
+    public class QRPoke
     {
-        public static string getSpecies(ushort ID, int form)
-        {
+        private readonly uint Key;
+        private readonly byte HyperTrainingFlags;
+        private readonly byte field_5;
+        private readonly byte field_6;
+        private readonly byte field_7;
+        private readonly byte[] PPUps;
+        private readonly uint IvFlags;
+        private readonly uint field_10;
+        private readonly ushort MonsNo;
+        private readonly ushort HoldItem;
+        private readonly ushort[] Moves;
+        private readonly byte field_20;
+        private readonly byte AbilityFlags;
+        private readonly byte Nature;
+        private readonly byte EncounterFlags;
+        private readonly byte EffortHp;
+        private readonly byte EffortAtk;
+        private readonly byte EffortDef;
+        private readonly byte EffortSpeed;
+        private readonly byte EffortSpAtk;
+        private readonly byte EffortSpDef;
+        private readonly byte field_2A;
+        private readonly byte Familiarity;
+        private readonly byte Pokeball;
+        private readonly byte Level;
+        private readonly byte CassetteVersion;
+        private readonly byte LangId;
+        private readonly byte[] rawData;
+        private readonly string gender;
+        private readonly int formID;
+        private readonly int[] IVs;
 
-            try
-            {
-                if (form > 0)
-                {
-                    //Has a different form from normal
-                    foreach (string line in getCSV("pokemonFormAbilities"))
-                    {
-                        var currLine = line.Split(',');
-                        if (int.Parse(currLine[0]) == ID)
-                        {
-                            if (int.Parse(currLine[1]) == form)
-                            {
-                                return currLine[2];
-                            }
-                        }
-                    }
-                }
-                return PKHeX.Core.Util.GetStringList("text_Species_en")[ID];
-
-            }
-            catch (Exception e)
-            {
-                return ID.ToString();
-            }
-        }
-        public static string getMove(ushort ID, Pokemon p)
-        {
-            string[] names = PKHeX.Core.Util.GetStringList("text_Moves_en");
-            try
-            {
-                if (names[ID] == "Hidden Power")
-                {
-                    return "Hidden Power [" + p.getHiddenPowerType() + "]";
-                }
-                return names[ID];
-            }
-            catch (Exception e)
-            {
-                return ID.ToString();
-            }
-        }
-        public static string getAbility(ushort ID, int form, int ability)
-        {
-            //Update to deal with the 1,2,4.
-            /*
-             * P3DS thoughts: 
-             *  - Split abilities into abilities and forms w/ different abilities
-             *  - Then, first check if Pokemon has a form ID > 0. If it does, check the form list for it
-             *    since it will require more processing than a standard list like normal.
-             *  - Maybe include an exclusion list as well, to help sort the out.
-             * 
-            */
-
-            try
-            {
-                if (form > 0)
-                {
-                    //Has a different form from normal
-                    foreach (string line in getCSV("pokemonFormAbilities"))
-                    {
-                        var currLine = line.Split(',');
-                        if (int.Parse(currLine[0]) == ID)
-                        {
-                            if (int.Parse(currLine[1]) == form)
-                            {
-                                return currLine[3 + (int)Math.Log(ability, 2)];
-                            }
-                        }
-                    }
-                }
-                return getCSV("pokemonAbilities")[ID].Split(',')[(int)Math.Log(ability, 2)];
-
-            }
-            catch (Exception e)
-            {
-                return ability.ToString();
-            }
-
-        }
-        public static string getItem(ushort ID)
-        {
-            string[] names = PKHeX.Core.Util.GetStringList("text_Items_en");
-            try
-            {
-                return names[ID];
-            }
-            catch (Exception e)
-            {
-                return ID.ToString();
-            }
-        }
-        public static string getNature(byte ID)
-        {
-            string[] names = PKHeX.Core.Util.GetStringList("text_Natures_en");
-            try
-            {
-                return names[ID];
-            }
-            catch (Exception e)
-            {
-                return ID.ToString();
-            }
-        }
-        private static string[] getCSV(string loc)
-        {
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            var resourceName = "PGLRentalLegality.Resources.text." + loc + ".csv";
-            System.IO.Stream stream = assembly.GetManifestResourceStream(resourceName);
-            System.IO.StreamReader file = new System.IO.StreamReader(stream);
-            var txt = file.ReadToEnd();
-            if (txt == null)
-                return new string[0];
-
-            string[] rawlist = (txt).Split('\n');
-
-            for (int i = 0; i < rawlist.Length; i++)
-                rawlist[i] = rawlist[i].Trim();
-
-            return rawlist;
-        }
-        private static string[] getList(string loc)
-        {
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            var resourceName = "PKHeX.Core.Resources.text.en."+ loc +".txt";
-            System.IO.Stream stream = assembly.GetManifestResourceStream(resourceName);
-            System.IO.StreamReader file = new System.IO.StreamReader(stream);
-            var txt = file.ReadToEnd();
-            if (txt == null)
-                return new string[0];
-
-            string[] rawlist = (txt).Split('\n');
-
-            for (int i = 0; i < rawlist.Length; i++)
-                rawlist[i] = rawlist[i].Trim();
-
-            return rawlist;
-        }
-    }
-    public partial class Pokemon
-    {
-        uint Key;
-        byte HyperTrainingFlags;
-        byte field_5;
-        byte field_6;
-        byte field_7;
-        byte[] PPUps;
-        uint IvFlags;
-        uint field_10;
-        ushort MonsNo;
-        ushort HoldItem;
-        ushort[] Moves;
-        byte field_20;
-        byte AbilityFlags;
-        byte Nature;
-        byte EncounterFlags;
-        byte EffortHp;
-        byte EffortAtk;
-        byte EffortDef;
-        byte EffortSpeed;
-        byte EffortSpAtk;
-        byte EffortSpDef;
-        byte field_2A;
-        byte Familiarity;
-        byte Pokeball;
-        byte Level;
-        byte CassetteVersion;
-        byte LangId;
-        byte[] rawData;
-        string gender;
-        int formID;
-        int[] IVs;
-
-        public Pokemon(byte[] pkmData)
+        public QRPoke(byte[] pkmData)
         {
             Console.WriteLine(pkmData.Length);
             try
@@ -224,7 +83,7 @@ namespace PKHeX.WinForms.Misc
                 Nature = pkmData[34];
 
                 EncounterFlags = pkmData[35];
-                //From Project Pokemon. 
+                //From Project Pokemon.
                 //Stored as: Bit 0: Fateful Encounter, Bit 1: Female, Bit 2: Genderless, Bits 3-7: Form Data.
 
                 gender = ((EncounterFlags & 0x2) != 0) ? "(F) " : ((EncounterFlags & 0x4) != 0) ? "" : "(M) ";
@@ -268,31 +127,28 @@ namespace PKHeX.WinForms.Misc
             }
         }
 
-        public String getHiddenPowerType()
+        public String GetHiddenPowerType()
         {
-            string rtn = "";
-            int type = IVs[0] % 2 + (IVs[1] % 2) * 2 + (IVs[2] % 2) * 4 + (IVs[5] % 2) * 8 + (IVs[3] % 2) * 16 + (IVs[4] % 2) * 32;
-            type = (type * 15) / 63;
-            switch (type)
+            switch (HiddenPower.GetType(IVs))
             {
-                case 0: rtn = "Fighting"; break;
-                case 1: rtn = "Flying"; break;
-                case 2: rtn = "Poison"; break;
-                case 3: rtn = "Ground"; break;
-                case 4: rtn = "Rock"; break;
-                case 5: rtn = "Bug"; break;
-                case 6: rtn = "Ghost"; break;
-                case 7: rtn = "Steel"; break;
-                case 8: rtn = "Fire"; break;
-                case 9: rtn = "Water"; break;
-                case 10: rtn = "Grass"; break;
-                case 11: rtn = "Electric"; break;
-                case 12: rtn = "Psychic"; break;
-                case 13: rtn = "Ice"; break;
-                case 14: rtn = "Dragon"; break;
-                case 15: rtn = "Dark"; break;
+                case 0: return "Fighting";
+                case 1: return "Flying";
+                case 2: return "Poison";
+                case 3: return "Ground";
+                case 4: return "Rock";
+                case 5: return "Bug";
+                case 6: return "Ghost";
+                case 7: return "Steel";
+                case 8: return "Fire";
+                case 9: return "Water";
+                case 10: return "Grass";
+                case 11: return "Electric";
+                case 12: return "Psychic";
+                case 13: return "Ice";
+                case 14: return "Dragon";
+                case 15: return "Dark";
             }
-            return rtn;
+            return string.Empty;
         }
 
         public string ToShowdownFormat(bool HT)
@@ -332,23 +188,23 @@ namespace PKHeX.WinForms.Misc
 
             string[] format =
             {
-                DataFetch.getSpecies(MonsNo,formID) + /*" ("  +")" +*/ " @ " + DataFetch.getItem(HoldItem),
-                "Ability: "+DataFetch.getAbility(MonsNo,formID,AbilityFlags),
+                DataFetch.GetSpecies(MonsNo,formID) + /*" ("  +")" +*/ " @ " + DataFetch.GetItem(HoldItem),
+                "Ability: "+DataFetch.GetAbility(MonsNo,formID,AbilityFlags),
                 "Level: "+Level,
                 "Happiness: 0",
                 "EVs: " + EffortHp + " HP / " + EffortAtk + " Atk / " + EffortDef + " Def / " + EffortSpAtk + " SpA / " + EffortSpDef + " SpD / " + EffortSpeed + " Spe",
-                DataFetch.getNature(Nature) + " Nature",
+                DataFetch.GetNature(Nature) + " Nature",
                 "IVs: " + IVString[0] + " HP / " + IVString[1] + " Atk / " + IVString[2] + " Def / " + IVString[3] + " SpA / " + IVString[4] + " SpD / " + IVString[5] + " Spe ",
-                " - " + DataFetch.getMove(Moves[0],this),
-                " - " + DataFetch.getMove(Moves[1],this),
-                " - " + DataFetch.getMove(Moves[2],this),
-                " - " + DataFetch.getMove(Moves[3],this)
+                " - " + DataFetch.GetMove(Moves[0],this),
+                " - " + DataFetch.GetMove(Moves[1],this),
+                " - " + DataFetch.GetMove(Moves[2],this),
+                " - " + DataFetch.GetMove(Moves[3],this)
             };
 
             return string.Join("\n", format);
         }
 
-        public string getStatsData()
+        public string GetStatsData()
         {
             string HTFlags = Convert.ToString(HyperTrainingFlags, 2);
             for (int i = 0; i < 30 - HTFlags.Length; i++)
@@ -373,12 +229,11 @@ namespace PKHeX.WinForms.Misc
                 {
                     HT += "X";
                 }
-
             }
 
             string[] format =
             {
-                "Item: " + DataFetch.getItem(HoldItem),
+                "Item: " + DataFetch.GetItem(HoldItem),
                 HT,
                 "EVs: " + EffortHp + "H " + EffortAtk + "A " + EffortDef + "B " + EffortSpAtk + "C " + EffortSpDef + "D " + EffortSpeed + "S",
                 "IVs: " + IVs[0] + "/" + IVs[1] + "/" + IVs[2] + "/" + IVs[3] + "/" + IVs[4] + "/" + IVs[5]
@@ -387,14 +242,14 @@ namespace PKHeX.WinForms.Misc
             return string.Join("\n", format);
         }
 
-        public string getMovesString()
+        public string GetMovesString()
         {
             string[] format =
             {
-                " - " + DataFetch.getMove(Moves[0],this),
-                " - " + DataFetch.getMove(Moves[1],this),
-                " - " + DataFetch.getMove(Moves[2],this),
-                " - " + DataFetch.getMove(Moves[3],this)
+                " - " + DataFetch.GetMove(Moves[0],this),
+                " - " + DataFetch.GetMove(Moves[1],this),
+                " - " + DataFetch.GetMove(Moves[2],this),
+                " - " + DataFetch.GetMove(Moves[3],this)
             };
 
             return string.Join("\n", format);
@@ -406,42 +261,41 @@ namespace PKHeX.WinForms.Misc
             {
                 return "\n" + ToShowdownFormat(true) + "\n";
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return "No Pokemon in this Slot";
             }
         }
     }
-    public partial class RentalTeam
+
+    public class RentalTeam
     {
-        public List<Pokemon> team;
+        public List<QRPoke> team;
         public byte[] GLid;
         public byte[] UnknownData;
 
         public RentalTeam(byte[] data)
         {
             Console.WriteLine(data.Length);
-            team = new List<Pokemon>();
-            team.Add(new Pokemon(data.Take(0x30).ToArray()));
-            team.Add(new Pokemon(data.Skip(0x30).Take(0x30).ToArray()));
-            team.Add(new Pokemon(data.Skip(0x60).Take(0x30).ToArray()));
-            team.Add(new Pokemon(data.Skip(0x90).Take(0x30).ToArray()));
-            team.Add(new Pokemon(data.Skip(0xC0).Take(0x30).ToArray()));
-            team.Add(new Pokemon(data.Skip(0xF0).Take(0x30).ToArray()));
+            team = new List<QRPoke>();
+            team.Add(new QRPoke(data.Take(0x30).ToArray()));
+            team.Add(new QRPoke(data.Skip(0x30).Take(0x30).ToArray()));
+            team.Add(new QRPoke(data.Skip(0x60).Take(0x30).ToArray()));
+            team.Add(new QRPoke(data.Skip(0x90).Take(0x30).ToArray()));
+            team.Add(new QRPoke(data.Skip(0xC0).Take(0x30).ToArray()));
+            team.Add(new QRPoke(data.Skip(0xF0).Take(0x30).ToArray()));
 
-            foreach (Pokemon p in team)
-            {
+            foreach (QRPoke p in team)
                 Console.WriteLine(p.ToShowdownFormat(true) + "\n");
-            }
 
             GLid = data.Skip(0x120).Take(8).ToArray();
             UnknownData = data.Skip(0x128).ToArray();
         }
     }
-    public partial class QRParser
+
+    public class QRParser
     {
         private string sID, tID, cookie;
-
 
         public QRParser()
         {
@@ -466,7 +320,6 @@ namespace PKHeX.WinForms.Misc
 
         public Image getQRData()
         {
-
             byte[] data = Encoding.ASCII.GetBytes("savedataId=" + sID + "&battleTeamCd=" + tID);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://3ds.pokemon-gl.com/frontendApi/battleTeam/getQr");
@@ -497,25 +350,23 @@ namespace PKHeX.WinForms.Misc
                     {
                         return Image.FromStream(stream);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         //invalid QR
                         return null;
                     }
-
                 }
             }
         }
 
         public byte[] parseQR(Image q)
         {
-            Bitmap bitmap = new Bitmap(q);
+            var bitmap = new Bitmap(q);
             var img = new RGBLuminanceSource(bitmap, bitmap.Width, bitmap.Height);
             var hybrid = new HybridBinarizer(img);
-            BinaryBitmap binaryMap = new BinaryBitmap(hybrid);
+            var binaryMap = new BinaryBitmap(hybrid);
             var reader = new QRCodeReader().decode(binaryMap, null);
-            byte[] data = Array.ConvertAll(reader.RawBytes, (a) => (byte)(a));
-            return data;
+            return Array.ConvertAll(reader.RawBytes, a => (byte)a);
         }
 
         public byte[] shiftArray(byte[] b)
@@ -528,7 +379,7 @@ namespace PKHeX.WinForms.Misc
                 byte B = b[i];
                 lb = (byte)((B & 0xF0) >> 4);
                 array[i] = (byte)(rb << 4 | lb);
-                rb = (byte)((B & 0xF));
+                rb = (byte)(B & 0xF);
             }
 
             return array;
@@ -574,15 +425,14 @@ namespace PKHeX.WinForms.Misc
             var qrue = data.Skip(3).ToArray();
 
             //MEME CRYPTO!!! De-Meme the data
-            if (!Core.MemeCrypto.VerifyMemePOKE(qrue, out var qrt))
+            if (!MemeCrypto.VerifyMemePOKE(qrue, out var qrt))
             {
                 Console.WriteLine("it failed");
                 return null;
             }
             else
             {
-
-                //unencrypt the data in the plaintext. 
+                //unencrypt the data in the plaintext.
                 byte[] qrDec = qr_t(qrt);
 
                 //build the rental team.

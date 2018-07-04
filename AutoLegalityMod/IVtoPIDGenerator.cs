@@ -2,7 +2,6 @@
 
 namespace Misc
 {
-
     internal class GenericRng
     {
         //  This is the generic base that all of the other lcrngs will
@@ -83,12 +82,12 @@ namespace Misc
 
     internal class Seed
     {
-        //  Needs to hold all of the information about 
+        //  Needs to hold all of the information about
         //  a seed that we have created from an IV and
         //  nature combo.
 
         //  Need to come up with a better name for this, as it
-        //  cant seem to have the same name as the containing 
+        //  cant seem to have the same name as the containing
         //  class :P
         public uint MonsterSeed { get; set; }
 
@@ -173,9 +172,7 @@ namespace Misc
 
         private uint dv;
         private uint id;
-        private uint number;
         private uint pid;
-        private uint seed;
         private uint sid;
 
         internal Frame(FrameType frameType)
@@ -187,17 +184,9 @@ namespace Misc
 
         public uint RngResult { get; set; }
 
-        public uint Seed
-        {
-            get { return seed; }
-            set { seed = value; }
-        }
+        public uint Seed { get; set; }
 
-        public uint Number
-        {
-            get { return number; }
-            set { number = value; }
-        }
+        public uint Number { get; set; }
 
         public uint Offset { get; set; }
 
@@ -206,7 +195,7 @@ namespace Misc
         public bool Shiny { get; private set; }
 
         //  The following are cacluated differently based
-        //  on the creation method of the pokemon. 
+        //  on the creation method of the pokemon.
 
         public uint Pid
         {
@@ -295,7 +284,7 @@ namespace Misc
             };
 
 
-            //  Set up the ID and SID before we calculate 
+            //  Set up the ID and SID before we calculate
             //  the pid, as we are going to need this.
 
 
@@ -317,15 +306,15 @@ namespace Misc
         {
             var frame = new Frame(frameType)
             {
-                seed = seed,
-                number = number,
+                Seed = seed,
+                Number = number,
                 RngResult = rngResult,
                 id = id,
                 sid = sid,
                 Pid = (pid2 << 16) | pid1,
                 Dv = (dv2 << 16) | dv1
             };
-            //  Set up the ID and SID before we calculate 
+            //  Set up the ID and SID before we calculate
             //  the pid, as we are going to need this.
 
 
@@ -354,8 +343,8 @@ namespace Misc
 
             var frame = new Frame(frameType)
             {
-                seed = seed,
-                number = number,
+                Seed = seed,
+                Number = number,
                 RngResult = rngResult,
                 id = id,
                 sid = sid,
@@ -408,7 +397,7 @@ namespace Misc
             Nature = nature;
         }
 
-        public uint Nature { get; private set; }
+        public uint Nature { get; }
 
         public bool Compare(Frame frame)
         {
@@ -587,7 +576,6 @@ namespace Misc
                             break;
                     }
 
-
                     if (frameCompare.Compare(frame))
                     {
                         frames.Add(frame); break;
@@ -597,7 +585,7 @@ namespace Misc
             else
             {
                 //  We are going to grab our initial set of rngs here and
-                //  then start our loop so that we can iterate as many 
+                //  then start our loop so that we can iterate as many
                 //  times as we have to.
                 var rng = new PokeRng((uint)InitialSeed);
                 rngList = new List<uint>();
@@ -675,7 +663,6 @@ namespace Misc
                             break;
                     }
 
-
                     //  Now we need to filter and decide if we are going
                     //  to add this to our collection for display to the
                     //  user.
@@ -694,7 +681,7 @@ namespace Misc
     /// <summary>
     ///     This class is going to do an IV/PID/Seed calculation given a particular method (1, 2 or 3, or 4). Should use the same code to develop candidate IVs.
     /// </summary>
-    internal class IVtoSeed
+    internal static class IVtoSeed
     {
         //  We need a function to return a list of monster seeds,
         //  which will be updated to include a method.
@@ -1105,7 +1092,6 @@ namespace Misc
         }
     }
 
-
     public class IVtoPIDGenerator
     {
         public static string[] M1PID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
@@ -1255,7 +1241,7 @@ namespace Misc
                     uint ivs2 = forward(ivs1);
                     ivs1 >>= 16;
                     ivs2 >>= 16;
-                    uint[] ivs = createIVs(ivs1, ivs2);
+                    uint[] ivs = CreateIVs(ivs1, ivs2);
                     if (ivs != null)
                     {
                         finalPID = pid;
@@ -1277,7 +1263,7 @@ namespace Misc
             return seed * 0x41c64e6d + 0x6073;
         }
 
-        private uint[] createIVs(uint iv1, uint ivs2)
+        private uint[] CreateIVs(uint iv1, uint ivs2)
         {
             uint[] ivs = new uint[6];
 
@@ -1293,7 +1279,7 @@ namespace Misc
             return ivs;
         }
 
-        private static IVFilter hptofilter(string hiddenpower)
+        private static IVFilter Hptofilter(string hiddenpower)
         {
             if (hiddenpower == "dark")
             {
@@ -1365,27 +1351,20 @@ namespace Misc
             }
         }
 
-        public static string[] getIVPID(uint nature, string hiddenpower, bool XD = false, string method = "")
+        public static string[] GetIVPID(uint nature, string hiddenpower, bool XD = false, string method = "")
         {
             var generator = new FrameGenerator();
-            if (XD || method == "XD") generator = new FrameGenerator
-            {
-                FrameType = FrameType.ColoXD
-            };
-            if (method == "M2") generator = new FrameGenerator
-            {
-                FrameType = FrameType.Method2
-            };
+            if (XD || method == "XD")
+                generator = new FrameGenerator{FrameType = FrameType.ColoXD};
+            if (method == "M2")
+                generator = new FrameGenerator{FrameType = FrameType.Method2};
             if (method == "BACD_R")
             {
-                generator = new FrameGenerator
-                {
-                    FrameType = FrameType.Method1Reverse
-                };
+                generator = new FrameGenerator{FrameType = FrameType.Method1Reverse};
                 IVtoPIDGenerator bacdr = new IVtoPIDGenerator();
                 return bacdr.generateWishmkr(nature);
             }
-            FrameCompare frameCompare = new FrameCompare(hptofilter(hiddenpower), nature);
+            FrameCompare frameCompare = new FrameCompare(Hptofilter(hiddenpower), nature);
             List<Frame> frames = generator.Generate(frameCompare, 0, 0);
             //Console.WriteLine("Num frames: " + frames.Count);
             return new string[] { frames[0].Pid.ToString("X"), frames[0].Hp.ToString(), frames[0].Atk.ToString(), frames[0].Def.ToString(), frames[0].Spa.ToString(), frames[0].Spd.ToString(), frames[0].Spe.ToString() };

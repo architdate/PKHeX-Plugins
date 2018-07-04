@@ -48,7 +48,7 @@ namespace ExportTrainerData
         {
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
-            ctrl.Click += new EventHandler(ExportData);
+            ctrl.Click += ExportData;
             ctrl.Image = ExportTrainerDataResources.exporttrainerdata;
         }
 
@@ -82,16 +82,17 @@ namespace ExportTrainerData
                 Country = pk.Country.ToString();
                 SubRegion = pk.Region.ToString();
                 ConsoleRegion = pk.ConsoleRegion.ToString();
-                writeTxtFile(TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion);
+                WriteTxtFile(TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion);
                 MessageBox.Show("trainerdata.txt Successfully Exported in the same directory as PKHeX");
             }
             catch
             {
-                writeTxtFile(TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion);
+                WriteTxtFile(TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion);
                 MessageBox.Show("Some of the fields were wrongly filled. Exported the default trainerdata.txt");
             }
         }
-        private void writeTxtFile(string TID, string SID, string OT, string Gender, string Country, string SubRegion, string ConsoleRegion)
+
+        private void WriteTxtFile(string TID, string SID, string OT, string Gender, string Country, string SubRegion, string ConsoleRegion)
         {
             string[] lines = { "TID:" + TID, "SID:" + SID, "OT:" + OT, "Gender:" + Gender, "Country:" + Country, "SubRegion:" + SubRegion, "3DSRegion:" + ConsoleRegion };
             System.IO.File.WriteAllLines(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "trainerdata.txt"), lines);
