@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using PKHeX.Core;
 using AutoLegalityMod;
@@ -12,11 +11,11 @@ namespace PGLRentalLegality
         public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
-        public object[] arguments { get; private set; }
+        public object[] Arguments { get; private set; }
 
         public void Initialize(params object[] args)
         {
-            arguments = args;
+            Arguments = args;
             Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
@@ -52,7 +51,7 @@ namespace PGLRentalLegality
         {
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
-            ctrl.Click += new EventHandler(PGLShowdownSet);
+            ctrl.Click += PGLShowdownSet;
             ctrl.Image = PGLRentalLegalityResources.pglqrcode;
             ctrl.ShortcutKeys = (Keys.Alt | Keys.Q);
         }
@@ -60,9 +59,9 @@ namespace PGLRentalLegality
         private void PGLShowdownSet(object sender, EventArgs e)
         {
             if (!Clipboard.ContainsImage()) return;
-            PKHeX.WinForms.Misc.RentalTeam rentalTeam = new PKHeX.WinForms.Misc.QRParser().decryptQRCode(Clipboard.GetImage());
+            var rentalTeam = new QRParser().decryptQRCode(Clipboard.GetImage());
             string data = "";
-            foreach (PKHeX.WinForms.Misc.Pokemon p in rentalTeam.team)
+            foreach (QRPoke p in rentalTeam.team)
             {
                 data += p.ToShowdownFormat(false) + Environment.NewLine + Environment.NewLine;
             }

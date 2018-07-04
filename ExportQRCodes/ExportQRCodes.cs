@@ -52,7 +52,7 @@ namespace ExportQRCodes
         {
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
-            ctrl.Click += new EventHandler(ExportQRs);
+            ctrl.Click += ExportQRs;
             ctrl.Image = ExportQRCodesResources.exportqrcode;
         }
 
@@ -65,18 +65,17 @@ namespace ExportQRCodes
                 MessageBox.Show("Box Data is null");
             }
             int ctr = 0;
-            Dictionary<string, Image> qrcodes = new Dictionary<string, Image>();
+            var qrcodes = new Dictionary<string, Image>();
             foreach (PKM pk in boxdata)
             {
                 if (pk.Species == 0 || !pk.Valid || (pk.Box - 1) != SaveFileEditor.CurrentBox)
                     continue;
                 ctr++;
-                Image qr;
-                qr = QR.GenerateQRCode7((PK7)pk);
-                if (qr == null) continue;
-                
+                Image qr = QR.GenerateQRCode7((PK7)pk);
+                if (qr == null)
+                    continue;
+
                 string[] r = pk.QRText;
-                string refer = "PKHeX Auto Legality Mod";
                 qrcodes.Add(Util.CleanFileName(pk.FileName), RefreshImage(qr));
             }
             if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "qrcodes")))

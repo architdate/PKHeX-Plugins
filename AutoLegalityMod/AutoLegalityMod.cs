@@ -6,7 +6,6 @@ namespace AutoLegalityMod
 {
     public partial class AutoLegalityMod : IPlugin
     {
-
         /// <summary>
         /// Main Plugin Variables
         /// </summary>
@@ -53,7 +52,7 @@ namespace AutoLegalityMod
         {
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
-            ctrl.Click += new EventHandler(ClickShowdownImportPKMModded);
+            ctrl.Click += ClickShowdownImportPKMModded;
             ctrl.Name = "Menu_AutoLegalityMod";
             ctrl.Image = AutoLegalityResources.autolegalitymod;
             ctrl.ShortcutKeys = (Keys.Control | Keys.I);
@@ -83,6 +82,5 @@ namespace AutoLegalityMod
             AutomaticLegality.SaveFileEditor = SaveFileEditor;
             AutomaticLegality.ImportModded();
         }
-        
     }
 }

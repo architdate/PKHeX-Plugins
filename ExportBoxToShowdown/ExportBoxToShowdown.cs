@@ -51,7 +51,7 @@ namespace ExportBoxToShowdown
         {
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
-            ctrl.Click += new EventHandler(BoxToShowdown);
+            ctrl.Click += BoxToShowdown;
             ctrl.Image = ExportBoxToShowdownResources.exportboxtoshowdown;
         }
 
@@ -65,13 +65,12 @@ namespace ExportBoxToShowdown
             Console.WriteLine($"{Name} was provided with the file path, but chose to do nothing with it.");
             return false; // no action taken
         }
+
         private void BoxToShowdown(object sender, EventArgs e)
         {
             try
             {
-                IList<PKM> BoxData = SaveFileEditor.SAV.BoxData;
-                List<PKM> BoxList = new List<PKM>(BoxData);
-                List<PKM> CurrBox = BoxList.GetRange(SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount, SaveFileEditor.SAV.BoxSlotCount);
+                var CurrBox = SaveFileEditor.SAV.GetBoxData(SaveFileEditor.SAV.CurrentBox);
                 var str = ShowdownSet.GetShowdownSets(CurrBox, Environment.NewLine + Environment.NewLine);
                 if (string.IsNullOrWhiteSpace(str)) return;
                 Clipboard.SetText(str);

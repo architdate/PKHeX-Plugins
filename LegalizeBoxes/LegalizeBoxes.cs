@@ -52,7 +52,7 @@ namespace LegalizeBoxes
         {
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
-            ctrl.Click += new EventHandler(Legalize);
+            ctrl.Click += Legalize;
             ctrl.Image = LegalizeBoxesResources.legalizeboxes;
         }
 
@@ -78,10 +78,11 @@ namespace LegalizeBoxes
                 PKM illegalPK = PKMEditor.PreparePKM();
                 bool box = false;
                 if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
-                {
                     box = true;
-                }
-                if (box) illegalPK = BoxData[SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount + i];
+
+                if (box && BoxData.Count > (SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount) + i)
+                    illegalPK = BoxData[(SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount) + i];
+
                 if (illegalPK.Species > 0 && !new LegalityAnalysis(illegalPK).Valid)
                 {
                     ShowdownSet Set = new ShowdownSet(ShowdownSet.GetShowdownText(illegalPK));
@@ -97,13 +98,20 @@ namespace LegalizeBoxes
                     catch { satisfied = false; }
                     if (!satisfied)
                     {
-                        BruteForce b = new BruteForce();
-                        b.SAV = SaveFileEditor.SAV;
+                        BruteForce b = new BruteForce { SAV = SaveFileEditor.SAV };
                         legal = b.LoadShowdownSetModded_PKSM(illegalPK, Set, resetForm, illegalPK.TID, illegalPK.SID, illegalPK.OT_Name, illegalPK.OT_Gender);
                     }
-                    else legal = APIGenerated;
+                    else
+                    {
+                        legal = APIGenerated;
+                    }
+
                     legal = AutoLegalityMod.AutoLegalityMod.SetTrainerData(illegalPK.OT_Name, illegalPK.TID, illegalPK.SID, illegalPK.OT_Gender, legal, satisfied);
-                    if (box) BoxData[SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount + i] = legal;
+
+                    if (box)
+                    {
+                        BoxData[(SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount) + i] = legal;
+                    }
                     else
                     {
                         PKMEditor.PopulateFields(legal);

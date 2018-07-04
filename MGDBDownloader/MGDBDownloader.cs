@@ -53,7 +53,7 @@ namespace MGDBDownloader
         {
             var ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
-            ctrl.Click += new EventHandler(DownloadMGDB);
+            ctrl.Click += DownloadMGDB;
             ctrl.Image = MGDBDownloaderResources.mgdbdownload;
         }
 
@@ -72,11 +72,11 @@ namespace MGDBDownloader
                 DialogResult latestCommit = MessageBox.Show("Download the entire database, which includes past generation events?\nSelecting No will download only the public release of the database.", "Download entire database?", MessageBoxButtons.YesNo);
                 if (latestCommit == DialogResult.Yes)
                 {
-                    string mgdbURL = @"https://github.com/projectpokemon/EventsGallery/archive/master.zip";
+                    const string mgdbURL = "https://github.com/projectpokemon/EventsGallery/archive/master.zip";
 
                     WebClient client = new WebClient();
 
-                    string mgdbZipPath = @"mgdb.zip";
+                    const string mgdbZipPath = "mgdb.zip";
                     client.DownloadFile(new Uri(mgdbURL), mgdbZipPath);
                     ZipFile.ExtractToDirectory(mgdbZipPath, MGDatabasePath);
                     File.Delete("mgdb.zip");
@@ -92,7 +92,7 @@ namespace MGDBDownloader
                     string json_data = DownloadString("https://api.github.com/repos/projectpokemon/EventsGallery/releases/latest");
                     string mgdbURL = json_data.Split(new string[] { "browser_download_url" }, StringSplitOptions.None)[1].Substring(3).Split('"')[0];
                     Console.WriteLine(mgdbURL);
-                    string mgdbZipPath = @"mgdb.zip";
+                    const string mgdbZipPath = "mgdb.zip";
                     client.DownloadFile(new Uri(mgdbURL), mgdbZipPath);
                     ZipFile.ExtractToDirectory(mgdbZipPath, MGDatabasePath);
                     File.Delete("mgdb.zip");
@@ -105,7 +105,7 @@ namespace MGDBDownloader
         {
             using (WebClient client = new WebClient())
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.github.com/repos/projectpokemon/EventsGallery/releases/latest");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(address);
                 request.Method = "GET";
                 request.UserAgent = "PKHeX-Auto-Legality-Mod";
                 request.Accept = "application/json";

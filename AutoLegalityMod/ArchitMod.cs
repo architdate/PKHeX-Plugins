@@ -16,13 +16,8 @@ namespace AutoLegalityMod
         /// <param name="bytes">byte array</param>
         public static void PrintByteArray(byte[] bytes)
         {
-            var sb = new System.Text.StringBuilder("new byte[] { ");
-            foreach (var b in bytes)
-            {
-                sb.Append(b + ", ");
-            }
-            sb.Append("}");
-            Console.WriteLine(sb.ToString());
+            var str = $"new byte[] {{ {string.Join(", ", bytes)} }}";
+            Console.WriteLine(str);
         }
 
         /// <summary>
@@ -31,11 +26,12 @@ namespace AutoLegalityMod
         /// <param name="Country">String denoting the exact country</param>
         /// <param name="SubRegion">String denoting the exact sub region</param>
         /// <param name="ConsoleRegion">String denoting the exact console region</param>
+        /// <param name="pk"></param>
         public static void SetRegions(string Country, string SubRegion, string ConsoleRegion, PKM pk)
         {
-            pk.Country = Util.GetCBList("countries", "en").FirstOrDefault(z => z.Text == Country).Value;
-            pk.Region = Util.GetCBList($"sr_{pk.Country:000}", "en").FirstOrDefault(z => z.Text == SubRegion).Value;
-            pk.ConsoleRegion = Util.GetUnsortedCBList("regions3ds").FirstOrDefault(z => z.Text == ConsoleRegion).Value;
+            pk.Country = Util.GetCBList("countries", "en").Find(z => z.Text == Country).Value;
+            pk.Region = Util.GetCBList($"sr_{pk.Country:000}", "en").Find(z => z.Text == SubRegion).Value;
+            pk.ConsoleRegion = Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == ConsoleRegion).Value;
         }
 
         /// <summary>
@@ -60,7 +56,9 @@ namespace AutoLegalityMod
         /// <param name="OT">string value of OT name</param>
         /// <param name="TID">INT value of TID</param>
         /// <param name="SID">INT value of SID</param>
+        /// <param name="gender"></param>
         /// <param name="pk"></param>
+        /// <param name="APILegalized"></param>
         /// <returns></returns>
         public static PKM SetTrainerData(string OT, int TID, int SID, int gender, PKM pk, bool APILegalized = false)
         {
@@ -88,7 +86,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="jsonstring">string form of trainerdata.json</param>
         /// <returns></returns>
-        public static string checkMode(string jsonstring = "")
+        public static string CheckMode(string jsonstring = "")
         {
             if(jsonstring != "")
             {
@@ -99,12 +97,15 @@ namespace AutoLegalityMod
             }
             else
             {
-                if (!System.IO.File.Exists(Directory.GetCurrentDirectory() + "\\trainerdata.json"))
+                if (!File.Exists(Directory.GetCurrentDirectory() + "\\trainerdata.json"))
                 {
                     return "save"; // Default trainerdata.txt handling
                 }
-                jsonstring = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + "\\trainerdata.json", System.Text.Encoding.UTF8);
-                if (jsonstring != "") return checkMode(jsonstring);
+                jsonstring = File.ReadAllText(Directory.GetCurrentDirectory() + "\\trainerdata.json", System.Text.Encoding.UTF8);
+                if (jsonstring != "")
+                {
+                    return CheckMode(jsonstring);
+                }
                 else
                 {
                     MessageBox.Show("Empty trainerdata.json file", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -120,10 +121,10 @@ namespace AutoLegalityMod
         /// <param name="Game">int value of the game</param>
         /// <param name="jsonvalue">internal json: trainerdata[Game]</param>
         /// <returns></returns>
-        public static bool checkIfGameExists(string jsonstring, int Game, out string jsonvalue)
+        public static bool CheckIfGameExists(string jsonstring, int Game, out string jsonvalue)
         {
             jsonvalue = "";
-            if (checkMode(jsonstring) == "auto")
+            if (CheckMode(jsonstring) == "auto")
             {
                 jsonvalue = "auto";
                 return false;
@@ -147,7 +148,7 @@ namespace AutoLegalityMod
         /// <param name="key"></param>
         /// <param name="finaljson"></param>
         /// <returns></returns>
-        public static string getValueFromKey(string key, string finaljson)
+        public static string GetValueFromKey(string key, string finaljson)
         {
             return finaljson.Split(new string[] { key }, StringSplitOptions.None)[1].Split('"')[2].Trim();
         }
@@ -160,7 +161,7 @@ namespace AutoLegalityMod
         /// <returns></returns>
         public static int[] ConvertTIDSID7toTIDSID(int tid7, int sid7)
         {
-            var repack = (long)sid7 * 1_000_000 + tid7;
+            var repack = ((long)sid7 * 1_000_000) + tid7;
             int sid = (ushort)(repack >> 16);
             int tid = (ushort)repack;
             return new int[] { tid, sid };
@@ -172,22 +173,22 @@ namespace AutoLegalityMod
         /// <param name="C_SAV">Current Save Editor</param>
         /// <param name="Game">optional Game value in case of mode being game</param>
         /// <returns></returns>
-        public static string[] parseTrainerJSON(SaveFile C_SAV, int Game = -1)
+        public static string[] ParseTrainerJSON(SaveFile C_SAV, int Game = -1)
         {
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\trainerdata.json"))
             {
-                return parseTrainerData(C_SAV); // Default trainerdata.txt handling
+                return ParseTrainerData(); // Default trainerdata.txt handling
             }
-            string jsonstring = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + "\\trainerdata.json", System.Text.Encoding.UTF8);
-            if (Game == -1) Game = C_SAV.Game; 
-            if(!checkIfGameExists(jsonstring, Game, out string finaljson)) return parseTrainerData(C_SAV, finaljson == "auto");
-            string TID = getValueFromKey("TID", finaljson);
-            string SID = getValueFromKey("SID", finaljson);
-            string OT = getValueFromKey("OT", finaljson);
-            string Gender = getValueFromKey("Gender", finaljson);
-            string Country = getValueFromKey("Country", finaljson);
-            string SubRegion = getValueFromKey("SubRegion", finaljson);
-            string ConsoleRegion = getValueFromKey("3DSRegion", finaljson);
+            string jsonstring = File.ReadAllText(Directory.GetCurrentDirectory() + "\\trainerdata.json", System.Text.Encoding.UTF8);
+            if (Game == -1) Game = C_SAV.Game;
+            if(!CheckIfGameExists(jsonstring, Game, out string finaljson)) return ParseTrainerData(finaljson == "auto");
+            string TID = GetValueFromKey("TID", finaljson);
+            string SID = GetValueFromKey("SID", finaljson);
+            string OT = GetValueFromKey("OT", finaljson);
+            string Gender = GetValueFromKey("Gender", finaljson);
+            string Country = GetValueFromKey("Country", finaljson);
+            string SubRegion = GetValueFromKey("SubRegion", finaljson);
+            string ConsoleRegion = GetValueFromKey("3DSRegion", finaljson);
             if (TID.Length == 6 && SID.Length == 4)
             {
                 if(new List<int> { 33, 32, 31, 30 }.IndexOf(Game) == -1) MessageBox.Show("Force Converting G7TID/G7SID to TID/SID", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -201,9 +202,9 @@ namespace AutoLegalityMod
         /// <summary>
         /// Parser for auto and preset trainerdata.txt files
         /// </summary>
-        /// <param name="C_SAV">SAVEditor of the current save file</param>
+        /// <param name="auto"></param>
         /// <returns></returns>
-        public static string[] parseTrainerData(SaveFile C_SAV, bool auto = false)
+        public static string[] ParseTrainerData(bool auto = false)
         {
             // Defaults
             string TID = "23456";
@@ -219,12 +220,12 @@ namespace AutoLegalityMod
             }
             string[] trainerdataLines = File.ReadAllText(Directory.GetCurrentDirectory() + "\\trainerdata.txt", System.Text.Encoding.UTF8)
                 .Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-            List<string> lstlines = trainerdataLines.OfType<string>().ToList();
+            List<string> lstlines = trainerdataLines.Where(f => f != null).ToList();
             int count = lstlines.Count;
             for (int i =0; i < count; i++)
             {
                 string item = lstlines[0];
-                if (item.TrimEnd() == "" || item.TrimEnd() == "auto") continue;
+                if (item.TrimEnd().Length == 0 || item.TrimEnd() == "auto") continue;
                 string key = item.Split(':')[0].TrimEnd();
                 string value = item.Split(':')[1].TrimEnd();
                 lstlines.RemoveAt(0);
@@ -263,7 +264,5 @@ namespace AutoLegalityMod
             }
             return new string[] { TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion };
         }
-
     }
-
 }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace AutoLegalityMod
 {
-    public class AutomaticLegality
+    public static class AutomaticLegality
     {
         public static ISaveFileProvider SaveFileEditor { get; set; }
         public static IPKMView PKMEditor { get; set; }
@@ -19,30 +19,33 @@ namespace AutoLegalityMod
         /// <summary>
         /// Global Variables for Auto Legality Mod
         /// </summary>
-        static int TID_ALM = -1;
-        static int SID_ALM = -1;
-        static string OT_ALM = "";
-        static int gender_ALM = 0;
-        static string Country_ALM = "";
-        static string SubRegion_ALM = "";
-        static string ConsoleRegion_ALM = "";
-        static bool APILegalized = false;
-        static string MGDatabasePath = Path.Combine(Directory.GetCurrentDirectory(), "mgdb");
+        private static int TID_ALM = -1;
+        private static int SID_ALM = -1;
+        private static string OT_ALM = "";
+        private static int gender_ALM = 0;
+        private static string Country_ALM = "";
+        private static string SubRegion_ALM = "";
+        private static string ConsoleRegion_ALM = "";
+        private static bool APILegalized = false;
+        private static readonly string MGDatabasePath = Path.Combine(Directory.GetCurrentDirectory(), "mgdb");
 
         public static void ImportModded()
         {
             Stopwatch timer = Stopwatch.StartNew();
             // TODO: Check for Auto Legality Mod Updates
-            bool allowAPI = true; // Use true to allow experimental API usage
+            const bool allowAPI = true; // Use true to allow experimental API usage
             APILegalized = false; // Initialize to false everytime command is used
 
             // Check for lack of showdown data provided
             CheckLoadFromText(out bool valid);
-            if (!valid) return;
+            if (!valid)
+                return;
 
             // Make a blank MGDB directory and initialize trainerdata
-            if (!Directory.Exists(MGDatabasePath)) Directory.CreateDirectory(MGDatabasePath);
-            if (AutoLegalityMod.checkMode() != "game") LoadTrainerData();
+            if (!Directory.Exists(MGDatabasePath))
+                Directory.CreateDirectory(MGDatabasePath);
+            if (AutoLegalityMod.CheckMode() != "game")
+                LoadTrainerData();
 
             // Get Text source from clipboard and convert to ShowdownSet(s)
             string source = Clipboard.GetText().TrimEnd();
@@ -54,8 +57,10 @@ namespace AutoLegalityMod
 
             // Debug Statements
             Debug.WriteLine(LogTimer(timer));
-            if (message.StartsWith("[DEBUG]")) Debug.WriteLine(message);
-            else Alert(message);
+            if (message.StartsWith("[DEBUG]"))
+                Debug.WriteLine(message);
+            else
+                Alert(message);
         }
 
         /// <summary>
@@ -64,26 +69,24 @@ namespace AutoLegalityMod
         /// <param name="valid">output boolean that tells if the data provided is valid or not</param>
         private static void CheckLoadFromText(out bool valid)
         {
-            valid = true;
-            if (!showdownData() || (Control.ModifierKeys & Keys.Shift) == Keys.Shift)
+            if (!ShowdownData() || (Control.ModifierKeys & Keys.Shift) == Keys.Shift)
             {
                 if (OpenSAVPKMDialog(new string[] { "txt" }, out string path))
                 {
                     Clipboard.SetText(File.ReadAllText(path).TrimEnd());
-                    if (!showdownData())
+                    if (!ShowdownData())
                     {
                         Alert("Text file with invalid data provided. Please provide a text file with proper Showdown data");
                         valid = false;
-                        return;
                     }
                 }
                 else
                 {
                     Alert("No data provided.");
                     valid = false;
-                    return;
                 }
             }
+            valid = true;
         }
 
         /// <summary>
@@ -92,16 +95,16 @@ namespace AutoLegalityMod
         /// <param name="legal">Optional legal PKM for loading trainerdata on a per game basis</param>
         private static void LoadTrainerData(PKM legal = null)
         {
-            bool checkPerGame = (AutoLegalityMod.checkMode() == "game");
+            bool checkPerGame = (AutoLegalityMod.CheckMode() == "game");
             // If mode is not set as game: (auto or save)
-            string[] tdataVals;
-            if (!checkPerGame || legal == null) tdataVals = AutoLegalityMod.parseTrainerJSON(SAV);
-
-            else tdataVals = AutoLegalityMod.parseTrainerJSON(SAV, legal.Version);
+            var tdataVals = !checkPerGame || legal == null
+                ? AutoLegalityMod.ParseTrainerJSON(SAV)
+                : AutoLegalityMod.ParseTrainerJSON(SAV, legal.Version);
             TID_ALM = Convert.ToInt32(tdataVals[0]);
             SID_ALM = Convert.ToInt32(tdataVals[1]);
             if (legal != null)
                 SID_ALM = legal.VC ? 0 : SID_ALM;
+
             OT_ALM = tdataVals[2];
             if (OT_ALM == "PKHeX") OT_ALM = "Archit(TCD)"; // Avoids secondary handler error
             gender_ALM = 0;
@@ -123,7 +126,7 @@ namespace AutoLegalityMod
         private static void ImportSets(List<ShowdownSet> sets, bool replace, out string message, bool allowAPI = true)
         {
             message = "[DEBUG] Commencing Import";
-            List<int> emptySlots = new List<int> { };
+            List<int> emptySlots = new List<int>();
             IList<PKM> BoxData = SAV.BoxData;
             int BoxOffset = SaveFileEditor.CurrentBox * SAV.BoxSlotCount;
             if (replace) emptySlots = Enumerable.Range(0, sets.Count).ToList();
@@ -172,15 +175,20 @@ namespace AutoLegalityMod
                 SAV.BoxData = BoxData;
                 SaveFileEditor.ReloadSlots();
                 message = "[DEBUG] API Genned Sets: " + apiCounter + Environment.NewLine + Environment.NewLine + "Number of sets not genned by the API: " + invalidAPISets.Count;
-                foreach (ShowdownSet i in invalidAPISets) Debug.WriteLine(i.Text);
+                foreach (ShowdownSet i in invalidAPISets)
+                    Debug.WriteLine(i.Text);
             }
-            else message = "[DEBUG] Set Genning Complete";
+            else
+            {
+                message = "[DEBUG] Set Genning Complete";
+            }
         }
 
         /// <summary>
         /// Set trainer data for a legal PKM
         /// </summary>
         /// <param name="legal">Legal PKM for setting the data</param>
+        /// <param name="display"></param>
         /// <returns>PKM with the necessary values modified to reflect trainerdata changes</returns>
         private static PKM SetTrainerData(PKM legal, bool display)
         {
@@ -212,7 +220,7 @@ namespace AutoLegalityMod
             int BoxCount = SAV.BoxSlotCount;
             for (int i = 0; i < BoxCount; i++)
             {
-                if (BoxData[CurrentBox * BoxCount + i].Species < 1) emptySlots.Add(i);
+                if (BoxData[(CurrentBox * BoxCount) + i].Species < 1) emptySlots.Add(i);
             }
             return emptySlots;
         }
@@ -222,6 +230,7 @@ namespace AutoLegalityMod
         /// Needs to be extended to hold several teams
         /// </summary>
         /// <param name="paste"></param>
+        /// <param name="TeamData"></param>
         /// <returns></returns>
         private static List<ShowdownSet> ShowdownSets(string paste, out Dictionary<int, string[]> TeamData)
         {
@@ -291,24 +300,22 @@ namespace AutoLegalityMod
         /// Checks the input text is a showdown set or not
         /// </summary>
         /// <returns>boolean of the summary</returns>
-        private static bool showdownData()
+        private static bool ShowdownData()
         {
-            if (!Clipboard.ContainsText()) return false;
+            if (!Clipboard.ContainsText())
+                return false;
             string source = Clipboard.GetText().TrimEnd();
-            if (TeamBackup(source)) return true;
+            if (TeamBackup(source))
+                return true;
             string[] stringSeparators = new string[] { "\n\r" };
-            string[] result;
 
-            // ...
-            result = source.Split(stringSeparators, StringSplitOptions.None);
-            if (new ShowdownSet(result[0]).Species < 0) return false;
-            return true;
+            var result = source.Split(stringSeparators, StringSplitOptions.None);
+            return new ShowdownSet(result[0]).Species >= 0;
         }
 
-        /// TODO
-        /// Method to check for updates to AutoLegalityMod
-        /// TODO
-
+        // TODO
+        // Method to check for updates to AutoLegalityMod
+        // TODO
 
         /// <summary>
         /// Parse release GitHub tag into a PKHeX style version
@@ -322,29 +329,7 @@ namespace AutoLegalityMod
             int.TryParse(date[0], out int a);
             int.TryParse(date[1], out int b);
             int.TryParse(date[2], out int c);
-            return (a + 2000) * 10000 + b * 100 + c;
-        }
-
-        /// <summary>
-        /// GET request to a url with UserAgent Header being AutoLegalityMod
-        /// </summary>
-        /// <param name="url">URL on which the GET request is to be executed</param>
-        /// <returns>GET Response</returns>
-        private static string GetPage(string url)
-        {
-            try
-            {
-                var request = (HttpWebRequest)WebRequest.Create(url);
-                request.UserAgent = "AutoLegalityMod";
-                var response = (HttpWebResponse)request.GetResponse();
-                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                return responseString;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: " + e.ToString() + "\nURL tried to access: " + url);
-                return "Error :" + e.ToString();
-            }
+            return ((a + 2000) * 10000) + (b * 100) + c;
         }
 
         private static DialogResult Alert(params string[] lines)

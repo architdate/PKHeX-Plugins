@@ -127,12 +127,13 @@ namespace AutoLegalityMod
 
             if (genderValid)
                 return;
+
+            if (pkm.Gender == 0)
+                pkm.Gender = 1;
+            else if (pkm.Gender == 1)
+                pkm.Gender = 0;
             else
-            {
-                if (pkm.Gender == 0) pkm.Gender = 1;
-                else if (pkm.Gender == 1) pkm.Gender = 0;
-                else pkm.GetSaneGender();
-            }
+                pkm.GetSaneGender();
         }
 
         /// <summary>
@@ -178,13 +179,14 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="SSet">SSet to modify</param>
+        /// <param name="Form">Form to modify</param>
         public static void SetSpeciesLevel(PKM pk, ShowdownSet SSet, int Form)
         {
             pk.Species = SSet.Species;
             if (SSet.Gender != null) pk.Gender = (SSet.Gender == "M") ? 0 : 1;
             pk.SetAltForm(Form);
             pk.IsNicknamed = (SSet.Nickname != null);
-            pk.Nickname = SSet.Nickname != null ? SSet.Nickname : PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, SAV.Generation);
+            pk.Nickname = SSet.Nickname ?? PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, SAV.Generation);
             pk.CurrentLevel = SSet.Level;
             if (pk.CurrentLevel == 50) pk.CurrentLevel = 100; // VGC Override
         }
@@ -296,6 +298,9 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="pk"></param>
         /// <param name="SSet"></param>
+        /// <param name="Method"></param>
+        /// <param name="HPType"></param>
+        /// <param name="originalPKMN"></param>
         public static void SetIVsPID(PKM pk, ShowdownSet SSet, PIDType Method, int HPType, PKM originalPKMN)
         {
             // Useful Values for computation
@@ -307,8 +312,8 @@ namespace AutoLegalityMod
 
             // Find the encounter
             LegalInfo li = EncounterFinder.FindVerifiedEncounter(originalPKMN);
-            var property = li.EncounterMatch.GetType().GetProperty("PIDType"); 
-            // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case? 
+            var property = li.EncounterMatch.GetType().GetProperty("PIDType");
+            // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
 
             if (pk.GenNumber > 4 || pk.VC)
@@ -354,6 +359,7 @@ namespace AutoLegalityMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="Method">Given Method</param>
         /// <param name="HPType">HPType INT for preserving Hidden powers</param>
+        /// <param name="originalPKMN"></param>
         public static void FindPIDIV(PKM pk, PIDType Method, int HPType, PKM originalPKMN)
         {
             if (Method == PIDType.None)
@@ -363,7 +369,7 @@ namespace AutoLegalityMod
                 if (Method == PIDType.None) pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
             }
             PKM iterPKM = pk;
-            while (true && Method != PIDType.None)
+            while (Method != PIDType.None)
             {
                 uint seed = Util.Rand32();
                 PIDGenerator.SetValuesFromSeed(pk, Method, seed);
@@ -383,9 +389,9 @@ namespace AutoLegalityMod
         public static PIDType FindLikelyPIDType(PKM pk, PKM pkmn)
         {
             BruteForce b = new BruteForce();
-            if (b.usesEventBasedMethod(pk.Species, pk.Moves, "BACD_R"))
+            if (b.UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R"))
                 return PIDType.BACD_R;
-            if (b.usesEventBasedMethod(pk.Species, pk.Moves, "M2")) return PIDType.Method_2;
+            if (b.UsesEventBasedMethod(pk.Species, pk.Moves, "M2")) return PIDType.Method_2;
             if (pk.Species == 490 && pk.Gen4)
             {
                 pk.Egg_Location = 2002;
@@ -451,7 +457,10 @@ namespace AutoLegalityMod
                 uint EC = wIndex < 0 ? Util.Rand32() : PKX.GetWurmpleEC(wIndex / 2);
                 if (!(pk.Species == 658 && pk.AltForm == 1)) pk.EncryptionConstant = EC;
             }
-            else pk.EncryptionConstant = pk.PID; // Generations 3 to 5
+            else
+            {
+                pk.EncryptionConstant = pk.PID; // Generations 3 to 5
+            }
         }
 
         /// <summary>

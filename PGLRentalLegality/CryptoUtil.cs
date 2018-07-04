@@ -1,11 +1,9 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 
-namespace PKHeX.WinForms.Misc
+namespace PGLRentalLegality
 {
-    public partial class Util
+    public static class CryptoUtil
     {
-
         /// <summary>
         /// Creates a new instance of <see cref="SHA1CryptoServiceProvider"/>, or <see cref="SHA1Managed"/> if not supported by the current platform.
         /// </summary>
