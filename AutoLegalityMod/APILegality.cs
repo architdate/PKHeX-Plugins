@@ -56,7 +56,7 @@ namespace AutoLegalityMod
                     SetEncryptionConstant(pk);
                     SetShinyBoolean(pk, SSet.Shiny);
                     CheckAndSetFateful(pk);
-                    FixGender(pk);
+                    FixGender(pk, SSet);
                     FixRibbons(pk);
                     FixMemoriesPKM(pk);
                     SetSpeciesBall(pk);
@@ -433,8 +433,10 @@ namespace AutoLegalityMod
         /// Quick Gender Toggle
         /// </summary>
         /// <param name="pk">PKM whose gender needs to be toggled</param>
-        public static void FixGender(PKM pk)
+        /// <param name="SSet">Showdown Set for Gender reference</param>
+        public static void FixGender(PKM pk, ShowdownSet SSet)
         {
+            pk.SetGender(SSet.Gender);
             LegalityAnalysis la = new LegalityAnalysis(pk);
             string Report = la.Report();
             if (Report.Contains(V255))
