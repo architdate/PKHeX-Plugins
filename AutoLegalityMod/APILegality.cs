@@ -401,18 +401,30 @@ namespace AutoLegalityMod
             switch (pk.GenNumber)
             {
                 case 3:
-                    switch (pk.Version)
+                    switch (EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch)
                     {
-                        case (int)GameVersion.CXD: return PIDType.CXD;
-                        case (int)GameVersion.E: return PIDType.Method_1;
-                        case (int)GameVersion.FR:
-                        case (int)GameVersion.LG:
-                            return PIDType.Method_1;
+                        case WC3 g:
+                            return g.Method;
+                        case EncounterStatic s:
+                            switch (pk.Version)
+                            {
+                                case (int)GameVersion.CXD: return PIDType.CXD;
+                                case (int)GameVersion.E: return PIDType.Method_1;
+                                case (int)GameVersion.FR:
+                                case (int)GameVersion.LG:
+                                    return PIDType.Method_1; // roamer glitch
+                                default:
+                                    return PIDType.Method_1;
+                            }
+                        case EncounterSlot w:
+                            if (pk.Version == 15)
+                                return PIDType.PokeSpot;
+                            return (pk.Species == 201 ? PIDType.Method_1_Unown : PIDType.Method_1);
                         default:
-                            return PIDType.Method_1;
+                            return PIDType.None;
                     }
                 case 4:
-                    switch(new LegalInfo(pk).EncounterMatch)
+                    switch (EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch)
                     {
                         case EncounterStatic s:
                             if (s.Location == 233 && s.Gift) // Pokewalker
