@@ -7,7 +7,6 @@ namespace com.google.zxing.common
     {
         private readonly sbyte[] luminances;
         private bool isRotated;
-        private readonly bool __isRegionSelect;
         private Rectangle __Region;
 
         public override int Height => !isRotated ? __height : __width;
@@ -63,7 +62,6 @@ namespace com.google.zxing.common
             __width = Region.Width;
             __height = Region.Height;
             __Region = Region;
-            __isRegionSelect = true;
             //luminances = Red.Imaging.Filters.CropArea(d, W, H, Region);
         }
 

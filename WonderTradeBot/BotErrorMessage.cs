@@ -26,7 +26,7 @@ namespace WonderTradeBot
 
     public static partial class Extensions
     {
-        public static string GetMessage(this BotErrorMessage message, int[] info)
+        public static string FormatString(this BotErrorMessage message, int[] info)
         {
             switch (message)
             {

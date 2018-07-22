@@ -2,7 +2,7 @@
 {
     public static class FriendCodes
     {
-        public static readonly uint[] FCtable =
+        public static readonly uint[] Table =
         {
             6, 16, 31, 61, 101, 151, 211, 281, 361,
             451, 551, 651, 751, 851, 951, 1051, 1151, 1251, 1351, 1451, 1571, 1691, 1811,

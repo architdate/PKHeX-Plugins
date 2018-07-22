@@ -59,7 +59,7 @@ namespace PGLRentalLegality
         private void PGLShowdownSet(object sender, EventArgs e)
         {
             if (!Clipboard.ContainsImage()) return;
-            var rentalTeam = new QRParser().decryptQRCode(Clipboard.GetImage());
+            var rentalTeam = new QRParser().DecryptQRCode(Clipboard.GetImage());
             string data = "";
             foreach (QRPoke p in rentalTeam.team)
             {

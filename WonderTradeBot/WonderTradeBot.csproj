@@ -43,6 +43,7 @@
     <Compile Include="BotState.cs" />
     <Compile Include="DataReadyWaiting.cs" />
     <Compile Include="Delg.cs" />
+    <Compile Include="FriendCodes.cs" />
     <Compile Include="LookupTable.cs" />
     <Compile Include="NTR.cs" />
     <Compile Include="RemoteControl.cs" />
