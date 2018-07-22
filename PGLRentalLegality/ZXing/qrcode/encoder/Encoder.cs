@@ -413,8 +413,8 @@ namespace com.google.zxing.qrcode.encoder
 				ByteArray ecBytes = generateECBytes(dataBytes, numEcBytesInBlock[0]);
 				blocks.Add(new BlockPair(dataBytes, ecBytes));
 				
-				maxNumDataBytes = System.Math.Max(maxNumDataBytes, dataBytes.size());
-				maxNumEcBytes = System.Math.Max(maxNumEcBytes, ecBytes.size());
+				maxNumDataBytes = Math.Max(maxNumDataBytes, dataBytes.size());
+				maxNumEcBytes = Math.Max(maxNumEcBytes, ecBytes.size());
 				dataBytesOffset += numDataBytesInBlock[0];
 			}
 			if (numDataBytes != dataBytesOffset)

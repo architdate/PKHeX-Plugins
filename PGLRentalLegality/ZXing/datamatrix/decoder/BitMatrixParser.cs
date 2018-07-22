@@ -23,7 +23,7 @@ namespace com.google.zxing.datamatrix.decoder
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	sealed class BitMatrixParser
+	internal sealed class BitMatrixParser
 	{
 		
 		//UPGRADE_NOTE: Final was removed from the declaration of 'mappingBitMatrix '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"

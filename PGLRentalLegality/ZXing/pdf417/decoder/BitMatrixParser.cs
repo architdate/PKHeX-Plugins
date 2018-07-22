@@ -28,7 +28,7 @@ namespace com.google.zxing.pdf417.decoder
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	sealed class BitMatrixParser
+	internal sealed class BitMatrixParser
 	{
 		/// <summary> Returns an array of locations representing the erasures.</summary>
 		public int[] Erasures

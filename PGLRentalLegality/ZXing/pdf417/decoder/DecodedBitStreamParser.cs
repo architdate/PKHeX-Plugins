@@ -26,7 +26,7 @@ namespace com.google.zxing.pdf417.decoder
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	sealed class DecodedBitStreamParser
+	internal sealed class DecodedBitStreamParser
 	{
 		
 		private const int TEXT_COMPACTION_MODE_LATCH = 900;

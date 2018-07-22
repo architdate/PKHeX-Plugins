@@ -365,7 +365,7 @@ namespace PGLRentalLegality
             var img = new RGBLuminanceSource(bitmap, bitmap.Width, bitmap.Height);
             var hybrid = new HybridBinarizer(img);
             var binaryMap = new BinaryBitmap(hybrid);
-            var reader = new QRCodeReader().decode(binaryMap, null);
+            var reader = new QRCodeReader().Decode(binaryMap, null);
             return Array.ConvertAll(reader.RawBytes, a => (byte)a);
         }
 

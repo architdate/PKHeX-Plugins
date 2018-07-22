@@ -31,7 +31,7 @@ namespace com.google.zxing.qrcode.decoder
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	abstract class DataMask
+	internal abstract class DataMask
 	{
 		
 		/// <summary> See ISO 18004:2006 6.8.1</summary>

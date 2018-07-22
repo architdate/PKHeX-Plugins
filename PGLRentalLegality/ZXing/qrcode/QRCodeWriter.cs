@@ -85,10 +85,10 @@ namespace com.google.zxing.qrcode
 			int inputHeight = input.Height;
 			int qrWidth = inputWidth + (QUIET_ZONE_SIZE << 1);
 			int qrHeight = inputHeight + (QUIET_ZONE_SIZE << 1);
-			int outputWidth = System.Math.Max(width, qrWidth);
-			int outputHeight = System.Math.Max(height, qrHeight);
+			int outputWidth = Math.Max(width, qrWidth);
+			int outputHeight = Math.Max(height, qrHeight);
 			
-			int multiple = System.Math.Min(outputWidth / qrWidth, outputHeight / qrHeight);
+			int multiple = Math.Min(outputWidth / qrWidth, outputHeight / qrHeight);
 			// Padding includes both the quiet zone and the extra white pixels to accommodate the requested
 			// dimensions. For example, if input is 25x25 the QR will be 33x33 including the quiet zone.
 			// If the requested size is 200x160, the multiple will be 4, for a QR of 132x132. These will

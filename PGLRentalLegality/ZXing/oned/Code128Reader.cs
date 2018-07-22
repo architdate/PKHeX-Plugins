@@ -104,7 +104,7 @@ namespace com.google.zxing.oned
 						if (bestMatch >= 0)
 						{
 							// Look for whitespace before start pattern, >= 50% of width of start pattern
-							if (row.isRange(System.Math.Max(0, patternStart - (i - patternStart) / 2), patternStart, false))
+							if (row.isRange(Math.Max(0, patternStart - (i - patternStart) / 2), patternStart, false))
 							{
 								return new int[]{patternStart, i, bestMatch};
 							}
@@ -396,7 +396,7 @@ namespace com.google.zxing.oned
 			{
 				nextStart++;
 			}
-			if (!row.isRange(nextStart, System.Math.Min(width, nextStart + (nextStart - lastStart) / 2), false))
+			if (!row.isRange(nextStart, Math.Min(width, nextStart + (nextStart - lastStart) / 2), false))
 			{
 				throw ReaderException.Instance;
 			}

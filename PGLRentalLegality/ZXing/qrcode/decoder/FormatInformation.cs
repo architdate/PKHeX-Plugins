@@ -29,7 +29,7 @@ namespace com.google.zxing.qrcode.decoder
 	/// </seealso>
 	/// <seealso cref="ErrorCorrectionLevel">
 	/// </seealso>
-	sealed class FormatInformation
+	internal sealed class FormatInformation
 	{
 		internal ErrorCorrectionLevel ErrorCorrectionLevel
 		{

@@ -28,7 +28,7 @@ namespace com.google.zxing.common.reedsolomon
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	sealed class GF256Poly
+	internal sealed class GF256Poly
 	{
 		internal int[] Coefficients
 		{

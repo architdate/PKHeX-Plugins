@@ -116,7 +116,7 @@ namespace com.google.zxing.qrcode.encoder
 			int numTotalCells = matrix.Height * matrix.Width;
 			double darkRatio = (double) numDarkCells / numTotalCells;
 			//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-			return System.Math.Abs((int) (darkRatio * 100 - 50)) / 5 * 10;
+			return Math.Abs((int) (darkRatio * 100 - 50)) / 5 * 10;
 		}
 		
 		// Return the mask bit for "getMaskPattern" at "x" and "y". See 8.8 of JISX0510:2004 for mask

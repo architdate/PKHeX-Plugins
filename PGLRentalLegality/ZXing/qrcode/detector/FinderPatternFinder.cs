@@ -274,7 +274,7 @@ namespace com.google.zxing.qrcode.detector
 			int moduleSize = (totalModuleSize << INTEGER_MATH_SHIFT) / 7;
 			int maxVariance = moduleSize / 2;
 			// Allow less than 50% variance from 1-1-3-1-1 proportions
-			return System.Math.Abs(moduleSize - (stateCount[0] << INTEGER_MATH_SHIFT)) < maxVariance && System.Math.Abs(moduleSize - (stateCount[1] << INTEGER_MATH_SHIFT)) < maxVariance && System.Math.Abs(3 * moduleSize - (stateCount[2] << INTEGER_MATH_SHIFT)) < 3 * maxVariance && System.Math.Abs(moduleSize - (stateCount[3] << INTEGER_MATH_SHIFT)) < maxVariance && System.Math.Abs(moduleSize - (stateCount[4] << INTEGER_MATH_SHIFT)) < maxVariance;
+			return Math.Abs(moduleSize - (stateCount[0] << INTEGER_MATH_SHIFT)) < maxVariance && Math.Abs(moduleSize - (stateCount[1] << INTEGER_MATH_SHIFT)) < maxVariance && Math.Abs(3 * moduleSize - (stateCount[2] << INTEGER_MATH_SHIFT)) < 3 * maxVariance && Math.Abs(moduleSize - (stateCount[3] << INTEGER_MATH_SHIFT)) < maxVariance && Math.Abs(moduleSize - (stateCount[4] << INTEGER_MATH_SHIFT)) < maxVariance;
 		}
 		
 		/// <summary> <p>After a horizontal scan finds a potential finder pattern, this method
@@ -362,7 +362,7 @@ namespace com.google.zxing.qrcode.detector
 			// If we found a finder-pattern-like section, but its size is more than 40% different than
 			// the original, assume it's a false positive
 			int stateCountTotal = stateCount[0] + stateCount[1] + stateCount[2] + stateCount[3] + stateCount[4];
-			if (5 * System.Math.Abs(stateCountTotal - originalStateCountTotal) >= 2 * originalStateCountTotal)
+			if (5 * Math.Abs(stateCountTotal - originalStateCountTotal) >= 2 * originalStateCountTotal)
 			{
 				return System.Single.NaN;
 			}
@@ -442,7 +442,7 @@ namespace com.google.zxing.qrcode.detector
 			// If we found a finder-pattern-like section, but its size is significantly different than
 			// the original, assume it's a false positive
 			int stateCountTotal = stateCount[0] + stateCount[1] + stateCount[2] + stateCount[3] + stateCount[4];
-			if (5 * System.Math.Abs(stateCountTotal - originalStateCountTotal) >= originalStateCountTotal)
+			if (5 * Math.Abs(stateCountTotal - originalStateCountTotal) >= originalStateCountTotal)
 			{
 				return System.Single.NaN;
 			}
@@ -543,7 +543,7 @@ namespace com.google.zxing.qrcode.detector
 						// This is the case where you find top left last.
 						hasSkipped = true;
 						//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-						return (int) (System.Math.Abs(firstConfirmedCenter.X - center.X) - System.Math.Abs(firstConfirmedCenter.Y - center.Y)) / 2;
+						return (int) (Math.Abs(firstConfirmedCenter.X - center.X) - Math.Abs(firstConfirmedCenter.Y - center.Y)) / 2;
 					}
 				}
 			}
@@ -582,7 +582,7 @@ namespace com.google.zxing.qrcode.detector
 			for (int i = 0; i < max; i++)
 			{
 				FinderPattern pattern = (FinderPattern) possibleCenters[i];
-				totalDeviation += System.Math.Abs(pattern.EstimatedModuleSize - average);
+				totalDeviation += Math.Abs(pattern.EstimatedModuleSize - average);
 			}
 			return totalDeviation <= 0.05f * totalModuleSize;
 		}
@@ -616,7 +616,7 @@ namespace com.google.zxing.qrcode.detector
 				for (int i = 0; i < possibleCenters.Count && possibleCenters.Count > 3; i++)
 				{
 					FinderPattern pattern = (FinderPattern) possibleCenters[i];
-					if (System.Math.Abs(pattern.EstimatedModuleSize - average) > 0.2f * average)
+					if (Math.Abs(pattern.EstimatedModuleSize - average) > 0.2f * average)
 					{
 						possibleCenters.RemoveAt(i);
 						i--;

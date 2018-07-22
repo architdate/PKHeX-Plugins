@@ -143,7 +143,7 @@ namespace com.google.zxing
 			float xDiff = pattern1.X - pattern2.X;
 			float yDiff = pattern1.Y - pattern2.Y;
 			//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-			return (float) System.Math.Sqrt((double) (xDiff * xDiff + yDiff * yDiff));
+			return (float)Math.Sqrt((double) (xDiff * xDiff + yDiff * yDiff));
 		}
 		
 		/// <summary> Returns the z component of the cross product between vectors BC and BA.</summary>

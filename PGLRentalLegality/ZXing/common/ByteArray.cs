@@ -82,7 +82,7 @@ namespace com.google.zxing.common
 		{
 			if (size_Renamed_Field == 0 || size_Renamed_Field >= bytes.Length)
 			{
-				int newSize = System.Math.Max(INITIAL_SIZE, size_Renamed_Field << 1);
+				int newSize = Math.Max(INITIAL_SIZE, size_Renamed_Field << 1);
 				reserve(newSize);
 			}
 			bytes[size_Renamed_Field] = (sbyte) value_Renamed;

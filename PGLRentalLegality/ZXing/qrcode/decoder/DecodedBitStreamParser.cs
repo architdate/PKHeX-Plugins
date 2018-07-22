@@ -31,7 +31,7 @@ namespace com.google.zxing.qrcode.decoder
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	sealed class DecodedBitStreamParser
+	internal sealed class DecodedBitStreamParser
 	{
 		
 		/// <summary> See ISO 18004:2006, 6.4.4 Table 5</summary>

@@ -32,7 +32,7 @@ namespace com.google.zxing.datamatrix.decoder
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	sealed class DecodedBitStreamParser
+	internal sealed class DecodedBitStreamParser
 	{
 		
 		/// <summary> See ISO 16022:2006, Annex C Table C.1

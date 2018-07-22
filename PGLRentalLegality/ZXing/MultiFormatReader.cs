@@ -20,24 +20,24 @@ using QRCodeReader = com.google.zxing.qrcode.QRCodeReader;
 using DataMatrixReader = com.google.zxing.datamatrix.DataMatrixReader;
 namespace com.google.zxing
 {
-	
+
 	/// <summary> MultiFormatReader is a convenience class and the main entry point into the library for most uses.
 	/// By default it attempts to decode all barcode formats that the library supports. Optionally, you
 	/// can provide a hints object to request different behavior, for example only decoding QR codes.
-	/// 
+	///
 	/// </summary>
 	/// <author>  Sean Owen
 	/// </author>
 	/// <author>  dswitkin@google.com (Daniel Switkin)
 	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
+	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
 	/// </author>
 	public sealed class MultiFormatReader : Reader
 	{
 		/// <summary> This method adds state to the MultiFormatReader. By setting the hints once, subsequent calls
 		/// to decodeWithState(image) can reuse the same set of readers without reallocating memory. This
 		/// is important for performance in continuous scan clients.
-		/// 
+		///
 		/// </summary>
 		/// <param name="hints">The set of hints to use for subsequent calls to decode(image)
 		/// </param>
@@ -46,7 +46,7 @@ namespace com.google.zxing
 			set
 			{
 				this.hints = value;
-				
+
 				bool tryHarder = value != null && value.ContainsKey(DecodeHintType.TRY_HARDER);
 				System.Collections.ArrayList formats = value == null?null:(System.Collections.ArrayList) value[DecodeHintType.POSSIBLE_FORMATS];
 				readers = System.Collections.ArrayList.Synchronized(new System.Collections.ArrayList(10));
@@ -83,43 +83,43 @@ namespace com.google.zxing
 						readers.Add(new MultiFormatOneDReader(value));
 					}
 					readers.Add(new QRCodeReader());
-					
+
 					// TODO re-enable once Data Matrix is ready
 					// readers.addElement(new DataMatrixReader());
-					
+
 					// TODO: Enable once PDF417 has passed QA
 					//readers.addElement(new PDF417Reader());
-					
+
 					if (tryHarder)
 					{
 						readers.Add(new MultiFormatOneDReader(value));
 					}
 				}
 			}
-			
+
 		}
-		
+
 		private System.Collections.Hashtable hints;
 		private System.Collections.ArrayList readers;
-		
+
 		/// <summary> This version of decode honors the intent of Reader.decode(BinaryBitmap) in that it
 		/// passes null as a hint to the decoders. However, that makes it inefficient to call repeatedly.
 		/// Use setHints() followed by decodeWithState() for continuous scan applications.
-		/// 
+		///
 		/// </summary>
 		/// <param name="image">The pixel data to decode
 		/// </param>
 		/// <returns> The contents of the image
 		/// </returns>
 		/// <throws>  ReaderException Any errors which occurred </throws>
-		public Result decode(BinaryBitmap image)
+		public Result Decode(BinaryBitmap image)
 		{
 			Hints = null;
 			return decodeInternal(image);
 		}
-		
+
 		/// <summary> Decode an image using the hints provided. Does not honor existing state.
-		/// 
+		///
 		/// </summary>
 		/// <param name="image">The pixel data to decode
 		/// </param>
@@ -128,15 +128,15 @@ namespace com.google.zxing
 		/// <returns> The contents of the image
 		/// </returns>
 		/// <throws>  ReaderException Any errors which occurred </throws>
-		public Result decode(BinaryBitmap image, System.Collections.Hashtable hints)
+		public Result Decode(BinaryBitmap image, System.Collections.Hashtable hints)
 		{
 			Hints = hints;
 			return decodeInternal(image);
 		}
-		
+
 		/// <summary> Decode an image using the state set up by calling setHints() previously. Continuous scan
 		/// clients will get a <b>large</b> speed increase by using this instead of decode().
-		/// 
+		///
 		/// </summary>
 		/// <param name="image">The pixel data to decode
 		/// </param>
@@ -152,7 +152,7 @@ namespace com.google.zxing
 			}
 			return decodeInternal(image);
 		}
-		
+
 		private Result decodeInternal(BinaryBitmap image)
 		{
 			int size = readers.Count;
@@ -161,14 +161,14 @@ namespace com.google.zxing
 				Reader reader = (Reader) readers[i];
 				try
 				{
-					return reader.decode(image, hints);
+					return reader.Decode(image, hints);
 				}
 				catch (ReaderException)
 				{
 					// continue
 				}
 			}
-			
+
 			throw ReaderException.Instance;
 		}
 	}

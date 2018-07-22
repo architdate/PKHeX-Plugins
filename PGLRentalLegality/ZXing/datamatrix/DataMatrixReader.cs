@@ -29,35 +29,35 @@ using Decoder = com.google.zxing.datamatrix.decoder.Decoder;
 using Detector = com.google.zxing.datamatrix.detector.Detector;
 namespace com.google.zxing.datamatrix
 {
-	
+
 	/// <summary> This implementation can detect and decode Data Matrix codes in an image.
-	/// 
+	///
 	/// </summary>
 	/// <author>  bbrown@google.com (Brian Brown)
 	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
+	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
 	/// </author>
 	public sealed class DataMatrixReader : Reader
 	{
-		
+
 		//UPGRADE_NOTE: Final was removed from the declaration of 'NO_POINTS '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
 		private static readonly ResultPoint[] NO_POINTS = new ResultPoint[0];
-		
+
 		//UPGRADE_NOTE: Final was removed from the declaration of 'decoder '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
 		private Decoder decoder = new Decoder();
-		
+
 		/// <summary> Locates and decodes a Data Matrix code in an image.
-		/// 
+		///
 		/// </summary>
 		/// <returns> a String representing the content encoded by the Data Matrix code
 		/// </returns>
 		/// <throws>  ReaderException if a Data Matrix code cannot be found, or cannot be decoded </throws>
-		public Result decode(BinaryBitmap image)
+		public Result Decode(BinaryBitmap image)
 		{
-			return decode(image, null);
+			return Decode(image, null);
 		}
-		
-		public Result decode(BinaryBitmap image, System.Collections.Hashtable hints)
+
+		public Result Decode(BinaryBitmap image, System.Collections.Hashtable hints)
 		{
 			DecoderResult decoderResult;
 			ResultPoint[] points;
@@ -84,7 +84,7 @@ namespace com.google.zxing.datamatrix
 			}
 			return result;
 		}
-		
+
 		/// <summary> This method detects a Data Matrix code in a "pure" image -- that is, pure monochrome image
 		/// which contains only an unrotated, unskewed, image of a Data Matrix code, with some white border
 		/// around it. This is a specialized method that works exceptionally fast in this special
@@ -93,11 +93,11 @@ namespace com.google.zxing.datamatrix
 		private static BitMatrix extractPureBits(BitMatrix image)
 		{
 			// Now need to determine module size in pixels
-			
+
 			int height = image.Height;
 			int width = image.Width;
-			int minDimension = System.Math.Min(height, width);
-			
+			int minDimension = Math.Min(height, width);
+
 			// First, skip white border by tracking diagonally from the top left down and to the right:
 			int borderWidth = 0;
 			while (borderWidth < minDimension && !image.get_Renamed(borderWidth, borderWidth))
@@ -108,7 +108,7 @@ namespace com.google.zxing.datamatrix
 			{
 				throw ReaderException.Instance;
 			}
-			
+
 			// And then keep tracking across the top-left black module to determine module size
 			int moduleEnd = borderWidth + 1;
 			while (moduleEnd < width && image.get_Renamed(moduleEnd, borderWidth))
@@ -119,9 +119,9 @@ namespace com.google.zxing.datamatrix
 			{
 				throw ReaderException.Instance;
 			}
-			
+
 			int moduleSize = moduleEnd - borderWidth;
-			
+
 			// And now find where the bottommost black module on the first column ends
 			int columnEndOfSymbol = height - 1;
 			while (columnEndOfSymbol >= 0 && !image.get_Renamed(borderWidth, columnEndOfSymbol))
@@ -133,25 +133,25 @@ namespace com.google.zxing.datamatrix
 				throw ReaderException.Instance;
 			}
 			columnEndOfSymbol++;
-			
+
 			// Make sure width of barcode is a multiple of module size
 			if ((columnEndOfSymbol - borderWidth) % moduleSize != 0)
 			{
 				throw ReaderException.Instance;
 			}
 			int dimension = (columnEndOfSymbol - borderWidth) / moduleSize;
-			
+
 			// Push in the "border" by half the module width so that we start
 			// sampling in the middle of the module. Just in case the image is a
 			// little off, this will help recover.
 			borderWidth += (moduleSize >> 1);
-			
+
 			int sampleDimension = borderWidth + (dimension - 1) * moduleSize;
 			if (sampleDimension >= width || sampleDimension >= height)
 			{
 				throw ReaderException.Instance;
 			}
-			
+
 			// Now just read off the bits
 			BitMatrix bits = new BitMatrix(dimension);
 			for (int i = 0; i < dimension; i++)
