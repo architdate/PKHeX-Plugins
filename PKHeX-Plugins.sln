@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "URLGenning", "URLGenning\UR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportBoxToShowdown", "ExportBoxToShowdown\ExportBoxToShowdown.csproj", "{87C69440-0FB5-4D5D-9865-9339AB1308F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WonderTradeBot", "WonderTradeBot\WonderTradeBot.csproj", "{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{87C69440-0FB5-4D5D-9865-9339AB1308F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87C69440-0FB5-4D5D-9865-9339AB1308F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87C69440-0FB5-4D5D-9865-9339AB1308F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
