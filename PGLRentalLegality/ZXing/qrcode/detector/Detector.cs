@@ -36,7 +36,7 @@ namespace com.google.zxing.qrcode.detector
 	/// </author>
 	public class Detector
 	{
-		virtual protected internal BitMatrix Image
+		protected internal virtual BitMatrix Image
 		{
 			get
 			{
@@ -44,7 +44,7 @@ namespace com.google.zxing.qrcode.detector
 			}
 			
 		}
-		virtual protected internal ResultPointCallback ResultPointCallback
+		protected internal virtual ResultPointCallback ResultPointCallback
 		{
 			get
 			{

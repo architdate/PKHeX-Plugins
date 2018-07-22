@@ -94,7 +94,7 @@ namespace com.google.zxing.oned
 						int bestMatch = - 1;
 						for (int startCode = CODE_START_A; startCode <= CODE_START_C; startCode++)
 						{
-							int variance = patternMatchVariance(counters, CODE_PATTERNS[startCode], MAX_INDIVIDUAL_VARIANCE);
+							int variance = PatternMatchVariance(counters, CODE_PATTERNS[startCode], MAX_INDIVIDUAL_VARIANCE);
 							if (variance < bestVariance)
 							{
 								bestVariance = variance;
@@ -131,13 +131,13 @@ namespace com.google.zxing.oned
 		
 		private static int decodeCode(BitArray row, int[] counters, int rowOffset)
 		{
-			recordPattern(row, rowOffset, counters);
+			RecordPattern(row, rowOffset, counters);
 			int bestVariance = MAX_AVG_VARIANCE; // worst variance we'll accept
 			int bestMatch = - 1;
 			for (int d = 0; d < CODE_PATTERNS.Length; d++)
 			{
 				int[] pattern = CODE_PATTERNS[d];
-				int variance = patternMatchVariance(counters, pattern, MAX_INDIVIDUAL_VARIANCE);
+				int variance = PatternMatchVariance(counters, pattern, MAX_INDIVIDUAL_VARIANCE);
 				if (variance < bestVariance)
 				{
 					bestVariance = variance;
@@ -155,7 +155,7 @@ namespace com.google.zxing.oned
 			}
 		}
 		
-		public override Result decodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
+		public override Result DecodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
 		{
 			
 			int[] startPatternInfo = findStartPattern(row);

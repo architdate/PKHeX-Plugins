@@ -36,7 +36,7 @@ namespace com.google.zxing.qrcode.detector
 	/// </author>
 	public class FinderPatternFinder
 	{
-		virtual protected internal BitMatrix Image
+		protected internal virtual BitMatrix Image
 		{
 			get
 			{
@@ -44,7 +44,7 @@ namespace com.google.zxing.qrcode.detector
 			}
 			
 		}
-		virtual protected internal System.Collections.ArrayList PossibleCenters
+		protected internal virtual System.Collections.ArrayList PossibleCenters
 		{
 			get
 			{

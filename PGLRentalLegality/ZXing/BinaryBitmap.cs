@@ -18,7 +18,6 @@ using BitArray = com.google.zxing.common.BitArray;
 using BitMatrix = com.google.zxing.common.BitMatrix;
 namespace com.google.zxing
 {
-
     /// <summary> This class is the core bitmap class used by ZXing to represent 1 bit data. Reader objects
     /// accept a BinaryBitmap and attempt to decode it.
     ///

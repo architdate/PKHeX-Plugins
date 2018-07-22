@@ -42,7 +42,7 @@ namespace com.google.zxing
 		public abstract sbyte[] Matrix{get;}
 		/// <returns> The width of the bitmap.
 		/// </returns>
-		virtual public int Width
+		public virtual int Width
 		{
 			get
 			{
@@ -52,7 +52,7 @@ namespace com.google.zxing
 		}
 		/// <returns> The height of the bitmap.
 		/// </returns>
-		virtual public int Height
+		public virtual int Height
 		{
 			get
 			{
@@ -62,7 +62,7 @@ namespace com.google.zxing
 		}
 		/// <returns> Whether this subclass supports cropping.
 		/// </returns>
-		virtual public bool CropSupported
+		public virtual bool CropSupported
 		{
 			get
 			{
@@ -72,7 +72,7 @@ namespace com.google.zxing
 		}
 		/// <returns> Whether this subclass supports counter-clockwise rotation.
 		/// </returns>
-		virtual public bool RotateSupported
+		public virtual bool RotateSupported
 		{
 			get
 			{

@@ -70,7 +70,7 @@ namespace com.google.zxing.oned
 		//UPGRADE_NOTE: Final was removed from the declaration of 'PATTERNS '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
 		private static readonly int[][] PATTERNS = new int[][]{new int[]{N, N, W, W, N}, new int[]{W, N, N, N, W}, new int[]{N, W, N, N, W}, new int[]{W, W, N, N, N}, new int[]{N, N, W, N, W}, new int[]{W, N, W, N, N}, new int[]{N, W, W, N, N}, new int[]{N, N, N, W, W}, new int[]{W, N, N, W, N}, new int[]{N, W, N, W, N}};
 		
-		public override Result decodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
+		public override Result DecodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
 		{
 			
 			// Find out where the Middle section (payload) starts & ends
@@ -135,7 +135,7 @@ namespace com.google.zxing.oned
 			{
 				
 				// Get 10 runs of black/white.
-				recordPattern(row, payloadStart, counterDigitPair);
+				RecordPattern(row, payloadStart, counterDigitPair);
 				// Split them into each array
 				for (int k = 0; k < 5; k++)
 				{
@@ -320,7 +320,7 @@ namespace com.google.zxing.oned
 				{
 					if (counterPosition == patternLength - 1)
 					{
-						if (patternMatchVariance(counters, pattern, MAX_INDIVIDUAL_VARIANCE) < MAX_AVG_VARIANCE)
+						if (PatternMatchVariance(counters, pattern, MAX_INDIVIDUAL_VARIANCE) < MAX_AVG_VARIANCE)
 						{
 							return new int[]{patternStart, x};
 						}
@@ -362,7 +362,7 @@ namespace com.google.zxing.oned
 			for (int i = 0; i < max; i++)
 			{
 				int[] pattern = PATTERNS[i];
-				int variance = patternMatchVariance(counters, pattern, MAX_INDIVIDUAL_VARIANCE);
+				int variance = PatternMatchVariance(counters, pattern, MAX_INDIVIDUAL_VARIANCE);
 				if (variance < bestVariance)
 				{
 					bestVariance = variance;

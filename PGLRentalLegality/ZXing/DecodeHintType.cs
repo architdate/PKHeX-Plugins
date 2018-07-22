@@ -28,7 +28,7 @@ namespace com.google.zxing
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	/// <seealso cref="Reader.decode(BinaryBitmap,java.util.Hashtable)">
+	/// <seealso cref="IReader.decode(BinaryBitmap,java.util.Hashtable)">
 	/// </seealso>
 	public sealed class DecodeHintType
 	{

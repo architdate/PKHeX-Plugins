@@ -14,11 +14,11 @@
 * limitations under the License.
 */
 using System;
+using System.Collections;
 using BitArray = com.google.zxing.common.BitArray;
 
 namespace com.google.zxing.oned
 {
-
     /// <summary> Encapsulates functionality and implementation that is common to all families
     /// of one-dimensional barcodes.
     ///
@@ -29,9 +29,8 @@ namespace com.google.zxing.oned
     /// </author>
     /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
     /// </author>
-    public abstract class OneDReader : Reader
+    public abstract class OneDReader : IReader
     {
-
         private const int INTEGER_MATH_SHIFT = 8;
         //UPGRADE_NOTE: Final was removed from the declaration of 'PATTERN_MATCH_RESULT_SCALE_FACTOR '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
         internal static readonly int PATTERN_MATCH_RESULT_SCALE_FACTOR = 1 << INTEGER_MATH_SHIFT;
@@ -114,7 +113,6 @@ namespace com.google.zxing.oned
 
             for (int x = 0; x < maxLines; x++)
             {
-
                 // Scanning from the middle out. Determine which row we're looking at next:
                 int rowStepsAboveOrBelow = (x + 1) >> 1;
                 bool isAbove = (x & 0x01) == 0; // i.e. is x even?
@@ -147,7 +145,7 @@ namespace com.google.zxing.oned
                         // since we want to avoid drawing the wrong points after flipping the row, and,
                         // don't want to clutter with noise from every single row scan -- just the scans
                         // that start on the center line.
-                        if (hints != null && hints.ContainsKey(DecodeHintType.NEED_RESULT_POINT_CALLBACK))
+                        if (hints?.ContainsKey(DecodeHintType.NEED_RESULT_POINT_CALLBACK) == true)
                         {
                             System.Collections.Hashtable newHints = System.Collections.Hashtable.Synchronized(new System.Collections.Hashtable()); // Can't use clone() in J2ME
                             System.Collections.IEnumerator hintEnum = hints.Keys.GetEnumerator();
@@ -167,7 +165,7 @@ namespace com.google.zxing.oned
                     try
                     {
                         // Look for a barcode
-                        Result result = decodeRow(rowNumber, row, hints);
+                        Result result = DecodeRow(rowNumber, row, hints);
                         // We found our barcode
                         if (attempt == 1)
                         {
@@ -206,7 +204,7 @@ namespace com.google.zxing.oned
         /// <throws>  ReaderException if counters cannot be filled entirely from row before running out </throws>
         /// <summary>  of pixels
         /// </summary>
-        internal static void  recordPattern(BitArray row, int start, int[] counters)
+        internal static void RecordPattern(BitArray row, int start, int[] counters)
         {
             int numCounters = counters.Length;
             for (int i = 0; i < numCounters; i++)
@@ -268,7 +266,7 @@ namespace com.google.zxing.oned
         /// the total variance between counters and patterns equals the pattern length, higher values mean
         /// even more variance
         /// </returns>
-        internal static int patternMatchVariance(int[] counters, int[] pattern, int maxIndividualVariance)
+        internal static int PatternMatchVariance(int[] counters, int[] pattern, int maxIndividualVariance)
         {
             int numCounters = counters.Length;
             int total = 0;
@@ -318,6 +316,6 @@ namespace com.google.zxing.oned
         /// <returns> {@link Result} containing encoded string and start/end of barcode
         /// </returns>
         /// <throws>  ReaderException if an error occurs or barcode cannot be found </throws>
-        public abstract Result decodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints);
+        public abstract Result DecodeRow(int rowNumber, BitArray row, Hashtable hints);
     }
 }

@@ -69,7 +69,7 @@ namespace com.google.zxing.oned
 			}
 		}
 		
-		public override Result decodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
+		public override Result DecodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
 		{
 			// Compute this location once and reuse it on multiple implementations
 			int[] startGuardPattern = UPCEANReader.findStartGuardPattern(row);

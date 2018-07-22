@@ -13,17 +13,20 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-using System;
 namespace com.google.zxing
 {
-
-	/// <summary> Implementations of this interface can decode an image of a barcode in some format into
+	/// <summary>
+	///
+	/// <para>
+	/// Implementations of this interface can decode an image of a barcode in some format into
 	/// the String it encodes. For example, {@link com.google.zxing.qrcode.QRCodeReader} can
 	/// decode a QR code. The decoder may optionally receive hints from the caller which may help
 	/// it decode more quickly or accurately.
-	///
+	/// </para>
+	/// <para>
 	/// See {@link com.google.zxing.MultiFormatReader}, which attempts to determine what barcode
 	/// format is present within the image as well, and then decodes it accordingly.
+	/// </para>
 	///
 	/// </summary>
 	/// <author>  Sean Owen
@@ -33,9 +36,8 @@ namespace com.google.zxing
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
 	/// </author>
 
-	public interface Reader
+	public interface IReader
 	{
-
 		/// <summary> Locates and decodes a barcode in some format within an image.
 		///
 		/// </summary>

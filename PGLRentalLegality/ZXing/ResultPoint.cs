@@ -28,7 +28,7 @@ namespace com.google.zxing
 
 	public class ResultPoint
 	{
-		virtual public float X
+		public virtual float X
 		{
 			get
 			{
@@ -36,7 +36,7 @@ namespace com.google.zxing
 			}
 			
 		}
-		virtual public float Y
+		public virtual float Y
 		{
 			get
 			{

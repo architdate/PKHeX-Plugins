@@ -100,7 +100,7 @@ namespace com.google.zxing.oned
 			return startRange;
 		}
 		
-		public override Result decodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
+		public override Result DecodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
 		{
 			return decodeRow(rowNumber, row, findStartGuardPattern(row), hints);
 		}
@@ -255,7 +255,7 @@ namespace com.google.zxing.oned
 				{
 					if (counterPosition == patternLength - 1)
 					{
-						if (patternMatchVariance(counters, pattern, MAX_INDIVIDUAL_VARIANCE) < MAX_AVG_VARIANCE)
+						if (PatternMatchVariance(counters, pattern, MAX_INDIVIDUAL_VARIANCE) < MAX_AVG_VARIANCE)
 						{
 							return new int[]{patternStart, x};
 						}
@@ -297,14 +297,14 @@ namespace com.google.zxing.oned
 		/// <throws>  ReaderException if digit cannot be decoded </throws>
 		internal static int decodeDigit(BitArray row, int[] counters, int rowOffset, int[][] patterns)
 		{
-			recordPattern(row, rowOffset, counters);
+			RecordPattern(row, rowOffset, counters);
 			int bestVariance = MAX_AVG_VARIANCE; // worst variance we'll accept
 			int bestMatch = - 1;
 			int max = patterns.Length;
 			for (int i = 0; i < max; i++)
 			{
 				int[] pattern = patterns[i];
-				int variance = patternMatchVariance(counters, pattern, MAX_INDIVIDUAL_VARIANCE);
+				int variance = PatternMatchVariance(counters, pattern, MAX_INDIVIDUAL_VARIANCE);
 				if (variance < bestVariance)
 				{
 					bestVariance = variance;
