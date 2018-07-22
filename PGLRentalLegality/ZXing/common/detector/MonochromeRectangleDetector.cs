@@ -58,8 +58,8 @@ namespace com.google.zxing.common.detector
 			int width = image.Width;
 			int halfHeight = height >> 1;
 			int halfWidth = width >> 1;
-			int deltaY = System.Math.Max(1, height / (MAX_MODULES << 3));
-			int deltaX = System.Math.Max(1, width / (MAX_MODULES << 3));
+			int deltaY = Math.Max(1, height / (MAX_MODULES << 3));
+			int deltaX = Math.Max(1, width / (MAX_MODULES << 3));
 			
 			int top = 0;
 			int bottom = height;

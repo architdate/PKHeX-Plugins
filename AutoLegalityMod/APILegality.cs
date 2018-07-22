@@ -329,7 +329,7 @@ namespace AutoLegalityMod
                 pk.IVs = SSet.IVs;
                 if (li.EncounterMatch is PCD)
                     return;
-                FindPIDIV(pk, Method, HPType, originalPKMN);
+                FindPIDIV(pk, Method, HPType);
                 ValidateGender(pk);
             }
         }
@@ -360,12 +360,11 @@ namespace AutoLegalityMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="Method">Given Method</param>
         /// <param name="HPType">HPType INT for preserving Hidden powers</param>
-        /// <param name="originalPKMN"></param>
-        public static void FindPIDIV(PKM pk, PIDType Method, int HPType, PKM originalPKMN)
+        public static void FindPIDIV(PKM pk, PIDType Method, int HPType)
         {
             if (Method == PIDType.None)
             {
-                Method = FindLikelyPIDType(pk, originalPKMN);
+                Method = FindLikelyPIDType(pk);
                 if (pk.Version == 15) Method = PIDType.CXD;
                 if (Method == PIDType.None) pk.SetPIDGender(pk.Gender);
             }
@@ -385,9 +384,8 @@ namespace AutoLegalityMod
         /// Secondary fallback if PIDType.None to slot the PKM into its most likely type
         /// </summary>
         /// <param name="pk">PKM to modify</param>
-        /// <param name="pkmn">Original PKM</param>
         /// <returns>PIDType that is likely used</returns>
-        public static PIDType FindLikelyPIDType(PKM pk, PKM pkmn)
+        public static PIDType FindLikelyPIDType(PKM pk)
         {
             BruteForce b = new BruteForce();
             if (b.UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R"))
@@ -419,7 +417,7 @@ namespace AutoLegalityMod
                         case EncounterSlot w:
                             if (pk.Version == 15)
                                 return PIDType.PokeSpot;
-                            return (pk.Species == 201 ? PIDType.Method_1_Unown : PIDType.Method_1);
+                            return pk.Species == 201 ? PIDType.Method_1_Unown : PIDType.Method_1;
                         default:
                             return PIDType.None;
                     }

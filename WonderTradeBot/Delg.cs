@@ -7,7 +7,7 @@ namespace pkmn_ntr.Helpers
     {
         #region All controls
 
-        delegate void SetTextDelegate(Control ctrl, string text);
+        private delegate void SetTextDelegate(Control ctrl, string text);
 
         public static void SetText(Control ctrl, string text)
         {
@@ -17,10 +17,12 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, text);
             }
             else
+            {
                 ctrl.Text = text;
+            }
         }
 
-        delegate void SeVisibleDelegate(Control ctrl, bool en);
+        private delegate void SeVisibleDelegate(Control ctrl, bool en);
 
         public static void SetVisible(Control ctrl, bool en)
         {
@@ -30,10 +32,12 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, en);
             }
             else
+            {
                 ctrl.Visible = en;
+            }
         }
 
-        delegate void SetEnabledDelegate(Control ctrl, bool en);
+        private delegate void SetEnabledDelegate(Control ctrl, bool en);
 
         public static void SetEnabled(Control ctrl, bool en)
         {
@@ -43,10 +47,12 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, en);
             }
             else
+            {
                 ctrl.Enabled = en;
+            }
         }
 
-        delegate void SetColorDelegate(Control ctrl, Color c, bool back);
+        private delegate void SetColorDelegate(Control ctrl, Color c, bool back);
 
         public static void SetColor(Control ctrl, Color c, bool back)
         {
@@ -68,7 +74,7 @@ namespace pkmn_ntr.Helpers
 
         #region CheckBox
 
-        delegate void SetCheckedDelegate(CheckBox ctrl, bool en);
+        private delegate void SetCheckedDelegate(CheckBox ctrl, bool en);
 
         public static void SetChecked(CheckBox ctrl, bool en)
         {
@@ -78,14 +84,16 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, en);
             }
             else
+            {
                 ctrl.Checked = en;
+            }
         }
 
         #endregion Checkbox
 
         #region ComboBox
 
-        delegate void SetSelectedIndexDelegate(ComboBox ctrl, int i);
+        private delegate void SetSelectedIndexDelegate(ComboBox ctrl, int i);
 
         public static void SetSelectedIndex(ComboBox ctrl, int i)
         {
@@ -95,10 +103,12 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, i);
             }
             else
+            {
                 ctrl.SelectedIndex = i;
+            }
         }
 
-        delegate void SetSelectedValueDelegate(ComboBox ctrl, int i);
+        private delegate void SetSelectedValueDelegate(ComboBox ctrl, int i);
 
         public static void SetSelectedValue(ComboBox ctrl, int i)
         {
@@ -108,10 +118,12 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, i);
             }
             else
+            {
                 ctrl.SelectedValue = i;
+            }
         }
 
-        delegate void ComboboxFillDelegate(ComboBox ctrl, string[] val);
+        private delegate void ComboboxFillDelegate(ComboBox ctrl, string[] val);
 
         public static void ComboboxFill(ComboBox ctrl, string[] val)
         {
@@ -124,9 +136,7 @@ namespace pkmn_ntr.Helpers
             {
                 ctrl.Items.Clear();
                 if (val != null)
-                {
                     ctrl.Items.AddRange(val);
-                }
             }
         }
 
@@ -134,7 +144,7 @@ namespace pkmn_ntr.Helpers
 
         #region DataGridView
 
-        delegate void DataGridViewAddRowDelegate(DataGridView ctrl, params object[] args);
+        private delegate void DataGridViewAddRowDelegate(DataGridView ctrl, params object[] args);
 
         public static void DataGridViewAddRow(DataGridView ctrl, params object[] args)
         {
@@ -153,7 +163,7 @@ namespace pkmn_ntr.Helpers
 
         #region NumericUpDown
 
-        delegate void SetValueDelegate(NumericUpDown ctrl, decimal val);
+        private delegate void SetValueDelegate(NumericUpDown ctrl, decimal val);
 
         public static void SetValue(NumericUpDown ctrl, decimal val)
         {
@@ -163,10 +173,12 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, val);
             }
             else
+            {
                 ctrl.Value = val;
+            }
         }
 
-        delegate void SetMaximumDelegate(NumericUpDown ctrl, decimal val);
+        private delegate void SetMaximumDelegate(NumericUpDown ctrl, decimal val);
 
         public static void SetMaximum(NumericUpDown ctrl, decimal val)
         {
@@ -176,10 +188,12 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, val);
             }
             else
+            {
                 ctrl.Maximum = val;
+            }
         }
 
-        delegate void SetMinimumDelegate(NumericUpDown ctrl, decimal val);
+        private delegate void SetMinimumDelegate(NumericUpDown ctrl, decimal val);
 
         public static void SetMinimum(NumericUpDown ctrl, decimal val)
         {
@@ -189,20 +203,20 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, val);
             }
             else
+            {
                 ctrl.Minimum = val;
+            }
         }
 
         #endregion NumericUpDown
 
         #region ListBox
 
-
-
         #endregion ListBox
 
         #region RadioButton
 
-        delegate void SetCheckedRadioDelegate(RadioButton ctrl, bool en);
+        private delegate void SetCheckedRadioDelegate(RadioButton ctrl, bool en);
 
         public static void SetCheckedRadio(RadioButton ctrl, bool en)
         {
@@ -212,14 +226,16 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, en);
             }
             else
+            {
                 ctrl.Checked = en;
+            }
         }
 
         #endregion RadioButton
 
         #region TextBox
 
-        delegate void SetReadOnlyDelegate(TextBox ctrl, bool en);
+        private delegate void SetReadOnlyDelegate(TextBox ctrl, bool en);
 
         public static void SetReadOnly(TextBox ctrl, bool en)
         {
@@ -229,14 +245,16 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, ctrl, en);
             }
             else
+            {
                 ctrl.ReadOnly = en;
+            }
         }
 
         #endregion TextBox
 
         #region ToolTip
 
-        delegate void SetTooltipDelegate(ToolTip source, Control ctrl, string text);
+        private delegate void SetTooltipDelegate(ToolTip source, Control ctrl, string text);
 
         public static void SetTooltip(ToolTip source, Control ctrl, string text)
         {
@@ -246,10 +264,12 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, source, ctrl, text);
             }
             else
+            {
                 source.SetToolTip(ctrl, text);
+            }
         }
 
-        delegate void RemoveTooltipDelegate(ToolTip source, Control ctrl);
+        private delegate void RemoveTooltipDelegate(ToolTip source, Control ctrl);
 
         public static void RemoveTooltip(ToolTip source, Control ctrl)
         {
@@ -259,7 +279,9 @@ namespace pkmn_ntr.Helpers
                 ctrl.Invoke(del, source, ctrl);
             }
             else
+            {
                 source.RemoveAll();
+            }
         }
 
         #endregion Tooltip

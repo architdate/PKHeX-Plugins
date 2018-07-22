@@ -60,8 +60,8 @@ namespace com.google.zxing.oned
 			int inputWidth = code.Length;
 			// Add quiet zone on both sides
 			int fullWidth = inputWidth + (UPCEANReader.START_END_PATTERN.Length << 1);
-			int outputWidth = System.Math.Max(width, fullWidth);
-			int outputHeight = System.Math.Max(1, height);
+			int outputWidth = Math.Max(width, fullWidth);
+			int outputHeight = Math.Max(1, height);
 			
 			int multiple = outputWidth / fullWidth;
 			int leftPadding = (outputWidth - (inputWidth * multiple)) / 2;

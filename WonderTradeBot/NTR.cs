@@ -5,22 +5,22 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-
+using System.Linq;
 
 namespace pkmn_ntr.Helpers
 {
-    public class readMemRequest
+    public class ReadMemRequest
     {
         public string fileName;
         public bool isCallback;
 
-        public readMemRequest(string fileName_)
+        public ReadMemRequest(string fileName_)
         {
             this.fileName = fileName_;
             this.isCallback = false;
         }
 
-        public readMemRequest()
+        public ReadMemRequest()
         {
             this.fileName = null;
             this.isCallback = true;
@@ -56,55 +56,39 @@ namespace pkmn_ntr.Helpers
         public TcpClient tcp;
         public NetworkStream netStream;
         public Thread packetRecvThread;
-        private object syncLock = new object();
+        private readonly object syncLock = new object();
         public int heartbeatSendable;
         public event EventHandler<DataReadyEventArgs> DataReady;
         public event EventHandler Connected;
         public event EventHandler<InfoReadyEventArgs> InfoReady;
 
-        protected virtual void OnDataReady(DataReadyEventArgs e)
-        {
-            DataReady?.Invoke(this, e);
-        }
+        protected virtual void OnDataReady(DataReadyEventArgs e) => DataReady?.Invoke(this, e);
+        protected virtual void OnConnected(EventArgs e) => Connected?.Invoke(this, e);
+        protected virtual void OnInfoReady(InfoReadyEventArgs e) => InfoReady?.Invoke(this, e);
 
-        protected virtual void OnConnected(EventArgs e)
-        {
-            Connected?.Invoke(this, e);
-        }
-
-        protected virtual void OnInfoReady(InfoReadyEventArgs e)
-        {
-            InfoReady?.Invoke(this, e);
-        }
-
-
-        public delegate void logHandler(string msg);
-        public event logHandler onLogArrival;
-        UInt32 currentSeq;
-        public Dictionary<UInt32, readMemRequest> pendingReadMem = new Dictionary<UInt32, readMemRequest>();
+        public delegate void LogHandler(string msg);
+        public event LogHandler OnLogArrival;
+        private uint currentSeq;
+        public Dictionary<uint, ReadMemRequest> pendingReadMem = new Dictionary<uint, ReadMemRequest>();
         public volatile int progress = -1;
 
-
-        int readNetworkStream(NetworkStream stream, byte[] buf, int length)
+        private int ReadNetworkStream(NetworkStream stream, byte[] buf, int length)
         {
             int index = 0;
             bool useProgress = false;
 
             if (length > 100000)
-            {
                 useProgress = true;
-            }
+
             do
             {
                 if (useProgress)
-                {
                     progress = (int)(((double)(index) / length) * 100);
-                }
+
                 int len = stream.Read(buf, index, length - index);
                 if (len == 0)
-                {
                     return 0;
-                }
+
                 index += len;
             }
             while (index < length);
@@ -112,10 +96,10 @@ namespace pkmn_ntr.Helpers
             return length;
         }
 
-        void packetRecvThreadStart()
+        private void PacketRecvThreadStart()
         {
             byte[] buf = new byte[84];
-            UInt32[] args = new UInt32[16];
+            uint[] args = new uint[16];
             int ret;
             NetworkStream stream = netStream;
 
@@ -123,34 +107,33 @@ namespace pkmn_ntr.Helpers
             {
                 try
                 {
-                    ret = readNetworkStream(stream, buf, buf.Length);
+                    ret = ReadNetworkStream(stream, buf, buf.Length);
                     if (ret == 0)
-                    {
                         break;
-                    }
+
                     int t = 0;
-                    UInt32 magic = BitConverter.ToUInt32(buf, t);
+                    uint magic = BitConverter.ToUInt32(buf, t);
                     t += 4;
-                    UInt32 seq = BitConverter.ToUInt32(buf, t);
+                    uint seq = BitConverter.ToUInt32(buf, t);
                     t += 4;
-                    UInt32 type = BitConverter.ToUInt32(buf, t);
+                    uint type = BitConverter.ToUInt32(buf, t);
                     t += 4;
-                    UInt32 cmd = BitConverter.ToUInt32(buf, t);
+                    uint cmd = BitConverter.ToUInt32(buf, t);
                     for (int i = 0; i < args.Length; i++)
                     {
                         t += 4;
                         args[i] = BitConverter.ToUInt32(buf, t);
                     }
                     t += 4;
-                    UInt32 dataLen = BitConverter.ToUInt32(buf, t);
+                    uint dataLen = BitConverter.ToUInt32(buf, t);
                     if (cmd != 0)
                     {
-                        log(String.Format("packet: cmd = {0}, dataLen = {1}", cmd, dataLen));
+                        Log(String.Format("packet: cmd = {0}, dataLen = {1}", cmd, dataLen));
                     }
 
                     if (magic != 0x12345678)
                     {
-                        log(String.Format("broken protocol: magic = {0}, seq = {1}", magic, seq));
+                        Log(String.Format("broken protocol: magic = {0}, seq = {1}", magic, seq));
                         break;
                     }
 
@@ -159,10 +142,10 @@ namespace pkmn_ntr.Helpers
                         if (dataLen != 0)
                         {
                             byte[] dataBuf = new byte[dataLen];
-                            readNetworkStream(stream, dataBuf, dataBuf.Length);
+                            ReadNetworkStream(stream, dataBuf, dataBuf.Length);
                             string logMsg = Encoding.UTF8.GetString(dataBuf);
                             OnInfoReady(new InfoReadyEventArgs(logMsg));
-                            log(logMsg);
+                            Log(logMsg);
                         }
                         lock (syncLock)
                         {
@@ -173,37 +156,28 @@ namespace pkmn_ntr.Helpers
                     if (dataLen != 0)
                     {
                         byte[] dataBuf = new byte[dataLen];
-                        readNetworkStream(stream, dataBuf, dataBuf.Length);
-                        handlePacket(cmd, seq, dataBuf);
+                        ReadNetworkStream(stream, dataBuf, dataBuf.Length);
+                        HandlePacket(cmd, seq, dataBuf);
                     }
                 }
                 catch (Exception e)
                 {
-                    log(e.Message);
+                    Log(e.Message);
                     break;
                 }
             }
 
-            log("Server disconnected.");
-            disconnect(false);
+            Log("Server disconnected.");
+            Disconnect(false);
         }
 
-        string byteToHex(byte[] datBuf, int type)
-        {
-            string r = "";
-            for (int i = 0; i < datBuf.Length; i++)
-            {
-                r += datBuf[i].ToString("X2") + " ";
-            }
-            return r;
-        }
+        private string ByteToHex(byte[] datBuf) => string.Join(" ", datBuf.Select(z => $"{z:X2}"));
 
-        void handleReadMem(UInt32 seq, byte[] dataBuf)
+        private void HandleReadMem(uint seq, byte[] dataBuf)
         {
-            readMemRequest requestDetails;
-            if (!pendingReadMem.TryGetValue(seq, out requestDetails))
+            if (!pendingReadMem.TryGetValue(seq, out ReadMemRequest requestDetails))
             {
-                log("seq not in pending readmems, ignored");
+                Log("seq not in pending readmems, ignored");
                 return;
             }
             pendingReadMem.Remove(seq);
@@ -214,7 +188,7 @@ namespace pkmn_ntr.Helpers
                 FileStream fs = new FileStream(fileName, FileMode.Create);
                 fs.Write(dataBuf, 0, dataBuf.Length);
                 fs.Close();
-                log("dump saved into " + fileName + " successfully");
+                Log("dump saved into " + fileName + " successfully");
                 return;
             }
             else if (requestDetails.isCallback)
@@ -227,76 +201,65 @@ namespace pkmn_ntr.Helpers
             }
             else
             {
-                log(byteToHex(dataBuf, 0));
+                Log(ByteToHex(dataBuf));
             }
-
         }
 
-        void handlePacket(UInt32 cmd, UInt32 seq, byte[] dataBuf)
+        private void HandlePacket(uint cmd, uint seq, byte[] dataBuf)
         {
-            if (cmd == 9)
+            switch (cmd)
             {
-                handleReadMem(seq, dataBuf);
+                case 9:
+                    HandleReadMem(seq, dataBuf);
+                    break;
             }
         }
 
-        public void setServer(String serverHost, int serverPort)
+        public void SetServer(String serverHost, int serverPort)
         {
             host = serverHost;
             port = serverPort;
         }
 
-
-        public void connectToServer()
+        public void ConnectToServer()
         {
             if (tcp != null)
-            {
-                disconnect();
-            }
+                Disconnect();
+
             try
             {
-                tcp = new TcpClient();
-                tcp.NoDelay = true;
+                tcp = new TcpClient {NoDelay = true};
                 tcp.Connect(host, port);
                 currentSeq = 0;
                 netStream = tcp.GetStream();
                 heartbeatSendable = 1;
-                packetRecvThread = new Thread(new ThreadStart(packetRecvThreadStart));
+                packetRecvThread = new Thread(new ThreadStart(PacketRecvThreadStart));
                 packetRecvThread.Start();
-                log("Server connected.");
+                Log("Server connected.");
                 OnConnected(null);
             }
             catch
             {
                 MessageBox.Show("Could not connect, make sure the IP is correct, you're running NTR and you're online in-game!", "Connection Failed");
             }
-
         }
 
-        public void disconnect(bool waitPacketThread = true)
+        public void Disconnect(bool waitPacketThread = true)
         {
             try
             {
-                if (tcp != null)
-                {
-                    tcp.Close();
-                }
+                tcp?.Close();
                 if (waitPacketThread)
-                {
-                    if (packetRecvThread != null)
-                    {
-                        packetRecvThread.Join();
-                    }
-                }
+                    packetRecvThread?.Join();
             }
             catch (Exception ex)
             {
-                log(ex.Message);
+                Log(ex.Message);
             }
             tcp = null;
         }
 
-        public void sendPacket(UInt32 type, UInt32 cmd, UInt32[] args, UInt32 dataLen)
+        public void SendPacket(uint type, uint cmd, uint[] args, uint dataLen)
         {
             int t = 0;
             currentSeq += 1000;
@@ -311,7 +274,7 @@ namespace pkmn_ntr.Helpers
             for (int i = 0; i < 16; i++)
             {
                 t += 4;
-                UInt32 arg = 0;
+                uint arg = 0;
                 if (args != null)
                 {
                     arg = args[i];
@@ -323,104 +286,81 @@ namespace pkmn_ntr.Helpers
             netStream.Write(buf, 0, buf.Length);
         }
 
-        public void sendReadMemPacket(UInt32 addr, UInt32 size, UInt32 pid, string fileName)
+        public void SendReadMemPacket(uint addr, uint size, uint pid, string fileName)
         {
-            sendEmptyPacket(9, pid, addr, size);
-            pendingReadMem.Add(currentSeq, new readMemRequest(fileName));
+            SendEmptyPacket(9, pid, addr, size);
+            pendingReadMem.Add(currentSeq, new ReadMemRequest(fileName));
         }
 
-        public uint sendReadMemPacket(UInt32 addr, UInt32 size, UInt32 pid)
+        public uint SendReadMemPacket(uint addr, uint size, uint pid)
         {
-            sendEmptyPacket(9, pid, addr, size);
-            pendingReadMem.Add(currentSeq, new readMemRequest());
+            SendEmptyPacket(9, pid, addr, size);
+            pendingReadMem.Add(currentSeq, new ReadMemRequest());
             return currentSeq;
         }
 
-        public void sendWriteMemPacket(UInt32 addr, UInt32 pid, byte[] buf)
+        public void SendWriteMemPacket(uint addr, uint pid, byte[] buf)
         {
-            UInt32[] args = new UInt32[16];
+            var args = new uint[16];
             args[0] = pid;
             args[1] = addr;
-            args[2] = (UInt32)buf.Length;
-            sendPacket(1, 10, args, args[2]);
+            args[2] = (uint)buf.Length;
+            SendPacket(1, 10, args, args[2]);
             netStream.Write(buf, 0, buf.Length);
         }
 
-        public void sendWriteMemPacketByte(UInt32 addr, UInt32 pid, byte buf)
+        public void SendWriteMemPacketByte(uint addr, uint pid, byte buf)
         {
-            UInt32[] args = new UInt32[16];
+            uint[] args = new uint[16];
             args[0] = pid;
             args[1] = addr;
-            args[2] = (UInt32)1;
-            sendPacket(1, 10, args, args[2]);
+            args[2] = 1;
+            SendPacket(1, 10, args, args[2]);
             netStream.WriteByte(buf);
         }
 
-
-        public void sendHeartbeatPacket()
+        public void SendHeartbeatPacket()
         {
-            if (tcp != null)
+            if (tcp == null)
+                return;
+            lock (syncLock)
             {
-                lock (syncLock)
-                {
-                    if (heartbeatSendable == 1)
-                    {
-                        heartbeatSendable = 0;
-                        sendPacket(0, 0, null, 0);
-                    }
-                }
+                if (heartbeatSendable != 1)
+                    return;
+
+                heartbeatSendable = 0;
+                SendPacket(0, 0, null, 0);
             }
-
         }
 
-        public void sendHelloPacket()
-        {
-            sendPacket(0, 3, null, 0);
-        }
+        public void SendHelloPacket() => SendPacket(0, 3, null, 0);
 
-        public void sendReloadPacket()
-        {
-            sendPacket(0, 4, null, 0);
-        }
+        public void SendReloadPacket() => SendPacket(0, 4, null, 0);
 
-        public void sendEmptyPacket(UInt32 cmd, UInt32 arg0 = 0, UInt32 arg1 = 0, UInt32 arg2 = 0)
+        public void SendEmptyPacket(uint cmd, uint arg0 = 0, uint arg1 = 0, uint arg2 = 0)
         {
-            UInt32[] args = new UInt32[16];
+            uint[] args = new uint[16];
 
             args[0] = arg0;
             args[1] = arg1;
             args[2] = arg2;
-            sendPacket(0, cmd, args, 0);
+            SendPacket(0, cmd, args, 0);
         }
 
-
-
-        public void sendSaveFilePacket(string fileName, byte[] fileData)
+        public void SendSaveFilePacket(string fileName, byte[] fileData)
         {
             byte[] fileNameBuf = new byte[0x200];
             Encoding.UTF8.GetBytes(fileName).CopyTo(fileNameBuf, 0);
-            sendPacket(1, 1, null, (UInt32)(fileNameBuf.Length + fileData.Length));
+            SendPacket(1, 1, null, (uint)(fileNameBuf.Length + fileData.Length));
             netStream.Write(fileNameBuf, 0, fileNameBuf.Length);
             netStream.Write(fileData, 0, fileData.Length);
         }
 
-        public void log(String msg)
+        public void Log(String msg)
         {
-            if (onLogArrival != null)
-            {
-                onLogArrival.Invoke(msg);
-            }
-            try
-            {
-
-                Console.WriteLine(msg);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
-
+            OnLogArrival?.Invoke(msg);
+            try { Console.WriteLine(msg); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

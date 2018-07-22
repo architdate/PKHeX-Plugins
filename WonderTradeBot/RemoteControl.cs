@@ -2,45 +2,30 @@
 using System.Threading.Tasks;
 using System.Timers;
 using PKHeX.Core;
-using System.Windows.Forms;
 using System.Collections.Generic;
 
 namespace pkmn_ntr.Helpers
 {
-    //Objects of this class contains an array for data that have been acquired, a delegate function 
+    //Objects of this class contains an array for data that have been acquired, a delegate function
     //to handle them and any additional arguments it might require.
-    public class DataReadyWaiting
-    {
-        public byte[] data;
-        public object arguments;
-        public delegate void DataHandler(object data_arguments);
-        public DataHandler handler;
-
-        public DataReadyWaiting(byte[] data_, DataHandler handler_, object arguments_)
-        {
-            this.data = data_;
-            this.handler = handler_;
-            this.arguments = arguments_;
-        }
-    }
     public class RemoteControl
     {
         // Class variables
-        private int maxtimeout = 5000; // Max timeout in ms
+        private readonly int maxtimeout = 5000; // Max timeout in ms
         public uint lastRead = 0; // Last read from RAM
         public byte[] lastmultiread;
         public int pid = 0;
-        PKM validator;
-        private System.Timers.Timer NTRtimer;
+        private PKM validator;
+        private readonly Timer NTRtimer;
         private bool timeout = false;
         public string lastlog;
         public static Dictionary<uint, DataReadyWaiting> waitingForData = new Dictionary<uint, DataReadyWaiting>();
 
         // Offsets for remote controls
-        private uint buttonsOff = 0x10df20;
-        private uint touchscrOff = 0x10df24;
-        private uint stickOff = 0x10df28;
-        private int hid_pid = 0x10;
+        private readonly uint buttonsOff = 0x10df20;
+        private readonly uint touchscrOff = 0x10df24;
+        private readonly uint stickOff = 0x10df28;
+        private readonly int hid_pid = 0x10;
         public const int BOXSIZE = 30;
         public const int POKEBYTES = 232;
         public const int PARTYBYTES = 260;
@@ -48,10 +33,12 @@ namespace pkmn_ntr.Helpers
         // Class constructor
         public RemoteControl()
         {
-            NTRtimer = new System.Timers.Timer(maxtimeout);
-            NTRtimer.AutoReset = false;
+            NTRtimer = new Timer(maxtimeout)
+            {
+                AutoReset = false,
+                Enabled = false
+            };
             NTRtimer.Elapsed += NTRtimer_Tick;
-            NTRtimer.Enabled = false;
         }
 
         // Log Handler
@@ -71,16 +58,16 @@ namespace pkmn_ntr.Helpers
         }
 
         // Button Handler
-        public async Task<bool> waitbutton(uint key)
+        public async Task<bool> ButtonWait(uint key)
         {
             Report("NTR: Send button command 0x" + key.ToString("X3"));
             // Get and send hex coordinates
             byte[] buttonByte = BitConverter.GetBytes(key);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-            setTimer(maxtimeout);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+            SetTimer(maxtimeout);
             while (!timeout)
             { // Timeout 1
-                await Task.Delay(100);
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("finished"))
                 {
                     break;
@@ -89,17 +76,17 @@ namespace pkmn_ntr.Helpers
             if (timeout) // If not response, return timeout
             {
                 Report("NTR: Button press failed, try to free buttons");
-                quickbuton(LookupTable.NoButtons, 250);
+                ButtonQuick(LookupTable.NoButtons, 250);
                 return false;
             }
             else
             { // Free the buttons
                 buttonByte = BitConverter.GetBytes(LookupTable.NoButtons);
-                WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-                setTimer(maxtimeout);
+                WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+                SetTimer(maxtimeout);
                 while (!timeout)
                 { // Timeout 2
-                    await Task.Delay(100);
+                    await Task.Delay(100).ConfigureAwait(false);
                     if (CompareLastLog("finished"))
                     {
                         break;
@@ -119,27 +106,27 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async void quickbuton(uint key, int time)
+        public async void ButtonQuick(uint key, int time)
         {
             Report("NTR: Send button command 0x" + key.ToString("X3") + " during " + time + " ms");
             byte[] buttonByte = BitConverter.GetBytes(key);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-            await Task.Delay(time);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+            await Task.Delay(time).ConfigureAwait(false);
             buttonByte = BitConverter.GetBytes(LookupTable.NoButtons);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
             Report("NTR: Button command sent, no feedback provided");
         }
 
-        public async Task<bool> waitSoftReset()
+        public async Task<bool> SoftResetWait()
         {
             Report("NTR: Send soft-reset command 0xCF7");
             // Get and send hex coordinates
             byte[] buttonByte = BitConverter.GetBytes(0xCF7);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-            setTimer(maxtimeout);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+            SetTimer(maxtimeout);
             while (!timeout)
             { // Timeout 1
-                await Task.Delay(100);
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("patching smdh"))
                 {
                     break;
@@ -148,17 +135,17 @@ namespace pkmn_ntr.Helpers
             if (timeout) // If not response, return timeout
             {
                 Report("NTR: Button press failed, try to free buttons");
-                quickbuton(LookupTable.NoButtons, 250);
+                ButtonQuick(LookupTable.NoButtons, 250);
                 return false;
             }
             else
             { // Free the buttons
                 buttonByte = BitConverter.GetBytes(LookupTable.NoButtons);
-                WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-                setTimer(maxtimeout);
+                WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+                SetTimer(maxtimeout);
                 while (!timeout)
                 { // Timeout 2
-                    await Task.Delay(100);
+                    await Task.Delay(100).ConfigureAwait(false);
                     if (CompareLastLog("finished") || CompareLastLog("patching smdh"))
                     {
                         break;
@@ -182,51 +169,51 @@ namespace pkmn_ntr.Helpers
         {
             Report($"Script: Send button command 0x{key.ToString("X3")}");
             byte[] buttonByte = BitConverter.GetBytes(key);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-            await Task.Delay(200);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+            await Task.Delay(200).ConfigureAwait(false);
             buttonByte = BitConverter.GetBytes(LookupTable.NoButtons);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-            await Task.Delay(500);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         public async Task ScriptButtonTimed(uint key, int time)
         {
             Report($"Script: Send button command 0x{key.ToString("X3")} during {time} ms");
             byte[] buttonByte = BitConverter.GetBytes(key);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-            await Task.Delay(time);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+            await Task.Delay(time).ConfigureAwait(false);
             buttonByte = BitConverter.GetBytes(LookupTable.NoButtons);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-            await Task.Delay(500);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         public async Task ScriptButtonHold(uint key)
         {
             Report($"Script: Send and hold button command 0x{key.ToString("X3")}");
             byte[] buttonByte = BitConverter.GetBytes(key);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-            await Task.Delay(500);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         public async Task ScriptButtonRelease()
         {
             Report($"Script: Release all buttons");
             byte[] buttonByte = BitConverter.GetBytes(LookupTable.NoButtons);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(buttonsOff, buttonByte, hid_pid);
-            await Task.Delay(500);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(buttonsOff, buttonByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         // Touch Screen Handler
-        public async Task<bool> waittouch(decimal Xcoord, decimal Ycoord)
+        public async Task<bool> TouchWait(decimal Xcoord, decimal Ycoord)
         {
             Report("NTR: Touch the screen at " + Xcoord.ToString("F0") + "," + Ycoord.ToString("F0"));
             // Get and send hex coordinates
-            byte[] buttonByte = BitConverter.GetBytes(gethexcoord(Xcoord, Ycoord));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, buttonByte, hid_pid);
-            setTimer(maxtimeout);
+            byte[] buttonByte = BitConverter.GetBytes(GetHexCoord(Xcoord, Ycoord));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, buttonByte, hid_pid);
+            SetTimer(maxtimeout);
             while (!timeout)
             { // Timeout 1
-                await Task.Delay(100);
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("finished"))
                 {
                     break;
@@ -235,17 +222,17 @@ namespace pkmn_ntr.Helpers
             if (timeout) // If not response, return timeout
             {
                 Report("NTR: Button press failed, try to free the touchscreen");
-                freetouch();
+                TouchFree();
                 return false;
             }
             else
             {  // Free the touch screen
                 buttonByte = BitConverter.GetBytes(LookupTable.NoTouch);
-                WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, buttonByte, hid_pid);
-                setTimer(maxtimeout);
+                WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, buttonByte, hid_pid);
+                SetTimer(maxtimeout);
                 while (!timeout)
                 { // Timeout 2
-                    await Task.Delay(100);
+                    await Task.Delay(100).ConfigureAwait(false);
                     if (CompareLastLog("finished"))
                     {
                         break;
@@ -265,16 +252,16 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async Task<bool> waitholdtouch(decimal Xcoord, decimal Ycoord)
+        public async Task<bool> TouchWaitHold(decimal Xcoord, decimal Ycoord)
         {
             Report("NTR: Touch the screen and hold at " + Xcoord.ToString("F0") + "," + Ycoord.ToString("F0"));
             // Get and send hex coordinates
-            byte[] buttonByte = BitConverter.GetBytes(gethexcoord(Xcoord, Ycoord));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, buttonByte, hid_pid);
-            setTimer(maxtimeout);
+            byte[] buttonByte = BitConverter.GetBytes(GetHexCoord(Xcoord, Ycoord));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, buttonByte, hid_pid);
+            SetTimer(maxtimeout);
             while (!timeout)
             { // Timeout
-                await Task.Delay(100);
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("finished"))
                 {
                     break;
@@ -293,16 +280,16 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async Task<bool> waitfreetouch()
+        public async Task<bool> TouchWaitFree()
         {
             Report("NTR: Free the touch screen");
             // Get and send hex coordinates
             byte[] buttonByte = BitConverter.GetBytes(LookupTable.NoTouch);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, buttonByte, hid_pid);
-            setTimer(maxtimeout);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, buttonByte, hid_pid);
+            SetTimer(maxtimeout);
             while (!timeout)
             { // Timeout
-                await Task.Delay(100);
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("finished"))
                 {
                     break;
@@ -321,91 +308,91 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async void quicktouch(decimal Xcoord, decimal Ycoord, int time)
+        public async void TouchQuick(decimal x, decimal y, int time)
         {
-            Report("NTR: Touch the screen at " + Xcoord.ToString("F0") + "," + Ycoord.ToString("F0") + " during " + time + " ms");
-            byte[] buttonByte = BitConverter.GetBytes(gethexcoord(Xcoord, Ycoord));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, buttonByte, hid_pid);
-            await Task.Delay(time);
+            Report($"NTR: Touch the screen at {x:F0},{y:F0} during {time} ms");
+            byte[] buttonByte = BitConverter.GetBytes(GetHexCoord(x, y));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, buttonByte, hid_pid);
+            await Task.Delay(time).ConfigureAwait(false);
             buttonByte = BitConverter.GetBytes(LookupTable.NoTouch);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, buttonByte, hid_pid);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, buttonByte, hid_pid);
             Report("NTR: Touch screen command sent, no feedback provided");
         }
 
-        public async void holdtouch(decimal Xcoord, decimal Ycoord)
+        public async void TouchHold(decimal x, decimal y)
         {
-            Report("NTR: Touch the screen and hold at " + Xcoord.ToString("F0") + "," + Ycoord.ToString("F0"));
-            byte[] buttonByte = BitConverter.GetBytes(gethexcoord(Xcoord, Ycoord));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, buttonByte, hid_pid);
-            await Task.Delay(100);
+            Report($"NTR: Touch the screen and hold at {x:F0},{y:F0}");
+            byte[] buttonByte = BitConverter.GetBytes(GetHexCoord(x, y));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, buttonByte, hid_pid);
+            await Task.Delay(100).ConfigureAwait(false);
             Report("NTR: Touch screen command sent, no feedback provided");
         }
 
-        public async void freetouch()
+        public async void TouchFree()
         {
             Report("NTR: Free the touch screen");
             byte[] buttonByte = BitConverter.GetBytes(LookupTable.NoTouch);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, buttonByte, hid_pid);
-            await Task.Delay(100);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, buttonByte, hid_pid);
+            await Task.Delay(100).ConfigureAwait(false);
             Report("NTR: Touch screen command sent, no feedback provided");
         }
 
-        private uint gethexcoord(decimal Xvalue, decimal Yvalue)
+        private uint GetHexCoord(decimal Xvalue, decimal Yvalue)
         {
             uint hexX = Convert.ToUInt32(Math.Round(Xvalue * 0xFFF / 319));
             uint hexY = Convert.ToUInt32(Math.Round(Yvalue * 0xFFF / 239));
-            return 0x01000000 + hexY * 0x1000 + hexX;
+            return 0x01000000 + (hexY * 0x1000) + hexX;
         }
 
         public async Task ScriptTouch(int Xvalue, int Yvalue)
         {
             Report($"Script: Touch screen at {Xvalue}, {Yvalue}");
-            byte[] touchByte = BitConverter.GetBytes(gethexcoord(Xvalue, Yvalue));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, touchByte, hid_pid);
-            await Task.Delay(200);
+            byte[] touchByte = BitConverter.GetBytes(GetHexCoord(Xvalue, Yvalue));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, touchByte, hid_pid);
+            await Task.Delay(200).ConfigureAwait(false);
             touchByte = BitConverter.GetBytes(LookupTable.NoTouch);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, touchByte, hid_pid);
-            await Task.Delay(500);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, touchByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         public async Task ScriptTouchTimed(int Xvalue, int Yvalue, int time)
         {
             Report($"Script: Touch screen at {Xvalue}, {Yvalue} during {time} ms");
-            byte[] touchByte = BitConverter.GetBytes(gethexcoord(Xvalue, Yvalue));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, touchByte, hid_pid);
-            await Task.Delay(time);
+            byte[] touchByte = BitConverter.GetBytes(GetHexCoord(Xvalue, Yvalue));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, touchByte, hid_pid);
+            await Task.Delay(time).ConfigureAwait(false);
             touchByte = BitConverter.GetBytes(LookupTable.NoTouch);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, touchByte, hid_pid);
-            await Task.Delay(500);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, touchByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         public async Task ScriptTouchHold(int Xvalue, int Yvalue)
         {
             Report($"Script: Touch screen and hold at {Xvalue}, {Yvalue}");
-            byte[] touchByte = BitConverter.GetBytes(gethexcoord(Xvalue, Yvalue));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, touchByte, hid_pid);
-            await Task.Delay(500);
+            byte[] touchByte = BitConverter.GetBytes(GetHexCoord(Xvalue, Yvalue));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, touchByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         public async Task ScriptTouchRelease()
         {
             Report($"Script: Release touch screen");
             byte[] touchByte = BitConverter.GetBytes(LookupTable.NoTouch);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(touchscrOff, touchByte, hid_pid);
-            await Task.Delay(500);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(touchscrOff, touchByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         // Control Stick Handler
-        public async Task<bool> waitsitck(int Xvalue, int Yvalue)
+        public async Task<bool> StickWait(int Xvalue, int Yvalue)
         {
             Report("NTR: Move Control Stick to " + Xvalue.ToString("D3") + "," + Yvalue.ToString("D3"));
             // Get and send hex coordinates
-            byte[] buttonByte = BitConverter.GetBytes(getstickhex(Xvalue, Yvalue));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(stickOff, buttonByte, hid_pid);
-            setTimer(maxtimeout);
+            byte[] buttonByte = BitConverter.GetBytes(GetStickHex(Xvalue, Yvalue));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(stickOff, buttonByte, hid_pid);
+            SetTimer(maxtimeout);
             while (!timeout)
             { // Timeout 1
-                await Task.Delay(100);
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("finished"))
                 {
                     break;
@@ -414,18 +401,18 @@ namespace pkmn_ntr.Helpers
             if (timeout) // If not response, return timeout
             {
                 Report("NTR: Control stick command failed, try to release it");
-                quickstick(0, 0, 250);
-                freetouch();
+                StickQuick(0, 0, 250);
+                TouchFree();
                 return false;
             }
             else
             { // Free the control stick
                 buttonByte = BitConverter.GetBytes(LookupTable.NoStick);
-                WonderTradeBot.WonderTradeBot.scriptHelper.write(stickOff, buttonByte, hid_pid);
-                setTimer(maxtimeout);
+                WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(stickOff, buttonByte, hid_pid);
+                SetTimer(maxtimeout);
                 while (!timeout)
                 { // Timeout 2
-                    await Task.Delay(100);
+                    await Task.Delay(100).ConfigureAwait(false);
                     if (CompareLastLog("finished"))
                     {
                         break;
@@ -445,87 +432,87 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async void quickstick(int Xvalue, int Yvalue, int time)
+        public async void StickQuick(int Xvalue, int Yvalue, int time)
         {
             Report("NTR: Move Control Stick to " + Xvalue.ToString("D3") + "," + Yvalue.ToString("D3") + " during " + time + " ms");
-            byte[] buttonByte = BitConverter.GetBytes(getstickhex(Xvalue, Yvalue));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(stickOff, buttonByte, hid_pid);
-            await Task.Delay(time);
+            byte[] buttonByte = BitConverter.GetBytes(GetStickHex(Xvalue, Yvalue));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(stickOff, buttonByte, hid_pid);
+            await Task.Delay(time).ConfigureAwait(false);
             buttonByte = BitConverter.GetBytes(LookupTable.NoStick);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(stickOff, buttonByte, hid_pid);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(stickOff, buttonByte, hid_pid);
             Report("NTR: Control Stick command sent, no feedback provided");
         }
 
-        private uint getstickhex(int Xvalue, int Yvalue)
+        private uint GetStickHex(int Xvalue, int Yvalue)
         {
             uint hexX = Convert.ToUInt32((Xvalue + 100) * 0xFFF / 200);
             uint hexY = Convert.ToUInt32((Yvalue + 100) * 0xFFF / 200);
             if (hexX >= 0x1000) hexX = 0xFFF;
             if (hexY >= 0x1000) hexY = 0xFFF;
-            return 0x01000000 + hexY * 0x1000 + hexX;
+            return 0x01000000 + (hexY * 0x1000) + hexX;
         }
 
-        public async Task ScriptStick(int Xvalue, int Yvalue)
+        public async Task ScriptStick(int x, int y)
         {
-            Report($"Script: Move and release the control stick to {Xvalue}, {Yvalue}");
-            byte[] stickByte = BitConverter.GetBytes(getstickhex(Xvalue, Yvalue));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(stickOff, stickByte, hid_pid);
-            await Task.Delay(200);
+            Report($"Script: Move and release the control stick to {x}, {y}");
+            byte[] stickByte = BitConverter.GetBytes(GetStickHex(x, y));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(stickOff, stickByte, hid_pid);
+            await Task.Delay(200).ConfigureAwait(false);
             stickByte = BitConverter.GetBytes(LookupTable.NoStick);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(stickOff, stickByte, hid_pid);
-            await Task.Delay(500);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(stickOff, stickByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
-        public async Task ScriptStickTimed(int Xvalue, int Yvalue, int time)
+        public async Task ScriptStickTimed(int x, int y, int time)
         {
-            Report($"Script: Move the control stick to {Xvalue}, {Yvalue} during {time} ms");
-            byte[] stickByte = BitConverter.GetBytes(getstickhex(Xvalue, Yvalue));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(stickOff, stickByte, hid_pid);
-            await Task.Delay(time);
+            Report($"Script: Move the control stick to {x}, {y} during {time} ms");
+            byte[] stickByte = BitConverter.GetBytes(GetStickHex(x, y));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(stickOff, stickByte, hid_pid);
+            await Task.Delay(time).ConfigureAwait(false);
             stickByte = BitConverter.GetBytes(LookupTable.NoStick);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(stickOff, stickByte, hid_pid);
-            await Task.Delay(500);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(stickOff, stickByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
-        public async Task ScriptStickHold(int Xvalue, int Yvalue)
+        public async Task ScriptStickHold(int x, int y)
         {
-            Report($"Script: Move and hold the control stick to {Xvalue}, {Yvalue}");
-            byte[] stickByte = BitConverter.GetBytes(getstickhex(Xvalue, Yvalue));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(stickOff, stickByte, hid_pid);
-            await Task.Delay(500);
+            Report($"Script: Move and hold the control stick to {x}, {y}");
+            byte[] stickByte = BitConverter.GetBytes(GetStickHex(x, y));
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(stickOff, stickByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         public async Task ScriptStickRelease()
         {
             Report($"Script: Release the control stick");
             byte[] stickByte = BitConverter.GetBytes(LookupTable.NoStick);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(stickOff, stickByte, hid_pid);
-            await Task.Delay(500);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(stickOff, stickByte, hid_pid);
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         // Memory Read Handler
-        private void handleMemoryRead(object args_obj)
+        private void HandleMemoryRead(object args_obj)
         {
             DataReadyWaiting args = (DataReadyWaiting)args_obj;
-            lastRead = BitConverter.ToUInt32(args.data, 0);
+            lastRead = BitConverter.ToUInt32(args.Data, 0);
         }
 
-        private void handlemulitMemoryRead(object args_obj)
+        private void HandleMemoryReadMulti(object args_obj)
         {
             DataReadyWaiting args = (DataReadyWaiting)args_obj;
-            lastmultiread = args.data;
+            lastmultiread = args.Data;
         }
 
-        public async Task<bool> waitNTRread(uint address)
+        public async Task<bool> WaitReadNTR(uint address)
         {
             Report("NTR: Read data at address 0x" + address.ToString("X8"));
             lastRead = 0;
-            DataReadyWaiting myArgs = new DataReadyWaiting(new byte[0x04], handleMemoryRead, null);
-            AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.data(address, 0x04, pid), myArgs);
-            setTimer(maxtimeout);
+            DataReadyWaiting myArgs = new DataReadyWaiting(new byte[0x04], HandleMemoryRead, null);
+            AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.ReadData(address, 0x04, pid), myArgs);
+            SetTimer(maxtimeout);
             while (!timeout)
             {
-                await Task.Delay(100);
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("finished"))
                 {
                     break;
@@ -542,16 +529,16 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async Task<bool> waitNTRmultiread(uint address, uint size)
+        public async Task<bool> WaitReadNTRMulti(uint address, uint size)
         {
             Report("NTR: Read " + size + " bytes of data starting at address 0x" + address.ToString("X8"));
             lastmultiread = new byte[] { };
-            DataReadyWaiting myArgs = new DataReadyWaiting(new byte[size], handlemulitMemoryRead, null);
-            AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.data(address, size, pid), myArgs);
-            setTimer(maxtimeout);
+            DataReadyWaiting myArgs = new DataReadyWaiting(new byte[size], HandleMemoryReadMulti, null);
+            AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.ReadData(address, size, pid), myArgs);
+            SetTimer(maxtimeout);
             while (!timeout)
             {
-                await Task.Delay(100);
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("finished"))
                 {
                     break;
@@ -579,35 +566,29 @@ namespace pkmn_ntr.Helpers
             waitingForData.Add(newkey, newvalue);
         }
 
-        private void handlePokeRead(object args_obj)
+        private void HandleReadPoke(object args_obj)
         {
             DataReadyWaiting args = (DataReadyWaiting)args_obj;
             if (WonderTradeBot.WonderTradeBot.SaveFileEditor2.SAV.Generation == 6)
-            {
-                validator = new PK6(PKX.DecryptArray(args.data));
-            }
+                validator = new PK6(PKX.DecryptArray(args.Data));
             else
-            {
-                validator = new PK7(PKX.DecryptArray(args.data));
-            }
+                validator = new PK7(PKX.DecryptArray(args.Data));
         }
 
-        public async Task<PKM> waitPokeRead(NumericUpDown boxCtrl, NumericUpDown slotCtrl)
+        public async Task<PKM> WaitReadPoke(int box, int slot)
         {
             try
             {
-                int box = (int)boxCtrl.Value - 1;
-                int slot = (int)slotCtrl.Value - 1;
                 Report("NTR: Read pokémon data at box " + (box + 1) + ", slot " + (slot + 1));
                 // Get offset
-                uint dumpOff = LookupTable.BoxOffset + (Convert.ToUInt32(box * BOXSIZE + slot) * POKEBYTES);
-                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[POKEBYTES], handlePokeRead, null);
+                uint dumpOff = LookupTable.BoxOffset + (Convert.ToUInt32((box * BOXSIZE) + slot) * POKEBYTES);
+                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[POKEBYTES], HandleReadPoke, null);
                 WonderTradeBot.WonderTradeBot.UpdateDumpBoxes(box, slot);
-                AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.data(dumpOff, POKEBYTES, pid), myArgs);
-                setTimer(maxtimeout);
+                AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.ReadData(dumpOff, POKEBYTES, pid), myArgs);
+                SetTimer(maxtimeout);
                 while (!timeout)
                 {
-                    await Task.Delay(100);
+                    await Task.Delay(100).ConfigureAwait(false);
                     if (CompareLastLog("finished"))
                     {
                         break;
@@ -648,17 +629,17 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async Task<PKM> waitPokeRead(uint offset)
+        public async Task<PKM> WaitReadPoke(uint offset)
         {
             try
             {
                 Report("NTR: Read pokémon data at offset 0x" + offset.ToString("X8"));
-                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[POKEBYTES], handlePokeRead, null);
-                AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.data(offset, POKEBYTES, pid), myArgs);
-                setTimer(maxtimeout);
+                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[POKEBYTES], HandleReadPoke, null);
+                AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.ReadData(offset, POKEBYTES, pid), myArgs);
+                SetTimer(maxtimeout);
                 while (!timeout)
                 {
-                    await Task.Delay(100);
+                    await Task.Delay(100).ConfigureAwait(false);
                     if (CompareLastLog("finished"))
                     {
                         break;
@@ -699,22 +680,20 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async Task<PKM> waitPartyRead(uint slot)
+        public async Task<PKM> WaitReadParty(uint slot)
         {
             try
             {
                 Report("NTR: Read pokémon data at party slot " + slot);
-                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[PARTYBYTES], handlePokeRead, null);
-                uint offset = LookupTable.PartyOffset + 484 * (slot - 1);
-                AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.data(offset, PARTYBYTES, pid), myArgs);
-                setTimer(maxtimeout);
+                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[PARTYBYTES], HandleReadPoke, null);
+                uint offset = LookupTable.PartyOffset + (484 * (slot - 1));
+                AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.ReadData(offset, PARTYBYTES, pid), myArgs);
+                SetTimer(maxtimeout);
                 while (!timeout)
                 {
-                    await Task.Delay(100);
+                    await Task.Delay(100).ConfigureAwait(false);
                     if (CompareLastLog("finished"))
-                    {
                         break;
-                    }
                 }
                 if (timeout)
                 { // No read
@@ -751,21 +730,19 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async Task<bool> memoryinrange(uint address, uint value, uint range)
+        public async Task<bool> IsMemoryInRange(uint address, uint value, uint range)
         {
-            Report("NTR: Read data at address 0x" + address.ToString("X8"));
-            Report("NTR: Expected value 0x" + value.ToString("X8") + " to 0x" + (value + range - 1).ToString("X8"));
+            Report($"NTR: Read data at address 0x{address:X8}");
+            Report($"NTR: Expected value 0x{value:X8} to 0x{value + range - 1:X8}");
             lastRead = value + range;
-            DataReadyWaiting myArgs = new DataReadyWaiting(new byte[0x04], handleMemoryRead, null);
-            AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.data(address, 0x04, pid), myArgs);
-            setTimer(maxtimeout);
+            DataReadyWaiting myArgs = new DataReadyWaiting(new byte[0x04], HandleMemoryRead, null);
+            AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.ReadData(address, 0x04, pid), myArgs);
+            SetTimer(maxtimeout);
             while (!timeout)
             {
-                await Task.Delay(100);
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("finished"))
-                {
                     break;
-                }
             }
             if (!timeout)
             { // Data received
@@ -788,21 +765,21 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async Task<bool> timememoryinrange(uint address, uint value, uint range, int tick, int maxtime)
+        public async Task<bool> IsTimeMemoryInRange(uint address, uint value, uint range, int tick, int maxtime)
         {
-            Report("NTR: Read data at address 0x" + address.ToString("X8") + " during " + maxtime + " ms");
-            Report("NTR: Expected value 0x" + value.ToString("X8") + " to 0x" + (value + range - 1).ToString("X8"));
+            Report($"NTR: Read data at address 0x{address:X8} during {maxtime} ms");
+            Report($"NTR: Expected value 0x{value:X8} to 0x{value + range - 1:X8}");
             int readcount = 0;
-            setTimer(maxtime);
+            SetTimer(maxtime);
             while (!timeout || readcount < 5)
             { // Ask for data
                 lastRead = value + range;
-                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[0x04], handleMemoryRead, null);
-                AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.data(address, 0x04, pid), myArgs);
+                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[0x04], HandleMemoryRead, null);
+                AddWaitingForData(WonderTradeBot.WonderTradeBot.scriptHelper.ReadData(address, 0x04, pid), myArgs);
                 // Wait for data
                 while (!timeout)
                 {
-                    await Task.Delay(100);
+                    await Task.Delay(100).ConfigureAwait(false);
                     if (CompareLastLog("finished"))
                     {
                         break;
@@ -810,7 +787,7 @@ namespace pkmn_ntr.Helpers
                     if (timeout && readcount < 5)
                     {
                         Report("NTR: Restarting timeout");
-                        setTimer(maxtimeout);
+                        SetTimer(maxtimeout);
                         break;
                     }
                 }
@@ -823,12 +800,12 @@ namespace pkmn_ntr.Helpers
                 else
                 {
                     Report("NTR: Value in range: No");
-                    await Task.Delay(tick);
+                    await Task.Delay(tick).ConfigureAwait(false);
                 }
                 if (timeout && readcount < 5)
                 {
                     Report("NTR: Restarting timeout");
-                    setTimer(maxtimeout);
+                    SetTimer(maxtimeout);
                 }
                 readcount++;
             }
@@ -837,15 +814,16 @@ namespace pkmn_ntr.Helpers
         }
 
         // Memory Write handler
-        public async Task<bool> waitNTRwrite(uint address, uint data, int pid)
+        public async Task<bool> WaitWriteNTR(uint address, uint data, int pid)
         {
-            Report("NTR: Write value 0x" + data.ToString("X8") + " at address 0x" + address.ToString("X8"));
+            Report($"NTR: Write value 0x{data:X8} at address 0x{address:X8}");
             byte[] command = BitConverter.GetBytes(data);
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(address, command, pid);
-            setTimer(maxtimeout);
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(address, command, pid);
+            SetTimer(maxtimeout);
             while (!timeout)
-            { // Timeout 1
-                await Task.Delay(100);
+            {
+                // Timeout 1
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("finished"))
                 {
                     break;
@@ -864,14 +842,15 @@ namespace pkmn_ntr.Helpers
             }
         }
 
-        public async Task<bool> waitNTRwrite(uint address, byte[] data, int pid)
+        public async Task<bool> WaitWriteNTR(uint address, byte[] data, int pid)
         {
-            Report("NTR: Write " + data.Length + " bytes at address 0x" + address.ToString("X8"));
-            WonderTradeBot.WonderTradeBot.scriptHelper.write(address, data, pid);
-            setTimer(maxtimeout);
+            Report($"NTR: Write {data.Length} bytes at address 0x{address:X8}");
+            WonderTradeBot.WonderTradeBot.scriptHelper.WriteData(address, data, pid);
+            SetTimer(maxtimeout);
             while (!timeout)
-            { // Timeout 1
-                await Task.Delay(100);
+            {
+                // Timeout 1
+                await Task.Delay(100).ConfigureAwait(false);
                 if (CompareLastLog("finished"))
                 {
                     break;
@@ -891,7 +870,7 @@ namespace pkmn_ntr.Helpers
         }
 
         // Timer
-        private void setTimer(int time)
+        private void SetTimer(int time)
         {
             WriteLastLog("");
             timeout = false;

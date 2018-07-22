@@ -1,19 +1,21 @@
-﻿using PKHeX.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using pkmn_ntr.Helpers;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
+using PKHeX.Core;
+using pkmn_ntr.Helpers;
 
 namespace WonderTradeBot
 {
     public partial class WonderTradeBot : Form, IPlugin
     {
-        private System.Windows.Forms.Timer timer1;
-        public string Name => "Wondertrade Gen 7";
+        private readonly Timer timer1 = new Timer();
+        private static NumericUpDown boxDump; // no idea why this is done like this.......
+        private static NumericUpDown slotDump;
+        string IPlugin.Name { get; } = "Wondertrade Gen 7";
+
         public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public static ISaveFileProvider SaveFileEditor2 { get; private set; }
@@ -24,8 +26,6 @@ namespace WonderTradeBot
         public static ScriptHelper scriptHelper;
         public static NTR ntrClient;
         public int pid; // apparently pokemon pid? wtf lol
-        private static System.Windows.Forms.NumericUpDown boxDump; // no idea why this is done like this.......
-        private static System.Windows.Forms.NumericUpDown slotDump;
 
         public void Initialize(params object[] args)
         {
@@ -39,7 +39,10 @@ namespace WonderTradeBot
             PKMEditor2 = PKMEditor;
             var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);
             LoadMenuStrip(menu);
+            boxDump = Box;
+            slotDump = Slot;
         }
+
         private void LoadMenuStrip(ToolStrip menuStrip)
         {
             var items = menuStrip.Items;
@@ -79,35 +82,11 @@ namespace WonderTradeBot
             return false; // no action taken
         }
 
-        /// <summary>
-        /// Secuency of steps done by the bot.
-        /// </summary>
-        private enum BotState
-        {
-            StartBot, BackupBoxes, CheckMode, InitializeFC1, InitializeFC2, ReadPoke,
-            ReadFolder, WriteFromFolder, WriteLastBox, PressTradeButton, TestTradeMenu,
-            PressWTButton, TestWTScreen, PressWTstart, TestBoxes, TouchPoke, CancelTouch,
-            TestPoke, StartTrade, ConfirmTrade, TestBoxesOut, WaitForTrade,
-            TestTradeFinish, TryFinish, FinishTrade, CollectFC1, CollectFC2, CollectFC3,
-            CollectFC4, CollectFC5, DumpAfter, ActionAfter, RestoreBackup, DeletePoke,
-            ExitBot
-        };
-
-        /// <summary>
-        /// All different error or finisish messages the bot can return.
-        /// </summary>
-        public enum ErrorMessage
-        {
-            Finished, UserStop, ReadError, WriteError, ButtonError, TouchError,
-            StickError, NotInPSS, FestivalPlaza, SVMatch, FilterMatch, NoMatch, SRMatch,
-            BattleMatch, Disconnect, NotWTMenu, GeneralError
-        };
-
         // General bot variables
         private bool botworking;
         private bool userstop;
         private BotState botstate;
-        private ErrorMessage botresult;
+        private BotErrorMessage botresult;
         private int attempts;
         private int maxreconnect;
         private Task<bool> waitTaskbool;
@@ -137,7 +116,7 @@ namespace WonderTradeBot
         // Class constants
         private readonly int commandtime = 250;
         private readonly int delaytime = 250;
-        private string wtfolderpath = @Application.StartupPath + "\\Wonder Trade\\";
+        private static readonly string wtfolderpath = Path.Combine(Application.StartupPath, "Wonder Trade");
 
         // Data offsets
         private uint TrademenuOff
@@ -158,6 +137,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint TrademenuIN
         {
             get
@@ -175,6 +155,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint TrademenuOUT
         {
             get
@@ -192,6 +173,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint TrademenuRange
         {
             get
@@ -209,6 +191,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint Tradeready
         {
             get
@@ -226,6 +209,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint TradereadyRange
         {
             get
@@ -243,6 +227,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint TradeEvoValue
         {
             get
@@ -260,6 +245,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint WtscreenOff
         {
             get
@@ -278,6 +264,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint WtscreenIN
         {
             get
@@ -295,6 +282,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         //private uint wtscreenOUT = 0x01; // 1.0 0x720000; 0x00 USUM
         private uint WtscreenRange
         {
@@ -313,6 +301,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint BoxesOff
         {
             get
@@ -331,6 +320,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint BoxesIN
         {
             get
@@ -348,6 +338,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint BoxesOUT
         {
             get
@@ -365,6 +356,7 @@ namespace WonderTradeBot
                 }
             }
         }
+
         private uint BoxesRange
         {
             get
@@ -382,120 +374,20 @@ namespace WonderTradeBot
                 }
             }
         }
+
         //private uint boxesviewOff = 0x672D04;
         //private uint boxesviewIN = 0x00000000;
         //private uint boxesviewOUT = 0x41000000;
-        private uint dialogOff = 0x6747E0; // 1.0: 0x63DD68; 1.1: 0x6747D8;
-        private uint dialogIn = 0x00000000; // 1.0: 0x0C;
-        private uint dialogOut = 0x41B80000; // 1.0: 0x0B;
-        private uint toppkmOff = 0x30000298;
-        private bool botWorking;
 
-        #region FCtable
-        public static readonly uint[] FCtable = { 6, 16, 31, 61, 101, 151, 211, 281, 361,
-            451, 551, 651, 751, 851, 951, 1051, 1151, 1251, 1351, 1451, 1571, 1691, 1811,
-            1931, 2051, 2171, 2291, 2411, 2531, 2651, 2801, 2951, 3101, 3251, 3401, 3551,
-            3701, 3851, 4001, 4151, 4331, 4511, 4691, 4871, 5051, 5231, 5411, 5591, 5771,
-            5951, 6161, 6371, 6581, 6791, 7001, 7211, 7421, 7631, 7841, 8051, 8291, 8531,
-            8771, 9011, 9251, 9491, 9731, 9971, 10211, 10451, 10721, 10991, 11261, 11531,
-            11801, 12071, 12341, 12611, 12881, 13151, 13421, 13691, 13961, 14231, 14501,
-            14771, 15041, 15311, 15581, 15851, 16121, 16391, 16661, 16931, 17201, 17471,
-            17741, 18011, 18281, 18551, 18851, 19151, 19451, 19751, 20051, 20351, 20651,
-            20951, 21251, 21551, 21851, 22151, 22451, 22751, 23051, 23351, 23651, 23951,
-            24251, 24551, 24851, 25151, 25451, 25751, 26051, 26351, 26651, 26951, 27251,
-            27551, 27851, 28151, 28451, 28751, 29051, 29351, 29651, 29951, 30251, 30551,
-            30851, 31151, 31451, 31751, 32051, 32351, 32651, 32951, 33251, 33551, 33851,
-            34151, 34451, 34751, 35051, 35351, 35651, 35951, 36251, 36551, 36851, 37151,
-            37451, 37751, 38051, 38351, 38651, 38951, 39251, 39551, 39851, 40151, 40451,
-            40751, 41051, 41351, 41651, 41951, 42251, 42551, 42851, 43151, 43451, 43751,
-            44051, 44351, 44651, 44951, 45251, 45551, 45851, 46151, 46451, 46751, 47051,
-            47351, 47651, 47951, 48251, 48551, 48851, 49151, 49451, 49751, 50051, 50351,
-            50651, 50951, 51251, 51551, 51851, 52151, 52451, 52751, 53051, 53351, 53651,
-            53951, 54251, 54551, 54851, 55151, 55451, 55751, 56051, 56351, 56651, 56951,
-            57251, 57551, 57851, 58151, 58451, 58751, 59051, 59351, 59651, 59951, 60251,
-            60551, 60851, 61151, 61451, 61751, 62051, 62351, 62651, 62951, 63251, 63551,
-            63851, 64151, 64451, 64751, 65051, 65351, 65651, 65951, 66251, 66551, 66851,
-            67151, 67451, 67751, 68051, 68351, 68651, 68951, 69251, 69551, 69851, 70151,
-            70451, 70751, 71051, 71351, 71651, 71951, 72251, 72551, 72851, 73151, 73451,
-            73751, 74051, 74351, 74651, 74951, 75251, 75551, 75851, 76151, 76451, 76751,
-            77051, 77351, 77651, 77951, 78251, 78551, 78851, 79151, 79451, 79751, 80051,
-            80351, 80651, 80951, 81251, 81551, 81851, 82151, 82451, 82751, 83051, 83351,
-            83651, 83951, 84251, 84551, 84851, 85151, 85451, 85751, 86051, 86351, 86651,
-            86951, 87251, 87551, 87851, 88151, 88451, 88751, 89051, 89351, 89651, 89951,
-            90251, 90551, 90851, 91151, 91451, 91751, 92051, 92351, 92651, 92951, 93251,
-            93551, 93851, 94151, 94451, 94751, 95051, 95351, 95651, 95951, 96251, 96551,
-            96851, 97151, 97451, 97751, 98051, 98351, 98651, 98951, 99251, 99551, 99851,
-            100151, 100451, 100751, 101051, 101351, 101651, 101951, 102251, 102551,
-            102851, 103151, 103451, 103751, 104051, 104351, 104651, 104951, 105251,
-            105551, 105851, 106151, 106451, 106751, 107051, 107351, 107651, 107951,
-            108251, 108551, 108851, 109151, 109451, 109751, 110051, 110351, 110651,
-            110951, 111251, 111551, 111851, 112151, 112451, 112751, 113051, 113351,
-            113651, 113951, 114251, 114551, 114851, 115151, 115451, 115751, 116051,
-            116351, 116651, 116951, 117251, 117551, 117851, 118151, 118451, 118751,
-            119051, 119351, 119651, 119951, 120251, 120551, 120851, 121151, 121451,
-            121751, 122051, 122351, 122651, 122951, 123251, 123551, 123851, 124151,
-            124451, 124751, 125051, 125351, 125651, 125951, 126251, 126551, 126851,
-            127151, 127451, 127751, 128051, 128351, 128651, 128951, 129251, 129551,
-            129851, 130151, 130451, 130751, 131051, 131351, 131651, 131951, 132251,
-            132551, 132851, 133151, 133451, 133751, 134051, 134351, 134651, 134951,
-            135251, 135551, 135851, 136151, 136451, 136751, 137051, 137351, 137651,
-            137951, 138251, 138551, 138851, 139151, 139451, 139751, 140051, 140351,
-            140651, 140951, 141251, 141551, 141851, 142151, 142451, 142751, 143051,
-            143351, 143651, 143951, 144251, 144551, 144851, 145151, 145451, 145751,
-            146051, 146351, 146651, 146951, 147251, 147551, 147851, 148151, 148451,
-            148751, 149051, 149351, 149651, 149951, 150251, 150551, 150851, 151151,
-            151451, 151751, 152051, 152351, 152651, 152951, 153251, 153551, 153851,
-            154151, 154451, 154751, 155051, 155351, 155651, 155951, 156251, 156551,
-            156851, 157151, 157451, 157751, 158051, 158351, 158651, 158951, 159251,
-            159551, 159851, 160151, 160451, 160751, 161051, 161351, 161651, 161951,
-            162251, 162551, 162851, 163151, 163451, 163751, 164051, 164351, 164651,
-            164951, 165251, 165551, 165851, 166151, 166451, 166751, 167051, 167351,
-            167651, 167951, 168251, 168551, 168851, 169151, 169451, 169751, 170051,
-            170351, 170651, 170951, 171251, 171551, 171851, 172151, 172451, 172751,
-            173051, 173351, 173651, 173951, 174251, 174551, 174851, 175151, 175451,
-            175751, 176051, 176351, 176651, 176951, 177251, 177551, 177851, 178151,
-            178451, 178751, 179051, 179351, 179651, 179951, 180251, 180551, 180851,
-            181151, 181451, 181751, 182051, 182351, 182651, 182951, 183251, 183551,
-            183851, 184151, 184451, 184751, 185051, 185351, 185651, 185951, 186251,
-            186551, 186851, 187151, 187451, 187751, 188051, 188351, 188651, 188951,
-            189251, 189551, 189851, 190151, 190451, 190751, 191051, 191351, 191651,
-            191951, 192251, 192551, 192851, 193151, 193451, 193751, 194051, 194351,
-            194651, 194951, 195251, 195551, 195851, 196151, 196451, 196751, 197051,
-            197351, 197651, 197951, 198251, 198551, 198851, 199151, 199451, 199751,
-            200051, 200351, 200651, 200951, 201251, 201551, 201851, 202151, 202451,
-            202751, 203051, 203351, 203651, 203951, 204251, 204551, 204851, 205151,
-            205451, 205751, 206051, 206351, 206651, 206951, 207251, 207551, 207851,
-            208151, 208451, 208751, 209051, 209351, 209651, 209951, 210251, 210551,
-            210851, 211151, 211451, 211751, 212051, 212351, 212651, 212951, 213251,
-            213551, 213851, 214151, 214451, 214751, 215051, 215351, 215651, 215951,
-            216251, 216551, 216851, 217151, 217451, 217751, 218051, 218351, 218651,
-            218951, 219251, 219551, 219851, 220151, 220451, 220751, 221051, 221351,
-            221651, 221951, 222251, 222551, 222851, 223151, 223451, 223751, 224051,
-            224351, 224651, 224951, 225251, 225551, 225851, 226151, 226451, 226751,
-            227051, 227351, 227651, 227951, 228251, 228551, 228851, 229151, 229451,
-            229751, 230051, 230351, 230651, 230951, 231251, 231551, 231851, 232151,
-            232451, 232751, 233051, 233351, 233651, 233951, 234251, 234551, 234851,
-            235151, 235451, 235751, 236051, 236351, 236651, 236951, 237251, 237551,
-            237851, 238151, 238451, 238751, 239051, 239351, 239651, 239951, 240251,
-            240551, 240851, 241151, 241451, 241751, 242051, 242351, 242651, 242951,
-            243251, 243551, 243851, 244151, 244451, 244751, 245051, 245351, 245651,
-            245951, 246251, 246551, 246851, 247151, 247451, 247751, 248051, 248351,
-            248651, 248951, 249251, 249551, 249851, 250151, 250451, 250751, 251051,
-            251351, 251651, 251951, 252251, 252551, 252851, 253151, 253451, 253751,
-            254051, 254351, 254651, 254951, 255251, 255551, 255851, 256151, 256451,
-            256751, 257051, 257351, 257651, 257951, 258251, 258551, 258851, 259151,
-            259451, 259751, 260051, 260351, 260651, 260951, 261251, 261551, 261851,
-            262151, 262451, 262751, 263051, 263351, 263651, 263951, 264251, 264551,
-            264851, 265151, 265451, 265751, 266051, 266351, 266651, 266951, 267251,
-            267551, 267851, 268151, 268451, 268751, 269051, 269351, 269651, 269951,
-            270251, 270551, 270851, 271151, 271451, 271751, 272051, 272351, 272651,
-            272951, 273251, 273551, 273851, 274151, 274451, 274751, 275051, 275351,
-            275651, 275951, 276251, 276551, 276851, 277151, 277451, 277751, 278051,
-            278351, 278651, 278951, 279251, 279551, 279851, 280151, 280451, 280751,
-            281051, 281351, 281651, 281951, 282251, 282551, 282851, 283151, 283451,
-            283751, 284051, 284351, 284651, 284951, 285251, 285551, 285851, 286151,
-            286451, 286751, 287051, 287351, 287651, 287951, 288251 };
-        #endregion FCtable
+        private const uint dialogOff = 0x6747E0; // 1.0: 0x63DD68; 1.1: 0x6747D8;
+
+        private const uint dialogIn = 0x00000000; // 1.0: 0x0C;
+
+        private const uint dialogOut = 0x41B80000; // 1.0: 0x0B;
+
+        private const uint toppkmOff = 0x30000298;
+
+        private bool botWorking;
 
         /// <summary>
         /// Constructor, changes GUI based on game.
@@ -504,8 +396,7 @@ namespace WonderTradeBot
         {
             InitializeComponent();
             RNG = new Random();
-            if (SaveFileEditor.SAV.Version == GameVersion.US ||
-                SaveFileEditor.SAV.Version == GameVersion.UM)
+            if (GameVersion.USUM.Contains(SaveFileEditor.SAV.Version))
             {
                 isUSUM = true;
                 collectFC.Visible = false;
@@ -553,9 +444,11 @@ namespace WonderTradeBot
                     notradepartner = false;
                     tradeevo = false;
                     currentfile = 0;
-                    pklist = new List<PKM> { };
-                    tradeTimer = new Timer();
-                    tradeTimer.Interval = 95000; // Trade timeout, 95 s
+                    pklist = new List<PKM>();
+                    tradeTimer = new Timer
+                    {
+                        Interval = 95000 // Trade timeout, 95 s
+                    };
                     tradeTimer.Tick += TradeTimer_Tick;
                     startbox = Box.Value;
                     startslot = Slot.Value;
@@ -639,535 +532,45 @@ namespace WonderTradeBot
                             botstate = BotState.BackupBoxes;
                             break;
 
-                        case BotState.BackupBoxes:
-                            Report("Bot: Backup boxes");
-                            waitTaskbool = helper.waitNTRmultiread(LookupTable
-                                .BoxOffset, 232 * 30 * 32);
-                            if (await waitTaskbool)
-                            {
-                                attempts = 0;
-                                string fileName = "WTBefore-" + DateTime.Now
-                                    .ToString("yyyyMMddHHmmss") + ".ek7";
-                                backuppath = wtfolderpath + fileName;
-                                WriteDataToFile(helper
-                                    .lastmultiread, backuppath);
-                                botstate = BotState.CheckMode;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.BackupBoxes;
-                            }
-                            break;
-
                         case BotState.CheckMode:
                             if (collectFC.Checked)
-                            {
                                 botstate = BotState.InitializeFC1;
-                            }
                             else if (sourceBox.Checked)
-                            {
                                 botstate = BotState.ReadPoke;
-                            }
                             else
-                            {
                                 botstate = BotState.ReadFolder;
-                            }
                             break;
 
-                        case BotState.InitializeFC1:
-                            waitTaskbool = helper.waitNTRread(LookupTable
-                                .TrainerTotalFCOffset);
-                            if (await waitTaskbool)
-                            {
-                                attempts = 0;
-                                currentTotalFC = helper.lastRead;
-                                Report("Bot: Current Total FC: " + currentTotalFC);
-                                botstate = BotState.InitializeFC2;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.InitializeFC1;
-                            }
-                            break;
-
-                        case BotState.InitializeFC2:
-                            waitTaskbool = helper.waitNTRread(LookupTable
-                                .TrainerCurrentFCOffset);
-                            if (await waitTaskbool)
-                            {
-                                attempts = 0;
-                                currentFC = helper.lastRead;
-                                Report("Bot: Current FC: " + currentFC);
-                                int i = 0;
-                                while (currentTotalFC >= nextFC)
-                                {
-                                    nextFC = FCtable[i];
-                                    i++;
-                                }
-                                Report("Bot: Points for next level: " + (nextFC -
-                                    currentTotalFC));
-                                if (sourceBox.Checked)
-                                {
-                                    botstate = BotState.ReadPoke;
-                                }
-                                else
-                                {
-                                    botstate = BotState.ReadFolder;
-                                }
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.InitializeFC2;
-                            }
-                            break;
-
-                        case BotState.ReadPoke:
-                            Report("Bot: Look for pokemon to trade");
-                            waitTaskPKM = helper.waitPokeRead(Box, Slot);
-                            WTpoke = await waitTaskPKM;
-                            if (WTpoke == null)
-                            { // No data or invalid
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.ReadPoke;
-                            }
-                            else if (WTpoke.Species == 0)
-                            { // Empty space
-                                Report("Bot: Empty slot");
-                                attempts = 0;
-                                GetNextSlot();
-                            }
-                            else
-                            { // Valid pkm, check legality
-                                attempts = 0;
-                                if (IsTradeable(WTpoke))
-                                {
-                                    currentCHK = WTpoke.Checksum;
-                                    Report("Bot: Pokémon found - 0x" + currentCHK
-                                        .ToString("X4"));
-                                    botstate = BotState.WriteLastBox;
-                                }
-                                else
-                                {
-                                    Report("Bot: Pokémon cannot be traded, is " +
-                                            "illegal or is an egg or have special " +
-                                            "ribbons.");
-                                    GetNextSlot();
-                                }
-                            }
-                            break;
-
-                        case BotState.ReadFolder:
-                            Report("Bot: Reading Wonder Trade folder");
-                            pkfiles = Directory.GetFiles(wtfolderpath, "*.pk7");
-                            if (pkfiles.Length > 0)
-                            {
-                                foreach (string pkf in pkfiles)
-                                {
-                                    byte[] temp = File.ReadAllBytes(pkf);
-                                    if (temp.Length == 232)
-                                    {
-                                        PK7 pkmn = new PK7(temp);
-                                        if (IsTradeable(pkmn))
-                                        { // Legal pkm
-                                            Report("Bot: Valid PK7 file");
-                                            pklist.Add(pkmn);
-                                        }
-                                        else
-                                        { // Illegal pkm
-                                            Report("Bot: File " + pkf + " cannot be " +
-                                                "traded");
-                                        }
-                                    }
-                                    else
-                                    { // Not valid file
-                                        Report("Bot: File " + pkf + " is not a valid" +
-                                            " pk7 file");
-                                    }
-                                }
-                            }
-                            if (pklist.Count > 0)
-                            {
-                                botstate = BotState.WriteFromFolder;
-                            }
-                            else
-                            {
-                                Report("Bot: No files detected");
-                                botresult = ErrorMessage.Finished;
-                                botstate = BotState.ExitBot;
-                            }
-                            break;
-
-                        case BotState.WriteFromFolder:
-                            Report("Bot: Write pkm file from list");
-                            if (sourceRandom.Checked)
-                            { // Select a random file
-                                currentfile = RNG.Next() % pklist.Count;
-                            }
-                            waitTaskbool = helper.waitNTRwrite(
-                                GetBoxOffset(LookupTable.BoxOffset, Box, Slot), pklist
-                                [currentfile].EncryptedBoxData, pid);
-                            if (await waitTaskbool)
-                            {
-                                UpdateDumpBoxes(Box, Slot);
-                                PKMEditor.PopulateFields(pklist[currentfile]);
-                                currentCHK = pklist[currentfile].Checksum;
-                                if (sourceFolder.Checked)
-                                {
-                                    currentfile++;
-                                    if (currentfile > pklist.Count - 1)
-                                    {
-                                        currentfile = 0;
-                                    }
-                                }
-                                attempts = 0;
-                                botstate = BotState.WriteLastBox;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.WriteError;
-                                botstate = BotState.WriteFromFolder;
-                            }
-                            break;
-
-                        case BotState.WriteLastBox:
-                            if (boxchange)
-                            {
-                                Report("Bot: Set current box");
-                                waitTaskbool = helper.waitNTRwrite(LookupTable
-                                    .CurrentboxOffset, (uint)GetIndex(Box), pid);
-                                if (await waitTaskbool)
-                                {
-                                    attempts = 0;
-                                    boxchange = false;
-                                    botstate = isUSUM ? BotState.TestWTScreen : BotState
-                                        .PressTradeButton;
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    botresult = ErrorMessage.WriteError;
-                                    botstate = BotState.WriteLastBox;
-                                }
-                            }
-                            else
-                            {
-                                botstate = isUSUM ? BotState.TestWTScreen : BotState
-                                    .PressTradeButton;
-                            }
-                            break;
-
-                        case BotState.PressTradeButton:
-                            Report("Bot: Press Trade Button");
-                            waitTaskbool = helper.waittouch(200, 120);
-                            if (await waitTaskbool)
-                            {
-                                botstate = BotState.TestTradeMenu;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.TouchError;
-                                botstate = BotState.PressTradeButton;
-                            }
-                            break;
-
-                        case BotState.TestTradeMenu:
-                            Report("Bot: Test if the trademenu is shown");
-                            waitTaskbool = helper.timememoryinrange(TrademenuOff,
-                                TrademenuIN, TrademenuRange, 100, 5000);
-                            if (await waitTaskbool)
-                            {
-                                attempts = 0;
-                                botstate = BotState.PressWTButton;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.PressTradeButton;
-                            }
-                            break;
-
-                        case BotState.PressWTButton:
-                            Report("Bot: Press Wonder Trade");
-                            waitTaskbool = helper.waittouch(160, 160);
-                            if (await waitTaskbool)
-                                botstate = BotState.TestWTScreen;
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.TouchError;
-                                botstate = BotState.PressWTButton;
-                            }
-                            break;
-
-                        case BotState.TestWTScreen:
-                            Report("Bot: Test if the Wonder Trade screen is shown");
-                            waitTaskbool = helper.timememoryinrange(WtscreenOff,
-                                WtscreenIN, WtscreenRange, 250, 5000);
-                            if (await waitTaskbool)
-                            {
-                                attempts = 0;
-                                botstate = BotState.PressWTstart;
-                            }
-                            else
-                            {
-                                if (isUSUM)
-                                {
-                                    botresult = ErrorMessage.NotWTMenu;
-                                    botstate = BotState.ExitBot;
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    botresult = ErrorMessage.ReadError;
-                                    botstate = BotState.PressWTButton;
-                                }
-                            }
-                            break;
-
-                        case BotState.PressWTstart:
-                            Report("Bot: Press Start");
-                            await Task.Delay(4 * delaytime);
-                            helper.quickbuton(LookupTable.ButtonA, commandtime);
-                            await Task.Delay(commandtime + delaytime);
-                            botstate = BotState.TestBoxes;
-                            break;
-
-                        case BotState.TestBoxes:
-                            Report("Bot: Test if the boxes are shown");
-                            waitTaskbool = helper.timememoryinrange(BoxesOff,
-                                BoxesIN, BoxesRange, 250, 5000);
-                            if (await waitTaskbool)
-                            {
-                                attempts = 0;
-                                botstate = BotState.TouchPoke;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.PressWTstart;
-                            }
-                            break;
-
-                        case BotState.TouchPoke:
-                            Report("Bot: Touch pokémon");
-                            await Task.Delay(4 * delaytime);
-                            waitTaskbool = helper.waittouch(LookupTable.pokeposX7
-                                [GetIndex(Slot)], LookupTable.pokeposY7[GetIndex(Slot)]);
-                            if (await waitTaskbool)
-                            {
-                                botstate = BotState.TestPoke;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.TouchError;
-                                botstate = BotState.TouchPoke;
-                            }
-                            break;
-
-                        case BotState.TestPoke:
-                            Report("Bot: Test if pokemon is selected");
-                            waitTaskPKM = helper.waitPokeRead(toppkmOff);
-                            validator = await waitTaskPKM;
-                            if (validator == null)
-                            { // No data or invalid
-                                Report("Bot: Error detected or slot is empty");
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.CancelTouch;
-                            }
-                            else if (validator.Checksum != currentCHK)
-                            { // Different poke
-                                Report("Bot: Picked incorrect pokemon");
-                                attempts++;
-                                botresult = ErrorMessage.GeneralError;
-                                botstate = BotState.CancelTouch;
-                            }
-                            else
-                            { // Correct pokemon
-                                attempts = 0;
-                                botstate = BotState.StartTrade;
-                            }
-                            break;
-
-                        case BotState.CancelTouch:
-                            Report("Bot: Cancel selection and check again");
-                            waitTaskPKM = helper.waitPokeRead(Box, Slot);
-                            WTpoke = await waitTaskPKM;
-                            if (WTpoke != null)
-                            {
-                                currentCHK = WTpoke.Checksum;
-                            }
-                            waitTaskbool = helper.waitbutton(LookupTable.ButtonB);
-                            if (await waitTaskbool)
-                            {
-                                botstate = BotState.TouchPoke;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ButtonError;
-                                botstate = BotState.TouchPoke;
-                            }
-                            break;
-
-                        case BotState.StartTrade:
-                            Report("Bot: Press Start");
-                            waitTaskbool = helper.waitbutton(LookupTable.ButtonA);
-                            if (await waitTaskbool)
-                            {
-                                botstate = BotState.ConfirmTrade;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ButtonError;
-                                botstate = BotState.StartTrade;
-                            }
-                            break;
-
-                        case BotState.ConfirmTrade:
-                            Report("Bot: Press Yes");
-                            waitTaskbool = helper.waitbutton(LookupTable.ButtonA);
-                            if (await waitTaskbool)
-                            {
-                                botstate = BotState.TestBoxesOut;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ButtonError;
-                                botstate = BotState.ConfirmTrade;
-                            }
-                            break;
-
-                        case BotState.TestBoxesOut:
-                            Report("Bot: Test if the boxes are not shown");
-                            waitTaskbool = helper.timememoryinrange(BoxesOff,
-                                BoxesOUT, BoxesRange, 500, 10000);
-                            if (await waitTaskbool)
-                            {
-                                attempts = -40; // Try 50 button presses
-                                botstate = BotState.WaitForTrade;
-                                tradeTimer.Start();
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.TouchPoke;
-                            }
-                            break;
-
-                        case BotState.WaitForTrade:
-                            Report("Bot: Wait for trade");
-                            waitTaskbool = helper.memoryinrange(TrademenuOff,
-                                Tradeready, TradereadyRange);
-                            if (await waitTaskbool)
-                            {
-                                tradeTimer.Stop();
-                                Report("Bot: Trade detected");
-                                await helper.waitPokeRead(Box, Slot);
-                                Report("Bot: Wait 30 seconds");
-                                await Task.Delay(30000);
-                                botstate = BotState.TestTradeFinish;
-                            }
-                            else if (notradepartner)
-                            { // Timeout
-                                boxchange = true; // Might fix a couple of errors
-                                botstate = BotState.TestTradeFinish;
-                            }
-                            else
-                            {
-                                await Task.Delay(8 * delaytime);
-                            }
-                            break;
-
-                        case BotState.TestTradeFinish:
-                            Report("Bot: Test if the trade is finished");
-                            if (isUSUM)
-                            {
-                                waitTaskbool = helper.memoryinrange(WtscreenOff,
-                                WtscreenIN, 0x1);
-                            }
-                            else
-                            {
-                                waitTaskbool = helper.memoryinrange(WtscreenIN,
-                                    TrademenuOUT, TrademenuRange);
-                            }
-                            if (await waitTaskbool)
-                            {
-                                attempts = 0;
-                                if (collectFC.Checked && !notradepartner)
-                                {
-                                    botstate = BotState.CollectFC1;
-                                }
-                                else
-                                {
-                                    botstate = BotState.FinishTrade;
-                                }
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.GeneralError;
-                                botstate = BotState.TryFinish;
-                                if (helper.lastRead == TradeEvoValue &&
-                                    !tradeevo)
-                                {
-                                    Report("Bot: Trade evolution detected, wait 20" +
-                                        " seconds");
-                                    await Task.Delay(20000);
-                                    tradeevo = true;
-                                    attempts = -40; // Try 50 button presses.
-                                }
-                            }
-                            break;
-
-                        case BotState.TryFinish:
-                            if (!tradeevo)
-                            {
-                                if (isUSUM)
-                                {
-                                    Report("Bot: Press A button");
-                                    waitTaskbool = helper.waitbutton(LookupTable
-                                        .ButtonA);
-                                }
-                                else
-                                {
-                                    Report("Bot: Press B button");
-                                    waitTaskbool = helper.waitbutton(LookupTable
-                                        .ButtonB);
-                                }
-                            }
-                            else
-                            {
-                                Report("Bot: Trade evolution detected, press A button");
-                                waitTaskbool = helper.waitbutton(LookupTable
-                                    .ButtonA);
-                            }
-                            if (await waitTaskbool)
-                            {
-                                botstate = BotState.TestTradeFinish;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ButtonError;
-                                botstate = BotState.TestTradeFinish;
-                            }
-                            break;
+                        case BotState.BackupBoxes: await BotBackupBoxes().ConfigureAwait(false); break;
+                        case BotState.InitializeFC1: await BotInitializeFC1().ConfigureAwait(false); break;
+                        case BotState.InitializeFC2: await BotInitializeFC2().ConfigureAwait(false); break;
+                        case BotState.ReadPoke: await BotReadPoke().ConfigureAwait(false); break;
+                        case BotState.ReadFolder: BotReadFolder(); break;
+                        case BotState.WriteFromFolder: await BotWriteFolder().ConfigureAwait(false); break;
+                        case BotState.WriteLastBox: await BotWriteLastBox().ConfigureAwait(false); break;
+                        case BotState.PressTradeButton: await BotPressTradeButton().ConfigureAwait(false); break;
+                        case BotState.TestTradeMenu: await BotTestTradeMenu().ConfigureAwait(false); break;
+                        case BotState.PressWTButton: await BotPressWTButton().ConfigureAwait(false); break;
+                        case BotState.TestWTScreen: await BotTestWTScreen().ConfigureAwait(false); break;
+                        case BotState.PressWTstart: await BotPressWTStart().ConfigureAwait(false); break;
+                        case BotState.TestBoxes: await BotTestBoxes().ConfigureAwait(false); break;
+                        case BotState.TouchPoke: await BotTouchPoke().ConfigureAwait(false); break;
+                        case BotState.TestPoke: await BotTestPoke().ConfigureAwait(false); break;
+                        case BotState.CancelTouch: await BotCancelTouch().ConfigureAwait(false); break;
+                        case BotState.StartTrade: await BotStartTrade().ConfigureAwait(false); break;
+                        case BotState.ConfirmTrade: await BotConfirmTrade().ConfigureAwait(false); break;
+                        case BotState.TestBoxesOut: await BotTestBoxesOut().ConfigureAwait(false); break;
+                        case BotState.WaitForTrade: await BotWaitForTrade().ConfigureAwait(false); break;
+                        case BotState.TestTradeFinish: await BotTestTradeFinish().ConfigureAwait(false); break;
+                        case BotState.TryFinish: await BotTryFinish().ConfigureAwait(false); break;
+                        case BotState.CollectFC1: await BotCollectFC1().ConfigureAwait(false); break;
+                        case BotState.CollectFC2: await BotCollectFC2().ConfigureAwait(false); break;
+                        case BotState.CollectFC3: await BotCollectFC3().ConfigureAwait(false); break;
+                        case BotState.CollectFC4: await BotCollectFC4().ConfigureAwait(false); break;
+                        case BotState.CollectFC5: await BotCollectFC5().ConfigureAwait(false); break;
+                        case BotState.DumpAfter: await BotDumpAfter().ConfigureAwait(false); break;
+                        case BotState.RestoreBackup: await BotRestoreBackup().ConfigureAwait(false); break;
+                        case BotState.DeletePoke: await BotDeletePoke().ConfigureAwait(false); break;
 
                         case BotState.FinishTrade:
                             if (notradepartner)
@@ -1182,128 +585,6 @@ namespace WonderTradeBot
                             tradeevo = false;
                             break;
 
-                        case BotState.CollectFC1:
-                            Report("Bot: Trigger Dialog");
-                            await Task.Delay(4 * delaytime);
-                            waitTaskbool = helper.waitbutton(LookupTable.ButtonA);
-                            if (await waitTaskbool)
-                            {
-                                botstate = BotState.CollectFC2;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ButtonError;
-                                botstate = BotState.TestTradeFinish;
-                            }
-                            break;
-
-                        case BotState.CollectFC2:
-                            Report("Bot: Test if dialog has started");
-                            waitTaskbool = helper.memoryinrange(dialogOff,
-                                dialogIn, 0x010000);
-                            if (await waitTaskbool)
-                            {
-                                attempts = 0;
-                                botstate = BotState.CollectFC3;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.CollectFC1;
-                            }
-                            break;
-
-                        case BotState.CollectFC3:
-                            Report("Bot: Continue dialog");
-                            waitTaskbool = helper.waitbutton(LookupTable.ButtonB);
-                            if (await waitTaskbool)
-                            {
-                                botstate = BotState.CollectFC4;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ButtonError;
-                                botstate = BotState.CollectFC3;
-                            }
-                            break;
-
-                        case BotState.CollectFC4:
-                            Report("Bot: Test if dialog has finished");
-                            waitTaskbool = helper.memoryinrange(dialogOff,
-                                dialogOut, 0x010000);
-                            if (await waitTaskbool || helper.lastRead == 0x0D)
-                            {
-                                attempts = 0;
-                                botstate = BotState.CollectFC5;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.CollectFC3;
-                            }
-                            break;
-
-                        case BotState.CollectFC5:
-                            Report("Bot: Test FC");
-                            waitTaskbool = helper.waitNTRread(LookupTable
-                                .TrainerTotalFCOffset);
-                            if (await waitTaskbool)
-                            {
-                                attempts = 0;
-                                currentTotalFC = helper.lastRead;
-                                Report("Bot: Current Total FC: " + currentTotalFC);
-                                if (currentTotalFC >= nextFC)
-                                {
-                                    Report("Bot: Festival Plaza level up");
-                                    GetNextSlot();
-                                    botresult = ErrorMessage.FestivalPlaza;
-                                    botstate = BotState.ExitBot;
-                                }
-                                else
-                                {
-                                    botstate = BotState.FinishTrade;
-                                }
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.ReadError;
-                                botstate = BotState.CollectFC5;
-                            }
-                            break;
-
-                        case BotState.DumpAfter:
-                            if (afterDump.Checked)
-                            {
-                                Report("Bot: Dump boxes");
-                                waitTaskbool = helper.waitNTRmultiread(LookupTable
-                                    .BoxOffset, 232 * 30 * 31);
-                                if (await waitTaskbool)
-                                {
-                                    attempts = 0;
-                                    string fileName = "WTAfter-" + DateTime.Now.ToString
-                                        ("yyyyMMddHHmmss") + ".ek7";
-                                    WriteDataToFile(helper
-                                        .lastmultiread, wtfolderpath + fileName);
-                                    botstate = BotState.ActionAfter;
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    botresult = ErrorMessage.ReadError;
-                                    botstate = BotState.DumpAfter;
-                                }
-                            }
-                            else
-                            {
-                                botstate = BotState.ActionAfter;
-                            }
-                            break;
-
                         case BotState.ActionAfter:
                             if (afterRestore.Checked)
                             {
@@ -1315,60 +596,8 @@ namespace WonderTradeBot
                             }
                             else
                             {
-                                botresult = ErrorMessage.Finished;
+                                botresult = BotErrorMessage.Finished;
                                 botstate = BotState.ExitBot;
-                            }
-                            break;
-
-                        case BotState.RestoreBackup:
-                            Report("Bot: Restore boxes backup");
-                            byte[] restore = File.ReadAllBytes(backuppath);
-                            if (restore.Length == 232 * 30 * 32)
-                            {
-                                waitTaskbool = helper.waitNTRwrite(LookupTable
-                                    .BoxOffset, restore, pid);
-                                if (await waitTaskbool)
-                                {
-                                    attempts = 0;
-                                    botresult = ErrorMessage.Finished;
-                                    botstate = BotState.ExitBot;
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    botresult = ErrorMessage.WriteError;
-                                    botstate = BotState.RestoreBackup;
-                                }
-                            }
-                            else
-                            {
-                                Report("Bot: Invalid boxes file");
-                                botresult = ErrorMessage.GeneralError;
-                                botstate = BotState.ExitBot;
-                            }
-                            break;
-
-                        case BotState.DeletePoke:
-                            Report("Bot: Delete traded pokémon");
-                            byte[] deletearray = new byte[232 * (int)starttrades];
-                            for (int i = 0; i < starttrades; i++)
-                            {
-                                SaveFileEditor.SAV.BlankPKM.EncryptedBoxData.CopyTo(
-                                    deletearray, i * 232);
-                            }
-                            waitTaskbool = helper.waitNTRwrite(GetBoxOffset(
-                                LookupTable.BoxOffset, Box, Slot), deletearray,
-                                pid);
-                            if (await waitTaskbool)
-                            {
-                                attempts = 0;
-                                botstate = BotState.ExitBot;
-                            }
-                            else
-                            {
-                                attempts++;
-                                botresult = ErrorMessage.WriteError;
-                                botstate = BotState.DeletePoke;
                             }
                             break;
 
@@ -1379,7 +608,7 @@ namespace WonderTradeBot
 
                         default:
                             Report("Bot: Stop Gen 7 Wonder Trade bot");
-                            botresult = ErrorMessage.GeneralError;
+                            botresult = BotErrorMessage.GeneralError;
                             botworking = false;
                             break;
                     }
@@ -1391,12 +620,12 @@ namespace WonderTradeBot
                             maxreconnect--;
                             if (await waitTaskbool)
                             {
-                                await Task.Delay(10 * delaytime);
+                                await Task.Delay(10 * delaytime).ConfigureAwait(false);
                                 attempts = 0;
                             }
                             else
                             {
-                                botresult = ErrorMessage.GeneralError;
+                                botresult = BotErrorMessage.GeneralError;
                                 botworking = false;
                             }
                         }
@@ -1421,17 +650,695 @@ namespace WonderTradeBot
                 Report("Bot: STOP Gen 7 Wonder Trade bot");
                 MessageBox.Show(ex.Message);
                 botworking = false;
-                botresult = ErrorMessage.GeneralError;
+                botresult = BotErrorMessage.GeneralError;
             }
             if (userstop)
             {
-                botresult = ErrorMessage.UserStop;
+                botresult = BotErrorMessage.UserStop;
             }
             ShowResult("Wonder Trade bot", botresult);
             Delg.SetText(RunStop, "Start Bot");
-            ntrClient.disconnect();
+            ntrClient.Disconnect();
             EnableControls();
             Delg.SetEnabled(RunStop, true);
+        }
+
+        private async Task BotDeletePoke()
+        {
+            Report("Bot: Delete traded pokémon");
+            byte[] deletearray = new byte[232 * (int)starttrades];
+            for (int i = 0; i < starttrades; i++)
+            {
+                SaveFileEditor.SAV.BlankPKM.EncryptedBoxData.CopyTo(deletearray, i * 232);
+            }
+            waitTaskbool = helper.WaitWriteNTR(GetBoxOffset(LookupTable.BoxOffset, Box, Slot), deletearray, pid);
+            if (await waitTaskbool)
+            {
+                attempts = 0;
+                botstate = BotState.ExitBot;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.WriteError;
+                botstate = BotState.DeletePoke;
+            }
+        }
+
+        private async Task BotRestoreBackup()
+        {
+            Report("Bot: Restore boxes backup");
+            byte[] restore = File.ReadAllBytes(backuppath);
+            if (restore.Length == 232 * 30 * 32)
+            {
+                waitTaskbool = helper.WaitWriteNTR(LookupTable.BoxOffset, restore, pid);
+                if (await waitTaskbool)
+                {
+                    attempts = 0;
+                    botresult = BotErrorMessage.Finished;
+                    botstate = BotState.ExitBot;
+                }
+                else
+                {
+                    attempts++;
+                    botresult = BotErrorMessage.WriteError;
+                    botstate = BotState.RestoreBackup;
+                }
+            }
+            else
+            {
+                Report("Bot: Invalid boxes file");
+                botresult = BotErrorMessage.GeneralError;
+                botstate = BotState.ExitBot;
+            }
+        }
+
+        private async Task BotDumpAfter()
+        {
+            if (afterDump.Checked)
+            {
+                Report("Bot: Dump boxes");
+                waitTaskbool = helper.WaitReadNTRMulti(LookupTable.BoxOffset, 232 * 30 * 31);
+                if (await waitTaskbool)
+                {
+                    attempts = 0;
+                    string fileName = $"WTAfter-{DateTime.Now:yyyyMMddHHmmss}.ek7";
+                    WriteDataToFile(helper
+                        .lastmultiread, wtfolderpath + fileName);
+                    botstate = BotState.ActionAfter;
+                }
+                else
+                {
+                    attempts++;
+                    botresult = BotErrorMessage.ReadError;
+                    botstate = BotState.DumpAfter;
+                }
+            }
+            else
+            {
+                botstate = BotState.ActionAfter;
+            }
+        }
+
+        private async Task BotCollectFC5()
+        {
+            Report("Bot: Test FC");
+            waitTaskbool = helper.WaitReadNTR(LookupTable.TrainerTotalFCOffset);
+            if (await waitTaskbool)
+            {
+                attempts = 0;
+                currentTotalFC = helper.lastRead;
+                Report($"Bot: Current Total FC: {currentTotalFC}");
+                if (currentTotalFC >= nextFC)
+                {
+                    Report("Bot: Festival Plaza level up");
+                    GetNextSlot();
+                    botresult = BotErrorMessage.FestivalPlaza;
+                    botstate = BotState.ExitBot;
+                }
+                else
+                {
+                    botstate = BotState.FinishTrade;
+                }
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.CollectFC5;
+            }
+        }
+
+        private async Task BotCollectFC4()
+        {
+            Report("Bot: Test if dialog has finished");
+            waitTaskbool = helper.IsMemoryInRange(dialogOff, dialogOut, 0x010000);
+            if (await waitTaskbool || helper.lastRead == 0x0D)
+            {
+                attempts = 0;
+                botstate = BotState.CollectFC5;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.CollectFC3;
+            }
+        }
+
+        private async Task BotCollectFC3()
+        {
+            Report("Bot: Continue dialog");
+            waitTaskbool = helper.ButtonWait(LookupTable.ButtonB);
+            if (await waitTaskbool)
+            {
+                botstate = BotState.CollectFC4;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ButtonError;
+                botstate = BotState.CollectFC3;
+            }
+        }
+
+        private async Task BotCollectFC2()
+        {
+            Report("Bot: Test if dialog has started");
+            waitTaskbool = helper.IsMemoryInRange(dialogOff, dialogIn, 0x010000);
+            if (await waitTaskbool)
+            {
+                attempts = 0;
+                botstate = BotState.CollectFC3;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.CollectFC1;
+            }
+        }
+
+        private async Task BotCollectFC1()
+        {
+            Report("Bot: Trigger Dialog");
+            await Task.Delay(4 * delaytime).ConfigureAwait(false);
+            waitTaskbool = helper.ButtonWait(LookupTable.ButtonA);
+            if (await waitTaskbool)
+            {
+                botstate = BotState.CollectFC2;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ButtonError;
+                botstate = BotState.TestTradeFinish;
+            }
+        }
+
+        private async Task BotTryFinish()
+        {
+            if (!tradeevo)
+            {
+                if (isUSUM)
+                {
+                    Report("Bot: Press A button");
+                    waitTaskbool = helper.ButtonWait(LookupTable.ButtonA);
+                }
+                else
+                {
+                    Report("Bot: Press B button");
+                    waitTaskbool = helper.ButtonWait(LookupTable.ButtonB);
+                }
+            }
+            else
+            {
+                Report("Bot: Trade evolution detected, press A button");
+                waitTaskbool = helper.ButtonWait(LookupTable.ButtonA);
+            }
+            if (await waitTaskbool)
+            {
+                botstate = BotState.TestTradeFinish;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ButtonError;
+                botstate = BotState.TestTradeFinish;
+            }
+        }
+
+        private async Task BotTestTradeFinish()
+        {
+            Report("Bot: Test if the trade is finished");
+            if (isUSUM)
+            {
+                waitTaskbool = helper.IsMemoryInRange(WtscreenOff, WtscreenIN, 0x1);
+            }
+            else
+            {
+                waitTaskbool = helper.IsMemoryInRange(WtscreenIN, TrademenuOUT, TrademenuRange);
+            }
+
+            if (await waitTaskbool)
+            {
+                attempts = 0;
+                botstate = collectFC.Checked && !notradepartner ? BotState.CollectFC1 : BotState.FinishTrade;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.GeneralError;
+                botstate = BotState.TryFinish;
+                if (helper.lastRead == TradeEvoValue && !tradeevo)
+                {
+                    Report("Bot: Trade evolution detected, wait 20" +
+                        " seconds");
+                    await Task.Delay(20000).ConfigureAwait(false);
+                    tradeevo = true;
+                    attempts = -40; // Try 50 button presses.
+                }
+            }
+        }
+
+        private async Task BotWaitForTrade()
+        {
+            Report("Bot: Wait for trade");
+            waitTaskbool = helper.IsMemoryInRange(TrademenuOff, Tradeready, TradereadyRange);
+            if (await waitTaskbool)
+            {
+                tradeTimer.Stop();
+                Report("Bot: Trade detected");
+                await helper.WaitReadPoke((int)Box.Value - 1, (int)Slot.Value - 1).ConfigureAwait(false);
+                Report("Bot: Wait 30 seconds");
+                await Task.Delay(30000).ConfigureAwait(false);
+                botstate = BotState.TestTradeFinish;
+            }
+            else if (notradepartner)
+            { // Timeout
+                boxchange = true; // Might fix a couple of errors
+                botstate = BotState.TestTradeFinish;
+            }
+            else
+            {
+                await Task.Delay(8 * delaytime).ConfigureAwait(false);
+            }
+        }
+
+        private async Task BotTestBoxesOut()
+        {
+            Report("Bot: Test if the boxes are not shown");
+            waitTaskbool = helper.IsTimeMemoryInRange(BoxesOff, BoxesOUT, BoxesRange, 500, 10000);
+            if (await waitTaskbool)
+            {
+                attempts = -40; // Try 50 button presses
+                botstate = BotState.WaitForTrade;
+                tradeTimer.Start();
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.TouchPoke;
+            }
+        }
+
+        private async Task BotConfirmTrade()
+        {
+            Report("Bot: Press Yes");
+            waitTaskbool = helper.ButtonWait(LookupTable.ButtonA);
+            if (await waitTaskbool)
+            {
+                botstate = BotState.TestBoxesOut;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ButtonError;
+                botstate = BotState.ConfirmTrade;
+            }
+        }
+
+        private async Task BotStartTrade()
+        {
+            Report("Bot: Press Start");
+            waitTaskbool = helper.ButtonWait(LookupTable.ButtonA);
+            if (await waitTaskbool)
+            {
+                botstate = BotState.ConfirmTrade;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ButtonError;
+                botstate = BotState.StartTrade;
+            }
+        }
+
+        private async Task BotCancelTouch()
+        {
+            Report("Bot: Cancel selection and check again");
+            waitTaskPKM = helper.WaitReadPoke((int)Box.Value - 1, (int)Slot.Value - 1);
+            WTpoke = await waitTaskPKM;
+            if (WTpoke != null)
+                currentCHK = WTpoke.Checksum;
+
+            waitTaskbool = helper.ButtonWait(LookupTable.ButtonB);
+            if (await waitTaskbool)
+            {
+                botstate = BotState.TouchPoke;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ButtonError;
+                botstate = BotState.TouchPoke;
+            }
+        }
+
+        private async Task BotTestPoke()
+        {
+            Report("Bot: Test if pokemon is selected");
+            waitTaskPKM = helper.WaitReadPoke(toppkmOff);
+            validator = await waitTaskPKM;
+            if (validator == null)
+            { // No data or invalid
+                Report("Bot: Error detected or slot is empty");
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.CancelTouch;
+            }
+            else if (validator.Checksum != currentCHK)
+            { // Different poke
+                Report("Bot: Picked incorrect pokemon");
+                attempts++;
+                botresult = BotErrorMessage.GeneralError;
+                botstate = BotState.CancelTouch;
+            }
+            else
+            { // Correct pokemon
+                attempts = 0;
+                botstate = BotState.StartTrade;
+            }
+        }
+
+        private async Task BotTouchPoke()
+        {
+            Report("Bot: Touch pokémon");
+            await Task.Delay(4 * delaytime).ConfigureAwait(false);
+            var slot = (uint)(Slot.Value - 1);
+            waitTaskbool = helper.TouchWait(LookupTable.pokeposX7[slot], LookupTable.pokeposY7[slot]);
+            if (await waitTaskbool)
+            {
+                botstate = BotState.TestPoke;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.TouchError;
+                botstate = BotState.TouchPoke;
+            }
+        }
+
+        private async Task BotTestBoxes()
+        {
+            Report("Bot: Test if the boxes are shown");
+            waitTaskbool = helper.IsTimeMemoryInRange(BoxesOff,
+                BoxesIN, BoxesRange, 250, 5000);
+            if (await waitTaskbool)
+            {
+                attempts = 0;
+                botstate = BotState.TouchPoke;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.PressWTstart;
+            }
+        }
+
+        private async Task BotPressWTStart()
+        {
+            Report("Bot: Press Start");
+            await Task.Delay(4 * delaytime).ConfigureAwait(false);
+            helper.ButtonQuick(LookupTable.ButtonA, commandtime);
+            await Task.Delay(commandtime + delaytime).ConfigureAwait(false);
+            botstate = BotState.TestBoxes;
+        }
+
+        private async Task BotWriteFolder()
+        {
+            Report("Bot: Write pkm file from list");
+            if (sourceRandom.Checked)
+            { // Select a random file
+                currentfile = RNG.Next() % pklist.Count;
+            }
+            waitTaskbool = helper.WaitWriteNTR(GetBoxOffset(LookupTable.BoxOffset, Box, Slot), pklist[currentfile].EncryptedBoxData, pid);
+            if (await waitTaskbool)
+            {
+                UpdateDumpBoxes(Box, Slot);
+                PKMEditor.PopulateFields(pklist[currentfile]);
+                currentCHK = pklist[currentfile].Checksum;
+                if (sourceFolder.Checked)
+                {
+                    currentfile++;
+                    if (currentfile > pklist.Count - 1)
+                        currentfile = 0;
+                }
+                attempts = 0;
+                botstate = BotState.WriteLastBox;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.WriteError;
+                botstate = BotState.WriteFromFolder;
+            }
+        }
+
+        private void BotReadFolder()
+        {
+            Report("Bot: Reading Wonder Trade folder");
+            pkfiles = Directory.GetFiles(wtfolderpath, "*.pk7");
+            if (pkfiles.Length > 0)
+            {
+                foreach (string pkf in pkfiles)
+                {
+                    byte[] temp = File.ReadAllBytes(pkf);
+                    if (temp.Length == 232)
+                    {
+                        PK7 pkmn = new PK7(temp);
+                        if (IsTradeable(pkmn))
+                        { // Legal pkm
+                            Report("Bot: Valid PK7 file");
+                            pklist.Add(pkmn);
+                        }
+                        else
+                        { // Illegal pkm
+                            Report($"Bot: File {pkf} cannot be traded");
+                        }
+                    }
+                    else
+                    { // Not valid file
+                        Report($"Bot: File {pkf} is not a valid pk7 file");
+                    }
+                }
+            }
+            if (pklist.Count > 0)
+            {
+                botstate = BotState.WriteFromFolder;
+            }
+            else
+            {
+                Report("Bot: No files detected");
+                botresult = BotErrorMessage.Finished;
+                botstate = BotState.ExitBot;
+            }
+        }
+
+        private async Task BotReadPoke()
+        {
+            Report("Bot: Look for pokemon to trade");
+            waitTaskPKM = helper.WaitReadPoke((int)Box.Value - 1, (int)Slot.Value - 1);
+            WTpoke = await waitTaskPKM;
+            if (WTpoke == null)
+            { // No data or invalid
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.ReadPoke;
+            }
+            else if (WTpoke.Species == 0)
+            { // Empty space
+                Report("Bot: Empty slot");
+                attempts = 0;
+                GetNextSlot();
+            }
+            else
+            { // Valid pkm, check legality
+                attempts = 0;
+                if (IsTradeable(WTpoke))
+                {
+                    currentCHK = WTpoke.Checksum;
+                    Report($"Bot: Pokémon found - 0x{currentCHK:X4}");
+                    botstate = BotState.WriteLastBox;
+                }
+                else
+                {
+                    Report("Bot: Pokémon cannot be traded, is illegal or is an egg or have special ribbons.");
+                    GetNextSlot();
+                }
+            }
+        }
+
+        private async Task BotInitializeFC2()
+        {
+            waitTaskbool = helper.WaitReadNTR(LookupTable.TrainerCurrentFCOffset);
+            if (await waitTaskbool)
+            {
+                attempts = 0;
+                currentFC = helper.lastRead;
+                Report($"Bot: Current FC: {currentFC}");
+                int i = 0;
+                while (currentTotalFC >= nextFC)
+                {
+                    nextFC = FriendCodes.Table[i];
+                    i++;
+                }
+                Report($"Bot: Points for next level: {nextFC - currentTotalFC}");
+                if (sourceBox.Checked)
+                {
+                    botstate = BotState.ReadPoke;
+                }
+                else
+                {
+                    botstate = BotState.ReadFolder;
+                }
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.InitializeFC2;
+            }
+        }
+
+        private async Task BotInitializeFC1()
+        {
+            waitTaskbool = helper.WaitReadNTR(LookupTable.TrainerTotalFCOffset);
+            if (await waitTaskbool)
+            {
+                attempts = 0;
+                currentTotalFC = helper.lastRead;
+                Report("Bot: Current Total FC: " + currentTotalFC);
+                botstate = BotState.InitializeFC2;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.InitializeFC1;
+            }
+        }
+
+        private async Task BotBackupBoxes()
+        {
+            Report("Bot: Backup boxes");
+            waitTaskbool = helper.WaitReadNTRMulti(LookupTable.BoxOffset, 232 * 30 * 32);
+            if (await waitTaskbool)
+            {
+                attempts = 0;
+                string fileName = $"WTBefore-{DateTime.Now:yyyyMMddHHmmss}.ek7";
+                backuppath = wtfolderpath + fileName;
+                WriteDataToFile(helper.lastmultiread, backuppath);
+                botstate = BotState.CheckMode;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.BackupBoxes;
+            }
+        }
+
+        private async Task BotTestWTScreen()
+        {
+            Report("Bot: Test if the Wonder Trade screen is shown");
+            waitTaskbool = helper.IsTimeMemoryInRange(WtscreenOff,
+                WtscreenIN, WtscreenRange, 250, 5000);
+            if (await waitTaskbool)
+            {
+                attempts = 0;
+                botstate = BotState.PressWTstart;
+            }
+            else
+            {
+                if (isUSUM)
+                {
+                    botresult = BotErrorMessage.NotWTMenu;
+                    botstate = BotState.ExitBot;
+                }
+                else
+                {
+                    attempts++;
+                    botresult = BotErrorMessage.ReadError;
+                    botstate = BotState.PressWTButton;
+                }
+            }
+        }
+
+        private async Task BotPressWTButton()
+        {
+            Report("Bot: Press Wonder Trade");
+            waitTaskbool = helper.TouchWait(160, 160);
+            if (await waitTaskbool)
+            {
+                botstate = BotState.TestWTScreen;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.TouchError;
+                botstate = BotState.PressWTButton;
+            }
+        }
+
+        private async Task BotTestTradeMenu()
+        {
+            Report("Bot: Test if the trademenu is shown");
+            waitTaskbool = helper.IsTimeMemoryInRange(TrademenuOff, TrademenuIN, TrademenuRange, 100, 5000);
+            if (await waitTaskbool)
+            {
+                attempts = 0;
+                botstate = BotState.PressWTButton;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.ReadError;
+                botstate = BotState.PressTradeButton;
+            }
+        }
+
+        private async Task BotPressTradeButton()
+        {
+            Report("Bot: Press Trade Button");
+            waitTaskbool = helper.TouchWait(200, 120);
+            if (await waitTaskbool)
+            {
+                botstate = BotState.TestTradeMenu;
+            }
+            else
+            {
+                attempts++;
+                botresult = BotErrorMessage.TouchError;
+                botstate = BotState.PressTradeButton;
+            }
+        }
+
+        private async Task BotWriteLastBox()
+        {
+            if (boxchange)
+            {
+                Report("Bot: Set current box");
+                waitTaskbool = helper.WaitWriteNTR(LookupTable.CurrentboxOffset, (uint)(Box.Value - 1), pid);
+                if (await waitTaskbool)
+                {
+                    attempts = 0;
+                    boxchange = false;
+                    botstate = isUSUM ? BotState.TestWTScreen : BotState.PressTradeButton;
+                }
+                else
+                {
+                    attempts++;
+                    botresult = BotErrorMessage.WriteError;
+                    botstate = BotState.WriteLastBox;
+                }
+            }
+            else
+            {
+                botstate = isUSUM ? BotState.TestWTScreen : BotState.PressTradeButton;
+            }
         }
 
         /// <summary>
@@ -1441,8 +1348,7 @@ namespace WonderTradeBot
         /// <param name="e"></param>
         private void Box_ValueChanged(object sender, EventArgs e)
         {
-            Delg.SetMaximum(Trades, LookupTable.GetRemainingSpaces((int)Box.Value,
-                (int)Slot.Value));
+            Delg.SetMaximum(Trades, LookupTable.GetRemainingSpaces((int)Box.Value, (int)Slot.Value));
         }
 
         /// <summary>
@@ -1463,14 +1369,7 @@ namespace WonderTradeBot
             Delg.SetValue(Trades, Trades.Value - 1);
             if (Trades.Value > 0)
             {
-                if (sourceBox.Checked)
-                {
-                    botstate = BotState.ReadPoke;
-                }
-                else
-                {
-                    botstate = BotState.WriteFromFolder;
-                }
+                botstate = sourceBox.Checked ? BotState.ReadPoke : BotState.WriteFromFolder;
                 attempts = 0;
             }
             else if (runEndless.Checked)
@@ -1478,14 +1377,7 @@ namespace WonderTradeBot
                 Delg.SetValue(Box, startbox);
                 Delg.SetValue(Slot, startslot);
                 Delg.SetValue(Trades, starttrades);
-                if (sourceBox.Checked)
-                {
-                    botstate = BotState.ReadPoke;
-                }
-                else
-                {
-                    botstate = BotState.WriteFromFolder;
-                }
+                botstate = sourceBox.Checked ? BotState.ReadPoke : BotState.WriteFromFolder;
                 attempts = 0;
             }
             else
@@ -1501,14 +1393,7 @@ namespace WonderTradeBot
         {
             if (Trades.Value > 0)
             {
-                if (sourceBox.Checked)
-                {
-                    botstate = BotState.ReadPoke;
-                }
-                else
-                {
-                    botstate = BotState.WriteFromFolder;
-                }
+                botstate = sourceBox.Checked ? BotState.ReadPoke : BotState.WriteFromFolder;
                 attempts = 0;
             }
             else if (runEndless.Checked)
@@ -1516,14 +1401,7 @@ namespace WonderTradeBot
                 Delg.SetValue(Box, startbox);
                 Delg.SetValue(Slot, startslot);
                 Delg.SetValue(Trades, starttrades);
-                if (sourceBox.Checked)
-                {
-                    botstate = BotState.ReadPoke;
-                }
-                else
-                {
-                    botstate = BotState.WriteFromFolder;
-                }
+                botstate = sourceBox.Checked ? BotState.ReadPoke : BotState.WriteFromFolder;
                 attempts = 0;
             }
             else
@@ -1554,8 +1432,7 @@ namespace WonderTradeBot
         {
             if (botworking)
             {
-                MessageBox.Show("Stop the bot before closing this window",
-                    "Wonder Trade bot", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Stop the bot before closing this window", "Wonder Trade bot", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
             }
         }
@@ -1567,93 +1444,64 @@ namespace WonderTradeBot
         /// <param name="e"></param>
         private void Bot_WonderTrade7_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ntrClient.disconnect();
+            ntrClient.Disconnect();
         }
 
         /// <summary>
         /// Reference for storing bot-related files.
         /// </summary>
-        public static string BotFolder
-        {
-            get
-            {
-                return Path.Combine(Application.StartupPath, "Bot");
-            }
-        }
+        public static string BotFolder { get; } = Path.Combine(Application.StartupPath, "Bot");
 
         /// <summary>
         /// Write data to the log.
         /// </summary>
         /// <param name="message">String which will be added to the log</param>
-        public static void Report(string message)
-        {
-            Console.WriteLine(message);
-        }
+        public static void Report(string message) => Console.WriteLine(message);
 
         /// <summary>
-        /// Check if a pokémon is legal,
-        /// </summary>
-        /// <param name="poke">PKM data to check.</param>
-        /// <returns>Returns true if the pokémon is legal or if the program is in illegal
-        /// mode. Returns false otherwise.</returns>
-        public static bool IsLegal(PKM poke)
-        {
-            LegalityAnalysis Legal = new LegalityAnalysis(poke);
-            if (Legal.Parsed)
-            {
-                return Legal.Valid;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        /// <summary>
-        /// Check if a pokémon can be traded via Wonder Trade, checks legality, 
+        /// Check if a pokémon can be traded via Wonder Trade, checks legality,
         /// egg and ribbons.
         /// </summary>
         /// <param name="poke">PKM data to check.</param>
-        /// <returns>Returns false if the pokémon is an egg or has special ribbons. It 
+        /// <returns>Returns false if the pokémon is an egg or has special ribbons. It
         /// also returns false if the pokémon is illegal, except when the program is in
         /// illegal mode.</returns>
         public static bool IsTradeable(PKM poke)
         {
-            if (!IsLegal(poke))
-            { // Don't trade illegal pokemon
+            if (!new LegalityAnalysis(poke).Valid) // Don't trade illegal pokemon
                 return false;
-            }
 
-            if (poke.IsEgg)
-            { // Don't trade eggs
+            if (poke.IsEgg) // Don't trade eggs
                 return false;
-            }
 
-            if (poke.Format == 6)
-            {
-                var poke6 = new PK6(poke.Data);
-                if (poke6.RibbonCountry || poke6.RibbonWorld || poke6.RibbonClassic ||
-                    poke6.RibbonPremier || poke6.RibbonEvent || poke6.RibbonBirthday ||
-                    poke6.RibbonSpecial || poke6.RibbonSouvenir || poke6.RibbonWishing ||
-                    poke6.RibbonChampionBattle || poke6.RibbonChampionRegional ||
-                    poke6.RibbonChampionNational || poke6.RibbonChampionWorld)
-                { // Check for Special Ribbons
-                    return false;
-                }
-            }
-            if (poke.Format == 7)
-            {
-                var poke7 = new PK7(poke.Data);
-                if (poke7.RibbonCountry || poke7.RibbonWorld || poke7.RibbonClassic ||
-                    poke7.RibbonPremier || poke7.RibbonEvent || poke7.RibbonBirthday ||
-                    poke7.RibbonSpecial || poke7.RibbonSouvenir || poke7.RibbonWishing ||
-                    poke7.RibbonChampionBattle || poke7.RibbonChampionRegional ||
-                    poke7.RibbonChampionNational || poke7.RibbonChampionWorld)
-                { // Check for Special Ribbons
-                    return false;
-                }
-            }
+            if (HasUntradableRibbon(poke))
+                return false;
+
             return true;
+        }
+
+        private static bool HasUntradableRibbon(PKM poke)
+        {
+            switch (poke)
+            {
+                case PK6 pk6:
+                    return pk6.RibbonCountry || pk6.RibbonWorld || pk6.RibbonClassic || pk6.RibbonPremier
+                           || pk6.RibbonEvent || pk6.RibbonBirthday || pk6.RibbonSpecial || pk6.RibbonSouvenir
+                           || pk6.RibbonWishing || pk6.RibbonChampionBattle || pk6.RibbonChampionRegional
+                           || pk6.RibbonChampionNational || pk6.RibbonChampionWorld;
+                case PK7 pk7:
+                    return pk7.RibbonCountry || pk7.RibbonWorld || pk7.RibbonClassic || pk7.RibbonPremier
+                           || pk7.RibbonEvent || pk7.RibbonBirthday || pk7.RibbonSpecial || pk7.RibbonSouvenir
+                           || pk7.RibbonWishing || pk7.RibbonChampionBattle || pk7.RibbonChampionRegional
+                           || pk7.RibbonChampionNational || pk7.RibbonChampionWorld;
+                default:
+                    return false;
+            }
+        }
+
+        private static uint GetBoxOffset(uint startOffset, uint box, uint slot)
+        {
+            return startOffset + (232 * ((box * 30) + slot));
         }
 
         /// <summary>
@@ -1662,230 +1510,191 @@ namespace WonderTradeBot
         /// <param name="startOffset">Offset of the first pokémon in the PC.</param>
         /// <param name="boxSource">Box reference.</param>
         /// <param name="slotSource">Slot reference.</param>
-        /// <returns>Returns an unsigned integer with the RAM address of the selected PC 
+        /// <returns>Returns an unsigned integer with the RAM address of the selected PC
         /// slot</returns>
-        public static uint GetBoxOffset(uint startOffset, NumericUpDown boxSource,
-            NumericUpDown slotSource)
+        public static uint GetBoxOffset(uint startOffset, NumericUpDown boxSource, NumericUpDown slotSource)
         {
-            return startOffset + (uint)(boxSource.Value - 1) * 30 * 232 +
-                (uint)(slotSource.Value - 1) * 232;
-        }
-
-        /// <summary>
-        /// Gets the zero-indexed value of a NumpericUpDown field.
-        /// </summary>
-        /// <param name="ctrl"></param>
-        /// <returns>Returns the value of the NumericUpDown minus one.</returns>
-        public static int GetIndex(NumericUpDown ctrl)
-        {
-            return (int)ctrl.Value - 1;
+            uint box = (uint)(boxSource.Value - 1);
+            uint slot = (uint)(slotSource.Value - 1);
+            return GetBoxOffset(startOffset, box, slot);
         }
 
         /// <summary>
         /// Compare a pokémon against a list of filters.</summary>
         /// <param name="poke">PKM data to compare.</param>
         /// <param name="filters">Filter list.</param>
-        /// <returns>If the pokémon passes all the tests of one of the filters this
-        /// method returns the filter position in the list. If no match is found it
-        /// returns -1.</returns>
+        /// <returns>
+        /// If the pokémon passes all the tests of one of the filters this method returns the filter position in the list.
+        /// If no match is found it  returns -1.
+        /// </returns>
         public static int CheckFilters(PKM poke, DataGridView filters)
         {
-            int currentFilter;
-            int failedTests;
-            int perfectIVs;
-            if (filters.Rows.Count > 0)
+            if (filters.Rows.Count <= 0)
+                return 1;
+
+            for (var filter = 0; filter < filters.Rows.Count; filter++)
             {
-                currentFilter = 0;
-                foreach (DataGridViewRow row in filters.Rows)
+                DataGridViewRow row = filters.Rows[filter];
+                bool failedTests = GetPassesTests(poke, filter, row);
+                if (failedTests)
+                    return filter;
+            }
+            return -1;
+        }
+
+        private static bool GetPassesTests(PKM pk, int currentFilter, DataGridViewRow row)
+        {
+            Report($"{Environment.NewLine}Filter: Analyze pokémon using filter # {currentFilter}");
+
+            // Test shiny
+            var shiny = (int)row.Cells[0].Value;
+            if (shiny == 1)
+            {
+                if (pk.IsShiny)
                 {
-                    currentFilter++;
-                    Report("\r\nFilter: Analyze pokémon using filter # " + currentFilter);
-                    failedTests = 0;
-                    perfectIVs = 0;
-                    // Test shiny
-                    if ((int)row.Cells[0].Value == 1)
-                    {
-                        if (poke.IsShiny)
-                        {
-                            Report("Filter: Shiny - PASS");
-                        }
-                        else
-                        {
-                            Report("Filter: Shiny - FAIL");
-                            failedTests++;
-                        }
-                    }
-                    else
-                    {
-                        Report("Filter: Shiny - Don't care");
-                    }
-
-                    // Test nature
-                    if ((int)row.Cells[1].Value < 0 || poke.Nature ==
-                        (int)row.Cells[1].Value)
-                    {
-                        Report("Filter: Nature - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Nature - FAIL");
-                        failedTests++;
-                    }
-
-                    // Test Ability
-                    if ((int)row.Cells[2].Value < 0 || (poke.Ability - 1) ==
-                        (int)row.Cells[2].Value)
-                    {
-                        Report("Filter: Ability - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Ability - FAIL");
-                        failedTests++;
-                    }
-
-                    // Test Hidden Power
-                    if ((int)row.Cells[3].Value < 0 || poke.HPType ==
-                        (int)row.Cells[3].Value)
-                    {
-                        Report("Filter: Hidden Power - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Hidden Power - FAIL");
-                        failedTests++;
-                    }
-
-                    // Test Gender
-                    if ((int)row.Cells[4].Value < 0 || (int)row.Cells[4].Value ==
-                        poke.Gender)
-                    {
-                        Report("Filter: Gender - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Gender - FAIL");
-                        failedTests++;
-                    }
-
-                    // Test HP
-                    if (IVCheck((int)row.Cells[5].Value, poke.IV_HP,
-                        (int)row.Cells[6].Value))
-                    {
-                        Report("Filter: Hit Points IV - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Hit Points IV - FAIL");
-                        failedTests++;
-                    }
-                    if (poke.IV_HP == 31)
-                    {
-                        perfectIVs++;
-                    }
-
-                    // Test Atk
-                    if (IVCheck((int)row.Cells[7].Value, poke.IV_ATK,
-                        (int)row.Cells[8].Value))
-                    {
-                        Report("Filter: Attack IV - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Attack IV - FAIL");
-                        failedTests++;
-                    }
-                    if (poke.IV_ATK == 31)
-                    {
-                        perfectIVs++;
-                    }
-
-                    // Test Def
-                    if (IVCheck((int)row.Cells[9].Value, poke.IV_DEF,
-                        (int)row.Cells[10].Value))
-                    {
-                        Report("Filter: Defense IV - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Defense IV - FAIL");
-                        failedTests++;
-                    }
-                    if (poke.IV_DEF == 31)
-                    {
-                        perfectIVs++;
-                    }
-
-                    // Test SpA
-                    if (IVCheck((int)row.Cells[11].Value, poke.IV_SPA,
-                        (int)row.Cells[12].Value))
-                    {
-                        Report("Filter: Special Attack IV - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Special Attack IV - FAIL");
-                        failedTests++;
-                    }
-                    if (poke.IV_SPA == 31)
-                    {
-                        perfectIVs++;
-                    }
-
-                    // Test SpD
-                    if (IVCheck((int)row.Cells[13].Value, poke.IV_SPD,
-                        (int)row.Cells[14].Value))
-                    {
-                        Report("Filter: Special Defense IV - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Special Defense IV - FAIL");
-                        failedTests++;
-                    }
-                    if (poke.IV_SPD == 31)
-                    {
-                        perfectIVs++;
-                    }
-
-                    // Test Spe
-                    if (IVCheck((int)row.Cells[15].Value, poke.IV_SPE,
-                        (int)row.Cells[16].Value))
-                    {
-                        Report("Filter: Speed IV - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Speed IV - FAIL");
-                        failedTests++;
-                    }
-                    if (poke.IV_SPE == 31)
-                    {
-                        perfectIVs++;
-                    }
-
-                    // Test Perfect IVs
-                    if (IVCheck((int)row.Cells[17].Value, perfectIVs,
-                        (int)row.Cells[18].Value))
-                    {
-                        Report("Filter: Perfect IVs - PASS");
-                    }
-                    else
-                    {
-                        Report("Filter: Perfect IVs - FAIL");
-                        failedTests++;
-                    }
-                    if (failedTests == 0)
-                    {
-                        return currentFilter;
-                    }
+                    Report("Filter: Shiny - PASS");
                 }
-                return -1;
+                else
+                {
+                    Report("Filter: Shiny - FAIL");
+                    return false;
+                }
             }
             else
             {
-                return 1;
+                Report("Filter: Shiny - Don't care");
             }
+
+            // Test nature
+            int nature = (int) row.Cells[1].Value;
+            if (nature < 0 || pk.Nature == nature)
+            {
+                Report("Filter: Nature - PASS");
+            }
+            else
+            {
+                Report("Filter: Nature - FAIL");
+                return false;
+            }
+
+            // Test Ability
+            int ability = (int) row.Cells[2].Value;
+            if (ability < 0 || (pk.Ability - 1) == ability)
+            {
+                Report("Filter: Ability - PASS");
+            }
+            else
+            {
+                Report("Filter: Ability - FAIL");
+                return false;
+            }
+
+            // Test Hidden Power
+            int power = (int) row.Cells[3].Value;
+            if (power < 0 || pk.HPType == power)
+            {
+                Report("Filter: Hidden Power - PASS");
+            }
+            else
+            {
+                Report("Filter: Hidden Power - FAIL");
+                return false;
+            }
+
+            // Test Gender
+            int gender = (int) row.Cells[4].Value;
+            if (gender < 0 || pk.Gender == gender)
+            {
+                Report("Filter: Gender - PASS");
+            }
+            else
+            {
+                Report("Filter: Gender - FAIL");
+                return false;
+            }
+
+            // Test HP
+            int hp1 = (int) row.Cells[5].Value;
+            int hp2 = (int) row.Cells[6].Value;
+            if (IVCheck(hp1, pk.IV_HP, hp2))
+            {
+                Report("Filter: Hit Points IV - PASS");
+            }
+            else
+            {
+                Report("Filter: Hit Points IV - FAIL");
+                return false;
+            }
+
+            // Test Atk
+            if (IVCheck((int)row.Cells[7].Value, pk.IV_ATK, (int)row.Cells[8].Value))
+            {
+                Report("Filter: Attack IV - PASS");
+            }
+            else
+            {
+                Report("Filter: Attack IV - FAIL");
+                return false;
+            }
+
+            // Test Def
+            if (IVCheck((int)row.Cells[9].Value, pk.IV_DEF,
+                (int)row.Cells[10].Value))
+            {
+                Report("Filter: Defense IV - PASS");
+            }
+            else
+            {
+                Report("Filter: Defense IV - FAIL");
+                return false;
+            }
+
+            // Test SpA
+            if (IVCheck((int)row.Cells[11].Value, pk.IV_SPA, (int)row.Cells[12].Value))
+            {
+                Report("Filter: Special Attack IV - PASS");
+            }
+            else
+            {
+                Report("Filter: Special Attack IV - FAIL");
+                return false;
+            }
+
+            // Test SpD
+            if (IVCheck((int)row.Cells[13].Value, pk.IV_SPD, (int)row.Cells[14].Value))
+            {
+                Report("Filter: Special Defense IV - PASS");
+            }
+            else
+            {
+                Report("Filter: Special Defense IV - FAIL");
+                return false;
+            }
+
+            // Test Spe
+            if (IVCheck((int)row.Cells[15].Value, pk.IV_SPE, (int)row.Cells[16].Value))
+            {
+                Report("Filter: Speed IV - PASS");
+            }
+            else
+            {
+                Report("Filter: Speed IV - FAIL");
+                return false;
+            }
+
+            // Test Perfect IVs
+            int perfectIVs = pk.IVs.Count(z => z == pk.MaxIV);
+            if (IVCheck((int)row.Cells[17].Value, perfectIVs, (int)row.Cells[18].Value))
+            {
+                Report("Filter: Perfect IVs - PASS");
+            }
+            else
+            {
+                Report("Filter: Perfect IVs - FAIL");
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -1938,91 +1747,32 @@ namespace WonderTradeBot
         /// <param name="source">Bot name.</param>
         /// <param name="message">Message to be displayed.</param>
         /// <param name="info">Additional informaiton.</param>
-        public static void ShowResult(string source, ErrorMessage message,
-            int[] info = null)
+        public static void ShowResult(string source, BotErrorMessage message, int[] info = null)
+        {
+            string userMessage = message.FormatString(info);
+            var icon = GetIcon(message);
+            MessageBox.Show(userMessage, source, MessageBoxButtons.OK);
+        }
+
+        private static MessageBoxIcon GetIcon(BotErrorMessage message)
         {
             switch (message)
             {
-                case ErrorMessage.Finished:
-                    MessageBox.Show("Bot finished sucessfully.", source,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ErrorMessage.UserStop:
-                    MessageBox.Show("Bot stopped by the user.", source,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ErrorMessage.ReadError:
-                    MessageBox.Show("A error ocurred while reading data from the " +
-                        "3DS RAM.", source, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case ErrorMessage.WriteError:
-                    MessageBox.Show("A error ocurred while writting data to the 3DS RAM.",
-                        source, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case ErrorMessage.ButtonError:
-                    MessageBox.Show("A error ocurred while sending Button commands to " +
-                        "the 3DS.", source, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case ErrorMessage.TouchError:
-                    MessageBox.Show("A error ocurred while sending Touch Screen " +
-                        "commands to the 3DS.", source, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    break;
-                case ErrorMessage.StickError:
-                    MessageBox.Show("A error ocurred while sending Control Stick " +
-                        "commands to the 3DS.", source, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    break;
-                case ErrorMessage.NotInPSS:
-                    MessageBox.Show("Please go to the PSS menu and try again.", source,
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
-                case ErrorMessage.FestivalPlaza:
-                    MessageBox.Show("Bot finished due level-up in Festival Plaza.",
-                        source, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ErrorMessage.SVMatch:
-                    MessageBox.Show($"Finished. A match was found at box {info[0]}, " +
-                        $"slot{info[1]} with the ESV/TSV value: {info[2]}.", source,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ErrorMessage.FilterMatch:
-                    MessageBox.Show($"Finished. A match was found at box {info[0]}, " +
-                        $"slot {info[1]} using filter #{info[2]}.", source,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ErrorMessage.NoMatch:
-                    MessageBox.Show("Bot finished sucessfuly without finding a match " +
-                        "for the current settings.", source, MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                    break;
-                case ErrorMessage.SRMatch:
-                    MessageBox.Show($"Finished. The current pokémon matched filter " +
-                        $"#{info[0]} after {info[1]} soft-resets.", source,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ErrorMessage.BattleMatch:
-                    MessageBox.Show($"Finished. The current pokémon matched filter " +
-                        $"#{info[0]} after {info[1]} battles.", source,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ErrorMessage.Disconnect:
-                    MessageBox.Show("Connection with the 3DS was lost.", source,
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case ErrorMessage.NotWTMenu:
-                    MessageBox.Show("Please, go to the Wonder trade screen and try again.",
-                        source, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case ErrorMessage.GeneralError:
-                    MessageBox.Show("A error has ocurred, see log for detals.", source,
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                case BotErrorMessage.Finished:
+                case BotErrorMessage.UserStop:
+                case BotErrorMessage.FestivalPlaza:
+                case BotErrorMessage.SVMatch:
+                case BotErrorMessage.FilterMatch:
+                case BotErrorMessage.NoMatch:
+                case BotErrorMessage.SRMatch:
+                case BotErrorMessage.BattleMatch:
+                    return MessageBoxIcon.Information;
+
+                case BotErrorMessage.NotInPSS:
+                    return MessageBoxIcon.Warning;
+
                 default:
-                    MessageBox.Show("An unknown error has ocurred, please keep the " +
-                        "log and report this error.", source, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    break;
+                    return MessageBoxIcon.Error;
             }
         }
     }

@@ -37,7 +37,7 @@ namespace com.google.zxing.qrcode.detector
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	sealed class AlignmentPatternFinder
+	internal sealed class AlignmentPatternFinder
 	{
 		
 		//UPGRADE_NOTE: Final was removed from the declaration of 'image '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
@@ -207,7 +207,7 @@ namespace com.google.zxing.qrcode.detector
 			float maxVariance = moduleSize / 2.0f;
 			for (int i = 0; i < 3; i++)
 			{
-				if (System.Math.Abs(moduleSize - stateCount[i]) >= maxVariance)
+				if (Math.Abs(moduleSize - stateCount[i]) >= maxVariance)
 				{
 					return false;
 				}
@@ -283,7 +283,7 @@ namespace com.google.zxing.qrcode.detector
 			}
 			
 			int stateCountTotal = stateCount[0] + stateCount[1] + stateCount[2];
-			if (5 * System.Math.Abs(stateCountTotal - originalStateCountTotal) >= 2 * originalStateCountTotal)
+			if (5 * Math.Abs(stateCountTotal - originalStateCountTotal) >= 2 * originalStateCountTotal)
 			{
 				return System.Single.NaN;
 			}

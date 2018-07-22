@@ -277,13 +277,15 @@ namespace PGLRentalLegality
         public RentalTeam(byte[] data)
         {
             Console.WriteLine(data.Length);
-            team = new List<QRPoke>();
-            team.Add(new QRPoke(data.Take(0x30).ToArray()));
-            team.Add(new QRPoke(data.Skip(0x30).Take(0x30).ToArray()));
-            team.Add(new QRPoke(data.Skip(0x60).Take(0x30).ToArray()));
-            team.Add(new QRPoke(data.Skip(0x90).Take(0x30).ToArray()));
-            team.Add(new QRPoke(data.Skip(0xC0).Take(0x30).ToArray()));
-            team.Add(new QRPoke(data.Skip(0xF0).Take(0x30).ToArray()));
+            team = new List<QRPoke>
+            {
+                new QRPoke(data.Take(0x30).ToArray()),
+                new QRPoke(data.Skip(0x30).Take(0x30).ToArray()),
+                new QRPoke(data.Skip(0x60).Take(0x30).ToArray()),
+                new QRPoke(data.Skip(0x90).Take(0x30).ToArray()),
+                new QRPoke(data.Skip(0xC0).Take(0x30).ToArray()),
+                new QRPoke(data.Skip(0xF0).Take(0x30).ToArray())
+            };
 
             foreach (QRPoke p in team)
                 Console.WriteLine(p.ToShowdownFormat(true) + "\n");
@@ -304,7 +306,7 @@ namespace PGLRentalLegality
             cookie = "";
         }
 
-        public void printByteArray(byte[] b)
+        public void PrintByteArray(byte[] b)
         {
             if (b == null) return;
 
@@ -318,7 +320,7 @@ namespace PGLRentalLegality
 
         //Get QR from HTTP requests.
 
-        public Image getQRData()
+        public Image GetQRData()
         {
             byte[] data = Encoding.ASCII.GetBytes("savedataId=" + sID + "&battleTeamCd=" + tID);
 
@@ -359,17 +361,17 @@ namespace PGLRentalLegality
             }
         }
 
-        public byte[] parseQR(Image q)
+        public byte[] ParseQR(Image q)
         {
             var bitmap = new Bitmap(q);
             var img = new RGBLuminanceSource(bitmap, bitmap.Width, bitmap.Height);
             var hybrid = new HybridBinarizer(img);
             var binaryMap = new BinaryBitmap(hybrid);
-            var reader = new QRCodeReader().decode(binaryMap, null);
+            var reader = new QRCodeReader().Decode(binaryMap, null);
             return Array.ConvertAll(reader.RawBytes, a => (byte)a);
         }
 
-        public byte[] shiftArray(byte[] b)
+        public byte[] ShiftArray(byte[] b)
         {
             byte[] array = new byte[507];
             byte lb = 0;
@@ -393,7 +395,7 @@ namespace PGLRentalLegality
                 .ToArray();
         }
 
-        public byte[] qr_t(byte[] qr)
+        public byte[] QR_t(byte[] qr)
         {
             byte[] aes_ctr_key = ToByteArray("0F8E2F405EAE51504EDBA7B4E297005B");
 
@@ -413,13 +415,13 @@ namespace PGLRentalLegality
             return cipher.ProcessBytes(data);
         }
 
-        public RentalTeam decryptQRCode(Image QR)
+        public RentalTeam DecryptQRCode(Image QR)
         {
             //Read the bytes of the QR code
-            byte[] data = parseQR(QR);
+            byte[] data = ParseQR(QR);
 
             //All data is shifted to the left by 4. Shift the data to the correct location.
-            data = shiftArray(data);
+            data = ShiftArray(data);
 
             //ZXing has added the header bytes to the raw bytes. These are the first 3, so skip them.
             var qrue = data.Skip(3).ToArray();
@@ -433,25 +435,24 @@ namespace PGLRentalLegality
             else
             {
                 //unencrypt the data in the plaintext.
-                byte[] qrDec = qr_t(qrt);
+                byte[] qrDec = QR_t(qrt);
 
                 //build the rental team.
                 return new RentalTeam(qrDec);
             }
         }
 
-
-        public void setsID(string newID)
+        public void SetsID(string newID)
         {
             sID = newID;
         }
 
-        public void settID(string newID)
+        public void SettID(string newID)
         {
             tID = newID;
         }
 
-        public void setCookie(string newCookie)
+        public void SetCookie(string newCookie)
         {
             cookie = newCookie;
         }

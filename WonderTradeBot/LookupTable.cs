@@ -1,21 +1,4 @@
-﻿/// PKMN-NTR - On-the-air memory editor for 3DS Pokémon games
-/// Copyright(C) 2016-2018  PKMN-NTR Dev Team
-///
-/// This program is free software: you can redistribute it and/or modify
-/// it under the terms of the GNU General Public License as published by
-/// the Free Software Foundation, either version 3 of the License, or
-/// (at your option) any later version.
-///
-/// This program is distributed in the hope that it will be useful,
-/// but WITHOUT ANY WARRANTY; without even the implied warranty of
-/// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-/// GNU General Public License for more details.
-///
-/// You should have received a copy of the GNU General Public License
-/// along with this program.If not, see<http://www.gnu.org/licenses/>.
-///
-
-using PKHeX.Core;
+﻿using PKHeX.Core;
 
 namespace pkmn_ntr.Helpers
 {
@@ -23,7 +6,7 @@ namespace pkmn_ntr.Helpers
     /// This class contains RAM memory address, some formulas, button padding and screen
     /// positions, they're used used by the program.
     /// </summary>
-    public class LookupTable
+    public static class LookupTable
     {
         #region RAM Address
 
@@ -578,7 +561,7 @@ namespace pkmn_ntr.Helpers
         }
 
         /// <summary>
-        /// Location of the Current Active Box data in RAM 
+        /// Location of the Current Active Box data in RAM
         /// </summary>
         public static uint CurrentboxOffset
         {
@@ -968,12 +951,15 @@ namespace pkmn_ntr.Helpers
         public static uint[] pokeposX6 = { 30, 60, 90, 120, 150, 180, 30, 60, 90, 120,
             150, 180, 30, 60, 90, 120, 150, 180, 30, 60, 90, 120, 150, 180, 30, 60, 90,
             120, 150, 180 };
+
         public static uint[] pokeposY6 = { 60, 60, 60, 60, 60, 60, 90, 90, 90, 90, 90,
             90, 120, 120, 120, 120, 120, 120, 150, 150, 150, 150, 150, 150, 180, 180,
             180, 180, 180, 180 };
+
         public static uint[] boxposX6 = { 20, 60, 100, 140, 180, 220, 260, 300, 20, 60,
             100, 140, 180, 220, 260, 300, 20, 60, 100, 140, 180, 220, 260, 300, 20, 60,
             100, 140, 180, 220, 260 };
+
         public static uint[] boxposY6 = { 24, 24, 24, 24, 24, 24, 24, 24, 72, 72, 72,
             72, 72, 72, 72, 72, 120, 120, 120, 120, 120, 120, 120, 120, 168, 168, 168,
             168, 168, 168, 168 };
@@ -982,17 +968,19 @@ namespace pkmn_ntr.Helpers
         public static uint[] pokeposX7 = { 30, 60, 90, 120, 150, 180, 30, 60, 90, 120,
             150, 180, 30, 60, 90, 120, 150, 180, 30, 60, 90, 120, 150, 180, 30, 60, 90,
             120, 150, 180 };
+
         public static uint[] pokeposY7 = { 70, 70, 70, 70, 70, 70, 100, 100, 100, 100,
             100, 100, 130, 130, 130, 130, 130, 130, 160, 160, 160, 160, 160, 160, 190,
             190, 190, 190, 190, 190 };
+
         public static uint[] boxposX7 = { 33, 69, 105, 141, 177, 213, 249, 285, 33, 69,
             105, 141, 177, 213, 249, 285, 33, 69, 105, 141, 177, 213, 249, 285, 33, 69,
             105, 141, 177, 213, 249, 285 };
+
         public static uint[] boxposY7 = { 36, 36, 36, 36, 36, 36, 36, 36, 84, 84, 84,
             84, 84, 84, 84, 84, 132, 132, 132, 132, 132, 132, 132, 132, 180, 180, 180,
             180, 180, 180, 180, 180 };
 
         #endregion Box Position
     }
-
 }

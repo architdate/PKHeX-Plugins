@@ -165,7 +165,7 @@ namespace com.google.zxing.datamatrix.detector
 			// or bottom right should work here. The number of transitions could be higher than it should be
 			// due to noise. So we try both and take the min.
 			
-			int dimension = System.Math.Min(transitionsBetween(topLeft, topRight).Transitions, transitionsBetween(bottomRight, topRight).Transitions);
+			int dimension = Math.Min(transitionsBetween(topLeft, topRight).Transitions, transitionsBetween(bottomRight, topRight).Transitions);
 			if ((dimension & 0x01) == 1)
 			{
 				// it can't be odd, so, round... up?
@@ -228,7 +228,7 @@ namespace com.google.zxing.datamatrix.detector
 			int toX = (int) to.X;
 			//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
 			int toY = (int) to.Y;
-			bool steep = System.Math.Abs(toY - fromY) > System.Math.Abs(toX - fromX);
+			bool steep = Math.Abs(toY - fromY) > Math.Abs(toX - fromX);
 			if (steep)
 			{
 				int temp = fromX;
@@ -239,8 +239,8 @@ namespace com.google.zxing.datamatrix.detector
 				toY = temp;
 			}
 			
-			int dx = System.Math.Abs(toX - fromX);
-			int dy = System.Math.Abs(toY - fromY);
+			int dx = Math.Abs(toX - fromX);
+			int dy = Math.Abs(toY - fromY);
 			int error = - dx >> 1;
 			int ystep = fromY < toY?1:- 1;
 			int xstep = fromX < toX?1:- 1;

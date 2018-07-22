@@ -32,7 +32,7 @@ namespace com.google.zxing.oned
 	/// </author>
 	public sealed class UPCEReader:UPCEANReader
 	{
-		override internal BarcodeFormat BarcodeFormat
+		internal override BarcodeFormat BarcodeFormat
 		{
 			get
 			{

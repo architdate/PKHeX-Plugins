@@ -90,7 +90,7 @@ namespace com.google.zxing.oned
 			this.extendedMode = extendedMode;
 		}
 		
-		public override Result decodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
+		public override Result DecodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
 		{
 			
 			int[] start = findAsteriskPattern(row);
@@ -109,7 +109,7 @@ namespace com.google.zxing.oned
 			int lastStart;
 			do 
 			{
-				recordPattern(row, nextStart, counters);
+				RecordPattern(row, nextStart, counters);
 				int pattern = toNarrowWidePattern(counters);
 				if (pattern < 0)
 				{
@@ -213,7 +213,7 @@ namespace com.google.zxing.oned
 						if (toNarrowWidePattern(counters) == ASTERISK_ENCODING)
 						{
 							// Look for whitespace before start pattern, >= 50% of width of start pattern
-							if (row.isRange(System.Math.Max(0, patternStart - (i - patternStart) / 2), patternStart, false))
+							if (row.isRange(Math.Max(0, patternStart - (i - patternStart) / 2), patternStart, false))
 							{
 								return new int[]{patternStart, i};
 							}

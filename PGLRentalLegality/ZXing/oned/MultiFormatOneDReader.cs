@@ -67,7 +67,7 @@ namespace com.google.zxing.oned
 			}
 		}
 		
-		public override Result decodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
+		public override Result DecodeRow(int rowNumber, BitArray row, System.Collections.Hashtable hints)
 		{
 			int size = readers.Count;
 			for (int i = 0; i < size; i++)
@@ -75,7 +75,7 @@ namespace com.google.zxing.oned
 				OneDReader reader = (OneDReader) readers[i];
 				try
 				{
-					return reader.decodeRow(rowNumber, row, hints);
+					return reader.DecodeRow(rowNumber, row, hints);
 				}
 				catch (ReaderException)
 				{

@@ -36,7 +36,7 @@ namespace com.google.zxing.qrcode.detector
 	/// </author>
 	public class Detector
 	{
-		virtual protected internal BitMatrix Image
+		protected internal virtual BitMatrix Image
 		{
 			get
 			{
@@ -44,7 +44,7 @@ namespace com.google.zxing.qrcode.detector
 			}
 			
 		}
-		virtual protected internal ResultPointCallback ResultPointCallback
+		protected internal virtual ResultPointCallback ResultPointCallback
 		{
 			get
 			{
@@ -311,7 +311,7 @@ namespace com.google.zxing.qrcode.detector
 		{
 			// Mild variant of Bresenham's algorithm;
 			// see http://en.wikipedia.org/wiki/Bresenham's_line_algorithm
-			bool steep = System.Math.Abs(toY - fromY) > System.Math.Abs(toX - fromX);
+			bool steep = Math.Abs(toY - fromY) > Math.Abs(toX - fromX);
 			if (steep)
 			{
 				int temp = fromX;
@@ -322,8 +322,8 @@ namespace com.google.zxing.qrcode.detector
 				toY = temp;
 			}
 			
-			int dx = System.Math.Abs(toX - fromX);
-			int dy = System.Math.Abs(toY - fromY);
+			int dx = Math.Abs(toX - fromX);
+			int dy = Math.Abs(toY - fromY);
 			int error = - dx >> 1;
 			int ystep = fromY < toY?1:- 1;
 			int xstep = fromX < toX?1:- 1;
@@ -355,7 +355,7 @@ namespace com.google.zxing.qrcode.detector
 					int diffX = x - fromX;
 					int diffY = y - fromY;
 					//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-					return (float) System.Math.Sqrt((double) (diffX * diffX + diffY * diffY));
+					return (float)Math.Sqrt((double) (diffX * diffX + diffY * diffY));
 				}
 				error += dy;
 				if (error > 0)
@@ -371,7 +371,7 @@ namespace com.google.zxing.qrcode.detector
 			int diffX2 = toX - fromX;
 			int diffY2 = toY - fromY;
 			//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-			return (float) System.Math.Sqrt((double) (diffX2 * diffX2 + diffY2 * diffY2));
+			return (float)Math.Sqrt((double) (diffX2 * diffX2 + diffY2 * diffY2));
 		}
 		
 		/// <summary> <p>Attempts to locate an alignment pattern in a limited region of the image, which is
@@ -395,15 +395,15 @@ namespace com.google.zxing.qrcode.detector
 			// should be
 			//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
 			int allowance = (int) (allowanceFactor * overallEstModuleSize);
-			int alignmentAreaLeftX = System.Math.Max(0, estAlignmentX - allowance);
-			int alignmentAreaRightX = System.Math.Min(image.Width - 1, estAlignmentX + allowance);
+			int alignmentAreaLeftX = Math.Max(0, estAlignmentX - allowance);
+			int alignmentAreaRightX = Math.Min(image.Width - 1, estAlignmentX + allowance);
 			if (alignmentAreaRightX - alignmentAreaLeftX < overallEstModuleSize * 3)
 			{
 				throw ReaderException.Instance;
 			}
 			
-			int alignmentAreaTopY = System.Math.Max(0, estAlignmentY - allowance);
-			int alignmentAreaBottomY = System.Math.Min(image.Height - 1, estAlignmentY + allowance);
+			int alignmentAreaTopY = Math.Max(0, estAlignmentY - allowance);
+			int alignmentAreaBottomY = Math.Min(image.Height - 1, estAlignmentY + allowance);
 			
 			AlignmentPatternFinder alignmentFinder = new AlignmentPatternFinder(image, alignmentAreaLeftX, alignmentAreaTopY, alignmentAreaRightX - alignmentAreaLeftX, alignmentAreaBottomY - alignmentAreaTopY, overallEstModuleSize, resultPointCallback);
 			return alignmentFinder.find();

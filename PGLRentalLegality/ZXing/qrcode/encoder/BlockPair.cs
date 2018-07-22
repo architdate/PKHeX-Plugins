@@ -18,7 +18,7 @@ using ByteArray = com.google.zxing.common.ByteArray;
 namespace com.google.zxing.qrcode.encoder
 {
 	
-	sealed class BlockPair
+	internal sealed class BlockPair
 	{
 		public ByteArray DataBytes
 		{

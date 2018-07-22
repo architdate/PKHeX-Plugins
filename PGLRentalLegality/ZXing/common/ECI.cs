@@ -27,7 +27,7 @@ namespace com.google.zxing.common
 	/// </author>
 	public abstract class ECI
 	{
-		virtual public int Value
+		public virtual int Value
 		{
 			get
 			{

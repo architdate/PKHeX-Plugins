@@ -37,21 +37,16 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BotErrorMessage.cs" />
+    <Compile Include="BotState.cs" />
+    <Compile Include="DataReadyWaiting.cs" />
     <Compile Include="Delg.cs" />
-    <Compile Include="ImageUtil.cs" />
     <Compile Include="LookupTable.cs" />
     <Compile Include="NTR.cs" />
     <Compile Include="RemoteControl.cs" />
     <Compile Include="ScriptHelper.cs" />
-    <Compile Include="WinFormsUtil.cs" />
     <Compile Include="WonderTradeBot.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -26,7 +26,7 @@ namespace Misc
 
         public virtual uint GetNext32BitNumber()
         {
-            Seed = Seed * mult + add;
+            Seed = (Seed * mult) + add;
 
             return Seed;
         }
@@ -34,7 +34,7 @@ namespace Misc
         public void GetNext32BitNumber(int num)
         {
             for (int i = 0; i < num; i++)
-                Seed = Seed * mult + add;
+                Seed = (Seed * mult) + add;
         }
     }
 
@@ -258,20 +258,14 @@ namespace Misc
         /// <summary>
         ///     Generic Frame creation where the values that are to be used for each part are passed in explicitly. There will be other methods to support splitting a list and then passing them to this for creation.
         /// </summary>
-        public static Frame GenerateFrame(
-            uint seed,
-            FrameType frameType,
-            uint number,
-            uint rngResult,
-            uint pid1,
-            uint pid2,
-            uint dv1,
-            uint dv2,
-            uint id,
-            uint sid,
+        public static Frame GenerateFrame(uint seed, FrameType frameType, uint number, uint rngResult,
+            uint pid1, uint pid2, uint dv1, uint dv2,
+            uint id, uint sid,
             uint offset)
         {
-            var frame = new Frame(frameType)
+            //  Set up the ID and SID before we calculate
+            //  the pid, as we are going to need this.
+            return new Frame(frameType)
             {
                 Seed = seed,
                 Number = number,
@@ -282,29 +276,16 @@ namespace Misc
                 Pid = (pid2 << 16) | pid1,
                 Dv = (dv2 << 16) | dv1
             };
-
-
-            //  Set up the ID and SID before we calculate
-            //  the pid, as we are going to need this.
-
-
-            return frame;
         }
 
         // for Methods 1, 2, 4
-        public static Frame GenerateFrame(
-            uint seed,
-            FrameType frameType,
-            uint number,
-            uint rngResult,
-            uint pid1,
-            uint pid2,
-            uint dv1,
-            uint dv2,
-            uint id,
-            uint sid)
+        public static Frame GenerateFrame(uint seed, FrameType frameType, uint number, uint rngResult,
+            uint pid1, uint pid2, uint dv1, uint dv2,
+            uint id, uint sid)
         {
-            var frame = new Frame(frameType)
+            //  Set up the ID and SID before we calculate
+            //  the pid, as we are going to need this.
+            return new Frame(frameType)
             {
                 Seed = seed,
                 Number = number,
@@ -314,29 +295,12 @@ namespace Misc
                 Pid = (pid2 << 16) | pid1,
                 Dv = (dv2 << 16) | dv1
             };
-            //  Set up the ID and SID before we calculate
-            //  the pid, as we are going to need this.
-
-
-            return frame;
         }
 
         // for channel
-        public static Frame GenerateFrame(
-            uint seed,
-            FrameType frameType,
-            uint number,
-            uint rngResult,
-            uint pid1,
-            uint pid2,
-            uint dv1,
-            uint dv2,
-            uint dv3,
-            uint dv4,
-            uint dv5,
-            uint dv6,
-            uint id,
-            uint sid)
+        public static Frame GenerateFrame(uint seed, FrameType frameType, uint number, uint rngResult,
+            uint pid1, uint pid2, uint dv1, uint dv2, uint dv3, uint dv4, uint dv5, uint dv6,
+            uint id, uint sid)
         {
             if ((pid2 > 7 ? 0 : 1) != (pid1 ^ 40122 ^ sid))
                 pid1 ^= 0x8000;
@@ -718,15 +682,15 @@ namespace Misc
                     keys = new Dictionary<uint, uint>();
                     for (uint i = 0; i < 256; i++)
                     {
-                        uint right = 0x41c64e6d * i + 0x6073;
+                        uint right = (0x41c64e6d * i) + 0x6073;
                         ushort val = (ushort)(right >> 16);
 
                         keys[val] = i;
                         keys[--val] = i;
                     }
 
-                    search1 = second - first * 0x41c64e6d;
-                    search2 = second - (first ^ 0x80000000) * 0x41c64e6d;
+                    search1 = second - (first * 0x41c64e6d);
+                    search2 = second - ((first ^ 0x80000000) * 0x41c64e6d);
                     for (uint cnt = 0; cnt < 256; ++cnt, search1 -= 0xc64e6d00, search2 -= 0xc64e6d00)
                     {
                         uint test = search1 >> 16;
@@ -734,7 +698,7 @@ namespace Misc
                         if (keys.ContainsKey(test))
                         {
                             rng.Seed = (first | (cnt << 8) | keys[test]);
-                            if (((rng.Seed * 0x41c64e6d + 0x6073) & 0x7FFF0000) == second)
+                            if ((((rng.Seed * 0x41c64e6d) + 0x6073) & 0x7FFF0000) == second)
                             {
                                 pid2 = rng.GetNext16BitNumber();
                                 pid1 = rng.GetNext16BitNumber();
@@ -772,7 +736,7 @@ namespace Misc
                         if (keys.ContainsKey(test))
                         {
                             rng.Seed = (first | (cnt << 8) | keys[test]);
-                            if (((rng.Seed * 0x41c64e6d + 0x6073) & 0x7FFF0000) == second)
+                            if ((((rng.Seed * 0x41c64e6d) + 0x6073) & 0x7FFF0000) == second)
                             {
                                 pid2 = rng.GetNext16BitNumber();
                                 pid1 = rng.GetNext16BitNumber();
@@ -812,15 +776,15 @@ namespace Misc
                     keys = new Dictionary<uint, uint>();
                     for (uint i = 0; i < 256; i++)
                     {
-                        uint right = 0x41c64e6d * i + 0x6073;
+                        uint right = (0x41c64e6d * i) + 0x6073;
                         ushort val = (ushort)(right >> 16);
 
                         keys[val] = i;
                         keys[--val] = i;
                     }
 
-                    search1 = second - first * 0x41c64e6d;
-                    search2 = second - (first ^ 0x80000000) * 0x41c64e6d;
+                    search1 = second - (first * 0x41c64e6d);
+                    search2 = second - ((first ^ 0x80000000) * 0x41c64e6d);
                     for (uint cnt = 0; cnt < 256; ++cnt, search1 -= 0xc64e6d00, search2 -= 0xc64e6d00)
                     {
                         uint test = search1 >> 16;
@@ -867,7 +831,7 @@ namespace Misc
                         if (keys.ContainsKey(test))
                         {
                             rng.Seed = (first | (cnt << 8) | keys[test]);
-                            if (((rng.Seed * 0x41c64e6d + 0x6073) & 0x7FFF0000) == second)
+                            if ((((rng.Seed * 0x41c64e6d) + 0x6073) & 0x7FFF0000) == second)
                             {
                                 pid2 = rng.GetNext16BitNumber();
                                 pid1 = rng.GetNext16BitNumber();
@@ -907,14 +871,14 @@ namespace Misc
                     keys = new Dictionary<uint, uint>();
                     for (uint i = 0; i < 256; i++)
                     {
-                        uint right = 0xc2a29a69 * i + 0xe97e7b6a;
+                        uint right = (0xc2a29a69 * i) + 0xe97e7b6a;
                         ushort val = (ushort)(right >> 16);
 
                         keys[val] = i;
                         keys[--val] = i;
                     }
 
-                    search1 = second - first * 0x41c64e6d;
+                    search1 = second - (first * 0x41c64e6d);
                     search2 = second - (first ^ 0x80000000) * 0x41c64e6d;
                     for (uint cnt = 0; cnt < 256; ++cnt, search1 -= 0xc64e6d00, search2 -= 0xc64e6d00)
                     {
@@ -999,7 +963,7 @@ namespace Misc
 
                 case FrameType.ColoXD:
 
-                    t = ((second - 0x343fd * first) - 0x259ec4) & 0xFFFFFFFF;
+                    t = ((second - (0x343fd * first)) - 0x259ec4) & 0xFFFFFFFF;
                     kmax = (0x343fabc02 - t) / 0x80000000;
 
                     for (ulong k = 0; k <= kmax; k++, t += 0x80000000)
@@ -1011,7 +975,7 @@ namespace Misc
                             pid1 = forward.GetNext16BitNumber();
                             pid2 = forward.GetNext16BitNumber();
                             pid = (pid1 << 16) | pid2;
-                            seed = back.GetNext32BitNumber(); ;
+                            seed = back.GetNext32BitNumber();
                             if (pid % 25 == nature)
                             {
                                 var newSeed = new Seed
@@ -1044,7 +1008,7 @@ namespace Misc
                 case FrameType.Channel:
                     first = hp << 27;
 
-                    t = (((spd << 27) - (0x284A930D * first)) - 0x9A974C78) & 0xFFFFFFFF;
+                    t = ((spd << 27) - (0x284A930D * first) - 0x9A974C78) & 0xFFFFFFFF;
                     kmax = ((0x142549847b56cf2 - t) / 0x100000000);
 
                     for (uint k = 0; k <= kmax; k++, t += 0x100000000)
@@ -1219,7 +1183,7 @@ namespace Misc
             return ans;
         }
 
-        public string[] generateWishmkr(uint targetNature)
+        public string[] GenerateWishmkr(uint targetNature)
         {
             uint finalPID = 0;
             uint finalHP = 0;
@@ -1230,15 +1194,15 @@ namespace Misc
             uint finalSPE = 0;
             for (uint x = 0; x <= 0xFFFF; x++)
             {
-                uint pid1 = forward(x);
-                uint pid2 = forward(pid1);
+                uint pid1 = Forward(x);
+                uint pid2 = Forward(pid1);
                 uint pid = (pid1 & 0xFFFF0000) | (pid2 >> 16);
                 uint nature = pid % 25;
 
                 if (nature == targetNature)
                 {
-                    uint ivs1 = forward(pid2);
-                    uint ivs2 = forward(ivs1);
+                    uint ivs1 = Forward(pid2);
+                    uint ivs2 = Forward(ivs1);
                     ivs1 >>= 16;
                     ivs2 >>= 16;
                     uint[] ivs = CreateIVs(ivs1, ivs2);
@@ -1258,9 +1222,9 @@ namespace Misc
             return new string[] { finalPID.ToString("X"), finalHP.ToString(), finalATK.ToString(), finalDEF.ToString(), finalSPA.ToString(), finalSPD.ToString(), finalSPE.ToString() };
         }
 
-        private uint forward(uint seed)
+        private uint Forward(uint seed)
         {
-            return seed * 0x41c64e6d + 0x6073;
+            return (seed * 0x41c64e6d) + 0x6073;
         }
 
         private uint[] CreateIVs(uint iv1, uint ivs2)
@@ -1362,7 +1326,7 @@ namespace Misc
             {
                 generator = new FrameGenerator{FrameType = FrameType.Method1Reverse};
                 IVtoPIDGenerator bacdr = new IVtoPIDGenerator();
-                return bacdr.generateWishmkr(nature);
+                return bacdr.GenerateWishmkr(nature);
             }
             FrameCompare frameCompare = new FrameCompare(Hptofilter(hiddenpower), nature);
             List<Frame> frames = generator.Generate(frameCompare, 0, 0);

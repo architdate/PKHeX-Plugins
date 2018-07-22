@@ -32,7 +32,7 @@ namespace com.google.zxing
 
 	public abstract class Binarizer
 	{
-		virtual public LuminanceSource LuminanceSource
+		public virtual LuminanceSource LuminanceSource
 		{
 			get
 			{

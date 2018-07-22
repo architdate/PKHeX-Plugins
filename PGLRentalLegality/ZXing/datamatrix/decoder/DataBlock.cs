@@ -26,7 +26,7 @@ namespace com.google.zxing.datamatrix.decoder
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	sealed class DataBlock
+	internal sealed class DataBlock
 	{
 		internal int NumDataCodewords
 		{
