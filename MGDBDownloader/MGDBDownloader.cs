@@ -5,6 +5,8 @@ using System.IO.Compression;
 using System.Windows.Forms;
 using PKHeX.Core;
 using System.IO;
+using System.Linq;
+using System.Threading;
 
 namespace MGDBDownloader
 {
@@ -25,6 +27,15 @@ namespace MGDBDownloader
             PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);
             var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);
             LoadMenuStrip(menu);
+
+            // many local files can delay mgdb initialization by PKHeX (file i/o speed)
+            // delay returning control to the main application until the mgdb is finished loading
+            if (Directory.Exists(MGDatabasePath)
+                && Directory.EnumerateFiles(MGDatabasePath, "*", SearchOption.AllDirectories).Any())
+            {
+                while (!EncounterEvent.Initialized)
+                    Thread.Sleep(50);
+            }
         }
 
         private void LoadMenuStrip(ToolStrip menuStrip)
