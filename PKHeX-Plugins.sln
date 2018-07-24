@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportBoxToShowdown", "Expo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WonderTradeBot", "WonderTradeBot\WonderTradeBot.csproj", "{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivingDex", "LivingDex\LivingDex.csproj", "{19621097-4DC3-4B97-9A59-851F9933BDCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,10 @@ Global
 		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19621097-4DC3-4B97-9A59-851F9933BDCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19621097-4DC3-4B97-9A59-851F9933BDCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19621097-4DC3-4B97-9A59-851F9933BDCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19621097-4DC3-4B97-9A59-851F9933BDCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
