@@ -77,7 +77,7 @@ namespace AutoLegalityMod
         /// <param name="pk"></param>
         public static void SetSpeciesBall(PKM pk)
         {
-            if (!new LegalityAnalysis(pk).Report().Contains(V118)) return;
+            if (!new LegalityAnalysis(pk).Report().Contains(LBallEncMismatch)) return;
             if (pk.GenNumber == 5 && pk.Met_Location == 75) pk.Ball = 25;
             else pk.Ball = 4;
         }
@@ -153,8 +153,8 @@ namespace AutoLegalityMod
         {
             LegalityAnalysis la = new LegalityAnalysis(pk);
             string Report = la.Report();
-            if (Report.Contains(V322) || Report.Contains(V324)) pk.FatefulEncounter = true;
-            if (Report.Contains(V325)) pk.FatefulEncounter = false;
+            if (Report.Contains(LFatefulMysteryMissing) || Report.Contains(LFatefulMissing)) pk.FatefulEncounter = true;
+            if (Report.Contains(LFatefulInvalid)) pk.FatefulEncounter = false;
         }
 
         /// <summary>
@@ -450,7 +450,7 @@ namespace AutoLegalityMod
             pk.SetGender(SSet.Gender);
             LegalityAnalysis la = new LegalityAnalysis(pk);
             string Report = la.Report();
-            if (Report.Contains(V255))
+            if (Report.Contains(LMemoryFeelInvalid))
             {
                 if (pk.Gender == 0) pk.Gender = 1;
                 else pk.Gender = 0;
@@ -504,9 +504,9 @@ namespace AutoLegalityMod
         public static void FixRibbons(PKM pk)
         {
             string Report = new LegalityAnalysis(pk).Report();
-            if (Report.Contains(String.Format(V600, "")))
+            if (Report.Contains(String.Format(LRibbonFMissing_0, "")))
             {
-                string[] ribbonList = Report.Split(new string[] { String.Format(V600, "") }, StringSplitOptions.None)[1].Split(new string[] { "\r\n" }, StringSplitOptions.None)[0].Split(new string[] { ", " }, StringSplitOptions.None);
+                string[] ribbonList = Report.Split(new string[] { String.Format(LRibbonFMissing_0, "") }, StringSplitOptions.None)[1].Split(new string[] { "\r\n" }, StringSplitOptions.None)[0].Split(new string[] { ", " }, StringSplitOptions.None);
                 var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
                 List<string> missingRibbons = new List<string>();
                 foreach (var RibbonName in RibbonNames)
@@ -520,9 +520,9 @@ namespace AutoLegalityMod
                     else ReflectUtil.SetValue(pk, missing, -1);
                 }
             }
-            if (Report.Contains(String.Format(V601, "")))
+            if (Report.Contains(String.Format(LRibbonFInvalid_0, "")))
             {
-                string[] ribbonList = Report.Split(new string[] { String.Format(V601, "") }, StringSplitOptions.None)[1].Split(new string[] { "\r\n" }, StringSplitOptions.None)[0].Split(new string[] { ", " }, StringSplitOptions.None);
+                string[] ribbonList = Report.Split(new string[] { String.Format(LRibbonFInvalid_0, "") }, StringSplitOptions.None)[1].Split(new string[] { "\r\n" }, StringSplitOptions.None)[0].Split(new string[] { ", " }, StringSplitOptions.None);
                 var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
                 List<string> invalidRibbons = new List<string>();
                 foreach (var RibbonName in RibbonNames)

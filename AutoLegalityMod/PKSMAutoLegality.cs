@@ -583,7 +583,7 @@ namespace AutoLegalityMod
                 pk.Version = (int)GameVersion.SN;
                 pk.IVs = new int[] { 20, 31, 20, 31, 31, 20 };
             }
-            if (report.Contains(string.Format(V255, "OT")) || report.Contains(string.Format(V255, "HT"))) //V255 = {0} Memory: Invalid Feeling (0 = OT/HT)
+            if (report.Contains(string.Format(LMemoryFeelInvalid, "OT")) || report.Contains(string.Format(LMemoryFeelInvalid, "HT"))) //V255 = {0} Memory: Invalid Feeling (0 = OT/HT)
             {
                 pk.HT_Memory = 3;
                 pk.HT_TextVar = 9;
@@ -596,18 +596,18 @@ namespace AutoLegalityMod
                 pk.OT_Feeling = Memories.GetRandomFeeling(pk.OT_Memory);
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V20)) // V20: Nickname does not match species name
+            if (report.Contains(LNickMatchLanguageFail)) // V20: Nickname does not match species name
             {
                 pk.IsNicknamed = false;
                 pk.Nickname = PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, Generation);
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V410)) // V410 = Mystery Gift fixed PID mismatch.
+            if (report.Contains(LEncGiftPIDMismatch)) // V410 = Mystery Gift fixed PID mismatch.
             {
                 pk.PID = fixedPID;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V411)) // V411 = Encounter type PID mismatch
+            if (report.Contains(LPIDTypeMismatch)) // V411 = Encounter type PID mismatch
             {
                 if ((UsesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.FR) || (UsesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.LG))
                 {
@@ -855,22 +855,22 @@ namespace AutoLegalityMod
                 report = UpdateReport(pk);
             }
 
-            if (report.Contains(V223)) //V223 = Ability mismatch for encounter.
+            if (report.Contains(LAbilityMismatch)) //V223 = Ability mismatch for encounter.
             {
                 pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
                 report = UpdateReport(pk);
-                if (report.Contains(V223)) //V223 = Ability mismatch for encounter.
+                if (report.Contains(LAbilityMismatch)) //V223 = Ability mismatch for encounter.
                 {
                     AlternateAbilityRefresh(pk);
                 }
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V61)) //V61 = Invalid Met Location, expected Transporter.
+            if (report.Contains(LTransferEggLocationTransporter)) //V61 = Invalid Met Location, expected Transporter.
             {
                 pk.Met_Location = 30001;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V118)) //V118 = Can't have ball for encounter type.
+            if (report.Contains(LBallEncMismatch)) //V118 = Can't have ball for encounter type.
             {
                 if (pk.B2W2)
                 {
@@ -883,7 +883,7 @@ namespace AutoLegalityMod
                     report = UpdateReport(pk);
                 }
             }
-            if (report.Contains(V353)) //V353 = Non japanese Mew from Faraway Island. Unreleased event.
+            if (report.Contains(LEncUnreleasedEMewJP)) //V353 = Non japanese Mew from Faraway Island. Unreleased event.
             {
                 bool shiny = pk.IsShiny;
                 pk.Language = 1;
@@ -893,66 +893,66 @@ namespace AutoLegalityMod
                 if (shiny) pk.SetShinySID();
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V208)) //V208 = Encryption Constant matches PID.
+            if (report.Contains(LPIDEqualsEC)) //V208 = Encryption Constant matches PID.
             {
                 int wIndex = Array.IndexOf(Legal.WurmpleEvolutions, pk.Species);
                 uint EC = wIndex < 0 ? Util.Rand32() : PKX.GetWurmpleEC(wIndex / 2);
                 pk.EncryptionConstant = EC;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V216)) //V216 = PID should be equal to EC!
+            if (report.Contains(LTransferPIDECEquals)) //V216 = PID should be equal to EC!
             {
                 pk.EncryptionConstant = pk.PID;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V215)) //V215 = PID should be equal to EC [with top bit flipped]!
+            if (report.Contains(LTransferPIDECBitFlip)) //V215 = PID should be equal to EC [with top bit flipped]!
             {
                 pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
                 if (pk.IsShiny) pk.SetShinyPID();
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V251)) //V251 = PID-Gender mismatch.
+            if (report.Contains(LPIDGenderMismatch)) //V251 = PID-Gender mismatch.
             {
                 pk.Gender = pk.Gender == 0 ? 1 : 0;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V407) || report.Contains(V408)) //V407 = OT from Colosseum/XD cannot be female. V408 = Female OT from Generation 1 / 2 is invalid.
+            if (report.Contains(LG3OTGender) || report.Contains(LG1OTGender)) //V407 = OT from Colosseum/XD cannot be female. V408 = Female OT from Generation 1 / 2 is invalid.
             {
                 pk.OT_Gender = 0;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V85)) //V85 = Current level is below met level.
+            if (report.Contains(LLevelMetBelow)) //V85 = Current level is below met level.
             {
                 pk.CurrentLevel = 100;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(string.Format(V600, "National"))) //V600 = Missing Ribbons: {0} (National in this case)
+            if (report.Contains(string.Format(LRibbonFMissing_0, "National"))) //V600 = Missing Ribbons: {0} (National in this case)
             {
                 ReflectUtil.SetValue(pk, "RibbonNational", -1);
                 report = UpdateReport(pk);
             }
-            if (report.Contains(string.Format(V601, "National"))) //V601 = Invalid Ribbons: {0} (National in this case)
+            if (report.Contains(string.Format(LRibbonFInvalid_0, "National"))) //V601 = Invalid Ribbons: {0} (National in this case)
             {
                 ReflectUtil.SetValue(pk, "RibbonNational", 0);
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V38)) //V38 = OT Name too long.
+            if (report.Contains(LOTLong)) //V38 = OT Name too long.
             {
                 pk.OT_Name = "ARCH";
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V421)) //V421 = OT from Generation 1/2 uses unavailable characters.
+            if (report.Contains(LG1CharOT)) //V421 = OT from Generation 1/2 uses unavailable characters.
             {
                 pk.OT_Name = "ARCH";
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V146))
+            if (report.Contains(LGeoNoCountryHT))
             {
                 var g = (IGeoTrack) pk;
                 g.Geo1_Country = 1;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V150)) //V150 = Memory: Handling Trainer Memory missing.
+            if (report.Contains(LMemoryMissingHT)) //V150 = Memory: Handling Trainer Memory missing.
             {
                 pk.HT_Memory = 3;
                 pk.HT_TextVar = 9;
@@ -961,7 +961,7 @@ namespace AutoLegalityMod
                 pk.HT_Friendship = pk.OT_Friendship;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V152)) //V152 = Memory: Original Trainer Memory missing.
+            if (report.Contains(LMemoryMissingOT)) //V152 = Memory: Original Trainer Memory missing.
             {
                 pk.OT_Memory = 3;
                 pk.OT_TextVar = 9;
@@ -969,7 +969,7 @@ namespace AutoLegalityMod
                 pk.OT_Feeling = Util.Rand.Next(0, 10); // 0-9
                 report = UpdateReport(pk);
             }
-            if (report.Contains(string.Format(V255, "OT")) || report.Contains(string.Format(V255, "HT"))) //V255 = {0} Memory: Invalid Feeling (0 = OT/HT)
+            if (report.Contains(string.Format(LMemoryFeelInvalid, "OT")) || report.Contains(string.Format(LMemoryFeelInvalid, "HT"))) //V255 = {0} Memory: Invalid Feeling (0 = OT/HT)
             {
                 pk.HT_Memory = 3;
                 pk.HT_TextVar = 9;
@@ -982,7 +982,7 @@ namespace AutoLegalityMod
                 pk.OT_Feeling = Memories.GetRandomFeeling(pk.OT_Memory);
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V130)) //V130 = Can't have any OT Memory.
+            if (report.Contains(LMemoryIndexIDOT0)) //V130 = Can't have any OT Memory.
             {
                 pk.OT_Memory = 0;
                 pk.OT_TextVar = 0;
@@ -990,42 +990,42 @@ namespace AutoLegalityMod
                 pk.OT_Feeling = 0;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V137)) //V137 = GeoLocation Memory: Memories should be present.
+            if (report.Contains(LGeoMemoryMissing)) //V137 = GeoLocation Memory: Memories should be present.
             {
                 var g = (IGeoTrack) pk;
                 g.Geo1_Country = 1;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V118)) //V118 = Can't have ball for encounter type.
+            if (report.Contains(LBallEncMismatch)) //V118 = Can't have ball for encounter type.
             {
                 pk.Ball = 4;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V302)) //Geolocation: Country is not in 3DS region.
+            if (report.Contains(LGeoHardwareInvalid)) //Geolocation: Country is not in 3DS region.
             {
                 pk.Country = 0;
                 pk.Region = 0;
                 pk.ConsoleRegion = 2;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V310)) //V310 = Form cannot exist outside of a battle.
+            if (report.Contains(LFormBattle)) //V310 = Form cannot exist outside of a battle.
             {
                 if (pk.Species == 718 && pk.Ability == 211) pk.AltForm = 3; // Zygarde Edge case
                 else pk.AltForm = 0;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V324)) //V324 = Special ingame Fateful Encounter flag missing.
+            if (report.Contains(LFatefulMissing)) //V324 = Special ingame Fateful Encounter flag missing.
             {
                 pk.FatefulEncounter = true;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V325)) //V325 = Fateful Encounter should not be checked.
+            if (report.Contains(LFatefulInvalid)) //V325 = Fateful Encounter should not be checked.
 
             {
                 pk.FatefulEncounter = false;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V381)) //V381 = Encounter Type does not match encounter.
+            if (report.Contains(LEncTypeMismatch)) //V381 = Encounter Type does not match encounter.
             {
                 IEncounterable EncounterMatch = new LegalityAnalysis(pk).Info.EncounterMatch;
                 EncounterType type = EncounterType.None;
@@ -1047,12 +1047,12 @@ namespace AutoLegalityMod
                     Console.WriteLine("This should never happen");
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V86)) //V86 = Evolution not valid (or level/trade evolution unsatisfied).
+            if (report.Contains(LEvoInvalid)) //V86 = Evolution not valid (or level/trade evolution unsatisfied).
             {
                 pk.Met_Level--;
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V411)) //V411 = Encounter Type PID mismatch.
+            if (report.Contains(LPIDTypeMismatch)) //V411 = Encounter Type PID mismatch.
             {
                 if (pk.Version == (int) GameVersion.CXD)
                     pk = SetPIDSID(pk, pk.IsShiny, true);
@@ -1063,10 +1063,10 @@ namespace AutoLegalityMod
                     return false;
 
                 report = UpdateReport(pk);
-                if (report.Equals(V411)) // V411 = Encounter Type PID mismatch.
+                if (report.Equals(LPIDTypeMismatch)) // V411 = Encounter Type PID mismatch.
                     return true;
 
-                if (report.Contains(V251)) // V251 = PID-Gender mismatch.
+                if (report.Contains(LPIDGenderMismatch)) // V251 = PID-Gender mismatch.
                 {
                     pk.Gender = pk.Gender == 0 ? 1 : 0;
                     report = UpdateReport(pk);
@@ -1074,12 +1074,12 @@ namespace AutoLegalityMod
                         return false;
                 }
             }
-            if (report.Contains(V41)) // V41 = Can't Hyper Train a Pokémon with perfect IVs.
+            if (report.Contains(LHyperPerfectAll)) // V41 = Can't Hyper Train a Pokémon with perfect IVs.
             {
                 ((IHyperTrain)pk).HyperTrainClear();
                 report = UpdateReport(pk);
             }
-            if (report.Contains(V42)) // V42 = Can't Hyper Train a perfect IV.
+            if (report.Contains(LHyperPerfectOne)) // V42 = Can't Hyper Train a perfect IV.
             {
                 if (pk is IHyperTrain h)
                 {
