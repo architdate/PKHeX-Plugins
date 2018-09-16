@@ -39,33 +39,40 @@ namespace AutoLegalityMod
             {
                 if (pkmn != null)
                 {
-                    PKM pk = PKMConverter.ConvertToType(pkmn, SAV.PKMType, out _); // All Possible PKM files
-                    LegalInfo info = new LegalInfo(pk);
-                    var pidiv = info.PIDIV ?? MethodFinder.Analyze(pk);
-                    PIDType Method = PIDType.None;
-                    if (pidiv != null) Method = pidiv.Type;
-                    SetVersion(pk, pkmn); // PreEmptive Version setting
-                    SetSpeciesLevel(pk, SSet, Form);
-                    SetMovesEVsItems(pk, SSet);
-                    SetTrainerDataAndMemories(pk);
-                    SetNatureAbility(pk, SSet);
-                    SetIVsPID(pk, SSet, Method, HPType, pkmn);
-                    PrintLegality(pk);
-                    ColosseumFixes(pk);
-                    pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
-                    SetEncryptionConstant(pk);
-                    SetShinyBoolean(pk, SSet.Shiny);
-                    CheckAndSetFateful(pk);
-                    FixGender(pk, SSet);
-                    FixRibbons(pk);
-                    FixMemoriesPKM(pk);
-                    SetSpeciesBall(pk);
-                    SetHappiness(pk);
-                    LegalityAnalysis la = new LegalityAnalysis(pk);
-                    if (la.Valid) satisfied = true;
-                    if (satisfied)
-                        return pk;
-                    else Console.WriteLine(la.Report());
+                    try
+                    {
+                        PKM pk = PKMConverter.ConvertToType(pkmn, SAV.PKMType, out _); // All Possible PKM files
+                        LegalInfo info = new LegalInfo(pk);
+                        var pidiv = info.PIDIV ?? MethodFinder.Analyze(pk);
+                        PIDType Method = PIDType.None;
+                        if (pidiv != null) Method = pidiv.Type;
+                        SetVersion(pk, pkmn); // PreEmptive Version setting
+                        SetSpeciesLevel(pk, SSet, Form);
+                        SetMovesEVsItems(pk, SSet);
+                        SetTrainerDataAndMemories(pk);
+                        SetNatureAbility(pk, SSet);
+                        SetIVsPID(pk, SSet, Method, HPType, pkmn);
+                        PrintLegality(pk);
+                        ColosseumFixes(pk);
+                        pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
+                        SetEncryptionConstant(pk);
+                        SetShinyBoolean(pk, SSet.Shiny);
+                        CheckAndSetFateful(pk);
+                        FixGender(pk, SSet);
+                        FixRibbons(pk);
+                        FixMemoriesPKM(pk);
+                        SetSpeciesBall(pk);
+                        SetHappiness(pk);
+                        LegalityAnalysis la = new LegalityAnalysis(pk);
+                        if (la.Valid) satisfied = true;
+                        if (satisfied)
+                            return pk;
+                        else Console.WriteLine(la.Report());
+                    }
+                    catch
+                    {
+                        continue;
+                    }
                 }
             }
             return roughPK;
@@ -569,6 +576,7 @@ namespace AutoLegalityMod
                 foreach (var enc in encs)
                 {
                     var result = enc.ConvertToPKM(info);
+                    if (result.Version != (int)ver) continue;
                     yield return result;
                 }
             }
