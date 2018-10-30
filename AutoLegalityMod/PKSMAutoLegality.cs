@@ -122,18 +122,18 @@ namespace AutoLegalityMod
                         Set.HT_Name = "Archit";
                         Set = SetSuggestedRelearnMoves_PKSM(Set);
                         Set.SetPIDNature(Set.Nature);
-                        if (shiny) Set.SetShinyPID();
+                        if (shiny) Set.SetShiny();
                         if (Set.PID == 0)
                         {
                             Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
-                            if (shiny) Set.SetShinyPID();
+                            if (shiny) Set.SetShiny();
                         }
                         Set = FixMemoriesPKM(Set);
                         if (Set.GenNumber < 6) Set.EncryptionConstant = Set.PID;
                         if (CommonErrorHandling2(Set))
                         {
                             HyperTrain(Set);
-                            if (shiny && !Set.IsShiny) Set.SetShinyPID();
+                            if (shiny && !Set.IsShiny) Set.SetShiny();
                             return Set;
                         }
                         HyperTrain(Set);
@@ -219,12 +219,12 @@ namespace AutoLegalityMod
                         Set.CurrentHandler = 1;
                         Set.HT_Name = "Archit";
                         Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
-                        if (shiny) Set.SetShinyPID();
+                        if (shiny) Set.SetShiny();
                         if (Set.PID == 0)
                         {
                             Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
                             if (shiny)
-                                Set.SetShinyPID();
+                                Set.SetShiny();
                         }
 
                         Set.RefreshAbility(abilitynum);
@@ -235,7 +235,7 @@ namespace AutoLegalityMod
                         if (CommonErrorHandling2(Set))
                         {
                             HyperTrain(Set);
-                            if (shiny) Set.SetShinyPID();
+                            if (shiny) Set.SetShiny();
                             return Set;
                         }
 
@@ -261,7 +261,7 @@ namespace AutoLegalityMod
                                 return Set;
 
                             Set = returnval;
-                            Set.SetShinyPID();
+                            Set.SetShiny();
 
                             if (new LegalityAnalysis(Set).Valid)
                                 return Set;
@@ -277,7 +277,7 @@ namespace AutoLegalityMod
                                 Set.FatefulEncounter = el.Fateful;
                                 if (el.RibbonWishing) ReflectUtil.SetValue(Set, "RibbonWishing", -1);
                                 Set.RelearnMoves = el.Relearn;
-                                if (SSet.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random)) Set.SetShinyPID();
+                                if (SSet.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random)) Set.SetShiny();
                                 else if (el.Shiny == Shiny.Never && Set.IsShiny) Set.PID ^= 0x10000000;
                                 else Set.SetPIDGender(Set.Gender);
                             }
@@ -442,7 +442,7 @@ namespace AutoLegalityMod
                         if (shiny && !eventpk.IsShiny && Generation > 4)
                         {
                             if (PIDType == 1)
-                                eventpk.SetShinyPID();
+                                eventpk.SetShiny();
                             else if (PIDType == 3)
                                 continue;
                         }
@@ -908,7 +908,7 @@ namespace AutoLegalityMod
             if (report.Contains(LTransferPIDECBitFlip)) //V215 = PID should be equal to EC [with top bit flipped]!
             {
                 pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
-                if (pk.IsShiny) pk.SetShinyPID();
+                if (pk.IsShiny) pk.SetShiny();
                 report = UpdateReport(pk);
             }
             if (report.Contains(LPIDGenderMismatch)) //V251 = PID-Gender mismatch.
