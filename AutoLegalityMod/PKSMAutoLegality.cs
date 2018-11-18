@@ -50,12 +50,13 @@ namespace AutoLegalityMod
 
             int[] eventList = new int[] { 719, 649, 720, 385, 647, 648, 721, 801, 802, 807 };
 
-            int[] GameVersionList = new int[] { (int)GameVersion.UM, (int)GameVersion.US, (int)GameVersion.MN, (int)GameVersion.SN, (int)GameVersion.AS,
-                                                (int)GameVersion.OR, (int)GameVersion.X, (int)GameVersion.Y, (int)GameVersion.B, (int)GameVersion.B2,
-                                                (int)GameVersion.W, (int)GameVersion.W2, (int)GameVersion.D, (int)GameVersion.P, (int)GameVersion.Pt,
-                                                (int)GameVersion.HG, (int)GameVersion.SS, (int)GameVersion.R, (int)GameVersion.S, (int)GameVersion.E,
-                                                (int)GameVersion.FR, (int)GameVersion.LG, (int)GameVersion.CXD, (int)GameVersion.RD, (int)GameVersion.GN,
-                                                (int)GameVersion.BU, (int)GameVersion.YW, (int)GameVersion.GD, (int)GameVersion.SV, (int)GameVersion.C };
+            int[] GameVersionList = new int[] { (int)GameVersion.GP, (int)GameVersion.GE, (int)GameVersion.UM, (int)GameVersion.US, (int)GameVersion.MN,
+                                                (int)GameVersion.SN, (int)GameVersion.AS, (int)GameVersion.OR, (int)GameVersion.X, (int)GameVersion.Y,
+                                                (int)GameVersion.B, (int)GameVersion.B2, (int)GameVersion.W, (int)GameVersion.W2, (int)GameVersion.D,
+                                                (int)GameVersion.P, (int)GameVersion.Pt, (int)GameVersion.HG, (int)GameVersion.SS, (int)GameVersion.R,
+                                                (int)GameVersion.S, (int)GameVersion.E, (int)GameVersion.FR, (int)GameVersion.LG, (int)GameVersion.CXD,
+                                                (int)GameVersion.RD, (int)GameVersion.GN, (int)GameVersion.BU, (int)GameVersion.YW, (int)GameVersion.GD,
+                                                (int)GameVersion.SV, (int)GameVersion.C, (int)GameVersion.GO};
 
             foreach (int mon in legendaryList)
             {
@@ -161,6 +162,17 @@ namespace AutoLegalityMod
                 {
                     if (Set.DebutGeneration > ((GameVersion)GameVersionList[i]).GetGeneration()) continue;
                     if (Set.Met_Level == 100) Set.Met_Level = 0;
+                    if (Set is PB7)
+                    {
+                        PKM set2 = Set;
+                        Set = Set as PB7;
+                        if (Set == null) Set = set2;
+                        else
+                        {
+                            ((PB7)Set).ResetCalculatedValues();
+                            ((PB7)Set).Stat_CP = ((PB7)Set).CalcCP;
+                        }
+                    }
                     Set.WasEgg = false;
                     Set.EggMetDate = null;
                     Set.Egg_Location = 0;
@@ -253,7 +265,7 @@ namespace AutoLegalityMod
                             PKM returnval = Set;
                             if (shiny && Set.IsShiny)
                                 return Set;
-                            if (!shiny || Set.IsShiny)
+                            if (!requestedShiny || Set.IsShiny)
                                 return returnval;
 
                             Set.SetShinySID();
@@ -547,6 +559,17 @@ namespace AutoLegalityMod
         {
             if (pk.Moves.Contains(218)) pk.CurrentFriendship = 0;
             else pk.CurrentFriendship = 255;
+            if (pk is PB7)
+            {
+                PKM set2 = pk;
+                pk = pk as PB7;
+                if (pk == null) pk = set2;
+                else
+                {
+                    ((PB7)pk).ResetCalculatedValues();
+                    ((PB7)pk).Stat_CP = ((PB7)pk).CalcCP;
+                }
+            }
         }
 
         private static List<EncounterStatic> EdgeMons(int Game, PKM pk)
@@ -784,11 +807,13 @@ namespace AutoLegalityMod
 
             if (Set.RelearnMoves.SequenceEqual(m))
                 return Set;
-
-            Set.RelearnMove1 = m[0];
-            Set.RelearnMove2 = m[1];
-            Set.RelearnMove3 = m[2];
-            Set.RelearnMove4 = m[3];
+            if (m.Length > 3)
+            {
+                Set.RelearnMove1 = m[0];
+                Set.RelearnMove2 = m[1];
+                Set.RelearnMove3 = m[2];
+                Set.RelearnMove4 = m[3];
+            }
             return Set;
         }
 
@@ -855,6 +880,16 @@ namespace AutoLegalityMod
                 report = UpdateReport(pk);
             }
 
+            if (report.Contains(LNickMatchLanguageFail))
+            {
+                pk.Nickname = PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, SAV.Generation); // failsafe to reset nick
+                report = UpdateReport(pk);
+            }
+            if (report.Contains(LStatIncorrectCP))
+            {
+                ((PB7)pk).ResetCP();
+                report = UpdateReport(pk);
+            }
             if (report.Contains(LAbilityMismatch)) //V223 = Ability mismatch for encounter.
             {
                 pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
