@@ -68,6 +68,8 @@ namespace AutoLegalityMod
                         if (satisfied)
                             return pk;
                         else Console.WriteLine(la.Report());
+                        satisfied = true;
+                        return pk;
                     }
                     catch
                     {
@@ -207,12 +209,20 @@ namespace AutoLegalityMod
         public static void SetMovesEVsItems(PKM pk, ShowdownSet SSet)
         {
             pk.SetMoves(SSet.Moves, true);
-            pk.EVs = SSet.EVs;
             pk.CurrentFriendship = SSet.Friendship;
-            pk.ApplyHeldItem(SSet.HeldItem, SSet.Format);
-            var legal = new LegalityAnalysis(pk);
-            if (legal.Parsed && !pk.WasEvent)
-                pk.RelearnMoves = pk.GetSuggestedRelearnMoves(legal);
+            if (pk is PB7)
+            {
+                ((PB7)pk).ResetCalculatedValues();
+                ((PB7)pk).Stat_CP = ((PB7)pk).CalcCP;
+            }
+            else
+            {
+                pk.EVs = SSet.EVs;
+                pk.ApplyHeldItem(SSet.HeldItem, SSet.Format);
+                var legal = new LegalityAnalysis(pk);
+                if (legal.Parsed && !pk.WasEvent)
+                    pk.RelearnMoves = pk.GetSuggestedRelearnMoves(legal);
+            }
         }
 
         /// <summary>
@@ -524,7 +534,7 @@ namespace AutoLegalityMod
                 foreach (string missing in missingRibbons)
                 {
                     if (missing == "RibbonCountMemoryBattle" || missing == "RibbonCountMemoryContest") ReflectUtil.SetValue(pk, missing, 0);
-                    else ReflectUtil.SetValue(pk, missing, -1);
+                    else ReflectUtil.SetValue(pk, missing, true);
                 }
             }
             if (Report.Contains(String.Format(LRibbonFInvalid_0, "")))
@@ -553,6 +563,11 @@ namespace AutoLegalityMod
         {
             if (pk.Moves.Contains(218)) pk.CurrentFriendship = 0;
             else pk.CurrentFriendship = 255;
+            if (pk is PB7)
+            {
+                ((PB7)pk).ResetCalculatedValues();
+                ((PB7)pk).Stat_CP = ((PB7)pk).CalcCP;
+            }
         }
 
         /// <summary>
