@@ -214,6 +214,13 @@ namespace AutoLegalityMod
             {
                 ((PB7)pk).ResetCalculatedValues();
                 ((PB7)pk).Stat_CP = ((PB7)pk).CalcCP;
+                // Auto Set AVs to 200
+                ((PB7)pk).AV_HP = 200;
+                ((PB7)pk).AV_ATK = 200;
+                ((PB7)pk).AV_DEF = 200;
+                ((PB7)pk).AV_SPA = 200;
+                ((PB7)pk).AV_SPD = 200;
+                ((PB7)pk).AV_SPE = 200;
             }
             else
             {
