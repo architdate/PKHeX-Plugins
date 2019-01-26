@@ -488,10 +488,10 @@ namespace AutoLegalityMod
             return Set;
         }
 
-        private static List<EncounterStatic> EdgeMons(GameVersion Game, PKM pk)
+        private static IEnumerable<EncounterStatic> EdgeMons(GameVersion Game, PKM pk)
         {
             var edgecasearray = GetEdgeCaseArray(Game);
-            return new List<EncounterStatic>(edgecasearray.Where(e => e.Species == pk.Species));
+            return edgecasearray.Where(e => e.Species == pk.Species);
         }
 
         private static EncounterStatic[] GetEdgeCaseArray(GameVersion Game)
@@ -507,9 +507,8 @@ namespace AutoLegalityMod
                 case GameVersion.US:
                 case GameVersion.UM:
                     return EdgeCaseLegality.USUMEdgeEnc;
+                default: return Array.Empty<EncounterStatic>();
             }
-
-            return new EncounterStatic[] { };
         }
 
         private bool EventErrorHandling(PKM pk, int Generation, uint fixedPID)
@@ -908,10 +907,7 @@ namespace AutoLegalityMod
             }
             if (report.Contains(LMemoryIndexIDOT0)) //V130 = Can't have any OT Memory.
             {
-                pk.OT_Memory = 0;
-                pk.OT_TextVar = 0;
-                pk.OT_Intensity = 0;
-                pk.OT_Feeling = 0;
+                pk.ClearOTMemory();
                 report = GetReport(pk);
             }
             if (report.Contains(LGeoMemoryMissing)) //V137 = GeoLocation Memory: Memories should be present.
@@ -951,19 +947,8 @@ namespace AutoLegalityMod
             }
             if (report.Contains(LEncTypeMismatch)) //V381 = Encounter Type does not match encounter.
             {
-                IEncounterable EncounterMatch = new LegalityAnalysis(pk).Info.EncounterMatch;
-                EncounterType type = EncounterType.None;
-                // Encounter type data is only stored for gen 4 encounters
-                // All eggs have encounter type none, even if they are from static encounters
-                if (pk.Gen4 && !pk.WasEgg)
-                {
-                    // If there is more than one slot, the get wild encounter have filter for the pkm type encounter like safari/sports ball
-                    if (EncounterMatch is EncounterSlot w)
-                        type = w.TypeEncounter;
-
-                    if (EncounterMatch is EncounterStaticTyped s)
-                        type = s.TypeEncounter;
-                }
+                var match = new LegalityAnalysis(pk).Info.EncounterMatch;
+                var type = GetRequiredEncounterType(pk, match);
 
                 if (!type.Contains(pk.EncounterType))
                     pk.EncounterType = Convert.ToInt32(Math.Log((int)type, 2));
@@ -1002,17 +987,27 @@ namespace AutoLegalityMod
             }
             if (report.Contains(LHyperPerfectOne)) // V42 = Can't Hyper Train a perfect IV.
             {
-                if (!(pk is IHyperTrain h))
-                    return false;
-                if (pk.IV_HP == 31) h.HT_HP = false;
-                if (pk.IV_ATK == 31) h.HT_ATK = false;
-                if (pk.IV_DEF == 31) h.HT_DEF = false;
-                if (pk.IV_SPA == 31) h.HT_SPA = false;
-                if (pk.IV_SPD == 31) h.HT_SPD = false;
-                if (pk.IV_SPE == 31) h.HT_SPE = false;
+                pk.ClearHyperTrainedPerfectIVs();
             }
 
             return false;
+        }
+
+        private static EncounterType GetRequiredEncounterType(PKM pk, IEncounterable match)
+        {
+            // Encounter type data is only stored for gen 4 encounters
+            // All eggs have encounter type none, even if they are from static encounters
+            if (!pk.Gen4 || pk.WasEgg)
+                return EncounterType.None;
+
+            // If there is more than one slot, the get wild encounter have filter for the pkm type encounter like safari/sport ball
+            switch (match)
+            {
+                case EncounterSlot w: return w.TypeEncounter;
+                case EncounterStaticTyped s: return s.TypeEncounter;
+                default:
+                    return EncounterType.None;
+            }
         }
 
         private static string GetReport(PKM pk)

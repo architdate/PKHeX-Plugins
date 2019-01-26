@@ -18,7 +18,8 @@ namespace AutoLegalityMod
             {
                 int wIndex = Array.IndexOf(Legal.WurmpleEvolutions, pk.Species);
                 uint EC = wIndex < 0 ? Util.Rand32() : PKX.GetWurmpleEC(wIndex / 2);
-                if (!(pk.Species == 658 && pk.AltForm == 1)) pk.EncryptionConstant = EC;
+                if (!(pk.Species == 658 && pk.AltForm == 1))
+                    pk.EncryptionConstant = EC;
             }
             else
             {
@@ -146,6 +147,18 @@ namespace AutoLegalityMod
             h.HT_SPE = (pk.IV_SPE != 0 && pk.IV_SPE != 1 && pk.IV_SPE != 31);
         }
 
+        public static void ClearHyperTrainedPerfectIVs(this PKM pk)
+        {
+            if (!(pk is IHyperTrain h))
+                return;
+            if (pk.IV_HP == 31) h.HT_HP = false;
+            if (pk.IV_ATK == 31) h.HT_ATK = false;
+            if (pk.IV_DEF == 31) h.HT_DEF = false;
+            if (pk.IV_SPA == 31) h.HT_SPA = false;
+            if (pk.IV_SPD == 31) h.HT_SPD = false;
+            if (pk.IV_SPE == 31) h.HT_SPE = false;
+        }
+
         public static void FixMemoriesPKM(this PKM pk)
         {
             switch (pk)
@@ -161,6 +174,14 @@ namespace AutoLegalityMod
                     pk6.FixMemories();
                     break;
             }
+        }
+
+        public static void ClearOTMemory(this PKM pk)
+        {
+            pk.OT_Memory = 0;
+            pk.OT_TextVar = 0;
+            pk.OT_Intensity = 0;
+            pk.OT_Feeling = 0;
         }
 
         /// <summary>
@@ -217,18 +238,22 @@ namespace AutoLegalityMod
             string Report = new LegalityAnalysis(pk).Report();
             if (Report.Contains(string.Format(LRibbonFMissing_0, "")))
             {
-                string[] ribbonList = Report.Split(new[] { string.Format(LRibbonFMissing_0, "") }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
+                var ribbonList = Report.Split(new[] { string.Format(LRibbonFMissing_0, "") }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
                 var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
-                List<string> missingRibbons = new List<string>();
+
+                var missingRibbons = new List<string>();
                 foreach (var RibbonName in RibbonNames)
                 {
                     string v = RibbonStrings.GetName(RibbonName).Replace("Ribbon", "");
-                    if (ribbonList.Contains(v)) missingRibbons.Add(RibbonName);
+                    if (ribbonList.Contains(v))
+                        missingRibbons.Add(RibbonName);
                 }
                 foreach (string missing in missingRibbons)
                 {
-                    if (missing == nameof(PK6.RibbonCountMemoryBattle) || missing == nameof(PK6.RibbonCountMemoryContest)) ReflectUtil.SetValue(pk, missing, 0);
-                    else ReflectUtil.SetValue(pk, missing, true);
+                    if (missing == nameof(PK6.RibbonCountMemoryBattle) || missing == nameof(PK6.RibbonCountMemoryContest))
+                        ReflectUtil.SetValue(pk, missing, 0);
+                    else
+                        ReflectUtil.SetValue(pk, missing, true);
                 }
             }
             if (Report.Contains(string.Format(LRibbonFInvalid_0, "")))

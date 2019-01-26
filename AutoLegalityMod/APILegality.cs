@@ -26,11 +26,10 @@ namespace AutoLegalityMod
                 roughPK.ApplySetDetails(SSet);
             }
             int HPType = roughPK.HPType;
-
             var destType = SAV.PKMType;
 
             // List of candidate PKM files
-            var f = GeneratePKMs(roughPK, SAV, SSet.Moves);
+            var f = EncounterMovesetGenerator.GeneratePKMs(roughPK, SAV, SSet.Moves);
             foreach (PKM pkmn in f)
             {
                 var pk = PKMConverter.ConvertToType(pkmn, destType, out _); // All Possible PKM files
@@ -304,50 +303,29 @@ namespace AutoLegalityMod
         }
 
         /// <summary>
-        /// Colosseum/XD pokemon need to be fixed. Fix Gender further in logic using <see cref="FixGender"/>
+        /// Colosseum/XD pokemon need to be fixed.
         /// </summary>
         /// <param name="pkm">PKM to apply the fix to</param>
         public static void ColosseumFixes(PKM pkm)
         {
-            if (pkm.Version == (int)GameVersion.CXD)
-            {
-                var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pkm.GetType(), "Ribbon").Distinct();
-                foreach (var RibbonName in RibbonNames)
-                {
-                    if (RibbonName == "RibbonCountMemoryBattle" || RibbonName == "RibbonCountMemoryContest") ReflectUtil.SetValue(pkm, RibbonName, 0);
-                    else ReflectUtil.SetValue(pkm, RibbonName, false);
-                }
-                ReflectUtil.SetValue(pkm, "RibbonNational", true);
-                pkm.Ball = 4;
-                pkm.FatefulEncounter = true;
-                pkm.OT_Gender = 0;
-            }
-        }
+            if (pkm.Version != (int) GameVersion.CXD)
+                return;
 
-        /// <summary>
-        /// Temporary Reimplementation of Kaphotics's Generator without the exception being thrown to avoid relying on the bruteforce mechanism
-        /// </summary>
-        /// <param name="pk">PKM to modify</param>
-        /// <param name="info">Trainer Info for TID</param>
-        /// <param name="moves">INT list of moves for the pkm</param>
-        /// <param name="versions">Versions to iterate over (All in our case)</param>
-        public static IEnumerable<PKM> GeneratePKMs(PKM pk, ITrainerInfo info, int[] moves = null, params GameVersion[] versions)
-        {
-            GameVersion[] Versions = ((GameVersion[])Enum.GetValues(typeof(GameVersion))).Where(z => z < GameVersion.RB && z > 0).OrderBy(x => x.GetGeneration()).Reverse().ToArray();
-            pk.TID = info.TID;
-            var m = moves ?? pk.Moves;
-            var vers = versions?.Length >= 1 ? versions : Versions.Where(z => z <= (GameVersion)pk.MaxGameID);
-            if (pk.Gen3) vers = vers.Concat(new[] { (GameVersion)15 });
-            foreach (var ver in vers)
+            // wipe all ribbons
+            var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pkm.GetType(), "Ribbon").Distinct();
+            foreach (var RibbonName in RibbonNames)
             {
-                var encs = EncounterMovesetGenerator.GenerateVersionEncounters(pk, m, ver);
-                foreach (var enc in encs)
-                {
-                    var result = enc.ConvertToPKM(info);
-                    if (result.Version != (int)ver) continue;
-                    yield return result;
-                }
+                if (RibbonName == "RibbonCountMemoryBattle" || RibbonName == "RibbonCountMemoryContest")
+                    ReflectUtil.SetValue(pkm, RibbonName, 0);
+                else
+                    ReflectUtil.SetValue(pkm, RibbonName, false);
             }
+
+            // set national ribbon
+            ReflectUtil.SetValue(pkm, "RibbonNational", true);
+            pkm.Ball = 4;
+            pkm.FatefulEncounter = true;
+            pkm.OT_Gender = 0;
         }
     }
 }
