@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="APILegality.cs" />
     <Compile Include="ArchitEdits.cs" />
-    <Compile Include="ArchitMod.cs" />
+    <Compile Include="TrainerSettings.cs" />
     <Compile Include="AutoLegalityMod.cs" />
     <Compile Include="AutoLegalityResources.Designer.cs">
       <AutoGen>True</AutoGen>
