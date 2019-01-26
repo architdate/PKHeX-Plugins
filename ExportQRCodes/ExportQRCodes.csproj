@@ -45,7 +45,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ExportQRCodesResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ImageUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QR.cs" />
     <Compile Include="QRCoder\AbstractQRCode.cs" />

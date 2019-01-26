@@ -63,14 +63,13 @@ namespace ExportQRCodes
             if (boxdata == null)
             {
                 MessageBox.Show("Box Data is null");
+                return;
             }
-            int ctr = 0;
             var qrcodes = new Dictionary<string, Image>();
             foreach (PKM pk in boxdata)
             {
                 if (pk.Species == 0 || !pk.Valid || (pk.Box - 1) != SaveFileEditor.CurrentBox)
                     continue;
-                ctr++;
                 Image qr = QR.GenerateQRCode7((PK7)pk);
                 if (qr == null)
                     continue;
@@ -88,7 +87,7 @@ namespace ExportQRCodes
             }
         }
 
-        private Image RefreshImage(Image qr)
+        private static Image RefreshImage(Image qr)
         {
             Image newpic = new Bitmap(405, 455);
             using (Graphics g = Graphics.FromImage(newpic))
