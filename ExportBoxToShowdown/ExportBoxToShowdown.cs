@@ -1,5 +1,6 @@
 ﻿using PKHeX.Core;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ExportBoxToShowdown
@@ -13,7 +14,7 @@ namespace ExportBoxToShowdown
 
         public void Initialize(params object[] args)
         {
-            Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
+            Debug.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
@@ -67,13 +68,20 @@ namespace ExportBoxToShowdown
         {
             try
             {
-                var CurrBox = SaveFileEditor.SAV.GetBoxData(SaveFileEditor.SAV.CurrentBox);
-                var str = ShowdownSet.GetShowdownSets(CurrBox, Environment.NewLine + Environment.NewLine);
+                var str = GetShowdownSetsFromBoxCurrent(SaveFileEditor.SAV);
                 if (string.IsNullOrWhiteSpace(str)) return;
                 Clipboard.SetText(str);
             }
             catch { }
             MessageBox.Show("Exported the active box to Showdown format");
+        }
+
+        private static string GetShowdownSetsFromBoxCurrent(SaveFile sav) => GetShowdownSetsFromBox(sav, sav.CurrentBox);
+
+        private static string GetShowdownSetsFromBox(SaveFile sav, int box)
+        {
+            var CurrBox = sav.GetBoxData(box);
+            return ShowdownSet.GetShowdownSets(CurrBox, Environment.NewLine + Environment.NewLine);
         }
     }
 }

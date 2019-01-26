@@ -1,5 +1,6 @@
 ﻿using PKHeX.Core;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace AutoLegalityMod
@@ -17,7 +18,7 @@ namespace AutoLegalityMod
 
         public void Initialize(params object[] args)
         {
-            Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
+            Debug.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null) return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
             PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);

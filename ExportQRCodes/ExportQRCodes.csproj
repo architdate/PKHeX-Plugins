@@ -46,7 +46,7 @@
       <DependentUpon>ExportQRCodesResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QR.cs" />
+    <Compile Include="QRCodeDumper.cs" />
     <Compile Include="QRCoder\AbstractQRCode.cs" />
     <Compile Include="QRCoder\QRCode.cs" />
     <Compile Include="QRCoder\QRCodeData.cs" />

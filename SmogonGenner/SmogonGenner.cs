@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using AutoLegalityMod;
 using PKHeX.Core;
@@ -14,7 +15,7 @@ namespace SmogonGenner
 
         public void Initialize(params object[] args)
         {
-            Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
+            Debug.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);

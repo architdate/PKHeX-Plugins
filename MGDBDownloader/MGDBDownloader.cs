@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using System.IO.Compression;
 
@@ -20,7 +21,7 @@ namespace MGDBDownloader
 
         public void Initialize(params object[] args)
         {
-            Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
+            Debug.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
@@ -101,7 +102,7 @@ namespace MGDBDownloader
                 {
                     WebClient client = new WebClient();
                     string json_data = DownloadString("https://api.github.com/repos/projectpokemon/EventsGallery/releases/latest");
-                    string mgdbURL = json_data.Split(new string[] { "browser_download_url" }, StringSplitOptions.None)[1].Substring(3).Split('"')[0];
+                    string mgdbURL = json_data.Split(new[] { "browser_download_url" }, StringSplitOptions.None)[1].Substring(3).Split('"')[0];
                     Console.WriteLine(mgdbURL);
                     const string mgdbZipPath = "mgdb.zip";
                     client.DownloadFile(new Uri(mgdbURL), mgdbZipPath);
@@ -114,7 +115,6 @@ namespace MGDBDownloader
 
         public static string DownloadString(string address)
         {
-            using (WebClient client = new WebClient())
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(address);
                 request.Method = "GET";
@@ -123,9 +123,7 @@ namespace MGDBDownloader
                 WebResponse response = request.GetResponse(); //Error Here
                 Stream dataStream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(dataStream);
-                string result = reader.ReadToEnd();
-
-                return result;
+                return reader.ReadToEnd();
             }
         }
 

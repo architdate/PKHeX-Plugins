@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using PKHeX.Core;
 
@@ -13,7 +14,7 @@ namespace ExportTrainerData
 
         public void Initialize(params object[] args)
         {
-            Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
+            Debug.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
@@ -65,37 +66,11 @@ namespace ExportTrainerData
 
         private void ExportData(object sender, EventArgs e)
         {
-            string TID = "23456";
-            string SID = "34567";
-            string OT = "Archit";
-            string Gender = "M";
-            string Country = "Canada";
-            string SubRegion = "Alberta";
-            string ConsoleRegion = "Americas (NA/SA)";
-            PKM pk = PKMEditor.PreparePKM();
-            try
-            {
-                TID = pk.TID.ToString();
-                SID = pk.SID.ToString();
-                OT = pk.OT_Name;
-                if (pk.OT_Gender == 1) Gender = "F";
-                Country = pk.Country.ToString();
-                SubRegion = pk.Region.ToString();
-                ConsoleRegion = pk.ConsoleRegion.ToString();
-                WriteTxtFile(TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion);
-                MessageBox.Show("trainerdata.txt Successfully Exported in the same directory as PKHeX");
-            }
-            catch
-            {
-                WriteTxtFile(TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion);
-                MessageBox.Show("Some of the fields were wrongly filled. Exported the default trainerdata.txt");
-            }
-        }
-
-        private void WriteTxtFile(string TID, string SID, string OT, string Gender, string Country, string SubRegion, string ConsoleRegion)
-        {
-            string[] lines = { "TID:" + TID, "SID:" + SID, "OT:" + OT, "Gender:" + Gender, "Country:" + Country, "SubRegion:" + SubRegion, "3DSRegion:" + ConsoleRegion };
-            System.IO.File.WriteAllLines(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "trainerdata.txt"), lines);
+            var complete = TrainerDataExporter.ExportTextFile(PKMEditor.PreparePKM());
+            var result = complete
+                ? "trainerdata.txt Successfully Exported in the same directory as PKHeX"
+                : "Some of the fields were wrongly filled. Exported the default trainerdata.txt";
+            MessageBox.Show(result);
         }
     }
 }

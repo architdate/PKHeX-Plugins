@@ -1,10 +1,7 @@
 ﻿using System;
 using PKHeX.Core;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Drawing;
-using PKHeX.WinForms;
-using System.IO;
+using System.Diagnostics;
 
 namespace ExportQRCodes
 {
@@ -17,7 +14,7 @@ namespace ExportQRCodes
 
         public void Initialize(params object[] args)
         {
-            Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
+            Debug.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
@@ -56,48 +53,6 @@ namespace ExportQRCodes
             ctrl.Image = ExportQRCodesResources.exportqrcode;
         }
 
-        private void ExportQRs(object sender, EventArgs e)
-        {
-            SaveFile SAV = SaveFileEditor.SAV;
-            var boxdata = SAV.BoxData;
-            if (boxdata == null)
-            {
-                MessageBox.Show("Box Data is null");
-                return;
-            }
-            var qrcodes = new Dictionary<string, Image>();
-            foreach (PKM pk in boxdata)
-            {
-                if (pk.Species == 0 || !pk.Valid || (pk.Box - 1) != SaveFileEditor.CurrentBox)
-                    continue;
-                Image qr = QR.GenerateQRCode7((PK7)pk);
-                if (qr == null)
-                    continue;
-
-                qrcodes.Add(Util.CleanFileName(pk.FileName), RefreshImage(qr));
-            }
-            if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "qrcodes")))
-                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "qrcodes"));
-            int counter = 0;
-            foreach (KeyValuePair<string, Image> qrcode in qrcodes)
-            {
-                Console.WriteLine(counter);
-                counter++;
-                qrcode.Value.Save(Path.Combine(Directory.GetCurrentDirectory(), "qrcodes", qrcode.Key + ".png"));
-            }
-        }
-
-        private static Image RefreshImage(Image qr)
-        {
-            Image newpic = new Bitmap(405, 455);
-            using (Graphics g = Graphics.FromImage(newpic))
-            {
-                g.FillRectangle(new SolidBrush(Color.White), 0, 0, newpic.Width, newpic.Height);
-                g.DrawImage(qr, 0, 0);
-            }
-            return newpic;
-        }
-
         public void NotifySaveLoaded()
         {
             Console.WriteLine($"{Name} was notified that a Save File was just loaded.");
@@ -107,6 +62,18 @@ namespace ExportQRCodes
         {
             Console.WriteLine($"{Name} was provided with the file path, but chose to do nothing with it.");
             return false; // no action taken
+        }
+
+        private void ExportQRs(object sender, EventArgs e)
+        {
+            var sav = SaveFileEditor.SAV;
+            if (!sav.HasBox)
+            {
+                MessageBox.Show("Save file does not have box data.");
+                return;
+            }
+            var boxData = sav.GetBoxData(sav.CurrentBox);
+            QRCodeDumper.DumpQRCodes(boxData);
         }
     }
 }

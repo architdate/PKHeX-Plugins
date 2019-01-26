@@ -46,6 +46,7 @@
       <DependentUpon>ExportTrainerDataResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrainerDataExporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\exporttrainerdata.png" />
