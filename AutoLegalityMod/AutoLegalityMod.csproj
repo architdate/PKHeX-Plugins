@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APILegality.cs" />
-    <Compile Include="ArchitEdits.cs" />
+    <Compile Include="SimpleEdits.cs" />
     <Compile Include="ShowdownEdits.cs" />
     <Compile Include="TrainerSettings.cs" />
     <Compile Include="AutoLegalityMod.cs" />
