@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
 using System.Windows.Forms;
 using PKHeX.Core;
 using AutoLegalityMod;
@@ -69,98 +66,38 @@ namespace URLGenning
             return false; // no action taken
         }
 
-        private void URLGen(object sender, EventArgs e)
+        private static void URLGen(object sender, EventArgs e)
         {
             string url = Clipboard.GetText().Trim();
             string initURL = url;
-            bool isUri = Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute);
-            if (!isUri)
-            {
-                MessageBox.Show("The text in the clipboard is not a valid URL");
-                return;
-            }
-            if (!CheckPokePaste(url) && !CheckPasteBin(url))
-            {
-                MessageBox.Show("The URL provided is not a pokepast.es or a pastebin.com URL");
-                return;
-            }
-            url = FixURL(url);
-            string sets = GetText(url).TrimStart().TrimEnd();
-            if (sets.StartsWith("Error :")) return;
-            Clipboard.SetText(sets);
-            try { AutomaticLegality.ImportModded(); }
-            catch { MessageBox.Show("The data inside the URL are not valid Showdown Sets"); }
-            Dictionary<string, string> metadata = GetMetadata(MetaDataURL(url));
-            string typeOfBin = (CheckPasteBin(url)) ? "Pastebin" : "PokePaste";
-            MessageBox.Show("All sets genned from the following URL: " + initURL + "\n\n" + typeOfBin + " data:\nTitle: " + metadata["Title"] + "\nAuthor: " + metadata["Author"] + "\nDescription: " + metadata["Description"]);
-            Clipboard.SetText(initURL);
-        }
-
-        private string FixURL(string url)
-        {
-            if (CheckPokePaste(url) && url.EndsWith("/raw")) return url;
-            else if (CheckPasteBin(url) && url.Contains("/raw/")) return url;
-            else if (CheckPokePaste(url)) return url + "/raw";
-            else if (CheckPasteBin(url)) return url.Replace("pastebin.com/", "pastebin.com/raw/");
-            else return url; // This should never happen
-        }
-
-        private string MetaDataURL(string url)
-        {
-            if (CheckPasteBin(url)) return url.Replace("/raw/", "/");
-            else return url.Replace("/raw", "");
-        }
-
-        private bool CheckPokePaste(string url)
-        {
-            return url.Contains("pokepast.es/");
-        }
-
-        private bool CheckPasteBin(string url)
-        {
-            return url.Contains("pastebin.com/");
-        }
-
-        private Dictionary<string, string> GetMetadata(string url)
-        {
-            string title = "Showdown Paste";
-            string author = "Pokémon Trainer";
-            string description = "A Mysterious Paste";
-            // Passed URL must be non raw
-            if (CheckPasteBin(url))
-            {
-                string htmldoc = GetText(url);
-                title = htmldoc.Split(new string[] { "<div class=\"paste_box_line1\" title=\"" }, StringSplitOptions.None)[1].Split('"')[0].Trim();
-                author = htmldoc.Split(new string[] { "<div class=\"paste_box_line2\">" }, StringSplitOptions.None)[1].Split('>')[1].Split('<')[0].Trim();
-                description = "Pastebin created on: " + htmldoc.Split(new string[] { "<div class=\"paste_box_line2\">" }, StringSplitOptions.None)[1].Split('>')[3].Split('<')[0].Trim();
-            }
-            if (CheckPokePaste(url))
-            {
-                string htmldoc = GetText(url);
-                string pastedata = htmldoc.Split(new string[] { "<aside>" }, StringSplitOptions.None)[1].Split(new string[] { "</aside>" }, StringSplitOptions.None)[0];
-                bool hasTitle = pastedata.Split(new string[] { "<h1>" }, StringSplitOptions.None).Length > 1;
-                bool hasAuthor = pastedata.Split(new string[] { "<h2>&nbsp;by" }, StringSplitOptions.None).Length > 1;
-                bool hasDescription = pastedata.Split(new string[] { "<p>" }, StringSplitOptions.None).Length > 1;
-                if (hasTitle) title = pastedata.Split(new string[] { "<h1>" }, StringSplitOptions.None)[1].Split('<')[0].Trim();
-                if (hasAuthor) author = pastedata.Split(new string[] { "<h2>&nbsp;by" }, StringSplitOptions.None)[1].Split('<')[0].Trim();
-                if (hasDescription) description = pastedata.Split(new string[] { "<p>" }, StringSplitOptions.None)[1].Split('<')[0].Trim();
-            }
-            return new Dictionary<string, string>() { { "Author", author }, { "Title", title }, { "Description", description } };
-        }
-
-        private string GetText(string url)
-        {
+            TeamPasteInfo info;
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(url);
-                var response = (HttpWebResponse)request.GetResponse();
-                return new StreamReader(response.GetResponseStream()).ReadToEnd();
+                info = new TeamPasteInfo(url);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show("An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: " + e);
-                return "Error :" + e;
+                MessageBox.Show($"An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: {ex}");
+                return;
             }
+            if (!info.Valid)
+            {
+                MessageBox.Show("The text in the clipboard is not a valid URL.");
+                return;
+            }
+            if (info.Source == TeamPasteInfo.PasteSource.None)
+            {
+                MessageBox.Show("The URL provided is not from a supported website.");
+                return;
+            }
+
+            Clipboard.SetText(info.Sets);
+            try { AutomaticLegality.ImportModded(); }
+            catch { MessageBox.Show("The data inside the URL are not valid Showdown Sets"); }
+
+            var response = $"All sets genned from the following URL: {info.URL}\n\n{info.Summary}";
+            MessageBox.Show(response);
+            Clipboard.SetText(initURL); // restore clipboard
         }
     }
 }

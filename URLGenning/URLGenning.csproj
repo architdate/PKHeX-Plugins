@@ -39,6 +39,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NetUtil.cs" />
+    <Compile Include="TeamPasteInfo.cs" />
     <Compile Include="URLGenning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="URLGenningResources.Designer.cs">
