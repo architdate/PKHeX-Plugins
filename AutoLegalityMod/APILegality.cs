@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 using PKHeX.Core;
 using static PKHeX.Core.LegalityCheckStrings;
@@ -103,7 +101,7 @@ namespace AutoLegalityMod
             else
             {
                 // check for mixed->fixed gender incompatibility by checking the gender of the original species
-                if (BruteTables.FixedGenderFromBiGender.Contains(pkm.Species) && pkm.Gender != 2) // shedinja
+                if (Legal.FixedGenderFromBiGender.Contains(pkm.Species) && pkm.Gender != 2) // shedinja
                 {
                     var gender = PKX.GetGenderFromPID(new LegalInfo(pkm).EncounterMatch.Species, pkm.EncryptionConstant);
                     pkm.Gender = gender;
@@ -308,21 +306,15 @@ namespace AutoLegalityMod
         /// <param name="pkm">PKM to apply the fix to</param>
         public static void ColosseumFixes(PKM pkm)
         {
-            if (pkm.Version != (int) GameVersion.CXD)
+            if (pkm.Version != (int)GameVersion.CXD)
                 return;
 
             // wipe all ribbons
-            var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pkm.GetType(), "Ribbon").Distinct();
-            foreach (var RibbonName in RibbonNames)
-            {
-                if (RibbonName == "RibbonCountMemoryBattle" || RibbonName == "RibbonCountMemoryContest")
-                    ReflectUtil.SetValue(pkm, RibbonName, 0);
-                else
-                    ReflectUtil.SetValue(pkm, RibbonName, false);
-            }
+            pkm.ClearAllRibbons();
 
             // set national ribbon
-            ReflectUtil.SetValue(pkm, "RibbonNational", true);
+            if (pkm is IRibbonSetEvent3 c3)
+                c3.RibbonNational = true;
             pkm.Ball = 4;
             pkm.FatefulEncounter = true;
             pkm.OT_Gender = 0;

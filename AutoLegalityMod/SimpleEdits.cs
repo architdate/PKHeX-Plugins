@@ -238,44 +238,47 @@ namespace AutoLegalityMod
             string Report = new LegalityAnalysis(pk).Report();
             if (Report.Contains(string.Format(LRibbonFMissing_0, "")))
             {
-                var ribbonList = Report.Split(new[] { string.Format(LRibbonFMissing_0, "") }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
-                var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
-
-                var missingRibbons = new List<string>();
-                foreach (var RibbonName in RibbonNames)
-                {
-                    string v = RibbonStrings.GetName(RibbonName).Replace("Ribbon", "");
-                    if (ribbonList.Contains(v))
-                        missingRibbons.Add(RibbonName);
-                }
-                foreach (string missing in missingRibbons)
-                {
-                    if (missing == nameof(PK6.RibbonCountMemoryBattle) || missing == nameof(PK6.RibbonCountMemoryContest))
-                        ReflectUtil.SetValue(pk, missing, 0);
-                    else
-                        ReflectUtil.SetValue(pk, missing, true);
-                }
+                var val = string.Format(LRibbonFMissing_0, "");
+                var ribbonList = GetRequiredRibbons(Report, val);
+                var missingRibbons = GetRibbonsRequired(pk, ribbonList);
+                SetRibbonValues(pk, missingRibbons, 0, true);
             }
             if (Report.Contains(string.Format(LRibbonFInvalid_0, "")))
             {
-                string[] ribbonList = Report.Split(new[] { string.Format(LRibbonFInvalid_0, "") }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
-                var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
-
-                var invalidRibbons = new List<string>();
-                foreach (var RibbonName in RibbonNames)
-                {
-                    string v = RibbonStrings.GetName(RibbonName).Replace("Ribbon", "");
-                    if (ribbonList.Contains(v))
-                        invalidRibbons.Add(RibbonName);
-                }
-                foreach(string invalid in invalidRibbons)
-                {
-                    if (invalid == nameof(PK6.RibbonCountMemoryBattle) || invalid == nameof(PK6.RibbonCountMemoryContest))
-                        ReflectUtil.SetValue(pk, invalid, 0);
-                    else
-                        ReflectUtil.SetValue(pk, invalid, false);
-                }
+                var val = string.Format(LRibbonFInvalid_0, "");
+                string[] ribbonList = GetRequiredRibbons(Report, val);
+                var invalidRibbons = GetRibbonsRequired(pk, ribbonList);
+                SetRibbonValues(pk, invalidRibbons, 0, false);
             }
         }
+
+        private static IEnumerable<string> GetRibbonsRequired(PKM pk, string[] ribbonList)
+        {
+            foreach (var RibbonName in GetRibbonNames(pk))
+            {
+                string v = RibbonStrings.GetName(RibbonName).Replace("Ribbon", "");
+                if (ribbonList.Contains(v))
+                    yield return RibbonName;
+            }
+        }
+
+        private static string[] GetRequiredRibbons(string Report, string val)
+        {
+            return Report.Split(new[] { val }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
+        }
+
+        private static void SetRibbonValues(this PKM pk, IEnumerable<string> ribNames, int vRib, bool bRib)
+        {
+            foreach (string invalid in ribNames)
+            {
+                if (invalid == nameof(PK6.RibbonCountMemoryBattle) || invalid == nameof(PK6.RibbonCountMemoryContest))
+                    ReflectUtil.SetValue(pk, invalid, vRib);
+                else
+                    ReflectUtil.SetValue(pk, invalid, bRib);
+            }
+        }
+
+        public static void ClearAllRibbons(this PKM pkm) => pkm.SetRibbonValues(GetRibbonNames(pkm), 0, false);
+        private static IEnumerable<string> GetRibbonNames(PKM pkm) => ReflectUtil.GetPropertiesStartWithPrefix(pkm.GetType(), "Ribbon").Distinct();
     }
 }

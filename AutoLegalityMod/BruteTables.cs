@@ -121,25 +121,5 @@ namespace AutoLegalityMod
                 {385, new[]{034, 273} }
             }
         };
-
-        // todo: make this public in PKHeX.Core and use reference
-        public static readonly HashSet<int> FixedGenderFromBiGender = new HashSet<int>
-        {
-            290, // Nincada
-            292, // Shedinja (G)
-
-            412, // Burmy
-            413, // Wormadam (F)
-            414, // Mothim (M)
-
-            280, // Ralts
-            475, // Gallade (M)
-
-            361, // Snorunt
-            478, // Froslass (F)
-
-            677, // Espurr
-            678, // Meowstic (M/F) forme specific
-        };
     }
 }

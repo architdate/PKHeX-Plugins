@@ -234,8 +234,8 @@ namespace AutoLegalityMod
                                 Set.Met_Level = el.Level;
                                 Set.CurrentLevel = 100;
                                 Set.FatefulEncounter = el.Fateful;
-                                if (el.RibbonWishing)
-                                    ReflectUtil.SetValue(Set, "RibbonWishing", -1);
+                                if (el.RibbonWishing && Set is IRibbonSetEvent4 e4)
+                                    e4.RibbonWishing = true;
                                 Set.RelearnMoves = el.Relearn;
 
                                 if (SSet.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random))
@@ -851,12 +851,14 @@ namespace AutoLegalityMod
             }
             if (report.Contains(string.Format(LRibbonFMissing_0, "National"))) //V600 = Missing Ribbons: {0} (National in this case)
             {
-                ReflectUtil.SetValue(pk, "RibbonNational", -1);
+                if (pk is IRibbonSetEvent3 e3)
+                    e3.RibbonNational = true;
                 report = GetReport(pk);
             }
             if (report.Contains(string.Format(LRibbonFInvalid_0, "National"))) //V601 = Invalid Ribbons: {0} (National in this case)
             {
-                ReflectUtil.SetValue(pk, "RibbonNational", 0);
+                if (pk is IRibbonSetEvent3 e3)
+                    e3.RibbonNational = false;
                 report = GetReport(pk);
             }
             if (report.Contains(LOTLong)) //V38 = OT Name too long.
