@@ -57,17 +57,20 @@ namespace AutoLegalityMod
             var text = Clipboard.GetText();
             string source = text.TrimEnd();
             List<ShowdownSet> Sets = ShowdownSets(source, out Dictionary<int, string[]> TeamData);
-            if (TeamData != null) Alert(TeamDataAlert(TeamData));
+            if (TeamData != null)
+                WinFormsUtil.Alert(TeamDataAlert(TeamData));
 
             // Import Showdown Sets and alert user of any messages intended
             ImportSets(Sets, replace, out string message, allowAPI);
-
-            // Debug Statements
-            Debug.WriteLine(LogTimer(timer));
             if (message.StartsWith("[DEBUG]"))
                 Debug.WriteLine(message);
             else
-                Alert(message);
+                WinFormsUtil.Alert(message);
+
+            // Debug Statements
+            timer.Stop();
+            TimeSpan timespan = timer.Elapsed;
+            Debug.WriteLine($"[DEBUG] Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
         }
 
         /// <summary>
@@ -76,18 +79,18 @@ namespace AutoLegalityMod
         /// <returns>output boolean that tells if the data provided is valid or not</returns>
         private static bool CheckLoadFromText()
         {
-            if (ShowdownData() && (Control.ModifierKeys & Keys.Shift) != Keys.Shift)
+            if (IsClipboardShowdownText() && (Control.ModifierKeys & Keys.Shift) != Keys.Shift)
                 return true;
-            if (!OpenSAVPKMDialog(new[] {"txt"}, out string path))
+            if (!WinFormsUtil.OpenSAVPKMDialog(new[] {"txt"}, out string path))
             {
-                Alert("No data provided.");
+                WinFormsUtil.Alert("No data provided.");
                 return false;
             }
 
             Clipboard.SetText(File.ReadAllText(path).TrimEnd());
-            if (!ShowdownData())
+            if (!IsClipboardShowdownText())
             {
-                Alert("Text file with invalid data provided. Please provide a text file with proper Showdown data");
+                WinFormsUtil.Alert("Text file with invalid data provided. Please provide a text file with proper Showdown data");
                 return false;
             }
             return true;
@@ -139,77 +142,109 @@ namespace AutoLegalityMod
         /// <param name="replace">A boolean that determines if current pokemon will be replaced or not</param>
         /// <param name="message">Output message to be displayed for the user</param>
         /// <param name="allowAPI">Use of generators before bruteforcing</param>
-        private static void ImportSets(List<ShowdownSet> sets, bool replace, out string message, bool allowAPI = true)
+        private static void ImportSets(IReadOnlyList<ShowdownSet> sets, bool replace, out string message, bool allowAPI = true)
         {
             message = "[DEBUG] Commencing Import";
-            IList<PKM> BoxData = SAV.BoxData;
-            int BoxOffset = SaveFileEditor.CurrentBox * SAV.BoxSlotCount;
-            var emptySlots = replace
-                ? Enumerable.Range(0, sets.Count).ToList()
-                : PopulateEmptySlots(BoxData, SaveFileEditor.CurrentBox);
-
-            if (emptySlots.Count < sets.Count && sets.Count != 1)
+            if (sets.Count == 1)
             {
-                message = "Not enough space in the box";
+                var set = sets[0];
+                if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", sets[0].Text))
+                    return;
+                if (set.InvalidLines.Count > 0)
+                    WinFormsUtil.Alert("Invalid lines detected:", string.Join(Environment.NewLine, set.InvalidLines));
+
+                PKM legal = GetLegalized(set, allowAPI, out var _);
+                PKMEditor.PopulateFields(legal);
+                message = "[DEBUG] Set Genning Complete";
                 return;
             }
 
+            var BoxData = SAV.BoxData;
+            int start = SaveFileEditor.CurrentBox * SAV.BoxSlotCount;
+            if (!ImportToExisting(sets, BoxData, start, replace, allowAPI, out message))
+                return;
+
+            SAV.BoxData = BoxData;
+            SaveFileEditor.ReloadSlots();
+        }
+
+        private static bool ImportToExisting(IReadOnlyList<ShowdownSet> sets, IList<PKM> BoxData, int start, bool replace, bool allowAPI, out string message)
+        {
+            var emptySlots = replace
+                ? Enumerable.Range(0, sets.Count).ToList()
+                : FindAllEmptySlots(BoxData, SaveFileEditor.CurrentBox);
+
+            if (emptySlots.Count < sets.Count && sets.Count != 1)
+            {
+                message = "Not enough space in the box.";
+                return false;
+            }
+
             int apiCounter = 0;
-            List<ShowdownSet> invalidAPISets = new List<ShowdownSet>();
+            var invalidAPISets = new List<ShowdownSet>();
             for (int i = 0; i < sets.Count; i++)
             {
                 ShowdownSet Set = sets[i];
-                if (sets.Count == 1 && DialogResult.Yes != Prompt(MessageBoxButtons.YesNo, "Import this set?", Set.Text))
-                    return;
                 if (Set.InvalidLines.Count > 0)
-                    Alert("Invalid lines detected:", string.Join(Environment.NewLine, Set.InvalidLines));
+                    WinFormsUtil.Alert("Invalid lines detected:", string.Join(Environment.NewLine, Set.InvalidLines));
 
-                bool resetForm = Set.Form != null && (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted");
-
-                PKM roughPKM = SAV.BlankPKM;
-                roughPKM.ApplySetDetails(Set);
-                roughPKM.Version = (int)GameVersion.MN; // Avoid the blank version glitch
-                PKM legal = SAV.BlankPKM;
-                bool satisfied = false;
-                if (allowAPI)
+                PKM legal = GetLegalized(Set, allowAPI, out var msg);
+                switch (msg)
                 {
-                    PKM APIGeneratedPKM = SAV.BlankPKM;
-                    try { APIGeneratedPKM = AutoLegalityMod.APILegality(roughPKM, Set, out satisfied); }
-                    catch { satisfied = false; }
-                    if (satisfied)
-                    {
-                        legal = APIGeneratedPKM;
+                    case LegalizationResult.API_Valid:
                         apiCounter++;
-                        APILegalized = true;
-                    }
+                        break;
+                    case LegalizationResult.API_Invalid:
+                        invalidAPISets.Add(Set);
+                        break;
                 }
 
-                if (!allowAPI || !satisfied)
+                BoxData[start + emptySlots[i]] = legal;
+            }
+
+            var total = invalidAPISets.Count + apiCounter;
+            message = $"[DEBUG] API Genned Sets: {apiCounter}/{total}, {invalidAPISets.Count} were not.";
+            foreach (ShowdownSet i in invalidAPISets)
+                Debug.WriteLine(i.Text);
+            return true;
+        }
+
+        private enum LegalizationResult
+        {
+            Other,
+            API_Invalid,
+            API_Valid,
+        }
+
+        private static PKM GetLegalized(ShowdownSet Set, bool allowAPI, out LegalizationResult message)
+        {
+            bool resetForm = Set.Form != null && (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted");
+            PKM roughPKM = SAV.BlankPKM;
+            roughPKM.ApplySetDetails(Set);
+            roughPKM.Version = (int)GameVersion.MN; // Avoid the blank version glitch
+            PKM legal = SAV.BlankPKM;
+            message = LegalizationResult.Other;
+            bool satisfied = false;
+            if (allowAPI)
+            {
+                PKM APIGeneratedPKM = SAV.BlankPKM;
+                try { APIGeneratedPKM = AutoLegalityMod.APILegality(roughPKM, Set, out satisfied); }
+                catch { satisfied = false; }
+                if (satisfied)
                 {
-                    invalidAPISets.Add(Set);
-                    BruteForce b = new BruteForce { SAV = SAV };
-                    legal = b.LoadShowdownSetModded_PKSM(roughPKM, Set, resetForm, Trainer);
-                    APILegalized = false;
+                    legal = APIGeneratedPKM;
+                    message = LegalizationResult.API_Valid;
                 }
-                SetTrainerData(legal);
+            }
 
-                if (sets.Count == 1)
-                    PKMEditor.PopulateFields(legal);
-                else
-                    BoxData[BoxOffset + emptySlots[i]] = legal;
-            }
-            if (sets.Count > 1)
+            if (!allowAPI || !satisfied)
             {
-                SAV.BoxData = BoxData;
-                SaveFileEditor.ReloadSlots();
-                message = "[DEBUG] API Genned Sets: " + apiCounter + Environment.NewLine + Environment.NewLine + "Number of sets not genned by the API: " + invalidAPISets.Count;
-                foreach (ShowdownSet i in invalidAPISets)
-                    Debug.WriteLine(i.Text);
+                message = LegalizationResult.API_Invalid;
+                BruteForce b = new BruteForce { SAV = SAV };
+                legal = b.LoadShowdownSetModded_PKSM(roughPKM, Set, resetForm, Trainer);
             }
-            else
-            {
-                message = "[DEBUG] Set Genning Complete";
-            }
+            SetTrainerData(legal);
+            return legal;
         }
 
         /// <summary>
@@ -232,7 +267,7 @@ namespace AutoLegalityMod
         /// <param name="BoxData">Box Data of the SAV file</param>
         /// <param name="CurrentBox">Index of the current box</param>
         /// <returns>A list of all indices in the current box that are empty</returns>
-        private static List<int> PopulateEmptySlots(IList<PKM> BoxData, int CurrentBox)
+        private static List<int> FindAllEmptySlots(IList<PKM> BoxData, int CurrentBox)
         {
             var emptySlots = new List<int>();
             int BoxCount = SAV.BoxSlotCount;
@@ -284,42 +319,25 @@ namespace AutoLegalityMod
             {
                 TeamData[i] = new[] { titlematches[i].Groups["format"].Value, titlematches[i].Groups["teamname"].Value };
             }
-            if (TeamData.Count == 0) return null;
-            return TeamData;
+            return TeamData.Count == 0 ? null : TeamData;
         }
 
         /// <summary>
         /// Convert Team Data into an alert for the main function
         /// </summary>
         /// <param name="TeamData">Dictionary with format as key and team name as value</param>
-        /// <returns></returns>
         private static string TeamDataAlert(Dictionary<int, string[]> TeamData)
         {
             string alert = "Generating the following teams:" + Environment.NewLine + Environment.NewLine;
-            foreach (KeyValuePair<int, string[]> entry in TeamData)
-            {
-                alert += $"Format: {entry.Value[0]}, Team Name: {entry.Value[1] + Environment.NewLine}";
-            }
-            return alert;
-        }
-
-        /// <summary>
-        /// Debug tool to help log the time needed for a function to execute. Pass Stopwatch class
-        /// </summary>
-        /// <param name="timer">Stopwatch to stop and read time from</param>
-        /// <returns></returns>
-        private static string LogTimer(Stopwatch timer)
-        {
-            timer.Stop();
-            TimeSpan timespan = timer.Elapsed;
-            return $"[DEBUG] Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds";
+            var lines = TeamData.Select(z => $"Format: {z.Value[0]}, Team Name: {z.Value[1]}");
+            return alert + string.Join(Environment.NewLine, lines);
         }
 
         /// <summary>
         /// Checks the input text is a showdown set or not
         /// </summary>
         /// <returns>boolean of the summary</returns>
-        private static bool ShowdownData()
+        private static bool IsClipboardShowdownText()
         {
             if (!Clipboard.ContainsText())
                 return false;
@@ -330,65 +348,6 @@ namespace AutoLegalityMod
 
             var result = source.Split(stringSeparators, StringSplitOptions.None);
             return new ShowdownSet(result[0]).Species >= 0;
-        }
-
-        // TODO
-        // Method to check for updates to AutoLegalityMod
-        // TODO
-
-        /// <summary>
-        /// Parse release GitHub tag into a PKHeX style version
-        /// </summary>
-        /// <param name="v">Tag String</param>
-        /// <returns>PKHeX style version int</returns>
-        public static int ParseTagAsVersion(string v)
-        {
-            string[] date = v.Split('.');
-            if (date.Length != 3) return -1;
-            int.TryParse(date[0], out int a);
-            int.TryParse(date[1], out int b);
-            int.TryParse(date[2], out int c);
-            return ((a + 2000) * 10000) + (b * 100) + c;
-        }
-
-        private static DialogResult Alert(params string[] lines)
-        {
-            System.Media.SystemSounds.Asterisk.Play();
-            string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
-            return MessageBox.Show(msg, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private static DialogResult Prompt(MessageBoxButtons btn, params string[] lines)
-        {
-            System.Media.SystemSounds.Question.Play();
-            string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
-            return MessageBox.Show(msg, "Prompt", btn, MessageBoxIcon.Asterisk);
-        }
-
-        /// <summary>
-        /// Opens a dialog to open a <see cref="SaveFile"/>, <see cref="PKM"/> file, or any other supported file.
-        /// </summary>
-        /// <param name="Extensions">Misc extensions of <see cref="PKM"/> files supported by the SAV.</param>
-        /// <param name="path">Output result path</param>
-        /// <returns>Result of whether or not a file is to be loaded from the output path.</returns>
-        public static bool OpenSAVPKMDialog(IEnumerable<string> Extensions, out string path)
-        {
-            string supported = string.Join(";", Extensions.Select(s => $"*.{s}").Concat(new[] { "*.pkm" }));
-            OpenFileDialog ofd = new OpenFileDialog
-            {
-                Filter = "All Files|*.*" +
-                         $"|Supported Files (*.*)|main;*.bin;{supported};*.bak" +
-                         "|Save Files (*.sav)|main" +
-                         "|Decrypted PKM File (*.pkm)|" + supported +
-                         "|Binary File|*.bin" +
-                         "|Backup File|*.bak"
-            };
-            path = null;
-            if (ofd.ShowDialog() != DialogResult.OK)
-                return false;
-
-            path = ofd.FileName;
-            return true;
         }
     }
 }
