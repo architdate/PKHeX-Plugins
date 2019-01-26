@@ -21,30 +21,32 @@ namespace AutoLegalityMod
         /// Check the mode for trainerdata.json
         /// </summary>
         /// <param name="jsonstring">string form of trainerdata.json</param>
-        public static AutoModMode CheckMode(string jsonstring = "")
+        public static AutoModMode CheckMode(string jsonstring)
         {
-            if (!string.IsNullOrWhiteSpace(jsonstring))
-            {
-                var mode = AutoModMode.Save;
-                if (jsonstring.Contains("mode"))
-                {
-                    var str = jsonstring.Split(new[] { "\"mode\"" }, StringSplitOptions.None)[1].Split('"')[1].ToLower();
-                    if (Enum.TryParse(str, true, out AutoModMode v))
-                        mode = v;
-                }
+            var mode = AutoModMode.Save;
+            if (!jsonstring.Contains("mode"))
                 return mode;
-            }
-            if (!File.Exists(Directory.GetCurrentDirectory() + "\\trainerdata.json"))
+            var str = jsonstring.Split(new[] { "\"mode\"" }, StringSplitOptions.None)[1].Split('"')[1].ToLower();
+            if (Enum.TryParse(str, true, out AutoModMode v))
+                mode = v;
+            return mode;
+        }
+
+        /// <summary>
+        /// Check the mode for trainerdata.json
+        /// </summary>
+        public static AutoModMode CheckMode()
+        {
+            var path = GetTrainerJSONPath();
+            if (!File.Exists(path))
                 return AutoModMode.Save; // Default trainerdata.txt handling
-            jsonstring = File.ReadAllText(Directory.GetCurrentDirectory() + "\\trainerdata.json", System.Text.Encoding.UTF8);
 
-            if (string.IsNullOrWhiteSpace(jsonstring))
-            {
-                MessageBox.Show("Empty trainerdata.json file", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return AutoModMode.Save;
-            }
+            var jsonstring = File.ReadAllText(path);
+            if (!string.IsNullOrWhiteSpace(jsonstring))
+                return CheckMode(jsonstring);
 
-            return CheckMode(jsonstring);
+            MessageBox.Show("Empty trainerdata.json file", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return AutoModMode.Save;
         }
 
         /// <summary>
@@ -101,12 +103,17 @@ namespace AutoLegalityMod
         /// <param name="Game">optional Game value in case of mode being game</param>
         public static string[] ParseTrainerJSON(SaveFile C_SAV, int Game = -1)
         {
-            if (!File.Exists(Directory.GetCurrentDirectory() + "\\trainerdata.json"))
+            var path = GetTrainerJSONPath();
+            if (!File.Exists(path))
                 return ParseTrainerData(); // Default trainerdata.txt handling
 
-            string jsonstring = File.ReadAllText(Directory.GetCurrentDirectory() + "\\trainerdata.json", System.Text.Encoding.UTF8);
-            if (Game == -1) Game = C_SAV.Game;
-            if(!CheckIfGameExists(jsonstring, Game, out string finaljson)) return ParseTrainerData(finaljson == "auto");
+            string jsonstring = File.ReadAllText(path, System.Text.Encoding.UTF8);
+            if (Game == -1)
+                Game = C_SAV.Game;
+
+            if (!CheckIfGameExists(jsonstring, Game, out string finaljson))
+                return ParseTrainerData(finaljson == "auto");
+
             string TID = GetValueFromKey("TID", finaljson);
             string SID = GetValueFromKey("SID", finaljson);
             string OT = GetValueFromKey("OT", finaljson);
@@ -117,13 +124,15 @@ namespace AutoLegalityMod
 
             if (TID.Length == 6 && SID.Length == 4)
             {
-                if(new List<int> { 33, 32, 31, 30 }.IndexOf(Game) == -1) MessageBox.Show("Force Converting G7TID/G7SID to TID/SID", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (new List<int> { 33, 32, 31, 30 }.IndexOf(Game) == -1) MessageBox.Show("Force Converting G7TID/G7SID to TID/SID", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 int[] tidsid = ConvertTIDSID7toTIDSID(int.Parse(TID), int.Parse(SID));
                 TID = tidsid[0].ToString();
                 SID = tidsid[1].ToString();
             }
             return new[] { TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion };
         }
+
+        private static string GetTrainerJSONPath() => Directory.GetCurrentDirectory() + "\\trainerdata.json";
 
         /// <summary>
         /// Parser for auto and preset trainerdata.txt files
@@ -138,12 +147,11 @@ namespace AutoLegalityMod
             string Country = "Canada";
             string SubRegion = "Alberta";
             string ConsoleRegion = "Americas (NA/SA)";
-            if (!File.Exists(Directory.GetCurrentDirectory() + "\\trainerdata.txt"))
-            {
-                return new[] { TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion}; // Default No trainerdata.txt handling
-            }
-            string[] trainerdataLines = File.ReadAllText(Directory.GetCurrentDirectory() + "\\trainerdata.txt", System.Text.Encoding.UTF8)
-                .Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            var path = GetTrainerJSONPath();
+            if (!File.Exists(path))
+                return new[] {TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion}; // Default No trainerdata.txt handling
+
+            string[] trainerdataLines = File.ReadAllText(path).Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
             List<string> lstlines = trainerdataLines.Where(f => f != null).ToList();
             int count = lstlines.Count;
