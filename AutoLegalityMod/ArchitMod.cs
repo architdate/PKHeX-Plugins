@@ -29,10 +29,14 @@ namespace AutoLegalityMod
         /// <param name="pk"></param>
         public static void SetRegions(string Country, string SubRegion, string ConsoleRegion, PKM pk)
         {
-            pk.Country = Util.GetCBList("countries", "en").Find(z => z.Text == Country).Value;
-            pk.Region = Util.GetCBList($"sr_{pk.Country:000}", "en").Find(z => z.Text == SubRegion).Value;
-            pk.ConsoleRegion = Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == ConsoleRegion).Value;
+            pk.Country = GetCountryID(Country);
+            pk.Region = GetSubRegionID(SubRegion, pk.Country);
+            pk.ConsoleRegion = GetConsoleRegionID(ConsoleRegion);
         }
+
+        public static int GetConsoleRegionID(string ConsoleRegion) => Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == ConsoleRegion).Value;
+        public static int GetSubRegionID(string SubRegion, int country) => Util.GetCBList($"sr_{country:000}", "en").Find(z => z.Text == SubRegion).Value;
+        public static int GetCountryID(string Country) => Util.GetCBList("countries", "en").Find(z => z.Text == Country).Value;
 
         /// <summary>
         /// Set Country, SubRegion and ConsoleRegion in a PKM directly
@@ -52,29 +56,26 @@ namespace AutoLegalityMod
         /// Set TID, SID and OT
         /// </summary>
         /// <param name="pk">PKM to set trainer data to</param>
-        /// <param name="OT">string value of OT name</param>
-        /// <param name="TID">INT value of TID</param>
-        /// <param name="SID">INT value of SID</param>
-        /// <param name="gender">Trainer Gender</param>
+        /// <param name="trainer">Trainer data</param>
         /// <param name="APILegalized">Was the <see cref="pk"/> legalized by the API</param>
-        public static void SetTrainerData(PKM pk, string OT, int TID, int SID, int gender, bool APILegalized = false)
+        public static void SetTrainerData(PKM pk, SimpleTrainerInfo trainer, bool APILegalized = false)
         {
             if (APILegalized)
             {
                 if ((pk.TID == 12345 && pk.OT_Name == "PKHeX") || (pk.TID == 34567 && pk.SID == 0 && pk.OT_Name == "TCD"))
                 {
                     bool Shiny = pk.IsShiny;
-                    pk.TID = TID;
-                    pk.SID = SID;
-                    pk.OT_Name = OT;
-                    pk.OT_Gender = gender;
+                    pk.TID = trainer.TID;
+                    pk.SID = trainer.SID;
+                    pk.OT_Name = trainer.OT;
+                    pk.OT_Gender = trainer.Gender;
                     pk.SetShinyBoolean(Shiny);
                 }
                 return;
             }
-            pk.TID = TID;
-            pk.SID = SID;
-            pk.OT_Name = OT;
+            pk.TID = trainer.TID;
+            pk.SID = trainer.SID;
+            pk.OT_Name = trainer.OT;
         }
 
         /// <summary>

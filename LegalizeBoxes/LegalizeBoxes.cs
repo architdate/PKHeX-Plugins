@@ -94,17 +94,19 @@ namespace LegalizeBoxes
                     bool satisfied;
                     try { APIGenerated = AutoLegalityMod.AutoLegalityMod.APILegality(illegalPK, Set, out satisfied); }
                     catch { satisfied = false; }
+
+                    var trainer = illegalPK.GetTrainerData();
                     if (!satisfied)
                     {
                         BruteForce b = new BruteForce { SAV = SaveFileEditor.SAV };
-                        legal = b.LoadShowdownSetModded_PKSM(illegalPK, Set, resetForm, illegalPK.TID, illegalPK.SID, illegalPK.OT_Name, illegalPK.OT_Gender);
+                        legal = b.LoadShowdownSetModded_PKSM(illegalPK, Set, resetForm, trainer);
                     }
                     else
                     {
                         legal = APIGenerated;
                     }
 
-                    AutoLegalityMod.AutoLegalityMod.SetTrainerData(legal, illegalPK.OT_Name, illegalPK.TID, illegalPK.SID, illegalPK.OT_Gender, satisfied);
+                    AutoLegalityMod.AutoLegalityMod.SetTrainerData(legal, trainer, satisfied);
 
                     if (box)
                     {

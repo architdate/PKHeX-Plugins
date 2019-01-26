@@ -18,15 +18,20 @@ namespace AutoLegalityMod
         /// <summary>
         /// Global Variables for Auto Legality Mod
         /// </summary>
-        private static int TID_ALM = -1;
-        private static int SID_ALM = -1;
-        private static string OT_ALM = "";
-        private static int gender_ALM = 0;
-        private static string Country_ALM = "";
-        private static string SubRegion_ALM = "";
-        private static string ConsoleRegion_ALM = "";
+        private static readonly SimpleTrainerInfo Trainer = new SimpleTrainerInfo();
         private static bool APILegalized = false;
         private static readonly string MGDatabasePath = Path.Combine(Directory.GetCurrentDirectory(), "mgdb");
+
+        public static SimpleTrainerInfo GetTrainerData(this PKM illegalPK)
+        {
+            return new SimpleTrainerInfo
+            {
+                TID = illegalPK.TID,
+                SID = illegalPK.SID,
+                OT = illegalPK.OT_Name,
+                Gender = illegalPK.OT_Gender,
+            };
+        }
 
         public static void ImportModded()
         {
@@ -92,27 +97,39 @@ namespace AutoLegalityMod
         /// Loads the trainerdata variables into the global variables for AutoLegalityMod
         /// </summary>
         /// <param name="legal">Optional legal PKM for loading trainerdata on a per game basis</param>
-        private static void LoadTrainerData(PKM legal = null)
+        private static SimpleTrainerInfo LoadTrainerData(PKM legal = null)
         {
             bool checkPerGame = (AutoLegalityMod.CheckMode() == "game");
             // If mode is not set as game: (auto or save)
             var tdataVals = !checkPerGame || legal == null
                 ? AutoLegalityMod.ParseTrainerJSON(SAV)
                 : AutoLegalityMod.ParseTrainerJSON(SAV, legal.Version);
-            TID_ALM = Convert.ToInt32(tdataVals[0]);
-            SID_ALM = Convert.ToInt32(tdataVals[1]);
+            Trainer.TID = Convert.ToInt32(tdataVals[0]);
+            Trainer.SID = Convert.ToInt32(tdataVals[1]);
             if (legal != null)
-                SID_ALM = legal.VC ? 0 : SID_ALM;
+                Trainer.SID = legal.VC ? 0 : Trainer.SID;
 
-            OT_ALM = tdataVals[2];
-            if (OT_ALM == "PKHeX") OT_ALM = "Archit(TCD)"; // Avoids secondary handler error
-            gender_ALM = 0;
-            if (tdataVals[3] == "F" || tdataVals[3] == "Female") gender_ALM = 1;
-            Country_ALM = tdataVals[4];
-            SubRegion_ALM = tdataVals[5];
-            ConsoleRegion_ALM = tdataVals[6];
+            Trainer.OT = tdataVals[2];
+            if (Trainer.OT == "PKHeX") Trainer.OT = "Archit(TCD)"; // Avoids secondary handler error
+            Trainer.Gender = tdataVals[3] == "F" || tdataVals[3] == "Female" ? 1 : 0;
+
+            // Load Trainer location details; check first if english string name
+            // if not, try to check if they're stored as integers.
+            Trainer.Country = AutoLegalityMod.GetCountryID(tdataVals[4]);
+            Trainer.SubRegion = AutoLegalityMod.GetSubRegionID(tdataVals[5], Trainer.Country);
+            Trainer.ConsoleRegion = AutoLegalityMod.GetConsoleRegionID(tdataVals[6]);
+
+            if (Trainer.Country < 0 && int.TryParse(tdataVals[4], out var c))
+                Trainer.Country = c;
+            if (Trainer.SubRegion < 0 && int.TryParse(tdataVals[5], out var s))
+                Trainer.SubRegion = s;
+            if (Trainer.ConsoleRegion < 0 && int.TryParse(tdataVals[6], out var x))
+                Trainer.ConsoleRegion = x;
+
             if ((checkPerGame && legal != null) || APILegalized)
-                AutoLegalityMod.SetTrainerData(legal, OT_ALM, TID_ALM, SID_ALM, gender_ALM, APILegalized);
+                AutoLegalityMod.SetTrainerData(legal, Trainer, APILegalized);
+
+            return Trainer;
         }
 
         /// <summary>
@@ -171,13 +188,15 @@ namespace AutoLegalityMod
                 {
                     invalidAPISets.Add(Set);
                     BruteForce b = new BruteForce { SAV = SAV };
-                    legal = b.LoadShowdownSetModded_PKSM(roughPKM, Set, resetForm, TID_ALM, SID_ALM, OT_ALM, gender_ALM);
+                    legal = b.LoadShowdownSetModded_PKSM(roughPKM, Set, resetForm, Trainer);
                     APILegalized = false;
                 }
-                PKM pk = SetTrainerData(legal, sets.Count == 1);
+                SetTrainerData(legal);
 
-                if (sets.Count > 1)
-                    BoxData[BoxOffset + emptySlots[i]] = pk;
+                if (sets.Count == 1)
+                    PKMEditor.PopulateFields(legal);
+                else
+                    BoxData[BoxOffset + emptySlots[i]] = legal;
             }
             if (sets.Count > 1)
             {
@@ -197,26 +216,14 @@ namespace AutoLegalityMod
         /// Set trainer data for a legal PKM
         /// </summary>
         /// <param name="legal">Legal PKM for setting the data</param>
-        /// <param name="display"></param>
         /// <returns>PKM with the necessary values modified to reflect trainerdata changes</returns>
-        private static PKM SetTrainerData(PKM legal, bool display)
+        private static void SetTrainerData(PKM legal)
         {
-            bool intRegions = false;
-            LoadTrainerData(legal);
-            if (int.TryParse(Country_ALM, out int n) && int.TryParse(SubRegion_ALM, out int m) && int.TryParse(ConsoleRegion_ALM, out int o))
-            {
-                AutoLegalityMod.SetPKMRegions(legal, n, m, o);
-                intRegions = true;
-            }
-            if (display)
-                PKMEditor.PopulateFields(legal);
+            var trainer = LoadTrainerData(legal);
 
-            if (!intRegions)
-            {
-                AutoLegalityMod.SetRegions(Country_ALM, SubRegion_ALM, ConsoleRegion_ALM, legal);
-                return legal;
-            }
-            return legal;
+            legal.ConsoleRegion = trainer.ConsoleRegion;
+            legal.Country = trainer.Country;
+            legal.Region = trainer.SubRegion;
         }
 
         /// <summary>

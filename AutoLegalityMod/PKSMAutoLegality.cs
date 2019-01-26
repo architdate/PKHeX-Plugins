@@ -15,20 +15,19 @@ namespace AutoLegalityMod
         public SaveFile SAV;
         private bool legalized;
 
+        private static readonly SimpleTrainerInfo DefaultTrainer = new SimpleTrainerInfo();
+
         /// <summary>
         /// Try to generate every a legal PKM from a showdown set using bruteforce. This should generally never be needed.
         /// </summary>
         /// <param name="Set">Rough PKM Set</param>
         /// <param name="SSet">Showdown Set</param>
         /// <param name="resetForm">boolean to reset form back to base form</param>
-        /// <param name="TID">optional TID</param>
-        /// <param name="SID">optional SID</param>
-        /// <param name="OT">optional OT Name</param>
-        /// <param name="gender">optional Gender</param>
         /// <returns>PKM legalized via bruteforce</returns>
-        public PKM LoadShowdownSetModded_PKSM(PKM Set, ShowdownSet SSet, bool resetForm = false, int TID = -1, int SID = -1, string OT = "", int gender = 0)
+        public PKM LoadShowdownSetModded_PKSM(PKM Set, ShowdownSet SSet, bool resetForm = false, SimpleTrainerInfo trainer = null)
         {
-            bool trainerinfo = TID > 0;
+            if (trainer == null)
+                trainer = DefaultTrainer;
             List<List<string>> evoChart = GenerateEvoLists2();
             int abilitynum = Set.AbilityNumber < 6 ? Set.AbilityNumber >> 1 : 0;
             if (resetForm)
@@ -53,19 +52,10 @@ namespace AutoLegalityMod
                     Set.Version = (int)game;
                     Set.RestoreIVs(SSet.IVs); // Restore IVs to SSet and HT to false
                     Set.Language = 2;
-                    if (trainerinfo)
-                    {
-                        Set.OT_Name = OT;
-                        Set.TID = TID;
-                        Set.SID = SID;
-                        Set.OT_Gender = gender;
-                    }
-                    else
-                    {
-                        Set.OT_Name = "Archit (TCD)";
-                        Set.TID = 24521;
-                        Set.SID = 42312;
-                    }
+                    Set.OT_Name = trainer.OT;
+                    Set.TID = trainer.TID;
+                    Set.SID = trainer.SID;
+                    Set.OT_Gender = trainer.Gender;
                     Set.MetDate = DateTime.Today;
                     Set.EggMetDate = DateTime.Today;
                     Set.Egg_Location = Set.Version < (int)GameVersion.W ? 2002 : 60002;
@@ -141,19 +131,10 @@ namespace AutoLegalityMod
                     Set.RestoreIVs(SSet.IVs); // Restore IVs to SSet and HT to false
                     Set.Language = 2;
                     Set.ConsoleRegion = 2;
-                    if (trainerinfo)
-                    {
-                        Set.OT_Name = OT;
-                        Set.TID = TID;
-                        Set.SID = SID;
-                        Set.OT_Gender = gender;
-                    }
-                    else
-                    {
-                        Set.OT_Name = "Archit (TCD)";
-                        Set.TID = 24521;
-                        Set.SID = 42312;
-                    }
+                    Set.OT_Name = trainer.OT;
+                    Set.TID = trainer.TID;
+                    Set.SID = trainer.SID;
+                    Set.OT_Gender = trainer.Gender;
 
                     if (BruteTables.UltraBeastBall.Contains(Set.Species))
                         Set.Ball = (int)Ball.Beast;
@@ -161,7 +142,7 @@ namespace AutoLegalityMod
                     if (game == GameVersion.RD || game == GameVersion.BU || game == GameVersion.YW || game == GameVersion.GN || game == GameVersion.GD || game == GameVersion.SV || game == GameVersion.C)
                     {
                         Set.SID = 0;
-                        if (OT.Length > 6)
+                        if (Set.OT_Name.Length > 6)
                             Set.OT_Name = "ARCH";
                     }
                     Set.MetDate = DateTime.Today;
