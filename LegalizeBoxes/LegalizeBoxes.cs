@@ -104,7 +104,7 @@ namespace LegalizeBoxes
                         legal = APIGenerated;
                     }
 
-                    AutoLegalityMod.AutoLegalityMod.SetTrainerData(legal, trainer, satisfied);
+                    legal.SetTrainerData(trainer, satisfied);
 
                     if (box)
                     {

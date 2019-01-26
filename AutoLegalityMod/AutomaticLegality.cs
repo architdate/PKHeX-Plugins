@@ -259,8 +259,7 @@ namespace AutoLegalityMod
         private static void SetTrainerData(PKM legal)
         {
             var trainer = LoadTrainerData(legal);
-            AutoLegalityMod.SetTrainerData(legal, trainer, true);
-
+            legal.SetTrainerData(trainer, true);
             legal.ConsoleRegion = trainer.ConsoleRegion;
             legal.Country = trainer.Country;
             legal.Region = trainer.SubRegion;

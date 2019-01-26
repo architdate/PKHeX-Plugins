@@ -154,5 +154,31 @@ namespace AutoLegalityMod
                     break;
             }
         }
+
+        /// <summary>
+        /// Set TID, SID and OT
+        /// </summary>
+        /// <param name="pk">PKM to set trainer data to</param>
+        /// <param name="trainer">Trainer data</param>
+        /// <param name="APILegalized">Was the <see cref="pk"/> legalized by the API</param>
+        public static void SetTrainerData(this PKM pk, SimpleTrainerInfo trainer, bool APILegalized = false)
+        {
+            if (APILegalized)
+            {
+                if ((pk.TID == 12345 && pk.OT_Name == "PKHeX") || (pk.TID == 34567 && pk.SID == 0 && pk.OT_Name == "TCD"))
+                {
+                    bool Shiny = pk.IsShiny;
+                    pk.TID = trainer.TID;
+                    pk.SID = trainer.SID;
+                    pk.OT_Name = trainer.OT;
+                    pk.OT_Gender = trainer.Gender;
+                    pk.SetShinyBoolean(Shiny);
+                }
+                return;
+            }
+            pk.TID = trainer.TID;
+            pk.SID = trainer.SID;
+            pk.OT_Name = trainer.OT;
+        }
     }
 }

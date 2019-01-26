@@ -10,73 +10,9 @@ namespace AutoLegalityMod
 {
     public static class AutoLegalityMod
     {
-        /// <summary>
-        /// Helper function to print out a byte array as a string that can be used within code
-        /// </summary>
-        /// <param name="bytes">byte array</param>
-        public static void PrintByteArray(byte[] bytes)
-        {
-            var str = $"new byte[] {{ {string.Join(", ", bytes)} }}";
-            Console.WriteLine(str);
-        }
-
-        /// <summary>
-        /// Set Country, SubRegion and Console in WinForms
-        /// </summary>
-        /// <param name="Country">String denoting the exact country</param>
-        /// <param name="SubRegion">String denoting the exact sub region</param>
-        /// <param name="ConsoleRegion">String denoting the exact console region</param>
-        /// <param name="pk"></param>
-        public static void SetRegions(string Country, string SubRegion, string ConsoleRegion, PKM pk)
-        {
-            pk.Country = GetCountryID(Country);
-            pk.Region = GetSubRegionID(SubRegion, pk.Country);
-            pk.ConsoleRegion = GetConsoleRegionID(ConsoleRegion);
-        }
-
         public static int GetConsoleRegionID(string ConsoleRegion) => Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == ConsoleRegion).Value;
         public static int GetSubRegionID(string SubRegion, int country) => Util.GetCBList($"sr_{country:000}", "en").Find(z => z.Text == SubRegion).Value;
         public static int GetCountryID(string Country) => Util.GetCBList("countries", "en").Find(z => z.Text == Country).Value;
-
-        /// <summary>
-        /// Set Country, SubRegion and ConsoleRegion in a PKM directly
-        /// </summary>
-        /// <param name="pk"></param>
-        /// <param name="Country">INT value corresponding to the index of the Country</param>
-        /// <param name="SubRegion">INT value corresponding to the index of the sub region</param>
-        /// <param name="ConsoleRegion">INT value corresponding to the index of the console region</param>
-        public static void SetPKMRegions(PKM pk, int Country, int SubRegion, int ConsoleRegion)
-        {
-            pk.Country = Country;
-            pk.Region = SubRegion;
-            pk.ConsoleRegion = ConsoleRegion;
-        }
-
-        /// <summary>
-        /// Set TID, SID and OT
-        /// </summary>
-        /// <param name="pk">PKM to set trainer data to</param>
-        /// <param name="trainer">Trainer data</param>
-        /// <param name="APILegalized">Was the <see cref="pk"/> legalized by the API</param>
-        public static void SetTrainerData(PKM pk, SimpleTrainerInfo trainer, bool APILegalized = false)
-        {
-            if (APILegalized)
-            {
-                if ((pk.TID == 12345 && pk.OT_Name == "PKHeX") || (pk.TID == 34567 && pk.SID == 0 && pk.OT_Name == "TCD"))
-                {
-                    bool Shiny = pk.IsShiny;
-                    pk.TID = trainer.TID;
-                    pk.SID = trainer.SID;
-                    pk.OT_Name = trainer.OT;
-                    pk.OT_Gender = trainer.Gender;
-                    pk.SetShinyBoolean(Shiny);
-                }
-                return;
-            }
-            pk.TID = trainer.TID;
-            pk.SID = trainer.SID;
-            pk.OT_Name = trainer.OT;
-        }
 
         /// <summary>
         /// Check the mode for trainerdata.json
