@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using PKHeX.Core;
 using AutoLegalityMod;
 using System.Windows.Forms;
@@ -67,11 +66,13 @@ namespace LegalizeBoxes
 
         private void Legalize(object sender, EventArgs e)
         {
-            bool box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
             AutomaticLegality.PKMEditor = PKMEditor;
             AutomaticLegality.SaveFileEditor = SaveFileEditor;
             API.SAV = SaveFileEditor.SAV;
-            IList<PKM> BoxData = SaveFileEditor.SAV.BoxData;
+
+            var BoxData = SaveFileEditor.SAV.BoxData;
+            var brute = new BruteForce { SAV = SaveFileEditor.SAV };
+            bool box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
             for (int i = 0; i < 30; i++)
             {
                 PKM illegalPK = PKMEditor.PreparePKM();
@@ -82,28 +83,23 @@ namespace LegalizeBoxes
                 if (illegalPK.Species > 0 && !new LegalityAnalysis(illegalPK).Valid)
                 {
                     ShowdownSet Set = new ShowdownSet(ShowdownSet.GetShowdownText(illegalPK));
-                    bool resetForm = false;
-                    if (Set.Form != null)
-                    {
-                        if (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted") resetForm = true;
-                    }
-                    PKM legal;
+
                     PKM APIGenerated = SaveFileEditor.SAV.BlankPKM;
-                    bool satisfied;
+                    bool satisfied = false;
                     try { APIGenerated = API.APILegality(illegalPK, Set, out satisfied); }
-                    catch { satisfied = false; }
+                    catch { }
 
                     var trainer = illegalPK.GetTrainerData();
+                    PKM legal;
                     if (!satisfied)
                     {
-                        BruteForce b = new BruteForce { SAV = SaveFileEditor.SAV };
-                        legal = b.LoadShowdownSetModded_PKSM(illegalPK, Set, resetForm, trainer);
+                        bool resetForm = Set.Form != null && (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted");
+                        legal = brute.ApplyDetails(illegalPK, Set, resetForm, trainer);
                     }
                     else
                     {
                         legal = APIGenerated;
                     }
-
                     legal.SetTrainerData(trainer, satisfied);
 
                     if (box)

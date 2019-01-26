@@ -11,11 +11,9 @@ namespace SmogonGenner
         public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
-        public object[] arguments;
 
         public void Initialize(params object[] args)
         {
-            arguments = args;
             Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;

@@ -23,8 +23,9 @@ namespace AutoLegalityMod
         /// <param name="Set">Rough PKM Set</param>
         /// <param name="SSet">Showdown Set</param>
         /// <param name="resetForm">boolean to reset form back to base form</param>
+        /// <param name="trainer">Trainer details to apply (optional)</param>
         /// <returns>PKM legalized via bruteforce</returns>
-        public PKM LoadShowdownSetModded_PKSM(PKM Set, ShowdownSet SSet, bool resetForm = false, SimpleTrainerInfo trainer = null)
+        public PKM ApplyDetails(PKM Set, ShowdownSet SSet, bool resetForm = false, SimpleTrainerInfo trainer = null)
         {
             if (trainer == null)
                 trainer = DefaultTrainer;
@@ -1272,7 +1273,6 @@ namespace AutoLegalityMod
 
         private static List<List<string>> GenerateEvoLists2()
         {
-            int counter = 0;
             string line;
             List<List<string>> evoList = new List<List<string>>();
             List<string> blankList = new List<string>();
@@ -1292,7 +1292,6 @@ namespace AutoLegalityMod
                 {
                     blankList.Add(trim);
                 }
-                counter++;
             }
             file.Close();
             return evoList;

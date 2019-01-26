@@ -245,7 +245,7 @@ namespace AutoLegalityMod
             {
                 message = LegalizationResult.API_Invalid;
                 BruteForce b = new BruteForce { SAV = SAV };
-                legal = b.LoadShowdownSetModded_PKSM(roughPKM, Set, resetForm, Trainer);
+                legal = b.ApplyDetails(roughPKM, Set, resetForm, Trainer);
             }
             SetTrainerData(legal);
             return legal;

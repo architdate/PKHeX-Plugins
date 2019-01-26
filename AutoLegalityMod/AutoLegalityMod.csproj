@@ -54,7 +54,7 @@
     <Compile Include="ConstData.cs" />
     <Compile Include="EdgeCaseLegality.cs" />
     <Compile Include="IVtoPIDGenerator.cs" />
-    <Compile Include="PKSMAutoLegality.cs" />
+    <Compile Include="BruteForce.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinFormsUtil.cs" />
   </ItemGroup>

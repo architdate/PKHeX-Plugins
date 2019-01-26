@@ -12,11 +12,9 @@ namespace PGLRentalLegality
         public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
-        public object[] Arguments { get; private set; }
 
         public void Initialize(params object[] args)
         {
-            Arguments = args;
             Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;

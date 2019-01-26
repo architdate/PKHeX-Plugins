@@ -8,6 +8,9 @@ using System.Windows.Forms;
 
 namespace AutoLegalityMod
 {
+    /// <summary>
+    /// Logic to load <see cref="SimpleTrainerInfo"/> from a saved text file.
+    /// </summary>
     public static class TrainerSettings
     {
         public static int GetConsoleRegionID(string ConsoleRegion) => Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == ConsoleRegion).Value;
