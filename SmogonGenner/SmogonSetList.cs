@@ -56,7 +56,29 @@ namespace SmogonGenner
         {
             switch (type)
             {
-                case nameof(PK7): return "https://www.smogon.com/dex/sm/pokemon";
+                case nameof(PK1):
+                    return "https://www.smogon.com/dex/rb/pokemon";
+                case nameof(PK2):
+                case nameof(_K12):
+                    return "https://www.smogon.com/dex/gs/pokemon";
+
+                case nameof(CK3):
+                case nameof(XK3):
+                case nameof(PK3):
+                case nameof(_K3):
+                    return "https://www.smogon.com/dex/rs/pokemon";
+
+                case nameof(BK4):
+                case nameof(PK4):
+                    return "https://www.smogon.com/dex/dp/pokemon";
+
+                case nameof(PK5):
+                    return "https://www.smogon.com/dex/bw/pokemon";
+                case nameof(PK6):
+                    return "https://www.smogon.com/dex/xy/pokemon";
+                case nameof(PK7):
+                    return "https://www.smogon.com/dex/sm/pokemon";
+
                 default: return string.Empty;
             }
         }
