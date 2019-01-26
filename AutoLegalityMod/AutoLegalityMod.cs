@@ -14,7 +14,6 @@ namespace AutoLegalityMod
         public int Priority => 0;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
-        public ToolStripItem menuinstance;
 
         public void Initialize(params object[] args)
         {
@@ -57,7 +56,6 @@ namespace AutoLegalityMod
             ctrl.Name = "Menu_AutoLegalityMod";
             ctrl.Image = AutoLegalityResources.autolegalitymod;
             ctrl.ShortcutKeys = (Keys.Control | Keys.I);
-            menuinstance = ctrl;
         }
 
         public void NotifySaveLoaded()

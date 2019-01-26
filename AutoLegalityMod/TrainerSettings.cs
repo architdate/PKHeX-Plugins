@@ -17,6 +17,8 @@ namespace AutoLegalityMod
         public static int GetSubRegionID(string SubRegion, int country) => Util.GetCBList($"sr_{country:000}", "en").Find(z => z.Text == SubRegion).Value;
         public static int GetCountryID(string Country) => Util.GetCBList("countries", "en").Find(z => z.Text == Country).Value;
 
+        private static string GetTrainerJSONPath() => Path.Combine(Directory.GetCurrentDirectory(), "trainerdata.json");
+
         /// <summary>
         /// Check the mode for trainerdata.json
         /// </summary>
@@ -63,8 +65,9 @@ namespace AutoLegalityMod
                 jsonvalue = "auto";
                 return false;
             }
-            if (!jsonstring.Contains("\"" + Game + "\"")) return false;
-            foreach (string s in jsonstring.Split(new[] { "\"" + Game + "\"" }, StringSplitOptions.None))
+            if (!jsonstring.Contains($"\"{Game}\""))
+                return false;
+            foreach (string s in jsonstring.Split(new[] {$"\"{Game}\""}, StringSplitOptions.None))
             {
                 if (s.Trim()[0] != ':')
                     continue;
@@ -131,8 +134,6 @@ namespace AutoLegalityMod
             }
             return new[] { TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion };
         }
-
-        private static string GetTrainerJSONPath() => Directory.GetCurrentDirectory() + "\\trainerdata.json";
 
         /// <summary>
         /// Parser for auto and preset trainerdata.txt files

@@ -740,8 +740,7 @@ namespace AutoLegalityMod
                 pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
                 if (pk.Ability == abilityID)
                 {
-                    LegalityAnalysis recheckLA = new LegalityAnalysis(pk);
-                    var updatedReport = recheckLA.Report();
+                    var updatedReport = GetReport(pk);
                     if (!updatedReport.Contains("Ability mismatch for encounter"))
                     {
                         finalabilitynum = pk.AbilityNumber;
@@ -755,8 +754,7 @@ namespace AutoLegalityMod
 
         public bool CommonErrorHandling2(PKM pk)
         {
-            LegalityAnalysis la = new LegalityAnalysis(pk);
-            var report = la.Report();
+            var report = GetReport(pk);
 
             // fucking M2
             if ((UsesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.FR) || (UsesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.LG))
@@ -1013,31 +1011,6 @@ namespace AutoLegalityMod
                 if (pk.IV_SPD == 31) h.HT_SPD = false;
                 if (pk.IV_SPE == 31) h.HT_SPE = false;
             }
-
-            /* Uncomment to automatically override specified IVs.
-             * Default Behaviour would be to ignore this fix if IVs are specified to be of such values
-             *
-             *
-            if (report.Contains(string.Format(V28, 3))) //V28 = Should have at least {0} IVs = 31.
-            {
-                PKM temp = pk;
-                pk.IV_HP = 31;
-                pk.IV_ATK = 31;
-                pk.IV_DEF = 31;
-                pk.IV_SPA = 31;
-                pk.IV_SPD = 31;
-                pk.IV_SPE = 31;
-                report = UpdateReport(pk);
-                if (new LegalityAnalysis(pk).Valid)
-                {
-                    return false;
-                }
-                else
-                {
-                    pk = temp;
-                }
-            }
-            */
 
             return false;
         }

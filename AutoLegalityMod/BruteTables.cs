@@ -4,7 +4,6 @@ using PKHeX.Core;
 
 namespace AutoLegalityMod
 {
-
     public static class BruteTables
     {
         public static readonly int[] Legendaries =
@@ -42,7 +41,7 @@ namespace AutoLegalityMod
             806,
         };
 
-        public static Dictionary<int, int[]>[] WC3RNGList =
+        public static readonly Dictionary<int, int[]>[] WC3RNGList =
         {
             new Dictionary<int, int[]>
             { // M2

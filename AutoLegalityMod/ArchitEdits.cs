@@ -1,21 +1,29 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using PKHeX.Core;
 using static PKHeX.Core.LegalityCheckStrings;
 
 namespace AutoLegalityMod
 {
-    public static class ArchitEdits
+    public static class SimpleEdits
     {
         /// <summary>
-        /// Set Nature and Ability of the pokemon
+        /// Set Encryption Constant based on PKM GenNumber
         /// </summary>
-        /// <param name="pk">PKM to modify</param>
-        /// <param name="SSet">Showdown Set to refer</param>
-        public static void SetNatureAbility(this PKM pk, ShowdownSet SSet)
+        /// <param name="pk"></param>
+        public static void SetEncryptionConstant(this PKM pk)
         {
-            // Values that are must for showdown set to work, IVs should be adjusted to account for this
-            pk.Nature = SSet.Nature;
-            pk.SetAbility(SSet.Ability);
+            if (pk.GenNumber > 5 || pk.VC)
+            {
+                int wIndex = Array.IndexOf(Legal.WurmpleEvolutions, pk.Species);
+                uint EC = wIndex < 0 ? Util.Rand32() : PKX.GetWurmpleEC(wIndex / 2);
+                if (!(pk.Species == 658 && pk.AltForm == 1)) pk.EncryptionConstant = EC;
+            }
+            else
+            {
+                pk.EncryptionConstant = pk.PID; // Generations 3 to 5
+            }
         }
 
         /// <summary>
@@ -179,6 +187,70 @@ namespace AutoLegalityMod
             pk.TID = trainer.TID;
             pk.SID = trainer.SID;
             pk.OT_Name = trainer.OT;
+        }
+
+        /// <summary>
+        /// Set Trainer data (TID, SID, OT) for a given PKM
+        /// </summary>
+        /// <param name="pk">PKM to modify</param>
+        public static void SetTrainerDataAndMemories(this PKM pk)
+        {
+            if (pk.WasEvent || pk.WasIngameTrade)
+                return;
+
+            // Hardcoded a generic one for now, trainerdata.json implementation here later
+            pk.CurrentHandler = 1;
+            pk.HT_Name = "ARCH";
+            pk.HT_Gender = 0; // Male for Colo/XD Cases
+            pk.TID = 34567;
+            pk.SID = 0;
+            pk.OT_Name = "TCD";
+            pk.FixMemoriesPKM();
+        }
+
+        /// <summary>
+        /// Fix invalid and missing ribbons. (V600 and V601)
+        /// </summary>
+        /// <param name="pk">PKM whose ribbons need to be fixed</param>
+        public static void FixRibbons(this PKM pk)
+        {
+            string Report = new LegalityAnalysis(pk).Report();
+            if (Report.Contains(string.Format(LRibbonFMissing_0, "")))
+            {
+                string[] ribbonList = Report.Split(new[] { string.Format(LRibbonFMissing_0, "") }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
+                var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
+                List<string> missingRibbons = new List<string>();
+                foreach (var RibbonName in RibbonNames)
+                {
+                    string v = RibbonStrings.GetName(RibbonName).Replace("Ribbon", "");
+                    if (ribbonList.Contains(v)) missingRibbons.Add(RibbonName);
+                }
+                foreach (string missing in missingRibbons)
+                {
+                    if (missing == nameof(PK6.RibbonCountMemoryBattle) || missing == nameof(PK6.RibbonCountMemoryContest)) ReflectUtil.SetValue(pk, missing, 0);
+                    else ReflectUtil.SetValue(pk, missing, true);
+                }
+            }
+            if (Report.Contains(string.Format(LRibbonFInvalid_0, "")))
+            {
+                string[] ribbonList = Report.Split(new[] { string.Format(LRibbonFInvalid_0, "") }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
+                var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
+
+                var invalidRibbons = new List<string>();
+                foreach (var RibbonName in RibbonNames)
+                {
+                    string v = RibbonStrings.GetName(RibbonName).Replace("Ribbon", "");
+                    if (ribbonList.Contains(v))
+                        invalidRibbons.Add(RibbonName);
+                }
+                foreach(string invalid in invalidRibbons)
+                {
+                    if (invalid == nameof(PK6.RibbonCountMemoryBattle) || invalid == nameof(PK6.RibbonCountMemoryContest))
+                        ReflectUtil.SetValue(pk, invalid, 0);
+                    else
+                        ReflectUtil.SetValue(pk, invalid, false);
+                }
+            }
         }
     }
 }
