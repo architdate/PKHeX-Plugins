@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace AutoLegalityMod
 {
-    public static class AutoLegalityMod
+    public static class TrainerSettings
     {
         public static int GetConsoleRegionID(string ConsoleRegion) => Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == ConsoleRegion).Value;
         public static int GetSubRegionID(string SubRegion, int country) => Util.GetCBList($"sr_{country:000}", "en").Find(z => z.Text == SubRegion).Value;

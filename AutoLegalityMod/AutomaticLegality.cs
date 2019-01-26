@@ -16,7 +16,7 @@ namespace AutoLegalityMod
             // Make a blank MGDB directory and initialize trainerdata
             if (!Directory.Exists(MGDatabasePath))
                 Directory.CreateDirectory(MGDatabasePath);
-            if (AutoLegalityMod.CheckMode() != AutoModMode.Game)
+            if (TrainerSettings.CheckMode() != AutoModMode.Game)
                 Trainer = LoadTrainerData();
         }
 
@@ -108,12 +108,12 @@ namespace AutoLegalityMod
         /// <param name="legal">Optional legal PKM for loading trainerdata on a per game basis</param>
         private static SimpleTrainerInfo LoadTrainerData(PKM legal = null)
         {
-            bool checkPerGame = (AutoLegalityMod.CheckMode() == AutoModMode.Save);
+            bool checkPerGame = (TrainerSettings.CheckMode() == AutoModMode.Save);
             var trainer = new SimpleTrainerInfo();
             // If mode is not set as game: (auto or save)
             var tdataVals = !checkPerGame || legal == null
-                ? AutoLegalityMod.ParseTrainerJSON(SAV)
-                : AutoLegalityMod.ParseTrainerJSON(SAV, legal.Version);
+                ? TrainerSettings.ParseTrainerJSON(SAV)
+                : TrainerSettings.ParseTrainerJSON(SAV, legal.Version);
             trainer.TID = Convert.ToInt32(tdataVals[0]);
             trainer.SID = Convert.ToInt32(tdataVals[1]);
             if (legal != null)
@@ -125,9 +125,9 @@ namespace AutoLegalityMod
 
             // Load Trainer location details; check first if english string name
             // if not, try to check if they're stored as integers.
-            trainer.Country = AutoLegalityMod.GetCountryID(tdataVals[4]);
-            trainer.SubRegion = AutoLegalityMod.GetSubRegionID(tdataVals[5], trainer.Country);
-            trainer.ConsoleRegion = AutoLegalityMod.GetConsoleRegionID(tdataVals[6]);
+            trainer.Country = TrainerSettings.GetCountryID(tdataVals[4]);
+            trainer.SubRegion = TrainerSettings.GetSubRegionID(tdataVals[5], trainer.Country);
+            trainer.ConsoleRegion = TrainerSettings.GetConsoleRegionID(tdataVals[6]);
 
             if (trainer.Country < 0 && int.TryParse(tdataVals[4], out var c))
                 trainer.Country = c;
