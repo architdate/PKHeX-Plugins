@@ -199,7 +199,7 @@ namespace Misc
 
         public uint Pid
         {
-            get { return pid; }
+            get => pid;
             set
             {
                 Nature = (value % 25);
@@ -220,7 +220,7 @@ namespace Misc
 
         public uint Dv
         {
-            get { return dv; }
+            get => dv;
             set
             {
                 //  Split up our DV
@@ -305,24 +305,21 @@ namespace Misc
             if ((pid2 > 7 ? 0 : 1) != (pid1 ^ 40122 ^ sid))
                 pid1 ^= 0x8000;
 
-            var frame = new Frame(frameType)
+            return new Frame(frameType)
             {
                 Seed = seed,
                 Number = number,
                 RngResult = rngResult,
                 id = id,
                 sid = sid,
-                Pid = (pid1 << 16) | pid2
+                Pid = (pid1 << 16) | pid2,
+                Hp = dv1,
+                Atk = dv2,
+                Def = dv3,
+                Spa = dv4,
+                Spd = dv5,
+                Spe = dv6
             };
-
-            frame.Hp = dv1;
-            frame.Atk = dv2;
-            frame.Def = dv3;
-            frame.Spa = dv4;
-            frame.Spd = dv5;
-            frame.Spe = dv6;
-
-            return frame;
         }
     }
 
@@ -454,7 +451,6 @@ namespace Misc
     internal class FrameGenerator
     {
         protected Frame frame;
-        protected FrameType frameType = FrameType.Method1;
         protected List<Frame> frames;
         private uint lastseed;
         protected uint maxResults;
@@ -467,17 +463,8 @@ namespace Misc
             InitialSeed = 0;
         }
 
-        public FrameType FrameType
-        {
-            get { return frameType; }
-            set
-            {
-                frameType = value;
-            }
-        }
-
+        public FrameType FrameType { get; set; }
         public ulong InitialSeed { get; set; }
-
         public uint InitialFrame { get; set; }
 
         // by declaring these only once you get a huge performance boost
@@ -492,7 +479,7 @@ namespace Misc
         {
             frames = new List<Frame>();
 
-            if (frameType == FrameType.ColoXD)
+            if (FrameType == FrameType.ColoXD)
             {
                 var rng = new XdRng((uint)InitialSeed);
                 rngList = new List<uint>();
@@ -505,7 +492,7 @@ namespace Misc
 
                 for (uint cnt = 0; cnt < maxResults; cnt++, rngList.RemoveAt(0), rngList.Add(rng.GetNext16BitNumber()))
                 {
-                    switch (frameType)
+                    switch (FrameType)
                     {
                         case FrameType.ColoXD:
                             frame = Frame.GenerateFrame(
@@ -564,7 +551,7 @@ namespace Misc
 
                 for (uint cnt = 0; cnt < maxResults; cnt++, rngList.RemoveAt(0), rngList.Add(rng.GetNext16BitNumber()))
                 {
-                    switch (frameType)
+                    switch (FrameType)
                     {
                         case FrameType.Method1:
                             frame =
@@ -792,7 +779,7 @@ namespace Misc
                         if (keys.ContainsKey(test))
                         {
                             rng.Seed = (first | (cnt << 8) | keys[test]);
-                            if (((rng.Seed * 0x41c64e6d + 0x6073) & 0x7FFF0000) == second)
+                            if ((((rng.Seed * 0x41c64e6d) + 0x6073) & 0x7FFF0000) == second)
                             {
                                 rng.GetNext32BitNumber();
                                 pid2 = rng.GetNext16BitNumber();
@@ -879,7 +866,7 @@ namespace Misc
                     }
 
                     search1 = second - (first * 0x41c64e6d);
-                    search2 = second - (first ^ 0x80000000) * 0x41c64e6d;
+                    search2 = second - ((first ^ 0x80000000) * 0x41c64e6d);
                     for (uint cnt = 0; cnt < 256; ++cnt, search1 -= 0xc64e6d00, search2 -= 0xc64e6d00)
                     {
                         uint test = search1 >> 16;
@@ -887,7 +874,7 @@ namespace Misc
                         if (keys.ContainsKey(test))
                         {
                             rng.Seed = (first | (cnt << 8) | keys[test]);
-                            if (((rng.Seed * 0x41c64e6d + 0x6073) & 0x7FFF0000) == second)
+                            if ((((rng.Seed * 0x41c64e6d) + 0x6073) & 0x7FFF0000) == second)
                             {
                                 pid2 = rng.GetNext16BitNumber();
                                 pid1 = rng.GetNext16BitNumber();
@@ -925,7 +912,7 @@ namespace Misc
                         if (keys.ContainsKey(test))
                         {
                             rng.Seed = (first | (cnt << 8) | keys[test]);
-                            if (((rng.Seed * 0x41c64e6d + 0x6073) & 0x7FFF0000) == second)
+                            if ((((rng.Seed * 0x41c64e6d) + 0x6073) & 0x7FFF0000) == second)
                             {
                                 pid2 = rng.GetNext16BitNumber();
                                 pid1 = rng.GetNext16BitNumber();
@@ -963,7 +950,7 @@ namespace Misc
 
                 case FrameType.ColoXD:
 
-                    t = ((second - (0x343fd * first)) - 0x259ec4) & 0xFFFFFFFF;
+                    t = (second - (0x343fd * first) - 0x259ec4) & 0xFFFFFFFF;
                     kmax = (0x343fabc02 - t) / 0x80000000;
 
                     for (ulong k = 0; k <= kmax; k++, t += 0x80000000)
@@ -1074,7 +1061,7 @@ namespace Misc
 
             if (seeds.Count == 0)
             {
-                return new string[] { "0", "0" };
+                return new[] { "0", "0" };
             }
 
             string[] ans = new string[2];
@@ -1099,7 +1086,7 @@ namespace Misc
 
             if (seeds.Count == 0)
             {
-                return new string[] { "0", "0" };
+                return new[] { "0", "0" };
             }
 
             string[] ans = new string[2];
@@ -1124,7 +1111,7 @@ namespace Misc
 
             if (seeds.Count == 0)
             {
-                return new string[] { "0", "0" };
+                return new[] { "0", "0" };
             }
 
             string[] ans = new string[2];
@@ -1149,7 +1136,7 @@ namespace Misc
 
             if (seeds.Count == 0)
             {
-                return new string[] { "0", "0" };
+                return new[] { "0", "0" };
             }
 
             string[] ans = new string[2];
@@ -1174,7 +1161,7 @@ namespace Misc
 
             if (seeds.Count == 0)
             {
-                return new string[] { "0", "0" };
+                return new[] { "0", "0" };
             }
 
             string[] ans = new string[2];
@@ -1219,7 +1206,7 @@ namespace Misc
                     }
                 }
             }
-            return new string[] { finalPID.ToString("X"), finalHP.ToString(), finalATK.ToString(), finalDEF.ToString(), finalSPA.ToString(), finalSPD.ToString(), finalSPE.ToString() };
+            return new[] { finalPID.ToString("X"), finalHP.ToString(), finalATK.ToString(), finalDEF.ToString(), finalSPA.ToString(), finalSPD.ToString(), finalSPE.ToString() };
         }
 
         private uint Forward(uint seed)
@@ -1324,14 +1311,13 @@ namespace Misc
                 generator = new FrameGenerator{FrameType = FrameType.Method2};
             if (method == "BACD_R")
             {
-                generator = new FrameGenerator{FrameType = FrameType.Method1Reverse};
                 IVtoPIDGenerator bacdr = new IVtoPIDGenerator();
                 return bacdr.GenerateWishmkr(nature);
             }
             FrameCompare frameCompare = new FrameCompare(Hptofilter(hiddenpower), nature);
             List<Frame> frames = generator.Generate(frameCompare, 0, 0);
             //Console.WriteLine("Num frames: " + frames.Count);
-            return new string[] { frames[0].Pid.ToString("X"), frames[0].Hp.ToString(), frames[0].Atk.ToString(), frames[0].Def.ToString(), frames[0].Spa.ToString(), frames[0].Spd.ToString(), frames[0].Spe.ToString() };
+            return new[] { frames[0].Pid.ToString("X"), frames[0].Hp.ToString(), frames[0].Atk.ToString(), frames[0].Def.ToString(), frames[0].Spa.ToString(), frames[0].Spd.ToString(), frames[0].Spe.ToString() };
         }
     }
 }

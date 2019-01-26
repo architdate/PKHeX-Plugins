@@ -69,6 +69,7 @@ namespace LegalizeBoxes
 
         private void Legalize(object sender, EventArgs e)
         {
+            bool box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
             AutomaticLegality.PKMEditor = PKMEditor;
             AutomaticLegality.SaveFileEditor = SaveFileEditor;
             AutoLegalityMod.AutoLegalityMod.SAV = SaveFileEditor.SAV;
@@ -76,9 +77,6 @@ namespace LegalizeBoxes
             for (int i = 0; i < 30; i++)
             {
                 PKM illegalPK = PKMEditor.PreparePKM();
-                bool box = false;
-                if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
-                    box = true;
 
                 if (box && BoxData.Count > (SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount) + i)
                     illegalPK = BoxData[(SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount) + i];
@@ -93,7 +91,7 @@ namespace LegalizeBoxes
                     }
                     PKM legal;
                     PKM APIGenerated = SaveFileEditor.SAV.BlankPKM;
-                    bool satisfied = false;
+                    bool satisfied;
                     try { APIGenerated = AutoLegalityMod.AutoLegalityMod.APILegality(illegalPK, Set, out satisfied); }
                     catch { satisfied = false; }
                     if (!satisfied)
@@ -106,7 +104,7 @@ namespace LegalizeBoxes
                         legal = APIGenerated;
                     }
 
-                    legal = AutoLegalityMod.AutoLegalityMod.SetTrainerData(illegalPK.OT_Name, illegalPK.TID, illegalPK.SID, illegalPK.OT_Gender, legal, satisfied);
+                    AutoLegalityMod.AutoLegalityMod.SetTrainerData(legal, illegalPK.OT_Name, illegalPK.TID, illegalPK.SID, illegalPK.OT_Gender, satisfied);
 
                     if (box)
                     {

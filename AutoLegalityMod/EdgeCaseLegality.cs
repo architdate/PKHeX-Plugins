@@ -3,19 +3,14 @@ using System.Linq;
 
 using PKHeX.Core;
 
-/// <summary>
-/// Covers everything that is not covered by / Cannot currently be covered by Auto Legality Mod generic legality formula
-/// AKA Hardcoding certain things that I cannot fix without restructuring everything I have done so far :[
-/// </summary>
-
 namespace AutoLegalityMod
 {
+    /// <summary>
+    /// Covers everything that is not covered by / Cannot currently be covered by Auto Legality Mod generic legality formula
+    /// AKA Hardcoding certain things that I cannot fix without restructuring everything I have done so far :[
+    /// </summary>
     public static class EdgeCaseLegality
     {
-        public static readonly EncounterStatic[] BWEntreeForest = MarkG5DreamWorld(BW_DreamWorld);
-        public static readonly EncounterStatic[] B2W2EntreeForest = MarkG5DreamWorld(B2W2_DreamWorld);
-        public static readonly EncounterStatic[] USUMEdgeEnc = MarkEncountersGeneration(USUMEdgeEncounters, 7);
-
         ///<summary>
         ///Gen 5 Dreamworld wack events
         ///</summary>
@@ -409,5 +404,9 @@ namespace AutoLegalityMod
         {
             return source.Where(s => s.Version.Contains(game)).ToArray();
         }
+
+        public static readonly EncounterStatic[] BWEntreeForest = MarkG5DreamWorld(BW_DreamWorld);
+        public static readonly EncounterStatic[] B2W2EntreeForest = MarkG5DreamWorld(B2W2_DreamWorld);
+        public static readonly EncounterStatic[] USUMEdgeEnc = MarkEncountersGeneration(USUMEdgeEncounters, 7);
     }
 }

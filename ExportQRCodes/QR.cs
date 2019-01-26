@@ -4,7 +4,7 @@ using QRCoder;
 
 namespace PKHeX.WinForms
 {
-    public partial class QR
+    public class QR
     {
         private Image finalqr;
         private readonly PKM pkm;

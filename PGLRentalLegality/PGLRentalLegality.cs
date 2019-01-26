@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using PKHeX.Core;
 using AutoLegalityMod;
@@ -53,19 +54,17 @@ namespace PGLRentalLegality
             tools.DropDownItems.Add(ctrl);
             ctrl.Click += PGLShowdownSet;
             ctrl.Image = PGLRentalLegalityResources.pglqrcode;
-            ctrl.ShortcutKeys = (Keys.Alt | Keys.Q);
+            ctrl.ShortcutKeys = Keys.Alt | Keys.Q;
         }
 
         private void PGLShowdownSet(object sender, EventArgs e)
         {
-            if (!Clipboard.ContainsImage()) return;
+            if (!Clipboard.ContainsImage())
+                return;
             var rentalTeam = new QRParser().DecryptQRCode(Clipboard.GetImage());
-            string data = "";
-            foreach (QRPoke p in rentalTeam.team)
-            {
-                data += p.ToShowdownFormat(false) + Environment.NewLine + Environment.NewLine;
-            }
-            Clipboard.SetText(data.TrimEnd());
+            var sets = rentalTeam.team.Select(z => z.ToShowdownFormat(false));
+            string data = string.Join(Environment.NewLine + Environment.NewLine, sets);
+            Clipboard.SetText(data);
             AutomaticLegality.ImportModded();
             MessageBox.Show("Exported OwO","Alert");
         }

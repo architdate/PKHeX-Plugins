@@ -75,7 +75,6 @@ namespace ExportQRCodes
                 if (qr == null)
                     continue;
 
-                string[] r = pk.GetQRLines();
                 qrcodes.Add(Util.CleanFileName(pk.FileName), RefreshImage(qr));
             }
             if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "qrcodes")))

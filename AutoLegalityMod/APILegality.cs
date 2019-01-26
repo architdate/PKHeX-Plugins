@@ -17,7 +17,6 @@ namespace AutoLegalityMod
         /// <param name="roughPK">rough pkm that has all the SSet values entered</param>
         /// <param name="SSet">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use current auto legality functionality</param>
-        /// <returns></returns>
         public static PKM APILegality(PKM roughPK, ShowdownSet SSet, out bool satisfied)
         {
             bool changedForm = false;
@@ -37,58 +36,45 @@ namespace AutoLegalityMod
             var f = GeneratePKMs(roughPK, SAV, moves);
             foreach (PKM pkmn in f)
             {
-                if (pkmn != null)
+                if (pkmn == null)
+                    continue;
+                try
                 {
-                    try
-                    {
-                        PKM pk = PKMConverter.ConvertToType(pkmn, SAV.PKMType, out _); // All Possible PKM files
-                        LegalInfo info = new LegalInfo(pk);
-                        var pidiv = info.PIDIV ?? MethodFinder.Analyze(pk);
-                        PIDType Method = PIDType.None;
-                        if (pidiv != null) Method = pidiv.Type;
-                        SetVersion(pk, pkmn); // PreEmptive Version setting
-                        SetSpeciesLevel(pk, SSet, Form);
-                        SetMovesEVsItems(pk, SSet);
-                        SetTrainerDataAndMemories(pk);
-                        SetNatureAbility(pk, SSet);
-                        SetIVsPID(pk, SSet, Method, HPType, pkmn);
-                        PrintLegality(pk);
-                        ColosseumFixes(pk);
-                        pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
-                        SetEncryptionConstant(pk);
-                        SetShinyBoolean(pk, SSet.Shiny);
-                        CheckAndSetFateful(pk);
-                        FixGender(pk, SSet);
-                        FixRibbons(pk);
-                        FixMemoriesPKM(pk);
-                        SetSpeciesBall(pk);
-                        SetHappiness(pk);
-                        LegalityAnalysis la = new LegalityAnalysis(pk);
-                        if (la.Valid) satisfied = true;
-                        if (satisfied)
-                            return pk;
-                        else Console.WriteLine(la.Report());
-                        satisfied = true;
+                    PKM pk = PKMConverter.ConvertToType(pkmn, SAV.PKMType, out _); // All Possible PKM files
+                    LegalInfo info = new LegalInfo(pk);
+                    var pidiv = info.PIDIV ?? MethodFinder.Analyze(pk);
+                    PIDType Method = PIDType.None;
+                    if (pidiv != null) Method = pidiv.Type;
+                    SetVersion(pk, pkmn); // PreEmptive Version setting
+                    SetSpeciesLevel(pk, SSet, Form);
+                    SetMovesEVsItems(pk, SSet);
+                    SetTrainerDataAndMemories(pk);
+                    pk.SetNatureAbility(SSet);
+                    SetIVsPID(pk, SSet, Method, HPType, pkmn);
+                    PrintLegality(pk);
+                    ColosseumFixes(pk);
+                    pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
+                    SetEncryptionConstant(pk);
+                    pk.SetShinyBoolean(SSet.Shiny);
+                    CheckAndSetFateful(pk);
+                    FixGender(pk, SSet);
+                    FixRibbons(pk);
+                    pk.FixMemoriesPKM();
+                    pk.SetSpeciesBall();
+                    pk.SetHappiness();
+                    pk.SetBelugaValues();
+                    LegalityAnalysis la = new LegalityAnalysis(pk);
+                    if (la.Valid)
                         return pk;
-                    }
-                    catch
-                    {
-                        continue;
-                    }
+                    Console.WriteLine(la.Report());
+                    satisfied = true;
+                    return pk;
+                }
+                catch
+                {
                 }
             }
             return roughPK;
-        }
-
-        /// <summary>
-        /// Set a valid Pokeball incase of an incorrect ball issue arising with GeneratePKM
-        /// </summary>
-        /// <param name="pk"></param>
-        public static void SetSpeciesBall(PKM pk)
-        {
-            if (!new LegalityAnalysis(pk).Report().Contains(LBallEncMismatch)) return;
-            if (pk.GenNumber == 5 && pk.Met_Location == 75) pk.Ball = 25;
-            else pk.Ball = 4;
         }
 
         /// <summary>
@@ -126,23 +112,23 @@ namespace AutoLegalityMod
             else
             {
                 // check for mixed->fixed gender incompatibility by checking the gender of the original species
-                if (new HashSet<int>{290, 292, 412, 413, 414, 280, 475, 361, 478, 677, 678}.Contains(pkm.Species) && pkm.Gender != 2) // shedinja
+                if (BruteTables.FixedGenderFromBiGender.Contains(pkm.Species) && pkm.Gender != 2) // shedinja
                 {
                     var gender = PKX.GetGenderFromPID(new LegalInfo(pkm).EncounterMatch.Species, pkm.EncryptionConstant);
                     pkm.Gender = gender;
-                    genderValid = true;
+                    // genderValid = true; already true if we reach here
                 }
             }
 
             if (genderValid)
                 return;
 
-            if (pkm.Gender == 0)
-                pkm.Gender = 1;
-            else if (pkm.Gender == 1)
-                pkm.Gender = 0;
-            else
-                pkm.GetSaneGender();
+            switch (pkm.Gender)
+            {
+                case 0: pkm.Gender = 1; break;
+                case 1: pkm.Gender = 0; break;
+                default: pkm.GetSaneGender(); break;
+            }
         }
 
         /// <summary>
@@ -152,18 +138,35 @@ namespace AutoLegalityMod
         /// <param name="pkmn">Generated PKM</param>
         public static void SetVersion(PKM pk, PKM pkmn)
         {
-            if (pkmn.Version == (int)GameVersion.RBY) pk.Version = (int)GameVersion.RD;
-            else if (pkmn.Version == (int)GameVersion.GSC) pk.Version = (int)GameVersion.C;
-            else if (pkmn.Species == 658 && pkmn.AltForm == 1 && ((pkmn.Version == (int)GameVersion.UM) || (pkmn.Version == (int)GameVersion.US))) pk.Version = (int)GameVersion.SN; // Ash-Greninja
-            else pk.Version = pkmn.Version;
+            switch (pkmn.Version)
+            {
+                case (int)GameVersion.RBY:
+                    pk.Version = (int)GameVersion.RD;
+                    break;
+                case (int)GameVersion.GSC:
+                    pk.Version = (int)GameVersion.C;
+                    break;
+                case (int)GameVersion.UM:
+                case (int)GameVersion.US:
+                    if (pkmn.Species == 658 && pkmn.AltForm == 1)
+                        pk.Version = (int)GameVersion.SN; // Ash-Greninja
+                    else
+                        pk.Version = pkmn.Version;
+                    break;
+                default:
+                    pk.Version = pkmn.Version;
+                    break;
+            }
         }
 
         public static void CheckAndSetFateful(PKM pk)
         {
             LegalityAnalysis la = new LegalityAnalysis(pk);
             string Report = la.Report();
-            if (Report.Contains(LFatefulMysteryMissing) || Report.Contains(LFatefulMissing)) pk.FatefulEncounter = true;
-            if (Report.Contains(LFatefulInvalid)) pk.FatefulEncounter = false;
+            if (Report.Contains(LFatefulMysteryMissing) || Report.Contains(LFatefulMissing))
+                pk.FatefulEncounter = true;
+            else if (Report.Contains(LFatefulInvalid))
+                pk.FatefulEncounter = false;
         }
 
         /// <summary>
@@ -175,12 +178,13 @@ namespace AutoLegalityMod
         public static bool FixFormes(ShowdownSet SSet, out ShowdownSet changedSet)
         {
             changedSet = SSet;
-            if (SSet.Form.Contains("Mega") || SSet.Form == "Primal" || SSet.Form == "Busted") {
-                SSet = new ShowdownSet(SSet.Text.Replace("-" + SSet.Form, ""));
-                changedSet = SSet;
-                return true;
-            }
-            return false;
+            var badForm = SSet.Form.Contains("Mega") || SSet.Form == "Primal" || SSet.Form == "Busted";
+            if (!badForm)
+                return false;
+
+            SSet = new ShowdownSet(SSet.Text.Replace("-" + SSet.Form, ""));
+            changedSet = SSet;
+            return true;
         }
 
         /// <summary>
@@ -210,17 +214,10 @@ namespace AutoLegalityMod
         {
             pk.SetMoves(SSet.Moves, true);
             pk.CurrentFriendship = SSet.Friendship;
-            if (pk is PB7)
+            pk.SetBelugaValues();
+            if (pk is IAwakened pb7)
             {
-                ((PB7)pk).ResetCalculatedValues();
-                ((PB7)pk).Stat_CP = ((PB7)pk).CalcCP;
-                // Auto Set AVs to 200
-                ((PB7)pk).AV_HP = 200;
-                ((PB7)pk).AV_ATK = 200;
-                ((PB7)pk).AV_DEF = 200;
-                ((PB7)pk).AV_SPA = 200;
-                ((PB7)pk).AV_SPD = 200;
-                ((PB7)pk).AV_SPE = 200;
+                pb7.SetSuggestedAwakenedValues(pk);
             }
             else
             {
@@ -237,14 +234,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="RelearnInfo">CheckResult List of relearn moves</param>
         /// <returns>If an invalid relearn move exists</returns>
-        public static bool CheckInvalidRelearn(CheckResult[] RelearnInfo)
-        {
-            foreach(CheckResult r in RelearnInfo)
-            {
-                if (!r.Valid) return false;
-            }
-            return true;
-        }
+        public static bool CheckInvalidRelearn(CheckResult[] RelearnInfo) => RelearnInfo.All(r => r.Valid);
 
         /// <summary>
         /// Set Trainer data (TID, SID, OT) for a given PKM
@@ -252,70 +242,17 @@ namespace AutoLegalityMod
         /// <param name="pk">PKM to modify</param>
         public static void SetTrainerDataAndMemories(PKM pk)
         {
-            if (!(pk.WasEvent || pk.WasIngameTrade))
-            {
-                // Hardcoded a generic one for now, trainerdata.json implementation here later
-                pk.CurrentHandler = 1;
-                pk.HT_Name = "ARCH";
-                pk.HT_Gender = 0; // Male for Colo/XD Cases
-                pk.TID = 34567;
-                pk.SID = 0;
-                pk.OT_Name = "TCD";
-                pk = FixMemoriesPKM(pk);
-            }
-        }
+            if (pk.WasEvent || pk.WasIngameTrade)
+                return;
 
-        /// <summary>
-        /// Memory fix if needed
-        /// </summary>
-        /// <param name="pk">PKM to modify</param>
-        /// <returns>Modified PKM file</returns>
-        private static PKM FixMemoriesPKM(PKM pk)
-        {
-            if (SAV.PKMType == typeof(PK7))
-            {
-                if (!pk.IsUntraded) ((PK7)pk).TradeMemory(true);
-                ((PK7)pk).FixMemories();
-                return pk;
-            }
-            else if (SAV.PKMType == typeof(PK6))
-            {
-                if (!pk.IsUntraded) ((PK6)pk).TradeMemory(true);
-                ((PK6)pk).FixMemories();
-                return pk;
-            }
-            return pk;
-        }
-
-        /// <summary>
-        /// Set Nature and Ability of the pokemon
-        /// </summary>
-        /// <param name="pk">PKM to modify</param>
-        /// <param name="SSet">Showdown Set to refer</param>
-        public static void SetNatureAbility(PKM pk, ShowdownSet SSet)
-        {
-            // Values that are must for showdown set to work, IVs should be adjusted to account for this
-            pk.Nature = SSet.Nature;
-            pk.SetAbility(SSet.Ability);
-        }
-
-        /// <summary>
-        /// Sets shiny value to whatever boolean is specified
-        /// </summary>
-        /// <param name="pk">PKM to modify</param>
-        /// <param name="isShiny">Shiny value that needs to be set</param>
-        public static void SetShinyBoolean(PKM pk, bool isShiny)
-        {
-            if (!isShiny)
-            {
-                pk.SetUnshiny();
-            }
-            if (isShiny)
-            {
-                if (pk.GenNumber > 5) pk.SetShiny();
-                else if (pk.VC) pk.SetIsShiny(true);
-                else pk.SetShinySID();
-            }
+            // Hardcoded a generic one for now, trainerdata.json implementation here later
+            pk.CurrentHandler = 1;
+            pk.HT_Name = "ARCH";
+            pk.HT_Gender = 0; // Male for Colo/XD Cases
+            pk.TID = 34567;
+            pk.SID = 0;
+            pk.OT_Name = "TCD";
+            pk.FixMemoriesPKM();
         }
 
         /// <summary>
@@ -333,11 +270,9 @@ namespace AutoLegalityMod
             int Nature = pk.Nature;
             int Gender = pk.Gender;
             int AbilityNumber = pk.AbilityNumber; // 1,2,4 (HA)
-            int Ability = pk.Ability;
 
             // Find the encounter
             LegalInfo li = EncounterFinder.FindVerifiedEncounter(originalPKMN);
-            var property = li.EncounterMatch.GetType().GetProperty("PIDType");
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
 
@@ -345,7 +280,7 @@ namespace AutoLegalityMod
             {
                 pk.IVs = SSet.IVs;
                 if (Species == 658 && pk.AltForm == 1)
-                    pk.IVs = new int[] { 20, 31, 20, 31, 31, 20 };
+                    pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
                 if(Method != PIDType.G5MGShiny) pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, (uint)(AbilityNumber * 0x10001));
             }
             else
@@ -393,11 +328,12 @@ namespace AutoLegalityMod
                 if (Method == PIDType.None) pk.SetPIDGender(pk.Gender);
             }
             PKM iterPKM = pk;
-            while (Method != PIDType.None)
+            while (true)
             {
                 uint seed = Util.Rand32();
                 PIDGenerator.SetValuesFromSeed(pk, Method, seed);
-                if (!(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber && pk.Nature == iterPKM.Nature)) continue;
+                if (!(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber && pk.Nature == iterPKM.Nature))
+                    continue;
                 if (pk.PID % 25 == iterPKM.Nature && pk.HPType == HPType) // Util.Rand32 is the way to go
                     break;
                 pk = iterPKM;
@@ -427,7 +363,7 @@ namespace AutoLegalityMod
                     {
                         case WC3 g:
                             return g.Method;
-                        case EncounterStatic s:
+                        case EncounterStatic _:
                             switch (pk.Version)
                             {
                                 case (int)GameVersion.CXD: return PIDType.CXD;
@@ -438,7 +374,7 @@ namespace AutoLegalityMod
                                 default:
                                     return PIDType.Method_1;
                             }
-                        case EncounterSlot w:
+                        case EncounterSlot _:
                             if (pk.Version == 15)
                                 return PIDType.PokeSpot;
                             return pk.Species == 201 ? PIDType.Method_1_Unown : PIDType.Method_1;
@@ -472,14 +408,14 @@ namespace AutoLegalityMod
         public static void FixGender(PKM pk, ShowdownSet SSet)
         {
             pk.SetGender(SSet.Gender);
-            LegalityAnalysis la = new LegalityAnalysis(pk);
+            var la = new LegalityAnalysis(pk);
             string Report = la.Report();
+
             if (Report.Contains(LMemoryFeelInvalid))
-            {
-                if (pk.Gender == 0) pk.Gender = 1;
-                else pk.Gender = 0;
-            }
-            if (pk.Gender != 0 && pk.Gender != 1) pk.Gender = pk.GetSaneGender();
+                pk.Gender = pk.Gender == 0 ? 1 : 0;
+
+            if (pk.Gender != 0 && pk.Gender != 1)
+                pk.Gender = pk.GetSaneGender();
         }
 
         /// <summary>
@@ -501,12 +437,12 @@ namespace AutoLegalityMod
         }
 
         /// <summary>
-        /// Colosseum/XD pokemon need to be fixed. Fix Gender further in logic using <see cref="FixGender(PKM)"/>
+        /// Colosseum/XD pokemon need to be fixed. Fix Gender further in logic using <see cref="FixGender"/>
         /// </summary>
         /// <param name="pkm">PKM to apply the fix to</param>
         public static void ColosseumFixes(PKM pkm)
         {
-            if(pkm.Version == 15)
+            if (pkm.Version == (int)GameVersion.CXD)
             {
                 var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pkm.GetType(), "Ribbon").Distinct();
                 foreach (var RibbonName in RibbonNames)
@@ -528,9 +464,9 @@ namespace AutoLegalityMod
         public static void FixRibbons(PKM pk)
         {
             string Report = new LegalityAnalysis(pk).Report();
-            if (Report.Contains(String.Format(LRibbonFMissing_0, "")))
+            if (Report.Contains(string.Format(LRibbonFMissing_0, "")))
             {
-                string[] ribbonList = Report.Split(new string[] { String.Format(LRibbonFMissing_0, "") }, StringSplitOptions.None)[1].Split(new string[] { "\r\n" }, StringSplitOptions.None)[0].Split(new string[] { ", " }, StringSplitOptions.None);
+                string[] ribbonList = Report.Split(new[] { string.Format(LRibbonFMissing_0, "") }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
                 var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
                 List<string> missingRibbons = new List<string>();
                 foreach (var RibbonName in RibbonNames)
@@ -540,40 +476,29 @@ namespace AutoLegalityMod
                 }
                 foreach (string missing in missingRibbons)
                 {
-                    if (missing == "RibbonCountMemoryBattle" || missing == "RibbonCountMemoryContest") ReflectUtil.SetValue(pk, missing, 0);
+                    if (missing == nameof(PK6.RibbonCountMemoryBattle) || missing == nameof(PK6.RibbonCountMemoryContest)) ReflectUtil.SetValue(pk, missing, 0);
                     else ReflectUtil.SetValue(pk, missing, true);
                 }
             }
-            if (Report.Contains(String.Format(LRibbonFInvalid_0, "")))
+            if (Report.Contains(string.Format(LRibbonFInvalid_0, "")))
             {
-                string[] ribbonList = Report.Split(new string[] { String.Format(LRibbonFInvalid_0, "") }, StringSplitOptions.None)[1].Split(new string[] { "\r\n" }, StringSplitOptions.None)[0].Split(new string[] { ", " }, StringSplitOptions.None);
+                string[] ribbonList = Report.Split(new[] { string.Format(LRibbonFInvalid_0, "") }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
                 var RibbonNames = ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
-                List<string> invalidRibbons = new List<string>();
+
+                var invalidRibbons = new List<string>();
                 foreach (var RibbonName in RibbonNames)
                 {
                     string v = RibbonStrings.GetName(RibbonName).Replace("Ribbon", "");
-                    if (ribbonList.Contains(v)) invalidRibbons.Add(RibbonName);
+                    if (ribbonList.Contains(v))
+                        invalidRibbons.Add(RibbonName);
                 }
                 foreach(string invalid in invalidRibbons)
                 {
-                    if (invalid == "RibbonCountMemoryBattle" || invalid == "RibbonCountMemoryContest") ReflectUtil.SetValue(pk, invalid, 0);
-                    else ReflectUtil.SetValue(pk, invalid, false);
+                    if (invalid == nameof(PK6.RibbonCountMemoryBattle) || invalid == nameof(PK6.RibbonCountMemoryContest))
+                        ReflectUtil.SetValue(pk, invalid, 0);
+                    else
+                        ReflectUtil.SetValue(pk, invalid, false);
                 }
-            }
-        }
-
-        /// <summary>
-        /// Makes Happiness 255 unless carrying frustration in which case it is set at 0
-        /// </summary>
-        /// <param name="pk"></param>
-        private static void SetHappiness(PKM pk)
-        {
-            if (pk.Moves.Contains(218)) pk.CurrentFriendship = 0;
-            else pk.CurrentFriendship = 255;
-            if (pk is PB7)
-            {
-                ((PB7)pk).ResetCalculatedValues();
-                ((PB7)pk).Stat_CP = ((PB7)pk).CalcCP;
             }
         }
 
@@ -591,7 +516,7 @@ namespace AutoLegalityMod
             pk.TID = info.TID;
             var m = moves ?? pk.Moves;
             var vers = versions?.Length >= 1 ? versions : Versions.Where(z => z <= (GameVersion)pk.MaxGameID);
-            if (pk.Gen3) vers = vers.Concat(new GameVersion[] { (GameVersion)15 });
+            if (pk.Gen3) vers = vers.Concat(new[] { (GameVersion)15 });
             foreach (var ver in vers)
             {
                 var encs = EncounterMovesetGenerator.GenerateVersionEncounters(pk, m, ver);

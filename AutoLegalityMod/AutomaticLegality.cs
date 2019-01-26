@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -37,7 +36,7 @@ namespace AutoLegalityMod
             APILegalized = false; // Initialize to false everytime command is used
 
             // Check for lack of showdown data provided
-            CheckLoadFromText(out bool valid);
+            var valid = CheckLoadFromText();
             if (!valid)
                 return;
 
@@ -47,13 +46,16 @@ namespace AutoLegalityMod
             if (AutoLegalityMod.CheckMode() != "game")
                 LoadTrainerData();
 
+            bool replace = (Control.ModifierKeys & Keys.Control) != 0;
+
             // Get Text source from clipboard and convert to ShowdownSet(s)
-            string source = Clipboard.GetText().TrimEnd();
+            var text = Clipboard.GetText();
+            string source = text.TrimEnd();
             List<ShowdownSet> Sets = ShowdownSets(source, out Dictionary<int, string[]> TeamData);
             if (TeamData != null) Alert(TeamDataAlert(TeamData));
 
             // Import Showdown Sets and alert user of any messages intended
-            ImportSets(Sets, (Control.ModifierKeys & Keys.Control) == Keys.Control, out string message, allowAPI);
+            ImportSets(Sets, replace, out string message, allowAPI);
 
             // Debug Statements
             Debug.WriteLine(LogTimer(timer));
@@ -66,27 +68,24 @@ namespace AutoLegalityMod
         /// <summary>
         /// Check whether the showdown text is supposed to be loaded via a text file. If so, set the clipboard to its contents.
         /// </summary>
-        /// <param name="valid">output boolean that tells if the data provided is valid or not</param>
-        private static void CheckLoadFromText(out bool valid)
+        /// <returns>output boolean that tells if the data provided is valid or not</returns>
+        private static bool CheckLoadFromText()
         {
-            if (!ShowdownData() || (Control.ModifierKeys & Keys.Shift) == Keys.Shift)
+            if (ShowdownData() && (Control.ModifierKeys & Keys.Shift) != Keys.Shift)
+                return true;
+            if (!OpenSAVPKMDialog(new[] {"txt"}, out string path))
             {
-                if (OpenSAVPKMDialog(new string[] { "txt" }, out string path))
-                {
-                    Clipboard.SetText(File.ReadAllText(path).TrimEnd());
-                    if (!ShowdownData())
-                    {
-                        Alert("Text file with invalid data provided. Please provide a text file with proper Showdown data");
-                        valid = false;
-                    }
-                }
-                else
-                {
-                    Alert("No data provided.");
-                    valid = false;
-                }
+                Alert("No data provided.");
+                return false;
             }
-            valid = true;
+
+            Clipboard.SetText(File.ReadAllText(path).TrimEnd());
+            if (!ShowdownData())
+            {
+                Alert("Text file with invalid data provided. Please provide a text file with proper Showdown data");
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -113,7 +112,7 @@ namespace AutoLegalityMod
             SubRegion_ALM = tdataVals[5];
             ConsoleRegion_ALM = tdataVals[6];
             if ((checkPerGame && legal != null) || APILegalized)
-                legal = AutoLegalityMod.SetTrainerData(OT_ALM, TID_ALM, SID_ALM, gender_ALM, legal, APILegalized);
+                AutoLegalityMod.SetTrainerData(legal, OT_ALM, TID_ALM, SID_ALM, gender_ALM, APILegalized);
         }
 
         /// <summary>
@@ -126,12 +125,18 @@ namespace AutoLegalityMod
         private static void ImportSets(List<ShowdownSet> sets, bool replace, out string message, bool allowAPI = true)
         {
             message = "[DEBUG] Commencing Import";
-            List<int> emptySlots = new List<int>();
             IList<PKM> BoxData = SAV.BoxData;
             int BoxOffset = SaveFileEditor.CurrentBox * SAV.BoxSlotCount;
-            if (replace) emptySlots = Enumerable.Range(0, sets.Count).ToList();
-            else emptySlots = PopulateEmptySlots(BoxData, SaveFileEditor.CurrentBox);
-            if (emptySlots.Count < sets.Count && sets.Count != 1) { message = "Not enough space in the box"; return; }
+            var emptySlots = replace
+                ? Enumerable.Range(0, sets.Count).ToList()
+                : PopulateEmptySlots(BoxData, SaveFileEditor.CurrentBox);
+
+            if (emptySlots.Count < sets.Count && sets.Count != 1)
+            {
+                message = "Not enough space in the box";
+                return;
+            }
+
             int apiCounter = 0;
             List<ShowdownSet> invalidAPISets = new List<ShowdownSet>();
             for (int i = 0; i < sets.Count; i++)
@@ -141,8 +146,9 @@ namespace AutoLegalityMod
                     return;
                 if (Set.InvalidLines.Count > 0)
                     Alert("Invalid lines detected:", string.Join(Environment.NewLine, Set.InvalidLines));
-                bool resetForm = false;
-                if (Set.Form != null && (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted")) resetForm = true;
+
+                bool resetForm = Set.Form != null && (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted");
+
                 PKM roughPKM = SAV.BlankPKM;
                 roughPKM.ApplySetDetails(Set);
                 roughPKM.Version = (int)GameVersion.MN; // Avoid the blank version glitch
@@ -160,6 +166,7 @@ namespace AutoLegalityMod
                         APILegalized = true;
                     }
                 }
+
                 if (!allowAPI || !satisfied)
                 {
                     invalidAPISets.Add(Set);
@@ -168,7 +175,9 @@ namespace AutoLegalityMod
                     APILegalized = false;
                 }
                 PKM pk = SetTrainerData(legal, sets.Count == 1);
-                if (sets.Count > 1) BoxData[BoxOffset + emptySlots[i]] = pk;
+
+                if (sets.Count > 1)
+                    BoxData[BoxOffset + emptySlots[i]] = pk;
             }
             if (sets.Count > 1)
             {
@@ -196,10 +205,12 @@ namespace AutoLegalityMod
             LoadTrainerData(legal);
             if (int.TryParse(Country_ALM, out int n) && int.TryParse(SubRegion_ALM, out int m) && int.TryParse(ConsoleRegion_ALM, out int o))
             {
-                legal = AutoLegalityMod.SetPKMRegions(n, m, o, legal);
+                AutoLegalityMod.SetPKMRegions(legal, n, m, o);
                 intRegions = true;
             }
-            if (display) PKMEditor.PopulateFields(legal);
+            if (display)
+                PKMEditor.PopulateFields(legal);
+
             if (!intRegions)
             {
                 AutoLegalityMod.SetRegions(Country_ALM, SubRegion_ALM, ConsoleRegion_ALM, legal);
@@ -216,11 +227,12 @@ namespace AutoLegalityMod
         /// <returns>A list of all indices in the current box that are empty</returns>
         private static List<int> PopulateEmptySlots(IList<PKM> BoxData, int CurrentBox)
         {
-            List<int> emptySlots = new List<int>();
+            var emptySlots = new List<int>();
             int BoxCount = SAV.BoxSlotCount;
             for (int i = 0; i < BoxCount; i++)
             {
-                if (BoxData[(CurrentBox * BoxCount) + i].Species < 1) emptySlots.Add(i);
+                if (BoxData[(CurrentBox * BoxCount) + i].Species < 1)
+                    emptySlots.Add(i);
             }
             return emptySlots;
         }
@@ -237,7 +249,7 @@ namespace AutoLegalityMod
             TeamData = null;
             paste = paste.Trim(); // Remove White Spaces
             if (TeamBackup(paste)) TeamData = GenerateTeamData(paste, out paste);
-            string[] lines = paste.Split(new string[] { "\n" }, StringSplitOptions.None);
+            string[] lines = paste.Split(new[] { "\n" }, StringSplitOptions.None);
             return ShowdownSet.GetShowdownSets(lines).ToList();
         }
 
@@ -263,7 +275,7 @@ namespace AutoLegalityMod
             MatchCollection titlematches = title.Matches(paste);
             for (int i = 0; i < titlematches.Count; i++)
             {
-                TeamData[i] = new string[] { titlematches[i].Groups["format"].Value, titlematches[i].Groups["teamname"].Value };
+                TeamData[i] = new[] { titlematches[i].Groups["format"].Value, titlematches[i].Groups["teamname"].Value };
             }
             if (TeamData.Count == 0) return null;
             return TeamData;
@@ -279,7 +291,7 @@ namespace AutoLegalityMod
             string alert = "Generating the following teams:" + Environment.NewLine + Environment.NewLine;
             foreach (KeyValuePair<int, string[]> entry in TeamData)
             {
-                alert += string.Format("Format: {0}, Team Name: {1}", entry.Value[0], entry.Value[1] + Environment.NewLine);
+                alert += $"Format: {entry.Value[0]}, Team Name: {entry.Value[1] + Environment.NewLine}";
             }
             return alert;
         }
@@ -293,7 +305,7 @@ namespace AutoLegalityMod
         {
             timer.Stop();
             TimeSpan timespan = timer.Elapsed;
-            return String.Format("[DEBUG] Time to complete function: {0:00} minutes {1:00} seconds {2:00} milliseconds", timespan.Minutes, timespan.Seconds, timespan.Milliseconds / 10);
+            return $"[DEBUG] Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds";
         }
 
         /// <summary>
@@ -307,7 +319,7 @@ namespace AutoLegalityMod
             string source = Clipboard.GetText().TrimEnd();
             if (TeamBackup(source))
                 return true;
-            string[] stringSeparators = new string[] { "\n\r" };
+            string[] stringSeparators = { "\n\r" };
 
             var result = source.Split(stringSeparators, StringSplitOptions.None);
             return new ShowdownSet(result[0]).Species >= 0;

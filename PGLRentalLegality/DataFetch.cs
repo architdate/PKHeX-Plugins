@@ -1,5 +1,5 @@
 using System;
-
+using System.IO;
 using PKHeX.Core;
 
 namespace PGLRentalLegality
@@ -112,13 +112,13 @@ namespace PGLRentalLegality
         {
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             var resourceName = "PGLRentalLegality.Resources.text." + loc + ".csv";
-            System.IO.Stream stream = assembly.GetManifestResourceStream(resourceName);
-            System.IO.StreamReader file = new System.IO.StreamReader(stream);
+            Stream stream = assembly.GetManifestResourceStream(resourceName);
+            StreamReader file = new StreamReader(stream);
             var txt = file.ReadToEnd();
-            if (txt == null)
-                return new string[0];
+            if (string.IsNullOrWhiteSpace(txt))
+                return Array.Empty<string>();
 
-            string[] rawlist = (txt).Split('\n');
+            string[] rawlist = txt.Split('\n');
 
             for (int i = 0; i < rawlist.Length; i++)
                 rawlist[i] = rawlist[i].Trim();

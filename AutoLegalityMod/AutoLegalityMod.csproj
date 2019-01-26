@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APILegality.cs" />
+    <Compile Include="ArchitEdits.cs" />
     <Compile Include="ArchitMod.cs" />
     <Compile Include="AutoLegalityMod.cs" />
     <Compile Include="AutoLegalityResources.Designer.cs">
@@ -48,6 +49,7 @@
       <DependentUpon>AutoLegalityResources.resx</DependentUpon>
     </Compile>
     <Compile Include="AutomaticLegality.cs" />
+    <Compile Include="BruteTables.cs" />
     <Compile Include="ConstData.cs" />
     <Compile Include="EdgeCaseLegality.cs" />
     <Compile Include="IVtoPIDGenerator.cs" />
