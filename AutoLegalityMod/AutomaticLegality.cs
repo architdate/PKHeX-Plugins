@@ -48,7 +48,7 @@ namespace AutoLegalityMod
             // Make a blank MGDB directory and initialize trainerdata
             if (!Directory.Exists(MGDatabasePath))
                 Directory.CreateDirectory(MGDatabasePath);
-            if (AutoLegalityMod.CheckMode() != "game")
+            if (AutoLegalityMod.CheckMode() != AutoModMode.Game)
                 LoadTrainerData();
 
             bool replace = (Control.ModifierKeys & Keys.Control) != 0;
@@ -99,7 +99,7 @@ namespace AutoLegalityMod
         /// <param name="legal">Optional legal PKM for loading trainerdata on a per game basis</param>
         private static SimpleTrainerInfo LoadTrainerData(PKM legal = null)
         {
-            bool checkPerGame = (AutoLegalityMod.CheckMode() == "game");
+            bool checkPerGame = (AutoLegalityMod.CheckMode() == AutoModMode.Save);
             // If mode is not set as game: (auto or save)
             var tdataVals = !checkPerGame || legal == null
                 ? AutoLegalityMod.ParseTrainerJSON(SAV)

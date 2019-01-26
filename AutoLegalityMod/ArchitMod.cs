@@ -82,25 +82,27 @@ namespace AutoLegalityMod
         /// Check the mode for trainerdata.json
         /// </summary>
         /// <param name="jsonstring">string form of trainerdata.json</param>
-        public static string CheckMode(string jsonstring = "")
+        public static AutoModMode CheckMode(string jsonstring = "")
         {
             if (!string.IsNullOrWhiteSpace(jsonstring))
             {
-                string mode = "save";
+                var mode = AutoModMode.Save;
                 if (jsonstring.Contains("mode"))
-                    mode = jsonstring.Split(new[] { "\"mode\"" }, StringSplitOptions.None)[1].Split('"')[1].ToLower();
-                if (mode != "game" && mode != "save" && mode != "auto")
-                    mode = "save"; // User Mistake or for some reason this exists as a value of some other key
+                {
+                    var str = jsonstring.Split(new[] { "\"mode\"" }, StringSplitOptions.None)[1].Split('"')[1].ToLower();
+                    if (Enum.TryParse(str, true, out AutoModMode v))
+                        mode = v;
+                }
                 return mode;
             }
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\trainerdata.json"))
-                return "save"; // Default trainerdata.txt handling
+                return AutoModMode.Save; // Default trainerdata.txt handling
             jsonstring = File.ReadAllText(Directory.GetCurrentDirectory() + "\\trainerdata.json", System.Text.Encoding.UTF8);
 
             if (string.IsNullOrWhiteSpace(jsonstring))
             {
                 MessageBox.Show("Empty trainerdata.json file", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return "save";
+                return AutoModMode.Save;
             }
 
             return CheckMode(jsonstring);
@@ -115,7 +117,7 @@ namespace AutoLegalityMod
         public static bool CheckIfGameExists(string jsonstring, int Game, out string jsonvalue)
         {
             jsonvalue = "";
-            if (CheckMode(jsonstring) == "auto")
+            if (CheckMode(jsonstring) == AutoModMode.Auto)
             {
                 jsonvalue = "auto";
                 return false;

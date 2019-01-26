@@ -49,6 +49,7 @@
       <DependentUpon>AutoLegalityResources.resx</DependentUpon>
     </Compile>
     <Compile Include="AutomaticLegality.cs" />
+    <Compile Include="AutoModMode.cs" />
     <Compile Include="BruteTables.cs" />
     <Compile Include="ConstData.cs" />
     <Compile Include="EdgeCaseLegality.cs" />
