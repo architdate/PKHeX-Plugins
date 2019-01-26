@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace AutoLegalityMod
 {
-    public partial class AutoLegalityMod : IPlugin
+    public class AutoMod : IPlugin
     {
         /// <summary>
         /// Main Plugin Variables
@@ -21,7 +21,7 @@ namespace AutoLegalityMod
             if (args == null) return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
             PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);
-            SAV = SaveFileEditor.SAV;
+            API.SAV = SaveFileEditor.SAV;
             var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);
             LoadMenuStrip(menu);
         }
@@ -62,7 +62,7 @@ namespace AutoLegalityMod
         public void NotifySaveLoaded()
         {
             Console.WriteLine($"{Name} was notified that a Save File was just loaded.");
-            SAV = SaveFileEditor.SAV;
+            API.SAV = SaveFileEditor.SAV;
         }
 
         public bool TryLoadFile(string filePath)

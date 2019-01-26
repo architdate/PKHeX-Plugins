@@ -12,11 +12,9 @@ namespace LegalizeBoxes
         public int Priority => 1;
         public ISaveFileProvider SaveFileEditor { get; private set; }
         public IPKMView PKMEditor { get; private set; }
-        public object[] arguments;
 
         public void Initialize(params object[] args)
         {
-            arguments = args;
             Console.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
@@ -72,7 +70,7 @@ namespace LegalizeBoxes
             bool box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
             AutomaticLegality.PKMEditor = PKMEditor;
             AutomaticLegality.SaveFileEditor = SaveFileEditor;
-            AutoLegalityMod.AutoLegalityMod.SAV = SaveFileEditor.SAV;
+            API.SAV = SaveFileEditor.SAV;
             IList<PKM> BoxData = SaveFileEditor.SAV.BoxData;
             for (int i = 0; i < 30; i++)
             {
@@ -92,7 +90,7 @@ namespace LegalizeBoxes
                     PKM legal;
                     PKM APIGenerated = SaveFileEditor.SAV.BlankPKM;
                     bool satisfied;
-                    try { APIGenerated = AutoLegalityMod.AutoLegalityMod.APILegality(illegalPK, Set, out satisfied); }
+                    try { APIGenerated = API.APILegality(illegalPK, Set, out satisfied); }
                     catch { satisfied = false; }
 
                     var trainer = illegalPK.GetTrainerData();

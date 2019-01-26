@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace AutoLegalityMod
 {
-    public partial class AutoLegalityMod
+    public static class AutoLegalityMod
     {
         /// <summary>
         /// Helper function to print out a byte array as a string that can be used within code
@@ -235,10 +235,8 @@ namespace AutoLegalityMod
                     int ct = PKMConverter.Country;
                     int sr = PKMConverter.Region;
                     int cr = PKMConverter.ConsoleRegion;
-                    if (SAV.Gender == 1) Gender = "F";
-                    return new[] { SAV.TID.ToString("00000"), SAV.SID.ToString("00000"),
-                                          SAV.OT, Gender, ct.ToString(),
-                                          sr.ToString(), cr.ToString()};
+                    if (API.SAV.Gender == 1) Gender = "F";
+                    return new[] { API.SAV.TID.ToString("00000"), API.SAV.SID.ToString("00000"), API.SAV.OT, Gender, ct.ToString(), sr.ToString(), cr.ToString()};
                 }
                 catch
                 {

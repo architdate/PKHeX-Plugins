@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace AutoLegalityMod
 {
-    public partial class AutoLegalityMod
+    public static class API
     {
         public static SaveFile SAV;
 

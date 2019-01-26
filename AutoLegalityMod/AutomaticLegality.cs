@@ -11,15 +11,24 @@ namespace AutoLegalityMod
 {
     public static class AutomaticLegality
     {
+        static AutomaticLegality()
+        {
+            // Make a blank MGDB directory and initialize trainerdata
+            if (!Directory.Exists(MGDatabasePath))
+                Directory.CreateDirectory(MGDatabasePath);
+            if (AutoLegalityMod.CheckMode() != AutoModMode.Game)
+                Trainer = LoadTrainerData();
+        }
+
+        // TODO: Check for Auto Legality Mod Updates
         public static ISaveFileProvider SaveFileEditor { get; set; }
         public static IPKMView PKMEditor { get; set; }
-        public static SaveFile SAV => AutoLegalityMod.SAV;
+        public static SaveFile SAV => API.SAV;
+        private static SimpleTrainerInfo Trainer;
 
         /// <summary>
         /// Global Variables for Auto Legality Mod
         /// </summary>
-        private static readonly SimpleTrainerInfo Trainer = new SimpleTrainerInfo();
-        private static bool APILegalized = false;
         private static readonly string MGDatabasePath = Path.Combine(Directory.GetCurrentDirectory(), "mgdb");
 
         public static SimpleTrainerInfo GetTrainerData(this PKM illegalPK)
@@ -36,22 +45,21 @@ namespace AutoLegalityMod
         public static void ImportModded()
         {
             Stopwatch timer = Stopwatch.StartNew();
-            // TODO: Check for Auto Legality Mod Updates
-            const bool allowAPI = true; // Use true to allow experimental API usage
-            APILegalized = false; // Initialize to false everytime command is used
+            if (!ImportSetsFromClipboard())
+                return;
 
+            // Debug Statements
+            timer.Stop();
+            TimeSpan timespan = timer.Elapsed;
+            Debug.WriteLine($"[DEBUG] Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
+        }
+
+        private static bool ImportSetsFromClipboard()
+        {
             // Check for lack of showdown data provided
             var valid = CheckLoadFromText();
             if (!valid)
-                return;
-
-            // Make a blank MGDB directory and initialize trainerdata
-            if (!Directory.Exists(MGDatabasePath))
-                Directory.CreateDirectory(MGDatabasePath);
-            if (AutoLegalityMod.CheckMode() != AutoModMode.Game)
-                LoadTrainerData();
-
-            bool replace = (Control.ModifierKeys & Keys.Control) != 0;
+                return false;
 
             // Get Text source from clipboard and convert to ShowdownSet(s)
             var text = Clipboard.GetText();
@@ -61,16 +69,14 @@ namespace AutoLegalityMod
                 WinFormsUtil.Alert(TeamDataAlert(TeamData));
 
             // Import Showdown Sets and alert user of any messages intended
-            ImportSets(Sets, replace, out string message, allowAPI);
+            bool replace = (Control.ModifierKeys & Keys.Control) != 0;
+            ImportSets(Sets, replace, out string message);
             if (message.StartsWith("[DEBUG]"))
                 Debug.WriteLine(message);
             else
                 WinFormsUtil.Alert(message);
 
-            // Debug Statements
-            timer.Stop();
-            TimeSpan timespan = timer.Elapsed;
-            Debug.WriteLine($"[DEBUG] Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
+            return true;
         }
 
         /// <summary>
@@ -103,36 +109,34 @@ namespace AutoLegalityMod
         private static SimpleTrainerInfo LoadTrainerData(PKM legal = null)
         {
             bool checkPerGame = (AutoLegalityMod.CheckMode() == AutoModMode.Save);
+            var trainer = new SimpleTrainerInfo();
             // If mode is not set as game: (auto or save)
             var tdataVals = !checkPerGame || legal == null
                 ? AutoLegalityMod.ParseTrainerJSON(SAV)
                 : AutoLegalityMod.ParseTrainerJSON(SAV, legal.Version);
-            Trainer.TID = Convert.ToInt32(tdataVals[0]);
-            Trainer.SID = Convert.ToInt32(tdataVals[1]);
+            trainer.TID = Convert.ToInt32(tdataVals[0]);
+            trainer.SID = Convert.ToInt32(tdataVals[1]);
             if (legal != null)
-                Trainer.SID = legal.VC ? 0 : Trainer.SID;
+                trainer.SID = legal.VC ? 0 : trainer.SID;
 
-            Trainer.OT = tdataVals[2];
-            if (Trainer.OT == "PKHeX") Trainer.OT = "Archit(TCD)"; // Avoids secondary handler error
-            Trainer.Gender = tdataVals[3] == "F" || tdataVals[3] == "Female" ? 1 : 0;
+            trainer.OT = tdataVals[2];
+            if (trainer.OT == "PKHeX") trainer.OT = "Archit(TCD)"; // Avoids secondary handler error
+            trainer.Gender = tdataVals[3] == "F" || tdataVals[3] == "Female" ? 1 : 0;
 
             // Load Trainer location details; check first if english string name
             // if not, try to check if they're stored as integers.
-            Trainer.Country = AutoLegalityMod.GetCountryID(tdataVals[4]);
-            Trainer.SubRegion = AutoLegalityMod.GetSubRegionID(tdataVals[5], Trainer.Country);
-            Trainer.ConsoleRegion = AutoLegalityMod.GetConsoleRegionID(tdataVals[6]);
+            trainer.Country = AutoLegalityMod.GetCountryID(tdataVals[4]);
+            trainer.SubRegion = AutoLegalityMod.GetSubRegionID(tdataVals[5], trainer.Country);
+            trainer.ConsoleRegion = AutoLegalityMod.GetConsoleRegionID(tdataVals[6]);
 
-            if (Trainer.Country < 0 && int.TryParse(tdataVals[4], out var c))
-                Trainer.Country = c;
-            if (Trainer.SubRegion < 0 && int.TryParse(tdataVals[5], out var s))
-                Trainer.SubRegion = s;
-            if (Trainer.ConsoleRegion < 0 && int.TryParse(tdataVals[6], out var x))
-                Trainer.ConsoleRegion = x;
+            if (trainer.Country < 0 && int.TryParse(tdataVals[4], out var c))
+                trainer.Country = c;
+            if (trainer.SubRegion < 0 && int.TryParse(tdataVals[5], out var s))
+                trainer.SubRegion = s;
+            if (trainer.ConsoleRegion < 0 && int.TryParse(tdataVals[6], out var x))
+                trainer.ConsoleRegion = x;
 
-            if ((checkPerGame && legal != null) || APILegalized)
-                AutoLegalityMod.SetTrainerData(legal, Trainer, APILegalized);
-
-            return Trainer;
+            return Trainer = trainer;
         }
 
         /// <summary>
@@ -228,7 +232,7 @@ namespace AutoLegalityMod
             if (allowAPI)
             {
                 PKM APIGeneratedPKM = SAV.BlankPKM;
-                try { APIGeneratedPKM = AutoLegalityMod.APILegality(roughPKM, Set, out satisfied); }
+                try { APIGeneratedPKM = API.APILegality(roughPKM, Set, out satisfied); }
                 catch { satisfied = false; }
                 if (satisfied)
                 {
@@ -255,6 +259,7 @@ namespace AutoLegalityMod
         private static void SetTrainerData(PKM legal)
         {
             var trainer = LoadTrainerData(legal);
+            AutoLegalityMod.SetTrainerData(legal, trainer, true);
 
             legal.ConsoleRegion = trainer.ConsoleRegion;
             legal.Country = trainer.Country;
@@ -285,12 +290,12 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="paste"></param>
         /// <param name="TeamData"></param>
-        /// <returns></returns>
         private static List<ShowdownSet> ShowdownSets(string paste, out Dictionary<int, string[]> TeamData)
         {
             TeamData = null;
             paste = paste.Trim(); // Remove White Spaces
-            if (TeamBackup(paste)) TeamData = GenerateTeamData(paste, out paste);
+            if (TeamBackup(paste))
+                TeamData = GenerateTeamData(paste, out paste);
             string[] lines = paste.Split(new[] { "\n" }, StringSplitOptions.None);
             return ShowdownSet.GetShowdownSets(lines).ToList();
         }
