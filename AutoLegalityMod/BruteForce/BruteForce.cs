@@ -33,7 +33,8 @@ namespace AutoLegalityMod
                 Set.AltForm = 0;
                 Set.RefreshAbility(Set.AbilityNumber < 6 ? Set.AbilityNumber >> 1 : 0);
             }
-            if (Set.Species == 774 && Set.AltForm == 0) Set.AltForm = 7; // Minior has to be C-Red and not M-Red outside of battle
+            if (Set.Species == 774 && Set.AltForm == 0)
+                Set.AltForm = 7; // Minior has to be C-Red and not M-Red outside of battle
             bool shiny = Set.IsShiny;
             requestedShiny = SSet.Shiny;
 
@@ -73,7 +74,8 @@ namespace AutoLegalityMod
                         Set.Met_Level = 100;
                     }
                     else { Set.SetSuggestedMetLocation(); }
-                    if (Set.GenNumber > 4) Set.Met_Level = 1;
+                    if (Set.GenNumber > 4)
+                        Set.Met_Level = 1;
                     Set.SetMarkings();
                     try
                     {
@@ -81,18 +83,21 @@ namespace AutoLegalityMod
                         Set.HT_Name = "Archit";
                         Set.SetSuggestedRelearnMoves();
                         Set.SetPIDNature(Set.Nature);
-                        if (shiny) Set.SetShiny();
+                        if (shiny)
+                            Set.SetShiny();
                         if (Set.PID == 0)
                         {
                             Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
                             if (shiny) Set.SetShiny();
                         }
                         Set.SetSuggestedMemories();
-                        if (Set.GenNumber < 6) Set.EncryptionConstant = Set.PID;
+                        if (Set.GenNumber < 6)
+                            Set.EncryptionConstant = Set.PID;
                         if (CommonErrorHandling2(Set))
                         {
                             Set.HyperTrain();
-                            if (shiny && !Set.IsShiny) Set.SetShiny();
+                            if (shiny && !Set.IsShiny)
+                                Set.SetShiny();
                             return Set;
                         }
                         Set.HyperTrain();
@@ -104,7 +109,8 @@ namespace AutoLegalityMod
                         {
                             Set.SetHappiness();
                             Set.SetBelugaValues();
-                            if (shiny && !Set.IsShiny) Set.SetShinySID();
+                            if (shiny && !Set.IsShiny)
+                                Set.SetShinySID();
                             return Set;
                         }
                         else
@@ -121,8 +127,10 @@ namespace AutoLegalityMod
             {
                 foreach (GameVersion game in BruteTables.GameVersionList)
                 {
-                    if (Set.DebutGeneration > game.GetGeneration()) continue;
-                    if (Set.Met_Level == 100) Set.Met_Level = 0;
+                    if (Set.DebutGeneration > game.GetGeneration())
+                        continue;
+                    if (Set.Met_Level == 100)
+                        Set.Met_Level = 0;
                     Set.SetBelugaValues();
                     Set.WasEgg = false;
                     Set.EggMetDate = null;
@@ -177,7 +185,8 @@ namespace AutoLegalityMod
                         Set.CurrentHandler = 1;
                         Set.HT_Name = "Archit";
                         Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
-                        if (shiny) Set.SetShiny();
+                        if (shiny)
+                            Set.SetShiny();
                         if (Set.PID == 0)
                         {
                             Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
@@ -245,7 +254,7 @@ namespace AutoLegalityMod
                                     Set.SetPIDGender(Set.Gender);
                             }
 
-                            LegalityAnalysis la = new LegalityAnalysis(Set);
+                            var la = new LegalityAnalysis(Set);
                             if (la.Valid)
                                 return Set;
                             Console.WriteLine(la.Report());
@@ -365,14 +374,14 @@ namespace AutoLegalityMod
                 pk.FatefulEncounter = true;
                 pk.Nickname = PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, 3);
                 pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
-                if (shiny) pk.SetShinySID();
+                if (shiny)
+                    pk.SetShinySID();
                 report = GetReport(pk);
             }
             if (report.Contains(LPIDEqualsEC)) //V208 = Encryption Constant matches PID.
             {
                 int wIndex = Array.IndexOf(Legal.WurmpleEvolutions, pk.Species);
-                uint EC = wIndex < 0 ? Util.Rand32() : PKX.GetWurmpleEC(wIndex / 2);
-                pk.EncryptionConstant = EC;
+                pk.EncryptionConstant = wIndex < 0 ? Util.Rand32() : PKX.GetWurmpleEC(wIndex / 2);
                 report = GetReport(pk);
             }
             if (report.Contains(LTransferPIDECEquals)) //V216 = PID should be equal to EC!
@@ -383,7 +392,8 @@ namespace AutoLegalityMod
             if (report.Contains(LTransferPIDECBitFlip)) //V215 = PID should be equal to EC [with top bit flipped]!
             {
                 pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
-                if (pk.IsShiny) pk.SetShiny();
+                if (pk.IsShiny)
+                    pk.SetShiny();
                 report = GetReport(pk);
             }
             if (report.Contains(LPIDGenderMismatch)) //V251 = PID-Gender mismatch.
@@ -484,8 +494,10 @@ namespace AutoLegalityMod
             }
             if (report.Contains(LFormBattle)) //V310 = Form cannot exist outside of a battle.
             {
-                if (pk.Species == 718 && pk.Ability == 211) pk.AltForm = 3; // Zygarde Edge case
-                else pk.AltForm = 0;
+                if (pk.Species == 718 && pk.Ability == 211)
+                    pk.AltForm = 3; // Zygarde Edge case
+                else
+                    pk.AltForm = 0;
                 report = GetReport(pk);
             }
             if (report.Contains(LFatefulMissing)) //V324 = Special ingame Fateful Encounter flag missing.
@@ -570,6 +582,8 @@ namespace AutoLegalityMod
             return la.Report();
         }
 
+        private static readonly string[] HiddenPowerNames = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
+
         private static void SetPIDSID(PKM pk, bool shiny, bool XD = false)
         {
             uint hp = (uint)pk.IV_HP;
@@ -578,6 +592,17 @@ namespace AutoLegalityMod
             uint spa = (uint)pk.IV_SPA;
             uint spd = (uint)pk.IV_SPD;
             uint spe = (uint)pk.IV_SPE;
+
+            void LoadOldIVs()
+            {
+                pk.IV_HP = (int)hp;
+                pk.IV_ATK = (int)atk;
+                pk.IV_DEF = (int)def;
+                pk.IV_SPA = (int)spa;
+                pk.IV_SPD = (int)spd;
+                pk.IV_SPE = (int)spe;
+            }
+
             uint nature = (uint)pk.Nature;
             bool pidsidmethod = true;
             string[] pidsid;
@@ -597,84 +622,83 @@ namespace AutoLegalityMod
                 pk.FatefulEncounter = true;
             }
             pk.PID = Util.GetHexValue(pidsid[0]);
-            if (pk.GenNumber < 5) pk.EncryptionConstant = pk.PID;
+            if (pk.GenNumber < 5)
+                pk.EncryptionConstant = pk.PID;
             pk.SID = Convert.ToInt32(pidsid[1]);
             if (shiny)
                 pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
             Console.WriteLine(updatedReport);
-            if (updatedReport.Contains("Invalid: Encounter Type PID mismatch."))
+            if (!updatedReport.Contains("Invalid: Encounter Type PID mismatch."))
+                return;
+
+            string hiddenpower = HiddenPowerNames[pk.HPType];
+            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID(nature, hiddenpower, XD);
+            Console.WriteLine(XD);
+            pk.PID = Util.GetHexValue(NatureHPIVs[0]);
+            if (pk.GenNumber < 5)
+                pk.EncryptionConstant = pk.PID;
+
+            SetIVs(pk, NatureHPIVs);
+            if (shiny)
+                pk.SetShinySID();
+
+            recheckLA = new LegalityAnalysis(pk);
+            updatedReport = recheckLA.Report();
+            if (!updatedReport.Contains("Invalid: Encounter Type PID mismatch."))
+                pidsidmethod = false;
+
+            if (pidsid[0] == "0" && pidsid[1] == "0" && pidsidmethod)
             {
-                string[] hpower = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
-                string hiddenpower = hpower[pk.HPType];
-                string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID(nature, hiddenpower, XD);
-                Console.WriteLine(XD);
-                pk.PID = Util.GetHexValue(NatureHPIVs[0]);
-                if (pk.GenNumber < 5)
-                    pk.EncryptionConstant = pk.PID;
-
-                Console.WriteLine(NatureHPIVs[0]);
-                pk.IV_HP = Convert.ToInt32(NatureHPIVs[1]);
-                pk.IV_ATK = Convert.ToInt32(NatureHPIVs[2]);
-                pk.IV_DEF = Convert.ToInt32(NatureHPIVs[3]);
-                pk.IV_SPA = Convert.ToInt32(NatureHPIVs[4]);
-                pk.IV_SPD = Convert.ToInt32(NatureHPIVs[5]);
-                pk.IV_SPE = Convert.ToInt32(NatureHPIVs[6]);
-                if (shiny) pk.SetShinySID();
-                recheckLA = new LegalityAnalysis(pk);
-                updatedReport = recheckLA.Report();
-                if (!updatedReport.Contains("Invalid: Encounter Type PID mismatch.")) pidsidmethod = false;
-                if (pidsid[0] == "0" && pidsid[1] == "0" && pidsidmethod)
-                {
-                    pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
-                    pk.IV_HP = (int)hp;
-                    pk.IV_ATK = (int)atk;
-                    pk.IV_DEF = (int)def;
-                    pk.IV_SPA = (int)spa;
-                    pk.IV_SPD = (int)spd;
-                    pk.IV_SPE = (int)spe;
-                }
-                if (shiny) pk.SetShinySID();
-                recheckLA = new LegalityAnalysis(pk);
-                updatedReport = recheckLA.Report();
-                if (updatedReport.Contains("PID-Gender mismatch."))
-                {
-                    pk.Gender = pk.Gender == 0 ? 1 : 0;
-                    var recheckLA2 = new LegalityAnalysis(pk);
-                    updatedReport = recheckLA2.Report();
-                }
-                if (updatedReport.Contains("Can't Hyper Train a Pokémon that isn't level 100."))
-                {
-                    pk.CurrentLevel = 100;
-                    var recheckLA2 = new LegalityAnalysis(pk);
-                    updatedReport = recheckLA2.Report();
-                }
-                LegalityAnalysis Legality = new LegalityAnalysis(pk);
-                if (Legality.Valid)
-                    return;
-                // Fix Moves if a slot is empty
-                pk.FixMoves();
-
-                // PKX is now filled
-                pk.RefreshChecksum();
-                pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
-                if (updatedReport.Contains("Invalid: Encounter Type PID mismatch.") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
-                {
-                    if (pk.GenNumber == 3 || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
-                    {
-                        pk = M2EventFix(pk, shiny);
-                        if (!new LegalityAnalysis(pk).Report().Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
-                            return;
-                    }
-                    pk.IV_HP = (int)hp;
-                    pk.IV_ATK = (int)atk;
-                    pk.IV_DEF = (int)def;
-                    pk.IV_SPA = (int)spa;
-                    pk.IV_SPD = (int)spd;
-                    pk.IV_SPE = (int)spe;
-                }
+                pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
+                LoadOldIVs();
             }
+            if (shiny)
+                pk.SetShinySID();
+
+            recheckLA = new LegalityAnalysis(pk);
+            updatedReport = recheckLA.Report();
+            if (updatedReport.Contains("PID-Gender mismatch."))
+            {
+                pk.Gender = pk.Gender == 0 ? 1 : 0;
+                var recheckLA2 = new LegalityAnalysis(pk);
+                updatedReport = recheckLA2.Report();
+            }
+            if (updatedReport.Contains("Can't Hyper Train a Pokémon that isn't level 100."))
+            {
+                pk.CurrentLevel = 100;
+                var recheckLA2 = new LegalityAnalysis(pk);
+                updatedReport = recheckLA2.Report();
+            }
+            var la = new LegalityAnalysis(pk);
+            if (la.Valid)
+                return;
+            // Fix Moves if a slot is empty
+            pk.FixMoves();
+
+            pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
+            if (updatedReport.Contains("Invalid: Encounter Type PID mismatch.") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+            {
+                if (pk.GenNumber == 3 || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+                {
+                    pk = M2EventFix(pk, shiny);
+                    if (!new LegalityAnalysis(pk).Report().Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+                        return;
+                }
+                LoadOldIVs();
+            }
+        }
+
+        private static void SetIVs(PKM pk, IReadOnlyList<string> NatureHPIVs)
+        {
+            Console.WriteLine(NatureHPIVs[0]);
+            pk.IV_HP = Convert.ToInt32(NatureHPIVs[1]);
+            pk.IV_ATK = Convert.ToInt32(NatureHPIVs[2]);
+            pk.IV_DEF = Convert.ToInt32(NatureHPIVs[3]);
+            pk.IV_SPA = Convert.ToInt32(NatureHPIVs[4]);
+            pk.IV_SPD = Convert.ToInt32(NatureHPIVs[5]);
+            pk.IV_SPE = Convert.ToInt32(NatureHPIVs[6]);
         }
 
         private static PKM M2EventFix(PKM pk, bool shiny)
@@ -687,15 +711,16 @@ namespace AutoLegalityMod
             string hiddenpower = hpower[pk.HPType];
             string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, hiddenpower, false, "M2");
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
-            if (pk.GenNumber < 5) pk.EncryptionConstant = pk.PID;
-            Console.WriteLine(NatureHPIVs[0]);
+            if (pk.GenNumber < 5)
+                pk.EncryptionConstant = pk.PID;
             pk.IV_HP = Convert.ToInt32(NatureHPIVs[1]);
             pk.IV_ATK = Convert.ToInt32(NatureHPIVs[2]);
             pk.IV_DEF = Convert.ToInt32(NatureHPIVs[3]);
             pk.IV_SPA = Convert.ToInt32(NatureHPIVs[4]);
             pk.IV_SPD = Convert.ToInt32(NatureHPIVs[5]);
             pk.IV_SPE = Convert.ToInt32(NatureHPIVs[6]);
-            if (shiny) pk.SetShinySID();
+            if (shiny)
+                pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
             if (updatedReport.Contains("PID-Gender mismatch"))
@@ -704,7 +729,9 @@ namespace AutoLegalityMod
                 var recheckLA2 = new LegalityAnalysis(pk);
                 updatedReport = recheckLA2.Report();
             }
-            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2")) return pk;
+
+            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+                return pk;
             Console.WriteLine(GetReport(pk));
             pk.FatefulEncounter = feFlag;
             pk.Egg_Location = eggloc;
@@ -721,14 +748,10 @@ namespace AutoLegalityMod
             string hiddenpower = hpower[pk.HPType];
             string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, hiddenpower, false, "BACD_R");
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
-            if (pk.GenNumber < 5) pk.EncryptionConstant = pk.PID;
+            if (pk.GenNumber < 5)
+                pk.EncryptionConstant = pk.PID;
             Console.WriteLine(NatureHPIVs[0]);
-            pk.IV_HP = Convert.ToInt32(NatureHPIVs[1]);
-            pk.IV_ATK = Convert.ToInt32(NatureHPIVs[2]);
-            pk.IV_DEF = Convert.ToInt32(NatureHPIVs[3]);
-            pk.IV_SPA = Convert.ToInt32(NatureHPIVs[4]);
-            pk.IV_SPD = Convert.ToInt32(NatureHPIVs[5]);
-            pk.IV_SPE = Convert.ToInt32(NatureHPIVs[6]);
+            SetIVs(pk, NatureHPIVs);
             if (shiny) pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
@@ -738,7 +761,8 @@ namespace AutoLegalityMod
                 var recheckLA2 = new LegalityAnalysis(pk);
                 updatedReport = recheckLA2.Report();
             }
-            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R")) return pk;
+            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R"))
+                return pk;
             Console.WriteLine(GetReport(pk));
             pk.FatefulEncounter = feFlag;
             pk.Egg_Location = eggloc;
