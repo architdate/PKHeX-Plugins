@@ -13,9 +13,9 @@ namespace AutoLegalityMod
     /// </summary>
     public static class TrainerSettings
     {
-        private static int GetConsoleRegionID(string ConsoleRegion) => Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == ConsoleRegion).Value;
-        private static int GetSubRegionID(string SubRegion, int country) => Util.GetCBList($"sr_{country:000}", "en").Find(z => z.Text == SubRegion).Value;
-        private static int GetCountryID(string Country) => Util.GetCBList("countries", "en").Find(z => z.Text == Country).Value;
+        private static int GetConsoleRegionID(string val) => Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == val).Value;
+        private static int GetSubRegionID(string val, int country) => Util.GetCBList($"sr_{country:000}", "en").Find(z => z.Text == val).Value;
+        private static int GetCountryID(string val) => Util.GetCBList("countries", "en").Find(z => z.Text == val).Value;
 
         private static string GetTrainerJSONPath() => Path.Combine(Directory.GetCurrentDirectory(), "trainerdata.json");
 

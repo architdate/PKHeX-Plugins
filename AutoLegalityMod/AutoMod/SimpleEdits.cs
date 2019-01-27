@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using PKHeX.Core;
-using static PKHeX.Core.LegalityCheckStrings;
 
 namespace AutoLegalityMod
 {
@@ -47,20 +45,6 @@ namespace AutoLegalityMod
                 else
                     pk.SetShinySID();
             }
-        }
-
-        /// <summary>
-        /// Set a valid Pokeball incase of an incorrect ball issue arising with GeneratePKM
-        /// </summary>
-        /// <param name="pk"></param>
-        public static void SetSpeciesBall(this PKM pk)
-        {
-            if (!new LegalityAnalysis(pk).Report().Contains(LBallEncMismatch))
-                return;
-            if (pk.GenNumber == 5 && pk.Met_Location == 75)
-                pk.Ball = (int)Ball.Dream;
-            else
-                pk.Ball = 4;
         }
 
         public static void ClearRelearnMoves(this PKM Set)
@@ -242,104 +226,5 @@ namespace AutoLegalityMod
             pk.Country = trainer.Country;
             pk.Region = trainer.SubRegion;
         }
-
-        /// <summary>
-        /// Fix invalid and missing ribbons. (V600 and V601)
-        /// </summary>
-        /// <param name="pk">PKM whose ribbons need to be fixed</param>
-        public static void SetSuggestedRibbons(this PKM pk)
-        {
-            string Report = new LegalityAnalysis(pk).Report();
-            if (Report.Contains(string.Format(LRibbonFMissing_0, "")))
-            {
-                var val = string.Format(LRibbonFMissing_0, "");
-                var ribbonList = GetRequiredRibbons(Report, val);
-                var missingRibbons = GetRibbonsRequired(pk, ribbonList);
-                SetRibbonValues(pk, missingRibbons, 0, true);
-            }
-            if (Report.Contains(string.Format(LRibbonFInvalid_0, "")))
-            {
-                var val = string.Format(LRibbonFInvalid_0, "");
-                string[] ribbonList = GetRequiredRibbons(Report, val);
-                var invalidRibbons = GetRibbonsRequired(pk, ribbonList);
-                SetRibbonValues(pk, invalidRibbons, 0, false);
-            }
-        }
-
-        public static void SetSuggestedRelearnMoves(this PKM pk)
-        {
-            if (pk.Format < 6)
-                return;
-            pk.ClearRelearnMoves();
-            var Legality = new LegalityAnalysis(pk);
-
-            int[] m = Legality.GetSuggestedRelearn();
-            if (m.All(z => z == 0))
-            {
-                if (!pk.WasEgg && !pk.WasEvent && !pk.WasEventEgg && !pk.WasLink)
-                {
-                    if (pk.Version != (int)GameVersion.CXD)
-                    {
-                        var encounter = Legality.GetSuggestedMetInfo();
-                        if (encounter != null)
-                            m = encounter.Relearn;
-                    }
-                }
-            }
-
-            if (pk.RelearnMoves.SequenceEqual(m))
-                return;
-            if (m.Length > 3)
-                pk.RelearnMoves = m;
-        }
-
-        public static void SetSuggestedMetLocation(this PKM pk)
-        {
-            var Legality = new LegalityAnalysis(pk);
-
-            var encounter = Legality.GetSuggestedMetInfo();
-            if (encounter == null || (pk.Format >= 3 && encounter.Location < 0))
-                return;
-
-            int level = encounter.Level;
-            int location = encounter.Location;
-            int minlvl = Legal.GetLowestLevel(pk, encounter.Species);
-            if (minlvl == 0)
-                minlvl = level;
-
-            if (pk.CurrentLevel >= minlvl && pk.Met_Level == level && pk.Met_Location == location)
-                return;
-            if (minlvl < level)
-                level = minlvl;
-            pk.Met_Location = location;
-            pk.Met_Level = level;
-        }
-
-        private static IEnumerable<string> GetRibbonsRequired(PKM pk, string[] ribbonList)
-        {
-            foreach (var RibbonName in GetRibbonNames(pk))
-            {
-                string v = RibbonStrings.GetName(RibbonName).Replace("Ribbon", "");
-                if (ribbonList.Contains(v))
-                    yield return RibbonName;
-            }
-        }
-
-        private static string[] GetRequiredRibbons(string Report, string val)
-        {
-            return Report.Split(new[] { val }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
-        }
-
-        private static void SetRibbonValues(this PKM pk, IEnumerable<string> ribNames, int vRib, bool bRib)
-        {
-            foreach (string rName in ribNames)
-            {
-                bool intRib = rName == nameof(PK6.RibbonCountMemoryBattle) || rName == nameof(PK6.RibbonCountMemoryContest);
-                ReflectUtil.SetValue(pk, rName, intRib ? (object)vRib : bRib);
-            }
-        }
-
-        public static void ClearAllRibbons(this PKM pk) => pk.SetRibbonValues(GetRibbonNames(pk), 0, false);
-        private static IEnumerable<string> GetRibbonNames(PKM pk) => ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
     }
 }

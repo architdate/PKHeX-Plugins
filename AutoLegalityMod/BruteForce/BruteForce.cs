@@ -99,8 +99,10 @@ namespace AutoLegalityMod
                             return Set;
                         }
                         Set.HyperTrain();
-                        if (new LegalityAnalysis(Set).Valid) legalized = true;
-                        if (Set.GenNumber < 6 && !legalized) Set.EncryptionConstant = Set.PID;
+                        if (new LegalityAnalysis(Set).Valid)
+                            legalized = true;
+                        if (Set.GenNumber < 6 && !legalized)
+                            Set.EncryptionConstant = Set.PID;
                         if (new LegalityAnalysis(Set).Valid && SAV.Generation >= Set.GenNumber)
                         {
                             Set.SetHappiness();

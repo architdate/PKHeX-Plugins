@@ -8,10 +8,10 @@ namespace AutoLegalityMod
         /// Quick Gender Toggle
         /// </summary>
         /// <param name="pk">PKM whose gender needs to be toggled</param>
-        /// <param name="SSet">Showdown Set for Gender reference</param>
-        public static void FixGender(this PKM pk, ShowdownSet SSet)
+        /// <param name="set">Showdown Set for Gender reference</param>
+        public static void FixGender(this PKM pk, ShowdownSet set)
         {
-            pk.SetGender(SSet.Gender);
+            pk.SetGender(set.Gender);
             var la = new LegalityAnalysis(pk);
             string Report = la.Report();
 
@@ -26,12 +26,12 @@ namespace AutoLegalityMod
         /// Set Nature and Ability of the pokemon
         /// </summary>
         /// <param name="pk">PKM to modify</param>
-        /// <param name="SSet">Showdown Set to refer</param>
-        public static void SetNatureAbility(this PKM pk, ShowdownSet SSet)
+        /// <param name="set">Showdown Set to refer</param>
+        public static void SetNatureAbility(this PKM pk, ShowdownSet set)
         {
             // Values that are must for showdown set to work, IVs should be adjusted to account for this
-            pk.Nature = SSet.Nature;
-            pk.SetAbility(SSet.Ability);
+            pk.Nature = set.Nature;
+            pk.SetAbility(set.Ability);
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace AutoLegalityMod
                 pk.Gender = set.Gender == "M" ? 0 : 1;
             else
                 pk.Gender = pk.GetSaneGender();
-
             pk.SetAltForm(Form);
+
             pk.IsNicknamed = set.Nickname != null;
             pk.Nickname = set.Nickname ?? PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, pk.Format);
             pk.CurrentLevel = set.Level;
@@ -74,9 +74,9 @@ namespace AutoLegalityMod
             {
                 pk.EVs = set.EVs;
                 pk.ApplyHeldItem(set.HeldItem, set.Format);
-                var legal = new LegalityAnalysis(pk);
-                if (legal.Parsed && !pk.WasEvent)
-                    pk.RelearnMoves = pk.GetSuggestedRelearnMoves(legal);
+                var la = new LegalityAnalysis(pk);
+                if (la.Parsed && !pk.WasEvent)
+                    pk.RelearnMoves = pk.GetSuggestedRelearnMoves(la);
             }
         }
     }

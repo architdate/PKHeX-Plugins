@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AutoMod\APILegality.cs" />
     <Compile Include="AutoMod\AutoModErrorCode.cs" />
+    <Compile Include="AutoMod\LegalEdits.cs" />
     <Compile Include="BruteForce\RNG\CompareType.cs" />
     <Compile Include="BruteForce\RNG\Frame.cs" />
     <Compile Include="BruteForce\RNG\FrameCompare.cs" />

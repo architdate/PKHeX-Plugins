@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Diagnostics;
 using PKHeX.Core;
 using static PKHeX.Core.LegalityCheckStrings;
 
@@ -12,50 +13,25 @@ namespace AutoLegalityMod
         /// <summary>
         /// Main function that auto legalizes based on the legality
         /// </summary>
-        /// <param name="roughPK">rough pkm that has all the SSet values entered</param>
+        /// <param name="template">rough pkm that has all the SSet values entered</param>
         /// <param name="SSet">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use current auto legality functionality</param>
-        public static PKM APILegality(PKM roughPK, ShowdownSet SSet, out bool satisfied)
+        public static PKM APILegality(PKM template, ShowdownSet SSet, out bool satisfied)
         {
-            int Form = roughPK.AltForm;
+            int Form = template.AltForm;
             if (SSet.Form != null && FixFormes(SSet, out SSet))
             {
                 Form = SSet.FormIndex;
-                roughPK.ApplySetDetails(SSet);
+                template.ApplySetDetails(SSet);
             }
-            int HPType = roughPK.HPType;
+            int HPType = template.HPType;
             var destType = SAV.PKMType;
 
-            // List of candidate PKM files
-            var f = EncounterMovesetGenerator.GeneratePKMs(roughPK, SAV, SSet.Moves);
-            foreach (PKM pkmn in f)
+            var possible = GetPossiblePKMs(template, SSet);
+            foreach (PKM raw in possible)
             {
-                var pk = PKMConverter.ConvertToType(pkmn, destType, out _); // All Possible PKM files
-
-                var info = new LegalInfo(pk);
-                var pidiv = info.PIDIV ?? MethodFinder.Analyze(pk);
-                var Method = pidiv?.Type ?? PIDType.None;
-
-                SetVersion(pk, pkmn); // PreEmptive Version setting
-                pk.SetSpeciesLevel(SSet, Form);
-                pk.SetMovesEVsItems(SSet);
-                pk.SetTrainerDataAndMemories();
-                pk.SetNatureAbility(SSet);
-                SetIVsPID(pk, SSet, Method, HPType, pkmn);
-
-                PrintLegality(pk);
-
-                ColosseumFixes(pk);
-                pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
-                pk.SetEncryptionConstant();
-                pk.SetShinyBoolean(SSet.Shiny);
-                CheckAndSetFateful(pk);
-                pk.FixGender(SSet);
-                pk.SetSuggestedRibbons();
-                pk.SetSuggestedMemories();
-                pk.SetSpeciesBall();
-                pk.SetHappiness();
-                pk.SetBelugaValues();
+                var pk = PKMConverter.ConvertToType(raw, destType, out _);
+                ApplySetDetails(pk, SSet, Form, HPType, raw);
 
                 satisfied = true;
                 var la = new LegalityAnalysis(pk);
@@ -66,14 +42,55 @@ namespace AutoLegalityMod
                 return pk;
             }
             satisfied = false;
-            return roughPK;
+            return template;
+        }
+
+        private static IEnumerable<PKM> GetPossiblePKMs(PKM template, ShowdownSet SSet)
+        {
+            return EncounterMovesetGenerator.GeneratePKMs(template, SAV, SSet.Moves);
+        }
+
+        /// <summary>
+        /// Modifies the provided <see cref="pk"/> to the specifications required by <see cref="set"/>.
+        /// </summary>
+        /// <param name="pk">Converted final pkm to apply details to</param>
+        /// <param name="set">Set details required</param>
+        /// <param name="Form">Alternate form required</param>
+        /// <param name="HPType">Hidden Power type requirement</param>
+        /// <param name="unconverted">Original pkm data</param>
+        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, int HPType, PKM unconverted)
+        {
+            var info = new LegalInfo(pk);
+            var pidiv = info.PIDIV ?? MethodFinder.Analyze(pk);
+            var Method = pidiv?.Type ?? PIDType.None;
+
+            SetVersion(pk, unconverted); // PreEmptive Version setting
+            pk.SetSpeciesLevel(set, Form);
+            pk.SetMovesEVsItems(set);
+            pk.SetTrainerDataAndMemories();
+            pk.SetNatureAbility(set);
+            SetIVsPID(pk, set, Method, HPType, unconverted);
+
+            PrintLegality(pk);
+
+            ColosseumFixes(pk);
+            pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
+            pk.SetEncryptionConstant();
+            pk.SetShinyBoolean(set.Shiny);
+            CheckAndSetFateful(pk);
+            pk.FixGender(set);
+            pk.SetSuggestedRibbons();
+            pk.SetSuggestedMemories();
+            pk.SetSuggestedBall();
+            pk.SetHappiness();
+            pk.SetBelugaValues();
         }
 
         /// <summary>
         /// Debugging tool
         /// </summary>
         /// <param name="pk">PKM whose legality must be printed</param>
-        public static void PrintLegality(PKM pk) => Console.WriteLine(new LegalityAnalysis(pk).Report());
+        private static void PrintLegality(PKM pk) => Debug.WriteLine(new LegalityAnalysis(pk).Report());
 
         /// <summary>
         /// Validate and Set the gender if needed
