@@ -55,7 +55,7 @@ namespace com.google.zxing.common
 		// So this is the smallest dimension in each axis we can accept.
 		private const int MINIMUM_DIMENSION = 40;
 
-		private BitMatrix matrix = null;
+		private BitMatrix matrix;
 
 		public HybridBinarizer(LuminanceSource source):base(source)
 		{
@@ -134,7 +134,7 @@ namespace com.google.zxing.common
 				{
 					int pixel = luminances[offset + x] & 0xff;
 					if (pixel < threshold)
-						matrix.set_Renamed(xoffset + x, yoffset + y);
+						matrix.Set_Renamed(xoffset + x, yoffset + y);
 				}
 			}
 		}

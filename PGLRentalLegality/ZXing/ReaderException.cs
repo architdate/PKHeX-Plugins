@@ -16,7 +16,6 @@
 using System;
 namespace com.google.zxing
 {
-	
 	/// <summary> The general exception class throw when something goes wrong during decoding of a barcode.
 	/// This includes, but is not limited to, failing checksums / error correction algorithms, being
 	/// unable to locate finder timing patterns, and so on.
@@ -50,7 +49,6 @@ namespace com.google.zxing
 				
 				return instance;
 			}
-			
 		}
 		
 		// TODO: Currently we throw up to 400 ReaderExceptions while scanning a single 240x240 image before

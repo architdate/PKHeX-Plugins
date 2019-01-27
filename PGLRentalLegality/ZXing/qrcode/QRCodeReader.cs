@@ -14,11 +14,10 @@
 * limitations under the License.
 */
 using System;
-using BitMatrix = com.google.zxing.common.BitMatrix;
-using DecoderResult = com.google.zxing.common.DecoderResult;
-using DetectorResult = com.google.zxing.common.DetectorResult;
-using Decoder = com.google.zxing.qrcode.decoder.Decoder;
-using Detector = com.google.zxing.qrcode.detector.Detector;
+using com.google.zxing.common;
+using com.google.zxing.qrcode.decoder;
+using com.google.zxing.qrcode.detector;
+
 namespace com.google.zxing.qrcode
 {
     /// <summary> This implementation can detect and decode QR Codes in an image.
@@ -28,9 +27,9 @@ namespace com.google.zxing.qrcode
     /// </author>
     /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
     /// </author>
-    public class QRCodeReader : IReader
+    public sealed class QRCodeReader : IReader
     {
-        protected internal virtual Decoder Decoder { get; } = new Decoder();
+        private Decoder Decoder { get; } = new Decoder();
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'NO_POINTS '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
         private static readonly ResultPoint[] NO_POINTS = new ResultPoint[0];
@@ -42,22 +41,22 @@ namespace com.google.zxing.qrcode
         /// <returns> a String representing the content encoded by the QR code
         /// </returns>
         /// <throws>  ReaderException if a QR code cannot be found, or cannot be decoded </throws>
-        public virtual Result Decode(BinaryBitmap image) => Decode(image, null);
+        public Result Decode(BinaryBitmap image) => Decode(image, null);
 
-        public virtual Result Decode(BinaryBitmap image, System.Collections.Hashtable hints)
+        public Result Decode(BinaryBitmap image, System.Collections.Hashtable hints)
         {
             DecoderResult decoderResult;
             ResultPoint[] points;
             if (hints?.ContainsKey(DecodeHintType.PURE_BARCODE) == true)
             {
                 BitMatrix bits = ExtractPureBits(image.BlackMatrix);
-                decoderResult = Decoder.decode(bits);
+                decoderResult = Decoder.Decode(bits);
                 points = NO_POINTS;
             }
             else
             {
-                DetectorResult detectorResult = new Detector(image.BlackMatrix).detect(hints);
-                decoderResult = Decoder.decode(detectorResult.Bits);
+                DetectorResult detectorResult = new Detector(image.BlackMatrix).Detect(hints);
+                decoderResult = Decoder.Decode(detectorResult.Bits);
                 points = detectorResult.Points;
             }
 
@@ -89,7 +88,7 @@ namespace com.google.zxing.qrcode
 
             // First, skip white border by tracking diagonally from the top left down and to the right:
             int borderWidth = 0;
-            while (borderWidth < minDimension && !image.get_Renamed(borderWidth, borderWidth))
+            while (borderWidth < minDimension && !image.Get_Renamed(borderWidth, borderWidth))
                 borderWidth++;
 
             if (borderWidth == minDimension)
@@ -97,7 +96,7 @@ namespace com.google.zxing.qrcode
 
             // And then keep tracking across the top-left black module to determine module size
             int moduleEnd = borderWidth;
-            while (moduleEnd < minDimension && image.get_Renamed(moduleEnd, moduleEnd))
+            while (moduleEnd < minDimension && image.Get_Renamed(moduleEnd, moduleEnd))
                 moduleEnd++;
 
             if (moduleEnd == minDimension)
@@ -107,7 +106,7 @@ namespace com.google.zxing.qrcode
 
             // And now find where the rightmost black module on the first row ends
             int rowEndOfSymbol = width - 1;
-            while (rowEndOfSymbol >= 0 && !image.get_Renamed(rowEndOfSymbol, borderWidth))
+            while (rowEndOfSymbol >= 0 && !image.Get_Renamed(rowEndOfSymbol, borderWidth))
                 rowEndOfSymbol--;
 
             if (rowEndOfSymbol < 0)
@@ -137,8 +136,8 @@ namespace com.google.zxing.qrcode
                 int iOffset = borderWidth + (i * moduleSize);
                 for (int j = 0; j < dimension; j++)
                 {
-                    if (image.get_Renamed(borderWidth + (j * moduleSize), iOffset))
-                        bits.set_Renamed(j, i);
+                    if (image.Get_Renamed(borderWidth + (j * moduleSize), iOffset))
+                        bits.Set_Renamed(j, i);
                 }
             }
             return bits;

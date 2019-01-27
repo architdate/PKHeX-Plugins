@@ -16,7 +16,6 @@
 using System;
 namespace com.google.zxing
 {
-	
 	/// <summary> <p>Encapsulates a point of interest in an image containing a barcode. Typically, this
 	/// would be the location of a finder pattern or the corner of the barcode, for example.</p>
 	/// 
@@ -34,7 +33,6 @@ namespace com.google.zxing
 			{
 				return x;
 			}
-			
 		}
 		public virtual float Y
 		{
@@ -42,7 +40,6 @@ namespace com.google.zxing
 			{
 				return y;
 			}
-			
 		}
 		
 		//UPGRADE_NOTE: Final was removed from the declaration of 'x '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
@@ -90,9 +87,8 @@ namespace com.google.zxing
 		/// <summary> <p>Orders an array of three ResultPoints in an order [A,B,C] such that AB < AC and
 		/// BC < AC and the angle between BC and BA is less than 180 degrees.
 		/// </summary>
-		public static void  orderBestPatterns(ResultPoint[] patterns)
+		public static void orderBestPatterns(ResultPoint[] patterns)
 		{
-			
 			// Find distances between pattern centers
 			float zeroOneDistance = distance(patterns[0], patterns[1]);
 			float oneTwoDistance = distance(patterns[1], patterns[2]);
@@ -143,7 +139,7 @@ namespace com.google.zxing
 			float xDiff = pattern1.X - pattern2.X;
 			float yDiff = pattern1.Y - pattern2.Y;
 			//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-			return (float)Math.Sqrt((double) (xDiff * xDiff + yDiff * yDiff));
+			return (float)Math.Sqrt((double) ((xDiff * xDiff) + (yDiff * yDiff)));
 		}
 		
 		/// <summary> Returns the z component of the cross product between vectors BC and BA.</summary>

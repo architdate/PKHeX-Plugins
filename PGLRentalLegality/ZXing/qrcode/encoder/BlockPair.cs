@@ -13,39 +13,24 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-using System;
-using ByteArray = com.google.zxing.common.ByteArray;
+
+using com.google.zxing.common;
+
 namespace com.google.zxing.qrcode.encoder
 {
-	
 	internal sealed class BlockPair
 	{
-		public ByteArray DataBytes
+		public ByteArray DataBytes { get; }
+
+	    public ByteArray ErrorCorrectionBytes { get; }
+
+	    //UPGRADE_NOTE: Final was removed from the declaration of 'dataBytes '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+	    //UPGRADE_NOTE: Final was removed from the declaration of 'errorCorrectionBytes '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+
+	    internal BlockPair(ByteArray data, ByteArray errorCorrection)
 		{
-			get
-			{
-				return dataBytes;
-			}
-			
-		}
-		public ByteArray ErrorCorrectionBytes
-		{
-			get
-			{
-				return errorCorrectionBytes;
-			}
-			
-		}
-		
-		//UPGRADE_NOTE: Final was removed from the declaration of 'dataBytes '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-		private ByteArray dataBytes;
-		//UPGRADE_NOTE: Final was removed from the declaration of 'errorCorrectionBytes '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-		private ByteArray errorCorrectionBytes;
-		
-		internal BlockPair(ByteArray data, ByteArray errorCorrection)
-		{
-			dataBytes = data;
-			errorCorrectionBytes = errorCorrection;
+			DataBytes = data;
+			ErrorCorrectionBytes = errorCorrection;
 		}
 	}
 }

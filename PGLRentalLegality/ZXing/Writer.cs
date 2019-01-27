@@ -17,20 +17,18 @@ using System;
 using ByteMatrix = com.google.zxing.common.ByteMatrix;
 namespace com.google.zxing
 {
-	
 	/// <summary> The base class for all objects which encode/generate a barcode image.
-	/// 
+	///
 	/// </summary>
 	/// <author>  dswitkin@google.com (Daniel Switkin)
 	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
+	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
 	/// </author>
 
 	public interface Writer
 	{
-		
 		/// <summary> Encode a barcode using the default settings.
-		/// 
+		///
 		/// </summary>
 		/// <param name="contents">The contents to encode in the barcode
 		/// </param>
@@ -42,8 +40,8 @@ namespace com.google.zxing
 		/// </param>
 		/// <returns> The generated barcode as a Matrix of unsigned bytes (0 == black, 255 == white)
 		/// </returns>
-		ByteMatrix encode(System.String contents, BarcodeFormat format, int width, int height);
-		
+		ByteMatrix encode(string contents, BarcodeFormat format, int width, int height);
+
 		/// <summary> </summary>
 		/// <param name="contents">The contents to encode in the barcode
 		/// </param>
@@ -57,6 +55,6 @@ namespace com.google.zxing
 		/// </param>
 		/// <returns> The generated barcode as a Matrix of unsigned bytes (0 == black, 255 == white)
 		/// </returns>
-		ByteMatrix encode(System.String contents, BarcodeFormat format, int width, int height, System.Collections.Hashtable hints);
+		ByteMatrix encode(string contents, BarcodeFormat format, int width, int height, System.Collections.Hashtable hints);
 	}
 }

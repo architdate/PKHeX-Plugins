@@ -13,45 +13,40 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-using System;
-using ReaderException = com.google.zxing.ReaderException;
-using BitMatrix = com.google.zxing.common.BitMatrix;
-using DecoderResult = com.google.zxing.common.DecoderResult;
-using GF256 = com.google.zxing.common.reedsolomon.GF256;
-using ReedSolomonDecoder = com.google.zxing.common.reedsolomon.ReedSolomonDecoder;
-using ReedSolomonException = com.google.zxing.common.reedsolomon.ReedSolomonException;
+
+using com.google.zxing.common;
+using com.google.zxing.common.reedsolomon;
+
 namespace com.google.zxing.qrcode.decoder
 {
-	
 	/// <summary> <p>The main class which implements QR Code decoding -- as opposed to locating and extracting
 	/// the QR Code from an image.</p>
-	/// 
+	///
 	/// </summary>
 	/// <author>  Sean Owen
 	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
+	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
 	/// </author>
 	public sealed class Decoder
 	{
-		
 		//UPGRADE_NOTE: Final was removed from the declaration of 'rsDecoder '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-		private ReedSolomonDecoder rsDecoder;
-		
+		private readonly ReedSolomonDecoder rsDecoder;
+
 		public Decoder()
 		{
 			rsDecoder = new ReedSolomonDecoder(GF256.QR_CODE_FIELD);
 		}
-		
+
 		/// <summary> <p>Convenience method that can decode a QR Code represented as a 2D array of booleans.
 		/// "true" is taken to mean a black module.</p>
-		/// 
+		///
 		/// </summary>
 		/// <param name="image">booleans representing white/black QR Code modules
 		/// </param>
 		/// <returns> text and bytes encoded within the QR Code
 		/// </returns>
 		/// <throws>  ReaderException if the QR Code cannot be decoded </throws>
-		public DecoderResult decode(bool[][] image)
+		public DecoderResult Decode(bool[][] image)
 		{
 			int dimension = image.Length;
 			BitMatrix bits = new BitMatrix(dimension);
@@ -61,70 +56,68 @@ namespace com.google.zxing.qrcode.decoder
 				{
 					if (image[i][j])
 					{
-						bits.set_Renamed(j, i);
+						bits.Set_Renamed(j, i);
 					}
 				}
 			}
-			return decode(bits);
+			return Decode(bits);
 		}
-		
+
 		/// <summary> <p>Decodes a QR Code represented as a {@link BitMatrix}. A 1 or "true" is taken to mean a black module.</p>
-		/// 
+		///
 		/// </summary>
 		/// <param name="bits">booleans representing white/black QR Code modules
 		/// </param>
 		/// <returns> text and bytes encoded within the QR Code
 		/// </returns>
 		/// <throws>  ReaderException if the QR Code cannot be decoded </throws>
-		public DecoderResult decode(BitMatrix bits)
+		public DecoderResult Decode(BitMatrix bits)
 		{
-			
 			// Construct a parser and read version, error-correction level
 			BitMatrixParser parser = new BitMatrixParser(bits);
-			Version version = parser.readVersion();
-			ErrorCorrectionLevel ecLevel = parser.readFormatInformation().ErrorCorrectionLevel;
-			
+			Version version = parser.ReadVersion();
+			ErrorCorrectionLevel ecLevel = parser.ReadFormatInformation().ErrorCorrectionLevel;
+
 			// Read codewords
-			sbyte[] codewords = parser.readCodewords();
+			sbyte[] codewords = parser.ReadCodewords();
 			// Separate into data blocks
-			DataBlock[] dataBlocks = DataBlock.getDataBlocks(codewords, version, ecLevel);
-			
+			DataBlock[] dataBlocks = DataBlock.GetDataBlocks(codewords, version, ecLevel);
+
 			// Count total number of data bytes
 			int totalBytes = 0;
-			for (int i = 0; i < dataBlocks.Length; i++)
+			foreach (DataBlock t in dataBlocks)
 			{
-				totalBytes += dataBlocks[i].NumDataCodewords;
+			    totalBytes += t.NumDataCodewords;
 			}
 			sbyte[] resultBytes = new sbyte[totalBytes];
 			int resultOffset = 0;
-			
+
 			// Error-correct and copy data blocks together into a stream of bytes
-			for (int j = 0; j < dataBlocks.Length; j++)
+			foreach (DataBlock dataBlock in dataBlocks)
 			{
-				DataBlock dataBlock = dataBlocks[j];
-				sbyte[] codewordBytes = dataBlock.Codewords;
-				int numDataCodewords = dataBlock.NumDataCodewords;
-				correctErrors(codewordBytes, numDataCodewords);
-				for (int i = 0; i < numDataCodewords; i++)
-				{
-					resultBytes[resultOffset++] = codewordBytes[i];
-				}
+			    sbyte[] codewordBytes = dataBlock.Codewords;
+			    int numDataCodewords = dataBlock.NumDataCodewords;
+			    CorrectErrors(codewordBytes, numDataCodewords);
+			    for (int i = 0; i < numDataCodewords; i++)
+			    {
+			        resultBytes[resultOffset++] = codewordBytes[i];
+			    }
 			}
-			
+
 			// Decode the contents of that stream of bytes
-			return DecodedBitStreamParser.decode(resultBytes, version, ecLevel);
+			return DecodedBitStreamParser.Decode(resultBytes, version, ecLevel);
 		}
-		
+
 		/// <summary> <p>Given data and error-correction codewords received, possibly corrupted by errors, attempts to
 		/// correct the errors in-place using Reed-Solomon error correction.</p>
-		/// 
+		///
 		/// </summary>
 		/// <param name="codewordBytes">data and error correction codewords
 		/// </param>
 		/// <param name="numDataCodewords">number of codewords that are data bytes
 		/// </param>
 		/// <throws>  ReaderException if error correction fails </throws>
-		private void  correctErrors(sbyte[] codewordBytes, int numDataCodewords)
+		private void CorrectErrors(sbyte[] codewordBytes, int numDataCodewords)
 		{
 			int numCodewords = codewordBytes.Length;
 			// First read into an array of ints
@@ -136,7 +129,7 @@ namespace com.google.zxing.qrcode.decoder
 			int numECCodewords = codewordBytes.Length - numDataCodewords;
 			try
 			{
-				rsDecoder.decode(codewordsInts, numECCodewords);
+				rsDecoder.Decode(codewordsInts, numECCodewords);
 			}
 			catch (ReedSolomonException)
 			{

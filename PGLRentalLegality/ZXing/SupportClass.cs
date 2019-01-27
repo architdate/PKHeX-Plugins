@@ -211,5 +211,4 @@ public class SupportClass
 		}
 		return sbyteArray;
 	}
-
 }

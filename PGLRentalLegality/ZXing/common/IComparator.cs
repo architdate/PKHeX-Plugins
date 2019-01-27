@@ -13,16 +13,13 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-using System;
 namespace com.google.zxing.common
 {
-	
 	/// <summary> This is merely a clone of <code>Comparator</code> since it is not available in
 	/// CLDC 1.1 / MIDP 2.0.
 	/// </summary>
-	public interface Comparator
+	public interface IComparator
 	{
-		
-		int compare(System.Object o1, System.Object o2);
+		int Compare(object o1, object o2);
 	}
 }

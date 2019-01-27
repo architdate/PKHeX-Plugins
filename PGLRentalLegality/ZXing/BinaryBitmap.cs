@@ -61,7 +61,6 @@ namespace com.google.zxing
                 matrix = binarizer.BlackMatrix;
                 return matrix;
             }
-
         }
 
         /// <summary>

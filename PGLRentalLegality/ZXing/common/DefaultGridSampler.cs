@@ -14,25 +14,24 @@
 * limitations under the License.
 */
 using System;
-using ReaderException = com.google.zxing.ReaderException;
 namespace com.google.zxing.common
 {
-	
+	/// <summary>
+	///
+	/// </summary>
 	/// <author>  Sean Owen
 	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
+	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
 	/// </author>
 	public sealed class DefaultGridSampler:GridSampler
 	{
-		
 		public override BitMatrix sampleGrid(BitMatrix image, int dimension, float p1ToX, float p1ToY, float p2ToX, float p2ToY, float p3ToX, float p3ToY, float p4ToX, float p4ToY, float p1FromX, float p1FromY, float p2FromX, float p2FromY, float p3FromX, float p3FromY, float p4FromX, float p4FromY)
 		{
-			
-			PerspectiveTransform transform = PerspectiveTransform.quadrilateralToQuadrilateral(p1ToX, p1ToY, p2ToX, p2ToY, p3ToX, p3ToY, p4ToX, p4ToY, p1FromX, p1FromY, p2FromX, p2FromY, p3FromX, p3FromY, p4FromX, p4FromY);
-			
+			PerspectiveTransform transform = PerspectiveTransform.QuadrilateralToQuadrilateral(p1ToX, p1ToY, p2ToX, p2ToY, p3ToX, p3ToY, p4ToX, p4ToY, p1FromX, p1FromY, p2FromX, p2FromY, p3FromX, p3FromY, p4FromX, p4FromY);
+
 			return sampleGrid(image, dimension, transform);
 		}
-		
+
 		public override BitMatrix sampleGrid(BitMatrix image, int dimension, PerspectiveTransform transform)
 		{
 			BitMatrix bits = new BitMatrix(dimension);
@@ -41,14 +40,14 @@ namespace com.google.zxing.common
 			{
 				int max = points.Length;
 				//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-				float iValue = (float) y + 0.5f;
+				float iValue = y + 0.5f;
 				for (int x = 0; x < max; x += 2)
 				{
 					//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-					points[x] = (float) (x >> 1) + 0.5f;
+					points[x] = (x >> 1) + 0.5f;
 					points[x + 1] = iValue;
 				}
-				transform.transformPoints(points);
+				transform.TransformPoints(points);
 				// Quick check to see if points transformed to something inside the image;
 				// sufficient to check the endpoints
 				checkAndNudgePoints(image, points);
@@ -57,14 +56,14 @@ namespace com.google.zxing.common
 					for (int x = 0; x < max; x += 2)
 					{
 						//UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-						if (image.get_Renamed((int) points[x], (int) points[x + 1]))
+						if (image.Get_Renamed((int) points[x], (int) points[x + 1]))
 						{
 							// Black(-ish) pixel
-							bits.set_Renamed(x >> 1, y);
+							bits.Set_Renamed(x >> 1, y);
 						}
 					}
 				}
-				catch (System.IndexOutOfRangeException)
+				catch (IndexOutOfRangeException)
 				{
 					// This feels wrong, but, sometimes if the finder patterns are misidentified, the resulting
 					// transform gets "twisted" such that it maps a straight line of points to a set of points
