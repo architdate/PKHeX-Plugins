@@ -75,14 +75,15 @@ namespace AutoLegalityMod
             var timer = Stopwatch.StartNew();
             // Import Showdown Sets and alert user of any messages intended
             bool replace = (Control.ModifierKeys & Keys.Control) != 0;
-            ImportSets(Sets, replace, out string message);
+            var result = ImportSets(Sets, replace);
 
             // Debug Statements
             timer.Stop();
             TimeSpan timespan = timer.Elapsed;
             Debug.WriteLine($"Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
 
-            if (!string.IsNullOrWhiteSpace(message))
+            var message = result.GetMessage();
+            if (!string.IsNullOrEmpty(message))
                 WinFormsUtil.Alert(message);
         }
 
@@ -136,47 +137,45 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="sets">A list of ShowdownSet(s) that need to be genned</param>
         /// <param name="replace">A boolean that determines if current pokemon will be replaced or not</param>
-        /// <param name="message">Output message to be displayed for the user</param>
         /// <param name="allowAPI">Use of generators before bruteforcing</param>
-        private static void ImportSets(IReadOnlyList<ShowdownSet> sets, bool replace, out string message, bool allowAPI = true)
+        private static AutoModErrorCode ImportSets(IReadOnlyList<ShowdownSet> sets, bool replace, bool allowAPI = true)
         {
-            message = string.Empty;
             Debug.WriteLine("Commencing Import");
             if (sets.Count == 1)
             {
                 var set = sets[0];
                 if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", sets[0].Text))
-                    return;
+                    return AutoModErrorCode.NoSingleImport;
                 if (set.InvalidLines.Count > 0)
-                    WinFormsUtil.Alert("Invalid lines detected:", string.Join(Environment.NewLine, set.InvalidLines));
+                    return AutoModErrorCode.InvalidLines;
 
                 PKM legal = GetLegalFromSet(set, allowAPI, out var _);
                 PKMEditor.PopulateFields(legal);
-                Debug.WriteLine("Set Genning Complete");
-                return;
+                Debug.WriteLine("Single Set Genning Complete");
+                return AutoModErrorCode.None;
             }
 
             var BoxData = SAV.BoxData;
             int start = SaveFileEditor.CurrentBox * SAV.BoxSlotCount;
-            if (!ImportToExisting(sets, BoxData, start, replace, allowAPI, out message))
-                return;
+
+            var result = ImportToExisting(sets, BoxData, start, replace, allowAPI);
+            if (result != AutoModErrorCode.None)
+                return result;
 
             SAV.BoxData = BoxData;
             SaveFileEditor.ReloadSlots();
+
+            return result;
         }
 
-        private static bool ImportToExisting(IReadOnlyList<ShowdownSet> sets, IList<PKM> BoxData, int start, bool replace, bool allowAPI, out string message)
+        private static AutoModErrorCode ImportToExisting(IReadOnlyList<ShowdownSet> sets, IList<PKM> BoxData, int start, bool replace, bool allowAPI)
         {
-            message = string.Empty;
             var emptySlots = replace
                 ? Enumerable.Range(0, sets.Count).ToList()
                 : FindAllEmptySlots(BoxData, SaveFileEditor.CurrentBox);
 
             if (emptySlots.Count < sets.Count && sets.Count != 1)
-            {
-                message = "Not enough space in the box.";
-                return false;
-            }
+                return AutoModErrorCode.NotEnoughSpace;
 
             int apiCounter = 0;
             var invalidAPISets = new List<ShowdownSet>();
@@ -184,7 +183,7 @@ namespace AutoLegalityMod
             {
                 ShowdownSet Set = sets[i];
                 if (Set.InvalidLines.Count > 0)
-                    WinFormsUtil.Alert("Invalid lines detected:", string.Join(Environment.NewLine, Set.InvalidLines));
+                    return AutoModErrorCode.InvalidLines;
 
                 PKM legal = GetLegalFromSet(Set, allowAPI, out var msg);
                 switch (msg)
@@ -202,9 +201,9 @@ namespace AutoLegalityMod
 
             var total = invalidAPISets.Count + apiCounter;
             Debug.WriteLine($"API Genned Sets: {apiCounter}/{total}, {invalidAPISets.Count} were not.");
-            foreach (ShowdownSet i in invalidAPISets)
-                Debug.WriteLine(i.Text);
-            return true;
+            foreach (var set in invalidAPISets)
+                Debug.WriteLine(set.Text);
+            return AutoModErrorCode.None;
         }
 
         private enum LegalizationResult

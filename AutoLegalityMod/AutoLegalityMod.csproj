@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APILegality.cs" />
+    <Compile Include="AutoModErrorCode.cs" />
     <Compile Include="AutoModPlugin.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
