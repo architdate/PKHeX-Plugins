@@ -269,12 +269,10 @@ namespace AutoLegalityMod
 
         private static void SetRibbonValues(this PKM pk, IEnumerable<string> ribNames, int vRib, bool bRib)
         {
-            foreach (string invalid in ribNames)
+            foreach (string rName in ribNames)
             {
-                if (invalid == nameof(PK6.RibbonCountMemoryBattle) || invalid == nameof(PK6.RibbonCountMemoryContest))
-                    ReflectUtil.SetValue(pk, invalid, vRib);
-                else
-                    ReflectUtil.SetValue(pk, invalid, bRib);
+                bool intRib = rName == nameof(PK6.RibbonCountMemoryBattle) || rName == nameof(PK6.RibbonCountMemoryContest);
+                ReflectUtil.SetValue(pk, rName, intRib ? (object)vRib : bRib);
             }
         }
 
