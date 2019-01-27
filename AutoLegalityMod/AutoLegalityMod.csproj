@@ -40,26 +40,35 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APILegality.cs" />
-    <Compile Include="AutoModErrorCode.cs" />
-    <Compile Include="AutoModPlugin.cs" />
+    <Compile Include="AutoMod\APILegality.cs" />
+    <Compile Include="AutoMod\AutoModErrorCode.cs" />
+    <Compile Include="BruteForce\RNG\CompareType.cs" />
+    <Compile Include="BruteForce\RNG\Frame.cs" />
+    <Compile Include="BruteForce\RNG\FrameCompare.cs" />
+    <Compile Include="BruteForce\RNG\FrameGenerator.cs" />
+    <Compile Include="BruteForce\RNG\FrameType.cs" />
+    <Compile Include="BruteForce\RNG\IVFilter.cs" />
+    <Compile Include="BruteForce\RNG\IVtoPIDGenerator1.cs" />
+    <Compile Include="BruteForce\RNG\IVtoSeed.cs" />
+    <Compile Include="BruteForce\RNG\Seed.cs" />
+    <Compile Include="GUI\AutoModPlugin.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SimpleEdits.cs" />
-    <Compile Include="ShowdownEdits.cs" />
-    <Compile Include="TrainerSettings.cs" />
-    <Compile Include="AutoLegalityMod.cs" />
-    <Compile Include="AutomaticLegality.cs" />
-    <Compile Include="AutoModMode.cs" />
-    <Compile Include="BruteTables.cs" />
-    <Compile Include="EdgeCaseLegality.cs" />
-    <Compile Include="IVtoPIDGenerator.cs" />
-    <Compile Include="BruteForce.cs" />
+    <Compile Include="AutoMod\SimpleEdits.cs" />
+    <Compile Include="AutoMod\ShowdownEdits.cs" />
+    <Compile Include="AutoMod\TrainerSettings.cs" />
+    <Compile Include="GUI\AutoLegalityMod.cs" />
+    <Compile Include="GUI\AutomaticLegality.cs" />
+    <Compile Include="AutoMod\AutoModMode.cs" />
+    <Compile Include="BruteForce\BruteTables.cs" />
+    <Compile Include="BruteForce\EdgeCaseLegality.cs" />
+    <Compile Include="BruteForce\RNG\IVtoPIDGenerator.cs" />
+    <Compile Include="BruteForce\BruteForce.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WinFormsUtil.cs" />
+    <Compile Include="GUI\WinFormsUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\autolegalitymod.png" />
@@ -71,5 +80,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\txt\evolutions.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

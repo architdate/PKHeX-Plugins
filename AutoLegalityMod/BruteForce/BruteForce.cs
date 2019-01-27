@@ -1003,11 +1003,11 @@ namespace AutoLegalityMod
             string[] pidsid;
             if (XD)
             {
-                pidsid = Misc.IVtoPIDGenerator.XDPID(hp, atk, def, spa, spd, spe, nature, 0);
+                pidsid = RNGReporter.IVtoPIDGenerator.XDPID(hp, atk, def, spa, spd, spe, nature, 0);
             }
             else
             {
-                pidsid = Misc.IVtoPIDGenerator.M1PID(hp, atk, def, spa, spd, spe, nature, 0);
+                pidsid = RNGReporter.IVtoPIDGenerator.M1PID(hp, atk, def, spa, spd, spe, nature, 0);
             }
 
             if (pk.Species == 490 && pk.Gen4)
@@ -1027,7 +1027,7 @@ namespace AutoLegalityMod
             {
                 string[] hpower = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
                 string hiddenpower = hpower[pk.HPType];
-                string[] NatureHPIVs = Misc.IVtoPIDGenerator.GetIVPID(nature, hiddenpower, XD);
+                string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID(nature, hiddenpower, XD);
                 Console.WriteLine(XD);
                 pk.PID = Util.GetHexValue(NatureHPIVs[0]);
                 if (pk.GenNumber < 5)
@@ -1104,7 +1104,7 @@ namespace AutoLegalityMod
             pk.FatefulEncounter = true;
             string[] hpower = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
             string hiddenpower = hpower[pk.HPType];
-            string[] NatureHPIVs = Misc.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, hiddenpower, false, "M2");
+            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, hiddenpower, false, "M2");
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5) pk.EncryptionConstant = pk.PID;
             Console.WriteLine(NatureHPIVs[0]);
@@ -1138,7 +1138,7 @@ namespace AutoLegalityMod
             pk.FatefulEncounter = false;
             string[] hpower = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
             string hiddenpower = hpower[pk.HPType];
-            string[] NatureHPIVs = Misc.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, hiddenpower, false, "BACD_R");
+            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, hiddenpower, false, "BACD_R");
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5) pk.EncryptionConstant = pk.PID;
             Console.WriteLine(NatureHPIVs[0]);
