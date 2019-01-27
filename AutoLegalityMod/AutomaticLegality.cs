@@ -80,11 +80,9 @@ namespace AutoLegalityMod
             // Debug Statements
             timer.Stop();
             TimeSpan timespan = timer.Elapsed;
-            Debug.WriteLine($"[DEBUG] Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
+            Debug.WriteLine($"Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
 
-            if (message.StartsWith("[DEBUG]"))
-                Debug.WriteLine(message);
-            else
+            if (!string.IsNullOrWhiteSpace(message))
                 WinFormsUtil.Alert(message);
         }
 
@@ -142,7 +140,8 @@ namespace AutoLegalityMod
         /// <param name="allowAPI">Use of generators before bruteforcing</param>
         private static void ImportSets(IReadOnlyList<ShowdownSet> sets, bool replace, out string message, bool allowAPI = true)
         {
-            message = "[DEBUG] Commencing Import";
+            message = string.Empty;
+            Debug.WriteLine("Commencing Import");
             if (sets.Count == 1)
             {
                 var set = sets[0];
@@ -153,7 +152,7 @@ namespace AutoLegalityMod
 
                 PKM legal = GetLegalFromSet(set, allowAPI, out var _);
                 PKMEditor.PopulateFields(legal);
-                message = "[DEBUG] Set Genning Complete";
+                Debug.WriteLine("Set Genning Complete");
                 return;
             }
 
@@ -168,6 +167,7 @@ namespace AutoLegalityMod
 
         private static bool ImportToExisting(IReadOnlyList<ShowdownSet> sets, IList<PKM> BoxData, int start, bool replace, bool allowAPI, out string message)
         {
+            message = string.Empty;
             var emptySlots = replace
                 ? Enumerable.Range(0, sets.Count).ToList()
                 : FindAllEmptySlots(BoxData, SaveFileEditor.CurrentBox);
@@ -201,7 +201,7 @@ namespace AutoLegalityMod
             }
 
             var total = invalidAPISets.Count + apiCounter;
-            message = $"[DEBUG] API Genned Sets: {apiCounter}/{total}, {invalidAPISets.Count} were not.";
+            Debug.WriteLine($"API Genned Sets: {apiCounter}/{total}, {invalidAPISets.Count} were not.");
             foreach (ShowdownSet i in invalidAPISets)
                 Debug.WriteLine(i.Text);
             return true;
