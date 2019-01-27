@@ -33,13 +33,13 @@ namespace AutoLegalityMod
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 ApplySetDetails(pk, SSet, Form, HPType, raw);
 
-                satisfied = true;
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid)
+                {
+                    satisfied = true;
                     return pk;
-
+                }
                 Console.WriteLine(la.Report());
-                return pk;
             }
             satisfied = false;
             return template;
