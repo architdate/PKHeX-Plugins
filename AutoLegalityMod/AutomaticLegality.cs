@@ -47,29 +47,15 @@ namespace AutoLegalityMod
         /// </summary>
         public static void ImportModded()
         {
-            Stopwatch timer = Stopwatch.StartNew();
-            if (!ImportSetsFromClipboard())
-                return;
-
-            // Debug Statements
-            timer.Stop();
-            TimeSpan timespan = timer.Elapsed;
-            Debug.WriteLine($"[DEBUG] Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
-        }
-
-        private static bool ImportSetsFromClipboard()
-        {
             // Check for lack of showdown data provided
             var valid = CheckLoadFromText();
             if (!valid)
-                return false;
+                return;
 
             // Get Text source from clipboard and convert to ShowdownSet(s)
             var text = Clipboard.GetText();
             string source = text.TrimEnd();
             ImportModded(source);
-
-            return true;
         }
 
         /// <summary>
@@ -77,7 +63,7 @@ namespace AutoLegalityMod
         /// </summary>
         public static void ImportModded(string source)
         {
-            List<ShowdownSet> Sets = ShowdownSets(source, out Dictionary<int, string[]> TeamData);
+            var Sets = ShowdownSets(source, out Dictionary<int, string[]> TeamData);
             if (TeamData != null)
                 WinFormsUtil.Alert(TeamDataAlert(TeamData));
 
@@ -95,9 +81,16 @@ namespace AutoLegalityMod
 
         public static void ImportSetsFromList(IReadOnlyList<ShowdownSet> Sets)
         {
+            var timer = Stopwatch.StartNew();
             // Import Showdown Sets and alert user of any messages intended
             bool replace = (Control.ModifierKeys & Keys.Control) != 0;
             ImportSets(Sets, replace, out string message);
+
+            // Debug Statements
+            timer.Stop();
+            TimeSpan timespan = timer.Elapsed;
+            Debug.WriteLine($"[DEBUG] Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
+
             if (message.StartsWith("[DEBUG]"))
                 Debug.WriteLine(message);
             else
