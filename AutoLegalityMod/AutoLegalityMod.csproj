@@ -53,6 +53,7 @@
     <Compile Include="BruteForce\RNG\IVtoSeed.cs" />
     <Compile Include="BruteForce\RNG\Seed.cs" />
     <Compile Include="GUI\AutoModPlugin.cs" />
+    <Compile Include="AutoMod\ShowdownUtil.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
