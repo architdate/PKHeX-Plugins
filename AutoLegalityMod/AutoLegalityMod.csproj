@@ -42,15 +42,15 @@
   <ItemGroup>
     <Compile Include="APILegality.cs" />
     <Compile Include="AutoModPlugin.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SimpleEdits.cs" />
     <Compile Include="ShowdownEdits.cs" />
     <Compile Include="TrainerSettings.cs" />
     <Compile Include="AutoLegalityMod.cs" />
-    <Compile Include="AutoLegalityResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AutoLegalityResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="AutomaticLegality.cs" />
     <Compile Include="AutoModMode.cs" />
     <Compile Include="BruteTables.cs" />
@@ -62,14 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\autolegalitymod.png" />
+    <None Include="Resources\img\icon.ico" />
     <Content Include="Resources\img\menuautolegality.png" />
-    <EmbeddedResource Include="Resources\txt\evolutions.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="AutoLegalityResources.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AutoLegalityResources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\txt\evolutions.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

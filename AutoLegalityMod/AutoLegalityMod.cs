@@ -19,8 +19,12 @@ namespace AutoLegalityMod
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += ClickShowdownImportPKMModded;
             ctrl.Name = "Menu_AutoLegalityMod";
-            ctrl.Image = AutoLegalityResources.autolegalitymod;
+            ctrl.Image = Properties.Resources.autolegalitymod;
             ctrl.ShortcutKeys = Keys.Control | Keys.I;
+
+            var parent = modmenu.OwnerItem;
+            var form = parent.GetCurrentParent().Parent.FindForm();
+            form.Icon = Properties.Resources.icon;
         }
 
         public override void NotifySaveLoaded()

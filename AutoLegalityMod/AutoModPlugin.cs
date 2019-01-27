@@ -58,7 +58,7 @@ namespace AutoLegalityMod
         {
             return new ToolStripMenuItem(ParentMenuText)
             {
-                Image = AutoLegalityResources.menuautolegality,
+                Image = Properties.Resources.menuautolegality,
                 Name = ParentMenuName
             };
         }
