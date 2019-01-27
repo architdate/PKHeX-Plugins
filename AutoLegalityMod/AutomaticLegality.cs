@@ -95,18 +95,27 @@ namespace AutoLegalityMod
         private static SimpleTrainerInfo LoadTrainerData(PKM legal = null)
         {
             bool checkPerGame = (TrainerSettings.CheckMode() == AutoModMode.Save);
-            var trainer = new SimpleTrainerInfo();
             // If mode is not set as game: (auto or save)
             var tdataVals = !checkPerGame || legal == null
                 ? TrainerSettings.ParseTrainerJSON(SAV)
                 : TrainerSettings.ParseTrainerJSON(SAV, legal.Version);
-            trainer.TID = Convert.ToInt32(tdataVals[0]);
-            trainer.SID = Convert.ToInt32(tdataVals[1]);
+
+            var trainer = GetTrainer(tdataVals);
             if (legal != null)
                 trainer.SID = legal.VC ? 0 : trainer.SID;
 
+            return trainer;
+        }
+
+        private static SimpleTrainerInfo GetTrainer(string[] tdataVals)
+        {
+            var trainer = new SimpleTrainerInfo();
+            trainer.TID = Convert.ToInt32(tdataVals[0]);
+            trainer.SID = Convert.ToInt32(tdataVals[1]);
+
             trainer.OT = tdataVals[2];
-            if (trainer.OT == "PKHeX") trainer.OT = "Archit(TCD)"; // Avoids secondary handler error
+            if (trainer.OT == "PKHeX")
+                trainer.OT = "Archit(TCD)"; // Avoids secondary handler error
             trainer.Gender = tdataVals[3] == "F" || tdataVals[3] == "Female" ? 1 : 0;
 
             // Load Trainer location details; check first if english string name
@@ -121,8 +130,7 @@ namespace AutoLegalityMod
                 trainer.SubRegion = s;
             if (trainer.ConsoleRegion < 0 && int.TryParse(tdataVals[6], out var x))
                 trainer.ConsoleRegion = x;
-
-            return Trainer = trainer;
+            return trainer;
         }
 
         /// <summary>
@@ -143,7 +151,7 @@ namespace AutoLegalityMod
                 if (set.InvalidLines.Count > 0)
                     WinFormsUtil.Alert("Invalid lines detected:", string.Join(Environment.NewLine, set.InvalidLines));
 
-                PKM legal = GetLegalized(set, allowAPI, out var _);
+                PKM legal = GetLegalFromSet(set, allowAPI, out var _);
                 PKMEditor.PopulateFields(legal);
                 message = "[DEBUG] Set Genning Complete";
                 return;
@@ -178,7 +186,7 @@ namespace AutoLegalityMod
                 if (Set.InvalidLines.Count > 0)
                     WinFormsUtil.Alert("Invalid lines detected:", string.Join(Environment.NewLine, Set.InvalidLines));
 
-                PKM legal = GetLegalized(Set, allowAPI, out var msg);
+                PKM legal = GetLegalFromSet(Set, allowAPI, out var msg);
                 switch (msg)
                 {
                     case LegalizationResult.API_Valid:
@@ -206,34 +214,44 @@ namespace AutoLegalityMod
             API_Valid,
         }
 
-        private static PKM GetLegalized(ShowdownSet Set, bool allowAPI, out LegalizationResult message)
+        private static PKM GetLegalFromSet(ShowdownSet Set, bool allowAPI, out LegalizationResult message)
         {
-            bool resetForm = Set.Form != null && (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted");
             PKM roughPKM = SAV.BlankPKM;
             roughPKM.ApplySetDetails(Set);
             roughPKM.Version = (int)GameVersion.MN; // Avoid the blank version glitch
-            PKM legal = SAV.BlankPKM;
-            message = LegalizationResult.Other;
-            bool satisfied = false;
-            if (allowAPI)
+            if (allowAPI && TryAPIConvert(Set, roughPKM, out PKM pkm))
             {
-                PKM APIGeneratedPKM = SAV.BlankPKM;
-                try { APIGeneratedPKM = API.APILegality(roughPKM, Set, out satisfied); }
-                catch { satisfied = false; }
-                if (satisfied)
-                {
-                    legal = APIGeneratedPKM;
-                    message = LegalizationResult.API_Valid;
-                }
+                message = LegalizationResult.API_Valid;
+                return pkm;
             }
+            message = LegalizationResult.API_Invalid;
+            return GetBruteForcedLegalMon(Set, roughPKM);
+        }
 
-            if (!allowAPI || !satisfied)
+        private static bool TryAPIConvert(ShowdownSet Set, PKM roughPKM, out PKM pkm)
+        {
+            try
             {
-                message = LegalizationResult.API_Invalid;
-                BruteForce b = new BruteForce { SAV = SAV };
-                legal = b.ApplyDetails(roughPKM, Set, resetForm, Trainer);
+                pkm = API.APILegality(roughPKM, Set, out bool satisfied);
+                if (!satisfied)
+                    return false;
+
+                pkm.SetTrainerData();
+                return true;
             }
-            SetTrainerData(legal);
+            catch
+            {
+                pkm = null;
+                return false;
+            }
+        }
+
+        private static PKM GetBruteForcedLegalMon(ShowdownSet Set, PKM roughPKM)
+        {
+            BruteForce b = new BruteForce { SAV = SAV };
+            bool resetForm = Set.Form != null && (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted");
+            var legal = b.ApplyDetails(roughPKM, Set, resetForm, Trainer);
+            legal.SetTrainerData();
             return legal;
         }
 
@@ -242,7 +260,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="legal">Legal PKM for setting the data</param>
         /// <returns>PKM with the necessary values modified to reflect trainerdata changes</returns>
-        private static void SetTrainerData(PKM legal)
+        private static void SetTrainerData(this PKM legal)
         {
             var trainer = LoadTrainerData(legal);
             legal.SetTrainerData(trainer, true);
