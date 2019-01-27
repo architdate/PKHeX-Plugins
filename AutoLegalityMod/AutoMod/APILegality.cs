@@ -178,17 +178,17 @@ namespace AutoLegalityMod
         /// <summary>
         /// Fix Formes that are illegal outside of battle
         /// </summary>
-        /// <param name="SSet">Original Showdown Set</param>
+        /// <param name="set">Original Showdown Set</param>
         /// <param name="changedSet">Edited Showdown Set</param>
         /// <returns>boolen that checks if a form is fixed or not</returns>
-        public static bool FixFormes(ShowdownSet SSet, out ShowdownSet changedSet)
+        public static bool FixFormes(ShowdownSet set, out ShowdownSet changedSet)
         {
-            changedSet = SSet;
-            var badForm = SSet.Form.Contains("Mega") || SSet.Form == "Primal" || SSet.Form == "Busted";
+            changedSet = set;
+            var badForm = ShowdownUtil.IsInvalidForm(set.Form);
             if (!badForm)
                 return false;
 
-            changedSet = new ShowdownSet(SSet.Text.Replace("-" + SSet.Form, ""));
+            changedSet = new ShowdownSet(set.Text.Replace("-" + set.Form, ""));
             return true;
         }
 

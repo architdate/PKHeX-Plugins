@@ -45,7 +45,7 @@ namespace LegalizeBoxes
                     PKM legal;
                     if (!satisfied)
                     {
-                        bool resetForm = Set.Form != null && (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted");
+                        bool resetForm = ShowdownUtil.IsInvalidForm(Set.Form);
                         legal = brute.ApplyDetails(illegalPK, Set, resetForm, trainer);
                     }
                     else

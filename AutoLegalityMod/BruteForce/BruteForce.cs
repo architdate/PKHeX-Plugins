@@ -371,7 +371,7 @@ namespace AutoLegalityMod
 
                     if (SSet.Form != null)
                     {
-                        if (SSet.Form.Contains("Mega") || SSet.Form == "Primal" || SSet.Form == "Busted")
+                        if (ShowdownUtil.IsInvalidForm(SSet.Form))
                         {
                             resetForm = true;
                             if (resetForm)
