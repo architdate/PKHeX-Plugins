@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Reflection;
 
 using PKHeX.Core;
 using static PKHeX.Core.LegalityCheckStrings;
-using System.IO;
 
 namespace AutoLegalityMod
 {
@@ -29,7 +27,6 @@ namespace AutoLegalityMod
         {
             if (trainer == null)
                 trainer = DefaultTrainer;
-            List<List<string>> evoChart = GenerateEvoLists2();
             int abilitynum = Set.AbilityNumber < 6 ? Set.AbilityNumber >> 1 : 0;
             if (resetForm)
             {
@@ -256,215 +253,6 @@ namespace AutoLegalityMod
                     }
                     catch { }
                 }
-            }
-            //return Set;
-
-            if (!new LegalityAnalysis(Set).Valid)
-            {
-                string fpath = Path.Combine(Directory.GetCurrentDirectory(), "mgdb");
-                List<string> fileList = new List<string>();
-                string[] PKMNList = Util.GetSpeciesList("en");
-                List<string> chain = new List<string>();
-                if (!legendary)
-                {
-                    foreach (List<string> a in evoChart)
-                    {
-                        foreach (string b in a)
-                        {
-                            if (b == PKMNList[Set.Species] && Set.Species != 0)
-                            {
-                                chain = a;
-                            }
-                        }
-                    }
-                }
-                if (chain.Count == 0 && Set.Species != 0) chain.Add(PKMNList[Set.Species]);
-                foreach (string file in Directory.GetFiles(fpath, "*.*", SearchOption.AllDirectories))
-                {
-                    foreach (string mon in chain)
-                    {
-                        if (file.IndexOf(mon, StringComparison.OrdinalIgnoreCase) >= 0 || Path.GetExtension(file) == ".pl6")
-                        {
-                            fileList.Add(file);
-                            Console.WriteLine(file);
-                        }
-                    }
-                }
-                PKM prevevent = new PK7();
-                foreach (string file in fileList)
-                {
-                    PKM eventpk = Set;
-                    int PIDType = -1;
-                    int Generation = 0;
-                    int AbilityType = -1;
-                    uint fixedPID = 0;
-                    int form = Set.AltForm;
-                    if (Path.GetExtension(file) == ".wc7" || Path.GetExtension(file) == ".wc7full")
-                    {
-                        var mg = (WC7)MysteryGift.GetMysteryGift(File.ReadAllBytes(file), Path.GetExtension(file));
-                        PIDType = (int)mg.PIDType;
-                        AbilityType = mg.AbilityType;
-                        Generation = 7;
-                        fixedPID = mg.PID;
-                        if (!ValidShiny((int)mg.PIDType, shiny)) continue;
-                        var temp = mg.ConvertToPKM(SAV);
-                        eventpk = PKMConverter.ConvertToType(temp, SAV.PKMType, out _);
-                    }
-                    else if (Path.GetExtension(file) == ".wc6" || Path.GetExtension(file) == ".wc6full")
-                    {
-                        var mg = (WC6)MysteryGift.GetMysteryGift(File.ReadAllBytes(file), Path.GetExtension(file));
-                        PIDType = (int)mg.PIDType;
-                        AbilityType = mg.AbilityType;
-                        Generation = 6;
-                        fixedPID = mg.PID;
-                        if (!ValidShiny((int)mg.PIDType, shiny)) continue;
-                        var temp = mg.ConvertToPKM(SAV);
-                        eventpk = PKMConverter.ConvertToType(temp, SAV.PKMType, out _);
-                    }
-                    else if (Path.GetExtension(file) == ".pgf")
-                    {
-                        var mg = (PGF)MysteryGift.GetMysteryGift(File.ReadAllBytes(file), Path.GetExtension(file));
-                        PIDType = mg.PIDType;
-                        AbilityType = mg.AbilityType;
-                        Generation = 5;
-                        fixedPID = mg.PID;
-                        if (!ValidShiny(mg.PIDType, shiny))
-                            continue;
-
-                        var temp = mg.ConvertToPKM(SAV);
-                        eventpk = PKMConverter.ConvertToType(temp, SAV.PKMType, out _);
-                    }
-                    else if (Path.GetExtension(file) == ".pgt" || Path.GetExtension(file) == ".pcd" || Path.GetExtension(file) == ".wc4")
-                    {
-                        try
-                        {
-                            var mg = (PCD)MysteryGift.GetMysteryGift(File.ReadAllBytes(file), Path.GetExtension(file));
-                            Generation = 4;
-                            if (shiny != mg.IsShiny)
-                                continue;
-
-                            var temp = mg.ConvertToPKM(SAV);
-                            eventpk = PKMConverter.ConvertToType(temp, SAV.PKMType, out _);
-                            fixedPID = eventpk.PID;
-                        }
-                        catch
-                        {
-                            var mg = (PGT)MysteryGift.GetMysteryGift(File.ReadAllBytes(file), Path.GetExtension(file));
-                            Generation = 4;
-                            if (shiny != mg.IsShiny)
-                                continue;
-
-                            var temp = mg.ConvertToPKM(SAV);
-                            eventpk = PKMConverter.ConvertToType(temp, SAV.PKMType, out _);
-                            fixedPID = eventpk.PID;
-                        }
-                    }
-                    else if (Path.GetExtension(file) == ".pk3")
-                    {
-                        Generation = 3;
-                        var pk = PKMConverter.GetPKMfromBytes(File.ReadAllBytes(file), prefer: Path.GetExtension(file).Length > 0 ? (Path.GetExtension(file).Last() - '0') & 0xF : SAV.Generation);
-                        if (pk == null)
-                            break;
-
-                        eventpk = PKMConverter.ConvertToType(pk, SAV.PKMType, out _);
-                    }
-
-                    if (SSet.Form != null)
-                    {
-                        if (ShowdownUtil.IsInvalidForm(SSet.Form))
-                        {
-                            resetForm = true;
-                            if (resetForm)
-                            {
-                                eventpk.AltForm = 0;
-                                eventpk.RefreshAbility(eventpk.AbilityNumber < 6 ? eventpk.AbilityNumber >> 1 : 0);
-                            }
-                        }
-                    }
-                    try
-                    {
-                        if ((PIDType == 0 && eventpk.IsShiny && !shiny && Generation > 4) || (PIDType == 0 && !eventpk.IsShiny && shiny && Generation > 4))
-                            continue;
-
-                        if (shiny && !eventpk.IsShiny && Generation > 4)
-                        {
-                            if (PIDType == 1)
-                                eventpk.SetShiny();
-                            else if (PIDType == 3)
-                                continue;
-                        }
-                        if (!shiny && eventpk.IsShiny && Generation > 4)
-                        {
-                            if (PIDType == 1) eventpk.PID ^= 0x10000000;
-                            else if (PIDType == 2)
-                                continue;
-                        }
-                        eventpk.Species = Set.Species;
-                        eventpk.AltForm = form;
-                        eventpk.Nickname = eventpk.IsNicknamed ? eventpk.Nickname : PKX.GetSpeciesNameGeneration(Set.Species, eventpk.Language, SAV.Generation);
-                        eventpk.HeldItem = SSet.HeldItem < 0 ? 0 : SSet.HeldItem;
-                        eventpk.Nature = SSet.Nature < 0 ? 0 : Set.Nature;
-                        eventpk.Ability = SSet.Ability;
-
-                        // Set IVs
-                        eventpk.IV_HP = SSet.IVs[0];
-                        eventpk.IV_ATK = SSet.IVs[1];
-                        eventpk.IV_DEF = SSet.IVs[2];
-                        eventpk.IV_SPA = SSet.IVs[4];
-                        eventpk.IV_SPD = SSet.IVs[5];
-                        eventpk.IV_SPE = SSet.IVs[3];
-
-                        // Set EVs
-                        eventpk.EV_HP = Set.EVs[0];
-                        eventpk.EV_ATK = Set.EVs[1];
-                        eventpk.EV_DEF = Set.EVs[2];
-                        eventpk.EV_SPA = Set.EVs[4];
-                        eventpk.EV_SPD = Set.EVs[5];
-                        eventpk.EV_SPE = Set.EVs[3];
-
-                        eventpk.CurrentLevel = 100;
-                        eventpk.Move1 = SSet.Moves[0];
-                        eventpk.Move2 = SSet.Moves[1];
-                        eventpk.Move3 = SSet.Moves[2];
-                        eventpk.Move4 = SSet.Moves[3];
-
-                        // PP Ups!
-                        eventpk.Move1_PPUps = SSet.Moves[0] != 0 ? 3 : 0;
-                        eventpk.Move2_PPUps = SSet.Moves[1] != 0 ? 3 : 0;
-                        eventpk.Move3_PPUps = SSet.Moves[2] != 0 ? 3 : 0;
-                        eventpk.Move4_PPUps = SSet.Moves[3] != 0 ? 3 : 0;
-
-                        eventpk.Move1_PP = eventpk.GetMovePP(eventpk.Move1, eventpk.Move1_PPUps);
-                        eventpk.Move2_PP = eventpk.GetMovePP(eventpk.Move2, eventpk.Move2_PPUps);
-                        eventpk.Move3_PP = eventpk.GetMovePP(eventpk.Move3, eventpk.Move3_PPUps);
-                        eventpk.Move4_PP = eventpk.GetMovePP(eventpk.Move4, eventpk.Move4_PPUps);
-
-                        eventpk.SetMarkings();
-                        eventpk.SetHappiness();
-                        eventpk.HyperTrain();
-
-                        if (new LegalityAnalysis(eventpk).Valid) return eventpk;
-
-                        SetWCXPID(eventpk, PIDType, Generation, AbilityType);
-                        LegalityAnalysis la2 = new LegalityAnalysis(eventpk);
-                        if (!la2.Valid)
-                        {
-                            Console.WriteLine(la2.Report());
-                            AlternateAbilityRefresh(eventpk);
-
-                            if (new LegalityAnalysis(eventpk).Valid)
-                                return eventpk;
-                            if (EventErrorHandling(eventpk, Generation, fixedPID))
-                                return eventpk;
-
-                            prevevent = eventpk;
-                            continue;
-                        }
-                        return eventpk;
-                    }
-                    catch { }
-                }
-                Set = prevevent;
             }
             return Set;
         }
@@ -1169,32 +957,6 @@ namespace AutoLegalityMod
                 default:
                     return -1;
             }
-        }
-
-        private static List<List<string>> GenerateEvoLists2()
-        {
-            string line;
-            List<List<string>> evoList = new List<List<string>>();
-            List<string> blankList = new List<string>();
-            var assembly = Assembly.GetExecutingAssembly();
-            const string resourceName = "AutoLegalityMod.Resources.txt.evolutions.txt";
-            var stream = assembly.GetManifestResourceStream(resourceName);
-            StreamReader file = new StreamReader(stream);
-            while ((line = file.ReadLine()) != null)
-            {
-                var trim = line.Trim();
-                if (trim.Length == 0)
-                {
-                    evoList.Add(blankList);
-                    blankList = new List<string>();
-                }
-                else
-                {
-                    blankList.Add(trim);
-                }
-            }
-            file.Close();
-            return evoList;
         }
     }
 }
