@@ -62,5 +62,11 @@
     <Content Include="Resources\img\exportqrcode.png" />
     <Content Include="Resources\img\menuautolegality.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoLegalityMod\AutoLegalityMod.csproj">
+      <Project>{8ed04749-56cc-488c-9d85-b1be83ef8f0c}</Project>
+      <Name>AutoLegalityMod</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -57,5 +57,11 @@
     <Content Include="Resources\img\livingdex.png" />
     <Content Include="Resources\img\menuautolegality.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoLegalityMod\AutoLegalityMod.csproj">
+      <Project>{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}</Project>
+      <Name>AutoLegalityMod</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
