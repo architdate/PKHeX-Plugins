@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using PKHeX.Core;
@@ -60,12 +62,10 @@ namespace PGLRentalLegality
         {
             if (!Clipboard.ContainsImage())
                 return;
-            var rentalTeam = new QRParser().DecryptQRCode(Clipboard.GetImage());
-            var sets = rentalTeam.Team.Select(z => z.ToShowdownFormat(false));
-            string data = string.Join(Environment.NewLine + Environment.NewLine, sets);
+            var img = Clipboard.GetImage();
+            string data = GetShowdownSetsFromPGLQR(img);
             Clipboard.SetText(data);
             AutomaticLegality.ImportModded();
-            MessageBox.Show("Exported OwO","Alert");
         }
 
         public void NotifySaveLoaded()
@@ -77,6 +77,18 @@ namespace PGLRentalLegality
         {
             Console.WriteLine($"{Name} was provided with the file path, but chose to do nothing with it.");
             return false; // no action taken
+        }
+
+        private static string GetShowdownSetsFromPGLQR(Image img)
+        {
+            var sets = GetSetsFromPGLQR(img);
+            return string.Join(Environment.NewLine + Environment.NewLine, sets);
+        }
+
+        private static IEnumerable<string> GetSetsFromPGLQR(Image img)
+        {
+            var rentalTeam = new QRParser().DecryptQRCode(img);
+            return rentalTeam.Team.Select(z => z.ToShowdownFormat(false));
         }
     }
 }
