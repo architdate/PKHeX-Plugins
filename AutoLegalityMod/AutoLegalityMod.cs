@@ -1,6 +1,7 @@
 ﻿using PKHeX.Core;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace AutoLegalityMod
@@ -70,16 +71,58 @@ namespace AutoLegalityMod
             return false; // no action taken
         }
 
-        /// <summary>
-        /// Main function to be called by the menu
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         public void ClickShowdownImportPKMModded(object sender, EventArgs e)
         {
             AutomaticLegality.PKMEditor = PKMEditor;
             AutomaticLegality.SaveFileEditor = SaveFileEditor;
-            AutomaticLegality.ImportModded();
+
+            // Check for showdown data in clipboard
+            var text = GetTextShowdownData();
+            if (string.IsNullOrWhiteSpace(text))
+                return;
+            AutomaticLegality.ImportModded(text);
+        }
+
+        /// <summary>
+        /// Check whether the showdown text is supposed to be loaded via a text file. If so, set the clipboard to its contents.
+        /// </summary>
+        /// <returns>output boolean that tells if the data provided is valid or not</returns>
+        private static string GetTextShowdownData()
+        {
+            bool skipClipboardCheck = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
+            if (!skipClipboardCheck && Clipboard.ContainsText())
+            {
+                var txt = Clipboard.GetText();
+                if (IsTextShowdownData(txt))
+                    return txt;
+            }
+
+            if (!WinFormsUtil.OpenSAVPKMDialog(new[] { "txt" }, out string path))
+            {
+                WinFormsUtil.Alert("No data provided.");
+                return null;
+            }
+
+            var text = File.ReadAllText(path).TrimEnd();
+            if (IsTextShowdownData(text))
+                return text;
+
+            WinFormsUtil.Alert("Text file with invalid data provided. Please provide a text file with proper Showdown data");
+            return null;
+        }
+
+        /// <summary>
+        /// Checks the input text is a showdown set or not
+        /// </summary>
+        /// <returns>boolean of the summary</returns>
+        private static bool IsTextShowdownData(string source)
+        {
+            if (AutomaticLegality.IsTeamBackup(source))
+                return true;
+            string[] stringSeparators = { "\n\r" };
+
+            var result = source.Split(stringSeparators, StringSplitOptions.None);
+            return new ShowdownSet(result[0]).Species >= 0;
         }
     }
 }

@@ -21,9 +21,9 @@ namespace AutoLegalityMod
         }
 
         // TODO: Check for Auto Legality Mod Updates
-        public static ISaveFileProvider SaveFileEditor { get; set; }
-        public static IPKMView PKMEditor { get; set; }
-        public static SaveFile SAV => API.SAV;
+        public static ISaveFileProvider SaveFileEditor { private get; set; }
+        public static IPKMView PKMEditor { private get; set; }
+        private static SaveFile SAV => API.SAV;
         private static SimpleTrainerInfo Trainer;
 
         /// <summary>
@@ -43,20 +43,11 @@ namespace AutoLegalityMod
         }
 
         /// <summary>
-        /// Imports <see cref="ShowdownSet"/> list(s) originating from the Clipboard.
+        /// Checks whether a paste is a showdown team backup
         /// </summary>
-        public static void ImportModded()
-        {
-            // Check for lack of showdown data provided
-            var valid = CheckLoadFromText();
-            if (!valid)
-                return;
-
-            // Get Text source from clipboard and convert to ShowdownSet(s)
-            var text = Clipboard.GetText();
-            string source = text.TrimEnd();
-            ImportModded(source);
-        }
+        /// <param name="paste">paste to check</param>
+        /// <returns>Returns bool</returns>
+        public static bool IsTeamBackup(string paste) => paste.StartsWith("===");
 
         /// <summary>
         /// Imports <see cref="ShowdownSet"/> list(s) originating from a concatenated list.
@@ -67,7 +58,7 @@ namespace AutoLegalityMod
             if (TeamData != null)
                 WinFormsUtil.Alert(TeamDataAlert(TeamData));
 
-            ImportSetsFromList(Sets);
+            ImportModded(Sets);
         }
 
         /// <summary>
@@ -76,10 +67,10 @@ namespace AutoLegalityMod
         public static void ImportModded(IEnumerable<string> sets)
         {
             var entries = sets.Select(z => new ShowdownSet(z)).ToList();
-            ImportSetsFromList(entries);
+            ImportModded(entries);
         }
 
-        public static void ImportSetsFromList(IReadOnlyList<ShowdownSet> Sets)
+        public static void ImportModded(IReadOnlyList<ShowdownSet> Sets)
         {
             var timer = Stopwatch.StartNew();
             // Import Showdown Sets and alert user of any messages intended
@@ -95,29 +86,6 @@ namespace AutoLegalityMod
                 Debug.WriteLine(message);
             else
                 WinFormsUtil.Alert(message);
-        }
-
-        /// <summary>
-        /// Check whether the showdown text is supposed to be loaded via a text file. If so, set the clipboard to its contents.
-        /// </summary>
-        /// <returns>output boolean that tells if the data provided is valid or not</returns>
-        private static bool CheckLoadFromText()
-        {
-            if (IsClipboardShowdownText() && (Control.ModifierKeys & Keys.Shift) != Keys.Shift)
-                return true;
-            if (!WinFormsUtil.OpenSAVPKMDialog(new[] {"txt"}, out string path))
-            {
-                WinFormsUtil.Alert("No data provided.");
-                return false;
-            }
-
-            Clipboard.SetText(File.ReadAllText(path).TrimEnd());
-            if (!IsClipboardShowdownText())
-            {
-                WinFormsUtil.Alert("Text file with invalid data provided. Please provide a text file with proper Showdown data");
-                return false;
-            }
-            return true;
         }
 
         /// <summary>
@@ -311,18 +279,11 @@ namespace AutoLegalityMod
         {
             TeamData = null;
             paste = paste.Trim(); // Remove White Spaces
-            if (TeamBackup(paste))
+            if (IsTeamBackup(paste))
                 TeamData = GenerateTeamData(paste, out paste);
             string[] lines = paste.Split(new[] { "\n" }, StringSplitOptions.None);
             return ShowdownSet.GetShowdownSets(lines).ToList();
         }
-
-        /// <summary>
-        /// Checks whether a paste is a showdown team backup
-        /// </summary>
-        /// <param name="paste">paste to check</param>
-        /// <returns>Returns bool</returns>
-        private static bool TeamBackup(string paste) => paste.StartsWith("===");
 
         /// <summary>
         /// Method to generate team data based on the given paste if applicable.
@@ -353,23 +314,6 @@ namespace AutoLegalityMod
             string alert = "Generating the following teams:" + Environment.NewLine + Environment.NewLine;
             var lines = TeamData.Select(z => $"Format: {z.Value[0]}, Team Name: {z.Value[1]}");
             return alert + string.Join(Environment.NewLine, lines);
-        }
-
-        /// <summary>
-        /// Checks the input text is a showdown set or not
-        /// </summary>
-        /// <returns>boolean of the summary</returns>
-        private static bool IsClipboardShowdownText()
-        {
-            if (!Clipboard.ContainsText())
-                return false;
-            string source = Clipboard.GetText().TrimEnd();
-            if (TeamBackup(source))
-                return true;
-            string[] stringSeparators = { "\n\r" };
-
-            var result = source.Split(stringSeparators, StringSplitOptions.None);
-            return new ShowdownSet(result[0]).Species >= 0;
         }
     }
 }
