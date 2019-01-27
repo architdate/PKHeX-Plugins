@@ -13,7 +13,6 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-using System;
 namespace com.google.zxing
 {
 	/// <summary> Callback which is invoked when a possible result point (significant

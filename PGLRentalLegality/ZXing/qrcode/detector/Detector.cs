@@ -153,8 +153,8 @@ namespace com.google.zxing.qrcode.detector
         /// </summary>
         internal static int ComputeDimension(ResultPoint topLeft, ResultPoint topRight, ResultPoint bottomLeft, float moduleSize)
         {
-            int tltrCentersDimension = Round(ResultPoint.distance(topLeft, topRight) / moduleSize);
-            int tlblCentersDimension = Round(ResultPoint.distance(topLeft, bottomLeft) / moduleSize);
+            int tltrCentersDimension = Round(ResultPoint.Distance(topLeft, topRight) / moduleSize);
+            int tlblCentersDimension = Round(ResultPoint.Distance(topLeft, bottomLeft) / moduleSize);
             int dimension = ((tltrCentersDimension + tlblCentersDimension) >> 1) + 7;
             switch (dimension & 0x03)
             {

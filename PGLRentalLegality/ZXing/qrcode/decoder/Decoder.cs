@@ -37,32 +37,6 @@ namespace com.google.zxing.qrcode.decoder
 			rsDecoder = new ReedSolomonDecoder(GF256.QR_CODE_FIELD);
 		}
 
-		/// <summary> <p>Convenience method that can decode a QR Code represented as a 2D array of booleans.
-		/// "true" is taken to mean a black module.</p>
-		///
-		/// </summary>
-		/// <param name="image">booleans representing white/black QR Code modules
-		/// </param>
-		/// <returns> text and bytes encoded within the QR Code
-		/// </returns>
-		/// <throws>  ReaderException if the QR Code cannot be decoded </throws>
-		public DecoderResult Decode(bool[][] image)
-		{
-			int dimension = image.Length;
-			BitMatrix bits = new BitMatrix(dimension);
-			for (int i = 0; i < dimension; i++)
-			{
-				for (int j = 0; j < dimension; j++)
-				{
-					if (image[i][j])
-					{
-						bits.Set_Renamed(j, i);
-					}
-				}
-			}
-			return Decode(bits);
-		}
-
 		/// <summary> <p>Decodes a QR Code represented as a {@link BitMatrix}. A 1 or "true" is taken to mean a black module.</p>
 		///
 		/// </summary>

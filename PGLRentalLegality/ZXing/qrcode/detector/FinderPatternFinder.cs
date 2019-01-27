@@ -208,7 +208,7 @@ namespace com.google.zxing.qrcode.detector
             }
 
             FinderPattern[] patternInfo = SelectBestPatterns();
-            ResultPoint.orderBestPatterns(patternInfo);
+            ResultPoint.OrderBestPatterns(patternInfo);
 
             return new FinderPatternInfo(patternInfo);
         }

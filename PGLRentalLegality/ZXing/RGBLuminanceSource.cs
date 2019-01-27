@@ -15,56 +15,6 @@ namespace com.google.zxing.common
         private readonly int __height;
         private readonly int __width;
 
-        public RGBLuminanceSource(byte[] d, int W, int H)
-            : base(W, H)
-        {
-            __width = W;
-            __height = H;
-            int width = W;
-            int height = H;
-            // In order to measure pure decoding speed, we convert the entire image to a greyscale array
-            // up front, which is the same as the Y channel of the YUVLuminanceSource in the real app.
-            luminances = new sbyte[width * height];
-            for (int y = 0; y < height; y++)
-            {
-                int offset = y * width;
-                for (int x = 0; x < width; x++)
-                {
-                    int r = d[(offset * 3) + (x * 3)];
-                    int g = d[(offset * 3) + (x * 3) + 1];
-                    int b = d[(offset * 3) + (x * 3) + 2];
-                    if (r == g && g == b)
-                    {
-                        // Image is already greyscale, so pick any channel.
-                        luminances[offset + x] = (sbyte)r;
-                    }
-                    else
-                    {
-                        // Calculate luminance cheaply, favoring green.
-                        luminances[offset + x] = (sbyte)((r + g + g + b) >> 2);
-                    }
-                }
-            }
-        }
-
-        public RGBLuminanceSource(byte[] d, int W, int H, bool Is8Bit)
-            : base(W, H)
-        {
-            __width = W;
-            __height = H;
-            luminances = new sbyte[W * H];
-            Buffer.BlockCopy(d, 0, luminances, 0, W * H);
-        }
-
-        public RGBLuminanceSource(byte[] d, int W, int H, bool Is8Bit, Rectangle Region)
-            : base(W, H)
-        {
-            __width = Region.Width;
-            __height = Region.Height;
-            __Region = Region;
-            //luminances = Red.Imaging.Filters.CropArea(d, W, H, Region);
-        }
-
         public RGBLuminanceSource(Bitmap d, int W, int H)
             : base(W, H)
         {
