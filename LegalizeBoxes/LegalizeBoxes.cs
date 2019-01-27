@@ -41,7 +41,7 @@ namespace LegalizeBoxes
                     try { APIGenerated = API.APILegality(illegalPK, Set, out satisfied); }
                     catch { }
 
-                    var trainer = illegalPK.GetTrainerData();
+                    var trainer = illegalPK.GetRoughTrainerData();
                     PKM legal;
                     if (!satisfied)
                     {

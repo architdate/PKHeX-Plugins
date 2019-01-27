@@ -11,7 +11,7 @@ namespace AutoLegalityMod
         /// <summary>
         /// Set Encryption Constant based on PKM GenNumber
         /// </summary>
-        /// <param name="pk"></param>
+        /// <param name="pk">PKM to modify</param>
         public static void SetEncryptionConstant(this PKM pk)
         {
             if (pk.GenNumber > 5 || pk.VC)
@@ -159,7 +159,7 @@ namespace AutoLegalityMod
             if (pk.IV_SPE == 31) h.HT_SPE = false;
         }
 
-        public static void FixMemoriesPKM(this PKM pk)
+        public static void SetSuggestedMemories(this PKM pk)
         {
             switch (pk)
             {
@@ -226,14 +226,28 @@ namespace AutoLegalityMod
             pk.TID = 34567;
             pk.SID = 0;
             pk.OT_Name = "TCD";
-            pk.FixMemoriesPKM();
+            pk.SetSuggestedMemories();
+        }
+
+        /// <summary>
+        /// Set trainer data for a legal PKM
+        /// </summary>
+        /// <param name="pk">Legal PKM for setting the data</param>
+        /// <param name="trainer"></param>
+        /// <returns>PKM with the necessary values modified to reflect trainerdata changes</returns>
+        public static void SetAllTrainerData(this PKM pk, SimpleTrainerInfo trainer)
+        {
+            pk.SetTrainerData(trainer, true);
+            pk.ConsoleRegion = trainer.ConsoleRegion;
+            pk.Country = trainer.Country;
+            pk.Region = trainer.SubRegion;
         }
 
         /// <summary>
         /// Fix invalid and missing ribbons. (V600 and V601)
         /// </summary>
         /// <param name="pk">PKM whose ribbons need to be fixed</param>
-        public static void FixRibbons(this PKM pk)
+        public static void SetSuggestedRibbons(this PKM pk)
         {
             string Report = new LegalityAnalysis(pk).Report();
             if (Report.Contains(string.Format(LRibbonFMissing_0, "")))
@@ -250,6 +264,55 @@ namespace AutoLegalityMod
                 var invalidRibbons = GetRibbonsRequired(pk, ribbonList);
                 SetRibbonValues(pk, invalidRibbons, 0, false);
             }
+        }
+
+        public static void SetSuggestedRelearnMoves(this PKM pk)
+        {
+            if (pk.Format < 6)
+                return;
+            pk.ClearRelearnMoves();
+            var Legality = new LegalityAnalysis(pk);
+
+            int[] m = Legality.GetSuggestedRelearn();
+            if (m.All(z => z == 0))
+            {
+                if (!pk.WasEgg && !pk.WasEvent && !pk.WasEventEgg && !pk.WasLink)
+                {
+                    if (pk.Version != (int)GameVersion.CXD)
+                    {
+                        var encounter = Legality.GetSuggestedMetInfo();
+                        if (encounter != null)
+                            m = encounter.Relearn;
+                    }
+                }
+            }
+
+            if (pk.RelearnMoves.SequenceEqual(m))
+                return;
+            if (m.Length > 3)
+                pk.RelearnMoves = m;
+        }
+
+        public static void SetSuggestedMetLocation(this PKM pk)
+        {
+            var Legality = new LegalityAnalysis(pk);
+
+            var encounter = Legality.GetSuggestedMetInfo();
+            if (encounter == null || (pk.Format >= 3 && encounter.Location < 0))
+                return;
+
+            int level = encounter.Level;
+            int location = encounter.Location;
+            int minlvl = Legal.GetLowestLevel(pk, encounter.Species);
+            if (minlvl == 0)
+                minlvl = level;
+
+            if (pk.CurrentLevel >= minlvl && pk.Met_Level == level && pk.Met_Location == location)
+                return;
+            if (minlvl < level)
+                level = minlvl;
+            pk.Met_Location = location;
+            pk.Met_Level = level;
         }
 
         private static IEnumerable<string> GetRibbonsRequired(PKM pk, string[] ribbonList)
@@ -276,7 +339,7 @@ namespace AutoLegalityMod
             }
         }
 
-        public static void ClearAllRibbons(this PKM pkm) => pkm.SetRibbonValues(GetRibbonNames(pkm), 0, false);
-        private static IEnumerable<string> GetRibbonNames(PKM pkm) => ReflectUtil.GetPropertiesStartWithPrefix(pkm.GetType(), "Ribbon").Distinct();
+        public static void ClearAllRibbons(this PKM pk) => pk.SetRibbonValues(GetRibbonNames(pk), 0, false);
+        private static IEnumerable<string> GetRibbonNames(PKM pk) => ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
     }
 }

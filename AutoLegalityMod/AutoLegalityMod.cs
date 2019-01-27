@@ -79,7 +79,7 @@ namespace AutoLegalityMod
         /// <returns>boolean of the summary</returns>
         private static bool IsTextShowdownData(string source)
         {
-            if (AutomaticLegality.IsTeamBackup(source))
+            if (ShowdownUtil.IsTeamBackup(source))
                 return true;
             string[] stringSeparators = { "\n\r" };
 

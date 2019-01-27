@@ -13,9 +13,9 @@ namespace AutoLegalityMod
     /// </summary>
     public static class TrainerSettings
     {
-        public static int GetConsoleRegionID(string ConsoleRegion) => Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == ConsoleRegion).Value;
-        public static int GetSubRegionID(string SubRegion, int country) => Util.GetCBList($"sr_{country:000}", "en").Find(z => z.Text == SubRegion).Value;
-        public static int GetCountryID(string Country) => Util.GetCBList("countries", "en").Find(z => z.Text == Country).Value;
+        private static int GetConsoleRegionID(string ConsoleRegion) => Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == ConsoleRegion).Value;
+        private static int GetSubRegionID(string SubRegion, int country) => Util.GetCBList($"sr_{country:000}", "en").Find(z => z.Text == SubRegion).Value;
+        private static int GetCountryID(string Country) => Util.GetCBList("countries", "en").Find(z => z.Text == Country).Value;
 
         private static string GetTrainerJSONPath() => Path.Combine(Directory.GetCurrentDirectory(), "trainerdata.json");
 
@@ -23,7 +23,7 @@ namespace AutoLegalityMod
         /// Check the mode for trainerdata.json
         /// </summary>
         /// <param name="jsonstring">string form of trainerdata.json</param>
-        public static AutoModMode CheckMode(string jsonstring)
+        private static AutoModMode CheckMode(string jsonstring)
         {
             var mode = AutoModMode.Save;
             if (!jsonstring.Contains("mode"))
@@ -37,7 +37,7 @@ namespace AutoLegalityMod
         /// <summary>
         /// Check the mode for trainerdata.json
         /// </summary>
-        public static AutoModMode CheckMode()
+        private static AutoModMode CheckMode()
         {
             var path = GetTrainerJSONPath();
             if (!File.Exists(path))
@@ -57,7 +57,7 @@ namespace AutoLegalityMod
         /// <param name="jsonstring">Complete trainerdata.json string</param>
         /// <param name="Game">int value of the game</param>
         /// <param name="jsonvalue">internal json: trainerdata[Game]</param>
-        public static bool CheckIfGameExists(string jsonstring, int Game, out string jsonvalue)
+        private static bool CheckIfGameExists(string jsonstring, int Game, out string jsonvalue)
         {
             jsonvalue = "";
             if (CheckMode(jsonstring) == AutoModMode.Auto)
@@ -81,7 +81,7 @@ namespace AutoLegalityMod
         /// <summary>
         /// String parse key to find value from final json
         /// </summary>
-        public static string GetValueFromKey(string key, string finaljson)
+        private static string GetValueFromKey(string key, string finaljson)
         {
             return finaljson.Split(new[] { key }, StringSplitOptions.None)[1].Split('"')[2].Trim();
         }
@@ -91,7 +91,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="tid7">TID7 value</param>
         /// <param name="sid7">SID7 value</param>
-        public static int[] ConvertTIDSID7toTIDSID(int tid7, int sid7)
+        private static int[] ConvertTIDSID7toTIDSID(int tid7, int sid7)
         {
             uint repack = ((uint)sid7 * 1_000_000) + (uint)tid7;
             int sid = (ushort)(repack >> 16);
@@ -104,7 +104,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="C_SAV">Current Save Editor</param>
         /// <param name="Game">optional Game value in case of mode being game</param>
-        public static string[] ParseTrainerJSON(SaveFile C_SAV, int Game = -1)
+        private static string[] ParseTrainerJSON(SaveFile C_SAV, int Game = -1)
         {
             var path = GetTrainerJSONPath();
             if (!File.Exists(path))
@@ -139,7 +139,7 @@ namespace AutoLegalityMod
         /// <summary>
         /// Parser for auto and preset trainerdata.txt files
         /// </summary>
-        public static string[] ParseTrainerData(bool auto = false)
+        private static string[] ParseTrainerData(bool auto = false)
         {
             // Defaults
             string TID = "23456";
@@ -201,7 +201,7 @@ namespace AutoLegalityMod
             return new[] { TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion };
         }
 
-        public static SimpleTrainerInfo GetTrainer(string[] tdataVals)
+        private static SimpleTrainerInfo GetTrainer(string[] tdataVals)
         {
             var trainer = new SimpleTrainerInfo
             {
@@ -227,6 +227,34 @@ namespace AutoLegalityMod
             if (trainer.ConsoleRegion < 0 && int.TryParse(tdataVals[6], out var x))
                 trainer.ConsoleRegion = x;
             return trainer;
+        }
+
+        private static SaveFile SAV => API.SAV;
+
+        public static SimpleTrainerInfo GetSavedTrainerData(PKM legal = null)
+        {
+            bool checkPerGame = (CheckMode() == AutoModMode.Save);
+            // If mode is not set as game: (auto or save)
+            var tdataVals = !checkPerGame || legal == null
+                ? ParseTrainerJSON(SAV)
+                : ParseTrainerJSON(SAV, legal.Version);
+
+            var trainer = GetTrainer(tdataVals);
+            if (legal != null)
+                trainer.SID = legal.VC ? 0 : trainer.SID;
+
+            return trainer;
+        }
+
+        public static SimpleTrainerInfo GetRoughTrainerData(this PKM illegalPK)
+        {
+            return new SimpleTrainerInfo
+            {
+                TID = illegalPK.TID,
+                SID = illegalPK.SID,
+                OT = illegalPK.OT_Name,
+                Gender = illegalPK.OT_Gender,
+            };
         }
     }
 }

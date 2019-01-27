@@ -51,8 +51,8 @@ namespace AutoLegalityMod
                 pk.SetShinyBoolean(SSet.Shiny);
                 CheckAndSetFateful(pk);
                 pk.FixGender(SSet);
-                pk.FixRibbons();
-                pk.FixMemoriesPKM();
+                pk.SetSuggestedRibbons();
+                pk.SetSuggestedMemories();
                 pk.SetSpeciesBall();
                 pk.SetHappiness();
                 pk.SetBelugaValues();

@@ -28,32 +28,14 @@ namespace AutoLegalityMod
         /// </summary>
         private static readonly string MGDatabasePath = Path.Combine(Directory.GetCurrentDirectory(), "mgdb");
 
-        public static SimpleTrainerInfo GetTrainerData(this PKM illegalPK)
-        {
-            return new SimpleTrainerInfo
-            {
-                TID = illegalPK.TID,
-                SID = illegalPK.SID,
-                OT = illegalPK.OT_Name,
-                Gender = illegalPK.OT_Gender,
-            };
-        }
-
-        /// <summary>
-        /// Checks whether a paste is a showdown team backup
-        /// </summary>
-        /// <param name="paste">paste to check</param>
-        /// <returns>Returns bool</returns>
-        public static bool IsTeamBackup(string paste) => paste.StartsWith("===");
-
         /// <summary>
         /// Imports <see cref="ShowdownSet"/> list(s) originating from a concatenated list.
         /// </summary>
         public static void ImportModded(string source)
         {
-            var Sets = ShowdownSets(source, out Dictionary<int, string[]> TeamData);
+            var Sets = ShowdownUtil.ShowdownSets(source, out Dictionary<int, string[]> TeamData);
             if (TeamData != null)
-                WinFormsUtil.Alert(TeamDataAlert(TeamData));
+                WinFormsUtil.Alert(ShowdownUtil.TeamDataAlert(TeamData));
 
             ImportModded(Sets);
         }
@@ -98,25 +80,6 @@ namespace AutoLegalityMod
                 WinFormsUtil.Alert(message);
         }
 
-        /// <summary>
-        /// Loads the trainerdata variables into the global variables for AutoLegalityMod
-        /// </summary>
-        /// <param name="legal">Optional legal PKM for loading trainerdata on a per game basis</param>
-        private static SimpleTrainerInfo LoadTrainerData(PKM legal = null)
-        {
-            bool checkPerGame = (TrainerSettings.CheckMode() == AutoModMode.Save);
-            // If mode is not set as game: (auto or save)
-            var tdataVals = !checkPerGame || legal == null
-                ? TrainerSettings.ParseTrainerJSON(SAV)
-                : TrainerSettings.ParseTrainerJSON(SAV, legal.Version);
-
-            var trainer = TrainerSettings.GetTrainer(tdataVals);
-            if (legal != null)
-                trainer.SID = legal.VC ? 0 : trainer.SID;
-
-            return trainer;
-        }
-
         private static AutoModErrorCode ImportSetToTabs(ShowdownSet set, bool allowAPI)
         {
             if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
@@ -155,7 +118,7 @@ namespace AutoLegalityMod
         {
             var emptySlots = replace
                 ? Enumerable.Range(0, sets.Count).ToList()
-                : FindAllEmptySlots(BoxData, SaveFileEditor.CurrentBox);
+                : FindAllEmptySlots(BoxData);
 
             if (emptySlots.Count < sets.Count && sets.Count != 1)
                 return AutoModErrorCode.NotEnoughSpace;
@@ -218,8 +181,8 @@ namespace AutoLegalityMod
                 if (!satisfied)
                     return false;
 
-                var trainer = LoadTrainerData(pkm);
-                pkm.SetTrainerData(trainer);
+                var trainer = TrainerSettings.GetSavedTrainerData(pkm);
+                pkm.SetAllTrainerData(trainer);
                 return true;
             }
             catch
@@ -233,42 +196,37 @@ namespace AutoLegalityMod
         {
             BruteForce b = new BruteForce { SAV = SAV };
             bool resetForm = Set.Form != null && (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted");
-            var trainer = LoadTrainerData(roughPKM);
+            var trainer = TrainerSettings.GetSavedTrainerData(roughPKM);
             var legal = b.ApplyDetails(roughPKM, Set, resetForm, trainer);
-            legal.SetTrainerData(trainer);
+            legal.SetAllTrainerData(trainer);
             return legal;
-        }
-
-        /// <summary>
-        /// Set trainer data for a legal PKM
-        /// </summary>
-        /// <param name="legal">Legal PKM for setting the data</param>
-        /// <returns>PKM with the necessary values modified to reflect trainerdata changes</returns>
-        private static void SetTrainerData(this PKM legal, SimpleTrainerInfo trainer)
-        {
-            legal.SetTrainerData(trainer, true);
-            legal.ConsoleRegion = trainer.ConsoleRegion;
-            legal.Country = trainer.Country;
-            legal.Region = trainer.SubRegion;
         }
 
         /// <summary>
         /// Method to find all empty slots in a current box
         /// </summary>
         /// <param name="BoxData">Box Data of the SAV file</param>
-        /// <param name="CurrentBox">Index of the current box</param>
         /// <returns>A list of all indices in the current box that are empty</returns>
-        private static List<int> FindAllEmptySlots(IList<PKM> BoxData, int CurrentBox)
+        private static List<int> FindAllEmptySlots(IList<PKM> BoxData)
         {
             var emptySlots = new List<int>();
-            int BoxCount = SAV.BoxSlotCount;
-            for (int i = 0; i < BoxCount; i++)
+            for (int i = 0; i < BoxData.Count; i++)
             {
-                if (BoxData[(CurrentBox * BoxCount) + i].Species < 1)
+                if (BoxData[i].Species < 1)
                     emptySlots.Add(i);
             }
             return emptySlots;
         }
+    }
+
+    public static class ShowdownUtil
+    {
+        /// <summary>
+        /// Checks whether a paste is a showdown team backup
+        /// </summary>
+        /// <param name="paste">paste to check</param>
+        /// <returns>Returns bool</returns>
+        public static bool IsTeamBackup(string paste) => paste.StartsWith("===");
 
         /// <summary>
         /// A method to get a list of ShowdownSet(s) from a string paste
@@ -276,7 +234,7 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="paste"></param>
         /// <param name="TeamData"></param>
-        private static List<ShowdownSet> ShowdownSets(string paste, out Dictionary<int, string[]> TeamData)
+        public static List<ShowdownSet> ShowdownSets(string paste, out Dictionary<int, string[]> TeamData)
         {
             TeamData = null;
             paste = paste.Trim(); // Remove White Spaces
@@ -292,7 +250,7 @@ namespace AutoLegalityMod
         /// <param name="paste">input paste</param>
         /// <param name="modified">modified paste for normal importing</param>
         /// <returns>null or dictionary with the teamdata</returns>
-        private static Dictionary<int, string[]> GenerateTeamData(string paste, out string modified)
+        public static Dictionary<int, string[]> GenerateTeamData(string paste, out string modified)
         {
             string[] IndividualTeams = Regex.Split(paste, @"={3} \[.+\] .+ ={3}").Select(team => team.Trim()).ToArray();
             Dictionary<int, string[]> TeamData = new Dictionary<int, string[]>();
@@ -310,7 +268,7 @@ namespace AutoLegalityMod
         /// Convert Team Data into an alert for the main function
         /// </summary>
         /// <param name="TeamData">Dictionary with format as key and team name as value</param>
-        private static string TeamDataAlert(Dictionary<int, string[]> TeamData)
+        public static string TeamDataAlert(Dictionary<int, string[]> TeamData)
         {
             string alert = "Generating the following teams:" + Environment.NewLine + Environment.NewLine;
             var lines = TeamData.Select(z => $"Format: {z.Value[0]}, Team Name: {z.Value[1]}");

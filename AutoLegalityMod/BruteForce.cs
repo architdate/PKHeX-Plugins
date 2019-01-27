@@ -75,14 +75,14 @@ namespace AutoLegalityMod
                         Set.Met_Location = 30001;
                         Set.Met_Level = 100;
                     }
-                    else { Set = ClickMetLocationModPKSM(Set); }
+                    else { Set.SetSuggestedMetLocation(); }
                     if (Set.GenNumber > 4) Set.Met_Level = 1;
                     Set.SetMarkings();
                     try
                     {
                         Set.CurrentHandler = 1;
                         Set.HT_Name = "Archit";
-                        Set = SetSuggestedRelearnMoves_PKSM(Set);
+                        Set.SetSuggestedRelearnMoves();
                         Set.SetPIDNature(Set.Nature);
                         if (shiny) Set.SetShiny();
                         if (Set.PID == 0)
@@ -90,7 +90,7 @@ namespace AutoLegalityMod
                             Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
                             if (shiny) Set.SetShiny();
                         }
-                        Set.FixMemoriesPKM();
+                        Set.SetSuggestedMemories();
                         if (Set.GenNumber < 6) Set.EncryptionConstant = Set.PID;
                         if (CommonErrorHandling2(Set))
                         {
@@ -171,10 +171,10 @@ namespace AutoLegalityMod
                                 Set.Met_Level = 100;
                                 break;
                             default:
-                                ClickMetLocationModPKSM(Set);
+                                Set.SetSuggestedMetLocation();
                                 break;
                         }
-                        Set = SetSuggestedRelearnMoves_PKSM(Set);
+                        Set.SetSuggestedRelearnMoves();
                         Set.CurrentHandler = 1;
                         Set.HT_Name = "Archit";
                         Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
@@ -187,7 +187,7 @@ namespace AutoLegalityMod
                         }
 
                         Set.RefreshAbility(abilitynum);
-                        Set.FixMemoriesPKM();
+                        Set.SetSuggestedMemories();
                         if (Set.GenNumber < 6)
                             Set.EncryptionConstant = Set.PID;
 
@@ -700,34 +700,6 @@ namespace AutoLegalityMod
             return false;
         }
 
-        private static PKM SetSuggestedRelearnMoves_PKSM(PKM Set)
-        {
-            Set.ClearRelearnMoves();
-            LegalityAnalysis Legality = new LegalityAnalysis(Set);
-            if (Set.Format < 6)
-                return Set;
-
-            int[] m = Legality.GetSuggestedRelearn();
-            if (m.All(z => z == 0))
-            {
-                if (!Set.WasEgg && !Set.WasEvent && !Set.WasEventEgg && !Set.WasLink)
-                {
-                    if (Set.Version != (int)GameVersion.CXD)
-                    {
-                        var encounter = Legality.GetSuggestedMetInfo();
-                        if (encounter != null)
-                            m = encounter.Relearn;
-                    }
-                }
-            }
-
-            if (Set.RelearnMoves.SequenceEqual(m))
-                return Set;
-            if (m.Length > 3)
-                Set.RelearnMoves = m;
-            return Set;
-        }
-
         private static void AlternateAbilityRefresh(PKM pk)
         {
             int abilityID = pk.Ability;
@@ -1216,29 +1188,6 @@ namespace AutoLegalityMod
                 default:
                     return -1;
             }
-        }
-
-        private static PKM ClickMetLocationModPKSM(PKM p)
-        {
-            LegalityAnalysis Legality = new LegalityAnalysis(p);
-
-            var encounter = Legality.GetSuggestedMetInfo();
-            if (encounter == null || (p.Format >= 3 && encounter.Location < 0))
-                return p;
-
-            int level = encounter.Level;
-            int location = encounter.Location;
-            int minlvl = Legal.GetLowestLevel(p, encounter.Species);
-            if (minlvl == 0)
-                minlvl = level;
-
-            if (p.CurrentLevel >= minlvl && p.Met_Level == level && p.Met_Location == location)
-                return p;
-            if (minlvl < level)
-                level = minlvl;
-            p.Met_Location = location;
-            p.Met_Level = level;
-            return p;
         }
 
         private static List<List<string>> GenerateEvoLists2()
