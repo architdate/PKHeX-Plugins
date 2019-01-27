@@ -33,20 +33,20 @@ namespace SmogonGenner
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: {ex}");
+                WinFormsUtil.Error($"An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: {ex}");
                 return;
             }
 
             if (info.ShowdownSets.Length == 0)
             {
-                MessageBox.Show("No movesets available. Perhaps you could help out? Check the Contributions & Corrections forum.\n\nForum: https://www.smogon.com/forums/forums/contributions-corrections.388/");
+                WinFormsUtil.Error("No movesets available. Perhaps you could help out? Check the Contributions & Corrections forum.\n\nForum: https://www.smogon.com/forums/forums/contributions-corrections.388/");
                 return;
             }
 
             try { AutomaticLegality.ImportModded(info.ShowdownSets); }
-            catch { MessageBox.Show("Something went wrong"); }
+            catch { WinFormsUtil.Error("Something went wrong"); }
 
-            MessageBox.Show(info.Summary);
+            WinFormsUtil.Alert(info.Summary);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace MGDBDownloader
         {
             if (Directory.Exists(MGDatabasePath))
             {
-                DialogResult dialogResult = MessageBox.Show("Update MGDB?", "MGDB already exists!", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Update MGDB?", "MGDB already exists!");
                 if (dialogResult == DialogResult.Yes)
                 {
                     DeleteDirectory(MGDatabasePath); // Adding events will be handled by the next conditional
@@ -46,7 +46,7 @@ namespace MGDBDownloader
             }
             if (!Directory.Exists(MGDatabasePath))
             {
-                DialogResult latestCommit = MessageBox.Show("Download the entire database, which includes past generation events?\nSelecting No will download only the public release of the database.", "Download entire database?", MessageBoxButtons.YesNo);
+                DialogResult latestCommit = WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Download the entire database, which includes past generation events?\nSelecting No will download only the public release of the database.", "Download entire database?");
                 if (latestCommit == DialogResult.Yes)
                 {
                     const string mgdbURL = "https://github.com/projectpokemon/EventsGallery/archive/master.zip";
@@ -61,7 +61,7 @@ namespace MGDBDownloader
                     DeleteDirectory(Path.Combine(MGDatabasePath, "EventsGallery-master", "Extras"));
                     File.Delete(Path.Combine(MGDatabasePath, "EventsGallery-master", ".gitignore"));
                     File.Delete(Path.Combine(MGDatabasePath, "EventsGallery-master", "README.md"));
-                    MessageBox.Show("Download Finished");
+                    WinFormsUtil.Alert("Download Finished");
                 }
                 else
                 {
@@ -73,7 +73,7 @@ namespace MGDBDownloader
                     client.DownloadFile(new Uri(mgdbURL), mgdbZipPath);
                     ZipFile.ExtractToDirectory(mgdbZipPath, MGDatabasePath);
                     File.Delete("mgdb.zip");
-                    MessageBox.Show("Download Finished");
+                    WinFormsUtil.Alert("Download Finished");
                 }
             }
         }

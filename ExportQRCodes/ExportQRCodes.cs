@@ -22,7 +22,7 @@ namespace ExportQRCodes
             var sav = SaveFileEditor.SAV;
             if (!sav.HasBox)
             {
-                MessageBox.Show("Save file does not have box data.");
+                WinFormsUtil.Error("Save file does not have box data.");
                 return;
             }
             var boxData = sav.GetBoxData(sav.CurrentBox);

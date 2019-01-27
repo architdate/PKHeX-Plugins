@@ -27,7 +27,7 @@ namespace ExportBoxToShowdown
                 Clipboard.SetText(str);
             }
             catch { }
-            MessageBox.Show("Exported the active box to Showdown format");
+            WinFormsUtil.Alert("Exported the active box to Showdown format");
         }
 
         private static string GetShowdownSetsFromBoxCurrent(SaveFile sav) => GetShowdownSetsFromBox(sav, sav.CurrentBox);

@@ -23,6 +23,18 @@ namespace AutoLegalityMod
         }
 
         /// <summary>
+        /// Displays a dialog showing the details of an error.
+        /// </summary>
+        /// <param name="lines">User-friendly message about the error.</param>
+        /// <returns>The <see cref="DialogResult"/> associated with the dialog.</returns>
+        public static DialogResult Error(params string[] lines)
+        {
+            SystemSounds.Exclamation.Play();
+            string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
+            return MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /// <summary>
         /// Opens a dialog to open a PKM/SAV file.
         /// </summary>
         /// <param name="Extensions">Misc extensions of files supported.</param>

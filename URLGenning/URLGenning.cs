@@ -28,25 +28,25 @@ namespace URLGenning
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: {ex}");
+                WinFormsUtil.Error($"An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: {ex}");
                 return;
             }
             if (!info.Valid)
             {
-                MessageBox.Show("The text in the clipboard is not a valid URL.");
+                WinFormsUtil.Error("The text in the clipboard is not a valid URL.");
                 return;
             }
             if (info.Source == TeamPasteInfo.PasteSource.None)
             {
-                MessageBox.Show("The URL provided is not from a supported website.");
+                WinFormsUtil.Error("The URL provided is not from a supported website.");
                 return;
             }
 
             try { AutomaticLegality.ImportModded(info.Sets); }
-            catch { MessageBox.Show("The data inside the URL are not valid Showdown Sets"); }
+            catch { WinFormsUtil.Error("The data inside the URL are not valid Showdown Sets"); }
 
             var response = $"All sets genned from the following URL: {info.URL}\n\n{info.Summary}";
-            MessageBox.Show(response);
+            WinFormsUtil.Alert(response);
             Clipboard.SetText(initURL); // restore clipboard
         }
     }

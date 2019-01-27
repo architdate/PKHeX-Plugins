@@ -47,7 +47,7 @@ namespace AutoLegalityMod
             if (!string.IsNullOrWhiteSpace(jsonstring))
                 return CheckMode(jsonstring);
 
-            MessageBox.Show("Empty trainerdata.json file", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            WinFormsUtil.Alert("Empty trainerdata.json file");
             return AutoModMode.Save;
         }
 
@@ -127,7 +127,8 @@ namespace AutoLegalityMod
 
             if (TID.Length == 6 && SID.Length == 4)
             {
-                if (new List<int> { 33, 32, 31, 30 }.IndexOf(Game) == -1) MessageBox.Show("Force Converting G7TID/G7SID to TID/SID", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (new List<int> { 33, 32, 31, 30 }.IndexOf(Game) == -1)
+                    WinFormsUtil.Alert("Force Converting G7TID/G7SID to TID/SID");
                 int[] tidsid = ConvertTIDSID7toTIDSID(int.Parse(TID), int.Parse(SID));
                 TID = tidsid[0].ToString();
                 SID = tidsid[1].ToString();

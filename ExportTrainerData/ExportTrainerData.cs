@@ -23,7 +23,7 @@ namespace ExportTrainerData
             var result = complete
                 ? "trainerdata.txt Successfully Exported in the same directory as PKHeX"
                 : "Some of the fields were wrongly filled. Exported the default trainerdata.txt";
-            MessageBox.Show(result);
+            WinFormsUtil.Alert(result);
         }
     }
 }

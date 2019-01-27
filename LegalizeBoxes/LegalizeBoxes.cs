@@ -63,14 +63,14 @@ namespace LegalizeBoxes
                     else
                     {
                         PKMEditor.PopulateFields(legal);
-                        MessageBox.Show("Legalized Active Pokemon.");
+                        WinFormsUtil.Alert("Legalized Active Pokemon.");
                         return;
                     }
                 }
             }
             SaveFileEditor.SAV.BoxData = BoxData;
             SaveFileEditor.ReloadSlots();
-            MessageBox.Show("Legalized Box Pokemon");
+            WinFormsUtil.Alert("Legalized Box Pokemon");
         }
     }
 }
