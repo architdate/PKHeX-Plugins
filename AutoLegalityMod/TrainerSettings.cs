@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using PKHeX.Core;
 using System.IO;
-using System.Windows.Forms;
+using System.Text;
 
 namespace AutoLegalityMod
 {
@@ -110,7 +110,7 @@ namespace AutoLegalityMod
             if (!File.Exists(path))
                 return ParseTrainerData(); // Default trainerdata.txt handling
 
-            string jsonstring = File.ReadAllText(path, System.Text.Encoding.UTF8);
+            string jsonstring = File.ReadAllText(path, Encoding.UTF8);
             if (Game == -1)
                 Game = C_SAV.Game;
 
@@ -199,6 +199,34 @@ namespace AutoLegalityMod
                 SID = tidsid[1].ToString();
             }
             return new[] { TID, SID, OT, Gender, Country, SubRegion, ConsoleRegion };
+        }
+
+        public static SimpleTrainerInfo GetTrainer(string[] tdataVals)
+        {
+            var trainer = new SimpleTrainerInfo
+            {
+                TID = Convert.ToInt32(tdataVals[0]),
+                SID = Convert.ToInt32(tdataVals[1]),
+                OT = tdataVals[2]
+            };
+
+            if (trainer.OT == "PKHeX")
+                trainer.OT = "Archit(TCD)"; // Avoids secondary handler error
+            trainer.Gender = tdataVals[3] == "F" || tdataVals[3] == "Female" ? 1 : 0;
+
+            // Load Trainer location details; check first if english string name
+            // if not, try to check if they're stored as integers.
+            trainer.Country = GetCountryID(tdataVals[4]);
+            trainer.SubRegion = GetSubRegionID(tdataVals[5], trainer.Country);
+            trainer.ConsoleRegion = GetConsoleRegionID(tdataVals[6]);
+
+            if (trainer.Country < 0 && int.TryParse(tdataVals[4], out var c))
+                trainer.Country = c;
+            if (trainer.SubRegion < 0 && int.TryParse(tdataVals[5], out var s))
+                trainer.SubRegion = s;
+            if (trainer.ConsoleRegion < 0 && int.TryParse(tdataVals[6], out var x))
+                trainer.ConsoleRegion = x;
+            return trainer;
         }
     }
 }

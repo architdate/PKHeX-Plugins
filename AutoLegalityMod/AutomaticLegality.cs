@@ -16,15 +16,12 @@ namespace AutoLegalityMod
             // Make a blank MGDB directory and initialize trainerdata
             if (!Directory.Exists(MGDatabasePath))
                 Directory.CreateDirectory(MGDatabasePath);
-            if (TrainerSettings.CheckMode() != AutoModMode.Game)
-                Trainer = LoadTrainerData();
         }
 
         // TODO: Check for Auto Legality Mod Updates
         public static ISaveFileProvider SaveFileEditor { private get; set; }
         public static IPKMView PKMEditor { private get; set; }
         private static SaveFile SAV => API.SAV;
-        private static SimpleTrainerInfo Trainer;
 
         /// <summary>
         /// Global Variables for Auto Legality Mod
@@ -70,12 +67,26 @@ namespace AutoLegalityMod
             ImportModded(entries);
         }
 
-        public static void ImportModded(IReadOnlyList<ShowdownSet> Sets)
+        /// <summary>
+        /// Import Showdown Sets and alert user of any messages intended
+        /// </summary>
+        public static void ImportModded(IReadOnlyList<ShowdownSet> sets)
         {
             var timer = Stopwatch.StartNew();
-            // Import Showdown Sets and alert user of any messages intended
-            bool replace = (Control.ModifierKeys & Keys.Control) != 0;
-            var result = ImportSets(Sets, replace);
+
+            Debug.WriteLine("Commencing Import");
+
+            const bool allowAPI = true;
+            AutoModErrorCode result;
+            if (sets.Count == 1)
+            {
+                result = ImportSetToTabs(sets[0], allowAPI);
+            }
+            else
+            {
+                bool replace = (Control.ModifierKeys & Keys.Control) != 0;
+                result = ImportSetsToBoxes(sets, replace, allowAPI);
+            }
 
             // Debug Statements
             timer.Stop();
@@ -99,37 +110,24 @@ namespace AutoLegalityMod
                 ? TrainerSettings.ParseTrainerJSON(SAV)
                 : TrainerSettings.ParseTrainerJSON(SAV, legal.Version);
 
-            var trainer = GetTrainer(tdataVals);
+            var trainer = TrainerSettings.GetTrainer(tdataVals);
             if (legal != null)
                 trainer.SID = legal.VC ? 0 : trainer.SID;
 
             return trainer;
         }
 
-        private static SimpleTrainerInfo GetTrainer(string[] tdataVals)
+        private static AutoModErrorCode ImportSetToTabs(ShowdownSet set, bool allowAPI)
         {
-            var trainer = new SimpleTrainerInfo();
-            trainer.TID = Convert.ToInt32(tdataVals[0]);
-            trainer.SID = Convert.ToInt32(tdataVals[1]);
+            if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
+                return AutoModErrorCode.NoSingleImport;
+            if (set.InvalidLines.Count > 0)
+                return AutoModErrorCode.InvalidLines;
 
-            trainer.OT = tdataVals[2];
-            if (trainer.OT == "PKHeX")
-                trainer.OT = "Archit(TCD)"; // Avoids secondary handler error
-            trainer.Gender = tdataVals[3] == "F" || tdataVals[3] == "Female" ? 1 : 0;
-
-            // Load Trainer location details; check first if english string name
-            // if not, try to check if they're stored as integers.
-            trainer.Country = TrainerSettings.GetCountryID(tdataVals[4]);
-            trainer.SubRegion = TrainerSettings.GetSubRegionID(tdataVals[5], trainer.Country);
-            trainer.ConsoleRegion = TrainerSettings.GetConsoleRegionID(tdataVals[6]);
-
-            if (trainer.Country < 0 && int.TryParse(tdataVals[4], out var c))
-                trainer.Country = c;
-            if (trainer.SubRegion < 0 && int.TryParse(tdataVals[5], out var s))
-                trainer.SubRegion = s;
-            if (trainer.ConsoleRegion < 0 && int.TryParse(tdataVals[6], out var x))
-                trainer.ConsoleRegion = x;
-            return trainer;
+            PKM legal = GetLegalFromSet(set, allowAPI, out var _);
+            Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
+            PKMEditor.PopulateFields(legal);
+            return AutoModErrorCode.None;
         }
 
         /// <summary>
@@ -138,23 +136,8 @@ namespace AutoLegalityMod
         /// <param name="sets">A list of ShowdownSet(s) that need to be genned</param>
         /// <param name="replace">A boolean that determines if current pokemon will be replaced or not</param>
         /// <param name="allowAPI">Use of generators before bruteforcing</param>
-        private static AutoModErrorCode ImportSets(IReadOnlyList<ShowdownSet> sets, bool replace, bool allowAPI = true)
+        private static AutoModErrorCode ImportSetsToBoxes(IReadOnlyList<ShowdownSet> sets, bool replace, bool allowAPI)
         {
-            Debug.WriteLine("Commencing Import");
-            if (sets.Count == 1)
-            {
-                var set = sets[0];
-                if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", sets[0].Text))
-                    return AutoModErrorCode.NoSingleImport;
-                if (set.InvalidLines.Count > 0)
-                    return AutoModErrorCode.InvalidLines;
-
-                PKM legal = GetLegalFromSet(set, allowAPI, out var _);
-                PKMEditor.PopulateFields(legal);
-                Debug.WriteLine("Single Set Genning Complete");
-                return AutoModErrorCode.None;
-            }
-
             var BoxData = SAV.BoxData;
             int start = SaveFileEditor.CurrentBox * SAV.BoxSlotCount;
 
@@ -162,10 +145,10 @@ namespace AutoLegalityMod
             if (result != AutoModErrorCode.None)
                 return result;
 
+            Debug.WriteLine("Multi Set Genning Complete. Setting data to the save file and reloading view.");
             SAV.BoxData = BoxData;
             SaveFileEditor.ReloadSlots();
-
-            return result;
+            return AutoModErrorCode.None;
         }
 
         private static AutoModErrorCode ImportToExisting(IReadOnlyList<ShowdownSet> sets, IList<PKM> BoxData, int start, bool replace, bool allowAPI)
@@ -235,7 +218,8 @@ namespace AutoLegalityMod
                 if (!satisfied)
                     return false;
 
-                pkm.SetTrainerData();
+                var trainer = LoadTrainerData(pkm);
+                pkm.SetTrainerData(trainer);
                 return true;
             }
             catch
@@ -249,8 +233,9 @@ namespace AutoLegalityMod
         {
             BruteForce b = new BruteForce { SAV = SAV };
             bool resetForm = Set.Form != null && (Set.Form.Contains("Mega") || Set.Form == "Primal" || Set.Form == "Busted");
-            var legal = b.ApplyDetails(roughPKM, Set, resetForm, Trainer);
-            legal.SetTrainerData();
+            var trainer = LoadTrainerData(roughPKM);
+            var legal = b.ApplyDetails(roughPKM, Set, resetForm, trainer);
+            legal.SetTrainerData(trainer);
             return legal;
         }
 
@@ -259,9 +244,8 @@ namespace AutoLegalityMod
         /// </summary>
         /// <param name="legal">Legal PKM for setting the data</param>
         /// <returns>PKM with the necessary values modified to reflect trainerdata changes</returns>
-        private static void SetTrainerData(this PKM legal)
+        private static void SetTrainerData(this PKM legal, SimpleTrainerInfo trainer)
         {
-            var trainer = LoadTrainerData(legal);
             legal.SetTrainerData(trainer, true);
             legal.ConsoleRegion = trainer.ConsoleRegion;
             legal.Country = trainer.Country;
