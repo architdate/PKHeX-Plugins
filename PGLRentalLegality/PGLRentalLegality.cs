@@ -61,7 +61,7 @@ namespace PGLRentalLegality
             if (!Clipboard.ContainsImage())
                 return;
             var rentalTeam = new QRParser().DecryptQRCode(Clipboard.GetImage());
-            var sets = rentalTeam.team.Select(z => z.ToShowdownFormat(false));
+            var sets = rentalTeam.Team.Select(z => z.ToShowdownFormat(false));
             string data = string.Join(Environment.NewLine + Environment.NewLine, sets);
             Clipboard.SetText(data);
             AutomaticLegality.ImportModded();

@@ -35,7 +35,7 @@ namespace PGLRentalLegality
             {
                 if (names[ID] == "Hidden Power")
                 {
-                    return "Hidden Power [" + p.GetHiddenPowerType() + "]";
+                    return "Hidden Power [" + p.GetHiddenPowerTypeName() + "]";
                 }
                 return names[ID];
             }
@@ -65,13 +65,11 @@ namespace PGLRentalLegality
                     foreach (string line in GetCSV("pokemonFormAbilities"))
                     {
                         var currLine = line.Split(',');
-                        if (int.Parse(currLine[0]) == ID)
-                        {
-                            if (int.Parse(currLine[1]) == form)
-                            {
-                                return currLine[3 + (int)Math.Log(ability, 2)];
-                            }
-                        }
+                        if (int.Parse(currLine[0]) != ID)
+                            continue;
+
+                        if (int.Parse(currLine[1]) == form)
+                            return currLine[3 + (int) Math.Log(ability, 2)];
                     }
                 }
                 return GetCSV("pokemonAbilities")[ID].Split(',')[(int)Math.Log(ability, 2)];

@@ -52,6 +52,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QRParser.cs" />
+    <Compile Include="QRPoke.cs" />
+    <Compile Include="RentalTeam.cs" />
     <Compile Include="ZXing\BarcodeFormat.cs" />
     <Compile Include="ZXing\Binarizer.cs" />
     <Compile Include="ZXing\BinaryBitmap.cs" />
