@@ -264,9 +264,9 @@ namespace AutoLegalityMod
         /// <returns>PIDType that is likely used</returns>
         public static PIDType FindLikelyPIDType(PKM pk)
         {
-            if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R"))
+            if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R))
                 return PIDType.BACD_R;
-            if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+            if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                 return PIDType.Method_2;
             if (pk.Species == 490 && pk.Gen4)
             {

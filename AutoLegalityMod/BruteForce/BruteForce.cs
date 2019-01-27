@@ -317,13 +317,14 @@ namespace AutoLegalityMod
             var report = GetReport(pk);
 
             // fucking M2
-            if ((UsesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.FR) || (UsesEventBasedMethod(pk.Species, pk.Moves, "M2") && pk.Version == (int)GameVersion.LG))
+            if ((UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2) && pk.Version == (int)GameVersion.FR)
+             || (UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2) && pk.Version == (int)GameVersion.LG))
             {
                 pk = M2EventFix(pk, pk.IsShiny);
                 report = GetReport(pk);
             }
 
-            if (UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R") && pk.Version == (int)GameVersion.R)
+            if (UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R) && pk.Version == (int)GameVersion.R)
             {
                 pk = BACD_REventFix(pk, pk.IsShiny);
                 report = GetReport(pk);
@@ -678,12 +679,12 @@ namespace AutoLegalityMod
             pk.FixMoves();
 
             pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
-            if (updatedReport.Contains("Invalid: Encounter Type PID mismatch.") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+            if (updatedReport.Contains("Invalid: Encounter Type PID mismatch.") || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
             {
-                if (pk.GenNumber == 3 || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+                if (pk.GenNumber == 3 || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                 {
                     pk = M2EventFix(pk, shiny);
-                    if (!new LegalityAnalysis(pk).Report().Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+                    if (!new LegalityAnalysis(pk).Report().Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                         return;
                 }
                 LoadOldIVs();
@@ -730,7 +731,7 @@ namespace AutoLegalityMod
                 updatedReport = recheckLA2.Report();
             }
 
-            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                 return pk;
             Console.WriteLine(GetReport(pk));
             pk.FatefulEncounter = feFlag;
@@ -761,7 +762,7 @@ namespace AutoLegalityMod
                 var recheckLA2 = new LegalityAnalysis(pk);
                 updatedReport = recheckLA2.Report();
             }
-            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R"))
+            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R))
                 return pk;
             Console.WriteLine(GetReport(pk));
             pk.FatefulEncounter = feFlag;
@@ -769,9 +770,9 @@ namespace AutoLegalityMod
             return pk;
         }
 
-        public static bool UsesEventBasedMethod(int Species, int[] Moves, string method)
+        public static bool UsesEventBasedMethod(int Species, int[] Moves, PIDType method)
         {
-            var index = GetRNGListIndex(method);
+            var index = BruteTables.GetRNGListIndex(method);
             if (index == -1)
                 return false;
 
@@ -780,19 +781,6 @@ namespace AutoLegalityMod
                 return false;
 
             return Moves.Any(i => RNGList[Species].Contains(i));
-        }
-
-        private static int GetRNGListIndex(string Method)
-        {
-            switch (Method)
-            {
-                case "M2":
-                    return 0;
-                case "BACD_R":
-                    return 1;
-                default:
-                    return -1;
-            }
         }
     }
 }

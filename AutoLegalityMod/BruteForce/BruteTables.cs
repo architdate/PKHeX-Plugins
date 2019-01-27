@@ -41,6 +41,19 @@ namespace AutoLegalityMod
             806,
         };
 
+        public static int GetRNGListIndex(PIDType Method)
+        {
+            switch (Method)
+            {
+                case PIDType.Method_2:
+                    return 0;
+                case PIDType.BACD_R:
+                    return 1;
+                default:
+                    return -1;
+            }
+        }
+
         public static readonly Dictionary<int, int[]>[] WC3RNGList =
         {
             new Dictionary<int, int[]>
