@@ -25,6 +25,9 @@ namespace AutoLegalityMod
             var parent = modmenu.OwnerItem;
             var form = parent.GetCurrentParent().Parent.FindForm();
             form.Icon = Properties.Resources.icon;
+
+            AutomaticLegality.PKMEditor = PKMEditor;
+            AutomaticLegality.SaveFileEditor = SaveFileEditor;
         }
 
         public override void NotifySaveLoaded()
@@ -35,9 +38,6 @@ namespace AutoLegalityMod
 
         public void ClickShowdownImportPKMModded(object sender, EventArgs e)
         {
-            AutomaticLegality.PKMEditor = PKMEditor;
-            AutomaticLegality.SaveFileEditor = SaveFileEditor;
-
             // Check for showdown data in clipboard
             var text = GetTextShowdownData();
             if (string.IsNullOrWhiteSpace(text))

@@ -20,8 +20,6 @@ namespace LegalizeBoxes
 
         private void Legalize(object sender, EventArgs e)
         {
-            AutomaticLegality.PKMEditor = PKMEditor;
-            AutomaticLegality.SaveFileEditor = SaveFileEditor;
             API.SAV = SaveFileEditor.SAV;
 
             var BoxData = SaveFileEditor.SAV.BoxData;
