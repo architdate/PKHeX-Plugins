@@ -109,7 +109,7 @@ namespace AutoLegalityMod
                         }
                         else
                         {
-                            LegalityAnalysis la = new LegalityAnalysis(Set);
+                            var la = new LegalityAnalysis(Set);
                             Console.WriteLine(la.Report());
                         }
                     }
@@ -303,7 +303,7 @@ namespace AutoLegalityMod
             pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
         }
 
-        public bool CommonErrorHandling2(PKM pk)
+        private bool CommonErrorHandling2(PKM pk)
         {
             var report = GetReport(pk);
 
@@ -566,11 +566,11 @@ namespace AutoLegalityMod
 
         private static string GetReport(PKM pk)
         {
-            LegalityAnalysis la = new LegalityAnalysis(pk);
+            var la = new LegalityAnalysis(pk);
             return la.Report();
         }
 
-        private void SetPIDSID(PKM pk, bool shiny, bool XD = false)
+        private static void SetPIDSID(PKM pk, bool shiny, bool XD = false)
         {
             uint hp = (uint)pk.IV_HP;
             uint atk = (uint)pk.IV_ATK;
@@ -599,8 +599,9 @@ namespace AutoLegalityMod
             pk.PID = Util.GetHexValue(pidsid[0]);
             if (pk.GenNumber < 5) pk.EncryptionConstant = pk.PID;
             pk.SID = Convert.ToInt32(pidsid[1]);
-            if (shiny) pk.SetShinySID();
-            LegalityAnalysis recheckLA = new LegalityAnalysis(pk);
+            if (shiny)
+                pk.SetShinySID();
+            var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
             Console.WriteLine(updatedReport);
             if (updatedReport.Contains("Invalid: Encounter Type PID mismatch."))
@@ -640,13 +641,13 @@ namespace AutoLegalityMod
                 if (updatedReport.Contains("PID-Gender mismatch."))
                 {
                     pk.Gender = pk.Gender == 0 ? 1 : 0;
-                    LegalityAnalysis recheckLA2 = new LegalityAnalysis(pk);
+                    var recheckLA2 = new LegalityAnalysis(pk);
                     updatedReport = recheckLA2.Report();
                 }
                 if (updatedReport.Contains("Can't Hyper Train a Pokémon that isn't level 100."))
                 {
                     pk.CurrentLevel = 100;
-                    LegalityAnalysis recheckLA2 = new LegalityAnalysis(pk);
+                    var recheckLA2 = new LegalityAnalysis(pk);
                     updatedReport = recheckLA2.Report();
                 }
                 LegalityAnalysis Legality = new LegalityAnalysis(pk);
@@ -676,7 +677,7 @@ namespace AutoLegalityMod
             }
         }
 
-        private PKM M2EventFix(PKM pk, bool shiny)
+        private static PKM M2EventFix(PKM pk, bool shiny)
         {
             int eggloc = pk.Egg_Location;
             bool feFlag = pk.FatefulEncounter;
@@ -695,12 +696,12 @@ namespace AutoLegalityMod
             pk.IV_SPD = Convert.ToInt32(NatureHPIVs[5]);
             pk.IV_SPE = Convert.ToInt32(NatureHPIVs[6]);
             if (shiny) pk.SetShinySID();
-            LegalityAnalysis recheckLA = new LegalityAnalysis(pk);
+            var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
             if (updatedReport.Contains("PID-Gender mismatch"))
             {
                 pk.Gender = pk.Gender == 0 ? 1 : 0;
-                LegalityAnalysis recheckLA2 = new LegalityAnalysis(pk);
+                var recheckLA2 = new LegalityAnalysis(pk);
                 updatedReport = recheckLA2.Report();
             }
             if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "M2")) return pk;
@@ -710,7 +711,7 @@ namespace AutoLegalityMod
             return pk;
         }
 
-        private PKM BACD_REventFix(PKM pk, bool shiny)
+        private static PKM BACD_REventFix(PKM pk, bool shiny)
         {
             int eggloc = pk.Egg_Location;
             bool feFlag = pk.FatefulEncounter;
@@ -729,12 +730,12 @@ namespace AutoLegalityMod
             pk.IV_SPD = Convert.ToInt32(NatureHPIVs[5]);
             pk.IV_SPE = Convert.ToInt32(NatureHPIVs[6]);
             if (shiny) pk.SetShinySID();
-            LegalityAnalysis recheckLA = new LegalityAnalysis(pk);
+            var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
             if (updatedReport.Contains("PID-Gender mismatch"))
             {
                 pk.Gender = pk.Gender == 0 ? 1 : 0;
-                LegalityAnalysis recheckLA2 = new LegalityAnalysis(pk);
+                var recheckLA2 = new LegalityAnalysis(pk);
                 updatedReport = recheckLA2.Report();
             }
             if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R")) return pk;
@@ -744,7 +745,7 @@ namespace AutoLegalityMod
             return pk;
         }
 
-        public bool UsesEventBasedMethod(int Species, int[] Moves, string method)
+        public static bool UsesEventBasedMethod(int Species, int[] Moves, string method)
         {
             var index = GetRNGListIndex(method);
             if (index == -1)

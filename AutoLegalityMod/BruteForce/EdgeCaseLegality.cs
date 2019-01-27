@@ -334,7 +334,7 @@ namespace AutoLegalityMod
             new EncounterStatic { Species=575, Level = 32, Moves = new[]{286}, Gender = 0, }, //Gothorita
         }).ToArray();
 
-        private static readonly EncounterStatic[] USUMEdgeEncounters = new EncounterStatic[]
+        private static readonly EncounterStatic[] USUMEdgeEncounters =
         {
             new EncounterStatic // Pikachu (Pretty Wing), should probably be a fake mystery gift as it has OT details
             {

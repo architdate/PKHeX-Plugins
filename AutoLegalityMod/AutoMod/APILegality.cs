@@ -141,10 +141,10 @@ namespace AutoLegalityMod
         /// Set Version override for GSC and RBY games
         /// </summary>
         /// <param name="pk">Return PKM</param>
-        /// <param name="pkmn">Generated PKM</param>
-        public static void SetVersion(PKM pk, PKM pkmn)
+        /// <param name="original">Generated PKM</param>
+        public static void SetVersion(PKM pk, PKM original)
         {
-            switch (pkmn.Version)
+            switch (original.Version)
             {
                 case (int)GameVersion.RBY:
                     pk.Version = (int)GameVersion.RD;
@@ -154,20 +154,20 @@ namespace AutoLegalityMod
                     break;
                 case (int)GameVersion.UM:
                 case (int)GameVersion.US:
-                    if (pkmn.Species == 658 && pkmn.AltForm == 1)
+                    if (original.Species == 658 && original.AltForm == 1)
                         pk.Version = (int)GameVersion.SN; // Ash-Greninja
                     else
-                        pk.Version = pkmn.Version;
+                        pk.Version = original.Version;
                     break;
                 default:
-                    pk.Version = pkmn.Version;
+                    pk.Version = original.Version;
                     break;
             }
         }
 
         public static void CheckAndSetFateful(PKM pk)
         {
-            LegalityAnalysis la = new LegalityAnalysis(pk);
+            var la = new LegalityAnalysis(pk);
             string Report = la.Report();
             if (Report.Contains(LFatefulMysteryMissing) || Report.Contains(LFatefulMissing))
                 pk.FatefulEncounter = true;
@@ -264,13 +264,13 @@ namespace AutoLegalityMod
         /// <returns>PIDType that is likely used</returns>
         public static PIDType FindLikelyPIDType(PKM pk)
         {
-            BruteForce b = new BruteForce();
-            if (b.UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R"))
+            if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, "BACD_R"))
                 return PIDType.BACD_R;
-            if (b.UsesEventBasedMethod(pk.Species, pk.Moves, "M2")) return PIDType.Method_2;
+            if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, "M2"))
+                return PIDType.Method_2;
             if (pk.Species == 490 && pk.Gen4)
             {
-                pk.Egg_Location = 2002;
+                pk.Egg_Location = 2002; // todo: really shouldn't be doing this, don't modify pkm
                 return PIDType.Method_1;
             }
             switch (pk.GenNumber)
