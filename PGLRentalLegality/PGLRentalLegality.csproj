@@ -68,7 +68,6 @@
     <Compile Include="ZXing\common\DecoderResult.cs" />
     <Compile Include="ZXing\common\DefaultGridSampler.cs" />
     <Compile Include="ZXing\common\DetectorResult.cs" />
-    <Compile Include="ZXing\common\detector\MonochromeRectangleDetector.cs" />
     <Compile Include="ZXing\common\ECI.cs" />
     <Compile Include="ZXing\common\GlobalHistogramBinarizer.cs" />
     <Compile Include="ZXing\common\GridSampler.cs" />
@@ -80,7 +79,6 @@
     <Compile Include="ZXing\common\reedsolomon\ReedSolomonEncoder.cs" />
     <Compile Include="ZXing\common\reedsolomon\ReedSolomonException.cs" />
     <Compile Include="ZXing\DecodeHintType.cs" />
-    <Compile Include="ZXing\EncodeHintType.cs" />
     <Compile Include="ZXing\LuminanceSource.cs" />
     <Compile Include="ZXing\qrcode\decoder\BitMatrixParser.cs" />
     <Compile Include="ZXing\qrcode\decoder\DataBlock.cs" />
@@ -98,7 +96,6 @@
     <Compile Include="ZXing\qrcode\detector\FinderPatternFinder.cs" />
     <Compile Include="ZXing\qrcode\detector\FinderPatternInfo.cs" />
     <Compile Include="ZXing\qrcode\QRCodeReader.cs" />
-    <Compile Include="ZXing\Reader.cs" />
     <Compile Include="ZXing\ReaderException.cs" />
     <Compile Include="ZXing\Result.cs" />
     <Compile Include="ZXing\ResultMetadataType.cs" />

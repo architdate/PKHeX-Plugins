@@ -477,7 +477,7 @@ namespace com.google.zxing.qrcode.detector
                     {
                         ResultPoint point = new FinderPattern(centerJ, centerI, estimatedModuleSize);
                         PossibleCenters.Add(point);
-                        resultPointCallback?.foundPossibleResultPoint(point);
+                        resultPointCallback?.FoundPossibleResultPoint(point);
                     }
                     return true;
                 }
@@ -609,9 +609,9 @@ namespace com.google.zxing.qrcode.detector
         /// <summary> <p>Orders by {@link FinderPattern#getCount()}, descending.</p></summary>
         private sealed class CenterComparator : IComparator
         {
-            public int Compare(object center1, object center2)
+            public int Compare(object o1, object o2)
             {
-                return ((FinderPattern) center2).Count - ((FinderPattern) center1).Count;
+                return ((FinderPattern) o2).Count - ((FinderPattern) o1).Count;
             }
         }
     }

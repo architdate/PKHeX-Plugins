@@ -62,7 +62,7 @@ namespace com.google.zxing.common
                     // Commented & Added
                     // START
                     //sbyte[] localLuminances = source.getRow(row, luminances);
-                    localLuminances = source.getRow(row, luminances);
+                    localLuminances = source.GetRow(row, luminances);
                     // END
                     int right = (width << 2) / 5;
                     for (int x = width / 5; x < right; x++)
@@ -109,7 +109,7 @@ namespace com.google.zxing.common
         }
 
         // Applies simple sharpening to the row data to improve performance of the 1D Readers.
-        public override BitArray getBlackRow(int y, BitArray row)
+        public override BitArray GetBlackRow(int y, BitArray row)
         {
             LuminanceSource source = LuminanceSource;
             int width = source.Width;
@@ -123,7 +123,7 @@ namespace com.google.zxing.common
             }
 
             InitArrays(width);
-            sbyte[] localLuminances = source.getRow(y, luminances);
+            sbyte[] localLuminances = source.GetRow(y, luminances);
             int[] localBuckets = buckets;
             for (int x = 0; x < width; x++)
             {
@@ -149,7 +149,7 @@ namespace com.google.zxing.common
             return row;
         }
 
-        public override Binarizer createBinarizer(LuminanceSource source)
+        public override Binarizer CreateBinarizer(LuminanceSource source)
         {
             return new GlobalHistogramBinarizer(source);
         }

@@ -31,7 +31,7 @@ namespace com.google.zxing
 
     public abstract class Binarizer
     {
-        public virtual LuminanceSource LuminanceSource { get; }
+        public LuminanceSource LuminanceSource { get; }
 
         /// <summary> Converts a 2D array of luminance data to 1 bit data. As above, assume this method is expensive
         /// and do not call it repeatedly. This method is intended for decoding 2D barcodes and may or
@@ -45,10 +45,7 @@ namespace com.google.zxing
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'source '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
 
-        protected internal Binarizer(LuminanceSource source)
-        {
-            this.LuminanceSource = source ?? throw new ArgumentException("Source must be non-null.");
-        }
+        protected internal Binarizer(LuminanceSource source) => LuminanceSource = source ?? throw new ArgumentException("Source must be non-null.");
 
         /// <summary> Converts one row of luminance data to 1 bit data. May actually do the conversion, or return
         /// cached data. Callers should assume this method is expensive and call it as seldom as possible.
@@ -65,7 +62,7 @@ namespace com.google.zxing
         /// </param>
         /// <returns> The array of bits for this row (true means black).
         /// </returns>
-        public abstract BitArray getBlackRow(int y, BitArray row);
+        public abstract BitArray GetBlackRow(int y, BitArray row);
 
         /// <summary> Creates a new object with the same type as this Binarizer implementation, but with pristine
         /// state. This is needed because Binarizer implementations may be stateful, e.g. keeping a cache
@@ -76,6 +73,6 @@ namespace com.google.zxing
         /// </param>
         /// <returns> A new concrete Binarizer implementation object.
         /// </returns>
-        public abstract Binarizer createBinarizer(LuminanceSource source);
+        public abstract Binarizer CreateBinarizer(LuminanceSource source);
     }
 }

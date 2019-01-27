@@ -20,14 +20,14 @@ using com.google.zxing.qrcode.detector;
 
 namespace com.google.zxing.qrcode
 {
-    /// <summary> This implementation can detect and decode QR Codes in an image.
-    ///
+    /// <summary>
+    /// This implementation can detect and decode QR Codes in an image.
     /// </summary>
     /// <author>  Sean Owen
     /// </author>
     /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
     /// </author>
-    public sealed class QRCodeReader : IReader
+    public sealed class QRCodeReader
     {
         private Decoder Decoder { get; } = new Decoder();
 
@@ -63,11 +63,11 @@ namespace com.google.zxing.qrcode
             Result result = new Result(decoderResult.Text, decoderResult.RawBytes, points, BarcodeFormat.QR_CODE);
             if (decoderResult.ByteSegments != null)
             {
-                result.putMetadata(ResultMetadataType.BYTE_SEGMENTS, decoderResult.ByteSegments);
+                result.PutMetadata(ResultMetadataType.BYTE_SEGMENTS, decoderResult.ByteSegments);
             }
             if (decoderResult.ECLevel != null)
             {
-                result.putMetadata(ResultMetadataType.ERROR_CORRECTION_LEVEL, decoderResult.ECLevel.ToString());
+                result.PutMetadata(ResultMetadataType.ERROR_CORRECTION_LEVEL, decoderResult.ECLevel.ToString());
             }
             return result;
         }

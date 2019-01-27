@@ -36,17 +36,9 @@ namespace com.google.zxing.common
 	{
 		/// <returns> the current implementation of {@link GridSampler}
 		/// </returns>
-		public static GridSampler Instance
-		{
-			get
-			{
-				return gridSampler;
-			}
-		}
+		public static GridSampler Instance { get; private set; } = new DefaultGridSampler();
 
-		private static GridSampler gridSampler = new DefaultGridSampler();
-
-		/// <summary> Sets the implementation of {@link GridSampler} used by the library. One global
+	    /// <summary> Sets the implementation of {@link GridSampler} used by the library. One global
 		/// instance is stored, which may sound problematic. But, the implementation provided
 		/// ought to be appropriate for the entire platform, and all uses of this library
 		/// in the whole lifetime of the JVM. For instance, an Android activity can swap in
@@ -57,11 +49,7 @@ namespace com.google.zxing.common
 		/// </param>
 		public static void setGridSampler(GridSampler newGridSampler)
 		{
-			if (newGridSampler == null)
-			{
-				throw new ArgumentException();
-			}
-			gridSampler = newGridSampler;
+		    Instance = newGridSampler ?? throw new ArgumentException();
 		}
 
 		/// <summary> <p>Samples an image for a square matrix of bits of the given dimension. This is used to extract

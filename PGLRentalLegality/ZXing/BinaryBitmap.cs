@@ -14,8 +14,8 @@
 * limitations under the License.
 */
 using System;
-using BitArray = com.google.zxing.common.BitArray;
-using BitMatrix = com.google.zxing.common.BitMatrix;
+using com.google.zxing.common;
+
 namespace com.google.zxing
 {
     /// <summary> This class is the core bitmap class used by ZXing to represent 1 bit data. Reader objects
@@ -29,16 +29,6 @@ namespace com.google.zxing
 
     public sealed class BinaryBitmap
     {
-        /// <summary>
-        /// The width of the bitmap.
-        /// </summary>
-        public int Width => binarizer.LuminanceSource.Width;
-
-        /// <summary>
-        /// The height of the bitmap.
-        /// </summary>
-        public int Height => binarizer.LuminanceSource.Height;
-
         /// <summary> Converts a 2D array of luminance data to 1 bit. As above, assume this method is expensive
         /// and do not call it repeatedly. This method is intended for decoding 2D barcodes and may or
         /// may not apply sharpening. Therefore, a row from this matrix may not be identical to one
@@ -63,16 +53,6 @@ namespace com.google.zxing
             }
         }
 
-        /// <summary>
-        /// Indicates whether this bitmap can be cropped.
-        /// </summary>
-        public bool CropSupported => binarizer.LuminanceSource.CropSupported;
-
-        /// <summary>
-        /// Indicates whether this bitmap supports counter-clockwise rotation.
-        /// </summary>
-        public bool RotateSupported => binarizer.LuminanceSource.RotateSupported;
-
         //UPGRADE_NOTE: Final was removed from the declaration of 'binarizer '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
         private readonly Binarizer binarizer;
         private BitMatrix matrix;
@@ -81,54 +61,6 @@ namespace com.google.zxing
         {
             this.binarizer = binarizer ?? throw new ArgumentException("Binarizer must be non-null.");
             matrix = null;
-        }
-
-        /// <summary> Converts one row of luminance data to 1 bit data. May actually do the conversion, or return
-        /// cached data. Callers should assume this method is expensive and call it as seldom as possible.
-        /// This method is intended for decoding 1D barcodes and may choose to apply sharpening.
-        ///
-        /// </summary>
-        /// <param name="y">The row to fetch, 0 <= y < bitmap height.
-        /// </param>
-        /// <param name="row">An optional preallocated array. If null or too small, it will be ignored.
-        /// If used, the Binarizer will call BitArray.clear(). Always use the returned object.
-        /// </param>
-        /// <returns> The array of bits for this row (true means black).
-        /// </returns>
-        public BitArray GetBlackRow(int y, BitArray row)
-        {
-            return binarizer.getBlackRow(y, row);
-        }
-
-        /// <summary> Returns a new object with cropped image data. Implementations may keep a reference to the
-        /// original data rather than a copy. Only callable if isCropSupported() is true.
-        ///
-        /// </summary>
-        /// <param name="left">The left coordinate, 0 <= left < getWidth().
-        /// </param>
-        /// <param name="top">The top coordinate, 0 <= top <= getHeight().
-        /// </param>
-        /// <param name="width">The width of the rectangle to crop.
-        /// </param>
-        /// <param name="height">The height of the rectangle to crop.
-        /// </param>
-        /// <returns> A cropped version of this object.
-        /// </returns>
-        public BinaryBitmap Crop(int left, int top, int width, int height)
-        {
-            LuminanceSource newSource = binarizer.LuminanceSource.crop(left, top, width, height);
-            return new BinaryBitmap(binarizer.createBinarizer(newSource));
-        }
-
-        /// <summary> Returns a new object with rotated image data. Only callable if isRotateSupported() is true.
-        ///
-        /// </summary>
-        /// <returns> A rotated version of this object.
-        /// </returns>
-        public BinaryBitmap RotateCounterClockwise()
-        {
-            LuminanceSource newSource = binarizer.LuminanceSource.rotateCounterClockwise();
-            return new BinaryBitmap(binarizer.createBinarizer(newSource));
         }
     }
 }

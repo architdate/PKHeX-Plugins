@@ -57,11 +57,11 @@ namespace com.google.zxing.common
 
 		private BitMatrix matrix;
 
-		public HybridBinarizer(LuminanceSource source):base(source)
+		public HybridBinarizer(LuminanceSource source) : base(source)
 		{
 		}
 
-		public override Binarizer createBinarizer(LuminanceSource source)
+		public override Binarizer CreateBinarizer(LuminanceSource source)
 		{
 			return new HybridBinarizer(source);
 		}

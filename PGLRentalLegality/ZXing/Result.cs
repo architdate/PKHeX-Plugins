@@ -18,66 +18,60 @@ using System.Collections;
 
 namespace com.google.zxing
 {
-	/// <summary> <p>Encapsulates the result of decoding a barcode within an image.</p>
-	///
-	/// </summary>
-	/// <author>  Sean Owen
-	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
-	/// </author>
+    /// <summary> <p>Encapsulates the result of decoding a barcode within an image.</p>
+    ///
+    /// </summary>
+    /// <author>  Sean Owen
+    /// </author>
+    /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
+    /// </author>
 
-	public sealed class Result
-	{
-		/// <returns> raw text encoded by the barcode, if applicable, otherwise <code>null</code>
-		/// </returns>
-		public string Text { get; }
+    public sealed class Result
+    {
+        /// <summary> raw text encoded by the barcode, if applicable, otherwise <code>null</code>
+        /// </summary>
+        public string Text { get; }
 
-	    /// <returns> raw bytes encoded by the barcode, if applicable, otherwise <code>null</code>
-		/// </returns>
-		public sbyte[] RawBytes { get; }
+        /// <summary> raw bytes encoded by the barcode, if applicable, otherwise <code>null</code>
+        /// </summary>
+        public sbyte[] RawBytes { get; }
 
-	    /// <returns> points related to the barcode in the image. These are typically points
-		/// identifying finder patterns or the corners of the barcode. The exact meaning is
-		/// specific to the type of barcode that was decoded.
-		/// </returns>
-		public ResultPoint[] ResultPoints { get; }
+        /// <summary> points related to the barcode in the image. These are typically points
+        /// identifying finder patterns or the corners of the barcode. The exact meaning is
+        /// specific to the type of barcode that was decoded.
+        /// </summary>
+        public ResultPoint[] ResultPoints { get; }
 
-	    /// <returns> {@link BarcodeFormat} representing the format of the barcode that was decoded
-		/// </returns>
-		public BarcodeFormat BarcodeFormat { get; }
+        /// <summary> {@link BarcodeFormat} representing the format of the barcode that was decoded
+        /// </summary>
+        public BarcodeFormat BarcodeFormat { get; }
 
-	    /// <returns> {@link Hashtable} mapping {@link ResultMetadataType} keys to values. May be
-		/// <code>null</code>. This contains optional metadata about what was detected about the barcode,
-		/// like orientation.
-		/// </returns>
-		public Hashtable ResultMetadata => resultMetadata;
+        /// <summary> {@link Hashtable} mapping {@link ResultMetadataType} keys to values. May be
+        /// <code>null</code>. This contains optional metadata about what was detected about the barcode,
+        /// like orientation.
+        /// </summary>
+        public Hashtable ResultMetadata { get; private set; }
 
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'text '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'rawBytes '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'resultPoints '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'format '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-	    private Hashtable resultMetadata;
+        public Result(string text, sbyte[] rawBytes, ResultPoint[] resultPoints, BarcodeFormat format)
+        {
+            if (text == null && rawBytes == null)
+            {
+                throw new ArgumentException("Text and bytes are null");
+            }
+            Text = text;
+            RawBytes = rawBytes;
+            ResultPoints = resultPoints;
+            BarcodeFormat = format;
+            ResultMetadata = null;
+        }
 
-		public Result(string text, sbyte[] rawBytes, ResultPoint[] resultPoints, BarcodeFormat format)
-		{
-			if (text == null && rawBytes == null)
-			{
-				throw new ArgumentException("Text and bytes are null");
-			}
-			Text = text;
-			RawBytes = rawBytes;
-			ResultPoints = resultPoints;
-			BarcodeFormat = format;
-			resultMetadata = null;
-		}
+        public void PutMetadata(ResultMetadataType type, object value_Renamed)
+        {
+            if (ResultMetadata == null)
+                ResultMetadata = Hashtable.Synchronized(new Hashtable(3));
+            ResultMetadata[type] = value_Renamed;
+        }
 
-		public void putMetadata(ResultMetadataType type, object value_Renamed)
-		{
-		    if (resultMetadata == null)
-		        resultMetadata = Hashtable.Synchronized(new Hashtable(3));
-		    resultMetadata[type] = value_Renamed;
-		}
-
-		public override string ToString() => Text ?? $"[{RawBytes.Length} bytes]";
-	}
+        public override string ToString() => Text ?? $"[{RawBytes.Length} bytes]";
+    }
 }

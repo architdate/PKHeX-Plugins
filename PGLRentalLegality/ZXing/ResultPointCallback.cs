@@ -23,6 +23,6 @@ namespace com.google.zxing
 	/// </seealso>
 	public interface ResultPointCallback
 	{
-		void foundPossibleResultPoint(ResultPoint point);
+		void FoundPossibleResultPoint(ResultPoint point);
 	}
 }

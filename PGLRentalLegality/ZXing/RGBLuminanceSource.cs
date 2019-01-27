@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System;
 
 namespace com.google.zxing.common
 {
@@ -7,7 +6,6 @@ namespace com.google.zxing.common
     {
         private readonly sbyte[] luminances;
         private bool isRotated;
-        private Rectangle __Region;
 
         public override int Height => !isRotated ? __height : __width;
         public override int Width => !isRotated ? __width : __height;
@@ -38,7 +36,7 @@ namespace com.google.zxing.common
             }
         }
 
-        public override sbyte[] getRow(int y, sbyte[] row)
+        public override sbyte[] GetRow(int y, sbyte[] row)
         {
             if (!isRotated)
             {
@@ -68,13 +66,5 @@ namespace com.google.zxing.common
         }
 
         public override sbyte[] Matrix => luminances;
-
-        public override LuminanceSource rotateCounterClockwise()
-        {
-            isRotated = true;
-            return this;
-        }
-
-        public override bool RotateSupported => true;
     }
 }

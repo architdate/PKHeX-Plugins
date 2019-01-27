@@ -327,7 +327,7 @@ namespace com.google.zxing.qrcode.detector
                 // Hadn't found this before; save it
                 ResultPoint point = new AlignmentPattern(centerJ, centerI, estimatedModuleSize);
                 possibleCenters.Add(point);
-                resultPointCallback?.foundPossibleResultPoint(point);
+                resultPointCallback?.FoundPossibleResultPoint(point);
             }
             return null;
         }
