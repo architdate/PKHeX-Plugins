@@ -92,8 +92,7 @@ namespace URLGenning
                 return;
             }
 
-            Clipboard.SetText(info.Sets);
-            try { AutomaticLegality.ImportModded(); }
+            try { AutomaticLegality.ImportModded(info.Sets); }
             catch { MessageBox.Show("The data inside the URL are not valid Showdown Sets"); }
 
             var response = $"All sets genned from the following URL: {info.URL}\n\n{info.Summary}";

@@ -42,6 +42,9 @@ namespace AutoLegalityMod
             };
         }
 
+        /// <summary>
+        /// Imports <see cref="ShowdownSet"/> list(s) originating from the Clipboard.
+        /// </summary>
         public static void ImportModded()
         {
             Stopwatch timer = Stopwatch.StartNew();
@@ -64,10 +67,34 @@ namespace AutoLegalityMod
             // Get Text source from clipboard and convert to ShowdownSet(s)
             var text = Clipboard.GetText();
             string source = text.TrimEnd();
+            ImportModded(source);
+
+            return true;
+        }
+
+        /// <summary>
+        /// Imports <see cref="ShowdownSet"/> list(s) originating from a concatenated list.
+        /// </summary>
+        public static void ImportModded(string source)
+        {
             List<ShowdownSet> Sets = ShowdownSets(source, out Dictionary<int, string[]> TeamData);
             if (TeamData != null)
                 WinFormsUtil.Alert(TeamDataAlert(TeamData));
 
+            ImportSetsFromList(Sets);
+        }
+
+        /// <summary>
+        /// Imports <see cref="ShowdownSet"/> list(s).
+        /// </summary>
+        public static void ImportModded(IEnumerable<string> sets)
+        {
+            var entries = sets.Select(z => new ShowdownSet(z)).ToList();
+            ImportSetsFromList(entries);
+        }
+
+        public static void ImportSetsFromList(IReadOnlyList<ShowdownSet> Sets)
+        {
             // Import Showdown Sets and alert user of any messages intended
             bool replace = (Control.ModifierKeys & Keys.Control) != 0;
             ImportSets(Sets, replace, out string message);
@@ -75,8 +102,6 @@ namespace AutoLegalityMod
                 Debug.WriteLine(message);
             else
                 WinFormsUtil.Alert(message);
-
-            return true;
         }
 
         /// <summary>

@@ -63,9 +63,8 @@ namespace PGLRentalLegality
             if (!Clipboard.ContainsImage())
                 return;
             var img = Clipboard.GetImage();
-            string data = GetShowdownSetsFromPGLQR(img);
-            Clipboard.SetText(data);
-            AutomaticLegality.ImportModded();
+            var sets = GetSetsFromPGLQR(img);
+            AutomaticLegality.ImportModded(sets);
         }
 
         public void NotifySaveLoaded()
@@ -77,12 +76,6 @@ namespace PGLRentalLegality
         {
             Console.WriteLine($"{Name} was provided with the file path, but chose to do nothing with it.");
             return false; // no action taken
-        }
-
-        private static string GetShowdownSetsFromPGLQR(Image img)
-        {
-            var sets = GetSetsFromPGLQR(img);
-            return string.Join(Environment.NewLine + Environment.NewLine, sets);
         }
 
         private static IEnumerable<string> GetSetsFromPGLQR(Image img)

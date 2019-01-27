@@ -90,8 +90,7 @@ namespace SmogonGenner
                 return;
             }
 
-            Clipboard.SetText(info.ShowdownSets);
-            try { AutomaticLegality.ImportModded(); }
+            try { AutomaticLegality.ImportModded(info.ShowdownSets); }
             catch { MessageBox.Show("Something went wrong"); }
 
             MessageBox.Show(info.Summary);
