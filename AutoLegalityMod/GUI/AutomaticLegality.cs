@@ -27,6 +27,30 @@ namespace AutoLegalityMod
         /// </summary>
         private static readonly string MGDatabasePath = Path.Combine(Directory.GetCurrentDirectory(), "mgdb");
 
+        public static PKM Legalize(PKM illegalPK)
+        {
+            ShowdownSet Set = new ShowdownSet(ShowdownSet.GetShowdownText(illegalPK));
+
+            PKM APIGenerated = SaveFileEditor.SAV.BlankPKM;
+            bool satisfied = false;
+            try { APIGenerated = API.APILegality(illegalPK, Set, out satisfied); }
+            catch { }
+
+            var trainer = illegalPK.GetRoughTrainerData();
+            PKM legal;
+            if (satisfied)
+            {
+                legal = APIGenerated;
+            }
+            else
+            {
+                bool resetForm = ShowdownUtil.IsInvalidForm(Set.Form);
+                legal = BruteForce.ApplyDetails(illegalPK, Set, resetForm, trainer);
+            }
+            legal.SetTrainerData(trainer, satisfied);
+            return legal;
+        }
+
         /// <summary>
         /// Imports <see cref="ShowdownSet"/> list(s) originating from a concatenated list.
         /// </summary>

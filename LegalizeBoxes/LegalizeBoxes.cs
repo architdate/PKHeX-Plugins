@@ -33,33 +33,14 @@ namespace LegalizeBoxes
 
                 if (illegalPK.Species > 0 && !new LegalityAnalysis(illegalPK).Valid)
                 {
-                    ShowdownSet Set = new ShowdownSet(ShowdownSet.GetShowdownText(illegalPK));
-
-                    PKM APIGenerated = SaveFileEditor.SAV.BlankPKM;
-                    bool satisfied = false;
-                    try { APIGenerated = API.APILegality(illegalPK, Set, out satisfied); }
-                    catch { }
-
-                    var trainer = illegalPK.GetRoughTrainerData();
-                    PKM legal;
-                    if (!satisfied)
-                    {
-                        bool resetForm = ShowdownUtil.IsInvalidForm(Set.Form);
-                        legal = BruteForce.ApplyDetails(illegalPK, Set, resetForm, trainer);
-                    }
-                    else
-                    {
-                        legal = APIGenerated;
-                    }
-                    legal.SetTrainerData(trainer, satisfied);
-
+                    var result = AutomaticLegality.Legalize(illegalPK);
                     if (box)
                     {
-                        BoxData[(SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount) + i] = legal;
+                        BoxData[(SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount) + i] = result;
                     }
                     else
                     {
-                        PKMEditor.PopulateFields(legal);
+                        PKMEditor.PopulateFields(result);
                         WinFormsUtil.Alert("Legalized Active Pokemon.");
                         return;
                     }
