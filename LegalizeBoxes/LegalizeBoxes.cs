@@ -22,33 +22,55 @@ namespace LegalizeBoxes
         {
             API.SAV = SaveFileEditor.SAV;
 
-            var BoxData = SaveFileEditor.SAV.BoxData;
             bool box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
+
+            if (!box)
+                LegalizeActive();
+            else
+                LegalizeCurrentBox();
+        }
+
+        private static bool LegalizeBox(SaveFile SAV, int box)
+        {
+            if ((uint)box >= SAV.BoxCount)
+                return false;
+
+            var data = SAV.GetBoxData(box);
+            bool modified = false;
             for (int i = 0; i < 30; i++)
             {
-                PKM illegalPK = PKMEditor.PreparePKM();
-
-                if (box && BoxData.Count > (SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount) + i)
-                    illegalPK = BoxData[(SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount) + i];
-
-                if (illegalPK.Species > 0 && !new LegalityAnalysis(illegalPK).Valid)
-                {
-                    var result = AutomaticLegality.Legalize(illegalPK);
-                    if (box)
-                    {
-                        BoxData[(SaveFileEditor.CurrentBox * SaveFileEditor.SAV.BoxSlotCount) + i] = result;
-                    }
-                    else
-                    {
-                        PKMEditor.PopulateFields(result);
-                        WinFormsUtil.Alert("Legalized Active Pokemon.");
-                        return;
-                    }
-                }
+                var pk = data[i];
+                if (pk.Species <= 0 || new LegalityAnalysis(pk).Valid)
+                    continue;
+                data[i] = AutomaticLegality.Legalize(pk);
+                modified = true;
             }
-            SaveFileEditor.SAV.BoxData = BoxData;
+            if (!modified)
+                return false;
+            SAV.SetBoxData(data, box);
+            return true;
+        }
+
+        private void LegalizeCurrentBox()
+        {
+            var SAV = SaveFileEditor.SAV;
+            var current = SAV.CurrentBox;
+            if (!LegalizeBox(SAV, current))
+                return;
             SaveFileEditor.ReloadSlots();
             WinFormsUtil.Alert("Legalized Box Pokemon");
+        }
+
+        private void LegalizeActive()
+        {
+            PKM illegalPK = PKMEditor.PreparePKM();
+            var la = new LegalityAnalysis(illegalPK);
+            if (la.Valid)
+                return;
+
+            var result = AutomaticLegality.Legalize(illegalPK);
+            PKMEditor.PopulateFields(result);
+            WinFormsUtil.Alert("Legalized Active Pokemon.");
         }
     }
 }
