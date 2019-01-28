@@ -52,18 +52,18 @@ namespace LivingDex
             SaveFileEditor.ReloadSlots();
         }
 
-        private void SetSuggestedMoves(PKM pkm, bool random = false)
+        private void SetSuggestedMoves(PKM pk, bool random = false)
         {
-            int[] m = pkm.GetMoveSet(random);
+            int[] m = pk.GetMoveSet(random);
             if (m?.Any(z => z != 0) != true)
             {
                 return;
             }
 
-            if (pkm.Moves.SequenceEqual(m))
+            if (pk.Moves.SequenceEqual(m))
                 return;
 
-            pkm.SetMoves(m);
+            pk.SetMoves(m);
         }
     }
 }

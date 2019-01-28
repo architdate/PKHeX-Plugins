@@ -58,7 +58,7 @@ namespace AutoLegalityMod
                 if (pk.DebutGeneration > game.GetGeneration())
                     continue;
                 pk.Version = (int) game;
-                pk.RestoreIVs(set.IVs); // Restore IVs to SSet and HT to false
+                pk.RestoreIVs(set.IVs); // Restore IVs to template, and HT to false
                 pk.Language = 2;
                 pk.OT_Name = trainer.OT;
                 pk.TID = trainer.TID;
@@ -155,7 +155,7 @@ namespace AutoLegalityMod
                 pk.EggMetDate = null;
                 pk.Egg_Location = 0;
                 pk.Version = (int) game;
-                pk.RestoreIVs(set.IVs); // Restore IVs to SSet and HT to false
+                pk.RestoreIVs(set.IVs); // Restore IVs to template, and HT to false
                 pk.Language = 2;
                 pk.ConsoleRegion = 2;
                 pk.OT_Name = trainer.OT;

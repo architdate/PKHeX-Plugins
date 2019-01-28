@@ -20,8 +20,6 @@ namespace LegalizeBoxes
 
         private void Legalize(object sender, EventArgs e)
         {
-            API.SAV = SaveFileEditor.SAV;
-
             bool box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
 
             if (!box)

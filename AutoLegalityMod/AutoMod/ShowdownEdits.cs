@@ -38,8 +38,8 @@ namespace AutoLegalityMod
         /// Set Species and Level with nickname (Helps with PreEvos)
         /// </summary>
         /// <param name="pk">PKM to modify</param>
-        /// <param name="set">SSet to modify</param>
-        /// <param name="Form">Form to modify</param>
+        /// <param name="set">Set to use as reference</param>
+        /// <param name="Form">Form to apply</param>
         public static void SetSpeciesLevel(this PKM pk, ShowdownSet set, int Form)
         {
             pk.Species = set.Species;

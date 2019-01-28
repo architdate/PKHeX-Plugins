@@ -27,16 +27,16 @@ namespace AutoLegalityMod
         /// </summary>
         private static readonly string MGDatabasePath = Path.Combine(Directory.GetCurrentDirectory(), "mgdb");
 
-        public static PKM Legalize(PKM illegalPK)
+        public static PKM Legalize(PKM pk)
         {
-            ShowdownSet Set = new ShowdownSet(ShowdownSet.GetShowdownText(illegalPK));
+            ShowdownSet set = new ShowdownSet(ShowdownSet.GetShowdownText(pk));
 
             PKM APIGenerated = SaveFileEditor.SAV.BlankPKM;
             bool satisfied = false;
-            try { APIGenerated = API.APILegality(illegalPK, Set, out satisfied); }
+            try { APIGenerated = API.APILegality(pk, set, out satisfied); }
             catch { }
 
-            var trainer = illegalPK.GetRoughTrainerData();
+            var trainer = pk.GetRoughTrainerData();
             PKM legal;
             if (satisfied)
             {
@@ -44,8 +44,8 @@ namespace AutoLegalityMod
             }
             else
             {
-                bool resetForm = ShowdownUtil.IsInvalidForm(Set.Form);
-                legal = BruteForce.ApplyDetails(illegalPK, Set, resetForm, trainer);
+                bool resetForm = ShowdownUtil.IsInvalidForm(set.Form);
+                legal = BruteForce.ApplyDetails(pk, set, resetForm, trainer);
             }
             legal.SetTrainerData(trainer, satisfied);
             return legal;
@@ -150,18 +150,18 @@ namespace AutoLegalityMod
             var invalidAPISets = new List<ShowdownSet>();
             for (int i = 0; i < sets.Count; i++)
             {
-                ShowdownSet Set = sets[i];
-                if (Set.InvalidLines.Count > 0)
+                ShowdownSet set = sets[i];
+                if (set.InvalidLines.Count > 0)
                     return AutoModErrorCode.InvalidLines;
 
-                PKM legal = GetLegalFromSet(Set, allowAPI, out var msg);
+                PKM legal = GetLegalFromSet(set, allowAPI, out var msg);
                 switch (msg)
                 {
                     case LegalizationResult.API_Valid:
                         apiCounter++;
                         break;
                     case LegalizationResult.API_Invalid:
-                        invalidAPISets.Add(Set);
+                        invalidAPISets.Add(set);
                         break;
                 }
 
@@ -182,25 +182,25 @@ namespace AutoLegalityMod
             API_Valid,
         }
 
-        private static PKM GetLegalFromSet(ShowdownSet Set, bool allowAPI, out LegalizationResult message)
+        private static PKM GetLegalFromSet(ShowdownSet set, bool allowAPI, out LegalizationResult msg)
         {
             PKM roughPKM = SAV.BlankPKM;
-            roughPKM.ApplySetDetails(Set);
+            roughPKM.ApplySetDetails(set);
             roughPKM.Version = (int)GameVersion.MN; // Avoid the blank version glitch
-            if (allowAPI && TryAPIConvert(Set, roughPKM, out PKM pkm))
+            if (allowAPI && TryAPIConvert(set, roughPKM, out PKM pk))
             {
-                message = LegalizationResult.API_Valid;
-                return pkm;
+                msg = LegalizationResult.API_Valid;
+                return pk;
             }
-            message = LegalizationResult.API_Invalid;
-            return GetBruteForcedLegalMon(Set, roughPKM);
+            msg = LegalizationResult.API_Invalid;
+            return GetBruteForcedLegalMon(set, roughPKM);
         }
 
-        private static bool TryAPIConvert(ShowdownSet Set, PKM roughPKM, out PKM pkm)
+        private static bool TryAPIConvert(ShowdownSet set, PKM template, out PKM pkm)
         {
             try
             {
-                pkm = API.APILegality(roughPKM, Set, out bool satisfied);
+                pkm = API.APILegality(template, set, out bool satisfied);
                 if (!satisfied)
                     return false;
 
@@ -215,11 +215,11 @@ namespace AutoLegalityMod
             }
         }
 
-        private static PKM GetBruteForcedLegalMon(ShowdownSet Set, PKM roughPKM)
+        private static PKM GetBruteForcedLegalMon(ShowdownSet set, PKM template)
         {
-            bool resetForm = ShowdownUtil.IsInvalidForm(Set.Form);
-            var trainer = TrainerSettings.GetSavedTrainerData(roughPKM);
-            var legal = BruteForce.ApplyDetails(roughPKM, Set, resetForm, trainer);
+            bool resetForm = ShowdownUtil.IsInvalidForm(set.Form);
+            var trainer = TrainerSettings.GetSavedTrainerData(template);
+            var legal = BruteForce.ApplyDetails(template, set, resetForm, trainer);
             legal.SetAllTrainerData(trainer);
             return legal;
         }
@@ -227,14 +227,14 @@ namespace AutoLegalityMod
         /// <summary>
         /// Method to find all empty slots in a current box
         /// </summary>
-        /// <param name="BoxData">Box Data of the SAV file</param>
+        /// <param name="data">Box Data of the SAV file</param>
         /// <returns>A list of all indices in the current box that are empty</returns>
-        private static List<int> FindAllEmptySlots(IList<PKM> BoxData)
+        private static List<int> FindAllEmptySlots(IList<PKM> data)
         {
             var emptySlots = new List<int>();
-            for (int i = 0; i < BoxData.Count; i++)
+            for (int i = 0; i < data.Count; i++)
             {
-                if (BoxData[i].Species < 1)
+                if (data[i].Species < 1)
                     emptySlots.Add(i);
             }
             return emptySlots;

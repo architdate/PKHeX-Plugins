@@ -18,12 +18,12 @@ namespace SmogonGenner
 
         public string Summary => AlertText(ShowdownSpeciesName, Sets.Count, GetTitles(Page));
 
-        public SmogonSetList(PKM pkm)
+        public SmogonSetList(PKM pk)
         {
-            string speciesName = GameInfo.GetStrings("en").Species[pkm.Species];
-            var set = new ShowdownSet(pkm);
+            string speciesName = GameInfo.GetStrings("en").Species[pk.Species];
+            var set = new ShowdownSet(pk);
             var form = set.Form;
-            var type = pkm.GetType().Name;
+            var type = pk.GetType().Name;
 
             Species = speciesName;
             Form = form;

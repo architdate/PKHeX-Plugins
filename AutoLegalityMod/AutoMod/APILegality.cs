@@ -8,30 +8,30 @@ namespace AutoLegalityMod
 {
     public static class API
     {
-        public static SaveFile SAV;
+        internal static SaveFile SAV;
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
         /// </summary>
-        /// <param name="template">rough pkm that has all the SSet values entered</param>
-        /// <param name="SSet">Showdown set object</param>
+        /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
+        /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use current auto legality functionality</param>
-        public static PKM APILegality(PKM template, ShowdownSet SSet, out bool satisfied)
+        public static PKM APILegality(PKM template, ShowdownSet set, out bool satisfied)
         {
             int Form = template.AltForm;
-            if (SSet.Form != null && FixFormes(SSet, out SSet))
+            if (set.Form != null && FixFormes(set, out set))
             {
-                Form = SSet.FormIndex;
-                template.ApplySetDetails(SSet);
+                Form = set.FormIndex;
+                template.ApplySetDetails(set);
             }
             int HPType = template.HPType;
             var destType = SAV.PKMType;
 
-            var possible = GetPossiblePKMs(template, SSet);
+            var possible = GetPossiblePKMs(template, set);
             foreach (PKM raw in possible)
             {
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
-                ApplySetDetails(pk, SSet, Form, HPType, raw);
+                ApplySetDetails(pk, set, Form, HPType, raw);
 
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid)
@@ -45,9 +45,9 @@ namespace AutoLegalityMod
             return template;
         }
 
-        private static IEnumerable<PKM> GetPossiblePKMs(PKM template, ShowdownSet SSet)
+        private static IEnumerable<PKM> GetPossiblePKMs(PKM template, ShowdownSet set)
         {
-            return EncounterMovesetGenerator.GeneratePKMs(template, SAV, SSet.Moves);
+            return EncounterMovesetGenerator.GeneratePKMs(template, SAV, set.Moves);
         }
 
         /// <summary>
@@ -95,33 +95,33 @@ namespace AutoLegalityMod
         /// <summary>
         /// Validate and Set the gender if needed
         /// </summary>
-        /// <param name="pkm">PKM to modify</param>
-        public static void ValidateGender(PKM pkm)
+        /// <param name="pk">PKM to modify</param>
+        public static void ValidateGender(PKM pk)
         {
-            bool genderValid = pkm.IsGenderValid();
+            bool genderValid = pk.IsGenderValid();
             if (!genderValid)
             {
-                if (pkm.Format == 4 && pkm.Species == 292) // Shedinja glitch
+                if (pk.Format == 4 && pk.Species == 292) // Shedinja glitch
                 {
                     // should match original gender
-                    var gender = PKX.GetGenderFromPIDAndRatio(pkm.PID, 0x7F); // 50-50
-                    if (gender == pkm.Gender)
+                    var gender = PKX.GetGenderFromPIDAndRatio(pk.PID, 0x7F); // 50-50
+                    if (gender == pk.Gender)
                         genderValid = true;
                 }
-                else if (pkm.Format > 5 && (pkm.Species == 183 || pkm.Species == 184))
+                else if (pk.Format > 5 && (pk.Species == 183 || pk.Species == 184))
                 {
-                    var gv = pkm.PID & 0xFF;
-                    if (gv > 63 && pkm.Gender == 1) // evolved from azurill after transferring to keep gender
+                    var gv = pk.PID & 0xFF;
+                    if (gv > 63 && pk.Gender == 1) // evolved from azurill after transferring to keep gender
                         genderValid = true;
                 }
             }
             else
             {
                 // check for mixed->fixed gender incompatibility by checking the gender of the original species
-                if (Legal.FixedGenderFromBiGender.Contains(pkm.Species) && pkm.Gender != 2) // shedinja
+                if (Legal.FixedGenderFromBiGender.Contains(pk.Species) && pk.Gender != 2) // shedinja
                 {
-                    var gender = PKX.GetGenderFromPID(new LegalInfo(pkm).EncounterMatch.Species, pkm.EncryptionConstant);
-                    pkm.Gender = gender;
+                    var gender = PKX.GetGenderFromPID(new LegalInfo(pk).EncounterMatch.Species, pk.EncryptionConstant);
+                    pk.Gender = gender;
                     // genderValid = true; already true if we reach here
                 }
             }
@@ -129,11 +129,11 @@ namespace AutoLegalityMod
             if (genderValid)
                 return;
 
-            switch (pkm.Gender)
+            switch (pk.Gender)
             {
-                case 0: pkm.Gender = 1; break;
-                case 1: pkm.Gender = 0; break;
-                default: pkm.GetSaneGender(); break;
+                case 0: pk.Gender = 1; break;
+                case 1: pk.Gender = 0; break;
+                default: pk.GetSaneGender(); break;
             }
         }
 
@@ -196,11 +196,11 @@ namespace AutoLegalityMod
         /// Set IV Values for the pokemon
         /// </summary>
         /// <param name="pk"></param>
-        /// <param name="SSet"></param>
-        /// <param name="Method"></param>
-        /// <param name="HPType"></param>
-        /// <param name="originalPKMN"></param>
-        public static void SetIVsPID(PKM pk, ShowdownSet SSet, PIDType Method, int HPType, PKM originalPKMN)
+        /// <param name="set"></param>
+        /// <param name="method"></param>
+        /// <param name="hpType"></param>
+        /// <param name="original"></param>
+        public static void SetIVsPID(PKM pk, ShowdownSet set, PIDType method, int hpType, PKM original)
         {
             // Useful Values for computation
             int Species = pk.Species;
@@ -209,23 +209,23 @@ namespace AutoLegalityMod
             int AbilityNumber = pk.AbilityNumber; // 1,2,4 (HA)
 
             // Find the encounter
-            LegalInfo li = EncounterFinder.FindVerifiedEncounter(originalPKMN);
+            LegalInfo li = EncounterFinder.FindVerifiedEncounter(original);
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
 
             if (pk.GenNumber > 4 || pk.VC)
             {
-                pk.IVs = SSet.IVs;
+                pk.IVs = set.IVs;
                 if (Species == 658 && pk.AltForm == 1)
                     pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
-                if (Method != PIDType.G5MGShiny) pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, (uint)(AbilityNumber * 0x10001));
+                if (method != PIDType.G5MGShiny) pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, (uint)(AbilityNumber * 0x10001));
             }
             else
             {
-                pk.IVs = SSet.IVs;
+                pk.IVs = set.IVs;
                 if (li.EncounterMatch is PCD)
                     return;
-                FindPIDIV(pk, Method, HPType);
+                FindPIDIV(pk, method, hpType);
                 ValidateGender(pk);
             }
         }
@@ -320,21 +320,21 @@ namespace AutoLegalityMod
         /// <summary>
         /// Colosseum/XD pokemon need to be fixed.
         /// </summary>
-        /// <param name="pkm">PKM to apply the fix to</param>
-        public static void ColosseumFixes(PKM pkm)
+        /// <param name="pk">PKM to apply the fix to</param>
+        public static void ColosseumFixes(PKM pk)
         {
-            if (pkm.Version != (int)GameVersion.CXD)
+            if (pk.Version != (int)GameVersion.CXD)
                 return;
 
             // wipe all ribbons
-            pkm.ClearAllRibbons();
+            pk.ClearAllRibbons();
 
             // set national ribbon
-            if (pkm is IRibbonSetEvent3 c3)
+            if (pk is IRibbonSetEvent3 c3)
                 c3.RibbonNational = true;
-            pkm.Ball = 4;
-            pkm.FatefulEncounter = true;
-            pkm.OT_Gender = 0;
+            pk.Ball = 4;
+            pk.FatefulEncounter = true;
+            pk.OT_Gender = 0;
         }
     }
 }
