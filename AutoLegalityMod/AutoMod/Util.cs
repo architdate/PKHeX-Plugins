@@ -1,7 +1,7 @@
-using System.IO;
+﻿using System.IO;
 using System.Net;
 
-namespace SmogonGenner
+namespace AutoLegalityMod
 {
     public static class NetUtil
     {

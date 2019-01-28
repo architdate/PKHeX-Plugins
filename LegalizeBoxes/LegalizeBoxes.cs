@@ -28,12 +28,12 @@ namespace LegalizeBoxes
                 LegalizeCurrentBox();
         }
 
-        private static bool LegalizeBox(SaveFile SAV, int box)
+        private static bool LegalizeBox(SaveFile sav, int box)
         {
-            if ((uint)box >= SAV.BoxCount)
+            if ((uint)box >= sav.BoxCount)
                 return false;
 
-            var data = SAV.GetBoxData(box);
+            var data = sav.GetBoxData(box);
             bool modified = false;
             for (int i = 0; i < 30; i++)
             {
@@ -45,7 +45,7 @@ namespace LegalizeBoxes
             }
             if (!modified)
                 return false;
-            SAV.SetBoxData(data, box);
+            sav.SetBoxData(data, box);
             return true;
         }
 

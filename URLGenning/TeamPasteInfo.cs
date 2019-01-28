@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoLegalityMod;
 
 namespace URLGenning
 {
@@ -58,7 +59,7 @@ namespace URLGenning
             Description = $"Pastebin created on: {date}";
         }
 
-        private PasteSource GetSource(string url)
+        private static PasteSource GetSource(string url)
         {
             if (url.Contains("pokepast.es/"))
                 return PasteSource.PokePaste;
