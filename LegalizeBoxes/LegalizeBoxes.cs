@@ -15,7 +15,7 @@ namespace LegalizeBoxes
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += Legalize;
-            ctrl.Image = LegalizeBoxesResources.legalizeboxes;
+            ctrl.Image = Properties.Resources.legalizeboxes;
         }
 
         private void Legalize(object sender, EventArgs e)

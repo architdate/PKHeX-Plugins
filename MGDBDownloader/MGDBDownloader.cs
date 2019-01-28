@@ -31,7 +31,7 @@ namespace MGDBDownloader
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += DownloadMGDB;
-            ctrl.Image = MGDBDownloaderResources.mgdbdownload;
+            ctrl.Image = Properties.Resources.mgdbdownload;
         }
 
         public void DownloadMGDB(object o, EventArgs e)

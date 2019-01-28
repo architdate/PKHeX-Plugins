@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LegalizeBoxes {
+namespace ExportQRCodes.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace LegalizeBoxes {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LegalizeBoxesResources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LegalizeBoxesResources() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace LegalizeBoxes {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LegalizeBoxes.LegalizeBoxesResources", typeof(LegalizeBoxesResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ExportQRCodes.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,19 +63,9 @@ namespace LegalizeBoxes {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap legalizeboxes {
+        internal static System.Drawing.Bitmap exportqrcode {
             get {
-                object obj = ResourceManager.GetObject("legalizeboxes", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap menuautolegality {
-            get {
-                object obj = ResourceManager.GetObject("menuautolegality", resourceCulture);
+                object obj = ResourceManager.GetObject("exportqrcode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

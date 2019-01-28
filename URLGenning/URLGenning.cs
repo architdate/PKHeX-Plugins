@@ -14,7 +14,7 @@ namespace URLGenning
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += URLGen;
-            ctrl.Image = URLGenningResources.urlimport;
+            ctrl.Image = Properties.Resources.urlimport;
         }
 
         private static void URLGen(object sender, EventArgs e)

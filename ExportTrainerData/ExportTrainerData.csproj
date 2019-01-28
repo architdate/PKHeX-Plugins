@@ -40,12 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExportTrainerData.cs" />
-    <Compile Include="ExportTrainerDataResources.Designer.cs">
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ExportTrainerDataResources.resx</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrainerDataExporter.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,16 +53,16 @@
     <Content Include="Resources\img\menuautolegality.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExportTrainerDataResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ExportTrainerDataResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AutoLegalityMod\AutoLegalityMod.csproj">
       <Project>{8ed04749-56cc-488c-9d85-b1be83ef8f0c}</Project>
       <Name>AutoLegalityMod</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

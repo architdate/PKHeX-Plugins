@@ -39,14 +39,14 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TeamPasteInfo.cs" />
     <Compile Include="URLGenning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="URLGenningResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>URLGenningResources.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoLegalityMod\AutoLegalityMod.csproj">
@@ -59,9 +59,9 @@
     <Content Include="Resources\img\urlimport.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="URLGenningResources.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>URLGenningResources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

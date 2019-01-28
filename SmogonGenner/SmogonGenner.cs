@@ -15,7 +15,7 @@ namespace SmogonGenner
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += SmogonGenning;
-            ctrl.Image = SmogonGennerResources.smogongenner;
+            ctrl.Image = Properties.Resources.smogongenner;
         }
 
         private void SmogonGenning(object sender, EventArgs e)

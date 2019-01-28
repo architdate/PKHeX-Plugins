@@ -14,7 +14,7 @@ namespace ExportQRCodes
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += ExportQRs;
-            ctrl.Image = ExportQRCodesResources.exportqrcode;
+            ctrl.Image = Properties.Resources.exportqrcode;
         }
 
         private void ExportQRs(object sender, EventArgs e)

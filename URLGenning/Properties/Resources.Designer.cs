@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PGLRentalLegality {
+namespace URLGenning.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace PGLRentalLegality {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class PGLRentalLegalityResources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal PGLRentalLegalityResources() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PGLRentalLegality {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PGLRentalLegality.PGLRentalLegalityResources", typeof(PGLRentalLegalityResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("URLGenning.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,19 +63,9 @@ namespace PGLRentalLegality {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap menuautolegality {
+        internal static System.Drawing.Bitmap urlimport {
             get {
-                object obj = ResourceManager.GetObject("menuautolegality", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pglqrcode {
-            get {
-                object obj = ResourceManager.GetObject("pglqrcode", resourceCulture);
+                object obj = ResourceManager.GetObject("urlimport", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

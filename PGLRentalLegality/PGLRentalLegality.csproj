@@ -45,12 +45,12 @@
     <Compile Include="CryptoUtil.cs" />
     <Compile Include="DataFetch.cs" />
     <Compile Include="PGLRentalLegality.cs" />
-    <Compile Include="PGLRentalLegalityResources.Designer.cs">
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PGLRentalLegalityResources.resx</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QRParser.cs" />
     <Compile Include="QRPoke.cs" />
     <Compile Include="RentalTeam.cs" />
@@ -105,9 +105,9 @@
     <Compile Include="ZXing\SupportClass.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="PGLRentalLegalityResources.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>PGLRentalLegalityResources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\text\pokemonAbilities.csv" />
     <EmbeddedResource Include="Resources\text\pokemonFormAbilities.csv" />

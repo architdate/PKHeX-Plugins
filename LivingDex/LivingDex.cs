@@ -16,7 +16,7 @@ namespace LivingDex
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += GenLivingDex;
-            ctrl.Image = LivingDexResources.livingdex;
+            ctrl.Image = Properties.Resources.livingdex;
         }
 
         private void GenLivingDex(object sender, EventArgs e)

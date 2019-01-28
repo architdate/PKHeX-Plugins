@@ -17,7 +17,7 @@ namespace PGLRentalLegality
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += PGLShowdownSet;
-            ctrl.Image = PGLRentalLegalityResources.pglqrcode;
+            ctrl.Image = Properties.Resources.pglqrcode;
             ctrl.ShortcutKeys = Keys.Alt | Keys.Q;
         }
 

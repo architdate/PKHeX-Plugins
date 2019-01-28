@@ -40,18 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LivingDex.cs" />
-    <Compile Include="LivingDexResources.Designer.cs">
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LivingDexResources.resx</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="LivingDexResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>LivingDexResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\livingdex.png" />
@@ -62,6 +56,12 @@
       <Project>{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}</Project>
       <Name>AutoLegalityMod</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

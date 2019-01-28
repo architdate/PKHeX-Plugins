@@ -14,7 +14,7 @@ namespace ExportTrainerData
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += ExportData;
-            ctrl.Image = ExportTrainerDataResources.exporttrainerdata;
+            ctrl.Image = Properties.Resources.exporttrainerdata;
         }
 
         private void ExportData(object sender, EventArgs e)

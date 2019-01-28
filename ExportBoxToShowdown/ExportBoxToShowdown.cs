@@ -15,7 +15,7 @@ namespace ExportBoxToShowdown
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += BoxToShowdown;
-            ctrl.Image = ExportBoxToShowdownResources.exportboxtoshowdown;
+            ctrl.Image = Properties.Resources.exportboxtoshowdown;
         }
 
         private void BoxToShowdown(object sender, EventArgs e)
