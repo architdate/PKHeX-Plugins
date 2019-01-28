@@ -7,263 +7,293 @@ using static PKHeX.Core.LegalityCheckStrings;
 
 namespace AutoLegalityMod
 {
-    public class BruteForce
+    public static class BruteForce
     {
-        private bool requestedShiny;
-        public SaveFile SAV;
-        private bool legalized;
-
         private static readonly SimpleTrainerInfo DefaultTrainer = new SimpleTrainerInfo();
 
         /// <summary>
         /// Try to generate every a legal PKM from a showdown set using bruteforce. This should generally never be needed.
         /// </summary>
-        /// <param name="Set">Rough PKM Set</param>
-        /// <param name="SSet">Showdown Set</param>
+        /// <param name="pk">Rough PKM Set</param>
+        /// <param name="set">Showdown Set</param>
         /// <param name="resetForm">boolean to reset form back to base form</param>
         /// <param name="trainer">Trainer details to apply (optional)</param>
         /// <returns>PKM legalized via bruteforce</returns>
-        public PKM ApplyDetails(PKM Set, ShowdownSet SSet, bool resetForm = false, SimpleTrainerInfo trainer = null)
+        public static PKM ApplyDetails(PKM pk, ShowdownSet set, bool resetForm = false, SimpleTrainerInfo trainer = null)
         {
             if (trainer == null)
                 trainer = DefaultTrainer;
-            int abilitynum = Set.AbilityNumber < 6 ? Set.AbilityNumber >> 1 : 0;
+            int abilitynum = pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0;
             if (resetForm)
             {
-                Set.AltForm = 0;
-                Set.RefreshAbility(Set.AbilityNumber < 6 ? Set.AbilityNumber >> 1 : 0);
+                pk.AltForm = 0;
+                pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
             }
-            if (Set.Species == 774 && Set.AltForm == 0)
-                Set.AltForm = 7; // Minior has to be C-Red and not M-Red outside of battle
-            bool shiny = Set.IsShiny;
-            requestedShiny = SSet.Shiny;
+            if (pk.Species == 774 && pk.AltForm == 0)
+                pk.AltForm = 7; // Minior has to be C-Red and not M-Red outside of battle
+            bool shiny = pk.IsShiny;
 
-            bool legendary = BruteTables.Legendaries.Contains(Set.Species);
-            bool eventMon = BruteTables.EventSpecies.Contains(Set.Species);
+            bool legendary = BruteTables.Legendaries.Contains(pk.Species);
+            bool eventMon = BruteTables.EventSpecies.Contains(pk.Species);
 
             // Egg based pokemon
             if (!legendary && !eventMon)
             {
-                foreach (var game in BruteTables.GameVersionList)
-                {
-                    if (Set.DebutGeneration > game.GetGeneration())
-                        continue;
-                    Set.Version = (int)game;
-                    Set.RestoreIVs(SSet.IVs); // Restore IVs to SSet and HT to false
-                    Set.Language = 2;
-                    Set.OT_Name = trainer.OT;
-                    Set.TID = trainer.TID;
-                    Set.SID = trainer.SID;
-                    Set.OT_Gender = trainer.Gender;
-                    Set.MetDate = DateTime.Today;
-                    Set.EggMetDate = DateTime.Today;
-                    Set.Egg_Location = Set.Version < (int)GameVersion.W ? 2002 : 60002;
-
-                    Set.Met_Level = 1;
-                    Set.ConsoleRegion = 2;
-
-                    if (Set.Version == (int)GameVersion.RD || Set.Version == (int)GameVersion.BU || Set.Version == (int)GameVersion.YW || Set.Version == (int)GameVersion.GN)
-                    {
-                        Set.SID = 0;
-                        Set.Met_Location = 30013;
-                        Set.Met_Level = 100;
-                    }
-                    if (Set.Version == (int)GameVersion.CXD)
-                    {
-                        Set.Met_Location = 30001;
-                        Set.Met_Level = 100;
-                    }
-                    else { Set.SetSuggestedMetLocation(); }
-                    if (Set.GenNumber > 4)
-                        Set.Met_Level = 1;
-                    Set.SetMarkings();
-                    try
-                    {
-                        Set.CurrentHandler = 1;
-                        Set.HT_Name = "Archit";
-                        Set.SetSuggestedRelearnMoves();
-                        Set.SetPIDNature(Set.Nature);
-                        if (shiny)
-                            Set.SetShiny();
-                        if (Set.PID == 0)
-                        {
-                            Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
-                            if (shiny) Set.SetShiny();
-                        }
-                        Set.SetSuggestedMemories();
-                        if (Set.GenNumber < 6)
-                            Set.EncryptionConstant = Set.PID;
-                        if (CommonErrorHandling2(Set))
-                        {
-                            Set.HyperTrain();
-                            if (shiny && !Set.IsShiny)
-                                Set.SetShiny();
-                            return Set;
-                        }
-                        Set.HyperTrain();
-                        if (new LegalityAnalysis(Set).Valid)
-                            legalized = true;
-                        if (Set.GenNumber < 6 && !legalized)
-                            Set.EncryptionConstant = Set.PID;
-                        if (new LegalityAnalysis(Set).Valid && SAV.Generation >= Set.GenNumber)
-                        {
-                            Set.SetHappiness();
-                            Set.SetBelugaValues();
-                            if (shiny && !Set.IsShiny)
-                                Set.SetShinySID();
-                            return Set;
-                        }
-                        else
-                        {
-                            var la = new LegalityAnalysis(Set);
-                            Console.WriteLine(la.Report());
-                        }
-                    }
-                    catch { }
-                }
+                if (BruteForceEgg(pk, set, trainer, shiny))
+                    return pk;
             }
 
-            if (!new LegalityAnalysis(Set).Valid && !eventMon)
+            if (!new LegalityAnalysis(pk).Valid && !eventMon)
             {
-                foreach (GameVersion game in BruteTables.GameVersionList)
+                if (BruteForceNonBreed(pk, set, trainer, shiny, abilitynum))
+                    return pk;
+            }
+            return pk;
+        }
+
+        private static bool BruteForceEgg(PKM pk, ShowdownSet set, ITrainerInfo trainer, bool shiny)
+        {
+            foreach (var game in BruteTables.GameVersionList)
+            {
+                if (pk.DebutGeneration > game.GetGeneration())
+                    continue;
+                pk.Version = (int) game;
+                pk.RestoreIVs(set.IVs); // Restore IVs to SSet and HT to false
+                pk.Language = 2;
+                pk.OT_Name = trainer.OT;
+                pk.TID = trainer.TID;
+                pk.SID = trainer.SID;
+                pk.OT_Gender = trainer.Gender;
+                pk.MetDate = DateTime.Today;
+                pk.EggMetDate = DateTime.Today;
+                pk.Egg_Location = pk.Version < (int) GameVersion.W ? 2002 : 60002;
+
+                pk.Met_Level = 1;
+                pk.ConsoleRegion = 2;
+
+                if (pk.Version == (int) GameVersion.RD || pk.Version == (int) GameVersion.BU || pk.Version == (int) GameVersion.YW || pk.Version == (int) GameVersion.GN)
                 {
-                    if (Set.DebutGeneration > game.GetGeneration())
-                        continue;
-                    if (Set.Met_Level == 100)
-                        Set.Met_Level = 0;
-                    Set.SetBelugaValues();
-                    Set.WasEgg = false;
-                    Set.EggMetDate = null;
-                    Set.Egg_Location = 0;
-                    Set.Version = (int)game;
-                    Set.RestoreIVs(SSet.IVs); // Restore IVs to SSet and HT to false
-                    Set.Language = 2;
-                    Set.ConsoleRegion = 2;
-                    Set.OT_Name = trainer.OT;
-                    Set.TID = trainer.TID;
-                    Set.SID = trainer.SID;
-                    Set.OT_Gender = trainer.Gender;
-
-                    if (BruteTables.UltraBeastBall.Contains(Set.Species))
-                        Set.Ball = (int)Ball.Beast;
-
-                    if (game == GameVersion.RD || game == GameVersion.BU || game == GameVersion.YW || game == GameVersion.GN || game == GameVersion.GD || game == GameVersion.SV || game == GameVersion.C)
+                    pk.SID = 0;
+                    pk.Met_Location = 30013;
+                    pk.Met_Level = 100;
+                }
+                if (pk.Version == (int) GameVersion.CXD)
+                {
+                    pk.Met_Location = 30001;
+                    pk.Met_Level = 100;
+                }
+                else
+                {
+                    pk.SetSuggestedMetLocation();
+                }
+                if (pk.GenNumber > 4)
+                    pk.Met_Level = 1;
+                pk.SetMarkings();
+                try
+                {
+                    pk.CurrentHandler = 1;
+                    pk.HT_Name = "Archit";
+                    pk.SetSuggestedRelearnMoves();
+                    pk.SetPIDNature(pk.Nature);
+                    if (shiny)
+                        pk.SetShiny();
+                    if (pk.PID == 0)
                     {
-                        Set.SID = 0;
-                        if (Set.OT_Name.Length > 6)
-                            Set.OT_Name = "ARCH";
+                        pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
+                            (uint) (pk.AbilityNumber * 0x10001));
+                        if (shiny) pk.SetShiny();
                     }
-                    Set.MetDate = DateTime.Today;
-                    Set.SetMarkings();
-                    try
+                    pk.SetSuggestedMemories();
+                    if (pk.GenNumber < 6)
+                        pk.EncryptionConstant = pk.PID;
+                    if (CommonErrorHandling2(pk))
                     {
-                        Set.ClearRelearnMoves();
-                        switch (game)
+                        pk.HyperTrain();
+                        if (shiny && !pk.IsShiny)
+                            pk.SetShiny();
                         {
-                            case GameVersion.RD:
-                            case GameVersion.BU:
-                            case GameVersion.YW:
-                            case GameVersion.GN:
-                                Set.Met_Location = 30013;
-                                Set.Met_Level = 100;
-                                break;
-                            case GameVersion.GD:
-                            case GameVersion.SV:
-                            case GameVersion.C:
-                                Set.Met_Location = 30017;
-                                Set.Met_Level = 100;
-                                break;
-                            case GameVersion.CXD:
-                                Set.Met_Location = 30001;
-                                Set.Met_Level = 100;
-                                break;
-                            default:
-                                Set.SetSuggestedMetLocation();
-                                break;
-                        }
-                        Set.SetSuggestedRelearnMoves();
-                        Set.CurrentHandler = 1;
-                        Set.HT_Name = "Archit";
-                        Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
-                        if (shiny)
-                            Set.SetShiny();
-                        if (Set.PID == 0)
-                        {
-                            Set.PID = PKX.GetRandomPID(Set.Species, Set.Gender, Set.Version, Set.Nature, Set.Format, (uint)(Set.AbilityNumber * 0x10001));
-                            if (shiny)
-                                Set.SetShiny();
-                        }
-
-                        Set.RefreshAbility(abilitynum);
-                        Set.SetSuggestedMemories();
-                        if (Set.GenNumber < 6)
-                            Set.EncryptionConstant = Set.PID;
-
-                        if (CommonErrorHandling2(Set))
-                        {
-                            Set.HyperTrain();
-                            if (shiny) Set.SetShiny();
-                            return Set;
-                        }
-
-                        Set.HyperTrain();
-                        if (new LegalityAnalysis(Set).Valid)
-                            legalized = true;
-
-                        AlternateAbilityRefresh(Set);
-                        if (Set.GenNumber < 6 && !legalized)
-                            Set.EncryptionConstant = Set.PID;
-
-                        if (new LegalityAnalysis(Set).Valid && SAV.Generation >= Set.GenNumber)
-                        {
-                            Set.SetHappiness();
-                            PKM returnval = Set;
-                            if (shiny && Set.IsShiny)
-                                return Set;
-                            if (!requestedShiny || Set.IsShiny)
-                                return returnval;
-
-                            Set.SetShinySID();
-                            if (new LegalityAnalysis(Set).Valid)
-                                return Set;
-
-                            Set = returnval;
-                            Set.SetShiny();
-
-                            if (new LegalityAnalysis(Set).Valid)
-                                return Set;
-                        }
-                        else
-                        {
-                            var edgeLegality = EdgeMons(game, Set);
-                            foreach (EncounterStatic el in edgeLegality)
-                            {
-                                Set.Met_Location = el.Location;
-                                Set.Met_Level = el.Level;
-                                Set.CurrentLevel = 100;
-                                Set.FatefulEncounter = el.Fateful;
-                                if (el.RibbonWishing && Set is IRibbonSetEvent4 e4)
-                                    e4.RibbonWishing = true;
-                                Set.RelearnMoves = el.Relearn;
-
-                                if (SSet.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random))
-                                    Set.SetShiny();
-                                else if (el.Shiny == Shiny.Never && Set.IsShiny)
-                                    Set.PID ^= 0x10000000;
-                                else
-                                    Set.SetPIDGender(Set.Gender);
-                            }
-
-                            var la = new LegalityAnalysis(Set);
-                            if (la.Valid)
-                                return Set;
-                            Console.WriteLine(la.Report());
+                            return true;
                         }
                     }
-                    catch { }
+                    pk.HyperTrain();
+                    bool legalized = new LegalityAnalysis(pk).Valid;
+                    if (pk.GenNumber < 6 && !legalized)
+                        pk.EncryptionConstant = pk.PID;
+                    if (new LegalityAnalysis(pk).Valid && pk.Format >= pk.GenNumber)
+                    {
+                        pk.SetHappiness();
+                        pk.SetBelugaValues();
+                        if (shiny && !pk.IsShiny)
+                            pk.SetShinySID();
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        var la = new LegalityAnalysis(pk);
+                        Console.WriteLine(la.Report());
+                    }
+                }
+                catch
+                {
                 }
             }
-            return Set;
+            return false;
+        }
+
+        private static bool BruteForceNonBreed(PKM pk, ShowdownSet set, ITrainerInfo trainer, bool shiny, int abilitynum)
+        {
+            foreach (GameVersion game in BruteTables.GameVersionList)
+            {
+                if (pk.DebutGeneration > game.GetGeneration())
+                    continue;
+                if (pk.Met_Level == 100)
+                    pk.Met_Level = 0;
+                pk.SetBelugaValues();
+                pk.WasEgg = false;
+                pk.EggMetDate = null;
+                pk.Egg_Location = 0;
+                pk.Version = (int) game;
+                pk.RestoreIVs(set.IVs); // Restore IVs to SSet and HT to false
+                pk.Language = 2;
+                pk.ConsoleRegion = 2;
+                pk.OT_Name = trainer.OT;
+                pk.TID = trainer.TID;
+                pk.SID = trainer.SID;
+                pk.OT_Gender = trainer.Gender;
+
+                if (BruteTables.UltraBeastBall.Contains(pk.Species))
+                    pk.Ball = (int) Ball.Beast;
+
+                if (game == GameVersion.RD || game == GameVersion.BU || game == GameVersion.YW || game == GameVersion.GN || game == GameVersion.GD || game == GameVersion.SV || game == GameVersion.C)
+                {
+                    pk.SID = 0;
+                    if (pk.OT_Name.Length > 6)
+                        pk.OT_Name = "ARCH";
+                }
+                pk.MetDate = DateTime.Today;
+                pk.SetMarkings();
+                try
+                {
+                    pk.ClearRelearnMoves();
+                    switch (game)
+                    {
+                        case GameVersion.RD:
+                        case GameVersion.BU:
+                        case GameVersion.YW:
+                        case GameVersion.GN:
+                            pk.Met_Location = 30013;
+                            pk.Met_Level = 100;
+                            break;
+                        case GameVersion.GD:
+                        case GameVersion.SV:
+                        case GameVersion.C:
+                            pk.Met_Location = 30017;
+                            pk.Met_Level = 100;
+                            break;
+                        case GameVersion.CXD:
+                            pk.Met_Location = 30001;
+                            pk.Met_Level = 100;
+                            break;
+                        default:
+                            pk.SetSuggestedMetLocation();
+                            break;
+                    }
+                    pk.SetSuggestedRelearnMoves();
+                    pk.CurrentHandler = 1;
+                    pk.HT_Name = "Archit";
+                    pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
+                        (uint) (pk.AbilityNumber * 0x10001));
+                    if (shiny)
+                        pk.SetShiny();
+                    if (pk.PID == 0)
+                    {
+                        pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
+                            (uint) (pk.AbilityNumber * 0x10001));
+                        if (shiny)
+                            pk.SetShiny();
+                    }
+
+                    pk.RefreshAbility(abilitynum);
+                    pk.SetSuggestedMemories();
+                    if (pk.GenNumber < 6)
+                        pk.EncryptionConstant = pk.PID;
+
+                    if (CommonErrorHandling2(pk))
+                    {
+                        pk.HyperTrain();
+                        if (shiny) pk.SetShiny();
+                        {
+                            return true;
+                        }
+                    }
+
+                    pk.HyperTrain();
+                    bool legalized = new LegalityAnalysis(pk).Valid;
+
+                    AlternateAbilityRefresh(pk);
+                    if (pk.GenNumber < 6 && !legalized)
+                        pk.EncryptionConstant = pk.PID;
+
+                    if (new LegalityAnalysis(pk).Valid && pk.Format >= pk.GenNumber)
+                    {
+                        pk.SetHappiness();
+                        if (shiny && pk.IsShiny)
+                        {
+                            return true;
+                        }
+                        if (!set.Shiny || pk.IsShiny)
+                        {
+                            return true;
+                        }
+
+                        pk.SetShinySID();
+                        if (new LegalityAnalysis(pk).Valid)
+                        {
+                            return true;
+                        }
+
+                        pk.SetShiny();
+                        if (new LegalityAnalysis(pk).Valid)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        var edgeLegality = EdgeMons(game, pk);
+                        foreach (EncounterStatic el in edgeLegality)
+                        {
+                            pk.Met_Location = el.Location;
+                            pk.Met_Level = el.Level;
+                            pk.CurrentLevel = 100;
+                            pk.FatefulEncounter = el.Fateful;
+                            if (el.RibbonWishing && pk is IRibbonSetEvent4 e4)
+                                e4.RibbonWishing = true;
+                            pk.RelearnMoves = el.Relearn;
+
+                            if (set.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random))
+                                pk.SetShiny();
+                            else if (el.Shiny == Shiny.Never && pk.IsShiny)
+                                pk.PID ^= 0x10000000;
+                            else
+                                pk.SetPIDGender(pk.Gender);
+                        }
+
+                        var la = new LegalityAnalysis(pk);
+                        if (la.Valid)
+                        {
+                            return true;
+                        }
+                        Console.WriteLine(la.Report());
+                    }
+                }
+                catch
+                {
+                }
+            }
+            return false;
         }
 
         private static IEnumerable<EncounterStatic> EdgeMons(GameVersion Game, PKM pk)
@@ -312,7 +342,7 @@ namespace AutoLegalityMod
             pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
         }
 
-        private bool CommonErrorHandling2(PKM pk)
+        private static bool CommonErrorHandling2(PKM pk)
         {
             var report = GetReport(pk);
 
@@ -332,7 +362,7 @@ namespace AutoLegalityMod
 
             if (report.Contains(LNickMatchLanguageFail))
             {
-                pk.Nickname = PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, SAV.Generation); // failsafe to reset nick
+                pk.Nickname = PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, pk.Format); // failsafe to reset nick
                 report = GetReport(pk);
             }
             if (report.Contains(LStatIncorrectCP))
@@ -605,7 +635,6 @@ namespace AutoLegalityMod
             }
 
             uint nature = (uint)pk.Nature;
-            bool pidsidmethod = true;
             string[] pidsid;
             if (XD)
             {
@@ -647,9 +676,8 @@ namespace AutoLegalityMod
 
             recheckLA = new LegalityAnalysis(pk);
             updatedReport = recheckLA.Report();
-            if (!updatedReport.Contains("Invalid: Encounter Type PID mismatch."))
-                pidsidmethod = false;
 
+            bool pidsidmethod = updatedReport.Contains("Invalid: Encounter Type PID mismatch.");
             if (pidsid[0] == "0" && pidsid[1] == "0" && pidsidmethod)
             {
                 pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));

@@ -23,7 +23,6 @@ namespace LegalizeBoxes
             API.SAV = SaveFileEditor.SAV;
 
             var BoxData = SaveFileEditor.SAV.BoxData;
-            var brute = new BruteForce { SAV = SaveFileEditor.SAV };
             bool box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
             for (int i = 0; i < 30; i++)
             {
@@ -46,7 +45,7 @@ namespace LegalizeBoxes
                     if (!satisfied)
                     {
                         bool resetForm = ShowdownUtil.IsInvalidForm(Set.Form);
-                        legal = brute.ApplyDetails(illegalPK, Set, resetForm, trainer);
+                        legal = BruteForce.ApplyDetails(illegalPK, Set, resetForm, trainer);
                     }
                     else
                     {

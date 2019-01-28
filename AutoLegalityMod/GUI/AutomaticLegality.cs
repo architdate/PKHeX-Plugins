@@ -193,10 +193,9 @@ namespace AutoLegalityMod
 
         private static PKM GetBruteForcedLegalMon(ShowdownSet Set, PKM roughPKM)
         {
-            BruteForce b = new BruteForce { SAV = SAV };
             bool resetForm = ShowdownUtil.IsInvalidForm(Set.Form);
             var trainer = TrainerSettings.GetSavedTrainerData(roughPKM);
-            var legal = b.ApplyDetails(roughPKM, Set, resetForm, trainer);
+            var legal = BruteForce.ApplyDetails(roughPKM, Set, resetForm, trainer);
             legal.SetAllTrainerData(trainer);
             return legal;
         }
