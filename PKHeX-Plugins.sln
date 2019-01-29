@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WonderTradeBot", "WonderTra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivingDex", "LivingDex\LivingDex.csproj", "{19621097-4DC3-4B97-9A59-851F9933BDCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoModTests", "AutoModTests\AutoModTests.csproj", "{07D53A68-26E2-4173-84FB-B2413F505D2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{19621097-4DC3-4B97-9A59-851F9933BDCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19621097-4DC3-4B97-9A59-851F9933BDCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19621097-4DC3-4B97-9A59-851F9933BDCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D53A68-26E2-4173-84FB-B2413F505D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D53A68-26E2-4173-84FB-B2413F505D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D53A68-26E2-4173-84FB-B2413F505D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D53A68-26E2-4173-84FB-B2413F505D2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
