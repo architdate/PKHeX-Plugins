@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using PKHeX.Core;
-
-namespace AutoLegalityMod
+namespace PKHeX.Core.AutoMod
 {
     /// <summary>
     /// Covers everything that is not covered by / Cannot currently be covered by Auto Legality Mod generic legality formula

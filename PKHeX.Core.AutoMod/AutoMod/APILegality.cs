@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using PKHeX.Core;
 using static PKHeX.Core.LegalityCheckStrings;
 
-namespace AutoLegalityMod
+namespace PKHeX.Core.AutoMod
 {
     public static class API
     {

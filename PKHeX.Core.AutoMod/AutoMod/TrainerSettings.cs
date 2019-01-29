@@ -1,12 +1,11 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-using PKHeX.Core;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace AutoLegalityMod
+namespace PKHeX.Core.AutoMod
 {
     /// <summary>
     /// Logic to load <see cref="SimpleTrainerInfo"/> from a saved text file.
@@ -47,7 +46,7 @@ namespace AutoLegalityMod
             if (!string.IsNullOrWhiteSpace(jsonstring))
                 return CheckMode(jsonstring);
 
-            WinFormsUtil.Alert("Empty trainerdata.json file");
+            Debug.WriteLine("Empty trainerdata.json file");
             return AutoModMode.Save;
         }
 
@@ -128,7 +127,7 @@ namespace AutoLegalityMod
             if (TID.Length == 6 && SID.Length == 4)
             {
                 if (new List<int> { 33, 32, 31, 30 }.IndexOf(Game) == -1)
-                    WinFormsUtil.Alert("Force Converting G7TID/G7SID to TID/SID");
+                    Debug.WriteLine("Force Converting G7TID/G7SID to TID/SID");
                 int[] tidsid = ConvertTIDSID7toTIDSID(int.Parse(TID), int.Parse(SID));
                 TID = tidsid[0].ToString();
                 SID = tidsid[1].ToString();

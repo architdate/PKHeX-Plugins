@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 using System;
-using ReaderException = com.google.zxing.ReaderException;
+
 namespace com.google.zxing.common
 {
 	/// <summary> Implementations of this class can, given locations of finder patterns for a QR code in an

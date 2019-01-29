@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using PKHeX.Core.AutoMod;
 
 namespace AutoLegalityMod
 {

@@ -1,7 +1,8 @@
 ﻿using System;
 using PKHeX.Core;
-using AutoLegalityMod;
 using System.Windows.Forms;
+using AutoLegalityMod;
+using PKHeX.Core.AutoMod;
 
 namespace LegalizeBoxes
 {

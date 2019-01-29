@@ -2,10 +2,9 @@
 using System.Linq;
 using System.Collections.Generic;
 
-using PKHeX.Core;
 using static PKHeX.Core.LegalityCheckStrings;
 
-namespace AutoLegalityMod
+namespace PKHeX.Core.AutoMod
 {
     public static class BruteForce
     {

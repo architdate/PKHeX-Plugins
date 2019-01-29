@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivingDex", "LivingDex\Livi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoModTests", "AutoModTests\AutoModTests.csproj", "{07D53A68-26E2-4173-84FB-B2413F505D2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PKHeX.Core.AutoMod", "PKHeX.Core.AutoMod\PKHeX.Core.AutoMod.csproj", "{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,10 @@ Global
 		{07D53A68-26E2-4173-84FB-B2413F505D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D53A68-26E2-4173-84FB-B2413F505D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07D53A68-26E2-4173-84FB-B2413F505D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

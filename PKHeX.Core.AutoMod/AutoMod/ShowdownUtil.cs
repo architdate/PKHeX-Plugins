@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using PKHeX.Core;
 
-namespace AutoLegalityMod
+namespace PKHeX.Core.AutoMod
 {
     public static class ShowdownUtil
     {

@@ -1,4 +1,4 @@
-﻿namespace AutoLegalityMod
+﻿namespace PKHeX.Core.AutoMod
 {
     public enum LegalizationResult
     {

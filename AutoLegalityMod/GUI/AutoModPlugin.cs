@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using PKHeX.Core;
+using PKHeX.Core.AutoMod;
 
 namespace AutoLegalityMod
 {

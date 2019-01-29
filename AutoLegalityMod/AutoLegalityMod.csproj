@@ -40,38 +40,14 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoMod\APILegality.cs" />
-    <Compile Include="AutoMod\AutoModErrorCode.cs" />
-    <Compile Include="AutoMod\LegalEdits.cs" />
-    <Compile Include="AutoMod\LegalizationResult.cs" />
-    <Compile Include="AutoMod\Util.cs" />
-    <Compile Include="BruteForce\RNG\CompareType.cs" />
-    <Compile Include="BruteForce\RNG\Frame.cs" />
-    <Compile Include="BruteForce\RNG\FrameCompare.cs" />
-    <Compile Include="BruteForce\RNG\FrameGenerator.cs" />
-    <Compile Include="BruteForce\RNG\FrameType.cs" />
-    <Compile Include="BruteForce\RNG\IVFilter.cs" />
-    <Compile Include="BruteForce\RNG\IVtoPIDGenerator1.cs" />
-    <Compile Include="BruteForce\RNG\IVtoSeed.cs" />
-    <Compile Include="BruteForce\RNG\Seed.cs" />
     <Compile Include="GUI\AutoModPlugin.cs" />
-    <Compile Include="AutoMod\ShowdownUtil.cs" />
-    <Compile Include="AutoMod\Legalizer.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="AutoMod\SimpleEdits.cs" />
-    <Compile Include="AutoMod\ShowdownEdits.cs" />
-    <Compile Include="AutoMod\TrainerSettings.cs" />
     <Compile Include="GUI\AutoLegalityMod.cs" />
     <Compile Include="GUI\AutomaticLegality.cs" />
-    <Compile Include="AutoMod\AutoModMode.cs" />
-    <Compile Include="BruteForce\BruteTables.cs" />
-    <Compile Include="BruteForce\EdgeCaseLegality.cs" />
-    <Compile Include="BruteForce\RNG\IVtoPIDGenerator.cs" />
-    <Compile Include="BruteForce\BruteForce.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GUI\WinFormsUtil.cs" />
   </ItemGroup>
@@ -84,6 +60,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PKHeX.Core.AutoMod\PKHeX.Core.AutoMod.csproj">
+      <Project>{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}</Project>
+      <Name>PKHeX.Core.AutoMod</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

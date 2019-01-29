@@ -1,6 +1,4 @@
-using PKHeX.Core;
-
-namespace AutoLegalityMod
+namespace PKHeX.Core.AutoMod
 {
     public static class ShowdownEdits
     {

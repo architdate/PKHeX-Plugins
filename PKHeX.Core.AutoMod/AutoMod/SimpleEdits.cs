@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
-using PKHeX.Core;
 
-namespace AutoLegalityMod
+namespace PKHeX.Core.AutoMod
 {
     public static class SimpleEdits
     {

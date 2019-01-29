@@ -7,7 +7,7 @@ using AutoLegalityMod;
 
 namespace PGLRentalLegality
 {
-    public class PGLRentalLegality : AutoLegalityMod.AutoLegalityMod
+    public class PGLRentalLegality : AutoModPlugin
     {
         public override string Name => "Import PGL QR code";
         public override int Priority => 1;

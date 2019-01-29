@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PKHeX.Core;
 
-namespace AutoLegalityMod
+namespace PKHeX.Core.AutoMod
 {
     /// <summary>
     /// Suggestion edits that rely on a <see cref="LegalityAnalysis"/> being done.

@@ -53,6 +53,10 @@
       <Project>{8ed04749-56cc-488c-9d85-b1be83ef8f0c}</Project>
       <Name>AutoLegalityMod</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PKHeX.Core.AutoMod\PKHeX.Core.AutoMod.csproj">
+      <Project>{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}</Project>
+      <Name>PKHeX.Core.AutoMod</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\menuautolegality.png" />

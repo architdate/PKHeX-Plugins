@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 
-using PKHeX.Core;
-
-namespace AutoLegalityMod
+namespace PKHeX.Core.AutoMod
 {
     public static class BruteTables
     {

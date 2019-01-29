@@ -2,7 +2,6 @@
 
 namespace RNGReporter
 {
-
     public class IVtoPIDGenerator
     {
         public static string[] M1PID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)

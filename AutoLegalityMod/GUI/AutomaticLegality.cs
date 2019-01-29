@@ -1,10 +1,11 @@
-﻿using PKHeX.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using PKHeX.Core;
+using PKHeX.Core.AutoMod;
 
 namespace AutoLegalityMod
 {
@@ -20,7 +21,6 @@ namespace AutoLegalityMod
         // TODO: Check for Auto Legality Mod Updates
         public static ISaveFileProvider SaveFileEditor { private get; set; }
         public static IPKMView PKMEditor { private get; set; }
-        private static SaveFile SAV => API.SAV;
 
         /// <summary>
         /// Global Variables for Auto Legality Mod
@@ -100,6 +100,7 @@ namespace AutoLegalityMod
         /// <param name="allowAPI">Use of generators before bruteforcing</param>
         private static AutoModErrorCode ImportSetsToBoxes(IReadOnlyList<ShowdownSet> sets, bool replace, bool allowAPI)
         {
+            var SAV = SaveFileEditor.SAV;
             var BoxData = SAV.BoxData;
             int start = SaveFileEditor.CurrentBox * SAV.BoxSlotCount;
 

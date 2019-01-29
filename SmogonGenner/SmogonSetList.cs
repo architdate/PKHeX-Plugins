@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoLegalityMod;
 using PKHeX.Core;
+using PKHeX.Core.AutoMod;
 
 namespace SmogonGenner
 {

@@ -1,8 +1,9 @@
 using System.IO;
+
 using FluentAssertions;
 using PKHeX.Core;
+using PKHeX.Core.AutoMod;
 using Xunit;
-using AutoLegalityMod;
 
 namespace AutoModTests
 {

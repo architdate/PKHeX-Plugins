@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Net;
 
-namespace AutoLegalityMod
+namespace PKHeX.Core.AutoMod
 {
     public static class NetUtil
     {

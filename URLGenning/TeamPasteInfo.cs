@@ -1,5 +1,5 @@
 ﻿using System;
-using AutoLegalityMod;
+using PKHeX.Core.AutoMod;
 
 namespace URLGenning
 {
