@@ -22,7 +22,7 @@ namespace AutoModTests
         }
 
         [Fact]
-        public void Test1()
+        public void TestFilesPassOrFailLegalityChecks()
         {
             var folder = PKMFolder;
             VerifyAll(folder, "Legal", true);
@@ -46,7 +46,7 @@ namespace AutoModTests
                 la.Valid.Should().Be(isValid, $"because the file '{fi.Directory.Name}\\{fi.Name}' should be {(isValid ? "Valid" : "Invalid")}");
 
                 // try legalizing, should end up as legal
-                var updated = AutomaticLegality.Legalize(pkm);
+                var updated = Legalizer.Legalize(pkm);
                 var la2 = new LegalityAnalysis(updated);
                 la2.Valid.Should().Be(true, $"because the file '{fi.Directory.Name}\\{fi.Name}' should be legal");
             }

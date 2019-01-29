@@ -40,7 +40,7 @@ namespace LegalizeBoxes
                 var pk = data[i];
                 if (pk.Species <= 0 || new LegalityAnalysis(pk).Valid)
                     continue;
-                data[i] = AutomaticLegality.Legalize(pk);
+                data[i] = Legalizer.Legalize(pk);
                 modified = true;
             }
             if (!modified)
@@ -66,7 +66,7 @@ namespace LegalizeBoxes
             if (la.Valid)
                 return;
 
-            var result = AutomaticLegality.Legalize(illegalPK);
+            var result = Legalizer.Legalize(illegalPK);
             PKMEditor.PopulateFields(result);
             WinFormsUtil.Alert("Legalized Active Pokemon.");
         }

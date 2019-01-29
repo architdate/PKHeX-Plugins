@@ -43,6 +43,7 @@
     <Compile Include="AutoMod\APILegality.cs" />
     <Compile Include="AutoMod\AutoModErrorCode.cs" />
     <Compile Include="AutoMod\LegalEdits.cs" />
+    <Compile Include="AutoMod\LegalizationResult.cs" />
     <Compile Include="AutoMod\Util.cs" />
     <Compile Include="BruteForce\RNG\CompareType.cs" />
     <Compile Include="BruteForce\RNG\Frame.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="BruteForce\RNG\Seed.cs" />
     <Compile Include="GUI\AutoModPlugin.cs" />
     <Compile Include="AutoMod\ShowdownUtil.cs" />
+    <Compile Include="AutoMod\Legalizer.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
