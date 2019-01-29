@@ -8,7 +8,7 @@ namespace AutoLegalityMod
 {
     public static class API
     {
-        internal static SaveFile SAV;
+        public static SaveFile SAV { internal get; set; }
 
         /// <summary>
         /// Main function that auto legalizes based on the legality

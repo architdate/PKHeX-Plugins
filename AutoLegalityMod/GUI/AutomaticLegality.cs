@@ -31,7 +31,7 @@ namespace AutoLegalityMod
         {
             ShowdownSet set = new ShowdownSet(ShowdownSet.GetShowdownText(pk));
 
-            PKM APIGenerated = SaveFileEditor.SAV.BlankPKM;
+            PKM APIGenerated = SAV.BlankPKM;
             bool satisfied = false;
             try { APIGenerated = API.APILegality(pk, set, out satisfied); }
             catch { }
