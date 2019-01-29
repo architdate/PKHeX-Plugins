@@ -22,7 +22,7 @@ All contributions are greatly appreciated!
 ## Support Server:
 Come join the dedicated server for this mod! Ask questions, give suggestions, get help, or just hang out. Don't be shy, we don't bite:
 
-[<img src="https://canary.discordapp.com/api/guilds/401014193211441153/widget.png?style=banner2">](https://discord.gg/9ptDkpV)
+[<img src="https://canary.discordapp.com/api/guilds/401014193211441153/widget.png?style=banner2">](https://discord.gg/tDMvSRv)
 
 ## Credits:
 @kwsch (Kaphotics): for having the IPlugin interface which allows loading of Plugin DLL files into PKHeX. Also for the support provided in my discord server
