@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Net;
-using System.IO.Compression;
-
 using System.Windows.Forms;
-using PKHeX.Core;
 using System.IO;
-using System.Linq;
-using System.Threading;
+
 using AutoLegalityMod;
+using PKHeX.Core;
 
 namespace MGDBDownloader
 {
@@ -19,15 +15,6 @@ namespace MGDBDownloader
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            // many local files can delay mgdb initialization by PKHeX (file i/o speed)
-            // delay returning control to the main application until the mgdb is finished loading
-            if (Directory.Exists(MGDatabasePath)
-                && Directory.EnumerateFiles(MGDatabasePath, "*", SearchOption.AllDirectories).Any())
-            {
-                while (!EncounterEvent.Initialized)
-                    Thread.Sleep(50);
-            }
-
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += DownloadMGDB;
@@ -38,58 +25,23 @@ namespace MGDBDownloader
         {
             if (Directory.Exists(MGDatabasePath))
             {
-                DialogResult dialogResult = WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Update MGDB?", "MGDB already exists!");
-                if (dialogResult == DialogResult.Yes)
-                {
-                    DeleteDirectory(MGDatabasePath); // Adding events will be handled by the next conditional
-                }
+                var result = WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "MGDB already exists!", "Update MGDB?");
+                if (result != DialogResult.Yes)
+                    return;
+                DeleteDirectory(MGDatabasePath); // Adding events will be handled by the next conditional
             }
-            if (!Directory.Exists(MGDatabasePath))
-            {
-                DialogResult latestCommit = WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Download the entire database, which includes past generation events?\nSelecting No will download only the public release of the database.", "Download entire database?");
-                if (latestCommit == DialogResult.Yes)
-                {
-                    const string mgdbURL = "https://github.com/projectpokemon/EventsGallery/archive/master.zip";
+            if (Directory.Exists(MGDatabasePath))
+                return;
 
-                    WebClient client = new WebClient();
+            var prompt = WinFormsUtil.Prompt(MessageBoxButtons.YesNo,
+                "Download entire database?",
+                "Download the entire database, which includes past generation events?",
+                "Selecting No will download only the public release of the database.");
 
-                    const string mgdbZipPath = "mgdb.zip";
-                    client.DownloadFile(new Uri(mgdbURL), mgdbZipPath);
-                    ZipFile.ExtractToDirectory(mgdbZipPath, MGDatabasePath);
-                    File.Delete("mgdb.zip");
-                    DeleteDirectory(Path.Combine(MGDatabasePath, "EventsGallery-master", "Unreleased"));
-                    DeleteDirectory(Path.Combine(MGDatabasePath, "EventsGallery-master", "Extras"));
-                    File.Delete(Path.Combine(MGDatabasePath, "EventsGallery-master", ".gitignore"));
-                    File.Delete(Path.Combine(MGDatabasePath, "EventsGallery-master", "README.md"));
-                    WinFormsUtil.Alert("Download Finished");
-                }
-                else
-                {
-                    WebClient client = new WebClient();
-                    string json_data = DownloadString("https://api.github.com/repos/projectpokemon/EventsGallery/releases/latest");
-                    string mgdbURL = json_data.Split(new[] { "browser_download_url" }, StringSplitOptions.None)[1].Substring(3).Split('"')[0];
-                    Console.WriteLine(mgdbURL);
-                    const string mgdbZipPath = "mgdb.zip";
-                    client.DownloadFile(new Uri(mgdbURL), mgdbZipPath);
-                    ZipFile.ExtractToDirectory(mgdbZipPath, MGDatabasePath);
-                    File.Delete("mgdb.zip");
-                    WinFormsUtil.Alert("Download Finished");
-                }
-            }
-        }
-
-        public static string DownloadString(string address)
-        {
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(address);
-                request.Method = "GET";
-                request.UserAgent = "PKHeX-Auto-Legality-Mod";
-                request.Accept = "application/json";
-                WebResponse response = request.GetResponse(); //Error Here
-                Stream dataStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(dataStream);
-                return reader.ReadToEnd();
-            }
+            bool entire = prompt == DialogResult.Yes;
+            EventsGalleryDownload.DownloadMGDBFromGitHub(MGDatabasePath, entire);
+            WinFormsUtil.Alert("Download Finished");
+            Legal.RefreshMGDB(MGDatabasePath);
         }
 
         public static void DeleteDirectory(string target_dir)
