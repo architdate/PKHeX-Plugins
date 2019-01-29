@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>net46</TargetFrameworks>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
