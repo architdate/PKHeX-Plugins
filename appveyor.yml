@@ -1,0 +1,119 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+configuration: Release
+init:
+- cmd: set PATH=C:\Python35;C:\Python35\Scripts;%path%
+environment:
+  latestcommit: false
+  notifyall: true
+before_build:
+- ps: >-
+    git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git C:\projects\pkhex
+
+    Set-Location -Path "C:\projects\pkhex"
+
+    $env:pkhex_commit = $(git rev-parse --short HEAD)
+
+    $env:mod_commit = $env:APPVEYOR_REPO_COMMIT.Substring(0,7)
+
+    Add-AppveyorMessage $env:pkhex_commit
+
+    Add-AppveyorMessage $env:mod_commit
+
+    if ($env:notifyall -eq "true") { Add-AppveyorMessage "notify" }
+
+    nuget restore
+
+    msbuild C:\projects\pkhex\PKHeX.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /verbosity:minimal /p:DefineConstants=UNSAFEDLL /p:Configuration=Release
+
+    Copy-Item "C:\projects\pkhex\pkhex.winforms\bin\release\PKHeX.Core.dll" "C:\projects\pkhex-plugins"
+
+    Set-Location -Path "C:\projects\pkhex-plugins"
+
+    dotnet restore
+build:
+  project: C:\projects\pkhex-plugins\PKHeX-Plugins.sln
+  verbosity: minimal
+before_package:
+- cmd: >-
+    mkdir base
+
+    xcopy C:\projects\pkhex\pkhex.winforms\bin\release C:\projects\pkhex-plugins\base /e /i /h
+after_build:
+- cmd: >-
+    mkdir bin
+
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\AutoLegalityMod.dll C:\projects\PKHeX-Plugins\bin\
+
+    xcopy C:\projects\PKHeX-Plugins\ExportBoxToShowdown\bin\Release\ExportBoxToShowdown.dll C:\projects\PKHeX-Plugins\bin\
+
+    xcopy C:\projects\PKHeX-Plugins\ExportQRCodes\bin\Release\ExportQRCodes.dll C:\projects\PKHeX-Plugins\bin\
+
+    xcopy C:\projects\PKHeX-Plugins\ExportTrainerData\bin\Release\ExportTrainerData.dll C:\projects\PKHeX-Plugins\bin\
+
+    xcopy C:\projects\PKHeX-Plugins\LegalizeBoxes\bin\Release\LegalizeBoxes.dll C:\projects\PKHeX-Plugins\bin\
+
+    xcopy C:\projects\PKHeX-Plugins\LivingDex\bin\Release\LivingDex.dll C:\projects\PKHeX-Plugins\bin\
+
+    xcopy C:\projects\PKHeX-Plugins\MGDBDownloader\bin\Release\MGDBDownloader.dll C:\projects\PKHeX-Plugins\bin\
+
+    xcopy C:\projects\PKHeX-Plugins\PGLRentalLegality\bin\Release\PGLRentalLegality.dll C:\projects\PKHeX-Plugins\bin\
+
+    xcopy C:\projects\PKHeX-Plugins\SmogonGenner\bin\Release\SmogonGenner.dll C:\projects\PKHeX-Plugins\bin\
+
+    xcopy C:\projects\PKHeX-Plugins\URLGenning\bin\Release\URLGenning.dll C:\projects\PKHeX-Plugins\bin\
+artifacts:
+- path: bin
+  name: PKHeX-Plugins-$(mod_commit)
+- path: base
+  name: PKHeX-$(pkhex_commit)-Unmerged
+notifications:
+- provider: Webhook
+  url: https://discordapp.com/api/webhooks/427340104277950476/YII7UTDyJWLm9MaLcf0L9N8W1H4Ggoi26OpHGMpTSVPFKWo2M_SRRRd549Xe8uUcRrgu
+  method: POST
+  headers:
+    User-Agent: AppVeyor/PKHeX-Plugins
+  body: >-
+    {
+      {{#jobs}}{{#messages.2}}{{#passed}}"content": "<@&409770274074918925>",
+      {{/passed}}{{/messages.2}}{{/jobs}}"embeds": [
+        {
+          "title": "Build {{buildId}}",
+          "url": "{{buildUrl}}",
+          "color": "{{#passed}}40973{{/passed}}{{^passed}}11672839{{/passed}}",
+          "footer": {
+            "icon_url": "{{#passed}}https://i.imgur.com/Rf4g8v6.png{{/passed}}{{^passed}}https://i.imgur.com/QaERwAW.png{{/passed}}",
+            "text": "{{#passed}}Success{{/passed}}{{^passed}}Failure{{/passed}}"
+          },
+          "author": {
+            "name": "{{commitAuthor}}",
+            "url": "https://github.com/{{repositoryName}}/commit/{{commitId}}"
+          },
+          "fields": [
+            {
+              "name": "PKHeX Commit Hash",
+              "value": "{{#jobs}}{{#messages.0}}{{message}}{{/messages.0}}{{/jobs}}",
+              "inline": true
+            },
+            {
+              "name": "Mod Commit Hash",
+              "value": "{{#jobs}}{{#messages.1}}{{message}}{{/messages.1}}{{/jobs}}",
+              "inline": true
+            },
+            {
+              "name": "Artifact",
+          "value": "{{#passed}}Unmerged Base PKHeX: [Download]({{#jobs}}{{#artifacts.0}}{{permalink}}{{/artifacts.0}}{{/jobs}}) \nPlugins: [Download]({{#jobs}}{{#artifacts.1}}{{permalink}}{{/artifacts.1}}{{/jobs}}){{/passed}}{{^passed}}Build Failed{{/passed}}",
+              "inline": true
+            },
+            {
+              "name": "Build version",
+              "value": "{{buildVersion}}",
+              "inline": true
+            }
+          ]
+        }
+      ]
+    }
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: false
