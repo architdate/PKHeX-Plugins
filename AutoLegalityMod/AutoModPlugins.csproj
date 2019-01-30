@@ -53,7 +53,6 @@
     <Compile Include="Plugins\LivingDex.cs" />
     <Compile Include="Plugins\MGDBDownloader.cs" />
     <Compile Include="Plugins\PGLRentalLegality.cs" />
-    <Compile Include="Plugins\QRParser.cs" />
     <Compile Include="Plugins\SmogonGenner.cs" />
     <Compile Include="Plugins\URLGenning.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
