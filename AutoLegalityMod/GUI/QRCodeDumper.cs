@@ -6,7 +6,7 @@ using System.IO;
 using PKHeX.Core;
 using QRCoder;
 
-namespace AutoLegalityMod
+namespace AutoModPlugins
 {
     public static class QRCodeDumper
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace AutoLegalityMod
+namespace AutoModPlugins
 {
     public class ExportQRCodes : AutoModPlugin
     {

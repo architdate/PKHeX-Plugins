@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using PKHeX.Core.AutoMod;
 
-namespace AutoLegalityMod
+namespace AutoModPlugins
 {
     public class URLGenning : AutoModPlugin
     {

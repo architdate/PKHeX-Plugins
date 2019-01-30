@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
-namespace AutoLegalityMod
+namespace AutoModPlugins
 {
     /// <summary>
     /// Base plugin logic; automatically adds plugin info

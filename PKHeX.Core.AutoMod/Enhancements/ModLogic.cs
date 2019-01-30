@@ -4,7 +4,7 @@ using System.Linq;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
-namespace AutoLegalityMod
+namespace AutoModPlugins
 {
     public static class ModLogic
     {

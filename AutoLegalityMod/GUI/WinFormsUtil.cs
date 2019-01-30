@@ -4,7 +4,7 @@ using System.Linq;
 using System.Media;
 using System.Windows.Forms;
 
-namespace AutoLegalityMod
+namespace AutoModPlugins
 {
     public static class WinFormsUtil
     {

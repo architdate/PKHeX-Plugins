@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using PKHeX.Core;
 
-namespace AutoLegalityMod
+namespace AutoModPlugins
 {
     public class LivingDex : AutoModPlugin
     {

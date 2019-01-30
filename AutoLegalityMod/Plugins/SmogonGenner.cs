@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using PKHeX.Core;
 using SmogonGenner;
 
-namespace AutoLegalityMod
+namespace AutoModPlugins
 {
     public class SmogonGenner : AutoModPlugin
     {

@@ -1,7 +1,7 @@
 ﻿using PKHeX.Core;
 using System.Windows.Forms;
 
-namespace AutoLegalityMod
+namespace AutoModPlugins
 {
     public class ExportBoxToShowdown : AutoModPlugin
     {

@@ -16,7 +16,7 @@ using Org.BouncyCastle.Crypto.Parameters;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
-namespace AutoLegalityMod
+namespace AutoModPlugins
 {
     public class QRParser
     {

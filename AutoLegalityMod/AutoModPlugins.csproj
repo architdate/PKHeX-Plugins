@@ -7,8 +7,8 @@
     <ProjectGuid>{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AutoLegalityMod</RootNamespace>
-    <AssemblyName>AutoLegalityMod</AssemblyName>
+    <RootNamespace>AutoModPlugins</RootNamespace>
+    <AssemblyName>AutoModPlugins</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

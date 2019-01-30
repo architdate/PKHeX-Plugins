@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoLegalityMod", "AutoLegalityMod\AutoLegalityMod.csproj", "{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoModPlugins", "AutoLegalityMod\AutoModPlugins.csproj", "{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WonderTradeBot", "WonderTradeBot\WonderTradeBot.csproj", "{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}"
 EndProject
