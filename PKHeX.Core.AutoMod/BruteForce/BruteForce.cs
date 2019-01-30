@@ -8,7 +8,7 @@ namespace PKHeX.Core.AutoMod
 {
     public static class BruteForce
     {
-        private static readonly SimpleTrainerInfo DefaultTrainer = new SimpleTrainerInfo();
+        private static readonly ITrainerInfo DefaultTrainer = new SimpleTrainerInfo();
 
         /// <summary>
         /// Try to generate every a legal PKM from a showdown set using bruteforce. This should generally never be needed.

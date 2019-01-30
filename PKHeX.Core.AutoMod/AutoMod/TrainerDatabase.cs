@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace PKHeX.Core.AutoMod
@@ -27,6 +28,27 @@ namespace PKHeX.Core.AutoMod
                 list.Add(trainer);
             else
                 Database.Add(ver, new List<ITrainerInfo> {trainer});
+        }
+
+        public void Register(PKM pkm) => Register(new PokeTrainerDetails(pkm));
+
+        private class PokeTrainerDetails : ITrainerInfo
+        {
+            private readonly PKM pkm;
+
+            public PokeTrainerDetails(PKM pk) => pkm = pk;
+
+            public int TID { get => pkm.TID; set => throw new ArgumentException(); }
+            public int SID { get => pkm.SID; set => throw new ArgumentException(); }
+
+            public string OT => pkm.OT_Name;
+            public int Gender => pkm.OT_Gender;
+            public int Game => pkm.Version;
+            public int Language => pkm.Language;
+            public int Country => pkm.Country;
+            public int SubRegion => pkm.Region;
+            public int ConsoleRegion => pkm.ConsoleRegion;
+            public int Generation => pkm.GenNumber;
         }
     }
 }
