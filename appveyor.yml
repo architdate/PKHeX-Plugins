@@ -31,6 +31,8 @@ before_build:
     Set-Location -Path "C:\projects\pkhex-plugins"
 
     dotnet restore
+
+    nuget restore
 build:
   project: C:\projects\pkhex-plugins\PKHeX-Plugins.sln
   verbosity: minimal
@@ -43,7 +45,18 @@ after_build:
 - cmd: >-
     mkdir bin
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\AutoModPlugins.dll C:\projects\PKHeX-Plugins\bin\
+    nuget install ILMerge -ExcludeVersion
+
+    cd "C:\projects\pkhex-plugins\ILMerge\tools\net452"
+
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\AutoModPlugins.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\BouncyCastle.CryptoExt.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\PKHeX.Core.AutoMod.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+
+    ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:C:\projects\pkhex-plugins\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll BouncyCastle.CryptoExt.dll
+
 artifacts:
 - path: bin
   name: PKHeX-Plugins-$(mod_commit)
