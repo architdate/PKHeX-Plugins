@@ -173,7 +173,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to set trainer data to</param>
         /// <param name="trainer">Trainer data</param>
         /// <param name="APILegalized">Was the <see cref="pk"/> legalized by the API</param>
-        public static void SetTrainerData(this PKM pk, SimpleTrainerInfo trainer, bool APILegalized = false)
+        public static void SetTrainerData(this PKM pk, ITrainerInfo trainer, bool APILegalized = false)
         {
             if (APILegalized)
             {
@@ -218,7 +218,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Legal PKM for setting the data</param>
         /// <param name="trainer"></param>
         /// <returns>PKM with the necessary values modified to reflect trainerdata changes</returns>
-        public static void SetAllTrainerData(this PKM pk, SimpleTrainerInfo trainer)
+        public static void SetAllTrainerData(this PKM pk, ITrainerInfo trainer)
         {
             pk.SetTrainerData(trainer, true);
             pk.ConsoleRegion = trainer.ConsoleRegion;

@@ -8,10 +8,12 @@ using System.Text;
 namespace PKHeX.Core.AutoMod
 {
     /// <summary>
-    /// Logic to load <see cref="SimpleTrainerInfo"/> from a saved text file.
+    /// Logic to load <see cref="ITrainerInfo"/> from a saved text file.
     /// </summary>
     public static class TrainerSettings
     {
+        private static readonly TrainerDatabase Database = new TrainerDatabase();
+
         private static int GetConsoleRegionID(string val) => Util.GetUnsortedCBList("regions3ds").Find(z => z.Text == val).Value;
         private static int GetSubRegionID(string val, int country) => Util.GetCBList($"sr_{country:000}", "en").Find(z => z.Text == val).Value;
         private static int GetCountryID(string val) => Util.GetCBList("countries", "en").Find(z => z.Text == val).Value;
@@ -101,9 +103,9 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Function to extract trainerdata values from trainerdata.json
         /// </summary>
-        /// <param name="C_SAV">Current Save Editor</param>
+        /// <param name="sav">Current Save File</param>
         /// <param name="Game">optional Game value in case of mode being game</param>
-        private static string[] ParseTrainerJSON(SaveFile C_SAV, int Game = -1)
+        private static string[] ParseTrainerJSON(ITrainerInfo sav, int Game = -1)
         {
             var path = GetTrainerJSONPath();
             if (!File.Exists(path))
@@ -111,7 +113,7 @@ namespace PKHeX.Core.AutoMod
 
             string jsonstring = File.ReadAllText(path, Encoding.UTF8);
             if (Game == -1)
-                Game = C_SAV.Game;
+                Game = sav.Game;
 
             if (!CheckIfGameExists(jsonstring, Game, out string finaljson))
                 return ParseTrainerData(finaljson == "auto");
@@ -243,7 +245,7 @@ namespace PKHeX.Core.AutoMod
             File.WriteAllLines("trainerdata.txt", lines);
         }
 
-        private static SimpleTrainerInfo GetTrainer(string[] tdataVals)
+        private static ITrainerInfo GetTrainer(string[] tdataVals)
         {
             var trainer = new SimpleTrainerInfo
             {
@@ -271,9 +273,9 @@ namespace PKHeX.Core.AutoMod
             return trainer;
         }
 
-        private static SaveFile SAV => API.SAV;
+        private static ITrainerInfo SAV => API.SAV;
 
-        public static SimpleTrainerInfo GetSavedTrainerData(PKM legal = null)
+        public static ITrainerInfo GetSavedTrainerData(PKM legal = null)
         {
             bool checkPerGame = CheckMode() == AutoModMode.Save;
             // If mode is not set as game: (auto or save)
@@ -288,7 +290,7 @@ namespace PKHeX.Core.AutoMod
             return trainer;
         }
 
-        public static SimpleTrainerInfo GetRoughTrainerData(this PKM illegalPK)
+        public static ITrainerInfo GetRoughTrainerData(this PKM illegalPK)
         {
             return new SimpleTrainerInfo
             {
