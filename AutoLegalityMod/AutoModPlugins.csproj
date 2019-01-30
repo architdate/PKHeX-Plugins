@@ -48,7 +48,6 @@
     <Compile Include="Plugins\AutoModPlugin.cs" />
     <Compile Include="Plugins\ExportBoxToShowdown.cs" />
     <Compile Include="Plugins\ExportQRCodes.cs" />
-    <Compile Include="Plugins\ExportTrainerData.cs" />
     <Compile Include="Plugins\LegalizeBoxes.cs" />
     <Compile Include="Plugins\LivingDex.cs" />
     <Compile Include="Plugins\MGDBDownloader.cs" />
