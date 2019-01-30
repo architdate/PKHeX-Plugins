@@ -20,7 +20,7 @@ namespace AutoModPlugins
         private void ExportData(object sender, EventArgs e)
         {
             var pk = PKMEditor.PreparePKM();
-            var complete = TrainerDataExporter.ExportTextFile(pk);
+            var complete = TrainerSettings.ExportTextFile(pk);
             var result = complete
                 ? "trainerdata.txt Successfully Exported in the same directory as PKHeX"
                 : "Some of the fields were wrongly filled. Exported the default trainerdata.txt";
