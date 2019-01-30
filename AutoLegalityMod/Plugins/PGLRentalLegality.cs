@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,19 +18,15 @@ namespace AutoModPlugins
             ctrl.ShortcutKeys = Keys.Alt | Keys.Q;
         }
 
-        private void PGLShowdownSet(object sender, EventArgs e)
+        private static void PGLShowdownSet(object sender, EventArgs e)
         {
             if (!Clipboard.ContainsImage())
                 return;
             var img = Clipboard.GetImage();
-            var sets = GetSetsFromPGLQR(img);
-            AutomaticLegality.ImportModded(sets);
-        }
 
-        private static IEnumerable<string> GetSetsFromPGLQR(Image img)
-        {
             var rentalTeam = new QRParser().DecryptQRCode(img);
-            return rentalTeam.Team.Select(z => z.ToShowdownFormat(false));
+            var sets = rentalTeam.ConvertedTeam.ToList();
+            AutomaticLegality.ImportModded(sets);
         }
     }
 }
