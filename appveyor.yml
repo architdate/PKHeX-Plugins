@@ -43,25 +43,7 @@ after_build:
 - cmd: >-
     mkdir bin
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\AutoLegalityMod.dll C:\projects\PKHeX-Plugins\bin\
-
-    xcopy C:\projects\PKHeX-Plugins\ExportBoxToShowdown\bin\Release\ExportBoxToShowdown.dll C:\projects\PKHeX-Plugins\bin\
-
-    xcopy C:\projects\PKHeX-Plugins\ExportQRCodes\bin\Release\ExportQRCodes.dll C:\projects\PKHeX-Plugins\bin\
-
-    xcopy C:\projects\PKHeX-Plugins\ExportTrainerData\bin\Release\ExportTrainerData.dll C:\projects\PKHeX-Plugins\bin\
-
-    xcopy C:\projects\PKHeX-Plugins\LegalizeBoxes\bin\Release\LegalizeBoxes.dll C:\projects\PKHeX-Plugins\bin\
-
-    xcopy C:\projects\PKHeX-Plugins\LivingDex\bin\Release\LivingDex.dll C:\projects\PKHeX-Plugins\bin\
-
-    xcopy C:\projects\PKHeX-Plugins\MGDBDownloader\bin\Release\MGDBDownloader.dll C:\projects\PKHeX-Plugins\bin\
-
-    xcopy C:\projects\PKHeX-Plugins\PGLRentalLegality\bin\Release\PGLRentalLegality.dll C:\projects\PKHeX-Plugins\bin\
-
-    xcopy C:\projects\PKHeX-Plugins\SmogonGenner\bin\Release\SmogonGenner.dll C:\projects\PKHeX-Plugins\bin\
-
-    xcopy C:\projects\PKHeX-Plugins\URLGenning\bin\Release\URLGenning.dll C:\projects\PKHeX-Plugins\bin\
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\AutoModPlugins.dll C:\projects\PKHeX-Plugins\bin\
 artifacts:
 - path: bin
   name: PKHeX-Plugins-$(mod_commit)
