@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.CryptoExt, Version=1.7.4114.6378, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle-Ext.1.7.0\lib\net20\BouncyCastle.CryptoExt.dll</HintPath>
+    </Reference>
     <Reference Include="PKHeX.Core">
       <HintPath>..\PKHeX.Core.dll</HintPath>
     </Reference>
@@ -40,7 +43,19 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GUI\AutoModPlugin.cs" />
+    <Compile Include="GUI\QRCodeDumper.cs" />
+    <Compile Include="GUI\QRParser.cs" />
+    <Compile Include="Plugins\AutoModPlugin.cs" />
+    <Compile Include="Plugins\ExportBoxToShowdown.cs" />
+    <Compile Include="Plugins\ExportQRCodes.cs" />
+    <Compile Include="Plugins\ExportTrainerData.cs" />
+    <Compile Include="Plugins\LegalizeBoxes.cs" />
+    <Compile Include="Plugins\LivingDex.cs" />
+    <Compile Include="Plugins\MGDBDownloader.cs" />
+    <Compile Include="Plugins\PGLRentalLegality.cs" />
+    <Compile Include="Plugins\QRParser.cs" />
+    <Compile Include="Plugins\SmogonGenner.cs" />
+    <Compile Include="Plugins\URLGenning.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -50,10 +65,73 @@
     <Compile Include="GUI\AutomaticLegality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GUI\WinFormsUtil.cs" />
+    <Compile Include="QRCoder\AbstractQRCode.cs" />
+    <Compile Include="QRCoder\QRCode.cs" />
+    <Compile Include="QRCoder\QRCodeData.cs" />
+    <Compile Include="QRCoder\QRCodeGenerator.cs" />
+    <Compile Include="ZXing\BarcodeFormat.cs" />
+    <Compile Include="ZXing\Binarizer.cs" />
+    <Compile Include="ZXing\BinaryBitmap.cs" />
+    <Compile Include="ZXing\common\BitArray.cs" />
+    <Compile Include="ZXing\common\BitMatrix.cs" />
+    <Compile Include="ZXing\common\BitSource.cs" />
+    <Compile Include="ZXing\common\ByteArray.cs" />
+    <Compile Include="ZXing\common\ByteMatrix.cs" />
+    <Compile Include="ZXing\common\CharacterSetECI.cs" />
+    <Compile Include="ZXing\common\Collections.cs" />
+    <Compile Include="ZXing\common\DecoderResult.cs" />
+    <Compile Include="ZXing\common\DefaultGridSampler.cs" />
+    <Compile Include="ZXing\common\DetectorResult.cs" />
+    <Compile Include="ZXing\common\ECI.cs" />
+    <Compile Include="ZXing\common\GlobalHistogramBinarizer.cs" />
+    <Compile Include="ZXing\common\GridSampler.cs" />
+    <Compile Include="ZXing\common\HybridBinarizer.cs" />
+    <Compile Include="ZXing\common\IComparator.cs" />
+    <Compile Include="ZXing\common\PerspectiveTransform.cs" />
+    <Compile Include="ZXing\common\reedsolomon\GF256.cs" />
+    <Compile Include="ZXing\common\reedsolomon\GF256Poly.cs" />
+    <Compile Include="ZXing\common\reedsolomon\ReedSolomonDecoder.cs" />
+    <Compile Include="ZXing\common\reedsolomon\ReedSolomonEncoder.cs" />
+    <Compile Include="ZXing\common\reedsolomon\ReedSolomonException.cs" />
+    <Compile Include="ZXing\DecodeHintType.cs" />
+    <Compile Include="ZXing\LuminanceSource.cs" />
+    <Compile Include="ZXing\qrcode\decoder\BitMatrixParser.cs" />
+    <Compile Include="ZXing\qrcode\decoder\DataBlock.cs" />
+    <Compile Include="ZXing\qrcode\decoder\DataMask.cs" />
+    <Compile Include="ZXing\qrcode\decoder\DecodedBitStreamParser.cs" />
+    <Compile Include="ZXing\qrcode\decoder\Decoder.cs" />
+    <Compile Include="ZXing\qrcode\decoder\ErrorCorrectionLevel.cs" />
+    <Compile Include="ZXing\qrcode\decoder\FormatInformation.cs" />
+    <Compile Include="ZXing\qrcode\decoder\Mode.cs" />
+    <Compile Include="ZXing\qrcode\decoder\Version.cs" />
+    <Compile Include="ZXing\qrcode\detector\AlignmentPattern.cs" />
+    <Compile Include="ZXing\qrcode\detector\AlignmentPatternFinder.cs" />
+    <Compile Include="ZXing\qrcode\detector\Detector.cs" />
+    <Compile Include="ZXing\qrcode\detector\FinderPattern.cs" />
+    <Compile Include="ZXing\qrcode\detector\FinderPatternFinder.cs" />
+    <Compile Include="ZXing\qrcode\detector\FinderPatternInfo.cs" />
+    <Compile Include="ZXing\qrcode\QRCodeReader.cs" />
+    <Compile Include="ZXing\ReaderException.cs" />
+    <Compile Include="ZXing\Result.cs" />
+    <Compile Include="ZXing\ResultMetadataType.cs" />
+    <Compile Include="ZXing\ResultPoint.cs" />
+    <Compile Include="ZXing\ResultPointCallback.cs" />
+    <Compile Include="ZXing\RGBLuminanceSource.cs" />
+    <Compile Include="ZXing\SupportClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\autolegalitymod.png" />
+    <None Include="packages.config" />
+    <None Include="Resources\img\urlimport.png" />
+    <None Include="Resources\img\smogongenner.png" />
+    <None Include="Resources\img\pglqrcode.png" />
+    <None Include="Resources\img\mgdbdownload.png" />
     <None Include="Resources\img\icon.ico" />
+    <None Include="Resources\img\livingdex.png" />
+    <None Include="Resources\img\exportboxtoshowdown.png" />
+    <None Include="Resources\img\exportqrcode.png" />
+    <None Include="Resources\img\exporttrainerdata.png" />
+    <None Include="Resources\img\legalizeboxes.png" />
     <Content Include="Resources\img\menuautolegality.png" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,5 +144,6 @@
       <Name>PKHeX.Core.AutoMod</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
