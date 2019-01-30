@@ -18,16 +18,12 @@ using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
 {
-    public class QRParser
+    public static class QRParser
     {
-        private string SaveID { get; } = string.Empty;
-        private string TeamID { get; } = string.Empty;
-        private string Cookie { get; } = string.Empty;
-
         /// <summary>
         /// Gets QR image from HTTP requests.
         /// </summary>
-        public Image GetQRData()
+        public static Image GetQRData(string SaveID, string TeamID, string Cookie)
         {
             byte[] data = Encoding.ASCII.GetBytes($"savedataId={SaveID}&battleTeamCd={TeamID}");
 
@@ -121,7 +117,7 @@ namespace AutoModPlugins
             return cipher.ProcessBytes(data);
         }
 
-        public RentalTeam DecryptQRCode(Image QR)
+        public static RentalTeam DecryptQRCode(Image QR)
         {
             //Read the bytes of the QR code
             byte[] data = ParseQR(QR);

@@ -24,7 +24,7 @@ namespace AutoModPlugins
                 return;
             var img = Clipboard.GetImage();
 
-            var rentalTeam = new QRParser().DecryptQRCode(img);
+            var rentalTeam = QRParser.DecryptQRCode(img);
             var sets = rentalTeam.ConvertedTeam.ToList();
             AutomaticLegality.ImportModded(sets);
         }
