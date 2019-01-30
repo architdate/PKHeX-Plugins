@@ -56,6 +56,10 @@
       <Project>{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}</Project>
       <Name>AutoLegalityMod</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PKHeX.Core.AutoMod\PKHeX.Core.AutoMod.csproj">
+      <Project>{ef5ec3e5-9d9d-4b54-bbf3-9b943ded8b8a}</Project>
+      <Name>PKHeX.Core.AutoMod</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

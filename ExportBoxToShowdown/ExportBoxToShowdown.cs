@@ -1,5 +1,4 @@
 ﻿using PKHeX.Core;
-using System;
 using System.Windows.Forms;
 using AutoLegalityMod;
 
@@ -14,28 +13,21 @@ namespace ExportBoxToShowdown
         {
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
-            ctrl.Click += BoxToShowdown;
+            ctrl.Click += (s, e) => Export(SaveFileEditor.SAV);
             ctrl.Image = Properties.Resources.exportboxtoshowdown;
         }
 
-        private void BoxToShowdown(object sender, EventArgs e)
+        private static void Export(SaveFile sav)
         {
             try
             {
-                var str = GetShowdownSetsFromBoxCurrent(SaveFileEditor.SAV);
-                if (string.IsNullOrWhiteSpace(str)) return;
+                var str = sav.GetShowdownSetsFromBoxCurrent();
+                if (string.IsNullOrWhiteSpace(str))
+                    return;
                 Clipboard.SetText(str);
+                WinFormsUtil.Alert("Exported the active box to Showdown format");
             }
             catch { }
-            WinFormsUtil.Alert("Exported the active box to Showdown format");
-        }
-
-        private static string GetShowdownSetsFromBoxCurrent(SaveFile sav) => GetShowdownSetsFromBox(sav, sav.CurrentBox);
-
-        private static string GetShowdownSetsFromBox(SaveFile sav, int box)
-        {
-            var CurrBox = sav.GetBoxData(box);
-            return ShowdownSet.GetShowdownSets(CurrBox, Environment.NewLine + Environment.NewLine);
         }
     }
 }

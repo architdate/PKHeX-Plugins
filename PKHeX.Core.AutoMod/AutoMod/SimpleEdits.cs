@@ -225,5 +225,20 @@ namespace PKHeX.Core.AutoMod
             pk.Country = trainer.Country;
             pk.Region = trainer.SubRegion;
         }
+
+
+        public static void SetSuggestedMoves(this PKM pk, bool random = false)
+        {
+            int[] m = pk.GetMoveSet(random);
+            if (m?.Any(z => z != 0) != true)
+            {
+                return;
+            }
+
+            if (pk.Moves.SequenceEqual(m))
+                return;
+
+            pk.SetMoves(m);
+        }
     }
 }

@@ -1,8 +1,7 @@
-﻿using PKHeX.Core;
-using System;
-using System.Linq;
+﻿using System;
 using System.Windows.Forms;
 using AutoLegalityMod;
+using PKHeX.Core;
 
 namespace LivingDex
 {
@@ -21,49 +20,12 @@ namespace LivingDex
 
         private void GenLivingDex(object sender, EventArgs e)
         {
-            var bd = SaveFileEditor.SAV.BoxData;
-
-            var tr = SaveFileEditor.SAV;
-            for (int i = 1; i <= tr.MaxSpeciesID; i++)
-            {
-                var pk = SaveFileEditor.SAV.BlankPKM;
-                pk.Species = i;
-                pk.Gender = pk.GetSaneGender();
-                if (i == 678)
-                    pk.AltForm = pk.Gender;
-                var f = EncounterMovesetGenerator.GeneratePKMs(pk, tr).FirstOrDefault();
-                if (f != null)
-                {
-                    int abilityretain = f.AbilityNumber >> 1;
-                    f.Species = i;
-                    f.Gender = f.GetSaneGender();
-                    if (i == 678)
-                        f.AltForm = f.Gender;
-                    f.CurrentLevel = 100;
-                    f.Nickname = PKX.GetSpeciesNameGeneration(f.Species, f.Language, SaveFileEditor.SAV.Generation);
-                    f.IsNicknamed = false;
-                    SetSuggestedMoves(f);
-                    f.AbilityNumber = abilityretain;
-                    f.RefreshAbility(abilityretain);
-                    bd[i] = PKMConverter.ConvertToType(f, SaveFileEditor.SAV.PKMType, out _);
-                }
-            }
-            SaveFileEditor.SAV.BoxData = bd;
+            var sav = SaveFileEditor.SAV;
+            var pkms = sav.GenerateLivingDex();
+            var bd = sav.BoxData;
+            pkms.CopyTo(bd);
+            sav.BoxData = bd;
             SaveFileEditor.ReloadSlots();
-        }
-
-        private void SetSuggestedMoves(PKM pk, bool random = false)
-        {
-            int[] m = pk.GetMoveSet(random);
-            if (m?.Any(z => z != 0) != true)
-            {
-                return;
-            }
-
-            if (pk.Moves.SequenceEqual(m))
-                return;
-
-            pk.SetMoves(m);
         }
     }
 }
