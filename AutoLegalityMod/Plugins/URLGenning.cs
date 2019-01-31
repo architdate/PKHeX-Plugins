@@ -28,7 +28,7 @@ namespace AutoModPlugins
             }
             catch (Exception ex)
             {
-                WinFormsUtil.Error($"An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: {ex}");
+                WinFormsUtil.Error("An error occured while trying to obtain the contents of the URL.", $"The exact error is as follows: {ex}");
                 return;
             }
             if (!info.Valid)
@@ -45,8 +45,8 @@ namespace AutoModPlugins
             try { AutomaticLegality.ImportModded(info.Sets); }
             catch { WinFormsUtil.Error("The data inside the URL are not valid Showdown Sets"); }
 
-            var response = $"All sets genned from the following URL: {info.URL}\n\n{info.Summary}";
-            WinFormsUtil.Alert(response);
+            var response = $"All sets genned from the following URL: {info.URL}";
+            WinFormsUtil.Alert(response, info.Summary);
             Clipboard.SetText(initURL); // restore clipboard
         }
     }

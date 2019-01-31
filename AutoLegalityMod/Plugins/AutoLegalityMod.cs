@@ -1,5 +1,4 @@
-﻿using PKHeX.Core;
-using System;
+﻿using System;
 using System.IO;
 using System.Windows.Forms;
 using PKHeX.Core.AutoMod;
@@ -37,7 +36,7 @@ namespace AutoModPlugins
             API.SAV = SaveFileEditor.SAV;
         }
 
-        public void ClickShowdownImportPKMModded(object sender, EventArgs e)
+        private static void ClickShowdownImportPKMModded(object sender, EventArgs e)
         {
             // Check for showdown data in clipboard
             var text = GetTextShowdownData();
@@ -56,7 +55,7 @@ namespace AutoModPlugins
             if (!skipClipboardCheck && Clipboard.ContainsText())
             {
                 var txt = Clipboard.GetText();
-                if (IsTextShowdownData(txt))
+                if (ShowdownUtil.IsTextShowdownData(txt))
                     return txt;
             }
 
@@ -67,25 +66,11 @@ namespace AutoModPlugins
             }
 
             var text = File.ReadAllText(path).TrimEnd();
-            if (IsTextShowdownData(text))
+            if (ShowdownUtil.IsTextShowdownData(text))
                 return text;
 
             WinFormsUtil.Alert("Text file with invalid data provided. Please provide a text file with proper Showdown data");
             return null;
-        }
-
-        /// <summary>
-        /// Checks the input text is a showdown set or not
-        /// </summary>
-        /// <returns>boolean of the summary</returns>
-        private static bool IsTextShowdownData(string source)
-        {
-            if (ShowdownUtil.IsTeamBackup(source))
-                return true;
-            string[] stringSeparators = { "\n\r" };
-
-            var result = source.Split(stringSeparators, StringSplitOptions.None);
-            return new ShowdownSet(result[0]).Species >= 0;
         }
     }
 }

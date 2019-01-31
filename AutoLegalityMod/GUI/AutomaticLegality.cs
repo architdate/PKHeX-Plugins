@@ -32,11 +32,17 @@ namespace AutoModPlugins
         /// </summary>
         public static void ImportModded(string source)
         {
-            var Sets = ShowdownUtil.ShowdownSets(source, out Dictionary<int, string[]> TeamData);
-            if (TeamData != null)
-                WinFormsUtil.Alert(ShowdownUtil.TeamDataAlert(TeamData));
+            if (ShowdownUtil.IsTeamBackup(source))
+            {
+                var teams = ShowdownTeamSet.GetTeams(source).ToArray();
+                var names = teams.Select(z => z.Summary);
+                WinFormsUtil.Alert("Generating the following teams:", string.Join(Environment.NewLine, names));
+                ImportModded(teams.SelectMany(z => z.Team).ToList());
+                return;
+            }
 
-            ImportModded(Sets);
+            var sets = ShowdownUtil.ShowdownSets(source);
+            ImportModded(sets);
         }
 
         /// <summary>
