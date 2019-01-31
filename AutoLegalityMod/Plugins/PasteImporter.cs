@@ -8,7 +8,7 @@ namespace AutoModPlugins
     /// <summary>
     /// Main Plugin with clipboard import calls
     /// </summary>
-    public class AutoLegalityMod : AutoModPlugin
+    public class PasteImporter : AutoModPlugin
     {
         public override string Name => "Import with Auto-Legality Mod";
         public override int Priority => 0;
@@ -17,7 +17,7 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
-            ctrl.Click += ClickShowdownImportPKMModded;
+            ctrl.Click += ImportPaste;
             ctrl.Name = "Menu_AutoLegalityMod";
             ctrl.Image = Properties.Resources.autolegalitymod;
             ctrl.ShortcutKeys = Keys.Control | Keys.I;
@@ -36,7 +36,7 @@ namespace AutoModPlugins
             API.SAV = SaveFileEditor.SAV;
         }
 
-        private static void ClickShowdownImportPKMModded(object sender, EventArgs e)
+        private static void ImportPaste(object sender, EventArgs e)
         {
             // Check for showdown data in clipboard
             var text = GetTextShowdownData();
