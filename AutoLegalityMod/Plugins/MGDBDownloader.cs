@@ -20,7 +20,7 @@ namespace AutoModPlugins
             ctrl.Image = Properties.Resources.mgdbdownload;
         }
 
-        public void DownloadMGDB(object o, EventArgs e)
+        private static void DownloadMGDB(object o, EventArgs e)
         {
             if (Directory.Exists(MGDatabasePath))
             {

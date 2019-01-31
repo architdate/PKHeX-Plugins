@@ -221,7 +221,7 @@ namespace SmogonGenner
             {
                 alertText += $"{entry.Key}: {string.Join(", ", entry.Value)}\n";
             }
-            alertText += Environment.NewLine + count + " sets genned for " + showdownSpec;
+            alertText += Environment.NewLine + $"{count} sets genned for {showdownSpec}";
             return alertText;
         }
     }
