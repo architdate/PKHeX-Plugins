@@ -5,6 +5,9 @@ namespace PKHeX.Core.AutoMod
         None,
         NoSingleImport,
 
+        /// <summary>
+        /// Don't use this!
+        /// </summary>
         CODE_SILENT,
 
         NotEnoughSpace,
@@ -15,7 +18,7 @@ namespace PKHeX.Core.AutoMod
     {
         public static string GetMessage(this AutoModErrorCode code)
         {
-            if (code <= AutoModErrorCode.CODE_SILENT)
+            if (code.IsSilent())
                 return string.Empty;
             switch (code)
             {
@@ -26,5 +29,7 @@ namespace PKHeX.Core.AutoMod
             }
             return string.Empty;
         }
+
+        public static bool IsSilent(this AutoModErrorCode code) => code <= AutoModErrorCode.CODE_SILENT;
     }
 }
