@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using PKHeX.Core;
@@ -9,55 +8,46 @@ using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
 {
-    public static class AutomaticLegality
+    /// <summary>
+    /// Logic that loads a <see cref="ShowdownSet"/>
+    /// </summary>
+    public static class ShowdownSetLoader
     {
-        static AutomaticLegality()
-        {
-            // Make a blank MGDB directory and initialize trainerdata
-            if (!Directory.Exists(MGDatabasePath))
-                Directory.CreateDirectory(MGDatabasePath);
-        }
-
         // TODO: Check for Auto Legality Mod Updates
         public static ISaveFileProvider SaveFileEditor { private get; set; }
         public static IPKMView PKMEditor { private get; set; }
 
         /// <summary>
-        /// Global Variables for Auto Legality Mod
-        /// </summary>
-        private static readonly string MGDatabasePath = Path.Combine(Directory.GetCurrentDirectory(), "mgdb");
-
-        /// <summary>
         /// Imports <see cref="ShowdownSet"/> list(s) originating from a concatenated list.
         /// </summary>
-        public static void ImportModded(string source)
+        public static void Import(string source)
         {
             if (ShowdownUtil.IsTeamBackup(source))
             {
                 var teams = ShowdownTeamSet.GetTeams(source).ToArray();
                 var names = teams.Select(z => z.Summary);
                 WinFormsUtil.Alert("Generating the following teams:", string.Join(Environment.NewLine, names));
-                ImportModded(teams.SelectMany(z => z.Team).ToList());
+                Import(teams.SelectMany(z => z.Team).ToList());
                 return;
             }
 
             var sets = ShowdownUtil.ShowdownSets(source);
-            ImportModded(sets);
+            Import(sets);
         }
 
         /// <summary>
         /// Imports <see cref="ShowdownSet"/> list(s).
         /// </summary>
-        public static void ImportModded(IEnumerable<string> sets)
+        public static void Import(IEnumerable<string> sets)
         {
             var entries = sets.Select(z => new ShowdownSet(z)).ToList();
-            ImportModded(entries);
+            Import(entries);
         }
 
         /// <summary>
         /// Import Showdown Sets and alert user of any messages intended
         /// </summary>
-        public static void ImportModded(IReadOnlyList<ShowdownSet> sets)
+        public static void Import(IReadOnlyList<ShowdownSet> sets)
         {
             var timer = Stopwatch.StartNew();
 
@@ -92,7 +82,7 @@ namespace AutoModPlugins
             if (set.InvalidLines.Count > 0)
                 return AutoModErrorCode.InvalidLines;
 
-            PKM legal = Legalizer.GetLegalFromSet(set, allowAPI, out var _);
+            var legal = Legalizer.GetLegalFromSet(set, out var _, allowAPI);
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
             return AutoModErrorCode.None;

@@ -26,7 +26,7 @@ namespace AutoModPlugins
 
             var rentalTeam = QRParser.DecryptQRCode(img);
             var sets = rentalTeam.ConvertedTeam.ToList();
-            AutomaticLegality.ImportModded(sets);
+            ShowdownSetLoader.Import(sets);
         }
     }
 }

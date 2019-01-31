@@ -42,7 +42,7 @@ namespace AutoModPlugins
                 return;
             }
 
-            try { AutomaticLegality.ImportModded(info.Sets); }
+            try { ShowdownSetLoader.Import(info.Sets); }
             catch { WinFormsUtil.Error("The data inside the URL are not valid Showdown Sets"); }
 
             var response = $"All sets genned from the following URL: {info.URL}";

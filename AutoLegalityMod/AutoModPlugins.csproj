@@ -60,7 +60,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Plugins\AutoLegalityMod.cs" />
-    <Compile Include="GUI\AutomaticLegality.cs" />
+    <Compile Include="GUI\ShowdownSetLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GUI\WinFormsUtil.cs" />
     <Compile Include="QRCoder\AbstractQRCode.cs" />

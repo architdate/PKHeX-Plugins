@@ -26,8 +26,8 @@ namespace AutoModPlugins
             var form = parent.GetCurrentParent().Parent.FindForm();
             form.Icon = Properties.Resources.icon;
 
-            AutomaticLegality.PKMEditor = PKMEditor;
-            AutomaticLegality.SaveFileEditor = SaveFileEditor;
+            ShowdownSetLoader.PKMEditor = PKMEditor;
+            ShowdownSetLoader.SaveFileEditor = SaveFileEditor;
         }
 
         public override void NotifySaveLoaded()
@@ -42,7 +42,7 @@ namespace AutoModPlugins
             var text = GetTextShowdownData();
             if (string.IsNullOrWhiteSpace(text))
                 return;
-            AutomaticLegality.ImportModded(text);
+            ShowdownSetLoader.Import(text);
         }
 
         /// <summary>

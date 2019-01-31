@@ -43,7 +43,7 @@ namespace AutoModPlugins
                 return;
             }
 
-            try { AutomaticLegality.ImportModded(info.ShowdownSets); }
+            try { ShowdownSetLoader.Import(info.ShowdownSets); }
             catch { WinFormsUtil.Error("Something went wrong"); }
 
             WinFormsUtil.Alert(info.Summary);
