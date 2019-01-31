@@ -8,12 +8,12 @@ namespace PKHeX.Core.AutoMod
     {
         public static PKM Legalize(PKM pk)
         {
-            ShowdownSet set = new ShowdownSet(ShowdownSet.GetShowdownText(pk));
+            var set = new ShowdownSet(ShowdownSet.GetShowdownText(pk));
 
-            PKM APIGenerated = API.SAV.BlankPKM;
+            PKM APIGenerated;
             bool satisfied = false;
             try { APIGenerated = API.APILegality(pk, set, out satisfied); }
-            catch { }
+            catch { APIGenerated = API.SAV.BlankPKM; }
 
             var trainer = pk.GetRoughTrainerData();
             PKM legal;
@@ -39,7 +39,7 @@ namespace PKHeX.Core.AutoMod
             if (emptySlots.Count < sets.Count && sets.Count != 1)
                 return AutoModErrorCode.NotEnoughSpace;
 
-            int apiCounter = 0;
+            int validAPI = 0;
             var invalidAPISets = new List<ShowdownSet>();
             for (int i = 0; i < sets.Count; i++)
             {
@@ -47,11 +47,11 @@ namespace PKHeX.Core.AutoMod
                 if (set.InvalidLines.Count > 0)
                     return AutoModErrorCode.InvalidLines;
 
-                PKM legal = GetLegalFromSet(set, allowAPI, out var msg);
+                PKM legal = GetLegalFromSet(set, out var msg, allowAPI);
                 switch (msg)
                 {
                     case LegalizationResult.API_Valid:
-                        apiCounter++;
+                        validAPI++;
                         break;
                     case LegalizationResult.API_Invalid:
                         invalidAPISets.Add(set);
@@ -61,25 +61,30 @@ namespace PKHeX.Core.AutoMod
                 BoxData[start + emptySlots[i]] = legal;
             }
 
-            var total = invalidAPISets.Count + apiCounter;
-            Debug.WriteLine($"API Genned Sets: {apiCounter}/{total}, {invalidAPISets.Count} were not.");
+            var total = invalidAPISets.Count + validAPI;
+            Debug.WriteLine($"API Genned Sets: {validAPI}/{total}, {invalidAPISets.Count} were not.");
             foreach (var set in invalidAPISets)
                 Debug.WriteLine(set.Text);
             return AutoModErrorCode.None;
         }
 
-        public static PKM GetLegalFromSet(ShowdownSet set, bool allowAPI, out LegalizationResult msg)
+        public static PKM GetLegalFromSet(ShowdownSet set, out LegalizationResult msg, bool allowAPI = true)
         {
-            PKM roughPKM = API.SAV.BlankPKM;
-            roughPKM.ApplySetDetails(set);
-            roughPKM.Version = (int)GameVersion.MN; // Avoid the blank version glitch
-            if (allowAPI && TryAPIConvert(set, roughPKM, out PKM pk))
+            var template = API.SAV.BlankPKM;
+            template.ApplySetDetails(set);
+            template.Version = (int)GameVersion.MN; // Avoid the blank version glitch
+            return GetLegalFromSet(set, template, out msg, allowAPI);
+        }
+
+        private static PKM GetLegalFromSet(ShowdownSet set, PKM template, out LegalizationResult msg, bool allowAPI = true)
+        {
+            if (allowAPI && TryAPIConvert(set, template, out PKM pk))
             {
                 msg = LegalizationResult.API_Valid;
                 return pk;
             }
             msg = LegalizationResult.API_Invalid;
-            return GetBruteForcedLegalMon(set, roughPKM);
+            return GetBruteForcedLegalMon(set, template);
         }
 
         private static bool TryAPIConvert(ShowdownSet set, PKM template, out PKM pkm)
