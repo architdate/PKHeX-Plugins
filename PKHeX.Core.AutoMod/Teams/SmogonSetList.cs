@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PKHeX.Core;
-using PKHeX.Core.AutoMod;
 
-namespace SmogonGenner
+namespace PKHeX.Core.AutoMod
 {
     public class SmogonSetList
     {
@@ -14,43 +12,54 @@ namespace SmogonGenner
         public readonly string Form;
         public readonly string ShowdownSpeciesName;
         public readonly string Page;
-        public readonly string ShowdownSets;
-        public readonly List<string> Sets = new List<string>();
+        public readonly List<string> SetConfig = new List<string>();
+        public readonly List<string> SetText = new List<string>();
+        public readonly List<ShowdownSet> Sets = new List<ShowdownSet>();
 
-        public string Summary => AlertText(ShowdownSpeciesName, Sets.Count, GetTitles(Page));
+        public string Summary => AlertText(ShowdownSpeciesName, SetText.Count, GetTitles(Page));
 
         public SmogonSetList(PKM pk)
         {
-            string speciesName = GameInfo.GetStrings("en").Species[pk.Species];
-            var set = new ShowdownSet(pk);
-            var form = set.Form;
-            var type = pk.GetType().Name;
-
-            Species = speciesName;
-            Form = form;
-            var baseURL = GetBaseURL(type);
+            var baseURL = GetBaseURL(pk.GetType().Name);
             if (string.IsNullOrWhiteSpace(baseURL))
                 return;
 
-            URL = GetURL(speciesName, form, baseURL);
+            var set = new ShowdownSet(pk);
+            Species = GameInfo.GetStrings("en").Species[pk.Species];
+            Form = set.Form;
+
+            URL = GetURL(Species, Form, baseURL);
             Page = NetUtil.GetPageText(URL);
 
             Valid = true;
+            ShowdownSpeciesName = GetShowdownName(Species, Form);
 
+            LoadSetsFromPage();
+        }
+
+        private static string GetShowdownName(string species, string form)
+        {
+            if (string.IsNullOrWhiteSpace(form) || form == "Mega")
+                return species;
+            return $"{species}-{form}";
+        }
+
+        private void LoadSetsFromPage()
+        {
             string[] split1 = Page.Split(new[] { "\",\"abilities\":" }, StringSplitOptions.None);
             for (int i = 1; i < split1.Length; i++)
-                Sets.Add(split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None)[0]);
-
-            ShowdownSpeciesName = speciesName;
-            if (form != null)
             {
-                if (form != "Mega" || form != "")
-                    ShowdownSpeciesName += ("-" + form);
-            }
+                var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
 
-            var converted = Sets.Select(z => ConvertSetToShowdown(z, ShowdownSpeciesName));
-            var separator = Environment.NewLine + Environment.NewLine;
-            ShowdownSets = string.Join(separator, converted);
+                var tmp = split2[0];
+                SetConfig.Add(tmp);
+
+                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName);
+                SetText.Add(morphed);
+
+                var converted = new ShowdownSet(morphed);
+                Sets.Add(converted);
+            }
         }
 
         private static string GetBaseURL(string type)
@@ -178,7 +187,7 @@ namespace SmogonGenner
 
         private static string GetURL(string speciesName, string form, string baseURL)
         {
-            if (form == null)
+            if (string.IsNullOrWhiteSpace(form))
             {
                 var spec = ConvertSpeciesToURLSpecies(speciesName).ToLower();
                 return $"{baseURL}/{spec}/";

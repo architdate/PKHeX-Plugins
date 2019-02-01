@@ -13,7 +13,6 @@ namespace AutoModPlugins
     /// </summary>
     public static class ShowdownSetLoader
     {
-        // TODO: Check for Auto Legality Mod Updates
         public static ISaveFileProvider SaveFileEditor { private get; set; }
         public static IPKMView PKMEditor { private get; set; }
 
@@ -98,7 +97,7 @@ namespace AutoModPlugins
         {
             var SAV = SaveFileEditor.SAV;
             var BoxData = SAV.BoxData;
-            int start = SaveFileEditor.CurrentBox * SAV.BoxSlotCount;
+            int start = SAV.CurrentBox * SAV.BoxSlotCount;
 
             var result = Legalizer.ImportToExisting(sets, BoxData, start, replace, allowAPI);
             if (result != AutoModErrorCode.None)

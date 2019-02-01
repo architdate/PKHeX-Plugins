@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using PKHeX.Core;
-using SmogonGenner;
+using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
 {
@@ -37,13 +37,13 @@ namespace AutoModPlugins
                 return;
             }
 
-            if (info.ShowdownSets.Length == 0)
+            if (!info.Valid || info.Sets.Count == 0)
             {
                 WinFormsUtil.Error("No movesets available. Perhaps you could help out? Check the Contributions & Corrections forum.\n\nForum: https://www.smogon.com/forums/forums/contributions-corrections.388/");
                 return;
             }
 
-            try { ShowdownSetLoader.Import(info.ShowdownSets); }
+            try { ShowdownSetLoader.Import(info.Sets); }
             catch { WinFormsUtil.Error("Something went wrong"); }
 
             WinFormsUtil.Alert(info.Summary);
