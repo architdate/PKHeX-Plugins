@@ -63,7 +63,7 @@ namespace AutoModTests
             if (format > 10)
                 format = 6;
             var pkm = PKMConverter.GetPKMfromBytes(data, prefer: format);
-            pkm.Should().NotBe($"the PKM '{new FileInfo(file).Name}' should have been loaded");
+            pkm.Should().NotBeNull($"the PKM '{new FileInfo(file).Name}' should have been loaded");
             return pkm;
         }
     }
