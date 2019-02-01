@@ -39,7 +39,7 @@ namespace PKHeX.Core.AutoMod
 
         private static string GetShowdownName(string species, string form)
         {
-            if (string.IsNullOrWhiteSpace(form) || form == "Mega")
+            if (string.IsNullOrWhiteSpace(form) || ShowdownUtil.IsInvalidForm(form))
                 return species;
             return $"{species}-{form}";
         }
