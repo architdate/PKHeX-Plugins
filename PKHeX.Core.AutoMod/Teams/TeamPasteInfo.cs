@@ -8,15 +8,15 @@ namespace PKHeX.Core.AutoMod
     public class TeamPasteInfo
     {
         public readonly string URL;
-        public readonly bool Valid = true;
+        public readonly bool Valid = false;
         public readonly PasteSource Source;
         public readonly string Sets;
 
         public string Summary => $"{Source} data:\nTitle: {Title}\nAuthor: {Author}\nDescription: {Description}";
 
-        private string Author = "Showdown Paste";
-        private string Title = "Pokémon Trainer";
-        private string Description = "A Mysterious Paste";
+        public string Author { get; private set; } = "Showdown Paste";
+        public string Title { get; private set; } = "Pokémon Trainer";
+        public string Description { get; private set; } = "A Mysterious Paste";
 
         public enum PasteSource
         {
@@ -108,21 +108,16 @@ namespace PKHeX.Core.AutoMod
         {
             URL = url;
             bool isUri = Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute);
-            if (isUri)
-            {
-                Valid = false;
+            if (!isUri)
                 return;
-            }
             Source = GetSource(url);
             if (Source == PasteSource.None)
-            {
-                Valid = false;
                 return;
-            }
 
             url = GetRawURL(url);
             Sets = NetUtil.GetPageText(url).Trim();
             LoadMetadata();
+            Valid = true;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FluentAssertions;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
@@ -18,10 +19,25 @@ namespace AutoModTests
             blank.AltForm = form;
 
             var smogon = new SmogonSetList(blank);
+            smogon.Valid.Should().BeTrue();
             int count = smogon.Sets.Count;
             count.Should().BeGreaterThan(0);
             smogon.SetConfig.Count.Should().Be(count);
             smogon.SetText.Count.Should().Be(count);
+        }
+
+        [Theory]
+        [InlineData("https://pokepast.es/73c130c81caab03e", "STING LIKE A BEE", 15, 801)]
+        public void HasPokePasteSets(string url, string name, params int[] speciesPresent)
+        {
+            var tpi = new TeamPasteInfo(url);
+            tpi.Valid.Should().BeTrue();
+            tpi.Title.Should().Be(name);
+
+            var team = ShowdownUtil.ShowdownSets(tpi.Sets);
+            var species = team.Select(s => s.Species).ToList();
+            var hasAll = speciesPresent.All(species.Contains);
+            hasAll.Should().BeTrue();
         }
     }
 }
