@@ -13,6 +13,9 @@ namespace AutoModTests
 
         static LegalityTests()
         {
+            if (!EncounterEvent.Initialized)
+                EncounterEvent.RefreshMGDB();
+
             var folder = Directory.GetCurrentDirectory();
             while (!folder.EndsWith(nameof(AutoModTests)))
                 folder = Directory.GetParent(folder).FullName;
