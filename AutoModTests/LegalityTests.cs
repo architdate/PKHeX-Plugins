@@ -7,7 +7,7 @@ using Xunit;
 
 namespace AutoModTests
 {
-    public class LegalityTests
+    public static class LegalityTests
     {
         public static readonly string PKMFolder;
 
@@ -23,7 +23,7 @@ namespace AutoModTests
         }
 
         [Fact]
-        public void TestFilesPassOrFailLegalityChecks()
+        public static void TestFilesPassOrFailLegalityChecks()
         {
             var folder = PKMFolder;
             VerifyAll(folder, "Legal", true);
