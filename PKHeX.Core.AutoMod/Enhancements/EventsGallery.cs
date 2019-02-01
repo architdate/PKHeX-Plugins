@@ -5,8 +5,17 @@ using System.Net;
 
 namespace PKHeX.Core.AutoMod
 {
-    public static class EventsGalleryDownload
+    public static class EventsGallery
     {
+        public const string mgdbURL = "https://github.com/projectpokemon/EventsGallery/archive/master.zip";
+        public const string releaseURL = "https://api.github.com/repos/projectpokemon/EventsGallery/releases/latest";
+
+        public static string GetMGDBDownloadURL()
+        {
+            string json_data = NetUtil.DownloadString(releaseURL);
+            return json_data.Split(new[] { "browser_download_url" }, StringSplitOptions.None)[1].Substring(3).Split('"')[0];
+        }
+
         public static void DownloadMGDBFromGitHub(string dest, bool entire)
         {
             if (entire)
@@ -17,14 +26,12 @@ namespace PKHeX.Core.AutoMod
 
         private static void DownloadRelease(string dest)
         {
-            string json_data = DownloadString("https://api.github.com/repos/projectpokemon/EventsGallery/releases/latest");
-            string mgdbURL = json_data.Split(new[] { "browser_download_url" }, StringSplitOptions.None)[1].Substring(3).Split('"')[0];
-            DownloadAndExtractZip(mgdbURL, dest);
+            string downloadURL = GetMGDBDownloadURL();
+            DownloadAndExtractZip(downloadURL, dest);
         }
 
         private static void DownloadEntireRepo(string dest)
         {
-            const string mgdbURL = "https://github.com/projectpokemon/EventsGallery/archive/master.zip";
             DownloadAndExtractZip(mgdbURL, dest);
 
             // clean up; delete unneeded files
@@ -43,18 +50,6 @@ namespace PKHeX.Core.AutoMod
             client.DownloadFile(new Uri(url), temp);
             ZipFile.ExtractToDirectory(temp, dest);
             File.Delete(temp);
-        }
-
-        private static string DownloadString(string address)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(address);
-            request.Method = "GET";
-            request.UserAgent = "PKHeX-Auto-Legality-Mod";
-            request.Accept = "application/json";
-            WebResponse response = request.GetResponse(); //Error Here
-            Stream dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            return reader.ReadToEnd();
         }
     }
 }

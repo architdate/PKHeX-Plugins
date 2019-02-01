@@ -38,7 +38,7 @@ namespace AutoModPlugins
                 "Selecting No will download only the public release of the database.");
 
             bool entire = prompt == DialogResult.Yes;
-            EventsGalleryDownload.DownloadMGDBFromGitHub(MGDatabasePath, entire);
+            EventsGallery.DownloadMGDBFromGitHub(MGDatabasePath, entire);
             WinFormsUtil.Alert("Download Finished");
             Legal.RefreshMGDB(MGDatabasePath);
         }
