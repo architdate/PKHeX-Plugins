@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -225,13 +226,18 @@ namespace PKHeX.Core.AutoMod
 
         private static string AlertText(string showdownSpec, int count, Dictionary<string, List<string>> titles)
         {
-            string alertText = showdownSpec + ":" + string.Concat(Enumerable.Repeat(Environment.NewLine, 2));
+            var sb = new StringBuilder();
+            sb.Append(showdownSpec).Append(":");
+            sb.Append(Environment.NewLine);
+            sb.Append(Environment.NewLine);
             foreach (KeyValuePair<string, List<string>> entry in titles)
             {
-                alertText += $"{entry.Key}: {string.Join(", ", entry.Value)}\n";
+                sb.Append(entry.Key).Append(": ").Append(string.Join(", ", entry.Value));
+                sb.Append(Environment.NewLine);
             }
-            alertText += Environment.NewLine + $"{count} sets genned for {showdownSpec}";
-            return alertText;
+            sb.Append(Environment.NewLine);
+            sb.Append(count).Append(" sets genned for ").Append(showdownSpec);
+            return sb.ToString();
         }
     }
 }

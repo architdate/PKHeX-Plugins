@@ -31,6 +31,7 @@ namespace AutoModTests
         public static void HasPokePasteSets(string url, string name, params int[] speciesPresent)
         {
             var tpi = new TeamPasteInfo(url);
+            tpi.Source.Should().Be(TeamPasteInfo.PasteSource.PokePaste);
             tpi.VerifyContents(name, speciesPresent);
         }
 
@@ -39,6 +40,7 @@ namespace AutoModTests
         public static void HasPastebinSets(string url, string name, params int[] speciesPresent)
         {
             var tpi = new TeamPasteInfo(url);
+            tpi.Source.Should().Be(TeamPasteInfo.PasteSource.Pastebin);
             tpi.VerifyContents(name, speciesPresent);
         }
 

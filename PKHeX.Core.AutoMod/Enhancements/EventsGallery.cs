@@ -45,9 +45,10 @@ namespace PKHeX.Core.AutoMod
 
         private static void DownloadAndExtractZip(string url, string dest)
         {
-            WebClient client = new WebClient();
             const string temp = "temp.zip";
-            client.DownloadFile(new Uri(url), temp);
+            using (WebClient client = new WebClient())
+                client.DownloadFile(new Uri(url), temp);
+
             ZipFile.ExtractToDirectory(temp, dest);
             File.Delete(temp);
         }
