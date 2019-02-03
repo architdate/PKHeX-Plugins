@@ -9,7 +9,7 @@ namespace AutoModTests
 {
     public static class LegalityTests
     {
-        public static readonly string PKMFolder = GetLegalityPKMFolder();
+        private static readonly string PKMFolder = TestUtil.GetTestFolder("Legality");
 
         static LegalityTests()
         {
@@ -17,14 +17,6 @@ namespace AutoModTests
                 EncounterEvent.RefreshMGDB();
 
             API.SAV = SaveUtil.GetBlankSAV(PKX.Generation, "PKHeX");
-        }
-
-        private static string GetLegalityPKMFolder()
-        {
-            var folder = Directory.GetCurrentDirectory();
-            while (!folder.EndsWith(nameof(AutoModTests)))
-                folder = Directory.GetParent(folder).FullName;
-            return Path.Combine(GetLegalityPKMFolder(), "Legality");
         }
 
         [Fact]

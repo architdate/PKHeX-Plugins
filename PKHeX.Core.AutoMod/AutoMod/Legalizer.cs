@@ -43,11 +43,11 @@ namespace PKHeX.Core.AutoMod
             var invalidAPISets = new List<ShowdownSet>();
             for (int i = 0; i < sets.Count; i++)
             {
-                ShowdownSet set = sets[i];
+                var set = sets[i];
                 if (set.InvalidLines.Count > 0)
                     return AutoModErrorCode.InvalidLines;
 
-                PKM legal = GetLegalFromSet(set, out var msg, allowAPI);
+                var pk = GetLegalFromSet(set, out var msg, allowAPI);
                 switch (msg)
                 {
                     case LegalizationResult.API_Valid:
@@ -58,7 +58,7 @@ namespace PKHeX.Core.AutoMod
                         break;
                 }
 
-                BoxData[start + emptySlots[i]] = legal;
+                BoxData[start + emptySlots[i]] = pk;
             }
 
             var total = invalidAPISets.Count + validAPI;

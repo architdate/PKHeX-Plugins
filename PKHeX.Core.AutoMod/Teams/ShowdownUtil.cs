@@ -32,6 +32,7 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Checks the input text is a showdown set or not
         /// </summary>
+        /// <param name="source">Concatenated showdown strings</param>
         /// <returns>boolean of the summary</returns>
         public static bool IsTextShowdownData(string source)
         {
