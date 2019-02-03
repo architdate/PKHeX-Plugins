@@ -29,7 +29,7 @@ namespace PKHeX.Core.AutoMod
             if (emptySlots.Count < sets.Count && sets.Count != 1)
                 return AutoModErrorCode.NotEnoughSpace;
 
-            int validAPI = 0;
+            var generated = 0;
             var invalidAPISets = new List<ShowdownSet>();
             for (int i = 0; i < sets.Count; i++)
             {
@@ -38,21 +38,14 @@ namespace PKHeX.Core.AutoMod
                     return AutoModErrorCode.InvalidLines;
 
                 var pk = sav.GetLegalFromSet(set, out var msg, allowAPI);
-                switch (msg)
-                {
-                    case LegalizationResult.API_Valid:
-                        validAPI++;
-                        break;
-                    case LegalizationResult.API_Invalid:
-                        invalidAPISets.Add(set);
-                        break;
-                }
+                if (msg == LegalizationResult.API_Invalid)
+                    invalidAPISets.Add(set);
 
                 BoxData[start + emptySlots[i]] = pk;
+                generated++;
             }
 
-            var total = invalidAPISets.Count + validAPI;
-            Debug.WriteLine($"API Genned Sets: {validAPI}/{total}, {invalidAPISets.Count} were not.");
+            Debug.WriteLine($"API Genned Sets: {generated - invalidAPISets.Count}/{generated}, {invalidAPISets.Count} were not.");
             foreach (var set in invalidAPISets)
                 Debug.WriteLine(set.Text);
             return AutoModErrorCode.None;
