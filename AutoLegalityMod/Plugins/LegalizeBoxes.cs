@@ -12,10 +12,9 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
-            modmenu.DropDownItems.Add(ctrl);
+            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.legalizeboxes };
             ctrl.Click += Legalize;
-            ctrl.Image = Properties.Resources.legalizeboxes;
+            modmenu.DropDownItems.Add(ctrl);
         }
 
         private void Legalize(object sender, EventArgs e)

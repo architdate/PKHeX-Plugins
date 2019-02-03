@@ -16,12 +16,13 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
-            modmenu.DropDownItems.Add(ctrl);
+            var ctrl = new ToolStripMenuItem(Name)
+            {
+                Image = Properties.Resources.autolegalitymod,
+                ShortcutKeys = Keys.Control | Keys.I
+            };
             ctrl.Click += ImportPaste;
-            ctrl.Name = "Menu_AutoLegalityMod";
-            ctrl.Image = Properties.Resources.autolegalitymod;
-            ctrl.ShortcutKeys = Keys.Control | Keys.I;
+            modmenu.DropDownItems.Add(ctrl);
 
             var parent = modmenu.OwnerItem;
             var form = parent.GetCurrentParent().Parent.FindForm();

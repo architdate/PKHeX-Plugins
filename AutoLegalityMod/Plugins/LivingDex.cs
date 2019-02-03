@@ -11,10 +11,9 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
-            modmenu.DropDownItems.Add(ctrl);
+            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.livingdex };
             ctrl.Click += GenLivingDex;
-            ctrl.Image = Properties.Resources.livingdex;
+            modmenu.DropDownItems.Add(ctrl);
         }
 
         private void GenLivingDex(object sender, EventArgs e)

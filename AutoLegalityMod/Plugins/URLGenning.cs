@@ -11,16 +11,14 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
-            modmenu.DropDownItems.Add(ctrl);
+            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.urlimport };
             ctrl.Click += URLGen;
-            ctrl.Image = Properties.Resources.urlimport;
+            modmenu.DropDownItems.Add(ctrl);
         }
 
         private static void URLGen(object sender, EventArgs e)
         {
-            string url = Clipboard.GetText().Trim();
-            string initURL = url;
+            var url = Clipboard.GetText().Trim();
             TeamPasteInfo info;
             try
             {
@@ -33,7 +31,7 @@ namespace AutoModPlugins
             }
             if (!info.Valid)
             {
-                WinFormsUtil.Error("The text in the clipboard is not a valid URL.");
+                WinFormsUtil.Error("The data inside the URL are not valid Showdown Sets");
                 return;
             }
             if (info.Source == TeamPasteInfo.PasteSource.None)
@@ -42,12 +40,10 @@ namespace AutoModPlugins
                 return;
             }
 
-            try { ShowdownSetLoader.Import(info.Sets); }
-            catch { WinFormsUtil.Error("The data inside the URL are not valid Showdown Sets"); }
+            ShowdownSetLoader.Import(info.Sets);
 
             var response = $"All sets genned from the following URL: {info.URL}";
             WinFormsUtil.Alert(response, info.Summary);
-            Clipboard.SetText(initURL); // restore clipboard
         }
     }
 }

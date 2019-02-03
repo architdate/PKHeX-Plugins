@@ -70,13 +70,17 @@ namespace PKHeX.Core.AutoMod
 
         public static PKM GetLegalFromSet(ShowdownSet set, out LegalizationResult msg, bool allowAPI = true)
         {
-            var template = API.SAV.BlankPKM;
+            return GetLegalFromSet(set, API.SAV, out msg, allowAPI);
+        }
+
+        public static PKM GetLegalFromSet(ShowdownSet set, SaveFile sav, out LegalizationResult msg, bool allowAPI = true)
+        {
+            var template = sav.BlankPKM;
             template.ApplySetDetails(set);
-            template.Version = (int)GameVersion.MN; // Avoid the blank version glitch
             return GetLegalFromSet(set, template, out msg, allowAPI);
         }
 
-        private static PKM GetLegalFromSet(ShowdownSet set, PKM template, out LegalizationResult msg, bool allowAPI = true)
+        public static PKM GetLegalFromSet(ShowdownSet set, PKM template, out LegalizationResult msg, bool allowAPI = true)
         {
             if (allowAPI && TryAPIConvert(set, template, out PKM pk))
             {
@@ -89,21 +93,13 @@ namespace PKHeX.Core.AutoMod
 
         private static bool TryAPIConvert(ShowdownSet set, PKM template, out PKM pkm)
         {
-            try
-            {
-                pkm = API.APILegality(template, set, out bool satisfied);
-                if (!satisfied)
-                    return false;
-
-                var trainer = TrainerSettings.GetSavedTrainerData(pkm);
-                pkm.SetAllTrainerData(trainer);
-                return true;
-            }
-            catch
-            {
-                pkm = null;
+            pkm = API.APILegality(template, set, out bool satisfied);
+            if (!satisfied)
                 return false;
-            }
+
+            var trainer = TrainerSettings.GetSavedTrainerData(pkm);
+            pkm.SetAllTrainerData(trainer);
+            return true;
         }
 
         private static PKM GetBruteForcedLegalMon(ShowdownSet set, PKM template)

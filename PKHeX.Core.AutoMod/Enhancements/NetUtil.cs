@@ -7,9 +7,8 @@ namespace PKHeX.Core.AutoMod
     {
         public static string GetPageText(string url)
         {
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            var response = (HttpWebResponse)request.GetResponse();
-            return new StreamReader(response.GetResponseStream()).ReadToEnd();
+            var request = WebRequest.Create(url);
+            return GetStringResponse(request);
         }
 
         public static string DownloadString(string address)
@@ -18,10 +17,15 @@ namespace PKHeX.Core.AutoMod
             request.Method = "GET";
             request.UserAgent = "PKHeX-Auto-Legality-Mod";
             request.Accept = "application/json";
-            WebResponse response = request.GetResponse(); //Error Here
-            Stream dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            return reader.ReadToEnd();
+            return GetStringResponse(request);
+        }
+
+        private static string GetStringResponse(WebRequest request)
+        {
+            using (var response = request.GetResponse())
+            using (var dataStream = response.GetResponseStream())
+            using (var reader = new StreamReader(dataStream))
+                return reader.ReadToEnd();
         }
     }
 }

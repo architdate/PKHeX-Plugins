@@ -187,7 +187,7 @@ namespace PKHeX.Core.AutoMod
             if (!badForm)
                 return false;
 
-            changedSet = new ShowdownSet(set.Text.Replace("-" + set.Form, ""));
+            changedSet = new ShowdownSet(set.Text.Replace($"-{set.Form}", string.Empty));
             return true;
         }
 
@@ -208,7 +208,7 @@ namespace PKHeX.Core.AutoMod
             int AbilityNumber = pk.AbilityNumber; // 1,2,4 (HA)
 
             // Find the encounter
-            LegalInfo li = EncounterFinder.FindVerifiedEncounter(original);
+            var li = EncounterFinder.FindVerifiedEncounter(original);
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
 
@@ -243,7 +243,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk.Version == 15) Method = PIDType.CXD;
                 if (Method == PIDType.None) pk.SetPIDGender(pk.Gender);
             }
-            PKM iterPKM = pk;
+            var iterPKM = pk.Clone();
             while (true)
             {
                 uint seed = Util.Rand32();

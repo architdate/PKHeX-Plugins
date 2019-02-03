@@ -14,10 +14,9 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
-            modmenu.DropDownItems.Add(ctrl);
+            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.mgdbdownload };
             ctrl.Click += DownloadMGDB;
-            ctrl.Image = Properties.Resources.mgdbdownload;
+            modmenu.DropDownItems.Add(ctrl);
         }
 
         private static void DownloadMGDB(object o, EventArgs e)

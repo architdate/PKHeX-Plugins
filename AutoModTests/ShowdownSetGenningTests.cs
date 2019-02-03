@@ -40,14 +40,14 @@ namespace AutoModTests
             var lines = File.ReadAllLines(path);
             var sets = ShowdownSet.GetShowdownSets(lines);
             var game = GetGameFromFile(path);
-            var sav = SaveUtil.GetBlankSAV(game, "ALM");
+            var sav = API.SAV = SaveUtil.GetBlankSAV(game, "ALM");
             sav.Should().NotBeNull();
-            API.SAV = sav;
             foreach (var s in sets)
             {
-                var pk = Legalizer.GetLegalFromSet(s, out _, true);
+                var blank = sav.BlankPKM;
+                var pk = Legalizer.GetLegalFromSet(s, sav, out _, true);
                 var la = new LegalityAnalysis(pk);
-                la.Valid.Should().BeTrue($"{path}'s set for {s.Species} should generate a legal mon");
+                la.Valid.Should().BeTrue($"{path}'s set for {GameInfo.Strings.Species[s.Species]} should generate a legal mon");
             }
         }
     }

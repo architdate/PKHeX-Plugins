@@ -19,6 +19,7 @@ namespace AutoModPlugins
         /// <summary>
         /// Imports <see cref="ShowdownSet"/> list(s) originating from a concatenated list.
         /// </summary>
+        /// <param name="source">Text containing <see cref="ShowdownSet"/> data</param>
         public static void Import(string source)
         {
             if (ShowdownUtil.IsTeamBackup(source))
@@ -37,6 +38,7 @@ namespace AutoModPlugins
         /// <summary>
         /// Imports <see cref="ShowdownSet"/> list(s).
         /// </summary>
+        /// <param name="sets">Text containing <see cref="ShowdownSet"/> data</param>
         public static void Import(IEnumerable<string> sets)
         {
             var entries = sets.Select(z => new ShowdownSet(z)).ToList();
@@ -46,6 +48,7 @@ namespace AutoModPlugins
         /// <summary>
         /// Import Showdown Sets and alert user of any messages intended
         /// </summary>
+        /// <param name="sets">Data to be loaded</param>
         public static void Import(IReadOnlyList<ShowdownSet> sets)
         {
             var timer = Stopwatch.StartNew();
@@ -66,7 +69,7 @@ namespace AutoModPlugins
 
             // Debug Statements
             timer.Stop();
-            TimeSpan timespan = timer.Elapsed;
+            var timespan = timer.Elapsed;
             Debug.WriteLine($"Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
 
             var message = result.GetMessage();

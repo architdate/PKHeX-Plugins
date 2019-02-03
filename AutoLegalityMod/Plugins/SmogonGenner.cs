@@ -12,15 +12,14 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
+            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.smogongenner };
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += SmogonGenning;
-            ctrl.Image = Properties.Resources.smogongenner;
         }
 
         private void SmogonGenning(object sender, EventArgs e)
         {
-            PKM rough = PKMEditor.PreparePKM();
+            var rough = PKMEditor.PreparePKM();
             GenSmogonSets(rough);
         }
 

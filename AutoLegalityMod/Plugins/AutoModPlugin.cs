@@ -27,7 +27,6 @@ namespace AutoModPlugins
         public void Initialize(params object[] args)
         {
             Debug.WriteLine($"[Auto Legality Mod] Loading {Name}");
-            if (args == null) return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
             PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);
             API.SAV = SaveFileEditor.SAV;

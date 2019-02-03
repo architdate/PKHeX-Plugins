@@ -10,7 +10,6 @@ using com.google.zxing;
 using com.google.zxing.common;
 
 using Org.BouncyCastle.Security;
-using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Parameters;
 
 using PKHeX.Core;
@@ -111,7 +110,7 @@ namespace AutoModPlugins
             Array.Copy(qr, 0x18, data, 0, 0x1CE);
             Array.Copy(qr, 0x1E6, sha1, 0, 0x8);
 
-            IBufferedCipher cipher = CipherUtilities.GetCipher("AES/CTR/NoPadding");
+            var cipher = CipherUtilities.GetCipher("AES/CTR/NoPadding");
             cipher.Init(false, new ParametersWithIV(new KeyParameter(aes_ctr_key), ctr_aes));
 
             return cipher.ProcessBytes(data);
