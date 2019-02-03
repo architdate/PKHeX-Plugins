@@ -61,7 +61,8 @@ namespace AutoModPlugins
             if (la.Valid)
                 return;
 
-            var result = Legalizer.Legalize(pk);
+            var sav = SaveFileEditor.SAV;
+            var result = sav.Legalize(pk);
             PKMEditor.PopulateFields(result);
             WinFormsUtil.Alert("Legalized Active Pokemon!");
         }

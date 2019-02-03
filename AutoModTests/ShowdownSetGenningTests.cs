@@ -40,12 +40,12 @@ namespace AutoModTests
             var lines = File.ReadAllLines(path);
             var sets = ShowdownSet.GetShowdownSets(lines);
             var game = GetGameFromFile(path);
-            var sav = API.SAV = SaveUtil.GetBlankSAV(game, "ALM");
+            var sav = SaveUtil.GetBlankSAV(game, "ALM");
             sav.Should().NotBeNull();
             foreach (var s in sets)
             {
                 var blank = sav.BlankPKM;
-                var pk = Legalizer.GetLegalFromSet(s, sav, out _, true);
+                var pk = sav.GetLegalFromSet(s, out _, true);
                 var la = new LegalityAnalysis(pk);
                 la.Valid.Should().BeTrue($"{path}'s set for {GameInfo.Strings.Species[s.Species]} should generate a legal mon");
             }

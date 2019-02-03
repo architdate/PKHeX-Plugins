@@ -29,7 +29,6 @@ namespace AutoModPlugins
             Debug.WriteLine($"[Auto Legality Mod] Loading {Name}");
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
             PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);
-            API.SAV = SaveFileEditor.SAV;
             var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);
             LoadMenuStrip(menu);
         }

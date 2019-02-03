@@ -10,13 +10,12 @@ namespace AutoModTests
     public static class LegalityTests
     {
         private static readonly string PKMFolder = TestUtil.GetTestFolder("Legality");
+        private static readonly SaveFile SAV = SaveUtil.GetBlankSAV(PKX.Generation, "PKHeX");
 
         static LegalityTests()
         {
             if (!EncounterEvent.Initialized)
                 EncounterEvent.RefreshMGDB();
-
-            API.SAV = SaveUtil.GetBlankSAV(PKX.Generation, "PKHeX");
         }
 
         [Fact]
@@ -37,14 +36,14 @@ namespace AutoModTests
             foreach (var file in files)
             {
                 var fi = new FileInfo(file);
-                PKM pkm = GetPKM(file, fi);
+                var pk = GetPKM(file, fi);
 
                 // double check initial state
-                var la = new LegalityAnalysis(pkm);
+                var la = new LegalityAnalysis(pk);
                 la.Valid.Should().Be(isValid, $"because the file '{fi.Directory.Name}\\{fi.Name}' should be {(isValid ? "Valid" : "Invalid")}");
 
                 // try legalizing, should end up as legal
-                var updated = Legalizer.Legalize(pkm);
+                var updated = SAV.Legalize(pk);
                 var la2 = new LegalityAnalysis(updated);
                 la2.Valid.Should().Be(true, $"because the file '{fi.Directory.Name}\\{fi.Name}' should be legal");
             }

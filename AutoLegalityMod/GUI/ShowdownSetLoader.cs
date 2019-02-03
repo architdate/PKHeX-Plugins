@@ -84,7 +84,8 @@ namespace AutoModPlugins
             if (set.InvalidLines.Count > 0)
                 return AutoModErrorCode.InvalidLines;
 
-            var legal = Legalizer.GetLegalFromSet(set, out var _, allowAPI);
+            var sav = SaveFileEditor.SAV;
+            var legal = sav.GetLegalFromSet(set, out var _, allowAPI);
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
             return AutoModErrorCode.None;
@@ -98,16 +99,16 @@ namespace AutoModPlugins
         /// <param name="allowAPI">Use of generators before bruteforcing</param>
         private static AutoModErrorCode ImportSetsToBoxes(IReadOnlyList<ShowdownSet> sets, bool replace, bool allowAPI)
         {
-            var SAV = SaveFileEditor.SAV;
-            var BoxData = SAV.BoxData;
-            int start = SAV.CurrentBox * SAV.BoxSlotCount;
+            var sav = SaveFileEditor.SAV;
+            var BoxData = sav.BoxData;
+            int start = sav.CurrentBox * sav.BoxSlotCount;
 
-            var result = Legalizer.ImportToExisting(sets, BoxData, start, replace, allowAPI);
+            var result = sav.ImportToExisting(sets, BoxData, start, replace, allowAPI);
             if (result != AutoModErrorCode.None)
                 return result;
 
             Debug.WriteLine("Multi Set Genning Complete. Setting data to the save file and reloading view.");
-            SAV.BoxData = BoxData;
+            sav.BoxData = BoxData;
             SaveFileEditor.ReloadSlots();
             return AutoModErrorCode.None;
         }

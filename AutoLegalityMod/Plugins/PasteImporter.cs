@@ -32,12 +32,6 @@ namespace AutoModPlugins
             ShowdownSetLoader.SaveFileEditor = SaveFileEditor;
         }
 
-        public override void NotifySaveLoaded()
-        {
-            base.NotifySaveLoaded();
-            API.SAV = SaveFileEditor.SAV;
-        }
-
         private static void ImportPaste(object sender, EventArgs e)
         {
             // Check for showdown data in clipboard

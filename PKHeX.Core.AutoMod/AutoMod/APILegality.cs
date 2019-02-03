@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using static PKHeX.Core.LegalityCheckStrings;
 
 namespace PKHeX.Core.AutoMod
 {
     public static class API
     {
-        public static SaveFile SAV { internal get; set; }
-
         /// <summary>
         /// Main function that auto legalizes based on the legality
         /// </summary>
+        /// <param name="sav">Destination for the generated pkm</param>
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use current auto legality functionality</param>
-        public static PKM APILegality(PKM template, ShowdownSet set, out bool satisfied)
+        public static PKM GetLegalFromTemplate(this SaveFile sav, PKM template, ShowdownSet set, out bool satisfied)
         {
             int Form = template.AltForm;
             if (set.Form != null && FixFormes(set, out set))
@@ -24,9 +24,9 @@ namespace PKHeX.Core.AutoMod
                 template.ApplySetDetails(set);
             }
             int HPType = template.HPType;
-            var destType = SAV.PKMType;
+            var destType = sav.PKMType;
 
-            var possible = GetPossiblePKMs(template, set);
+            var possible = GetPossiblePKMs(template, set, sav);
             foreach (PKM raw in possible)
             {
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
@@ -44,9 +44,10 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
-        private static IEnumerable<PKM> GetPossiblePKMs(PKM template, ShowdownSet set)
+        private static IEnumerable<PKM> GetPossiblePKMs(PKM template, ShowdownSet set, ITrainerInfo parent)
         {
-            return EncounterMovesetGenerator.GeneratePKMs(template, SAV, set.Moves);
+            var trainer = TrainerSettings.GetSavedTrainerData(template, parent);
+            return EncounterMovesetGenerator.GeneratePKMs(template, trainer, set.Moves);
         }
 
         /// <summary>
@@ -89,13 +90,14 @@ namespace PKHeX.Core.AutoMod
         /// Debugging tool
         /// </summary>
         /// <param name="pk">PKM whose legality must be printed</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void PrintLegality(PKM pk) => Debug.WriteLine(new LegalityAnalysis(pk).Report());
 
         /// <summary>
         /// Validate and Set the gender if needed
         /// </summary>
         /// <param name="pk">PKM to modify</param>
-        public static void ValidateGender(PKM pk)
+        private static void ValidateGender(PKM pk)
         {
             bool genderValid = pk.IsGenderValid();
             if (!genderValid)
@@ -141,7 +143,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Return PKM</param>
         /// <param name="original">Generated PKM</param>
-        public static void SetVersion(PKM pk, PKM original)
+        private static void SetVersion(PKM pk, PKM original)
         {
             switch (original.Version)
             {
@@ -164,7 +166,7 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        public static void CheckAndSetFateful(PKM pk)
+        private static void CheckAndSetFateful(PKM pk)
         {
             var la = new LegalityAnalysis(pk);
             string Report = la.Report();
@@ -180,7 +182,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Original Showdown Set</param>
         /// <param name="changedSet">Edited Showdown Set</param>
         /// <returns>boolen that checks if a form is fixed or not</returns>
-        public static bool FixFormes(ShowdownSet set, out ShowdownSet changedSet)
+        private static bool FixFormes(ShowdownSet set, out ShowdownSet changedSet)
         {
             changedSet = set;
             var badForm = ShowdownUtil.IsInvalidForm(set.Form);
@@ -199,7 +201,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="method"></param>
         /// <param name="hpType"></param>
         /// <param name="original"></param>
-        public static void SetIVsPID(PKM pk, ShowdownSet set, PIDType method, int hpType, PKM original)
+        private static void SetIVsPID(PKM pk, ShowdownSet set, PIDType method, int hpType, PKM original)
         {
             // Useful Values for computation
             int Species = pk.Species;
@@ -235,7 +237,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="Method">Given Method</param>
         /// <param name="HPType">HPType INT for preserving Hidden powers</param>
-        public static void FindPIDIV(PKM pk, PIDType Method, int HPType)
+        private static void FindPIDIV(PKM pk, PIDType Method, int HPType)
         {
             if (Method == PIDType.None)
             {
@@ -261,7 +263,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <returns>PIDType that is likely used</returns>
-        public static PIDType FindLikelyPIDType(PKM pk)
+        private static PIDType FindLikelyPIDType(PKM pk)
         {
             if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R))
                 return PIDType.BACD_R;
@@ -320,7 +322,7 @@ namespace PKHeX.Core.AutoMod
         /// Colosseum/XD pokemon need to be fixed.
         /// </summary>
         /// <param name="pk">PKM to apply the fix to</param>
-        public static void ColosseumFixes(PKM pk)
+        private static void ColosseumFixes(PKM pk)
         {
             if (pk.Version != (int)GameVersion.CXD)
                 return;

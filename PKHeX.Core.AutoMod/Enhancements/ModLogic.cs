@@ -86,7 +86,7 @@ namespace AutoModPlugins
                 var pk = data[i];
                 if (pk.Species <= 0 || new LegalityAnalysis(pk).Valid)
                     continue;
-                data[i] = Legalizer.Legalize(pk);
+                data[i] = sav.Legalize(pk);
                 modified = true;
             }
             if (!modified)
