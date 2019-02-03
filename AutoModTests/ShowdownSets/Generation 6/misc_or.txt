@@ -1,0 +1,57 @@
+Ninetales @ Leftovers
+Ability: Drought
+EVs: 248 HP / 16 Def / 8 SpA / 220 SpD / 16 Spe
+Calm Nature
+- Roar
+- Will-O-Wisp
+- Pain Split
+- Flamethrower
+
+Forretress @ Leftovers
+Ability: Sturdy
+EVs: 240 HP / 8 Atk / 220 Def / 40 SpA
+Relaxed Nature
+IVs: 2 Spe
+- Hidden Power Ice
+- Gyro Ball
+- Rapid Spin
+- Volt Switch
+
+Dugtrio @ Focus Sash
+Ability: Arena Trap
+EVs: 252 Atk / 4 SpA / 252 Spe
+Hasty Nature
+IVs: 21 HP
+- Stealth Rock
+- Earthquake
+- Reversal
+- Memento
+
+Venusaur @ Life Orb
+Ability: Chlorophyll
+EVs: 156 Atk / 172 SpA / 180 Spe
+Naive Nature
+IVs: 30 Spe
+- Sleep Powder
+- SolarBeam
+- Hidden Power Ice
+- Earthquake
+
+Volcarona @ Lum Berry
+Ability: Flame Body
+EVs: 128 HP / 142 Def / 96 SpA / 144 Spe
+Modest Nature
+- Quiver Dance
+- Fiery Dance
+- Morning Sun
+- Bug Buzz
+
+GMST PH (Xerneas) @ Power Herb
+Ability: Fairy Aura
+Shiny: Yes
+EVs: 4 HP / 252 SpA / 252 Spe
+Modest Nature
+- Geomancy
+- Moonblast
+- Substitute
+- Thunder
