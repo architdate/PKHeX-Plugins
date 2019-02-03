@@ -38,8 +38,8 @@ namespace PKHeX.Core.AutoMod
 
             public PokeTrainerDetails(PKM pk) => pkm = pk;
 
-            public int TID { get => pkm.TID; set => throw new ArgumentException(); }
-            public int SID { get => pkm.SID; set => throw new ArgumentException(); }
+            public int TID { get => pkm.TID; set => throw new ArgumentException("Setter for this object should never be called."); }
+            public int SID { get => pkm.SID; set => throw new ArgumentException("Setter for this object should never be called."); }
 
             public string OT => pkm.OT_Name;
             public int Gender => pkm.OT_Gender;

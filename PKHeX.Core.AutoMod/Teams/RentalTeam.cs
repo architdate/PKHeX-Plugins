@@ -7,14 +7,14 @@ namespace PKHeX.Core.AutoMod
 {
     public class RentalTeam
     {
-        public readonly List<QRPK7> Team;
+        public readonly IReadOnlyList<QRPK7> Team;
         public byte[] GlobalLinkID { get; }
         public byte[] UnknownData { get; }
 
         public RentalTeam(byte[] data)
         {
             Console.WriteLine(data.Length);
-            Team = new List<QRPK7>
+            Team = new[]
             {
                 new QRPK7(data.Take(0x30).ToArray()),
                 new QRPK7(data.Skip(0x30).Take(0x30).ToArray()),

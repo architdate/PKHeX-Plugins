@@ -26,7 +26,7 @@ namespace AutoModPlugins
                 Clipboard.SetText(str);
                 WinFormsUtil.Alert("Exported the active box to Showdown format");
             }
-            catch { }
+            catch { WinFormsUtil.Error("Unable to export text to clipboard."); }
         }
     }
 }

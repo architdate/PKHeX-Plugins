@@ -109,13 +109,13 @@ namespace com.google.zxing.qrcode.decoder
             return (ErrorCorrectionLevel.Ordinal() << 3) | DataMask;
         }
 
-        public  override bool Equals(object o)
+        public  override bool Equals(object obj)
         {
-            if (!(o is FormatInformation))
+            if (!(obj is FormatInformation))
             {
                 return false;
             }
-            FormatInformation other = (FormatInformation) o;
+            FormatInformation other = (FormatInformation) obj;
             return ErrorCorrectionLevel == other.ErrorCorrectionLevel && DataMask == other.DataMask;
         }
     }
