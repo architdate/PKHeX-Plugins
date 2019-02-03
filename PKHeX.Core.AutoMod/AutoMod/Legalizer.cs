@@ -20,7 +20,7 @@ namespace PKHeX.Core.AutoMod
             return legal;
         }
 
-        public static AutoModErrorCode ImportToExisting(this SaveFile sav, IReadOnlyList<ShowdownSet> sets, IList<PKM> BoxData, int start, bool replace, bool allowAPI)
+        public static AutoModErrorCode ImportToExisting(this SaveFile sav, IReadOnlyList<ShowdownSet> sets, IList<PKM> BoxData, int start = 0, bool replace = true, bool allowAPI = true)
         {
             var emptySlots = replace
                 ? Enumerable.Range(0, sets.Count).ToList()
