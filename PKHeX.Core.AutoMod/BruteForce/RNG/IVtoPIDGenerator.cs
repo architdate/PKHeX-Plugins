@@ -1,136 +1,23 @@
-﻿using System.Collections.Generic;
-using static RNGReporter.CompareType;
+﻿using static RNGReporter.CompareType;
 
 namespace RNGReporter
 {
-    public class IVtoPIDGenerator
+    public static class IVtoPIDGenerator
     {
-        public static string[] M1PID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
+        public static string[] Generate(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid, FrameType type)
         {
-            List<Seed> seeds =
-                IVtoSeed.GetSeeds(
-                    hp,
-                    atk,
-                    def,
-                    spa,
-                    spd,
-                    spe,
-                    nature,
-                    tid,
-                    FrameType.Method1);
-
+            var seeds = IVtoSeed.GetSeeds(hp, atk, def, spa, spd, spe, nature, tid, type);
             if (seeds.Count == 0)
-            {
                 return new[] { "0", "0" };
-            }
 
-            string[] ans = new string[2];
-            ans[0] = seeds[0].Pid.ToString("X");
-            ans[1] = seeds[0].Sid.ToString();
-            return ans;
+            return new[]
+            {
+                seeds[0].Pid.ToString("X"),
+                seeds[0].Sid.ToString(),
+            };
         }
 
-        public static string[] M2PID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
-        {
-            List<Seed> seeds =
-                IVtoSeed.GetSeeds(
-                    hp,
-                    atk,
-                    def,
-                    spa,
-                    spd,
-                    spe,
-                    nature,
-                    tid,
-                    FrameType.Method2);
-
-            if (seeds.Count == 0)
-            {
-                return new[] { "0", "0" };
-            }
-
-            string[] ans = new string[2];
-            ans[0] = seeds[0].Pid.ToString("X");
-            ans[1] = seeds[1].Sid.ToString();
-            return ans;
-        }
-
-        public static string[] M4PID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
-        {
-            List<Seed> seeds =
-                IVtoSeed.GetSeeds(
-                    hp,
-                    atk,
-                    def,
-                    spa,
-                    spd,
-                    spe,
-                    nature,
-                    tid,
-                    FrameType.Method4);
-
-            if (seeds.Count == 0)
-            {
-                return new[] { "0", "0" };
-            }
-
-            string[] ans = new string[2];
-            ans[0] = seeds[0].Pid.ToString("X");
-            ans[1] = seeds[1].Sid.ToString();
-            return ans;
-        }
-
-        public static string[] XDPID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
-        {
-            List<Seed> seeds =
-                IVtoSeed.GetSeeds(
-                    hp,
-                    atk,
-                    def,
-                    spa,
-                    spd,
-                    spe,
-                    nature,
-                    tid,
-                    FrameType.ColoXD);
-
-            if (seeds.Count == 0)
-            {
-                return new[] { "0", "0" };
-            }
-
-            string[] ans = new string[2];
-            ans[0] = seeds[0].Pid.ToString("X");
-            ans[1] = seeds[0].Sid.ToString();
-            return ans;
-        }
-
-        public static string[] ChannelPID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
-        {
-            List<Seed> seeds =
-                IVtoSeed.GetSeeds(
-                    hp,
-                    atk,
-                    def,
-                    spa,
-                    spd,
-                    spe,
-                    nature,
-                    tid,
-                    FrameType.Channel);
-
-            if (seeds.Count == 0)
-            {
-                return new[] { "0", "0" };
-            }
-
-            string[] ans = new string[2];
-            ans[0] = seeds[0].Pid.ToString("X");
-            ans[1] = seeds[0].Sid.ToString();
-            return ans;
-        }
-
-        public string[] GenerateWishmkr(uint targetNature)
+        public static string[] GenerateWishmkr(uint targetNature)
         {
             uint finalPID = 0;
             uint finalHP = 0;
@@ -169,12 +56,12 @@ namespace RNGReporter
             return new[] { finalPID.ToString("X"), finalHP.ToString(), finalATK.ToString(), finalDEF.ToString(), finalSPA.ToString(), finalSPD.ToString(), finalSPE.ToString() };
         }
 
-        private uint Forward(uint seed)
+        private static uint Forward(uint seed)
         {
             return (seed * 0x41c64e6d) + 0x6073;
         }
 
-        private uint[] CreateIVs(uint iv1, uint ivs2)
+        private static uint[] CreateIVs(uint iv1, uint ivs2)
         {
             uint[] ivs = new uint[6];
 
@@ -233,19 +120,15 @@ namespace RNGReporter
 
         public static string[] GetIVPID(uint nature, int hiddenpower, bool XD = false, string method = "")
         {
+            if (method == "BACD_R")
+                return GenerateWishmkr(nature);
             var generator = new FrameGenerator();
             if (XD || method == "XD")
                 generator = new FrameGenerator{FrameType = FrameType.ColoXD};
             if (method == "M2")
                 generator = new FrameGenerator{FrameType = FrameType.Method2};
-            if (method == "BACD_R")
-            {
-                IVtoPIDGenerator bacdr = new IVtoPIDGenerator();
-                return bacdr.GenerateWishmkr(nature);
-            }
-            FrameCompare frameCompare = new FrameCompare(Hptofilter(hiddenpower), nature);
-            List<Frame> frames = generator.Generate(frameCompare, 0, 0);
-            //Console.WriteLine("Num frames: " + frames.Count);
+            var frameCompare = new FrameCompare(Hptofilter(hiddenpower), nature);
+            var frames = generator.Generate(frameCompare, 0, 0);
             return new[] { frames[0].Pid.ToString("X"), frames[0].Hp.ToString(), frames[0].Atk.ToString(), frames[0].Def.ToString(), frames[0].Spa.ToString(), frames[0].Spd.ToString(), frames[0].Spe.ToString() };
         }
     }

@@ -618,15 +618,8 @@ namespace PKHeX.Core.AutoMod
             }
 
             uint nature = (uint)pk.Nature;
-            string[] pidsid;
-            if (XD)
-            {
-                pidsid = RNGReporter.IVtoPIDGenerator.XDPID(hp, atk, def, spa, spd, spe, nature, 0);
-            }
-            else
-            {
-                pidsid = RNGReporter.IVtoPIDGenerator.M1PID(hp, atk, def, spa, spd, spe, nature, 0);
-            }
+            var type = XD ? RNGReporter.FrameType.ColoXD : RNGReporter.FrameType.Method1;
+            var pidsid = RNGReporter.IVtoPIDGenerator.Generate(hp, atk, def, spa, spd, spe, nature, 0, type);
 
             if (pk.Species == 490 && pk.Gen4)
             {
@@ -646,7 +639,7 @@ namespace PKHeX.Core.AutoMod
             if (!updatedReport.Contains(LPIDTypeMismatch))
                 return;
 
-            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID(nature, pk.HPType, XD);
+            var NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID(nature, pk.HPType, XD);
             Console.WriteLine(XD);
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)

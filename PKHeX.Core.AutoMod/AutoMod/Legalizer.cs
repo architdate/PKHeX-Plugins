@@ -26,7 +26,7 @@ namespace PKHeX.Core.AutoMod
                 ? Enumerable.Range(0, sets.Count).ToList()
                 : FindAllEmptySlots(BoxData);
 
-            if (emptySlots.Count < sets.Count && sets.Count != 1)
+            if (emptySlots.Count < sets.Count)
                 return AutoModErrorCode.NotEnoughSpace;
 
             var generated = 0;
@@ -82,7 +82,7 @@ namespace PKHeX.Core.AutoMod
 
         private static PKM GetBruteForcedLegalMon(this ITrainerInfo sav, ShowdownSet set, PKM template)
         {
-            bool resetForm = ShowdownUtil.IsInvalidForm(set.Form);
+            var resetForm = ShowdownUtil.IsInvalidForm(set.Form);
             var trainer = TrainerSettings.GetSavedTrainerData(template, sav);
             var legal = BruteForce.ApplyDetails(template, set, resetForm, trainer);
             legal.SetAllTrainerData(trainer);

@@ -171,7 +171,7 @@ namespace pkmn_ntr.Helpers
             Disconnect(false);
         }
 
-        private string ByteToHex(byte[] datBuf) => string.Join(" ", datBuf.Select(z => $"{z:X2}"));
+        private static string ByteToHex(byte[] datBuf) => string.Join(" ", datBuf.Select(z => $"{z:X2}"));
 
         private void HandleReadMem(uint seq, byte[] dataBuf)
         {
