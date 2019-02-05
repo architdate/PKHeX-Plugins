@@ -199,18 +199,14 @@ namespace PKHeX.Core.AutoMod
         /// Set Trainer data (TID, SID, OT) for a given PKM
         /// </summary>
         /// <param name="pk">PKM to modify</param>
-        public static void SetTrainerDataAndMemories(this PKM pk)
+        public static void SetTrainerDataAndMemories(this PKM pk, ITrainerInfo trainer)
         {
+            pk.CurrentHandler = 1;
+            pk.HT_Name = trainer.OT;
+            pk.HT_Gender = trainer.Gender;
             if (pk.WasEvent || pk.WasIngameTrade)
                 return;
 
-            // Hardcoded a generic one for now, trainerdata.json implementation here later
-            pk.CurrentHandler = 1;
-            pk.HT_Name = "ARCH";
-            pk.HT_Gender = 0; // Male for Colo/XD Cases
-            pk.TID = 34567;
-            pk.SID = 0;
-            pk.OT_Name = "TCD";
             pk.SetSuggestedMemories();
         }
 

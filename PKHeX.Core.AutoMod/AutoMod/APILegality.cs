@@ -26,11 +26,14 @@ namespace PKHeX.Core.AutoMod
             int HPType = template.HPType;
             var destType = sav.PKMType;
 
-            var possible = GetPossiblePKMs(template, set, sav);
-            foreach (PKM raw in possible)
+            var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves);
+            foreach (var enc in encounters)
             {
+                var ver = enc is IVersion v ? (int)v.Version: sav.Game;
+                var tr = TrainerSettings.GetSavedTrainerData(ver, sav);
+                var raw = enc.ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
-                ApplySetDetails(pk, set, Form, HPType, raw);
+                ApplySetDetails(pk, set, Form, HPType, raw, sav);
 
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid)
@@ -44,12 +47,6 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
-        private static IEnumerable<PKM> GetPossiblePKMs(PKM template, ShowdownSet set, ITrainerInfo parent)
-        {
-            var trainer = TrainerSettings.GetSavedTrainerData(template, parent);
-            return EncounterMovesetGenerator.GeneratePKMs(template, trainer, set.Moves);
-        }
-
         /// <summary>
         /// Modifies the provided <see cref="pk"/> to the specifications required by <see cref="set"/>.
         /// </summary>
@@ -58,7 +55,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="Form">Alternate form required</param>
         /// <param name="HPType">Hidden Power type requirement</param>
         /// <param name="unconverted">Original pkm data</param>
-        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, int HPType, PKM unconverted)
+        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, int HPType, PKM unconverted, ITrainerInfo handler)
         {
             var info = new LegalInfo(pk);
             var pidiv = info.PIDIV ?? MethodFinder.Analyze(pk);
@@ -67,7 +64,7 @@ namespace PKHeX.Core.AutoMod
             SetVersion(pk, unconverted); // PreEmptive Version setting
             pk.SetSpeciesLevel(set, Form);
             pk.SetMovesEVsItems(set);
-            pk.SetTrainerDataAndMemories();
+            pk.SetTrainerDataAndMemories(handler);
             pk.SetNatureAbility(set);
             SetIVsPID(pk, set, Method, HPType, unconverted);
 

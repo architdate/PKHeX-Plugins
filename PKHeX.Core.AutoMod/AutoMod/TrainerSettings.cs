@@ -27,7 +27,9 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        public static ITrainerInfo GetSavedTrainerData(PKM legal, ITrainerInfo fallback) => Database.GetTrainer(legal.Version) ?? fallback;
+        public static ITrainerInfo GetSavedTrainerData(int version, ITrainerInfo fallback) => Database.GetTrainer(version) ?? fallback;
+
+        public static ITrainerInfo GetSavedTrainerData(PKM legal, ITrainerInfo fallback) => GetSavedTrainerData(legal.Version, fallback);
 
         public static ITrainerInfo GetRoughTrainerData(this PKM illegalPK)
         {
