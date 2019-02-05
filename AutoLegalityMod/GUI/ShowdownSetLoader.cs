@@ -51,7 +51,6 @@ namespace AutoModPlugins
         /// <param name="sets">Data to be loaded</param>
         public static void Import(IReadOnlyList<ShowdownSet> sets)
         {
-            var timer = Stopwatch.StartNew();
 
             Debug.WriteLine("Commencing Import");
 
@@ -67,11 +66,6 @@ namespace AutoModPlugins
                 result = ImportSetsToBoxes(sets, replace, allowAPI);
             }
 
-            // Debug Statements
-            timer.Stop();
-            var timespan = timer.Elapsed;
-            Debug.WriteLine($"Time to complete function: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
-
             var message = result.GetMessage();
             if (!string.IsNullOrEmpty(message))
                 WinFormsUtil.Alert(message);
@@ -84,10 +78,17 @@ namespace AutoModPlugins
             if (set.InvalidLines.Count > 0)
                 return AutoModErrorCode.InvalidLines;
 
+            var timer = Stopwatch.StartNew();
+
             var sav = SaveFileEditor.SAV;
             var legal = sav.GetLegalFromSet(set, out var _, allowAPI);
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
+
+            // Debug Statements
+            timer.Stop();
+            var timespan = timer.Elapsed;
+            Debug.WriteLine($"Time to complete {nameof(ImportSetToTabs)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
             return AutoModErrorCode.None;
         }
 
@@ -99,6 +100,7 @@ namespace AutoModPlugins
         /// <param name="allowAPI">Use of generators before bruteforcing</param>
         private static AutoModErrorCode ImportSetsToBoxes(IReadOnlyList<ShowdownSet> sets, bool replace, bool allowAPI)
         {
+            var timer = Stopwatch.StartNew();
             var sav = SaveFileEditor.SAV;
             var BoxData = sav.BoxData;
             int start = sav.CurrentBox * sav.BoxSlotCount;
@@ -110,6 +112,11 @@ namespace AutoModPlugins
             Debug.WriteLine("Multi Set Genning Complete. Setting data to the save file and reloading view.");
             sav.BoxData = BoxData;
             SaveFileEditor.ReloadSlots();
+
+            // Debug Statements
+            timer.Stop();
+            var timespan = timer.Elapsed;
+            Debug.WriteLine($"Time to complete {nameof(ImportSetToTabs)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
             return AutoModErrorCode.None;
         }
     }
