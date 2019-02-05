@@ -179,17 +179,19 @@ namespace PKHeX.Core.AutoMod
             {
                 if ((pk.TID == 12345 && pk.OT_Name == "PKHeX") || (pk.TID == 34567 && pk.SID == 0 && pk.OT_Name == "TCD"))
                 {
-                    bool Shiny = pk.IsShiny;
+                    bool shiny = pk.IsShiny;
                     pk.TID = trainer.TID;
-                    pk.SID = trainer.SID;
+                    if (pk.GenNumber >= 3)
+                        pk.SID = trainer.SID;
                     pk.OT_Name = trainer.OT;
                     pk.OT_Gender = trainer.Gender;
-                    pk.SetShinyBoolean(Shiny);
+                    if (pk.IsShiny != shiny)
+                        pk.SetShinyBoolean(shiny);
                 }
                 return;
             }
             pk.TID = trainer.TID;
-            pk.SID = trainer.SID;
+            pk.SID = pk.GenNumber >= 3 ? trainer.SID : 0;
             pk.OT_Name = trainer.OT;
         }
 

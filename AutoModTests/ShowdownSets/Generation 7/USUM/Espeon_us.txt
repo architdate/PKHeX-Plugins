@@ -1,0 +1,9 @@
+Espeon (F) @ Light Clay
+Ability: Magic Bounce
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Reflect
+- Light Screen
+- Heal Bell
+- Psychic
