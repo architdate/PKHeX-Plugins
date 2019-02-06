@@ -56,21 +56,28 @@ namespace PKHeX.Core.AutoMod
 
         public static void SetMarkings(this PKM pk)
         {
-            if (pk.Format >= 7)
+            var f = pk.Format;
+            if (f < 3)
+                return;
+
+            pk.Markings = new int[]
             {
-                if (pk.IV_HP == 30 || pk.IV_HP == 29) pk.MarkCircle = 2;
-                if (pk.IV_ATK == 30 || pk.IV_ATK == 29) pk.MarkTriangle = 2;
-                if (pk.IV_DEF == 30 || pk.IV_DEF == 29) pk.MarkSquare = 2;
-                if (pk.IV_SPA == 30 || pk.IV_SPA == 29) pk.MarkHeart = 2;
-                if (pk.IV_SPD == 30 || pk.IV_SPD == 29) pk.MarkStar = 2;
-                if (pk.IV_SPE == 30 || pk.IV_SPE == 29) pk.MarkDiamond = 2;
+                GetMarkVal(pk.IV_HP, f),
+                GetMarkVal(pk.IV_ATK, f),
+                GetMarkVal(pk.IV_DEF, f),
+                GetMarkVal(pk.IV_SPA, f),
+                GetMarkVal(pk.IV_SPD, f),
+                GetMarkVal(pk.IV_SPE, f),
+            };
+
+            int GetMarkVal(int val, int format)
+            {
+                if (val == 31)
+                    return 1;
+                if (format >= 7 && val >= 29)
+                    return 2;
+                return 0;
             }
-            if (pk.IV_HP == 31) pk.MarkCircle = 1;
-            if (pk.IV_ATK == 31) pk.MarkTriangle = 1;
-            if (pk.IV_DEF == 31) pk.MarkSquare = 1;
-            if (pk.IV_SPA == 31) pk.MarkHeart = 1;
-            if (pk.IV_SPD == 31) pk.MarkStar = 1;
-            if (pk.IV_SPE == 31) pk.MarkDiamond = 1;
         }
 
         public static void ClearHyperTraining(this PKM pk)
@@ -105,14 +112,14 @@ namespace PKHeX.Core.AutoMod
 
         public static bool NeedsHyperTraining(this PKM pk)
         {
-            int flawless = 0;
-            int minIVs = 0;
-            foreach (int i in pk.IVs)
+            for (int i = 0; i < 6; i++)
             {
-                if (i == 31) flawless++;
-                if (i == 0 || i == 1) minIVs++; //ignore IV value = 0/1 for intentional IV values (1 for hidden power cases)
+                var iv = pk.GetIV(i);
+                if (iv == 31 || iv <= 1) // ignore IV value = 0/1 for intentional IV values (1 for hidden power cases)
+                    continue;
+                return true; // flawed IV present
             }
-            return flawless + minIVs != 6;
+            return false;
         }
 
         public static void HyperTrain(this PKM pk)
@@ -134,12 +141,18 @@ namespace PKHeX.Core.AutoMod
         {
             if (!(pk is IHyperTrain h))
                 return;
-            if (pk.IV_HP == 31) h.HT_HP = false;
-            if (pk.IV_ATK == 31) h.HT_ATK = false;
-            if (pk.IV_DEF == 31) h.HT_DEF = false;
-            if (pk.IV_SPA == 31) h.HT_SPA = false;
-            if (pk.IV_SPD == 31) h.HT_SPD = false;
-            if (pk.IV_SPE == 31) h.HT_SPE = false;
+            if (pk.IV_HP == 31)
+                h.HT_HP = false;
+            if (pk.IV_ATK == 31)
+                h.HT_ATK = false;
+            if (pk.IV_DEF == 31)
+                h.HT_DEF = false;
+            if (pk.IV_SPA == 31)
+                h.HT_SPA = false;
+            if (pk.IV_SPD == 31)
+                h.HT_SPD = false;
+            if (pk.IV_SPE == 31)
+                h.HT_SPE = false;
         }
 
         public static void SetSuggestedMemories(this PKM pk)

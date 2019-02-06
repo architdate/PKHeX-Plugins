@@ -216,7 +216,8 @@ namespace PKHeX.Core.AutoMod
                 pk.IVs = set.IVs;
                 if (Species == 658 && pk.AltForm == 1)
                     pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
-                if (method != PIDType.G5MGShiny) pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, (uint)(AbilityNumber * 0x10001));
+                if (method != PIDType.G5MGShiny)
+                    pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, (uint)(AbilityNumber * 0x10001));
             }
             else
             {
@@ -239,8 +240,10 @@ namespace PKHeX.Core.AutoMod
             if (Method == PIDType.None)
             {
                 Method = FindLikelyPIDType(pk);
-                if (pk.Version == 15) Method = PIDType.CXD;
-                if (Method == PIDType.None) pk.SetPIDGender(pk.Gender);
+                if (pk.Version == 15)
+                    Method = PIDType.CXD;
+                if (Method == PIDType.None)
+                    pk.SetPIDGender(pk.Gender);
             }
             var iterPKM = pk.Clone();
             while (true)

@@ -97,9 +97,9 @@ namespace PKHeX.Core.AutoMod
                     pk.SetShiny();
                 if (pk.PID == 0)
                 {
-                    pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
-                        (uint) (pk.AbilityNumber * 0x10001));
-                    if (shiny) pk.SetShiny();
+                    pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint) (pk.AbilityNumber * 0x10001));
+                    if (shiny)
+                        pk.SetShiny();
                 }
                 pk.SetSuggestedMemories();
                 if (pk.GenNumber < 6)
@@ -217,10 +217,9 @@ namespace PKHeX.Core.AutoMod
                     if (CommonErrorHandling2(pk))
                     {
                         pk.HyperTrain();
-                        if (shiny) pk.SetShiny();
-                        {
-                            return true;
-                        }
+                        if (shiny)
+                            pk.SetShiny();
+                        return true;
                     }
 
                     pk.HyperTrain();

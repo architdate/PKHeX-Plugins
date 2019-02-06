@@ -129,11 +129,15 @@ namespace PKHeX.Core.AutoMod
         private static IReadOnlyList<string> GetMoves(string movesets)
         {
             var moves = new List<string>();
-            string[] splitmoves = movesets.Split(new[] { "[\"" }, StringSplitOptions.None);
-            if (splitmoves.Length > 1) moves.Add(splitmoves[1].Split('"')[0]);
-            if (splitmoves.Length > 2) moves.Add(splitmoves[2].Split('"')[0]);
-            if (splitmoves.Length > 3) moves.Add(splitmoves[3].Split('"')[0]);
-            if (splitmoves.Length > 4) moves.Add(splitmoves[4].Split('"')[0]);
+            var splitmoves = movesets.Split(new[] { "[\"" }, StringSplitOptions.None);
+            if (splitmoves.Length > 1)
+                moves.Add(splitmoves[1].Split('"')[0]);
+            if (splitmoves.Length > 2)
+                moves.Add(splitmoves[2].Split('"')[0]);
+            if (splitmoves.Length > 3)
+                moves.Add(splitmoves[3].Split('"')[0]);
+            if (splitmoves.Length > 4)
+                moves.Add(splitmoves[4].Split('"')[0]);
             return moves;
         }
 

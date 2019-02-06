@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -389,13 +390,10 @@ namespace PKHeX.Core.AutoMod
 
         internal static EncounterStatic CloneObject(EncounterStatic s)
         {
-            if (s == null) return null;
-            System.Reflection.MethodInfo inst = s.GetType().GetMethod("MemberwiseClone",
-                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-            if (inst != null)
-                return (EncounterStatic)inst.Invoke(s, null);
-            else
+            if (s == null)
                 return null;
+            var inst = s.GetType().GetMethod("MemberwiseClone", BindingFlags.Instance | BindingFlags.NonPublic);
+            return (EncounterStatic)inst?.Invoke(s, null);
         }
 
         internal static EncounterStatic[] GetStaticEncounters(IEnumerable<EncounterStatic> source, GameVersion game)
