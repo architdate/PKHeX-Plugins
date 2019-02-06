@@ -15,7 +15,7 @@ namespace PKHeX.Core.AutoMod
             {
                 int wIndex = Array.IndexOf(Legal.WurmpleEvolutions, pk.Species);
                 uint EC = wIndex < 0 ? Util.Rand32() : PKX.GetWurmpleEC(wIndex / 2);
-                if (!(pk.Species == 658 && pk.AltForm == 1))
+                if (!(pk.Species == 658 && pk.AltForm == 1)) // Ash-Greninja
                     pk.EncryptionConstant = EC;
             }
             else
@@ -83,14 +83,7 @@ namespace PKHeX.Core.AutoMod
         public static void ClearHyperTraining(this PKM pk)
         {
             if (pk is IHyperTrain h)
-            {
-                h.HT_HP = false;
-                h.HT_ATK = false;
-                h.HT_DEF = false;
-                h.HT_SPA = false;
-                h.HT_SPD = false;
-                h.HT_SPE = false;
-            }
+                h.HyperTrainClear();
         }
 
         public static void SetHappiness(this PKM pk)
@@ -128,13 +121,7 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             pk.CurrentLevel = 100; // Set level for HT before doing HT
-
-            h.HT_HP = (pk.IV_HP != 0 && pk.IV_HP != 1 && pk.IV_HP != 31);
-            h.HT_ATK = (pk.IV_ATK != 0 && pk.IV_ATK != 1 && pk.IV_ATK != 31);
-            h.HT_DEF = (pk.IV_DEF != 0 && pk.IV_DEF != 1 && pk.IV_DEF != 31);
-            h.HT_SPA = (pk.IV_SPA != 0 && pk.IV_SPA != 1 && pk.IV_SPA != 31);
-            h.HT_SPD = (pk.IV_SPD != 0 && pk.IV_SPD != 1 && pk.IV_SPD != 31);
-            h.HT_SPE = (pk.IV_SPE != 0 && pk.IV_SPE != 1 && pk.IV_SPE != 31);
+            pk.SetSuggestedHyperTrainingData();
         }
 
         public static void ClearHyperTrainedPerfectIVs(this PKM pk)
