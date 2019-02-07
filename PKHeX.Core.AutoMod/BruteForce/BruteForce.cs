@@ -247,8 +247,8 @@ namespace PKHeX.Core.AutoMod
                     }
                     else
                     {
-                        var edgeLegality = EdgeMons(game, pk);
-                        foreach (EncounterStatic el in edgeLegality)
+                        var edge = EncounterMovesetGenerator.GenerateEncounters(pk).OfType<EncounterStatic>();
+                        foreach (EncounterStatic el in edge)
                         {
                             pk.Met_Location = el.Location;
                             pk.Met_Level = el.Level;
@@ -278,29 +278,6 @@ namespace PKHeX.Core.AutoMod
                 }
             }
             return false;
-        }
-
-        private static IEnumerable<EncounterStatic> EdgeMons(GameVersion Game, PKM pk)
-        {
-            var edgecasearray = GetEdgeCaseArray(Game);
-            return edgecasearray.Where(e => e.Species == pk.Species);
-        }
-
-        private static EncounterStatic[] GetEdgeCaseArray(GameVersion Game)
-        {
-            switch (Game)
-            {
-                case GameVersion.B:
-                case GameVersion.W:
-                    return EdgeCaseLegality.BWEntreeForest;
-                case GameVersion.B2:
-                case GameVersion.W2:
-                    return EdgeCaseLegality.B2W2EntreeForest;
-                case GameVersion.US:
-                case GameVersion.UM:
-                    return EdgeCaseLegality.USUMEdgeEnc;
-                default: return Array.Empty<EncounterStatic>();
-            }
         }
 
         private static void AlternateAbilityRefresh(PKM pk)
