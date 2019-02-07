@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PKHeX.Core" Version="19.2.7" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="PKHeX.Core">
       <HintPath>..\PKHeX.Core.dll</HintPath>
     </Reference>
