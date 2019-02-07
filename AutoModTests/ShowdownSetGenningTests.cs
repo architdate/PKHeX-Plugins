@@ -11,12 +11,6 @@ namespace AutoModTests
     {
         private static readonly string ShowdownSetsFolder = TestUtil.GetTestFolder("ShowdownSets");
 
-        static ShowdownSetGenningTests()
-        {
-            if (!EncounterEvent.Initialized)
-                EncounterEvent.RefreshMGDB();
-        }
-
         private static GameVersion GetGameFromFile(string path)
         {
             var filename = Path.GetFileNameWithoutExtension(path);

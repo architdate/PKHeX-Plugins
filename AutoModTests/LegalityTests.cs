@@ -12,12 +12,6 @@ namespace AutoModTests
         private static readonly string PKMFolder = TestUtil.GetTestFolder("Legality");
         private static readonly SaveFile SAV = SaveUtil.GetBlankSAV(PKX.Generation, "PKHeX");
 
-        static LegalityTests()
-        {
-            if (!EncounterEvent.Initialized)
-                EncounterEvent.RefreshMGDB();
-        }
-
         [Fact]
         public static void TestFilesPassOrFailLegalityChecks()
         {
