@@ -42,9 +42,7 @@ namespace AutoModPlugins
                 return;
             }
 
-            try { ShowdownSetLoader.Import(info.Sets); }
-            catch { WinFormsUtil.Error("Something went wrong"); }
-
+            ShowdownSetLoader.Import(info.Sets);
             WinFormsUtil.Alert(info.Summary);
         }
     }
