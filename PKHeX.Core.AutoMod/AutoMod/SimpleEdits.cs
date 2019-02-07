@@ -219,6 +219,7 @@ namespace PKHeX.Core.AutoMod
         public static void SetAllTrainerData(this PKM pk, ITrainerInfo trainer)
         {
             pk.SetTrainerData(trainer, true);
+            pk.SetBelugaValues(); // trainer details changed?
             pk.ConsoleRegion = trainer.ConsoleRegion;
             pk.Country = trainer.Country;
             pk.Region = trainer.SubRegion;
