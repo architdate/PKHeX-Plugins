@@ -168,116 +168,123 @@ namespace PKHeX.Core.AutoMod
                 }
                 pk.MetDate = DateTime.Today;
                 pk.SetMarkings();
-                try
-                {
-                    pk.ClearRelearnMoves();
-                    switch (game)
-                    {
-                        case GameVersion.RD:
-                        case GameVersion.BU:
-                        case GameVersion.YW:
-                        case GameVersion.GN:
-                            pk.Met_Location = 30013;
-                            pk.Met_Level = 100;
-                            break;
-                        case GameVersion.GD:
-                        case GameVersion.SV:
-                        case GameVersion.C:
-                            pk.Met_Location = 30017;
-                            pk.Met_Level = 100;
-                            break;
-                        case GameVersion.CXD:
-                            pk.Met_Location = 30001;
-                            pk.Met_Level = 100;
-                            break;
-                        default:
-                            pk.SetSuggestedMetLocation();
-                            break;
-                    }
-                    pk.SetSuggestedRelearnMoves();
-                    pk.CurrentHandler = 1;
-                    pk.HT_Name = "Archit";
-                    pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
-                        (uint) (pk.AbilityNumber * 0x10001));
-                    if (shiny)
-                        pk.SetShiny();
-                    if (pk.PID == 0)
-                    {
-                        pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
-                            (uint) (pk.AbilityNumber * 0x10001));
-                        if (shiny)
-                            pk.SetShiny();
-                    }
 
-                    pk.RefreshAbility(abilitynum);
-                    pk.SetSuggestedMemories();
-                    if (pk.GenNumber < 6)
-                        pk.EncryptionConstant = pk.PID;
-
-                    if (CommonErrorHandling2(pk))
-                    {
-                        pk.HyperTrain();
-                        if (shiny)
-                            pk.SetShiny();
-                        return true;
-                    }
-
-                    pk.HyperTrain();
-                    bool legalized = new LegalityAnalysis(pk).Valid;
-
-                    AlternateAbilityRefresh(pk);
-                    if (pk.GenNumber < 6 && !legalized)
-                        pk.EncryptionConstant = pk.PID;
-
-                    if (new LegalityAnalysis(pk).Valid && pk.Format >= pk.GenNumber)
-                    {
-                        pk.SetHappiness();
-                        if (shiny && pk.IsShiny)
-                            return true;
-                        if (!set.Shiny || pk.IsShiny)
-                            return true;
-
-                        pk.SetShinySID();
-                        if (new LegalityAnalysis(pk).Valid)
-                            return true;
-
-                        pk.SetShiny();
-                        if (new LegalityAnalysis(pk).Valid)
-                            return true;
-                    }
-                    else
-                    {
-                        var edge = EncounterMovesetGenerator.GenerateEncounters(pk).OfType<EncounterStatic>();
-                        foreach (EncounterStatic el in edge)
-                        {
-                            pk.Met_Location = el.Location;
-                            pk.Met_Level = el.Level;
-                            pk.CurrentLevel = 100;
-                            pk.FatefulEncounter = el.Fateful;
-                            if (el.RibbonWishing && pk is IRibbonSetEvent4 e4)
-                                e4.RibbonWishing = true;
-                            pk.RelearnMoves = el.Relearn;
-
-                            if (set.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random))
-                                pk.SetShiny();
-                            else if (el.Shiny == Shiny.Never && pk.IsShiny)
-                                pk.PID ^= 0x10000000;
-                            else
-                                pk.SetPIDGender(pk.Gender);
-                        }
-
-                        var la = new LegalityAnalysis(pk);
-                        if (la.Valid)
-                            return true;
-
-                        Console.WriteLine(la.Report());
-                    }
-                }
-                catch
-                {
-                }
+                var result = InnerBruteForce(pk, game, shiny, abilitynum, set);
+                if (result)
+                    return true;
             }
             return false;
+        }
+
+        private static bool InnerBruteForce(PKM pk, GameVersion game, bool shiny, int abilitynum, ShowdownSet set)
+        {
+            pk.ClearRelearnMoves();
+            switch (game)
+            {
+                case GameVersion.RD:
+                case GameVersion.BU:
+                case GameVersion.YW:
+                case GameVersion.GN:
+                    pk.Met_Location = 30013;
+                    pk.Met_Level = 100;
+                    break;
+                case GameVersion.GD:
+                case GameVersion.SV:
+                case GameVersion.C:
+                    pk.Met_Location = 30017;
+                    pk.Met_Level = 100;
+                    break;
+                case GameVersion.CXD:
+                    pk.Met_Location = 30001;
+                    pk.Met_Level = 100;
+                    break;
+                default:
+                    pk.SetSuggestedMetLocation();
+                    break;
+            }
+            pk.SetSuggestedRelearnMoves();
+            pk.CurrentHandler = 1;
+            pk.HT_Name = "Archit";
+            pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
+                (uint)(pk.AbilityNumber * 0x10001));
+            if (shiny)
+                pk.SetShiny();
+            if (pk.PID == 0)
+            {
+                pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
+                    (uint)(pk.AbilityNumber * 0x10001));
+                if (shiny)
+                    pk.SetShiny();
+            }
+
+            pk.RefreshAbility(abilitynum);
+            pk.SetSuggestedMemories();
+            if (pk.GenNumber < 6)
+                pk.EncryptionConstant = pk.PID;
+
+            if (CommonErrorHandling2(pk))
+            {
+                pk.HyperTrain();
+                if (shiny)
+                    pk.SetShiny();
+                return true;
+            }
+
+            pk.HyperTrain();
+            bool legalized = new LegalityAnalysis(pk).Valid;
+
+            AlternateAbilityRefresh(pk);
+            if (pk.GenNumber < 6 && !legalized)
+                pk.EncryptionConstant = pk.PID;
+
+            if (new LegalityAnalysis(pk).Valid && pk.Format >= pk.GenNumber)
+            {
+                pk.SetHappiness();
+                if (shiny && pk.IsShiny)
+                    return true;
+                if (!set.Shiny || pk.IsShiny)
+                    return true;
+
+                pk.SetShinySID();
+                if (new LegalityAnalysis(pk).Valid)
+                    return true;
+
+                pk.SetShiny();
+                if (new LegalityAnalysis(pk).Valid)
+                    return true;
+            }
+            else
+            {
+                var edge = EncounterMovesetGenerator.GenerateEncounters(pk).OfType<EncounterStatic>();
+                foreach (EncounterStatic el in edge)
+                {
+                    ApplyEncounterAttributes(pk, set, el);
+                    var la = new LegalityAnalysis(pk);
+                    if (la.Valid)
+                        return true;
+                    Console.WriteLine(la.Report());
+                }
+            }
+
+            return false;
+        }
+
+        private static void ApplyEncounterAttributes(PKM pk, ShowdownSet set, EncounterStatic el)
+        {
+            pk.Met_Location = el.Location;
+            pk.Met_Level = el.Level;
+            pk.CurrentLevel = 100;
+            pk.FatefulEncounter = el.Fateful;
+            if (el.RibbonWishing && pk is IRibbonSetEvent4 e4)
+                e4.RibbonWishing = true;
+            pk.RelearnMoves = el.Relearn;
+
+            if (set.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random))
+                pk.SetShiny();
+            else if (el.Shiny == Shiny.Never && pk.IsShiny)
+                pk.PID ^= 0x10000000;
+            else
+                pk.SetPIDGender(pk.Gender);
         }
 
         private static void AlternateAbilityRefresh(PKM pk)
@@ -308,8 +315,7 @@ namespace PKHeX.Core.AutoMod
             var report = GetReport(pk);
 
             // fucking M2
-            if ((UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2) && pk.Version == (int)GameVersion.FR)
-             || (UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2) && pk.Version == (int)GameVersion.LG))
+            if (GameVersion.FRLG.Contains(pk.Version) && UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
             {
                 pk = M2EventFix(pk, pk.IsShiny);
                 report = GetReport(pk);
