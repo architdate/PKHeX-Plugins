@@ -34,8 +34,8 @@
     <Reference Include="BouncyCastle.CryptoExt, Version=1.7.4114.6378, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle-Ext.1.7.0\lib\net20\BouncyCastle.CryptoExt.dll</HintPath>
     </Reference>
-    <Reference Include="PKHeX.Core">
-      <HintPath>..\PKHeX.Core.dll</HintPath>
+    <Reference Include="PKHeX.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PKHeX.Core.19.2.7\lib\net46\PKHeX.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
