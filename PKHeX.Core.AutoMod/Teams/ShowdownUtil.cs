@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Logic for handling <see cref="ShowdownSet"/> data.
+    /// </summary>
     public static class ShowdownUtil
     {
         /// <summary>

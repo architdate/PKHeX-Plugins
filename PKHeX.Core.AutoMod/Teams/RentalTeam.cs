@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// PGL Website QR Rental Team
+    /// </summary>
     public class RentalTeam
     {
         public readonly IReadOnlyList<QRPK7> Team;

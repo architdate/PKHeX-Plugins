@@ -6,11 +6,15 @@ using static PKHeX.Core.LegalityCheckStrings;
 
 namespace PKHeX.Core.AutoMod
 {
-    public static class API
+    /// <summary>
+    /// Leverages <see cref="Core"/>'s <see cref="EncounterMovesetGenerator"/> to create a <see cref="PKM"/> from a <see cref="ShowdownSet"/>.
+    /// </summary>
+    public static class APILegality
     {
         /// <summary>
         /// Main function that auto legalizes based on the legality
         /// </summary>
+        /// <remarks>Leverages <see cref="Core"/>'s <see cref="EncounterMovesetGenerator"/> to create a <see cref="PKM"/> from a <see cref="ShowdownSet"/>.</remarks>
         /// <param name="sav">Destination for the generated pkm</param>
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>

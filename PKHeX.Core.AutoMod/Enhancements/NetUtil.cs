@@ -3,14 +3,27 @@ using System.Net;
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Internet web request Utility
+    /// </summary>
     public static class NetUtil
     {
-        public static string GetPageText(string url)
+        /// <summary>
+        /// Gets the html string from the requested <see cref="url"/>.
+        /// </summary>
+        /// <param name="address">Address to fetch from</param>
+        /// <returns>Page response</returns>
+        public static string GetPageText(string address)
         {
-            var request = WebRequest.Create(url);
+            var request = WebRequest.Create(address);
             return GetStringResponse(request);
         }
 
+        /// <summary>
+        /// Downloads a string response with hard-coded <see cref="HttpWebRequest"/> parameters.
+        /// </summary>
+        /// <param name="address">Address to fetch from</param>
+        /// <returns>Page response</returns>
         public static string DownloadString(string address)
         {
             var request = (HttpWebRequest)WebRequest.Create(address);

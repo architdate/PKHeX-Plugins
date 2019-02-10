@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Full party worth of <see cref="ShowdownSet"/> data, and page metadata.
+    /// </summary>
     public class ShowdownTeamSet
     {
         public List<ShowdownSet> Team { get; set; }

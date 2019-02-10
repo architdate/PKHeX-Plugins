@@ -1,5 +1,8 @@
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Result codes for legalization and import operations.
+    /// </summary>
     public enum AutoModErrorCode
     {
         None,

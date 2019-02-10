@@ -225,14 +225,17 @@ namespace PKHeX.Core.AutoMod
             pk.Region = trainer.SubRegion;
         }
 
-
-        public static void SetSuggestedMoves(this PKM pk, bool random = false)
+        /// <summary>
+        /// Sets a moveset which is suggested based on calculated legality.
+        /// </summary>
+        /// <param name="pk">Legal PKM for setting the data</param>
+        /// <param name="random">True for Random assortment of legal moves, false if current moves only.</param>
+        /// <param name="la">Current legality report (calculated if not provided)</param>
+        public static void SetSuggestedMoves(this PKM pk, bool random = false, LegalityAnalysis la = null)
         {
-            int[] m = pk.GetMoveSet(random);
+            int[] m = pk.GetMoveSet(random, la);
             if (m?.Any(z => z != 0) != true)
-            {
                 return;
-            }
 
             if (pk.Moves.SequenceEqual(m))
                 return;

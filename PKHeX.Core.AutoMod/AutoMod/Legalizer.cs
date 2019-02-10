@@ -4,13 +4,22 @@ using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Dual-approach legalization methods (regenerate and brute force)
+    /// </summary>
     public static class Legalizer
     {
+        /// <summary>
+        /// Tries to regenerate the <see cref="pk"/> into a valid pkm.
+        /// </summary>
+        /// <param name="sav">Source/Destination savefile</param>
+        /// <param name="pk">Currently invalid pkm data</param>
+        /// <returns>Legalized PKM (hopefully legal)</returns>
         public static PKM Legalize(this SaveFile sav, PKM pk)
         {
             var set = new ShowdownSet(ShowdownSet.GetShowdownText(pk));
             var legal = sav.GetLegalFromTemplate(pk, set, out var satisfied);
-            var trainer = pk.GetRoughTrainerData();
+            var trainer = new PokeTrainerDetails(pk.Clone());
             if (!satisfied)
             {
                 var resetForm = ShowdownUtil.IsInvalidForm(set.Form);
@@ -20,11 +29,21 @@ namespace PKHeX.Core.AutoMod
             return legal;
         }
 
-        public static AutoModErrorCode ImportToExisting(this SaveFile sav, IReadOnlyList<ShowdownSet> sets, IList<PKM> BoxData, int start = 0, bool replace = true, bool allowAPI = true)
+        /// <summary>
+        /// Imports <see cref="sets"/> to a provided <see cref="arr"/>, with a context of <see cref="sav"/>.
+        /// </summary>
+        /// <param name="sav">Source/Destination savefile</param>
+        /// <param name="sets">Set data to import</param>
+        /// <param name="arr">Current list of data to write to</param>
+        /// <param name="start">Starting offset to place converted details</param>
+        /// <param name="overwrite">Overwrite</param>
+        /// <param name="allowAPI">Use <see cref="Core"/> to find and generate a new pkm</param>
+        /// <returns>Result code indicating success or failure</returns>
+        public static AutoModErrorCode ImportToExisting(this SaveFile sav, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, int start = 0, bool overwrite = true, bool allowAPI = true)
         {
-            var emptySlots = replace
+            var emptySlots = overwrite
                 ? Enumerable.Range(0, sets.Count).ToList()
-                : FindAllEmptySlots(BoxData);
+                : FindAllEmptySlots(arr);
 
             if (emptySlots.Count < sets.Count)
                 return AutoModErrorCode.NotEnoughSpace;
@@ -38,10 +57,10 @@ namespace PKHeX.Core.AutoMod
                     return AutoModErrorCode.InvalidLines;
 
                 var pk = sav.GetLegalFromSet(set, out var msg, allowAPI);
-                if (msg == LegalizationResult.API_Invalid)
+                if (msg == LegalizationResult.BruteForce)
                     invalidAPISets.Add(set);
 
-                BoxData[start + emptySlots[i]] = pk;
+                arr[start + emptySlots[i]] = pk;
                 generated++;
             }
 
@@ -51,6 +70,14 @@ namespace PKHeX.Core.AutoMod
             return AutoModErrorCode.None;
         }
 
+        /// <summary>
+        /// Imports a <see cref="set"/> to create a new <see cref="PKM"/> with a context of <see cref="sav"/>.
+        /// </summary>
+        /// <param name="sav">Source/Destination savefile</param>
+        /// <param name="set">Set data to import</param>
+        /// <param name="msg">Result code indicating success or failure</param>
+        /// <param name="allowAPI">Use <see cref="Core"/> to find and generate a new pkm</param>
+        /// <returns>Legalized PKM (hopefully legal)</returns>
         public static PKM GetLegalFromSet(this SaveFile sav, ShowdownSet set, out LegalizationResult msg, bool allowAPI = true)
         {
             var template = sav.BlankPKM;
@@ -62,10 +89,10 @@ namespace PKHeX.Core.AutoMod
         {
             if (allowAPI && sav.TryAPIConvert(set, template, out PKM pk))
             {
-                msg = LegalizationResult.API_Valid;
+                msg = LegalizationResult.Regenerated;
                 return pk;
             }
-            msg = LegalizationResult.API_Invalid;
+            msg = LegalizationResult.BruteForce;
             return sav.GetBruteForcedLegalMon(set, template);
         }
 

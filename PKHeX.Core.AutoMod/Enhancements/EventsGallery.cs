@@ -5,17 +5,25 @@ using System.Net;
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Interactions with ProjectPokémon's Event Gallery (hosted on GitHub)
+    /// </summary>
     public static class EventsGallery
     {
-        public const string mgdbURL = "https://github.com/projectpokemon/EventsGallery/archive/master.zip";
-        public const string releaseURL = "https://api.github.com/repos/projectpokemon/EventsGallery/releases/latest";
+        private const string RepoURL = "https://github.com/projectpokemon/EventsGallery/archive/master.zip";
+        private const string RepoReleaseURL = "https://api.github.com/repos/projectpokemon/EventsGallery/releases/latest";
 
         public static string GetMGDBDownloadURL()
         {
-            string json_data = NetUtil.DownloadString(releaseURL);
+            string json_data = NetUtil.DownloadString(RepoReleaseURL);
             return json_data.Split(new[] { "browser_download_url" }, StringSplitOptions.None)[1].Substring(3).Split('"')[0];
         }
 
+        /// <summary>
+        /// Downloads the entire repository from GitHub and extracts the contents to the <see cref="path"/>.
+        /// </summary>
+        /// <param name="dest">Location to extract the repository to</param>
+        /// <param name="entire">True to Download the current repository, false to only download the latest release.</param>
         public static void DownloadMGDBFromGitHub(string dest, bool entire)
         {
             if (entire)
@@ -32,7 +40,7 @@ namespace PKHeX.Core.AutoMod
 
         private static void DownloadEntireRepo(string dest)
         {
-            DownloadAndExtractZip(mgdbURL, dest);
+            DownloadAndExtractZip(RepoURL, dest);
 
             // clean up; delete unneeded files
             var path = Path.Combine(dest, "EventsGallery-master");

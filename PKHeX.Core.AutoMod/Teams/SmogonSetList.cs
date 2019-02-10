@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Parser for Smogon webpage <see cref="ShowdownSet"/> data.
+    /// </summary>
     public class SmogonSetList
     {
         public readonly bool Valid;

@@ -2,9 +2,12 @@
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Misc static data used for <see cref="BruteForce"/> operations.
+    /// </summary>
     public static class BruteTables
     {
-        public static readonly int[] Legendaries =
+        public static readonly HashSet<int> Legendaries = new HashSet<int>
         {
             144, 145, 146, 150, 151, 243, 244, 245, 249, 250, 251, 377, 378, 379, 380, 381, 382, 383, 384, 385,
             386, 480, 481, 482, 483, 484, 485, 486, 487, 488, 491, 492, 493, 494, 638, 639, 640, 642, 641, 643,
@@ -12,7 +15,7 @@ namespace PKHeX.Core.AutoMod
             793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 132
         };
 
-        public static readonly int[] EventSpecies = { 719, 649, 720, 385, 647, 648, 721, 801, 802, 807 };
+        public static readonly HashSet<int> EventSpecies = new HashSet<int> { 719, 649, 720, 385, 647, 648, 721, 801, 802, 807 };
 
         public static readonly GameVersion[] GameVersionList =
         {

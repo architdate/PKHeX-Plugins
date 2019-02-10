@@ -6,6 +6,9 @@ using static PKHeX.Core.LegalityCheckStrings;
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Logic for forcing an existing <see cref="PKM"/> to be legal.
+    /// </summary>
     public static class BruteForce
     {
         private static readonly ITrainerInfo DefaultTrainer = new SimpleTrainerInfo();
