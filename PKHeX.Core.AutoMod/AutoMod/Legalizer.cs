@@ -12,10 +12,10 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Tries to regenerate the <see cref="pk"/> into a valid pkm.
         /// </summary>
-        /// <param name="sav">Source/Destination savefile</param>
+        /// <param name="sav">Source/Destination trainer</param>
         /// <param name="pk">Currently invalid pkm data</param>
         /// <returns>Legalized PKM (hopefully legal)</returns>
-        public static PKM Legalize(this SaveFile sav, PKM pk)
+        public static PKM Legalize(this ITrainerInfo sav, PKM pk)
         {
             var set = new ShowdownSet(ShowdownSet.GetShowdownText(pk));
             var legal = sav.GetLegalFromTemplate(pk, set, out var satisfied);
@@ -32,14 +32,14 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Imports <see cref="sets"/> to a provided <see cref="arr"/>, with a context of <see cref="sav"/>.
         /// </summary>
-        /// <param name="sav">Source/Destination savefile</param>
+        /// <param name="sav">Source/Destination trainer</param>
         /// <param name="sets">Set data to import</param>
         /// <param name="arr">Current list of data to write to</param>
         /// <param name="start">Starting offset to place converted details</param>
         /// <param name="overwrite">Overwrite</param>
         /// <param name="allowAPI">Use <see cref="Core"/> to find and generate a new pkm</param>
         /// <returns>Result code indicating success or failure</returns>
-        public static AutoModErrorCode ImportToExisting(this SaveFile sav, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, int start = 0, bool overwrite = true, bool allowAPI = true)
+        public static AutoModErrorCode ImportToExisting(this ITrainerInfo sav, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, int start = 0, bool overwrite = true, bool allowAPI = true)
         {
             var emptySlots = overwrite
                 ? Enumerable.Range(0, sets.Count).ToList()
@@ -73,19 +73,20 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Imports a <see cref="set"/> to create a new <see cref="PKM"/> with a context of <see cref="sav"/>.
         /// </summary>
-        /// <param name="sav">Source/Destination savefile</param>
+        /// <param name="sav">Source/Destination trainer</param>
         /// <param name="set">Set data to import</param>
         /// <param name="msg">Result code indicating success or failure</param>
         /// <param name="allowAPI">Use <see cref="Core"/> to find and generate a new pkm</param>
         /// <returns>Legalized PKM (hopefully legal)</returns>
-        public static PKM GetLegalFromSet(this SaveFile sav, ShowdownSet set, out LegalizationResult msg, bool allowAPI = true)
+        public static PKM GetLegalFromSet(this ITrainerInfo sav, ShowdownSet set, out LegalizationResult msg, bool allowAPI = true)
         {
-            var template = sav.BlankPKM;
+            var game = (GameVersion)sav.Game;
+            var template = PKMConverter.GetBlank(game.GetGeneration(), game);
             template.ApplySetDetails(set);
             return sav.GetLegalFromSet(set, template, out msg, allowAPI);
         }
 
-        private static PKM GetLegalFromSet(this SaveFile sav, ShowdownSet set, PKM template, out LegalizationResult msg, bool allowAPI = true)
+        private static PKM GetLegalFromSet(this ITrainerInfo sav, ShowdownSet set, PKM template, out LegalizationResult msg, bool allowAPI = true)
         {
             if (allowAPI && sav.TryAPIConvert(set, template, out PKM pk))
             {
@@ -96,7 +97,7 @@ namespace PKHeX.Core.AutoMod
             return sav.GetBruteForcedLegalMon(set, template);
         }
 
-        private static bool TryAPIConvert(this SaveFile sav, ShowdownSet set, PKM template, out PKM pkm)
+        private static bool TryAPIConvert(this ITrainerInfo sav, ShowdownSet set, PKM template, out PKM pkm)
         {
             pkm = sav.GetLegalFromTemplate(template, set, out bool satisfied);
             if (!satisfied)

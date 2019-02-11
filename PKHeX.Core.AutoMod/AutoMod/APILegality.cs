@@ -15,29 +15,24 @@ namespace PKHeX.Core.AutoMod
         /// Main function that auto legalizes based on the legality
         /// </summary>
         /// <remarks>Leverages <see cref="Core"/>'s <see cref="EncounterMovesetGenerator"/> to create a <see cref="PKM"/> from a <see cref="ShowdownSet"/>.</remarks>
-        /// <param name="sav">Destination for the generated pkm</param>
+        /// <param name="dest">Destination for the generated pkm</param>
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use current auto legality functionality</param>
-        public static PKM GetLegalFromTemplate(this SaveFile sav, PKM template, ShowdownSet set, out bool satisfied)
+        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied)
         {
-            int Form = template.AltForm;
-            if (set.Form != null && FixFormes(set, out set))
-            {
-                Form = set.FormIndex;
-                template.ApplySetDetails(set);
-            }
-            int HPType = template.HPType;
-            var destType = sav.PKMType;
+            var Form = SanityCheckForm(template, ref set);
+            template.ApplySetDetails(set);
+            var destType = template.GetType();
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves);
             foreach (var enc in encounters)
             {
-                var ver = enc is IVersion v ? v.Version: (GameVersion)sav.Game;
-                var tr = TrainerSettings.GetSavedTrainerData(ver, sav);
+                var ver = enc is IVersion v ? v.Version : (GameVersion)dest.Game;
+                var tr = TrainerSettings.GetSavedTrainerData(ver);
                 var raw = enc.ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
-                ApplySetDetails(pk, set, Form, HPType, raw, sav);
+                ApplySetDetails(pk, set, Form, raw, dest);
 
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid)
@@ -45,10 +40,18 @@ namespace PKHeX.Core.AutoMod
                     satisfied = true;
                     return pk;
                 }
-                Console.WriteLine(la.Report());
+                Debug.WriteLine(la.Report());
             }
             satisfied = false;
             return template;
+        }
+
+        private static int SanityCheckForm(PKM template, ref ShowdownSet set)
+        {
+            int Form = template.AltForm;
+            if (set.Form != null && FixFormes(set, out set))
+                Form = set.FormIndex;
+            return Form;
         }
 
         /// <summary>
@@ -59,20 +62,18 @@ namespace PKHeX.Core.AutoMod
         /// <param name="Form">Alternate form required</param>
         /// <param name="HPType">Hidden Power type requirement</param>
         /// <param name="unconverted">Original pkm data</param>
-        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, int HPType, PKM unconverted, ITrainerInfo handler)
+        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler)
         {
-            var info = new LegalInfo(pk);
-            var pidiv = info.PIDIV ?? MethodFinder.Analyze(pk);
-            var Method = pidiv?.Type ?? PIDType.None;
+            var pidiv = MethodFinder.Analyze(pk);
 
-            SetVersion(pk, unconverted); // PreEmptive Version setting
+            pk.SetVersion(unconverted); // PreEmptive Version setting
             pk.SetSpeciesLevel(set, Form);
             pk.SetMovesEVsItems(set);
             pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set);
-            SetIVsPID(pk, set, Method, HPType, unconverted);
+            pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
 
-            PrintLegality(pk);
+            Debug.WriteLine(new LegalityAnalysis(pk).Report());
 
             pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
             pk.SetEncryptionConstant();
@@ -84,13 +85,6 @@ namespace PKHeX.Core.AutoMod
             pk.SetHappiness();
             pk.SetBelugaValues();
         }
-
-        /// <summary>
-        /// Debugging tool
-        /// </summary>
-        /// <param name="pk">PKM whose legality must be printed</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static void PrintLegality(PKM pk) => Debug.WriteLine(new LegalityAnalysis(pk).Report());
 
         /// <summary>
         /// Validate and Set the gender if needed
@@ -142,7 +136,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Return PKM</param>
         /// <param name="original">Generated PKM</param>
-        private static void SetVersion(PKM pk, PKM original)
+        private static void SetVersion(this PKM pk, PKM original)
         {
             switch (original.Version)
             {
@@ -190,7 +184,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="method"></param>
         /// <param name="hpType"></param>
         /// <param name="original"></param>
-        private static void SetIVsPID(PKM pk, ShowdownSet set, PIDType method, int hpType, PKM original)
+        private static void SetIVsPID(this PKM pk, ShowdownSet set, PIDType method, int hpType, PKM original)
         {
             // Useful Values for computation
             int Species = pk.Species;
@@ -244,9 +238,11 @@ namespace PKHeX.Core.AutoMod
                 PIDGenerator.SetValuesFromSeed(pk, Method, seed);
                 if (!(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber && pk.Nature == iterPKM.Nature))
                     continue;
-                if (pk.PID % 25 == iterPKM.Nature && pk.HPType == HPType) // Util.Rand32 is the way to go
-                    break;
-                pk = iterPKM;
+                if (HPType >= 0 && pk.HPType != HPType)
+                    continue;
+                if (pk.PID % 25 != iterPKM.Nature) // Util.Rand32 is the way to go
+                    continue;
+                break;
             }
         }
 

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 using static PKHeX.Core.LegalityCheckStrings;
+using System.Diagnostics;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -133,7 +134,7 @@ namespace PKHeX.Core.AutoMod
                 else
                 {
                     var la = new LegalityAnalysis(pk);
-                    Console.WriteLine(la.Report());
+                    Debug.WriteLine(la.Report());
                 }
             }
             return false;
@@ -265,7 +266,7 @@ namespace PKHeX.Core.AutoMod
                     var la = new LegalityAnalysis(pk);
                     if (la.Valid)
                         return true;
-                    Console.WriteLine(la.Report());
+                    Debug.WriteLine(la.Report());
                 }
             }
 
@@ -520,7 +521,7 @@ namespace PKHeX.Core.AutoMod
                 if (!type.Contains(pk.EncounterType))
                     pk.EncounterType = Convert.ToInt32(Math.Log((int)type, 2));
                 else
-                    Console.WriteLine("This should never happen");
+                    Debug.WriteLine("This should never happen");
                 report = GetReport(pk);
             }
             if (report.Contains(LEvoInvalid)) //V86 = Evolution not valid (or level/trade evolution unsatisfied).
@@ -620,12 +621,12 @@ namespace PKHeX.Core.AutoMod
                 pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
-            Console.WriteLine(updatedReport);
+            Debug.WriteLine(updatedReport);
             if (!updatedReport.Contains(LPIDTypeMismatch))
                 return;
 
             var NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID(nature, pk.HPType, XD);
-            Console.WriteLine(XD);
+            Debug.WriteLine(XD);
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
@@ -681,7 +682,7 @@ namespace PKHeX.Core.AutoMod
 
         private static void SetIVs(PKM pk, IReadOnlyList<string> NatureHPIVs)
         {
-            Console.WriteLine(NatureHPIVs[0]);
+            Debug.WriteLine(NatureHPIVs[0]);
             pk.IV_HP = Convert.ToInt32(NatureHPIVs[1]);
             pk.IV_ATK = Convert.ToInt32(NatureHPIVs[2]);
             pk.IV_DEF = Convert.ToInt32(NatureHPIVs[3]);
@@ -719,7 +720,7 @@ namespace PKHeX.Core.AutoMod
 
             if (!updatedReport.Contains(LPIDTypeMismatch) || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                 return pk;
-            Console.WriteLine(GetReport(pk));
+            Debug.WriteLine(GetReport(pk));
             pk.FatefulEncounter = feFlag;
             pk.Egg_Location = eggloc;
             return pk;
@@ -735,7 +736,7 @@ namespace PKHeX.Core.AutoMod
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
-            Console.WriteLine(NatureHPIVs[0]);
+            Debug.WriteLine(NatureHPIVs[0]);
             SetIVs(pk, NatureHPIVs);
             if (shiny) pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
@@ -748,7 +749,7 @@ namespace PKHeX.Core.AutoMod
             }
             if (!updatedReport.Contains(LPIDTypeMismatch) || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R))
                 return pk;
-            Console.WriteLine(GetReport(pk));
+            Debug.WriteLine(GetReport(pk));
             pk.FatefulEncounter = feFlag;
             pk.Egg_Location = eggloc;
             return pk;

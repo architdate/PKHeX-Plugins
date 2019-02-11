@@ -16,7 +16,7 @@ namespace PKHeX.Core.AutoMod
 
         public RentalTeam(byte[] data)
         {
-            Console.WriteLine(data.Length);
+            Debug.WriteLine(data.Length);
             Team = new[]
             {
                 new QRPK7(data.Take(0x30).ToArray()),

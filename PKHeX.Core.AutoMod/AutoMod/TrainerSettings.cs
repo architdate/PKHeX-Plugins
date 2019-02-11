@@ -11,6 +11,8 @@ namespace PKHeX.Core.AutoMod
         private static readonly string TrainerPath = Path.Combine(Directory.GetCurrentDirectory(), "trainers");
         static TrainerSettings() => LoadTrainerDatabaseFromPath(TrainerPath);
 
+        private static readonly ITrainerInfo DefaultFallback = new SimpleTrainerInfo();
+
         /// <summary>
         /// Loads possible <see cref="PKM"/> data from the path, and registers them to the <see cref="Database"/>.
         /// </summary>
@@ -38,7 +40,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="generation">Generation of origin requested.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
-        public static ITrainerInfo GetSavedTrainerData(int generation, ITrainerInfo fallback) => Database.GetTrainerFromGen(generation) ?? fallback;
+        public static ITrainerInfo GetSavedTrainerData(int generation, ITrainerInfo fallback = null) => Database.GetTrainerFromGen(generation) ?? fallback ?? DefaultFallback;
 
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="version">Version of origin requested.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
-        public static ITrainerInfo GetSavedTrainerData(GameVersion version, ITrainerInfo fallback) => Database.GetTrainer(version) ?? fallback;
+        public static ITrainerInfo GetSavedTrainerData(GameVersion version, ITrainerInfo fallback = null) => Database.GetTrainer(version) ?? fallback ?? DefaultFallback;
 
         /// <summary>
         /// Gets a possible parent Trainer Data for the provided <see cref="pk"/>.
@@ -55,6 +57,6 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokémon that will receive the trainer details.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
-        public static ITrainerInfo GetSavedTrainerData(PKM pk, ITrainerInfo fallback) => GetSavedTrainerData((GameVersion)pk.Version, fallback);
+        public static ITrainerInfo GetSavedTrainerData(PKM pk, ITrainerInfo fallback = null) => GetSavedTrainerData((GameVersion)pk.Version, fallback);
     }
 }
