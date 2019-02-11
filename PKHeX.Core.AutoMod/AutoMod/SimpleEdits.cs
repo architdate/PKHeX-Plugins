@@ -5,6 +5,30 @@ namespace PKHeX.Core.AutoMod
 {
     public static class SimpleEdits
     {
+        static SimpleEdits()
+        {
+            // Make PKHeX use our own marking method
+            CommonEdits.MarkingMethod = FlagIVsAutoMod;
+        }
+
+        private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
+        {
+            if (pk.Format < 7)
+                return GetSimpleMarking;
+            return GetComplexMarking;
+
+            // value, index
+            int GetSimpleMarking(int val, int _) => val == 31 ? 1 : 0;
+            int GetComplexMarking(int val, int _)
+            {
+                if (val == 31)
+                    return 1;
+                if (val == 1 || val == 0)
+                    return 2;
+                return 0;
+            }
+        }
+
         /// <summary>
         /// Set Encryption Constant based on PKM GenNumber
         /// </summary>
@@ -52,32 +76,6 @@ namespace PKHeX.Core.AutoMod
             pk.RelearnMove2 = 0;
             pk.RelearnMove3 = 0;
             pk.RelearnMove4 = 0;
-        }
-
-        public static void SetMarkings(this PKM pk)
-        {
-            var f = pk.Format;
-            if (f < 3)
-                return;
-
-            pk.Markings = new int[]
-            {
-                GetMarkVal(pk.IV_HP, f),
-                GetMarkVal(pk.IV_ATK, f),
-                GetMarkVal(pk.IV_DEF, f),
-                GetMarkVal(pk.IV_SPA, f),
-                GetMarkVal(pk.IV_SPD, f),
-                GetMarkVal(pk.IV_SPE, f),
-            };
-
-            int GetMarkVal(int val, int format)
-            {
-                if (val == 31)
-                    return 1;
-                if (format >= 7 && val >= 29)
-                    return 2;
-                return 0;
-            }
         }
 
         public static void ClearHyperTraining(this PKM pk)
