@@ -46,12 +46,12 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        public static void ClearRelearnMoves(this PKM Set)
+        public static void ClearRelearnMoves(this PKM pk)
         {
-            Set.RelearnMove1 = 0;
-            Set.RelearnMove2 = 0;
-            Set.RelearnMove3 = 0;
-            Set.RelearnMove4 = 0;
+            pk.RelearnMove1 = 0;
+            pk.RelearnMove2 = 0;
+            pk.RelearnMove3 = 0;
+            pk.RelearnMove4 = 0;
         }
 
         public static void SetMarkings(this PKM pk)
@@ -146,15 +146,11 @@ namespace PKHeX.Core.AutoMod
         {
             switch (pk)
             {
-                case PK7 pk7:
-                    if (!pk.IsUntraded)
-                        pk7.TradeMemory(true);
-                    pk7.FixMemories();
+                case PK7 pk7 when !pk.IsUntraded:
+                    pk7.TradeMemory(true);
                     break;
-                case PK6 pk6:
-                    if (!pk.IsUntraded)
-                        pk6.TradeMemory(true);
-                    pk6.FixMemories();
+                case PK6 pk6 when !pk.IsUntraded:
+                    pk6.TradeMemory(true);
                     break;
             }
         }
@@ -172,34 +168,19 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to set trainer data to</param>
         /// <param name="trainer">Trainer data</param>
-        /// <param name="APILegalized">Was the <see cref="pk"/> legalized by the API</param>
-        public static void SetTrainerData(this PKM pk, ITrainerInfo trainer, bool APILegalized = false)
+        public static void SetTrainerData(this PKM pk, ITrainerInfo trainer)
         {
-            if (APILegalized)
-            {
-                if ((pk.TID == 12345 && pk.OT_Name == "PKHeX") || (pk.TID == 34567 && pk.SID == 0 && pk.OT_Name == "TCD"))
-                {
-                    bool shiny = pk.IsShiny;
-                    pk.TID = trainer.TID;
-                    if (pk.GenNumber >= 3)
-                        pk.SID = trainer.SID;
-                    pk.OT_Name = trainer.OT;
-                    pk.OT_Gender = trainer.Gender;
-                    if (pk.IsShiny != shiny)
-                        pk.SetShinyBoolean(shiny);
-                }
-                return;
-            }
             pk.TID = trainer.TID;
             pk.SID = pk.GenNumber >= 3 ? trainer.SID : 0;
             pk.OT_Name = trainer.OT;
         }
 
         /// <summary>
-        /// Set Trainer data (TID, SID, OT) for a given PKM
+        /// Set Handling Trainer data for a given PKM
         /// </summary>
         /// <param name="pk">PKM to modify</param>
-        public static void SetTrainerDataAndMemories(this PKM pk, ITrainerInfo trainer)
+        /// <param name="trainer">Trainer to handle the <see cref="pk"/></param>
+        public static void SetHandlerandMemory(this PKM pk, ITrainerInfo trainer)
         {
             pk.CurrentHandler = 1;
             pk.HT_Name = trainer.OT;
@@ -218,7 +199,6 @@ namespace PKHeX.Core.AutoMod
         /// <returns>PKM with the necessary values modified to reflect trainerdata changes</returns>
         public static void SetAllTrainerData(this PKM pk, ITrainerInfo trainer)
         {
-            pk.SetTrainerData(trainer, true);
             pk.SetBelugaValues(); // trainer details changed?
             pk.ConsoleRegion = trainer.ConsoleRegion;
             pk.Country = trainer.Country;

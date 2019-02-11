@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -10,13 +11,18 @@ namespace PKHeX.Core.AutoMod
         private readonly Dictionary<GameVersion, List<ITrainerInfo>> Database = new Dictionary<GameVersion, List<ITrainerInfo>>();
 
         /// <summary>
-        /// Fetches an appropriate trainer based on the <see cref="ver"/>.
+        /// Fetches an appropriate trainer based on the requested <see cref="version"/>.
+        /// </summary>
+        /// <param name="version">Version the trainer should originate from</param>
+        /// <returns>Null if no trainer found for this version.</returns>
+        public ITrainerInfo GetTrainer(int version) => GetTrainer((GameVersion) version);
+
+        /// <summary>
+        /// Fetches an appropriate trainer based on the requested <see cref="ver"/>.
         /// </summary>
         /// <param name="ver">Version the trainer should originate from</param>
         /// <returns>Null if no trainer found for this version.</returns>
-        public ITrainerInfo GetTrainer(int ver) => GetTrainer((GameVersion) ver);
-
-        private ITrainerInfo GetTrainer(GameVersion ver)
+        public ITrainerInfo GetTrainer(GameVersion ver)
         {
             if (Database.TryGetValue(ver, out var list))
             {
@@ -26,6 +32,19 @@ namespace PKHeX.Core.AutoMod
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Fetches an appropriate trainer based on the requested <see cref="generation"/>.
+        /// </summary>
+        /// <param name="generation">Generation the trainer should inhabit</param>
+        /// <returns>Null if no trainer found for this version.</returns>
+        public ITrainerInfo GetTrainerFromGen(int generation)
+        {
+            var possible = Database.Where(z => z.Key.GetGeneration() == generation).ToList();
+            var group = Util.Rand.Next(possible.Count);
+            var list = possible[group].Value;
+            return list[Util.Rand.Next(list.Count)];
         }
 
         /// <summary>

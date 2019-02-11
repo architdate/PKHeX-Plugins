@@ -24,8 +24,8 @@ namespace PKHeX.Core.AutoMod
             {
                 var resetForm = ShowdownUtil.IsInvalidForm(set.Form);
                 legal = BruteForce.ApplyDetails(pk, set, resetForm, trainer);
+                legal.SetTrainerData(trainer);
             }
-            legal.SetTrainerData(trainer, satisfied);
             return legal;
         }
 

@@ -33,7 +33,7 @@ namespace PKHeX.Core.AutoMod
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves);
             foreach (var enc in encounters)
             {
-                var ver = enc is IVersion v ? (int)v.Version: sav.Game;
+                var ver = enc is IVersion v ? v.Version: (GameVersion)sav.Game;
                 var tr = TrainerSettings.GetSavedTrainerData(ver, sav);
                 var raw = enc.ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
@@ -68,17 +68,15 @@ namespace PKHeX.Core.AutoMod
             SetVersion(pk, unconverted); // PreEmptive Version setting
             pk.SetSpeciesLevel(set, Form);
             pk.SetMovesEVsItems(set);
-            pk.SetTrainerDataAndMemories(handler);
+            pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set);
             SetIVsPID(pk, set, Method, HPType, unconverted);
 
             PrintLegality(pk);
 
-            ColosseumFixes(pk);
             pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
             pk.SetEncryptionConstant();
             pk.SetShinyBoolean(set.Shiny);
-            CheckAndSetFateful(pk);
             pk.FixGender(set);
             pk.SetSuggestedRibbons();
             pk.SetSuggestedMemories();
@@ -165,16 +163,6 @@ namespace PKHeX.Core.AutoMod
                     pk.Version = original.Version;
                     break;
             }
-        }
-
-        private static void CheckAndSetFateful(PKM pk)
-        {
-            var la = new LegalityAnalysis(pk);
-            string Report = la.Report();
-            if (Report.Contains(LFatefulMysteryMissing) || Report.Contains(LFatefulMissing))
-                pk.FatefulEncounter = true;
-            else if (Report.Contains(LFatefulInvalid))
-                pk.FatefulEncounter = false;
         }
 
         /// <summary>
@@ -320,26 +308,6 @@ namespace PKHeX.Core.AutoMod
                 default:
                     return PIDType.None;
             }
-        }
-
-        /// <summary>
-        /// Colosseum/XD pokemon need to be fixed.
-        /// </summary>
-        /// <param name="pk">PKM to apply the fix to</param>
-        private static void ColosseumFixes(PKM pk)
-        {
-            if (pk.Version != (int)GameVersion.CXD)
-                return;
-
-            // wipe all ribbons
-            pk.ClearAllRibbons();
-
-            // set national ribbon
-            if (pk is IRibbonSetEvent3 c3)
-                c3.RibbonNational = true;
-            pk.Ball = 4;
-            pk.FatefulEncounter = true;
-            pk.OT_Gender = 0;
         }
     }
 }
