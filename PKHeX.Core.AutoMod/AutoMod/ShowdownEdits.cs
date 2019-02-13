@@ -1,7 +1,7 @@
 namespace PKHeX.Core.AutoMod
 {
     /// <summary>
-    /// Modifications for a <see cref="PKM"/> based on a <see cref="ShowdownSet"/>.
+    /// Modifications for a <see cref="PKM"/> based on a <see cref="ShowdownSet"/>
     /// </summary>
     public static class ShowdownEdits
     {
@@ -49,9 +49,7 @@ namespace PKHeX.Core.AutoMod
             else
                 pk.Gender = pk.GetSaneGender();
             pk.SetAltForm(Form);
-
-            pk.IsNicknamed = set.Nickname != null;
-            pk.Nickname = set.Nickname ?? PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, pk.Format);
+            pk.SetNickname(set.Nickname);
             pk.CurrentLevel = set.Level;
             if (pk.CurrentLevel == 50)
                 pk.CurrentLevel = 100; // VGC Override
@@ -66,7 +64,6 @@ namespace PKHeX.Core.AutoMod
         {
             pk.SetMoves(set.Moves, true);
             pk.CurrentFriendship = set.Friendship;
-            pk.SetBelugaValues();
             if (pk is IAwakened pb7)
             {
                 pb7.SetSuggestedAwakenedValues(pk);
