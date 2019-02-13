@@ -1,9 +1,8 @@
-# PKHeX-Plugins
-Plugins for PKHeX
-Uses the Plugin Interface in the base PKHeX repository.
+# About
+This project uses `PKHeX.Core` and PKHeX's `IPlugin` interface to provide PKHeX program enhancements, namely **Auto**mated **Mod**ifications to create Legal Pokémon. Please refer to the [Wiki](https://github.com/architdate/PKHeX-Plugins/wiki) for more information regarding the functionalities provided by this project.
 
 ## Building
-This needs any IDE that supports compiling .NET based code (Ideally 4.6+). Recommended IDE is Visual Studio 2017
+This project requires an IDE that supports compiling .NET based code (Ideally .NET 4.6+). Recommended IDE is Visual Studio 2017 (Community)
 
 - First Clone this repository using: `$ git clone https://github.com/architdate/PKHeX-Plugins.git`
 - Right click on the solution and click `Rebuild All`
@@ -11,18 +10,18 @@ This needs any IDE that supports compiling .NET based code (Ideally 4.6+). Recom
 
 ## Usage
 To use the plugins:
-- Create a folder called `plugins` in the same directory as PKHeX
-- Put the compiled plugins in the folder
-- Start PKHeX and the plugins should be available for use in `Tools > Auto Legality Mod` menu
-
-## Contributing
-To contribute to the repository, you can submit a pull request to the repository. Try to follow a format similar to the plugins inside the repository already
-All contributions are greatly appreciated!
+- Create a folder called `plugins` in the same directory as PKHeX.exe
+- Put the compiled plugins from this project in the `plugins` folder
+- Start PKHeX.
+- The plugins should be available for use in `Tools > Auto Legality Mod` drop-down menu
 
 ## Support Server:
-Come join the dedicated server for this mod! Ask questions, give suggestions, get help, or just hang out. Don't be shy, we don't bite:
+Come join the dedicated Discord server for this mod! Ask questions, give suggestions, get help, or just hang out. Don't be shy, we don't bite:
 
 [<img src="https://canary.discordapp.com/api/guilds/401014193211441153/widget.png?style=banner2">](https://discord.gg/tDMvSRv)
 
+## Contributing
+To contribute to the repository, you can submit a pull request to the repository. Try to follow a format similar to the current codebase. All contributions are greatly appreciated! If you would like to discuss possible contributions without using GitHub, please contact us using the Support Server above.
+
 ## Credits:
-@kwsch (Kaphotics): for having the IPlugin interface which allows loading of Plugin DLL files into PKHeX. Also for the support provided in my discord server
+[@kwsch](https://github.com/kwsch): for providing the IPlugin interface in PKHeX, which allows loading of this project's Plugin DLL files. Also for the support provided in the support server.
