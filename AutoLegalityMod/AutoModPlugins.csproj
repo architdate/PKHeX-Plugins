@@ -43,7 +43,6 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GUI\PKSMUtil.cs" />
     <Compile Include="GUI\QRCodeDumper.cs" />
     <Compile Include="GUI\QRParser.cs" />
     <Compile Include="Plugins\AutoModPlugin.cs" />

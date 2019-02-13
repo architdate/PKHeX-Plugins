@@ -1,5 +1,6 @@
-﻿using System;
+﻿using System.IO;
 using System.Windows.Forms;
+using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
 {
@@ -12,23 +13,23 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name);
             modmenu.DropDownItems.Add(ctrl);
-            ctrl.Click += Export;
+            ctrl.Click += (s, e) => Export();
             ctrl.Image = Properties.Resources.mgdbdownload;
         }
 
-        private void Export(object sender, EventArgs e)
+        private static void Export()
         {
-            var bank = PKSMUtil.GetBankData();
-
-            // Check for invalid bank
-            if (bank == null)
-            {
-                WinFormsUtil.Alert("Invalid bank input");
+            if (!WinFormsUtil.OpenSAVPKMDialog(new[] { ".bnk" }, out string path))
                 return;
-            }
 
-            PKSMUtil.ExportBank(bank);
-            WinFormsUtil.Alert("Bank Exported");
+            var bank = File.ReadAllBytes(path);
+            using (var fbd = new FolderBrowserDialog())
+            {
+                if (fbd.ShowDialog() != DialogResult.OK)
+                    return;
+                var count = PKSMUtil.ExportBank(bank, fbd.SelectedPath);
+                WinFormsUtil.Alert("Bank Exported!", $"Dumped {count} Pokémon!");
+            }
         }
     }
 }
