@@ -7,23 +7,13 @@ using Xunit;
 
 namespace AutoModTests
 {
-    public class LegalityTests
+    public static class LegalityTests
     {
-        public static readonly string PKMFolder;
-
-        static LegalityTests()
-        {
-            var folder = Directory.GetCurrentDirectory();
-            while (!folder.EndsWith(nameof(AutoModTests)))
-                folder = Directory.GetParent(folder).FullName;
-
-            PKMFolder = Path.Combine(folder, "Legality");
-
-            API.SAV = SaveUtil.GetBlankSAV(PKX.Generation, "PKHeX");
-        }
+        private static readonly string PKMFolder = TestUtil.GetTestFolder("Legality");
+        private static readonly SaveFile SAV = SaveUtil.GetBlankSAV(PKX.Generation, "PKHeX");
 
         [Fact]
-        public void TestFilesPassOrFailLegalityChecks()
+        public static void TestFilesPassOrFailLegalityChecks()
         {
             var folder = PKMFolder;
             VerifyAll(folder, "Legal", true);
@@ -40,14 +30,14 @@ namespace AutoModTests
             foreach (var file in files)
             {
                 var fi = new FileInfo(file);
-                PKM pkm = GetPKM(file, fi);
+                var pk = GetPKM(file, fi);
 
                 // double check initial state
-                var la = new LegalityAnalysis(pkm);
+                var la = new LegalityAnalysis(pk);
                 la.Valid.Should().Be(isValid, $"because the file '{fi.Directory.Name}\\{fi.Name}' should be {(isValid ? "Valid" : "Invalid")}");
 
                 // try legalizing, should end up as legal
-                var updated = Legalizer.Legalize(pkm);
+                var updated = SAV.Legalize(pk);
                 var la2 = new LegalityAnalysis(updated);
                 la2.Valid.Should().Be(true, $"because the file '{fi.Directory.Name}\\{fi.Name}' should be legal");
             }
@@ -63,7 +53,7 @@ namespace AutoModTests
             if (format > 10)
                 format = 6;
             var pkm = PKMConverter.GetPKMfromBytes(data, prefer: format);
-            pkm.Should().NotBe($"the PKM '{new FileInfo(file).Name}' should have been loaded");
+            pkm.Should().NotBeNull($"the PKM '{new FileInfo(file).Name}' should have been loaded");
             return pkm;
         }
     }

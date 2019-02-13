@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using PKHeX.Core;
-using SmogonGenner;
+using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
 {
@@ -12,15 +12,14 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
+            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.smogongenner };
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += SmogonGenning;
-            ctrl.Image = Properties.Resources.smogongenner;
         }
 
         private void SmogonGenning(object sender, EventArgs e)
         {
-            PKM rough = PKMEditor.PreparePKM();
+            var rough = PKMEditor.PreparePKM();
             GenSmogonSets(rough);
         }
 
@@ -37,15 +36,13 @@ namespace AutoModPlugins
                 return;
             }
 
-            if (info.ShowdownSets.Length == 0)
+            if (!info.Valid || info.Sets.Count == 0)
             {
                 WinFormsUtil.Error("No movesets available. Perhaps you could help out? Check the Contributions & Corrections forum.\n\nForum: https://www.smogon.com/forums/forums/contributions-corrections.388/");
                 return;
             }
 
-            try { AutomaticLegality.ImportModded(info.ShowdownSets); }
-            catch { WinFormsUtil.Error("Something went wrong"); }
-
+            ShowdownSetLoader.Import(info.Sets);
             WinFormsUtil.Alert(info.Summary);
         }
     }

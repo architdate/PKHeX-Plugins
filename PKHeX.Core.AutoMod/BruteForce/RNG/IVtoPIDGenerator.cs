@@ -1,135 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using static RNGReporter.CompareType;
 
 namespace RNGReporter
 {
-    public class IVtoPIDGenerator
+    public static class IVtoPIDGenerator
     {
-        public static string[] M1PID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
+        public static string[] Generate(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid, FrameType type)
         {
-            List<Seed> seeds =
-                IVtoSeed.GetSeeds(
-                    hp,
-                    atk,
-                    def,
-                    spa,
-                    spd,
-                    spe,
-                    nature,
-                    tid,
-                    FrameType.Method1);
-
+            var seeds = IVtoSeed.GetSeeds(hp, atk, def, spa, spd, spe, nature, tid, type);
             if (seeds.Count == 0)
-            {
                 return new[] { "0", "0" };
-            }
 
-            string[] ans = new string[2];
-            ans[0] = seeds[0].Pid.ToString("X");
-            ans[1] = seeds[0].Sid.ToString();
-            return ans;
+            return new[]
+            {
+                seeds[0].Pid.ToString("X"),
+                seeds[0].Sid.ToString(),
+            };
         }
 
-        public static string[] M2PID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
-        {
-            List<Seed> seeds =
-                IVtoSeed.GetSeeds(
-                    hp,
-                    atk,
-                    def,
-                    spa,
-                    spd,
-                    spe,
-                    nature,
-                    tid,
-                    FrameType.Method2);
-
-            if (seeds.Count == 0)
-            {
-                return new[] { "0", "0" };
-            }
-
-            string[] ans = new string[2];
-            ans[0] = seeds[0].Pid.ToString("X");
-            ans[1] = seeds[1].Sid.ToString();
-            return ans;
-        }
-
-        public static string[] M4PID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
-        {
-            List<Seed> seeds =
-                IVtoSeed.GetSeeds(
-                    hp,
-                    atk,
-                    def,
-                    spa,
-                    spd,
-                    spe,
-                    nature,
-                    tid,
-                    FrameType.Method4);
-
-            if (seeds.Count == 0)
-            {
-                return new[] { "0", "0" };
-            }
-
-            string[] ans = new string[2];
-            ans[0] = seeds[0].Pid.ToString("X");
-            ans[1] = seeds[1].Sid.ToString();
-            return ans;
-        }
-
-        public static string[] XDPID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
-        {
-            List<Seed> seeds =
-                IVtoSeed.GetSeeds(
-                    hp,
-                    atk,
-                    def,
-                    spa,
-                    spd,
-                    spe,
-                    nature,
-                    tid,
-                    FrameType.ColoXD);
-
-            if (seeds.Count == 0)
-            {
-                return new[] { "0", "0" };
-            }
-
-            string[] ans = new string[2];
-            ans[0] = seeds[0].Pid.ToString("X");
-            ans[1] = seeds[0].Sid.ToString();
-            return ans;
-        }
-
-        public static string[] ChannelPID(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid)
-        {
-            List<Seed> seeds =
-                IVtoSeed.GetSeeds(
-                    hp,
-                    atk,
-                    def,
-                    spa,
-                    spd,
-                    spe,
-                    nature,
-                    tid,
-                    FrameType.Channel);
-
-            if (seeds.Count == 0)
-            {
-                return new[] { "0", "0" };
-            }
-
-            string[] ans = new string[2];
-            ans[0] = seeds[0].Pid.ToString("X");
-            ans[1] = seeds[0].Sid.ToString();
-            return ans;
-        }
-
-        public string[] GenerateWishmkr(uint targetNature)
+        public static string[] GenerateWishmkr(uint targetNature)
         {
             uint finalPID = 0;
             uint finalHP = 0;
@@ -168,12 +56,12 @@ namespace RNGReporter
             return new[] { finalPID.ToString("X"), finalHP.ToString(), finalATK.ToString(), finalDEF.ToString(), finalSPA.ToString(), finalSPD.ToString(), finalSPE.ToString() };
         }
 
-        private uint Forward(uint seed)
+        private static uint Forward(uint seed)
         {
             return (seed * 0x41c64e6d) + 0x6073;
         }
 
-        private uint[] CreateIVs(uint iv1, uint ivs2)
+        private static uint[] CreateIVs(uint iv1, uint ivs2)
         {
             uint[] ivs = new uint[6];
 
@@ -189,93 +77,58 @@ namespace RNGReporter
             return ivs;
         }
 
-        private static IVFilter Hptofilter(string hiddenpower)
+        private static IVFilter Hptofilter(int hiddenpower)
         {
-            if (hiddenpower == "dark")
+            switch (hiddenpower)
             {
-                return new IVFilter(0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd);
-            }
-            else if (hiddenpower == "dragon")
-            {
-                return new IVFilter(0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd);
-            }
-            else if (hiddenpower == "ice")
-            {
-                return new IVFilter(0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd);
-            }
-            else if (hiddenpower == "psychic")
-            {
-                return new IVFilter(0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven);
-            }
-            else if (hiddenpower == "electric")
-            {
-                return new IVFilter(0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven);
-            }
-            else if (hiddenpower == "grass")
-            {
-                return new IVFilter(0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd);
-            }
-            else if (hiddenpower == "water")
-            {
-                return new IVFilter(0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd);
-            }
-            else if (hiddenpower == "fire")
-            {
-                return new IVFilter(0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven);
-            }
-            else if (hiddenpower == "steel")
-            {
-                return new IVFilter(0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven);
-            }
-            else if (hiddenpower == "ghost")
-            {
-                return new IVFilter(0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd);
-            }
-            else if (hiddenpower == "bug")
-            {
-                return new IVFilter(0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd);
-            }
-            else if (hiddenpower == "rock")
-            {
-                return new IVFilter(0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven);
-            }
-            else if (hiddenpower == "ground")
-            {
-                return new IVFilter(0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven);
-            }
-            else if (hiddenpower == "poison")
-            {
-                return new IVFilter(0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd);
-            }
-            else if (hiddenpower == "flying")
-            {
-                return new IVFilter(0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd);
-            }
-            else if (hiddenpower == "fighting")
-            {
-                return new IVFilter(0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenOdd, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven, 0, CompareType.HiddenEven);
-            }
-            else
-            {
-                return new IVFilter();
+                case 0: // Fighting
+                    return new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenEven, 0, HiddenEven);
+                case 1: // Flying
+                    return new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd);
+                case 2: // Poison
+                    return new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenEven, 0, HiddenOdd);
+                case 3: // Ground
+                    return new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenEven);
+                case 4: // Rock
+                    return new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenEven, 0, HiddenEven);
+                case 5: // Bug
+                    return new IVFilter(0, HiddenOdd,  0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd);
+                case 6: // Ghost
+                    return new IVFilter(0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd);
+                case 7: // Steel
+                    return new IVFilter(0, HiddenOdd,  0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenEven);
+                case 8: // Fire
+                    return new IVFilter(0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenEven);
+                case 9: // Water
+                    return new IVFilter(0, HiddenOdd,  0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd);
+                case 10: // Grass
+                    return new IVFilter(0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd);
+                case 11: // Electric
+                    return new IVFilter(0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenEven);
+                case 12: // Psychic
+                    return new IVFilter(0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenEven);
+                case 13: // Ice
+                    return new IVFilter(0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd);
+                case 14: // Dragon
+                    return new IVFilter(0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd);
+                case 15: // Dark
+                    return new IVFilter(0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd);
+                default:
+                    return new IVFilter();
             }
         }
 
-        public static string[] GetIVPID(uint nature, string hiddenpower, bool XD = false, string method = "")
+        public static string[] GetIVPID(uint nature, int hiddenpower, bool XD = false, string method = "")
         {
+            if (method == "BACD_R")
+                return GenerateWishmkr(nature);
             var generator = new FrameGenerator();
             if (XD || method == "XD")
                 generator = new FrameGenerator{FrameType = FrameType.ColoXD};
             if (method == "M2")
                 generator = new FrameGenerator{FrameType = FrameType.Method2};
-            if (method == "BACD_R")
-            {
-                IVtoPIDGenerator bacdr = new IVtoPIDGenerator();
-                return bacdr.GenerateWishmkr(nature);
-            }
-            FrameCompare frameCompare = new FrameCompare(Hptofilter(hiddenpower), nature);
-            List<Frame> frames = generator.Generate(frameCompare, 0, 0);
-            //Console.WriteLine("Num frames: " + frames.Count);
+            var frameCompare = new FrameCompare(Hptofilter(hiddenpower), nature);
+            var frames = generator.Generate(frameCompare, 0, 0);
             return new[] { frames[0].Pid.ToString("X"), frames[0].Hp.ToString(), frames[0].Atk.ToString(), frames[0].Def.ToString(), frames[0].Spa.ToString(), frames[0].Spd.ToString(), frames[0].Spe.ToString() };
         }
     }

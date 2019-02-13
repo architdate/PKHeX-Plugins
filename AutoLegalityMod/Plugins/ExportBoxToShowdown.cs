@@ -10,10 +10,9 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
-            modmenu.DropDownItems.Add(ctrl);
+            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.exportboxtoshowdown };
             ctrl.Click += (s, e) => Export(SaveFileEditor.SAV);
-            ctrl.Image = Properties.Resources.exportboxtoshowdown;
+            modmenu.DropDownItems.Add(ctrl);
         }
 
         private static void Export(SaveFile sav)
@@ -26,7 +25,7 @@ namespace AutoModPlugins
                 Clipboard.SetText(str);
                 WinFormsUtil.Alert("Exported the active box to Showdown format");
             }
-            catch { }
+            catch { WinFormsUtil.Error("Unable to export text to clipboard."); }
         }
     }
 }

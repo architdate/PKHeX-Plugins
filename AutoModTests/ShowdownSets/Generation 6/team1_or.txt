@@ -1,0 +1,44 @@
+Ditto  
+Ability: Imposter  
+EVs: 252 HP / 4 Atk / 252 Def  
+Impish Nature  
+IVs: 0 Atk  
+- Transform
+
+Ded (Latios) @ Life Orb  
+Ability: Levitate  
+Shiny: Yes  
+EVs: 252 SpA / 4 SpD / 252 Spe  
+Timid Nature  
+IVs: 0 Atk  
+- Draco Meteor  
+- Psyshock  
+- Defog  
+- Recover
+
+Everest (Tyranitar) (M) @ Choice Band  
+Ability: Sand Stream  
+EVs: 100 HP / 252 Atk / 156 Spe  
+Adamant Nature  
+- Crunch  
+- Stone Edge  
+- Pursuit  
+- Earthquake
+
+Falchion (Skarmory) (M) @ Rocky Helmet  
+Ability: Sturdy  
+EVs: 252 HP / 232 Def / 24 Spe  
+Impish Nature  
+- Brave Bird  
+- Stealth Rock  
+- Whirlwind  
+- Roost
+
+Lapis (Azumarill) (F) @ Assault Vest  
+Ability: Huge Power  
+EVs: 240 HP / 252 Atk / 16 SpD  
+Adamant Nature  
+- Waterfall  
+- Knock Off  
+- Play Rough  
+- Aqua Jet

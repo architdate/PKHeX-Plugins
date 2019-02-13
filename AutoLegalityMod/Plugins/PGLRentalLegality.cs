@@ -11,11 +11,13 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
+            var ctrl = new ToolStripMenuItem(Name)
+            {
+                Image = Properties.Resources.pglqrcode,
+                ShortcutKeys = Keys.Alt | Keys.Q
+            };
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += PGLShowdownSet;
-            ctrl.Image = Properties.Resources.pglqrcode;
-            ctrl.ShortcutKeys = Keys.Alt | Keys.Q;
         }
 
         private static void PGLShowdownSet(object sender, EventArgs e)
@@ -26,7 +28,7 @@ namespace AutoModPlugins
 
             var rentalTeam = QRParser.DecryptQRCode(img);
             var sets = rentalTeam.ConvertedTeam.ToList();
-            AutomaticLegality.ImportModded(sets);
+            ShowdownSetLoader.Import(sets);
         }
     }
 }

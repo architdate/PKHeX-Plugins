@@ -12,47 +12,42 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
-            modmenu.DropDownItems.Add(ctrl);
+            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.legalizeboxes };
             ctrl.Click += Legalize;
-            ctrl.Image = Properties.Resources.legalizeboxes;
+            modmenu.DropDownItems.Add(ctrl);
         }
 
         private void Legalize(object sender, EventArgs e)
         {
             bool box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
+            bool all = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
 
             if (!box)
-            {
                 LegalizeActive();
-                return;
-            }
-
-            bool all = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
             if (!all)
-            {
                 LegalizeCurrent();
-                return;
-            }
-            LegalizeAllBoxes();
+            else
+                LegalizeAllBoxes();
         }
 
         private void LegalizeCurrent()
         {
             var sav = SaveFileEditor.SAV;
-            if (!sav.LegalizeBox(sav.CurrentBox))
+            var count = sav.LegalizeBox(sav.CurrentBox);
+            if (count <= 0) // failed to modify anything
                 return;
             SaveFileEditor.ReloadSlots();
-            WinFormsUtil.Alert("Legalized Current Box's Pokémon!");
+            WinFormsUtil.Alert($"Legalized {count} Pokémon in Current Box!");
         }
 
         private void LegalizeAllBoxes()
         {
             var sav = SaveFileEditor.SAV;
-            if (!sav.LegalizeBoxes())
+            var count = sav.LegalizeBoxes();
+            if (count <= 0) // failed to modify anything
                 return;
             SaveFileEditor.ReloadSlots();
-            WinFormsUtil.Alert("Legalized All Box Pokémon!");
+            WinFormsUtil.Alert($"Legalized {count} Pokémon across all boxes!");
         }
 
         private void LegalizeActive()
@@ -60,9 +55,20 @@ namespace AutoModPlugins
             var pk = PKMEditor.PreparePKM();
             var la = new LegalityAnalysis(pk);
             if (la.Valid)
-                return;
+                return; // already valid, don't modify it
 
-            var result = Legalizer.Legalize(pk);
+            var sav = SaveFileEditor.SAV;
+            var result = sav.Legalize(pk);
+
+            // let's double check
+
+            la = new LegalityAnalysis(result);
+            if (!la.Valid)
+            {
+                WinFormsUtil.Error("Unable to make the Active Pokemon legal!");
+                return;
+            }
+
             PKMEditor.PopulateFields(result);
             WinFormsUtil.Alert("Legalized Active Pokemon!");
         }

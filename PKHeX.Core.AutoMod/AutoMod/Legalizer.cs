@@ -4,107 +4,114 @@ using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Dual-approach legalization methods (regenerate and brute force)
+    /// </summary>
     public static class Legalizer
     {
-        public static PKM Legalize(PKM pk)
+        /// <summary>
+        /// Tries to regenerate the <see cref="pk"/> into a valid pkm.
+        /// </summary>
+        /// <param name="sav">Source/Destination trainer</param>
+        /// <param name="pk">Currently invalid pkm data</param>
+        /// <returns>Legalized PKM (hopefully legal)</returns>
+        public static PKM Legalize(this ITrainerInfo sav, PKM pk)
         {
-            ShowdownSet set = new ShowdownSet(ShowdownSet.GetShowdownText(pk));
-
-            PKM APIGenerated = API.SAV.BlankPKM;
-            bool satisfied = false;
-            try { APIGenerated = API.APILegality(pk, set, out satisfied); }
-            catch { }
-
-            var trainer = pk.GetRoughTrainerData();
-            PKM legal;
-            if (satisfied)
+            var set = new ShowdownSet(ShowdownSet.GetShowdownText(pk));
+            var legal = sav.GetLegalFromTemplate(pk, set, out var satisfied);
+            var trainer = new PokeTrainerDetails(pk.Clone());
+            if (!satisfied)
             {
-                legal = APIGenerated;
-            }
-            else
-            {
-                bool resetForm = ShowdownUtil.IsInvalidForm(set.Form);
+                var resetForm = ShowdownUtil.IsInvalidForm(set.Form);
                 legal = BruteForce.ApplyDetails(pk, set, resetForm, trainer);
+                legal.SetTrainerData(trainer);
             }
-            legal.SetTrainerData(trainer, satisfied);
             return legal;
         }
 
-        public static AutoModErrorCode ImportToExisting(IReadOnlyList<ShowdownSet> sets, IList<PKM> BoxData, int start, bool replace, bool allowAPI)
+        /// <summary>
+        /// Imports <see cref="sets"/> to a provided <see cref="arr"/>, with a context of <see cref="sav"/>.
+        /// </summary>
+        /// <param name="sav">Source/Destination trainer</param>
+        /// <param name="sets">Set data to import</param>
+        /// <param name="arr">Current list of data to write to</param>
+        /// <param name="start">Starting offset to place converted details</param>
+        /// <param name="overwrite">Overwrite</param>
+        /// <param name="allowAPI">Use <see cref="Core"/> to find and generate a new pkm</param>
+        /// <returns>Result code indicating success or failure</returns>
+        public static AutoModErrorCode ImportToExisting(this ITrainerInfo sav, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, int start = 0, bool overwrite = true, bool allowAPI = true)
         {
-            var emptySlots = replace
+            var emptySlots = overwrite
                 ? Enumerable.Range(0, sets.Count).ToList()
-                : FindAllEmptySlots(BoxData);
+                : FindAllEmptySlots(arr);
 
-            if (emptySlots.Count < sets.Count && sets.Count != 1)
+            if (emptySlots.Count < sets.Count)
                 return AutoModErrorCode.NotEnoughSpace;
 
-            int apiCounter = 0;
+            var generated = 0;
             var invalidAPISets = new List<ShowdownSet>();
             for (int i = 0; i < sets.Count; i++)
             {
-                ShowdownSet set = sets[i];
+                var set = sets[i];
                 if (set.InvalidLines.Count > 0)
                     return AutoModErrorCode.InvalidLines;
 
-                PKM legal = GetLegalFromSet(set, allowAPI, out var msg);
-                switch (msg)
-                {
-                    case LegalizationResult.API_Valid:
-                        apiCounter++;
-                        break;
-                    case LegalizationResult.API_Invalid:
-                        invalidAPISets.Add(set);
-                        break;
-                }
+                var pk = sav.GetLegalFromSet(set, out var msg, allowAPI);
+                if (msg == LegalizationResult.BruteForce)
+                    invalidAPISets.Add(set);
 
-                BoxData[start + emptySlots[i]] = legal;
+                arr[start + emptySlots[i]] = pk;
+                generated++;
             }
 
-            var total = invalidAPISets.Count + apiCounter;
-            Debug.WriteLine($"API Genned Sets: {apiCounter}/{total}, {invalidAPISets.Count} were not.");
+            Debug.WriteLine($"API Genned Sets: {generated - invalidAPISets.Count}/{generated}, {invalidAPISets.Count} were not.");
             foreach (var set in invalidAPISets)
                 Debug.WriteLine(set.Text);
             return AutoModErrorCode.None;
         }
 
-        public static PKM GetLegalFromSet(ShowdownSet set, bool allowAPI, out LegalizationResult msg)
+        /// <summary>
+        /// Imports a <see cref="set"/> to create a new <see cref="PKM"/> with a context of <see cref="sav"/>.
+        /// </summary>
+        /// <param name="sav">Source/Destination trainer</param>
+        /// <param name="set">Set data to import</param>
+        /// <param name="msg">Result code indicating success or failure</param>
+        /// <param name="allowAPI">Use <see cref="Core"/> to find and generate a new pkm</param>
+        /// <returns>Legalized PKM (hopefully legal)</returns>
+        public static PKM GetLegalFromSet(this ITrainerInfo sav, ShowdownSet set, out LegalizationResult msg, bool allowAPI = true)
         {
-            PKM roughPKM = API.SAV.BlankPKM;
-            roughPKM.ApplySetDetails(set);
-            roughPKM.Version = (int)GameVersion.MN; // Avoid the blank version glitch
-            if (allowAPI && TryAPIConvert(set, roughPKM, out PKM pk))
+            var game = (GameVersion)sav.Game;
+            var template = PKMConverter.GetBlank(game.GetGeneration(), game);
+            template.ApplySetDetails(set);
+            return sav.GetLegalFromSet(set, template, out msg, allowAPI);
+        }
+
+        private static PKM GetLegalFromSet(this ITrainerInfo sav, ShowdownSet set, PKM template, out LegalizationResult msg, bool allowAPI = true)
+        {
+            if (allowAPI && sav.TryAPIConvert(set, template, out PKM pk))
             {
-                msg = LegalizationResult.API_Valid;
+                msg = LegalizationResult.Regenerated;
                 return pk;
             }
-            msg = LegalizationResult.API_Invalid;
-            return GetBruteForcedLegalMon(set, roughPKM);
+            msg = LegalizationResult.BruteForce;
+            return sav.GetBruteForcedLegalMon(set, template);
         }
 
-        private static bool TryAPIConvert(ShowdownSet set, PKM template, out PKM pkm)
+        private static bool TryAPIConvert(this ITrainerInfo sav, ShowdownSet set, PKM template, out PKM pkm)
         {
-            try
-            {
-                pkm = API.APILegality(template, set, out bool satisfied);
-                if (!satisfied)
-                    return false;
-
-                var trainer = TrainerSettings.GetSavedTrainerData(pkm);
-                pkm.SetAllTrainerData(trainer);
-                return true;
-            }
-            catch
-            {
-                pkm = null;
+            pkm = sav.GetLegalFromTemplate(template, set, out bool satisfied);
+            if (!satisfied)
                 return false;
-            }
+
+            var trainer = TrainerSettings.GetSavedTrainerData(pkm, sav);
+            pkm.SetAllTrainerData(trainer);
+            return true;
         }
 
-        private static PKM GetBruteForcedLegalMon(ShowdownSet set, PKM template)
+        private static PKM GetBruteForcedLegalMon(this ITrainerInfo sav, ShowdownSet set, PKM template)
         {
-            bool resetForm = ShowdownUtil.IsInvalidForm(set.Form);
-            var trainer = TrainerSettings.GetSavedTrainerData(template);
+            var resetForm = ShowdownUtil.IsInvalidForm(set.Form);
+            var trainer = TrainerSettings.GetSavedTrainerData(template, sav);
             var legal = BruteForce.ApplyDetails(template, set, resetForm, trainer);
             legal.SetAllTrainerData(trainer);
             return legal;
@@ -113,7 +120,7 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Method to find all empty slots in a current box
         /// </summary>
-        /// <param name="data">Box Data of the SAV file</param>
+        /// <param name="data">Box Data of the save file</param>
         /// <returns>A list of all indices in the current box that are empty</returns>
         private static List<int> FindAllEmptySlots(IList<PKM> data)
         {

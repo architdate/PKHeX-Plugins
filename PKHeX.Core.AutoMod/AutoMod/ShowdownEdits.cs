@@ -1,5 +1,8 @@
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Modifications for a <see cref="PKM"/> based on a <see cref="ShowdownSet"/>.
+    /// </summary>
     public static class ShowdownEdits
     {
         /// <summary>

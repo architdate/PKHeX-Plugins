@@ -33,12 +33,8 @@ namespace AutoModPlugins
             public QRCodeResult(PKM pk)
             {
                 Source = pk;
-                switch (pk)
-                {
-                    case PK7 pk7:
-                        Image = GenerateQRCode7(pk7);
-                        break;
-                }
+                if (pk is PK7 pk7)
+                    Image = GenerateQRCode7(pk7);
 
                 if (Image != null)
                     Image = Resize(Image);
@@ -49,7 +45,8 @@ namespace AutoModPlugins
                 Image newpic = new Bitmap(405, 455);
                 using (Graphics g = Graphics.FromImage(newpic))
                 {
-                    g.FillRectangle(new SolidBrush(Color.White), 0, 0, newpic.Width, newpic.Height);
+                    using (var solidBrush = new SolidBrush(Color.White))
+                        g.FillRectangle(solidBrush, 0, 0, newpic.Width, newpic.Height);
                     g.DrawImage(qr, 0, 0);
                 }
                 return newpic;

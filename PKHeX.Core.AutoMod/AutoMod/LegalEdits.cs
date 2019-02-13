@@ -10,7 +10,7 @@ namespace PKHeX.Core.AutoMod
     public static class LegalEdits
     {
         /// <summary>
-        /// Set a valid Pokeball incase of an incorrect ball issue arising with GeneratePKM
+        /// Set a valid Pokeball based on a legality check's suggestions.
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
         public static void SetSuggestedBall(this PKM pk)
@@ -25,6 +25,10 @@ namespace PKHeX.Core.AutoMod
                 pk.Ball = 4;
         }
 
+        /// <summary>
+        /// Sets the <see cref="PKM.RelearnMoves"/> based on a legality check's suggestions.
+        /// </summary>
+        /// <param name="pk"></param>
         public static void SetSuggestedRelearnMoves(this PKM pk)
         {
             if (pk.Format < 6)
@@ -52,6 +56,10 @@ namespace PKHeX.Core.AutoMod
                 pk.RelearnMoves = m;
         }
 
+        /// <summary>
+        /// Sets the <see cref="PKM.Met_Location"/> (and other met details) based on a legality check's suggestions.
+        /// </summary>
+        /// <param name="pk"></param>
         public static void SetSuggestedMetLocation(this PKM pk)
         {
             var la = new LegalityAnalysis(pk);
@@ -74,10 +82,14 @@ namespace PKHeX.Core.AutoMod
             pk.Met_Level = level;
         }
 
+        /// <summary>
+        /// Removes all ribbons from the provided <see cref="pk"/>, using reflection to clear one bit at a time.
+        /// </summary>
+        /// <param name="pk">Pokémon to modify.</param>
         public static void ClearAllRibbons(this PKM pk) => pk.SetRibbonValues(GetRibbonNames(pk), 0, false);
 
         /// <summary>
-        /// Fix invalid and missing ribbons. (V600 and V601)
+        /// Sets all ribbon flags according to a legality report.
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
         public static void SetSuggestedRibbons(this PKM pk)

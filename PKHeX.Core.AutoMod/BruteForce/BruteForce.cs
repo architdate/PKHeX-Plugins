@@ -3,9 +3,13 @@ using System.Linq;
 using System.Collections.Generic;
 
 using static PKHeX.Core.LegalityCheckStrings;
+using System.Diagnostics;
 
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Logic for forcing an existing <see cref="PKM"/> to be legal.
+    /// </summary>
     public static class BruteForce
     {
         private static readonly ITrainerInfo DefaultTrainer = new SimpleTrainerInfo();
@@ -87,55 +91,50 @@ namespace PKHeX.Core.AutoMod
                 }
                 if (pk.GenNumber > 4)
                     pk.Met_Level = 1;
+
                 pk.SetMarkings();
-                try
+                pk.CurrentHandler = 1;
+                pk.HT_Name = "Archit";
+                pk.SetSuggestedRelearnMoves();
+                pk.SetPIDNature(pk.Nature);
+                if (shiny)
+                    pk.SetShiny();
+                if (pk.PID == 0)
                 {
-                    pk.CurrentHandler = 1;
-                    pk.HT_Name = "Archit";
-                    pk.SetSuggestedRelearnMoves();
-                    pk.SetPIDNature(pk.Nature);
+                    pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint) (pk.AbilityNumber * 0x10001));
                     if (shiny)
                         pk.SetShiny();
-                    if (pk.PID == 0)
-                    {
-                        pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
-                            (uint) (pk.AbilityNumber * 0x10001));
-                        if (shiny) pk.SetShiny();
-                    }
-                    pk.SetSuggestedMemories();
-                    if (pk.GenNumber < 6)
-                        pk.EncryptionConstant = pk.PID;
-                    if (CommonErrorHandling2(pk))
-                    {
-                        pk.HyperTrain();
-                        if (shiny && !pk.IsShiny)
-                            pk.SetShiny();
-                        {
-                            return true;
-                        }
-                    }
+                }
+                pk.SetSuggestedMemories();
+                if (pk.GenNumber < 6)
+                    pk.EncryptionConstant = pk.PID;
+                if (CommonErrorHandling2(pk))
+                {
                     pk.HyperTrain();
-                    bool legalized = new LegalityAnalysis(pk).Valid;
-                    if (pk.GenNumber < 6 && !legalized)
-                        pk.EncryptionConstant = pk.PID;
-                    if (new LegalityAnalysis(pk).Valid && pk.Format >= pk.GenNumber)
+                    if (shiny && !pk.IsShiny)
+                        pk.SetShiny();
                     {
-                        pk.SetHappiness();
-                        pk.SetBelugaValues();
-                        if (shiny && !pk.IsShiny)
-                            pk.SetShinySID();
-                        {
-                            return true;
-                        }
-                    }
-                    else
-                    {
-                        var la = new LegalityAnalysis(pk);
-                        Console.WriteLine(la.Report());
+                        return true;
                     }
                 }
-                catch
+                pk.HyperTrain();
+                bool legalized = new LegalityAnalysis(pk).Valid;
+                if (pk.GenNumber < 6 && !legalized)
+                    pk.EncryptionConstant = pk.PID;
+                if (new LegalityAnalysis(pk).Valid && pk.Format >= pk.GenNumber)
                 {
+                    pk.SetHappiness();
+                    pk.SetBelugaValues();
+                    if (shiny && !pk.IsShiny)
+                        pk.SetShinySID();
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    var la = new LegalityAnalysis(pk);
+                    Debug.WriteLine(la.Report());
                 }
             }
             return false;
@@ -173,149 +172,123 @@ namespace PKHeX.Core.AutoMod
                 }
                 pk.MetDate = DateTime.Today;
                 pk.SetMarkings();
-                try
-                {
-                    pk.ClearRelearnMoves();
-                    switch (game)
-                    {
-                        case GameVersion.RD:
-                        case GameVersion.BU:
-                        case GameVersion.YW:
-                        case GameVersion.GN:
-                            pk.Met_Location = 30013;
-                            pk.Met_Level = 100;
-                            break;
-                        case GameVersion.GD:
-                        case GameVersion.SV:
-                        case GameVersion.C:
-                            pk.Met_Location = 30017;
-                            pk.Met_Level = 100;
-                            break;
-                        case GameVersion.CXD:
-                            pk.Met_Location = 30001;
-                            pk.Met_Level = 100;
-                            break;
-                        default:
-                            pk.SetSuggestedMetLocation();
-                            break;
-                    }
-                    pk.SetSuggestedRelearnMoves();
-                    pk.CurrentHandler = 1;
-                    pk.HT_Name = "Archit";
-                    pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
-                        (uint) (pk.AbilityNumber * 0x10001));
-                    if (shiny)
-                        pk.SetShiny();
-                    if (pk.PID == 0)
-                    {
-                        pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
-                            (uint) (pk.AbilityNumber * 0x10001));
-                        if (shiny)
-                            pk.SetShiny();
-                    }
 
-                    pk.RefreshAbility(abilitynum);
-                    pk.SetSuggestedMemories();
-                    if (pk.GenNumber < 6)
-                        pk.EncryptionConstant = pk.PID;
-
-                    if (CommonErrorHandling2(pk))
-                    {
-                        pk.HyperTrain();
-                        if (shiny) pk.SetShiny();
-                        {
-                            return true;
-                        }
-                    }
-
-                    pk.HyperTrain();
-                    bool legalized = new LegalityAnalysis(pk).Valid;
-
-                    AlternateAbilityRefresh(pk);
-                    if (pk.GenNumber < 6 && !legalized)
-                        pk.EncryptionConstant = pk.PID;
-
-                    if (new LegalityAnalysis(pk).Valid && pk.Format >= pk.GenNumber)
-                    {
-                        pk.SetHappiness();
-                        if (shiny && pk.IsShiny)
-                        {
-                            return true;
-                        }
-                        if (!set.Shiny || pk.IsShiny)
-                        {
-                            return true;
-                        }
-
-                        pk.SetShinySID();
-                        if (new LegalityAnalysis(pk).Valid)
-                        {
-                            return true;
-                        }
-
-                        pk.SetShiny();
-                        if (new LegalityAnalysis(pk).Valid)
-                        {
-                            return true;
-                        }
-                    }
-                    else
-                    {
-                        var edgeLegality = EdgeMons(game, pk);
-                        foreach (EncounterStatic el in edgeLegality)
-                        {
-                            pk.Met_Location = el.Location;
-                            pk.Met_Level = el.Level;
-                            pk.CurrentLevel = 100;
-                            pk.FatefulEncounter = el.Fateful;
-                            if (el.RibbonWishing && pk is IRibbonSetEvent4 e4)
-                                e4.RibbonWishing = true;
-                            pk.RelearnMoves = el.Relearn;
-
-                            if (set.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random))
-                                pk.SetShiny();
-                            else if (el.Shiny == Shiny.Never && pk.IsShiny)
-                                pk.PID ^= 0x10000000;
-                            else
-                                pk.SetPIDGender(pk.Gender);
-                        }
-
-                        var la = new LegalityAnalysis(pk);
-                        if (la.Valid)
-                        {
-                            return true;
-                        }
-                        Console.WriteLine(la.Report());
-                    }
-                }
-                catch
-                {
-                }
+                var result = InnerBruteForce(pk, game, shiny, abilitynum, set);
+                if (result)
+                    return true;
             }
             return false;
         }
 
-        private static IEnumerable<EncounterStatic> EdgeMons(GameVersion Game, PKM pk)
+        private static bool InnerBruteForce(PKM pk, GameVersion game, bool shiny, int abilitynum, ShowdownSet set)
         {
-            var edgecasearray = GetEdgeCaseArray(Game);
-            return edgecasearray.Where(e => e.Species == pk.Species);
+            pk.ClearRelearnMoves();
+            switch (game)
+            {
+                case GameVersion.RD:
+                case GameVersion.BU:
+                case GameVersion.YW:
+                case GameVersion.GN:
+                    pk.Met_Location = 30013;
+                    pk.Met_Level = 100;
+                    break;
+                case GameVersion.GD:
+                case GameVersion.SV:
+                case GameVersion.C:
+                    pk.Met_Location = 30017;
+                    pk.Met_Level = 100;
+                    break;
+                case GameVersion.CXD:
+                    pk.Met_Location = 30001;
+                    pk.Met_Level = 100;
+                    break;
+                default:
+                    pk.SetSuggestedMetLocation();
+                    break;
+            }
+            pk.SetSuggestedRelearnMoves();
+            pk.CurrentHandler = 1;
+            pk.HT_Name = "Archit";
+            pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
+                (uint)(pk.AbilityNumber * 0x10001));
+            if (shiny)
+                pk.SetShiny();
+            if (pk.PID == 0)
+            {
+                pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
+                    (uint)(pk.AbilityNumber * 0x10001));
+                if (shiny)
+                    pk.SetShiny();
+            }
+
+            pk.RefreshAbility(abilitynum);
+            pk.SetSuggestedMemories();
+            if (pk.GenNumber < 6)
+                pk.EncryptionConstant = pk.PID;
+
+            if (CommonErrorHandling2(pk))
+            {
+                pk.HyperTrain();
+                if (shiny)
+                    pk.SetShiny();
+                return true;
+            }
+
+            pk.HyperTrain();
+            bool legalized = new LegalityAnalysis(pk).Valid;
+
+            AlternateAbilityRefresh(pk);
+            if (pk.GenNumber < 6 && !legalized)
+                pk.EncryptionConstant = pk.PID;
+
+            if (new LegalityAnalysis(pk).Valid && pk.Format >= pk.GenNumber)
+            {
+                pk.SetHappiness();
+                if (shiny && pk.IsShiny)
+                    return true;
+                if (!set.Shiny || pk.IsShiny)
+                    return true;
+
+                pk.SetShinySID();
+                if (new LegalityAnalysis(pk).Valid)
+                    return true;
+
+                pk.SetShiny();
+                if (new LegalityAnalysis(pk).Valid)
+                    return true;
+            }
+            else
+            {
+                var edge = EncounterMovesetGenerator.GenerateEncounters(pk).OfType<EncounterStatic>();
+                foreach (EncounterStatic el in edge)
+                {
+                    ApplyEncounterAttributes(pk, set, el);
+                    var la = new LegalityAnalysis(pk);
+                    if (la.Valid)
+                        return true;
+                    Debug.WriteLine(la.Report());
+                }
+            }
+
+            return false;
         }
 
-        private static EncounterStatic[] GetEdgeCaseArray(GameVersion Game)
+        private static void ApplyEncounterAttributes(PKM pk, ShowdownSet set, EncounterStatic el)
         {
-            switch (Game)
-            {
-                case GameVersion.B:
-                case GameVersion.W:
-                    return EdgeCaseLegality.BWEntreeForest;
-                case GameVersion.B2:
-                case GameVersion.W2:
-                    return EdgeCaseLegality.B2W2EntreeForest;
-                case GameVersion.US:
-                case GameVersion.UM:
-                    return EdgeCaseLegality.USUMEdgeEnc;
-                default: return Array.Empty<EncounterStatic>();
-            }
+            pk.Met_Location = el.Location;
+            pk.Met_Level = el.Level;
+            pk.CurrentLevel = 100;
+            pk.FatefulEncounter = el.Fateful;
+            if (el.RibbonWishing && pk is IRibbonSetEvent4 e4)
+                e4.RibbonWishing = true;
+            pk.RelearnMoves = el.Relearn;
+
+            if (set.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random))
+                pk.SetShiny();
+            else if (el.Shiny == Shiny.Never && pk.IsShiny)
+                pk.PID ^= 0x10000000;
+            else
+                pk.SetPIDGender(pk.Gender);
         }
 
         private static void AlternateAbilityRefresh(PKM pk)
@@ -330,7 +303,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk.Ability == abilityID)
                 {
                     var updatedReport = GetReport(pk);
-                    if (!updatedReport.Contains("Ability mismatch for encounter"))
+                    if (!updatedReport.Contains(LAbilityMismatch))
                     {
                         finalabilitynum = pk.AbilityNumber;
                         break;
@@ -346,8 +319,7 @@ namespace PKHeX.Core.AutoMod
             var report = GetReport(pk);
 
             // fucking M2
-            if ((UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2) && pk.Version == (int)GameVersion.FR)
-             || (UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2) && pk.Version == (int)GameVersion.LG))
+            if (GameVersion.FRLG.Contains(pk.Version) && UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
             {
                 pk = M2EventFix(pk, pk.IsShiny);
                 report = GetReport(pk);
@@ -549,7 +521,7 @@ namespace PKHeX.Core.AutoMod
                 if (!type.Contains(pk.EncounterType))
                     pk.EncounterType = Convert.ToInt32(Math.Log((int)type, 2));
                 else
-                    Console.WriteLine("This should never happen");
+                    Debug.WriteLine("This should never happen");
                 report = GetReport(pk);
             }
             if (report.Contains(LEvoInvalid)) //V86 = Evolution not valid (or level/trade evolution unsatisfied).
@@ -612,8 +584,6 @@ namespace PKHeX.Core.AutoMod
             return la.Report();
         }
 
-        private static readonly string[] HiddenPowerNames = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
-
         private static void SetPIDSID(PKM pk, bool shiny, bool XD = false)
         {
             uint hp = (uint)pk.IV_HP;
@@ -634,15 +604,8 @@ namespace PKHeX.Core.AutoMod
             }
 
             uint nature = (uint)pk.Nature;
-            string[] pidsid;
-            if (XD)
-            {
-                pidsid = RNGReporter.IVtoPIDGenerator.XDPID(hp, atk, def, spa, spd, spe, nature, 0);
-            }
-            else
-            {
-                pidsid = RNGReporter.IVtoPIDGenerator.M1PID(hp, atk, def, spa, spd, spe, nature, 0);
-            }
+            var type = XD ? RNGReporter.FrameType.ColoXD : RNGReporter.FrameType.Method1;
+            var pidsid = RNGReporter.IVtoPIDGenerator.Generate(hp, atk, def, spa, spd, spe, nature, 0, type);
 
             if (pk.Species == 490 && pk.Gen4)
             {
@@ -658,13 +621,12 @@ namespace PKHeX.Core.AutoMod
                 pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
-            Console.WriteLine(updatedReport);
-            if (!updatedReport.Contains("Invalid: Encounter Type PID mismatch."))
+            Debug.WriteLine(updatedReport);
+            if (!updatedReport.Contains(LPIDTypeMismatch))
                 return;
 
-            string hiddenpower = HiddenPowerNames[pk.HPType];
-            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID(nature, hiddenpower, XD);
-            Console.WriteLine(XD);
+            var NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID(nature, pk.HPType, XD);
+            Debug.WriteLine(XD);
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
@@ -676,7 +638,7 @@ namespace PKHeX.Core.AutoMod
             recheckLA = new LegalityAnalysis(pk);
             updatedReport = recheckLA.Report();
 
-            bool pidsidmethod = updatedReport.Contains("Invalid: Encounter Type PID mismatch.");
+            bool pidsidmethod = updatedReport.Contains(LPIDTypeMismatch);
             if (pidsid[0] == "0" && pidsid[1] == "0" && pidsidmethod)
             {
                 pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
@@ -687,13 +649,13 @@ namespace PKHeX.Core.AutoMod
 
             recheckLA = new LegalityAnalysis(pk);
             updatedReport = recheckLA.Report();
-            if (updatedReport.Contains("PID-Gender mismatch."))
+            if (updatedReport.Contains(LPIDGenderMismatch))
             {
                 pk.Gender = pk.Gender == 0 ? 1 : 0;
                 var recheckLA2 = new LegalityAnalysis(pk);
                 updatedReport = recheckLA2.Report();
             }
-            if (updatedReport.Contains("Can't Hyper Train a Pokémon that isn't level 100."))
+            if (updatedReport.Contains(LHyperBelow100))
             {
                 pk.CurrentLevel = 100;
                 var recheckLA2 = new LegalityAnalysis(pk);
@@ -706,12 +668,12 @@ namespace PKHeX.Core.AutoMod
             pk.FixMoves();
 
             pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
-            if (updatedReport.Contains("Invalid: Encounter Type PID mismatch.") || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
+            if (updatedReport.Contains(LPIDTypeMismatch) || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
             {
                 if (pk.GenNumber == 3 || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                 {
                     pk = M2EventFix(pk, shiny);
-                    if (!new LegalityAnalysis(pk).Report().Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
+                    if (!new LegalityAnalysis(pk).Report().Contains(LPIDTypeMismatch) || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                         return;
                 }
                 LoadOldIVs();
@@ -720,7 +682,7 @@ namespace PKHeX.Core.AutoMod
 
         private static void SetIVs(PKM pk, IReadOnlyList<string> NatureHPIVs)
         {
-            Console.WriteLine(NatureHPIVs[0]);
+            Debug.WriteLine(NatureHPIVs[0]);
             pk.IV_HP = Convert.ToInt32(NatureHPIVs[1]);
             pk.IV_ATK = Convert.ToInt32(NatureHPIVs[2]);
             pk.IV_DEF = Convert.ToInt32(NatureHPIVs[3]);
@@ -735,9 +697,7 @@ namespace PKHeX.Core.AutoMod
             bool feFlag = pk.FatefulEncounter;
             pk.Egg_Location = 0;
             pk.FatefulEncounter = true;
-            string[] hpower = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
-            string hiddenpower = hpower[pk.HPType];
-            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, hiddenpower, false, "M2");
+            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, "M2");
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
@@ -751,16 +711,16 @@ namespace PKHeX.Core.AutoMod
                 pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
-            if (updatedReport.Contains("PID-Gender mismatch"))
+            if (updatedReport.Contains(LPIDGenderMismatch))
             {
                 pk.Gender = pk.Gender == 0 ? 1 : 0;
                 var recheckLA2 = new LegalityAnalysis(pk);
                 updatedReport = recheckLA2.Report();
             }
 
-            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
+            if (!updatedReport.Contains(LPIDTypeMismatch) || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                 return pk;
-            Console.WriteLine(GetReport(pk));
+            Debug.WriteLine(GetReport(pk));
             pk.FatefulEncounter = feFlag;
             pk.Egg_Location = eggloc;
             return pk;
@@ -772,26 +732,24 @@ namespace PKHeX.Core.AutoMod
             bool feFlag = pk.FatefulEncounter;
             pk.Egg_Location = 0;
             pk.FatefulEncounter = false;
-            string[] hpower = { "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark" };
-            string hiddenpower = hpower[pk.HPType];
-            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, hiddenpower, false, "BACD_R");
+            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, "BACD_R");
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
-            Console.WriteLine(NatureHPIVs[0]);
+            Debug.WriteLine(NatureHPIVs[0]);
             SetIVs(pk, NatureHPIVs);
             if (shiny) pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
-            if (updatedReport.Contains("PID-Gender mismatch"))
+            if (updatedReport.Contains(LPIDGenderMismatch))
             {
                 pk.Gender = pk.Gender == 0 ? 1 : 0;
                 var recheckLA2 = new LegalityAnalysis(pk);
                 updatedReport = recheckLA2.Report();
             }
-            if (!updatedReport.Contains("PID mismatch") || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R))
+            if (!updatedReport.Contains(LPIDTypeMismatch) || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R))
                 return pk;
-            Console.WriteLine(GetReport(pk));
+            Debug.WriteLine(GetReport(pk));
             pk.FatefulEncounter = feFlag;
             pk.Egg_Location = eggloc;
             return pk;

@@ -13,8 +13,8 @@ namespace WonderTradeBot
     public partial class WonderTradeBot : Form, IPlugin
     {
         private readonly Timer timer1 = new Timer();
-        private static NumericUpDown boxDump; // no idea why this is done like this.......
-        private static NumericUpDown slotDump;
+        private static NumericUpDown boxDump { get; set; } // no idea why this is done like this.......
+        private static NumericUpDown slotDump { get; set; }
         string IPlugin.Name { get; } = "Wondertrade Gen 7";
 
         public int Priority => 1;
@@ -22,15 +22,13 @@ namespace WonderTradeBot
         public static ISaveFileProvider SaveFileEditor2 { get; private set; }
         public IPKMView PKMEditor { get; private set; }
         public static IPKMView PKMEditor2 { get; private set; }
-        public object[] arguments;
-        public static RemoteControl helper;
-        public static ScriptHelper scriptHelper;
-        public static NTR ntrClient;
-        public int pid; // apparently pokemon pid? wtf lol
+        public static RemoteControl helper { get; set; }
+        public static ScriptHelper scriptHelper { get; set; }
+        public static NTR ntrClient { get; set; }
+        public int ProcessID { get; set; }
 
         public void Initialize(params object[] args)
         {
-            arguments = args;
             Debug.WriteLine($"[Auto Legality Mod] Loading {Name}");
             if (args == null)
                 return;
@@ -672,7 +670,7 @@ namespace WonderTradeBot
             {
                 SaveFileEditor.SAV.BlankPKM.EncryptedBoxData.CopyTo(deletearray, i * 232);
             }
-            waitTaskbool = helper.WaitWriteNTR(GetBoxOffset(LookupTable.BoxOffset, Box, Slot), deletearray, pid);
+            waitTaskbool = helper.WaitWriteNTR(GetBoxOffset(LookupTable.BoxOffset, Box, Slot), deletearray, ProcessID);
             if (await waitTaskbool)
             {
                 attempts = 0;
@@ -692,7 +690,7 @@ namespace WonderTradeBot
             byte[] restore = File.ReadAllBytes(backuppath);
             if (restore.Length == 232 * 30 * 32)
             {
-                waitTaskbool = helper.WaitWriteNTR(LookupTable.BoxOffset, restore, pid);
+                waitTaskbool = helper.WaitWriteNTR(LookupTable.BoxOffset, restore, ProcessID);
                 if (await waitTaskbool)
                 {
                     attempts = 0;
@@ -1075,7 +1073,7 @@ namespace WonderTradeBot
             { // Select a random file
                 currentfile = RNG.Next() % pklist.Count;
             }
-            waitTaskbool = helper.WaitWriteNTR(GetBoxOffset(LookupTable.BoxOffset, Box, Slot), pklist[currentfile].EncryptedBoxData, pid);
+            waitTaskbool = helper.WaitWriteNTR(GetBoxOffset(LookupTable.BoxOffset, Box, Slot), pklist[currentfile].EncryptedBoxData, ProcessID);
             if (await waitTaskbool)
             {
                 UpdateDumpBoxes(Box, Slot);
@@ -1322,7 +1320,7 @@ namespace WonderTradeBot
             if (boxchange)
             {
                 Report("Bot: Set current box");
-                waitTaskbool = helper.WaitWriteNTR(LookupTable.CurrentboxOffset, (uint)(Box.Value - 1), pid);
+                waitTaskbool = helper.WaitWriteNTR(LookupTable.CurrentboxOffset, (uint)(Box.Value - 1), ProcessID);
                 if (await waitTaskbool)
                 {
                     attempts = 0;
@@ -1752,7 +1750,7 @@ namespace WonderTradeBot
         {
             string userMessage = message.FormatString(info);
             var icon = GetIcon(message);
-            MessageBox.Show(userMessage, source, MessageBoxButtons.OK);
+            MessageBox.Show(userMessage, source, MessageBoxButtons.OK,  icon);
         }
 
         private static MessageBoxIcon GetIcon(BotErrorMessage message)

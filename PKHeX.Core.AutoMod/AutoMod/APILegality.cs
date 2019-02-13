@@ -1,36 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using static PKHeX.Core.LegalityCheckStrings;
 
 namespace PKHeX.Core.AutoMod
 {
-    public static class API
+    /// <summary>
+    /// Leverages <see cref="Core"/>'s <see cref="EncounterMovesetGenerator"/> to create a <see cref="PKM"/> from a <see cref="ShowdownSet"/>.
+    /// </summary>
+    public static class APILegality
     {
-        public static SaveFile SAV { internal get; set; }
-
         /// <summary>
         /// Main function that auto legalizes based on the legality
         /// </summary>
+        /// <remarks>Leverages <see cref="Core"/>'s <see cref="EncounterMovesetGenerator"/> to create a <see cref="PKM"/> from a <see cref="ShowdownSet"/>.</remarks>
+        /// <param name="dest">Destination for the generated pkm</param>
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use current auto legality functionality</param>
-        public static PKM APILegality(PKM template, ShowdownSet set, out bool satisfied)
+        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied)
         {
-            int Form = template.AltForm;
-            if (set.Form != null && FixFormes(set, out set))
-            {
-                Form = set.FormIndex;
-                template.ApplySetDetails(set);
-            }
-            int HPType = template.HPType;
-            var destType = SAV.PKMType;
+            var Form = SanityCheckForm(template, ref set);
+            template.ApplySetDetails(set);
+            var destType = template.GetType();
 
-            var possible = GetPossiblePKMs(template, set);
-            foreach (PKM raw in possible)
+            var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves);
+            foreach (var enc in encounters)
             {
+                var ver = enc is IVersion v ? v.Version : (GameVersion)dest.Game;
+                var tr = TrainerSettings.GetSavedTrainerData(ver);
+                var raw = enc.ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
-                ApplySetDetails(pk, set, Form, HPType, raw);
+                ApplySetDetails(pk, set, Form, raw, dest);
 
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid)
@@ -38,15 +40,18 @@ namespace PKHeX.Core.AutoMod
                     satisfied = true;
                     return pk;
                 }
-                Console.WriteLine(la.Report());
+                Debug.WriteLine(la.Report());
             }
             satisfied = false;
             return template;
         }
 
-        private static IEnumerable<PKM> GetPossiblePKMs(PKM template, ShowdownSet set)
+        private static int SanityCheckForm(PKM template, ref ShowdownSet set)
         {
-            return EncounterMovesetGenerator.GeneratePKMs(template, SAV, set.Moves);
+            int Form = template.AltForm;
+            if (set.Form != null && FixFormes(set, out set))
+                Form = set.FormIndex;
+            return Form;
         }
 
         /// <summary>
@@ -57,26 +62,22 @@ namespace PKHeX.Core.AutoMod
         /// <param name="Form">Alternate form required</param>
         /// <param name="HPType">Hidden Power type requirement</param>
         /// <param name="unconverted">Original pkm data</param>
-        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, int HPType, PKM unconverted)
+        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler)
         {
-            var info = new LegalInfo(pk);
-            var pidiv = info.PIDIV ?? MethodFinder.Analyze(pk);
-            var Method = pidiv?.Type ?? PIDType.None;
+            var pidiv = MethodFinder.Analyze(pk);
 
-            SetVersion(pk, unconverted); // PreEmptive Version setting
+            pk.SetVersion(unconverted); // PreEmptive Version setting
             pk.SetSpeciesLevel(set, Form);
             pk.SetMovesEVsItems(set);
-            pk.SetTrainerDataAndMemories();
+            pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set);
-            SetIVsPID(pk, set, Method, HPType, unconverted);
+            pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
 
-            PrintLegality(pk);
+            Debug.WriteLine(new LegalityAnalysis(pk).Report());
 
-            ColosseumFixes(pk);
             pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
             pk.SetEncryptionConstant();
             pk.SetShinyBoolean(set.Shiny);
-            CheckAndSetFateful(pk);
             pk.FixGender(set);
             pk.SetSuggestedRibbons();
             pk.SetSuggestedMemories();
@@ -86,16 +87,10 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Debugging tool
-        /// </summary>
-        /// <param name="pk">PKM whose legality must be printed</param>
-        private static void PrintLegality(PKM pk) => Debug.WriteLine(new LegalityAnalysis(pk).Report());
-
-        /// <summary>
         /// Validate and Set the gender if needed
         /// </summary>
         /// <param name="pk">PKM to modify</param>
-        public static void ValidateGender(PKM pk)
+        private static void ValidateGender(PKM pk)
         {
             bool genderValid = pk.IsGenderValid();
             if (!genderValid)
@@ -141,7 +136,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Return PKM</param>
         /// <param name="original">Generated PKM</param>
-        public static void SetVersion(PKM pk, PKM original)
+        private static void SetVersion(this PKM pk, PKM original)
         {
             switch (original.Version)
             {
@@ -164,30 +159,20 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        public static void CheckAndSetFateful(PKM pk)
-        {
-            var la = new LegalityAnalysis(pk);
-            string Report = la.Report();
-            if (Report.Contains(LFatefulMysteryMissing) || Report.Contains(LFatefulMissing))
-                pk.FatefulEncounter = true;
-            else if (Report.Contains(LFatefulInvalid))
-                pk.FatefulEncounter = false;
-        }
-
         /// <summary>
         /// Fix Formes that are illegal outside of battle
         /// </summary>
         /// <param name="set">Original Showdown Set</param>
         /// <param name="changedSet">Edited Showdown Set</param>
         /// <returns>boolen that checks if a form is fixed or not</returns>
-        public static bool FixFormes(ShowdownSet set, out ShowdownSet changedSet)
+        private static bool FixFormes(ShowdownSet set, out ShowdownSet changedSet)
         {
             changedSet = set;
             var badForm = ShowdownUtil.IsInvalidForm(set.Form);
             if (!badForm)
                 return false;
 
-            changedSet = new ShowdownSet(set.Text.Replace("-" + set.Form, ""));
+            changedSet = new ShowdownSet(set.Text.Replace($"-{set.Form}", string.Empty));
             return true;
         }
 
@@ -199,7 +184,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="method"></param>
         /// <param name="hpType"></param>
         /// <param name="original"></param>
-        public static void SetIVsPID(PKM pk, ShowdownSet set, PIDType method, int hpType, PKM original)
+        private static void SetIVsPID(this PKM pk, ShowdownSet set, PIDType method, int hpType, PKM original)
         {
             // Useful Values for computation
             int Species = pk.Species;
@@ -208,7 +193,7 @@ namespace PKHeX.Core.AutoMod
             int AbilityNumber = pk.AbilityNumber; // 1,2,4 (HA)
 
             // Find the encounter
-            LegalInfo li = EncounterFinder.FindVerifiedEncounter(original);
+            var li = EncounterFinder.FindVerifiedEncounter(original);
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
 
@@ -217,7 +202,8 @@ namespace PKHeX.Core.AutoMod
                 pk.IVs = set.IVs;
                 if (Species == 658 && pk.AltForm == 1)
                     pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
-                if (method != PIDType.G5MGShiny) pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, (uint)(AbilityNumber * 0x10001));
+                if (method != PIDType.G5MGShiny)
+                    pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, (uint)(AbilityNumber * 0x10001));
             }
             else
             {
@@ -235,24 +221,28 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="Method">Given Method</param>
         /// <param name="HPType">HPType INT for preserving Hidden powers</param>
-        public static void FindPIDIV(PKM pk, PIDType Method, int HPType)
+        private static void FindPIDIV(PKM pk, PIDType Method, int HPType)
         {
             if (Method == PIDType.None)
             {
                 Method = FindLikelyPIDType(pk);
-                if (pk.Version == 15) Method = PIDType.CXD;
-                if (Method == PIDType.None) pk.SetPIDGender(pk.Gender);
+                if (pk.Version == 15)
+                    Method = PIDType.CXD;
+                if (Method == PIDType.None)
+                    pk.SetPIDGender(pk.Gender);
             }
-            PKM iterPKM = pk;
+            var iterPKM = pk.Clone();
             while (true)
             {
                 uint seed = Util.Rand32();
                 PIDGenerator.SetValuesFromSeed(pk, Method, seed);
                 if (!(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber && pk.Nature == iterPKM.Nature))
                     continue;
-                if (pk.PID % 25 == iterPKM.Nature && pk.HPType == HPType) // Util.Rand32 is the way to go
-                    break;
-                pk = iterPKM;
+                if (HPType >= 0 && pk.HPType != HPType)
+                    continue;
+                if (pk.PID % 25 != iterPKM.Nature) // Util.Rand32 is the way to go
+                    continue;
+                break;
             }
         }
 
@@ -261,7 +251,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <returns>PIDType that is likely used</returns>
-        public static PIDType FindLikelyPIDType(PKM pk)
+        private static PIDType FindLikelyPIDType(PKM pk)
         {
             if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R))
                 return PIDType.BACD_R;
@@ -314,26 +304,6 @@ namespace PKHeX.Core.AutoMod
                 default:
                     return PIDType.None;
             }
-        }
-
-        /// <summary>
-        /// Colosseum/XD pokemon need to be fixed.
-        /// </summary>
-        /// <param name="pk">PKM to apply the fix to</param>
-        public static void ColosseumFixes(PKM pk)
-        {
-            if (pk.Version != (int)GameVersion.CXD)
-                return;
-
-            // wipe all ribbons
-            pk.ClearAllRibbons();
-
-            // set national ribbon
-            if (pk is IRibbonSetEvent3 c3)
-                c3.RibbonNational = true;
-            pk.Ball = 4;
-            pk.FatefulEncounter = true;
-            pk.OT_Gender = 0;
         }
     }
 }

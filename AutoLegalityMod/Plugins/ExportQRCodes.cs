@@ -10,10 +10,9 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
-            modmenu.DropDownItems.Add(ctrl);
+            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.exportqrcode };
             ctrl.Click += ExportQRs;
-            ctrl.Image = Properties.Resources.exportqrcode;
+            modmenu.DropDownItems.Add(ctrl);
         }
 
         private void ExportQRs(object sender, EventArgs e)

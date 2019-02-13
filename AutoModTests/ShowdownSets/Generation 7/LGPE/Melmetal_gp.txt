@@ -1,0 +1,10 @@
+Melmetal  
+Ability: Iron Fist  
+Level: 50  
+Shiny: Yes  
+Happiness: 70  
+Jolly Nature  
+- Thunder Punch  
+- Ice Punch  
+- Earthquake  
+- Double Iron Bash

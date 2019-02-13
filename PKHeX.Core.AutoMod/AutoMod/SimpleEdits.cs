@@ -5,6 +5,30 @@ namespace PKHeX.Core.AutoMod
 {
     public static class SimpleEdits
     {
+        static SimpleEdits()
+        {
+            // Make PKHeX use our own marking method
+            CommonEdits.MarkingMethod = FlagIVsAutoMod;
+        }
+
+        private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
+        {
+            if (pk.Format < 7)
+                return GetSimpleMarking;
+            return GetComplexMarking;
+
+            // value, index
+            int GetSimpleMarking(int val, int _) => val == 31 ? 1 : 0;
+            int GetComplexMarking(int val, int _)
+            {
+                if (val == 31)
+                    return 1;
+                if (val == 1 || val == 0)
+                    return 2;
+                return 0;
+            }
+        }
+
         /// <summary>
         /// Set Encryption Constant based on PKM GenNumber
         /// </summary>
@@ -15,7 +39,7 @@ namespace PKHeX.Core.AutoMod
             {
                 int wIndex = Array.IndexOf(Legal.WurmpleEvolutions, pk.Species);
                 uint EC = wIndex < 0 ? Util.Rand32() : PKX.GetWurmpleEC(wIndex / 2);
-                if (!(pk.Species == 658 && pk.AltForm == 1))
+                if (!(pk.Species == 658 && pk.AltForm == 1)) // Ash-Greninja
                     pk.EncryptionConstant = EC;
             }
             else
@@ -46,44 +70,18 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        public static void ClearRelearnMoves(this PKM Set)
+        public static void ClearRelearnMoves(this PKM pk)
         {
-            Set.RelearnMove1 = 0;
-            Set.RelearnMove2 = 0;
-            Set.RelearnMove3 = 0;
-            Set.RelearnMove4 = 0;
-        }
-
-        public static void SetMarkings(this PKM pk)
-        {
-            if (pk.Format >= 7)
-            {
-                if (pk.IV_HP == 30 || pk.IV_HP == 29) pk.MarkCircle = 2;
-                if (pk.IV_ATK == 30 || pk.IV_ATK == 29) pk.MarkTriangle = 2;
-                if (pk.IV_DEF == 30 || pk.IV_DEF == 29) pk.MarkSquare = 2;
-                if (pk.IV_SPA == 30 || pk.IV_SPA == 29) pk.MarkHeart = 2;
-                if (pk.IV_SPD == 30 || pk.IV_SPD == 29) pk.MarkStar = 2;
-                if (pk.IV_SPE == 30 || pk.IV_SPE == 29) pk.MarkDiamond = 2;
-            }
-            if (pk.IV_HP == 31) pk.MarkCircle = 1;
-            if (pk.IV_ATK == 31) pk.MarkTriangle = 1;
-            if (pk.IV_DEF == 31) pk.MarkSquare = 1;
-            if (pk.IV_SPA == 31) pk.MarkHeart = 1;
-            if (pk.IV_SPD == 31) pk.MarkStar = 1;
-            if (pk.IV_SPE == 31) pk.MarkDiamond = 1;
+            pk.RelearnMove1 = 0;
+            pk.RelearnMove2 = 0;
+            pk.RelearnMove3 = 0;
+            pk.RelearnMove4 = 0;
         }
 
         public static void ClearHyperTraining(this PKM pk)
         {
             if (pk is IHyperTrain h)
-            {
-                h.HT_HP = false;
-                h.HT_ATK = false;
-                h.HT_DEF = false;
-                h.HT_SPA = false;
-                h.HT_SPD = false;
-                h.HT_SPE = false;
-            }
+                h.HyperTrainClear();
         }
 
         public static void SetHappiness(this PKM pk)
@@ -105,14 +103,14 @@ namespace PKHeX.Core.AutoMod
 
         public static bool NeedsHyperTraining(this PKM pk)
         {
-            int flawless = 0;
-            int minIVs = 0;
-            foreach (int i in pk.IVs)
+            for (int i = 0; i < 6; i++)
             {
-                if (i == 31) flawless++;
-                if (i == 0 || i == 1) minIVs++; //ignore IV value = 0/1 for intentional IV values (1 for hidden power cases)
+                var iv = pk.GetIV(i);
+                if (iv == 31 || iv <= 1) // ignore IV value = 0/1 for intentional IV values (1 for hidden power cases)
+                    continue;
+                return true; // flawed IV present
             }
-            return flawless + minIVs != 6;
+            return false;
         }
 
         public static void HyperTrain(this PKM pk)
@@ -121,40 +119,36 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             pk.CurrentLevel = 100; // Set level for HT before doing HT
-
-            h.HT_HP = (pk.IV_HP != 0 && pk.IV_HP != 1 && pk.IV_HP != 31);
-            h.HT_ATK = (pk.IV_ATK != 0 && pk.IV_ATK != 1 && pk.IV_ATK != 31);
-            h.HT_DEF = (pk.IV_DEF != 0 && pk.IV_DEF != 1 && pk.IV_DEF != 31);
-            h.HT_SPA = (pk.IV_SPA != 0 && pk.IV_SPA != 1 && pk.IV_SPA != 31);
-            h.HT_SPD = (pk.IV_SPD != 0 && pk.IV_SPD != 1 && pk.IV_SPD != 31);
-            h.HT_SPE = (pk.IV_SPE != 0 && pk.IV_SPE != 1 && pk.IV_SPE != 31);
+            pk.SetSuggestedHyperTrainingData();
         }
 
         public static void ClearHyperTrainedPerfectIVs(this PKM pk)
         {
             if (!(pk is IHyperTrain h))
                 return;
-            if (pk.IV_HP == 31) h.HT_HP = false;
-            if (pk.IV_ATK == 31) h.HT_ATK = false;
-            if (pk.IV_DEF == 31) h.HT_DEF = false;
-            if (pk.IV_SPA == 31) h.HT_SPA = false;
-            if (pk.IV_SPD == 31) h.HT_SPD = false;
-            if (pk.IV_SPE == 31) h.HT_SPE = false;
+            if (pk.IV_HP == 31)
+                h.HT_HP = false;
+            if (pk.IV_ATK == 31)
+                h.HT_ATK = false;
+            if (pk.IV_DEF == 31)
+                h.HT_DEF = false;
+            if (pk.IV_SPA == 31)
+                h.HT_SPA = false;
+            if (pk.IV_SPD == 31)
+                h.HT_SPD = false;
+            if (pk.IV_SPE == 31)
+                h.HT_SPE = false;
         }
 
         public static void SetSuggestedMemories(this PKM pk)
         {
             switch (pk)
             {
-                case PK7 pk7:
-                    if (!pk.IsUntraded)
-                        pk7.TradeMemory(true);
-                    pk7.FixMemories();
+                case PK7 pk7 when !pk.IsUntraded:
+                    pk7.TradeMemory(true);
                     break;
-                case PK6 pk6:
-                    if (!pk.IsUntraded)
-                        pk6.TradeMemory(true);
-                    pk6.FixMemories();
+                case PK6 pk6 when !pk.IsUntraded:
+                    pk6.TradeMemory(true);
                     break;
             }
         }
@@ -172,43 +166,26 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to set trainer data to</param>
         /// <param name="trainer">Trainer data</param>
-        /// <param name="APILegalized">Was the <see cref="pk"/> legalized by the API</param>
-        public static void SetTrainerData(this PKM pk, ITrainerInfo trainer, bool APILegalized = false)
+        public static void SetTrainerData(this PKM pk, ITrainerInfo trainer)
         {
-            if (APILegalized)
-            {
-                if ((pk.TID == 12345 && pk.OT_Name == "PKHeX") || (pk.TID == 34567 && pk.SID == 0 && pk.OT_Name == "TCD"))
-                {
-                    bool Shiny = pk.IsShiny;
-                    pk.TID = trainer.TID;
-                    pk.SID = trainer.SID;
-                    pk.OT_Name = trainer.OT;
-                    pk.OT_Gender = trainer.Gender;
-                    pk.SetShinyBoolean(Shiny);
-                }
-                return;
-            }
             pk.TID = trainer.TID;
-            pk.SID = trainer.SID;
+            pk.SID = pk.GenNumber >= 3 ? trainer.SID : 0;
             pk.OT_Name = trainer.OT;
         }
 
         /// <summary>
-        /// Set Trainer data (TID, SID, OT) for a given PKM
+        /// Set Handling Trainer data for a given PKM
         /// </summary>
         /// <param name="pk">PKM to modify</param>
-        public static void SetTrainerDataAndMemories(this PKM pk)
+        /// <param name="trainer">Trainer to handle the <see cref="pk"/></param>
+        public static void SetHandlerandMemory(this PKM pk, ITrainerInfo trainer)
         {
+            pk.CurrentHandler = 1;
+            pk.HT_Name = trainer.OT;
+            pk.HT_Gender = trainer.Gender;
             if (pk.WasEvent || pk.WasIngameTrade)
                 return;
 
-            // Hardcoded a generic one for now, trainerdata.json implementation here later
-            pk.CurrentHandler = 1;
-            pk.HT_Name = "ARCH";
-            pk.HT_Gender = 0; // Male for Colo/XD Cases
-            pk.TID = 34567;
-            pk.SID = 0;
-            pk.OT_Name = "TCD";
             pk.SetSuggestedMemories();
         }
 
@@ -220,20 +197,23 @@ namespace PKHeX.Core.AutoMod
         /// <returns>PKM with the necessary values modified to reflect trainerdata changes</returns>
         public static void SetAllTrainerData(this PKM pk, ITrainerInfo trainer)
         {
-            pk.SetTrainerData(trainer, true);
+            pk.SetBelugaValues(); // trainer details changed?
             pk.ConsoleRegion = trainer.ConsoleRegion;
             pk.Country = trainer.Country;
             pk.Region = trainer.SubRegion;
         }
 
-
-        public static void SetSuggestedMoves(this PKM pk, bool random = false)
+        /// <summary>
+        /// Sets a moveset which is suggested based on calculated legality.
+        /// </summary>
+        /// <param name="pk">Legal PKM for setting the data</param>
+        /// <param name="random">True for Random assortment of legal moves, false if current moves only.</param>
+        /// <param name="la">Current legality report (calculated if not provided)</param>
+        public static void SetSuggestedMoves(this PKM pk, bool random = false, LegalityAnalysis la = null)
         {
-            int[] m = pk.GetMoveSet(random);
+            int[] m = pk.GetMoveSet(random, la);
             if (m?.Any(z => z != 0) != true)
-            {
                 return;
-            }
 
             if (pk.Moves.SequenceEqual(m))
                 return;

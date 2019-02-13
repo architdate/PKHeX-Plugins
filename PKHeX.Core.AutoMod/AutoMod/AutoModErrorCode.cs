@@ -1,10 +1,16 @@
 namespace PKHeX.Core.AutoMod
 {
+    /// <summary>
+    /// Result codes for legalization and import operations.
+    /// </summary>
     public enum AutoModErrorCode
     {
         None,
         NoSingleImport,
 
+        /// <summary>
+        /// Don't use this!
+        /// </summary>
         CODE_SILENT,
 
         NotEnoughSpace,
@@ -15,16 +21,20 @@ namespace PKHeX.Core.AutoMod
     {
         public static string GetMessage(this AutoModErrorCode code)
         {
-            if (code <= AutoModErrorCode.CODE_SILENT)
+            if (code.IsSilent())
                 return string.Empty;
+
             switch (code)
             {
                 case AutoModErrorCode.NotEnoughSpace:
                     return "Not enough space in the box.";
                 case AutoModErrorCode.InvalidLines:
                     return "Invalid lines detected.";
+                default:
+                    return string.Empty;
             }
-            return string.Empty;
         }
+
+        public static bool IsSilent(this AutoModErrorCode code) => code <= AutoModErrorCode.CODE_SILENT;
     }
 }
