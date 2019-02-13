@@ -43,10 +43,12 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\PKSMUtil.cs" />
     <Compile Include="GUI\QRCodeDumper.cs" />
     <Compile Include="GUI\QRParser.cs" />
     <Compile Include="Plugins\AutoModPlugin.cs" />
     <Compile Include="Plugins\ExportBoxToShowdown.cs" />
+    <Compile Include="Plugins\ExportPKSMBank.cs" />
     <Compile Include="Plugins\ExportQRCodes.cs" />
     <Compile Include="Plugins\LegalizeBoxes.cs" />
     <Compile Include="Plugins\LivingDex.cs" />
