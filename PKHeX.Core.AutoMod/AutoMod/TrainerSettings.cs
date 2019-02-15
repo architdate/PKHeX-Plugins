@@ -35,7 +35,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Gets a possible handler Trainer Data for the provided <see cref="pk"/>.
+        /// Gets a possible Trainer Data for the requested <see cref="generation"/>.
         /// </summary>
         /// <param name="generation">Generation of origin requested.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
@@ -44,7 +44,7 @@ namespace PKHeX.Core.AutoMod
 
 
         /// <summary>
-        /// Gets a possible parent Trainer Data for the provided <see cref="pk"/>.
+        /// Gets a possible Trainer Data for the requested <see cref="version"/>.
         /// </summary>
         /// <param name="version">Version of origin requested.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
@@ -52,7 +52,7 @@ namespace PKHeX.Core.AutoMod
         public static ITrainerInfo GetSavedTrainerData(GameVersion version, ITrainerInfo fallback = null) => Database.GetTrainer(version) ?? fallback ?? DefaultFallback;
 
         /// <summary>
-        /// Gets a possible parent Trainer Data for the provided <see cref="pk"/>.
+        /// Gets a possible Trainer Data for the provided <see cref="pk"/>.
         /// </summary>
         /// <param name="pk">Pokémon that will receive the trainer details.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>

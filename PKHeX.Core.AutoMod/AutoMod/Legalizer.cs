@@ -30,7 +30,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Imports <see cref="sets"/> to a provided <see cref="arr"/>, with a context of <see cref="sav"/>.
+        /// Imports <see cref="sets"/> to a provided <see cref="arr"/>, with a context of <see cref="tr"/>.
         /// </summary>
         /// <param name="tr">Source/Destination trainer</param>
         /// <param name="sets">Set data to import</param>
@@ -71,7 +71,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Imports a <see cref="set"/> to create a new <see cref="PKM"/> with a context of <see cref="sav"/>.
+        /// Imports a <see cref="set"/> to create a new <see cref="PKM"/> with a context of <see cref="tr"/>.
         /// </summary>
         /// <param name="tr">Source/Destination trainer</param>
         /// <param name="set">Set data to import</param>

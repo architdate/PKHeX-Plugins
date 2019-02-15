@@ -9,7 +9,7 @@ namespace PKHeX.Core.AutoMod
     public static class NetUtil
     {
         /// <summary>
-        /// Gets the html string from the requested <see cref="url"/>.
+        /// Gets the html string from the requested <see cref="address"/>.
         /// </summary>
         /// <param name="address">Address to fetch from</param>
         /// <returns>Page response</returns>

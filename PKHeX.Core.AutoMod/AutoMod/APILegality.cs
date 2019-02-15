@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using static PKHeX.Core.LegalityCheckStrings;
+﻿using System.Diagnostics;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -60,13 +56,13 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Converted final pkm to apply details to</param>
         /// <param name="set">Set details required</param>
         /// <param name="Form">Alternate form required</param>
-        /// <param name="HPType">Hidden Power type requirement</param>
         /// <param name="unconverted">Original pkm data</param>
+        /// <param name="handler">Trainer to handle the Pokémon</param>
         private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler)
         {
             var pidiv = MethodFinder.Analyze(pk);
 
-            pk.SetVersion(unconverted); // PreEmptive Version setting
+            pk.SetVersion(unconverted); // Preemptive Version setting
             pk.SetSpeciesLevel(set, Form);
             pk.SetMovesEVsItems(set);
             pk.SetHandlerandMemory(handler);

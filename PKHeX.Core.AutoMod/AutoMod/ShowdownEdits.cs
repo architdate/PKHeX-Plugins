@@ -16,7 +16,7 @@ namespace PKHeX.Core.AutoMod
             var la = new LegalityAnalysis(pk);
             string Report = la.Report();
 
-            if (Report.Contains(LegalityCheckStrings.LMemoryFeelInvalid))
+            if (Report.Contains(LegalityCheckStrings.LPIDGenderMismatch))
                 pk.Gender = pk.Gender == 0 ? 1 : 0;
 
             if (pk.Gender != 0 && pk.Gender != 1)

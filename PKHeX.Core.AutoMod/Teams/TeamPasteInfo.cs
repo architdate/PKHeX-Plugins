@@ -8,7 +8,7 @@ namespace PKHeX.Core.AutoMod
     public class TeamPasteInfo
     {
         public readonly string URL;
-        public readonly bool Valid = false;
+        public readonly bool Valid;
         public readonly PasteSource Source;
         public readonly string Sets;
 

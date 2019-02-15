@@ -115,7 +115,7 @@ namespace PKHeX.Core.AutoMod
 
         public static void HyperTrain(this PKM pk)
         {
-            if (!(pk is IHyperTrain h) || !NeedsHyperTraining(pk))
+            if (!(pk is IHyperTrain) || !NeedsHyperTraining(pk))
                 return;
 
             pk.CurrentLevel = 100; // Set level for HT before doing HT

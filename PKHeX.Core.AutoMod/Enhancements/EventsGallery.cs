@@ -20,7 +20,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Downloads the entire repository from GitHub and extracts the contents to the <see cref="path"/>.
+        /// Downloads the entire repository from GitHub and extracts the contents to the <see cref="dest"/>.
         /// </summary>
         /// <param name="dest">Location to extract the repository to</param>
         /// <param name="entire">True to Download the current repository, false to only download the latest release.</param>
