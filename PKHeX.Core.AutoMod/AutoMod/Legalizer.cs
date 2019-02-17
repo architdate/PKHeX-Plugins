@@ -42,8 +42,8 @@ namespace PKHeX.Core.AutoMod
         public static AutoModErrorCode ImportToExisting(this ITrainerInfo tr, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, int start = 0, bool overwrite = true, bool allowAPI = true)
         {
             var emptySlots = overwrite
-                ? Enumerable.Range(0, sets.Count).ToList()
-                : FindAllEmptySlots(arr);
+                ? Enumerable.Range(start, sets.Count).ToList()
+                : FindAllEmptySlots(arr, start);
 
             if (emptySlots.Count < sets.Count)
                 return AutoModErrorCode.NotEnoughSpace;
@@ -61,7 +61,7 @@ namespace PKHeX.Core.AutoMod
                 if (msg == LegalizationResult.BruteForce)
                     invalidAPISets.Add(set);
 
-                arr[start + emptySlots[i]] = pk;
+                arr[emptySlots[i]] = pk;
                 generated++;
             }
 
@@ -122,11 +122,12 @@ namespace PKHeX.Core.AutoMod
         /// Method to find all empty slots in a current box
         /// </summary>
         /// <param name="data">Box Data of the save file</param>
+        /// <param name="start">Starting position for finding an empty slot</param>
         /// <returns>A list of all indices in the current box that are empty</returns>
-        private static List<int> FindAllEmptySlots(IList<PKM> data)
+        private static List<int> FindAllEmptySlots(IList<PKM> data, int start)
         {
             var emptySlots = new List<int>();
-            for (int i = 0; i < data.Count; i++)
+            for (int i = start; i < data.Count; i++)
             {
                 if (data[i].Species < 1)
                     emptySlots.Add(i);
