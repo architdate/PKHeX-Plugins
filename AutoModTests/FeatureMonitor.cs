@@ -13,7 +13,7 @@ namespace AutoModTests
             var url = EventsGallery.GetMGDBDownloadURL();
             string.IsNullOrWhiteSpace(url).Should().BeFalse("Download URL should exist");
 
-            bool isUri = Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute);
+            var isUri = Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute);
             isUri.Should().BeTrue("Download URL should be valid");
         }
     }

@@ -58,14 +58,12 @@ namespace PKHeX.Core.AutoMod
             return arr;
         }
 
-
-        // copied from pkhex.core
-        internal static bool IsPKMPresent(byte[] data, int offset)
+        // copied from PKHeX.Core
+        private static bool IsPKMPresent(byte[] data, int offset)
         {
             if (BitConverter.ToUInt32(data, offset) != 0) // PID
                 return true;
-            ushort species = BitConverter.ToUInt16(data, offset + 8);
-            return species != 0;
+            return 0 != BitConverter.ToUInt16(data, offset + 8);
         }
 
         private enum PKSMStorageFormat

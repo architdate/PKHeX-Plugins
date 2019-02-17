@@ -15,7 +15,7 @@ namespace PKHeX.Core.AutoMod
 
         public static string GetMGDBDownloadURL()
         {
-            string json_data = NetUtil.DownloadString(RepoReleaseURL);
+            var json_data = NetUtil.DownloadString(RepoReleaseURL);
             return json_data.Split(new[] { "browser_download_url" }, StringSplitOptions.None)[1].Substring(3).Split('"')[0];
         }
 
@@ -34,7 +34,7 @@ namespace PKHeX.Core.AutoMod
 
         private static void DownloadRelease(string dest)
         {
-            string downloadURL = GetMGDBDownloadURL();
+            var downloadURL = GetMGDBDownloadURL();
             DownloadAndExtractZip(downloadURL, dest);
         }
 

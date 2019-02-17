@@ -38,7 +38,7 @@ namespace AutoModTests
             sav.Should().NotBeNull();
             foreach (var s in sets)
             {
-                var pk = sav.GetLegalFromSet(s, out _, true);
+                var pk = sav.GetLegalFromSet(s, out _);
                 var la = new LegalityAnalysis(pk);
                 la.Valid.Should().BeTrue($"{path}'s set for {GameInfo.Strings.Species[s.Species]} should generate a legal mon");
             }

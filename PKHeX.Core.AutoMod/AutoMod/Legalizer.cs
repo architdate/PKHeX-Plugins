@@ -56,6 +56,7 @@ namespace PKHeX.Core.AutoMod
                 if (set.InvalidLines.Count > 0)
                     return AutoModErrorCode.InvalidLines;
 
+                Debug.WriteLine($"Generating Set: {GameInfo.Strings.Species[set.Species]}");
                 var pk = tr.GetLegalFromSet(set, out var msg, allowAPI);
                 if (msg == LegalizationResult.BruteForce)
                     invalidAPISets.Add(set);

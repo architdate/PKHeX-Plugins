@@ -27,8 +27,8 @@ namespace PKHeX.Core.AutoMod
 
         private void GetFromPokePaste(string url)
         {
-            string htmldoc = NetUtil.GetPageText(url);
-            string pastedata = htmldoc.Split(new[] { "<aside>" }, StringSplitOptions.None)[1].Split(new[] { "</aside>" }, StringSplitOptions.None)[0];
+            var htmldoc = NetUtil.GetPageText(url);
+            var pastedata = htmldoc.Split(new[] { "<aside>" }, StringSplitOptions.None)[1].Split(new[] { "</aside>" }, StringSplitOptions.None)[0];
 
             var title = pastedata.Split(new[] { "<h1>" }, StringSplitOptions.None);
             if (title.Length > 1)
@@ -45,12 +45,12 @@ namespace PKHeX.Core.AutoMod
 
         private void GetFromPasteBin(string url)
         {
-            string htmldoc = NetUtil.GetPageText(url);
+            var page = NetUtil.GetPageText(url);
 
-            var title = htmldoc.Split(new[] { "<div class=\"paste_box_line1\" title=\"" }, StringSplitOptions.None)[1];
+            var title = page.Split(new[] { "<div class=\"paste_box_line1\" title=\"" }, StringSplitOptions.None)[1];
             Title = GetVal(title, '"');
 
-            var auth = htmldoc.Split(new[] { "<div class=\"paste_box_line2\">" }, StringSplitOptions.None)[1].Split('>');
+            var auth = page.Split(new[] { "<div class=\"paste_box_line2\">" }, StringSplitOptions.None)[1].Split('>');
             Author = GetVal(auth[1]);
 
             var datestr = auth[3];
@@ -107,7 +107,7 @@ namespace PKHeX.Core.AutoMod
         public TeamPasteInfo(string url)
         {
             URL = url;
-            bool isUri = Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute);
+            var isUri = Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute);
             if (!isUri)
                 return;
             Source = GetSource(url);

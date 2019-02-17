@@ -35,7 +35,8 @@ namespace AutoModPlugins
         private void LoadMenuStrip(ToolStrip menuStrip)
         {
             var items = menuStrip.Items;
-            var tools = items.Find(ParentMenuParent, false)[0] as ToolStripDropDownItem;
+            if (!(items.Find(ParentMenuParent, false)[0] is ToolStripDropDownItem tools))
+                return;
             var toolsitems = tools.DropDownItems;
             var modmenusearch = toolsitems.Find(ParentMenuName, false);
             var modmenu = GetModMenu(tools, modmenusearch);

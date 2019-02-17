@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using static PKHeX.Core.LegalityCheckStrings;
 using System.Diagnostics;
+using RNGReporter;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -697,7 +698,7 @@ namespace PKHeX.Core.AutoMod
             bool feFlag = pk.FatefulEncounter;
             pk.Egg_Location = 0;
             pk.FatefulEncounter = true;
-            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, "M2");
+            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, IVPIDMethod.M2);
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
@@ -732,7 +733,7 @@ namespace PKHeX.Core.AutoMod
             bool feFlag = pk.FatefulEncounter;
             pk.Egg_Location = 0;
             pk.FatefulEncounter = false;
-            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, "BACD_R");
+            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, IVPIDMethod.BACD_R);
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;

@@ -1,4 +1,5 @@
-﻿using PKHeX.Core;
+﻿using System;
+using PKHeX.Core;
 using System.Windows.Forms;
 
 namespace AutoModPlugins
@@ -25,7 +26,10 @@ namespace AutoModPlugins
                 Clipboard.SetText(str);
                 WinFormsUtil.Alert("Exported the active box to Showdown format");
             }
-            catch { WinFormsUtil.Error("Unable to export text to clipboard."); }
+            catch (Exception e)
+            {
+                WinFormsUtil.Error("Unable to export text to clipboard.", e.Message);
+            }
         }
     }
 }

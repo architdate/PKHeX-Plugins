@@ -12,14 +12,14 @@ namespace AutoModPlugins
         {
             SystemSounds.Asterisk.Play();
             string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
-            return MessageBox.Show(msg, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return MessageBox.Show(msg, nameof(Alert), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static DialogResult Prompt(MessageBoxButtons btn, params string[] lines)
         {
             SystemSounds.Question.Play();
             string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
-            return MessageBox.Show(msg, "Prompt", btn, MessageBoxIcon.Asterisk);
+            return MessageBox.Show(msg, nameof(Prompt), btn, MessageBoxIcon.Asterisk);
         }
 
         /// <summary>
@@ -29,9 +29,9 @@ namespace AutoModPlugins
         /// <returns>The <see cref="DialogResult"/> associated with the dialog.</returns>
         public static DialogResult Error(params string[] lines)
         {
-            SystemSounds.Exclamation.Play();
+            SystemSounds.Hand.Play();
             string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
-            return MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return MessageBox.Show(msg, nameof(Error), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace AutoModPlugins
         public static bool OpenSAVPKMDialog(IEnumerable<string> Extensions, out string path)
         {
             string supported = string.Join(";", Extensions.Select(s => $"*.{s}").Concat(new[] { "*.pkm" }));
-            OpenFileDialog ofd = new OpenFileDialog
+            var ofd = new OpenFileDialog
             {
                 Filter = "All Files|*.*" +
                          $"|Supported Files (*.*)|main;*.bin;{supported};*.bak" +
@@ -52,9 +52,11 @@ namespace AutoModPlugins
                          "|Binary File|*.bin" +
                          "|Backup File|*.bak"
             };
-            path = null;
             if (ofd.ShowDialog() != DialogResult.OK)
+            {
+                path = null;
                 return false;
+            }
 
             path = ofd.FileName;
             return true;

@@ -36,7 +36,7 @@ namespace AutoModPlugins
                 "Download the entire database, which includes past generation events?",
                 "Selecting No will download only the public release of the database.");
 
-            bool entire = prompt == DialogResult.Yes;
+            var entire = prompt == DialogResult.Yes;
             EventsGallery.DownloadMGDBFromGitHub(MGDatabasePath, entire);
             WinFormsUtil.Alert("Download Finished");
             Legal.RefreshMGDB(MGDatabasePath);
@@ -44,8 +44,8 @@ namespace AutoModPlugins
 
         public static void DeleteDirectory(string target_dir)
         {
-            string[] files = Directory.GetFiles(target_dir);
-            string[] dirs = Directory.GetDirectories(target_dir);
+            var files = Directory.GetFiles(target_dir);
+            var dirs = Directory.GetDirectories(target_dir);
 
             foreach (string file in files)
             {

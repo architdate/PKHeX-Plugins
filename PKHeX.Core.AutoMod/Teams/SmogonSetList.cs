@@ -50,7 +50,7 @@ namespace PKHeX.Core.AutoMod
 
         private void LoadSetsFromPage()
         {
-            string[] split1 = Page.Split(new[] { "\",\"abilities\":" }, StringSplitOptions.None);
+            var split1 = Page.Split(new[] { "\",\"abilities\":" }, StringSplitOptions.None);
             for (int i = 1; i < split1.Length; i++)
             {
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
@@ -105,21 +105,21 @@ namespace PKHeX.Core.AutoMod
 
         private static readonly string[] statNames = { "HP", "Atk", "Def", "SpA", "SpD", "Spe" };
 
-        private static IReadOnlyList<string> GetSetLines(string set, string species)
+        private static IEnumerable<string> GetSetLines(string set, string species)
         {
-            string item = string.Empty;
+            var item = string.Empty;
             if (set.Contains("\"items\":[\""))
                 item = set.Split(new[] { "\"items\":[\"" }, StringSplitOptions.None)[1].Split('"')[0]; // Acrobatics Possibility
 
-            string ability = set.Split('\"')[1];
-            string[] evs = ParseEVIVs(set.Split(new[] { "\"evconfigs\":" }, StringSplitOptions.None)[1].Split(new[] { ",\"ivconfigs\":" }, StringSplitOptions.None)[0], false);
-            string[] ivs = ParseEVIVs(set.Split(new[] { "\"ivconfigs\":" }, StringSplitOptions.None)[1].Split(new[] { ",\"natures\":" }, StringSplitOptions.None)[0], true);
-            string nature = set.Split(new[] { "\"natures\":[\"" }, StringSplitOptions.None)[1].Split('"')[0];
-            string movesets = set.Split(new[] { "\"moveslots\":[" }, StringSplitOptions.None)[1].Split(new[] { ",\"evconfigs\"" }, StringSplitOptions.None)[0];
+            var ability = set.Split('\"')[1];
+            var evs = ParseEVIVs(set.Split(new[] { "\"evconfigs\":" }, StringSplitOptions.None)[1].Split(new[] { ",\"ivconfigs\":" }, StringSplitOptions.None)[0], false);
+            var ivs = ParseEVIVs(set.Split(new[] { "\"ivconfigs\":" }, StringSplitOptions.None)[1].Split(new[] { ",\"natures\":" }, StringSplitOptions.None)[0], true);
+            var nature = set.Split(new[] { "\"natures\":[\"" }, StringSplitOptions.None)[1].Split('"')[0];
+            var movesets = set.Split(new[] { "\"moveslots\":[" }, StringSplitOptions.None)[1].Split(new[] { ",\"evconfigs\"" }, StringSplitOptions.None)[0];
 
             var result = new List<string>
             {
-                item != string.Empty ? $"{species} @ {item}" : species,
+                item.Length == 0 ? species : $"{species} @ {item}",
                 $"Ability: {ability}",
                 $"EVs: {string.Join(" / ", statNames.Select((z, i) => evs[i] + z))}",
                 $"IVs: {string.Join(" / ", statNames.Select((z, i) => ivs[i] + z))}",
@@ -129,18 +129,20 @@ namespace PKHeX.Core.AutoMod
             return result;
         }
 
-        private static IReadOnlyList<string> GetMoves(string movesets)
+        private static IEnumerable<string> GetMoves(string movesets)
         {
             var moves = new List<string>();
             var splitmoves = movesets.Split(new[] { "[\"" }, StringSplitOptions.None);
             if (splitmoves.Length > 1)
-                moves.Add(splitmoves[1].Split('"')[0]);
+                moves.Add(GetMove(splitmoves[1]));
             if (splitmoves.Length > 2)
-                moves.Add(splitmoves[2].Split('"')[0]);
+                moves.Add(GetMove(splitmoves[2]));
             if (splitmoves.Length > 3)
-                moves.Add(splitmoves[3].Split('"')[0]);
+                moves.Add(GetMove(splitmoves[3]));
             if (splitmoves.Length > 4)
-                moves.Add(splitmoves[4].Split('"')[0]);
+                moves.Add(GetMove(splitmoves[4]));
+
+            string GetMove(string s) => s.Split('"')[0];
             return moves;
         }
 
@@ -195,36 +197,33 @@ namespace PKHeX.Core.AutoMod
 
         private static string GetURL(string speciesName, string form, string baseURL)
         {
-            if (string.IsNullOrWhiteSpace(form))
+            if (string.IsNullOrWhiteSpace(form) || ShowdownUtil.IsInvalidForm(form))
             {
                 var spec = ConvertSpeciesToURLSpecies(speciesName).ToLower();
                 return $"{baseURL}/{spec}/";
             }
 
-            string urlSpecies = ConvertSpeciesToURLSpecies(speciesName);
-            if (form != "Mega" || form != "")
+            var urlSpecies = ConvertSpeciesToURLSpecies(speciesName);
             {
                 var spec = urlSpecies.ToLower();
                 var f = ConvertFormToURLForm(form, urlSpecies).ToLower();
                 return $"{baseURL}/{spec}-{f}/";
             }
-
-            return string.Empty;
         }
 
         private static Dictionary<string, List<string>> GetTitles(string pageData)
         {
-            Dictionary<string, List<string>> titles = new Dictionary<string, List<string>>();
-            string strats = pageData.Split(new[] { "\"strategies\":[{\"format\"" }, StringSplitOptions.None)[1].Split(new[] { "</script>" }, StringSplitOptions.None)[0];
-            string[] formatList = strats.Split(new[] { "\"format\"" }, StringSplitOptions.None);
+            var titles = new Dictionary<string, List<string>>();
+            var strats = pageData.Split(new[] { "\"strategies\":[{\"format\"" }, StringSplitOptions.None)[1].Split(new[] { "</script>" }, StringSplitOptions.None)[0];
+            var formatList = strats.Split(new[] { "\"format\"" }, StringSplitOptions.None);
             foreach (string format in formatList)
             {
-                string key = format.Split('"')[1];
-                List<string> values = new List<string>();
-                string[] Names = format.Split(new[] { "\"name\"" }, StringSplitOptions.None);
-                for (int i = 1; i < Names.Length; i++)
+                var key = format.Split('"')[1];
+                var values = new List<string>();
+                var names = format.Split(new[] { "\"name\"" }, StringSplitOptions.None);
+                for (int i = 1; i < names.Length; i++)
                 {
-                    values.Add(Names[i].Split('"')[1]);
+                    values.Add(names[i].Split('"')[1]);
                 }
                 titles.Add(key, values);
             }
@@ -237,7 +236,7 @@ namespace PKHeX.Core.AutoMod
             sb.Append(showdownSpec).Append(":");
             sb.Append(Environment.NewLine);
             sb.Append(Environment.NewLine);
-            foreach (KeyValuePair<string, List<string>> entry in titles)
+            foreach (var entry in titles)
             {
                 sb.Append(entry.Key).Append(": ").Append(string.Join(", ", entry.Value));
                 sb.Append(Environment.NewLine);

@@ -20,7 +20,7 @@ namespace AutoModTests
 
             var smogon = new SmogonSetList(blank);
             smogon.Valid.Should().BeTrue("Sets should exist for this setup");
-            int count = smogon.Sets.Count;
+            var count = smogon.Sets.Count;
             count.Should().BeGreaterThan(0, "At least one set should exist");
             smogon.SetConfig.Count.Should().Be(count, "Unparsed text should be captured and match result count");
             smogon.SetText.Count.Should().Be(count, "Reformatted text should be captured and match result count");

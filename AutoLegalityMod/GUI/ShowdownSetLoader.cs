@@ -51,9 +51,6 @@ namespace AutoModPlugins
         /// <param name="sets">Data to be loaded</param>
         public static void Import(IReadOnlyList<ShowdownSet> sets)
         {
-
-            Debug.WriteLine("Commencing Import");
-
             const bool allowAPI = true;
             AutoModErrorCode result;
             if (sets.Count == 1)
@@ -62,7 +59,7 @@ namespace AutoModPlugins
             }
             else
             {
-                bool replace = (Control.ModifierKeys & Keys.Control) != 0;
+                var replace = (Control.ModifierKeys & Keys.Control) != 0;
                 result = ImportSetsToBoxes(sets, replace, allowAPI);
             }
 
@@ -78,6 +75,7 @@ namespace AutoModPlugins
             if (set.InvalidLines.Count > 0)
                 return AutoModErrorCode.InvalidLines;
 
+            Debug.WriteLine($"Commencing Import of {GameInfo.Strings.Species[set.Species]}");
             var timer = Stopwatch.StartNew();
 
             var sav = SaveFileEditor.SAV;
@@ -103,8 +101,9 @@ namespace AutoModPlugins
             var timer = Stopwatch.StartNew();
             var sav = SaveFileEditor.SAV;
             var BoxData = sav.BoxData;
-            int start = sav.CurrentBox * sav.BoxSlotCount;
+            var start = sav.CurrentBox * sav.BoxSlotCount;
 
+            Debug.WriteLine($"Commencing Import of {sets.Count} set(s).");
             var result = sav.ImportToExisting(sets, BoxData, start, replace, allowAPI);
             if (result != AutoModErrorCode.None)
                 return result;
@@ -116,7 +115,7 @@ namespace AutoModPlugins
             // Debug Statements
             timer.Stop();
             var timespan = timer.Elapsed;
-            Debug.WriteLine($"Time to complete {nameof(ImportSetToTabs)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
+            Debug.WriteLine($"Time to complete {nameof(ImportSetsToBoxes)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
             return AutoModErrorCode.None;
         }
     }

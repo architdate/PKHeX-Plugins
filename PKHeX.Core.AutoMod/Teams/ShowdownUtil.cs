@@ -28,7 +28,7 @@ namespace PKHeX.Core.AutoMod
             paste = paste.Trim(); // Remove White Spaces
             if (IsTeamBackup(paste))
                 return ShowdownTeamSet.GetTeams(paste).SelectMany(z => z.Team).ToList();
-            string[] lines = paste.Split(new[] { "\n" }, StringSplitOptions.None);
+            var lines = paste.Split(new[] { "\n" }, StringSplitOptions.None);
             return ShowdownSet.GetShowdownSets(lines).ToList();
         }
 

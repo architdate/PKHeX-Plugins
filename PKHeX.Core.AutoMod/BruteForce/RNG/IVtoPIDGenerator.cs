@@ -118,18 +118,26 @@ namespace RNGReporter
             }
         }
 
-        public static string[] GetIVPID(uint nature, int hiddenpower, bool XD = false, string method = "")
+        public static string[] GetIVPID(uint nature, int hiddenpower, bool XD = false, IVPIDMethod method = IVPIDMethod.None)
         {
-            if (method == "BACD_R")
+            if (method == IVPIDMethod.BACD_R)
                 return GenerateWishmkr(nature);
             var generator = new FrameGenerator();
-            if (XD || method == "XD")
+            if (XD || method == IVPIDMethod.XD)
                 generator = new FrameGenerator{FrameType = FrameType.ColoXD};
-            if (method == "M2")
+            if (method == IVPIDMethod.M2)
                 generator = new FrameGenerator{FrameType = FrameType.Method2};
             var frameCompare = new FrameCompare(Hptofilter(hiddenpower), nature);
             var frames = generator.Generate(frameCompare, 0, 0);
             return new[] { frames[0].Pid.ToString("X"), frames[0].Hp.ToString(), frames[0].Atk.ToString(), frames[0].Def.ToString(), frames[0].Spa.ToString(), frames[0].Spd.ToString(), frames[0].Spe.ToString() };
         }
+    }
+
+    public enum IVPIDMethod
+    {
+        None,
+        BACD_R,
+        XD,
+        M2,
     }
 }
