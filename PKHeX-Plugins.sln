@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoModPlugins", "AutoLegalityMod\AutoModPlugins.csproj", "{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WonderTradeBot", "WonderTradeBot\WonderTradeBot.csproj", "{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoModTests", "AutoModTests\AutoModTests.csproj", "{07D53A68-26E2-4173-84FB-B2413F505D2A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKHeX.Core.AutoMod", "PKHeX.Core.AutoMod\PKHeX.Core.AutoMod.csproj", "{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}"
@@ -23,10 +21,6 @@ Global
 		{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79}.Release|Any CPU.Build.0 = Release|Any CPU
 		{07D53A68-26E2-4173-84FB-B2413F505D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07D53A68-26E2-4173-84FB-B2413F505D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D53A68-26E2-4173-84FB-B2413F505D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,7 +35,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8ED04749-56CC-488C-9D85-B1BE83EF8F0C} = {C280F954-8B81-4014-881C-D3FBF0CC2E44}
-		{397B3C0E-0D3C-4BBA-B357-5EDDD75F1F79} = {C280F954-8B81-4014-881C-D3FBF0CC2E44}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95162B5A-0896-469B-8682-1266DDCD8749}
