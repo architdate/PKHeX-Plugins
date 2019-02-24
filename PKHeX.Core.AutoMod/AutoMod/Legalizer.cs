@@ -12,6 +12,17 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Tries to regenerate the <see cref="pk"/> into a valid pkm.
         /// </summary>
+        /// <param name="pk">Currently invalid pkm data</param>
+        /// <returns>Legalized PKM (hopefully legal)</returns>
+        public static PKM Legalize(this PKM pk)
+        {
+            var tr = TrainerSettings.GetSavedTrainerData(pk.Format);
+            return tr.Legalize(pk);
+        }
+
+        /// <summary>
+        /// Tries to regenerate the <see cref="pk"/> into a valid pkm.
+        /// </summary>
         /// <param name="tr">Source/Destination trainer</param>
         /// <param name="pk">Currently invalid pkm data</param>
         /// <returns>Legalized PKM (hopefully legal)</returns>
@@ -19,13 +30,13 @@ namespace PKHeX.Core.AutoMod
         {
             var set = new ShowdownSet(ShowdownSet.GetShowdownText(pk));
             var legal = tr.GetLegalFromTemplate(pk, set, out var satisfied);
-            var trainer = new PokeTrainerDetails(pk.Clone());
-            if (!satisfied)
-            {
-                var resetForm = ShowdownUtil.IsInvalidForm(set.Form);
-                legal = BruteForce.ApplyDetails(pk, set, resetForm, trainer);
-                legal.SetTrainerData(trainer);
-            }
+            if (satisfied)
+                return legal;
+
+            var dest = new PokeTrainerDetails(pk.Clone());
+            var resetForm = ShowdownUtil.IsInvalidForm(set.Form);
+            legal = BruteForce.ApplyDetails(pk, set, resetForm, dest);
+            legal.SetTrainerData(dest);
             return legal;
         }
 

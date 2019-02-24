@@ -606,7 +606,7 @@ namespace PKHeX.Core.AutoMod
 
             uint nature = (uint)pk.Nature;
             var type = XD ? RNGReporter.FrameType.ColoXD : RNGReporter.FrameType.Method1;
-            var pidsid = RNGReporter.IVtoPIDGenerator.Generate(hp, atk, def, spa, spd, spe, nature, 0, type);
+            var pidsid = IVtoPIDGenerator.Generate(hp, atk, def, spa, spd, spe, nature, 0, type);
 
             if (pk.Species == 490 && pk.Gen4)
             {
@@ -626,7 +626,7 @@ namespace PKHeX.Core.AutoMod
             if (!updatedReport.Contains(LPIDTypeMismatch))
                 return;
 
-            var NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID(nature, pk.HPType, XD);
+            var NatureHPIVs = IVtoPIDGenerator.GetIVPID(nature, pk.HPType, XD);
             Debug.WriteLine(XD);
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)
@@ -698,7 +698,7 @@ namespace PKHeX.Core.AutoMod
             bool feFlag = pk.FatefulEncounter;
             pk.Egg_Location = 0;
             pk.FatefulEncounter = true;
-            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, IVPIDMethod.M2);
+            string[] NatureHPIVs = IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, IVPIDMethod.M2);
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
@@ -733,7 +733,7 @@ namespace PKHeX.Core.AutoMod
             bool feFlag = pk.FatefulEncounter;
             pk.Egg_Location = 0;
             pk.FatefulEncounter = false;
-            string[] NatureHPIVs = RNGReporter.IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, IVPIDMethod.BACD_R);
+            string[] NatureHPIVs = IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, IVPIDMethod.BACD_R);
             pk.PID = Util.GetHexValue(NatureHPIVs[0]);
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
