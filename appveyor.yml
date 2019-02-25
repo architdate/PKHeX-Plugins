@@ -66,7 +66,8 @@ artifacts:
   name: PKHeX-$(pkhex_commit)-Unmerged
 notifications:
 - provider: Webhook
-  url: XmxZS8u/xG8nB6Kc5LePdDVVsPRNX7ryjU/Tgd53qI7aqkZ7Mk0KdwBAYfT26d6g/lMgMOC5CKULYn+UGjd5R/FAJ9pQudtgFoQ5tnU+yM1eMBnOGpj/J/5gSkpz3qFhsaNzJcDwXFpthUIocvhH32vzf+ItsqIz6QFX6dSiyh8=
+  url: 
+    secure: XmxZS8u/xG8nB6Kc5LePdDVVsPRNX7ryjU/Tgd53qI7aqkZ7Mk0KdwBAYfT26d6g/lMgMOC5CKULYn+UGjd5R/FAJ9pQudtgFoQ5tnU+yM1eMBnOGpj/J/5gSkpz3qFhsaNzJcDwXFpthUIocvhH32vzf+ItsqIz6QFX6dSiyh8=
   method: POST
   headers:
     User-Agent: AppVeyor/PKHeX-Plugins
