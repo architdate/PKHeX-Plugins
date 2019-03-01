@@ -54,7 +54,7 @@ namespace PKHeX.Core.AutoMod
         private static byte[] Slice(byte[] data, int ofs, int len)
         {
             var arr = new byte[len];
-            Array.Copy(data, ofs, arr, len, 0);
+            Array.Copy(data, ofs, arr, 0, len);
             return arr;
         }
 
