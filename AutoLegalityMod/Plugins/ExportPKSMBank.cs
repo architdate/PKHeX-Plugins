@@ -29,7 +29,7 @@ namespace AutoModPlugins
                 if (fbd.ShowDialog() != DialogResult.OK)
                     return;
                 var count = PKSMUtil.ExportBank(bank, fbd.SelectedPath, out List<PKMPreview> previews);
-                PKSMUtil.ExportCSV(previews, fbd.SelectedPath);
+                PKMPreview.ExportCSV(previews, fbd.SelectedPath);
                 WinFormsUtil.Alert("Bank Exported!", $"Dumped {count} Pokémon!");
             }
         }
