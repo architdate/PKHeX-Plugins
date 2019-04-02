@@ -28,7 +28,7 @@ namespace PKHeX.Core.AutoMod
                 if (!PKX.IsPKM(len))
                     return;
                 var data = File.ReadAllBytes(f);
-                var pk = PKMConverter.GetPKMfromBytes(data, f);
+                var pk = PKMConverter.GetPKMfromBytes(data);
                 if (pk != null)
                     Database.Register(pk);
             }
