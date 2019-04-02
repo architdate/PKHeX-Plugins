@@ -1,6 +1,8 @@
 # About
 This project uses `PKHeX.Core` and PKHeX's `IPlugin` interface to provide PKHeX program enhancements, namely **Auto**mated **Mod**ifications to create Legal Pokémon. Please refer to the [Wiki](https://github.com/architdate/PKHeX-Plugins/wiki) for more information regarding the functionalities provided by this project.
 
+This project is owned by [@architdate](https://github.com/architdate) (Discord: thecommondude#8240) and [@kwsch](https://github.com/kwsch) (Discord: Kurt#6024)
+
 ## Building
 This project requires an IDE that supports compiling .NET based code (Ideally .NET 4.6+). Recommended IDE is Visual Studio 2017 (Community)
 
