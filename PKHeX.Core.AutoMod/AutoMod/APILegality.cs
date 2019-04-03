@@ -25,7 +25,8 @@ namespace PKHeX.Core.AutoMod
             foreach (var enc in encounters)
             {
                 var ver = enc is IVersion v ? v.Version : (GameVersion)dest.Game;
-                var tr = TrainerSettings.GetSavedTrainerData(ver);
+                var gen = enc is IGeneration g ? g.Generation : dest.Generation;
+                var tr = TrainerSettings.GetSavedTrainerData(ver, gen);
                 var raw = enc.ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 ApplySetDetails(pk, set, Form, raw, dest);

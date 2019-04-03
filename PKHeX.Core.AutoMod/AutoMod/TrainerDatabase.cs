@@ -24,14 +24,38 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Null if no trainer found for this version.</returns>
         public ITrainerInfo GetTrainer(GameVersion ver)
         {
+            if (ver <= 0)
+                return null;
+
+            if (ver >= GameVersion.RB)
+                return GetTrainerFromGroup(ver);
+
             if (Database.TryGetValue(ver, out var list))
-            {
-                if (list.Count == 1)
-                    return list[0];
-                return list[Util.Rand.Next(list.Count)];
-            }
+                return GetRandomChoice(list);
 
             return null;
+        }
+
+        private static ITrainerInfo GetRandomChoice(IReadOnlyList<ITrainerInfo> list)
+        {
+            if (list.Count == 1)
+                return list[0];
+            return list[Util.Rand.Next(list.Count)];
+        }
+
+        /// <summary>
+        /// Fetches an appropriate trainer based on the requested <see cref="ver"/> group.
+        /// </summary>
+        /// <param name="ver">Version the trainer should originate from</param>
+        /// <returns>Null if no trainer found for this version.</returns>
+        private ITrainerInfo GetTrainerFromGroup(GameVersion ver)
+        {
+            var possible = Database.Where(z => ver.Contains(z.Key)).ToList();
+            if (possible.Count == 0)
+                return null;
+            var group = Util.Rand.Next(possible.Count);
+            var choice = possible[group];
+            return GetRandomChoice(choice.Value);
         }
 
         /// <summary>
@@ -42,9 +66,11 @@ namespace PKHeX.Core.AutoMod
         public ITrainerInfo GetTrainerFromGen(int generation)
         {
             var possible = Database.Where(z => z.Key.GetGeneration() == generation).ToList();
+            if (possible.Count == 0)
+                return null;
             var group = Util.Rand.Next(possible.Count);
-            var list = possible[group].Value;
-            return list[Util.Rand.Next(list.Count)];
+            var choice = possible[group];
+            return GetRandomChoice(choice.Value);
         }
 
         /// <summary>

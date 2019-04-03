@@ -47,9 +47,14 @@ namespace PKHeX.Core.AutoMod
         /// Gets a possible Trainer Data for the requested <see cref="version"/>.
         /// </summary>
         /// <param name="version">Version of origin requested.</param>
+        /// <param name="gen">Generation of origin requested.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
-        public static ITrainerInfo GetSavedTrainerData(GameVersion version, ITrainerInfo fallback = null) => Database.GetTrainer(version) ?? fallback ?? DefaultFallback;
+        public static ITrainerInfo GetSavedTrainerData(GameVersion version, int gen, ITrainerInfo fallback = null)
+        {
+            var byVer = Database.GetTrainer(version);
+            return byVer ?? GetSavedTrainerData(gen, fallback);
+        }
 
         /// <summary>
         /// Gets a possible Trainer Data for the provided <see cref="pk"/>.
@@ -57,6 +62,6 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokémon that will receive the trainer details.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
-        public static ITrainerInfo GetSavedTrainerData(PKM pk, ITrainerInfo fallback = null) => GetSavedTrainerData((GameVersion)pk.Version, fallback);
+        public static ITrainerInfo GetSavedTrainerData(PKM pk, ITrainerInfo fallback = null) => GetSavedTrainerData((GameVersion)pk.Version, pk.GenNumber, fallback);
     }
 }
