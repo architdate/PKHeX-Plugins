@@ -18,6 +18,7 @@ namespace AutoModPlugins
 
         private void GenLivingDex(object sender, EventArgs e)
         {
+            if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Generate a Living Dex?")) return;
             var sav = SaveFileEditor.SAV;
             var pkms = sav.GenerateLivingDex();
             var bd = sav.BoxData;
