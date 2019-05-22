@@ -35,17 +35,9 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to modify</param>
         public static void SetEncryptionConstant(this PKM pk)
         {
-            if (pk.GenNumber > 5 || pk.VC)
-            {
-                int wIndex = Array.IndexOf(Legal.WurmpleEvolutions, pk.Species);
-                uint EC = wIndex < 0 ? Util.Rand32() : PKX.GetWurmpleEC(wIndex / 2);
-                if (!(pk.Species == 658 && pk.AltForm == 1)) // Ash-Greninja
-                    pk.EncryptionConstant = EC;
-            }
-            else
-            {
-                pk.EncryptionConstant = pk.PID; // Generations 3 to 5
-            }
+            if (pk.Species == 658 && pk.AltForm == 1) // Ash-Greninja
+                return;
+            pk.SetRandomEC();
         }
 
         /// <summary>
@@ -183,9 +175,6 @@ namespace PKHeX.Core.AutoMod
             pk.CurrentHandler = 1;
             pk.HT_Name = trainer.OT;
             pk.HT_Gender = trainer.Gender;
-            if (pk.WasEvent || pk.WasIngameTrade)
-                return;
-
             pk.SetSuggestedMemories();
         }
 

@@ -383,8 +383,7 @@ namespace PKHeX.Core.AutoMod
             }
             if (report.Contains(LPIDEqualsEC)) //V208 = Encryption Constant matches PID.
             {
-                int wIndex = Array.IndexOf(Legal.WurmpleEvolutions, pk.Species);
-                pk.EncryptionConstant = wIndex < 0 ? Util.Rand32() : PKX.GetWurmpleEC(wIndex / 2);
+                pk.SetRandomEC();
                 report = GetReport(pk);
             }
             if (report.Contains(LTransferPIDECEquals)) //V216 = PID should be equal to EC!
