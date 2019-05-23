@@ -20,10 +20,13 @@ namespace AutoModPlugins
         private void Legalize(object sender, EventArgs e)
         {
             var box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
-            var all = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
-
             if (!box)
+            {
                 LegalizeActive();
+                return;
+            }
+
+            var all = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
             if (!all)
                 LegalizeCurrent();
             else

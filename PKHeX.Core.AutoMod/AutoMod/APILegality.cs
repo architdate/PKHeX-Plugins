@@ -20,11 +20,14 @@ namespace PKHeX.Core.AutoMod
             var Form = SanityCheckForm(template, ref set);
             template.ApplySetDetails(set);
             var destType = template.GetType();
+            var destVer = (GameVersion)dest.Game;
+            if (destVer <= 0 && dest is SaveFile s)
+                destVer = s.Version;
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves);
             foreach (var enc in encounters)
             {
-                var ver = enc is IVersion v ? v.Version : (GameVersion)dest.Game;
+                var ver = enc is IVersion v ? v.Version : destVer;
                 var gen = enc is IGeneration g ? g.Generation : dest.Generation;
                 var tr = TrainerSettings.GetSavedTrainerData(ver, gen);
                 var raw = enc.ConvertToPKM(tr);

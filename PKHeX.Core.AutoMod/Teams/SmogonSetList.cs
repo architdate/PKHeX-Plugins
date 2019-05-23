@@ -117,6 +117,9 @@ namespace PKHeX.Core.AutoMod
             var ivs = ParseEVIVs(ivstr, true);
             var ability = set[1] == ']' ? string.Empty : set.Split('\"')[1];
 
+            if (item == "No Item") // LGPE actually lists an item, RBY sets have an empty [].
+                item = string.Empty;
+
             var result = new List<string>(8)
             {
                 item.Length == 0 ? species : $"{species} @ {item}",

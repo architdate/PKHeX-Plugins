@@ -80,6 +80,8 @@ namespace PKHeX.Core.AutoMod
         public void Register(ITrainerInfo trainer)
         {
             var ver = (GameVersion) trainer.Game;
+            if (ver <= 0 && trainer is SaveFile s)
+                ver = s.Version;
             if (Database.TryGetValue(ver, out var list))
                 list.Add(trainer);
             else
