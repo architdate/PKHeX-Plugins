@@ -107,26 +107,57 @@ namespace PKHeX.Core.AutoMod
 
         private static IEnumerable<string> GetSetLines(string set, string species)
         {
-            var item = string.Empty;
-            if (set.Contains("\"items\":[\""))
-                item = set.Split(new[] { "\"items\":[\"" }, StringSplitOptions.None)[1].Split('"')[0]; // Acrobatics Possibility
+            TryGetToken(set, "\"items\":[\"", "\"", out var item);
+            TryGetToken(set, "\"moveslots\":", ",\"evconfigs\":", out var movesets);
+            TryGetToken(set, "\"evconfigs\":[{", "}],\"ivconfigs\":", out var evstr);
+            TryGetToken(set, "\"ivconfigs\":[{", "}],\"natures\":", out var ivstr);
+            TryGetToken(set, "\"natures\":[\"", "\"", out var nature);
 
-            var ability = set.Split('\"')[1];
-            var evs = ParseEVIVs(set.Split(new[] { "\"evconfigs\":" }, StringSplitOptions.None)[1].Split(new[] { ",\"ivconfigs\":" }, StringSplitOptions.None)[0], false);
-            var ivs = ParseEVIVs(set.Split(new[] { "\"ivconfigs\":" }, StringSplitOptions.None)[1].Split(new[] { ",\"natures\":" }, StringSplitOptions.None)[0], true);
-            var nature = set.Split(new[] { "\"natures\":[\"" }, StringSplitOptions.None)[1].Split('"')[0];
-            var movesets = set.Split(new[] { "\"moveslots\":[" }, StringSplitOptions.None)[1].Split(new[] { ",\"evconfigs\"" }, StringSplitOptions.None)[0];
+            var evs = ParseEVIVs(evstr, false);
+            var ivs = ParseEVIVs(ivstr, true);
+            var ability = set[1] == ']' ? string.Empty : set.Split('\"')[1];
 
-            var result = new List<string>
+            var result = new List<string>(8)
             {
                 item.Length == 0 ? species : $"{species} @ {item}",
-                $"Ability: {ability}",
-                $"EVs: {string.Join(" / ", statNames.Select((z, i) => evs[i] + z))}",
-                $"IVs: {string.Join(" / ", statNames.Select((z, i) => ivs[i] + z))}",
-                $"{nature} Nature"
             };
+            if (!string.IsNullOrWhiteSpace(ability))
+                result.Add($"Ability: {ability}");
+            if (evstr.Length >= 3)
+                result.Add($"EVs: {string.Join(" / ", statNames.Select((z, i) => $"{evs[i]} {z}"))}");
+            if (ivstr.Length >= 3)
+                result.Add($"IVs: {string.Join(" / ", statNames.Select((z, i) => $"{ivs[i]} {z}"))}");
+            if (!string.IsNullOrWhiteSpace(nature))
+                result.Add($"{nature} Nature");
+
             result.AddRange(GetMoves(movesets).Select(move => $"- {move}"));
             return result;
+        }
+
+        /// <summary>
+        /// Tries to rip out a substring between the provided <see cref="prefix"/> and <see cref="suffix"/>.
+        /// </summary>
+        /// <param name="line">Line</param>
+        /// <param name="prefix">Prefix</param>
+        /// <param name="suffix">Suffix</param>
+        /// <param name="result">Substring within prefix-suffix.</param>
+        /// <returns>True if found a substring, false if no prefix found.</returns>
+        private static bool TryGetToken(string line, string prefix, string suffix, out string result)
+        {
+            var prefixStart = line.IndexOf(prefix, StringComparison.Ordinal);
+            if (prefixStart < 0)
+            {
+                result = string.Empty;
+                return false;
+            }
+            prefixStart += prefix.Length;
+
+            var suffixStart = line.IndexOf(suffix, prefixStart, StringComparison.Ordinal);
+            if (suffixStart < 0)
+                suffixStart = line.Length;
+
+            result = line.Substring(prefixStart, suffixStart - prefixStart);
+            return true;
         }
 
         private static IEnumerable<string> GetMoves(string movesets)
@@ -151,7 +182,7 @@ namespace PKHeX.Core.AutoMod
             string[] ivdefault = { "31", "31", "31", "31", "31", "31" };
             string[] evdefault = { "0", "0", "0", "0", "0", "0" };
             var val = iv ? ivdefault : evdefault;
-            if (!liststring.Contains("{"))
+            if (string.IsNullOrWhiteSpace(liststring))
                 return val;
 
             string getStat(string v) => liststring.Split(new[] { v }, StringSplitOptions.None)[1].Split(',')[0];

@@ -10,7 +10,9 @@ namespace AutoModTests
     public static class WebSetFetch
     {
         [Theory]
-        [InlineData(typeof(PK7), GameVersion.MN, 3)] // Venusaur
+        [InlineData(typeof(PK7), GameVersion.MN, (int)Species.Venusaur)] // Venusaur
+        [InlineData(typeof(PK1), GameVersion.RD, (int)Species.Charizard)] // Charizard
+        [InlineData(typeof(PK3), GameVersion.E, (int)Species.Blastoise)] // Blastoise
         public static void HasSmogonSets(Type t, GameVersion game, int species, int form = 0)
         {
             var blank = PKMConverter.GetBlank(t);
