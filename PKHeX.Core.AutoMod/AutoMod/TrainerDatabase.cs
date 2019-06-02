@@ -36,7 +36,7 @@ namespace PKHeX.Core.AutoMod
             return null;
         }
 
-        private static ITrainerInfo GetRandomChoice(IReadOnlyList<ITrainerInfo> list)
+        private static T GetRandomChoice<T>(IReadOnlyList<T> list)
         {
             if (list.Count == 1)
                 return list[0];
@@ -51,11 +51,7 @@ namespace PKHeX.Core.AutoMod
         private ITrainerInfo GetTrainerFromGroup(GameVersion ver)
         {
             var possible = Database.Where(z => ver.Contains(z.Key)).ToList();
-            if (possible.Count == 0)
-                return null;
-            var group = Util.Rand.Next(possible.Count);
-            var choice = possible[group];
-            return GetRandomChoice(choice.Value);
+            return GetRandomTrainer(possible);
         }
 
         /// <summary>
@@ -66,11 +62,15 @@ namespace PKHeX.Core.AutoMod
         public ITrainerInfo GetTrainerFromGen(int generation)
         {
             var possible = Database.Where(z => z.Key.GetGeneration() == generation).ToList();
+            return GetRandomTrainer(possible);
+        }
+
+        private static ITrainerInfo GetRandomTrainer(IReadOnlyList<KeyValuePair<GameVersion, List<ITrainerInfo>>> possible)
+        {
             if (possible.Count == 0)
                 return null;
-            var group = Util.Rand.Next(possible.Count);
-            var choice = possible[group];
-            return GetRandomChoice(choice.Value);
+            var group = GetRandomChoice(possible);
+            return GetRandomChoice(group.Value);
         }
 
         /// <summary>

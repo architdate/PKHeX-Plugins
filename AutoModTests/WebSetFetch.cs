@@ -30,7 +30,7 @@ namespace AutoModTests
         }
 
         [Theory]
-        [InlineData("https://pokepast.es/73c130c81caab03e", "STING LIKE A BEE", 15, 801)] // Beedrill, Magearna
+        [InlineData("https://pokepast.es/73c130c81caab03e", "STING LIKE A BEE", (int)Species.Beedrill, (int)Species.Magearna)] // Beedrill, Magearna
         public static void HasPokePasteSets(string url, string name, params int[] speciesPresent)
         {
             var tpi = new TeamPasteInfo(url);
@@ -39,7 +39,7 @@ namespace AutoModTests
         }
 
         [Theory]
-        [InlineData("https://pastebin.com/0x7jJvB4", "Untitled", 241, 628)] // Miltank...Braviary
+        [InlineData("https://pastebin.com/0x7jJvB4", "Untitled", (int)Species.Miltank, (int)Species.Braviary)] // Miltank...Braviary
         public static void HasPastebinSets(string url, string name, params int[] speciesPresent)
         {
             var tpi = new TeamPasteInfo(url);
