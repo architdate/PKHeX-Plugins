@@ -82,10 +82,15 @@ namespace PKHeX.Core.AutoMod
             var ver = (GameVersion) trainer.Game;
             if (ver <= 0 && trainer is SaveFile s)
                 ver = s.Version;
-            if (Database.TryGetValue(ver, out var list))
-                list.Add(trainer);
-            else
+            if (!Database.TryGetValue(ver, out var list))
+            {
                 Database.Add(ver, new List<ITrainerInfo> {trainer});
+                return;
+            }
+
+            if (list.Contains(trainer))
+                return;
+            list.Add(trainer);
         }
 
         /// <summary>

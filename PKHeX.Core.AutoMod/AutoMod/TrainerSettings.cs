@@ -63,5 +63,11 @@ namespace PKHeX.Core.AutoMod
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
         public static ITrainerInfo GetSavedTrainerData(PKM pk, ITrainerInfo fallback = null) => GetSavedTrainerData((GameVersion)pk.Version, pk.GenNumber, fallback);
+
+        /// <summary>
+        /// Registers the Trainer Data to the <see cref="Database"/>.
+        /// </summary>
+        /// <param name="tr">Trainer Data</param>
+        public static void Register(ITrainerInfo tr) => Database.Register(tr);
     }
 }
