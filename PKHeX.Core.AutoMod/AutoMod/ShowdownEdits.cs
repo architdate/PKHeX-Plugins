@@ -1,3 +1,5 @@
+using System;
+
 namespace PKHeX.Core.AutoMod
 {
     /// <summary>
@@ -31,7 +33,7 @@ namespace PKHeX.Core.AutoMod
         public static void SetNatureAbility(this PKM pk, ShowdownSet set)
         {
             // Values that are must for showdown set to work, IVs should be adjusted to account for this
-            pk.Nature = set.Nature;
+            pk.Nature = Math.Max(0, set.Nature);
             pk.SetAbility(set.Ability);
         }
 
