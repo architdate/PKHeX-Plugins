@@ -31,7 +31,7 @@ namespace PKHeX.Core.AutoMod
             if (resetForm)
             {
                 pk.AltForm = 0;
-                pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
+                pk.RefreshAbility((uint)pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
             }
             if (pk.Species == 774 && pk.AltForm == 0)
                 pk.AltForm = 7; // Minior has to be C-Red and not M-Red outside of battle
@@ -344,7 +344,7 @@ namespace PKHeX.Core.AutoMod
             }
             if (report.Contains(LAbilityMismatch)) //V223 = Ability mismatch for encounter.
             {
-                pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
+                pk.RefreshAbility((uint)pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
                 report = GetReport(pk);
                 if (report.Contains(LAbilityMismatch)) //V223 = Ability mismatch for encounter.
                 {
@@ -667,7 +667,7 @@ namespace PKHeX.Core.AutoMod
             // Fix Moves if a slot is empty
             pk.FixMoves();
 
-            pk.RefreshAbility(pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
+            pk.RefreshAbility((uint)pk.AbilityNumber < 6 ? pk.AbilityNumber >> 1 : 0);
             if (updatedReport.Contains(LPIDTypeMismatch) || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
             {
                 if (pk.GenNumber == 3 || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
