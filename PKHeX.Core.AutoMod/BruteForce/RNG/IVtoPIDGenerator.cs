@@ -1,31 +1,26 @@
-﻿using static RNGReporter.CompareType;
+﻿using PKHeX.Core;
+using static RNGReporter.CompareType;
 
 namespace RNGReporter
 {
     public static class IVtoPIDGenerator
     {
-        public static string[] Generate(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid, FrameType type)
+        public static uint[] Generate(uint hp, uint atk, uint def, uint spa, uint spd, uint spe, uint nature, uint tid, FrameType type)
         {
             var seeds = IVtoSeed.GetSeeds(hp, atk, def, spa, spd, spe, nature, tid, type);
             if (seeds.Count == 0)
-                return new[] { "0", "0" };
+                return new[] {0u,0u};
 
             return new[]
             {
-                seeds[0].Pid.ToString("X"),
-                seeds[0].Sid.ToString(),
+                seeds[0].Pid,
+                seeds[0].Sid,
             };
         }
 
-        public static string[] GenerateWishmkr(uint targetNature)
+        public static IVPID GenerateWishmkr(uint targetNature)
         {
-            uint finalPID = 0;
-            uint finalHP = 0;
-            uint finalATK = 0;
-            uint finalDEF = 0;
-            uint finalSPA = 0;
-            uint finalSPD = 0;
-            uint finalSPE = 0;
+            var ivp = new IVPID();
             for (uint x = 0; x <= 0xFFFF; x++)
             {
                 uint pid1 = Forward(x);
@@ -33,27 +28,25 @@ namespace RNGReporter
                 uint pid = (pid1 & 0xFFFF0000) | (pid2 >> 16);
                 uint nature = pid % 25;
 
-                if (nature == targetNature)
-                {
-                    uint ivs1 = Forward(pid2);
-                    uint ivs2 = Forward(ivs1);
-                    ivs1 >>= 16;
-                    ivs2 >>= 16;
-                    uint[] ivs = CreateIVs(ivs1, ivs2);
-                    if (ivs != null)
-                    {
-                        finalPID = pid;
-                        finalHP = ivs[0];
-                        finalATK = ivs[1];
-                        finalDEF = ivs[2];
-                        finalSPA = ivs[3];
-                        finalSPD = ivs[4];
-                        finalSPE = ivs[5];
-                        break;
-                    }
-                }
+                if (nature != targetNature)
+                    continue;
+
+                uint ivs1 = Forward(pid2);
+                uint ivs2 = Forward(ivs1);
+                ivs1 >>= 16;
+                ivs2 >>= 16;
+                uint[] ivs = CreateIVs(ivs1, ivs2);
+
+                ivp.PID = pid;
+                ivp.HP = ivs[0];
+                ivp.ATK = ivs[1];
+                ivp.DEF = ivs[2];
+                ivp.SPA = ivs[3];
+                ivp.SPD = ivs[4];
+                ivp.SPE = ivs[5];
+                return ivp;
             }
-            return new[] { finalPID.ToString("X"), finalHP.ToString(), finalATK.ToString(), finalDEF.ToString(), finalSPA.ToString(), finalSPD.ToString(), finalSPE.ToString() };
+            return ivp;
         }
 
         private static uint Forward(uint seed)
@@ -118,26 +111,20 @@ namespace RNGReporter
             }
         }
 
-        public static string[] GetIVPID(uint nature, int hiddenpower, bool XD = false, IVPIDMethod method = IVPIDMethod.None)
+        public static IVPID GetIVPID(uint nature, int hiddenpower, bool XD = false, PIDType method = PIDType.None)
         {
-            if (method == IVPIDMethod.BACD_R)
+            if (method == PIDType.BACD_R)
                 return GenerateWishmkr(nature);
+
             var generator = new FrameGenerator();
-            if (XD || method == IVPIDMethod.XD)
-                generator = new FrameGenerator{FrameType = FrameType.ColoXD};
-            if (method == IVPIDMethod.M2)
-                generator = new FrameGenerator{FrameType = FrameType.Method2};
+            if (XD || method == PIDType.CXD)
+                generator.FrameType = FrameType.ColoXD;
+            else if (method == PIDType.Method_2)
+                generator.FrameType = FrameType.Method2;
+
             var frameCompare = new FrameCompare(Hptofilter(hiddenpower), nature);
             var frames = generator.Generate(frameCompare, 0, 0);
-            return new[] { frames[0].Pid.ToString("X"), frames[0].Hp.ToString(), frames[0].Atk.ToString(), frames[0].Def.ToString(), frames[0].Spa.ToString(), frames[0].Spd.ToString(), frames[0].Spe.ToString() };
+            return new IVPID(frames[0]);
         }
-    }
-
-    public enum IVPIDMethod
-    {
-        None,
-        BACD_R,
-        XD,
-        M2,
     }
 }

@@ -63,65 +63,24 @@ namespace RNGReporter
             return true;
         }
 
-        public bool CompareIV(CompareType compare, uint frameIv, uint testIv)
+        public static bool CompareIV(CompareType compare, uint frameIv, uint testIv)
         {
-            bool passed = true;
-
             //  Anything set not to compare is considered pass
-            if (compare != CompareType.None)
+            switch (compare)
             {
-                switch (compare)
-                {
-                    case CompareType.Equal:
-                        if (frameIv != testIv)
-                            passed = false;
-                        break;
-
-                    case CompareType.GtEqual:
-                        if (frameIv < testIv)
-                            passed = false;
-                        break;
-
-                    case CompareType.LtEqual:
-                        if (frameIv > testIv)
-                            passed = false;
-                        break;
-
-                    case CompareType.NotEqual:
-                        if (frameIv == testIv)
-                            passed = false;
-                        break;
-
-                    case CompareType.Even:
-                        if ((frameIv & 1) != 0)
-                            passed = false;
-
-                        break;
-
-                    case CompareType.Odd:
-                        if ((frameIv & 1) == 0)
-                            passed = false;
-
-                        break;
-
-                    case CompareType.Hidden:
-                        if ((((frameIv + 2) & 3) != 0) && (((frameIv + 5) & 3) != 0))
-                            passed = false;
-                        break;
-
-                    case CompareType.HiddenEven:
-                        if (((frameIv + 2) & 3) != 0)
-                            passed = false;
-                        break;
-
-                    case CompareType.HiddenOdd:
-                        if (((frameIv + 5) & 3) != 0)
-                            passed = false;
-                        break;
-                }
+                case CompareType.Equal:      return frameIv == testIv;
+                case CompareType.GtEqual:    return frameIv >= testIv;
+                case CompareType.LtEqual:    return frameIv <= testIv;
+                case CompareType.NotEqual:   return frameIv != testIv;
+                case CompareType.Even:       return (frameIv & 1) == 0;
+                case CompareType.Odd:        return (frameIv & 1) == 1;
+                case CompareType.HiddenEven: return ((frameIv + 2) & 3) == 0;
+                case CompareType.HiddenOdd:  return ((frameIv + 5) & 3) == 0;
+                case CompareType.Hidden:     return ((frameIv + 2) & 3) == 0
+                                                 || ((frameIv + 5) & 3) == 0;
+                default:
+                    return true;
             }
-
-            return passed;
         }
     }
 }

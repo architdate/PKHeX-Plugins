@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
 
 using static PKHeX.Core.LegalityCheckStrings;
 using System.Diagnostics;
@@ -165,7 +164,7 @@ namespace PKHeX.Core.AutoMod
                 if (BruteTables.UltraBeastBall.Contains(pk.Species))
                     pk.Ball = (int) Ball.Beast;
 
-                if (game == GameVersion.RD || game == GameVersion.BU || game == GameVersion.YW || game == GameVersion.GN || game == GameVersion.GD || game == GameVersion.SV || game == GameVersion.C)
+                if (game.GetGeneration() <= 2)
                 {
                     pk.SID = 0;
                     if (pk.OT_Name.Length > 6)
@@ -210,14 +209,12 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedRelearnMoves();
             pk.CurrentHandler = 1;
             pk.HT_Name = "Archit";
-            pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
-                (uint)(pk.AbilityNumber * 0x10001));
+            pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
             if (shiny)
                 pk.SetShiny();
             if (pk.PID == 0)
             {
-                pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format,
-                    (uint)(pk.AbilityNumber * 0x10001));
+                pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
                 if (shiny)
                     pk.SetShiny();
             }
@@ -322,13 +319,13 @@ namespace PKHeX.Core.AutoMod
             // fucking M2
             if (GameVersion.FRLG.Contains(pk.Version) && UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
             {
-                pk = M2EventFix(pk, pk.IsShiny);
+                M2EventFix(pk, pk.IsShiny);
                 report = GetReport(pk);
             }
 
             if (UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R) && pk.Version == (int)GameVersion.R)
             {
-                pk = BACD_REventFix(pk, pk.IsShiny);
+                BACD_REventFix(pk, pk.IsShiny);
                 report = GetReport(pk);
             }
 
@@ -613,7 +610,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Egg_Location = 2002;
                 pk.FatefulEncounter = true;
             }
-            pk.PID = Util.GetHexValue(pidsid[0]);
+            pk.PID = pidsid[0];
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
             pk.SID = Convert.ToInt32(pidsid[1]);
@@ -625,13 +622,13 @@ namespace PKHeX.Core.AutoMod
             if (!updatedReport.Contains(LPIDTypeMismatch))
                 return;
 
-            var NatureHPIVs = IVtoPIDGenerator.GetIVPID(nature, pk.HPType, XD);
+            var ivp = IVtoPIDGenerator.GetIVPID(nature, pk.HPType, XD);
             Debug.WriteLine(XD);
-            pk.PID = Util.GetHexValue(NatureHPIVs[0]);
+            pk.PID = ivp.PID;
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
 
-            SetIVs(pk, NatureHPIVs);
+            SetIVs(pk, ivp);
             if (shiny)
                 pk.SetShinySID();
 
@@ -639,7 +636,7 @@ namespace PKHeX.Core.AutoMod
             updatedReport = recheckLA.Report();
 
             bool pidsidmethod = updatedReport.Contains(LPIDTypeMismatch);
-            if (pidsid[0] == "0" && pidsid[1] == "0" && pidsidmethod)
+            if (pidsid[0] == 0 && pidsid[1] == 0 && pidsidmethod)
             {
                 pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
                 LoadOldIVs();
@@ -672,7 +669,7 @@ namespace PKHeX.Core.AutoMod
             {
                 if (pk.GenNumber == 3 || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                 {
-                    pk = M2EventFix(pk, shiny);
+                    M2EventFix(pk, shiny);
                     if (!new LegalityAnalysis(pk).Report().Contains(LPIDTypeMismatch) || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                         return;
                 }
@@ -680,33 +677,27 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static void SetIVs(PKM pk, IReadOnlyList<string> NatureHPIVs)
+        private static void SetIVs(PKM pk, IVPID ivp)
         {
-            Debug.WriteLine(NatureHPIVs[0]);
-            pk.IV_HP = Convert.ToInt32(NatureHPIVs[1]);
-            pk.IV_ATK = Convert.ToInt32(NatureHPIVs[2]);
-            pk.IV_DEF = Convert.ToInt32(NatureHPIVs[3]);
-            pk.IV_SPA = Convert.ToInt32(NatureHPIVs[4]);
-            pk.IV_SPD = Convert.ToInt32(NatureHPIVs[5]);
-            pk.IV_SPE = Convert.ToInt32(NatureHPIVs[6]);
+            pk.IV_HP = (int)ivp.HP;
+            pk.IV_ATK = (int)ivp.ATK;
+            pk.IV_DEF = (int)ivp.DEF;
+            pk.IV_SPA = (int)ivp.SPA;
+            pk.IV_SPD = (int)ivp.SPD;
+            pk.IV_SPE = (int)ivp.SPE;
         }
 
-        private static PKM M2EventFix(PKM pk, bool shiny)
+        private static void M2EventFix(PKM pk, bool shiny)
         {
             int eggloc = pk.Egg_Location;
             bool feFlag = pk.FatefulEncounter;
             pk.Egg_Location = 0;
             pk.FatefulEncounter = true;
-            string[] NatureHPIVs = IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, IVPIDMethod.M2);
-            pk.PID = Util.GetHexValue(NatureHPIVs[0]);
+            var ivp = IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, PIDType.Method_2);
+            pk.PID = ivp.PID;
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
-            pk.IV_HP = Convert.ToInt32(NatureHPIVs[1]);
-            pk.IV_ATK = Convert.ToInt32(NatureHPIVs[2]);
-            pk.IV_DEF = Convert.ToInt32(NatureHPIVs[3]);
-            pk.IV_SPA = Convert.ToInt32(NatureHPIVs[4]);
-            pk.IV_SPD = Convert.ToInt32(NatureHPIVs[5]);
-            pk.IV_SPE = Convert.ToInt32(NatureHPIVs[6]);
+            SetIVs(pk, ivp);
             if (shiny)
                 pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
@@ -714,45 +705,41 @@ namespace PKHeX.Core.AutoMod
             if (updatedReport.Contains(LPIDGenderMismatch))
             {
                 pk.Gender = pk.Gender == 0 ? 1 : 0;
-                var recheckLA2 = new LegalityAnalysis(pk);
-                updatedReport = recheckLA2.Report();
+                updatedReport = new LegalityAnalysis(pk).Report();
             }
 
             if (!updatedReport.Contains(LPIDTypeMismatch) || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
-                return pk;
+                return;
             Debug.WriteLine(GetReport(pk));
             pk.FatefulEncounter = feFlag;
             pk.Egg_Location = eggloc;
-            return pk;
         }
 
-        private static PKM BACD_REventFix(PKM pk, bool shiny)
+        private static void BACD_REventFix(PKM pk, bool shiny)
         {
             int eggloc = pk.Egg_Location;
             bool feFlag = pk.FatefulEncounter;
             pk.Egg_Location = 0;
             pk.FatefulEncounter = false;
-            string[] NatureHPIVs = IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, IVPIDMethod.BACD_R);
-            pk.PID = Util.GetHexValue(NatureHPIVs[0]);
+            var ivp = IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, PIDType.BACD_R);
+            pk.PID = ivp.PID;
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
-            Debug.WriteLine(NatureHPIVs[0]);
-            SetIVs(pk, NatureHPIVs);
+            Debug.WriteLine(ivp.HP);
+            SetIVs(pk, ivp);
             if (shiny) pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
             if (updatedReport.Contains(LPIDGenderMismatch))
             {
                 pk.Gender = pk.Gender == 0 ? 1 : 0;
-                var recheckLA2 = new LegalityAnalysis(pk);
-                updatedReport = recheckLA2.Report();
+                updatedReport = new LegalityAnalysis(pk).Report();
             }
             if (!updatedReport.Contains(LPIDTypeMismatch) || UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R))
-                return pk;
+                return;
             Debug.WriteLine(GetReport(pk));
             pk.FatefulEncounter = feFlag;
             pk.Egg_Location = eggloc;
-            return pk;
         }
 
         public static bool UsesEventBasedMethod(int Species, int[] Moves, PIDType method)
