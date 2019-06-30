@@ -744,15 +744,8 @@ namespace PKHeX.Core.AutoMod
 
         public static bool UsesEventBasedMethod(int Species, int[] Moves, PIDType method)
         {
-            var index = BruteTables.GetRNGListIndex(method);
-            if (index == -1)
-                return false;
-
-            var RNGList = BruteTables.WC3RNGList[index];
-            if (!RNGList.Keys.Contains(Species))
-                return false;
-
-            return Moves.Any(i => RNGList[Species].Contains(i));
+            var list = BruteTables.GetRNGList(method);
+            return list.TryGetValue(Species, out var moves) && Moves.Any(i => moves.Contains(i));
         }
     }
 }
