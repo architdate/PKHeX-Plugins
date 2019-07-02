@@ -13,12 +13,10 @@ namespace AutoModTests
         private static readonly SaveFile SAV = SaveUtil.GetBlankSAV(PKX.Generation, "PKHeX");
 
         [Fact]
-        public static void TestFilesPassOrFailLegalityChecks()
-        {
-            var folder = PKMFolder;
-            VerifyAll(folder, "Legal", true);
-            VerifyAll(folder, "Illegal", false);
-        }
+        public static void TestLegal() => VerifyAll(PKMFolder, "Legal", true);
+
+        [Fact]
+        public static void TestIllegal() => VerifyAll(PKMFolder, "Illegal", false);
 
         // ReSharper disable once UnusedParameter.Local
         private static void VerifyAll(string folder, string name, bool isValid)
