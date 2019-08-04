@@ -149,7 +149,6 @@ namespace PKHeX.Core.AutoMod
                 if (pk.Met_Level == 100)
                     pk.Met_Level = 0;
                 pk.SetBelugaValues();
-                pk.WasEgg = false;
                 pk.EggMetDate = null;
                 pk.Egg_Location = 0;
                 pk.Version = (int) game;
@@ -606,7 +605,6 @@ namespace PKHeX.Core.AutoMod
 
             if (pk.Species == 490 && pk.Gen4)
             {
-                pk.WasEgg = true;
                 pk.Egg_Location = 2002;
                 pk.FatefulEncounter = true;
             }
