@@ -23,7 +23,7 @@ namespace PKHeX.Core.AutoMod
             var result = new List<ShowdownTeamSet>();
             for (int i = 0; i < lines.Length; i++)
             {
-                var line = lines[i]?.Trim();
+                var line = lines[i].Trim();
                 if (string.IsNullOrWhiteSpace(line))
                     continue;
 
@@ -52,7 +52,7 @@ namespace PKHeX.Core.AutoMod
 
                 var teamlines = lines.Skip(i + 1).Take(end - i - 1).Where(z => !string.IsNullOrWhiteSpace(z));
                 var sets = ShowdownSet.GetShowdownSets(teamlines).ToList();
-                if (sets.Count <= 0)
+                if (sets.Count == 0)
                     continue;
                 result.Add(new ShowdownTeamSet { Format = format, TeamName = name, Team = sets });
 

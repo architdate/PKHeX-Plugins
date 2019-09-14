@@ -39,8 +39,8 @@ namespace AutoModPlugins
         public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav)
         {
             var species = Enumerable.Range(1, sav.MaxSpeciesID);
-            if (sav.GG)
-                species = species.Where(z => z <= 151 || z >= 808); // only include Kanto and M&M
+            if (sav is SAV7b)
+                species = species.Where(z => z <= 151 || (z == 808 || z == 809)); // only include Kanto and M&M
             return sav.GenerateLivingDex(species);
         }
 

@@ -76,7 +76,7 @@ namespace PKHeX.Core.AutoMod
                 pk.ApplyHeldItem(set.HeldItem, set.Format);
                 var la = new LegalityAnalysis(pk);
                 if (la.Parsed && !pk.WasEvent)
-                    pk.RelearnMoves = pk.GetSuggestedRelearnMoves(la);
+                    pk.SetRelearnMoves(pk.GetSuggestedRelearnMoves(la));
             }
         }
     }

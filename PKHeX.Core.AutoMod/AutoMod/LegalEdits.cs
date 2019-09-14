@@ -36,7 +36,7 @@ namespace PKHeX.Core.AutoMod
             pk.ClearRelearnMoves();
             var la = new LegalityAnalysis(pk);
 
-            int[] m = la.GetSuggestedRelearn();
+            var m = la.GetSuggestedRelearn();
             if (m.All(z => z == 0))
             {
                 if (!pk.WasEgg && !pk.WasEvent && !pk.WasEventEgg && !pk.WasLink)
@@ -52,8 +52,8 @@ namespace PKHeX.Core.AutoMod
 
             if (pk.RelearnMoves.SequenceEqual(m))
                 return;
-            if (m.Length > 3)
-                pk.RelearnMoves = m;
+            if (m.Count > 3)
+                pk.SetRelearnMoves(m);
         }
 
         /// <summary>

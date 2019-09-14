@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Windows.Forms;
 using PKHeX.Core.AutoMod;
 
@@ -28,7 +27,7 @@ namespace AutoModPlugins
             {
                 if (fbd.ShowDialog() != DialogResult.OK)
                     return;
-                var count = PKSMUtil.ExportBank(bank, fbd.SelectedPath, out List<PKMPreview> previews);
+                var count = PKSMUtil.ExportBank(bank, fbd.SelectedPath, out var previews);
                 PKMPreview.ExportCSV(previews, fbd.SelectedPath);
                 WinFormsUtil.Alert("Bank Exported!", $"Dumped {count} Pokémon!");
             }
