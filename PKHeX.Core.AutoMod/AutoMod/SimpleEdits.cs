@@ -87,6 +87,12 @@ namespace PKHeX.Core.AutoMod
                 pb7.ResetCalculatedValues();
         }
 
+        public static void SetHTLanguage(this PKM pk)
+        {
+            if (pk is IHandlerLanguage pkm)
+                pkm.HT_Language = 1;
+        }
+
         public static void RestoreIVs(this PKM pk, int[] IVs)
         {
             pk.IVs = IVs;

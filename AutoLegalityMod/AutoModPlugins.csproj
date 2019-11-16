@@ -34,9 +34,6 @@
     <Reference Include="BouncyCastle.CryptoExt, Version=1.7.4114.6378, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle-Ext.1.7.0\lib\net20\BouncyCastle.CryptoExt.dll</HintPath>
     </Reference>
-    <Reference Include="PKHeX.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PKHeX.Core.19.8.20\lib\net46\PKHeX.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -138,11 +135,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Plugin Testing\PKHeX\PKHeX.Core\PKHeX.Core.csproj">
+      <Project>{279e59f2-50ea-475d-8ba4-fa69f0578c0d}</Project>
+      <Name>PKHeX.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PKHeX.Core.AutoMod\PKHeX.Core.AutoMod.csproj">
-      <Project>{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}</Project>
+      <Project>{b2ec5fb6-4b00-4c00-91eb-f4eb01dd590d}</Project>
       <Name>PKHeX.Core.AutoMod</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

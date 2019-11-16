@@ -84,6 +84,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedBall();
             pk.SetHappiness();
             pk.SetBelugaValues();
+            pk.SetHTLanguage();
         }
 
         /// <summary>
