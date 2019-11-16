@@ -330,7 +330,7 @@ namespace PKHeX.Core.AutoMod
 
             if (report.Contains(LNickMatchLanguageFail))
             {
-                pk.Nickname = PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, pk.Format); // failsafe to reset nick
+                pk.Nickname = SpeciesName.GetSpeciesNameGeneration(pk.Species, pk.Language, pk.Format); // failsafe to reset nick
                 report = GetReport(pk);
             }
             if (report.Contains(LStatIncorrectCP))
@@ -371,7 +371,7 @@ namespace PKHeX.Core.AutoMod
                 bool shiny = pk.IsShiny;
                 pk.Language = 1;
                 pk.FatefulEncounter = true;
-                pk.Nickname = PKX.GetSpeciesNameGeneration(pk.Species, pk.Language, 3);
+                pk.Nickname = SpeciesName.GetSpeciesNameGeneration(pk.Species, pk.Language, 3);
                 pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
                 if (shiny)
                     pk.SetShinySID();

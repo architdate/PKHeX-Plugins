@@ -73,13 +73,11 @@ namespace PKHeX.Core.AutoMod
                 case nameof(PK1):
                     return "https://www.smogon.com/dex/rb/pokemon";
                 case nameof(PK2):
-                case nameof(_K12):
                     return "https://www.smogon.com/dex/gs/pokemon";
 
                 case nameof(CK3):
                 case nameof(XK3):
                 case nameof(PK3):
-                case nameof(_K3):
                     return "https://www.smogon.com/dex/rs/pokemon";
 
                 case nameof(BK4):

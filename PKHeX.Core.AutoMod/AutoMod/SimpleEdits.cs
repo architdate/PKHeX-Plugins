@@ -200,7 +200,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="la">Current legality report (calculated if not provided)</param>
         public static void SetSuggestedMoves(this PKM pk, bool random = false, LegalityAnalysis la = null)
         {
-            int[] m = pk.GetMoveSet(random, la);
+            int[] m = pk.GetMoveSet(la, random);
             if (m?.Any(z => z != 0) != true)
                 return;
 

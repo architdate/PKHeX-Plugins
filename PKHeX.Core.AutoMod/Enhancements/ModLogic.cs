@@ -119,7 +119,7 @@ namespace AutoModPlugins
             if (species == 678)
                 f.AltForm = f.Gender;
             f.CurrentLevel = 100;
-            f.Nickname = PKX.GetSpeciesNameGeneration(f.Species, f.Language, f.Format);
+            f.Nickname = SpeciesName.GetSpeciesNameGeneration(f.Species, f.Language, f.Format);
             f.IsNicknamed = false;
             f.SetSuggestedMoves();
             f.AbilityNumber = abilityretain;
