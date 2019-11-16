@@ -19,6 +19,7 @@ namespace PKHeX.Core.AutoMod
         {
             var Form = SanityCheckForm(template, ref set);
             template.ApplySetDetails(set);
+            template.SetRecordFlags(); // Validate TR moves for the encounter
             var destType = template.GetType();
             var destVer = (GameVersion)dest.Game;
             if (destVer <= 0 && dest is SaveFile s)
@@ -69,6 +70,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetVersion(unconverted); // Preemptive Version setting
             pk.SetSpeciesLevel(set, Form);
             pk.SetMovesEVsItems(set);
+            pk.SetRecordFlags(); 
             pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
