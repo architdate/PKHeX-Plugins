@@ -93,6 +93,12 @@ namespace PKHeX.Core.AutoMod
                 pkm.HT_Language = 1;
         }
 
+        public static void SetDynamaxLevel(this PKM pk)
+        {
+            if (pk is IDynamaxLevel pkm)
+                pkm.DynamaxLevel = 10; // Set max dynamax level
+        }
+
         public static void RestoreIVs(this PKM pk, int[] IVs)
         {
             pk.IVs = IVs;
