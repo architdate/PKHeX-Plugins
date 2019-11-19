@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -177,6 +178,20 @@ namespace PKHeX.Core.AutoMod
                 return false;
 
             changedSet = new ShowdownSet(set.Text.Replace($"-{set.Form}", string.Empty));
+
+            // Changed set handling for forme changes that affect battle-only moves
+
+            if (changedSet.Species == 888 || changedSet.Species == 889) // Zacian and Zamazenta
+            {
+                if (changedSet.Moves.Contains(781) || changedSet.Moves.Contains(782)) // Behemoth Blade and Behemoth Bash
+                {
+                    for (int i = 0; i < changedSet.Moves.Count(); i++)
+                    {
+                        if (changedSet.Moves[i] == 781 || changedSet.Moves[i] == 782)
+                            changedSet.Moves[i] = 442; // Iron Head
+                    }
+                }
+            }
             return true;
         }
 
