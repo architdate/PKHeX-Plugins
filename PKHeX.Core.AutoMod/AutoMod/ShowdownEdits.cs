@@ -34,6 +34,8 @@ namespace PKHeX.Core.AutoMod
         {
             // Values that are must for showdown set to work, IVs should be adjusted to account for this
             pk.Nature = Math.Max(0, set.Nature);
+            if (pk is PK8 pkm)
+                pkm.StatNature = Math.Max(0, set.Nature);
             pk.SetAbility(set.Ability);
         }
 

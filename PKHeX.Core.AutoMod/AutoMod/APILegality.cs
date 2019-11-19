@@ -69,8 +69,8 @@ namespace PKHeX.Core.AutoMod
 
             pk.SetVersion(unconverted); // Preemptive Version setting
             pk.SetSpeciesLevel(set, Form);
+            pk.SetRecordFlags();
             pk.SetMovesEVsItems(set);
-            pk.SetRecordFlags(); 
             pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
@@ -87,6 +87,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetHappiness();
             pk.SetBelugaValues();
             pk.SetHTLanguage();
+            pk.SetDynamaxLevel();
         }
 
         /// <summary>
