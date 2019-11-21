@@ -99,6 +99,11 @@ namespace PKHeX.Core.AutoMod
                 level = 10;
             if (pk is IDynamaxLevel pkm)
                 pkm.DynamaxLevel = level; // Set max dynamax level
+            if (pk is PK8 pk8)
+            {
+                if (pk8.Species >= (int)Species.Zacian) // Zacian, Zamazenta and Eternatus cannot dynamax
+                    pk8.DynamaxLevel = 0;
+            }
         }
 
         public static void RestoreIVs(this PKM pk, int[] IVs)

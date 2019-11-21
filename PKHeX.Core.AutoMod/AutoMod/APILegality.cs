@@ -35,6 +35,11 @@ namespace PKHeX.Core.AutoMod
                 var raw = enc.ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 ApplySetDetails(pk, set, Form, raw, dest);
+                if (pk is IGigantamax gmax && set.CanGigantamax)
+                {
+                    if (!gmax.CanGigantamax)
+                        continue;
+                }
 
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid)
