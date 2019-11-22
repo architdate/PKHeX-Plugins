@@ -26,7 +26,7 @@ before_build:
 
     msbuild C:\projects\pkhex\PKHeX.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /verbosity:minimal /p:DefineConstants=UNSAFEDLL /p:Configuration=Release
 
-    Copy-Item "C:\projects\pkhex\pkhex.winforms\bin\release\net46\PKHeX.Core.dll" "C:\projects\pkhex-plugins"
+    Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "C:\projects\pkhex-plugins"
 
     Set-Location -Path "C:\projects\pkhex-plugins"
 
