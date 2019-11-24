@@ -4,7 +4,7 @@ This project uses `PKHeX.Core` and PKHeX's `IPlugin` interface to provide PKHeX 
 This project is owned by [@architdate](https://github.com/architdate) (Discord: thecommondude#8240) and [@kwsch](https://github.com/kwsch) (Discord: Kurt#6024)
 
 ## Building
-This project requires an IDE that supports compiling .NET based code (Ideally .NET 4.6+). Recommended IDE is Visual Studio 2017 (Community)
+This project requires an IDE that supports compiling .NET based code (Ideally .NET 4.6+). Recommended IDE is Visual Studio 2019 
 
 - First Clone this repository using: `$ git clone https://github.com/architdate/PKHeX-Plugins.git`
 - Right click on the solution and click `Rebuild All`
