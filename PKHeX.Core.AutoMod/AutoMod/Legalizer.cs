@@ -69,6 +69,7 @@ namespace PKHeX.Core.AutoMod
 
                 Debug.WriteLine($"Generating Set: {GameInfo.Strings.Species[set.Species]}");
                 var pk = tr.GetLegalFromSet(set, out var msg, allowAPI);
+                pk.ResetPartyStats();
                 if (msg == LegalizationResult.BruteForce)
                     invalidAPISets.Add(set);
 
