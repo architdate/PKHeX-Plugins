@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Plugin Testing\PKHeX\PKHeX.Core\PKHeX.Core.csproj" />
+    <PackageReference Include="PKHeX.Core" Version="19.11.25" />
   </ItemGroup>
 
 </Project>
