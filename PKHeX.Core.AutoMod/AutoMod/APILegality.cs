@@ -75,7 +75,10 @@ namespace PKHeX.Core.AutoMod
 
             pk.SetVersion(unconverted); // Preemptive Version setting
             pk.SetSpeciesLevel(set, Form);
-            pk.SetRecordFlags();
+            if (pk.Species == (int)Species.Ralts || pk.Species == (int)Species.Kirlia || pk.Species == (int)Species.Gardevoir || pk.Species == (int)Species.Gallade || pk.Species == (int)Species.Mew) // https://twitter.com/SciresM/status/1194817757910454272
+                pk.SetRecordFlags(set.Moves);
+            else
+                pk.SetRecordFlags();
             pk.SetMovesEVsItems(set);
             pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set);
