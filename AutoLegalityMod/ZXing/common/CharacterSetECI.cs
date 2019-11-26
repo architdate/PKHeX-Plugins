@@ -79,16 +79,16 @@ namespace com.google.zxing.common
 		        NAME_TO_ECI[s] = eci;
 		}
 
-		/// <summary>
-		///
-		/// </summary>
-		/// <param name="value">character set ECI value
-		/// </param>
-		/// <returns> {@link CharacterSetECI} representing ECI of given value, or null if it is legal but
-		/// unsupported
-		/// </returns>
-		/// <throws>  IllegalArgumentException if ECI value is invalid </throws>
-		public static CharacterSetECI GetCharacterSetECIByValue(int value)
+        /// <summary>
+        /// Summary
+        /// </summary>
+        /// <param name="value">character set ECI value
+        /// </param>
+        /// <returns> {@link CharacterSetECI} representing ECI of given value, or null if it is legal but
+        /// unsupported
+        /// </returns>
+        /// <throws>  IllegalArgumentException if ECI value is invalid </throws>
+        public static CharacterSetECI GetCharacterSetECIByValue(int value)
 		{
 		    if (VALUE_TO_ECI == null)
 		        Initialize();
@@ -100,7 +100,7 @@ namespace com.google.zxing.common
 		}
 
 		/// <summary>
-		///
+		/// Summary
 		/// </summary>
 		/// <param name="name">character set ECI encoding name
 		/// </param>

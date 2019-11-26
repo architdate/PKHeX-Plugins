@@ -7,10 +7,10 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public class TeamPasteInfo
     {
-        public readonly string URL;
         public readonly bool Valid;
         public readonly PasteSource Source;
-        public readonly string Sets;
+        public readonly string URL;
+        public readonly string Sets = string.Empty;
 
         public string Summary => $"{Source} data:\nTitle: {Title}\nAuthor: {Author}\nDescription: {Description}";
 
@@ -69,15 +69,12 @@ namespace PKHeX.Core.AutoMod
 
         private string GetRawURL(string url)
         {
-            switch (Source)
+            return Source switch
             {
-                case PasteSource.PokePaste:
-                    return url.EndsWith("/raw") ? url : url + "/raw";
-                case PasteSource.Pastebin:
-                    return url.Contains("/raw/") ? url : url.Replace("pastebin.com/", "pastebin.com/raw/");
-                default:
-                    return url; // This should never happen
-            }
+                PasteSource.PokePaste => url.EndsWith("/raw") ? url : url + "/raw",
+                PasteSource.Pastebin => url.Contains("/raw/") ? url : url.Replace("pastebin.com/", "pastebin.com/raw/"),
+                _ => url, // This should never happen
+            };
         }
 
         private void LoadMetadata()

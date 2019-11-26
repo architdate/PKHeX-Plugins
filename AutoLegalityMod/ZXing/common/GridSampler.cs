@@ -33,10 +33,13 @@ namespace com.google.zxing.common
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
 	/// </author>
 	public abstract class GridSampler
-	{
-		/// <returns> the current implementation of {@link GridSampler}
-		/// </returns>
-		public static GridSampler Instance { get; private set; } = new DefaultGridSampler();
+    {
+        /// <summary>
+        /// Text
+        /// </summary>
+        /// <returns> the current implementation of {@link GridSampler}
+        /// </returns>
+        public static GridSampler Instance { get; private set; } = new DefaultGridSampler();
 
 	    /// <summary> Sets the implementation of {@link GridSampler} used by the library. One global
 		/// instance is stored, which may sound problematic. But, the implementation provided

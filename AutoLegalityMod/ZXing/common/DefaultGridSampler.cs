@@ -17,7 +17,7 @@ using System;
 namespace com.google.zxing.common
 {
 	/// <summary>
-	///
+	/// Text
 	/// </summary>
 	/// <author>  Sean Owen
 	/// </author>

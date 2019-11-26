@@ -34,6 +34,9 @@ namespace PKHeX.Core.AutoMod
                 var tr = TrainerSettings.GetSavedTrainerData(ver, gen);
                 var raw = enc.ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
+                if (pk == null)
+                    continue;
+
                 ApplySetDetails(pk, set, Form, raw, dest);
                 if (set.CanGigantamax && pk is IGigantamax gmax)
                 {
@@ -318,17 +321,13 @@ namespace PKHeX.Core.AutoMod
                             return PIDType.None;
                     }
                 case 4:
-                    switch (EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch)
+                    return EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch switch
                     {
-                        case EncounterStatic s when s.Location == Locations.PokeWalker4 && s.Gift:
-                            return PIDType.Pokewalker;
-                        case EncounterStatic s:
-                            return s.Shiny == Shiny.Always ? PIDType.ChainShiny : PIDType.Method_1;
-                        case PGT _:
-                            return PIDType.Method_1;
-                        default:
-                            return PIDType.None;
-                    }
+                        EncounterStatic s when s.Location == Locations.PokeWalker4 && s.Gift => PIDType.Pokewalker,
+                        EncounterStatic s => (s.Shiny == Shiny.Always ? PIDType.ChainShiny : PIDType.Method_1),
+                        PGT _ => PIDType.Method_1,
+                        _ => PIDType.None
+                    };
                 default:
                     return PIDType.None;
             }

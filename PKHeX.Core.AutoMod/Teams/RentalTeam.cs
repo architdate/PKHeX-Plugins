@@ -11,8 +11,8 @@ namespace PKHeX.Core.AutoMod
     public class RentalTeam
     {
         public readonly IReadOnlyList<QRPK7> Team;
-        public byte[] GlobalLinkID { get; }
-        public byte[] UnknownData { get; }
+        public IReadOnlyList<byte> GlobalLinkID { get; }
+        public IReadOnlyList<byte> UnknownData { get; }
 
         public RentalTeam(byte[] data)
         {

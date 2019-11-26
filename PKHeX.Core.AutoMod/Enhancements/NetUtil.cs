@@ -35,10 +35,10 @@ namespace PKHeX.Core.AutoMod
 
         private static string GetStringResponse(WebRequest request)
         {
-            using (var response = request.GetResponse())
-            using (var dataStream = response.GetResponseStream())
-            using (var reader = new StreamReader(dataStream))
-                return reader.ReadToEnd();
+            using var response = request.GetResponse();
+            using var dataStream = response.GetResponseStream();
+            using var reader = new StreamReader(dataStream);
+            return reader.ReadToEnd();
         }
     }
 }

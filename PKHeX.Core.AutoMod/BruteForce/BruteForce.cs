@@ -22,7 +22,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="resetForm">boolean to reset form back to base form</param>
         /// <param name="trainer">Trainer details to apply (optional)</param>
         /// <returns>PKM legalized via bruteforce</returns>
-        public static PKM ApplyDetails(PKM pk, ShowdownSet set, bool resetForm = false, ITrainerInfo trainer = null)
+        public static PKM ApplyDetails(PKM pk, ShowdownSet set, bool resetForm = false, ITrainerInfo? trainer = null)
         {
             if (trainer == null)
                 trainer = DefaultTrainer;
@@ -565,13 +565,12 @@ namespace PKHeX.Core.AutoMod
                 return EncounterType.None;
 
             // If there is more than one slot, the get wild encounter have filter for the pkm type encounter like safari/sport ball
-            switch (match)
+            return match switch
             {
-                case EncounterSlot w: return w.TypeEncounter;
-                case EncounterStaticTyped s: return s.TypeEncounter;
-                default:
-                    return EncounterType.None;
-            }
+                EncounterSlot w => w.TypeEncounter,
+                EncounterStaticTyped s => s.TypeEncounter,
+                _ => EncounterType.None
+            };
         }
 
         private static string GetReport(PKM pk)

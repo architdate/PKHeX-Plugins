@@ -38,5 +38,10 @@ namespace com.google.zxing.common.reedsolomon
         public ReedSolomonException(string message, Exception innerException) : base(message, innerException)
         {
         }
+
+        private ReedSolomonException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

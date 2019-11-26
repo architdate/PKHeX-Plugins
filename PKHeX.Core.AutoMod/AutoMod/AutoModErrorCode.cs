@@ -24,15 +24,12 @@ namespace PKHeX.Core.AutoMod
             if (code.IsSilent())
                 return string.Empty;
 
-            switch (code)
+            return code switch
             {
-                case AutoModErrorCode.NotEnoughSpace:
-                    return "Not enough space in the box.";
-                case AutoModErrorCode.InvalidLines:
-                    return "Invalid lines detected.";
-                default:
-                    return string.Empty;
-            }
+                AutoModErrorCode.NotEnoughSpace => "Not enough space in the box.",
+                AutoModErrorCode.InvalidLines => "Invalid lines detected.",
+                _ => string.Empty
+            };
         }
 
         public static bool IsSilent(this AutoModErrorCode code) => code <= AutoModErrorCode.CODE_SILENT;

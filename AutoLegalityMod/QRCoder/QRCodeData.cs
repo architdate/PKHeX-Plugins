@@ -6,7 +6,7 @@ namespace QRCoder
 {
     using System;
 
-    public class QRCodeData : IDisposable
+    public sealed class QRCodeData : IDisposable
     {
         public List<BitArray> ModuleMatrix { get; set; }
 

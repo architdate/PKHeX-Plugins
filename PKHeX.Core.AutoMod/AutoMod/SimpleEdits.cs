@@ -18,14 +18,16 @@ namespace PKHeX.Core.AutoMod
             return GetComplexMarking;
 
             // value, index
-            int GetSimpleMarking(int val, int _) => val == 31 ? 1 : 0;
-            int GetComplexMarking(int val, int _)
+            static int GetSimpleMarking(int val, int _) => val == 31 ? 1 : 0;
+            static int GetComplexMarking(int val, int _)
             {
-                if (val == 31)
-                    return 1;
-                if (val == 1 || val == 0)
-                    return 2;
-                return 0;
+                return val switch
+                {
+                    31 => 1,
+                    1 => 2,
+                    0 => 2,
+                    _ => 0
+                };
             }
         }
 
@@ -216,10 +218,9 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Legal PKM for setting the data</param>
         /// <param name="random">True for Random assortment of legal moves, false if current moves only.</param>
-        /// <param name="la">Current legality report (calculated if not provided)</param>
-        public static void SetSuggestedMoves(this PKM pk, bool random = false, LegalityAnalysis la = null)
+        public static void SetSuggestedMoves(this PKM pk, bool random = false)
         {
-            int[] m = pk.GetMoveSet(la, random);
+            int[] m = pk.GetMoveSet(random);
             if (m?.Any(z => z != 0) != true)
                 return;
 

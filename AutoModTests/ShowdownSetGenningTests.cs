@@ -21,7 +21,7 @@ namespace AutoModTests
         }
 
         [Fact]
-        private static void ShowdownTextGenerate()
+        public static void ShowdownTextGenerate()
         {
             var path = ShowdownSetsFolder;
             var files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);

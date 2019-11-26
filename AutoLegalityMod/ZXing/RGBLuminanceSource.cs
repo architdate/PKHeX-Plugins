@@ -5,7 +5,7 @@ namespace com.google.zxing.common
     public class RGBLuminanceSource : LuminanceSource
     {
         private readonly sbyte[] luminances;
-        private bool isRotated;
+        private readonly bool isRotated;
 
         public override int Height => !isRotated ? __height : __width;
         public override int Width => !isRotated ? __width : __height;
@@ -13,9 +13,10 @@ namespace com.google.zxing.common
         private readonly int __height;
         private readonly int __width;
 
-        public RGBLuminanceSource(Bitmap d, int W, int H)
+        public RGBLuminanceSource(Bitmap d, int W, int H, bool rotated = false)
             : base(W, H)
         {
+            isRotated = rotated;
             int width = __width = W;
             int height = __height = H;
             // In order to measure pure decoding speed, we convert the entire image to a greyscale array
@@ -23,14 +24,13 @@ namespace com.google.zxing.common
             luminances = new sbyte[width * height];
             //if (format == PixelFormat.Format8bppIndexed)
             {
-                Color c;
                 for (int y = 0; y < height; y++)
                 {
                     int offset = y * width;
                     for (int x = 0; x < width; x++)
                     {
-                        c = d.GetPixel(x, y);
-                        luminances[offset + x] = (sbyte)(((int)c.R) << 16 | ((int)c.G) << 8 | ((int)c.B));
+                        var c = d.GetPixel(x, y);
+                        luminances[offset + x] = (sbyte)(c.R << 16 | c.G << 8 | c.B);
                     }
                 }
             }

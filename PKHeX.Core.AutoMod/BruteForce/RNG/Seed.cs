@@ -2,6 +2,8 @@ namespace RNGReporter
 {
     internal class Seed
     {
+        internal Seed(string method) => Method = method;
+
         //  Needs to hold all of the information about
         //  a seed that we have created from an IV and
         //  nature combo.
@@ -13,7 +15,7 @@ namespace RNGReporter
 
         public uint Pid { get; set; }
 
-        public string Method { get; set; }
+        public readonly string Method;
 
         public uint Sid { get; set; }
     }

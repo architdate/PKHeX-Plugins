@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using System.IO;
 using System.Linq;
@@ -40,25 +41,22 @@ namespace AutoModPlugins
             request.Referer = $"https://3ds.pokemon-gl.com/rentalteam/{TeamID}";
             request.UserAgent = "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36";
 
-            using (Stream stream = request.GetRequestStream())
-            {
-                stream.Write(data, 0, data.Length);
-            }
+            using (Stream reqStream = request.GetRequestStream())
+                reqStream.Write(data, 0, data.Length);
 
             using (WebResponse response = request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
             {
-                using (Stream stream = response.GetResponseStream())
+                //add failing validation.
+                try
                 {
-                    //add failing validation.
-                    try
-                    {
-                        return Image.FromStream(stream);
-                    }
-                    catch (Exception)
-                    {
-                        //invalid QR
-                        return null;
-                    }
+                    return Image.FromStream(stream);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    //invalid QR
+                    return null;
                 }
             }
         }

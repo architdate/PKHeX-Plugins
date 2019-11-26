@@ -66,9 +66,8 @@ namespace RNGReporter
                                 seed = rng.GetNext32BitNumber();
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 1")
                                     {
-                                        Method = "Method 1",
                                         Pid = pid,
                                         MonsterSeed = seed,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -79,9 +78,8 @@ namespace RNGReporter
                                 pid ^= 0x80000000;
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 1")
                                     {
-                                        Method = "Method 1",
                                         Pid = pid,
                                         MonsterSeed = seed ^ 0x80000000,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -104,9 +102,8 @@ namespace RNGReporter
                                 seed = rng.GetNext32BitNumber();
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 1")
                                     {
-                                        Method = "Method 1",
                                         Pid = pid,
                                         MonsterSeed = seed,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -117,9 +114,8 @@ namespace RNGReporter
                                 pid ^= 0x80000000;
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 1")
                                     {
-                                        Method = "Method 1",
                                         Pid = pid,
                                         MonsterSeed = seed ^ 0x80000000,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -161,9 +157,8 @@ namespace RNGReporter
                                 seed = rng.GetNext32BitNumber();
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 2")
                                     {
-                                        Method = "Method 2",
                                         Pid = pid,
                                         MonsterSeed = seed,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -174,9 +169,8 @@ namespace RNGReporter
                                 pid ^= 0x80000000;
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 2")
                                     {
-                                        Method = "Method 2",
                                         Pid = pid,
                                         MonsterSeed = seed ^ 0x80000000,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -199,9 +193,8 @@ namespace RNGReporter
                                 seed = rng.GetNext32BitNumber();
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 2")
                                     {
-                                        Method = "Method 2",
                                         Pid = pid,
                                         MonsterSeed = seed,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -212,9 +205,8 @@ namespace RNGReporter
                                 pid ^= 0x80000000;
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 2")
                                     {
-                                        Method = "Method 2",
                                         Pid = pid,
                                         MonsterSeed = seed ^ 0x80000000,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -255,9 +247,8 @@ namespace RNGReporter
                                 seed = rng.GetNext32BitNumber();
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 4")
                                     {
-                                        Method = "Method 4",
                                         Pid = pid,
                                         MonsterSeed = seed,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -268,9 +259,8 @@ namespace RNGReporter
                                 pid ^= 0x80000000;
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 4")
                                     {
-                                        Method = "Method 4",
                                         Pid = pid,
                                         MonsterSeed = seed ^ 0x80000000,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -293,9 +283,8 @@ namespace RNGReporter
                                 seed = rng.GetNext32BitNumber();
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 4")
                                     {
-                                        Method = "Method 4",
                                         Pid = pid,
                                         MonsterSeed = seed,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -306,9 +295,8 @@ namespace RNGReporter
                                 pid ^= 0x80000000;
                                 if (pid % 25 == nature)
                                 {
-                                    var newSeed = new Seed
+                                    var newSeed = new Seed("Method 4")
                                     {
-                                        Method = "Method 4",
                                         Pid = pid,
                                         MonsterSeed = seed ^ 0x80000000,
                                         Sid = (tid ^ pid1 ^ pid2)
@@ -338,9 +326,8 @@ namespace RNGReporter
                             seed = back.GetNext32BitNumber();
                             if (pid % 25 == nature)
                             {
-                                var newSeed = new Seed
+                                var newSeed = new Seed("Colosseum/XD")
                                 {
-                                    Method = "Colosseum/XD",
                                     Pid = pid,
                                     MonsterSeed = seed,
                                     Sid = (tid ^ pid1 ^ pid2)
@@ -351,9 +338,8 @@ namespace RNGReporter
                             pid ^= 0x80008000;
                             if (pid % 25 == nature)
                             {
-                                var newSeed = new Seed
+                                var newSeed = new Seed("Colosseum/XD")
                                 {
-                                    Method = "Colosseum/XD",
                                     Pid = pid,
                                     MonsterSeed = seed ^ 0x80000000,
                                     Sid = (tid ^ pid1 ^ pid2)
@@ -398,9 +384,8 @@ namespace RNGReporter
                             pid ^= 0x80000000;
                         if (pid % 25 == nature)
                         {
-                            var newSeed = new Seed
+                            var newSeed = new Seed("Channel")
                             {
-                                Method = "Channel",
                                 Pid = pid,
                                 MonsterSeed = back.GetNext32BitNumber(),
                                 Sid = (tid ^ pid1 ^ pid2)

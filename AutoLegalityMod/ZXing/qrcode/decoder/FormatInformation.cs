@@ -106,7 +106,7 @@ namespace com.google.zxing.qrcode.decoder
 
         public override int GetHashCode()
         {
-            return (ErrorCorrectionLevel.Ordinal() << 3) | DataMask;
+            return (ErrorCorrectionLevel.Ordinal() << 3) | (byte)DataMask;
         }
 
         public  override bool Equals(object obj)

@@ -52,5 +52,10 @@ namespace com.google.zxing
         public ReaderException(string message, Exception innerException) : base(message, innerException)
         {
         }
+
+        private ReaderException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

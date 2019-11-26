@@ -2,10 +2,7 @@ namespace RNGReporter
 {
     public class Frame
     {
-        /// <summary>
-        ///     1 or 2 for the ability number, best we can do since we don't know what the monster is actually going to be.
-        /// </summary>
-        private uint ability;
+        public static readonly Frame None = new Frame(FrameType.None);
 
         private uint dv;
         private uint id;
@@ -40,7 +37,6 @@ namespace RNGReporter
             set
             {
                 Nature = (value % 25);
-                ability = (value & 1);
 
                 //  figure out if we are shiny here
                 uint tid = (id & 0xffff) | ((sid & 0xffff) << 16);

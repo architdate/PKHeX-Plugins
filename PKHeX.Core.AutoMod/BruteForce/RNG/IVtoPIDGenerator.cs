@@ -72,43 +72,26 @@ namespace RNGReporter
 
         private static IVFilter Hptofilter(int hiddenpower)
         {
-            switch (hiddenpower)
+            return hiddenpower switch
             {
-                case 0: // Fighting
-                    return new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenEven, 0, HiddenEven);
-                case 1: // Flying
-                    return new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd);
-                case 2: // Poison
-                    return new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenEven, 0, HiddenOdd);
-                case 3: // Ground
-                    return new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenEven);
-                case 4: // Rock
-                    return new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenEven, 0, HiddenEven);
-                case 5: // Bug
-                    return new IVFilter(0, HiddenOdd,  0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd);
-                case 6: // Ghost
-                    return new IVFilter(0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd);
-                case 7: // Steel
-                    return new IVFilter(0, HiddenOdd,  0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenEven);
-                case 8: // Fire
-                    return new IVFilter(0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenEven);
-                case 9: // Water
-                    return new IVFilter(0, HiddenOdd,  0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd);
-                case 10: // Grass
-                    return new IVFilter(0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd);
-                case 11: // Electric
-                    return new IVFilter(0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenEven);
-                case 12: // Psychic
-                    return new IVFilter(0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenEven);
-                case 13: // Ice
-                    return new IVFilter(0, HiddenEven, 0, HiddenOdd,  0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd);
-                case 14: // Dragon
-                    return new IVFilter(0, HiddenEven, 0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd);
-                case 15: // Dark
-                    return new IVFilter(0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd,  0, HiddenOdd);
-                default:
-                    return new IVFilter();
-            }
+                00 => new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenOdd, 0, HiddenEven, 0, HiddenEven, 0, HiddenEven),  // Fighting
+                01 => new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd), // Flying
+                02 => new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenOdd, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd), // Poison
+                03 => new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd, 0, HiddenEven, 0, HiddenEven), // Ground
+                04 => new IVFilter(0, HiddenEven, 0, HiddenEven, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenEven, 0, HiddenEven), // Rock
+                05 => new IVFilter(0, HiddenOdd, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd, 0, HiddenEven, 0, HiddenOdd), // Bug
+                06 => new IVFilter(0, HiddenOdd, 0, HiddenEven, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenEven, 0, HiddenOdd), // Ghost
+                07 => new IVFilter(0, HiddenOdd, 0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd, 0, HiddenEven), // Steel
+                08 => new IVFilter(0, HiddenOdd, 0, HiddenEven, 0, HiddenOdd, 0, HiddenEven, 0, HiddenOdd, 0, HiddenEven), // Fire
+                09 => new IVFilter(0, HiddenOdd, 0, HiddenEven, 0, HiddenEven, 0, HiddenEven, 0, HiddenOdd, 0, HiddenOdd), // Water
+                10 => new IVFilter(0, HiddenEven, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenEven, 0, HiddenOdd, 0, HiddenOdd), // Grass
+                11 => new IVFilter(0, HiddenEven, 0, HiddenOdd, 0, HiddenEven, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenEven), // Electric
+                12 => new IVFilter(0, HiddenEven, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenEven), // Psychic
+                13 => new IVFilter(0, HiddenEven, 0, HiddenOdd, 0, HiddenEven, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenOdd), // Ice
+                14 => new IVFilter(0, HiddenEven, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenOdd), // Dragon
+                15 => new IVFilter(0, HiddenOdd, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenOdd, 0, HiddenOdd), // Dark
+                _ => new IVFilter()
+            };
         }
 
         public static IVPID GetIVPID(uint nature, int hiddenpower, bool XD = false, PIDType method = PIDType.None)

@@ -9,9 +9,16 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public class ShowdownTeamSet
     {
-        public List<ShowdownSet> Team { get; set; }
-        public string Format { get; set; } = string.Empty;
-        public string TeamName { get; set; } = string.Empty;
+        public readonly List<ShowdownSet> Team;
+        public readonly string Format;
+        public readonly string TeamName;
+
+        public ShowdownTeamSet(string name, List<ShowdownSet> sets, string format)
+        {
+            TeamName = name;
+            Team = sets;
+            Format = format;
+        }
 
         public string Summary => $"=== [{Format}] {TeamName} ===";
 
@@ -54,7 +61,7 @@ namespace PKHeX.Core.AutoMod
                 var sets = ShowdownSet.GetShowdownSets(teamlines).ToList();
                 if (sets.Count == 0)
                     continue;
-                result.Add(new ShowdownTeamSet { Format = format, TeamName = name, Team = sets });
+                result.Add(new ShowdownTeamSet(name, sets, format));
 
                 i = end;
             }

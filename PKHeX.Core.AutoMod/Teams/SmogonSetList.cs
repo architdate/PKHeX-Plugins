@@ -26,7 +26,10 @@ namespace PKHeX.Core.AutoMod
         {
             var baseURL = GetBaseURL(pk.GetType().Name);
             if (string.IsNullOrWhiteSpace(baseURL))
+            {
+                URL = Species = Form = ShowdownSpeciesName = Page = string.Empty;
                 return;
+            }
 
             var set = new ShowdownSet(pk);
             Species = GameInfo.GetStrings("en").Species[pk.Species];
@@ -174,7 +177,7 @@ namespace PKHeX.Core.AutoMod
             if (splitmoves.Length > 4)
                 moves.Add(GetMove(splitmoves[4]));
 
-            string GetMove(string s) => s.Split('"')[0];
+            static string GetMove(string s) => s.Split('"')[0];
             return moves;
         }
 
@@ -200,31 +203,26 @@ namespace PKHeX.Core.AutoMod
         // Smogon Quirks
         private static string ConvertSpeciesToURLSpecies(string spec)
         {
-            switch (spec)
+            return spec switch
             {
-                case "Nidoran♂": return "nidoran-m";
-                case "Nidoran♀": return "nidoran-f";
-                case "Farfetch’d": return "farfetchd";
-                case "Flabébé": return "flabebe";
-                default:
-                    return spec;
-            }
+                "Nidoran♂" => "nidoran-m",
+                "Nidoran♀" => "nidoran-f",
+                "Farfetch’d" => "farfetchd",
+                "Flabébé" => "flabebe",
+                _ => spec
+            };
         }
 
         // Smogon Quirks
         private static string ConvertFormToURLForm(string form, string spec)
         {
-            switch (spec)
+            return spec switch
             {
-                case "Necrozma" when form == "Dusk":
-                    return "dusk_mane";
-                case "Necrozma" when form == "Dawn":
-                    return "dawn_wings";
-                case "Oricorio" when form == "Pa'u":
-                    return "pau";
-                default:
-                    return form;
-            }
+                "Necrozma" when form == "Dusk" => "dusk_mane",
+                "Necrozma" when form == "Dawn" => "dawn_wings",
+                "Oricorio" when form == "Pa'u" => "pau",
+                _ => form
+            };
         }
 
         private static string GetURL(string speciesName, string form, string baseURL)

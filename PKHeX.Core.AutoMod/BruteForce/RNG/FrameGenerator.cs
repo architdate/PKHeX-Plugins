@@ -4,11 +4,10 @@ namespace RNGReporter
 {
     internal class FrameGenerator
     {
-        protected Frame frame;
-        protected List<Frame> frames;
-        private uint lastseed;
-        protected uint maxResults;
-        protected List<uint> rngList;
+        protected Frame frame = Frame.None;
+        protected readonly List<Frame> frames = new List<Frame>();
+        protected readonly List<uint> rngList = new List<uint>();
+        protected readonly uint maxResults;
 
         public FrameGenerator()
         {
@@ -31,12 +30,12 @@ namespace RNGReporter
             uint id,
             uint sid)
         {
-            frames = new List<Frame>();
+            frames.Clear();
+            rngList.Clear();
 
             if (FrameType == FrameType.ColoXD)
             {
                 var rng = new XdRng((uint)InitialSeed);
-                rngList = new List<uint>();
 
                 for (uint cnt = 1; cnt < InitialFrame; cnt++)
                     rng.GetNext32BitNumber();
@@ -93,15 +92,12 @@ namespace RNGReporter
                 //  then start our loop so that we can iterate as many
                 //  times as we have to.
                 var rng = new PokeRng((uint)InitialSeed);
-                rngList = new List<uint>();
 
                 for (uint cnt = 1; cnt < InitialFrame; cnt++)
                     rng.GetNext32BitNumber();
 
                 for (uint cnt = 0; cnt < 20; cnt++)
                     rngList.Add(rng.GetNext16BitNumber());
-
-                lastseed = rng.Seed;
 
                 for (uint cnt = 0; cnt < maxResults; cnt++, rngList.RemoveAt(0), rngList.Add(rng.GetNext16BitNumber()))
                 {

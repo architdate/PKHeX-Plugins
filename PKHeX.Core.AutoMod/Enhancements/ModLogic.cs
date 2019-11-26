@@ -63,7 +63,7 @@ namespace AutoModPlugins
         {
             foreach (var id in speciesIDs)
             {
-                if (GetRandomEncounter(sav, sav, id, out PKM pk))
+                if (GetRandomEncounter(sav, sav, id, out var pk) && pk != null)
                     yield return pk;
             }
         }
@@ -75,7 +75,7 @@ namespace AutoModPlugins
         /// <param name="species">Species ID to generate</param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this SaveFile sav, int species, out PKM pk) => sav.GetRandomEncounter(sav, species, out pk);
+        public static bool GetRandomEncounter(this SaveFile sav, int species, out PKM? pk) => sav.GetRandomEncounter(sav, species, out pk);
 
         /// <summary>
         /// Gets a legal <see cref="PKM"/> from a random in-game encounter's data.
@@ -85,7 +85,7 @@ namespace AutoModPlugins
         /// <param name="species">Species ID to generate</param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this SaveFile sav, ITrainerInfo tr, int species, out PKM pk)
+        public static bool GetRandomEncounter(this SaveFile sav, ITrainerInfo tr, int species, out PKM? pk)
         {
             var blank = sav.BlankPKM;
             pk = GetRandomEncounter(blank, tr, species);
@@ -103,7 +103,7 @@ namespace AutoModPlugins
         /// <param name="tr">Trainer Data to use in generating the encounter</param>
         /// <param name="species">Species ID to generate</param>
         /// <returns>Result legal pkm, null if data should be ignored.</returns>
-        private static PKM GetRandomEncounter(PKM blank, ITrainerInfo tr, int species)
+        private static PKM? GetRandomEncounter(PKM blank, ITrainerInfo tr, int species)
         {
             blank.Species = species;
             blank.Gender = blank.GetSaneGender();

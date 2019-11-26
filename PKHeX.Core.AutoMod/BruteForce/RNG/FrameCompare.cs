@@ -66,21 +66,19 @@ namespace RNGReporter
         public static bool CompareIV(CompareType compare, uint frameIv, uint testIv)
         {
             //  Anything set not to compare is considered pass
-            switch (compare)
+            return compare switch
             {
-                case CompareType.Equal:      return frameIv == testIv;
-                case CompareType.GtEqual:    return frameIv >= testIv;
-                case CompareType.LtEqual:    return frameIv <= testIv;
-                case CompareType.NotEqual:   return frameIv != testIv;
-                case CompareType.Even:       return (frameIv & 1) == 0;
-                case CompareType.Odd:        return (frameIv & 1) == 1;
-                case CompareType.HiddenEven: return ((frameIv + 2) & 3) == 0;
-                case CompareType.HiddenOdd:  return ((frameIv + 5) & 3) == 0;
-                case CompareType.Hidden:     return ((frameIv + 2) & 3) == 0
-                                                 || ((frameIv + 5) & 3) == 0;
-                default:
-                    return true;
-            }
+                CompareType.Equal =>      (frameIv == testIv),
+                CompareType.GtEqual =>    (frameIv >= testIv),
+                CompareType.LtEqual =>    (frameIv <= testIv),
+                CompareType.NotEqual =>   (frameIv != testIv),
+                CompareType.Even =>       ((frameIv & 1) == 0),
+                CompareType.Odd =>        ((frameIv & 1) == 1),
+                CompareType.HiddenEven => (((frameIv + 2) & 3) == 0),
+                CompareType.HiddenOdd =>  (((frameIv + 5) & 3) == 0),
+                CompareType.Hidden =>     (((frameIv + 2) & 3) == 0 || ((frameIv + 5) & 3) == 0),
+                _ => true
+            };
         }
     }
 }

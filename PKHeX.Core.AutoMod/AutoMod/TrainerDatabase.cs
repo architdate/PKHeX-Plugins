@@ -15,14 +15,14 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="version">Version the trainer should originate from</param>
         /// <returns>Null if no trainer found for this version.</returns>
-        public ITrainerInfo GetTrainer(int version) => GetTrainer((GameVersion) version);
+        public ITrainerInfo? GetTrainer(int version) => GetTrainer((GameVersion) version);
 
         /// <summary>
         /// Fetches an appropriate trainer based on the requested <see cref="ver"/>.
         /// </summary>
         /// <param name="ver">Version the trainer should originate from</param>
         /// <returns>Null if no trainer found for this version.</returns>
-        public ITrainerInfo GetTrainer(GameVersion ver)
+        public ITrainerInfo? GetTrainer(GameVersion ver)
         {
             if (ver <= 0)
                 return null;
@@ -48,7 +48,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="ver">Version the trainer should originate from</param>
         /// <returns>Null if no trainer found for this version.</returns>
-        private ITrainerInfo GetTrainerFromGroup(GameVersion ver)
+        private ITrainerInfo? GetTrainerFromGroup(GameVersion ver)
         {
             var possible = Database.Where(z => ver.Contains(z.Key)).ToList();
             return GetRandomTrainer(possible);
@@ -59,13 +59,13 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="generation">Generation the trainer should inhabit</param>
         /// <returns>Null if no trainer found for this version.</returns>
-        public ITrainerInfo GetTrainerFromGen(int generation)
+        public ITrainerInfo? GetTrainerFromGen(int generation)
         {
             var possible = Database.Where(z => z.Key.GetGeneration() == generation).ToList();
             return GetRandomTrainer(possible);
         }
 
-        private static ITrainerInfo GetRandomTrainer(IReadOnlyList<KeyValuePair<GameVersion, List<ITrainerInfo>>> possible)
+        private static ITrainerInfo? GetRandomTrainer(IReadOnlyList<KeyValuePair<GameVersion, List<ITrainerInfo>>> possible)
         {
             if (possible.Count == 0)
                 return null;

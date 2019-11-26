@@ -18,27 +18,27 @@ using com.google.zxing.common;
 
 namespace com.google.zxing.qrcode.decoder
 {
-	/// <summary>
-	///
-	/// </summary>
-	/// <author>  Sean Owen
-	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
-	/// </author>
-	internal sealed class BitMatrixParser
+    /// <summary>
+    /// Text
+    /// </summary>
+    /// <author>  Sean Owen
+    /// </author>
+    /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
+    /// </author>
+    internal sealed class BitMatrixParser
 	{
 		//UPGRADE_NOTE: Final was removed from the declaration of 'bitMatrix '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
 		private readonly BitMatrix bitMatrix;
 		private Version parsedVersion;
 		private FormatInformation parsedFormatInfo;
 
-		/// <summary>
-		///
-		/// </summary>
-		/// <param name="bitMatrix">{@link BitMatrix} to parse
-		/// </param>
-		/// <throws>  ReaderException if dimension is not >= 21 and 1 mod 4 </throws>
-		internal BitMatrixParser(BitMatrix bitMatrix)
+        /// <summary>
+        /// Text
+        /// </summary>
+        /// <param name="bitMatrix">{@link BitMatrix} to parse
+        /// </param>
+        /// <throws>  ReaderException if dimension is not >= 21 and 1 mod 4 </throws>
+        internal BitMatrixParser(BitMatrix bitMatrix)
 		{
 			int dimension = bitMatrix.Dimension;
 			if (dimension < 21 || (dimension & 0x03) != 1)

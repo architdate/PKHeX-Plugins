@@ -32,7 +32,7 @@ namespace PKHeX.Core.AutoMod
             return ctr;
         }
 
-        private static PKM GetPKSMStoredPKM(byte[] data, int ofs)
+        private static PKM? GetPKSMStoredPKM(byte[] data, int ofs)
         {
             // get format
             var metadata = BitConverter.ToUInt32(data, ofs);
@@ -44,16 +44,15 @@ namespace PKHeX.Core.AutoMod
             if (!IsPKMPresent(data, ofs + 4))
                 return null;
 
-            switch (format)
+            return format switch
             {
-                case PKSMStorageFormat.FOUR: return new PK4(Slice(data, ofs + 4, 136));
-                case PKSMStorageFormat.FIVE: return new PK5(Slice(data, ofs + 4, 136));
-                case PKSMStorageFormat.SIX: return new PK6(Slice(data, ofs + 4, 232));
-                case PKSMStorageFormat.SEVEN: return new PK7(Slice(data, ofs + 4, 232));
-                case PKSMStorageFormat.LGPE: return new PB7(Slice(data, ofs + 4, 232));
-                default:
-                    return null;
-            }
+                PKSMStorageFormat.FOUR => (PKM) new PK4(Slice(data, ofs + 4, 136)),
+                PKSMStorageFormat.FIVE => new PK5(Slice(data, ofs + 4, 136)),
+                PKSMStorageFormat.SIX => new PK6(Slice(data, ofs + 4, 232)),
+                PKSMStorageFormat.SEVEN => new PK7(Slice(data, ofs + 4, 232)),
+                PKSMStorageFormat.LGPE => new PB7(Slice(data, ofs + 4, 232)),
+                _ => null
+            };
         }
 
         private static byte[] Slice(byte[] data, int ofs, int len)
