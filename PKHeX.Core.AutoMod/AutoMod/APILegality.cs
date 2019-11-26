@@ -83,9 +83,6 @@ namespace PKHeX.Core.AutoMod
             pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
-
-            Debug.WriteLine(new LegalityAnalysis(pk).Report());
-
             pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
             pk.SetEncryptionConstant();
             pk.SetShinyBoolean(set.Shiny);

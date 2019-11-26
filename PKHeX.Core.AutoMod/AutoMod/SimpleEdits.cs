@@ -157,6 +157,12 @@ namespace PKHeX.Core.AutoMod
         {
             switch (pk)
             {
+                case PK8 pk8 when !pk.IsUntraded:
+                    pk8.HT_Memory = 4;
+                    pk8.HT_TextVar = 0;
+                    pk8.HT_Intensity = 1;
+                    pk8.HT_Feeling = Memories.GetRandomFeeling(pk8.HT_Memory, 10);
+                    break;
                 case PK7 pk7 when !pk.IsUntraded:
                     pk7.TradeMemory(true);
                     break;
