@@ -17,7 +17,7 @@ namespace PKHeX.Core.AutoMod
             Directory.CreateDirectory(dir);
             var ctr = 0;
             previews = new List<PKMPreview>();
-            for (int i = 12; i < bank.Length; i += 264)
+            for (int i = 12; i < bank.Length; i += 4 + 260)
             {
                 var pk = GetPKSMStoredPKM(bank, i);
                 if (pk == null)

@@ -35,7 +35,7 @@ namespace PKHeX.Core.AutoMod
                 var raw = enc.ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 ApplySetDetails(pk, set, Form, raw, dest);
-                if (pk is IGigantamax gmax && set.CanGigantamax)
+                if (set.CanGigantamax && pk is IGigantamax gmax)
                 {
                     if (!gmax.CanGigantamax)
                         continue;
@@ -75,7 +75,7 @@ namespace PKHeX.Core.AutoMod
 
             pk.SetVersion(unconverted); // Preemptive Version setting
             pk.SetSpeciesLevel(set, Form);
-            pk.SetRecordFlags();
+            pk.SetRecordFlags(set.Moves);
             pk.SetMovesEVsItems(set);
             pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set);
@@ -105,7 +105,7 @@ namespace PKHeX.Core.AutoMod
             bool genderValid = pk.IsGenderValid();
             if (!genderValid)
             {
-                if (pk.Format == 4 && pk.Species == 292) // Shedinja glitch
+                if (pk.Format == 4 && pk.Species == (int)Species.Shedinja) // Shedinja glitch
                 {
                     // should match original gender
                     var gender = PKX.GetGenderFromPIDAndRatio(pk.PID, 0x7F); // 50-50
@@ -124,8 +124,7 @@ namespace PKHeX.Core.AutoMod
                 // check for mixed->fixed gender incompatibility by checking the gender of the original species
                 if (Legal.FixedGenderFromBiGender.Contains(pk.Species) && pk.Gender != 2) // shedinja
                 {
-                    var gender = PKX.GetGenderFromPID(new LegalInfo(pk).EncounterMatch.Species, pk.EncryptionConstant);
-                    pk.Gender = gender;
+                    pk.Gender = PKX.GetGenderFromPID(new LegalInfo(pk).EncounterMatch.Species, pk.EncryptionConstant);
                     // genderValid = true; already true if we reach here
                 }
             }
@@ -156,12 +155,9 @@ namespace PKHeX.Core.AutoMod
                 case (int)GameVersion.GSC:
                     pk.Version = (int)GameVersion.C;
                     break;
-                case (int)GameVersion.UM:
-                case (int)GameVersion.US:
-                    if (original.Species == 658 && original.AltForm == 1)
-                        pk.Version = (int)GameVersion.SN; // Ash-Greninja
-                    else
-                        pk.Version = original.Version;
+                case (int)GameVersion.UM when original.Species == (int)Species.Greninja && original.AltForm == 1:
+                case (int)GameVersion.US when original.Species == (int)Species.Greninja && original.AltForm == 1:
+                    pk.Version = (int)GameVersion.SN; // Ash-Greninja
                     break;
                 default:
                     pk.Version = original.Version;
@@ -185,19 +181,29 @@ namespace PKHeX.Core.AutoMod
             changedSet = new ShowdownSet(set.Text.Replace($"-{set.Form}", string.Empty));
 
             // Changed set handling for forme changes that affect battle-only moves
+            ReplaceBattleOnlyMoves(changedSet);
+            return true;
+        }
 
-            if (changedSet.Species == 888 || changedSet.Species == 889) // Zacian and Zamazenta
+        private static void ReplaceBattleOnlyMoves(ShowdownSet changedSet)
+        {
+            switch (changedSet.Species)
             {
-                if (changedSet.Moves.Contains(781) || changedSet.Moves.Contains(782)) // Behemoth Blade and Behemoth Bash
+                case (int) Species.Zacian:
+                case (int) Species.Zamazenta:
                 {
-                    for (int i = 0; i < changedSet.Moves.Count(); i++)
+                    // Behemoth Blade and Behemoth Bash -> Iron Head
+                    if (!changedSet.Moves.Contains(781) && !changedSet.Moves.Contains(782))
+                        return;
+
+                    for (int i = 0; i < changedSet.Moves.Length; i++)
                     {
                         if (changedSet.Moves[i] == 781 || changedSet.Moves[i] == 782)
-                            changedSet.Moves[i] = 442; // Iron Head
+                            changedSet.Moves[i] = 442;
                     }
+                    break;
                 }
             }
-            return true;
         }
 
         /// <summary>
@@ -250,7 +256,7 @@ namespace PKHeX.Core.AutoMod
             if (Method == PIDType.None)
             {
                 Method = FindLikelyPIDType(pk);
-                if (pk.Version == 15)
+                if (pk.Version == (int)GameVersion.CXD)
                     Method = PIDType.CXD;
                 if (Method == PIDType.None)
                     pk.SetPIDGender(pk.Gender);
@@ -281,9 +287,9 @@ namespace PKHeX.Core.AutoMod
                 return PIDType.BACD_R;
             if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
                 return PIDType.Method_2;
-            if (pk.Species == 490 && pk.Gen4)
+            if (pk.Species == (int)Species.Manaphy && pk.Gen4)
             {
-                pk.Egg_Location = 2002; // todo: really shouldn't be doing this, don't modify pkm
+                pk.Egg_Location = Locations.LinkTrade4; // todo: really shouldn't be doing this, don't modify pkm
                 return PIDType.Method_1;
             }
             switch (pk.GenNumber)
@@ -304,22 +310,20 @@ namespace PKHeX.Core.AutoMod
                                 default:
                                     return PIDType.Method_1;
                             }
+                        case EncounterSlot _ when pk.Version == (int)GameVersion.CXD:
+                            return PIDType.PokeSpot;
                         case EncounterSlot _:
-                            if (pk.Version == 15)
-                                return PIDType.PokeSpot;
-                            return pk.Species == 201 ? PIDType.Method_1_Unown : PIDType.Method_1;
+                            return pk.Species == (int)Species.Unown ? PIDType.Method_1_Unown : PIDType.Method_1;
                         default:
                             return PIDType.None;
                     }
                 case 4:
                     switch (EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch)
                     {
+                        case EncounterStatic s when s.Location == Locations.PokeWalker4 && s.Gift:
+                            return PIDType.Pokewalker;
                         case EncounterStatic s:
-                            if (s.Location == 233 && s.Gift) // Pokewalker
-                                return PIDType.Pokewalker;
-                            if (s.Shiny == Shiny.Always)
-                                return PIDType.ChainShiny;
-                            return PIDType.Method_1;
+                            return s.Shiny == Shiny.Always ? PIDType.ChainShiny : PIDType.Method_1;
                         case PGT _:
                             return PIDType.Method_1;
                         default:

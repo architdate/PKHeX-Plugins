@@ -19,18 +19,18 @@ namespace PKHeX.Core.AutoMod
             Debug.WriteLine(data.Length);
             Team = new[]
             {
-                new QRPK7(data.Take(0x30).ToArray()),
-                new QRPK7(data.Skip(0x30).Take(0x30).ToArray()),
-                new QRPK7(data.Skip(0x60).Take(0x30).ToArray()),
-                new QRPK7(data.Skip(0x90).Take(0x30).ToArray()),
-                new QRPK7(data.Skip(0xC0).Take(0x30).ToArray()),
-                new QRPK7(data.Skip(0xF0).Take(0x30).ToArray())
+                new QRPK7(data.Slice(0x00, 0x30)),
+                new QRPK7(data.Slice(0x30, 0x30)),
+                new QRPK7(data.Slice(0x60, 0x30)),
+                new QRPK7(data.Slice(0x90, 0x30)),
+                new QRPK7(data.Slice(0xC0, 0x30)),
+                new QRPK7(data.Slice(0xF0, 0x30)),
             };
 
             Debug.WriteLine(string.Join(Environment.NewLine, ConvertedTeam.Select(z => z.Text)));
 
-            GlobalLinkID = data.Skip(0x120).Take(8).ToArray();
-            UnknownData = data.Skip(0x128).ToArray();
+            GlobalLinkID = data.Slice(0x120, 8);
+            UnknownData = data.SliceEnd(0x128);
         }
 
         public IEnumerable<ShowdownSet> ConvertedTeam => Team.Select(z => z.ConvertToPKM()).Select(z => new ShowdownSet(z));
