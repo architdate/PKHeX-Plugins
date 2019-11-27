@@ -15,7 +15,7 @@ namespace PKHeX.Core.AutoMod
 
         private static ITrainerInfo GetFallback(PKM pk)
         {
-            SimpleTrainerInfo fallback = new SimpleTrainerInfo();
+            SimpleTrainerInfo fallback = new SimpleTrainerInfo((GameVersion)pk.Version);
             if (pk.GenNumber >= 8 || pk.GG)
                 fallback.ConsoleRegion = fallback.Country = fallback.SubRegion = 0;
             return fallback;
