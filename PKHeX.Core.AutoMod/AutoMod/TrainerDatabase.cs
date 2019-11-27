@@ -98,6 +98,11 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pkm">Pokémon with Trainer details to add.</param>
         /// <remarks>A copy of the object will be made to prevent modifications, just in case.</remarks>
-        public void Register(PKM pkm) => Register(new PokeTrainerDetails(pkm.Clone()));
+        public void Register(PKM pkm)
+        {
+            if (pkm.GenNumber >= 8 || pkm.GG)
+                pkm.ConsoleRegion = pkm.Region = pkm.Country = 0;
+            Register(new PokeTrainerDetails(pkm.Clone()));
+        }
     }
 }

@@ -13,6 +13,14 @@ namespace PKHeX.Core.AutoMod
 
         private static readonly ITrainerInfo DefaultFallback = new SimpleTrainerInfo();
 
+        private static ITrainerInfo GetFallback(PKM pk)
+        {
+            SimpleTrainerInfo fallback = new SimpleTrainerInfo();
+            if (pk.GenNumber >= 8 || pk.GG)
+                fallback.ConsoleRegion = fallback.Country = fallback.SubRegion = 0;
+            return fallback;
+        }
+
         /// <summary>
         /// Loads possible <see cref="PKM"/> data from the path, and registers them to the <see cref="Database"/>.
         /// </summary>
@@ -61,7 +69,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokémon that will receive the trainer details.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
-        public static ITrainerInfo GetSavedTrainerData(PKM pk, ITrainerInfo? fallback = null) => GetSavedTrainerData((GameVersion)pk.Version, pk.GenNumber, fallback);
+        public static ITrainerInfo GetSavedTrainerData(PKM pk, ITrainerInfo? fallback = null) => GetSavedTrainerData((GameVersion)pk.Version, pk.GenNumber, GetFallback(pk));
 
         /// <summary>
         /// Registers the Trainer Data to the <see cref="Database"/>.
