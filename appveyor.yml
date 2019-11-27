@@ -8,6 +8,8 @@ environment:
   notifyall: true
 before_build:
 - ps: >-
+    New-Variable -Name "nugetver" -Visibility Public -Value "19.11.25"
+
     git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git C:\projects\pkhex
 
     Set-Location -Path "C:\projects\pkhex"
@@ -33,6 +35,12 @@ before_build:
     dotnet restore
 
     nuget restore
+
+    Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "C:\Users\appveyor\.nuget\packages\pkhex.core\$nugetver\lib\net46"
+
+    Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "C:\projects\pkhex-plugins\packages\PKHeX.Core.$nugetver\lib\net46"
+
+    Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "C:\projects\pkhex-plugins\packages\PKHeX.Core.$nugetver\lib\netstandard2.0"
 build:
   project: C:\projects\pkhex-plugins\PKHeX-Plugins.sln
   verbosity: minimal
