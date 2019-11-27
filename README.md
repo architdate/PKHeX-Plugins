@@ -6,9 +6,27 @@ This project is owned by [@architdate](https://github.com/architdate) (Discord: 
 ## Building
 This project requires an IDE that supports compiling .NET based code (Ideally .NET 4.6+). Recommended IDE is Visual Studio 2019 
 
+**Building Regular Builds**
+Regular builds will usually work unless there are changes that have been commited to the mod that do not work with the nuget [PKHeX.Core](https://www.nuget.org/packages/PKHeX.Core) package dependancy specified in the `.csproj` files of the projects. If building fails, use the bleeding edge build method
+
 - First Clone this repository using: `$ git clone https://github.com/architdate/PKHeX-Plugins.git`
 - Right click on the solution and click `Rebuild All`
-- All the compiled DLL's will be present in the `*/bin` folder where `*` represents the mod name
+- The compiled DLL's will be present in the `AutoLegalityMod/bin` folder. You will need to have `AutoModPlugins.dll` and `PKHeX.Core.AutoMod.dll` files in your plugins folder. `BouncyCastle.CryptoExt.dll` should be in the same directory as `PKHeX.exe`. You may also combine all three of these dll files using ILMerge
+
+**Building Bleeding Edge Builds**
+Use this build method only if the regular builds fail. The AppVeyor CI will always use the bleeding edge build method. More details regarding this can be seen in the [appveyor.yml](https://github.com/architdate/PKHeX-Plugins/blob/master/appveyor.yml) file.
+
+- First Clone the PKHeX repository using: `$ git clone https://github.com/kwsch/PKHeX.git`
+- Clone this repo using: `$ git clone https://github.com/architdate/PKHeX-Plugins.git`
+- Open the PKHeX solution and right click on the `PKHeX.Core` project and click `Rebuild` to build the project with `Release` as the environment.
+- Open the PKHeX-Plugins solution and do `nuget restore`.
+- Copy the `PKHeX.Core.dll` file located in `PKHeX.Core/bin/Release/net46` folder and copy it to the following folders: 
+    * `PKHeX-Plugins/packages/PKHeX.Core.YY.MM.DD/lib/net46`
+    * `C:/Users/%USERNAME%/.nuget/packages/pkhex.core/YY.MM.DD/lib/net46`
+- Copy the `PKHeX.Core.dll` file located in `PKHeX.Core/bin/Release/netstandard2.0` folder and copy it to the following folders: 
+    * `PKHeX-Plugins/packages/PKHeX.Core.YY.MM.DD/lib/netstandard2.0`
+    * `C:/Users/%USERNAME%/.nuget/packages/pkhex.core/YY.MM.DD/lib/netstandard2.0`
+- Right click the PKHeX-Plugins solution and choose `Rebuild All`. This should build the mod with the latest `PKHeX.Core` version so that it can be used with the latest commit of PKHeX
 
 ## Usage
 To use the plugins:
