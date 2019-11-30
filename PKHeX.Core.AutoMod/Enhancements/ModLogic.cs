@@ -41,6 +41,8 @@ namespace AutoModPlugins
             var species = Enumerable.Range(1, sav.MaxSpeciesID);
             if (sav is SAV7b)
                 species = species.Where(z => z <= 151 || (z == 808 || z == 809)); // only include Kanto and M&M
+            if (sav is SAV8)
+                species = species.Where(z => Zukan8.DexLookup.TryGetValue(z, out int value));
             return sav.GenerateLivingDex(species);
         }
 
