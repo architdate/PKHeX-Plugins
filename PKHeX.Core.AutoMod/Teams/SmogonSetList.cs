@@ -93,6 +93,8 @@ namespace PKHeX.Core.AutoMod
                     return "https://www.smogon.com/dex/xy/pokemon";
                 case nameof(PK7):
                     return "https://www.smogon.com/dex/sm/pokemon";
+                case nameof(PK8):
+                    return "https://www.smogon.com/dex/ss/pokemon";
 
                 default: return string.Empty;
             }
@@ -221,6 +223,7 @@ namespace PKHeX.Core.AutoMod
                 "Necrozma" when form == "Dusk" => "dusk_mane",
                 "Necrozma" when form == "Dawn" => "dawn_wings",
                 "Oricorio" when form == "Pa'u" => "pau",
+                "Darmanitan" when form == "Galarian Standard" => "galar",
                 _ => form
             };
         }
@@ -250,7 +253,10 @@ namespace PKHeX.Core.AutoMod
             {
                 var key = format.Split('"')[1];
                 var values = new List<string>();
-                var names = format.Split(new[] { "\"name\"" }, StringSplitOptions.None);
+                // SS Smogon metadata can be dirtied by credits being flagged as team names
+                // TODO: Handle this better
+                var cleaned = format.Split(new[] { "credits" }, StringSplitOptions.None)[0];
+                var names = cleaned.Split(new[] { "\"name\"" }, StringSplitOptions.None);
                 for (int i = 1; i < names.Length; i++)
                 {
                     values.Add(names[i].Split('"')[1]);

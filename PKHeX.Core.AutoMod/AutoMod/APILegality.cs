@@ -31,7 +31,7 @@ namespace PKHeX.Core.AutoMod
             {
                 var ver = enc is IVersion v ? v.Version : destVer;
                 var gen = enc is IGeneration g ? g.Generation : dest.Generation;
-                var tr = TrainerSettings.GetSavedTrainerData(ver, gen);
+                var tr = TrainerSettings.GetSavedTrainerData(ver, gen, new SimpleTrainerInfo(ver));
                 var raw = enc.ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
