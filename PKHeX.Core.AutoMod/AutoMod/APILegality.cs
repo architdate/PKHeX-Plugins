@@ -155,6 +155,9 @@ namespace PKHeX.Core.AutoMod
                 case (int)GameVersion.GSC:
                     pk.Version = (int)GameVersion.C;
                     break;
+                case (int)GameVersion.SWSH:
+                    pk.Version = (int)GameVersion.SW;
+                    break;
                 case (int)GameVersion.UM when original.Species == (int)Species.Greninja && original.AltForm == 1:
                 case (int)GameVersion.US when original.Species == (int)Species.Greninja && original.AltForm == 1:
                     pk.Version = (int)GameVersion.SN; // Ash-Greninja
