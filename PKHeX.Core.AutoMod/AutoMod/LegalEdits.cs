@@ -15,6 +15,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokémon to modify</param>
         public static void SetSuggestedBall(this PKM pk)
         {
+            pk.SetMatchingBall();
             var la = new LegalityAnalysis(pk);
             var report = la.Report();
             if (!report.Contains(LegalityCheckStrings.LBallEncMismatch))
@@ -94,6 +95,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokémon to modify</param>
         public static void SetSuggestedRibbons(this PKM pk)
         {
+            RibbonApplicator.SetAllValidRibbons(pk);
             string report = new LegalityAnalysis(pk).Report();
             if (report.Contains(string.Format(LegalityCheckStrings.LRibbonFMissing_0, "")))
             {

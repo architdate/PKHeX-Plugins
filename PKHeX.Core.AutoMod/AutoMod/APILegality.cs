@@ -89,11 +89,12 @@ namespace PKHeX.Core.AutoMod
             pk.FixGender(set);
             pk.SetSuggestedRibbons();
             pk.SetSuggestedMemories();
-            pk.SetSuggestedBall();
-            pk.SetHappiness();
-            pk.SetBelugaValues();
             pk.SetHTLanguage();
             pk.SetDynamaxLevel();
+            pk.SetSuggestedBall();
+            pk.SetMarkings();
+            pk.SetHappiness();
+            pk.SetBelugaValues();
         }
 
         /// <summary>
@@ -149,14 +150,40 @@ namespace PKHeX.Core.AutoMod
         {
             switch (original.Version)
             {
-                case (int)GameVersion.RBY:
-                    pk.Version = (int)GameVersion.RD;
+                case (int)GameVersion.SWSH:
+                    pk.Version = (int)GameVersion.SW;
+                    break;
+                case (int)GameVersion.USUM:
+                    pk.Version = (int)GameVersion.US;
+                    break;
+                case (int)GameVersion.SM:
+                    pk.Version = (int)GameVersion.SN;
+                    break;
+                case (int)GameVersion.ORAS:
+                    pk.Version = (int)GameVersion.OR;
+                    break;
+                case (int)GameVersion.XY:
+                    pk.Version = (int)GameVersion.X;
+                    break;
+                case (int)GameVersion.B2W2:
+                    pk.Version = (int)GameVersion.B2;
+                    break;
+                case (int)GameVersion.BW:
+                    pk.Version = (int)GameVersion.B;
+                    break;
+                case (int)GameVersion.DP:
+                case (int)GameVersion.DPPt:
+                    pk.Version = (int)GameVersion.D;
+                    break;
+                case (int)GameVersion.RS:
+                case (int)GameVersion.RSE:
+                    pk.Version = (int)GameVersion.R;
                     break;
                 case (int)GameVersion.GSC:
                     pk.Version = (int)GameVersion.C;
                     break;
-                case (int)GameVersion.SWSH:
-                    pk.Version = (int)GameVersion.SW;
+                case (int)GameVersion.RBY:
+                    pk.Version = (int)GameVersion.RD;
                     break;
                 case (int)GameVersion.UM when original.Species == (int)Species.Greninja && original.AltForm == 1:
                 case (int)GameVersion.US when original.Species == (int)Species.Greninja && original.AltForm == 1:
@@ -167,6 +194,12 @@ namespace PKHeX.Core.AutoMod
                     break;
             }
         }
+
+        /// <summary>
+        /// Set matching colored pokeballs based on the color API in personal table
+        /// </summary>
+        /// <param name="pk">Return PKM</param>
+        public static void SetMatchingBall(this PKM pk) => BallRandomizer.ApplyBallLegalByColor(pk);
 
         /// <summary>
         /// Fix Formes that are illegal outside of battle
