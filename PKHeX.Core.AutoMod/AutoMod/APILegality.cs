@@ -32,7 +32,7 @@ namespace PKHeX.Core.AutoMod
                 var ver = enc is IVersion v ? v.Version : destVer;
                 var gen = enc is IGeneration g ? g.Generation : dest.Generation;
                 var tr = TrainerSettings.GetSavedTrainerData(ver, gen, new SimpleTrainerInfo(ver));
-                var raw = enc.ConvertToPKM(tr);
+                var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
                     continue;
@@ -62,6 +62,22 @@ namespace PKHeX.Core.AutoMod
             if (set.Form != null && FixFormes(set, out set))
                 Form = set.FormIndex;
             return Form;
+        }
+
+        /// <summary>
+        /// Sanity checking encounters before passing them into ApplySetDetails.
+        /// Some encounters may have an empty met location leading to an encounter mismatch. Use this function for all encounter pre-processing!
+        /// </summary>
+        /// <param name="enc">IEncounterable variable that is a product of the Encounter Generator</param>
+        /// <returns></returns>
+        private static IEncounterable SanityCheckEncounters(IEncounterable enc)
+        {
+            var SharedNest = 162; // Shared Nest for online encounter
+            if (enc is EncounterStatic8N e && e.Location == 0)
+                e.Location = SharedNest;
+            if (enc is EncounterStatic8ND ed && ed.Location == 0)
+                ed.Location = SharedNest;
+            return enc;
         }
 
         /// <summary>
