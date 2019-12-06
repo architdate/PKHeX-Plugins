@@ -35,9 +35,9 @@ namespace PKHeX.Core.AutoMod
         /// Set Encryption Constant based on PKM GenNumber
         /// </summary>
         /// <param name="pk">PKM to modify</param>
-        public static void SetEncryptionConstant(this PKM pk)
+        public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
         {
-            if (pk.Species == 658 && pk.AltForm == 1) // Ash-Greninja
+            if ((pk.Species == 658 && pk.AltForm == 1) || enc is EncounterStatic8N) // Ash-Greninja
                 return;
             pk.SetRandomEC();
         }

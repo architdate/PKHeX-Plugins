@@ -37,7 +37,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk == null)
                     continue;
 
-                ApplySetDetails(pk, set, Form, raw, dest);
+                ApplySetDetails(pk, set, Form, raw, dest, enc);
                 if (set.CanGigantamax && pk is IGigantamax gmax)
                 {
                     if (!gmax.CanGigantamax)
@@ -88,7 +88,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="Form">Alternate form required</param>
         /// <param name="unconverted">Original pkm data</param>
         /// <param name="handler">Trainer to handle the Pokémon</param>
-        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler)
+        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc)
         {
             var pidiv = MethodFinder.Analyze(pk);
 
@@ -100,7 +100,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetNatureAbility(set);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
             pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
-            pk.SetEncryptionConstant();
+            pk.SetEncryptionConstant(enc);
             pk.SetShinyBoolean(set.Shiny);
             pk.FixGender(set);
             pk.SetSuggestedRibbons();
@@ -278,8 +278,17 @@ namespace PKHeX.Core.AutoMod
             var li = EncounterFinder.FindVerifiedEncounter(original);
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
-
-            if (pk.GenNumber > 4 || pk.VC)
+            if (li.EncounterMatch is EncounterStatic8N e)
+            {
+                pk.IVs = set.IVs;
+                if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2)) { } // encounter impossible 
+                else
+                {
+                    FindNestPIDIV(pk, e);
+                    ValidateGender(pk);
+                }
+            }
+            else if (pk.GenNumber > 4 || pk.VC)
             {
                 pk.IVs = set.IVs;
                 if (Species == 658 && pk.AltForm == 1)
@@ -295,6 +304,91 @@ namespace PKHeX.Core.AutoMod
                 FindPIDIV(pk, method, hpType);
                 ValidateGender(pk);
             }
+        }
+
+        private static void FindNestPIDIV(PKM pk, EncounterStatic8N enc)
+        {
+            // Preserve Nature, Altform, Ability (only if HA)
+            // Nest encounter RNG generation
+            int iv_count = enc.FlawlessIVCount;
+            int ability_param;
+            int altform_count = pk.PersonalInfo.FormeCount;
+            int gender_ratio = pk.PersonalInfo.Gender;
+            int nature_param = 255; // random nature in raids
+
+            // TODO: Ability param for A2 raids
+            if (enc.Ability == 0) ability_param = 255;
+            else if (enc.Ability == -1) ability_param = 254;
+            else ability_param = enc.Ability >> 1;
+
+            var iterPKM = pk.Clone();
+            while (true)
+            {
+                ulong seed = GetRandomULong();
+                var RNG = new XOROSHIRO(seed);
+                SetValuesFromSeed8(pk, RNG, iv_count, ability_param, altform_count, gender_ratio, nature_param);
+                if (!(pk.Nature == iterPKM.Nature && pk.AltForm == iterPKM.AltForm))
+                    continue;
+                if (iterPKM.AbilityNumber == 4 && !(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber))
+                    continue;
+                else
+                    // can be ability capsuled
+                    pk.RefreshAbility(pk.AbilityNumber >> 1);
+                break;
+            }
+
+        }
+
+        private static void SetValuesFromSeed8(PKM pk, XOROSHIRO rng, int iv_count, int ability_param, int altform_count, int gender_ratio, int nature_param)
+        {
+            pk.EncryptionConstant = rng.nextInt();
+            rng.nextInt(); // pass
+            pk.PID = rng.nextInt();
+            int[] ivs = new int[] {-1, -1, -1, -1, -1, -1};
+            for (int i = 0; i < iv_count; i++)
+            {
+                int idx = (int)rng.nextInt(6);
+                while (ivs[idx] != -1)
+                    idx = (int)rng.nextInt(6);
+                ivs[idx] = 31;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                if (ivs[i] == -1)
+                    ivs[i] = (int)rng.nextInt(32);
+            }
+            pk.IVs = ivs;
+            int abil;
+            if (ability_param == 254)
+                abil = (int)rng.nextInt(3);
+            else if (ability_param == 255)
+                abil = (int)rng.nextInt(2);
+            else
+                abil = ability_param;
+            pk.RefreshAbility(abil);
+            if (altform_count != 1)
+                pk.AltForm = (int)rng.nextInt((ulong)altform_count);
+            else
+                pk.AltForm = 0;
+            if (gender_ratio == 255)
+                pk.SetGender(2);
+            else if (gender_ratio == 254)
+                pk.SetGender(1);
+            else if (gender_ratio == 0)
+                pk.SetGender(0);
+            else if ((int)rng.nextInt(252) + 1 < gender_ratio)
+                pk.SetGender(1);
+            else
+                pk.SetGender(0);
+            if (nature_param == 255)
+                pk.Nature = ((int)rng.nextInt(25));
+            else
+                pk.Nature = (nature_param);
+        }
+
+        private static ulong GetRandomULong()
+        {
+            return ((ulong)Util.Rand.Next(1 << 30) << 34) | ((ulong)Util.Rand.Next(1 << 30) << 4) | (uint)Util.Rand.Next(1 << 4);
         }
 
         /// <summary>
@@ -379,6 +473,52 @@ namespace PKHeX.Core.AutoMod
                     };
                 default:
                     return PIDType.None;
+            }
+        }
+
+        // Implemention from Leannys XOROSHIRO method and Admiral Fish's XOROSHIRO method
+        public class XOROSHIRO
+        {
+            static ulong[] s = { 0, 0 };
+            static ulong rotl(ulong x, int k)
+            {
+                return (x << k) | (x >> (64 - k));
+            }
+            public XOROSHIRO(ulong seed)
+            {
+                s[0] = seed;
+                s[1] = 0x82A2B175229D6A5B;
+            }
+            public ulong next()
+            {
+                ulong s0 = s[0];
+                ulong s1 = s[1];
+                ulong result = s0 + s1;
+
+                s1 ^= s0;
+                s[0] = rotl(s0, 24) ^ s1 ^ (s1 << 16);
+                s[1] = rotl(s1, 37);
+
+                return result;
+            }
+            private ulong nextP2(ulong n)
+            {
+                n--;
+                for (int i = 0; i < 6; i++)
+                {
+                    n |= n >> (1 << i);
+                }
+                return n;
+            }
+            public uint nextInt(ulong MOD = 0xFFFFFFFF)
+            {
+                ulong res = 0;
+                ulong p2mod = nextP2(MOD);
+                do
+                {
+                    res = next() & p2mod;
+                } while (res >= MOD);
+                return (uint) res;
             }
         }
     }
