@@ -55,7 +55,7 @@ namespace PKHeX.Core.AutoMod
             }
             else
             {
-                if (pk.GenNumber > 5)
+                if (7 > pk.GenNumber && pk.GenNumber > 5) // Set Shiny SID for gen 8 until raid shiny locks are documented
                     pk.SetShiny();
                 else if (pk.VC)
                     pk.SetIsShiny(true);
