@@ -101,7 +101,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
             pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
             pk.SetEncryptionConstant(enc);
-            pk.SetShinyBoolean(set.Shiny);
+            pk.SetShinyBoolean(set.Shiny, enc);
             pk.FixGender(set);
             pk.SetSuggestedRibbons();
             pk.SetSuggestedMemories();
@@ -284,7 +284,7 @@ namespace PKHeX.Core.AutoMod
                 if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2)) { } // encounter impossible 
                 else
                 {
-                    FindNestPIDIV(pk, e);
+                    FindNestPIDIV(pk, e, set.Shiny);
                     ValidateGender(pk);
                 }
             }
@@ -306,7 +306,7 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static void FindNestPIDIV(PKM pk, EncounterStatic8N enc)
+        private static void FindNestPIDIV(PKM pk, EncounterStatic8N enc, bool shiny)
         {
             // Preserve Nature, Altform, Ability (only if HA)
             // Nest encounter RNG generation
@@ -326,7 +326,8 @@ namespace PKHeX.Core.AutoMod
             {
                 ulong seed = GetRandomULong();
                 var RNG = new XOROSHIRO(seed);
-                SetValuesFromSeed8(pk, RNG, iv_count, ability_param, altform_count, gender_ratio, nature_param);
+                if (!shiny)
+                    SetValuesFromSeed8Unshiny(pk, RNG, iv_count, ability_param, altform_count, gender_ratio, nature_param);
                 if (!(pk.Nature == iterPKM.Nature && pk.AltForm == iterPKM.AltForm))
                     continue;
                 if (iterPKM.AbilityNumber == 4 && !(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber))
@@ -339,11 +340,13 @@ namespace PKHeX.Core.AutoMod
 
         }
 
-        private static void SetValuesFromSeed8(PKM pk, XOROSHIRO rng, int iv_count, int ability_param, int altform_count, int gender_ratio, int nature_param)
+        private static void SetValuesFromSeed8Unshiny(PKM pk, XOROSHIRO rng, int iv_count, int ability_param, int altform_count, int gender_ratio, int nature_param)
         {
             pk.EncryptionConstant = rng.nextInt();
-            rng.nextInt(); // pass
+            var ftidsid = rng.nextInt(); // pass
             pk.PID = rng.nextInt();
+            if (pk.PSV == ((ftidsid >> 16) ^ (ftidsid & 0xFFFF)) >> 4) // force unshiny!
+                pk.PID = pk.PID ^ 0x10000000; // the rare case where you actually roll a full odds shiny in pkhex. Apply for a lottery!
             int[] ivs = new int[] {-1, -1, -1, -1, -1, -1};
             for (int i = 0; i < iv_count; i++)
             {

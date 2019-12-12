@@ -47,7 +47,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="isShiny">Shiny value that needs to be set</param>
-        public static void SetShinyBoolean(this PKM pk, bool isShiny)
+        public static void SetShinyBoolean(this PKM pk, bool isShiny, IEncounterable enc)
         {
             if (!isShiny)
             {
@@ -55,12 +55,30 @@ namespace PKHeX.Core.AutoMod
             }
             else
             {
-                if (8 > pk.GenNumber && pk.GenNumber > 5) // Set Shiny SID for gen 8 until raid shiny locks are documented
+                if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND) // have to verify all since 8NC and 8ND do not inherit 8N
+                    pk.SetRaidShiny();
+                else if (8 > pk.GenNumber && pk.GenNumber > 5) // Set Shiny SID for gen 8 until raid shiny locks are documented
                     pk.SetShiny();
                 else if (pk.VC)
                     pk.SetIsShiny(true);
                 else
                     pk.SetShinySID();
+            }
+        }
+
+        public static void SetRaidShiny(this PKM pk)
+        {
+            if (pk.IsShiny)
+                return;
+
+            while (true)
+            {
+                pk.SetShiny();
+                if (pk.Format <= 7)
+                    return;
+                var xor = pk.ShinyXor;
+                if (xor < 2) // allow xor1 and xor0 for den shinies
+                    return;
             }
         }
 
