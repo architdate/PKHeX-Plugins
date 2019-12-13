@@ -312,7 +312,6 @@ namespace PKHeX.Core.AutoMod
             // Nest encounter RNG generation
             int iv_count = enc.FlawlessIVCount;
             int ability_param;
-            int altform_count = pk.PersonalInfo.FormeCount;
             int gender_ratio = pk.PersonalInfo.Gender;
             int nature_param = 255; // random nature in raids
 
@@ -327,7 +326,7 @@ namespace PKHeX.Core.AutoMod
                 ulong seed = GetRandomULong();
                 var RNG = new XOROSHIRO(seed);
                 if (!shiny)
-                    SetValuesFromSeed8Unshiny(pk, RNG, iv_count, ability_param, altform_count, gender_ratio, nature_param);
+                    SetValuesFromSeed8Unshiny(pk, RNG, iv_count, ability_param, gender_ratio, nature_param);
                 if (!(pk.Nature == iterPKM.Nature && pk.AltForm == iterPKM.AltForm))
                     continue;
                 if (iterPKM.AbilityNumber == 4 && !(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber))
@@ -340,7 +339,7 @@ namespace PKHeX.Core.AutoMod
 
         }
 
-        private static void SetValuesFromSeed8Unshiny(PKM pk, XOROSHIRO rng, int iv_count, int ability_param, int altform_count, int gender_ratio, int nature_param)
+        private static void SetValuesFromSeed8Unshiny(PKM pk, XOROSHIRO rng, int iv_count, int ability_param, int gender_ratio, int nature_param)
         {
             pk.EncryptionConstant = rng.nextInt();
             var ftidsid = rng.nextInt(); // pass
@@ -369,10 +368,6 @@ namespace PKHeX.Core.AutoMod
             else
                 abil = ability_param;
             pk.RefreshAbility(abil);
-            if (altform_count != 1)
-                pk.AltForm = (int)rng.nextInt((ulong)altform_count);
-            else
-                pk.AltForm = 0;
             if (gender_ratio == 255)
                 pk.SetGender(2);
             else if (gender_ratio == 254)
