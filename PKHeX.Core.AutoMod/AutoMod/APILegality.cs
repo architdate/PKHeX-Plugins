@@ -72,7 +72,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns></returns>
         private static IEncounterable SanityCheckEncounters(IEncounterable enc)
         {
-            var SharedNest = 162; // Shared Nest for online encounter
+            const int SharedNest = 162; // Shared Nest for online encounter
             if (enc is EncounterStatic8N e && e.Location == 0)
                 e.Location = SharedNest;
             if (enc is EncounterStatic8ND ed && ed.Location == 0)
@@ -88,6 +88,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="Form">Alternate form required</param>
         /// <param name="unconverted">Original pkm data</param>
         /// <param name="handler">Trainer to handle the Pokémon</param>
+        /// <param name="enc">Encounter details matched to the Pokémon</param>
         private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc)
         {
             var pidiv = MethodFinder.Analyze(pk);
@@ -281,12 +282,10 @@ namespace PKHeX.Core.AutoMod
             if (li.EncounterMatch is EncounterStatic8N e)
             {
                 pk.IVs = set.IVs;
-                if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2)) { } // encounter impossible 
-                else
-                {
-                    FindNestPIDIV(pk, e, set.Shiny);
-                    ValidateGender(pk);
-                }
+                if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2))
+                    return;
+                FindNestPIDIV(pk, e, set.Shiny);
+                ValidateGender(pk);
             }
             else if (pk.GenNumber > 4 || pk.VC)
             {
@@ -316,9 +315,12 @@ namespace PKHeX.Core.AutoMod
             int nature_param = 255; // random nature in raids
 
             // TODO: Ability param for A2 raids
-            if (enc.Ability == 0) ability_param = 255;
-            else if (enc.Ability == -1) ability_param = 254;
-            else ability_param = enc.Ability >> 1;
+            if (enc.Ability == 0)
+                ability_param = 255;
+            else if (enc.Ability == -1)
+                ability_param = 254;
+            else
+                ability_param = enc.Ability >> 1;
 
             var iterPKM = pk.Clone();
             while (true)
@@ -331,40 +333,38 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 if (iterPKM.AbilityNumber == 4 && !(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber))
                     continue;
-                else
-                    // can be ability capsuled
-                    pk.RefreshAbility(pk.AbilityNumber >> 1);
+                // can be ability capsuled
+                pk.RefreshAbility(pk.AbilityNumber >> 1);
                 break;
             }
-
         }
 
         private static void SetValuesFromSeed8Unshiny(PKM pk, XOROSHIRO rng, int iv_count, int ability_param, int gender_ratio, int nature_param)
         {
-            pk.EncryptionConstant = rng.nextInt();
-            var ftidsid = rng.nextInt(); // pass
-            pk.PID = rng.nextInt();
+            pk.EncryptionConstant = (uint)rng.NextInt();
+            var ftidsid = (uint)rng.NextInt(); // pass
+            pk.PID = (uint)rng.NextInt();
             if (pk.PSV == ((ftidsid >> 16) ^ (ftidsid & 0xFFFF)) >> 4) // force unshiny!
-                pk.PID = pk.PID ^ 0x10000000; // the rare case where you actually roll a full odds shiny in pkhex. Apply for a lottery!
-            int[] ivs = new int[] {-1, -1, -1, -1, -1, -1};
+                pk.PID ^= 0x10000000; // the rare case where you actually roll a full odds shiny in PKHeX. Apply for a lottery!
+            int[] ivs = {-1, -1, -1, -1, -1, -1};
             for (int i = 0; i < iv_count; i++)
             {
-                int idx = (int)rng.nextInt(6);
+                int idx = (int)rng.NextInt(6);
                 while (ivs[idx] != -1)
-                    idx = (int)rng.nextInt(6);
+                    idx = (int)rng.NextInt(6);
                 ivs[idx] = 31;
             }
             for (int i = 0; i < 6; i++)
             {
                 if (ivs[i] == -1)
-                    ivs[i] = (int)rng.nextInt(32);
+                    ivs[i] = (int)rng.NextInt(32);
             }
             pk.IVs = ivs;
             int abil;
             if (ability_param == 254)
-                abil = (int)rng.nextInt(3);
+                abil = (int)rng.NextInt(3);
             else if (ability_param == 255)
-                abil = (int)rng.nextInt(2);
+                abil = (int)rng.NextInt(2);
             else
                 abil = ability_param;
             pk.RefreshAbility(abil);
@@ -374,14 +374,14 @@ namespace PKHeX.Core.AutoMod
                 pk.SetGender(1);
             else if (gender_ratio == 0)
                 pk.SetGender(0);
-            else if ((int)rng.nextInt(252) + 1 < gender_ratio)
+            else if ((int)rng.NextInt(252) + 1 < gender_ratio)
                 pk.SetGender(1);
             else
                 pk.SetGender(0);
             if (nature_param == 255)
-                pk.Nature = ((int)rng.nextInt(25));
+                pk.Nature = (int)rng.NextInt(25);
             else
-                pk.Nature = (nature_param);
+                pk.Nature = nature_param;
         }
 
         private static ulong GetRandomULong()
@@ -471,52 +471,6 @@ namespace PKHeX.Core.AutoMod
                     };
                 default:
                     return PIDType.None;
-            }
-        }
-
-        // Implemention from Leannys XOROSHIRO method and Admiral Fish's XOROSHIRO method
-        public class XOROSHIRO
-        {
-            static ulong[] s = { 0, 0 };
-            static ulong rotl(ulong x, int k)
-            {
-                return (x << k) | (x >> (64 - k));
-            }
-            public XOROSHIRO(ulong seed)
-            {
-                s[0] = seed;
-                s[1] = 0x82A2B175229D6A5B;
-            }
-            public ulong next()
-            {
-                ulong s0 = s[0];
-                ulong s1 = s[1];
-                ulong result = s0 + s1;
-
-                s1 ^= s0;
-                s[0] = rotl(s0, 24) ^ s1 ^ (s1 << 16);
-                s[1] = rotl(s1, 37);
-
-                return result;
-            }
-            private ulong nextP2(ulong n)
-            {
-                n--;
-                for (int i = 0; i < 6; i++)
-                {
-                    n |= n >> (1 << i);
-                }
-                return n;
-            }
-            public uint nextInt(ulong MOD = 0xFFFFFFFF)
-            {
-                ulong res = 0;
-                ulong p2mod = nextP2(MOD);
-                do
-                {
-                    res = next() & p2mod;
-                } while (res >= MOD);
-                return (uint) res;
             }
         }
     }
