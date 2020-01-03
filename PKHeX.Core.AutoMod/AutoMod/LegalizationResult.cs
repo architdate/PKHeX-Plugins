@@ -14,5 +14,10 @@
         /// Passed through an attempt of Brute Forcing certain legality properties.
         /// </summary>
         BruteForce,
+
+        /// <summary>
+        /// Failed to generate.
+        /// </summary>
+        Failed
     }
 }

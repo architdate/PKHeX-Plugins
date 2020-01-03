@@ -9,6 +9,9 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public static class Legalizer
     {
+        public static bool AllowAPI { get; set; } = true;
+        public static bool AllowBruteForce { get; set; } = true;
+
         /// <summary>
         /// Tries to regenerate the <see cref="pk"/> into a valid pkm.
         /// </summary>
@@ -68,7 +71,7 @@ namespace PKHeX.Core.AutoMod
                     return AutoModErrorCode.InvalidLines;
 
                 Debug.WriteLine($"Generating Set: {GameInfo.Strings.Species[set.Species]}");
-                var pk = tr.GetLegalFromSet(set, out var msg, allowAPI);
+                var pk = tr.GetLegalFromSet(set, out var msg);
                 pk.ResetPartyStats();
                 if (msg == LegalizationResult.BruteForce)
                     invalidAPISets.Add(set);
@@ -89,24 +92,39 @@ namespace PKHeX.Core.AutoMod
         /// <param name="tr">Source/Destination trainer</param>
         /// <param name="set">Set data to import</param>
         /// <param name="msg">Result code indicating success or failure</param>
-        /// <param name="allowAPI">Use <see cref="Core"/> to find and generate a new pkm</param>
         /// <returns>Legalized PKM (hopefully legal)</returns>
-        public static PKM GetLegalFromSet(this ITrainerInfo tr, ShowdownSet set, out LegalizationResult msg, bool allowAPI = true)
+        public static PKM GetLegalFromSet(this ITrainerInfo tr, ShowdownSet set, out LegalizationResult msg)
         {
             var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
             template.ApplySetDetails(set);
-            return tr.GetLegalFromSet(set, template, out msg, allowAPI);
+            return tr.GetLegalFromSet(set, template, out msg);
         }
 
-        private static PKM GetLegalFromSet(this ITrainerInfo tr, ShowdownSet set, PKM template, out LegalizationResult msg, bool allowAPI = true)
+        private static PKM GetLegalFromSet(this ITrainerInfo tr, ShowdownSet set, PKM template, out LegalizationResult msg)
         {
-            if (allowAPI && tr.TryAPIConvert(set, template, out PKM pk))
+            if (AllowAPI)
             {
-                msg = LegalizationResult.Regenerated;
-                return pk;
+                bool success = tr.TryAPIConvert(set, template, out PKM pk);
+                if (success)
+                {
+                    msg = LegalizationResult.Regenerated;
+                    return pk;
+                }
+                if (!AllowBruteForce)
+                {
+                    msg = LegalizationResult.Failed;
+                    return pk;
+                }
             }
-            msg = LegalizationResult.BruteForce;
-            return tr.GetBruteForcedLegalMon(set, template);
+
+            if (AllowBruteForce)
+            {
+                msg = LegalizationResult.BruteForce;
+                return tr.GetBruteForcedLegalMon(set, template);
+            }
+
+            msg = LegalizationResult.Failed;
+            return template;
         }
 
         private static bool TryAPIConvert(this ITrainerInfo tr, ShowdownSet set, PKM template, out PKM pkm)

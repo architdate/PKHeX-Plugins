@@ -51,16 +51,15 @@ namespace AutoModPlugins
         /// <param name="sets">Data to be loaded</param>
         public static void Import(IReadOnlyList<ShowdownSet> sets)
         {
-            const bool allowAPI = true;
             AutoModErrorCode result;
             if (sets.Count == 1)
             {
-                result = ImportSetToTabs(sets[0], allowAPI);
+                result = ImportSetToTabs(sets[0]);
             }
             else
             {
                 var replace = (Control.ModifierKeys & Keys.Control) != 0;
-                result = ImportSetsToBoxes(sets, replace, allowAPI);
+                result = ImportSetsToBoxes(sets, replace);
             }
 
             var message = result.GetMessage();
@@ -68,7 +67,7 @@ namespace AutoModPlugins
                 WinFormsUtil.Alert(message);
         }
 
-        private static AutoModErrorCode ImportSetToTabs(ShowdownSet set, bool allowAPI)
+        private static AutoModErrorCode ImportSetToTabs(ShowdownSet set)
         {
             if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
                 return AutoModErrorCode.NoSingleImport;
@@ -79,7 +78,7 @@ namespace AutoModPlugins
             var timer = Stopwatch.StartNew();
 
             var sav = SaveFileEditor.SAV;
-            var legal = sav.GetLegalFromSet(set, out var _, allowAPI);
+            var legal = sav.GetLegalFromSet(set, out var _);
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
 
@@ -95,8 +94,7 @@ namespace AutoModPlugins
         /// </summary>
         /// <param name="sets">A list of ShowdownSet(s) that need to be genned</param>
         /// <param name="replace">A boolean that determines if current pokemon will be replaced or not</param>
-        /// <param name="allowAPI">Use of generators before bruteforcing</param>
-        private static AutoModErrorCode ImportSetsToBoxes(IReadOnlyList<ShowdownSet> sets, bool replace, bool allowAPI)
+        private static AutoModErrorCode ImportSetsToBoxes(IReadOnlyList<ShowdownSet> sets, bool replace)
         {
             var timer = Stopwatch.StartNew();
             var sav = SaveFileEditor.SAV;
@@ -104,7 +102,7 @@ namespace AutoModPlugins
             var start = sav.CurrentBox * sav.BoxSlotCount;
 
             Debug.WriteLine($"Commencing Import of {sets.Count} set(s).");
-            var result = sav.ImportToExisting(sets, BoxData, start, replace, allowAPI);
+            var result = sav.ImportToExisting(sets, BoxData, start, replace);
             if (result != AutoModErrorCode.None)
                 return result;
 
