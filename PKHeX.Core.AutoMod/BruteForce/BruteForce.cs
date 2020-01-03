@@ -621,11 +621,14 @@ namespace PKHeX.Core.AutoMod
 
             var ivp = IVtoPIDGenerator.GetIVPID(nature, pk.HPType, XD);
             Debug.WriteLine(XD);
-            pk.PID = ivp.PID;
+            if (ivp != null)
+            {
+                pk.PID = ivp.PID;
+                SetIVs(pk, ivp);
+            }
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
 
-            SetIVs(pk, ivp);
             if (shiny)
                 pk.SetShinySID();
 
@@ -691,10 +694,13 @@ namespace PKHeX.Core.AutoMod
             pk.Egg_Location = 0;
             pk.FatefulEncounter = true;
             var ivp = IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, PIDType.Method_2);
-            pk.PID = ivp.PID;
+            if (ivp != null)
+            {
+                pk.PID = ivp.PID;
+                SetIVs(pk, ivp);
+            }
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
-            SetIVs(pk, ivp);
             if (shiny)
                 pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
@@ -719,12 +725,15 @@ namespace PKHeX.Core.AutoMod
             pk.Egg_Location = 0;
             pk.FatefulEncounter = false;
             var ivp = IVtoPIDGenerator.GetIVPID((uint)pk.Nature, pk.HPType, false, PIDType.BACD_R);
-            pk.PID = ivp.PID;
+            if (ivp != null)
+            {
+                pk.PID = ivp.PID;
+                SetIVs(pk, ivp);
+            }
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
-            Debug.WriteLine(ivp.HP);
-            SetIVs(pk, ivp);
-            if (shiny) pk.SetShinySID();
+            if (shiny) 
+                pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();
             if (updatedReport.Contains(LPIDGenderMismatch))

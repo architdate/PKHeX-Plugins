@@ -94,7 +94,7 @@ namespace RNGReporter
             };
         }
 
-        public static IVPID GetIVPID(uint nature, int hiddenpower, bool XD = false, PIDType method = PIDType.None)
+        public static IVPID? GetIVPID(uint nature, int hiddenpower, bool XD = false, PIDType method = PIDType.None)
         {
             if (method == PIDType.BACD_R)
                 return GenerateWishmkr(nature);
@@ -107,6 +107,8 @@ namespace RNGReporter
 
             var frameCompare = new FrameCompare(Hptofilter(hiddenpower), nature);
             var frames = generator.Generate(frameCompare, 0, 0);
+            if (frames.Count == 0)
+                return null;
             return new IVPID(frames[0]);
         }
     }
