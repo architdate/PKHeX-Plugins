@@ -46,6 +46,7 @@ namespace AutoModTests
         }
 
         [Theory]
+        [InlineData(5, Genesect)]
         [InlineData(7, Darkrai)]
         public static void VerifyManually(int gen, string txt)
         {
@@ -68,5 +69,15 @@ Timid Nature
 - Feint Attack
 - Nightmare
 - Double Team";
+
+        private const string Genesect =
+@"Genesect
+Ability: Download
+Shiny: Yes
+Hasty Nature
+- Extreme Speed
+- Techno Blast
+- Blaze Kick
+- Shift Gear";
     }
 }

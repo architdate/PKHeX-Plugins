@@ -14,8 +14,10 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Showdown Set for Gender reference</param>
         public static void FixGender(this PKM pk, ShowdownSet set)
         {
-            pk.SetGender(set.Gender);
+            pk.ApplySetGender(set);
             var la = new LegalityAnalysis(pk);
+            if (la.Valid)
+                return;
             string Report = la.Report();
 
             if (Report.Contains(LegalityCheckStrings.LPIDGenderMismatch))
@@ -36,7 +38,8 @@ namespace PKHeX.Core.AutoMod
             pk.Nature = Math.Max(0, set.Nature);
             if (pk is PK8 pkm)
                 pkm.StatNature = Math.Max(0, set.Nature);
-            pk.SetAbility(set.Ability);
+            if (pk.Ability != set.Ability)
+                pk.SetAbility(set.Ability);
         }
 
         /// <summary>
@@ -48,15 +51,20 @@ namespace PKHeX.Core.AutoMod
         public static void SetSpeciesLevel(this PKM pk, ShowdownSet set, int Form)
         {
             pk.Species = set.Species;
-            if (set.Gender != null)
-                pk.Gender = set.Gender == "M" ? 0 : 1;
-            else
-                pk.Gender = pk.GetSaneGender();
+            pk.ApplySetGender(set);
             pk.SetAltForm(Form);
             pk.SetNickname(set.Nickname);
             pk.CurrentLevel = set.Level;
             if (pk.CurrentLevel == 50)
                 pk.CurrentLevel = 100; // VGC Override
+        }
+
+        private static void ApplySetGender(this PKM pk, ShowdownSet set)
+        {
+            if (!string.IsNullOrWhiteSpace(set.Gender))
+                pk.Gender = set.Gender == "M" ? 0 : 1;
+            else
+                pk.Gender = pk.GetSaneGender();
         }
 
         /// <summary>
