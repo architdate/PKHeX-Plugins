@@ -8,7 +8,7 @@ environment:
   notifyall: true
 before_build:
 - ps: >-
-    New-Variable -Name "nugetver" -Visibility Public -Value "19.12.10-PullRequest2591.18"
+    New-Variable -Name "nugetver" -Visibility Public -Value "19.12.27"
 
     git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git C:\projects\pkhex
 
