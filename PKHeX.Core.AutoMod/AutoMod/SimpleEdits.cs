@@ -232,9 +232,14 @@ namespace PKHeX.Core.AutoMod
         public static void SetAllTrainerData(this PKM pk, ITrainerInfo trainer)
         {
             pk.SetBelugaValues(); // trainer details changed?
-            pk.ConsoleRegion = trainer.ConsoleRegion;
-            pk.Country = trainer.Country;
-            pk.Region = trainer.SubRegion;
+
+            int gen = trainer.Generation;
+            if (gen == 6 || (gen == 7 && !GameVersion.GG.Contains((GameVersion)trainer.Game)))
+            {
+                pk.ConsoleRegion = trainer.ConsoleRegion;
+                pk.Country = trainer.Country;
+                pk.Region = trainer.SubRegion;
+            }
         }
 
         /// <summary>

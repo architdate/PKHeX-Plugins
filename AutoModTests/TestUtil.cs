@@ -6,12 +6,16 @@ namespace AutoModTests
     public static class TestUtil
     {
         static TestUtil() => InitializePKHeXEnvironment();
+        private static bool Initialized;
 
-        private static void InitializePKHeXEnvironment()
+        public static void InitializePKHeXEnvironment()
         {
+            if (Initialized)
+                return;
             if (!EncounterEvent.Initialized)
                 EncounterEvent.RefreshMGDB();
             RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
+            Initialized = true;
         }
 
         public static string GetTestFolder(string name)

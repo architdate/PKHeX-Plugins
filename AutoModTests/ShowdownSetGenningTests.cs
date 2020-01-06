@@ -10,6 +10,7 @@ namespace AutoModTests
     public static class ShowdownSetGenningTests
     {
         private static readonly string ShowdownSetsFolder = TestUtil.GetTestFolder("ShowdownSets");
+        static ShowdownSetGenningTests() => TestUtil.InitializePKHeXEnvironment();
 
         private static GameVersion GetGameFromFile(string path)
         {
@@ -43,5 +44,29 @@ namespace AutoModTests
                 la.Valid.Should().BeTrue($"{path}'s set for {GameInfo.Strings.Species[s.Species]} should generate a legal mon");
             }
         }
+
+        [Theory]
+        [InlineData(7, Darkrai)]
+        public static void VerifyManually(int gen, string txt)
+        {
+            var sav = SaveUtil.GetBlankSAV(gen, "ALM");
+            TrainerSettings.Register(sav);
+            PKMConverter.Trainer = TrainerSettings.GetSavedTrainerData(gen);
+            var set = new ShowdownSet(txt);
+            var pkm = sav.GetLegalFromSet(set, out _);
+            var la = new LegalityAnalysis(pkm);
+            la.Valid.Should().BeTrue();
+        }
+
+        private const string Darkrai =
+@"Darkrai
+IVs: 7 Atk
+Ability: Bad Dreams
+Shiny: Yes
+Timid Nature
+- Hypnosis
+- Feint Attack
+- Nightmare
+- Double Team";
     }
 }
