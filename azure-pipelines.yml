@@ -35,4 +35,14 @@ steps:
       mkdir bin
       nuget install ILMerge -ExcludeVersion
 
-- bash: echo $(PWD)
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      cd $(Agent.BuildDirectory)
+      echo $(ls)
+      
+      cd $(Build.SourcesDirectory)
+      echo $(ls)
