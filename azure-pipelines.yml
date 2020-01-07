@@ -39,7 +39,7 @@ steps:
       xcopy ..\..\..\AutoLegalityMod\bin\Release\BouncyCastle.CryptoExt.dll .\
       xcopy ..\..\..\AutoLegalityMod\bin\Release\PKHeX.Core.AutoMod.dll .\
       xcopy ..\..\..\AutoLegalityMod\bin\Release\PKHeX.Core.dll .\
-      ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:..\..\..\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll BouncyCastle.CryptoExt.dll
+      ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:$(Agent.BuildDirectory)\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll BouncyCastle.CryptoExt.dll
 
 - task: Bash@3
   inputs:
@@ -52,3 +52,9 @@ steps:
       
       cd $(Build.SourcesDirectory)
       echo $(ls)
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Agent.BuildDirectory)\bin'
+    ArtifactName: 'PKHeX-Plugins'
+    publishLocation: 'Container'
