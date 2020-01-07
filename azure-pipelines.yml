@@ -29,7 +29,9 @@ steps:
     restoreNugetPackages: true
     createLogFile: true
 
-- task: VSTest@2
+- task: CmdLine@2
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    script: |
+      mkdir bin
+      nuget install ILMerge -ExcludeVersion
+      pwd
