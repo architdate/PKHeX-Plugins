@@ -34,4 +34,5 @@ steps:
     script: |
       mkdir bin
       nuget install ILMerge -ExcludeVersion
-      pwd
+
+- bash: echo $(PWD)
