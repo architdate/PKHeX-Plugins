@@ -15,7 +15,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="dest">Destination for the generated pkm</param>
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
-        /// <param name="satisfied">If the final result is satisfactory, otherwise use current auto legality functionality</param>
+        /// <param name="satisfied">If the final result is satisfactory, otherwise use deprecated bruteforce auto legality functionality</param>
         public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied)
         {
             var Form = SanityCheckForm(template, ref set);

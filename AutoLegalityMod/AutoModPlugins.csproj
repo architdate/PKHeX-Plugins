@@ -49,6 +49,7 @@
     <Compile Include="Plugins\ExportBoxToShowdown.cs" />
     <Compile Include="Plugins\ExportPKSMBank.cs" />
     <Compile Include="Plugins\ExportQRCodes.cs" />
+    <Compile Include="Plugins\GPSSPlugin.cs" />
     <Compile Include="Plugins\LegalizeBoxes.cs" />
     <Compile Include="Plugins\LivingDex.cs" />
     <Compile Include="Plugins\MGDBDownloader.cs" />

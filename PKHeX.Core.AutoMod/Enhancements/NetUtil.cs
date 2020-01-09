@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Net;
+using System.Text;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -39,6 +40,81 @@ namespace PKHeX.Core.AutoMod
             using var dataStream = response.GetResponseStream();
             using var reader = new StreamReader(dataStream);
             return reader.ReadToEnd();
+        }
+
+        /// <summary>
+        /// GPSS upload function. POST request using multipart form-data
+        /// </summary>
+        /// <param name="data">pkm data in bytes.</param>
+        /// <returns></returns>
+        public static string GPSSPost(byte[] data)
+        {
+            WebRequest request = WebRequest.Create("https://flagbrew.org/gpss/share");
+            request.Method = "POST";
+            string boundary = "-----------";
+            request.ContentType = "multipart/form-data; boundary=" + boundary;
+            // Build up the post message header  
+            StringBuilder sb = new StringBuilder();
+            sb.Append("--");
+            sb.Append(boundary);
+            sb.Append("\r\n");
+            sb.Append("Content-Disposition: form-data; name=\"");
+            sb.Append("pkmn");
+            sb.Append("\"; filename=\"");
+            sb.Append("file");
+            sb.Append("\"");
+            sb.Append("\r\n");
+            sb.Append("Content-Type: ");
+            sb.Append("application/octet-stream");
+            sb.Append("\r\n");
+            sb.Append("\r\n");
+
+            string postHeader = sb.ToString();
+            byte[] postHeaderBytes = Encoding.UTF8.GetBytes(postHeader);
+            byte[] boundaryBytes = Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+            long length = postHeaderBytes.Length + data.Length + boundaryBytes.Length;
+            request.ContentLength = length;
+            using (Stream datastream = request.GetRequestStream())
+            {
+                datastream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
+                datastream.Write(data, 0, data.Length);
+                datastream.Write(boundaryBytes, 0, boundaryBytes.Length);
+            }
+            // Get the response.
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                using (Stream responseStream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(responseStream))
+                {
+                    string responseFromServer = reader.ReadToEnd();
+                    return "Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://flagbrew.org/gpss/view/" + responseFromServer;
+                }
+            }
+            catch (WebException e)
+            {
+                var exstr = "Exception: \n";
+                if (e.Status == WebExceptionStatus.ProtocolError)
+                    exstr += $"Status Code : {((HttpWebResponse)e.Response).StatusCode}\nStatus Description : {((HttpWebResponse)e.Response).StatusDescription}";
+                else
+                    exstr += e.Message;
+                return exstr;
+            }
+        }
+
+        /// <summary>
+        /// GPSS downloader
+        /// </summary>
+        /// <param name="code">url long</param>
+        /// <returns>byte array corresponding to a pkm</returns>
+        public static byte[] GPSSDownload(long code)
+        {
+            // code is returned as a long
+            var request = (HttpWebRequest)WebRequest.Create("https://flagbrew.org/gpss/download/" + $"{code}");
+            request.Method = "GET";
+            request.UserAgent = "PKHeX-Auto-Legality-Mod";
+            var b64 = GetStringResponse(request);
+            return System.Convert.FromBase64String(b64);
         }
     }
 }

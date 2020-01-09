@@ -230,7 +230,7 @@ namespace PKHeX.Core.AutoMod
 
         private static string GetURL(string speciesName, string form, string baseURL)
         {
-            if (string.IsNullOrWhiteSpace(form) || ShowdownUtil.IsInvalidForm(form))
+            if (string.IsNullOrWhiteSpace(form) || (ShowdownUtil.IsInvalidForm(form) && form != "Crowned")) // Crowned Formes have separate pages
             {
                 var spec = ConvertSpeciesToURLSpecies(speciesName).ToLower();
                 return $"{baseURL}/{spec}/";
