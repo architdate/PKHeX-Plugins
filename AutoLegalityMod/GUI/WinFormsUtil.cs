@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Media;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace AutoModPlugins
 {
@@ -60,6 +61,13 @@ namespace AutoModPlugins
 
             path = ofd.FileName;
             return true;
+        }
+
+        internal static void CenterToForm(this Control child, Control parent)
+        {
+            int x = parent.Location.X + ((parent.Width - child.Width) / 2);
+            int y = parent.Location.Y + ((parent.Height - child.Height) / 2);
+            child.Location = new Point(Math.Max(x, 0), Math.Max(y, 0));
         }
     }
 }

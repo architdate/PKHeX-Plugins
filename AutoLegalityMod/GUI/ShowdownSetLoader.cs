@@ -69,6 +69,11 @@ namespace AutoModPlugins
 
         private static AutoModErrorCode ImportSetToTabs(ShowdownSet set)
         {
+            // ALM Settings
+            APILegality.UseTrainerData = Properties.AutoLegality.Default.UseTrainerData;
+            APILegality.SetAllLegalRibbons = Properties.AutoLegality.Default.SetAllLegalRibbons;
+            APILegality.SetMatchingBalls = Properties.AutoLegality.Default.SetMatchingBalls;
+
             if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
                 return AutoModErrorCode.NoSingleImport;
             if (set.InvalidLines.Count > 0)
@@ -96,6 +101,11 @@ namespace AutoModPlugins
         /// <param name="replace">A boolean that determines if current pokemon will be replaced or not</param>
         private static AutoModErrorCode ImportSetsToBoxes(IReadOnlyList<ShowdownSet> sets, bool replace)
         {
+            // ALM Settings
+            APILegality.UseTrainerData = Properties.AutoLegality.Default.UseTrainerData;
+            APILegality.SetAllLegalRibbons = Properties.AutoLegality.Default.SetAllLegalRibbons;
+            APILegality.SetMatchingBalls = Properties.AutoLegality.Default.SetMatchingBalls;
+
             var timer = Stopwatch.StartNew();
             var sav = SaveFileEditor.SAV;
             var BoxData = sav.BoxData;

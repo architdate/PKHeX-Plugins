@@ -13,9 +13,10 @@ namespace PKHeX.Core.AutoMod
         /// Set a valid Pokeball based on a legality check's suggestions.
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
-        public static void SetSuggestedBall(this PKM pk)
+        public static void SetSuggestedBall(this PKM pk, bool matching = true)
         {
-            pk.SetMatchingBall();
+            if (matching) 
+                pk.SetMatchingBall();
             var la = new LegalityAnalysis(pk);
             var report = la.Report();
             if (!report.Contains(LegalityCheckStrings.LBallEncMismatch))
@@ -93,9 +94,10 @@ namespace PKHeX.Core.AutoMod
         /// Sets all ribbon flags according to a legality report.
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
-        public static void SetSuggestedRibbons(this PKM pk)
+        public static void SetSuggestedRibbons(this PKM pk, bool allValid = true)
         {
-            RibbonApplicator.SetAllValidRibbons(pk);
+            if (allValid)
+                RibbonApplicator.SetAllValidRibbons(pk);
             string report = new LegalityAnalysis(pk).Report();
             if (report.Contains(string.Format(LegalityCheckStrings.LRibbonFMissing_0, "")))
             {

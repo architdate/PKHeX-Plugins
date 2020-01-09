@@ -8,6 +8,11 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public static class APILegality
     {
+
+        public static bool UseTrainerData = true;
+        public static bool SetMatchingBalls = true;
+        public static bool SetAllLegalRibbons = true;
+
         /// <summary>
         /// Main function that auto legalizes based on the legality
         /// </summary>
@@ -31,7 +36,9 @@ namespace PKHeX.Core.AutoMod
             {
                 var ver = enc is IVersion v ? v.Version : destVer;
                 var gen = enc is IGeneration g ? g.Generation : dest.Generation;
-                var tr = TrainerSettings.GetSavedTrainerData(ver, gen, new SimpleTrainerInfo(ver));
+                ITrainerInfo tr = new SimpleTrainerInfo(ver);
+                if (UseTrainerData)
+                    tr = TrainerSettings.GetSavedTrainerData(ver, gen, new SimpleTrainerInfo(ver));
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
@@ -104,11 +111,11 @@ namespace PKHeX.Core.AutoMod
             pk.SetEncryptionConstant(enc);
             pk.SetShinyBoolean(set.Shiny, enc);
             pk.FixGender(set);
-            pk.SetSuggestedRibbons();
+            pk.SetSuggestedRibbons(SetAllLegalRibbons);
             pk.SetSuggestedMemories();
             pk.SetHTLanguage();
             pk.SetDynamaxLevel();
-            pk.SetSuggestedBall();
+            pk.SetSuggestedBall(SetMatchingBalls);
             pk.SetMarkings();
             pk.SetHappiness();
             pk.SetBelugaValues();

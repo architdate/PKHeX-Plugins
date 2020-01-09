@@ -7,7 +7,8 @@ namespace AutoModPlugins
     public class GPSSPlugin : AutoModPlugin
     {
         public override string Name => "GPSS Tools";
-        public override int Priority => 1;
+        public override int Priority => 2;
+        public string Url => Properties.AutoLegality.Default.GPSSBaseURL;
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
@@ -27,7 +28,7 @@ namespace AutoModPlugins
         {
             var pk = PKMEditor.PreparePKM();
             byte[] rawdata = pk.Data;
-            var postval = PKHeX.Core.AutoMod.NetUtil.GPSSPost(rawdata);
+            var postval = PKHeX.Core.AutoMod.NetUtil.GPSSPost(rawdata, Url);
             Clipboard.SetText(postval);
             WinFormsUtil.Alert(postval);
         }
@@ -46,7 +47,7 @@ namespace AutoModPlugins
                 {
                     if (long.TryParse(txt.Split('/')[txt.Split('/').Length - 1], out long code))
                     {
-                        var pkbytes = PKHeX.Core.AutoMod.NetUtil.GPSSDownload(code);
+                        var pkbytes = PKHeX.Core.AutoMod.NetUtil.GPSSDownload(code, Url);
                         var pkm = PKMConverter.GetPKMfromBytes(pkbytes);
                         if (LoadPKM(pkm))
                             WinFormsUtil.Alert("GPSS Pokemon loaded to PKM Editor");

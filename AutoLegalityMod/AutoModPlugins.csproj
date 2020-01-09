@@ -2,6 +2,9 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}</ProjectGuid>
@@ -38,11 +41,18 @@
       <HintPath>..\packages\PKHeX.Core.19.12.27\lib\net46\PKHeX.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\ALMSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ALMSettings.Designer.cs">
+      <DependentUpon>ALMSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QRCodeDumper.cs" />
     <Compile Include="GUI\QRParser.cs" />
     <Compile Include="Plugins\AutoModPlugin.cs" />
@@ -54,8 +64,15 @@
     <Compile Include="Plugins\LivingDex.cs" />
     <Compile Include="Plugins\MGDBDownloader.cs" />
     <Compile Include="Plugins\PGLRentalLegality.cs" />
+    <Compile Include="Plugins\SettingsEditor.cs" />
     <Compile Include="Plugins\SmogonGenner.cs" />
     <Compile Include="Plugins\URLGenning.cs" />
+    <Compile Include="Properties\AutoLegality.cs" />
+    <Compile Include="Properties\AutoLegality.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>AutoLegality.settings</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,7 +138,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\autolegalitymod.png" />
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\AutoLegality.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>AutoLegality.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\img\urlimport.png" />
     <None Include="Resources\img\smogongenner.png" />
     <None Include="Resources\img\pglqrcode.png" />
@@ -133,6 +155,9 @@
     <None Include="Resources\img\exporttrainerdata.png" />
     <None Include="Resources\img\legalizeboxes.png" />
     <Content Include="Resources\img\menuautolegality.png" />
+    <EmbeddedResource Include="GUI\ALMSettings.resx">
+      <DependentUpon>ALMSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

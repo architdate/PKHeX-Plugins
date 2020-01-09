@@ -47,9 +47,9 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="data">pkm data in bytes.</param>
         /// <returns></returns>
-        public static string GPSSPost(byte[] data)
+        public static string GPSSPost(byte[] data, string Url = "flagbrew.org")
         {
-            WebRequest request = WebRequest.Create("https://flagbrew.org/gpss/share");
+            WebRequest request = WebRequest.Create("https://" + $"{Url}" + "/gpss/share");
             request.Method = "POST";
             string boundary = "-----------";
             request.ContentType = "multipart/form-data; boundary=" + boundary;
@@ -107,10 +107,10 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="code">url long</param>
         /// <returns>byte array corresponding to a pkm</returns>
-        public static byte[] GPSSDownload(long code)
+        public static byte[] GPSSDownload(long code, string Url = "flagbrew.org")
         {
             // code is returned as a long
-            var request = (HttpWebRequest)WebRequest.Create("https://flagbrew.org/gpss/download/" + $"{code}");
+            var request = (HttpWebRequest)WebRequest.Create("https://" + $"{Url}" + "/gpss/download/" + $"{code}");
             request.Method = "GET";
             request.UserAgent = "PKHeX-Auto-Legality-Mod";
             var b64 = GetStringResponse(request);
