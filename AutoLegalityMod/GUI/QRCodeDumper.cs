@@ -25,7 +25,7 @@ namespace AutoModPlugins
             }
         }
 
-        public class QRCodeResult
+        private class QRCodeResult
         {
             public readonly PKM Source;
             public readonly Image Image;
@@ -53,7 +53,7 @@ namespace AutoModPlugins
             }
         }
 
-        public static List<QRCodeResult> GetQRCodeImages(IList<PKM> arr)
+        private static List<QRCodeResult> GetQRCodeImages(IList<PKM> arr)
         {
             var qrcodes = new List<QRCodeResult>();
             foreach (PKM pk in arr)
@@ -77,10 +77,10 @@ namespace AutoModPlugins
 
         private static Image GenerateQRCode(byte[] data, int ppm = 4)
         {
-            using (var generator = new QRCodeGenerator())
-            using (var qr_data = generator.CreateQRCode(data))
-            using (var qr_code = new QRCode(qr_data))
-                return qr_code.GetGraphic(ppm);
+            using var generator = new QRCodeGenerator();
+            using var qr_data = generator.CreateQRCode(data);
+            using var qr_code = new QRCode(qr_data);
+            return qr_code.GetGraphic(ppm);
         }
     }
 }

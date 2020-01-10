@@ -8,10 +8,9 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public static class APILegality
     {
-
-        public static bool UseTrainerData = true;
-        public static bool SetMatchingBalls = true;
-        public static bool SetAllLegalRibbons = true;
+        public static bool UseTrainerData { get; set; } = true;
+        public static bool SetMatchingBalls { get; set; } = true;
+        public static bool SetAllLegalRibbons { get; set; } = true;
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -319,7 +318,7 @@ namespace PKHeX.Core.AutoMod
             int iv_count = enc.FlawlessIVCount;
             int ability_param;
             int gender_ratio = pk.PersonalInfo.Gender;
-            int nature_param = 255; // random nature in raids
+            const int nature_param = 255; // random nature in raids
 
             // TODO: Ability param for A2 raids
             if (enc.Ability == 0)

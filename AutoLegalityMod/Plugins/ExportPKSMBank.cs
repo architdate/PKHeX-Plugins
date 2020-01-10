@@ -23,14 +23,12 @@ namespace AutoModPlugins
                 return;
 
             var bank = File.ReadAllBytes(path);
-            using (var fbd = new FolderBrowserDialog())
-            {
-                if (fbd.ShowDialog() != DialogResult.OK)
-                    return;
-                var count = PKSMUtil.ExportBank(bank, fbd.SelectedPath, out var previews);
-                PKMPreview.ExportCSV(previews, fbd.SelectedPath);
-                WinFormsUtil.Alert("Bank Exported!", $"Dumped {count} Pokémon!");
-            }
+            using var fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() != DialogResult.OK)
+                return;
+            var count = PKSMUtil.ExportBank(bank, fbd.SelectedPath, out var previews);
+            PKMPreview.ExportCSV(previews, fbd.SelectedPath);
+            WinFormsUtil.Alert("Bank Exported!", $"Dumped {count} Pokémon!");
         }
     }
 }

@@ -8,7 +8,7 @@ namespace AutoModPlugins
     {
         public override string Name => "GPSS Tools";
         public override int Priority => 2;
-        public string Url => Properties.AutoLegality.Default.GPSSBaseURL;
+        public static string Url => Properties.AutoLegality.Default.GPSSBaseURL;
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
@@ -38,39 +38,36 @@ namespace AutoModPlugins
             if (Clipboard.ContainsText())
             {
                 var txt = Clipboard.GetText();
-                if (!txt.Contains("/gpss/")) 
+                if (!txt.Contains("/gpss/"))
                 {
                     WinFormsUtil.Error("Invalid URL or incorrect data in the clipboard");
                     return;
                 }
-                else
+
+                if (!long.TryParse(txt.Split('/')[txt.Split('/').Length - 1], out long code))
                 {
-                    if (long.TryParse(txt.Split('/')[txt.Split('/').Length - 1], out long code))
-                    {
-                        var pkbytes = PKHeX.Core.AutoMod.NetUtil.GPSSDownload(code, Url);
-                        var pkm = PKMConverter.GetPKMfromBytes(pkbytes);
-                        if (LoadPKM(pkm))
-                            WinFormsUtil.Alert("GPSS Pokemon loaded to PKM Editor");
-                        else
-                            WinFormsUtil.Error("Error parsing PKM bytes. Make sure the pokemon is valid and can exist in this generation.");
-                    }
-                    else
-                    {
-                        WinFormsUtil.Error("Invalid URL (wrong code)");
-                        return;
-                    }
+                    WinFormsUtil.Error("Invalid URL (wrong code)");
+                    return;
                 }
+
+                var pkbytes = PKHeX.Core.AutoMod.NetUtil.GPSSDownload(code, Url);
+                var pkm = PKMConverter.GetPKMfromBytes(pkbytes);
+                if (!LoadPKM(pkm))
+                {
+                    WinFormsUtil.Error("Error parsing PKM bytes. Make sure the pokemon is valid and can exist in this generation.");
+                    return;
+                }
+                WinFormsUtil.Alert("GPSS Pokemon loaded to PKM Editor");
             }
         }
 
         private bool LoadPKM(PKM pk)
         {
-            pk = PKMConverter.ConvertToType(pk, SaveFileEditor.SAV.PKMType, out string c);
+            pk = PKMConverter.ConvertToType(pk, SaveFileEditor.SAV.PKMType, out _);
             if (pk == null)
                 return false;
             PKMEditor.PopulateFields(pk);
             return true;
         }
-
     }
 }

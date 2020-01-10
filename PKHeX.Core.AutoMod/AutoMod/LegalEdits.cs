@@ -13,9 +13,10 @@ namespace PKHeX.Core.AutoMod
         /// Set a valid Pokeball based on a legality check's suggestions.
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
+        /// <param name="matching">Set matching ball</param>
         public static void SetSuggestedBall(this PKM pk, bool matching = true)
         {
-            if (matching) 
+            if (matching)
                 pk.SetMatchingBall();
             var la = new LegalityAnalysis(pk);
             var report = la.Report();

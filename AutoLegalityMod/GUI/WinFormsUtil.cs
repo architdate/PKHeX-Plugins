@@ -44,7 +44,7 @@ namespace AutoModPlugins
         public static bool OpenSAVPKMDialog(IEnumerable<string> Extensions, out string path)
         {
             string supported = string.Join(";", Extensions.Select(s => $"*.{s}").Concat(new[] { "*.pkm" }));
-            var ofd = new OpenFileDialog
+            using var ofd = new OpenFileDialog
             {
                 Filter = "All Files|*.*" +
                          $"|Supported Files (*.*)|main;*.bin;{supported};*.bak" +

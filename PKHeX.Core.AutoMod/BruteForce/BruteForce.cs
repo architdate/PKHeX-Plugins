@@ -732,7 +732,7 @@ namespace PKHeX.Core.AutoMod
             }
             if (pk.GenNumber < 5)
                 pk.EncryptionConstant = pk.PID;
-            if (shiny) 
+            if (shiny)
                 pk.SetShinySID();
             var recheckLA = new LegalityAnalysis(pk);
             string updatedReport = recheckLA.Report();

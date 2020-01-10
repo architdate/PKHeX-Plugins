@@ -44,26 +44,24 @@ namespace AutoModPlugins
             using (Stream reqStream = request.GetRequestStream())
                 reqStream.Write(data, 0, data.Length);
 
-            using (WebResponse response = request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
+            using WebResponse response = request.GetResponse();
+            using Stream stream = response.GetResponseStream();
+            //add failing validation.
+            try
             {
-                //add failing validation.
-                try
-                {
-                    return Image.FromStream(stream);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.Message);
-                    //invalid QR
-                    return null;
-                }
+                return Image.FromStream(stream);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                //invalid QR
+                return null;
             }
         }
 
         private static byte[] ParseQR(Image q)
         {
-            var bitmap = new Bitmap(q);
+            using var bitmap = new Bitmap(q);
             var img = new RGBLuminanceSource(bitmap, bitmap.Width, bitmap.Height);
             var hybrid = new HybridBinarizer(img);
             var binaryMap = new BinaryBitmap(hybrid);

@@ -46,12 +46,13 @@ namespace PKHeX.Core.AutoMod
         /// GPSS upload function. POST request using multipart form-data
         /// </summary>
         /// <param name="data">pkm data in bytes.</param>
+        /// <param name="Url">location to fetch from</param>
         /// <returns></returns>
         public static string GPSSPost(byte[] data, string Url = "flagbrew.org")
         {
-            WebRequest request = WebRequest.Create("https://" + $"{Url}" + "/gpss/share");
+            WebRequest request = WebRequest.Create($"https://{Url}/gpss/share");
             request.Method = "POST";
-            string boundary = "-----------";
+            const string boundary = "-----------";
             request.ContentType = "multipart/form-data; boundary=" + boundary;
             // Build up the post message header  
             StringBuilder sb = new StringBuilder();
@@ -71,7 +72,7 @@ namespace PKHeX.Core.AutoMod
 
             string postHeader = sb.ToString();
             byte[] postHeaderBytes = Encoding.UTF8.GetBytes(postHeader);
-            byte[] boundaryBytes = Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+            byte[] boundaryBytes = Encoding.ASCII.GetBytes($"\r\n--{boundary}\r\n");
             long length = postHeaderBytes.Length + data.Length + boundaryBytes.Length;
             request.ContentLength = length;
             using (Stream datastream = request.GetRequestStream())
@@ -83,13 +84,11 @@ namespace PKHeX.Core.AutoMod
             // Get the response.
             try
             {
-                using (WebResponse response = request.GetResponse())
-                using (Stream responseStream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(responseStream))
-                {
-                    string responseFromServer = reader.ReadToEnd();
-                    return "Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://flagbrew.org/gpss/view/" + responseFromServer;
-                }
+                using WebResponse response = request.GetResponse();
+                using Stream responseStream = response.GetResponseStream();
+                using StreamReader reader = new StreamReader(responseStream);
+                string responseFromServer = reader.ReadToEnd();
+                return "Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://flagbrew.org/gpss/view/" + responseFromServer;
             }
             catch (WebException e)
             {
@@ -106,11 +105,12 @@ namespace PKHeX.Core.AutoMod
         /// GPSS downloader
         /// </summary>
         /// <param name="code">url long</param>
+        /// <param name="Url">location to fetch from</param>
         /// <returns>byte array corresponding to a pkm</returns>
         public static byte[] GPSSDownload(long code, string Url = "flagbrew.org")
         {
             // code is returned as a long
-            var request = (HttpWebRequest)WebRequest.Create("https://" + $"{Url}" + "/gpss/download/" + $"{code}");
+            var request = (HttpWebRequest)WebRequest.Create($"https://{Url}/gpss/download/{code}");
             request.Method = "GET";
             request.UserAgent = "PKHeX-Auto-Legality-Mod";
             var b64 = GetStringResponse(request);

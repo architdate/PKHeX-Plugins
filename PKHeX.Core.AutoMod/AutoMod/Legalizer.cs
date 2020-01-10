@@ -51,9 +51,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="arr">Current list of data to write to</param>
         /// <param name="start">Starting offset to place converted details</param>
         /// <param name="overwrite">Overwrite</param>
-        /// <param name="allowAPI">Use <see cref="Core"/> to find and generate a new pkm</param>
         /// <returns>Result code indicating success or failure</returns>
-        public static AutoModErrorCode ImportToExisting(this ITrainerInfo tr, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, int start = 0, bool overwrite = true, bool allowAPI = true)
+        public static AutoModErrorCode ImportToExisting(this ITrainerInfo tr, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, int start = 0, bool overwrite = true)
         {
             var emptySlots = overwrite
                 ? Enumerable.Range(start, sets.Count).ToList()

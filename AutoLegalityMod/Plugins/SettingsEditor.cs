@@ -16,11 +16,12 @@ namespace AutoModPlugins
             modmenu.DropDownItems.Add(ctrl);
         }
 
-        private void SettingsForm(object sender, EventArgs e)
+        private static void SettingsForm(object sender, EventArgs e)
         {
             var settings = Properties.AutoLegality.Default;
-            var form = new ALMSettings(settings);
+            using var form = new ALMSettings(settings);
             form.ShowDialog();
+            settings.Save();
         }
     }
 }
