@@ -56,12 +56,13 @@ namespace PKHeX.Core.AutoMod
             var split1 = Page.Split(new[] { "\",\"abilities\":" }, StringSplitOptions.None);
             for (int i = 1; i < split1.Length; i++)
             {
+                var shiny = split1[i-1].Contains("\"shiny\":true");
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
 
                 var tmp = split2[0];
                 SetConfig.Add(tmp);
 
-                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName);
+                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName, shiny);
                 SetText.Add(morphed);
 
                 var converted = new ShowdownSet(morphed);
@@ -100,15 +101,15 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static string ConvertSetToShowdown(string set, string species)
+        private static string ConvertSetToShowdown(string set, string species, bool shiny)
         {
-            var result = GetSetLines(set, species);
+            var result = GetSetLines(set, species, shiny);
             return string.Join(Environment.NewLine, result);
         }
 
         private static readonly string[] statNames = { "HP", "Atk", "Def", "SpA", "SpD", "Spe" };
 
-        private static IEnumerable<string> GetSetLines(string set, string species)
+        private static IEnumerable<string> GetSetLines(string set, string species, bool shiny)
         {
             TryGetToken(set, "\"items\":[\"", "\"", out var item);
             TryGetToken(set, "\"moveslots\":", ",\"evconfigs\":", out var movesets);
@@ -127,6 +128,8 @@ namespace PKHeX.Core.AutoMod
             {
                 item.Length == 0 ? species : $"{species} @ {item}",
             };
+            if (shiny)
+                result.Add($"Shiny: Yes");
             if (!string.IsNullOrWhiteSpace(ability))
                 result.Add($"Ability: {ability}");
             if (evstr.Length >= 3)
