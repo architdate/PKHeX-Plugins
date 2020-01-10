@@ -30,7 +30,8 @@ namespace PKHeX.Core.AutoMod
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
-            var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves);
+            var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
+            var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             foreach (var enc in encounters)
             {
                 var ver = enc is IVersion v ? v.Version : destVer;
@@ -161,6 +162,21 @@ namespace PKHeX.Core.AutoMod
                 case 0: pk.Gender = 1; break;
                 case 1: pk.Gender = 0; break;
                 default: pk.GetSaneGender(); break;
+            }
+        }
+
+        private static void ApplyMarkings(this PKM pk, bool apply = true, bool competitive = false)
+        {
+            if (!apply || pk.Format <= 3) // No markings if pk.Format is less than or equal to 3
+                return;
+            if (!competitive || pk.Format < 7) // Simple markings dont apply with competitive atall
+                // Red for 0/1 IVs and Blue for 30/31 IVs (PKHeX default behaviour)
+                pk.SetMarkings();
+            else
+            {
+                // Red for 30 denoting imperfect but close to perfect. Blue for 31. No marking for 0 IVs
+
+                pk.SetMarkings();    
             }
         }
 
