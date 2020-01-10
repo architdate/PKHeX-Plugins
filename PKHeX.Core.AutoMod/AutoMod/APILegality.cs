@@ -299,7 +299,7 @@ namespace PKHeX.Core.AutoMod
                 if (Species == 658 && pk.AltForm == 1)
                     pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
                 if (method != PIDType.G5MGShiny)
-                    pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, (uint)(AbilityNumber * 0x10001));
+                    pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
             }
             else
             {
