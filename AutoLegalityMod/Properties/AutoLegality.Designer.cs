@@ -70,5 +70,29 @@ namespace AutoModPlugins.Properties {
                 this["UseTrainerData"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseCompetitiveMarkings {
+            get {
+                return ((bool)(this["UseCompetitiveMarkings"]));
+            }
+            set {
+                this["UseCompetitiveMarkings"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseMarkings {
+            get {
+                return ((bool)(this["UseMarkings"]));
+            }
+            set {
+                this["UseMarkings"] = value;
+            }
+        }
     }
 }

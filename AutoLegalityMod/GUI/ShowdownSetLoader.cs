@@ -73,6 +73,8 @@ namespace AutoModPlugins
             APILegality.UseTrainerData = Properties.AutoLegality.Default.UseTrainerData;
             APILegality.SetAllLegalRibbons = Properties.AutoLegality.Default.SetAllLegalRibbons;
             APILegality.SetMatchingBalls = Properties.AutoLegality.Default.SetMatchingBalls;
+            APILegality.UseCompetitiveMarkings = Properties.AutoLegality.Default.UseCompetitiveMarkings;
+            APILegality.UseMarkings = Properties.AutoLegality.Default.UseMarkings;
 
             if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
                 return AutoModErrorCode.NoSingleImport;
@@ -105,6 +107,8 @@ namespace AutoModPlugins
             APILegality.UseTrainerData = Properties.AutoLegality.Default.UseTrainerData;
             APILegality.SetAllLegalRibbons = Properties.AutoLegality.Default.SetAllLegalRibbons;
             APILegality.SetMatchingBalls = Properties.AutoLegality.Default.SetMatchingBalls;
+            APILegality.UseCompetitiveMarkings = Properties.AutoLegality.Default.UseCompetitiveMarkings;
+            APILegality.UseMarkings = Properties.AutoLegality.Default.UseMarkings;
 
             var timer = Stopwatch.StartNew();
             var sav = SaveFileEditor.SAV;

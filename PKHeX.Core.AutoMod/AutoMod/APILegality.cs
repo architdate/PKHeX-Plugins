@@ -11,6 +11,8 @@ namespace PKHeX.Core.AutoMod
         public static bool UseTrainerData { get; set; } = true;
         public static bool SetMatchingBalls { get; set; } = true;
         public static bool SetAllLegalRibbons { get; set; } = true;
+        public static bool UseCompetitiveMarkings { get; set; } = false;
+        public static bool UseMarkings { get; set; } = true;
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -116,7 +118,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetHTLanguage();
             pk.SetDynamaxLevel();
             pk.SetSuggestedBall(SetMatchingBalls);
-            pk.SetMarkings();
+            pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.SetHappiness();
             pk.SetBelugaValues();
         }
@@ -165,18 +167,26 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Comptitive IVs or PKHeX default IVs implementation
+        /// </summary>
+        /// <param name="pk"></param>
+        /// <param name="apply">boolean to apply or not to apply markings</param>
+        /// <param name="competitive">boolean to apply competitive IVs instead of the default behaviour</param>
         private static void ApplyMarkings(this PKM pk, bool apply = true, bool competitive = false)
         {
             if (!apply || pk.Format <= 3) // No markings if pk.Format is less than or equal to 3
                 return;
             if (!competitive || pk.Format < 7) // Simple markings dont apply with competitive atall
-                // Red for 0/1 IVs and Blue for 30/31 IVs (PKHeX default behaviour)
+                // Blue for 31/1 IVs and Red for 30/0 IVs (PKHeX default behaviour)
                 pk.SetMarkings();
             else
             {
                 // Red for 30 denoting imperfect but close to perfect. Blue for 31. No marking for 0 IVs
-
-                pk.SetMarkings();    
+                var markings = new int[] { 0, 0, 0, 0, 0, 0 };
+                for (int i = 0; i < pk.IVs.Length; i++)
+                    if (pk.IVs[i] == 31 || pk.IVs[i] == 30) markings[i] = pk.IVs[i] == 31 ? 1 : 2;
+                pk.Markings = PKX.ReorderSpeedLast(markings);    
             }
         }
 
