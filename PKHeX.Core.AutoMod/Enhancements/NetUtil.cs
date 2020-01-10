@@ -88,7 +88,7 @@ namespace PKHeX.Core.AutoMod
                 using Stream responseStream = response.GetResponseStream();
                 using StreamReader reader = new StreamReader(responseStream);
                 string responseFromServer = reader.ReadToEnd();
-                return "Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://flagbrew.org/gpss/view/" + responseFromServer;
+                return $"Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://{Url}/gpss/view/" + responseFromServer;
             }
             catch (WebException e)
             {
