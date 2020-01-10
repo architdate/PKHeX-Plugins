@@ -45,3 +45,4 @@ To contribute to the repository, you can submit a pull request to the repository
 
 ## Credits:
 [@kwsch](https://github.com/kwsch): for providing the IPlugin interface in PKHeX, which allows loading of this project's Plugin DLL files. Also for the support provided in the support server.
+[FlatIcon](https://www.flaticon.com/): for their icons. Author credits (Those Icons, Pixel perfect)

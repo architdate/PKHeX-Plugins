@@ -138,6 +138,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\autolegalitymod.png" />
+    <Content Include="Resources\img\settings.png" />
+    <Content Include="Resources\img\uploadgpss.png" />
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\AutoLegality.settings">
@@ -154,6 +156,7 @@
     <None Include="Resources\img\exportqrcode.png" />
     <None Include="Resources\img\exporttrainerdata.png" />
     <None Include="Resources\img\legalizeboxes.png" />
+    <Content Include="Resources\img\flagbrew.png" />
     <Content Include="Resources\img\menuautolegality.png" />
     <EmbeddedResource Include="GUI\ALMSettings.resx">
       <DependentUpon>ALMSettings.cs</DependentUpon>
