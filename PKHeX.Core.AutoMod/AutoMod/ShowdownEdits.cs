@@ -32,7 +32,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Showdown Set to refer</param>
-        public static void SetNatureAbility(this PKM pk, ShowdownSet set)
+        public static void SetNatureAbility(this PKM pk, ShowdownSet set, int preference = -1)
         {
             // Values that are must for showdown set to work, IVs should be adjusted to account for this
             pk.SetNature(set.Nature);
@@ -40,6 +40,13 @@ namespace PKHeX.Core.AutoMod
                 pkm.Nature = Math.Max(0, set.Nature);
             if (pk.Ability != set.Ability)
                 pk.SetAbility(set.Ability);
+
+            if (preference > 0)
+            {
+                // Set preferred ability number if applicable
+                var abilities = pk.PersonalInfo.Abilities;
+                pk.AbilityNumber = abilities[preference >> 1] == set.Ability ? preference : pk.AbilityNumber;
+            }
         }
 
         /// <summary>

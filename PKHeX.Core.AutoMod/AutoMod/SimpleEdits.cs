@@ -49,6 +49,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="isShiny">Shiny value that needs to be set</param>
         public static void SetShinyBoolean(this PKM pk, bool isShiny, IEncounterable enc)
         {
+            if (pk.IsShiny == isShiny)
+                return; // don't mess with stuff if pk is already shiny
             if (!isShiny)
             {
                 pk.SetUnshiny();
@@ -62,7 +64,17 @@ namespace PKHeX.Core.AutoMod
                 else if (pk.VC)
                     pk.SetIsShiny(true);
                 else
-                    pk.SetShinySID();
+                {
+                    if (enc is MysteryGift mg) 
+                    {
+                        if (mg.IsEgg)
+                            pk.SetShinySID(); // not SID locked
+                        else
+                            pk.SetShiny(); // if SID cant be changed, PID has to be able to change if shiny is possible.
+                    }
+                    else
+                        pk.SetShinySID(); // no mg = no lock
+                }
             }
         }
 

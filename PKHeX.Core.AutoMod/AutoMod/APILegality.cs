@@ -101,13 +101,14 @@ namespace PKHeX.Core.AutoMod
         private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc)
         {
             var pidiv = MethodFinder.Analyze(pk);
+            var abilitypref = pk.AbilityNumber;
 
             pk.SetVersion(unconverted); // Preemptive Version setting
             pk.SetSpeciesLevel(set, Form);
             pk.SetRecordFlags(set.Moves);
             pk.SetMovesEVsItems(set);
             pk.SetHandlerandMemory(handler);
-            pk.SetNatureAbility(set);
+            pk.SetNatureAbility(set, abilitypref);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
             pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
             pk.SetEncryptionConstant(enc);
@@ -352,7 +353,7 @@ namespace PKHeX.Core.AutoMod
             else
             {
                 pk.IVs = set.IVs;
-                if (li.EncounterMatch is PCD)
+                if (li.EncounterMatch is PCD || li.EncounterMatch is EncounterEgg)
                     return;
                 FindPIDIV(pk, method, hpType);
                 ValidateGender(pk);
