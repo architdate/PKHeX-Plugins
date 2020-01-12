@@ -437,6 +437,8 @@ namespace PKHeX.Core.AutoMod
                 if (Method == PIDType.None)
                     pk.SetPIDGender(pk.Gender);
             }
+            if (Method == PIDType.Method_1_Roamer && pk.HPType != (int)MoveType.Fighting - 1) // M1 Roamers can only be HP fighting
+                return;
             var iterPKM = pk.Clone();
             while (true)
             {
