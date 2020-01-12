@@ -9,7 +9,7 @@ namespace PKHeX.Core.AutoMod
     {
         private static readonly TrainerDatabase Database = new TrainerDatabase();
         private static readonly string TrainerPath = Path.Combine(Directory.GetCurrentDirectory(), "trainers");
-        private static readonly ITrainerInfo DefaultFallback = new SimpleTrainerInfo();
+        internal static readonly ITrainerInfo DefaultFallback = new SimpleTrainerInfo();
         static TrainerSettings() => LoadTrainerDatabaseFromPath(TrainerPath);
 
         /// <summary>

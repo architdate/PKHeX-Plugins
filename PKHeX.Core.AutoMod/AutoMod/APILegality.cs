@@ -38,15 +38,13 @@ namespace PKHeX.Core.AutoMod
             {
                 var ver = enc is IVersion v ? v.Version : destVer;
                 var gen = enc is IGeneration g ? g.Generation : dest.Generation;
-                ITrainerInfo tr = new SimpleTrainerInfo(ver);
-                if (UseTrainerData)
-                    tr = TrainerSettings.GetSavedTrainerData(ver, gen, new SimpleTrainerInfo(ver));
+                var tr = UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, gen) : TrainerSettings.DefaultFallback;
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
+                if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
+                    raw.ForceHatchPKM();
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
                     continue;
-                if (pk.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
-                    pk.ForceHatchPKM();
 
                 ApplySetDetails(pk, set, Form, raw, dest, enc);
                 if (set.CanGigantamax && pk is IGigantamax gmax)
@@ -225,6 +223,10 @@ namespace PKHeX.Core.AutoMod
                 case (int)GameVersion.DP:
                 case (int)GameVersion.DPPt:
                     pk.Version = (int)GameVersion.D;
+                    break;
+                case (int)GameVersion.COLO:
+                case (int)GameVersion.XD:
+                    pk.Version = (int)GameVersion.CXD;
                     break;
                 case (int)GameVersion.RS:
                 case (int)GameVersion.RSE:
