@@ -41,7 +41,7 @@ namespace PKHeX.Core.AutoMod
                 var tr = UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, gen) : TrainerSettings.DefaultFallback;
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
-                    raw.ForceHatchPKM();
+                    raw.HandleEggEncounters();
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
                     continue;
@@ -121,6 +121,7 @@ namespace PKHeX.Core.AutoMod
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.SetHappiness();
             pk.SetBelugaValues();
+            pk.FixEdgeCases();
         }
 
         /// <summary>
@@ -274,6 +275,10 @@ namespace PKHeX.Core.AutoMod
             return true;
         }
 
+        /// <summary>
+        /// Showdown quirks lets you have battle only moves in battle only formes. Transform back to base move.
+        /// </summary>
+        /// <param name="changedSet"></param>
         private static void ReplaceBattleOnlyMoves(ShowdownSet changedSet)
         {
             switch (changedSet.Species)
@@ -293,6 +298,19 @@ namespace PKHeX.Core.AutoMod
                     break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Handle Egg encounters (for example PGF events that were distributed as eggs)
+        /// </summary>
+        /// <param name="pk">pkm distributed as an egg</param>
+        private static void HandleEggEncounters(this PKM pk)
+        {
+            if (!pk.IsEgg)
+                return; // should be checked before, but condition added for future usecases
+            // Handle egg encounters. Set them as traded and force hatch them before proceeding
+            pk.ForceHatchPKM();
+            pk.Egg_Location = Locations.TradedEggLocation(pk.GenNumber);
         }
 
         /// <summary>
@@ -510,6 +528,17 @@ namespace PKHeX.Core.AutoMod
                 default:
                     return PIDType.None;
             }
+        }
+
+        /// <summary>
+        /// Edge case memes
+        /// </summary>
+        /// <param name="pk"></param>
+        private static void FixEdgeCases(this PKM pk)
+        {
+            // Shiny Manaphy Egg
+            if (pk.Species == (int)Species.Manaphy && pk.IsShiny)
+                pk.Egg_Location = Locations.LinkTrade4;
         }
     }
 }
