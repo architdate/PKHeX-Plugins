@@ -45,6 +45,8 @@ namespace PKHeX.Core.AutoMod
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
                     continue;
+                if (pk.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
+                    pk.ForceHatchPKM();
 
                 ApplySetDetails(pk, set, Form, raw, dest, enc);
                 if (set.CanGigantamax && pk is IGigantamax gmax)
