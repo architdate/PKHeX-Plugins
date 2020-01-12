@@ -9,7 +9,11 @@ namespace PKHeX.Core.AutoMod
     {
         private static readonly TrainerDatabase Database = new TrainerDatabase();
         private static readonly string TrainerPath = Path.Combine(Directory.GetCurrentDirectory(), "trainers");
-        internal static readonly ITrainerInfo DefaultFallback = new SimpleTrainerInfo();
+        private static readonly ITrainerInfo DefaultFallback8 = new SimpleTrainerInfo(GameVersion.SW);
+        private static readonly ITrainerInfo DefaultFallback7 = new SimpleTrainerInfo(GameVersion.UM);
+
+        internal static ITrainerInfo DefaultFallback(int gen = 8) => gen > 7 ? DefaultFallback8 : DefaultFallback7;
+
         static TrainerSettings() => LoadTrainerDatabaseFromPath(TrainerPath);
 
         /// <summary>
@@ -39,7 +43,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="generation">Generation of origin requested.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
-        public static ITrainerInfo GetSavedTrainerData(int generation, ITrainerInfo? fallback = null) => Database.GetTrainerFromGen(generation) ?? fallback ?? DefaultFallback;
+        public static ITrainerInfo GetSavedTrainerData(int generation, ITrainerInfo? fallback = null) => Database.GetTrainerFromGen(generation) ?? fallback ?? DefaultFallback(generation);
 
         /// <summary>
         /// Gets a possible Trainer Data for the requested <see cref="version"/>.
