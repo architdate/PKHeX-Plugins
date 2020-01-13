@@ -95,6 +95,7 @@ namespace PKHeX.Core.AutoMod
                 if (la.Parsed && !pk.WasEvent)
                     pk.SetRelearnMoves(la.GetSuggestedRelearnMoves());
             }
+            pk.SetCorrectMetLevel();
         }
     }
 }

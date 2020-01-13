@@ -46,7 +46,7 @@ namespace PKHeX.Core.AutoMod
                 {
                     if (pk.Version != (int)GameVersion.CXD)
                     {
-                        var encounter = la.GetSuggestedMetInfo();
+                        var encounter = EncounterSuggestion.GetSuggestedMetInfo(pk);
                         if (encounter != null)
                             m = encounter.Relearn;
                     }
@@ -67,7 +67,7 @@ namespace PKHeX.Core.AutoMod
         {
             var la = new LegalityAnalysis(pk);
 
-            var encounter = la.GetSuggestedMetInfo();
+            var encounter = EncounterSuggestion.GetSuggestedMetInfo(pk);
             if (encounter == null || (pk.Format >= 3 && encounter.Location < 0))
                 return;
 

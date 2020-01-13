@@ -87,7 +87,11 @@ namespace PKHeX.Core.AutoMod
                 }
                 else
                 {
-                    pk.SetSuggestedMetLocation();
+                    try
+                    {
+                        pk.SetSuggestedMetLocation();
+                    }
+                    catch { }
                 }
                 if (pk.GenNumber > 4)
                     pk.Met_Level = 1;
@@ -95,7 +99,11 @@ namespace PKHeX.Core.AutoMod
                 pk.SetMarkings();
                 pk.CurrentHandler = 1;
                 pk.HT_Name = "Archit";
-                pk.SetSuggestedRelearnMoves();
+                try
+                {
+                    pk.SetSuggestedRelearnMoves();
+                }
+                catch { }
                 pk.SetPIDNature(pk.Nature);
                 if (shiny)
                     pk.SetShiny();
@@ -202,10 +210,18 @@ namespace PKHeX.Core.AutoMod
                     pk.Met_Level = 100;
                     break;
                 default:
-                    pk.SetSuggestedMetLocation();
+                    try
+                    {
+                        pk.SetSuggestedMetLocation();
+                    }
+                    catch { }
                     break;
             }
-            pk.SetSuggestedRelearnMoves();
+            try
+            {
+                pk.SetSuggestedRelearnMoves();
+            }
+            catch { }
             pk.CurrentHandler = 1;
             pk.HT_Name = "Archit";
             pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));

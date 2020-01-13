@@ -33,6 +33,7 @@ namespace PKHeX.Core.AutoMod
                 destVer = s.Version;
 
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
+            EncounterMovesetGenerator.PriorityList = new EncounterOrder[] { EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery };
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             foreach (var enc in encounters)
             {
@@ -353,8 +354,13 @@ namespace PKHeX.Core.AutoMod
             else
             {
                 pk.IVs = set.IVs;
-                if (li.EncounterMatch is PCD || li.EncounterMatch is EncounterEgg)
+                if (li.EncounterMatch is PCD)
                     return;
+                if (li.EncounterMatch is EncounterEgg)
+                {
+                    pk.SetPIDNature(Nature);
+                    return;
+                }
                 FindPIDIV(pk, method, hpType);
                 ValidateGender(pk);
             }
@@ -529,6 +535,23 @@ namespace PKHeX.Core.AutoMod
                 default:
                     return PIDType.None;
             }
+        }
+
+        public static void SetCorrectMetLevel(this PKM pk)
+        {
+            if (pk.Met_Location != Locations.Transfer4 && pk.Met_Location != Locations.Transfer3)
+                return;
+            var level = pk.Met_Level;
+            if (pk.CurrentLevel <= level)
+                return;
+            while (pk.CurrentLevel >= pk.Met_Level)
+            {
+                pk.Met_Level += 1;
+                var la = new LegalityAnalysis(pk);
+                if (la.Info.Moves.All(z => z.Valid))
+                    return;
+            }
+            pk.Met_Level = level; // Set back to normal if nothing legalized
         }
 
         /// <summary>
