@@ -354,8 +354,12 @@ namespace PKHeX.Core.AutoMod
             else
             {
                 pk.IVs = set.IVs;
-                if (li.EncounterMatch is PCD)
+                if (li.EncounterMatch is PCD d)
+                {
+                    if (d.Gift.PK.PID != 1)
+                        pk.PID = d.Gift.PK.PID;
                     return;
+                }
                 if (li.EncounterMatch is EncounterEgg)
                 {
                     pk.SetPIDNature(Nature);
