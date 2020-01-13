@@ -102,7 +102,7 @@ namespace PKHeX.Core.AutoMod
         private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc)
         {
             var pidiv = MethodFinder.Analyze(pk);
-            var abilitypref = pk.AbilityNumber;
+            var abilitypref = GetAbilityPreference(pk, enc);
 
             pk.SetVersion(unconverted); // Preemptive Version setting
             pk.SetSpeciesLevel(set, Form);
@@ -535,6 +535,19 @@ namespace PKHeX.Core.AutoMod
                 default:
                     return PIDType.None;
             }
+        }
+
+        private static int GetAbilityPreference(PKM pk, IEncounterable enc)
+        {
+            var pref = pk.AbilityNumber;
+            if (enc is EncounterTrade et)
+                pref = et.Ability;
+            else if (enc is EncounterStatic es)
+            {
+                if (es.Ability != 0 && es.Ability != 1)
+                    pref = es.Ability;
+            }
+            return pref;
         }
 
         public static void SetCorrectMetLevel(this PKM pk)
