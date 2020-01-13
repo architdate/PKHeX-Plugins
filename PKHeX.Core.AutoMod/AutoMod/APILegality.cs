@@ -105,7 +105,7 @@ namespace PKHeX.Core.AutoMod
             var abilitypref = GetAbilityPreference(pk, enc);
 
             pk.SetVersion(unconverted); // Preemptive Version setting
-            pk.SetSpeciesLevel(set, Form);
+            pk.SetSpeciesLevel(set, Form, enc);
             pk.SetRecordFlags(set.Moves);
             pk.SetMovesEVsItems(set);
             pk.SetHandlerandMemory(handler);

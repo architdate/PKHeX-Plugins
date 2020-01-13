@@ -55,15 +55,44 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Set to use as reference</param>
         /// <param name="Form">Form to apply</param>
-        public static void SetSpeciesLevel(this PKM pk, ShowdownSet set, int Form)
+        public static void SetSpeciesLevel(this PKM pk, ShowdownSet set, int Form, IEncounterable enc)
         {
             pk.Species = set.Species;
             pk.ApplySetGender(set);
             pk.SetAltForm(Form);
+            pk.SetFormArgument(enc);
             pk.SetNickname(set.Nickname);
             pk.CurrentLevel = set.Level;
             if (pk.CurrentLevel == 50)
                 pk.CurrentLevel = 100; // VGC Override
+        }
+
+        private static void SetFormArgument(this PKM pk, IEncounterable enc)
+        {
+            if (pk is IFormArgument f)
+                switch (pk.Species)
+                {
+                    default:
+                        f.FormArgument = 0;
+                        break;
+                    case (int)Species.Hoopa:
+                    case (int)Species.Furfrou:
+                        {
+                            if (pk.AltForm != 0)
+                                f.FormArgument = 1;
+                            else
+                                f.FormArgument = 0;
+                            break;
+                        }
+                    case (int)Species.Runerigus:
+                        {
+                            if (enc.Species == (int)Species.Runerigus)
+                                f.FormArgument = 0;
+                            else
+                                f.FormArgument = 49;
+                            break;
+                        }
+                }
         }
 
         private static void ApplySetGender(this PKM pk, ShowdownSet set)
