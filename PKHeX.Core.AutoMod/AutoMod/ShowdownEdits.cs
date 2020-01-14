@@ -32,6 +32,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Showdown Set to refer</param>
+        /// <param name="preference">Ability index (1/2/4) preferred; &lt;= 0 for any</param>
         public static void SetNatureAbility(this PKM pk, ShowdownSet set, int preference = -1)
         {
             // Values that are must for showdown set to work, IVs should be adjusted to account for this
@@ -55,6 +56,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Set to use as reference</param>
         /// <param name="Form">Form to apply</param>
+        /// <param name="enc">Encounter detail</param>
         public static void SetSpeciesLevel(this PKM pk, ShowdownSet set, int Form, IEncounterable enc)
         {
             pk.Species = set.Species;
@@ -70,29 +72,18 @@ namespace PKHeX.Core.AutoMod
         private static void SetFormArgument(this PKM pk, IEncounterable enc)
         {
             if (pk is IFormArgument f)
-                switch (pk.Species)
-                {
-                    default:
-                        f.FormArgument = 0;
-                        break;
-                    case (int)Species.Hoopa:
-                    case (int)Species.Furfrou:
-                        {
-                            if (pk.AltForm != 0)
-                                f.FormArgument = 1;
-                            else
-                                f.FormArgument = 0;
-                            break;
-                        }
-                    case (int)Species.Runerigus:
-                        {
-                            if (enc.Species == (int)Species.Runerigus)
-                                f.FormArgument = 0;
-                            else
-                                f.FormArgument = 49;
-                            break;
-                        }
-                }
+                f.FormArgument = GetSuggestedFormArgument(pk, enc.Species);
+        }
+
+        public static uint GetSuggestedFormArgument(PKM pk, int origSpecies = 0)
+        {
+            return pk.Species switch
+            {
+                (int)Species.Hoopa when pk.AltForm != 0 => 3,
+                (int)Species.Furfrou when pk.AltForm != 0 => 5,
+                (int)Species.Runerigus when origSpecies != (int)Species.Runerigus => 49,
+                _ => 0
+            };
         }
 
         private static void ApplySetGender(this PKM pk, ShowdownSet set)
