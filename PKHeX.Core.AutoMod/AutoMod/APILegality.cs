@@ -592,7 +592,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Edge case memes
+        /// Edge case memes for weird properties that I have no interest in setting for other pokemon.
         /// </summary>
         /// <param name="pk"></param>
         private static void FixEdgeCases(this PKM pk)
@@ -600,6 +600,8 @@ namespace PKHeX.Core.AutoMod
             // Shiny Manaphy Egg
             if (pk.Species == (int)Species.Manaphy && pk.IsShiny)
                 pk.Egg_Location = Locations.LinkTrade4;
+            if (pk.Species == (int)Species.Milotic && pk.Format < 5 && pk is IContestStats c) // Evolves via beauty
+                c.CNT_Beauty = 170; 
         }
     }
 }
