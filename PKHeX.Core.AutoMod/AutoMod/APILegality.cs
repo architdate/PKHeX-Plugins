@@ -278,6 +278,25 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
+        /// Set formes of specific species to altform 0 since they cannot have a form while boxed
+        /// </summary>
+        /// <param name="pk">pokemon passed to the method</param>
+        public static void SetBoxForm(this PKM pk)
+        {
+            switch (pk.Species)
+            {
+                case (int)Species.Shaymin when pk.AltForm != 0:
+                case (int)Species.Hoopa when pk.AltForm != 0:
+                case (int)Species.Furfrou when pk.AltForm != 0:
+                    pk.AltForm = 0;
+                    if (pk is IFormArgument f) f.FormArgument = 0;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
         /// Showdown quirks lets you have battle only moves in battle only formes. Transform back to base move.
         /// </summary>
         /// <param name="changedSet"></param>
