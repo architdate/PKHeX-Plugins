@@ -70,11 +70,7 @@ namespace AutoModPlugins
         private static AutoModErrorCode ImportSetToTabs(ShowdownSet set)
         {
             // ALM Settings
-            APILegality.UseTrainerData = Properties.AutoLegality.Default.UseTrainerData;
-            APILegality.SetAllLegalRibbons = Properties.AutoLegality.Default.SetAllLegalRibbons;
-            APILegality.SetMatchingBalls = Properties.AutoLegality.Default.SetMatchingBalls;
-            APILegality.UseCompetitiveMarkings = Properties.AutoLegality.Default.UseCompetitiveMarkings;
-            APILegality.UseMarkings = Properties.AutoLegality.Default.UseMarkings;
+            SetAPILegalitySettings();
 
             if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
                 return AutoModErrorCode.NoSingleImport;
@@ -104,11 +100,7 @@ namespace AutoModPlugins
         private static AutoModErrorCode ImportSetsToBoxes(IReadOnlyList<ShowdownSet> sets, bool replace)
         {
             // ALM Settings
-            APILegality.UseTrainerData = Properties.AutoLegality.Default.UseTrainerData;
-            APILegality.SetAllLegalRibbons = Properties.AutoLegality.Default.SetAllLegalRibbons;
-            APILegality.SetMatchingBalls = Properties.AutoLegality.Default.SetMatchingBalls;
-            APILegality.UseCompetitiveMarkings = Properties.AutoLegality.Default.UseCompetitiveMarkings;
-            APILegality.UseMarkings = Properties.AutoLegality.Default.UseMarkings;
+            SetAPILegalitySettings();
 
             var timer = Stopwatch.StartNew();
             var sav = SaveFileEditor.SAV;
@@ -129,6 +121,16 @@ namespace AutoModPlugins
             var timespan = timer.Elapsed;
             Debug.WriteLine($"Time to complete {nameof(ImportSetsToBoxes)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
             return AutoModErrorCode.None;
+        }
+
+        private static void SetAPILegalitySettings()
+        {
+            APILegality.UseTrainerData = Properties.AutoLegality.Default.UseTrainerData;
+            APILegality.SetAllLegalRibbons = Properties.AutoLegality.Default.SetAllLegalRibbons;
+            APILegality.SetMatchingBalls = Properties.AutoLegality.Default.SetMatchingBalls;
+            APILegality.UseCompetitiveMarkings = Properties.AutoLegality.Default.UseCompetitiveMarkings;
+            APILegality.UseMarkings = Properties.AutoLegality.Default.UseMarkings;
+            APILegality.UseXOROSHIRO = Properties.AutoLegality.Default.UseXOROSHIRO;
         }
     }
 }

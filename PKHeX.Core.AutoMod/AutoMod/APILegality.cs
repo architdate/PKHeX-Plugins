@@ -13,6 +13,7 @@ namespace PKHeX.Core.AutoMod
         public static bool SetAllLegalRibbons { get; set; } = true;
         public static bool UseCompetitiveMarkings { get; set; } = false;
         public static bool UseMarkings { get; set; } = true;
+        public static bool UseXOROSHIRO { get; set; } = true;
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -411,7 +412,7 @@ namespace PKHeX.Core.AutoMod
             {
                 ulong seed = GetRandomULong();
                 var RNG = new XOROSHIRO(seed);
-                if (!shiny)
+                if (!shiny && UseXOROSHIRO)
                     SetValuesFromSeed8Unshiny(pk, RNG, iv_count, ability_param, gender_ratio, nature_param);
                 if (!(pk.Nature == iterPKM.Nature && pk.AltForm == iterPKM.AltForm))
                     continue;
