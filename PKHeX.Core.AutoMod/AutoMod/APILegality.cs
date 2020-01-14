@@ -43,7 +43,7 @@ namespace PKHeX.Core.AutoMod
                 var tr = UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, gen) : TrainerSettings.DefaultFallback(gen);
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
-                    raw.HandleEggEncounters();
+                    raw.HandleEggEncounters(enc, tr);
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
                     continue;
@@ -326,12 +326,17 @@ namespace PKHeX.Core.AutoMod
         /// Handle Egg encounters (for example PGF events that were distributed as eggs)
         /// </summary>
         /// <param name="pk">pkm distributed as an egg</param>
-        private static void HandleEggEncounters(this PKM pk)
+        private static void HandleEggEncounters(this PKM pk, IEncounterable enc, ITrainerInfo SAV)
         {
             if (!pk.IsEgg)
                 return; // should be checked before, but condition added for future usecases
             // Handle egg encounters. Set them as traded and force hatch them before proceeding
             pk.ForceHatchPKM();
+            if (enc is MysteryGift mg && mg.IsEgg)
+            {
+                pk.Language = (int)LanguageID.English;
+                pk.SetTrainerData(SAV);
+            }
             pk.Egg_Location = Locations.TradedEggLocation(pk.GenNumber);
         }
 
