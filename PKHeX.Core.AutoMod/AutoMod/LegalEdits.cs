@@ -17,7 +17,12 @@ namespace PKHeX.Core.AutoMod
         public static void SetSuggestedBall(this PKM pk, bool matching = true)
         {
             if (matching)
-                pk.SetMatchingBall();
+            {
+                if (!pk.IsShiny)
+                    pk.SetMatchingBall();
+                else
+                    Aesthetics.ApplyShinyBall(pk);
+            }
             var la = new LegalityAnalysis(pk);
             var report = la.Report();
             if (!report.Contains(LegalityCheckStrings.LBallEncMismatch))
