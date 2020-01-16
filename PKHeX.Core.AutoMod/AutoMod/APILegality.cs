@@ -112,7 +112,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set, abilitypref);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
-            pk.SetSuggestedHyperTrainingData(pk.IVs); // Hypertrain
+            pk.SetHyperTrainingFlags(set); // Hypertrain
             pk.SetEncryptionConstant(enc);
             pk.SetShinyBoolean(set.Shiny, enc);
             pk.FixGender(set);
@@ -191,6 +191,43 @@ namespace PKHeX.Core.AutoMod
                 for (int i = 0; i < pk.IVs.Length; i++)
                     if (pk.IVs[i] == 31 || pk.IVs[i] == 30) markings[i] = pk.IVs[i] == 31 ? 1 : 2;
                 pk.Markings = PKX.ReorderSpeedLast(markings);    
+            }
+        }
+
+        /// <summary>
+        /// Proper method to hypertrain based on Showdown Sets. Also handles edge cases like ultrabeasts
+        /// </summary>
+        /// <param name="pk">passed pkm object</param>
+        /// <param name="set">showdown set to base hypertraining on</param>
+        private static void SetHyperTrainingFlags(this PKM pk, ShowdownSet set)
+        {
+            if (!(pk is IHyperTrain t))
+                return;
+            pk.SetSuggestedHyperTrainingData(set.IVs); // Set IV data based on showdownset
+
+            // Fix HT flags as necessary
+            t.HT_HP = pk.IVs[0] == 31 && t.HT_HP ? false : t.HT_HP;
+            t.HT_ATK = pk.IVs[1] == 31 && t.HT_ATK ? false : t.HT_ATK;
+            t.HT_DEF = pk.IVs[2] == 31 && t.HT_DEF ? false : t.HT_DEF;
+            t.HT_SPE = pk.IVs[3] == 31 && t.HT_SPE ? false : t.HT_SPE;
+            t.HT_SPA = pk.IVs[4] == 31 && t.HT_SPA ? false : t.HT_SPA;
+            t.HT_SPD = pk.IVs[5] == 31 && t.HT_SPD ? false : t.HT_SPD;
+
+            // Handle special cases here for ultrabeasts
+            switch (pk.Species)
+            {
+                case (int)Species.Kartana when pk.Nature == (int)Nature.Timid && ((set.IVs[1] <= 19 && pk.CurrentLevel == 100) || (set.IVs[1] <= 21 && pk.CurrentLevel == 50)): // Speed boosting Timid Kartana ATK IVs <= 19
+                    t.HT_ATK = false;
+                    break;
+                case (int)Species.Stakataka when pk.Nature == (int)Nature.Lonely && ((set.IVs[2] <= 15 && pk.CurrentLevel == 100) || (set.IVs[2] <= 17 && pk.CurrentLevel == 50)): // Atk boosting Lonely Stakataka DEF IVs <= 15
+                    t.HT_DEF = false;
+                    break;
+                case (int)Species.Pyukumuku when set.IVs[2] == 0 && set.IVs[5] == 0 && pk.Ability == (int)Ability.InnardsOut: // 0 Def / 0 Spd Pyukumuku with innards out
+                    t.HT_DEF = false;
+                    t.HT_SPD = false;
+                    break;
+                default:
+                    break;
             }
         }
 
