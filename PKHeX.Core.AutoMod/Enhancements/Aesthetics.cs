@@ -2,6 +2,8 @@
 using static PKHeX.Core.Ball;
 using static PKHeX.Core.Species;
 using static PKHeX.Core.AutoMod.Aesthetics.PersonalColor;
+using System;
+using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -905,6 +907,22 @@ namespace PKHeX.Core.AutoMod
         {
             var color = ShinyMap[(Species)pk.Species];
             ApplyFirstLegalBall(pk, BallColors[color]);
+        }
+
+        private static readonly Ball[] BallList = (Ball[])Enum.GetValues(typeof(Ball));
+        static Aesthetics()
+        {
+            var exclude = new[] { Ball.None, Poke };
+            var end = new[] { Poke };
+            var allBalls = BallList.Except(exclude).ToArray();
+            var colors = (PersonalColor[])Enum.GetValues(typeof(PersonalColor));
+            foreach (var c in colors)
+            {
+                var vals = BallColors[c];
+                var extra = allBalls.Except(vals).ToArray();
+                Util.Shuffle(extra);
+                BallColors[c] = vals.Concat(extra).Concat(end).ToArray();
+            }
         }
 
         /// <summary>
