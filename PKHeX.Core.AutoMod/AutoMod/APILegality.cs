@@ -420,7 +420,7 @@ namespace PKHeX.Core.AutoMod
                 {
                     if (d.Gift.PK.PID != 1)
                         pk.PID = d.Gift.PK.PID;
-                    else if (pk.Nature != pk.PID % 25)
+                    else if (pk.Nature != pk.PID)
                         pk.SetPIDNature(Nature);
                     return;
                 }
@@ -643,7 +643,10 @@ namespace PKHeX.Core.AutoMod
         {
             // Shiny Manaphy Egg
             if (pk.Species == (int)Species.Manaphy && pk.IsShiny)
+            {
                 pk.Egg_Location = Locations.LinkTrade4;
+                pk.Met_Location = pk.Format == 4 ? (pk.HGSS ? Locations.HatchLocationHGSS : Locations.HatchLocationDPPt) : pk.Met_Location;
+            }
             if (pk.Species == (int)Species.Milotic && pk.Format < 5 && pk is IContestStats c) // Evolves via beauty
                 c.CNT_Beauty = 170; 
         }
