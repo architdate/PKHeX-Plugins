@@ -420,6 +420,8 @@ namespace PKHeX.Core.AutoMod
                 {
                     if (d.Gift.PK.PID != 1)
                         pk.PID = d.Gift.PK.PID;
+                    else if (pk.Nature != pk.PID % 25)
+                        pk.SetPIDNature(Nature);
                     return;
                 }
                 if (li.EncounterMatch is EncounterEgg)
