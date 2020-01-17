@@ -488,7 +488,7 @@ namespace PKHeX.Core.AutoMod
                 if (ivs[i] == -1)
                     ivs[i] = (int)rng.NextInt(32);
             }
-            pk.IVs = ivs;
+            pk.IVs = new[] { ivs[0], ivs[1], ivs[2], ivs[5], ivs[3], ivs[4] };
             int abil;
             if (ability_param == 254)
                 abil = (int)rng.NextInt(3);
