@@ -63,7 +63,13 @@ namespace PKHeX.Core.AutoMod
             pk.ApplySetGender(set);
             pk.SetAltForm(Form);
             pk.SetFormArgument(enc);
-            pk.SetNickname(set.Nickname);
+
+            var gen = new LegalityAnalysis(pk).Info.Generation;
+            var nickname = Legal.GetMaxLengthNickname(gen, LanguageID.English) < set.Nickname.Length ? set.Nickname.Substring(0, Legal.GetMaxLengthNickname(gen, LanguageID.English)) : set.Nickname;
+            if (!WordFilter.IsFiltered(nickname, out _))
+                pk.SetNickname(nickname);
+            else
+                pk.ClearNickname();
             pk.CurrentLevel = set.Level;
             if (pk.CurrentLevel == 50)
                 pk.CurrentLevel = 100; // VGC Override
