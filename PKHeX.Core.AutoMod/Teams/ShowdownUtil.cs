@@ -16,7 +16,8 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Returns bool</returns>
         public static bool IsTeamBackup(string paste) => paste.StartsWith("===");
 
-        public static bool IsInvalidForm(string form) => form != null && (form.Contains("Mega") || form == "Primal" || form == "Busted" || form == "Crowned");
+        private static string[] InvalidFormes => new string[] { "Primal", "Busted", "Crowned", "Noice", "Gulping", "Gorging", "Zen", "Galar-Zen", "Hangry" };
+        public static bool IsInvalidForm(string form) => form != null && (form.Contains("Mega") || InvalidFormes.Contains(form));
 
         /// <summary>
         /// A method to get a list of ShowdownSet(s) from a string paste

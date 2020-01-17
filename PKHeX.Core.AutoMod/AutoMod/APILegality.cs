@@ -308,7 +308,8 @@ namespace PKHeX.Core.AutoMod
             if (!badForm)
                 return false;
 
-            changedSet = new ShowdownSet(set.Text.Replace($"-{set.Form}", string.Empty));
+            var invalidform = set.Form == "Galar-Zen" ? "Zen" : set.Form;
+            changedSet = new ShowdownSet(set.Text.Replace($"-{invalidform}", string.Empty));
 
             // Changed set handling for forme changes that affect battle-only moves
             ReplaceBattleOnlyMoves(changedSet);
