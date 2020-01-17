@@ -203,15 +203,11 @@ namespace PKHeX.Core.AutoMod
         {
             if (!(pk is IHyperTrain t))
                 return;
-            pk.SetSuggestedHyperTrainingData(set.IVs); // Set IV data based on showdownset
+            pk.SetSuggestedHyperTrainingData(); // Set IV data based on showdownset
 
             // Fix HT flags as necessary
-            t.HT_HP = pk.IVs[0] == 31 && t.HT_HP ? false : t.HT_HP;
-            t.HT_ATK = pk.IVs[1] == 31 && t.HT_ATK ? false : t.HT_ATK;
-            t.HT_DEF = pk.IVs[2] == 31 && t.HT_DEF ? false : t.HT_DEF;
-            t.HT_SPE = pk.IVs[3] == 31 && t.HT_SPE ? false : t.HT_SPE;
-            t.HT_SPA = pk.IVs[4] == 31 && t.HT_SPA ? false : t.HT_SPA;
-            t.HT_SPD = pk.IVs[5] == 31 && t.HT_SPD ? false : t.HT_SPD;
+            t.HT_ATK = set.IVs[1] < 3 && t.HT_ATK ? false : t.HT_ATK;
+            t.HT_SPE = set.IVs[3] < 3 && t.HT_SPE ? false : t.HT_SPE;
 
             // Handle special cases here for ultrabeasts
             switch (pk.Species)
