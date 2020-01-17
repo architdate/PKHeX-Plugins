@@ -111,7 +111,9 @@ namespace PKHeX.Core.AutoMod
             {
                 pk.EVs = set.EVs;
                 pk.ApplyHeldItem(set.HeldItem, set.Format);
-                pk.FixInvalidFormItems();
+                pk.FixInvalidFormItems(); // arceus, silvally, giratina, genesect fix
+                if (!ItemRestrictions.IsHeldItemAllowed(pk))
+                    pk.HeldItem = 0; // Remove the item if the item is illegal in its generation
                 var la = new LegalityAnalysis(pk);
                 if (la.Parsed && !pk.WasEvent)
                     pk.SetRelearnMoves(la.GetSuggestedRelearnMoves());
