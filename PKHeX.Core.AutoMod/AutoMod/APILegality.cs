@@ -206,8 +206,8 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedHyperTrainingData(); // Set IV data based on showdownset
 
             // Fix HT flags as necessary
-            t.HT_ATK = set.IVs[1] < 3 && t.HT_ATK ? false : (set.IVs[1] >= 3 && pk.IVs[1] < 3 ? true : t.HT_ATK);
-            t.HT_SPE = set.IVs[3] < 3 && t.HT_SPE ? false : (set.IVs[3] >= 3 && pk.IVs[3] < 3 ? true : t.HT_SPE);
+            t.HT_ATK = set.IVs[1] < 3 && t.HT_ATK ? false : (set.IVs[1] >= 3 && pk.IVs[1] < 3 && pk.CurrentLevel == 100 ? true : t.HT_ATK);
+            t.HT_SPE = set.IVs[3] < 3 && t.HT_SPE ? false : (set.IVs[3] >= 3 && pk.IVs[3] < 3 && pk.CurrentLevel == 100 ? true : t.HT_SPE);
 
             // Handle special cases here for ultrabeasts
             switch (pk.Species)
