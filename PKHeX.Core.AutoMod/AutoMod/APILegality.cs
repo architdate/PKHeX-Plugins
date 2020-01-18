@@ -114,6 +114,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
             pk.SetHyperTrainingFlags(set); // Hypertrain
             pk.SetEncryptionConstant(enc);
+            pk.FixFatefulFlag(enc);
             pk.SetShinyBoolean(set.Shiny, enc);
             pk.FixGender(set);
             pk.SetSuggestedRibbons(SetAllLegalRibbons);
@@ -526,7 +527,7 @@ namespace PKHeX.Core.AutoMod
             if (Method == PIDType.None)
             {
                 Method = FindLikelyPIDType(pk);
-                if (pk.Version == (int)GameVersion.CXD)
+                if (pk.Version == (int)GameVersion.CXD && Method != PIDType.PokeSpot)
                     Method = PIDType.CXD;
                 if (Method == PIDType.None)
                     pk.SetPIDGender(pk.Gender);
@@ -544,7 +545,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 if (pk.PID % 25 != iterPKM.Nature) // Util.Rand32 is the way to go
                     continue;
-                if (pk.Version == (int)GameVersion.CXD) // verify locks
+                if (pk.Version == (int)GameVersion.CXD && Method == PIDType.CXD) // verify locks
                 {
                     pk.EncryptionConstant = pk.PID;
                     var la = new LegalityAnalysis(pk);
@@ -606,6 +607,16 @@ namespace PKHeX.Core.AutoMod
                     };
                 default:
                     return PIDType.None;
+            }
+        }
+
+        private static void FixFatefulFlag(this PKM pk, IEncounterable enc)
+        {
+            switch (enc)
+            {
+                case EncounterSlot x when x.Version == GameVersion.XD: // pokespot RNG is always fateful
+                    pk.FatefulEncounter = true; 
+                    break;
             }
         }
 
