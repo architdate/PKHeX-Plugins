@@ -652,7 +652,9 @@ namespace PKHeX.Core.AutoMod
                 pk.Met_Location = pk.Format == 4 ? (pk.HGSS ? Locations.HatchLocationHGSS : Locations.HatchLocationDPPt) : pk.Met_Location;
             }
             if (pk.Species == (int)Species.Milotic && pk.Format < 5 && pk is IContestStats c) // Evolves via beauty
-                c.CNT_Beauty = 170; 
+                c.CNT_Beauty = 170;
+            if (pk.Version == (int)GameVersion.CXD && pk.OT_Gender == (int)Gender.Female) // Colosseum and XD are sexist games.
+                pk.OT_Gender = (int)Gender.Male;
         }
     }
 }
