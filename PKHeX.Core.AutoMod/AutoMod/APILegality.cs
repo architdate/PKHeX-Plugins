@@ -206,8 +206,8 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedHyperTrainingData(); // Set IV data based on showdownset
 
             // Fix HT flags as necessary
-            t.HT_ATK = set.IVs[1] < 3 && t.HT_ATK ? false : t.HT_ATK;
-            t.HT_SPE = set.IVs[3] < 3 && t.HT_SPE ? false : t.HT_SPE;
+            t.HT_ATK = set.IVs[1] < 3 && t.HT_ATK ? false : (set.IVs[1] >= 3 && pk.IVs[1] < 3 ? true : t.HT_ATK);
+            t.HT_SPE = set.IVs[3] < 3 && t.HT_SPE ? false : (set.IVs[3] >= 3 && pk.IVs[3] < 3 ? true : t.HT_ATK);
 
             // Handle special cases here for ultrabeasts
             switch (pk.Species)
@@ -544,6 +544,13 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 if (pk.PID % 25 != iterPKM.Nature) // Util.Rand32 is the way to go
                     continue;
+                if (pk.Version == (int)GameVersion.CXD) // verify locks
+                {
+                    pk.EncryptionConstant = pk.PID;
+                    var la = new LegalityAnalysis(pk);
+                    if (la.Info.PIDIV.Type != PIDType.CXD || !la.Info.PIDIVMatches)
+                        continue;
+                }
                 break;
             }
         }
