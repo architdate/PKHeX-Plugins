@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace PKHeX.Core.AutoMod
@@ -36,6 +37,8 @@ namespace PKHeX.Core.AutoMod
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
             EncounterMovesetGenerator.PriorityList = new EncounterOrder[] { EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery };
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
+            if (template.Species <= 721)
+                encounters = encounters.Concat(GetFriendSafariEncounters(template));
             foreach (var enc in encounters)
             {
                 var ver = enc is IVersion v ? v.Version : destVer;
@@ -373,6 +376,22 @@ namespace PKHeX.Core.AutoMod
                 pk.SetTrainerData(SAV);
             }
             pk.Egg_Location = Locations.TradedEggLocation(pk.GenNumber);
+        }
+
+        /// <summary>
+        /// Add friend safari encounters to encounter generator
+        /// </summary>
+        /// <param name="pk">mock pkm to get friend safari encounters</param>
+        /// <returns>IEncounterable enumaration of friend safari encounters in the evo chain</returns>
+        private static IEnumerable<IEncounterable> GetFriendSafariEncounters(PKM pk)
+        {
+            // Set values to get a mock pk6
+            pk.Version = (int)GameVersion.X;
+            pk.Met_Location = 148;
+            pk.Met_Level = 30;
+            pk.Egg_Location = 0;
+
+            return EncounterArea6XY.GetValidFriendSafari(pk);
         }
 
         /// <summary>
