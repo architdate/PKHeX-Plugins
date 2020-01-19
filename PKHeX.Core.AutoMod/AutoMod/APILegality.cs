@@ -428,7 +428,20 @@ namespace PKHeX.Core.AutoMod
                 if (Species == 658 && pk.AltForm == 1)
                     pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
                 if (method != PIDType.G5MGShiny)
+                {
                     pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
+                    while (true)
+                    {
+                        if (li.Generation != 5) break;
+                        if (li.EncounterMatch is EncounterStatic s &&
+                            (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75)) break;
+                        if (pk is PK5 p && p.NPokémon) break;
+                        var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
+                        if (result == 0) 
+                            break;
+                        pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
+                    }
+                }
             }
             else
             {
