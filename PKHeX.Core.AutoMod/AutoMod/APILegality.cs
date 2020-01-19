@@ -553,12 +553,14 @@ namespace PKHeX.Core.AutoMod
             }
             if (Method == PIDType.Method_1_Roamer && pk.HPType != (int)MoveType.Fighting - 1) // M1 Roamers can only be HP fighting
                 return;
-            if (Method == PIDType.Pokewalker) // No possible pokewalker matches
+            if (Method == PIDType.Pokewalker && (pk.Nature >= 24 || pk.AbilityNumber == 4)) // No possible pokewalker matches
                 return;
             var iterPKM = pk.Clone();
             while (true)
             {
                 uint seed = Util.Rand32();
+                if (PokeWalkerSeedFail(seed, Method, pk, iterPKM))
+                    continue;
                 PIDGenerator.SetValuesFromSeed(pk, Method, seed);
                 if (!(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber && pk.Nature == iterPKM.Nature))
                     continue;
@@ -575,6 +577,17 @@ namespace PKHeX.Core.AutoMod
                 }
                 break;
             }
+        }
+
+        private static bool PokeWalkerSeedFail(uint seed, PIDType method, PKM pk, PKM original)
+        {
+            if (method != PIDType.Pokewalker)
+                return false;
+            if (seed % 24 != original.Nature)
+                return true;
+            pk.TID = Util.Rand.Next(65535);
+            pk.SID = Util.Rand.Next(65535);
+            return false;
         }
 
         /// <summary>
