@@ -553,7 +553,7 @@ namespace PKHeX.Core.AutoMod
             }
             if (Method == PIDType.Method_1_Roamer && pk.HPType != (int)MoveType.Fighting - 1) // M1 Roamers can only be HP fighting
                 return;
-            if (Method == PIDType.Pokewalker && pk.Nature >= 24) // No possible pokewalker matches
+            if (Method == PIDType.Pokewalker) // No possible pokewalker matches
                 return;
             var iterPKM = pk.Clone();
             while (true)
