@@ -3,6 +3,8 @@ This project uses `PKHeX.Core` and PKHeX's `IPlugin` interface to provide PKHeX 
 
 This project is owned by [@architdate](https://github.com/architdate) (Discord: thecommondude#8240) and [@kwsch](https://github.com/kwsch) (Discord: Kurt#6024)
 
+[Feature Demonstration Video](https://www.youtube.com/watch?v=pKuElH0hWWA) by AAron#2420
+
 ## Building
 This project requires an IDE that supports compiling .NET based code (Ideally .NET 4.6+). Recommended IDE is Visual Studio 2019 
 
