@@ -20,7 +20,7 @@ namespace PKHeX.Core.AutoMod
             Format = format;
         }
 
-        public string Summary => $"=== [{Format}] {TeamName} ===";
+        public string Summary => $"{Format}: {TeamName}";
 
         public static bool IsLineShowdownTeam(string line) => line.TrimStart().StartsWith("===") && line.TrimEnd().EndsWith("===");
 
@@ -57,13 +57,13 @@ namespace PKHeX.Core.AutoMod
                     end++;
                 }
 
-                var teamlines = lines.Skip(i + 1).Take(end - i - 1).Where(z => !string.IsNullOrWhiteSpace(z));
+                var teamlines = lines.Skip(i + 1).Take(end - i - 1);
                 var sets = ShowdownSet.GetShowdownSets(teamlines).ToList();
                 if (sets.Count == 0)
                     continue;
                 result.Add(new ShowdownTeamSet(name, sets, format));
 
-                i = end;
+                i = end - 1;
             }
             return result;
         }

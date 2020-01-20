@@ -16,7 +16,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Returns bool</returns>
         public static bool IsTeamBackup(string paste) => paste.StartsWith("===");
 
-        private static string[] InvalidFormes => new string[] { "Primal", "Busted", "Crowned", "Noice", "Gulping", "Gorging", "Zen", "Galar-Zen", "Hangry" };
+        private static string[] InvalidFormes => new string[] { "Primal", "Busted", "Crowned", "Noice", "Gulping", "Gorging", "Zen", "Galar-Zen", "Hangry", "Complete" };
         public static bool IsInvalidForm(string form) => form != null && (form.Contains("Mega") || InvalidFormes.Contains(form));
 
         /// <summary>
