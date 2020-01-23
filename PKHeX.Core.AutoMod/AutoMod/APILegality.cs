@@ -541,6 +541,11 @@ namespace PKHeX.Core.AutoMod
                 pk.Nature = (int)rng.NextInt(25);
             else
                 pk.Nature = nature_param;
+            if (pk is PK8 pk8)
+            {
+                pk8.HeightScalar = (int)rng.NextInt(0x81) + (int)rng.NextInt(0x80);
+                pk8.WeightScalar = (int)rng.NextInt(0x81) + (int)rng.NextInt(0x80);
+            }
         }
 
         private static ulong GetRandomULong()
