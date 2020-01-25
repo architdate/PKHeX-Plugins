@@ -538,7 +538,20 @@ namespace PKHeX.Core.AutoMod
             else
                 pk.SetGender(0);
             if (nature_param == 255)
-                pk.Nature = (int)rng.NextInt(25);
+            {
+                if (pk.Species == (int) Species.Toxtricity && pk.AltForm == 0)
+                {
+                    int[] natures = { 3, 4, 2, 8, 9, 19, 22, 11, 13, 14, 0, 6, 24 };
+                    pk.Nature = natures[rng.NextInt((uint) natures.Length)];
+                }
+                else if (pk.Species == (int)Species.Toxtricity && pk.AltForm == 1)
+                {
+                    int[] natures = { 1, 5, 7, 10, 12, 15, 16, 17, 18, 20, 21, 23 };
+                    pk.Nature = natures[rng.NextInt((uint)natures.Length)];
+                }
+                else 
+                    pk.Nature = (int) rng.NextInt(25);
+            }
             else
                 pk.Nature = nature_param;
             if (pk is PK8 pk8)
