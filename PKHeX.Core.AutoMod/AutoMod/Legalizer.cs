@@ -10,7 +10,7 @@ namespace PKHeX.Core.AutoMod
     public static class Legalizer
     {
         public static bool AllowAPI { get; set; } = true;
-        public static bool AllowBruteForce { get; set; } = true;
+        public static bool AllowBruteForce { get; set; } = false;
 
         /// <summary>
         /// Tries to regenerate the <see cref="pk"/> into a valid pkm.
