@@ -8,7 +8,7 @@ namespace PKHeX.Core.AutoMod
         static SimpleEdits()
         {
             // Make PKHeX use our own marking method
-            CommonEdits.MarkingMethod = FlagIVsAutoMod;
+            MarkingApplicator.MarkingMethod = FlagIVsAutoMod;
         }
 
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)

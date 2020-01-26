@@ -293,7 +293,7 @@ namespace PKHeX.Core.AutoMod
         /// Set matching colored pokeballs based on the color API in personal table
         /// </summary>
         /// <param name="pk">Return PKM</param>
-        public static void SetMatchingBall(this PKM pk) => BallRandomizer.ApplyBallLegalByColor(pk);
+        public static void SetMatchingBall(this PKM pk) => BallApplicator.ApplyBallLegalByColor(pk);
 
         /// <summary>
         /// Fix Formes that are illegal outside of battle
@@ -429,7 +429,7 @@ namespace PKHeX.Core.AutoMod
                     pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
                 if (method != PIDType.G5MGShiny)
                 {
-                    pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
+                    pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
                     while (true)
                     {
                         if (li.Generation != 5) break;
@@ -439,7 +439,7 @@ namespace PKHeX.Core.AutoMod
                         var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
                         if (result == 0) 
                             break;
-                        pk.PID = PKX.GetRandomPID(Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
+                        pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
                     }
                 }
             }

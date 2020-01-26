@@ -109,7 +109,7 @@ namespace PKHeX.Core.AutoMod
                     pk.SetShiny();
                 if (pk.PID == 0)
                 {
-                    pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint) (pk.AbilityNumber * 0x10001));
+                    pk.PID = PKX.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint) (pk.AbilityNumber * 0x10001));
                     if (shiny)
                         pk.SetShiny();
                 }
@@ -224,12 +224,12 @@ namespace PKHeX.Core.AutoMod
             catch { }
             pk.CurrentHandler = 1;
             pk.HT_Name = "Archit";
-            pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
+            pk.PID = PKX.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
             if (shiny)
                 pk.SetShiny();
             if (pk.PID == 0)
             {
-                pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
+                pk.PID = PKX.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
                 if (shiny)
                     pk.SetShiny();
             }
@@ -294,7 +294,7 @@ namespace PKHeX.Core.AutoMod
             pk.FatefulEncounter = el.Fateful;
             if (el.RibbonWishing && pk is IRibbonSetEvent4 e4)
                 e4.RibbonWishing = true;
-            pk.RelearnMoves = el.Relearn;
+            pk.SetRelearnMoves(el.Relearn);
 
             if (set.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random))
                 pk.SetShiny();
@@ -388,7 +388,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Language = 1;
                 pk.FatefulEncounter = true;
                 pk.Nickname = SpeciesName.GetSpeciesNameGeneration(pk.Species, pk.Language, 3);
-                pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
+                pk.PID = PKX.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
                 if (shiny)
                     pk.SetShinySID();
                 report = GetReport(pk);
@@ -405,7 +405,7 @@ namespace PKHeX.Core.AutoMod
             }
             if (report.Contains(LTransferPIDECBitFlip)) //V215 = PID should be equal to EC [with top bit flipped]!
             {
-                pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
+                pk.PID = PKX.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
                 if (pk.IsShiny)
                     pk.SetShiny();
                 report = GetReport(pk);
@@ -481,11 +481,6 @@ namespace PKHeX.Core.AutoMod
                 pk.OT_TextVar = 9;
                 pk.OT_Intensity = 1;
                 pk.OT_Feeling = Memories.GetRandomFeeling(pk.OT_Memory);
-                report = GetReport(pk);
-            }
-            if (report.Contains(LMemoryIndexIDOT0)) //V130 = Can't have any OT Memory.
-            {
-                pk.ClearOTMemory();
                 report = GetReport(pk);
             }
             if (report.Contains(LGeoMemoryMissing)) //V137 = GeoLocation Memory: Memories should be present.
@@ -654,7 +649,7 @@ namespace PKHeX.Core.AutoMod
             bool pidsidmethod = updatedReport.Contains(LPIDTypeMismatch);
             if (pidsid[0] == 0 && pidsid[1] == 0 && pidsidmethod)
             {
-                pk.PID = PKX.GetRandomPID(pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
+                pk.PID = PKX.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
                 LoadOldIVs();
             }
             if (shiny)
