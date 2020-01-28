@@ -9,6 +9,10 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public static class Legalizer
     {
+        /// <summary>
+        /// Global legalizer settings. Ideally everything should be solved via the API.
+        /// If something gets solved via bruteforce, something is wrong.
+        /// </summary>
         public static bool AllowAPI { get; set; } = true;
         public static bool AllowBruteForce { get; set; } = true;
 
@@ -100,6 +104,14 @@ namespace PKHeX.Core.AutoMod
             return tr.GetLegalFromSet(set, template, out msg);
         }
 
+        /// <summary>
+        /// Main method that calls both API legality and Bruteforce
+        /// </summary>
+        /// <param name="tr">Trainer Data that was passed in</param>
+        /// <param name="set">Showdown set being used</param>
+        /// <param name="template">template PKM to legalize</param>
+        /// <param name="msg">Legalization result (API, Bruteforce, Failure)</param>
+        /// <returns>Legalized pkm</returns>
         private static PKM GetLegalFromSet(this ITrainerInfo tr, ShowdownSet set, PKM template, out LegalizationResult msg)
         {
             if (AllowAPI)
@@ -127,6 +139,14 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
+        /// <summary>
+        /// API Legality
+        /// </summary>
+        /// <param name="tr">trainer data</param>
+        /// <param name="set">showdown set to legalize from</param>
+        /// <param name="template">pkm file to legalize</param>
+        /// <param name="pkm">legalized pkm file</param>
+        /// <returns>bool if the pokemon was legalized via API or bruteforce</returns>
         private static bool TryAPIConvert(this ITrainerInfo tr, ShowdownSet set, PKM template, out PKM pkm)
         {
             pkm = tr.GetLegalFromTemplate(template, set, out bool satisfied);
@@ -138,6 +158,13 @@ namespace PKHeX.Core.AutoMod
             return true;
         }
 
+        /// <summary>
+        /// Method to bruteforce the pkm (won't be documented, because fuck bruteforce)
+        /// </summary>
+        /// <param name="tr">trainerdata</param>
+        /// <param name="set">showdown set</param>
+        /// <param name="template">template pkm to bruteforce</param>
+        /// <returns>(Hopefully) Legalized pkm file</returns>
         private static PKM GetBruteForcedLegalMon(this ITrainerInfo tr, ShowdownSet set, PKM template)
         {
             var resetForm = ShowdownUtil.IsInvalidForm(set.Form);

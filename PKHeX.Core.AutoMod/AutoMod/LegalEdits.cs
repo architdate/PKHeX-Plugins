@@ -121,6 +121,12 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Method to get ribbons from ribbon string array
+        /// </summary>
+        /// <param name="pk">pokemon</param>
+        /// <param name="ribbonList">string array of ribbons</param>
+        /// <returns>IEnumberable of all ribbons</returns>
         private static IEnumerable<string> GetRibbonsRequired(PKM pk, string[] ribbonList)
         {
             foreach (var RibbonName in GetRibbonNames(pk))
@@ -131,11 +137,24 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Get required ribbons from the report
+        /// </summary>
+        /// <param name="Report">legality report</param>
+        /// <param name="val">value passed</param>
+        /// <returns></returns>
         private static string[] GetRequiredRibbons(string Report, string val)
         {
             return Report.Split(new[] { val }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
         }
 
+        /// <summary>
+        /// Set ribbon values to the pkm file using reflectutil
+        /// </summary>
+        /// <param name="pk">pokemon</param>
+        /// <param name="ribNames">string of ribbon names</param>
+        /// <param name="vRib">ribbon value</param>
+        /// <param name="bRib">ribbon boolean</param>
         private static void SetRibbonValues(this PKM pk, IEnumerable<string> ribNames, int vRib, bool bRib)
         {
             foreach (string rName in ribNames)
@@ -145,6 +164,11 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Get ribbon names of a pkm
+        /// </summary>
+        /// <param name="pk">pokemon</param>
+        /// <returns></returns>
         private static IEnumerable<string> GetRibbonNames(PKM pk) => ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
     }
 }

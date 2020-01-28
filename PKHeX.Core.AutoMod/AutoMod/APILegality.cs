@@ -9,6 +9,9 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public static class APILegality
     {
+        /// <summary>
+        /// Settings
+        /// </summary>
         public static bool UseTrainerData { get; set; } = true;
         public static bool SetMatchingBalls { get; set; } = true;
         public static bool SetAllLegalRibbons { get; set; } = true;
@@ -70,6 +73,12 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
+        /// <summary>
+        /// Function to fix impossible forms
+        /// </summary>
+        /// <param name="template">PKM template with uncorrected set data imported</param>
+        /// <param name="set">Showdown set</param>
+        /// <returns></returns>
         private static int SanityCheckForm(PKM template, ref ShowdownSet set)
         {
             int Form = template.AltForm;
@@ -464,6 +473,13 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Method to find the PID and IV associated with a nest. Shinies are just allowed 
+        /// since there is no way gamefreak actually bruteforces top half of the PID to flag illegals.
+        /// </summary>
+        /// <param name="pk">Passed PKM</param>
+        /// <param name="enc">Nest encounter object</param>
+        /// <param name="shiny">Shiny boolean</param>
         private static void FindNestPIDIV(PKM pk, EncounterStatic8N enc, bool shiny)
         {
             // Preserve Nature, Altform, Ability (only if HA)
@@ -498,6 +514,15 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Function to set pokemon properties from an unshiny seed
+        /// </summary>
+        /// <param name="pk">Passed pokemon</param>
+        /// <param name="rng">XOROSHIRO object</param>
+        /// <param name="iv_count">Flawless IV count</param>
+        /// <param name="ability_param">254 for all abilities, 255 for no HA</param>
+        /// <param name="gender_ratio">Gender ratio according to personalinfo</param>
+        /// <param name="nature_param">255 for random nature, nature uint for specific</param>
         private static void SetValuesFromSeed8Unshiny(PKM pk, XOROSHIRO rng, int iv_count, int ability_param, int gender_ratio, int nature_param)
         {
             pk.EncryptionConstant = (uint)rng.NextInt();
@@ -561,6 +586,10 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Function to generate a random ulong
+        /// </summary>
+        /// <returns>A random ulong</returns>
         private static ulong GetRandomULong()
         {
             return ((ulong)Util.Rand.Next(1 << 30) << 34) | ((ulong)Util.Rand.Next(1 << 30) << 4) | (uint)Util.Rand.Next(1 << 4);
@@ -610,6 +639,14 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Checks if a pokewalker seed failed, and if it did, randomizes TID and SID (to retry in the future)
+        /// </summary>
+        /// <param name="seed">Seed</param>
+        /// <param name="method">RNG method (every method except pokewalker is ignored)</param>
+        /// <param name="pk">PKM object</param>
+        /// <param name="original">original encounter pkm</param>
+        /// <returns></returns>
         private static bool PokeWalkerSeedFail(uint seed, PIDType method, PKM pk, PKM original)
         {
             if (method != PIDType.Pokewalker)
@@ -675,6 +712,11 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Method to fix specific fateful encounter flags
+        /// </summary>
+        /// <param name="pk">pokemon</param>
+        /// <param name="enc">encounter</param>
         private static void FixFatefulFlag(this PKM pk, IEncounterable enc)
         {
             switch (enc)
@@ -685,6 +727,12 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Method to get preferred ability number based on the encounter. Useful for when multiple ability numbers have the same ability
+        /// </summary>
+        /// <param name="pk">pokemon</param>
+        /// <param name="enc">encounter</param>
+        /// <returns></returns>
         private static int GetAbilityPreference(PKM pk, IEncounterable enc)
         {
             var pref = pk.AbilityNumber;
@@ -698,6 +746,10 @@ namespace PKHeX.Core.AutoMod
             return pref;
         }
 
+        /// <summary>
+        /// Method to get the correct met level for a pokemon. Move up the met level till all moves are legal
+        /// </summary>
+        /// <param name="pk">pokemon</param>
         public static void SetCorrectMetLevel(this PKM pk)
         {
             if (pk.Met_Location != Locations.Transfer4 && pk.Met_Location != Locations.Transfer3)
