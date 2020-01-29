@@ -43,8 +43,10 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GUI\ALMSettings.cs">
@@ -52,6 +54,18 @@
     </Compile>
     <Compile Include="GUI\ALMSettings.Designer.cs">
       <DependentUpon>ALMSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\InjectPKM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\InjectPKM.Designer.cs">
+      <DependentUpon>InjectPKM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\LoadBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\LoadBox.Designer.cs">
+      <DependentUpon>LoadBox.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QRCodeDumper.cs" />
     <Compile Include="GUI\QRParser.cs" />
@@ -61,6 +75,7 @@
     <Compile Include="Plugins\ExportQRCodes.cs" />
     <Compile Include="Plugins\GPSSPlugin.cs" />
     <Compile Include="Plugins\LegalizeBoxes.cs" />
+    <Compile Include="Plugins\LiveHex.cs" />
     <Compile Include="Plugins\LivingDex.cs" />
     <Compile Include="Plugins\MGDBDownloader.cs" />
     <Compile Include="Plugins\PGLRentalLegality.cs" />
@@ -160,6 +175,9 @@
     <Content Include="Resources\img\menuautolegality.png" />
     <EmbeddedResource Include="GUI\ALMSettings.resx">
       <DependentUpon>ALMSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\InjectPKM.resx">
+      <DependentUpon>InjectPKM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
