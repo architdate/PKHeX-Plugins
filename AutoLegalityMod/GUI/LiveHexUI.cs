@@ -44,7 +44,7 @@ namespace AutoModPlugins
 
         private void ChangeBox(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            if (checkBox1.Checked && Remote.Bot.Connected)
                 Remote.ChangeBox(BoxSelect.SelectedIndex);
         }
 
@@ -80,14 +80,13 @@ namespace AutoModPlugins
         public void NotifySlotOld(ISlotInfo previous) { }
         public void NotifySlotChanged(ISlotInfo slot, SlotTouchType type, PKM pkm)
         {
-            if (checkBox2.Checked)
-            {
-                if (!(slot is SlotInfoBox b))
-                    return;
-                int box = b.Box;
-                int slotpkm = b.Slot;
-                Remote.Bot.SendSlot(pkm.EncryptedPartyData, box, slotpkm);
-            }
+            if (!checkBox2.Checked || !Remote.Bot.Connected)
+                return;
+            if (!(slot is SlotInfoBox b))
+                return;
+            int box = b.Box;
+            int slotpkm = b.Slot;
+            Remote.Bot.SendSlot(pkm.EncryptedPartyData, box, slotpkm);
         }
 
         public ISlotInfo GetSlotData(PictureBox view) => null;
