@@ -16,11 +16,12 @@ namespace PKHeX.Core.AutoMod
         {
             Connection = new Socket(SocketType.Stream, ProtocolType.Tcp);
             Connection.Connect(IP, Port);
+            Connected = true;
         }
 
         public void Disconnect()
         {
-            Connection.Shutdown(SocketShutdown.Both);
+            Connection.Disconnect(false);
         }
 
         public int Read(byte[] buffer) => Connection.Receive(buffer);

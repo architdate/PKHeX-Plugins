@@ -44,6 +44,7 @@
             this.NUD_Box = new System.Windows.Forms.NumericUpDown();
             this.B_ReadSlot = new System.Windows.Forms.Button();
             this.B_WriteSlot = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).BeginInit();
@@ -52,7 +53,7 @@
             // 
             // B_ReadCurrent
             // 
-            this.B_ReadCurrent.Location = new System.Drawing.Point(13, 42);
+            this.B_ReadCurrent.Location = new System.Drawing.Point(13, 61);
             this.B_ReadCurrent.Name = "B_ReadCurrent";
             this.B_ReadCurrent.Size = new System.Drawing.Size(125, 23);
             this.B_ReadCurrent.TabIndex = 0;
@@ -62,7 +63,7 @@
             // 
             // B_WriteCurrent
             // 
-            this.B_WriteCurrent.Location = new System.Drawing.Point(13, 71);
+            this.B_WriteCurrent.Location = new System.Drawing.Point(13, 90);
             this.B_WriteCurrent.Name = "B_WriteCurrent";
             this.B_WriteCurrent.Size = new System.Drawing.Size(125, 23);
             this.B_WriteCurrent.TabIndex = 1;
@@ -73,6 +74,8 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(13, 19);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(130, 17);
@@ -128,12 +131,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.B_ReadCurrent);
             this.groupBox1.Controls.Add(this.B_WriteCurrent);
             this.groupBox1.Location = new System.Drawing.Point(12, 66);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(149, 104);
+            this.groupBox1.Size = new System.Drawing.Size(149, 126);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Boxes";
@@ -146,7 +150,7 @@
             this.groupBox2.Controls.Add(this.NUD_Box);
             this.groupBox2.Controls.Add(this.B_ReadSlot);
             this.groupBox2.Controls.Add(this.B_WriteSlot);
-            this.groupBox2.Location = new System.Drawing.Point(12, 177);
+            this.groupBox2.Location = new System.Drawing.Point(12, 198);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(149, 120);
             this.groupBox2.TabIndex = 9;
@@ -221,7 +225,7 @@
             this.B_ReadSlot.Name = "B_ReadSlot";
             this.B_ReadSlot.Size = new System.Drawing.Size(125, 23);
             this.B_ReadSlot.TabIndex = 0;
-            this.B_ReadSlot.Text = "Read Current Box";
+            this.B_ReadSlot.Text = "Read From Slot";
             this.B_ReadSlot.UseVisualStyleBackColor = true;
             this.B_ReadSlot.Click += new System.EventHandler(this.B_ReadSlot_Click);
             // 
@@ -231,15 +235,27 @@
             this.B_WriteSlot.Name = "B_WriteSlot";
             this.B_WriteSlot.Size = new System.Drawing.Size(125, 23);
             this.B_WriteSlot.TabIndex = 1;
-            this.B_WriteSlot.Text = "Write Current Box";
+            this.B_WriteSlot.Text = "Write to Slot";
             this.B_WriteSlot.UseVisualStyleBackColor = true;
             this.B_WriteSlot.Click += new System.EventHandler(this.B_WriteSlot_Click);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(13, 38);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(85, 17);
+            this.checkBox2.TabIndex = 3;
+            this.checkBox2.Text = "Inject In Slot";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // LiveHexUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(174, 309);
+            this.ClientSize = new System.Drawing.Size(174, 326);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.B_Connect);
@@ -282,5 +298,6 @@
         private System.Windows.Forms.NumericUpDown NUD_Slot;
         private System.Windows.Forms.Label L_Box;
         private System.Windows.Forms.NumericUpDown NUD_Box;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

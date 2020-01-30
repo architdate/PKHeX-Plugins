@@ -21,6 +21,7 @@ namespace AutoModPlugins
         public abstract string Name { get; }
         public abstract int Priority { get; }
         public ISaveFileProvider SaveFileEditor { get; private set; }
+        public ContextMenuStrip MenuVSD { get; set; }
         protected IPKMView PKMEditor { get; private set; }
 
         public void Initialize(params object[] args)
