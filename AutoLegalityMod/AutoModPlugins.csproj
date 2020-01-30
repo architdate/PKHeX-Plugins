@@ -55,18 +55,6 @@
     <Compile Include="GUI\ALMSettings.Designer.cs">
       <DependentUpon>ALMSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\InjectPKM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\InjectPKM.Designer.cs">
-      <DependentUpon>InjectPKM.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\LoadBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\LoadBox.Designer.cs">
-      <DependentUpon>LoadBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\QRCodeDumper.cs" />
     <Compile Include="GUI\QRParser.cs" />
     <Compile Include="Plugins\AutoModPlugin.cs" />
@@ -76,6 +64,12 @@
     <Compile Include="Plugins\GPSSPlugin.cs" />
     <Compile Include="Plugins\LegalizeBoxes.cs" />
     <Compile Include="Plugins\LiveHex.cs" />
+    <Compile Include="GUI\LiveHexUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\LiveHexUI.Designer.cs">
+      <DependentUpon>LiveHexUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Plugins\LivingDex.cs" />
     <Compile Include="Plugins\MGDBDownloader.cs" />
     <Compile Include="Plugins\PGLRentalLegality.cs" />
@@ -176,8 +170,8 @@
     <EmbeddedResource Include="GUI\ALMSettings.resx">
       <DependentUpon>ALMSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\InjectPKM.resx">
-      <DependentUpon>InjectPKM.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\LiveHexUI.resx">
+      <DependentUpon>LiveHexUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -190,5 +184,6 @@
       <Name>PKHeX.Core.AutoMod</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
