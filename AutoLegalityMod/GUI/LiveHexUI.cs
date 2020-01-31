@@ -56,6 +56,7 @@ namespace AutoModPlugins
                 Remote.Bot.Port = int.Parse(TB_Port.Text);
                 Remote.Bot.Connect();
                 B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
+                checkBox1.Enabled = checkBox2.Enabled = true;
                 groupBox1.Enabled = groupBox2.Enabled = true;
             }
             catch (Exception ex)

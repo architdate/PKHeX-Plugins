@@ -22,6 +22,7 @@ namespace PKHeX.Core.AutoMod
         public void Disconnect()
         {
             Connection.Disconnect(false);
+            Connected = false;
         }
 
         public int Read(byte[] buffer) => Connection.Receive(buffer);
