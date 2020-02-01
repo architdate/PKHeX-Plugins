@@ -42,6 +42,17 @@ namespace AutoModPlugins
             TB_Port.Text = Remote.Bot.Port.ToString();
         }
 
+        private void SetTrainerData(SaveFile sav, byte[] data)
+        {
+            switch (sav)
+            {
+                case SAV8SWSH s8:
+                    var info = s8.MyStatus;
+                    data.CopyTo(info.Data);
+                    break;
+            }
+        }
+
         private void ChangeBox(object sender, EventArgs e)
         {
             if (checkBox1.Checked && Remote.Bot.Connected)
@@ -55,6 +66,12 @@ namespace AutoModPlugins
                 Remote.Bot.IP = TB_IP.Text;
                 Remote.Bot.Port = int.Parse(TB_Port.Text);
                 Remote.Bot.Connect();
+
+                // Set Trainer Data
+                var data = Remote.Bot.ReadBytes(0x42935e48, 0x110);
+                SetTrainerData(SAV.SAV, data);
+
+                // Enable controls
                 B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
                 checkBox1.Enabled = checkBox2.Enabled = true;
                 groupBox1.Enabled = groupBox2.Enabled = true;

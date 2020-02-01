@@ -34,7 +34,7 @@ namespace PKHeX.Core.AutoMod
             Send(cmd);
 
             // give it time to push data back
-            Thread.Sleep((length / 8) + 200);
+            Thread.Sleep((length / 256) + 100);
             var buffer = new byte[(length * 2) + 1];
             var _ = Read(buffer);
             return Decoder.ConvertHexByteStringToBytes(buffer);
@@ -45,7 +45,7 @@ namespace PKHeX.Core.AutoMod
             Send(SwitchCommand.Poke(offset, data));
 
             // give it time to push data back
-            Thread.Sleep((data.Length / 8) + 200);
+            Thread.Sleep((data.Length / 256) + 100);
         }
     }
 }
