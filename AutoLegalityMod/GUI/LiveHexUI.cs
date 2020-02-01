@@ -42,12 +42,13 @@ namespace AutoModPlugins
             TB_Port.Text = Remote.Bot.Port.ToString();
         }
 
-        private void SetTrainerData(SaveFile sav, byte[] data)
+        private void SetTrainerData(SaveFile sav)
         {
             switch (sav)
             {
                 case SAV8SWSH s8:
                     var info = s8.MyStatus;
+                    var data = Remote.Bot.ReadBytes(0x42935e48, 0x110);
                     data.CopyTo(info.Data);
                     break;
             }
@@ -68,8 +69,7 @@ namespace AutoModPlugins
                 Remote.Bot.Connect();
 
                 // Set Trainer Data
-                var data = Remote.Bot.ReadBytes(0x42935e48, 0x110);
-                SetTrainerData(SAV.SAV, data);
+                SetTrainerData(SAV.SAV);
 
                 // Enable controls
                 B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
