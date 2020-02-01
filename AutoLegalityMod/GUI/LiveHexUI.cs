@@ -18,6 +18,7 @@ namespace AutoModPlugins
 
         private readonly LiveHexController Remote;
         private readonly ComboBox BoxSelect;
+        private SaveDataEditor<PictureBox> x;
 
         public LiveHexUI(ISaveFileProvider sav, IPKMView editor)
         {
@@ -35,7 +36,7 @@ namespace AutoModPlugins
             var type = sav.GetType();
             var fields = type.GetTypeInfo().DeclaredFields;
             var test = fields.First(z => z.Name == "EditEnv");
-            var x = (SaveDataEditor<PictureBox>) test.GetValue(sav);
+            x = (SaveDataEditor<PictureBox>) test.GetValue(sav);
             x.Slots.Publisher.Subscribers.Add(this);
 
             TB_IP.Text = Remote.Bot.IP;
@@ -88,6 +89,7 @@ namespace AutoModPlugins
                 Remote.Bot.Disconnect();
             if (BoxSelect != null)
                 BoxSelect.SelectedIndexChanged -= ChangeBox;
+            x.Slots.Publisher.Subscribers.Remove(this);
         }
 
         private void B_ReadCurrent_Click(object sender, EventArgs e) => Remote.ReadBox(SAV.CurrentBox);
