@@ -25,7 +25,13 @@ namespace PKHeX.Core.AutoMod
             Connected = false;
         }
 
-        public int Read(byte[] buffer) => Connection.Receive(buffer);
+        public int Read(byte[] buffer)
+        {
+            int br = Connection.Receive(buffer, 0, 1, SocketFlags.None);
+            while (buffer[br -1] != (byte) '\n')
+                br += Connection.Receive(buffer, br, 1, SocketFlags.None);
+            return br;
+        }
         public int Send(byte[] buffer) => Connection.Send(buffer);
 
         public byte[] ReadBytes(uint myGiftAddress, int length)
