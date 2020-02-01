@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PKHeX.Core.AutoMod
+﻿namespace PKHeX.Core.AutoMod
 {
     public class PokeSysBotMini : SysBotMini
     {
@@ -16,23 +14,11 @@ namespace PKHeX.Core.AutoMod
 
         public void SendBox(byte[] boxData, int box)
         {
-            byte[][] pkmData = BufferSplit(boxData, SlotSize);
+            byte[][] pkmData = boxData.Split(SlotSize);
             for (int i = 0; i < SlotCount; i++)
                 SendSlot(pkmData[i], box, i);
         }
+
         public void SendSlot(byte[] data, int box, int slot) => WriteBytes(data, GetSlotOffset(box, slot));
-
-        public static byte[][] BufferSplit(byte[] buffer, int blockSize)
-        {
-            byte[][] blocks = new byte[(buffer.Length + blockSize - 1) / blockSize][];
-
-            for (int i = 0, j = 0; i < blocks.Length; i++, j += blockSize)
-            {
-                blocks[i] = new byte[Math.Min(blockSize, buffer.Length - j)];
-                Array.Copy(buffer, j, blocks[i], 0, blocks[i].Length);
-            }
-
-            return blocks;
-        }
     }
 }

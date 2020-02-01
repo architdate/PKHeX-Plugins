@@ -10,7 +10,7 @@ namespace PKHeX.Core.AutoMod
 
         public Socket Connection = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
-        public bool Connected = false;
+        public bool Connected;
 
         public void Connect()
         {
