@@ -74,8 +74,12 @@ namespace AutoModPlugins
 
                 // Enable controls
                 B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
+                B_ReadCurrent.Enabled = B_WriteCurrent.Enabled = B_ReadSlot.Enabled = B_WriteSlot.Enabled = true;
                 checkBox1.Enabled = checkBox2.Enabled = true;
                 groupBox1.Enabled = groupBox2.Enabled = true;
+
+                // Load current box
+                Remote.ReadBox(SAV.CurrentBox);
             }
             catch (Exception ex)
             {
