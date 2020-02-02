@@ -14,6 +14,11 @@ namespace AutoModPlugins
             var c1 = new ToolStripMenuItem("Open LiveHex") { Image = Properties.Resources.uploadgpss };
             c1.Click += (s, e) =>
             {
+                if (!(SaveFileEditor.SAV is SAV8SWSH))
+                {
+                    WinFormsUtil.Error("Must have a Sword/Shield save file loaded.");
+                    return;
+                }
                 var editor = new LiveHexUI(SaveFileEditor, PKMEditor);
                 editor.Show();
             };
