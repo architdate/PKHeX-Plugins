@@ -504,12 +504,14 @@ namespace PKHeX.Core.AutoMod
                 var RNG = new XOROSHIRO(seed);
                 if (!shiny && UseXOROSHIRO)
                     SetValuesFromSeed8Unshiny(pk, RNG, iv_count, ability_param, gender_ratio, nature_param);
-                if (!(pk.Nature == iterPKM.Nature && pk.AltForm == iterPKM.AltForm))
+                if (pk.AltForm != iterPKM.AltForm) // no nature checks since only stat nature is relevant.
                     continue;
                 if (iterPKM.AbilityNumber == 4 && !(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber))
                     continue;
+                if (iterPKM.AbilityNumber != 4 && pk.AbilityNumber == 4) // cannot ability capsule HA to non HA
+                    continue;
                 // can be ability capsuled
-                pk.RefreshAbility(pk.AbilityNumber >> 1);
+                pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
                 break;
             }
         }
