@@ -105,7 +105,7 @@ namespace com.google.zxing.qrcode.detector
             for (int iGen = 0; iGen < height; iGen++)
             {
                 // Search from middle outwards
-                int i = middleI + ((iGen & 0x01) == 0?((iGen + 1) >> 1):- ((iGen + 1) >> 1));
+                int i = middleI + ((iGen & 0x01) == 0 ? ((iGen + 1) >> 1) : -((iGen + 1) >> 1));
                 stateCount[0] = 0;
                 stateCount[1] = 0;
                 stateCount[2] = 0;
@@ -180,7 +180,7 @@ namespace com.google.zxing.qrcode.detector
             // any guess at all, return it.
             if (possibleCenters.Count != 0)
             {
-                return (AlignmentPattern) possibleCenters[0];
+                return (AlignmentPattern)possibleCenters[0];
             }
 
             throw ReaderException.Instance;
@@ -287,7 +287,7 @@ namespace com.google.zxing.qrcode.detector
                 return float.NaN;
             }
 
-            return FoundPatternCross(stateCount)?CenterFromEnd(stateCount, i):float.NaN;
+            return FoundPatternCross(stateCount) ? CenterFromEnd(stateCount, i) : float.NaN;
         }
 
         /// <summary> <p>This is called when a horizontal scan finds a possible alignment pattern. It will
@@ -309,7 +309,7 @@ namespace com.google.zxing.qrcode.detector
             int stateCountTotal = stateCount[0] + stateCount[1] + stateCount[2];
             float centerJ = CenterFromEnd(stateCount, j);
             //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-            float centerI = CrossCheckVertical(i, (int) centerJ, 2 * stateCount[1], stateCountTotal);
+            float centerI = CrossCheckVertical(i, (int)centerJ, 2 * stateCount[1], stateCountTotal);
             if (!float.IsNaN(centerI))
             {
                 //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
@@ -317,7 +317,7 @@ namespace com.google.zxing.qrcode.detector
                 int max = possibleCenters.Count;
                 for (int index = 0; index < max; index++)
                 {
-                    AlignmentPattern center = (AlignmentPattern) possibleCenters[index];
+                    AlignmentPattern center = (AlignmentPattern)possibleCenters[index];
                     // Look for about the same center and module size:
                     if (center.AboutEquals(estimatedModuleSize, centerI, centerJ))
                     {

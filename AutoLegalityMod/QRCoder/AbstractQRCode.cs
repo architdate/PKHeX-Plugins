@@ -5,7 +5,8 @@ namespace QRCoder
     {
         protected QRCodeData QrCodeData { get; set; }
 
-        protected AbstractQRCode(QRCodeData data) {
+        protected AbstractQRCode(QRCodeData data)
+        {
             this.QrCodeData = data;
         }
 

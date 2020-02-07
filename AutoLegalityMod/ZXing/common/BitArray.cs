@@ -122,12 +122,12 @@ namespace com.google.zxing.common
             int lastInt = end >> 5;
             for (int i = firstInt; i <= lastInt; i++)
             {
-                int firstBit = i > firstInt?0:start & 0x1F;
-                int lastBit = i < lastInt?31:end & 0x1F;
+                int firstBit = i > firstInt ? 0 : start & 0x1F;
+                int lastBit = i < lastInt ? 31 : end & 0x1F;
                 int mask;
                 if (firstBit == 0 && lastBit == 31)
                 {
-                    mask = - 1;
+                    mask = -1;
                 }
                 else
                 {
@@ -140,7 +140,7 @@ namespace com.google.zxing.common
 
                 // Return false if we're looking for 1s and the masked bits[i] isn't all 1s (that is,
                 // equals the mask, or we're looking for 0s and the masked portion is not all 0s
-                if ((bits[i] & mask) != (value?mask:0))
+                if ((bits[i] & mask) != (value ? mask : 0))
                 {
                     return false;
                 }
@@ -187,7 +187,7 @@ namespace com.google.zxing.common
                 {
                     result.Append(' ');
                 }
-                result.Append(Get_Renamed(i)?'X':'.');
+                result.Append(Get_Renamed(i) ? 'X' : '.');
             }
             return result.ToString();
         }

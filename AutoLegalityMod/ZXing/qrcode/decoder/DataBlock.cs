@@ -124,7 +124,7 @@ namespace com.google.zxing.qrcode.decoder
             {
                 for (int j = 0; j < numResultBlocks; j++)
                 {
-                    int iOffset = j < longerBlocksStartAt?i:i + 1;
+                    int iOffset = j < longerBlocksStartAt ? i : i + 1;
                     result[j].Codewords[iOffset] = rawCodewords[rawCodewordsOffset++];
                 }
             }

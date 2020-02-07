@@ -16,93 +16,93 @@
 using System;
 namespace com.google.zxing.common
 {
-	/// <summary> This class implements an array of unsigned bytes.
-	///
-	/// </summary>
-	/// <author>  dswitkin@google.com (Daniel Switkin)
-	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
-	/// </author>
-	public sealed class ByteArray
-	{
-		public bool Empty => size_Renamed_Field == 0;
+    /// <summary> This class implements an array of unsigned bytes.
+    ///
+    /// </summary>
+    /// <author>  dswitkin@google.com (Daniel Switkin)
+    /// </author>
+    /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
+    /// </author>
+    public sealed class ByteArray
+    {
+        public bool Empty => size_Renamed_Field == 0;
 
-	    private const int INITIAL_SIZE = 32;
+        private const int INITIAL_SIZE = 32;
 
-		private sbyte[] bytes;
-		private int size_Renamed_Field;
+        private sbyte[] bytes;
+        private int size_Renamed_Field;
 
-		public ByteArray()
-		{
-			bytes = null;
-			size_Renamed_Field = 0;
-		}
+        public ByteArray()
+        {
+            bytes = null;
+            size_Renamed_Field = 0;
+        }
 
-		public ByteArray(int size)
-		{
-			bytes = new sbyte[size];
-			size_Renamed_Field = size;
-		}
+        public ByteArray(int size)
+        {
+            bytes = new sbyte[size];
+            size_Renamed_Field = size;
+        }
 
-		public ByteArray(sbyte[] byteArray)
-		{
-			bytes = byteArray;
-			size_Renamed_Field = bytes.Length;
-		}
+        public ByteArray(sbyte[] byteArray)
+        {
+            bytes = byteArray;
+            size_Renamed_Field = bytes.Length;
+        }
 
-		/// <summary> Access an unsigned byte at location index.</summary>
-		/// <param name="index">The index in the array to access.
-		/// </param>
-		/// <returns> The unsigned value of the byte as an int.
-		/// </returns>
-		public int At(int index)
-		{
-			return bytes[index] & 0xff;
-		}
+        /// <summary> Access an unsigned byte at location index.</summary>
+        /// <param name="index">The index in the array to access.
+        /// </param>
+        /// <returns> The unsigned value of the byte as an int.
+        /// </returns>
+        public int At(int index)
+        {
+            return bytes[index] & 0xff;
+        }
 
-		public void Set_Renamed(int index, int value_Renamed)
-		{
-			bytes[index] = (sbyte) value_Renamed;
-		}
+        public void Set_Renamed(int index, int value_Renamed)
+        {
+            bytes[index] = (sbyte)value_Renamed;
+        }
 
-		public int Size()
-		{
-			return size_Renamed_Field;
-		}
+        public int Size()
+        {
+            return size_Renamed_Field;
+        }
 
-		public void AppendByte(int value_Renamed)
-		{
-			if (size_Renamed_Field == 0 || size_Renamed_Field >= bytes.Length)
-			{
-				int newSize = Math.Max(INITIAL_SIZE, size_Renamed_Field << 1);
-				Reserve(newSize);
-			}
-			bytes[size_Renamed_Field] = (sbyte) value_Renamed;
-			size_Renamed_Field++;
-		}
+        public void AppendByte(int value_Renamed)
+        {
+            if (size_Renamed_Field == 0 || size_Renamed_Field >= bytes.Length)
+            {
+                int newSize = Math.Max(INITIAL_SIZE, size_Renamed_Field << 1);
+                Reserve(newSize);
+            }
+            bytes[size_Renamed_Field] = (sbyte)value_Renamed;
+            size_Renamed_Field++;
+        }
 
-		public void Reserve(int capacity)
-		{
-			if (bytes == null || bytes.Length < capacity)
-			{
-				sbyte[] newArray = new sbyte[capacity];
-				if (bytes != null)
-				{
-					Array.Copy(bytes, 0, newArray, 0, bytes.Length);
-				}
-				bytes = newArray;
-			}
-		}
+        public void Reserve(int capacity)
+        {
+            if (bytes == null || bytes.Length < capacity)
+            {
+                sbyte[] newArray = new sbyte[capacity];
+                if (bytes != null)
+                {
+                    Array.Copy(bytes, 0, newArray, 0, bytes.Length);
+                }
+                bytes = newArray;
+            }
+        }
 
-		// Copy count bytes from array source starting at offset.
-		public void Set_Renamed(sbyte[] source, int offset, int count)
-		{
-			bytes = new sbyte[count];
-			size_Renamed_Field = count;
-			for (int x = 0; x < count; x++)
-			{
-				bytes[x] = source[offset + x];
-			}
-		}
-	}
+        // Copy count bytes from array source starting at offset.
+        public void Set_Renamed(sbyte[] source, int offset, int count)
+        {
+            bytes = new sbyte[count];
+            size_Renamed_Field = count;
+            for (int x = 0; x < count; x++)
+            {
+                bytes[x] = source[offset + x];
+            }
+        }
+    }
 }

@@ -38,7 +38,7 @@ namespace PKHeX.Core.AutoMod
                 destVer = s.Version;
 
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
-            EncounterMovesetGenerator.PriorityList = new EncounterOrder[] { EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery };
+            EncounterMovesetGenerator.PriorityList = new[] { EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery };
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             if (template.Species <= 721)
                 encounters = encounters.Concat(GetFriendSafariEncounters(template));
@@ -194,16 +194,18 @@ namespace PKHeX.Core.AutoMod
         {
             if (!apply || pk.Format <= 3) // No markings if pk.Format is less than or equal to 3
                 return;
-            if (!competitive || pk.Format < 7) // Simple markings dont apply with competitive atall
+            if (!competitive || pk.Format < 7) // Simple markings dont apply with competitive at all
+            {
                 // Blue for 31/1 IVs and Red for 30/0 IVs (PKHeX default behaviour)
                 pk.SetMarkings();
+            }
             else
             {
                 // Red for 30 denoting imperfect but close to perfect. Blue for 31. No marking for 0 IVs
-                var markings = new int[] { 0, 0, 0, 0, 0, 0 };
+                var markings = new[] { 0, 0, 0, 0, 0, 0 };
                 for (int i = 0; i < pk.IVs.Length; i++)
                     if (pk.IVs[i] == 31 || pk.IVs[i] == 30) markings[i] = pk.IVs[i] == 31 ? 1 : 2;
-                pk.Markings = PKX.ReorderSpeedLast(markings);    
+                pk.Markings = PKX.ReorderSpeedLast(markings);
             }
         }
 
@@ -219,8 +221,8 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedHyperTrainingData(); // Set IV data based on showdownset
 
             // Fix HT flags as necessary
-            t.HT_ATK = set.IVs[1] < 3 && t.HT_ATK ? false : (set.IVs[1] >= 3 && pk.IVs[1] < 3 && pk.CurrentLevel == 100 ? true : t.HT_ATK);
-            t.HT_SPE = set.IVs[3] < 3 && t.HT_SPE ? false : (set.IVs[3] >= 3 && pk.IVs[3] < 3 && pk.CurrentLevel == 100 ? true : t.HT_SPE);
+            t.HT_ATK = (set.IVs[1] >= 3 || !t.HT_ATK) && ((set.IVs[1] >= 3 && pk.IVs[1] < 3 && pk.CurrentLevel == 100) || t.HT_ATK);
+            t.HT_SPE = (set.IVs[3] >= 3 || !t.HT_SPE) && ((set.IVs[3] >= 3 && pk.IVs[3] < 3 && pk.CurrentLevel == 100) || t.HT_SPE);
 
             // Handle special cases here for ultrabeasts
             switch (pk.Species)
@@ -234,8 +236,6 @@ namespace PKHeX.Core.AutoMod
                 case (int)Species.Pyukumuku when set.IVs[2] == 0 && set.IVs[5] == 0 && pk.Ability == (int)Ability.InnardsOut: // 0 Def / 0 Spd Pyukumuku with innards out
                     t.HT_DEF = false;
                     t.HT_SPD = false;
-                    break;
-                default:
                     break;
             }
         }
@@ -339,8 +339,6 @@ namespace PKHeX.Core.AutoMod
                     pk.AltForm = 0;
                     if (pk is IFormArgument f) f.FormArgument = 0;
                     break;
-                default:
-                    break;
             }
         }
 
@@ -352,20 +350,20 @@ namespace PKHeX.Core.AutoMod
         {
             switch (changedSet.Species)
             {
-                case (int) Species.Zacian:
-                case (int) Species.Zamazenta:
-                {
-                    // Behemoth Blade and Behemoth Bash -> Iron Head
-                    if (!changedSet.Moves.Contains(781) && !changedSet.Moves.Contains(782))
-                        return;
-
-                    for (int i = 0; i < changedSet.Moves.Length; i++)
+                case (int)Species.Zacian:
+                case (int)Species.Zamazenta:
                     {
-                        if (changedSet.Moves[i] == 781 || changedSet.Moves[i] == 782)
-                            changedSet.Moves[i] = 442;
+                        // Behemoth Blade and Behemoth Bash -> Iron Head
+                        if (!changedSet.Moves.Contains(781) && !changedSet.Moves.Contains(782))
+                            return;
+
+                        for (int i = 0; i < changedSet.Moves.Length; i++)
+                        {
+                            if (changedSet.Moves[i] == 781 || changedSet.Moves[i] == 782)
+                                changedSet.Moves[i] = 442;
+                        }
+                        break;
                     }
-                    break;
-                }
             }
         }
 
@@ -373,7 +371,9 @@ namespace PKHeX.Core.AutoMod
         /// Handle Egg encounters (for example PGF events that were distributed as eggs)
         /// </summary>
         /// <param name="pk">pkm distributed as an egg</param>
-        private static void HandleEggEncounters(this PKM pk, IEncounterable enc, ITrainerInfo SAV)
+        /// <param name="enc">encounter detail</param>
+        /// <param name="tr">save file</param>
+        private static void HandleEggEncounters(this PKM pk, IEncounterable enc, ITrainerInfo tr)
         {
             if (!pk.IsEgg)
                 return; // should be checked before, but condition added for future usecases
@@ -382,7 +382,7 @@ namespace PKHeX.Core.AutoMod
             if (enc is MysteryGift mg && mg.IsEgg)
             {
                 pk.Language = (int)LanguageID.English;
-                pk.SetTrainerData(SAV);
+                pk.SetTrainerData(tr);
             }
             pk.Egg_Location = Locations.TradedEggLocation(pk.GenNumber);
         }
@@ -430,7 +430,7 @@ namespace PKHeX.Core.AutoMod
                 if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2))
                     return;
 
-                var pk8 = (PK8) pk;
+                var pk8 = (PK8)pk;
                 switch (e)
                 {
                     case EncounterStatic8NC c: FindNestPIDIV(pk8, c, set.Shiny); break;
@@ -446,12 +446,15 @@ namespace PKHeX.Core.AutoMod
                 if (method != PIDType.G5MGShiny)
                 {
                     pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
+                    if (li.Generation != 5)
+                        return;
+
                     while (true)
                     {
-                        if (li.Generation != 5) break;
-                        if (li.EncounterMatch is EncounterStatic s &&
-                            (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75)) break;
-                        if (pk is PK5 p && p.NPokémon) break;
+                        if (li.EncounterMatch is EncounterStatic s && (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75))
+                            break;
+                        if (pk is PK5 p && p.NPokémon)
+                            break;
                         var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
                         if (result == 0)
                             break;
@@ -647,7 +650,7 @@ namespace PKHeX.Core.AutoMod
             switch (enc)
             {
                 case EncounterSlot x when x.Version == GameVersion.XD: // pokespot RNG is always fateful
-                    pk.FatefulEncounter = true; 
+                    pk.FatefulEncounter = true;
                     break;
             }
         }
@@ -660,15 +663,12 @@ namespace PKHeX.Core.AutoMod
         /// <returns></returns>
         private static int GetAbilityPreference(PKM pk, IEncounterable enc)
         {
-            var pref = pk.AbilityNumber;
-            if (enc is EncounterTrade et)
-                pref = et.Ability;
-            else if (enc is EncounterStatic es)
+            return enc switch
             {
-                if (es.Ability != 0 && es.Ability != 1)
-                    pref = es.Ability;
-            }
-            return pref;
+                EncounterTrade et => et.Ability,
+                EncounterStatic es when es.Ability != 0 && es.Ability != 1 => es.Ability,
+                _ => pk.AbilityNumber,
+            };
         }
 
         /// <summary>
@@ -684,7 +684,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             while (pk.CurrentLevel >= pk.Met_Level)
             {
-                pk.Met_Level += 1;
+                pk.Met_Level++;
                 var la = new LegalityAnalysis(pk);
                 if (la.Info.Moves.All(z => z.Valid))
                     return;

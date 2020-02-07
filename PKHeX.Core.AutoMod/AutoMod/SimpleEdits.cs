@@ -35,6 +35,7 @@ namespace PKHeX.Core.AutoMod
         /// Set Encryption Constant based on PKM GenNumber
         /// </summary>
         /// <param name="pk">PKM to modify</param>
+        /// <param name="enc">Encounter details</param>
         public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
         {
             if ((pk.Species == 658 && pk.AltForm == 1) || enc is EncounterStatic8N) // Ash-Greninja
@@ -47,6 +48,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="isShiny">Shiny value that needs to be set</param>
+        /// <param name="enc">Encounter details</param>
         public static void SetShinyBoolean(this PKM pk, bool isShiny, IEncounterable enc)
         {
             if (pk.IsShiny == isShiny)
@@ -57,23 +59,33 @@ namespace PKHeX.Core.AutoMod
             }
             else
             {
-                if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND) // have to verify all since 8NC and 8ND do not inherit 8N
+                if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND)
+                {
+                    // have to verify all since 8NC and 8ND do not inherit 8N
                     pk.SetRaidShiny();
-                else if (8 > pk.GenNumber && pk.GenNumber > 5) // Set Shiny SID for gen 8 until raid shiny locks are documented
+                }
+                else if (8 > pk.GenNumber && pk.GenNumber > 5)
+                {
+                    // Set Shiny SID for gen 8 until raid shiny locks are documented
                     pk.SetShiny();
+                }
                 else if (pk.VC)
+                {
                     pk.SetIsShiny(true);
+                }
                 else
                 {
-                    if (enc is MysteryGift mg) 
+                    if (enc is MysteryGift mg)
                     {
-                        if (mg.IsEgg || mg is PGT g && g.IsManaphyEgg)
+                        if (mg.IsEgg || (mg is PGT g && g.IsManaphyEgg))
                             pk.SetShinySID(); // not SID locked
                         else
                             pk.SetShiny(); // if SID cant be changed, PID has to be able to change if shiny is possible.
                     }
                     else
+                    {
                         pk.SetShinySID(); // no mg = no lock
+                    }
                 }
             }
         }

@@ -340,7 +340,7 @@ namespace com.google.zxing.qrcode.detector
                 return float.NaN;
             }
 
-            return FoundPatternCross(stateCount)?CenterFromEnd(stateCount, i):float.NaN;
+            return FoundPatternCross(stateCount) ? CenterFromEnd(stateCount, i) : float.NaN;
         }
 
         /// <summary> <p>Like {@link #crossCheckVertical(int, int, int, int)}, and in fact is basically identical,
@@ -420,7 +420,7 @@ namespace com.google.zxing.qrcode.detector
                 return float.NaN;
             }
 
-            return FoundPatternCross(stateCount)?CenterFromEnd(stateCount, j):float.NaN;
+            return FoundPatternCross(stateCount) ? CenterFromEnd(stateCount, j) : float.NaN;
         }
 
         /// <summary> <para>
@@ -450,12 +450,12 @@ namespace com.google.zxing.qrcode.detector
             int stateCountTotal = stateCount[0] + stateCount[1] + stateCount[2] + stateCount[3] + stateCount[4];
             float centerJ = CenterFromEnd(stateCount, j);
             //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-            float centerI = CrossCheckVertical(i, (int) centerJ, stateCount[2], stateCountTotal);
+            float centerI = CrossCheckVertical(i, (int)centerJ, stateCount[2], stateCountTotal);
             if (!float.IsNaN(centerI))
             {
                 // Re-cross check
                 //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-                centerJ = CrossCheckHorizontal((int) centerJ, (int) centerI, stateCount[2], stateCountTotal);
+                centerJ = CrossCheckHorizontal((int)centerJ, (int)centerI, stateCount[2], stateCountTotal);
                 if (!float.IsNaN(centerJ))
                 {
                     //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
@@ -464,7 +464,7 @@ namespace com.google.zxing.qrcode.detector
                     int max = PossibleCenters.Count;
                     for (int index = 0; index < max; index++)
                     {
-                        FinderPattern center = (FinderPattern) PossibleCenters[index];
+                        FinderPattern center = (FinderPattern)PossibleCenters[index];
                         // Look for about the same center and module size:
                         if (center.AboutEquals(estimatedModuleSize, centerI, centerJ))
                         {
@@ -500,7 +500,7 @@ namespace com.google.zxing.qrcode.detector
             FinderPattern firstConfirmedCenter = null;
             for (int i = 0; i < max; i++)
             {
-                FinderPattern center = (FinderPattern) PossibleCenters[i];
+                FinderPattern center = (FinderPattern)PossibleCenters[i];
                 if (center.Count >= CENTER_QUORUM)
                 {
                     if (firstConfirmedCenter == null)
@@ -516,7 +516,7 @@ namespace com.google.zxing.qrcode.detector
                         // This is the case where you find top left last.
                         hasSkipped = true;
                         //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-                        return (int) (Math.Abs(firstConfirmedCenter.X - center.X) - Math.Abs(firstConfirmedCenter.Y - center.Y)) / 2;
+                        return (int)(Math.Abs(firstConfirmedCenter.X - center.X) - Math.Abs(firstConfirmedCenter.Y - center.Y)) / 2;
                     }
                 }
             }
@@ -534,7 +534,7 @@ namespace com.google.zxing.qrcode.detector
             int max = PossibleCenters.Count;
             for (int i = 0; i < max; i++)
             {
-                FinderPattern pattern = (FinderPattern) PossibleCenters[i];
+                FinderPattern pattern = (FinderPattern)PossibleCenters[i];
                 if (pattern.Count >= CENTER_QUORUM)
                 {
                     confirmedCount++;
@@ -554,7 +554,7 @@ namespace com.google.zxing.qrcode.detector
             float totalDeviation = 0.0f;
             for (int i = 0; i < max; i++)
             {
-                FinderPattern pattern = (FinderPattern) PossibleCenters[i];
+                FinderPattern pattern = (FinderPattern)PossibleCenters[i];
                 totalDeviation += Math.Abs(pattern.EstimatedModuleSize - average);
             }
             return totalDeviation <= 0.05f * totalModuleSize;
@@ -581,13 +581,13 @@ namespace com.google.zxing.qrcode.detector
                 float totalModuleSize = 0.0f;
                 for (int i = 0; i < startSize; i++)
                 {
-                    totalModuleSize += ((FinderPattern) PossibleCenters[i]).EstimatedModuleSize;
+                    totalModuleSize += ((FinderPattern)PossibleCenters[i]).EstimatedModuleSize;
                 }
                 //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
                 float average = totalModuleSize / startSize;
                 for (int i = 0; i < PossibleCenters.Count && PossibleCenters.Count > 3; i++)
                 {
-                    FinderPattern pattern = (FinderPattern) PossibleCenters[i];
+                    FinderPattern pattern = (FinderPattern)PossibleCenters[i];
                     if (Math.Abs(pattern.EstimatedModuleSize - average) > 0.2f * average)
                     {
                         PossibleCenters.RemoveAt(i);
@@ -603,7 +603,7 @@ namespace com.google.zxing.qrcode.detector
                 SupportClass.SetCapacity(PossibleCenters, 3);
             }
 
-            return new[]{(FinderPattern) PossibleCenters[0], (FinderPattern) PossibleCenters[1], (FinderPattern) PossibleCenters[2]};
+            return new[] { (FinderPattern)PossibleCenters[0], (FinderPattern)PossibleCenters[1], (FinderPattern)PossibleCenters[2] };
         }
 
         /// <summary> <p>Orders by {@link FinderPattern#getCount()}, descending.</p></summary>
@@ -611,7 +611,7 @@ namespace com.google.zxing.qrcode.detector
         {
             public int Compare(object o1, object o2)
             {
-                return ((FinderPattern) o2).Count - ((FinderPattern) o1).Count;
+                return ((FinderPattern)o2).Count - ((FinderPattern)o1).Count;
             }
         }
     }

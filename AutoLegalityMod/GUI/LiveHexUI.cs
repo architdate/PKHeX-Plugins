@@ -18,7 +18,7 @@ namespace AutoModPlugins
 
         private readonly LiveHexController Remote;
         private readonly ComboBox BoxSelect;
-        private SaveDataEditor<PictureBox> x;
+        private readonly SaveDataEditor<PictureBox> x;
 
         public LiveHexUI(ISaveFileProvider sav, IPKMView editor)
         {
@@ -36,7 +36,7 @@ namespace AutoModPlugins
             var type = sav.GetType();
             var fields = type.GetTypeInfo().DeclaredFields;
             var test = fields.First(z => z.Name == "EditEnv");
-            x = (SaveDataEditor<PictureBox>) test.GetValue(sav);
+            x = (SaveDataEditor<PictureBox>)test.GetValue(sav);
             x.Slots.Publisher.Subscribers.Add(this);
 
             TB_IP.Text = Remote.Bot.IP;
@@ -102,6 +102,7 @@ namespace AutoModPlugins
         private void B_WriteSlot_Click(object sender, EventArgs e) => Remote.WriteActiveSlot((int)NUD_Box.Value - 1, (int)NUD_Slot.Value - 1);
 
         public void NotifySlotOld(ISlotInfo previous) { }
+
         public void NotifySlotChanged(ISlotInfo slot, SlotTouchType type, PKM pkm)
         {
             if (!checkBox2.Checked || !Remote.Bot.Connected)
@@ -115,6 +116,5 @@ namespace AutoModPlugins
 
         public ISlotInfo GetSlotData(PictureBox view) => null;
         public int GetViewIndex(ISlotInfo slot) => -1;
-
     }
 }

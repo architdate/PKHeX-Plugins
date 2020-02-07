@@ -83,17 +83,17 @@ namespace PKHeX.Core.AutoMod
             switch (Source)
             {
                 case PasteSource.PokePaste:
-                {
-                    var url = URL.Replace("/raw", "");
-                    GetFromPokePaste(url);
-                    return;
-                }
+                    {
+                        var url = URL.Replace("/raw", "");
+                        GetFromPokePaste(url);
+                        return;
+                    }
                 case PasteSource.Pastebin:
-                {
-                    var url = URL.Replace("/raw/", "/");
-                    GetFromPasteBin(url);
-                    return;
-                }
+                    {
+                        var url = URL.Replace("/raw/", "/");
+                        GetFromPasteBin(url);
+                        return;
+                    }
                 default:
                     return; // This should never happen
             }

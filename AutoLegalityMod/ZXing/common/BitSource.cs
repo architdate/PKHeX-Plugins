@@ -67,7 +67,7 @@ namespace com.google.zxing.common
             if (bitOffset > 0)
             {
                 int bitsLeft = 8 - bitOffset;
-                int toRead = numBits < bitsLeft?numBits:bitsLeft;
+                int toRead = numBits < bitsLeft ? numBits : bitsLeft;
                 int bitsToNotRead = bitsLeft - toRead;
                 int mask = (0xFF >> (8 - toRead)) << bitsToNotRead;
                 result = (bytes[byteOffset] & mask) >> bitsToNotRead;

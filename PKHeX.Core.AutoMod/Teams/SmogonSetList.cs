@@ -56,7 +56,7 @@ namespace PKHeX.Core.AutoMod
             var split1 = Page.Split(new[] { "\",\"abilities\":" }, StringSplitOptions.None);
             for (int i = 1; i < split1.Length; i++)
             {
-                var shiny = split1[i-1].Contains("\"shiny\":true");
+                var shiny = split1[i - 1].Contains("\"shiny\":true");
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
 
                 var tmp = split2[0];

@@ -73,7 +73,7 @@ namespace com.google.zxing.common.reedsolomon
             for (int i = 0; i < twoS; i++)
             {
                 // Thanks to sanfordsquires for this fix:
-                int eval = poly.EvaluateAt(field.Exp(dataMatrix?i + 1:i));
+                int eval = poly.EvaluateAt(field.Exp(dataMatrix ? i + 1 : i));
                 syndromeCoefficients[syndromeCoefficients.Length - 1 - i] = eval;
                 if (eval != 0)
                 {
@@ -82,7 +82,7 @@ namespace com.google.zxing.common.reedsolomon
             }
             if (noError)
             {
-                return ;
+                return;
             }
             GF256Poly syndrome = new GF256Poly(field, syndromeCoefficients);
             GF256Poly[] sigmaOmega = RunEuclideanAlgorithm(field.BuildMonomial(twoS, 1), syndrome, twoS);
@@ -159,7 +159,7 @@ namespace com.google.zxing.common.reedsolomon
             int inverse = field.Inverse(sigmaTildeAtZero);
             GF256Poly sigma = t.Multiply(inverse);
             GF256Poly omega = r.Multiply(inverse);
-            return new[]{sigma, omega};
+            return new[] { sigma, omega };
         }
 
         private int[] FindErrorLocations(GF256Poly errorLocator)
@@ -169,7 +169,7 @@ namespace com.google.zxing.common.reedsolomon
             if (numErrors == 1)
             {
                 // shortcut
-                return new[]{errorLocator.GetCoefficient(1)};
+                return new[] { errorLocator.GetCoefficient(1) };
             }
             int[] result = new int[numErrors];
             int e = 0;

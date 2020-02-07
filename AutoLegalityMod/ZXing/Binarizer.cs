@@ -41,7 +41,7 @@ namespace com.google.zxing
         /// </summary>
         /// <returns> The 2D array of bits for the image (true means black).
         /// </returns>
-        public abstract BitMatrix BlackMatrix{get;}
+        public abstract BitMatrix BlackMatrix { get; }
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'source '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
 

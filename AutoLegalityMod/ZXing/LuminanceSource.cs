@@ -37,7 +37,7 @@ namespace com.google.zxing
         /// larger than width * height bytes on some platforms. Do not modify the contents
         /// of the result.
         /// </returns>
-        public abstract sbyte[] Matrix{get;}
+        public abstract sbyte[] Matrix { get; }
 
         /// <summary> The width of the bitmap.
         /// </summary>

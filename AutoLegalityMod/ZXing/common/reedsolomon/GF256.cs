@@ -74,8 +74,8 @@ namespace com.google.zxing.common.reedsolomon
                 logTable[expTable[i]] = i;
             }
             // logTable[0] == 0 but this should never be used
-            Zero = new GF256Poly(this, new[]{0});
-            One = new GF256Poly(this, new[]{1});
+            Zero = new GF256Poly(this, new[] { 0 });
+            One = new GF256Poly(this, new[] { 1 });
         }
 
         /// <summary> the monomial representing coefficient * x^degree

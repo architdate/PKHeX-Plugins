@@ -48,7 +48,7 @@ namespace com.google.zxing.qrcode.detector
         /// <throws>  ReaderException if no QR Code can be found </throws>
         public DetectorResult Detect(Hashtable hints = null)
         {
-            ResultPointCallback = (ResultPointCallback) hints?[DecodeHintType.NEED_RESULT_POINT_CALLBACK];
+            ResultPointCallback = (ResultPointCallback)hints?[DecodeHintType.NEED_RESULT_POINT_CALLBACK];
 
             FinderPatternFinder finder = new FinderPatternFinder(Image, ResultPointCallback);
             FinderPatternInfo info = finder.Find(hints);
@@ -84,9 +84,9 @@ namespace com.google.zxing.qrcode.detector
                 //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
                 float correctionToTopLeft = 1.0f - (3.0f / modulesBetweenFPCenters);
                 //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-                int estAlignmentX = (int) (topLeft.X + (correctionToTopLeft * (bottomRightX - topLeft.X)));
+                int estAlignmentX = (int)(topLeft.X + (correctionToTopLeft * (bottomRightX - topLeft.X)));
                 //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-                int estAlignmentY = (int) (topLeft.Y + (correctionToTopLeft * (bottomRightY - topLeft.Y)));
+                int estAlignmentY = (int)(topLeft.Y + (correctionToTopLeft * (bottomRightY - topLeft.Y)));
 
                 // Kind of arbitrary -- expand search radius before giving up
                 for (int i = 4; i <= 16; i <<= 1)
@@ -110,8 +110,8 @@ namespace com.google.zxing.qrcode.detector
             BitMatrix bits = SampleGrid(Image, transform, dimension);
 
             var points = alignmentPattern == null
-                ? new ResultPoint[] {bottomLeft, topLeft, topRight}
-                : new ResultPoint[] {bottomLeft, topLeft, topRight, alignmentPattern};
+                ? new ResultPoint[] { bottomLeft, topLeft, topRight }
+                : new ResultPoint[] { bottomLeft, topLeft, topRight, alignmentPattern };
             return new DetectorResult(bits, points);
         }
 
@@ -162,7 +162,7 @@ namespace com.google.zxing.qrcode.detector
                 case 0:
                     dimension++;
                     break;
-                    // 1? do nothing
+                // 1? do nothing
 
                 case 2:
                     dimension--;
@@ -170,7 +170,7 @@ namespace com.google.zxing.qrcode.detector
 
                 case 3:
                     throw ReaderException.Instance;
-                }
+            }
             Console.WriteLine(dimension);
             return dimension;
         }
@@ -191,9 +191,9 @@ namespace com.google.zxing.qrcode.detector
         private float CalculateModuleSizeOneWay(ResultPoint pattern, ResultPoint otherPattern)
         {
             //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-            float moduleSizeEst1 = SizeOfBlackWhiteBlackRunBothWays((int) pattern.X, (int) pattern.Y, (int) otherPattern.X, (int) otherPattern.Y);
+            float moduleSizeEst1 = SizeOfBlackWhiteBlackRunBothWays((int)pattern.X, (int)pattern.Y, (int)otherPattern.X, (int)otherPattern.Y);
             //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-            float moduleSizeEst2 = SizeOfBlackWhiteBlackRunBothWays((int) otherPattern.X, (int) otherPattern.Y, (int) pattern.X, (int) pattern.Y);
+            float moduleSizeEst2 = SizeOfBlackWhiteBlackRunBothWays((int)otherPattern.X, (int)otherPattern.Y, (int)pattern.X, (int)pattern.Y);
             if (float.IsNaN(moduleSizeEst1))
             {
                 return moduleSizeEst2 / 7.0f;
@@ -221,33 +221,33 @@ namespace com.google.zxing.qrcode.detector
             if (otherToX < 0)
             {
                 //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-                scale = fromX / (float) (fromX - otherToX);
+                scale = fromX / (float)(fromX - otherToX);
                 otherToX = 0;
             }
             else if (otherToX >= Image.Width)
             {
                 //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-                scale = (Image.Width - 1 - fromX) / (float) (otherToX - fromX);
+                scale = (Image.Width - 1 - fromX) / (float)(otherToX - fromX);
                 otherToX = Image.Width - 1;
             }
             //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-            int otherToY = (int) (fromY - ((toY - fromY) * scale));
+            int otherToY = (int)(fromY - ((toY - fromY) * scale));
 
             scale = 1.0f;
             if (otherToY < 0)
             {
                 //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-                scale = fromY / (float) (fromY - otherToY);
+                scale = fromY / (float)(fromY - otherToY);
                 otherToY = 0;
             }
             else if (otherToY >= Image.Height)
             {
                 //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-                scale = (Image.Height - 1 - fromY) / (float) (otherToY - fromY);
+                scale = (Image.Height - 1 - fromY) / (float)(otherToY - fromY);
                 otherToY = Image.Height - 1;
             }
             //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-            otherToX = (int) (fromX + ((otherToX - fromX) * scale));
+            otherToX = (int)(fromX + ((otherToX - fromX) * scale));
 
             result += SizeOfBlackWhiteBlackRun(fromX, fromY, otherToX, otherToY);
             return result - 1.0f; // -1 because we counted the middle pixel twice
@@ -280,14 +280,14 @@ namespace com.google.zxing.qrcode.detector
 
             int dx = Math.Abs(toX - fromX);
             int dy = Math.Abs(toY - fromY);
-            int error = - dx >> 1;
-            int ystep = fromY < toY?1:- 1;
-            int xstep = fromX < toX?1:- 1;
+            int error = -dx >> 1;
+            int ystep = fromY < toY ? 1 : -1;
+            int xstep = fromX < toX ? 1 : -1;
             int state = 0; // In black pixels, looking for white, first or second time
             for (int x = fromX, y = fromY; x != toX; x += xstep)
             {
-                int realX = steep?y:x;
-                int realY = steep?x:y;
+                int realX = steep ? y : x;
+                int realY = steep ? x : y;
                 if (state == 1)
                 {
                     // In white pixels, looking for black
@@ -349,7 +349,7 @@ namespace com.google.zxing.qrcode.detector
             // Look for an alignment pattern (3 modules in size) around where it
             // should be
             //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-            int allowance = (int) (allowanceFactor * overallEstModuleSize);
+            int allowance = (int)(allowanceFactor * overallEstModuleSize);
             int alignmentAreaLeftX = Math.Max(0, estAlignmentX - allowance);
             int alignmentAreaRightX = Math.Min(Image.Width - 1, estAlignmentX + allowance);
             if (alignmentAreaRightX - alignmentAreaLeftX < overallEstModuleSize * 3)
@@ -370,7 +370,7 @@ namespace com.google.zxing.qrcode.detector
         private static int Round(float d)
         {
             //UPGRADE_WARNING: Data types in Visual C# might be different.  Verify the accuracy of narrowing conversions. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1042'"
-            return (int) (d + 0.5f);
+            return (int)(d + 0.5f);
         }
     }
 }

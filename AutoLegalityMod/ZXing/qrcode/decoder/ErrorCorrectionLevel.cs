@@ -47,7 +47,7 @@ namespace com.google.zxing.qrcode.decoder
         public static readonly ErrorCorrectionLevel H = new ErrorCorrectionLevel(3, 0x02, "H");
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'FOR_BITS '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-        private static readonly ErrorCorrectionLevel[] FOR_BITS = {M, L, H, Q};
+        private static readonly ErrorCorrectionLevel[] FOR_BITS = { M, L, H, Q };
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'ordinal '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
         private readonly int Ordinal_Renamed_Field;

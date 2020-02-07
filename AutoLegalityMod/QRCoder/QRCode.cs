@@ -7,7 +7,7 @@ namespace QRCoder
 
     public sealed class QRCode : AbstractQRCode<Bitmap>, IDisposable
     {
-        public QRCode(QRCodeData data) : base(data) {}
+        public QRCode(QRCodeData data) : base(data) { }
 
         public override Bitmap GetGraphic(int pixelsPerModule)
         {
@@ -25,7 +25,7 @@ namespace QRCoder
             {
                 for (var y = 0; y < size + offset; y += pixelsPerModule)
                 {
-                    var module = QrCodeData.ModuleMatrix[((y + pixelsPerModule)/pixelsPerModule) - 1][((x + pixelsPerModule)/pixelsPerModule) - 1];
+                    var module = QrCodeData.ModuleMatrix[((y + pixelsPerModule) / pixelsPerModule) - 1][((x + pixelsPerModule) / pixelsPerModule) - 1];
                     var brush = module ? new SolidBrush(darkColor) : new SolidBrush(lightColor);
                     gfx.FillRectangle(brush, new Rectangle(x - offset, y - offset, pixelsPerModule, pixelsPerModule));
                 }

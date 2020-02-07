@@ -38,7 +38,7 @@ namespace com.google.zxing.qrcode.decoder
     {
         /// <summary> See ISO 18004:2006 6.8.1</summary>
         //UPGRADE_NOTE: Final was removed from the declaration of 'DATA_MASKS '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-        private static readonly DataMask[] DATA_MASKS = new DataMask[]{new DataMask000(), new DataMask001(), new DataMask010(), new DataMask011(), new DataMask100(), new DataMask101(), new DataMask110(), new DataMask111()};
+        private static readonly DataMask[] DATA_MASKS = new DataMask[] { new DataMask000(), new DataMask001(), new DataMask010(), new DataMask011(), new DataMask100(), new DataMask101(), new DataMask110(), new DataMask111() };
 
         private DataMask()
         {
@@ -83,7 +83,7 @@ namespace com.google.zxing.qrcode.decoder
         }
 
         /// <summary> 000: mask bits for which (x + y) mod 2 == 0</summary>
-        private class DataMask000:DataMask
+        private class DataMask000 : DataMask
         {
             protected override bool IsMasked(int i, int j)
             {
@@ -92,7 +92,7 @@ namespace com.google.zxing.qrcode.decoder
         }
 
         /// <summary> 001: mask bits for which x mod 2 == 0</summary>
-        private class DataMask001:DataMask
+        private class DataMask001 : DataMask
         {
             protected override bool IsMasked(int i, int j)
             {
@@ -101,7 +101,7 @@ namespace com.google.zxing.qrcode.decoder
         }
 
         /// <summary> 010: mask bits for which y mod 3 == 0</summary>
-        private class DataMask010:DataMask
+        private class DataMask010 : DataMask
         {
             protected override bool IsMasked(int i, int j)
             {
@@ -110,7 +110,7 @@ namespace com.google.zxing.qrcode.decoder
         }
 
         /// <summary> 011: mask bits for which (x + y) mod 3 == 0</summary>
-        private class DataMask011:DataMask
+        private class DataMask011 : DataMask
         {
             protected override bool IsMasked(int i, int j)
             {
@@ -119,7 +119,7 @@ namespace com.google.zxing.qrcode.decoder
         }
 
         /// <summary> 100: mask bits for which (x/2 + y/3) mod 2 == 0</summary>
-        private class DataMask100:DataMask
+        private class DataMask100 : DataMask
         {
             protected override bool IsMasked(int i, int j)
             {
@@ -128,7 +128,7 @@ namespace com.google.zxing.qrcode.decoder
         }
 
         /// <summary> 101: mask bits for which xy mod 2 + xy mod 3 == 0</summary>
-        private class DataMask101:DataMask
+        private class DataMask101 : DataMask
         {
             protected override bool IsMasked(int i, int j)
             {
@@ -138,7 +138,7 @@ namespace com.google.zxing.qrcode.decoder
         }
 
         /// <summary> 110: mask bits for which (xy mod 2 + xy mod 3) mod 2 == 0</summary>
-        private class DataMask110:DataMask
+        private class DataMask110 : DataMask
         {
             protected override bool IsMasked(int i, int j)
             {
@@ -148,7 +148,7 @@ namespace com.google.zxing.qrcode.decoder
         }
 
         /// <summary> 111: mask bits for which ((x+y)mod 2 + xy mod 3) mod 2 == 0</summary>
-        private class DataMask111:DataMask
+        private class DataMask111 : DataMask
         {
             protected override bool IsMasked(int i, int j)
             {

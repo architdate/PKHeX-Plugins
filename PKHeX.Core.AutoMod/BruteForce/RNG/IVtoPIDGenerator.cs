@@ -9,7 +9,7 @@ namespace RNGReporter
         {
             var seeds = IVtoSeed.GetSeeds(hp, atk, def, spa, spd, spe, nature, tid, type);
             if (seeds.Count == 0)
-                return new[] {0u,0u};
+                return new[] { 0u, 0u };
 
             return new[]
             {

@@ -17,36 +17,36 @@ using System.Collections;
 
 namespace com.google.zxing
 {
-	/// <summary> Enumerates barcode formats known to this package.
-	///
-	/// </summary>
-	/// <author>  Sean Owen
-	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
-	/// </author>
+    /// <summary> Enumerates barcode formats known to this package.
+    ///
+    /// </summary>
+    /// <author>  Sean Owen
+    /// </author>
+    /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
+    /// </author>
 
-	public sealed class BarcodeFormat
-	{
-		public string Name { get; }
+    public sealed class BarcodeFormat
+    {
+        public string Name { get; }
 
-	    // No, we can't use an enum here. J2ME doesn't support it.
+        // No, we can't use an enum here. J2ME doesn't support it.
 
-		//UPGRADE_NOTE: Final was removed from the declaration of 'VALUES '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-		private static readonly Hashtable VALUES = Hashtable.Synchronized(new Hashtable());
+        //UPGRADE_NOTE: Final was removed from the declaration of 'VALUES '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+        private static readonly Hashtable VALUES = Hashtable.Synchronized(new Hashtable());
 
-		/// <summary>QR Code 2D barcode format. </summary>
-		//UPGRADE_NOTE: Final was removed from the declaration of 'QR_CODE '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-		public static readonly BarcodeFormat QR_CODE = new BarcodeFormat("QR_CODE");
+        /// <summary>QR Code 2D barcode format. </summary>
+        //UPGRADE_NOTE: Final was removed from the declaration of 'QR_CODE '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+        public static readonly BarcodeFormat QR_CODE = new BarcodeFormat("QR_CODE");
 
-	    private BarcodeFormat(string name)
-		{
-			Name = name;
-			VALUES[name] = this;
-		}
+        private BarcodeFormat(string name)
+        {
+            Name = name;
+            VALUES[name] = this;
+        }
 
-		public override string ToString()
-		{
-			return Name;
-		}
-	}
+        public override string ToString()
+        {
+            return Name;
+        }
+    }
 }

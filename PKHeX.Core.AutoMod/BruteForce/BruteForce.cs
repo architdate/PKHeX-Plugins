@@ -60,7 +60,7 @@ namespace PKHeX.Core.AutoMod
             {
                 if (pk.DebutGeneration > game.GetGeneration())
                     continue;
-                pk.Version = (int) game;
+                pk.Version = (int)game;
                 pk.RestoreIVs(set.IVs); // Restore IVs to template, and HT to false
                 pk.Language = 2;
                 pk.OT_Name = trainer.OT;
@@ -69,18 +69,18 @@ namespace PKHeX.Core.AutoMod
                 pk.OT_Gender = trainer.Gender;
                 pk.MetDate = DateTime.Today;
                 pk.EggMetDate = DateTime.Today;
-                pk.Egg_Location = pk.Version < (int) GameVersion.W ? 2002 : 60002;
+                pk.Egg_Location = pk.Version < (int)GameVersion.W ? 2002 : 60002;
 
                 pk.Met_Level = 1;
                 pk.ConsoleRegion = 2;
 
-                if (pk.Version == (int) GameVersion.RD || pk.Version == (int) GameVersion.BU || pk.Version == (int) GameVersion.YW || pk.Version == (int) GameVersion.GN)
+                if (pk.Version == (int)GameVersion.RD || pk.Version == (int)GameVersion.BU || pk.Version == (int)GameVersion.YW || pk.Version == (int)GameVersion.GN)
                 {
                     pk.SID = 0;
                     pk.Met_Location = 30013;
                     pk.Met_Level = 100;
                 }
-                if (pk.Version == (int) GameVersion.CXD)
+                if (pk.Version == (int)GameVersion.CXD)
                 {
                     pk.Met_Location = 30001;
                     pk.Met_Level = 100;
@@ -109,7 +109,7 @@ namespace PKHeX.Core.AutoMod
                     pk.SetShiny();
                 if (pk.PID == 0)
                 {
-                    pk.PID = PKX.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint) (pk.AbilityNumber * 0x10001));
+                    pk.PID = PKX.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, (uint)(pk.AbilityNumber * 0x10001));
                     if (shiny)
                         pk.SetShiny();
                 }
@@ -159,7 +159,7 @@ namespace PKHeX.Core.AutoMod
                 pk.SetBelugaValues();
                 pk.EggMetDate = null;
                 pk.Egg_Location = 0;
-                pk.Version = (int) game;
+                pk.Version = (int)game;
                 pk.RestoreIVs(set.IVs); // Restore IVs to template, and HT to false
                 pk.Language = 2;
                 pk.ConsoleRegion = 2;
@@ -169,7 +169,7 @@ namespace PKHeX.Core.AutoMod
                 pk.OT_Gender = trainer.Gender;
 
                 if (BruteTables.UltraBeastBall.Contains(pk.Species))
-                    pk.Ball = (int) Ball.Beast;
+                    pk.Ball = (int)Ball.Beast;
 
                 if (game.GetGeneration() <= 2)
                 {
@@ -449,7 +449,7 @@ namespace PKHeX.Core.AutoMod
             }
             if (report.Contains(LGeoNoCountryHT))
             {
-                var g = (IGeoTrack) pk;
+                var g = (IGeoTrack)pk;
                 g.Geo1_Country = 1;
                 report = GetReport(pk);
             }
@@ -485,7 +485,7 @@ namespace PKHeX.Core.AutoMod
             }
             if (report.Contains(LGeoMemoryMissing)) //V137 = GeoLocation Memory: Memories should be present.
             {
-                var g = (IGeoTrack) pk;
+                var g = (IGeoTrack)pk;
                 g.Geo1_Country = 1;
                 report = GetReport(pk);
             }

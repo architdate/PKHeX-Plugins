@@ -15,31 +15,31 @@
 */
 namespace com.google.zxing.qrcode.detector
 {
-	/// <summary> <p>Encapsulates information about finder patterns in an image, including the location of
-	/// the three finder patterns, and their estimated module size.</p>
-	///
-	/// </summary>
-	/// <author>  Sean Owen
-	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
-	/// </author>
-	public sealed class FinderPatternInfo
-	{
-		public FinderPattern BottomLeft { get; }
+    /// <summary> <p>Encapsulates information about finder patterns in an image, including the location of
+    /// the three finder patterns, and their estimated module size.</p>
+    ///
+    /// </summary>
+    /// <author>  Sean Owen
+    /// </author>
+    /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
+    /// </author>
+    public sealed class FinderPatternInfo
+    {
+        public FinderPattern BottomLeft { get; }
 
-	    public FinderPattern TopLeft { get; }
+        public FinderPattern TopLeft { get; }
 
-	    public FinderPattern TopRight { get; }
+        public FinderPattern TopRight { get; }
 
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'bottomLeft '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'topLeft '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'topRight '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+        //UPGRADE_NOTE: Final was removed from the declaration of 'bottomLeft '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+        //UPGRADE_NOTE: Final was removed from the declaration of 'topLeft '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+        //UPGRADE_NOTE: Final was removed from the declaration of 'topRight '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
 
-	    public FinderPatternInfo(FinderPattern[] patternCenters)
-		{
-			BottomLeft = patternCenters[0];
-			TopLeft = patternCenters[1];
-			TopRight = patternCenters[2];
-		}
-	}
+        public FinderPatternInfo(FinderPattern[] patternCenters)
+        {
+            BottomLeft = patternCenters[0];
+            TopLeft = patternCenters[1];
+            TopRight = patternCenters[2];
+        }
+    }
 }

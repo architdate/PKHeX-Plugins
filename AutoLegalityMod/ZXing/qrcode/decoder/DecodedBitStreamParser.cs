@@ -35,7 +35,7 @@ namespace com.google.zxing.qrcode.decoder
     {
         /// <summary> See ISO 18004:2006, 6.4.4 Table 5</summary>
         //UPGRADE_NOTE: Final was removed from the declaration of 'ALPHANUMERIC_CHARS'. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-        private static readonly char[] ALPHANUMERIC_CHARS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '$', '%', '*', '+', '-', '.', '/', ':'};
+        private static readonly char[] ALPHANUMERIC_CHARS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '$', '%', '*', '+', '-', '.', '/', ':' };
         private const string SHIFT_JIS = "SJIS";
         private const string EUC_JP = "EUC_JP";
         private static readonly bool ASSUME_SHIFT_JIS;
@@ -124,7 +124,7 @@ namespace com.google.zxing.qrcode.decoder
             }
             while (!mode.Equals(Mode.TERMINATOR));
 
-            return new DecoderResult(bytes, result.ToString(), (byteSegments.Count == 0)?null:byteSegments, ecLevel);
+            return new DecoderResult(bytes, result.ToString(), (byteSegments.Count == 0) ? null : byteSegments, ecLevel);
         }
 
         private static void DecodeKanjiSegment(BitSource bits, StringBuilder result, int count)
@@ -148,8 +148,8 @@ namespace com.google.zxing.qrcode.decoder
                     // In the 0xE040 to 0xEBBF range
                     assembledTwoBytes += 0x0C140;
                 }
-                buffer[offset] = (sbyte) (assembledTwoBytes >> 8);
-                buffer[offset + 1] = (sbyte) assembledTwoBytes;
+                buffer[offset] = (sbyte)(assembledTwoBytes >> 8);
+                buffer[offset + 1] = (sbyte)assembledTwoBytes;
                 offset += 2;
                 count--;
             }
@@ -174,7 +174,7 @@ namespace com.google.zxing.qrcode.decoder
             }
             for (int i = 0; i < count; i++)
             {
-                readBytes[i] = (sbyte) bits.ReadBits(8);
+                readBytes[i] = (sbyte)bits.ReadBits(8);
             }
 
             // The spec isn't clear on this mode; see
@@ -227,7 +227,7 @@ namespace com.google.zxing.qrcode.decoder
                         else
                         {
                             // In alpha mode, % should be converted to FNC1 separator 0x1D
-                            result[i] = (char) 0x1D;
+                            result[i] = (char)0x1D;
                         }
                     }
                 }
@@ -280,7 +280,7 @@ namespace com.google.zxing.qrcode.decoder
                 return SHIFT_JIS;
             }
             // Does it start with the UTF-8 byte order mark? then guess it's UTF-8
-            if (bytes.Length > 3 && bytes[0] == (sbyte) SupportClass.Identity(0xEF) && bytes[1] == (sbyte) SupportClass.Identity(0xBB) && bytes[2] == (sbyte) SupportClass.Identity(0xBF))
+            if (bytes.Length > 3 && bytes[0] == (sbyte)SupportClass.Identity(0xEF) && bytes[1] == (sbyte)SupportClass.Identity(0xBB) && bytes[2] == (sbyte)SupportClass.Identity(0xBF))
             {
                 return UTF8;
             }

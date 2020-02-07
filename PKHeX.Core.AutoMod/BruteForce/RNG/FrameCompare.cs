@@ -68,15 +68,15 @@ namespace RNGReporter
             //  Anything set not to compare is considered pass
             return compare switch
             {
-                CompareType.Equal =>      (frameIv == testIv),
-                CompareType.GtEqual =>    (frameIv >= testIv),
-                CompareType.LtEqual =>    (frameIv <= testIv),
-                CompareType.NotEqual =>   (frameIv != testIv),
-                CompareType.Even =>       ((frameIv & 1) == 0),
-                CompareType.Odd =>        ((frameIv & 1) == 1),
+                CompareType.Equal => (frameIv == testIv),
+                CompareType.GtEqual => (frameIv >= testIv),
+                CompareType.LtEqual => (frameIv <= testIv),
+                CompareType.NotEqual => (frameIv != testIv),
+                CompareType.Even => ((frameIv & 1) == 0),
+                CompareType.Odd => ((frameIv & 1) == 1),
                 CompareType.HiddenEven => (((frameIv + 2) & 3) == 0),
-                CompareType.HiddenOdd =>  (((frameIv + 5) & 3) == 0),
-                CompareType.Hidden =>     (((frameIv + 2) & 3) == 0 || ((frameIv + 5) & 3) == 0),
+                CompareType.HiddenOdd => (((frameIv + 5) & 3) == 0),
+                CompareType.Hidden => (((frameIv + 2) & 3) == 0 || ((frameIv + 5) & 3) == 0),
                 _ => true
             };
         }

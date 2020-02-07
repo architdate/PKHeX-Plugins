@@ -30,7 +30,7 @@ namespace com.google.zxing.common
     /// </author>
     /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
     /// </author>
-    public class GlobalHistogramBinarizer:Binarizer
+    public class GlobalHistogramBinarizer : Binarizer
     {
         public override BitMatrix BlackMatrix
         {
@@ -227,7 +227,7 @@ namespace com.google.zxing.common
 
             // Find a valley between them that is low and closer to the white peak.
             int bestValley = secondPeak - 1;
-            int bestValleyScore = - 1;
+            int bestValleyScore = -1;
             for (int x = secondPeak - 1; x > firstPeak; x--)
             {
                 int fromFirst = x - firstPeak;

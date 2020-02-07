@@ -33,25 +33,25 @@ namespace com.google.zxing.qrcode.decoder
         // No, we can't use an enum here. J2ME doesn't support it.
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'TERMINATOR '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-        public static readonly Mode TERMINATOR = new Mode(new[]{0, 0, 0}, 0x00, "TERMINATOR"); // Not really a mode...
+        public static readonly Mode TERMINATOR = new Mode(new[] { 0, 0, 0 }, 0x00, "TERMINATOR"); // Not really a mode...
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'NUMERIC '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-        public static readonly Mode NUMERIC = new Mode(new[]{10, 12, 14}, 0x01, "NUMERIC");
+        public static readonly Mode NUMERIC = new Mode(new[] { 10, 12, 14 }, 0x01, "NUMERIC");
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'ALPHANUMERIC '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-        public static readonly Mode ALPHANUMERIC = new Mode(new[]{9, 11, 13}, 0x02, "ALPHANUMERIC");
+        public static readonly Mode ALPHANUMERIC = new Mode(new[] { 9, 11, 13 }, 0x02, "ALPHANUMERIC");
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'STRUCTURED_APPEND '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-        public static readonly Mode STRUCTURED_APPEND = new Mode(new[]{0, 0, 0}, 0x03, "STRUCTURED_APPEND"); // Not supported
+        public static readonly Mode STRUCTURED_APPEND = new Mode(new[] { 0, 0, 0 }, 0x03, "STRUCTURED_APPEND"); // Not supported
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'BYTE '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-        public static readonly Mode BYTE = new Mode(new[]{8, 16, 16}, 0x04, "BYTE");
+        public static readonly Mode BYTE = new Mode(new[] { 8, 16, 16 }, 0x04, "BYTE");
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'ECI '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
         public static readonly Mode ECI = new Mode(null, 0x07, "ECI"); // character counts don't apply
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'KANJI '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-        public static readonly Mode KANJI = new Mode(new[]{8, 10, 12}, 0x08, "KANJI");
+        public static readonly Mode KANJI = new Mode(new[] { 8, 10, 12 }, 0x08, "KANJI");
 
         //UPGRADE_NOTE: Final was removed from the declaration of 'FNC1_FIRST_POSITION '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
         public static readonly Mode FNC1_FIRST_POSITION = new Mode(null, 0x05, "FNC1_FIRST_POSITION");

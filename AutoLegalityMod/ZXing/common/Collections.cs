@@ -18,39 +18,39 @@ using System.Collections;
 
 namespace com.google.zxing.common
 {
-	/// <summary> <p>This is basically a substitute for <code>java.util.Collections</code>, which is not
-	/// present in MIDP 2.0 / CLDC 1.1.</p>
-	///
-	/// </summary>
-	/// <author>  Sean Owen
-	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
-	/// </author>
-	public static class Collections
-	{
-	    /// <summary> Sorts its argument (destructively) using insert sort; in the context of this package
-		/// insertion sort is simple and efficient given its relatively small inputs.
-		///
-		/// </summary>
-		/// <param name="vector">vector to sort
-		/// </param>
-		/// <param name="comparator">comparator to define sort ordering
-		/// </param>
-		public static void InsertionSort(ArrayList vector, IComparator comparator)
-		{
-			int max = vector.Count;
-			for (int i = 1; i < max; i++)
-			{
-				object value_Renamed = vector[i];
-				int j = i - 1;
-				object valueB;
-				while (j >= 0 && comparator.Compare(valueB = vector[j], value_Renamed) > 0)
-				{
-					vector[j + 1] = valueB;
-					j--;
-				}
-				vector[j + 1] = value_Renamed;
-			}
-		}
-	}
+    /// <summary> <p>This is basically a substitute for <code>java.util.Collections</code>, which is not
+    /// present in MIDP 2.0 / CLDC 1.1.</p>
+    ///
+    /// </summary>
+    /// <author>  Sean Owen
+    /// </author>
+    /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
+    /// </author>
+    public static class Collections
+    {
+        /// <summary> Sorts its argument (destructively) using insert sort; in the context of this package
+        /// insertion sort is simple and efficient given its relatively small inputs.
+        ///
+        /// </summary>
+        /// <param name="vector">vector to sort
+        /// </param>
+        /// <param name="comparator">comparator to define sort ordering
+        /// </param>
+        public static void InsertionSort(ArrayList vector, IComparator comparator)
+        {
+            int max = vector.Count;
+            for (int i = 1; i < max; i++)
+            {
+                object value_Renamed = vector[i];
+                int j = i - 1;
+                object valueB;
+                while (j >= 0 && comparator.Compare(valueB = vector[j], value_Renamed) > 0)
+                {
+                    vector[j + 1] = valueB;
+                    j--;
+                }
+                vector[j + 1] = value_Renamed;
+            }
+        }
+    }
 }

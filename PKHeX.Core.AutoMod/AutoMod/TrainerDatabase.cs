@@ -15,7 +15,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="version">Version the trainer should originate from</param>
         /// <returns>Null if no trainer found for this version.</returns>
-        public ITrainerInfo? GetTrainer(int version) => GetTrainer((GameVersion) version);
+        public ITrainerInfo? GetTrainer(int version) => GetTrainer((GameVersion)version);
 
         /// <summary>
         /// Fetches an appropriate trainer based on the requested <see cref="ver"/>.
@@ -79,12 +79,12 @@ namespace PKHeX.Core.AutoMod
         /// <param name="trainer">Trainer details to add.</param>
         public void Register(ITrainerInfo trainer)
         {
-            var ver = (GameVersion) trainer.Game;
+            var ver = (GameVersion)trainer.Game;
             if (ver <= 0 && trainer is SaveFile s)
                 ver = s.Version;
             if (!Database.TryGetValue(ver, out var list))
             {
-                Database.Add(ver, new List<ITrainerInfo> {trainer});
+                Database.Add(ver, new List<ITrainerInfo> { trainer });
                 return;
             }
 

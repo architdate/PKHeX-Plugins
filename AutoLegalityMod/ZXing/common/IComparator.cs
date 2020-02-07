@@ -15,11 +15,11 @@
 */
 namespace com.google.zxing.common
 {
-	/// <summary> This is merely a clone of <code>Comparator</code> since it is not available in
-	/// CLDC 1.1 / MIDP 2.0.
-	/// </summary>
-	public interface IComparator
-	{
-		int Compare(object o1, object o2);
-	}
+    /// <summary> This is merely a clone of <code>Comparator</code> since it is not available in
+    /// CLDC 1.1 / MIDP 2.0.
+    /// </summary>
+    public interface IComparator
+    {
+        int Compare(object o1, object o2);
+    }
 }

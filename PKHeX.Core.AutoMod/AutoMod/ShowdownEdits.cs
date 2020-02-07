@@ -178,6 +178,5 @@ namespace PKHeX.Core.AutoMod
                 return item - 115;
             return 0;
         }
-
     }
 }

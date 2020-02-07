@@ -19,40 +19,40 @@ using com.google.zxing.qrcode.decoder;
 
 namespace com.google.zxing.common
 {
-	/// <summary> <p>Encapsulates the result of decoding a matrix of bits. This typically
-	/// applies to 2D barcode formats. For now it contains the raw bytes obtained,
-	/// as well as a String interpretation of those bytes, if applicable.</p>
-	///
-	/// </summary>
-	/// <author>  Sean Owen
-	/// </author>
-	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
-	/// </author>
-	public sealed class DecoderResult
-	{
-		public sbyte[] RawBytes { get; }
+    /// <summary> <p>Encapsulates the result of decoding a matrix of bits. This typically
+    /// applies to 2D barcode formats. For now it contains the raw bytes obtained,
+    /// as well as a String interpretation of those bytes, if applicable.</p>
+    ///
+    /// </summary>
+    /// <author>  Sean Owen
+    /// </author>
+    /// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source
+    /// </author>
+    public sealed class DecoderResult
+    {
+        public sbyte[] RawBytes { get; }
 
-	    public string Text { get; }
+        public string Text { get; }
 
-	    public ArrayList ByteSegments { get; }
+        public ArrayList ByteSegments { get; }
 
-	    public ErrorCorrectionLevel ECLevel { get; }
+        public ErrorCorrectionLevel ECLevel { get; }
 
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'rawBytes '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'text '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'byteSegments '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
-	    //UPGRADE_NOTE: Final was removed from the declaration of 'ecLevel '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+        //UPGRADE_NOTE: Final was removed from the declaration of 'rawBytes '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+        //UPGRADE_NOTE: Final was removed from the declaration of 'text '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+        //UPGRADE_NOTE: Final was removed from the declaration of 'byteSegments '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
+        //UPGRADE_NOTE: Final was removed from the declaration of 'ecLevel '. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1003'"
 
-	    public DecoderResult(sbyte[] rawBytes, string text, ArrayList byteSegments, ErrorCorrectionLevel ecLevel)
-		{
-			if (rawBytes == null && text == null)
-			{
-				throw new ArgumentException();
-			}
-			RawBytes = rawBytes;
-			Text = text;
-			ByteSegments = byteSegments;
-			ECLevel = ecLevel;
-		}
-	}
+        public DecoderResult(sbyte[] rawBytes, string text, ArrayList byteSegments, ErrorCorrectionLevel ecLevel)
+        {
+            if (rawBytes == null && text == null)
+            {
+                throw new ArgumentException();
+            }
+            RawBytes = rawBytes;
+            Text = text;
+            ByteSegments = byteSegments;
+            ECLevel = ecLevel;
+        }
+    }
 }

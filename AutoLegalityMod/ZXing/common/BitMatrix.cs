@@ -214,7 +214,7 @@ namespace com.google.zxing.common
             {
                 for (int x = 0; x < Width; x++)
                 {
-                    result.Append(Get_Renamed(x, y)?"X ":"  ");
+                    result.Append(Get_Renamed(x, y) ? "X " : "  ");
                 }
                 result.Append('\n');
             }

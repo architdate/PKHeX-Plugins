@@ -910,6 +910,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         private static readonly Ball[] BallList = (Ball[])Enum.GetValues(typeof(Ball));
+
         static Aesthetics()
         {
             var exclude = new[] { Ball.None, Poke };

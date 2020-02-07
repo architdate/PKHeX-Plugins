@@ -240,7 +240,7 @@ namespace com.google.zxing.common.reedsolomon
                 remainder = remainder.AddOrSubtract(term);
             }
 
-            return new[]{quotient, remainder};
+            return new[] { quotient, remainder };
         }
 
         public override string ToString()
@@ -254,7 +254,7 @@ namespace com.google.zxing.common.reedsolomon
                     if (coefficient < 0)
                     {
                         result.Append(" - ");
-                        coefficient = - coefficient;
+                        coefficient = -coefficient;
                     }
                     else
                     {

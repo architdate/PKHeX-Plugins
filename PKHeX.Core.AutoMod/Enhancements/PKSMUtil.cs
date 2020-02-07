@@ -46,7 +46,7 @@ namespace PKHeX.Core.AutoMod
 
             return format switch
             {
-                PKSMStorageFormat.FOUR => (PKM) new PK4(Slice(data, ofs + 4, 136)),
+                PKSMStorageFormat.FOUR => (PKM)new PK4(Slice(data, ofs + 4, 136)),
                 PKSMStorageFormat.FIVE => new PK5(Slice(data, ofs + 4, 136)),
                 PKSMStorageFormat.SIX => new PK6(Slice(data, ofs + 4, 232)),
                 PKSMStorageFormat.SEVEN => new PK7(Slice(data, ofs + 4, 232)),

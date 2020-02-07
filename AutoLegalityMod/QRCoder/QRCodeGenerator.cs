@@ -1006,10 +1006,10 @@ namespace QRCoder
                 }
 
                 alignmentPatternTable.Add(new AlignmentPattern()
-                    {
-                        Version = (i + 7) / 7,
-                        PatternPositions = points
-                    }
+                {
+                    Version = (i + 7) / 7,
+                    PatternPositions = points
+                }
                 );
             }
         }

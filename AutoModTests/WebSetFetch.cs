@@ -17,7 +17,7 @@ namespace AutoModTests
         public static void HasSmogonSets(Type t, GameVersion game, int species, int form = 0)
         {
             var blank = PKMConverter.GetBlank(t);
-            blank.Version = (int) game;
+            blank.Version = (int)game;
             blank.Species = species;
             blank.AltForm = form;
 
