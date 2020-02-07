@@ -36,10 +36,15 @@ steps:
       nuget install ILMerge -ExcludeVersion
       cd ILMerge\tools\net452
       xcopy ..\..\..\AutoLegalityMod\bin\Release\AutoModPlugins.dll .\
-      xcopy ..\..\..\AutoLegalityMod\bin\Release\BouncyCastle.CryptoExt.dll .\
+      xcopy ..\..\..\QRPlugins\bin\Release\net46\BouncyCastle.CryptoExt.dll .\
+      xcopy ..\..\..\QRPlugins\bin\Release\net46\zxing.dll .\
+      xcopy ..\..\..\QRPlugins\bin\Release\net46\zxing.presentation.dll .\
+      xcopy ..\..\..\QRPlugins\bin\Release\net46\QRCoder.dll .\
+      xcopy ..\..\..\QRPlugins\bin\Release\net46\QRPlugins.dll .\
       xcopy ..\..\..\AutoLegalityMod\bin\Release\PKHeX.Core.AutoMod.dll .\
       xcopy ..\..\..\AutoLegalityMod\bin\Release\PKHeX.Core.dll .\
-      ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:$(Agent.BuildDirectory)\s\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll BouncyCastle.CryptoExt.dll
+      ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:$(Agent.BuildDirectory)\s\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll
+      ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:$(Agent.BuildDirectory)\s\bin\QRPlugins.dll QRPlugins.dll PKHeX.Core.AutoMod.dll BouncyCastle.CryptoExt.dll QRCoder.dll zxing.dll zxing.presentation.dll
 
 - task: Bash@3
   inputs:

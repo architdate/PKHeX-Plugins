@@ -61,13 +61,23 @@ after_build:
 
     xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\AutoModPlugins.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\BouncyCastle.CryptoExt.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\BouncyCastle.CryptoExt.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+
+    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\QRCoder.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+
+    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\zxing.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+
+    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\zxing.presentation.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+
+    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\QRPlugins.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
     xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\PKHeX.Core.AutoMod.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
     xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\PKHeX.Core.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
-    ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:C:\projects\pkhex-plugins\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll BouncyCastle.CryptoExt.dll
+    ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:C:\projects\pkhex-plugins\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll
+
+    ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:C:\projects\pkhex-plugins\bin\QRPlugins.dll QRPlugins.dll PKHeX.Core.AutoMod.dll BouncyCastle.CryptoExt.dll QRCoder.dll zxing.dll zxing.presentation.dll
 
 artifacts:
 - path: bin
