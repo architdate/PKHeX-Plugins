@@ -426,36 +426,17 @@ namespace PKHeX.Core.AutoMod
             if (li.EncounterMatch is EncounterStatic8N || li.EncounterMatch is EncounterStatic8NC || li.EncounterMatch is EncounterStatic8ND)
             {
                 pk.IVs = set.IVs;
-                switch (li.EncounterMatch)
-                {
-                    case EncounterStatic8NC c:
-                        if (AbilityNumber == 4 && (c.Ability == 0 || c.Ability == 1 || c.Ability == 2))
-                            return;
-                        break;
-                    case EncounterStatic8ND d:
-                        if (AbilityNumber == 4 && (d.Ability == 0 || d.Ability == 1 || d.Ability == 2))
-                            return;
-                        break;
-                    case EncounterStatic8N e:
-                        if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2))
-                            return;
-                        break;
-                }
+                var e = (EncounterStatic)li.EncounterMatch;
+                if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2))
+                    return;
 
-                switch (li.EncounterMatch)
+                var pk8 = (PK8) pk;
+                switch (e)
                 {
-                    case EncounterStatic8NC c: 
-                        FindNestPIDIV(pk, c, set.Shiny);
-                        break;
-                    case EncounterStatic8ND c:
-                        FindNestPIDIV(pk, c, set.Shiny);
-                        break;
-                    case EncounterStatic8N c:
-                        FindNestPIDIV(pk, c, set.Shiny);
-                        break;
+                    case EncounterStatic8NC c: FindNestPIDIV(pk8, c, set.Shiny); break;
+                    case EncounterStatic8ND c: FindNestPIDIV(pk8, c, set.Shiny); break;
+                    case EncounterStatic8N c: FindNestPIDIV(pk8, c, set.Shiny); break;
                 }
-                
-                ValidateGender(pk);
             }
             else if (pk.GenNumber > 4 || pk.VC)
             {
@@ -472,7 +453,7 @@ namespace PKHeX.Core.AutoMod
                             (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75)) break;
                         if (pk is PK5 p && p.NPokémon) break;
                         var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
-                        if (result == 0) 
+                        if (result == 0)
                             break;
                         pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
                     }
@@ -506,31 +487,19 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Passed PKM</param>
         /// <param name="enc">Nest encounter object</param>
         /// <param name="shiny">Shiny boolean</param>
-        private static void FindNestPIDIV<T>(PKM pk, T enc, bool shiny) where T : EncounterStatic8Nest<T>
+        private static void FindNestPIDIV<T>(PK8 pk, T enc, bool shiny) where T : EncounterStatic8Nest<T>
         {
             // Preserve Nature, Altform, Ability (only if HA)
             // Nest encounter RNG generation
-            int iv_count = enc.FlawlessIVCount;
-            int ability_param;
-            int gender_ratio = pk.PersonalInfo.Gender;
-            const int nature_param = 255; // random nature in raids
-
-            // TODO: Ability param for A2 raids
-            if (enc.Ability == 0)
-                ability_param = 255;
-            else if (enc.Ability == -1)
-                ability_param = 254;
-            else
-                ability_param = enc.Ability >> 1;
-
             var iterPKM = pk.Clone();
             while (true)
             {
                 ulong seed = GetRandomULong();
-                var RNG = new XOROSHIRO(seed);
                 if (!shiny && UseXOROSHIRO)
-                    SetValuesFromSeed8Unshiny(pk, RNG, iv_count, ability_param, gender_ratio, nature_param);
+                    enc.ApplyDetailsTo(pk, seed);
                 if (pk.AltForm != iterPKM.AltForm) // no nature checks since only stat nature is relevant.
+                    continue;
+                if (iterPKM.Gender != pk.Gender) // match gender
                     continue;
                 if (iterPKM.AbilityNumber == 4 && !(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber))
                     continue;
@@ -539,78 +508,6 @@ namespace PKHeX.Core.AutoMod
                 // can be ability capsuled
                 pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
                 break;
-            }
-        }
-
-        /// <summary>
-        /// Function to set pokemon properties from an unshiny seed
-        /// </summary>
-        /// <param name="pk">Passed pokemon</param>
-        /// <param name="rng">XOROSHIRO object</param>
-        /// <param name="iv_count">Flawless IV count</param>
-        /// <param name="ability_param">254 for all abilities, 255 for no HA</param>
-        /// <param name="gender_ratio">Gender ratio according to personalinfo</param>
-        /// <param name="nature_param">255 for random nature, nature uint for specific</param>
-        private static void SetValuesFromSeed8Unshiny(PKM pk, XOROSHIRO rng, int iv_count, int ability_param, int gender_ratio, int nature_param)
-        {
-            pk.EncryptionConstant = (uint)rng.NextInt();
-            var ftidsid = (uint)rng.NextInt(); // pass
-            pk.PID = (uint)rng.NextInt();
-            if (pk.PSV == ((ftidsid >> 16) ^ (ftidsid & 0xFFFF)) >> 4) // force unshiny!
-                pk.PID ^= 0x10000000; // the rare case where you actually roll a full odds shiny in PKHeX. Apply for a lottery!
-            int[] ivs = {-1, -1, -1, -1, -1, -1};
-            for (int i = 0; i < iv_count; i++)
-            {
-                int idx = (int)rng.NextInt(6);
-                while (ivs[idx] != -1)
-                    idx = (int)rng.NextInt(6);
-                ivs[idx] = 31;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                if (ivs[i] == -1)
-                    ivs[i] = (int)rng.NextInt(32);
-            }
-            pk.IVs = new[] { ivs[0], ivs[1], ivs[2], ivs[5], ivs[3], ivs[4] };
-            int abil;
-            if (ability_param == 254)
-                abil = (int)rng.NextInt(3);
-            else if (ability_param == 255)
-                abil = (int)rng.NextInt(2);
-            else
-                abil = ability_param;
-            pk.RefreshAbility(abil);
-            if (gender_ratio == 255)
-                pk.SetGender(2);
-            else if (gender_ratio == 254)
-                pk.SetGender(1);
-            else if (gender_ratio == 0)
-                pk.SetGender(0);
-            else if ((int)rng.NextInt(252) + 1 < gender_ratio)
-                pk.SetGender(1);
-            else
-                pk.SetGender(0);
-            if (nature_param == 255)
-            {
-                if (pk.Species == (int) Species.Toxtricity && pk.AltForm == 0)
-                {
-                    int[] natures = { 3, 4, 2, 8, 9, 19, 22, 11, 13, 14, 0, 6, 24 };
-                    pk.Nature = natures[rng.NextInt((uint) natures.Length)];
-                }
-                else if (pk.Species == (int)Species.Toxtricity && pk.AltForm == 1)
-                {
-                    int[] natures = { 1, 5, 7, 10, 12, 15, 16, 17, 18, 20, 21, 23 };
-                    pk.Nature = natures[rng.NextInt((uint)natures.Length)];
-                }
-                else 
-                    pk.Nature = (int) rng.NextInt(25);
-            }
-            else
-                pk.Nature = nature_param;
-            if (pk is PK8 pk8)
-            {
-                pk8.HeightScalar = (int)rng.NextInt(0x81) + (int)rng.NextInt(0x80);
-                pk8.WeightScalar = (int)rng.NextInt(0x81) + (int)rng.NextInt(0x80);
             }
         }
 
