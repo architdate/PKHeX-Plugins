@@ -6,15 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-using com.google.zxing.qrcode;
-using com.google.zxing;
-using com.google.zxing.common;
-
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Crypto.Parameters;
 
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
+using ZXing;
 
 namespace AutoModPlugins
 {
@@ -62,11 +59,9 @@ namespace AutoModPlugins
         private static byte[] ParseQR(Image q)
         {
             using var bitmap = new Bitmap(q);
-            var img = new RGBLuminanceSource(bitmap, bitmap.Width, bitmap.Height);
-            var hybrid = new HybridBinarizer(img);
-            var binaryMap = new BinaryBitmap(hybrid);
-            var reader = new QRCodeReader().Decode(binaryMap, null);
-            return Array.ConvertAll(reader.RawBytes, a => (byte)a);
+            BarcodeReader reader = new BarcodeReader { AutoRotate = true, TryInverted = true };
+            var data = reader.Decode(bitmap).RawBytes;
+            return Array.ConvertAll(data, a => a);
         }
 
         private static byte[] ShiftArray(byte[] b)

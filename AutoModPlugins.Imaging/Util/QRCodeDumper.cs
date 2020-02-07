@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-
+using System.Linq;
 using PKHeX.Core;
 using QRCoder;
 
@@ -77,8 +77,9 @@ namespace AutoModPlugins
 
         private static Image GenerateQRCode(byte[] data, int ppm = 4)
         {
+            var msg = string.Concat(data.Select(c => (char) c));
             using var generator = new QRCodeGenerator();
-            using var qr_data = generator.CreateQRCode(data);
+            using var qr_data = generator.CreateQrCode(msg, QRCodeGenerator.ECCLevel.Q);
             using var qr_code = new QRCode(qr_data);
             return qr_code.GetGraphic(ppm);
         }
