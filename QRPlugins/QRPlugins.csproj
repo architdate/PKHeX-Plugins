@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\PKHeX-Plugins\AutoLegalityMod\AutoModPlugins.csproj" />
+    <ProjectReference Include="..\AutoLegalityMod\AutoModPlugins.csproj" />
   </ItemGroup>
 
   <ItemGroup>
