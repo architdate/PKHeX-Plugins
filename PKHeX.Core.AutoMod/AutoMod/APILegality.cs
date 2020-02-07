@@ -423,12 +423,38 @@ namespace PKHeX.Core.AutoMod
             var li = EncounterFinder.FindVerifiedEncounter(original);
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
-            if (li.EncounterMatch is EncounterStatic8N e)
+            if (li.EncounterMatch is EncounterStatic8N || li.EncounterMatch is EncounterStatic8NC || li.EncounterMatch is EncounterStatic8ND)
             {
                 pk.IVs = set.IVs;
-                if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2))
-                    return;
-                FindNestPIDIV(pk, e, set.Shiny);
+                switch (li.EncounterMatch)
+                {
+                    case EncounterStatic8NC c:
+                        if (AbilityNumber == 4 && (c.Ability == 0 || c.Ability == 1 || c.Ability == 2))
+                            return;
+                        break;
+                    case EncounterStatic8ND d:
+                        if (AbilityNumber == 4 && (d.Ability == 0 || d.Ability == 1 || d.Ability == 2))
+                            return;
+                        break;
+                    case EncounterStatic8N e:
+                        if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2))
+                            return;
+                        break;
+                }
+
+                switch (li.EncounterMatch)
+                {
+                    case EncounterStatic8NC c: 
+                        FindNestPIDIV(pk, c, set.Shiny);
+                        break;
+                    case EncounterStatic8ND c:
+                        FindNestPIDIV(pk, c, set.Shiny);
+                        break;
+                    case EncounterStatic8N c:
+                        FindNestPIDIV(pk, c, set.Shiny);
+                        break;
+                }
+                
                 ValidateGender(pk);
             }
             else if (pk.GenNumber > 4 || pk.VC)
@@ -480,7 +506,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Passed PKM</param>
         /// <param name="enc">Nest encounter object</param>
         /// <param name="shiny">Shiny boolean</param>
-        private static void FindNestPIDIV(PKM pk, EncounterStatic8N enc, bool shiny)
+        private static void FindNestPIDIV<T>(PKM pk, T enc, bool shiny) where T : EncounterStatic8Nest<T>
         {
             // Preserve Nature, Altform, Ability (only if HA)
             // Nest encounter RNG generation
