@@ -52,5 +52,17 @@
             var pkm = new PK8(data);
             Editor.PopulateFields(pkm);
         }
+
+        public bool ReadOffset(uint offset)
+        {
+            var data = Bot.ReadOffset(offset);
+            var pkm = new PK8(data);
+
+            // Since data might not actually exist at the user-specified offset, double check that the pkm data is valid.
+            if (!pkm.ChecksumValid)
+                return false;
+            Editor.PopulateFields(pkm);
+            return true;
+        }
     }
 }

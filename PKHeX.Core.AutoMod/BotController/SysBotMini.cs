@@ -49,11 +49,11 @@ namespace PKHeX.Core.AutoMod
                 return ReadInternal(buffer);
         }
 
-        public byte[] ReadBytes(uint myGiftAddress, int length)
+        public byte[] ReadBytes(uint offset, int length)
         {
             lock (_sync)
             {
-                var cmd = SwitchCommand.Peek(myGiftAddress, length);
+                var cmd = SwitchCommand.Peek(offset, length);
                 SendInternal(cmd);
 
                 // give it time to push data back

@@ -10,7 +10,8 @@
         private static uint GetSlotOffset(int box, int slot) => GetBoxOffset(box) + (uint)(SlotSize * slot);
 
         public byte[] ReadBox(int box, int len) => ReadBytes(GetBoxOffset(box), len);
-        public byte[] ReadSlot(int box, int slot) => ReadBytes(GetSlotOffset(box, slot), 344);
+        public byte[] ReadSlot(int box, int slot) => ReadBytes(GetSlotOffset(box, slot), SlotSize);
+        public byte[] ReadOffset(uint offset) => ReadBytes(offset, SlotSize);
 
         public void SendBox(byte[] boxData, int box)
         {

@@ -34,7 +34,7 @@
             this.TB_IP = new System.Windows.Forms.TextBox();
             this.L_IP = new System.Windows.Forms.Label();
             this.TB_Port = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.L_Port = new System.Windows.Forms.Label();
             this.B_Connect = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -45,10 +45,14 @@
             this.NUD_Box = new System.Windows.Forms.NumericUpDown();
             this.B_ReadSlot = new System.Windows.Forms.Button();
             this.B_WriteSlot = new System.Windows.Forms.Button();
+            this.B_ReadOffset = new System.Windows.Forms.Button();
+            this.L_ReadOffset = new System.Windows.Forms.Label();
+            this.NUD_Offset = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Box)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Offset)).BeginInit();
             this.SuspendLayout();
             // 
             // B_ReadCurrent
@@ -65,7 +69,7 @@
             // B_WriteCurrent
             // 
             this.B_WriteCurrent.Enabled = false;
-            this.B_WriteCurrent.Location = new System.Drawing.Point(13, 90);
+            this.B_WriteCurrent.Location = new System.Drawing.Point(13, 87);
             this.B_WriteCurrent.Name = "B_WriteCurrent";
             this.B_WriteCurrent.Size = new System.Drawing.Size(125, 23);
             this.B_WriteCurrent.TabIndex = 1;
@@ -113,14 +117,14 @@
             this.TB_Port.TabIndex = 5;
             this.TB_Port.Text = "65535";
             // 
-            // label1
+            // L_Port
             // 
-            this.label1.Location = new System.Drawing.Point(4, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Port:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_Port.Location = new System.Drawing.Point(4, 38);
+            this.L_Port.Name = "L_Port";
+            this.L_Port.Size = new System.Drawing.Size(40, 20);
+            this.L_Port.TabIndex = 6;
+            this.L_Port.Text = "Port:";
+            this.L_Port.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // B_Connect
             // 
@@ -140,7 +144,7 @@
             this.groupBox1.Controls.Add(this.B_WriteCurrent);
             this.groupBox1.Location = new System.Drawing.Point(12, 66);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(149, 126);
+            this.groupBox1.Size = new System.Drawing.Size(149, 116);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Boxes";
@@ -160,22 +164,25 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.L_ReadOffset);
+            this.groupBox2.Controls.Add(this.NUD_Offset);
+            this.groupBox2.Controls.Add(this.B_ReadOffset);
             this.groupBox2.Controls.Add(this.L_Slot);
             this.groupBox2.Controls.Add(this.NUD_Slot);
             this.groupBox2.Controls.Add(this.L_Box);
             this.groupBox2.Controls.Add(this.NUD_Box);
             this.groupBox2.Controls.Add(this.B_ReadSlot);
             this.groupBox2.Controls.Add(this.B_WriteSlot);
-            this.groupBox2.Location = new System.Drawing.Point(12, 198);
+            this.groupBox2.Location = new System.Drawing.Point(171, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(149, 120);
+            this.groupBox2.Size = new System.Drawing.Size(149, 170);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PKM Editor";
             // 
             // L_Slot
             // 
-            this.L_Slot.Location = new System.Drawing.Point(27, 94);
+            this.L_Slot.Location = new System.Drawing.Point(27, 90);
             this.L_Slot.Name = "L_Slot";
             this.L_Slot.Size = new System.Drawing.Size(42, 20);
             this.L_Slot.TabIndex = 12;
@@ -184,7 +191,7 @@
             // 
             // NUD_Slot
             // 
-            this.NUD_Slot.Location = new System.Drawing.Point(75, 94);
+            this.NUD_Slot.Location = new System.Drawing.Point(75, 90);
             this.NUD_Slot.Maximum = new decimal(new int[] {
             30,
             0,
@@ -206,7 +213,7 @@
             // 
             // L_Box
             // 
-            this.L_Box.Location = new System.Drawing.Point(27, 73);
+            this.L_Box.Location = new System.Drawing.Point(27, 69);
             this.L_Box.Name = "L_Box";
             this.L_Box.Size = new System.Drawing.Size(42, 20);
             this.L_Box.TabIndex = 10;
@@ -215,7 +222,7 @@
             // 
             // NUD_Box
             // 
-            this.NUD_Box.Location = new System.Drawing.Point(75, 73);
+            this.NUD_Box.Location = new System.Drawing.Point(75, 69);
             this.NUD_Box.Maximum = new decimal(new int[] {
             20,
             0,
@@ -242,14 +249,14 @@
             this.B_ReadSlot.Name = "B_ReadSlot";
             this.B_ReadSlot.Size = new System.Drawing.Size(125, 23);
             this.B_ReadSlot.TabIndex = 0;
-            this.B_ReadSlot.Text = "Read From Slot";
+            this.B_ReadSlot.Text = "Read from Slot";
             this.B_ReadSlot.UseVisualStyleBackColor = true;
             this.B_ReadSlot.Click += new System.EventHandler(this.B_ReadSlot_Click);
             // 
             // B_WriteSlot
             // 
             this.B_WriteSlot.Enabled = false;
-            this.B_WriteSlot.Location = new System.Drawing.Point(13, 47);
+            this.B_WriteSlot.Location = new System.Drawing.Point(13, 44);
             this.B_WriteSlot.Name = "B_WriteSlot";
             this.B_WriteSlot.Size = new System.Drawing.Size(125, 23);
             this.B_WriteSlot.TabIndex = 1;
@@ -257,15 +264,59 @@
             this.B_WriteSlot.UseVisualStyleBackColor = true;
             this.B_WriteSlot.Click += new System.EventHandler(this.B_WriteSlot_Click);
             // 
+            // B_ReadOffset
+            // 
+            this.B_ReadOffset.Enabled = false;
+            this.B_ReadOffset.Location = new System.Drawing.Point(13, 115);
+            this.B_ReadOffset.Name = "B_ReadOffset";
+            this.B_ReadOffset.Size = new System.Drawing.Size(125, 23);
+            this.B_ReadOffset.TabIndex = 13;
+            this.B_ReadOffset.Text = "Read from Offset";
+            this.B_ReadOffset.UseVisualStyleBackColor = true;
+            this.B_ReadOffset.Click += new System.EventHandler(this.B_ReadOffset_Click);
+            // 
+            // L_ReadOffset
+            // 
+            this.L_ReadOffset.Location = new System.Drawing.Point(10, 141);
+            this.L_ReadOffset.Name = "L_ReadOffset";
+            this.L_ReadOffset.Size = new System.Drawing.Size(42, 20);
+            this.L_ReadOffset.TabIndex = 15;
+            this.L_ReadOffset.Text = "Offset:";
+            this.L_ReadOffset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // NUD_Offset
+            // 
+            this.NUD_Offset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NUD_Offset.Hexadecimal = true;
+            this.NUD_Offset.Location = new System.Drawing.Point(62, 141);
+            this.NUD_Offset.Maximum = new decimal(new int[] {
+            -1,
+            0,
+            0,
+            0});
+            this.NUD_Offset.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NUD_Offset.Name = "NUD_Offset";
+            this.NUD_Offset.Size = new System.Drawing.Size(76, 20);
+            this.NUD_Offset.TabIndex = 14;
+            this.NUD_Offset.Value = new decimal(new int[] {
+            -1400619160,
+            0,
+            0,
+            0});
+            // 
             // LiveHexUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(174, 326);
+            this.ClientSize = new System.Drawing.Size(331, 191);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.B_Connect);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.L_Port);
             this.Controls.Add(this.TB_Port);
             this.Controls.Add(this.L_IP);
             this.Controls.Add(this.TB_IP);
@@ -281,6 +332,7 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Box)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Offset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,7 +346,7 @@
         private System.Windows.Forms.TextBox TB_IP;
         private System.Windows.Forms.Label L_IP;
         private System.Windows.Forms.TextBox TB_Port;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label L_Port;
         private System.Windows.Forms.Button B_Connect;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -305,5 +357,8 @@
         private System.Windows.Forms.Label L_Box;
         private System.Windows.Forms.NumericUpDown NUD_Box;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Label L_ReadOffset;
+        private System.Windows.Forms.Button B_ReadOffset;
+        private System.Windows.Forms.NumericUpDown NUD_Offset;
     }
 }

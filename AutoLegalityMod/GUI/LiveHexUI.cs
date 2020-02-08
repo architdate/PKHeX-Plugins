@@ -102,6 +102,20 @@ namespace AutoModPlugins
         private void B_ReadSlot_Click(object sender, EventArgs e) => Remote.ReadActiveSlot((int)NUD_Box.Value - 1, (int)NUD_Slot.Value - 1);
         private void B_WriteSlot_Click(object sender, EventArgs e) => Remote.WriteActiveSlot((int)NUD_Box.Value - 1, (int)NUD_Slot.Value - 1);
 
+        private void B_ReadOffset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = Remote.ReadOffset((uint)(int)NUD_Offset.Value);
+                if (!result)
+                    WinFormsUtil.Alert("No valid data is located at the specified offset.");
+            }
+            catch
+            {
+                WinFormsUtil.Error("Unable to load data from the specified offset.");
+            }
+        }
+
         public void NotifySlotOld(ISlotInfo previous) { }
 
         public void NotifySlotChanged(ISlotInfo slot, SlotTouchType type, PKM pkm)
