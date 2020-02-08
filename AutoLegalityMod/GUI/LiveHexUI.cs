@@ -110,7 +110,7 @@ namespace AutoModPlugins
                 return;
             if (!(slot is SlotInfoBox b))
                 return;
-            if (type == SlotTouchType.Get)
+            if (!type.IsContentChange())
                 return;
             int box = b.Box;
             int slotpkm = b.Slot;
