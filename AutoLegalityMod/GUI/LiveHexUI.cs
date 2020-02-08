@@ -110,6 +110,8 @@ namespace AutoModPlugins
                 return;
             if (!(slot is SlotInfoBox b))
                 return;
+            if (type == SlotTouchType.Get)
+                return;
             int box = b.Box;
             int slotpkm = b.Slot;
             Remote.Bot.SendSlot(pkm.EncryptedPartyData, box, slotpkm);
