@@ -229,6 +229,10 @@ namespace PKHeX.Core.AutoMod
                 "Darmanitan" when form == "Galarian Standard" => "galar",
                 "Meowstic" when form == "" => "m",
                 "Gastrodon" => "",
+                "Vivillon" => "",
+                "Sawsbuck" => "",
+                "Deerling" => "",
+                "Furfrou" => "",
                 _ => form
             };
         }
