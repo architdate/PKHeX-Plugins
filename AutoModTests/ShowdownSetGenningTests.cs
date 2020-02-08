@@ -46,8 +46,9 @@ namespace AutoModTests
         }
 
         [Theory]
-        [InlineData(5, Genesect)]
+        [InlineData(7, Meowstic)]
         [InlineData(7, Darkrai)]
+        [InlineData(5, Genesect)]
         public static void VerifyManually(int gen, string txt)
         {
             var sav = SaveUtil.GetBlankSAV(gen, "ALM");
@@ -80,5 +81,15 @@ Hasty Nature
 - Techno Blast
 - Blaze Kick
 - Shift Gear";
+
+        private const string Meowstic = 
+@"Meowstic-F @ Life Orb
+Ability: Competitive
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Psyshock
+- Signal Beam
+- Hidden Power Ground
+- Calm Mind";
     }
 }
