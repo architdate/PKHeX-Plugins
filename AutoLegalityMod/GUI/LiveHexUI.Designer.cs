@@ -57,7 +57,6 @@
             // 
             // B_ReadCurrent
             // 
-            this.B_ReadCurrent.Enabled = false;
             this.B_ReadCurrent.Location = new System.Drawing.Point(13, 61);
             this.B_ReadCurrent.Name = "B_ReadCurrent";
             this.B_ReadCurrent.Size = new System.Drawing.Size(125, 23);
@@ -68,7 +67,6 @@
             // 
             // B_WriteCurrent
             // 
-            this.B_WriteCurrent.Enabled = false;
             this.B_WriteCurrent.Location = new System.Drawing.Point(13, 87);
             this.B_WriteCurrent.Name = "B_WriteCurrent";
             this.B_WriteCurrent.Size = new System.Drawing.Size(125, 23);
@@ -82,7 +80,6 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Enabled = false;
             this.checkBox1.Location = new System.Drawing.Point(13, 19);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(130, 17);
@@ -142,6 +139,7 @@
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.B_ReadCurrent);
             this.groupBox1.Controls.Add(this.B_WriteCurrent);
+            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(12, 66);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(149, 116);
@@ -154,7 +152,6 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Enabled = false;
             this.checkBox2.Location = new System.Drawing.Point(13, 38);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(85, 17);
@@ -173,6 +170,7 @@
             this.groupBox2.Controls.Add(this.NUD_Box);
             this.groupBox2.Controls.Add(this.B_ReadSlot);
             this.groupBox2.Controls.Add(this.B_WriteSlot);
+            this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(171, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(149, 170);
@@ -244,7 +242,6 @@
             // 
             // B_ReadSlot
             // 
-            this.B_ReadSlot.Enabled = false;
             this.B_ReadSlot.Location = new System.Drawing.Point(13, 18);
             this.B_ReadSlot.Name = "B_ReadSlot";
             this.B_ReadSlot.Size = new System.Drawing.Size(125, 23);
@@ -255,7 +252,6 @@
             // 
             // B_WriteSlot
             // 
-            this.B_WriteSlot.Enabled = false;
             this.B_WriteSlot.Location = new System.Drawing.Point(13, 44);
             this.B_WriteSlot.Name = "B_WriteSlot";
             this.B_WriteSlot.Size = new System.Drawing.Size(125, 23);
@@ -266,7 +262,6 @@
             // 
             // B_ReadOffset
             // 
-            this.B_ReadOffset.Enabled = false;
             this.B_ReadOffset.Location = new System.Drawing.Point(13, 115);
             this.B_ReadOffset.Name = "B_ReadOffset";
             this.B_ReadOffset.Size = new System.Drawing.Size(125, 23);
