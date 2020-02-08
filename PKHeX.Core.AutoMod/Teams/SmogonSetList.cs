@@ -33,7 +33,7 @@ namespace PKHeX.Core.AutoMod
 
             var set = new ShowdownSet(pk);
             Species = GameInfo.GetStrings("en").Species[pk.Species];
-            Form = set.Form;
+            Form = ConvertFormToURLForm(set.Form, Species);
 
             URL = GetURL(Species, Form, baseURL);
             Page = NetUtil.GetPageText(URL);
@@ -227,6 +227,7 @@ namespace PKHeX.Core.AutoMod
                 "Necrozma" when form == "Dawn" => "dawn_wings",
                 "Oricorio" when form == "Pa'u" => "pau",
                 "Darmanitan" when form == "Galarian Standard" => "galar",
+                "Meowstic" when form == "" => "m",
                 _ => form
             };
         }
@@ -242,7 +243,7 @@ namespace PKHeX.Core.AutoMod
             var urlSpecies = ConvertSpeciesToURLSpecies(speciesName);
             {
                 var spec = urlSpecies.ToLower();
-                var f = ConvertFormToURLForm(form, urlSpecies).ToLower();
+                var f = form.ToLower();
                 return $"{baseURL}/{spec}-{f}/";
             }
         }

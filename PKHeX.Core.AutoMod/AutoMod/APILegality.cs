@@ -29,6 +29,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="satisfied">If the final result is satisfactory, otherwise use deprecated bruteforce auto legality functionality</param>
         public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied)
         {
+            set = set.PreProcessShowdownSet();
             var Form = SanityCheckForm(template, ref set);
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR moves for the encounter
@@ -323,6 +324,17 @@ namespace PKHeX.Core.AutoMod
             // Changed set handling for forme changes that affect battle-only moves
             ReplaceBattleOnlyMoves(changedSet);
             return true;
+        }
+
+        /// <summary>
+        /// General method to preprocess sets excluding invalid formes. (handled in a future method)
+        /// </summary>
+        /// <param name="set">Showdown set passed to the function</param>
+        private static ShowdownSet PreProcessShowdownSet(this ShowdownSet set)
+        {
+            if ((set.Species == (int)Species.Indeedee || set.Species == (int)Species.Meowstic) && set.Form == "F")
+                set = new ShowdownSet(set.Text.Replace("(M)", "(F)"));
+            return set;
         }
 
         /// <summary>
