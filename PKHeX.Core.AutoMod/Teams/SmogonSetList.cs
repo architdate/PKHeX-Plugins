@@ -228,6 +228,7 @@ namespace PKHeX.Core.AutoMod
                 "Oricorio" when form == "Pa'u" => "pau",
                 "Darmanitan" when form == "Galarian Standard" => "galar",
                 "Meowstic" when form == "" => "m",
+                "Gastrodon" => "",
                 _ => form
             };
         }
