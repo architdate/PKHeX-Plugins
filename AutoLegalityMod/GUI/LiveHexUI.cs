@@ -108,9 +108,9 @@ namespace AutoModPlugins
                 if (!result)
                     WinFormsUtil.Alert("No valid data is located at the specified offset.");
             }
-            catch
+            catch (Exception ex)
             {
-                WinFormsUtil.Error("Unable to load data from the specified offset.");
+                WinFormsUtil.Error("Unable to load data from the specified offset.", ex.Message);
             }
         }
 
