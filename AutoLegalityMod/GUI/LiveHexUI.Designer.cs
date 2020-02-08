@@ -39,20 +39,19 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TB_Offset = new System.Windows.Forms.TextBox();
+            this.L_ReadOffset = new System.Windows.Forms.Label();
+            this.B_ReadOffset = new System.Windows.Forms.Button();
             this.L_Slot = new System.Windows.Forms.Label();
             this.NUD_Slot = new System.Windows.Forms.NumericUpDown();
             this.L_Box = new System.Windows.Forms.Label();
             this.NUD_Box = new System.Windows.Forms.NumericUpDown();
             this.B_ReadSlot = new System.Windows.Forms.Button();
             this.B_WriteSlot = new System.Windows.Forms.Button();
-            this.B_ReadOffset = new System.Windows.Forms.Button();
-            this.L_ReadOffset = new System.Windows.Forms.Label();
-            this.NUD_Offset = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Box)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUD_Offset)).BeginInit();
             this.SuspendLayout();
             // 
             // B_ReadCurrent
@@ -161,8 +160,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.TB_Offset);
             this.groupBox2.Controls.Add(this.L_ReadOffset);
-            this.groupBox2.Controls.Add(this.NUD_Offset);
             this.groupBox2.Controls.Add(this.B_ReadOffset);
             this.groupBox2.Controls.Add(this.L_Slot);
             this.groupBox2.Controls.Add(this.NUD_Slot);
@@ -177,6 +176,35 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PKM Editor";
+            // 
+            // TB_Offset
+            // 
+            this.TB_Offset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_Offset.Location = new System.Drawing.Point(65, 141);
+            this.TB_Offset.MaxLength = 8;
+            this.TB_Offset.Name = "TB_Offset";
+            this.TB_Offset.Size = new System.Drawing.Size(63, 20);
+            this.TB_Offset.TabIndex = 16;
+            this.TB_Offset.Text = "AC843F68";
+            // 
+            // L_ReadOffset
+            // 
+            this.L_ReadOffset.Location = new System.Drawing.Point(17, 141);
+            this.L_ReadOffset.Name = "L_ReadOffset";
+            this.L_ReadOffset.Size = new System.Drawing.Size(42, 20);
+            this.L_ReadOffset.TabIndex = 15;
+            this.L_ReadOffset.Text = "Offset:";
+            this.L_ReadOffset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // B_ReadOffset
+            // 
+            this.B_ReadOffset.Location = new System.Drawing.Point(13, 115);
+            this.B_ReadOffset.Name = "B_ReadOffset";
+            this.B_ReadOffset.Size = new System.Drawing.Size(125, 23);
+            this.B_ReadOffset.TabIndex = 13;
+            this.B_ReadOffset.Text = "Read from Offset";
+            this.B_ReadOffset.UseVisualStyleBackColor = true;
+            this.B_ReadOffset.Click += new System.EventHandler(this.B_ReadOffset_Click);
             // 
             // L_Slot
             // 
@@ -260,49 +288,6 @@
             this.B_WriteSlot.UseVisualStyleBackColor = true;
             this.B_WriteSlot.Click += new System.EventHandler(this.B_WriteSlot_Click);
             // 
-            // B_ReadOffset
-            // 
-            this.B_ReadOffset.Location = new System.Drawing.Point(13, 115);
-            this.B_ReadOffset.Name = "B_ReadOffset";
-            this.B_ReadOffset.Size = new System.Drawing.Size(125, 23);
-            this.B_ReadOffset.TabIndex = 13;
-            this.B_ReadOffset.Text = "Read from Offset";
-            this.B_ReadOffset.UseVisualStyleBackColor = true;
-            this.B_ReadOffset.Click += new System.EventHandler(this.B_ReadOffset_Click);
-            // 
-            // L_ReadOffset
-            // 
-            this.L_ReadOffset.Location = new System.Drawing.Point(10, 141);
-            this.L_ReadOffset.Name = "L_ReadOffset";
-            this.L_ReadOffset.Size = new System.Drawing.Size(42, 20);
-            this.L_ReadOffset.TabIndex = 15;
-            this.L_ReadOffset.Text = "Offset:";
-            this.L_ReadOffset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // NUD_Offset
-            // 
-            this.NUD_Offset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NUD_Offset.Hexadecimal = true;
-            this.NUD_Offset.Location = new System.Drawing.Point(62, 141);
-            this.NUD_Offset.Maximum = new decimal(new int[] {
-            -1,
-            0,
-            0,
-            0});
-            this.NUD_Offset.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.NUD_Offset.Name = "NUD_Offset";
-            this.NUD_Offset.Size = new System.Drawing.Size(76, 20);
-            this.NUD_Offset.TabIndex = 14;
-            this.NUD_Offset.Value = new decimal(new int[] {
-            -1400619160,
-            0,
-            0,
-            0});
-            // 
             // LiveHexUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,9 +310,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Box)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUD_Offset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,6 +339,6 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label L_ReadOffset;
         private System.Windows.Forms.Button B_ReadOffset;
-        private System.Windows.Forms.NumericUpDown NUD_Offset;
+        private System.Windows.Forms.TextBox TB_Offset;
     }
 }

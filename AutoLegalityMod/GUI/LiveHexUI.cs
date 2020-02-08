@@ -102,9 +102,16 @@ namespace AutoModPlugins
 
         private void B_ReadOffset_Click(object sender, EventArgs e)
         {
+            var txt = TB_Offset.Text;
+            var offset = Util.GetHexValue(txt);
+            if (offset.ToString("X8") != txt.ToUpper().PadLeft(8, '0'))
+            {
+                WinFormsUtil.Alert("Specified offset is not a valid hex string.");
+                return;
+            }
             try
             {
-                var result = Remote.ReadOffset((uint)(int)NUD_Offset.Value);
+                var result = Remote.ReadOffset(offset);
                 if (!result)
                     WinFormsUtil.Alert("No valid data is located at the specified offset.");
             }
