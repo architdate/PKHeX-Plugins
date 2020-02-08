@@ -12,20 +12,28 @@ namespace PKHeX.Core.AutoMod
 
         public bool Connected;
 
+        private readonly object _sync = new object();
+
         public void Connect()
         {
-            Connection = new Socket(SocketType.Stream, ProtocolType.Tcp);
-            Connection.Connect(IP, Port);
-            Connected = true;
+            lock (_sync)
+            {
+                Connection = new Socket(SocketType.Stream, ProtocolType.Tcp);
+                Connection.Connect(IP, Port);
+                Connected = true;
+            }
         }
 
         public void Disconnect()
         {
-            Connection.Disconnect(false);
-            Connected = false;
+            lock (_sync)
+            {
+                Connection.Disconnect(false);
+                Connected = false;
+            }
         }
 
-        public int Read(byte[] buffer)
+        private int ReadInternal(byte[] buffer)
         {
             int br = Connection.Receive(buffer, 0, 1, SocketFlags.None);
             while (buffer[br - 1] != (byte)'\n')
@@ -33,26 +41,38 @@ namespace PKHeX.Core.AutoMod
             return br;
         }
 
-        public int Send(byte[] buffer) => Connection.Send(buffer);
+        private int SendInternal(byte[] buffer) => Connection.Send(buffer);
+
+        public int Read(byte[] buffer)
+        {
+            lock (_sync)
+                return ReadInternal(buffer);
+        }
 
         public byte[] ReadBytes(uint myGiftAddress, int length)
         {
-            var cmd = SwitchCommand.Peek(myGiftAddress, length);
-            Send(cmd);
+            lock (_sync)
+            {
+                var cmd = SwitchCommand.Peek(myGiftAddress, length);
+                SendInternal(cmd);
 
-            // give it time to push data back
-            Thread.Sleep((length / 256) + 100);
-            var buffer = new byte[(length * 2) + 1];
-            var _ = Read(buffer);
-            return Decoder.ConvertHexByteStringToBytes(buffer);
+                // give it time to push data back
+                Thread.Sleep((length / 256) + 100);
+                var buffer = new byte[(length * 2) + 1];
+                var _ = ReadInternal(buffer);
+                return Decoder.ConvertHexByteStringToBytes(buffer);
+            }
         }
 
         public void WriteBytes(byte[] data, uint offset)
         {
-            Send(SwitchCommand.Poke(offset, data));
+            lock (_sync)
+            {
+                SendInternal(SwitchCommand.Poke(offset, data));
 
-            // give it time to push data back
-            Thread.Sleep((data.Length / 256) + 100);
+                // give it time to push data back
+                Thread.Sleep((data.Length / 256) + 100);
+            }
         }
     }
 }

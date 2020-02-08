@@ -41,6 +41,7 @@ namespace AutoModPlugins
 
             TB_IP.Text = Remote.Bot.IP;
             TB_Port.Text = Remote.Bot.Port.ToString();
+            CenterToParent();
         }
 
         private void SetTrainerData(SaveFile sav)
@@ -108,6 +109,8 @@ namespace AutoModPlugins
             if (!checkBox2.Checked || !Remote.Bot.Connected)
                 return;
             if (!(slot is SlotInfoBox b))
+                return;
+            if (!type.IsContentChange())
                 return;
             int box = b.Box;
             int slotpkm = b.Slot;
