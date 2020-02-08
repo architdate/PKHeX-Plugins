@@ -41,6 +41,7 @@ namespace AutoModPlugins
 
             TB_IP.Text = Remote.Bot.IP;
             TB_Port.Text = Remote.Bot.Port.ToString();
+            CenterToParent();
         }
 
         private void SetTrainerData(SaveFile sav)
