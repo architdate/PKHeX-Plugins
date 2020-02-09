@@ -86,6 +86,7 @@
     <Content Include="Resources\img\autolegalitymod.png" />
     <Content Include="Resources\img\settings.png" />
     <Content Include="Resources\img\uploadgpss.png" />
+    <Content Include="Resources\img\wifi.png" />
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\AutoLegality.settings">

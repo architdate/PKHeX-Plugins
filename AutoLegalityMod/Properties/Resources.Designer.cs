@@ -22,7 +22,7 @@ namespace AutoModPlugins.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -83,7 +83,7 @@ namespace AutoModPlugins.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap exportqrcode {
+        internal static System.Drawing.Bitmap exportqrcode {
             get {
                 object obj = ResourceManager.GetObject("exportqrcode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +153,7 @@ namespace AutoModPlugins.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap pglqrcode {
+        internal static System.Drawing.Bitmap pglqrcode {
             get {
                 object obj = ResourceManager.GetObject("pglqrcode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -196,6 +196,16 @@ namespace AutoModPlugins.Properties {
         internal static System.Drawing.Bitmap urlimport {
             get {
                 object obj = ResourceManager.GetObject("urlimport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wifi {
+            get {
+                object obj = ResourceManager.GetObject("wifi", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
