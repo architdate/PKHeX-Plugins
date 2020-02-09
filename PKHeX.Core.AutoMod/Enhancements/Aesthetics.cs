@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
-    public class Aesthetics
+    public static class Aesthetics
     {
-        private static Dictionary<Species, PersonalColor> ShinyMap = new Dictionary<Species, PersonalColor>()
+        private static readonly Dictionary<Species, PersonalColor> ShinyMap = new Dictionary<Species, PersonalColor>()
         {
             { Bulbasaur,       Green },
             { Ivysaur,         Green },

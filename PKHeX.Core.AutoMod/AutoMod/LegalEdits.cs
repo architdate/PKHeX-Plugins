@@ -70,8 +70,6 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk"></param>
         public static void SetSuggestedMetLocation(this PKM pk)
         {
-            var la = new LegalityAnalysis(pk);
-
             var encounter = EncounterSuggestion.GetSuggestedMetInfo(pk);
             if (encounter == null || (pk.Format >= 3 && encounter.Location < 0))
                 return;

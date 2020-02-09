@@ -82,7 +82,7 @@ Hasty Nature
 - Blaze Kick
 - Shift Gear";
 
-        private const string Meowstic = 
+        private const string Meowstic =
 @"Meowstic-F @ Life Orb
 Ability: Competitive
 EVs: 4 Def / 252 SpA / 252 Spe

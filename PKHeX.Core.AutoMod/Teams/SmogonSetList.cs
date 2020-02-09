@@ -227,7 +227,7 @@ namespace PKHeX.Core.AutoMod
                 "Necrozma" when form == "Dawn" => "dawn_wings",
                 "Oricorio" when form == "Pa'u" => "pau",
                 "Darmanitan" when form == "Galarian Standard" => "galar",
-                "Meowstic" when form == "" => "m",
+                "Meowstic" when form.Length == 0 => "m",
                 "Gastrodon" => "",
                 "Vivillon" => "",
                 "Sawsbuck" => "",
