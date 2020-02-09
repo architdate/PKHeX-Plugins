@@ -35,7 +35,7 @@ To use the plugins:
 - Create a folder called `plugins` in the same directory as PKHeX.exe
 - Put the compiled plugins from this project in the `plugins` folder
 - Start PKHeX.
-- The plugins should be available for use in `Tools > Auto Legality Mod` drop-down menu
+- The plugins should be available for use in `Tools > Auto Legality Mod` drop-down menu.
 
 ## Support Server:
 Come join the dedicated Discord server for this mod! Ask questions, give suggestions, get help, or just hang out. Don't be shy, we don't bite:
