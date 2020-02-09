@@ -51,3 +51,4 @@ To contribute to the repository, you can submit a pull request to the repository
 - [@Rino6357](https://github.com/Rino6357) and [@crzyc](https://github.com/crzyc) for their help with the GitHub Wiki associated with this project!
 - [Lusamine](https://github.com/Lusamine) for all their help with stress testing the code with wacky sets!
 - [FlatIcon](https://www.flaticon.com/): for their icons. Author credits (Those Icons, Pixel perfect)
+- [Bappsack](https://github.com/Bappsack): such a cool dude.
