@@ -40,6 +40,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>boolean of the summary</returns>
         public static bool IsTextShowdownData(string source)
         {
+            source = source.Trim();
             if (IsTeamBackup(source))
                 return true;
             string[] stringSeparators = { "\n\r" };

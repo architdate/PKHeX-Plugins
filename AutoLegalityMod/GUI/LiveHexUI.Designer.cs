@@ -185,7 +185,7 @@
             this.TB_Offset.Name = "TB_Offset";
             this.TB_Offset.Size = new System.Drawing.Size(63, 20);
             this.TB_Offset.TabIndex = 16;
-            this.TB_Offset.Text = "AC843F68";
+            this.TB_Offset.Text = "2E32206A";
             // 
             // L_ReadOffset
             // 

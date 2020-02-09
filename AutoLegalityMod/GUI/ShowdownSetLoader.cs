@@ -113,7 +113,6 @@ namespace AutoModPlugins
                 return result;
 
             Debug.WriteLine("Multi Set Genning Complete. Setting data to the save file and reloading view.");
-            sav.BoxData = BoxData;
             SaveFileEditor.ReloadSlots();
 
             // Debug Statements

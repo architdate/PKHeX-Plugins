@@ -11,6 +11,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
+            Properties.AutoLegality.Default.Upgrade();
             var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.settings };
             ctrl.Click += SettingsForm;
             modmenu.DropDownItems.Add(ctrl);

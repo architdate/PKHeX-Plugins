@@ -56,10 +56,10 @@ namespace PKHeX.Core.AutoMod
         /// <param name="start">Starting offset to place converted details</param>
         /// <param name="overwrite">Overwrite</param>
         /// <returns>Result code indicating success or failure</returns>
-        public static AutoModErrorCode ImportToExisting(this ITrainerInfo tr, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, int start = 0, bool overwrite = true)
+        public static AutoModErrorCode ImportToExisting(this SaveFile tr, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, int start = 0, bool overwrite = true)
         {
             var emptySlots = overwrite
-                ? Enumerable.Range(start, sets.Count).ToList()
+                ? Enumerable.Range(start, sets.Count).Where(set => set < arr.Count).ToList()
                 : FindAllEmptySlots(arr, start);
 
             if (emptySlots.Count < sets.Count)
@@ -80,7 +80,8 @@ namespace PKHeX.Core.AutoMod
                 if (msg == LegalizationResult.BruteForce)
                     invalidAPISets.Add(set);
 
-                arr[emptySlots[i]] = pk;
+                var index = emptySlots[i];
+                tr.SetBoxSlotAtIndex(pk, index);
                 generated++;
             }
 
