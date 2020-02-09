@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using QRPlugins;
 
 namespace AutoModPlugins
 {
@@ -10,7 +11,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.exportqrcode };
+            var ctrl = new ToolStripMenuItem(Name) { Image = QRResources.exportqrcode };
             ctrl.Click += ExportQRs;
             modmenu.DropDownItems.Add(ctrl);
         }

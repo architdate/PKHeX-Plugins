@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using QRPlugins;
 
 namespace AutoModPlugins
 {
@@ -13,7 +14,7 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name)
             {
-                Image = Properties.Resources.pglqrcode,
+                Image = QRResources.pglqrcode,
                 ShortcutKeys = Keys.Alt | Keys.Q
             };
             modmenu.DropDownItems.Add(ctrl);
