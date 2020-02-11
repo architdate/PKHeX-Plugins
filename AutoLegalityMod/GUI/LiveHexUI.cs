@@ -27,6 +27,8 @@ namespace AutoModPlugins
 
             InitializeComponent();
 
+            TB_IP.Text = Properties.Settings.Default.LatestIP;
+
             // add an event to the editor
             // ReSharper disable once SuspiciousTypeConversion.Global
             BoxSelect = ((Control)sav).Controls.Find("CB_BoxSelect", true).FirstOrDefault() as ComboBox;
@@ -93,6 +95,9 @@ namespace AutoModPlugins
             if (BoxSelect != null)
                 BoxSelect.SelectedIndexChanged -= ChangeBox;
             x.Slots.Publisher.Subscribers.Remove(this);
+
+            Properties.Settings.Default.LatestIP = TB_IP.Text;
+            Properties.Settings.Default.Save();
         }
 
         private void B_ReadCurrent_Click(object sender, EventArgs e) => Remote.ReadBox(SAV.CurrentBox);
