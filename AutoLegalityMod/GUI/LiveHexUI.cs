@@ -41,7 +41,6 @@ namespace AutoModPlugins
             x = (SaveDataEditor<PictureBox>)test.GetValue(sav);
             x.Slots.Publisher.Subscribers.Add(this);
 
-            TB_IP.Text = Remote.Bot.IP;
             TB_Port.Text = Remote.Bot.Port.ToString();
             CenterToParent();
         }
