@@ -27,6 +27,8 @@ namespace AutoModPlugins
 
             InitializeComponent();
 
+            TB_IP.Text = AutoModPlugins.Properties.AutoLegality.Default.LatestIP;
+
             // add an event to the editor
             // ReSharper disable once SuspiciousTypeConversion.Global
             BoxSelect = ((Control)sav).Controls.Find("CB_BoxSelect", true).FirstOrDefault() as ComboBox;
@@ -39,7 +41,6 @@ namespace AutoModPlugins
             x = (SaveDataEditor<PictureBox>)test.GetValue(sav);
             x.Slots.Publisher.Subscribers.Add(this);
 
-            TB_IP.Text = Remote.Bot.IP;
             TB_Port.Text = Remote.Bot.Port.ToString();
             CenterToParent();
         }
@@ -93,6 +94,9 @@ namespace AutoModPlugins
             if (BoxSelect != null)
                 BoxSelect.SelectedIndexChanged -= ChangeBox;
             x.Slots.Publisher.Subscribers.Remove(this);
+
+            AutoModPlugins.Properties.AutoLegality.Default.LatestIP = TB_IP.Text;
+            AutoModPlugins.Properties.AutoLegality.Default.Save();
         }
 
         private void B_ReadCurrent_Click(object sender, EventArgs e) => Remote.ReadBox(SAV.CurrentBox);
