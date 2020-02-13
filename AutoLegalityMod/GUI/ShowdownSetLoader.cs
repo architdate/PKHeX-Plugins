@@ -130,6 +130,7 @@ namespace AutoModPlugins
             APILegality.UseCompetitiveMarkings = Properties.AutoLegality.Default.UseCompetitiveMarkings;
             APILegality.UseMarkings = Properties.AutoLegality.Default.UseMarkings;
             APILegality.UseXOROSHIRO = Properties.AutoLegality.Default.UseXOROSHIRO;
+            APILegality.SetRandomTracker = Properties.AutoLegality.Default.SetRandomTracker;
         }
     }
 }

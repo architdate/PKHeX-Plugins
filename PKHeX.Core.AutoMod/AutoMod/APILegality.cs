@@ -18,6 +18,7 @@ namespace PKHeX.Core.AutoMod
         public static bool UseCompetitiveMarkings { get; set; } = false;
         public static bool UseMarkings { get; set; } = true;
         public static bool UseXOROSHIRO { get; set; } = true;
+        public static bool SetRandomTracker { get; set; } = false;
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -124,6 +125,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetMovesEVsItems(set);
             pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set, abilitypref);
+            pk.GetSuggestedTracker();
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
             pk.SetHyperTrainingFlags(set); // Hypertrain
             pk.SetEncryptionConstant(enc);
@@ -397,6 +399,19 @@ namespace PKHeX.Core.AutoMod
                 pk.SetTrainerData(tr);
             }
             pk.Egg_Location = Locations.TradedEggLocation(pk.GenNumber);
+        }
+
+        private static void GetSuggestedTracker(this PKM pk)
+        {
+            var origin_gen = pk.GenNumber;
+            if (pk is IHomeTrack home)
+            {
+                // Check setting
+                if (SetRandomTracker && origin_gen < 8 && home.Tracker == 0)
+                    home.Tracker = GetRandomULong();
+                else
+                    home.Tracker = 0;
+            }
         }
 
         /// <summary>
