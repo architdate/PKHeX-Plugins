@@ -66,7 +66,14 @@ namespace AutoModPlugins
             foreach (var id in speciesIDs)
             {
                 if (GetRandomEncounter(sav, sav, id, out var pk) && pk != null)
+                {
+                        pk.Move1_PP = 0;
+                        pk.Move2_PP = 0;
+                        pk.Move3_PP = 0;
+                        pk.Move4_PP = 0;
+                        pk.HealPP();
                     yield return pk;
+                }
             }
         }
 
