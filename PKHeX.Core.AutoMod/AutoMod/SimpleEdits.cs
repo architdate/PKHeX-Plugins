@@ -120,9 +120,12 @@ namespace PKHeX.Core.AutoMod
                 h.HyperTrainClear();
         }
 
-        public static void SetHappiness(this PKM pk)
+        public static void SetHappiness(this PKM pk, IEncounterable enc)
         {
-            pk.CurrentFriendship = pk.Moves.Contains(218) ? 0 : 255;
+            var gen = pk.GenNumber <= 2 ? 7 : pk.GenNumber;
+            if (!HistoryVerifier.GetCanOTHandle(enc, pk, gen) || pk.GenNumber <= 2)
+                pk.OT_Friendship = GetBaseFriendship(gen, pk.Species);
+            else pk.CurrentFriendship = pk.Moves.Contains(218) ? 0 : 255;
         }
 
         public static void SetBelugaValues(this PKM pk)
@@ -212,6 +215,20 @@ namespace PKHeX.Core.AutoMod
                     pk6.TradeMemory(true);
                     break;
             }
+        }
+
+        private static int GetBaseFriendship(int gen, int species)
+        {
+            return gen switch
+            {
+                1 => PersonalTable.USUM[species].BaseFriendship,
+                2 => PersonalTable.USUM[species].BaseFriendship,
+
+                6 => PersonalTable.AO[species].BaseFriendship,
+                7 => PersonalTable.USUM[species].BaseFriendship,
+                8 => PersonalTable.SWSH[species].BaseFriendship,
+                _ => throw new IndexOutOfRangeException(),
+            };
         }
 
         public static void ClearOTMemory(this PKM pk)

@@ -131,7 +131,7 @@ namespace PKHeX.Core.AutoMod
                     pk.EncryptionConstant = pk.PID;
                 if (new LegalityAnalysis(pk).Valid && pk.Format >= pk.GenNumber)
                 {
-                    pk.SetHappiness();
+                    pk.SetHappiness(new LegalityAnalysis(pk).EncounterMatch);
                     pk.SetBelugaValues();
                     if (shiny && !pk.IsShiny)
                         pk.SetShinySID();
@@ -256,7 +256,7 @@ namespace PKHeX.Core.AutoMod
 
             if (new LegalityAnalysis(pk).Valid && pk.Format >= pk.GenNumber)
             {
-                pk.SetHappiness();
+                pk.SetHappiness(new LegalityAnalysis(pk).EncounterMatch);
                 if (shiny && pk.IsShiny)
                     return true;
                 if (!set.Shiny || pk.IsShiny)

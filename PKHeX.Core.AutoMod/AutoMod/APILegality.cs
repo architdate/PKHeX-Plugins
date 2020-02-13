@@ -138,7 +138,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetDynamaxLevel();
             pk.SetSuggestedBall(SetMatchingBalls);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
-            pk.SetHappiness();
+            pk.SetHappiness(enc);
             pk.SetBelugaValues();
             pk.FixEdgeCases();
         }
