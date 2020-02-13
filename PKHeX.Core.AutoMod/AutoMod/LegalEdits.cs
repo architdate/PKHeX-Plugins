@@ -76,7 +76,7 @@ namespace PKHeX.Core.AutoMod
 
             int level = encounter.LevelMin;
             int location = encounter.Location;
-            int minlvl = Legal.GetLowestLevel(pk, encounter.Species);
+            int minlvl = EncounterSuggestion.GetLowestLevel(pk, encounter.Species);
             if (minlvl == 0)
                 minlvl = level;
 

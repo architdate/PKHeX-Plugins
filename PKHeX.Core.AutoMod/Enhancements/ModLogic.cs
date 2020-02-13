@@ -67,11 +67,6 @@ namespace AutoModPlugins
             {
                 if (GetRandomEncounter(sav, sav, id, out var pk) && pk != null)
                 {
-                        pk.Move1_PP = 0;
-                        pk.Move2_PP = 0;
-                        pk.Move3_PP = 0;
-                        pk.Move4_PP = 0;
-                        pk.HealPP();
                     yield return pk;
                 }
             }
@@ -116,23 +111,22 @@ namespace AutoModPlugins
         {
             blank.Species = species;
             blank.Gender = blank.GetSaneGender();
-            if (species == 678)
+            if (species == (int)Species.Meowstic || species == (int)Species.Indeedee)
                 blank.AltForm = blank.Gender;
 
-            var f = EncounterMovesetGenerator.GeneratePKMs(blank, tr).FirstOrDefault();
+            var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid);
+            var f = legalencs.FirstOrDefault();
             if (f == null)
                 return null;
-            int abilityretain = f.AbilityNumber >> 1;
+            var an = f.AbilityNumber;
             f.Species = species;
             f.Gender = f.GetSaneGender();
-            if (species == 678)
+            if (species == (int)Species.Meowstic || species == (int)Species.Indeedee)
                 f.AltForm = f.Gender;
             f.CurrentLevel = 100;
             f.Nickname = SpeciesName.GetSpeciesNameGeneration(f.Species, f.Language, f.Format);
             f.IsNicknamed = false;
-            f.SetSuggestedMoves();
-            f.AbilityNumber = abilityretain;
-            f.RefreshAbility(abilityretain);
+            f.RefreshAbility(an >> 1);
             return f;
         }
 
