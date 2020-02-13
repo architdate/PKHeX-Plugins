@@ -81,11 +81,6 @@
     <Compile Include="GUI\ShowdownSetLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GUI\WinFormsUtil.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\autolegalitymod.png" />
@@ -97,10 +92,6 @@
     <None Include="Properties\AutoLegality.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>AutoLegality.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\img\urlimport.png" />
     <None Include="Resources\img\smogongenner.png" />
