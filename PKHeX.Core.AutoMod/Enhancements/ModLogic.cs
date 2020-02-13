@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
@@ -126,7 +127,25 @@ namespace AutoModPlugins
             f.CurrentLevel = 100;
             f.Nickname = SpeciesName.GetSpeciesNameGeneration(f.Species, f.Language, f.Format);
             f.IsNicknamed = false;
+            f.SetSuggestedMoves();
+            f.SetSuggestedMovePP(0);
+            f.SetSuggestedMovePP(1);
+            f.SetSuggestedMovePP(2);
+            f.SetSuggestedMovePP(3);
             f.RefreshAbility(an >> 1);
+            var info = new LegalityAnalysis(f).Info;
+            if (info.Generation > 0 && info.EvoChainsAllGens[info.Generation].All(z => z.Species != info.EncounterMatch.Species))
+            {
+                f.CurrentHandler = 1;
+                f.HT_Name = f.OT_Name;
+                if (f is IHandlerLanguage h)
+                    h.HT_Language = 1;
+            }
+            if (f is IFormArgument fa)
+                fa.FormArgument = ShowdownEdits.GetSuggestedFormArgument(f, info.EncounterMatch.Species);
+            int wIndex = WurmpleUtil.GetWurmpleEvoGroup(f.Species);
+            if (wIndex != -1)
+                f.EncryptionConstant = WurmpleUtil.GetWurmpleEC(wIndex);
             return f;
         }
 
