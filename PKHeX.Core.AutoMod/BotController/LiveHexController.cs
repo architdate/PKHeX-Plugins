@@ -42,6 +42,7 @@
         public void WriteActiveSlot(int box, int slot)
         {
             var pkm = Editor.PreparePKM();
+            pkm.ResetPartyStats();
             var data = pkm.EncryptedPartyData;
             Bot.SendSlot(data, box, slot);
         }
