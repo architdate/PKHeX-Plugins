@@ -537,6 +537,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 // can be ability capsuled
                 pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
+                pk.StatNature = iterPKM.StatNature;
                 break;
             }
         }
