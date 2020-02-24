@@ -105,7 +105,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Showdown Set to refer</param>
         public static void SetMovesEVsItems(this PKM pk, ShowdownSet set)
         {
-            pk.SetMoves(set.Moves, true);
+            if (set.Moves[0] != 0)
+                pk.SetMoves(set.Moves, true);
             pk.CurrentFriendship = set.Friendship;
             if (pk is IAwakened pb7)
             {
