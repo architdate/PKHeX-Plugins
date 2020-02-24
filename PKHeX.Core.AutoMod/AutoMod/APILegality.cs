@@ -136,11 +136,11 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedMemories();
             pk.SetHTLanguage();
             pk.SetDynamaxLevel();
-            pk.SetSuggestedBall(SetMatchingBalls);
-            pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.SetHappiness(enc);
             pk.SetBelugaValues();
             pk.FixEdgeCases();
+            pk.SetSuggestedBall(SetMatchingBalls);
+            pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
         }
 
         /// <summary>
