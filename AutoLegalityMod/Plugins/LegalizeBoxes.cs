@@ -19,6 +19,9 @@ namespace AutoModPlugins
 
         private void Legalize(object sender, EventArgs e)
         {
+            // ALM Settings
+            ShowdownSetLoader.SetAPILegalitySettings();
+
             var box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
             if (!box)
             {

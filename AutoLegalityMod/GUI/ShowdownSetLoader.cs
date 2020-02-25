@@ -122,7 +122,7 @@ namespace AutoModPlugins
             return AutoModErrorCode.None;
         }
 
-        private static void SetAPILegalitySettings()
+        public static void SetAPILegalitySettings()
         {
             APILegality.UseTrainerData = Properties.AutoLegality.Default.UseTrainerData;
             APILegality.SetAllLegalRibbons = Properties.AutoLegality.Default.SetAllLegalRibbons;
