@@ -30,6 +30,9 @@ namespace AutoModPlugins
             PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);
             var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);
             LoadMenuStrip(menu);
+
+            // ALM Settings
+            ShowdownSetLoader.SetAPILegalitySettings();
         }
 
         private void LoadMenuStrip(ToolStrip menuStrip)

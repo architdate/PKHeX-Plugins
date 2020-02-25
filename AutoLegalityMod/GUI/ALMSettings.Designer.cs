@@ -1,4 +1,6 @@
-﻿namespace AutoModPlugins.GUI
+﻿using System.Windows.Forms;
+
+namespace AutoModPlugins.GUI
 {
     partial class ALMSettings
     {
@@ -54,6 +56,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Auto Legality Plugin Settings";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SettingsEditor_KeyDown);
+            this.FormClosing += new FormClosingEventHandler(this.ALMSettings_FormClosing);
             this.ResumeLayout(false);
 
         }

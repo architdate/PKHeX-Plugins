@@ -17,5 +17,13 @@ namespace AutoModPlugins.GUI
             if (e.KeyCode == Keys.W && ModifierKeys == Keys.Control)
                 Close();
         }
+
+        private void ALMSettings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // ALM Settings
+            ShowdownSetLoader.SetAPILegalitySettings();
+
+            Properties.AutoLegality.Default.Save();
+        }
     }
 }
