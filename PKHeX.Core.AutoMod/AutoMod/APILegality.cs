@@ -522,6 +522,8 @@ namespace PKHeX.Core.AutoMod
             // Preserve Nature, Altform, Ability (only if HA)
             // Nest encounter RNG generation
             var iterPKM = pk.Clone();
+            if (enc.Ability != -1 && (pk.AbilityNumber == 4) != (enc.Ability == 4))
+                return;
             while (true)
             {
                 ulong seed = GetRandomULong();
