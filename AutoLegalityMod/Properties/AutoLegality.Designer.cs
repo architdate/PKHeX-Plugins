@@ -130,5 +130,17 @@ namespace AutoModPlugins.Properties {
                 this["SetRandomTracker"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PrioritizeEvent {
+            get {
+                return ((bool)(this["PrioritizeEvent"]));
+            }
+            set {
+                this["PrioritizeEvent"] = value;
+            }
+        }
     }
 }

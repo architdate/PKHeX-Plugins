@@ -19,6 +19,7 @@ namespace PKHeX.Core.AutoMod
         public static bool UseMarkings { get; set; } = true;
         public static bool UseXOROSHIRO { get; set; } = true;
         public static bool SetRandomTracker { get; set; } = false;
+        public static bool PrioritizeEvent { get; set; } = false;
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -40,7 +41,8 @@ namespace PKHeX.Core.AutoMod
                 destVer = s.Version;
 
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
-            EncounterMovesetGenerator.PriorityList = new[] { EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery };
+            EncounterMovesetGenerator.PriorityList = PrioritizeEvent ? new[] { EncounterOrder.Mystery, EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot } : 
+                                                                        new[] { EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery };
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             if (template.Species <= 721)
                 encounters = encounters.Concat(GetFriendSafariEncounters(template));

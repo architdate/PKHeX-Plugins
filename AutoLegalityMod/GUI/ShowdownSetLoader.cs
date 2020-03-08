@@ -125,6 +125,7 @@ namespace AutoModPlugins
             APILegality.UseMarkings = Properties.AutoLegality.Default.UseMarkings;
             APILegality.UseXOROSHIRO = Properties.AutoLegality.Default.UseXOROSHIRO;
             APILegality.SetRandomTracker = Properties.AutoLegality.Default.SetRandomTracker;
+            APILegality.PrioritizeEvent = Properties.AutoLegality.Default.PrioritizeEvent;
         }
     }
 }
