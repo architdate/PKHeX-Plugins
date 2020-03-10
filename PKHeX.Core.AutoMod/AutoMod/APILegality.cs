@@ -31,7 +31,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="satisfied">If the final result is satisfactory, otherwise use deprecated bruteforce auto legality functionality</param>
         public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied)
         {
-            set = set.PreProcessShowdownSet();
+            set = set.PreProcessShowdownSet(template.PersonalInfo);
             var Form = SanityCheckForm(template, ref set);
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR moves for the encounter
@@ -334,10 +334,16 @@ namespace PKHeX.Core.AutoMod
         /// General method to preprocess sets excluding invalid formes. (handled in a future method)
         /// </summary>
         /// <param name="set">Showdown set passed to the function</param>
-        private static ShowdownSet PreProcessShowdownSet(this ShowdownSet set)
+        private static ShowdownSet PreProcessShowdownSet(this ShowdownSet set, PersonalInfo personal)
         {
             if ((set.Species == (int)Species.Indeedee || set.Species == (int)Species.Meowstic) && set.Form == "F")
                 set = new ShowdownSet(set.Text.Replace("(M)", "(F)"));
+
+            // Validate Gender
+            if (personal.Gender == 255 && set.Gender != "") set = new ShowdownSet(set.Text.Replace("(M)", "").Replace("(F)", ""));
+            if (personal.Gender == 254 && set.Gender != "F") set = new ShowdownSet(set.Text.Replace("(M)", "(F)"));
+            if (personal.Gender == 000 && set.Gender != "M") set = new ShowdownSet(set.Text.Replace("(F)", "(M)"));
+
             return set;
         }
 
