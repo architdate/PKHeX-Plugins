@@ -337,15 +337,19 @@ namespace PKHeX.Core.AutoMod
         /// General method to preprocess sets excluding invalid formes. (handled in a future method)
         /// </summary>
         /// <param name="set">Showdown set passed to the function</param>
+        /// <param name="personal">Personal data for the desired form</param>
         private static ShowdownSet PreProcessShowdownSet(this ShowdownSet set, PersonalInfo personal)
         {
             if ((set.Species == (int)Species.Indeedee || set.Species == (int)Species.Meowstic) && set.Form == "F")
                 set = new ShowdownSet(set.Text.Replace("(M)", "(F)"));
 
             // Validate Gender
-            if (personal.Gender == 255 && set.Gender != "") set = new ShowdownSet(set.Text.Replace("(M)", "").Replace("(F)", ""));
-            if (personal.Gender == 254 && set.Gender != "F") set = new ShowdownSet(set.Text.Replace("(M)", "(F)"));
-            if (personal.Gender == 000 && set.Gender != "M") set = new ShowdownSet(set.Text.Replace("(F)", "(M)"));
+            if (personal.Genderless && set.Gender.Length == 0)
+                return new ShowdownSet(set.Text.Replace("(M)", "").Replace("(F)", ""));
+            if (personal.OnlyFemale && set.Gender != "F")
+                return new ShowdownSet(set.Text.Replace("(M)", "(F)"));
+            if (personal.OnlyMale && set.Gender != "M")
+                return new ShowdownSet(set.Text.Replace("(F)", "(M)"));
 
             return set;
         }
@@ -430,16 +434,10 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">mock pkm to get friend safari encounters</param>
         /// <returns>IEncounterable enumaration of friend safari encounters in the evo chain</returns>
-        private static IEnumerable<IEncounterable> GetFriendSafariEncounters(PKM pkm)
+        private static IEnumerable<IEncounterable> GetFriendSafariEncounters(PKM pk)
         {
             // Set values to get a mock pk6
-            var pk = pkm.Clone();
-            pk.Version = (int) GameVersion.X;
-            pk.Met_Location = 148;
-            pk.Met_Level = 30;
-            pk.Egg_Location = 0;
             pk.HT_Name = "A";
-
             return EncounterArea6XY.GetValidFriendSafari(pk);
         }
 
@@ -524,8 +522,8 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Method to find the PID and IV associated with a nest. Shinies are just allowed 
-        /// since there is no way gamefreak actually bruteforces top half of the PID to flag illegals.
+        /// Method to find the PID and IV associated with a nest. Shinies are just allowed
+        /// since there is no way GameFreak actually brute-forces top half of the PID to flag illegals.
         /// </summary>
         /// <param name="pk">Passed PKM</param>
         /// <param name="enc">Nest encounter object</param>
