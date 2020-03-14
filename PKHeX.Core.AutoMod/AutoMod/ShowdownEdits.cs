@@ -130,7 +130,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Showdown Set to refer</param>
-        public static void SetMovesEVsItems(this PKM pk, ShowdownSet set)
+        public static void SetMovesEVs(this PKM pk, ShowdownSet set)
         {
             if (set.Moves[0] != 0)
                 pk.SetMoves(set.Moves, true);
@@ -142,15 +142,19 @@ namespace PKHeX.Core.AutoMod
             else
             {
                 pk.EVs = set.EVs;
-                pk.ApplyHeldItem(set.HeldItem, set.Format);
-                pk.FixInvalidFormItems(); // arceus, silvally, giratina, genesect fix
-                if (!ItemRestrictions.IsHeldItemAllowed(pk))
-                    pk.HeldItem = 0; // Remove the item if the item is illegal in its generation
                 var la = new LegalityAnalysis(pk);
                 if (la.Parsed && !pk.WasEvent)
                     pk.SetRelearnMoves(la.GetSuggestedRelearnMoves());
             }
             pk.SetCorrectMetLevel();
+        }
+
+        public static void SetHeldItem(this PKM pk, ShowdownSet set)
+        {
+            pk.ApplyHeldItem(set.HeldItem, set.Format);
+            pk.FixInvalidFormItems(); // arceus, silvally, giratina, genesect fix
+            if (!ItemRestrictions.IsHeldItemAllowed(pk) || pk is PB7)
+                pk.HeldItem = 0; // Remove the item if the item is illegal in its generation
         }
 
         private static void FixInvalidFormItems(this PKM pk)
