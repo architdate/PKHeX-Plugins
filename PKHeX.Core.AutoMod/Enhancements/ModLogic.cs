@@ -68,6 +68,7 @@ namespace AutoModPlugins
             {
                 if (GetRandomEncounter(sav, sav, id, out var pk) && pk != null)
                 {
+                    pk.Heal();
                     yield return pk;
                 }
             }
