@@ -42,8 +42,7 @@ namespace PKHeX.Core.AutoMod
 
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
-            if (template.Species <= 721)
-                encounters = encounters.Concat(GetFriendSafariEncounters(template));
+            encounters = encounters.Concat(GetFriendSafariEncounters(template));
             foreach (var enc in encounters)
             {
                 if (enc.LevelMin > set.Level)
@@ -434,10 +433,11 @@ namespace PKHeX.Core.AutoMod
         private static IEnumerable<IEncounterable> GetFriendSafariEncounters(PKM pk)
         {
             // Set values to get a mock pk6
-            pk.Version = (int)GameVersion.X;
+            pk.Version = (int) GameVersion.X;
             pk.Met_Location = 148;
             pk.Met_Level = 30;
             pk.Egg_Location = 0;
+            pk.HT_Name = "A";
 
             return EncounterArea6XY.GetValidFriendSafari(pk);
         }

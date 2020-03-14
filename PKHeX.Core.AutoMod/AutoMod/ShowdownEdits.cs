@@ -37,11 +37,12 @@ namespace PKHeX.Core.AutoMod
         public static void SetNatureAbility(this PKM pk, ShowdownSet set, int preference = -1)
         {
             // Values that are must for showdown set to work, IVs should be adjusted to account for this
-            pk.SetNature(set.Nature);
+            var val = Math.Min((int) Nature.Quirky, Math.Max((int) Nature.Hardy, set.Nature));
+            pk.SetNature(val);
             var orig = pk.Nature;
-            if (orig != set.Nature)
+            if (orig != val)
             {
-                pk.Nature = set.Nature;
+                pk.Nature = val;
                 var la = new LegalityAnalysis(pk);
                 if (la.Info.Parse.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
                     pk.Nature = orig;
