@@ -58,7 +58,7 @@ namespace PKHeX.Core.AutoMod
 
             pk.Nature = val;
             var la = new LegalityAnalysis(pk);
-            if (la.Info.Parse.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
+            if (!la.Valid)
                 pk.Nature = orig;
         }
 
