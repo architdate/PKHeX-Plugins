@@ -36,19 +36,34 @@ namespace PKHeX.Core.AutoMod
         /// <param name="preference">Ability index (1/2/4) preferred; &lt;= 0 for any</param>
         public static void SetNatureAbility(this PKM pk, ShowdownSet set, int preference = -1)
         {
-            // Values that are must for showdown set to work, IVs should be adjusted to account for this
-            var val = Math.Min((int) Nature.Quirky, Math.Max((int) Nature.Hardy, set.Nature));
+            SetNature(pk, set);
+            SetAbility(pk, set, preference);
+        }
+
+        private static void SetNature(PKM pk, ShowdownSet set)
+        {
+            var val = Math.Min((int)Nature.Quirky, Math.Max((int)Nature.Hardy, set.Nature));
             pk.SetNature(val);
-            var orig = pk.Nature;
-            if (orig != val)
+            if (pk.Species == (int)Species.Toxtricity)
             {
-                pk.Nature = val;
-                if (pk.Species == (int)Species.Toxtricity && pk.AltForm != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
-                    pk.Nature = orig;
-                var la = new LegalityAnalysis(pk);
-                if (la.Info.Parse.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
-                    pk.Nature = orig;
+                if (pk.AltForm == EvolutionMethod.GetAmpLowKeyResult(val))
+                    pk.Nature = val; // StatNature already set
+                return;
             }
+
+            // Try setting the actual nature (in the event the StatNature was set instead)
+            var orig = pk.Nature;
+            if (orig == val)
+                return;
+
+            pk.Nature = val;
+            var la = new LegalityAnalysis(pk);
+            if (la.Info.Parse.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
+                pk.Nature = orig;
+        }
+
+        private static void SetAbility(PKM pk, ShowdownSet set, int preference)
+        {
             if (pk.Ability != set.Ability)
                 pk.SetAbility(set.Ability);
 
