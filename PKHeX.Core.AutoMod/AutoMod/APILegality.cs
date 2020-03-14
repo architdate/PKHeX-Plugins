@@ -343,9 +343,12 @@ namespace PKHeX.Core.AutoMod
                 set = new ShowdownSet(set.Text.Replace("(M)", "(F)"));
 
             // Validate Gender
-            if (personal.Gender == 255 && set.Gender != "") set = new ShowdownSet(set.Text.Replace("(M)", "").Replace("(F)", ""));
-            if (personal.Gender == 254 && set.Gender != "F") set = new ShowdownSet(set.Text.Replace("(M)", "(F)"));
-            if (personal.Gender == 000 && set.Gender != "M") set = new ShowdownSet(set.Text.Replace("(F)", "(M)"));
+            if (personal.Gender == 255 && set.Gender.Length == 0)
+                return new ShowdownSet(set.Text.Replace("(M)", "").Replace("(F)", ""));
+            if (personal.Gender == 254 && set.Gender != "F")
+                return new ShowdownSet(set.Text.Replace("(M)", "(F)"));
+            if (personal.Gender == 000 && set.Gender != "M")
+                return new ShowdownSet(set.Text.Replace("(F)", "(M)"));
 
             return set;
         }
@@ -523,8 +526,8 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Method to find the PID and IV associated with a nest. Shinies are just allowed 
-        /// since there is no way gamefreak actually bruteforces top half of the PID to flag illegals.
+        /// Method to find the PID and IV associated with a nest. Shinies are just allowed
+        /// since there is no way GameFreak actually brute-forces top half of the PID to flag illegals.
         /// </summary>
         /// <param name="pk">Passed PKM</param>
         /// <param name="enc">Nest encounter object</param>

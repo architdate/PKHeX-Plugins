@@ -175,8 +175,6 @@ namespace PKHeX.Core.AutoMod
                 case Species.Giratina when pk.AltForm == 1 && pk.HeldItem != 112:
                     pk.HeldItem = 122;
                     break;
-                default:
-                    break;
             }
         }
 
