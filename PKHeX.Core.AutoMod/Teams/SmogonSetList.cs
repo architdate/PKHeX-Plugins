@@ -172,15 +172,22 @@ namespace PKHeX.Core.AutoMod
         private static IEnumerable<string> GetMoves(string movesets)
         {
             var moves = new List<string>();
-            var splitmoves = movesets.Split(new[] { "\"move\":\"" }, StringSplitOptions.None).Skip(1).ToArray();
-            if (splitmoves.Length > 1)
-                moves.Add(GetMove(splitmoves[1]));
-            if (splitmoves.Length > 2)
-                moves.Add(GetMove(splitmoves[2]));
-            if (splitmoves.Length > 3)
-                moves.Add(GetMove(splitmoves[3]));
-            if (splitmoves.Length > 4)
-                moves.Add(GetMove(splitmoves[4]));
+            var slots = movesets.Split(new[] {"],["}, StringSplitOptions.None);
+            foreach (var slot in slots)
+            {
+                var choices = slot.Split(new[] { "\"move\":\"" }, StringSplitOptions.None).Skip(1).ToArray();
+                foreach (var choice in choices)
+                {
+                    var move = GetMove(choice);
+                    if (moves.Contains(move))
+                        continue;
+                    moves.Add(move);
+                    break;
+                }
+
+                if (moves.Count == 4)
+                    break;
+            }
 
             static string GetMove(string s) => s.Split('"')[0];
             return moves;
