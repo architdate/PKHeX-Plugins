@@ -62,10 +62,9 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 ApplySetDetails(pk, set, Form, raw, dest, enc);
-                if (set.CanGigantamax && pk is IGigantamax gmax)
+                if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
-                    if (!gmax.CanGigantamax)
-                        continue;
+                    continue;
                 }
 
                 var la = new LegalityAnalysis(pk);
@@ -127,11 +126,12 @@ namespace PKHeX.Core.AutoMod
             pk.SetVersion(unconverted); // Preemptive Version setting
             pk.SetSpeciesLevel(set, Form, enc);
             pk.SetRecordFlags(set.Moves);
-            pk.SetMovesEVsItems(set);
+            pk.SetMovesEVs(set);
             pk.SetHandlerandMemory(handler);
             pk.SetNatureAbility(set, abilitypref);
             pk.GetSuggestedTracker();
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
+            pk.SetHeldItem(set);
             pk.SetHyperTrainingFlags(set); // Hypertrain
             pk.SetEncryptionConstant(enc);
             pk.FixFatefulFlag(enc);
@@ -430,9 +430,10 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">mock pkm to get friend safari encounters</param>
         /// <returns>IEncounterable enumaration of friend safari encounters in the evo chain</returns>
-        private static IEnumerable<IEncounterable> GetFriendSafariEncounters(PKM pk)
+        private static IEnumerable<IEncounterable> GetFriendSafariEncounters(PKM pkm)
         {
             // Set values to get a mock pk6
+            var pk = pkm.Clone();
             pk.Version = (int) GameVersion.X;
             pk.Met_Location = 148;
             pk.Met_Level = 30;
@@ -517,7 +518,7 @@ namespace PKHeX.Core.AutoMod
                     pk.SetPIDNature(Nature);
                     return;
                 }
-                FindPIDIV(pk, method, hpType);
+                FindPIDIV(pk, method, hpType, set.Shiny);
                 ValidateGender(pk);
             }
         }
@@ -539,6 +540,8 @@ namespace PKHeX.Core.AutoMod
             if (pk.Species == (int) Species.Toxtricity && pk.AltForm != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
             {
                 enc.ApplyDetailsTo(pk, GetRandomULong());
+                pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
+                pk.StatNature = iterPKM.StatNature;
                 return;
             }
 
@@ -589,7 +592,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="Method">Given Method</param>
         /// <param name="HPType">HPType INT for preserving Hidden powers</param>
-        private static void FindPIDIV(PKM pk, PIDType Method, int HPType)
+        /// <param name="shiny">Only used for CHANNEL RNG type</param>
+        private static void FindPIDIV(PKM pk, PIDType Method, int HPType, bool shiny)
         {
             if (Method == PIDType.None)
             {
@@ -623,6 +627,8 @@ namespace PKHeX.Core.AutoMod
                     if (la.Info.PIDIV.Type != PIDType.CXD || !la.Info.PIDIVMatches)
                         continue;
                 }
+                if (Method == PIDType.Channel && shiny != pk.IsShiny)
+                    continue;
                 break;
             }
         }
@@ -745,9 +751,9 @@ namespace PKHeX.Core.AutoMod
             var la = new LegalityAnalysis(pk);
             while (pk.CurrentLevel >= pk.Met_Level)
             {
-                pk.Met_Level++;
                 if (la.Info.Moves.All(z => z.Valid))
                     return;
+                pk.Met_Level++;
             }
             pk.Met_Level = level; // Set back to normal if nothing legalized
         }
