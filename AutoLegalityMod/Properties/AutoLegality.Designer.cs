@@ -142,5 +142,17 @@ namespace AutoModPlugins.Properties {
                 this["PrioritizeEvent"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AllowBruteforce {
+            get {
+                return ((bool)(this["AllowBruteforce"]));
+            }
+            set {
+                this["AllowBruteforce"] = value;
+            }
+        }
     }
 }

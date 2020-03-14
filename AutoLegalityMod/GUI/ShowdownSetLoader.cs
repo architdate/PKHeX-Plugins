@@ -118,14 +118,19 @@ namespace AutoModPlugins
 
         public static void SetAPILegalitySettings()
         {
-            APILegality.UseTrainerData = Properties.AutoLegality.Default.UseTrainerData;
-            APILegality.SetAllLegalRibbons = Properties.AutoLegality.Default.SetAllLegalRibbons;
-            APILegality.SetMatchingBalls = Properties.AutoLegality.Default.SetMatchingBalls;
-            APILegality.UseCompetitiveMarkings = Properties.AutoLegality.Default.UseCompetitiveMarkings;
-            APILegality.UseMarkings = Properties.AutoLegality.Default.UseMarkings;
-            APILegality.UseXOROSHIRO = Properties.AutoLegality.Default.UseXOROSHIRO;
-            APILegality.SetRandomTracker = Properties.AutoLegality.Default.SetRandomTracker;
-            APILegality.PrioritizeEvent = Properties.AutoLegality.Default.PrioritizeEvent;
+            var settings = Properties.AutoLegality.Default;
+            APILegality.UseTrainerData = settings.UseTrainerData;
+            APILegality.SetAllLegalRibbons = settings.SetAllLegalRibbons;
+            APILegality.SetMatchingBalls = settings.SetMatchingBalls;
+            APILegality.UseCompetitiveMarkings = settings.UseCompetitiveMarkings;
+            APILegality.UseMarkings = settings.UseMarkings;
+            APILegality.UseXOROSHIRO = settings.UseXOROSHIRO;
+            APILegality.SetRandomTracker = settings.SetRandomTracker;
+            Legalizer.AllowBruteForce = settings.AllowBruteforce;
+
+            EncounterMovesetGenerator.PriorityList = settings.PrioritizeEvent
+                ? new[] {EncounterOrder.Mystery, EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot}
+                : new[] {EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery};
         }
     }
 }

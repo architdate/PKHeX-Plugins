@@ -19,7 +19,6 @@ namespace PKHeX.Core.AutoMod
         public static bool UseMarkings { get; set; } = true;
         public static bool UseXOROSHIRO { get; set; } = true;
         public static bool SetRandomTracker { get; set; } = false;
-        public static bool PrioritizeEvent { get; set; } = false;
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -35,21 +34,24 @@ namespace PKHeX.Core.AutoMod
             var Form = SanityCheckForm(template, ref set);
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR moves for the encounter
+            var isHidden = template.AbilityNumber == 4;
             var destType = template.GetType();
             var destVer = (GameVersion)dest.Game;
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
-            EncounterMovesetGenerator.PriorityList = PrioritizeEvent ? new[] { EncounterOrder.Mystery, EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot } : 
-                                                                        new[] { EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery };
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             if (template.Species <= 721)
                 encounters = encounters.Concat(GetFriendSafariEncounters(template));
             foreach (var enc in encounters)
             {
-                var ver = enc is IVersion v ? v.Version : destVer;
                 var gen = enc is IGeneration g ? g.Generation : dest.Generation;
+                if (isHidden && (uint)(gen - 3) < 2) // Gen 3 and Gen 4
+                    continue;
+                var ver = enc is IVersion v ? v.Version : destVer;
+                if (set.CanGigantamax && !GameVersion.SWSH.Contains(ver))
+                    continue;
                 var tr = UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, gen) : TrainerSettings.DefaultFallback(gen);
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
@@ -532,24 +534,42 @@ namespace PKHeX.Core.AutoMod
             var iterPKM = pk.Clone();
             if (enc.Ability != -1 && (pk.AbilityNumber == 4) != (enc.Ability == 4))
                 return;
-            while (true)
+            if (pk.Species == (int) Species.Toxtricity && pk.AltForm != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
+            {
+                enc.ApplyDetailsTo(pk, GetRandomULong());
+                return;
+            }
+
+            if (shiny || !UseXOROSHIRO)
+                return;
+
+            var count = 0;
+            do
             {
                 ulong seed = GetRandomULong();
-                if (!shiny && UseXOROSHIRO)
-                    enc.ApplyDetailsTo(pk, seed);
-                if (pk.AltForm != iterPKM.AltForm) // no nature checks since only stat nature is relevant.
-                    continue;
-                if (iterPKM.Gender != pk.Gender) // match gender
-                    continue;
-                if (iterPKM.AbilityNumber == 4 && !(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber))
-                    continue;
-                if (iterPKM.AbilityNumber != 4 && pk.AbilityNumber == 4) // cannot ability capsule HA to non HA
-                    continue;
-                // can be ability capsuled
-                pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
-                pk.StatNature = iterPKM.StatNature;
-                break;
-            }
+                enc.ApplyDetailsTo(pk, seed);
+                if (IsMatchCriteria<T>(pk, iterPKM))
+                    break;
+            } while (++ count < 10_000);
+
+            // can be ability capsuled
+            pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
+            pk.StatNature = iterPKM.StatNature;
+        }
+
+        private static bool IsMatchCriteria<T>(PK8 pk, PKM template) where T : EncounterStatic8Nest<T>
+        {
+            if (template.Nature != pk.Nature) // match nature
+                return false;
+            if (template.Gender != pk.Gender) // match gender
+                return false;
+            if (template.AbilityNumber == 4 && !(template.Ability == pk.Ability && template.AbilityNumber == pk.AbilityNumber))
+                return false;
+            if (template.AbilityNumber != 4 && pk.AbilityNumber == 4) // cannot ability capsule HA to non HA
+                return false;
+            // if (template.AltForm != pk.AltForm) // match form -- no variable forms
+                // return false;
+            return true;
         }
 
         /// <summary>
@@ -720,10 +740,10 @@ namespace PKHeX.Core.AutoMod
             var level = pk.Met_Level;
             if (pk.CurrentLevel <= level)
                 return;
+            var la = new LegalityAnalysis(pk);
             while (pk.CurrentLevel >= pk.Met_Level)
             {
                 pk.Met_Level++;
-                var la = new LegalityAnalysis(pk);
                 if (la.Info.Moves.All(z => z.Valid))
                     return;
             }

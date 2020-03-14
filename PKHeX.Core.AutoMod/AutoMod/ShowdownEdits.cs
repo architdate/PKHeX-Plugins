@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -37,6 +38,14 @@ namespace PKHeX.Core.AutoMod
         {
             // Values that are must for showdown set to work, IVs should be adjusted to account for this
             pk.SetNature(set.Nature);
+            var orig = pk.Nature;
+            if (orig != set.Nature)
+            {
+                pk.Nature = set.Nature;
+                var la = new LegalityAnalysis(pk);
+                if (la.Info.Parse.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
+                    pk.Nature = orig;
+            }
             if (pk.Ability != set.Ability)
                 pk.SetAbility(set.Ability);
 
