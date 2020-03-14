@@ -46,6 +46,8 @@ namespace PKHeX.Core.AutoMod
                 encounters = encounters.Concat(GetFriendSafariEncounters(template));
             foreach (var enc in encounters)
             {
+                if (enc.LevelMin > set.Level)
+                    continue;
                 var gen = enc is IGeneration g ? g.Generation : dest.Generation;
                 if (isHidden && (uint)(gen - 3) < 2) // Gen 3 and Gen 4
                     continue;
