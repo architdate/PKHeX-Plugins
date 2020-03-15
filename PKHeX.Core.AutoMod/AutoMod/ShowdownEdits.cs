@@ -56,9 +56,12 @@ namespace PKHeX.Core.AutoMod
             if (orig == val)
                 return;
 
-            pk.Nature = val;
             var la = new LegalityAnalysis(pk);
-            if (!la.Valid)
+            pk.Nature = val;
+            var la2 = new LegalityAnalysis(pk);
+            var enc1 = la.EncounterOriginal;
+            var enc2 = la2.EncounterOriginal;
+            if (!ReferenceEquals(enc1, enc2) && !(enc1 is EncounterEgg) || la2.Info.Parse.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
                 pk.Nature = orig;
         }
 
