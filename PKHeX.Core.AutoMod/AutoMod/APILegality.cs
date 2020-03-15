@@ -606,7 +606,8 @@ namespace PKHeX.Core.AutoMod
             if (Method == PIDType.Pokewalker && (pk.Nature >= 24 || pk.AbilityNumber == 4)) // No possible pokewalker matches
                 return;
             var iterPKM = pk.Clone();
-            while (true)
+            var count = 0;
+            do
             {
                 uint seed = Util.Rand32();
                 if (PokeWalkerSeedFail(seed, Method, pk, iterPKM))
@@ -625,10 +626,11 @@ namespace PKHeX.Core.AutoMod
                     if (la.Info.PIDIV.Type != PIDType.CXD || !la.Info.PIDIVMatches)
                         continue;
                 }
+
                 if (Method == PIDType.Channel && shiny != pk.IsShiny)
                     continue;
                 break;
-            }
+            } while (++count < 10_000_000);
         }
 
         /// <summary>
