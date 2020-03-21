@@ -751,9 +751,9 @@ namespace PKHeX.Core.AutoMod
             var level = pk.Met_Level;
             if (pk.CurrentLevel <= level)
                 return;
-            var la = new LegalityAnalysis(pk);
             while (pk.CurrentLevel >= pk.Met_Level)
             {
+                var la = new LegalityAnalysis(pk);
                 if (la.Info.Moves.All(z => z.Valid))
                     return;
                 pk.Met_Level++;
