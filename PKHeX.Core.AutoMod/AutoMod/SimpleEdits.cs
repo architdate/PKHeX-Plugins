@@ -40,7 +40,25 @@ namespace PKHeX.Core.AutoMod
         {
             if ((pk.Species == 658 && pk.AltForm == 1) || enc is EncounterStatic8N) // Ash-Greninja
                 return;
-            pk.SetRandomEC();
+            int gen = pk.GenNumber;
+            if (2 < gen && gen < 6)
+            {
+                var ec = pk.PID;
+                pk.EncryptionConstant = ec;
+                if (pk.Format >= 6)
+                {
+                    var pidxor = ((pk.TID ^ pk.SID ^ (int) (ec & 0xFFFF) ^ (int) (ec >> 16)) & ~0x7) == 8;
+                    pk.PID = pidxor ? ec ^ 0x80000000 : ec;
+                }
+                return;
+            }
+            int wIndex = WurmpleUtil.GetWurmpleEvoGroup(pk.Species);
+            if (wIndex != -1)
+            {
+                pk.EncryptionConstant = WurmpleUtil.GetWurmpleEC(wIndex);
+                return;
+            }
+            pk.EncryptionConstant = Util.Rand32();
         }
 
         /// <summary>
@@ -80,7 +98,17 @@ namespace PKHeX.Core.AutoMod
                         if (mg.IsEgg || (mg is PGT g && g.IsManaphyEgg))
                             pk.SetShinySID(); // not SID locked
                         else
-                            pk.SetShiny(); // if SID cant be changed, PID has to be able to change if shiny is possible.
+                        {
+                            pk.SetShiny();
+                            if (pk.Format >= 6)
+                            {
+                                do
+                                {
+                                    pk.SetShiny();
+                                } while (GetPIDXOR());
+                                bool GetPIDXOR() => ((pk.TID ^ pk.SID ^ (int)(pk.PID & 0xFFFF) ^ (int)(pk.PID >> 16)) & ~0x7) == 8;
+                            }
+                        } // if SID cant be changed, PID has to be able to change if shiny is possible.
                     }
                     else
                     {
