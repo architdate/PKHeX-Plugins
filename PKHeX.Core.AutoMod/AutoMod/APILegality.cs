@@ -73,7 +73,7 @@ namespace PKHeX.Core.AutoMod
                     satisfied = true;
                     return pk;
                 }
-                Debug.WriteLine(la.Report());
+                Debug.WriteLine($"{la.Report()}\n");
             }
             satisfied = false;
             return template;
@@ -459,11 +459,11 @@ namespace PKHeX.Core.AutoMod
 
             // Find the encounter
             var li = EncounterFinder.FindVerifiedEncounter(original);
+            pk.IVs = set.IVs;
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
             if (li.EncounterMatch is EncounterStatic8N || li.EncounterMatch is EncounterStatic8NC || li.EncounterMatch is EncounterStatic8ND)
             {
-                pk.IVs = set.IVs;
                 var e = (EncounterStatic)li.EncounterMatch;
                 if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2))
                     return;
@@ -478,7 +478,6 @@ namespace PKHeX.Core.AutoMod
             }
             else if (pk.GenNumber > 4 || pk.VC)
             {
-                pk.IVs = set.IVs;
                 if (Species == 658 && pk.AltForm == 1)
                     pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
                 if (method != PIDType.G5MGShiny)
@@ -502,7 +501,6 @@ namespace PKHeX.Core.AutoMod
             }
             else
             {
-                pk.IVs = set.IVs;
                 if (li.EncounterMatch is PCD d)
                 {
                     if (d.Gift.PK.PID != 1)
@@ -516,6 +514,8 @@ namespace PKHeX.Core.AutoMod
                     pk.SetPIDNature(Nature);
                     return;
                 }
+                if (li.EncounterMatch is EncounterTradePID)
+                    return; // Fixed PID, no need to mutate
                 FindPIDIV(pk, method, hpType, set.Shiny);
                 ValidateGender(pk);
             }
