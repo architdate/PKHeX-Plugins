@@ -11,6 +11,14 @@ namespace PKHeX.Core.AutoMod
             MarkingApplicator.MarkingMethod = FlagIVsAutoMod;
         }
 
+        public static readonly int[] Zukan8Additions =
+        {
+            001, 002, 003, 007, 008, 009, 150, 151, 251, 385,
+            638, 639, 640, 643, 644, 646, 647, 722, 723, 724,
+            725, 726, 727, 728, 729, 730, 789, 790, 791, 792,
+            800, 802, 807, 808, 809
+        };
+
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
         {
             if (pk.Format < 7)

@@ -45,13 +45,7 @@ namespace PKHeX.Core.AutoMod
             encounters = encounters.Concat(GetFriendSafariEncounters(template));
             foreach (var enc in encounters)
             {
-                if (enc.LevelMin > set.Level)
-                    continue;
-                var gen = enc is IGeneration g ? g.Generation : dest.Generation;
-                if (isHidden && (uint)(gen - 3) < 2) // Gen 3 and Gen 4
-                    continue;
-                var ver = enc is IVersion v ? v.Version : destVer;
-                if (set.CanGigantamax && !GameVersion.SWSH.Contains(ver))
+                if (!IsEncounterValid(dest, set, enc, isHidden, destVer, out var gen, out var ver)) 
                     continue;
                 var tr = UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, gen) : TrainerSettings.DefaultFallback(gen);
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
@@ -77,6 +71,51 @@ namespace PKHeX.Core.AutoMod
             }
             satisfied = false;
             return template;
+        }
+
+        /// <summary>
+        /// Checks if the encounter is even valid before processing it
+        /// </summary>
+        /// <param name="tr">trainer info</param>
+        /// <param name="set">showdown set</param>
+        /// <param name="enc">encounter object</param>
+        /// <param name="isHidden">is HA requested</param>
+        /// <param name="destVer">version to generate in</param>
+        /// <param name="gen">generation of enc/tr</param>
+        /// <param name="ver">version of enc/destVer</param>
+        /// <returns>if the encounter is valid or not</returns>
+        private static bool IsEncounterValid(ITrainerInfo tr, ShowdownSet set, IEncounterable enc, bool isHidden, GameVersion destVer, out int gen, out GameVersion ver)
+        {
+            // initialize out vars (not calculating here to save time)
+            gen = -1;
+            ver = GameVersion.Any;
+
+            // Don't process if encounter min level is higher than requested level
+            if (enc.LevelMin > set.Level)
+                return false;
+
+            // Don't process if Hidden Ability is requested and the PKM is from Gen 3 or Gen 4
+            gen = enc is IGeneration g ? g.Generation : tr.Generation;
+            if (isHidden && (uint) (gen - 3) < 2) // Gen 3 and Gen 4
+                return false;
+
+            // Don't process if requested PKM is Gigantamax but the Game is not SW/SH
+            ver = enc is IVersion v ? v.Version : destVer;
+            if (set.CanGigantamax && !GameVersion.SWSH.Contains(ver))
+                return false;
+
+            // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
+            // Don't process if Game is SWSH and requested PKM is not from the Galar Dex (Zukan8.DexLookup)
+            var species = Enumerable.Range(1, destVer.GetMaxSpeciesID());
+            if (GameVersion.GG.Contains(destVer))
+                species = species.Where(z => z <= 151 || (z == 808 || z == 809)); 
+            if (GameVersion.SWSH.Contains(destVer))
+                species = species.Where(z => Zukan8.DexLookup.TryGetValue(z, out _) || SimpleEdits.Zukan8Additions.Contains(z));
+            if (!species.Contains(set.Species))
+                return false;
+
+            // Encounter should hopefully be possible
+            return true;
         }
 
         /// <summary>
