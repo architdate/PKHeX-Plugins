@@ -514,8 +514,11 @@ namespace PKHeX.Core.AutoMod
                     pk.SetPIDNature(Nature);
                     return;
                 }
-                if (li.EncounterMatch is EncounterTradePID)
+                if (li.EncounterMatch is EncounterTradePID t)
+                {
+                    t.SetEncounterTradeIVs(pk);
                     return; // Fixed PID, no need to mutate
+                }
                 FindPIDIV(pk, method, hpType, set.Shiny);
                 ValidateGender(pk);
             }

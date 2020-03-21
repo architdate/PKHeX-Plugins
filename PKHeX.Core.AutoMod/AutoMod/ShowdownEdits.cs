@@ -152,6 +152,14 @@ namespace PKHeX.Core.AutoMod
             pk.SetCorrectMetLevel();
         }
 
+        public static void SetEncounterTradeIVs(this EncounterTrade t, PKM pk)
+        {
+            if (t.IVs.Count != 0)
+                pk.SetRandomIVs(t.IVs, 0);
+            else
+                pk.SetRandomIVs(flawless: 3);
+        }
+
         public static void SetHeldItem(this PKM pk, ShowdownSet set)
         {
             pk.ApplyHeldItem(set.HeldItem, set.Format);
