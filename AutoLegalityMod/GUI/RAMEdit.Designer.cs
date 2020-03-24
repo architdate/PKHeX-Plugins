@@ -37,6 +37,7 @@ namespace AutoModPlugins.GUI
             // 
             // RAM
             // 
+            this.RAM.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RAM.Location = new System.Drawing.Point(9, 10);
             this.RAM.Multiline = true;
             this.RAM.Name = "RAM";

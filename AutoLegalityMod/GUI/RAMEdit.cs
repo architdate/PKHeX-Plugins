@@ -12,7 +12,7 @@ namespace AutoModPlugins.GUI
         public RAMEdit(byte[] originalBytes)
         {
             InitializeComponent();
-            var editable = string.Concat(originalBytes.Select(z => $"{z:X2}  "));
+            var editable = string.Concat(originalBytes.Select(z => $"{z:X2} "));
             RAM.Text = editable;
             text = editable;
             length = originalBytes.Length;
