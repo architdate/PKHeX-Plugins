@@ -48,10 +48,17 @@
             this.NUD_Box = new System.Windows.Forms.NumericUpDown();
             this.B_ReadSlot = new System.Windows.Forms.Button();
             this.B_WriteSlot = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.B_ReadRAM = new System.Windows.Forms.Button();
+            this.RamSize = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.RamOffset = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Box)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // B_ReadCurrent
@@ -288,11 +295,75 @@
             this.B_WriteSlot.UseVisualStyleBackColor = true;
             this.B_WriteSlot.Click += new System.EventHandler(this.B_WriteSlot_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.B_ReadRAM);
+            this.groupBox3.Controls.Add(this.RamSize);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.RamOffset);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Enabled = false;
+            this.groupBox3.Location = new System.Drawing.Point(12, 188);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(307, 48);
+            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "RAM Editor";
+            // 
+            // B_ReadRAM
+            // 
+            this.B_ReadRAM.Location = new System.Drawing.Point(225, 16);
+            this.B_ReadRAM.Name = "B_ReadRAM";
+            this.B_ReadRAM.Size = new System.Drawing.Size(75, 23);
+            this.B_ReadRAM.TabIndex = 21;
+            this.B_ReadRAM.Text = "Edit RAM";
+            this.B_ReadRAM.UseVisualStyleBackColor = true;
+            this.B_ReadRAM.Click += new System.EventHandler(this.B_ReadRAM_Click);
+            // 
+            // RamSize
+            // 
+            this.RamSize.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RamSize.Location = new System.Drawing.Point(155, 16);
+            this.RamSize.MaxLength = 8;
+            this.RamSize.Name = "RamSize";
+            this.RamSize.Size = new System.Drawing.Size(63, 20);
+            this.RamSize.TabIndex = 20;
+            this.RamSize.Text = "344";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(127, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 20);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Size:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // RamOffset
+            // 
+            this.RamOffset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RamOffset.Location = new System.Drawing.Point(58, 16);
+            this.RamOffset.MaxLength = 8;
+            this.RamOffset.Name = "RamOffset";
+            this.RamOffset.Size = new System.Drawing.Size(63, 20);
+            this.RamOffset.TabIndex = 18;
+            this.RamOffset.Text = "2E32206A";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(10, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 20);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Offset:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // LiveHexUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 191);
+            this.ClientSize = new System.Drawing.Size(331, 246);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.B_Connect);
@@ -313,6 +384,8 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Box)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +413,11 @@
         private System.Windows.Forms.Label L_ReadOffset;
         private System.Windows.Forms.Button B_ReadOffset;
         private System.Windows.Forms.TextBox TB_Offset;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button B_ReadRAM;
+        private System.Windows.Forms.TextBox RamSize;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox RamOffset;
+        private System.Windows.Forms.Label label1;
     }
 }

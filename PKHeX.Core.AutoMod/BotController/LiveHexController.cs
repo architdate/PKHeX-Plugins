@@ -65,5 +65,9 @@
             Editor.PopulateFields(pkm);
             return true;
         }
+
+        public byte[] ReadRAM(uint offset, int size) => Bot.ReadBytes(offset, size);
+
+        public void WriteRAM(uint offset, byte[] data) => Bot.WriteBytes(data, offset);
     }
 }
