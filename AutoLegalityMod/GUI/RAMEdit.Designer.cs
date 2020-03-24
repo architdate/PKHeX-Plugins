@@ -31,7 +31,7 @@ namespace AutoModPlugins.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.RAM = new System.Windows.Forms.TextBox();
+            this.RAM = new System.Windows.Forms.RichTextBox();
             this.Update = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -41,7 +41,6 @@ namespace AutoModPlugins.GUI
             this.RAM.Location = new System.Drawing.Point(9, 10);
             this.RAM.Multiline = true;
             this.RAM.Name = "RAM";
-            this.RAM.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.RAM.Size = new System.Drawing.Size(364, 292);
             this.RAM.TabIndex = 0;
             // 
@@ -75,7 +74,7 @@ namespace AutoModPlugins.GUI
         }
         #endregion
 
-        private System.Windows.Forms.TextBox RAM;
+        private System.Windows.Forms.RichTextBox RAM;
         private Button Update;
     }
 }
