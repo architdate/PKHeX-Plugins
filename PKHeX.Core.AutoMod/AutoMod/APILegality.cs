@@ -45,7 +45,7 @@ namespace PKHeX.Core.AutoMod
             encounters = encounters.Concat(GetFriendSafariEncounters(template));
             foreach (var enc in encounters)
             {
-                if (!IsEncounterValid(dest, set, enc, isHidden, destVer, out var gen, out var ver)) 
+                if (!IsEncounterValid(dest, set, enc, isHidden, destVer, out var gen, out var ver))
                     continue;
                 var tr = UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, gen) : TrainerSettings.DefaultFallback(gen);
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
@@ -108,7 +108,7 @@ namespace PKHeX.Core.AutoMod
             // Don't process if Game is SWSH and requested PKM is not from the Galar Dex (Zukan8.DexLookup)
             var species = Enumerable.Range(1, destVer.GetMaxSpeciesID());
             if (GameVersion.GG.Contains(destVer))
-                species = species.Where(z => z <= 151 || (z == 808 || z == 809)); 
+                species = species.Where(z => z <= 151 || (z == 808 || z == 809));
             if (GameVersion.SWSH.Contains(destVer))
                 species = species.Where(z => Zukan8.DexLookup.TryGetValue(z, out _) || SimpleEdits.Zukan8Additions.Contains(z));
             if (!species.Contains(set.Species))
@@ -524,13 +524,13 @@ namespace PKHeX.Core.AutoMod
                     pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
                     if (li.Generation != 5)
                         return;
+                    if (pk is PK5 p && p.NPokémon)
+                        return;
+                    if (li.EncounterMatch is EncounterStatic s && (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75))
+                        return;
 
                     while (true)
                     {
-                        if (li.EncounterMatch is EncounterStatic s && (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75))
-                            break;
-                        if (pk is PK5 p && p.NPokémon)
-                            break;
                         var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
                         if (result == 0)
                             break;

@@ -19,9 +19,11 @@ namespace AutoModPlugins
         SaveFile ISlotViewer<PictureBox>.SAV => null;
 
         private readonly LiveHexController Remote;
-        private readonly ComboBox BoxSelect;
         private readonly SaveDataEditor<PictureBox> x;
-        private bool formLock = false;
+
+#pragma warning disable CA2213 // Disposable fields should be disposed
+        private readonly ComboBox BoxSelect; // this is just us holding a reference; disposal is done by its parent
+#pragma warning restore CA2213 // Disposable fields should be disposed
 
         public LiveHexUI(ISaveFileProvider sav, IPKMView editor)
         {
@@ -30,13 +32,14 @@ namespace AutoModPlugins
 
             InitializeComponent();
 
-            TB_IP.Text = AutoModPlugins.Properties.AutoLegality.Default.LatestIP;
+            TB_IP.Text = Properties.AutoLegality.Default.LatestIP;
 
             // add an event to the editor
             // ReSharper disable once SuspiciousTypeConversion.Global
             BoxSelect = ((Control)sav).Controls.Find("CB_BoxSelect", true).FirstOrDefault() as ComboBox;
             if (BoxSelect != null)
                 BoxSelect.SelectedIndexChanged += ChangeBox;
+            Closing += (s, e) => BoxSelect.SelectedIndexChanged -= ChangeBox;
 
             var type = sav.GetType();
             var fields = type.GetTypeInfo().DeclaredFields;
@@ -63,7 +66,7 @@ namespace AutoModPlugins
         private void ChangeBox(object sender, EventArgs e)
         {
             if (checkBox1.Checked && Remote.Bot.Connected)
-                Remote.ChangeBox(BoxSelect.SelectedIndex);
+                Remote.ChangeBox(ViewIndex);
         }
 
         private void B_Connect_Click(object sender, EventArgs e)
@@ -94,12 +97,10 @@ namespace AutoModPlugins
         {
             if (Remote.Bot.Connected)
                 Remote.Bot.Disconnect();
-            if (BoxSelect != null)
-                BoxSelect.SelectedIndexChanged -= ChangeBox;
             x.Slots.Publisher.Subscribers.Remove(this);
 
-            AutoModPlugins.Properties.AutoLegality.Default.LatestIP = TB_IP.Text;
-            AutoModPlugins.Properties.AutoLegality.Default.Save();
+            Properties.AutoLegality.Default.LatestIP = TB_IP.Text;
+            Properties.AutoLegality.Default.Save();
         }
 
         private void B_ReadCurrent_Click(object sender, EventArgs e) => Remote.ReadBox(SAV.CurrentBox);
@@ -138,25 +139,19 @@ namespace AutoModPlugins
                 WinFormsUtil.Alert("Make sure that the RAM offset is a hex string and the size is a valid integer");
                 return;
             }
-            if (formLock)
-            {
-                WinFormsUtil.Alert("Please close out of your current RAM edit window before editing RAM again.");
-                return;
-            }
+
             try
             {
                 var result = Remote.ReadRAM(offset, size);
-                using (var form = new RAMEdit(result))
+                using (var form = new SimpleHexEditor(result))
                 {
-                    formLock = true;
                     var res = form.ShowDialog();
                     if (res == DialogResult.OK)
                     {
-                        var modifiedRAM = form.modifiedBytes;
+                        var modifiedRAM = form.Bytes;
                         Remote.WriteRAM(offset, modifiedRAM);
                     }
                 }
-                formLock = false;
                 Debug.WriteLine("RAM Modified");
             }
             catch (Exception ex)

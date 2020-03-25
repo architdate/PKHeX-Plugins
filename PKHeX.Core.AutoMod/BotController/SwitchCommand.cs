@@ -4,7 +4,7 @@ using System.Text;
 namespace PKHeX.Core.AutoMod
 {
     /// <summary>
-    /// Encodes commands for a <see cref="SwitchBot"/> to be sent as a <see cref="byte"/> array.
+    /// Encodes commands for a <see cref="SysBotMini"/> to be sent as a <see cref="byte"/> array.
     /// </summary>
     public static class SwitchCommand
     {

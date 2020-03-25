@@ -51,11 +51,11 @@
     <Compile Include="GUI\ALMSettings.Designer.cs">
       <DependentUpon>ALMSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\RAMEdit.cs">
+    <Compile Include="GUI\SimpleHexEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\RAMEdit.Designer.cs">
-      <DependentUpon>RAMEdit.cs</DependentUpon>
+    <Compile Include="GUI\SimpleHexEditor.Designer.cs">
+      <DependentUpon>SimpleHexEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Plugins\AutoModPlugin.cs" />
     <Compile Include="Plugins\ExportBoxToShowdown.cs" />
@@ -119,8 +119,8 @@
     <EmbeddedResource Include="GUI\LiveHexUI.resx">
       <DependentUpon>LiveHexUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\RAMEdit.resx">
-      <DependentUpon>RAMEdit.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\SimpleHexEditor.resx">
+      <DependentUpon>SimpleHexEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
