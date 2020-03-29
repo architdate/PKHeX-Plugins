@@ -98,6 +98,7 @@ namespace PKHeX.Core.AutoMod
         /// Sets all ribbon flags according to a legality report.
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
+        /// <param name="allValid">Set all valid ribbons only</param>
         public static void SetSuggestedRibbons(this PKM pk, bool allValid = true)
         {
             if (allValid)

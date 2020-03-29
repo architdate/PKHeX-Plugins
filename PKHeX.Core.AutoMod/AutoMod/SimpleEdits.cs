@@ -108,7 +108,9 @@ namespace PKHeX.Core.AutoMod
                     if (enc is MysteryGift mg)
                     {
                         if (mg.IsEgg || (mg is PGT g && g.IsManaphyEgg))
+                        {
                             pk.SetShinySID(); // not SID locked
+                        }
                         else
                         {
                             pk.SetShiny();

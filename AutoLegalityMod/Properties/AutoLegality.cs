@@ -7,6 +7,7 @@
     //  The SettingsSaving event is raised before the setting values are saved.
     internal sealed partial class AutoLegality
     {
+        /*
         public AutoLegality()
         {
             // // To add event handlers for saving and changing settings, uncomment the lines below:
@@ -26,5 +27,6 @@
         {
             // Add code to handle the SettingsSaving event here.
         }
+        */
     }
 }

@@ -19,7 +19,7 @@ namespace PKHeX.Core.AutoMod
             return dest;
         }
 
-        public static byte[] StringToByteArray(String hex)
+        public static byte[] StringToByteArray(string hex)
         {
             int NumberChars = hex.Length;
             byte[] bytes = new byte[NumberChars / 2];
