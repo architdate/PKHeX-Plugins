@@ -71,14 +71,15 @@ namespace AutoModPlugins
         {
             if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
                 return AutoModErrorCode.NoSingleImport;
-            if (set.InvalidLines.Count > 0)
+            var ball = Ball.None;
+            if (set.InvalidLines.Count > 0 && !(set.InvalidLines.Count == 1 && set.Balltism(out ball)))
                 return AutoModErrorCode.InvalidLines;
 
             Debug.WriteLine($"Commencing Import of {GameInfo.Strings.Species[set.Species]}");
             var timer = Stopwatch.StartNew();
 
             var sav = SaveFileEditor.SAV;
-            var legal = sav.GetLegalFromSet(set, out var _);
+            var legal = sav.GetLegalFromSet(set, out var _ , ball);
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
 
@@ -122,6 +123,7 @@ namespace AutoModPlugins
             APILegality.UseTrainerData = settings.UseTrainerData;
             APILegality.SetAllLegalRibbons = settings.SetAllLegalRibbons;
             APILegality.SetMatchingBalls = settings.SetMatchingBalls;
+            APILegality.ForceSpecifiedBall = settings.ForceSpecifiedBall;
             APILegality.UseCompetitiveMarkings = settings.UseCompetitiveMarkings;
             APILegality.UseMarkings = settings.UseMarkings;
             APILegality.UseXOROSHIRO = settings.UseXOROSHIRO;

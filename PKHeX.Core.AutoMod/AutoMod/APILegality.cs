@@ -14,6 +14,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         public static bool UseTrainerData { get; set; } = true;
         public static bool SetMatchingBalls { get; set; } = true;
+        public static bool ForceSpecifiedBall { get; set; } = false;
         public static bool SetAllLegalRibbons { get; set; } = true;
         public static bool UseCompetitiveMarkings { get; set; } = false;
         public static bool UseMarkings { get; set; } = true;
@@ -28,7 +29,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use deprecated bruteforce auto legality functionality</param>
-        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied)
+        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied, Ball ball = Ball.None)
         {
             set = set.PreProcessShowdownSet(template.PersonalInfo);
             var Form = SanityCheckForm(template, ref set);
@@ -55,7 +56,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk == null)
                     continue;
 
-                ApplySetDetails(pk, set, Form, raw, dest, enc);
+                ApplySetDetails(pk, set, Form, raw, dest, enc, ball);
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
                     continue;
@@ -157,7 +158,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="unconverted">Original pkm data</param>
         /// <param name="handler">Trainer to handle the Pokémon</param>
         /// <param name="enc">Encounter details matched to the Pokémon</param>
-        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc)
+        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc, Ball ball = Ball.None)
         {
             var pidiv = MethodFinder.Analyze(pk);
             var abilitypref = GetAbilityPreference(pk, enc);
@@ -183,7 +184,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetHappiness(enc);
             pk.SetBelugaValues();
             pk.FixEdgeCases();
-            pk.SetSuggestedBall(SetMatchingBalls);
+            pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, ball);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
         }
 

@@ -903,6 +903,17 @@ namespace PKHeX.Core.AutoMod
             { Eternatus,       Red },
         };
 
+        public static Ball GetBallFromString(string ballstr)
+        {
+            ballstr = ballstr.Split(' ')[0];
+            if (ballstr == "Poké")
+                return Poke;
+            var valid = Enum.TryParse<Ball>(ballstr, out Ball ball);
+            if (valid)
+                return ball;
+            return Ball.None;
+        }
+
         public static void ApplyShinyBall(PKM pk)
         {
             var color = ShinyMap[(Species)pk.Species];

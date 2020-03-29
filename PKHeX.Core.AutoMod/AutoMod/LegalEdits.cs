@@ -14,9 +14,16 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
         /// <param name="matching">Set matching ball</param>
-        public static void SetSuggestedBall(this PKM pk, bool matching = true)
+        public static void SetSuggestedBall(this PKM pk, bool matching = true, bool force = false, Ball ball = Ball.None)
         {
-            if (matching)
+            if (ball != Ball.None)
+            {
+                var orig = pk.Ball;
+                pk.Ball = (int) ball;
+                if (!force && !pk.ValidBall())
+                    pk.Ball = orig;
+            }
+            else if (matching)
             {
                 if (!pk.IsShiny)
                     pk.SetMatchingBall();
@@ -25,12 +32,18 @@ namespace PKHeX.Core.AutoMod
             }
             var la = new LegalityAnalysis(pk);
             var report = la.Report();
-            if (!report.Contains(LegalityCheckStrings.LBallEncMismatch))
+            if (!report.Contains(LegalityCheckStrings.LBallEncMismatch) || force)
                 return;
             if (pk.GenNumber == 5 && pk.Met_Location == 75)
                 pk.Ball = (int)Ball.Dream;
             else
                 pk.Ball = 4;
+        }
+
+        public static bool ValidBall(this PKM pk)
+        {
+            var rep = new LegalityAnalysis(pk).Report(true);
+            return rep.Contains(LegalityCheckStrings.LBallEnc) || rep.Contains(LegalityCheckStrings.LBallSpeciesPass);
         }
 
         /// <summary>
@@ -169,5 +182,12 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon</param>
         /// <returns></returns>
         private static IEnumerable<string> GetRibbonNames(PKM pk) => ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
+
+        public static int ParseItemStr(string itemstr, int format)
+        {
+            var items = (string[])GameInfo.GetStrings(GameLanguage.DefaultLanguage).GetItemStrings(format); // ireadonlylist->string[] must be possible for the provided strings
+            int item = StringUtil.FindIndexIgnoreCase(items, itemstr);
+            return item;
+        }
     }
 }

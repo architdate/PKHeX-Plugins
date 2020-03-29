@@ -154,5 +154,17 @@ namespace AutoModPlugins.Properties {
                 this["AllowBruteforce"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ForceSpecifiedBall {
+            get {
+                return ((bool)(this["ForceSpecifiedBall"]));
+            }
+            set {
+                this["ForceSpecifiedBall"] = value;
+            }
+        }
     }
 }
