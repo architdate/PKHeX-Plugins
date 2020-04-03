@@ -13,6 +13,7 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.urlimport };
             ctrl.Click += URLGen;
+            ctrl.Name = "Menu_URLGenning";
             modmenu.DropDownItems.Add(ctrl);
         }
 

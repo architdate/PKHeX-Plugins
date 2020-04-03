@@ -6,12 +6,12 @@ namespace AutoModPlugins
 {
     public class LiveHex : AutoModPlugin
     {
-        public override string Name => "Live PKHeX";
+        public override string Name => "Open LiveHeX";
         public override int Priority => 1;
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var c1 = new ToolStripMenuItem("Open LiveHex") { Image = Properties.Resources.wifi };
+            var c1 = new ToolStripMenuItem(Name) { Image = Properties.Resources.wifi };
             c1.Click += (s, e) =>
             {
                 if (!(SaveFileEditor.SAV is SAV8SWSH))
@@ -22,6 +22,7 @@ namespace AutoModPlugins
                 var editor = new LiveHexUI(SaveFileEditor, PKMEditor);
                 editor.Show();
             };
+            c1.Name = "Menu_LiveHeX";
             modmenu.DropDownItems.Add(c1);
         }
 

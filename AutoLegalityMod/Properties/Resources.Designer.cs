@@ -61,6 +61,206 @@ namespace AutoModPlugins.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
+        ///
+        ///LiveHexUI=LiveHexUI
+        ///LiveHexUI.B_ReadCurrent=Read Current Box
+        ///LiveHexUI.B_WriteCurrent=Write Current Box
+        ///LiveHexUI.checkBox1=Read On Change Box
+        ///LiveHexUI.L_IP=IP:
+        ///LiveHexUI.L_Port=Port:
+        ///LiveHexUI.B_Connect=Connect
+        ///LiveHexUI.groupBox1=Boxes
+        ///LiveHexUI.checkBox2=Inject In Slot
+        ///LiveHexUI.groupBox2=PKM Editor
+        ///LiveHexUI.L_ReadOffset=Offset:
+        ///LiveHexUI.B_ReadOffset=Read from Offset
+        ///LiveHexUI.L_Slot=Slot:
+        ///LiveHexUI.L_Box=Box:
+        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string almlang_de {
+            get {
+                return ResourceManager.GetString("almlang_de", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
+        ///
+        ///LiveHexUI=LiveHexUI
+        ///LiveHexUI.B_ReadCurrent=Read Current Box
+        ///LiveHexUI.B_WriteCurrent=Write Current Box
+        ///LiveHexUI.checkBox1=Read On Change Box
+        ///LiveHexUI.L_IP=IP:
+        ///LiveHexUI.L_Port=Port:
+        ///LiveHexUI.B_Connect=Connect
+        ///LiveHexUI.groupBox1=Boxes
+        ///LiveHexUI.checkBox2=Inject In Slot
+        ///LiveHexUI.groupBox2=PKM Editor
+        ///LiveHexUI.L_ReadOffset=Offset:
+        ///LiveHexUI.B_ReadOffset=Read from Offset
+        ///LiveHexUI.L_Slot=Slot:
+        ///LiveHexUI.L_Box=Box:
+        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string almlang_en {
+            get {
+                return ResourceManager.GetString("almlang_en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
+        ///
+        ///LiveHexUI=LiveHexUI
+        ///LiveHexUI.B_ReadCurrent=Read Current Box
+        ///LiveHexUI.B_WriteCurrent=Write Current Box
+        ///LiveHexUI.checkBox1=Read On Change Box
+        ///LiveHexUI.L_IP=IP:
+        ///LiveHexUI.L_Port=Port:
+        ///LiveHexUI.B_Connect=Connect
+        ///LiveHexUI.groupBox1=Boxes
+        ///LiveHexUI.checkBox2=Inject In Slot
+        ///LiveHexUI.groupBox2=PKM Editor
+        ///LiveHexUI.L_ReadOffset=Offset:
+        ///LiveHexUI.B_ReadOffset=Read from Offset
+        ///LiveHexUI.L_Slot=Slot:
+        ///LiveHexUI.L_Box=Box:
+        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string almlang_es {
+            get {
+                return ResourceManager.GetString("almlang_es", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
+        ///
+        ///LiveHexUI=LiveHexUI
+        ///LiveHexUI.B_ReadCurrent=Read Current Box
+        ///LiveHexUI.B_WriteCurrent=Write Current Box
+        ///LiveHexUI.checkBox1=Read On Change Box
+        ///LiveHexUI.L_IP=IP:
+        ///LiveHexUI.L_Port=Port:
+        ///LiveHexUI.B_Connect=Connect
+        ///LiveHexUI.groupBox1=Boxes
+        ///LiveHexUI.checkBox2=Inject In Slot
+        ///LiveHexUI.groupBox2=PKM Editor
+        ///LiveHexUI.L_ReadOffset=Offset:
+        ///LiveHexUI.B_ReadOffset=Read from Offset
+        ///LiveHexUI.L_Slot=Slot:
+        ///LiveHexUI.L_Box=Box:
+        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string almlang_fr {
+            get {
+                return ResourceManager.GetString("almlang_fr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
+        ///
+        ///LiveHexUI=LiveHexUI
+        ///LiveHexUI.B_ReadCurrent=Read Current Box
+        ///LiveHexUI.B_WriteCurrent=Write Current Box
+        ///LiveHexUI.checkBox1=Read On Change Box
+        ///LiveHexUI.L_IP=IP:
+        ///LiveHexUI.L_Port=Port:
+        ///LiveHexUI.B_Connect=Connect
+        ///LiveHexUI.groupBox1=Boxes
+        ///LiveHexUI.checkBox2=Inject In Slot
+        ///LiveHexUI.groupBox2=PKM Editor
+        ///LiveHexUI.L_ReadOffset=Offset:
+        ///LiveHexUI.B_ReadOffset=Read from Offset
+        ///LiveHexUI.L_Slot=Slot:
+        ///LiveHexUI.L_Box=Box:
+        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string almlang_it {
+            get {
+                return ResourceManager.GetString("almlang_it", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
+        ///
+        ///LiveHexUI=LiveHexUI
+        ///LiveHexUI.B_ReadCurrent=Read Current Box
+        ///LiveHexUI.B_WriteCurrent=Write Current Box
+        ///LiveHexUI.checkBox1=Read On Change Box
+        ///LiveHexUI.L_IP=IP:
+        ///LiveHexUI.L_Port=Port:
+        ///LiveHexUI.B_Connect=Connect
+        ///LiveHexUI.groupBox1=Boxes
+        ///LiveHexUI.checkBox2=Inject In Slot
+        ///LiveHexUI.groupBox2=PKM Editor
+        ///LiveHexUI.L_ReadOffset=Offset:
+        ///LiveHexUI.B_ReadOffset=Read from Offset
+        ///LiveHexUI.L_Slot=Slot:
+        ///LiveHexUI.L_Box=Box:
+        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string almlang_ja {
+            get {
+                return ResourceManager.GetString("almlang_ja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
+        ///
+        ///LiveHexUI=LiveHexUI
+        ///LiveHexUI.B_ReadCurrent=Read Current Box
+        ///LiveHexUI.B_WriteCurrent=Write Current Box
+        ///LiveHexUI.checkBox1=Read On Change Box
+        ///LiveHexUI.L_IP=IP:
+        ///LiveHexUI.L_Port=Port:
+        ///LiveHexUI.B_Connect=Connect
+        ///LiveHexUI.groupBox1=Boxes
+        ///LiveHexUI.checkBox2=Inject In Slot
+        ///LiveHexUI.groupBox2=PKM Editor
+        ///LiveHexUI.L_ReadOffset=Offset:
+        ///LiveHexUI.B_ReadOffset=Read from Offset
+        ///LiveHexUI.L_Slot=Slot:
+        ///LiveHexUI.L_Box=Box:
+        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string almlang_ko {
+            get {
+                return ResourceManager.GetString("almlang_ko", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
+        ///
+        ///LiveHexUI=LiveHexUI
+        ///LiveHexUI.B_ReadCurrent=Read Current Box
+        ///LiveHexUI.B_WriteCurrent=Write Current Box
+        ///LiveHexUI.checkBox1=Read On Change Box
+        ///LiveHexUI.L_IP=IP:
+        ///LiveHexUI.L_Port=Port:
+        ///LiveHexUI.B_Connect=Connect
+        ///LiveHexUI.groupBox1=Boxes
+        ///LiveHexUI.checkBox2=Inject In Slot
+        ///LiveHexUI.groupBox2=PKM Editor
+        ///LiveHexUI.L_ReadOffset=Offset:
+        ///LiveHexUI.B_ReadOffset=Read from Offset
+        ///LiveHexUI.L_Slot=Slot:
+        ///LiveHexUI.L_Box=Box:
+        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string almlang_zh {
+            get {
+                return ResourceManager.GetString("almlang_zh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap autolegalitymod {

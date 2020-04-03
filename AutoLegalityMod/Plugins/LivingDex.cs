@@ -13,6 +13,7 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.livingdex };
             ctrl.Click += GenLivingDex;
+            ctrl.Name = "Menu_LivingDex";
             modmenu.DropDownItems.Add(ctrl);
         }
 

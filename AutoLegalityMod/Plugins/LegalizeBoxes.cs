@@ -14,6 +14,7 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.legalizeboxes };
             ctrl.Click += Legalize;
+            ctrl.Name = "Menu_LeaglizeBoxes";
             modmenu.DropDownItems.Add(ctrl);
         }
 
