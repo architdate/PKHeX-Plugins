@@ -16,6 +16,7 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.mgdbdownload };
             ctrl.Click += DownloadMGDB;
+            ctrl.Name = "Menu_MGDBDownloader";
             modmenu.DropDownItems.Add(ctrl);
         }
 

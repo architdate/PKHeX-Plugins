@@ -13,6 +13,7 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.exportboxtoshowdown };
             ctrl.Click += (s, e) => Export(SaveFileEditor.SAV);
+            ctrl.Name = "Menu_ExportBoxtoShowdown";
             modmenu.DropDownItems.Add(ctrl);
         }
 

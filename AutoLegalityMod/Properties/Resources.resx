@@ -118,6 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="almlang_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\almlang_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="almlang_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\almlang_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="almlang_es" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\almlang_es.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="almlang_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\almlang_fr.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="almlang_it" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\almlang_it.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="almlang_ja" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\almlang_ja.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="almlang_ko" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\almlang_ko.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="almlang_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\almlang_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="autolegalitymod" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img\autolegalitymod.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

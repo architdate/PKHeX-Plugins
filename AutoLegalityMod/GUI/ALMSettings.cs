@@ -8,6 +8,7 @@ namespace AutoModPlugins.GUI
         {
             InitializeComponent();
             PG_Settings.SelectedObject = obj;
+            WinFormsTranslator.TranslateInterface(this, WinFormsTranslator.CurrentLanguage);
 
             this.CenterToForm(FindForm());
         }

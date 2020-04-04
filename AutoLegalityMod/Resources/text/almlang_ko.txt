@@ -1,0 +1,40 @@
+﻿ALMSettings=Auto Legality Plugin Settings
+
+LiveHexUI=LiveHexUI
+LiveHexUI.B_ReadCurrent=Read Current Box
+LiveHexUI.B_WriteCurrent=Write Current Box
+LiveHexUI.checkBox1=Read On Change Box
+LiveHexUI.L_IP=IP:
+LiveHexUI.L_Port=Port:
+LiveHexUI.B_Connect=Connect
+LiveHexUI.groupBox1=Boxes
+LiveHexUI.checkBox2=Inject In Slot
+LiveHexUI.groupBox2=PKM Editor
+LiveHexUI.L_ReadOffset=Offset:
+LiveHexUI.B_ReadOffset=Read from Offset
+LiveHexUI.L_Slot=Slot:
+LiveHexUI.L_Box=Box:
+LiveHexUI.B_ReadSlot=Read from Slot
+LiveHexUI.B_WriteSlot=Write to Slot
+LiveHexUI.groupBox3=Ram Editor
+LiveHexUI.B_ReadRAM=Edit RAM
+LiveHexUI.label2=Size:
+LiveHexUI.label1=Offset:
+
+SimpleHexEditor=RAMEdit
+SimpleHexEditor.B_Update=Update
+
+Main.Menu_AutoLegality=Auto Legality Mod
+Main.Menu_ExportBoxtoShowdown=Export Box to Showdown
+Main.Menu_PasteImporter=Import with Auto-Legality Mod
+Main.Menu_ExportPKSMBank=Export PKSM Bank to PKM
+Main.Menu_LeaglizeBoxes=Legalize Active Pokemon
+Main.Menu_LiveHeX=Open LiveHeX
+Main.Menu_LivingDex=Generate Living Dex
+Main.Menu_MGDBDownloader=Download MGDB
+Main.Menu_SmogonGenner=Gen Smogon Sets
+Main.Menu_URLGenning=Gen from URL
+Main.Menu_GPSSPlugin=GPSS Tools
+Main.Menu_UploadtoGPSS=Upload to GPSS
+Main.Menu_ImportfromGPSSURL=Import from GPSS URL
+Main.Menu_ALMSettingsEditor=Plugin Settings

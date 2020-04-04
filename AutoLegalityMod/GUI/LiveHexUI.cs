@@ -31,6 +31,7 @@ namespace AutoModPlugins
             Remote = new LiveHexController(sav, editor);
 
             InitializeComponent();
+            WinFormsTranslator.TranslateInterface(this, WinFormsTranslator.CurrentLanguage);
 
             TB_IP.Text = Properties.AutoLegality.Default.LatestIP;
 

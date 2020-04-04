@@ -22,8 +22,8 @@ namespace AutoModPlugins
                 ShortcutKeys = Keys.Control | Keys.I
             };
             ctrl.Click += ImportPaste;
+            ctrl.Name = "Menu_PasteImporter";
             modmenu.DropDownItems.Add(ctrl);
-
             var parent = modmenu.OwnerItem;
             var form = parent.GetCurrentParent().Parent.FindForm();
             form.Icon = Properties.Resources.icon;
