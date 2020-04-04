@@ -37,4 +37,4 @@ Main.Menu_URLGenning=Gen from URL
 Main.Menu_GPSSPlugin=GPSS Tools
 Main.Menu_UploadtoGPSS=Upload to GPSS
 Main.Menu_ImportfromGPSSURL=Import from GPSS URL
-Main.Menu_SettingsEditor=Plugin Settings
+Main.Menu_ALMSettingsEditor=Plugin Settings

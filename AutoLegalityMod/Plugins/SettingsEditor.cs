@@ -13,7 +13,7 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.settings };
             ctrl.Click += SettingsForm;
-            ctrl.Name = "Menu_SettingsEditor";
+            ctrl.Name = "Menu_ALMSettingsEditor";
             modmenu.DropDownItems.Add(ctrl);
         }
 
