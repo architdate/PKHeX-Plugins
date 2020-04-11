@@ -29,7 +29,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use deprecated bruteforce auto legality functionality</param>
-        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied, Ball ball = Ball.None)
+        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
         {
             set = set.PreProcessShowdownSet(template.PersonalInfo);
             var Form = SanityCheckForm(template, ref set);
@@ -56,7 +56,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk == null)
                     continue;
 
-                ApplySetDetails(pk, set, Form, raw, dest, enc, ball);
+                ApplySetDetails(pk, set, Form, raw, dest, enc, ball, shiny);
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
                     continue;
@@ -158,7 +158,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="unconverted">Original pkm data</param>
         /// <param name="handler">Trainer to handle the Pokémon</param>
         /// <param name="enc">Encounter details matched to the Pokémon</param>
-        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc, Ball ball = Ball.None)
+        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
         {
             var pidiv = MethodFinder.Analyze(pk);
             var abilitypref = GetAbilityPreference(pk, enc);
@@ -175,7 +175,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetHyperTrainingFlags(set); // Hypertrain
             pk.SetEncryptionConstant(enc);
             pk.FixFatefulFlag(enc);
-            pk.SetShinyBoolean(set.Shiny, enc);
+            pk.SetShinyBoolean(set.Shiny, enc, shiny);
             pk.FixGender(set);
             pk.SetSuggestedRibbons(SetAllLegalRibbons);
             pk.SetSuggestedMemories();

@@ -71,15 +71,20 @@ namespace AutoModPlugins
         {
             if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
                 return AutoModErrorCode.NoSingleImport;
-            var ball = Ball.None;
-            if (set.InvalidLines.Count > 0 && !(set.InvalidLines.Count == 1 && set.Balltism(out ball)))
+
+            if (set.Balltism(out var ball))
+                Debug.WriteLine($"Ball override: {ball}");
+            if (set.GetShinyType(out var shiny))
+                Debug.WriteLine($"Shiny override: {shiny}");
+
+            if (Legalizer.InvalidLineOverride(ref set) > 0)
                 return AutoModErrorCode.InvalidLines;
 
             Debug.WriteLine($"Commencing Import of {GameInfo.Strings.Species[set.Species]}");
             var timer = Stopwatch.StartNew();
 
             var sav = SaveFileEditor.SAV;
-            var legal = sav.GetLegalFromSet(set, out var _ , ball);
+            var legal = sav.GetLegalFromSet(set, out var _ , ball, shiny);
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
 

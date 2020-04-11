@@ -74,34 +74,29 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Sets shiny value to whatever boolean is specified
+        /// Sets shiny value to whatever boolean is specified. Takes in specific shiny as a boolean. Ignores it for stuff that is gen 5 or lower. Cant be asked to find out all legality quirks
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="isShiny">Shiny value that needs to be set</param>
         /// <param name="enc">Encounter details</param>
-        public static void SetShinyBoolean(this PKM pk, bool isShiny, IEncounterable enc)
+        public static void SetShinyBoolean(this PKM pk, bool isShiny, IEncounterable enc, Shiny shiny = Shiny.Random)
         {
             if (pk.IsShiny == isShiny)
-                return; // don't mess with stuff if pk is already shiny
+                return; // don't mess with stuff if pk is already shiny. Also do not modify for specific shinies (Most likely event shinies)
             if (!isShiny)
-            {
                 pk.SetUnshiny();
-            }
             else
             {
                 if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND)
+                    pk.SetRaidShiny(shiny);
+                else if (pk.GenNumber > 5 || pk.VC)
                 {
-                    // have to verify all since 8NC and 8ND do not inherit 8N
-                    pk.SetRaidShiny();
-                }
-                else if (8 > pk.GenNumber && pk.GenNumber > 5)
-                {
-                    // Set Shiny SID for gen 8 until raid shiny locks are documented
-                    pk.SetShiny();
-                }
-                else if (pk.VC)
-                {
-                    pk.SetIsShiny(true);
+                    while (shiny != Shiny.FixedValue && shiny != Shiny.Never)
+                    {
+                        pk.SetShiny();
+                        if ((shiny == Shiny.AlwaysSquare && pk.ShinyXor == 0) || (shiny == Shiny.AlwaysStar && pk.ShinyXor != 0) || shiny == Shiny.Always || shiny == Shiny.Random)
+                            break;
+                    }
                 }
                 else
                 {
@@ -120,7 +115,9 @@ namespace PKHeX.Core.AutoMod
                                 {
                                     pk.SetShiny();
                                 } while (GetPIDXOR());
-                                bool GetPIDXOR() => ((pk.TID ^ pk.SID ^ (int)(pk.PID & 0xFFFF) ^ (int)(pk.PID >> 16)) & ~0x7) == 8;
+
+                                bool GetPIDXOR() =>
+                                    ((pk.TID ^ pk.SID ^ (int) (pk.PID & 0xFFFF) ^ (int) (pk.PID >> 16)) & ~0x7) == 8;
                             }
                         } // if SID cant be changed, PID has to be able to change if shiny is possible.
                     }
@@ -132,7 +129,7 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        public static void SetRaidShiny(this PKM pk)
+        public static void SetRaidShiny(this PKM pk, Shiny shiny)
         {
             if (pk.IsShiny)
                 return;
@@ -143,7 +140,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk.Format <= 7)
                     return;
                 var xor = pk.ShinyXor;
-                if (xor < 2) // allow xor1 and xor0 for den shinies
+                if ((shiny == Shiny.AlwaysStar && xor == 1) || (shiny == Shiny.AlwaysSquare && xor == 0) || ((shiny == Shiny.Always || shiny == Shiny.Random) && xor < 2)) // allow xor1 and xor0 for den shinies
                     return;
             }
         }
