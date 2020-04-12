@@ -908,7 +908,7 @@ namespace PKHeX.Core.AutoMod
             ballstr = ballstr.Split(' ')[0];
             if (ballstr == "Poké")
                 return Poke;
-            var valid = Enum.TryParse<Ball>(ballstr, out Ball ball);
+            var valid = Enum.TryParse(ballstr, out Ball ball);
             if (valid)
                 return ball;
             return Ball.None;

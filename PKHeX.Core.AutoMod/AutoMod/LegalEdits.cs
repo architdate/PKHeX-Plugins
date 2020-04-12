@@ -14,6 +14,8 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
         /// <param name="matching">Set matching ball</param>
+        /// <param name="force"></param>
+        /// <param name="ball"></param>
         public static void SetSuggestedBall(this PKM pk, bool matching = true, bool force = false, Ball ball = Ball.None)
         {
             if (ball != Ball.None)

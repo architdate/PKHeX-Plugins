@@ -29,6 +29,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use deprecated bruteforce auto legality functionality</param>
+        /// <param name="ball"></param>
+        /// <param name="shiny"></param>
         public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
         {
             set = set.PreProcessShowdownSet(template.PersonalInfo);
@@ -128,7 +130,7 @@ namespace PKHeX.Core.AutoMod
         private static int SanityCheckForm(PKM template, ref ShowdownSet set)
         {
             int Form = template.AltForm;
-            if (set.Form != null && FixFormes(set, out set))
+            if (set.Form.Length != 0 && FixFormes(set, out set))
                 Form = set.FormIndex;
             return Form;
         }
@@ -158,6 +160,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="unconverted">Original pkm data</param>
         /// <param name="handler">Trainer to handle the Pokémon</param>
         /// <param name="enc">Encounter details matched to the Pokémon</param>
+        /// <param name="ball"></param>
+        /// <param name="shiny"></param>
         private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
         {
             var pidiv = MethodFinder.Analyze(pk);
@@ -181,7 +185,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedMemories();
             pk.SetHTLanguage();
             pk.SetDynamaxLevel();
-            pk.SetHappiness(enc);
+            pk.SetFriendship(enc);
             pk.SetBelugaValues();
             pk.FixEdgeCases();
             pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, ball);

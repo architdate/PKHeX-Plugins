@@ -30,8 +30,9 @@ namespace AutoModPlugins
             PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);
             var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);
             LoadMenuStrip(menu);
-            WinFormsTranslator.TranslateInterface(((ContainerControl)SaveFileEditor).ParentForm, WinFormsTranslator.CurrentLanguage);
-            
+            // ReSharper disable once SuspiciousTypeConversion.Global
+            ((ContainerControl)SaveFileEditor).ParentForm.TranslateInterface(WinFormsTranslator.CurrentLanguage);
+
             // ALM Settings
             ShowdownSetLoader.SetAPILegalitySettings();
         }

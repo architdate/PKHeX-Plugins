@@ -11,8 +11,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name);
-            ctrl.Name = "Menu_ExportPKSMBank";
+            var ctrl = new ToolStripMenuItem(Name) {Name = "Menu_ExportPKSMBank"};
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += (s, e) => Export();
             ctrl.Image = Properties.Resources.mgdbdownload;

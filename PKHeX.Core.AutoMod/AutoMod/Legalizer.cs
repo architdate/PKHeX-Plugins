@@ -56,7 +56,7 @@ namespace PKHeX.Core.AutoMod
             if (balltism)
             {
                 var line = set.InvalidLines.Find(z => z.StartsWith("Ball: ") && z.EndsWith(" Ball"));
-                var itemstr = line.Split(new string[] { "Ball: " }, StringSplitOptions.None)[1];
+                var itemstr = line.Split(new[] { "Ball: " }, StringSplitOptions.None)[1];
                 var item = LegalEdits.ParseItemStr(itemstr, set.Format);
                 if (item > 0)
                 {
@@ -149,6 +149,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="tr">Source/Destination trainer</param>
         /// <param name="set">Set data to import</param>
         /// <param name="msg">Result code indicating success or failure</param>
+        /// <param name="ball"></param>
+        /// <param name="shiny"></param>
         /// <returns>Legalized PKM (hopefully legal)</returns>
         public static PKM GetLegalFromSet(this ITrainerInfo tr, ShowdownSet set, out LegalizationResult msg, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
         {
@@ -164,6 +166,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Showdown set being used</param>
         /// <param name="template">template PKM to legalize</param>
         /// <param name="msg">Legalization result (API, Bruteforce, Failure)</param>
+        /// <param name="ball"></param>
+        /// <param name="shiny"></param>
         /// <returns>Legalized pkm</returns>
         private static PKM GetLegalFromSet(this ITrainerInfo tr, ShowdownSet set, PKM template, out LegalizationResult msg, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
         {
@@ -199,6 +203,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">showdown set to legalize from</param>
         /// <param name="template">pkm file to legalize</param>
         /// <param name="pkm">legalized pkm file</param>
+        /// <param name="ball"></param>
+        /// <param name="shiny"></param>
         /// <returns>bool if the pokemon was legalized via API or bruteforce</returns>
         private static bool TryAPIConvert(this ITrainerInfo tr, ShowdownSet set, PKM template, out PKM pkm, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
         {

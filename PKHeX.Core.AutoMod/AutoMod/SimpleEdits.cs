@@ -79,54 +79,67 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="isShiny">Shiny value that needs to be set</param>
         /// <param name="enc">Encounter details</param>
+        /// <param name="shiny">Set is shiny</param>
         public static void SetShinyBoolean(this PKM pk, bool isShiny, IEncounterable enc, Shiny shiny = Shiny.Random)
         {
             if (pk.IsShiny == isShiny)
                 return; // don't mess with stuff if pk is already shiny. Also do not modify for specific shinies (Most likely event shinies)
-            if (!isShiny)
-                pk.SetUnshiny();
-            else
-            {
-                if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND)
-                    pk.SetRaidShiny(shiny);
-                else if (pk.GenNumber > 5 || pk.VC)
-                {
-                    while (shiny != Shiny.FixedValue && shiny != Shiny.Never)
-                    {
-                        pk.SetShiny();
-                        if ((shiny == Shiny.AlwaysSquare && pk.ShinyXor == 0) || (shiny == Shiny.AlwaysStar && pk.ShinyXor != 0) || shiny == Shiny.Always || shiny == Shiny.Random)
-                            break;
-                    }
-                }
-                else
-                {
-                    if (enc is MysteryGift mg)
-                    {
-                        if (mg.IsEgg || (mg is PGT g && g.IsManaphyEgg))
-                        {
-                            pk.SetShinySID(); // not SID locked
-                        }
-                        else
-                        {
-                            pk.SetShiny();
-                            if (pk.Format >= 6)
-                            {
-                                do
-                                {
-                                    pk.SetShiny();
-                                } while (GetPIDXOR());
 
-                                bool GetPIDXOR() =>
-                                    ((pk.TID ^ pk.SID ^ (int) (pk.PID & 0xFFFF) ^ (int) (pk.PID >> 16)) & ~0x7) == 8;
-                            }
-                        } // if SID cant be changed, PID has to be able to change if shiny is possible.
-                    }
-                    else
+            if (!isShiny)
+            {
+                pk.SetUnshiny();
+                return;
+            }
+
+            if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND)
+            {
+                pk.SetRaidShiny(shiny);
+                return;
+            }
+
+            if (pk.GenNumber > 5 || pk.VC)
+            {
+                if (shiny == Shiny.FixedValue || shiny == Shiny.Never)
+                    return;
+
+                while (true)
+                {
+                    pk.SetShiny();
+                    switch (shiny)
                     {
-                        pk.SetShinySID(); // no mg = no lock
+                        case Shiny.AlwaysSquare when pk.ShinyXor != 0:
+                            continue;
+                        case Shiny.AlwaysStar when pk.ShinyXor == 0:
+                            continue;
                     }
+                    return;
                 }
             }
+
+            if (enc is MysteryGift mg)
+            {
+                if (mg.IsEgg || (mg is PGT g && g.IsManaphyEgg))
+                {
+                    pk.SetShinySID(); // not SID locked
+                    return;
+                }
+
+                pk.SetShiny();
+                if (pk.Format >= 6)
+                {
+                    do
+                    {
+                        pk.SetShiny();
+                    } while (GetPIDXOR());
+
+                    bool GetPIDXOR() =>
+                        ((pk.TID ^ pk.SID ^ (int) (pk.PID & 0xFFFF) ^ (int) (pk.PID >> 16)) & ~0x7) == 8;
+                }
+
+                return;
+            }
+
+            pk.SetShinySID(); // no mg = no lock
         }
 
         public static void SetRaidShiny(this PKM pk, Shiny shiny)
@@ -159,7 +172,7 @@ namespace PKHeX.Core.AutoMod
                 h.HyperTrainClear();
         }
 
-        public static void SetHappiness(this PKM pk, IEncounterable enc)
+        public static void SetFriendship(this PKM pk, IEncounterable enc)
         {
             var gen = pk.GenNumber <= 2 ? 7 : pk.GenNumber;
             if (!HistoryVerifier.GetCanOTHandle(enc, pk, gen) || pk.GenNumber <= 2)
@@ -330,7 +343,7 @@ namespace PKHeX.Core.AutoMod
         public static void SetSuggestedMoves(this PKM pk, bool random = false)
         {
             int[] m = pk.GetMoveSet(random);
-            if (m?.Any(z => z != 0) != true)
+            if (m.All(z => z == 0))
                 return;
 
             if (pk.Moves.SequenceEqual(m))
