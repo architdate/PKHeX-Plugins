@@ -31,6 +31,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="satisfied">If the final result is satisfactory, otherwise use deprecated bruteforce auto legality functionality</param>
         public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out bool satisfied)
         {
+            if (set is RegenTemplate t)
+                t.FixGender(template.PersonalInfo);
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR moves for the encounter
             var isHidden = template.AbilityNumber == 4;

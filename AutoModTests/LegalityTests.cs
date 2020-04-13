@@ -10,7 +10,6 @@ namespace AutoModTests
     public static class LegalityTests
     {
         private static readonly string PKMFolder = TestUtil.GetTestFolder("Legality");
-        private static readonly SaveFile SAV = SaveUtil.GetBlankSAV(PKX.Generation, "PKHeX");
 
         [Fact]
         public static void TestLegal() => VerifyAll(PKMFolder, "Legal", true);
@@ -35,7 +34,7 @@ namespace AutoModTests
                 la.Valid.Should().Be(isValid, $"because the file '{fi.Directory.Name}\\{fi.Name}' should be {(isValid ? "Valid" : "Invalid")}");
 
                 // try legalizing, should end up as legal
-                var updated = SAV.Legalize(pk);
+                var updated = pk.Legalize();
                 var la2 = new LegalityAnalysis(updated);
                 la2.Valid.Should().Be(true, $"because the file '{fi.Directory.Name}\\{fi.Name}' should be legal");
             }
