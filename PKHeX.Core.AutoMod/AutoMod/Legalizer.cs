@@ -224,7 +224,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">showdown set</param>
         /// <param name="template">template pkm to bruteforce</param>
         /// <returns>(Hopefully) Legalized pkm file</returns>
-        private static PKM GetBruteForcedLegalMon(this ITrainerInfo tr, ShowdownSet set, PKM template)
+        private static PKM GetBruteForcedLegalMon(this ITrainerInfo tr, IBattleTemplate set, PKM template)
         {
             var resetForm = ShowdownUtil.IsInvalidForm(set.Form);
             var trainer = TrainerSettings.GetSavedTrainerData(template, tr);

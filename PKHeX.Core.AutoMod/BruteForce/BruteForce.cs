@@ -22,7 +22,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="resetForm">boolean to reset form back to base form</param>
         /// <param name="trainer">Trainer details to apply (optional)</param>
         /// <returns>PKM legalized via bruteforce</returns>
-        public static PKM ApplyDetails(PKM pk, ShowdownSet set, bool resetForm = false, ITrainerInfo? trainer = null)
+        public static PKM ApplyDetails(PKM pk, IBattleTemplate set, bool resetForm = false, ITrainerInfo? trainer = null)
         {
             if (trainer == null)
                 trainer = DefaultTrainer;
@@ -54,7 +54,7 @@ namespace PKHeX.Core.AutoMod
             return pk;
         }
 
-        private static bool BruteForceEgg(PKM pk, ShowdownSet set, ITrainerInfo trainer, bool shiny)
+        private static bool BruteForceEgg(PKM pk, IBattleTemplate set, ITrainerInfo trainer, bool shiny)
         {
             foreach (var game in BruteTables.GameVersionList)
             {
@@ -148,7 +148,7 @@ namespace PKHeX.Core.AutoMod
             return false;
         }
 
-        private static bool BruteForceNonBreed(PKM pk, ShowdownSet set, ITrainerInfo trainer, bool shiny, int abilitynum)
+        private static bool BruteForceNonBreed(PKM pk, IBattleTemplate set, ITrainerInfo trainer, bool shiny, int abilitynum)
         {
             foreach (GameVersion game in BruteTables.GameVersionList)
             {
@@ -187,7 +187,7 @@ namespace PKHeX.Core.AutoMod
             return false;
         }
 
-        private static bool InnerBruteForce(PKM pk, GameVersion game, bool shiny, int abilitynum, ShowdownSet set)
+        private static bool InnerBruteForce(PKM pk, GameVersion game, bool shiny, int abilitynum, IBattleTemplate set)
         {
             pk.ClearRelearnMoves();
             switch (game)
@@ -286,7 +286,7 @@ namespace PKHeX.Core.AutoMod
             return false;
         }
 
-        private static void ApplyEncounterAttributes(PKM pk, ShowdownSet set, EncounterStatic el)
+        private static void ApplyEncounterAttributes(PKM pk, IBattleTemplate set, EncounterStatic el)
         {
             pk.Met_Location = el.Location;
             pk.Met_Level = el.Level;

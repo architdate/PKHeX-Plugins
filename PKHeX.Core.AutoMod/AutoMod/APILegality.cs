@@ -5,7 +5,7 @@ using System.Linq;
 namespace PKHeX.Core.AutoMod
 {
     /// <summary>
-    /// Leverages <see cref="Core"/>'s <see cref="EncounterMovesetGenerator"/> to create a <see cref="PKM"/> from a <see cref="ShowdownSet"/>.
+    /// Leverages <see cref="Core"/>'s <see cref="EncounterMovesetGenerator"/> to create a <see cref="PKM"/> from a <see cref="IBattleTemplate"/>.
     /// </summary>
     public static class APILegality
     {
@@ -14,12 +14,12 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         public static bool UseTrainerData { get; set; } = true;
         public static bool SetMatchingBalls { get; set; } = true;
-        public static bool ForceSpecifiedBall { get; set; } = false;
+        public static bool ForceSpecifiedBall { get; set; }
         public static bool SetAllLegalRibbons { get; set; } = true;
-        public static bool UseCompetitiveMarkings { get; set; } = false;
+        public static bool UseCompetitiveMarkings { get; set; }
         public static bool UseMarkings { get; set; } = true;
         public static bool UseXOROSHIRO { get; set; } = true;
-        public static bool SetRandomTracker { get; set; } = false;
+        public static bool SetRandomTracker { get; set; }
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -87,7 +87,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="gen">generation of enc/tr</param>
         /// <param name="ver">version of enc/destVer</param>
         /// <returns>if the encounter is valid or not</returns>
-        private static bool IsEncounterValid(ITrainerInfo tr, ShowdownSet set, IEncounterable enc, bool isHidden, GameVersion destVer, out int gen, out GameVersion ver)
+        private static bool IsEncounterValid(ITrainerInfo tr, IBattleTemplate set, IEncounterable enc, bool isHidden, GameVersion destVer, out int gen, out GameVersion ver)
         {
             // initialize out vars (not calculating here to save time)
             gen = -1;
@@ -162,7 +162,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">Encounter details matched to the Pokémon</param>
         /// <param name="ball"></param>
         /// <param name="shiny"></param>
-        private static void ApplySetDetails(PKM pk, ShowdownSet set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
+        private static void ApplySetDetails(PKM pk, IBattleTemplate set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
         {
             var pidiv = MethodFinder.Analyze(pk);
             var abilitypref = GetAbilityPreference(pk, enc);
@@ -266,7 +266,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">passed pkm object</param>
         /// <param name="set">showdown set to base hypertraining on</param>
-        private static void SetHyperTrainingFlags(this PKM pk, ShowdownSet set)
+        private static void SetHyperTrainingFlags(this PKM pk, IBattleTemplate set)
         {
             if (!(pk is IHyperTrain t))
                 return;
@@ -419,7 +419,7 @@ namespace PKHeX.Core.AutoMod
         /// Showdown quirks lets you have battle only moves in battle only formes. Transform back to base move.
         /// </summary>
         /// <param name="changedSet"></param>
-        private static void ReplaceBattleOnlyMoves(ShowdownSet changedSet)
+        private static void ReplaceBattleOnlyMoves(IBattleTemplate changedSet)
         {
             switch (changedSet.Species)
             {
@@ -493,7 +493,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="method"></param>
         /// <param name="hpType"></param>
         /// <param name="original"></param>
-        private static void SetIVsPID(this PKM pk, ShowdownSet set, PIDType method, int hpType, PKM original)
+        private static void SetIVsPID(this PKM pk, IBattleTemplate set, PIDType method, int hpType, PKM original)
         {
             // Useful Values for computation
             int Species = pk.Species;

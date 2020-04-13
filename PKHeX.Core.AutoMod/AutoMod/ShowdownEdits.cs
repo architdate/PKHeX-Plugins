@@ -4,7 +4,7 @@ using System.Linq;
 namespace PKHeX.Core.AutoMod
 {
     /// <summary>
-    /// Modifications for a <see cref="PKM"/> based on a <see cref="ShowdownSet"/>
+    /// Modifications for a <see cref="PKM"/> based on a <see cref="IBattleTemplate"/>
     /// </summary>
     public static class ShowdownEdits
     {
@@ -13,7 +13,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM whose gender needs to be toggled</param>
         /// <param name="set">Showdown Set for Gender reference</param>
-        public static void FixGender(this PKM pk, ShowdownSet set)
+        public static void FixGender(this PKM pk, IBattleTemplate set)
         {
             pk.ApplySetGender(set);
             var la = new LegalityAnalysis(pk);
@@ -34,13 +34,13 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Showdown Set to refer</param>
         /// <param name="preference">Ability index (1/2/4) preferred; &lt;= 0 for any</param>
-        public static void SetNatureAbility(this PKM pk, ShowdownSet set, int preference = -1)
+        public static void SetNatureAbility(this PKM pk, IBattleTemplate set, int preference = -1)
         {
             SetNature(pk, set);
             SetAbility(pk, set, preference);
         }
 
-        private static void SetNature(PKM pk, ShowdownSet set)
+        private static void SetNature(PKM pk, IBattleTemplate set)
         {
             var val = Math.Min((int)Nature.Quirky, Math.Max((int)Nature.Hardy, set.Nature));
             pk.SetNature(val);
@@ -65,7 +65,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Nature = orig;
         }
 
-        private static void SetAbility(PKM pk, ShowdownSet set, int preference)
+        private static void SetAbility(PKM pk, IBattleTemplate set, int preference)
         {
             if (pk.Ability != set.Ability)
                 pk.SetAbility(set.Ability);
@@ -85,7 +85,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Set to use as reference</param>
         /// <param name="Form">Form to apply</param>
         /// <param name="enc">Encounter detail</param>
-        public static void SetSpeciesLevel(this PKM pk, ShowdownSet set, int Form, IEncounterable enc)
+        public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, int Form, IEncounterable enc)
         {
             pk.Species = set.Species;
             pk.ApplySetGender(set);
@@ -120,7 +120,7 @@ namespace PKHeX.Core.AutoMod
             };
         }
 
-        private static void ApplySetGender(this PKM pk, ShowdownSet set)
+        private static void ApplySetGender(this PKM pk, IBattleTemplate set)
         {
             if (!string.IsNullOrWhiteSpace(set.Gender))
                 pk.Gender = set.Gender == "M" ? 0 : 1;
@@ -133,7 +133,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Showdown Set to refer</param>
-        public static void SetMovesEVs(this PKM pk, ShowdownSet set)
+        public static void SetMovesEVs(this PKM pk, IBattleTemplate set)
         {
             if (set.Moves[0] != 0)
                 pk.SetMoves(set.Moves, true);
@@ -160,7 +160,7 @@ namespace PKHeX.Core.AutoMod
                 pk.SetRandomIVs(flawless: 3);
         }
 
-        public static void SetHeldItem(this PKM pk, ShowdownSet set)
+        public static void SetHeldItem(this PKM pk, IBattleTemplate set)
         {
             pk.ApplyHeldItem(set.HeldItem, set.Format);
             pk.FixInvalidFormItems(); // arceus, silvally, giratina, genesect fix
