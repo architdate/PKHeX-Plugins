@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -36,9 +35,12 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Legalized PKM (hopefully legal)</returns>
         public static PKM Legalize(this ITrainerInfo tr, PKM pk)
         {
-            var set = new ShowdownSet(ShowdownSet.GetShowdownText(pk));
-            var shiny = pk.ShinyXor == 0 ? Shiny.AlwaysSquare : (pk.IsShiny ? Shiny.AlwaysStar : Shiny.Never);
-            var legal = tr.GetLegalFromTemplate(pk, set, out var satisfied, (Ball)pk.Ball, shiny);
+            var set = new RegenTemplate(pk)
+            {
+                Ball = (Ball) pk.Ball,
+                ShinyType = pk.ShinyXor == 0 ? Shiny.AlwaysSquare : pk.IsShiny ? Shiny.AlwaysStar : Shiny.Never
+            };
+            var legal = tr.GetLegalFromTemplate(pk, set, out var satisfied);
             if (satisfied)
                 return legal;
 
@@ -47,51 +49,6 @@ namespace PKHeX.Core.AutoMod
             legal = BruteForce.ApplyDetails(pk, set, resetForm, dest);
             legal.SetTrainerData(dest);
             return legal;
-        }
-
-        public static bool Balltism(this ShowdownSet set, out Ball ball)
-        {
-            ball = Ball.None;
-            var balltism = set.InvalidLines.Any(z => z.Contains("Ball: ") && z.Contains(" Ball"));
-            if (balltism)
-            {
-                var line = set.InvalidLines.Find(z => z.StartsWith("Ball: ") && z.EndsWith(" Ball"));
-                var itemstr = line.Split(new[] { "Ball: " }, StringSplitOptions.None)[1];
-                var item = LegalEdits.ParseItemStr(itemstr, set.Format);
-                if (item > 0)
-                {
-                    ball = Aesthetics.GetBallFromString(itemstr);
-                }
-            }
-            return balltism;
-        }
-
-        public static bool GetShinyType(this ShowdownSet set, out Shiny shiny)
-        {
-            shiny = set.Shiny ? Shiny.Always : Shiny.Never;
-            var specificShiny = set.InvalidLines.Any(z => z.Trim().Equals("Shiny: Star") || z.Trim().Equals("Shiny: Square"));
-            if (specificShiny && set.InvalidLines.Any(z => z.Trim().Equals("Shiny: Star")))
-                shiny = Shiny.AlwaysStar;
-            else if (specificShiny)
-                shiny = Shiny.AlwaysSquare;
-            return specificShiny;
-        }
-
-        public static int InvalidLineOverride(ref ShowdownSet set)
-        {
-            var invalidLines = new List<string>(set.InvalidLines);
-            // Allow Balltism to be an override
-            invalidLines.RemoveAll(z => z.Contains("Ball: ") && z.Contains(" Ball"));
-
-            // Allow shiny value to be an override
-            var removed = invalidLines.RemoveAll(z => z.Trim().Equals("Shiny: Star") || z.Trim().Equals("Shiny: Square"));
-            if (removed > 0)
-            {
-                var lines = set.GetSetLines();
-                lines.Insert(1,"Shiny: Yes");
-                set = new ShowdownSet(lines);
-            }
-            return invalidLines.Count;
         }
 
         /// <summary>
@@ -117,16 +74,12 @@ namespace PKHeX.Core.AutoMod
             for (int i = 0; i < sets.Count; i++)
             {
                 var set = sets[i];
-                if (set.Balltism(out var ball))
-                    Debug.WriteLine($"Ball override: {ball}");
-                if (set.GetShinyType(out var shiny))
-                    Debug.WriteLine($"Shiny override: {shiny}");
-
-                if (InvalidLineOverride(ref set) > 0)
+                var regen = new RegenTemplate(set);
+                if (set.InvalidLines.Count > 0)
                     return AutoModErrorCode.InvalidLines;
 
                 Debug.WriteLine($"Generating Set: {GameInfo.Strings.Species[set.Species]}");
-                var pk = tr.GetLegalFromSet(set, out var msg, ball, shiny);
+                var pk = tr.GetLegalFromSet(regen, out var msg);
                 pk.ResetPartyStats();
                 pk.SetBoxForm();
                 if (msg == LegalizationResult.BruteForce)
@@ -149,14 +102,12 @@ namespace PKHeX.Core.AutoMod
         /// <param name="tr">Source/Destination trainer</param>
         /// <param name="set">Set data to import</param>
         /// <param name="msg">Result code indicating success or failure</param>
-        /// <param name="ball"></param>
-        /// <param name="shiny"></param>
         /// <returns>Legalized PKM (hopefully legal)</returns>
-        public static PKM GetLegalFromSet(this ITrainerInfo tr, ShowdownSet set, out LegalizationResult msg, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
+        public static PKM GetLegalFromSet(this ITrainerInfo tr, IBattleTemplate set, out LegalizationResult msg)
         {
             var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
             template.ApplySetDetails(set);
-            return tr.GetLegalFromSet(set, template, out msg, ball, shiny);
+            return tr.GetLegalFromSet(set, template, out msg);
         }
 
         /// <summary>
@@ -166,14 +117,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Showdown set being used</param>
         /// <param name="template">template PKM to legalize</param>
         /// <param name="msg">Legalization result (API, Bruteforce, Failure)</param>
-        /// <param name="ball"></param>
-        /// <param name="shiny"></param>
         /// <returns>Legalized pkm</returns>
-        private static PKM GetLegalFromSet(this ITrainerInfo tr, ShowdownSet set, PKM template, out LegalizationResult msg, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
+        private static PKM GetLegalFromSet(this ITrainerInfo tr, IBattleTemplate set, PKM template, out LegalizationResult msg)
         {
+            if (set is ShowdownSet s)
+                set = new RegenTemplate(s);
+
             if (AllowAPI)
             {
-                bool success = tr.TryAPIConvert(set, template, out PKM pk, ball, shiny);
+                bool success = tr.TryAPIConvert(set, template, out PKM pk);
                 if (success)
                 {
                     msg = LegalizationResult.Regenerated;
@@ -203,12 +155,10 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">showdown set to legalize from</param>
         /// <param name="template">pkm file to legalize</param>
         /// <param name="pkm">legalized pkm file</param>
-        /// <param name="ball"></param>
-        /// <param name="shiny"></param>
         /// <returns>bool if the pokemon was legalized via API or bruteforce</returns>
-        private static bool TryAPIConvert(this ITrainerInfo tr, ShowdownSet set, PKM template, out PKM pkm, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
+        private static bool TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, out PKM pkm)
         {
-            pkm = tr.GetLegalFromTemplate(template, set, out bool satisfied, ball, shiny);
+            pkm = tr.GetLegalFromTemplate(template, set, out bool satisfied);
             if (!satisfied)
                 return false;
 

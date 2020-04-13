@@ -24,17 +24,13 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Main function that auto legalizes based on the legality
         /// </summary>
-        /// <remarks>Leverages <see cref="Core"/>'s <see cref="EncounterMovesetGenerator"/> to create a <see cref="PKM"/> from a <see cref="ShowdownSet"/>.</remarks>
+        /// <remarks>Leverages <see cref="Core"/>'s <see cref="EncounterMovesetGenerator"/> to create a <see cref="PKM"/> from a <see cref="IBattleTemplate"/>.</remarks>
         /// <param name="dest">Destination for the generated pkm</param>
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is satisfactory, otherwise use deprecated bruteforce auto legality functionality</param>
-        /// <param name="ball"></param>
-        /// <param name="shiny"></param>
-        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, ShowdownSet set, out bool satisfied, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
+        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out bool satisfied)
         {
-            set = set.PreProcessShowdownSet(template.PersonalInfo);
-            var Form = SanityCheckForm(template, ref set);
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR moves for the encounter
             var isHidden = template.AbilityNumber == 4;
@@ -58,7 +54,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk == null)
                     continue;
 
-                ApplySetDetails(pk, set, Form, raw, dest, enc, ball, shiny);
+                ApplySetDetails(pk, set, raw, dest, enc);
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
                     continue;
@@ -122,20 +118,6 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Function to fix impossible forms
-        /// </summary>
-        /// <param name="template">PKM template with uncorrected set data imported</param>
-        /// <param name="set">Showdown set</param>
-        /// <returns></returns>
-        private static int SanityCheckForm(PKM template, ref ShowdownSet set)
-        {
-            int Form = template.AltForm;
-            if (set.Form.Length != 0 && FixFormes(set, out set))
-                Form = set.FormIndex;
-            return Form;
-        }
-
-        /// <summary>
         /// Sanity checking encounters before passing them into ApplySetDetails.
         /// Some encounters may have an empty met location leading to an encounter mismatch. Use this function for all encounter pre-processing!
         /// </summary>
@@ -156,14 +138,12 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Converted final pkm to apply details to</param>
         /// <param name="set">Set details required</param>
-        /// <param name="Form">Alternate form required</param>
         /// <param name="unconverted">Original pkm data</param>
         /// <param name="handler">Trainer to handle the Pokémon</param>
         /// <param name="enc">Encounter details matched to the Pokémon</param>
-        /// <param name="ball"></param>
-        /// <param name="shiny"></param>
-        private static void ApplySetDetails(PKM pk, IBattleTemplate set, int Form, PKM unconverted, ITrainerInfo handler, IEncounterable enc, Ball ball = Ball.None, Shiny shiny = Shiny.Random)
+        private static void ApplySetDetails(PKM pk, IBattleTemplate set, PKM unconverted, ITrainerInfo handler, IEncounterable enc)
         {
+            int Form = set.FormIndex;
             var pidiv = MethodFinder.Analyze(pk);
             var abilitypref = GetAbilityPreference(pk, enc);
 
@@ -179,7 +159,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetHyperTrainingFlags(set); // Hypertrain
             pk.SetEncryptionConstant(enc);
             pk.FixFatefulFlag(enc);
-            pk.SetShinyBoolean(set.Shiny, enc, shiny);
+            pk.SetShinyBoolean(set.Shiny, enc, set is RegenTemplate s ? s.ShinyType : Shiny.Random);
             pk.FixGender(set);
             pk.SetSuggestedRibbons(SetAllLegalRibbons);
             pk.SetSuggestedMemories();
@@ -188,7 +168,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetFriendship(enc);
             pk.SetBelugaValues();
             pk.FixEdgeCases();
-            pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, ball);
+            pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, set is RegenTemplate b ? b.Ball : Ball.None);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
         }
 
@@ -357,48 +337,6 @@ namespace PKHeX.Core.AutoMod
         public static void SetMatchingBall(this PKM pk) => BallApplicator.ApplyBallLegalByColor(pk);
 
         /// <summary>
-        /// Fix Formes that are illegal outside of battle
-        /// </summary>
-        /// <param name="set">Original Showdown Set</param>
-        /// <param name="changedSet">Edited Showdown Set</param>
-        /// <returns>boolen that checks if a form is fixed or not</returns>
-        private static bool FixFormes(ShowdownSet set, out ShowdownSet changedSet)
-        {
-            changedSet = set;
-            var badForm = ShowdownUtil.IsInvalidForm(set.Form);
-            if (!badForm)
-                return false;
-
-            var invalidform = set.Form == "Galar-Zen" ? "Zen" : set.Form;
-            changedSet = new ShowdownSet(set.Text.Replace($"-{invalidform}", string.Empty));
-
-            // Changed set handling for forme changes that affect battle-only moves
-            ReplaceBattleOnlyMoves(changedSet);
-            return true;
-        }
-
-        /// <summary>
-        /// General method to preprocess sets excluding invalid formes. (handled in a future method)
-        /// </summary>
-        /// <param name="set">Showdown set passed to the function</param>
-        /// <param name="personal">Personal data for the desired form</param>
-        private static ShowdownSet PreProcessShowdownSet(this ShowdownSet set, PersonalInfo personal)
-        {
-            if ((set.Species == (int)Species.Indeedee || set.Species == (int)Species.Meowstic) && set.Form == "F")
-                set = new ShowdownSet(set.Text.Replace("(M)", "(F)"));
-
-            // Validate Gender
-            if (personal.Genderless && set.Gender.Length == 0)
-                return new ShowdownSet(set.Text.Replace("(M)", "").Replace("(F)", ""));
-            if (personal.OnlyFemale && set.Gender != "F")
-                return new ShowdownSet(set.Text.Replace("(M)", "(F)"));
-            if (personal.OnlyMale && set.Gender != "M")
-                return new ShowdownSet(set.Text.Replace("(F)", "(M)"));
-
-            return set;
-        }
-
-        /// <summary>
         /// Set formes of specific species to altform 0 since they cannot have a form while boxed
         /// </summary>
         /// <param name="pk">pokemon passed to the method</param>
@@ -412,31 +350,6 @@ namespace PKHeX.Core.AutoMod
                     pk.AltForm = 0;
                     if (pk is IFormArgument f) f.FormArgument = 0;
                     break;
-            }
-        }
-
-        /// <summary>
-        /// Showdown quirks lets you have battle only moves in battle only formes. Transform back to base move.
-        /// </summary>
-        /// <param name="changedSet"></param>
-        private static void ReplaceBattleOnlyMoves(IBattleTemplate changedSet)
-        {
-            switch (changedSet.Species)
-            {
-                case (int)Species.Zacian:
-                case (int)Species.Zamazenta:
-                    {
-                        // Behemoth Blade and Behemoth Bash -> Iron Head
-                        if (!changedSet.Moves.Contains(781) && !changedSet.Moves.Contains(782))
-                            return;
-
-                        for (int i = 0; i < changedSet.Moves.Length; i++)
-                        {
-                            if (changedSet.Moves[i] == 781 || changedSet.Moves[i] == 782)
-                                changedSet.Moves[i] = 442;
-                        }
-                        break;
-                    }
             }
         }
 

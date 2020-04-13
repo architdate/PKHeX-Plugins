@@ -937,6 +937,20 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        public static Shiny GetShinyType(string value)
+        {
+            if (value.Equals("Square", StringComparison.OrdinalIgnoreCase))
+                return Shiny.AlwaysSquare;
+            if (value.Equals("Star", StringComparison.OrdinalIgnoreCase))
+                return Shiny.AlwaysStar;
+            if (value.Equals("Yes", StringComparison.OrdinalIgnoreCase))
+                return Shiny.Always;
+            if (value.Equals("No", StringComparison.OrdinalIgnoreCase))
+                return Shiny.Never;
+
+            return Shiny.Random;
+        }
+
         /// <summary>
         /// Priority Match ball IDs that match the color ID in descending order
         /// </summary>
