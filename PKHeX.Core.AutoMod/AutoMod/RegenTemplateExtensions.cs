@@ -32,7 +32,7 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             if (set.Species == (int)Species.Darmanitan)
-                set.FormIndex--;
+                set.FormIndex &= 2;
             else
                 set.FormIndex = 0;
         }
