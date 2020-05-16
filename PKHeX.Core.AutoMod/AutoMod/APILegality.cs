@@ -93,7 +93,10 @@ namespace PKHeX.Core.AutoMod
 
             // Don't process if encounter min level is higher than requested level
             if (enc.LevelMin > set.Level)
-                return false;
+            {
+                if (!(enc is EncounterStatic8N))
+                    return false;
+            }
 
             // Don't process if Hidden Ability is requested and the PKM is from Gen 3 or Gen 4
             gen = enc is IGeneration g ? g.Generation : tr.Generation;

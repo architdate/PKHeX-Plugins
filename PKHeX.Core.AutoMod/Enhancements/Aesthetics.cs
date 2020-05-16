@@ -897,7 +897,7 @@ namespace PKHeX.Core.AutoMod
             { Duraludon,       White },
             { Dreepy,          Green },
             { Drakloak,        Gray },
-            { Dragapult,       Blue },
+            { Dragapult,       Green },
             { Zacian,          Blue },
             { Zamazenta,       Red },
             { Eternatus,       Red },
