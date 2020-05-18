@@ -1,6 +1,7 @@
 ﻿// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -41,7 +42,7 @@ namespace PKHeX.Core.AutoMod
             Nature = set.Nature;
             Form = set.Form;
             FormIndex = set.FormIndex;
-            EVs = set.EVs;
+            EVs = SanitizeEVs(set.EVs);
             IVs = set.IVs;
             HiddenPowerType = set.HiddenPowerType;
             Moves = set.Moves;
@@ -91,5 +92,7 @@ namespace PKHeX.Core.AutoMod
                 lines.RemoveAt(i--);
             }
         }
+
+        private int[] SanitizeEVs(int[] evs) => evs.Select(z => z > 252 ? 252 : z).ToArray();
     }
 }

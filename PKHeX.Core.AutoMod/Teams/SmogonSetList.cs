@@ -34,12 +34,13 @@ namespace PKHeX.Core.AutoMod
             var set = new ShowdownSet(pk);
             Species = GameInfo.GetStrings("en").Species[pk.Species];
             Form = ConvertFormToURLForm(set.Form, Species);
+            var psform = ConvertFormToShowdown(set.Form, set.Species);
 
             URL = GetURL(Species, Form, baseURL);
             Page = NetUtil.GetPageText(URL);
 
             Valid = true;
-            ShowdownSpeciesName = GetShowdownName(Species, Form);
+            ShowdownSpeciesName = GetShowdownName(Species, psform);
 
             LoadSetsFromPage();
         }
@@ -232,7 +233,7 @@ namespace PKHeX.Core.AutoMod
             {
                 "Necrozma" when form == "Dusk" => "dusk_mane",
                 "Necrozma" when form == "Dawn" => "dawn_wings",
-                "Oricorio" when form == "Pa'u" => "pau",
+                "Oricorio" when form == "Pa’u" => "pau",
                 "Darmanitan" when form == "Galarian Standard" => "galar",
                 "Meowstic" when form.Length == 0 => "m",
                 "Gastrodon" => "",
@@ -243,6 +244,73 @@ namespace PKHeX.Core.AutoMod
                 _ => form
             };
         }
+
+        private static string ConvertFormToShowdown(string form, int spec)
+        {
+            if (form.Length == 0)
+            {
+                return spec switch
+                {
+                    (int)Core.Species.Minior => "Meteor",
+                    _ => form
+                };
+            }
+
+            switch (spec)
+            {
+                case (int)Core.Species.Basculin when form == "Blue":
+                    return "Blue-Striped";
+                case (int)Core.Species.Vivillon when form == "Poké Ball":
+                    return "Pokeball";
+                case (int)Core.Species.Zygarde:
+                    form = form.Replace("-C", string.Empty);
+                    return form.Replace("50%", string.Empty);
+                case (int)Core.Species.Minior:
+                    if (form.StartsWith("M-"))
+                        return "Meteor";
+                    return form.Replace("C-", string.Empty);
+                case (int)Core.Species.Necrozma when form == "Dusk":
+                    return $"{form}-Mane";
+                case (int)Core.Species.Necrozma when form == "Dawn":
+                    return $"{form}-Wings";
+
+                case (int)Core.Species.Furfrou:
+                case (int)Core.Species.Greninja:
+                case (int)Core.Species.Rockruff:
+                    return string.Empty;
+
+                case (int)Core.Species.Polteageist:
+                case (int)Core.Species.Sinistea:
+                    return form == "Antique" ? form : string.Empty;
+
+                default:
+                    if (Totem_USUM.Contains(spec) && form == "Large")
+                        return Totem_Alolan.Contains(spec) && spec != (int)Core.Species.Mimikyu ? "Alola-Totem" : "Totem";
+                    return form.Replace(' ', '-');
+            }
+        }
+
+        internal static readonly HashSet<int> Totem_Alolan = new HashSet<int>
+        {
+            020, // Raticate (Normal, Alolan, Totem)
+            105, // Marowak (Normal, Alolan, Totem)
+            778, // Mimikyu (Normal, Busted, Totem, Totem_Busted)
+        };
+
+        internal static readonly HashSet<int> Totem_USUM = new HashSet<int>
+        {
+            020, // Raticate
+            735, // Gumshoos
+            758, // Salazzle
+            754, // Lurantis
+            738, // Vikavolt
+            778, // Mimikyu
+            784, // Kommo-o
+            105, // Marowak
+            752, // Araquanid
+            777, // Togedemaru
+            743, // Ribombee
+        };
 
         private static string GetURL(string speciesName, string form, string baseURL)
         {

@@ -23,6 +23,8 @@ namespace PKHeX.Core.AutoMod
                 return false;
             if (species == (int)Species.Darmanitan && form == 2 && format >= 8)
                 return false; // this one is OK, Galarian non-Zen
+            if (species == (int) Species.Necrozma && form != 3) // Not Ultra-Necrozma
+                return false;
             return true;
         }
 
