@@ -46,9 +46,9 @@ namespace PKHeX.Core.AutoMod
             encounters = encounters.Concat(GetFriendSafariEncounters(template));
             foreach (var enc in encounters)
             {
-                if (!IsEncounterValid(dest, set, enc, isHidden, destVer, out var gen, out var ver))
+                if (!IsEncounterValid(set, enc, isHidden, destVer, out var ver))
                     continue;
-                var tr = UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, gen) : TrainerSettings.DefaultFallback(gen);
+                var tr = UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, enc.Generation) : TrainerSettings.DefaultFallback(enc.Generation);
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);
@@ -77,18 +77,15 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Checks if the encounter is even valid before processing it
         /// </summary>
-        /// <param name="tr">trainer info</param>
         /// <param name="set">showdown set</param>
         /// <param name="enc">encounter object</param>
         /// <param name="isHidden">is HA requested</param>
         /// <param name="destVer">version to generate in</param>
-        /// <param name="gen">generation of enc/tr</param>
         /// <param name="ver">version of enc/destVer</param>
         /// <returns>if the encounter is valid or not</returns>
-        private static bool IsEncounterValid(ITrainerInfo tr, IBattleTemplate set, IEncounterable enc, bool isHidden, GameVersion destVer, out int gen, out GameVersion ver)
+        private static bool IsEncounterValid(IBattleTemplate set, IEncounterable enc, bool isHidden, GameVersion destVer, out GameVersion ver)
         {
             // initialize out vars (not calculating here to save time)
-            gen = -1;
             ver = GameVersion.Any;
 
             // Don't process if encounter min level is higher than requested level
@@ -99,7 +96,7 @@ namespace PKHeX.Core.AutoMod
             }
 
             // Don't process if Hidden Ability is requested and the PKM is from Gen 3 or Gen 4
-            gen = enc is IGeneration g ? g.Generation : tr.Generation;
+            var gen = enc.Generation;
             if (isHidden && (uint) (gen - 3) < 2) // Gen 3 and Gen 4
                 return false;
 

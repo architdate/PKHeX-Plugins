@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PKHeX.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PKHeX.Core.20.4.14\lib\net46\PKHeX.Core.dll</HintPath>
+      <HintPath>..\packages\PKHeX.Core.20.4.15\lib\net46\PKHeX.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -94,6 +94,7 @@
     <Content Include="Resources\img\settings.png" />
     <Content Include="Resources\img\uploadgpss.png" />
     <Content Include="Resources\img\wifi.png" />
+    <None Include="packages.config" />
     <None Include="Resources\text\almlang_zh.txt" />
     <None Include="Resources\text\almlang_ko.txt" />
     <None Include="Resources\text\almlang_ja.txt" />
@@ -103,7 +104,6 @@
     <None Include="Resources\text\almlang_de.txt" />
     <None Include="Resources\text\almlang_en.txt" />
     <None Include="app.config" />
-    <None Include="packages.config" />
     <None Include="Properties\AutoLegality.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>AutoLegality.Designer.cs</LastGenOutput>
