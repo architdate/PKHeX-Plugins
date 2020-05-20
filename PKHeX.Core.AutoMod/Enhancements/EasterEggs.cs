@@ -44,8 +44,8 @@
         {
             return gen switch
             {
-                1 => "HOW DO I HAK",
-                2 => "DON'T FUCKLE",
+                1 => "HOWDOIHAK",
+                2 => "DONT FCKLE",
                 3 => "CANTA",
                 4 => "U R A DOOF",
                 5 => "PANCAKE",

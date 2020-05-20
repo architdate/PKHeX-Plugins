@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using AutoModPlugins;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -145,6 +146,9 @@ namespace PKHeX.Core.AutoMod
             {
                 var gen = EasterEggs.GetGeneration(template.Species);
                 template.Species = (int) EasterEggs.IllegalPKMMemeSpecies(gen);
+                var legalencs = ModLogic.GetRandomEncounter(tr, (int) EasterEggs.IllegalPKMMemeSpecies(gen), out var legal);
+                if (legalencs && legal != null)
+                    template = legal;
                 template.SetNickname(EasterEggs.IllegalPKMMemeNickname(gen));
             }
             return template;
@@ -158,7 +162,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="template">pkm file to legalize</param>
         /// <param name="pkm">legalized pkm file</param>
         /// <returns>bool if the pokemon was legalized via API or bruteforce</returns>
-        private static bool TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, out PKM pkm)
+        public static bool TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, out PKM pkm)
         {
             pkm = tr.GetLegalFromTemplate(template, set, out bool satisfied);
             if (!satisfied)

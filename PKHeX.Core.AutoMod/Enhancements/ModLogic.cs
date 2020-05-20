@@ -65,7 +65,7 @@ namespace AutoModPlugins
         {
             foreach (var id in speciesIDs)
             {
-                if (GetRandomEncounter(sav, sav, id, out var pk) && pk != null)
+                if (GetRandomEncounter(sav, id, out var pk) && pk != null)
                 {
                     pk.Heal();
                     yield return pk;
@@ -80,7 +80,7 @@ namespace AutoModPlugins
         /// <param name="species">Species ID to generate</param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this SaveFile sav, int species, out PKM? pk) => sav.GetRandomEncounter(sav, species, out pk);
+        public static bool GetRandomEncounter(this SaveFile sav, int species, out PKM? pk) => ((ITrainerInfo)sav).GetRandomEncounter(species, out pk);
 
         /// <summary>
         /// Gets a legal <see cref="PKM"/> from a random in-game encounter's data.
@@ -90,14 +90,14 @@ namespace AutoModPlugins
         /// <param name="species">Species ID to generate</param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this SaveFile sav, ITrainerInfo tr, int species, out PKM? pk)
+        public static bool GetRandomEncounter(this ITrainerInfo tr, int species, out PKM? pk)
         {
-            var blank = sav.BlankPKM;
+            var blank = PKMConverter.GetBlank(tr.Generation, tr.Game);
             pk = GetRandomEncounter(blank, tr, species);
             if (pk == null)
                 return false;
 
-            pk = PKMConverter.ConvertToType(pk, sav.PKMType, out _);
+            pk = PKMConverter.ConvertToType(pk, blank.GetType(), out _);
             return pk != null;
         }
 
@@ -118,7 +118,13 @@ namespace AutoModPlugins
             var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid);
             var f = legalencs.FirstOrDefault();
             if (f == null)
-                return null;
+            {
+                var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
+                var set = new ShowdownSet(new ShowdownSet(blank).Text.Split('\r')[0]);
+                template.ApplySetDetails(set);
+                bool success = tr.TryAPIConvert(set, template, out PKM pk);
+                return success ? pk : null;
+            }
             var an = f.AbilityNumber;
             f.Species = species;
             f.Gender = f.GetSaneGender();
@@ -146,7 +152,15 @@ namespace AutoModPlugins
             int wIndex = WurmpleUtil.GetWurmpleEvoGroup(f.Species);
             if (wIndex != -1)
                 f.EncryptionConstant = WurmpleUtil.GetWurmpleEC(wIndex);
-            return f;
+            if (new LegalityAnalysis(f).Valid) return f;
+            else
+            {
+                var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
+                var set = new ShowdownSet(new ShowdownSet(blank).Text.Split('\r')[0]);
+                template.ApplySetDetails(set);
+                bool success = tr.TryAPIConvert(set, template, out PKM pk);
+                return success ? pk : null;
+            }
         }
 
         /// <summary>
