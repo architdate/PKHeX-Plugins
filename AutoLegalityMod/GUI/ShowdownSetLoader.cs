@@ -130,6 +130,7 @@ namespace AutoModPlugins
             APILegality.UseXOROSHIRO = settings.UseXOROSHIRO;
             APILegality.SetRandomTracker = settings.SetRandomTracker;
             Legalizer.AllowBruteForce = settings.AllowBruteforce;
+            Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
 
             EncounterMovesetGenerator.PriorityList = settings.PrioritizeEvent
                 ? new[] {EncounterOrder.Mystery, EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot}

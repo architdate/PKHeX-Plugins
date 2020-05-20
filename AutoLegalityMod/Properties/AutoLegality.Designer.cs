@@ -166,5 +166,17 @@ namespace AutoModPlugins.Properties {
                 this["ForceSpecifiedBall"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool EnableEasterEggs {
+            get {
+                return ((bool)(this["EnableEasterEggs"]));
+            }
+            set {
+                this["EnableEasterEggs"] = value;
+            }
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         public static bool AllowAPI { get; set; } = true;
         public static bool AllowBruteForce { get; set; } = true;
+        public static bool EnableEasterEggs { get; set; } = true;
 
         /// <summary>
         /// Tries to regenerate the <see cref="pk"/> into a valid pkm.
@@ -131,11 +132,6 @@ namespace PKHeX.Core.AutoMod
                     msg = LegalizationResult.Regenerated;
                     return pk;
                 }
-                if (!AllowBruteForce)
-                {
-                    msg = LegalizationResult.Failed;
-                    return pk;
-                }
             }
 
             if (AllowBruteForce)
@@ -145,6 +141,12 @@ namespace PKHeX.Core.AutoMod
             }
 
             msg = LegalizationResult.Failed;
+            if (EnableEasterEggs)
+            {
+                var gen = EasterEggs.GetGeneration(template.Species);
+                template.Species = (int) EasterEggs.IllegalPKMMemeSpecies(gen);
+                template.SetNickname(EasterEggs.IllegalPKMMemeNickname(gen));
+            }
             return template;
         }
 
