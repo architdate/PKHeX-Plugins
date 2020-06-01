@@ -39,7 +39,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.TB_Offset = new System.Windows.Forms.TextBox();
+            this.TB_Offset = new HexTextBox();
             this.L_ReadOffset = new System.Windows.Forms.Label();
             this.B_ReadOffset = new System.Windows.Forms.Button();
             this.L_Slot = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@
             this.B_ReadRAM = new System.Windows.Forms.Button();
             this.RamSize = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.RamOffset = new System.Windows.Forms.TextBox();
+            this.RamOffset = new HexTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -412,12 +412,12 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label L_ReadOffset;
         private System.Windows.Forms.Button B_ReadOffset;
-        private System.Windows.Forms.TextBox TB_Offset;
+        private HexTextBox TB_Offset;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button B_ReadRAM;
         private System.Windows.Forms.TextBox RamSize;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox RamOffset;
+        private HexTextBox RamOffset;
         private System.Windows.Forms.Label label1;
     }
 }

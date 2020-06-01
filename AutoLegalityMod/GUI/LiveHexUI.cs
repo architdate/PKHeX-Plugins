@@ -179,4 +179,25 @@ namespace AutoModPlugins
         public ISlotInfo GetSlotData(PictureBox view) => null;
         public int GetViewIndex(ISlotInfo slot) => -1;
     }
+
+    internal class HexTextBox : TextBox
+    {
+        private const int WM_PASTE = 0x0302;
+
+        protected override void WndProc(ref Message m)
+        {
+            Debug.WriteLine(m.Msg);
+            if (m.Msg == WM_PASTE)
+            {
+                var text = Clipboard.GetText();
+                if (text.StartsWith("0x"))
+                {
+                    text = text.Substring(2);
+                    Clipboard.SetText(text);
+                }
+            }
+
+            base.WndProc(ref m);
+        }
+    }
 }
