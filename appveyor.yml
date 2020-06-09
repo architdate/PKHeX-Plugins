@@ -120,7 +120,7 @@ notifications:
             },
             {
               "name": "Artifact",
-          "value": "{{#passed}}Unmerged Base PKHeX: [Download](https://projectpokemon.org/home/files/file/2445-pkhex-development-build/) \nPlugins: [Download]({{#jobs}}{{#artifacts.1}}{{permalink}}{{/artifacts.1}}{{/jobs}}){{/passed}}{{^passed}}Build Failed{{/passed}}",
+          "value": "{{#passed}}Unmerged Base PKHeX: [Download](https://projectpokemon.org/home/files/file/2445-pkhex-development-build/) \nPlugins: [Download]({{#jobs}}{{#artifacts.0}}{{permalink}}{{/artifacts.0}}{{/jobs}}){{/passed}}{{^passed}}Build Failed{{/passed}}",
               "inline": true
             },
             {
