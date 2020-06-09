@@ -26,9 +26,9 @@ before_build:
 
     nuget restore
 
-    msbuild C:\projects\pkhex\PKHeX.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /verbosity:minimal /p:DefineConstants=UNSAFEDLL /p:Configuration=Release
+    #msbuild C:\projects\pkhex\PKHeX.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /verbosity:minimal /p:DefineConstants=UNSAFEDLL /p:Configuration=Release
 
-    Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "C:\projects\pkhex-plugins"
+    #Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "C:\projects\pkhex-plugins"
 
     Set-Location -Path "C:\projects\pkhex-plugins"
 
@@ -46,11 +46,11 @@ before_build:
 build:
   project: C:\projects\pkhex-plugins\PKHeX-Plugins.sln
   verbosity: minimal
-before_package:
-- cmd: >-
-    mkdir base
-
-    xcopy C:\projects\pkhex\pkhex.winforms\bin\release C:\projects\pkhex-plugins\base /e /i /h
+#before_package:
+#- cmd: >-
+#    mkdir base
+#
+#    xcopy C:\projects\pkhex\pkhex.winforms\bin\release C:\projects\pkhex-plugins\base /e /i /h
 after_build:
 - cmd: >-
     mkdir bin
@@ -82,8 +82,8 @@ after_build:
 artifacts:
 - path: bin
   name: PKHeX-Plugins-$(mod_commit)
-- path: base
-  name: PKHeX-$(pkhex_commit)-Unmerged
+#- path: base
+#  name: PKHeX-$(pkhex_commit)-Unmerged
 notifications:
 - provider: Webhook
   url: 
@@ -120,7 +120,7 @@ notifications:
             },
             {
               "name": "Artifact",
-          "value": "{{#passed}}Unmerged Base PKHeX: [Download]({{#jobs}}{{#artifacts.0}}{{permalink}}{{/artifacts.0}}{{/jobs}}) \nPlugins: [Download]({{#jobs}}{{#artifacts.1}}{{permalink}}{{/artifacts.1}}{{/jobs}}){{/passed}}{{^passed}}Build Failed{{/passed}}",
+          "value": "{{#passed}}Unmerged Base PKHeX: [Download](https://projectpokemon.org/home/files/file/2445-pkhex-development-build/) \nPlugins: [Download]({{#jobs}}{{#artifacts.1}}{{permalink}}{{/artifacts.1}}{{/jobs}}){{/passed}}{{^passed}}Build Failed{{/passed}}",
               "inline": true
             },
             {
