@@ -20,7 +20,7 @@ namespace PKHeX.Core.AutoMod
             800, 802, 807, 808, 809,
 
             // DLC (Isle of Armour)
-            079
+            079, 891, 892, 893
         };
 
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
