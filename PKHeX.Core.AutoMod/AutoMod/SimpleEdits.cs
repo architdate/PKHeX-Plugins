@@ -67,7 +67,7 @@ namespace PKHeX.Core.AutoMod
             int wIndex = WurmpleUtil.GetWurmpleEvoGroup(pk.Species);
             if (wIndex != -1)
             {
-                pk.EncryptionConstant = WurmpleUtil.GetWurmpleEC(wIndex);
+                pk.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
                 return;
             }
             pk.EncryptionConstant = Util.Rand32();

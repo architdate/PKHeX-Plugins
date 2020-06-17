@@ -151,7 +151,7 @@ namespace AutoModPlugins
                 fa.FormArgument = ShowdownEdits.GetSuggestedFormArgument(f, info.EncounterMatch.Species);
             int wIndex = WurmpleUtil.GetWurmpleEvoGroup(f.Species);
             if (wIndex != -1)
-                f.EncryptionConstant = WurmpleUtil.GetWurmpleEC(wIndex);
+                f.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
             if (new LegalityAnalysis(f).Valid) return f;
             else
             {

@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\img\autolegalitymod.png" />
+    <Content Include="Resources\img\blmicon.ico" />
     <Content Include="Resources\img\settings.png" />
     <Content Include="Resources\img\uploadgpss.png" />
     <Content Include="Resources\img\wifi.png" />

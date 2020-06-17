@@ -61,23 +61,23 @@ namespace AutoModPlugins.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
+        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Einstellungen
         ///
         ///LiveHexUI=LiveHexUI
-        ///LiveHexUI.B_ReadCurrent=Read Current Box
-        ///LiveHexUI.B_WriteCurrent=Write Current Box
-        ///LiveHexUI.checkBox1=Read On Change Box
+        ///LiveHexUI.B_ReadCurrent=Aktuelle Box lesen
+        ///LiveHexUI.B_WriteCurrent=Aktuelle Box schreiben
+        ///LiveHexUI.checkBox1=Lesen bei Boxwechsel
         ///LiveHexUI.L_IP=IP:
         ///LiveHexUI.L_Port=Port:
-        ///LiveHexUI.B_Connect=Connect
-        ///LiveHexUI.groupBox1=Boxes
-        ///LiveHexUI.checkBox2=Inject In Slot
+        ///LiveHexUI.B_Connect=Verbinden
+        ///LiveHexUI.groupBox1=Boxen
+        ///LiveHexUI.checkBox2=Injecte in Slot
         ///LiveHexUI.groupBox2=PKM Editor
         ///LiveHexUI.L_ReadOffset=Offset:
-        ///LiveHexUI.B_ReadOffset=Read from Offset
+        ///LiveHexUI.B_ReadOffset=Offset auslesen
         ///LiveHexUI.L_Slot=Slot:
         ///LiveHexUI.L_Box=Box:
-        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        ///LiveHexUI.B_ReadS [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string almlang_de {
             get {
@@ -111,23 +111,22 @@ namespace AutoModPlugins.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
+        ///   Looks up a localized string similar to ALMSettings=Configuración de Plugin de Auto Legalidad
         ///
-        ///LiveHexUI=LiveHexUI
-        ///LiveHexUI.B_ReadCurrent=Read Current Box
-        ///LiveHexUI.B_WriteCurrent=Write Current Box
-        ///LiveHexUI.checkBox1=Read On Change Box
+        ///LiveHexUI=IULiveHex
+        ///LiveHexUI.B_ReadCurrent=Leer Caja Actual
+        ///LiveHexUI.B_WriteCurrent=Escribir Caja Actual
+        ///LiveHexUI.checkBox1= Leer en Caja de Cambio
         ///LiveHexUI.L_IP=IP:
-        ///LiveHexUI.L_Port=Port:
-        ///LiveHexUI.B_Connect=Connect
-        ///LiveHexUI.groupBox1=Boxes
-        ///LiveHexUI.checkBox2=Inject In Slot
-        ///LiveHexUI.groupBox2=PKM Editor
+        ///LiveHexUI.L_Port=Puerto:
+        ///LiveHexUI.B_Connect=Conectar
+        ///LiveHexUI.groupBox1=Cajas
+        ///LiveHexUI.checkBox2=Inyectar en Casilla
+        ///LiveHexUI.groupBox2=Editor de PKM
         ///LiveHexUI.L_ReadOffset=Offset:
-        ///LiveHexUI.B_ReadOffset=Read from Offset
-        ///LiveHexUI.L_Slot=Slot:
-        ///LiveHexUI.L_Box=Box:
-        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        ///LiveHexUI.B_ReadOffset=Leer desde el Offset
+        ///LiveHexUI.L_Slot=Casilla:
+        ///LiveHexUI.L_Box=C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string almlang_es {
             get {
@@ -267,6 +266,16 @@ namespace AutoModPlugins.Properties {
             get {
                 object obj = ResourceManager.GetObject("autolegalitymod", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon blmicon {
+            get {
+                object obj = ResourceManager.GetObject("blmicon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
