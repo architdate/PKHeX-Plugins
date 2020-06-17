@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using AutoModPlugins.GUI;
 using PKHeX.Core;
@@ -52,13 +53,17 @@ namespace AutoModPlugins
             CenterToParent();
         }
 
-        private void SetTrainerData(SaveFile sav)
+        private void SetTrainerData(SaveFile sav, int savsize)
         {
             switch (sav)
             {
                 case SAV8SWSH s8:
                     var info = s8.MyStatus;
-                    var data = Remote.Bot.ReadBytes(0x42935e48, 0x110);
+                    byte[] data;
+                    if (savsize == 0x1716B3 || savsize == 0x17195E)
+                        data = Remote.Bot.ReadBytes(0x42935e48, 0x110);
+                    else
+                        data = Remote.Bot.ReadBytes(0x45061108, 0x110);
                     data.CopyTo(info.Data);
                     break;
             }
@@ -74,19 +79,44 @@ namespace AutoModPlugins
         {
             try
             {
-                Remote.Bot.IP = TB_IP.Text;
-                Remote.Bot.Port = int.Parse(TB_Port.Text);
-                Remote.Bot.Connect();
-
-                // Set Trainer Data
-                SetTrainerData(SAV.SAV);
-
                 // Enable controls
                 B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
                 groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
+                var ConnectionEstablished = false;
+                var savsize = 0x1716B3;
+                var validsizes = new[] { 0x1716B3, 0x17195E, 0x180B19 };
+                foreach (int size in validsizes)
+                {
+                    Remote.Bot = new PokeSysBotMini(size);
+                    Remote.Bot.IP = TB_IP.Text;
+                    Remote.Bot.Port = int.Parse(TB_Port.Text);
+                    Remote.Bot.Connect();
 
+                    var data = Remote.Bot.ReadSlot(1, 1);
+                    var pkm = new PK8(data);
+                    if (pkm.ChecksumValid && pkm.Species > -1)
+                    {
+                        ConnectionEstablished = true;
+                        savsize = size;
+                        break;
+                    }
+
+                    if (Remote.Bot.Connected)
+                        Remote.Bot.Disconnect();
+                }
+
+                if (!ConnectionEstablished)
+                {
+                    Remote.Bot = new PokeSysBotMini(0x180B19);
+                    Remote.Bot.IP = TB_IP.Text;
+                    Remote.Bot.Port = int.Parse(TB_Port.Text);
+                    Remote.Bot.Connect();
+                }
                 // Load current box
                 Remote.ReadBox(SAV.CurrentBox);
+
+                // Set Trainer Data
+                SetTrainerData(SAV.SAV, savsize);
             }
             catch (Exception ex)
             {

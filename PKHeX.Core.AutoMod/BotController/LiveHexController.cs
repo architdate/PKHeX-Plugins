@@ -4,12 +4,13 @@
     {
         private readonly ISaveFileProvider SAV;
         private readonly IPKMView Editor;
-        public readonly PokeSysBotMini Bot = new PokeSysBotMini();
+        public PokeSysBotMini Bot;
 
         public LiveHexController(ISaveFileProvider boxes, IPKMView editor)
         {
             SAV = boxes;
             Editor = editor;
+            Bot = new PokeSysBotMini(0x1716B3);
         }
 
         public void ChangeBox(int box)

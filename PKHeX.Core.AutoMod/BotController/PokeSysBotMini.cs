@@ -2,11 +2,25 @@
 {
     public class PokeSysBotMini : SysBotMini
     {
-        private const int BoxStart = 0x4293D8B0;
+        public static int BoxStart = 0x4506D890;
         private const int SlotSize = 344;
         private const int SlotCount = 30;
 
-        private static uint GetBoxOffset(int box) => BoxStart + (uint)(SlotSize * SlotCount * box);
+        public PokeSysBotMini(int savsize)
+        {
+            switch (savsize)
+            {
+                case 0x1716B3:
+                case 0x17195E:
+                    BoxStart = 0x4293D8B0;
+                    break;
+                case 0x180B19:
+                    BoxStart = 0x4506D890;
+                    break;
+            }
+        }
+
+        private static uint GetBoxOffset(int box) => (uint)BoxStart + (uint)(SlotSize * SlotCount * box);
         private static uint GetSlotOffset(int box, int slot) => GetBoxOffset(box) + (uint)(SlotSize * slot);
 
         public byte[] ReadBox(int box, int len) => ReadBytes(GetBoxOffset(box), len);
