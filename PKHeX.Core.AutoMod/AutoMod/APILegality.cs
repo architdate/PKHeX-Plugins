@@ -59,7 +59,7 @@ namespace PKHeX.Core.AutoMod
                 ApplySetDetails(pk, set, raw, dest, enc);
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
-                    if (SimpleEdits.CanEatMaxSoup.Contains(pk.Species))
+                    if (Legal.CanEatMaxSoup.Contains(pk.Species))
                         gmax.CanGigantamax = set.CanGigantamax; // soup hax
                     else continue;
                 }
