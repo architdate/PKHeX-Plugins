@@ -59,7 +59,9 @@ namespace PKHeX.Core.AutoMod
                 ApplySetDetails(pk, set, raw, dest, enc);
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
-                    continue;
+                    if (gmax.CanGigantamax) // No way to remove Gigantamax factor
+                        continue;
+                    gmax.CanGigantamax = set.CanGigantamax; // soup hax
                 }
 
                 var la = new LegalityAnalysis(pk);
@@ -111,7 +113,7 @@ namespace PKHeX.Core.AutoMod
             if (GameVersion.GG.Contains(destVer))
                 species = species.Where(z => z <= 151 || (z == 808 || z == 809));
             if (GameVersion.SWSH.Contains(destVer))
-                species = species.Where(z => Zukan8.DexLookup.TryGetValue(z, out _) || SimpleEdits.Zukan8Additions.Contains(z));
+                species = species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(z, enc.Form)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z));
             if (!species.Contains(set.Species))
                 return false;
 

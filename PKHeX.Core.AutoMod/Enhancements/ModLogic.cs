@@ -42,7 +42,7 @@ namespace AutoModPlugins
             if (sav is SAV7b)
                 species = species.Where(z => z <= 151 || (z == 808 || z == 809)); // only include Kanto and M&M
             if (sav is SAV8)
-                species = species.Where(z => Zukan8.DexLookup.TryGetValue(z, out _) || SimpleEdits.Zukan8Additions.Contains(z));
+                species = species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z));
             return sav.GenerateLivingDex(species);
         }
 
