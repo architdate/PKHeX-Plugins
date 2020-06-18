@@ -901,6 +901,9 @@ namespace PKHeX.Core.AutoMod
             { Zacian,          Blue },
             { Zamazenta,       Red },
             { Eternatus,       Red },
+            { Kubfu,           White},
+            { Urshifu,         Black },
+            { Zarude,          Black },
         };
 
         public static Ball GetBallFromString(string ballstr)
