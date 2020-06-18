@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PKHeX.Core.AutoMod
@@ -21,6 +22,41 @@ namespace PKHeX.Core.AutoMod
 
             // DLC (Isle of Armour)
             079, 080, 891, 892, 893
+        };
+
+        internal static readonly HashSet<int> CanEatMaxSoup = new HashSet<int>
+        {
+            (int)Species.Venusaur,
+            (int)Species.Charizard,
+            (int)Species.Blastoise,
+            (int)Species.Rillaboom,
+            (int)Species.Cinderace,
+            (int)Species.Inteleon,
+            (int)Species.Butterfree,
+            (int)Species.Pikachu,
+            (int)Species.Meowth,
+            (int)Species.Machamp,
+            (int)Species.Gengar,
+            (int)Species.Lapras,
+            (int)Species.Eevee,
+            (int)Species.Snorlax,
+            (int)Species.Garbodor,
+            (int)Species.Drednaw,
+            (int)Species.Corviknight,
+            (int)Species.Toxtricity,
+            (int)Species.Alcremie,
+            (int)Species.Duraludon,
+            (int)Species.Orbeetle,
+            (int)Species.Coalossal,
+            (int)Species.Sandaconda,
+            (int)Species.Grimmsnarl,
+            (int)Species.Flapple,
+            (int)Species.Appletun,
+            (int)Species.Hatterene,
+            (int)Species.Copperajah,
+            (int)Species.Kingler,
+            (int)Species.Centiskorch,
+            (int)Species.Urshifu
         };
 
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
