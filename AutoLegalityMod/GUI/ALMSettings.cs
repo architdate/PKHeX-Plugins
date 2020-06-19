@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.IO;
+using System.Windows.Forms;
+using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins.GUI
 {
@@ -25,6 +28,22 @@ namespace AutoModPlugins.GUI
             ShowdownSetLoader.SetAPILegalitySettings();
 
             Properties.AutoLegality.Default.Save();
+        }
+
+        private void RunBulkTests_Click(object sender, System.EventArgs e)
+        {
+            if (!Directory.Exists(TeamTest.TestPath))
+            {
+                WinFormsUtil.Error("Valid Test Path does not exist");
+            }
+            else
+            {
+                var results = TeamTest.VerifyFiles();
+                var finalstr = "";
+                foreach (var res in results)
+                    finalstr += $"{Path.GetFileName(res.Key)} : Legal - {res.Value["legal"].Length} | Illegal - {res.Value["illegal"].Length}\n";
+                WinFormsUtil.Alert(finalstr.TrimEnd());
+            }
         }
     }
 }
