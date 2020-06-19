@@ -2,7 +2,7 @@
 {
     public class PokeSysBotMini : SysBotMini
     {
-        private const int BoxStart = 0x4293D8B0;
+        private const int BoxStart = 0x4506D890;
         private const int SlotSize = 344;
         private const int SlotCount = 30;
 
