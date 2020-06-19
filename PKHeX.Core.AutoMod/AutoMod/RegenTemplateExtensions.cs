@@ -16,21 +16,9 @@ namespace PKHeX.Core.AutoMod
             return hs;
         }
 
-        // Replace with PKHeX.Core method call on next API update (FormVerifier)
-        private static bool IsBattleOnlyForm(int species, int form, int format)
-        {
-            if (!BattleOnly.Contains(species))
-                return false;
-            if (species == (int)Species.Darmanitan && form == 2 && format >= 8)
-                return false; // this one is OK, Galarian non-Zen
-            if (species == (int) Species.Necrozma && form != 3) // Not Ultra-Necrozma
-                return false;
-            return true;
-        }
-
         public static void SanitizeForm(this RegenTemplate set)
         {
-            if (!IsBattleOnlyForm(set.Species, set.FormIndex, set.Format))
+            if (!FormVerifier.IsBattleOnlyForm(set.Species, set.FormIndex, set.Format))
                 return;
 
             if (set.Species == (int)Species.Darmanitan)
