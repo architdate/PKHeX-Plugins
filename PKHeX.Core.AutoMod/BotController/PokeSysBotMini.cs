@@ -1,23 +1,18 @@
-﻿namespace PKHeX.Core.AutoMod
+﻿using static PKHeX.Core.AutoMod.LiveHeXVersion;
+
+namespace PKHeX.Core.AutoMod
 {
     public class PokeSysBotMini : SysBotMini
     {
         public static int BoxStart = 0x4506D890;
-        private const int SlotSize = 344;
-        private const int SlotCount = 30;
+        public static int SlotSize = 344;
+        public static int SlotCount = 30;
 
-        public PokeSysBotMini(int savsize)
+        public PokeSysBotMini(LiveHeXVersion lv)
         {
-            switch (savsize)
-            {
-                case 0x1716B3:
-                case 0x17195E:
-                    BoxStart = 0x4293D8B0;
-                    break;
-                case 0x180B19:
-                    BoxStart = 0x4506D890;
-                    break;
-            }
+            BoxStart = RamOffsets.GetB1S1Offset(lv);
+            SlotSize = RamOffsets.GetSlotSize(lv);
+            SlotCount = RamOffsets.GetSlotCount(lv);
         }
 
         private static uint GetBoxOffset(int box) => (uint)BoxStart + (uint)(SlotSize * SlotCount * box);

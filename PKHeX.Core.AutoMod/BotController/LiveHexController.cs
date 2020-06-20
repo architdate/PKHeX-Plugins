@@ -10,7 +10,7 @@
         {
             SAV = boxes;
             Editor = editor;
-            Bot = new PokeSysBotMini(0x1716B3);
+            Bot = new PokeSysBotMini(LiveHeXVersion.SWSH_Rigel1);
         }
 
         public void ChangeBox(int box)

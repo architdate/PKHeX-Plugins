@@ -53,20 +53,13 @@ namespace AutoModPlugins
             CenterToParent();
         }
 
-        private void SetTrainerData(SaveFile sav, int savsize)
+        private void SetTrainerData(SaveFile sav, LiveHeXVersion lv)
         {
-            switch (sav)
-            {
-                case SAV8SWSH s8:
-                    var info = s8.MyStatus;
-                    byte[] data;
-                    if (savsize == 0x1716B3 || savsize == 0x17195E)
-                        data = Remote.Bot.ReadBytes(0x42935e48, 0x110);
-                    else
-                        data = Remote.Bot.ReadBytes(0x45061108, 0x110);
-                    data.CopyTo(info.Data);
-                    break;
-            }
+            var size = RamOffsets.GetTrainerBlockSize(lv);
+            var ofs = RamOffsets.GetTrainerBlockOffset(lv);
+            
+            // Check and set trainerdata based on ISaveBlock interfaces
+            if (sav is ISaveBlock8Main s8) Remote.Bot.ReadBytes(ofs, size).CopyTo(s8.MyStatus.Data);
         }
 
         private void ChangeBox(object sender, EventArgs e)
@@ -83,11 +76,11 @@ namespace AutoModPlugins
                 B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
                 groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
                 var ConnectionEstablished = false;
-                var savsize = 0x1716B3;
-                var validsizes = new[] { 0x1716B3, 0x17195E, 0x180B19 };
-                foreach (int size in validsizes)
+                var currver = LiveHeXVersion.SWSH_Rigel1;
+                var validversions = Enum.GetValues(typeof(LiveHeXVersion)).Cast<LiveHeXVersion>();
+                foreach (LiveHeXVersion ver in validversions)
                 {
-                    Remote.Bot = new PokeSysBotMini(size);
+                    Remote.Bot = new PokeSysBotMini(ver);
                     Remote.Bot.IP = TB_IP.Text;
                     Remote.Bot.Port = int.Parse(TB_Port.Text);
                     Remote.Bot.Connect();
@@ -97,7 +90,7 @@ namespace AutoModPlugins
                     if (pkm.ChecksumValid && pkm.Species > -1)
                     {
                         ConnectionEstablished = true;
-                        savsize = size;
+                        currver = ver;
                         break;
                     }
 
@@ -107,7 +100,7 @@ namespace AutoModPlugins
 
                 if (!ConnectionEstablished)
                 {
-                    Remote.Bot = new PokeSysBotMini(0x180B19);
+                    Remote.Bot = new PokeSysBotMini(currver);
                     Remote.Bot.IP = TB_IP.Text;
                     Remote.Bot.Port = int.Parse(TB_Port.Text);
                     Remote.Bot.Connect();
@@ -116,7 +109,7 @@ namespace AutoModPlugins
                 Remote.ReadBox(SAV.CurrentBox);
 
                 // Set Trainer Data
-                SetTrainerData(SAV.SAV, savsize);
+                SetTrainerData(SAV.SAV, currver);
             }
             catch (Exception ex)
             {
