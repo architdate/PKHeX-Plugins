@@ -71,7 +71,10 @@ namespace PKHeX.Core.AutoMod
                 pk.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
                 return;
             }
-            pk.EncryptionConstant = Util.Rand32();
+
+            if (enc is WC8 w8 && w8.PIDType == Shiny.FixedValue && w8.EncryptionConstant == 0) // HOME Gifts
+                pk.EncryptionConstant = 0;
+            else pk.EncryptionConstant = Util.Rand32();
         }
 
         /// <summary>

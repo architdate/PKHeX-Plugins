@@ -420,7 +420,15 @@ namespace PKHeX.Core.AutoMod
 
             // Find the encounter
             var li = EncounterFinder.FindVerifiedEncounter(original);
-            pk.IVs = set.IVs;
+            if (li.EncounterMatch is MysteryGift mg)
+            {
+                for (int i = 0; i < mg.IVs.Length; i++)
+                {
+                    if (mg.IVs[i] > 31) pk.IVs[i] = set.IVs[i];
+                    else pk.IVs[i] = mg.IVs[i];
+                }
+            }
+            else pk.IVs = set.IVs;
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
             if (li.EncounterMatch is EncounterStatic8N || li.EncounterMatch is EncounterStatic8NC || li.EncounterMatch is EncounterStatic8ND)
@@ -441,6 +449,9 @@ namespace PKHeX.Core.AutoMod
             {
                 if (Species == 658 && pk.AltForm == 1)
                     pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
+                if (li.EncounterMatch is WC6 w6 && w6.PIDType == Shiny.FixedValue) return;
+                if (li.EncounterMatch is WC7 w7 && w7.PIDType == Shiny.FixedValue) return;
+                if (li.EncounterMatch is WC8 w8 && w8.PIDType == Shiny.FixedValue) return;
                 if (method != PIDType.G5MGShiny)
                 {
                     pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
