@@ -422,11 +422,13 @@ namespace PKHeX.Core.AutoMod
             var li = EncounterFinder.FindVerifiedEncounter(original);
             if (li.EncounterMatch is MysteryGift mg)
             {
+                var ivs = pk.IVs;
                 for (int i = 0; i < mg.IVs.Length; i++)
                 {
-                    if (mg.IVs[i] > 31) pk.IVs[i] = set.IVs[i];
-                    else pk.IVs[i] = mg.IVs[i];
+                    if (mg.IVs[i] > 31) ivs[i] = set.IVs[i];
+                    else ivs[i] = mg.IVs[i];
                 }
+                pk.IVs = ivs;
             }
             else pk.IVs = set.IVs;
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
@@ -452,9 +454,13 @@ namespace PKHeX.Core.AutoMod
                 if (li.EncounterMatch is WC6 w6 && w6.PIDType == Shiny.FixedValue) return;
                 if (li.EncounterMatch is WC7 w7 && w7.PIDType == Shiny.FixedValue) return;
                 if (li.EncounterMatch is WC8 w8 && w8.PIDType == Shiny.FixedValue) return;
+                if (pk.Version >= 24) return; // Don't even bother changing IVs for Gen 6+ because why bother
                 if (method != PIDType.G5MGShiny)
                 {
+                    var origpid = pk.PID;
                     pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
+                    if (!li.EncounterMatch.Equals(EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch))
+                        pk.PID = origpid; // Bad things happen when you change the PID!
                     if (li.Generation != 5)
                         return;
                     if (pk is PK5 p && p.NPokémon)
