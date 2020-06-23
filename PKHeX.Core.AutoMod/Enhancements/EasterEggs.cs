@@ -21,8 +21,8 @@
                 4 => Species.Bidoof,
                 5 => Species.Stunfisk,
                 6 => Species.Sliggoo,
-                7 => Species.Meltan,
-                8 => Species.Snom,
+                7 => Species.Cosmog,
+                8 => Species.Meltan,
                 _ => Species.Diglett
             };
         }
@@ -50,8 +50,8 @@
                 4 => "U R A DOOF",
                 5 => "PANCAKE",
                 6 => "SHOOT DAT GOO",
-                7 => "MATT'S NUT",
-                8 => "ILLEGAL BUG",
+                7 => "GET IN BAG",
+                8 => "MATT'S NUT",
                 _ => "HOW DO I HAK"
             };
         }
