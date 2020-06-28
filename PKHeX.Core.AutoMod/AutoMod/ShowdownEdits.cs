@@ -63,6 +63,8 @@ namespace PKHeX.Core.AutoMod
             var enc2 = la2.EncounterOriginal;
             if ((!ReferenceEquals(enc1, enc2) && !(enc1 is EncounterEgg)) || la2.Info.Parse.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
                 pk.Nature = orig;
+            if (pk.Format >= 8 && pk.StatNature != pk.Nature && pk.StatNature != 12 && (pk.StatNature > 24 || pk.StatNature % 6 == 0)) // Only Serious Mint for Neutral Natures
+                pk.StatNature = 12;
         }
 
         private static void SetAbility(PKM pk, IBattleTemplate set, int preference)
@@ -91,6 +93,7 @@ namespace PKHeX.Core.AutoMod
             pk.ApplySetGender(set);
             pk.SetAltForm(Form);
             pk.SetFormArgument(enc);
+            pk.RefreshAbility(pk.AbilityNumber >> 1);
 
             var gen = new LegalityAnalysis(pk).Info.Generation;
             var nickname = Legal.GetMaxLengthNickname(gen, LanguageID.English) < set.Nickname.Length ? set.Nickname.Substring(0, Legal.GetMaxLengthNickname(gen, LanguageID.English)) : set.Nickname;
