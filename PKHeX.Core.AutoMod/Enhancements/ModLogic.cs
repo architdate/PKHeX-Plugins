@@ -152,6 +152,8 @@ namespace AutoModPlugins
             int wIndex = WurmpleUtil.GetWurmpleEvoGroup(f.Species);
             if (wIndex != -1)
                 f.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
+            if (f is IHomeTrack ht && ht.Tracker == 0 && APILegality.SetRandomTracker)
+                ht.Tracker = APILegality.GetRandomULong();
             if (new LegalityAnalysis(f).Valid) return f;
             else
             {

@@ -560,7 +560,7 @@ namespace PKHeX.Core.AutoMod
         /// Function to generate a random ulong
         /// </summary>
         /// <returns>A random ulong</returns>
-        private static ulong GetRandomULong()
+        public static ulong GetRandomULong()
         {
             return ((ulong)Util.Rand.Next(1 << 30) << 34) | ((ulong)Util.Rand.Next(1 << 30) << 4) | (uint)Util.Rand.Next(1 << 4);
         }
