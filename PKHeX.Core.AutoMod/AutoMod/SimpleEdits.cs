@@ -204,7 +204,7 @@ namespace PKHeX.Core.AutoMod
                 pkm.DynamaxLevel = level; // Set max dynamax level
             if (pk is PK8 pk8)
             {
-                if (pk8.Species >= (int)Species.Zacian) // Zacian, Zamazenta and Eternatus cannot dynamax
+                if (pk8.Species == (int)Species.Zacian || pk8.Species == (int)Species.Zamazenta || pk8.Species == (int)Species.Eternatus) // Zacian, Zamazenta and Eternatus cannot dynamax
                     pk8.DynamaxLevel = 0;
             }
         }
