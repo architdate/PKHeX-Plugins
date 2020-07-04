@@ -104,7 +104,7 @@ namespace PKHeX.Core.AutoMod
 
             // Don't process if requested PKM is Gigantamax but the Game is not SW/SH
             ver = enc is IVersion v ? v.Version : destVer;
-            if (set.CanGigantamax && !GameVersion.SWSH.Contains(ver))
+            if (set.CanGigantamax && !GameVersion.SWSH.Contains(ver) && !Legal.CanEatMaxSoup.Contains(set.Species))
                 return false;
 
             // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal

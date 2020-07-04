@@ -101,6 +101,16 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
+            if (enc is WC8 w8)
+            {
+                var isHOMEGift = w8.Location == 30018 || w8.GetOT(2) == "HOME";
+                if (isHOMEGift)
+                {
+                    pk.SetShinySID(); // Fix this to set random trainer TID/SID values such that SID7 == 0
+                    return;
+                }
+            }
+
             if (pk.GenNumber > 5 || pk.VC)
             {
                 if (shiny == Shiny.FixedValue || shiny == Shiny.Never)
