@@ -48,6 +48,8 @@ namespace PKHeX.Core.AutoMod
             {
                 if (pk.AltForm == EvolutionMethod.GetAmpLowKeyResult(val))
                     pk.Nature = val; // StatNature already set
+                if (pk.Format >= 8 && pk.StatNature != pk.Nature && pk.StatNature != 12 && (pk.StatNature > 24 || pk.StatNature % 6 == 0)) // Only Serious Mint for Neutral Natures
+                    pk.StatNature = 12;
                 return;
             }
 
