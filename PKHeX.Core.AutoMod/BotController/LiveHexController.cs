@@ -51,17 +51,18 @@
         public void ReadActiveSlot(int box, int slot)
         {
             var data = Bot.ReadSlot(box, slot);
-            var pkm = new PK8(data);
-            Editor.PopulateFields(pkm);
+            var pkm = PKMConverter.GetPKMfromBytes(data);
+            if (pkm != null)
+                Editor.PopulateFields(pkm);
         }
 
         public bool ReadOffset(uint offset)
         {
             var data = Bot.ReadOffset(offset);
-            var pkm = new PK8(data);
+            var pkm = PKMConverter.GetPKMfromBytes(data);
 
             // Since data might not actually exist at the user-specified offset, double check that the pkm data is valid.
-            if (!pkm.ChecksumValid)
+            if (pkm == null || !pkm.ChecksumValid)
                 return false;
             Editor.PopulateFields(pkm);
             return true;
