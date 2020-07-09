@@ -14,6 +14,13 @@ namespace PKHeX.Core.AutoMod
 
     public static class RamOffsets
     {
+        public static LiveHeXVersion[] GetValidVersions(SaveFile sf)
+        {
+            if (sf is SAV7b) return new[] { LiveHeXVersion.LGPE_v102 };
+            if (sf is SAV8SWSH) return new[] { LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2 };
+            return new[] { LiveHeXVersion.SWSH_Rigel2 };
+        }
+
         public static int GetB1S1Offset(LiveHeXVersion lv)
         {
             return lv switch

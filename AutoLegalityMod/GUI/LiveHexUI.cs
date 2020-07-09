@@ -78,7 +78,7 @@ namespace AutoModPlugins
                 groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
                 var ConnectionEstablished = false;
                 var currver = LiveHeXVersion.SWSH_Rigel1;
-                var validversions = Enum.GetValues(typeof(LiveHeXVersion)).Cast<LiveHeXVersion>();
+                var validversions = RamOffsets.GetValidVersions(SAV.SAV);
                 foreach (LiveHeXVersion ver in validversions)
                 {
                     Remote.Bot = new PokeSysBotMini(ver);
