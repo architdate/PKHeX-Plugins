@@ -28,7 +28,7 @@
         public void ReadBox(int box)
         {
             var sav = SAV.SAV;
-            var len = SAV.SAV.BoxSlotCount * 344;
+            var len = SAV.SAV.BoxSlotCount * (RamOffsets.GetSlotSize(Bot.Version) + RamOffsets.GetGapSize(Bot.Version));
             var data = Bot.ReadBox(box, len);
             sav.SetBoxBinary(data, box);
             SAV.ReloadSlots();

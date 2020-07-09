@@ -60,6 +60,7 @@ namespace AutoModPlugins
             
             // Check and set trainerdata based on ISaveBlock interfaces
             if (sav is ISaveBlock8Main s8) Remote.Bot.ReadBytes(ofs, size).CopyTo(s8.MyStatus.Data);
+            else if (sav is SAV7b slgpe) Remote.Bot.ReadBytes(ofs, size).CopyTo(slgpe.Blocks.Status.Data);
         }
 
         private void ChangeBox(object sender, EventArgs e)
@@ -86,8 +87,8 @@ namespace AutoModPlugins
                     Remote.Bot.Connect();
 
                     var data = Remote.Bot.ReadSlot(1, 1);
-                    var pkm = new PK8(data);
-                    if (pkm.ChecksumValid && pkm.Species > -1)
+                    var pkm = PKMConverter.GetPKMfromBytes(data);
+                    if (pkm != null && pkm.ChecksumValid && pkm.Species > -1)
                     {
                         ConnectionEstablished = true;
                         currver = ver;

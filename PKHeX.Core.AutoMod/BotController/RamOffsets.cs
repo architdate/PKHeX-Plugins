@@ -6,6 +6,7 @@ namespace PKHeX.Core.AutoMod
 {
     public enum LiveHeXVersion
     {
+        LGPE_v102,
         SWSH_Orion,
         SWSH_Rigel1,
         SWSH_Rigel2
@@ -17,6 +18,7 @@ namespace PKHeX.Core.AutoMod
         {
             return lv switch
             {
+                LiveHeXVersion.LGPE_v102 => 0x53586c30,
                 LiveHeXVersion.SWSH_Orion => 0x4293D8B0,
                 LiveHeXVersion.SWSH_Rigel1 => 0x4506D890,
                 _ => 0x4506D890
@@ -27,9 +29,21 @@ namespace PKHeX.Core.AutoMod
         {
             return lv switch
             {
+                LiveHeXVersion.LGPE_v102 => 260,
                 LiveHeXVersion.SWSH_Orion => 344,
                 LiveHeXVersion.SWSH_Rigel1 => 344,
                 _ => 344
+            };
+        }
+
+        public static int GetGapSize(LiveHeXVersion lv)
+        {
+            return lv switch
+            {
+                LiveHeXVersion.LGPE_v102 => 0,
+                LiveHeXVersion.SWSH_Orion => 0,
+                LiveHeXVersion.SWSH_Rigel1 => 0,
+                _ => 0
             };
         }
 
@@ -37,6 +51,7 @@ namespace PKHeX.Core.AutoMod
         {
             return lv switch
             {
+                LiveHeXVersion.LGPE_v102 => 25,
                 LiveHeXVersion.SWSH_Orion => 30,
                 LiveHeXVersion.SWSH_Rigel1 => 30,
                 _ => 30
@@ -47,6 +62,7 @@ namespace PKHeX.Core.AutoMod
         {
             return lv switch
             {
+                LiveHeXVersion.LGPE_v102 => 0x168,
                 LiveHeXVersion.SWSH_Orion => 0x110,
                 LiveHeXVersion.SWSH_Rigel1 => 0x110,
                 _ => 0x110
@@ -57,6 +73,7 @@ namespace PKHeX.Core.AutoMod
         {
             return lv switch
             {
+                LiveHeXVersion.LGPE_v102 => 0x533211BC,
                 LiveHeXVersion.SWSH_Orion => 0x42935e48,
                 LiveHeXVersion.SWSH_Rigel1 => 0x45061108,
                 _ => 0x45061108
