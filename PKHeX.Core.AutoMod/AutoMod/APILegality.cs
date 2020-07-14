@@ -536,6 +536,7 @@ namespace PKHeX.Core.AutoMod
                     break;
             } while (++ count < 10_000);
 
+            pk.Species = iterPKM.Species; // possible evolution
             // can be ability capsuled
             pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
             pk.StatNature = iterPKM.StatNature;
