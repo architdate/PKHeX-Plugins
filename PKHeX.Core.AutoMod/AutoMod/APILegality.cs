@@ -112,7 +112,7 @@ namespace PKHeX.Core.AutoMod
             if (GameVersion.GG.Contains(destVer))
                 return set.Species <= 151 || set.Species == 808 || set.Species == 809;
             if (GameVersion.SWSH.Contains(destVer))
-                return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(set.Species, enc.Form)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(set.Species);
+                return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(set.Species, set.FormIndex)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(set.Species);
             if (set.Species > destVer.GetMaxSpeciesID())
                 return false;
 
