@@ -66,14 +66,21 @@ namespace PKHeX.Core.AutoMod
                 {
                     if (!species.Contains(set.Species))
                         continue;
-                    var pk = sav.GetLegalFromSet(set, out _);
-                    var la = new LegalityAnalysis(pk);
-                    if (la.Valid)
-                        legalsets.Add(set);
-                    else
+                    try
                     {
-                        illegalsets.Add(set);
-                        Console.WriteLine($"Invalid Set for {(Species)set.Species} in file {file}");
+                        var pk = sav.GetLegalFromSet(set, out _);
+                        var la = new LegalityAnalysis(pk);
+                        if (la.Valid)
+                            legalsets.Add(set);
+                        else
+                        {
+                            illegalsets.Add(set);
+                            Console.WriteLine($"Invalid Set for {(Species) set.Species} in file {file} with set: {set.Text}");
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine($"Exception for {(Species) set.Species} in file {file} with set: {set.Text}");
                     }
                 }
             }

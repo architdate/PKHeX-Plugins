@@ -59,7 +59,7 @@ namespace PKHeX.Core.AutoMod
                 ApplySetDetails(pk, set, raw, dest, enc);
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
-                    if (Legal.CanEatMaxSoup.Contains(pk.Species))
+                    if (gmax.CanToggleGigantamax(pk.Species, enc.Species))
                         gmax.CanGigantamax = set.CanGigantamax; // soup hax
                     else continue;
                 }
@@ -104,17 +104,16 @@ namespace PKHeX.Core.AutoMod
 
             // Don't process if requested PKM is Gigantamax but the Game is not SW/SH
             ver = enc is IVersion v ? v.Version : destVer;
-            if (set.CanGigantamax && !GameVersion.SWSH.Contains(ver) && !Legal.CanEatMaxSoup.Contains(set.Species))
+            if (set.CanGigantamax && !GameVersion.SWSH.Contains(ver))
                 return false;
 
             // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
             // Don't process if Game is SWSH and requested PKM is not from the Galar Dex (Zukan8.DexLookup)
-            var species = Enumerable.Range(1, destVer.GetMaxSpeciesID());
             if (GameVersion.GG.Contains(destVer))
-                species = species.Where(z => z <= 151 || (z == 808 || z == 809));
+                return set.Species <= 151 || set.Species == 808 || set.Species == 809;
             if (GameVersion.SWSH.Contains(destVer))
-                species = species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(z, enc.Form)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z));
-            if (!species.Contains(set.Species))
+                return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(set.Species, enc.Form)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(set.Species);
+            if (set.Species > destVer.GetMaxSpeciesID())
                 return false;
 
             // Encounter should hopefully be possible

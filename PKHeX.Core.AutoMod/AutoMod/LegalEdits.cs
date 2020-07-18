@@ -59,7 +59,7 @@ namespace PKHeX.Core.AutoMod
             pk.ClearRelearnMoves();
             var la = new LegalityAnalysis(pk);
 
-            var m = la.GetSuggestedRelearn();
+            var m = la.GetSuggestedRelearnMoves();
             if (m.All(z => z == 0))
             {
                 if (!pk.WasEgg && !pk.WasEvent && !pk.WasEventEgg && !pk.WasLink)
