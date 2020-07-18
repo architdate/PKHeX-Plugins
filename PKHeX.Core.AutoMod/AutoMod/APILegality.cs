@@ -109,16 +109,11 @@ namespace PKHeX.Core.AutoMod
 
             // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
             // Don't process if Game is SWSH and requested PKM is not from the Galar Dex (Zukan8.DexLookup)
-            var species = Enumerable.Range(1, destVer.GetMaxSpeciesID());
             if (GameVersion.GG.Contains(destVer))
-                species = species.Where(z => z <= 151 || (z == 808 || z == 809));
+                return set.Species <= 151 || (set.Species == 808 || set.Species == 809);
             if (GameVersion.SWSH.Contains(destVer))
-                species = species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(z, enc.Form)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z));
-            if (!species.Contains(set.Species))
-                return false;
-
-            // Encounter should hopefully be possible
-            return true;
+                return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(set.Species, set.FormIndex)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(set.Species);
+            return set.Species <= destVer.GetMaxSpeciesID();
         }
 
         /// <summary>
