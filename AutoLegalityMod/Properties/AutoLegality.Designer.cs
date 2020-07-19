@@ -178,5 +178,17 @@ namespace AutoModPlugins.Properties {
                 this["EnableEasterEggs"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PrioritizeGame {
+            get {
+                return ((bool)(this["PrioritizeGame"]));
+            }
+            set {
+                this["PrioritizeGame"] = value;
+            }
+        }
     }
 }

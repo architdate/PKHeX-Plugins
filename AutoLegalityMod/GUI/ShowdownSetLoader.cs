@@ -129,6 +129,7 @@ namespace AutoModPlugins
             APILegality.UseMarkings = settings.UseMarkings;
             APILegality.UseXOROSHIRO = settings.UseXOROSHIRO;
             APILegality.SetRandomTracker = settings.SetRandomTracker;
+            APILegality.PrioritizeGame = settings.PrioritizeGame;
             Legalizer.AllowBruteForce = settings.AllowBruteforce;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
 

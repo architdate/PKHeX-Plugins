@@ -19,6 +19,7 @@ namespace PKHeX.Core.AutoMod
         public static bool UseCompetitiveMarkings { get; set; }
         public static bool UseMarkings { get; set; } = true;
         public static bool UseXOROSHIRO { get; set; } = true;
+        public static bool PrioritizeGame { get; set; } = true;
         public static bool SetRandomTracker { get; set; }
 
         /// <summary>
@@ -42,6 +43,8 @@ namespace PKHeX.Core.AutoMod
                 destVer = s.Version;
 
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
+            if (PrioritizeGame)
+                gamelist = PrioritizeVersion(gamelist, destVer);
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             encounters = encounters.Concat(GetFriendSafariEncounters(template));
             foreach (var enc in encounters)
@@ -74,6 +77,28 @@ namespace PKHeX.Core.AutoMod
             }
             satisfied = false;
             return template;
+        }
+
+        /// <summary>
+        /// Gives the currently loaded save priority over other saves in the same generation. Otherwise generational order is preserved
+        /// </summary>
+        /// <param name="gamelist">Array of gameversions which needs to be prioritized</param>
+        /// <param name="game">Gameversion to prioritize</param>
+        /// <returns></returns>
+        private static GameVersion[] PrioritizeVersion(GameVersion[] gamelist, GameVersion game)
+        {
+            var matched = 0;
+            var retval = new List<GameVersion>();
+            foreach (GameVersion poss in gamelist)
+            {
+                if (poss == game || game.Contains(poss))
+                {
+                    retval.Insert(matched, poss);
+                    matched++;
+                }
+                else retval.Add(poss);
+            }
+            return retval.ToArray();
         }
 
         /// <summary>
