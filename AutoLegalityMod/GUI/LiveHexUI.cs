@@ -79,8 +79,8 @@ namespace AutoModPlugins
                 B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
                 groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
                 var ConnectionEstablished = false;
-                var currver = LiveHeXVersion.SWSH_Rigel1;
                 var validversions = RamOffsets.GetValidVersions(SAV.SAV);
+                var currver = validversions[0];
                 foreach (LiveHeXVersion ver in validversions)
                 {
                     Remote.Bot = new PokeSysBotMini(ver);
@@ -108,6 +108,10 @@ namespace AutoModPlugins
                     Remote.Bot.com.Port = int.Parse(TB_Port.Text);
                     Remote.Bot.com.Connect();
                 }
+                // Patch NFC if needed
+                if (RamOffsets.NFCOffset(currver) != 0)
+                    Remote.Bot.com.WriteBytes(BitConverter.GetBytes(RamOffsets.NFCValue), RamOffsets.NFCOffset(currver));
+
                 // Load current box
                 Remote.ReadBox(SAV.CurrentBox);
 

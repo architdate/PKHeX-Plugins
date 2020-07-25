@@ -166,5 +166,19 @@ namespace PKHeX.Core.AutoMod
                 _ => 0x45061108
             };
         }
+
+        public static uint NFCValue = 0xE3A01000;
+
+        public static uint NFCOffset(LiveHeXVersion lv)
+        {
+            return lv switch
+            {
+                LiveHeXVersion.UM_v12 => 0x3F3428,
+                LiveHeXVersion.US_v12 => 0x3F3424,
+                LiveHeXVersion.SN_v12 => 0x3E14C0,
+                LiveHeXVersion.MN_v12 => 0x3E14C0,
+                _ => 0
+            };
+        }
     }
 }

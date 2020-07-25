@@ -9,10 +9,10 @@ namespace PKHeX.Core.AutoMod
 {
     public class NTRMini : ICommunicator
     {
-        public string IP = "192.168.1.65";
+        public string IP = "192.168.1.106";
         public int Port = 8000;
 
-        public NtrClient client = new NtrClient();
+        private NtrClient client;
 
         public bool Connected;
 
@@ -24,6 +24,7 @@ namespace PKHeX.Core.AutoMod
         {
             lock (_sync)
             {
+                client = new NtrClient();
                 client.EvtNtrStringReceived += OnProcessList;
                 client.EvtReadMemoryReceived += OnReadMemory;
                 client.EvtConnect += OnConnected;

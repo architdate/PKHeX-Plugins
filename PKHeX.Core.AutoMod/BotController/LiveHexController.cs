@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace PKHeX.Core.AutoMod
+﻿namespace PKHeX.Core.AutoMod
 {
     public class LiveHexController
     {
@@ -13,7 +11,7 @@ namespace PKHeX.Core.AutoMod
             SAV = boxes;
             Editor = editor;
             var ValidVers = RamOffsets.GetValidVersions(boxes.SAV);
-            Bot = new PokeSysBotMini(ValidVers.Last());
+            Bot = new PokeSysBotMini(ValidVers[0]);
         }
 
         public void ChangeBox(int box)
