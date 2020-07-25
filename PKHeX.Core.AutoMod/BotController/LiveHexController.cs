@@ -45,7 +45,7 @@
         {
             var pkm = Editor.PreparePKM();
             pkm.ResetPartyStats();
-            var data = pkm.EncryptedPartyData;
+            var data = RamOffsets.WriteBoxData(Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData;
             Bot.SendSlot(data, box, slot);
         }
 

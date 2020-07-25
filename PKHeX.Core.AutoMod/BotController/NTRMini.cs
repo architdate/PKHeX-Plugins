@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace PKHeX.Core.AutoMod
                 client.EvtNtrStringReceived += OnProcessList;
                 client.EvtReadMemoryReceived += OnReadMemory;
                 client.EvtConnect += OnConnected;
+                client.EvtDisconnect += OnDisconnected;
                 client.SetServer(IP, 8000);
                 client.ConnectToServer();
 
@@ -65,6 +67,9 @@ namespace PKHeX.Core.AutoMod
             lock (_sync)
             {
                 if (!NTRConnected) Connect();
+                while (!client.HeartbeatSendable)
+                    Thread.Sleep(50);
+
                 client.SendReadMemPacket(offset, (uint)length, (uint)PID);
 
                 while (lastMemoryRead == null)
@@ -93,20 +98,28 @@ namespace PKHeX.Core.AutoMod
 
         private void OnConnected(object sender, EventArgs e)
         {
-            Console.WriteLine("Connected");
+            Debug.WriteLine("Connected");
             Connected = true;
             NTRConnected = true;
         }
 
+        private void OnDisconnected(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Disconnected");
+            NTRConnected = false;
+            lastMemoryRead = null;
+        }
+
         private void OnReadMemory(object sender, ReadMemoryReceivedEventArgs e)
         {
-            Console.WriteLine("Requested Memory Read Size:" + e.Buffer.Length);
+            Debug.WriteLine("Requested Memory Read Size:" + e.Buffer.Length);
             lastMemoryRead = client.ReadMemory;
         }
 
         private void OnProcessList(object sender, MessageReceivedEventArgs e)
         {
             string log = e.Message;
+            Debug.WriteLine(log);
             if (log.Contains("momiji")) // Ultra Sun and Moon
             {
                 string splitlog = log.Substring(log.IndexOf(", pname:   momiji") - 8, log.Length - log.IndexOf(", pname:   momiji"));

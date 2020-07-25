@@ -203,7 +203,7 @@ namespace AutoModPlugins
                 return;
             int box = b.Box;
             int slotpkm = b.Slot;
-            Remote.Bot.SendSlot(pkm.EncryptedPartyData, box, slotpkm);
+            Remote.Bot.SendSlot(RamOffsets.WriteBoxData(Remote.Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData, box, slotpkm);
         }
 
         public ISlotInfo GetSlotData(PictureBox view) => null;
