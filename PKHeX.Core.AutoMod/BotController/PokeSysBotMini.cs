@@ -4,17 +4,20 @@ using static PKHeX.Core.AutoMod.LiveHeXVersion;
 
 namespace PKHeX.Core.AutoMod
 {
-    public class PokeSysBotMini : SysBotMini
+    public class PokeSysBotMini
     {
         public static int BoxStart = 0x4506D890;
         public static int SlotSize = 344;
         public static int SlotCount = 30;
         public static int GapSize = 0;
         public LiveHeXVersion Version;
+        public ICommunicator com;
+        public bool Connected => com.Connected;
 
         public PokeSysBotMini(LiveHeXVersion lv)
         {
             Version = lv;
+            com = RamOffsets.GetCommunicator(lv);
             BoxStart = RamOffsets.GetB1S1Offset(lv);
             SlotSize = RamOffsets.GetSlotSize(lv);
             SlotCount = RamOffsets.GetSlotCount(lv);
@@ -26,7 +29,7 @@ namespace PKHeX.Core.AutoMod
 
         public byte[] ReadBox(int box, int len)
         {
-            var bytes = ReadBytes(GetBoxOffset(box), len);
+            var bytes = com.ReadBytes(GetBoxOffset(box), len);
             if (GapSize == 0)
                 return bytes;
             var allpkm = new List<byte[]>();
@@ -44,8 +47,8 @@ namespace PKHeX.Core.AutoMod
             return retval;
         }
 
-        public byte[] ReadSlot(int box, int slot) => ReadBytes(GetSlotOffset(box, slot), SlotSize);
-        public byte[] ReadOffset(uint offset) => ReadBytes(offset, SlotSize);
+        public byte[] ReadSlot(int box, int slot) => com.ReadBytes(GetSlotOffset(box, slot), SlotSize);
+        public byte[] ReadOffset(uint offset) => com.ReadBytes(offset, SlotSize);
 
         public void SendBox(byte[] boxData, int box)
         {
@@ -54,6 +57,6 @@ namespace PKHeX.Core.AutoMod
                 SendSlot(pkmData[i], box, i);
         }
 
-        public void SendSlot(byte[] data, int box, int slot) => WriteBytes(data, GetSlotOffset(box, slot));
+        public void SendSlot(byte[] data, int box, int slot) => com.WriteBytes(data, GetSlotOffset(box, slot));
     }
 }

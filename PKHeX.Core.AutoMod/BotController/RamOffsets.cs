@@ -21,6 +21,18 @@ namespace PKHeX.Core.AutoMod
             return new[] { LiveHeXVersion.SWSH_Rigel2 };
         }
 
+        public static ICommunicator GetCommunicator(LiveHeXVersion lv)
+        {
+            return lv switch
+            {
+                LiveHeXVersion.LGPE_v102 => new SysBotMini(),
+                LiveHeXVersion.SWSH_Orion => new SysBotMini(),
+                LiveHeXVersion.SWSH_Rigel1 => new SysBotMini(),
+                LiveHeXVersion.SWSH_Rigel2 => new SysBotMini(),
+                _ => new NTRMini()
+            };
+        }
+
         public static int GetB1S1Offset(LiveHeXVersion lv)
         {
             return lv switch

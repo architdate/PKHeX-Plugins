@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace PKHeX.Core.AutoMod
 {
-    public class SysBotMini
+    public class SysBotMini : ICommunicator
     {
         public string IP = "192.168.1.65";
         public int Port = 6000;
@@ -13,6 +13,11 @@ namespace PKHeX.Core.AutoMod
         public bool Connected;
 
         private readonly object _sync = new object();
+
+        bool ICommunicator.Connected { get => Connected; set => Connected = value; }
+        int ICommunicator.Port { get => Port; set => Port = value; }
+        string ICommunicator.IP { get => IP; set => IP = value; }
+
 
         public void Connect()
         {

@@ -13,4 +13,10 @@
     <PackageReference Include="PKHeX.Core" Version="20.7.18" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="NtrSharp">
+      <HintPath>BotController\deps\NtrSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

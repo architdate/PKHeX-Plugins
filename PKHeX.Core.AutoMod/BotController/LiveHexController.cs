@@ -68,8 +68,8 @@
             return true;
         }
 
-        public byte[] ReadRAM(uint offset, int size) => Bot.ReadBytes(offset, size);
+        public byte[] ReadRAM(uint offset, int size) => Bot.com.ReadBytes(offset, size);
 
-        public void WriteRAM(uint offset, byte[] data) => Bot.WriteBytes(data, offset);
+        public void WriteRAM(uint offset, byte[] data) => Bot.com.WriteBytes(data, offset);
     }
 }

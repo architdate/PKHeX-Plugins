@@ -49,7 +49,7 @@ namespace AutoModPlugins
             x = (SaveDataEditor<PictureBox>)test.GetValue(sav);
             x.Slots.Publisher.Subscribers.Add(this);
 
-            TB_Port.Text = Remote.Bot.Port.ToString();
+            TB_Port.Text = Remote.Bot.com.Port.ToString();
             CenterToParent();
         }
 
@@ -59,8 +59,8 @@ namespace AutoModPlugins
             var ofs = RamOffsets.GetTrainerBlockOffset(lv);
             
             // Check and set trainerdata based on ISaveBlock interfaces
-            if (sav is ISaveBlock8Main s8) Remote.Bot.ReadBytes(ofs, size).CopyTo(s8.MyStatus.Data);
-            else if (sav is SAV7b slgpe) Remote.Bot.ReadBytes(ofs, size).CopyTo(slgpe.Blocks.Status.Data);
+            if (sav is ISaveBlock8Main s8) Remote.Bot.com.ReadBytes(ofs, size).CopyTo(s8.MyStatus.Data);
+            else if (sav is SAV7b slgpe) Remote.Bot.com.ReadBytes(ofs, size).CopyTo(slgpe.Blocks.Status.Data);
         }
 
         private void ChangeBox(object sender, EventArgs e)
@@ -82,9 +82,9 @@ namespace AutoModPlugins
                 foreach (LiveHeXVersion ver in validversions)
                 {
                     Remote.Bot = new PokeSysBotMini(ver);
-                    Remote.Bot.IP = TB_IP.Text;
-                    Remote.Bot.Port = int.Parse(TB_Port.Text);
-                    Remote.Bot.Connect();
+                    Remote.Bot.com.IP = TB_IP.Text;
+                    Remote.Bot.com.Port = int.Parse(TB_Port.Text);
+                    Remote.Bot.com.Connect();
 
                     var data = Remote.Bot.ReadSlot(1, 1);
                     var pkm = PKMConverter.GetPKMfromBytes(data);
@@ -96,15 +96,15 @@ namespace AutoModPlugins
                     }
 
                     if (Remote.Bot.Connected)
-                        Remote.Bot.Disconnect();
+                        Remote.Bot.com.Disconnect();
                 }
 
                 if (!ConnectionEstablished)
                 {
                     Remote.Bot = new PokeSysBotMini(currver);
-                    Remote.Bot.IP = TB_IP.Text;
-                    Remote.Bot.Port = int.Parse(TB_Port.Text);
-                    Remote.Bot.Connect();
+                    Remote.Bot.com.IP = TB_IP.Text;
+                    Remote.Bot.com.Port = int.Parse(TB_Port.Text);
+                    Remote.Bot.com.Connect();
                 }
                 // Load current box
                 Remote.ReadBox(SAV.CurrentBox);
@@ -121,7 +121,7 @@ namespace AutoModPlugins
         private void LiveHexUI_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Remote.Bot.Connected)
-                Remote.Bot.Disconnect();
+                Remote.Bot.com.Disconnect();
             x.Slots.Publisher.Subscribers.Remove(this);
 
             Properties.AutoLegality.Default.LatestIP = TB_IP.Text;
