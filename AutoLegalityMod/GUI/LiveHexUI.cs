@@ -60,6 +60,8 @@ namespace AutoModPlugins
             
             // Check and set trainerdata based on ISaveBlock interfaces
             if (sav is ISaveBlock8Main s8) Remote.Bot.com.ReadBytes(ofs, size).CopyTo(s8.MyStatus.Data);
+            else if (sav is ISaveBlock7Main s7) Remote.Bot.com.ReadBytes(ofs, size).CopyTo(s7.MyStatus.Data);
+            else if (sav is ISaveBlock6Core s6) Remote.Bot.com.ReadBytes(ofs, size).CopyTo(s6.Status.Data);
             else if (sav is SAV7b slgpe) Remote.Bot.com.ReadBytes(ofs, size).CopyTo(slgpe.Blocks.Status.Data);
         }
 
