@@ -14,9 +14,9 @@ namespace AutoModPlugins
             var c1 = new ToolStripMenuItem(Name) { Image = Properties.Resources.wifi };
             c1.Click += (s, e) =>
             {
-                if (!(SaveFileEditor.SAV is SAV8SWSH))
+                if (!(SaveFileEditor.SAV is SAV8SWSH || SaveFileEditor.SAV is SAV7USUM || SaveFileEditor.SAV is SAV7SM || SaveFileEditor.SAV is SAV6AO || SaveFileEditor.SAV is SAV6XY))
                 {
-                    WinFormsUtil.Error("Must have a Sword/Shield save file loaded.");
+                    WinFormsUtil.Error("Must have a 3DS or Switch main line game save file loaded up");
                     return;
                 }
                 var editor = new LiveHexUI(SaveFileEditor, PKMEditor);
