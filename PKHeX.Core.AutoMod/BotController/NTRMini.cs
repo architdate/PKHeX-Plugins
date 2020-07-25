@@ -15,6 +15,7 @@ namespace PKHeX.Core.AutoMod
         private NtrClient client;
 
         public bool Connected;
+        private bool NTRConnected;
 
         private readonly object _sync = new object();
         private int PID = -1;
@@ -47,6 +48,8 @@ namespace PKHeX.Core.AutoMod
             lock (_sync)
             {
                 client.Disconnect();
+                NTRConnected = false;
+                lastMemoryRead = null;
             }
         }
 
@@ -61,6 +64,7 @@ namespace PKHeX.Core.AutoMod
         {
             lock (_sync)
             {
+                if (!NTRConnected) Connect();
                 client.SendReadMemPacket(offset, (uint)length, (uint)PID);
 
                 while (lastMemoryRead == null)
@@ -69,6 +73,7 @@ namespace PKHeX.Core.AutoMod
                 byte[] result = lastMemoryRead;
                 lastMemoryRead = null;
 
+                Disconnect();
                 return result;
             }
         }
@@ -77,10 +82,12 @@ namespace PKHeX.Core.AutoMod
         {
             lock (_sync)
             {
+                if (!NTRConnected) Connect();
                 client.SendWriteMemPacket(offset, (uint)PID, data);
 
                 // give it time to push data back
                 Thread.Sleep((data.Length / 256) + 100);
+                Disconnect();
             }
         }
 
@@ -88,6 +95,7 @@ namespace PKHeX.Core.AutoMod
         {
             Console.WriteLine("Connected");
             Connected = true;
+            NTRConnected = true;
         }
 
         private void OnReadMemory(object sender, ReadMemoryReceivedEventArgs e)
