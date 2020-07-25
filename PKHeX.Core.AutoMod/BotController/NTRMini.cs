@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using NtrSharp;
@@ -72,8 +73,15 @@ namespace PKHeX.Core.AutoMod
 
                 client.SendReadMemPacket(offset, (uint)length, (uint)PID);
 
-                while (lastMemoryRead == null)
+                var shittyntrcount = 0;
+                while (lastMemoryRead == null && shittyntrcount < 20)
+                {
                     Thread.Sleep(100);
+                    shittyntrcount += 1;
+                }
+
+                if (shittyntrcount == 20)
+                    return RetryByteRead(offset, length);
 
                 byte[] result = lastMemoryRead;
                 lastMemoryRead = null;
@@ -81,6 +89,12 @@ namespace PKHeX.Core.AutoMod
                 Disconnect();
                 return result;
             }
+        }
+
+        public byte[] RetryByteRead(uint offset, int length)
+        {
+            Disconnect();
+            return ReadBytes(offset, length);
         }
 
         public void WriteBytes(byte[] data, uint offset)
