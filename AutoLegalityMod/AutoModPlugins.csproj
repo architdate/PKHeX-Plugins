@@ -58,7 +58,7 @@
     <Compile Include="GUI\WinFormsTranslator.cs" />
     <Compile Include="Plugins\AutoModPlugin.cs" />
     <Compile Include="Plugins\ExportBoxToShowdown.cs" />
-    <Compile Include="Plugins\ExportPKSMBank.cs" />
+    <Compile Include="Plugins\PKSMBankPlugin.cs" />
     <Compile Include="Plugins\GPSSPlugin.cs" />
     <Compile Include="Plugins\LegalizeBoxes.cs" />
     <Compile Include="Plugins\LiveHex.cs" />
