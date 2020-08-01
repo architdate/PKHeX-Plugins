@@ -275,10 +275,10 @@ namespace PKHeX.Core.AutoMod
                     pk8.HT_Feeling = Memories.GetRandomFeeling(pk8.HT_Memory, 10);
                     break;
                 case PK7 pk7 when !pk.IsUntraded:
-                    pk7.TradeMemory(true);
+                    pk7.SetTradeMemoryHT(true);
                     break;
                 case PK6 pk6 when !pk.IsUntraded:
-                    pk6.TradeMemory(true);
+                    pk6.SetTradeMemoryHT(true);
                     break;
             }
         }
@@ -299,10 +299,13 @@ namespace PKHeX.Core.AutoMod
 
         public static void ClearOTMemory(this PKM pk)
         {
-            pk.OT_Memory = 0;
-            pk.OT_TextVar = 0;
-            pk.OT_Intensity = 0;
-            pk.OT_Feeling = 0;
+            if (pk is IMemoryOT o)
+            {
+                o.OT_Memory = 0;
+                o.OT_TextVar = 0;
+                o.OT_Intensity = 0;
+                o.OT_Feeling = 0;
+            }
         }
 
         /// <summary>
@@ -340,13 +343,20 @@ namespace PKHeX.Core.AutoMod
         {
             pk.SetBelugaValues(); // trainer details changed?
 
-            int gen = trainer.Generation;
-            if (gen == 6 || (gen == 7 && !GameVersion.GG.Contains((GameVersion)trainer.Game)))
+            if (!(pk is IGeoTrack gt))
+                return;
+
+            if (trainer is IRegionOrigin o)
             {
-                pk.ConsoleRegion = trainer.ConsoleRegion;
-                pk.Country = trainer.Country;
-                pk.Region = trainer.SubRegion;
+                gt.ConsoleRegion = o.ConsoleRegion;
+                gt.Country = o.Country;
+                gt.Region = o.Region;
+                return;
             }
+
+            gt.ConsoleRegion = 1; // North America
+            gt.Country = 49; // USA
+            gt.Region = 7; // California
         }
 
         /// <summary>

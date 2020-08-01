@@ -72,7 +72,8 @@ namespace PKHeX.Core.AutoMod
                 pk.Egg_Location = pk.Version < (int)GameVersion.W ? 2002 : 60002;
 
                 pk.Met_Level = 1;
-                pk.ConsoleRegion = 2;
+                if (pk is IGeoTrack gt)
+                    gt.ConsoleRegion = 2;
 
                 if (pk.Version == (int)GameVersion.RD || pk.Version == (int)GameVersion.BU || pk.Version == (int)GameVersion.YW || pk.Version == (int)GameVersion.GN)
                 {
@@ -162,7 +163,8 @@ namespace PKHeX.Core.AutoMod
                 pk.Version = (int)game;
                 pk.RestoreIVs(set.IVs); // Restore IVs to template, and HT to false
                 pk.Language = 2;
-                pk.ConsoleRegion = 2;
+                if (pk is IGeoTrack gt)
+                    gt.ConsoleRegion = 2;
                 pk.OT_Name = trainer.OT;
                 pk.TID = trainer.TID;
                 pk.SID = trainer.SID;
@@ -455,32 +457,47 @@ namespace PKHeX.Core.AutoMod
             }
             if (report.Contains(LMemoryMissingHT)) //V150 = Memory: Handling Trainer Memory missing.
             {
-                pk.HT_Memory = 3;
-                pk.HT_TextVar = 9;
-                pk.HT_Intensity = 1;
-                pk.HT_Feeling = Util.Rand.Next(0, 10); // 0-9
+                if (pk is IMemoryHT h)
+                {
+                    h.HT_Memory = 3;
+                    h.HT_TextVar = 9;
+                    h.HT_Intensity = 1;
+                    h.HT_Feeling = Memories.GetRandomFeeling(h.HT_Memory);
+                }
                 pk.HT_Friendship = pk.OT_Friendship;
                 report = GetReport(pk);
             }
             if (report.Contains(LMemoryMissingOT)) //V152 = Memory: Original Trainer Memory missing.
             {
-                pk.OT_Memory = 3;
-                pk.OT_TextVar = 9;
-                pk.OT_Intensity = 1;
-                pk.OT_Feeling = Util.Rand.Next(0, 10); // 0-9
+                if (pk is IMemoryOT o)
+                {
+                    o.OT_Memory = 3;
+                    o.OT_TextVar = 9;
+                    o.OT_Intensity = 1;
+                    o.OT_Feeling = Memories.GetRandomFeeling(o.OT_Memory);
+                }
                 report = GetReport(pk);
             }
             if (report.Contains(string.Format(LMemoryFeelInvalid, "OT")) || report.Contains(string.Format(LMemoryFeelInvalid, "HT"))) //V255 = {0} Memory: Invalid Feeling (0 = OT/HT)
             {
-                pk.HT_Memory = 3;
-                pk.HT_TextVar = 9;
-                pk.HT_Intensity = 1;
-                pk.HT_Feeling = Memories.GetRandomFeeling(pk.HT_Memory);
+                if (pk is IMemoryHT h)
+                {
+                    h.HT_Memory = 3;
+                    h.HT_TextVar = 9;
+                    h.HT_Intensity = 1;
+                    h.HT_Feeling = Memories.GetRandomFeeling(h.HT_Memory);
+                }
+
                 pk.HT_Friendship = pk.OT_Friendship;
-                pk.OT_Memory = 3;
-                pk.OT_TextVar = 9;
-                pk.OT_Intensity = 1;
-                pk.OT_Feeling = Memories.GetRandomFeeling(pk.OT_Memory);
+
+                if (pk is IMemoryOT o)
+                {
+                    o.OT_Memory = 3;
+                    o.OT_TextVar = 9;
+                    o.OT_Intensity = 1;
+                    o.OT_Feeling = Memories.GetRandomFeeling(o.OT_Memory);
+                }
+
                 report = GetReport(pk);
             }
             if (report.Contains(LGeoMemoryMissing)) //V137 = GeoLocation Memory: Memories should be present.
@@ -496,9 +513,13 @@ namespace PKHeX.Core.AutoMod
             }
             if (report.Contains(LGeoHardwareInvalid)) //Geolocation: Country is not in 3DS region.
             {
-                pk.Country = 0;
-                pk.Region = 0;
-                pk.ConsoleRegion = 2;
+                if (pk is IGeoTrack gt)
+                {
+                    gt.Country = 0;
+                    gt.Region = 0;
+                    gt.ConsoleRegion = 2;
+                }
+
                 report = GetReport(pk);
             }
             if (report.Contains(LFormBattle)) //V310 = Form cannot exist outside of a battle.
