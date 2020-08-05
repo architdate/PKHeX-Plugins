@@ -19,7 +19,10 @@ namespace PKHeX.Core.AutoMod
             Dictionary<string, int> result = new Dictionary<string, int>();
             foreach (var f in files)
             {
-                if (int.TryParse(f.Split('k')[f.Split('k').Length - 1].Split(' ')[0], out var gen))
+                var ext = f.Substring(f.Length - 7).Split('.')[0];
+                if (ext.StartsWith("pb"))
+                    result.Add(f, -1);
+                else if (ext.StartsWith("pk") && int.TryParse(ext.Split('k')[1], out var gen))
                     result.Add(f, gen);
                 else Console.WriteLine($"Invalid file: {f}. Name does not start with 'pkX '");
             }
@@ -30,6 +33,7 @@ namespace PKHeX.Core.AutoMod
         {
             return gen switch
             {
+                -1 => new [] { GP },
                 3 => new[] { SW, US, S, OR, X, B2, B, Pt, E },
                 4 => new[] { SW, US, S, OR, X, B2, B, Pt },
                 5 => new[] { SW, US, S, OR, X, B2 },
