@@ -24,6 +24,25 @@ namespace PKHeX.Core.AutoMod
             079, 080, 891, 892, 893
         };
 
+        internal static readonly HashSet<int> AlolanOriginForms = new HashSet<int>
+        {
+            019, // Rattata
+            020, // Raticate
+            027, // Sandshrew
+            028, // Sandslash
+            037, // Vulpix
+            038, // Ninetales
+            050, // Diglett
+            051, // Dugtrio
+            052, // Meowth
+            053, // Persian
+            074, // Geodude
+            075, // Graveler
+            076, // Golem
+            088, // Grimer
+            089, // Muk
+        };
+
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
         {
             if (pk.Format < 7)
@@ -419,9 +438,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             if ((enc.Species == (int)Species.Meltan || enc.Species == (int)Species.Melmetal) && pk.IsShiny) pk.MetDate = new DateTime(2019, 02, 14); // Shiny Meltan Pokemon GO
             else if (enc.Species == (int)Species.Mewtwo) pk.MetDate = new DateTime(2020, 05, 04); // Mewtwo Raid
-            else if (enc.Species == (int)Species.Marowak && pk.AltForm == 1) pk.MetDate = new DateTime(2020, 07, 25); // Alo-Marowak GO Fest
-            else if (enc.Species == (int)Species.Exeggutor && pk.AltForm == 1) pk.MetDate = new DateTime(2020, 08, 05); // Alo-Exeggutor GO Fest
-            else if (enc.Species == (int)Species.Raichu && pk.AltForm == 1) pk.MetDate = new DateTime(2019, 03, 23); // Alo-Raichu Raid
+            else if (AlolanOriginForms.Contains(enc.Species) && pk.AltForm == 1) pk.MetDate = new DateTime(2019, 10, 02); // Alolan Eggs
             else pk.MetDate = DateTime.Today;
         }
     }
