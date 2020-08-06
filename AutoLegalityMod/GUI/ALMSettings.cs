@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using PKHeX.Core.AutoMod;
 
@@ -42,6 +43,9 @@ namespace AutoModPlugins.GUI
                 var finalstr = "";
                 foreach (var res in results)
                     finalstr += $"{Path.GetFileName(res.Key)} : Legal - {res.Value["legal"].Length} | Illegal - {res.Value["illegal"].Length}\n";
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "logs"));
+                foreach (var res in results)
+                    File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "logs", Path.GetFileName(res.Key).Replace('.', '_') + DateTime.Now.ToString("_yyyy-MM-dd-HH-mm-ss") + ".log"), string.Join("\n\n", res.Value["illegal"].Select(x => x.Text)));
                 WinFormsUtil.Alert(finalstr.TrimEnd());
             }
         }

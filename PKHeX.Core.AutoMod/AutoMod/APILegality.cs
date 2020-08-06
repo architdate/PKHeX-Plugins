@@ -158,6 +158,8 @@ namespace PKHeX.Core.AutoMod
                 e.Location = SharedNest;
             if (enc is EncounterStatic8ND ed && ed.Location == 0)
                 ed.Location = SharedNest;
+            // if (enc is EncounterStatic es && es.Version == GameVersion.GG) // Needs a better fix on PKHeX side
+                // es.Version = GameVersion.GP;
             return enc;
         }
 
@@ -314,6 +316,9 @@ namespace PKHeX.Core.AutoMod
             {
                 case (int)GameVersion.SWSH:
                     pk.Version = (int)GameVersion.SW;
+                    break;
+                case (int)GameVersion.GG:
+                    pk.Version = (int)GameVersion.GP;
                     break;
                 case (int)GameVersion.USUM:
                     pk.Version = (int)GameVersion.US;
