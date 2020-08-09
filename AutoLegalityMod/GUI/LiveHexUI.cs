@@ -22,6 +22,8 @@ namespace AutoModPlugins
         private readonly LiveHexController Remote;
         private readonly SaveDataEditor<PictureBox> x;
 
+        private readonly InjectorCommunicationType CurrentInjectionType;
+
 #pragma warning disable CA2213 // Disposable fields should be disposed
         private readonly ComboBox BoxSelect; // this is just us holding a reference; disposal is done by its parent
 #pragma warning restore CA2213 // Disposable fields should be disposed
@@ -29,12 +31,14 @@ namespace AutoModPlugins
         public LiveHexUI(ISaveFileProvider sav, IPKMView editor)
         {
             SAV = sav;
-            Remote = new LiveHexController(sav, editor);
+            CurrentInjectionType = Properties.AutoLegality.Default.USBBotBasePreferred ? InjectorCommunicationType.USB : InjectorCommunicationType.SocketNetwork;
+            Remote = new LiveHexController(sav, editor, CurrentInjectionType);
 
             InitializeComponent();
             WinFormsTranslator.TranslateInterface(this, WinFormsTranslator.CurrentLanguage);
 
             TB_IP.Text = Properties.AutoLegality.Default.LatestIP;
+            SetInjectionTypeView();
 
             // add an event to the editor
             // ReSharper disable once SuspiciousTypeConversion.Global
@@ -83,7 +87,7 @@ namespace AutoModPlugins
                 var currver = validversions[0];
                 foreach (LiveHeXVersion ver in validversions)
                 {
-                    Remote.Bot = new PokeSysBotMini(ver);
+                    Remote.Bot = new PokeSysBotMini(ver, CurrentInjectionType);
                     Remote.Bot.com.IP = TB_IP.Text;
                     Remote.Bot.com.Port = int.Parse(TB_Port.Text);
                     Remote.Bot.com.Connect();
@@ -103,7 +107,7 @@ namespace AutoModPlugins
 
                 if (!ConnectionEstablished)
                 {
-                    Remote.Bot = new PokeSysBotMini(currver);
+                    Remote.Bot = new PokeSysBotMini(currver, CurrentInjectionType);
                     Remote.Bot.com.IP = TB_IP.Text;
                     Remote.Bot.com.Port = int.Parse(TB_Port.Text);
                     Remote.Bot.com.Connect();
@@ -208,6 +212,15 @@ namespace AutoModPlugins
 
         public ISlotInfo GetSlotData(PictureBox view) => null;
         public int GetViewIndex(ISlotInfo slot) => -1;
+
+        private void SetInjectionTypeView()
+        {
+            TB_IP.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
+            TB_Port.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
+            L_IP.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
+            L_Port.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
+            L_USBState.Visible = CurrentInjectionType == InjectorCommunicationType.USB;
+        }
     }
 
     internal class HexTextBox : TextBox

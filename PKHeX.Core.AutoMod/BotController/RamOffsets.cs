@@ -30,14 +30,14 @@ namespace PKHeX.Core.AutoMod
             return new[] { LiveHeXVersion.SWSH_Rigel2 };
         }
 
-        public static ICommunicator GetCommunicator(LiveHeXVersion lv)
+        public static ICommunicator GetCommunicator(LiveHeXVersion lv, InjectorCommunicationType ict)
         {
             return lv switch
             {
-                LiveHeXVersion.LGPE_v102 => new SysBotMini(),
-                LiveHeXVersion.SWSH_Orion => new SysBotMini(),
-                LiveHeXVersion.SWSH_Rigel1 => new SysBotMini(),
-                LiveHeXVersion.SWSH_Rigel2 => new SysBotMini(),
+                LiveHeXVersion.LGPE_v102 => GetSwitchInterface(ict),
+                LiveHeXVersion.SWSH_Orion => GetSwitchInterface(ict),
+                LiveHeXVersion.SWSH_Rigel1 => GetSwitchInterface(ict),
+                LiveHeXVersion.SWSH_Rigel2 => GetSwitchInterface(ict),
                 LiveHeXVersion.UM_v12 => new NTRMini(),
                 LiveHeXVersion.US_v12 => new NTRMini(),
                 LiveHeXVersion.SM_v12 => new NTRMini(),
@@ -166,6 +166,17 @@ namespace PKHeX.Core.AutoMod
                 LiveHeXVersion.US_v12 => 0x3F3424,
                 LiveHeXVersion.SM_v12 => 0x3E14C0,
                 _ => 0
+            };
+        }
+
+        private static ICommunicator GetSwitchInterface(InjectorCommunicationType ict)
+        {
+            // No conditional expression possible
+            return ict switch
+            {
+                InjectorCommunicationType.SocketNetwork => new SysBotMini(),
+                InjectorCommunicationType.USB => new UsbBotMini(),
+                _ => new SysBotMini()
             };
         }
     }

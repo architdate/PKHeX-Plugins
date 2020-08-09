@@ -1,5 +1,11 @@
 ﻿namespace PKHeX.Core.AutoMod
 {
+    public enum InjectorCommunicationType
+    {
+        SocketNetwork = 0,
+        USB = 1
+    }
+
     public interface ICommunicator
     {
         void Connect();
