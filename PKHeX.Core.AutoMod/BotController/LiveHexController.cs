@@ -6,12 +6,12 @@
         private readonly IPKMView Editor;
         public PokeSysBotMini Bot;
 
-        public LiveHexController(ISaveFileProvider boxes, IPKMView editor)
+        public LiveHexController(ISaveFileProvider boxes, IPKMView editor, InjectorCommunicationType ict)
         {
             SAV = boxes;
             Editor = editor;
             var ValidVers = RamOffsets.GetValidVersions(boxes.SAV);
-            Bot = new PokeSysBotMini(ValidVers[0]);
+            Bot = new PokeSysBotMini(ValidVers[0], ict);
         }
 
         public void ChangeBox(int box)
