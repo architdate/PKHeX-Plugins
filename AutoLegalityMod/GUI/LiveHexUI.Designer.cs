@@ -39,7 +39,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.TB_Offset = new HexTextBox();
+            this.TB_Offset = new AutoModPlugins.HexTextBox();
             this.L_ReadOffset = new System.Windows.Forms.Label();
             this.B_ReadOffset = new System.Windows.Forms.Button();
             this.L_Slot = new System.Windows.Forms.Label();
@@ -52,8 +52,9 @@
             this.B_ReadRAM = new System.Windows.Forms.Button();
             this.RamSize = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.RamOffset = new HexTextBox();
+            this.RamOffset = new AutoModPlugins.HexTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.L_USBState = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).BeginInit();
@@ -358,6 +359,16 @@
             this.label1.Text = "Offset:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // L_USBState
+            // 
+            this.L_USBState.AutoSize = true;
+            this.L_USBState.Location = new System.Drawing.Point(12, 15);
+            this.L_USBState.Name = "L_USBState";
+            this.L_USBState.Size = new System.Drawing.Size(100, 13);
+            this.L_USBState.TabIndex = 11;
+            this.L_USBState.Text = "USB-Botbase mode";
+            this.L_USBState.Visible = false;
+            // 
             // LiveHexUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,6 +382,7 @@
             this.Controls.Add(this.TB_Port);
             this.Controls.Add(this.L_IP);
             this.Controls.Add(this.TB_IP);
+            this.Controls.Add(this.L_USBState);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -419,5 +431,6 @@
         private System.Windows.Forms.Label label2;
         private HexTextBox RamOffset;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label L_USBState;
     }
 }

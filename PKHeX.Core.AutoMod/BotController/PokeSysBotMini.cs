@@ -14,10 +14,10 @@ namespace PKHeX.Core.AutoMod
         public ICommunicator com;
         public bool Connected => com.Connected;
 
-        public PokeSysBotMini(LiveHeXVersion lv)
+        public PokeSysBotMini(LiveHeXVersion lv, InjectorCommunicationType ict)
         {
             Version = lv;
-            com = RamOffsets.GetCommunicator(lv);
+            com = RamOffsets.GetCommunicator(lv, ict);
             BoxStart = RamOffsets.GetB1S1Offset(lv);
             SlotSize = RamOffsets.GetSlotSize(lv);
             SlotCount = RamOffsets.GetSlotCount(lv);
