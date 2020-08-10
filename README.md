@@ -48,6 +48,8 @@ To contribute to the repository, you can submit a pull request to the repository
 ## Credits:
 - [@kwsch](https://github.com/kwsch): for providing the IPlugin interface in PKHeX, which allows loading of this project's Plugin DLL files. Also for the support provided in the support server.
 - [@olliz0r](https://github.com/olliz0r): For developing and maintaining `sys-botbase` which is necessary for LiveHeX to work.
+- [@fishguy6564](https://github.com/fishguy6564): For creating `USB-Botbase` (by extending sys-botbase)
+- [@berichan](https://github.com/berichan): For adding USB-Botbase support to LiveHeX
 - [@Rino6357](https://github.com/Rino6357) and [@crzyc](https://github.com/crzyc) for their help with the GitHub Wiki associated with this project!
 - [@Lusamine](https://github.com/Lusamine) for all their help with stress testing the code with wacky sets!
 - [@Bappsack](https://github.com/Bappsack) for his help on discord in voice chats!
