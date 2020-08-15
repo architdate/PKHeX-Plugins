@@ -294,9 +294,10 @@ namespace PKHeX.Core.AutoMod
             pk.Met_Level = el.Level;
             pk.CurrentLevel = 100;
             pk.FatefulEncounter = el.Fateful;
-            if (el.RibbonWishing && pk is IRibbonSetEvent4 e4)
+            if (el is EncounterStatic7 s7 && s7.RibbonWishing && pk is IRibbonSetEvent4 e4)
                 e4.RibbonWishing = true;
-            pk.SetRelearnMoves(el.Relearn);
+            if (el is IRelearn relearn)
+                pk.SetRelearnMoves(relearn.Relearn);
 
             if (set.Shiny && (el.Shiny == Shiny.Always || el.Shiny == Shiny.Random))
                 pk.SetShiny();
@@ -599,7 +600,7 @@ namespace PKHeX.Core.AutoMod
             // If there is more than one slot, the get wild encounter have filter for the pkm type encounter like safari/sport ball
             return match switch
             {
-                EncounterSlot w => w.TypeEncounter,
+                EncounterSlot4 w4 => w4.TypeEncounter,
                 EncounterStaticTyped s => s.TypeEncounter,
                 _ => EncounterType.None
             };

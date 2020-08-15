@@ -125,7 +125,9 @@ namespace PKHeX.Core.AutoMod
                 var isHOMEGift = w8.Location == 30018 || w8.GetOT(2) == "HOME";
                 if (isHOMEGift)
                 {
-                    pk.SetShinySID(); // Fix this to set random trainer TID/SID values such that SID7 == 0
+                    // Set XOR as 0 so SID comes out as 8 or less, Set TID based on that (kinda like a setshinytid)
+                    pk.TID = (int)(0 ^ (pk.PID & 0xFFFF) ^ (pk.PID >> 16));
+                    pk.SID = Util.Rand.Next(8);
                     return;
                 }
             }

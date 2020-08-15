@@ -431,7 +431,7 @@ namespace PKHeX.Core.AutoMod
         {
             // Set values to get a mock pk6
             pk.HT_Name = "A";
-            return EncounterArea6XY.GetValidFriendSafari(pk);
+            return EncounterArea6XYFriendSafari.GetValidSafariEncounters(pk);
         }
 
         /// <summary>
@@ -497,7 +497,7 @@ namespace PKHeX.Core.AutoMod
                         return;
                     if (pk is PK5 p && p.NPokémon)
                         return;
-                    if (li.EncounterMatch is EncounterStatic s && (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75))
+                    if (li.EncounterMatch is EncounterStatic5 s && (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75))
                         return;
 
                     while (true)
