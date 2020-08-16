@@ -19,8 +19,18 @@ namespace AutoModPlugins
                     WinFormsUtil.Error("Must have a 3DS or Switch main line game save file loaded up");
                     return;
                 }
-                var editor = new LiveHexUI(SaveFileEditor, PKMEditor);
-                editor.Show();
+
+                var editor = FirstFormOfType<LiveHexUI>();
+                if (editor == null)
+                {
+                    editor = new LiveHexUI(SaveFileEditor, PKMEditor);
+                    editor.Show();
+                }
+                else
+                {
+                    editor.Focus();
+                    // WinFormsUtil.Alert("LiveHeX already open!");
+                }
             };
             c1.Name = "Menu_LiveHeX";
             modmenu.DropDownItems.Add(c1);
