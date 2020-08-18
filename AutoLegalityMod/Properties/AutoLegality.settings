@@ -47,5 +47,8 @@
     <Setting Name="USBBotBasePreferred" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="PriorityGameVersion" Type="PKHeX.Core.GameVersion" Scope="User">
+      <Value Profile="(Default)">Any</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

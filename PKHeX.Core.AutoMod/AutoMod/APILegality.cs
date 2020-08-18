@@ -21,6 +21,7 @@ namespace PKHeX.Core.AutoMod
         public static bool UseXOROSHIRO { get; set; } = true;
         public static bool PrioritizeGame { get; set; } = true;
         public static bool SetRandomTracker { get; set; }
+        public static GameVersion PrioritizeGameVersion { get; set; }
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -44,7 +45,7 @@ namespace PKHeX.Core.AutoMod
 
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
             if (PrioritizeGame)
-                gamelist = PrioritizeVersion(gamelist, destVer);
+                gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, destVer) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             encounters = encounters.Concat(GetFriendSafariEncounters(template));
             foreach (var enc in encounters)
