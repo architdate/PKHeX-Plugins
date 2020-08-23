@@ -38,11 +38,11 @@ namespace PKHeX.Core.AutoMod
                 LiveHeXVersion.SWSH_Orion => GetSwitchInterface(ict),
                 LiveHeXVersion.SWSH_Rigel1 => GetSwitchInterface(ict),
                 LiveHeXVersion.SWSH_Rigel2 => GetSwitchInterface(ict),
-                LiveHeXVersion.UM_v12 => new NTRMini(),
-                LiveHeXVersion.US_v12 => new NTRMini(),
-                LiveHeXVersion.SM_v12 => new NTRMini(),
-                LiveHeXVersion.ORAS => new NTRMini(),
-                LiveHeXVersion.XY => new NTRMini(),
+                LiveHeXVersion.UM_v12 => new NTRSharpClient(),
+                LiveHeXVersion.US_v12 => new NTRSharpClient(),
+                LiveHeXVersion.SM_v12 => new NTRSharpClient(),
+                LiveHeXVersion.ORAS => new NTRSharpClient(),
+                LiveHeXVersion.XY => new NTRSharpClient(),
                 _ => new SysBotMini()
             };
         }

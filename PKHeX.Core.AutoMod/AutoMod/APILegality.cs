@@ -510,9 +510,10 @@ namespace PKHeX.Core.AutoMod
                     }
                 }
             }
-            else
+            else // Generation 3 and 4
             {
-                if (li.EncounterMatch is PCD d)
+                var encounter = li.EncounterMatch;
+                if (encounter is PCD d)
                 {
                     if (d.Gift.PK.PID != 1)
                         pk.PID = d.Gift.PK.PID;
@@ -520,15 +521,19 @@ namespace PKHeX.Core.AutoMod
                         pk.SetPIDNature(Nature);
                     return;
                 }
-                if (li.EncounterMatch is EncounterEgg)
+                if (encounter is EncounterEgg)
                 {
                     pk.SetPIDNature(Nature);
                     return;
                 }
-                if (li.EncounterMatch is EncounterTradePID t)
+                if (encounter is EncounterTrade t)
                 {
-                    t.SetEncounterTradeIVs(pk);
-                    return; // Fixed PID, no need to mutate
+                    // EncounterTrade4 doesn't have fixed PIDs, so don't early return
+                    if (encounter is EncounterTrade3 || encounter is EncounterTrade4PID)
+                    {
+                        t.SetEncounterTradeIVs(pk);
+                        return; // Fixed PID, no need to mutate
+                    }
                 }
                 FindPIDIV(pk, method, hpType, set.Shiny);
                 ValidateGender(pk);

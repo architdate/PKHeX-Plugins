@@ -9,7 +9,7 @@ using NtrSharp.Events;
 
 namespace PKHeX.Core.AutoMod
 {
-    public class NTRMini : ICommunicator
+    public class NTRSharpClient : ICommunicator
     {
         public string IP = "192.168.1.106";
         public int Port = 8000;
