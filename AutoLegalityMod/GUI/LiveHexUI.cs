@@ -111,9 +111,6 @@ namespace AutoModPlugins
                     Remote.Bot.com.Port = int.Parse(TB_Port.Text);
                     Remote.Bot.com.Connect();
                 }
-                // Patch NFC if needed
-                if (RamOffsets.NFCOffset(currver) != 0)
-                    Remote.Bot.com.WriteBytes(BitConverter.GetBytes(RamOffsets.NFCValue), RamOffsets.NFCOffset(currver));
 
                 // Load current box
                 Remote.ReadBox(SAV.CurrentBox);

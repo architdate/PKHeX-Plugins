@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -130,42 +131,54 @@ namespace PKHeX.Core.AutoMod
             lastMemoryRead = client.ReadMemory;
         }
 
+        private static string[] titleidstr = { "175e00", "1b5100" };
+
         private void OnProcessList(object sender, MessageReceivedEventArgs e)
         {
             string log = e.Message;
+            var currver = LiveHeXVersion.SWSH_Rigel2;
             Debug.WriteLine(log);
             if (log.Contains("momiji")) // Ultra Sun and Moon
             {
                 string splitlog = log.Substring(log.IndexOf(", pname:   momiji") - 8, log.Length - log.IndexOf(", pname:   momiji"));
                 PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
+                currver = titleidstr.Any(log.Contains) ? LiveHeXVersion.UM_v12 : LiveHeXVersion.US_v12;
             }
 
             else if (log.Contains("sango-1")) // Omega Ruby
             {
                 string splitlog = log.Substring(log.IndexOf(", pname:  sango-1") - 8, log.Length - log.IndexOf(", pname:  sango-1"));
                 PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
+                currver = LiveHeXVersion.ORAS;
             }
 
             else if (log.Contains("sango-2")) // Alpha Sapphire
             {
                 string splitlog = log.Substring(log.IndexOf(", pname:  sango-2") - 8, log.Length - log.IndexOf(", pname:  sango-2"));
                 PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
+                currver = LiveHeXVersion.ORAS;
             }
 
             else if (log.Contains("kujira-1")) // X
             {
                 string splitlog = log.Substring(log.IndexOf(", pname: kujira-1") - 8, log.Length - log.IndexOf(", pname: kujira-1"));
                 PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
+                currver = LiveHeXVersion.XY;
             }
 
             else if (log.Contains("kujira-2")) // Y
             {
                 string splitlog = log.Substring(log.IndexOf(", pname: kujira-2") - 8, log.Length - log.IndexOf(", pname: kujira-2"));
                 PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
+                currver = LiveHeXVersion.XY;
             }
 
             else
                 PID = 0;
+
+            // Patch NFC if needed
+            if (RamOffsets.NFCOffset(currver) != 0)
+                WriteBytes(BitConverter.GetBytes(RamOffsets.NFCValue), RamOffsets.NFCOffset(currver));
 
         }
     }
