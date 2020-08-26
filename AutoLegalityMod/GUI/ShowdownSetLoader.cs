@@ -58,7 +58,7 @@ namespace AutoModPlugins
             }
             else
             {
-                var replace = (Control.ModifierKeys & Keys.Control) != 0;
+                var replace = (Control.ModifierKeys & Keys.Alt) != 0;
                 result = ImportSetsToBoxes(sets, replace);
             }
 
@@ -101,7 +101,7 @@ namespace AutoModPlugins
             var timer = Stopwatch.StartNew();
             var sav = SaveFileEditor.SAV;
             var BoxData = sav.BoxData;
-            var start = sav.CurrentBox * sav.BoxSlotCount;
+            var start = SaveFileEditor.CurrentBox * sav.BoxSlotCount;
 
             Debug.WriteLine($"Commencing Import of {sets.Count} set(s).");
             var result = sav.ImportToExisting(sets, BoxData, start, replace);
