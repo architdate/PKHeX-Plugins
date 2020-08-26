@@ -22,6 +22,7 @@ namespace PKHeX.Core.AutoMod
         public static bool PrioritizeGame { get; set; } = true;
         public static bool SetRandomTracker { get; set; }
         public static GameVersion PrioritizeGameVersion { get; set; }
+        internal static readonly EncounterArea6XYFriendSafari FriendSafari = new EncounterArea6XYFriendSafari(SimpleEdits.FriendSafari);
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -432,7 +433,8 @@ namespace PKHeX.Core.AutoMod
         {
             // Set values to get a mock pk6
             pk.HT_Name = "A";
-            return EncounterArea6XYFriendSafari.GetValidSafariEncounters(pk);
+            var chain = EncounterOrigin.GetOriginChain(pk);
+            return FriendSafari.GetMatchingSlots(pk, chain);
         }
 
         /// <summary>
