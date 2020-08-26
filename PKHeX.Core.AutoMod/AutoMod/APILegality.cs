@@ -22,7 +22,7 @@ namespace PKHeX.Core.AutoMod
         public static bool PrioritizeGame { get; set; } = true;
         public static bool SetRandomTracker { get; set; }
         public static GameVersion PrioritizeGameVersion { get; set; }
-        internal static readonly EncounterArea6XYFriendSafari FriendSafari = new EncounterArea6XYFriendSafari(SimpleEdits.FriendSafari);
+        internal static readonly EncounterArea6XY FriendSafari = new EncounterArea6XY(SimpleEdits.FriendSafari);
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
