@@ -253,7 +253,7 @@ namespace PKHeX.Core.AutoMod
                     height = top % 0x80 + bottom % 0x81;
                     weight = (int) (pk.EncryptionConstant >> 16) % 0x80 + (int) (pk.EncryptionConstant & 0xFFFF) % 0x81;
                 }
-                else if (pk is PB7)
+                else if (pk.GG)
                 {
                     height = (int) (pk.PID >> 16) % 0xFF;
                     weight = (int) (pk.PID & 0xFFFF) % 0xFF;
