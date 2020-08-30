@@ -227,6 +227,8 @@ namespace PKHeX.Core.AutoMod
         public static void ApplyHeightWeight(this PKM pk, IEncounterable enc)
         {
             var signed = true;
+            if (pk.GenNumber < 8 && pk.Format >= 8 && !pk.GG) // height and weight don't apply prior to GG
+                return;
             if (!(pk is IScaledSize size))
                 return;
             if (enc is WC8 w8)
