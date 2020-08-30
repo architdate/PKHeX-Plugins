@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -221,6 +222,50 @@ namespace PKHeX.Core.AutoMod
             pk.RelearnMove2 = 0;
             pk.RelearnMove3 = 0;
             pk.RelearnMove4 = 0;
+        }
+
+        public static void ApplyHeightWeight(this PKM pk, IEncounterable enc)
+        {
+            var signed = true;
+            if (!(pk is IScaledSize size))
+                return;
+            if (enc is WC8 w8)
+            {
+                var isHOMEGift = w8.Location == 30018 || w8.GetOT(2) == "HOME";
+                if (isHOMEGift) return;
+            }
+
+            if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND)
+            {
+                if (APILegality.UseXOROSHIRO)
+                    return;
+            }
+            if (signed)
+            {
+                var height = 0x12;
+                var weight = 0x97;
+                if (GameVersion.SWSH.Contains(pk.Version))
+                {
+                    var top = (int) (pk.PID >> 16);
+                    var bottom = (int) (pk.PID & 0xFFFF);
+                    height = top % 0x80 + bottom % 0x81;
+                    weight = (int) (pk.EncryptionConstant >> 16) % 0x80 + (int) (pk.EncryptionConstant & 0xFFFF) % 0x81;
+                }
+                else if (pk is PB7)
+                {
+                    height = (int) (pk.PID >> 16) % 0xFF;
+                    weight = (int) (pk.PID & 0xFFFF) % 0xFF;
+                }
+                size.HeightScalar = height;
+                size.WeightScalar = weight;
+                if (pk is PB7 pb)
+                    pb.ResetCalculatedValues();
+                return;
+            }
+            size.HeightScalar = Util.Rand.Next(255);
+            size.WeightScalar = Util.Rand.Next(255);
+            if (pk is PB7 pb1)
+                pb1.ResetCalculatedValues();
         }
 
         public static void ClearHyperTraining(this PKM pk)

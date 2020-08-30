@@ -202,6 +202,7 @@ namespace PKHeX.Core.AutoMod
             pk.FixEdgeCases();
             pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, set is RegenTemplate b ? b.Ball : Ball.None);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
+            pk.ApplyHeightWeight(enc);
 
             // Extra legality unchecked by PKHeX
             pk.SetDatelocks(enc);
