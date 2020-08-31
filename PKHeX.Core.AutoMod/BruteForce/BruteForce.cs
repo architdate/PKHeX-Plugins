@@ -294,7 +294,7 @@ namespace PKHeX.Core.AutoMod
             pk.Met_Level = el.Level;
             pk.CurrentLevel = 100;
             pk.FatefulEncounter = el.Fateful;
-            if (el is EncounterStatic7 s7 && s7.RibbonWishing && pk is IRibbonSetEvent4 e4)
+            if (el is EncounterStatic7 s7 && s7.Species == (int)Species.Magearna && pk is IRibbonSetEvent4 e4)
                 e4.RibbonWishing = true;
             if (el is IRelearn relearn)
                 pk.SetRelearnMoves(relearn.Relearn);
