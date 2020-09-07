@@ -24,7 +24,7 @@ steps:
 - task: PowerShell@2
   inputs:
     script:
-      git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git $(Build.SourcesDirectory)
+      git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git
 
 - task: VSBuild@1
   inputs:
