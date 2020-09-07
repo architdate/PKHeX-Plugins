@@ -32,7 +32,7 @@ steps:
   inputs:
     solution: '$(Build.SourcesDirectory)/PKHeX/PKHeX.sln'
     platform: '$(buildPlatform)'
-    configuration: 'Debug'
+    configuration: 'Release'
     restoreNugetPackages: true
     createLogFile: true
 
