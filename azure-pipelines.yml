@@ -21,6 +21,19 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+- task: PowerShell@2
+  inputs:
+    script:
+      git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git $(Build.SourcesDirectory)
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(Build.SourcesDirectory)/PKHeX/PKHeX.sln'
+    platform: '$(buildPlatform)'
+    configuration: 'Debug'
+    restoreNugetPackages: true
+    createLogFile: true
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -53,12 +66,14 @@ steps:
     targetType: 'inline'
     script: |
       # Write your commands here
+      cd "C:\Users"
+      echo $(ls)
       
       cd $(Agent.BuildDirectory)
-      echo $(ls)
+      echo $(Agent.BuildDirectory)
       
       cd $(Build.SourcesDirectory)
-      echo $(ls)
+      echo $(Build.SourcesDirectory)
 
 - task: PublishBuildArtifacts@1
   inputs:
