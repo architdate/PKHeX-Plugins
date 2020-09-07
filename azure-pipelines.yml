@@ -23,7 +23,7 @@ steps:
 
 - powershell: |
     git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git $(Build.SourcesDirectory)/PKHeX
-    
+
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(Build.SourcesDirectory)/PKHeX/PKHeX.sln'
@@ -36,12 +36,18 @@ steps:
     restoreNugetPackages: true
     createLogFile: true
 
+- powershell: |
+    $nugetver = (Get-ChildItem "$(UserProfile)/.nuget/packages/pkhex.core" | Sort-Object -Property LastWriteTime -Descending)[0].Name
+    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\net46"
+    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Release\netstandard2.0\PKHeX.Core.dll" "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\netstandard2.0"
+    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "$(Build.SourcesDirectory)\packages\PKHeX.Core.$nugetver\lib\net46"
+    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Release\netstandard2.0\PKHeX.Core.dll" "$(Build.SourcesDirectory)\packages\PKHeX.Core.$nugetver\lib\netstandard2.0"
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    restoreNugetPackages: true
     createLogFile: true
 
 - task: CmdLine@2
