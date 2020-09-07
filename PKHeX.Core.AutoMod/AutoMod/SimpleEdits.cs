@@ -93,7 +93,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">Encounter details</param>
         public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
         {
-            if ((pk.Species == 658 && pk.AltForm == 1) || enc is EncounterStatic8N) // Ash-Greninja
+            if ((pk.Species == 658 && pk.AltForm == 1) || enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND) // Ash-Greninja or raids
                 return;
             int gen = pk.GenNumber;
             if (2 < gen && gen < 6)
