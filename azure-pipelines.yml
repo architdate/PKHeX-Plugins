@@ -21,10 +21,8 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: PowerShell@2
-  inputs:
-    script:
-      git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git
+- powershell: |
+    git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git $(Build.SourcesDirectory)/PKHeX
 
 - task: VSBuild@1
   inputs:
