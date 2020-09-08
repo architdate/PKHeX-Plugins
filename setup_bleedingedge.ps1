@@ -1,4 +1,7 @@
-﻿# Powershell script to download PKHeX and Plugins (latest)
+﻿# Setting the TLS protocol to 1.2 instead of the default 1.0
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+# Powershell script to download PKHeX and Plugins (latest)
 Write-Host "PKHeX and PKHeX-Plugins downloader (latest releases)"
 Write-Host "please report any issues with this setup file via GitHub issues at https://github.com/architdate/PKHeX-Plugins/issues"
 Write-Host ""
