@@ -116,7 +116,8 @@ namespace AutoModPlugins
                 blank.AltForm = blank.Gender;
 
             var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid);
-            var f = legalencs.FirstOrDefault();
+            var firstenc = legalencs.FirstOrDefault();
+            var f = PKMConverter.ConvertToType(firstenc, blank.GetType(), out _);
             if (f == null)
             {
                 var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
