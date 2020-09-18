@@ -55,15 +55,16 @@ namespace PKHeX.Core.AutoMod
         private void LoadSetsFromPage()
         {
             var split1 = Page.Split(new[] { "\",\"abilities\":" }, StringSplitOptions.None);
-            var format = "";
+            var lc = false;
             for (int i = 1; i < split1.Length; i++)
             {
                 var shiny = split1[i - 1].Contains("\"shiny\":true");
                 if (split1[i - 1].Contains("\"format\":\""))
                 {
-                    format = split1[i - 1].Substring(split1[i - 1].IndexOf("\"format\":\"") + "\"format\":\"".Length);
+                    lc = split1[i - 1].Substring(split1[i - 1].IndexOf("\"format\":\"") + "\"format\":\"".Length)
+                        .StartsWith("LC");
                 }
-                var level = format.StartsWith("LC") ? 5 : 100;
+                var level = lc ? 5 : 100;
                 if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
                 {
                     int.TryParse(split1[i - 1].Split(new[] {"\"level\":"}, StringSplitOptions.None)[1]
