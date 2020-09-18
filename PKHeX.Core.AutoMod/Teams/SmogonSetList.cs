@@ -58,8 +58,8 @@ namespace PKHeX.Core.AutoMod
             for (int i = 1; i < split1.Length; i++)
             {
                 var shiny = split1[i - 1].Contains("\"shiny\":true");
-                var level = 100;
-                if (split1[i - 1].Contains("\"level\":"))
+                var level = split1[i - 1].Contains("\"format\":\"LC") ? 5 : 100;
+                if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
                 {
                     try
                     {
