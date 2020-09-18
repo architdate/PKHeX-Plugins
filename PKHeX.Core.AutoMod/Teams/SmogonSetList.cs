@@ -70,21 +70,12 @@ namespace PKHeX.Core.AutoMod
                         .Split(',')[0], out level);
                 }
 
-                var gender = 'D';
-
-                // Gender check; seemingly unused as alternate gender forms are listed as separate entries
-                //if (!split1[i - 1].Contains("\"gender\":\"DC\"") && split1[i - 1].Contains("\"gender\":"))
-                //{
-                //    gender = split1[i - 1].ToCharArray()[
-                //        split1[i - 1].IndexOf("\"gender\":\"") + "\"gender\":\"".Length];
-                //}
-
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
 
                 var tmp = split2[0];
                 SetConfig.Add(tmp);
 
-                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName, shiny, gender, level);
+                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName, shiny, level);
                 SetText.Add(morphed);
 
                 var converted = new ShowdownSet(morphed);
@@ -123,15 +114,15 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static string ConvertSetToShowdown(string set, string species, bool shiny, char gender, int level)
+        private static string ConvertSetToShowdown(string set, string species, bool shiny, int level)
         {
-            var result = GetSetLines(set, species, shiny, gender, level);
+            var result = GetSetLines(set, species, shiny, level);
             return string.Join(Environment.NewLine, result);
         }
 
         private static readonly string[] statNames = { "HP", "Atk", "Def", "SpA", "SpD", "Spe" };
 
-        private static IEnumerable<string> GetSetLines(string set, string species, bool shiny, char gender, int level)
+        private static IEnumerable<string> GetSetLines(string set, string species, bool shiny, int level)
         {
             TryGetToken(set, "\"items\":[\"", "\"", out var item);
             TryGetToken(set, "\"moveslots\":", ",\"evconfigs\":", out var movesets);
@@ -146,10 +137,9 @@ namespace PKHeX.Core.AutoMod
             if (item == "No Item") // LGPE actually lists an item, RBY sets have an empty [].
                 item = string.Empty;
 
-            var speciesName = gender == 'D' ? species : $"{species} ({gender})";
             var result = new List<string>(9)
             {
-                item.Length == 0 ? speciesName : $"{speciesName} @ {item}",
+                item.Length == 0 ? species : $"{species} @ {item}",
             };
             if(level != 100)
                 result.Add($"Level: {level}");
