@@ -67,7 +67,7 @@ namespace PKHeX.Core.AutoMod
                             .Split(',')[0]);
                         if (level == 0)
                         {
-                            level = 5;
+                            level = split1[i-1].Contains("\"format\":\"LC") ? 5 : 100;
                         }
                     }
                     catch
@@ -76,9 +76,15 @@ namespace PKHeX.Core.AutoMod
                     }
                 }
 
-                var gender = split1[i - 1].Contains("\"gender\":\"")
-                    ? split1[i - 1].ToCharArray()[split1[i - 1].IndexOf("\"gender\":\"") + "\"gender\":\"".Length]
-                    : 'D';
+                var gender = 'D';
+
+                // Gender check; seemingly unused as alternate gender forms are listed as separate entries
+                //if (!split1[i - 1].Contains("\"gender\":\"DC\"") && split1[i - 1].Contains("\"gender\":"))
+                //{
+                //    gender = split1[i - 1].ToCharArray()[
+                //        split1[i - 1].IndexOf("\"gender\":\"") + "\"gender\":\"".Length];
+                //}
+
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
 
                 var tmp = split2[0];
