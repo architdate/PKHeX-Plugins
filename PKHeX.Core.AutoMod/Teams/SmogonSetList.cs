@@ -61,15 +61,8 @@ namespace PKHeX.Core.AutoMod
                 var level = split1[i - 1].Contains("\"format\":\"LC") ? 5 : 100;
                 if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
                 {
-                    try
-                    {
-                        level = int.Parse(split1[i - 1].Split(new[] {"\"level\":"}, StringSplitOptions.None)[1]
-                            .Split(',')[0]);
-                    }
-                    catch
-                    {
-                        level = 100;
-                    }
+                    int.TryParse(split1[i - 1].Split(new[] {"\"level\":"}, StringSplitOptions.None)[1]
+                        .Split(',')[0], out level);
                 }
 
                 var gender = 'D';
