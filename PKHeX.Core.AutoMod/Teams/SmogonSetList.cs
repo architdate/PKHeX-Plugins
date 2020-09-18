@@ -65,10 +65,6 @@ namespace PKHeX.Core.AutoMod
                     {
                         level = int.Parse(split1[i - 1].Split(new[] {"\"level\":"}, StringSplitOptions.None)[1]
                             .Split(',')[0]);
-                        if (level == 0)
-                        {
-                            level = split1[i-1].Contains("\"format\":\"LC") ? 5 : 100;
-                        }
                     }
                     catch
                     {
