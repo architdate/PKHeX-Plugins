@@ -11,7 +11,7 @@ namespace AutoModPlugins.GUI
         public SimpleHexEditor(byte[] originalBytes)
         {
             InitializeComponent();
-            WinFormsTranslator.TranslateInterface(this, WinFormsTranslator.CurrentLanguage);
+            this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
             RTB_RAM.Text = string.Join(" ", originalBytes.Select(z => $"{z:X2}"));
             Bytes = originalBytes;
         }

@@ -1,21 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
     public static class RegenTemplateExtensions
     {
-        private static readonly HashSet<int> BattleOnly = GetBattleFormSet();
-
-        private static HashSet<int> GetBattleFormSet()
-        {
-            var hs = new HashSet<int>();
-            hs.UnionWith(Legal.BattleForms);
-            hs.UnionWith(Legal.BattleMegas);
-            hs.UnionWith(Legal.BattlePrimals);
-            return hs;
-        }
-
         public static void SanitizeForm(this RegenTemplate set)
         {
             if (!FormVerifier.IsBattleOnlyForm(set.Species, set.FormIndex, set.Format))

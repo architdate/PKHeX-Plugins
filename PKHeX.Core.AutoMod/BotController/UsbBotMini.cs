@@ -11,7 +11,7 @@ namespace PKHeX.Core.AutoMod
         private const int MaximumTransferSize = 468; // byte limitation of USB-Botbase over Android for ACNHMS, assumed same here.
 
         public string IP = string.Empty;
-        public int Port = 0;
+        public int Port;
 
         private UsbDevice? SwDevice;
         private UsbEndpointReader? reader;

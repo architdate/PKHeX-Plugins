@@ -1,31 +1,31 @@
 ﻿// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
     public sealed class RegenTemplate : IBattleTemplate
     {
         public int Species { get; set; }
-        public int Format { get; set; } = PKMConverter.Format;
-        public string Nickname { get; set; } = string.Empty;
-        public string Gender { get; set; } = string.Empty;
+        public int Format { get; set; }
+        public string Nickname { get; set; }
+        public string Gender { get; set; }
         public int HeldItem { get; set; }
-        public int Ability { get; set; } = -1;
-        public int Level { get; set; } = 100;
+        public int Ability { get; set; }
+        public int Level { get; set; }
         public bool Shiny { get; set; }
-        public int Friendship { get; set; } = 255;
-        public int Nature { get; set; } = -1;
-        public string Form { get; set; } = string.Empty;
+        public int Friendship { get; set; }
+        public int Nature { get; set; }
+        public string Form { get; set; }
         public int FormIndex { get; set; }
-        public int[] EVs { get; set; } = { 00, 00, 00, 00, 00, 00 };
-        public int[] IVs { get; set; } = { 31, 31, 31, 31, 31, 31 };
-        public int HiddenPowerType { get; set; } = -1;
-        public int[] Moves { get; } = { 0, 0, 0, 0 };
+        public int HiddenPowerType { get; set; }
         public bool CanGigantamax { get; set; }
 
-        public Ball Ball { get; set; } = Ball.None;
+        public int[] EVs { get; }
+        public int[] IVs { get; }
+        public int[] Moves { get; }
+
+        public Ball Ball { get; set; }
         public Shiny ShinyType { get; set; } = Core.Shiny.Random;
 
         public RegenTemplate(IBattleTemplate set)
@@ -61,7 +61,6 @@ namespace PKHeX.Core.AutoMod
             this.FixGender(pk.PersonalInfo);
         }
 
-
         private static readonly string[] ExtraSplitter = {": "};
 
         private void LoadExtraInstructions(List<string> lines)
@@ -93,6 +92,15 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private int[] SanitizeEVs(int[] evs) => evs.Select(z => z > 252 ? 252 : z).ToArray();
+        private static int[] SanitizeEVs(int[] evs)
+        {
+            var copy = (int[])evs.Clone();
+            for (int i = 0; i < evs.Length; i++)
+            {
+                if (copy[i] > 252)
+                    copy[i] = 252;
+            }
+            return copy;
+        }
     }
 }

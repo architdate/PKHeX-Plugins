@@ -58,14 +58,22 @@ namespace AutoModPlugins
 
         private void SetTrainerData(SaveFile sav, LiveHeXVersion lv)
         {
-            var size = RamOffsets.GetTrainerBlockSize(lv);
-            var ofs = RamOffsets.GetTrainerBlockOffset(lv);
-            
             // Check and set trainerdata based on ISaveBlock interfaces
-            if (sav is ISaveBlock8Main s8) Remote.Bot.com.ReadBytes(ofs, size).CopyTo(s8.MyStatus.Data);
-            else if (sav is ISaveBlock7Main s7) Remote.Bot.com.ReadBytes(ofs, size).CopyTo(s7.MyStatus.Data);
-            else if (sav is ISaveBlock6Core s6) Remote.Bot.com.ReadBytes(ofs, size).CopyTo(s6.Status.Data);
-            else if (sav is SAV7b slgpe) Remote.Bot.com.ReadBytes(ofs, size).CopyTo(slgpe.Blocks.Status.Data);
+            byte[] dest = sav switch
+            {
+                ISaveBlock8Main s8 => s8.MyStatus.Data,
+                ISaveBlock7Main s7 => s7.MyStatus.Data,
+                ISaveBlock6Core s6 => s6.Status.Data,
+                SAV7b slgpe => slgpe.Blocks.Status.Data,
+                _ => Array.Empty<byte>()
+            };
+
+            if (dest.Length == 0)
+                return;
+
+            var ofs = RamOffsets.GetTrainerBlockOffset(lv);
+            var data = Remote.Bot.com.ReadBytes(ofs, dest.Length);
+            data.CopyTo(dest, 0);
         }
 
         private void ChangeBox(object sender, EventArgs e)
@@ -84,19 +92,20 @@ namespace AutoModPlugins
                 var ConnectionEstablished = false;
                 var validversions = RamOffsets.GetValidVersions(SAV.SAV);
                 var currver = validversions[0];
-                foreach (LiveHeXVersion ver in validversions)
+                foreach (var version in validversions)
                 {
-                    Remote.Bot = new PokeSysBotMini(ver, CurrentInjectionType);
-                    Remote.Bot.com.IP = TB_IP.Text;
-                    Remote.Bot.com.Port = int.Parse(TB_Port.Text);
+                    Remote.Bot = new PokeSysBotMini(version, CurrentInjectionType)
+                    {
+                        com = {IP = TB_IP.Text, Port = int.Parse(TB_Port.Text)}
+                    };
                     Remote.Bot.com.Connect();
 
                     var data = Remote.Bot.ReadSlot(1, 1);
                     var pkm = PKMConverter.GetPKMfromBytes(data);
-                    if (pkm != null && pkm.ChecksumValid && pkm.Species > -1)
+                    if (pkm?.ChecksumValid == true)
                     {
                         ConnectionEstablished = true;
-                        currver = ver;
+                        currver = version;
                         break;
                     }
 
@@ -106,9 +115,10 @@ namespace AutoModPlugins
 
                 if (!ConnectionEstablished)
                 {
-                    Remote.Bot = new PokeSysBotMini(currver, CurrentInjectionType);
-                    Remote.Bot.com.IP = TB_IP.Text;
-                    Remote.Bot.com.Port = int.Parse(TB_Port.Text);
+                    Remote.Bot = new PokeSysBotMini(currver, CurrentInjectionType)
+                    {
+                        com = {IP = TB_IP.Text, Port = int.Parse(TB_Port.Text)}
+                    };
                     Remote.Bot.com.Connect();
                 }
 
@@ -118,7 +128,10 @@ namespace AutoModPlugins
                 // Set Trainer Data
                 SetTrainerData(SAV.SAV, currver);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
+            // Console might be disconnected...
             catch (Exception ex)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 WinFormsUtil.Error(ex.Message);
             }

@@ -17,21 +17,19 @@ namespace RNGReporter
 
         public FrameCompare(IVFilter ivBase, uint nature)
         {
-            if (ivBase != null)
-            {
-                hpValue = ivBase.hpValue;
-                hpCompare = ivBase.hpCompare;
-                atkValue = ivBase.atkValue;
-                atkCompare = ivBase.atkCompare;
-                defValue = ivBase.defValue;
-                defCompare = ivBase.defCompare;
-                spaValue = ivBase.spaValue;
-                spaCompare = ivBase.spaCompare;
-                spdValue = ivBase.spdValue;
-                spdCompare = ivBase.spdCompare;
-                speValue = ivBase.speValue;
-                speCompare = ivBase.speCompare;
-            }
+            hpValue = ivBase.hpValue;
+            hpCompare = ivBase.hpCompare;
+            atkValue = ivBase.atkValue;
+            atkCompare = ivBase.atkCompare;
+            defValue = ivBase.defValue;
+            defCompare = ivBase.defCompare;
+            spaValue = ivBase.spaValue;
+            spaCompare = ivBase.spaCompare;
+            spdValue = ivBase.spdValue;
+            spdCompare = ivBase.spdCompare;
+            speValue = ivBase.speValue;
+            speCompare = ivBase.speCompare;
+
             Nature = nature;
         }
 

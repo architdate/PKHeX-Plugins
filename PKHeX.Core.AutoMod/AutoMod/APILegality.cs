@@ -96,7 +96,10 @@ namespace PKHeX.Core.AutoMod
                     retval.Insert(matched, poss);
                     matched++;
                 }
-                else retval.Add(poss);
+                else
+                {
+                    retval.Add(poss);
+                }
             }
             return retval.ToArray();
         }

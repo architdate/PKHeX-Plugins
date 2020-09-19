@@ -61,11 +61,11 @@ namespace PKHeX.Core.AutoMod
                 var shiny = split1[i - 1].Contains("\"shiny\":true");
                 if (split1[i - 1].Contains("\"format\":\""))
                 {
-                    lc = split1[i - 1].Substring(split1[i - 1].IndexOf("\"format\":\"") + "\"format\":\"".Length)
+                    lc = split1[i - 1].Substring(split1[i - 1].IndexOf("\"format\":\"", StringComparison.Ordinal) + "\"format\":\"".Length)
                         .StartsWith("LC");
                 }
                 var level = lc ? 5 : 100;
-                
+
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
                 var tmp = split2[0];
                 SetConfig.Add(tmp);
@@ -139,7 +139,7 @@ namespace PKHeX.Core.AutoMod
             if(level != 100)
                 result.Add($"Level: {level}");
             if (shiny)
-                result.Add($"Shiny: Yes");
+                result.Add("Shiny: Yes");
             if (!string.IsNullOrWhiteSpace(ability))
                 result.Add($"Ability: {ability}");
             if (evstr.Length >= 3)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using PKHeX.Core.AutoMod;
 
@@ -31,23 +32,29 @@ namespace AutoModPlugins.GUI
             Properties.AutoLegality.Default.Save();
         }
 
-        private void RunBulkTests_Click(object sender, System.EventArgs e)
+        private void RunBulkTests_Click(object sender, EventArgs e)
         {
             if (!Directory.Exists(TeamTest.TestPath))
             {
                 WinFormsUtil.Error("Valid Test Path does not exist");
+                return;
             }
-            else
+
+            var results = TeamTest.VerifyFiles();
+            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "logs"));
+
+            foreach (var res in results)
             {
-                var results = TeamTest.VerifyFiles();
-                var finalstr = "";
-                foreach (var res in results)
-                    finalstr += $"{Path.GetFileName(res.Key)} : Legal - {res.Value["legal"].Length} | Illegal - {res.Value["illegal"].Length}\n";
-                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "logs"));
-                foreach (var res in results)
-                    File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "logs", Path.GetFileName(res.Key).Replace('.', '_') + DateTime.Now.ToString("_yyyy-MM-dd-HH-mm-ss") + ".log"), string.Join("\n\n", res.Value["illegal"].Select(x => x.Text)));
-                WinFormsUtil.Alert(finalstr.TrimEnd());
+                var fileName = $"{Path.GetFileName(res.Key).Replace('.', '_')}{DateTime.Now:_yyyy-MM-dd-HH-mm-ss}.log";
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "logs", fileName);
+                var msg = string.Join("\n\n", res.Value["illegal"].Select(x => x.Text));
+                File.WriteAllText(path, msg);
             }
+
+            var sb = new StringBuilder();
+            foreach (var res in results)
+                sb.Append(Path.GetFileName(res.Key)).Append(" : Legal - ").Append(res.Value["legal"].Length).Append(" | Illegal - ").Append(res.Value["illegal"].Length).AppendLine();
+            WinFormsUtil.Alert(sb.ToString());
         }
     }
 }

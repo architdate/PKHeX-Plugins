@@ -63,8 +63,11 @@
             var pkm = PKMConverter.GetPKMfromBytes(data);
 
             // Since data might not actually exist at the user-specified offset, double check that the pkm data is valid.
-            if (pkm == null || !pkm.ChecksumValid)
+            if (pkm == null)
                 return false;
+            if (!pkm.ChecksumValid)
+                return false;
+
             Editor.PopulateFields(pkm);
             return true;
         }

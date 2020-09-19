@@ -18,7 +18,6 @@ namespace PKHeX.Core.AutoMod
         int ICommunicator.Port { get => Port; set => Port = value; }
         string ICommunicator.IP { get => IP; set => IP = value; }
 
-
         public void Connect()
         {
             lock (_sync)

@@ -146,7 +146,7 @@ namespace PKHeX.Core.AutoMod
             {
                 var gen = EasterEggs.GetGeneration(template.Species);
                 template.Species = (int) EasterEggs.IllegalPKMMemeSpecies(gen);
-                var legalencs = ModLogic.GetRandomEncounter(tr, (int) EasterEggs.IllegalPKMMemeSpecies(gen), out var legal);
+                var legalencs = tr.GetRandomEncounter((int) EasterEggs.IllegalPKMMemeSpecies(gen), out var legal);
                 if (legalencs && legal != null)
                     template = legal;
                 template.SetNickname(EasterEggs.IllegalPKMMemeNickname(gen));

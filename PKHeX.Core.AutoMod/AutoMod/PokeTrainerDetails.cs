@@ -18,9 +18,10 @@ namespace PKHeX.Core.AutoMod
         public int Gender => pkm.OT_Gender;
         public int Game => pkm.Version;
         public int Language => pkm.Language;
-        public int Country { get => pkm is IGeoTrack gt ? gt.Country : 0; set => Country = value; }
-        public int Region { get => pkm is IGeoTrack gt ? gt.Region : 0; set => Region = value; }
-        public int ConsoleRegion { get => pkm is IGeoTrack gt ? gt.ConsoleRegion : 0; set => ConsoleRegion = value; }
+
+        public int Country { get => pkm is IGeoTrack gt ? gt.Country : 0; set { if (pkm is IGeoTrack gt) gt.Country = value; } }
+        public int Region { get => pkm is IGeoTrack gt ? gt.Region : 0; set { if (pkm is IGeoTrack gt) gt.Region = value; } }
+        public int ConsoleRegion { get => pkm is IGeoTrack gt ? gt.ConsoleRegion : 0; set { if (pkm is IGeoTrack gt) gt.ConsoleRegion = value; } }
         public int Generation => pkm.GenNumber;
     }
 }

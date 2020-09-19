@@ -85,7 +85,6 @@ namespace AutoModPlugins
         /// <summary>
         /// Gets a legal <see cref="PKM"/> from a random in-game encounter's data.
         /// </summary>
-        /// <param name="sav">Save File to receive the generated <see cref="PKM"/>.</param>
         /// <param name="tr">Trainer Data to use in generating the encounter</param>
         /// <param name="species">Species ID to generate</param>
         /// <param name="pk">Result legal pkm</param>
@@ -155,8 +154,10 @@ namespace AutoModPlugins
                 f.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
             if (f is IHomeTrack ht && ht.Tracker == 0 && APILegality.SetRandomTracker)
                 ht.Tracker = APILegality.GetRandomULong();
-            if (new LegalityAnalysis(f).Valid) return f;
-            else
+            if (new LegalityAnalysis(f).Valid)
+                return f;
+
+            // local name clashes!
             {
                 var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
                 var set = new ShowdownSet(new ShowdownSet(blank).Text.Split('\r')[0]);

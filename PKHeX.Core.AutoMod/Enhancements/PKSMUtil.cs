@@ -10,9 +10,7 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Creates PKSM's bank.bin to individual <see cref="PKM"/> files (v1)
         /// </summary>
-        /// <param name="bank">PKSM format bank storage</param>
         /// <param name="dir">Folder to export all dumped files to</param>
-        /// <param name="previews">Preview data</param>
         public static int CreateBank(string dir)
         {
             var files = Directory.GetFiles(dir, "*.p??", SearchOption.TopDirectoryOnly);
@@ -20,7 +18,7 @@ namespace PKHeX.Core.AutoMod
             var version = BitConverter.GetBytes(ver + 1); // Latest bank version
             var pksmsize = GetBankSize((PKSMBankVersion) ver);
             var boxcount = (files.Length / 30) + 1;
-            var bank = new byte[8 + 4 + 4 + boxcount * pksmsize * 30];
+            var bank = new byte[8 + 4 + 4 + (boxcount * pksmsize * 30)];
             var ctr = 0;
             var magic = new byte[] {0x50, 0x4B, 0x53, 0x4D, 0x42, 0x41, 0x4E, 0x4B}; // PKSMBANK
             magic.CopyTo(bank, 0);
@@ -33,7 +31,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 if (pk.Species == 0 && pk.Species >= pk.MaxSpeciesID)
                     continue;
-                var ofs = 16 + ctr * pksmsize;
+                var ofs = 16 + (ctr * pksmsize);
                 BitConverter.GetBytes((int) GetPKSMFormat(pk)).CopyTo(bank, ofs);
                 pk.DecryptedBoxData.CopyTo(bank, ofs + 4);
                 byte[] temp = Enumerable.Repeat((byte)0xFF, pksmsize - pk.DecryptedBoxData.Length - 8).ToArray();
@@ -45,7 +43,7 @@ namespace PKHeX.Core.AutoMod
             var empty = (boxcount * 30) - files.Length;
             for (int i = 0; i < empty; i++)
             {
-                var ofs = 16 + ctr * pksmsize;
+                var ofs = 16 + (ctr * pksmsize);
                 byte[] temp = Enumerable.Repeat((byte)0xFF, pksmsize).ToArray();
                 temp.CopyTo(bank, ofs);
                 ctr++;

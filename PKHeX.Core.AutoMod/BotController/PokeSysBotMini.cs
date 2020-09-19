@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using static PKHeX.Core.AutoMod.LiveHeXVersion;
 
 namespace PKHeX.Core.AutoMod
 {
     public class PokeSysBotMini
     {
-        public static int BoxStart = 0x4506D890;
-        public static int SlotSize = 344;
-        public static int SlotCount = 30;
-        public static int GapSize = 0;
-        public LiveHeXVersion Version;
-        public ICommunicator com;
+        public readonly int BoxStart;
+        public readonly int SlotSize;
+        public readonly int SlotCount;
+        public readonly int GapSize;
+        public readonly LiveHeXVersion Version;
+        public readonly ICommunicator com;
         public bool Connected => com.Connected;
 
         public PokeSysBotMini(LiveHeXVersion lv, InjectorCommunicationType ict)
@@ -24,8 +24,8 @@ namespace PKHeX.Core.AutoMod
             GapSize = RamOffsets.GetGapSize(lv);
         }
 
-        private static uint GetBoxOffset(int box) => (uint)BoxStart + (uint)((SlotSize + GapSize) * SlotCount * box);
-        private static uint GetSlotOffset(int box, int slot) => GetBoxOffset(box) + (uint)(SlotSize * slot);
+        private uint GetBoxOffset(int box) => (uint)BoxStart + (uint)((SlotSize + GapSize) * SlotCount * box);
+        private uint GetSlotOffset(int box, int slot) => GetBoxOffset(box) + (uint)(SlotSize * slot);
 
         public byte[] ReadBox(int box, int len)
         {
@@ -33,7 +33,7 @@ namespace PKHeX.Core.AutoMod
             if (GapSize == 0)
                 return bytes;
             var allpkm = new List<byte[]>();
-            var retval = new byte[0];
+            var retval = Array.Empty<byte>();
             var currofs = 0;
             for (int i = 0; i < SlotCount; i++)
             {

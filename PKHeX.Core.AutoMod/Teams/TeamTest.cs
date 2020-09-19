@@ -47,17 +47,12 @@ namespace PKHeX.Core.AutoMod
         public static Dictionary<string, ShowdownSet[]> VerifyFile(string file, GameVersion[] saves)
         {
             var lines = File.ReadAllLines(file);
-            var sets = ShowdownSet.GetShowdownSets(lines);
+            var sets = ShowdownSet.GetShowdownSets(lines).ToList();
             var legalsets = new List<ShowdownSet>();
             var illegalsets = new List<ShowdownSet>();
             foreach (var s in saves)
             {
                 var sav = SaveUtil.GetBlankSAV(s, "ALM");
-                if (sav == null)
-                {
-                    Console.WriteLine("Null Save!");
-                    return new Dictionary<string, ShowdownSet[]> { {"illegal", sets.ToArray() }, {"legal", new ShowdownSet[] { } } };
-                }
                 var trainer = TrainerSettings.DefaultFallback(sav.Generation);
                 PKMConverter.SetPrimaryTrainer(trainer);
                 var species = Enumerable.Range(1, sav.MaxSpeciesID);
@@ -66,23 +61,28 @@ namespace PKHeX.Core.AutoMod
                 if (sav is SAV8)
                     species = species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z));
 
+                var spec = species.ToList();
                 foreach (var set in sets)
                 {
-                    if (!species.Contains(set.Species))
+                    if (!spec.Contains(set.Species))
                         continue;
                     try
                     {
                         var pk = sav.GetLegalFromSet(set, out _);
                         var la = new LegalityAnalysis(pk);
                         if (la.Valid)
+                        {
                             legalsets.Add(set);
+                        }
                         else
                         {
                             illegalsets.Add(set);
                             Console.WriteLine($"Invalid Set for {(Species) set.Species} in file {file} with set: {set.Text}");
                         }
                     }
+#pragma warning disable CA1031 // Do not catch general exception types
                     catch
+#pragma warning restore CA1031 // Do not catch general exception types
                     {
                         Console.WriteLine($"Exception for {(Species) set.Species} in file {file} with set: {set.Text}");
                     }
