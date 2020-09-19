@@ -22,7 +22,6 @@ namespace PKHeX.Core.AutoMod
         public static bool PrioritizeGame { get; set; } = true;
         public static bool SetRandomTracker { get; set; }
         public static GameVersion PrioritizeGameVersion { get; set; }
-        internal static readonly EncounterArea6XY FriendSafari = new EncounterArea6XY(SimpleEdits.FriendSafari);
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -48,7 +47,6 @@ namespace PKHeX.Core.AutoMod
             if (PrioritizeGame)
                 gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, destVer) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
-            encounters = encounters.Concat(GetFriendSafariEncounters(template));
             foreach (var enc in encounters)
             {
                 if (!IsEncounterValid(set, enc, isHidden, destVer, out var ver))
@@ -426,19 +424,6 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Add friend safari encounters to encounter generator
-        /// </summary>
-        /// <param name="pk">mock pkm to get friend safari encounters</param>
-        /// <returns>IEncounterable enumaration of friend safari encounters in the evo chain</returns>
-        private static IEnumerable<IEncounterable> GetFriendSafariEncounters(PKM pk)
-        {
-            // Set values to get a mock pk6
-            pk.HT_Name = "A";
-            var chain = EncounterOrigin.GetOriginChain(pk);
-            return FriendSafari.GetMatchingSlots(pk, chain);
-        }
-
-        /// <summary>
         /// Set IV Values for the pokemon
         /// </summary>
         /// <param name="pk"></param>
@@ -460,13 +445,13 @@ namespace PKHeX.Core.AutoMod
             {
                 var ivs = pk.IVs;
                 for (int i = 0; i < mg.IVs.Length; i++)
-                {
-                    if (mg.IVs[i] > 31) ivs[i] = set.IVs[i];
-                    else ivs[i] = mg.IVs[i];
-                }
+                    ivs[i] = mg.IVs[i] > 31 ? set.IVs[i] : mg.IVs[i];
                 pk.IVs = ivs;
             }
-            else pk.IVs = set.IVs;
+            else
+            {
+                pk.IVs = set.IVs;
+            }
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
             if (li.EncounterMatch is EncounterStatic8N || li.EncounterMatch is EncounterStatic8NC || li.EncounterMatch is EncounterStatic8ND)

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -42,28 +41,6 @@ namespace PKHeX.Core.AutoMod
             076, // Golem
             088, // Grimer
             089, // Muk
-        };
-
-        internal static readonly HashSet<int> FriendSafari = new HashSet<int>
-        {
-            190, 206, 216, 506, 294, 352, 531, 572, 113, 132, 133, 235,
-            012, 046, 165, 415, 267, 284, 313, 314, 049, 127, 214, 666,
-            262, 274, 624, 629, 215, 332, 342, 551, 302, 359, 510, 686,
-            444, 611, 148, 372, 714, 621, 705,
-            101, 417, 587, 702, 025, 125, 618, 694, 310, 404, 523, 596,
-            175, 209, 281, 702, 039, 303, 682, 684, 035, 670,
-            056, 067, 307, 619, 538, 539, 674, 236, 286, 297, 447,
-            058, 077, 126, 513, 005, 218, 636, 668, 038, 654, 662,
-            016, 021, 083, 084, 163, 520, 527, 581, 357, 627, 662, 701,
-            353, 608, 708, 710, 356, 426, 442, 623,
-            043, 114, 191, 511, 002, 541, 548, 586, 556, 651, 673,
-            027, 194, 231, 328, 051, 105, 290, 323, 423, 536, 660,
-            225, 361, 363, 459, 215, 614, 712, 087, 091, 131, 221,
-            014, 044, 268, 336, 049, 168, 317, 569, 089, 452, 454, 544,
-            063, 096, 326, 517, 202, 561, 677, 178, 203, 575, 578,
-            299, 525, 557, 095, 219, 222, 247, 112, 213, 689,
-            082, 303, 597, 205, 227, 375, 600, 437, 530, 707,
-            098, 224, 400, 515, 008, 130, 195, 419, 061, 184, 657
         };
 
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
@@ -224,9 +201,8 @@ namespace PKHeX.Core.AutoMod
             pk.RelearnMove4 = 0;
         }
 
-        public static void ApplyHeightWeight(this PKM pk, IEncounterable enc)
+        public static void ApplyHeightWeight(this PKM pk, IEncounterable enc, bool signed = true)
         {
-            var signed = true;
             if (pk.GenNumber < 8 && pk.Format >= 8 && !pk.GG) // height and weight don't apply prior to GG
                 return;
             if (!(pk is IScaledSize size))
@@ -242,30 +218,31 @@ namespace PKHeX.Core.AutoMod
                 if (APILegality.UseXOROSHIRO)
                     return;
             }
+
+            var height = 0x12;
+            var weight = 0x97;
             if (signed)
             {
-                var height = 0x12;
-                var weight = 0x97;
                 if (GameVersion.SWSH.Contains(pk.Version))
                 {
                     var top = (int) (pk.PID >> 16);
                     var bottom = (int) (pk.PID & 0xFFFF);
-                    height = top % 0x80 + bottom % 0x81;
-                    weight = (int) (pk.EncryptionConstant >> 16) % 0x80 + (int) (pk.EncryptionConstant & 0xFFFF) % 0x81;
+                    height = (top % 0x80) + (bottom % 0x81);
+                    weight = ((int) (pk.EncryptionConstant >> 16) % 0x80) + ((int) (pk.EncryptionConstant & 0xFFFF) % 0x81);
                 }
                 else if (pk.GG)
                 {
                     height = (int) (pk.PID >> 16) % 0xFF;
                     weight = (int) (pk.PID & 0xFFFF) % 0xFF;
                 }
-                size.HeightScalar = height;
-                size.WeightScalar = weight;
-                if (pk is PB7 pb)
-                    pb.ResetCalculatedValues();
-                return;
             }
-            size.HeightScalar = Util.Rand.Next(255);
-            size.WeightScalar = Util.Rand.Next(255);
+            else
+            {
+                height = Util.Rand.Next(255);
+                weight = Util.Rand.Next(255);
+            }
+            size.HeightScalar = height;
+            size.WeightScalar = weight;
             if (pk is PB7 pb1)
                 pb1.ResetCalculatedValues();
         }
