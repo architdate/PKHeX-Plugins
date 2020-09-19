@@ -55,15 +55,28 @@ namespace PKHeX.Core.AutoMod
         private void LoadSetsFromPage()
         {
             var split1 = Page.Split(new[] { "\",\"abilities\":" }, StringSplitOptions.None);
+            var lc = false;
             for (int i = 1; i < split1.Length; i++)
             {
                 var shiny = split1[i - 1].Contains("\"shiny\":true");
+                if (split1[i - 1].Contains("\"format\":\""))
+                {
+                    lc = split1[i - 1].Substring(split1[i - 1].IndexOf("\"format\":\"") + "\"format\":\"".Length)
+                        .StartsWith("LC");
+                }
+                var level = lc ? 5 : 100;
+                if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
+                {
+                    int.TryParse(split1[i - 1].Split(new[] {"\"level\":"}, StringSplitOptions.None)[1]
+                        .Split(',')[0], out level);
+                }
+
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
 
                 var tmp = split2[0];
                 SetConfig.Add(tmp);
 
-                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName, shiny);
+                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName, shiny, level);
                 SetText.Add(morphed);
 
                 var converted = new ShowdownSet(morphed);
@@ -102,15 +115,15 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static string ConvertSetToShowdown(string set, string species, bool shiny)
+        private static string ConvertSetToShowdown(string set, string species, bool shiny, int level)
         {
-            var result = GetSetLines(set, species, shiny);
+            var result = GetSetLines(set, species, shiny, level);
             return string.Join(Environment.NewLine, result);
         }
 
         private static readonly string[] statNames = { "HP", "Atk", "Def", "SpA", "SpD", "Spe" };
 
-        private static IEnumerable<string> GetSetLines(string set, string species, bool shiny)
+        private static IEnumerable<string> GetSetLines(string set, string species, bool shiny, int level)
         {
             TryGetToken(set, "\"items\":[\"", "\"", out var item);
             TryGetToken(set, "\"moveslots\":", ",\"evconfigs\":", out var movesets);
@@ -125,10 +138,12 @@ namespace PKHeX.Core.AutoMod
             if (item == "No Item") // LGPE actually lists an item, RBY sets have an empty [].
                 item = string.Empty;
 
-            var result = new List<string>(8)
+            var result = new List<string>(9)
             {
                 item.Length == 0 ? species : $"{species} @ {item}",
             };
+            if(level != 100)
+                result.Add($"Level: {level}");
             if (shiny)
                 result.Add($"Shiny: Yes");
             if (!string.IsNullOrWhiteSpace(ability))
