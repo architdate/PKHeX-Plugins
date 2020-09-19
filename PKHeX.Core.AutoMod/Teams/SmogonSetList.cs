@@ -65,14 +65,8 @@ namespace PKHeX.Core.AutoMod
                         .StartsWith("LC");
                 }
                 var level = lc ? 5 : 100;
-                if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
-                {
-                    int.TryParse(split1[i - 1].Split(new[] {"\"level\":"}, StringSplitOptions.None)[1]
-                        .Split(',')[0], out level);
-                }
-
+                
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
-
                 var tmp = split2[0];
                 SetConfig.Add(tmp);
 
