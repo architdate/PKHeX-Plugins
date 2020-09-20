@@ -31,34 +31,21 @@ namespace AutoModPlugins.GUI
         private void InitializeComponent()
         {
             this.PG_Settings = new System.Windows.Forms.PropertyGrid();
-            this.RunBulkTests = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PG_Settings
             // 
-            this.PG_Settings.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PG_Settings.Location = new System.Drawing.Point(0, 29);
+            this.PG_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PG_Settings.Location = new System.Drawing.Point(0, 0);
             this.PG_Settings.Name = "PG_Settings";
-            this.PG_Settings.Size = new System.Drawing.Size(334, 299);
+            this.PG_Settings.Size = new System.Drawing.Size(334, 328);
             this.PG_Settings.TabIndex = 1;
-            // 
-            // RunBulkTests
-            // 
-            this.RunBulkTests.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RunBulkTests.Location = new System.Drawing.Point(0, 0);
-            this.RunBulkTests.Name = "RunBulkTests";
-            this.RunBulkTests.Size = new System.Drawing.Size(334, 23);
-            this.RunBulkTests.TabIndex = 2;
-            this.RunBulkTests.Text = "Run Tests";
-            this.RunBulkTests.UseVisualStyleBackColor = true;
-            this.RunBulkTests.Click += new System.EventHandler(this.RunBulkTests_Click);
             // 
             // ALMSettings
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(334, 328);
-            this.Controls.Add(this.RunBulkTests);
             this.Controls.Add(this.PG_Settings);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = global::AutoModPlugins.Properties.Resources.icon;
@@ -77,6 +64,5 @@ namespace AutoModPlugins.GUI
         #endregion
 
         private System.Windows.Forms.PropertyGrid PG_Settings;
-        private Button RunBulkTests;
     }
 }

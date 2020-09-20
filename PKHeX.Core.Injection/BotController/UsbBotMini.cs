@@ -4,7 +4,7 @@ using System.Threading;
 using LibUsbDotNet;
 using LibUsbDotNet.Main;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Injection
 {
     public class UsbBotMini : ICommunicator
     {

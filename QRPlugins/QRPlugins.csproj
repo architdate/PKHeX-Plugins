@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AutoLegalityMod\AutoModPlugins.csproj" />
+    <ProjectReference Include="..\PKHeX.Core.Enhancements\PKHeX.Core.Enhancements.csproj" />
   </ItemGroup>
 
   <ItemGroup>

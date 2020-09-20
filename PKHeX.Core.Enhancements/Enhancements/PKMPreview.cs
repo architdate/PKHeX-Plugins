@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Enhancements
 {
     public sealed class PKMPreview : PKMSummary
     {

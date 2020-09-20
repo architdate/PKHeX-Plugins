@@ -34,10 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LibUsbDotNet.LibUsbDotNet, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c677239abe1e02a9, processorArchitecture=MSIL">
-      <HintPath>..\packages\LibUsbDotNet.2.2.29\lib\net45\LibUsbDotNet.LibUsbDotNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="PKHeX.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PKHeX.Core.20.8.8\lib\net46\PKHeX.Core.dll</HintPath>
     </Reference>
@@ -143,6 +139,14 @@
     <ProjectReference Include="..\PKHeX.Core.AutoMod\PKHeX.Core.AutoMod.csproj">
       <Project>{b2ec5fb6-4b00-4c00-91eb-f4eb01dd590d}</Project>
       <Name>PKHeX.Core.AutoMod</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PKHeX.Core.Enhancements\PKHeX.Core.Enhancements.csproj">
+      <Project>{165d144a-dbb4-4f3b-bf39-e783b41008c3}</Project>
+      <Name>PKHeX.Core.Enhancements</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PKHeX.Core.Injection\PKHeX.Core.Injection.csproj">
+      <Project>{db4da5c0-dfb3-490e-90e1-cdd9330267f2}</Project>
+      <Name>PKHeX.Core.Injection</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -8,7 +8,7 @@ using System.Text;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Security;
 using PKHeX.Core;
-using PKHeX.Core.AutoMod;
+using PKHeX.Core.Enhancements;
 using ZXing;
 
 namespace AutoModPlugins

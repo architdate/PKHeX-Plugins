@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using AutoModPlugins.Properties;
 using PKHeX.Core;
-using NetUtil = PKHeX.Core.AutoMod.NetUtil;
 
 namespace AutoModPlugins
 {
@@ -33,7 +32,7 @@ namespace AutoModPlugins
         {
             var pk = PKMEditor.PreparePKM();
             byte[] rawdata = pk.Data;
-            var postval = NetUtil.GPSSPost(rawdata, Url);
+            var postval = PKHeX.Core.Enhancements.NetUtil.GPSSPost(rawdata, Url);
             Clipboard.SetText(postval);
             WinFormsUtil.Alert(postval);
         }
@@ -55,7 +54,7 @@ namespace AutoModPlugins
                     return;
                 }
 
-                var pkbytes = NetUtil.GPSSDownload(code, Url);
+                var pkbytes = PKHeX.Core.Enhancements.NetUtil.GPSSDownload(code, Url);
                 var pkm = PKMConverter.GetPKMfromBytes(pkbytes);
                 if (!LoadPKM(pkm))
                 {

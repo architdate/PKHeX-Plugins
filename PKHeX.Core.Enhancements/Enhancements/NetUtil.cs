@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Enhancements
 {
     /// <summary>
     /// Internet web request Utility

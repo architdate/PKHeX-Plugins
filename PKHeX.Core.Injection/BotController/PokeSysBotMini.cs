@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Injection
 {
     public class PokeSysBotMini
     {

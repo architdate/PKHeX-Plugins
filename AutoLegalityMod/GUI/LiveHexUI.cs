@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using AutoModPlugins.GUI;
 using AutoModPlugins.Properties;
 using PKHeX.Core;
-using PKHeX.Core.AutoMod;
+using PKHeX.Core.Injection;
 
 namespace AutoModPlugins
 {

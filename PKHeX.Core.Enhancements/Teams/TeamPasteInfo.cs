@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Enhancements
 {
     /// <summary>
     /// Paste Details originating from a common pasting website URL.

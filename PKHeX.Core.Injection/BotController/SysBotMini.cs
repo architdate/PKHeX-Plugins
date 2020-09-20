@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Threading;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Injection
 {
     public class SysBotMini : ICommunicator
     {

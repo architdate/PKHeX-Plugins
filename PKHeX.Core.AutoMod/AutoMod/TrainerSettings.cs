@@ -12,7 +12,7 @@ namespace PKHeX.Core.AutoMod
         private static readonly ITrainerInfo DefaultFallback8 = new SimpleTrainerInfo(GameVersion.SW);
         private static readonly ITrainerInfo DefaultFallback7 = new SimpleTrainerInfo(GameVersion.UM);
 
-        internal static ITrainerInfo DefaultFallback(int gen = 8) => gen > 7 ? DefaultFallback8 : DefaultFallback7;
+        public static ITrainerInfo DefaultFallback(int gen = 8) => gen > 7 ? DefaultFallback8 : DefaultFallback7;
 
         static TrainerSettings() => LoadTrainerDatabaseFromPath(TrainerPath);
 

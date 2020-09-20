@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using FluentAssertions;
+using PKHeX.Core;
+using PKHeX.Core.AutoMod;
+using Xunit;
 using static PKHeX.Core.GameVersion;
 
-namespace PKHeX.Core.AutoMod
+namespace AutoModTests
 {
     /// <summary>
     /// Class to test multiple large pastebins with a mix of legal/illegal mons
     /// </summary>
-    public static class TeamTest
+    public static class TeamTests
     {
-        public static string TestPath => Path.Combine(Directory.GetCurrentDirectory(), "tests");
+        private static string TestPath => Path.Combine(Directory.GetCurrentDirectory(), "tests");
 
         private static Dictionary<string, int> GetFileStructures()
         {
@@ -29,11 +34,11 @@ namespace PKHeX.Core.AutoMod
             return result;
         }
 
-        public static GameVersion[] GetGameVersionsToTest(int gen)
+        private static GameVersion[] GetGameVersionsToTest(int gen)
         {
             return gen switch
             {
-                -1 => new [] { GP },
+                -1 => new[] { GP },
                 3 => new[] { SW, US, S, OR, X, B2, B, Pt, E },
                 4 => new[] { SW, US, S, OR, X, B2, B, Pt },
                 5 => new[] { SW, US, S, OR, X, B2 },
@@ -44,7 +49,7 @@ namespace PKHeX.Core.AutoMod
             };
         }
 
-        public static Dictionary<string, ShowdownSet[]> VerifyFile(string file, GameVersion[] saves)
+        private static Dictionary<string, ShowdownSet[]> VerifyFile(string file, GameVersion[] saves)
         {
             var lines = File.ReadAllLines(file);
             var sets = ShowdownSet.GetShowdownSets(lines).ToList();
@@ -59,7 +64,7 @@ namespace PKHeX.Core.AutoMod
                 species = sav switch
                 {
                     SAV7b _ => species.Where(z => z <= 151 || (z == 808 || z == 809)), // only include Kanto and M&M
-                    SAV8 _ => species.Where(z => ((PersonalInfoSWSH) PersonalTable.SWSH.GetFormeEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
+                    SAV8 _ => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
                     _ => species
                 };
 
@@ -79,14 +84,14 @@ namespace PKHeX.Core.AutoMod
                         else
                         {
                             illegalsets.Add(set);
-                            Console.WriteLine($"Invalid Set for {(Species) set.Species} in file {file} with set: {set.Text}");
+                            Console.WriteLine($"Invalid Set for {(Species)set.Species} in file {file} with set: {set.Text}");
                         }
                     }
 #pragma warning disable CA1031 // Do not catch general exception types
                     catch
 #pragma warning restore CA1031 // Do not catch general exception types
                     {
-                        Console.WriteLine($"Exception for {(Species) set.Species} in file {file} with set: {set.Text}");
+                        Console.WriteLine($"Exception for {(Species)set.Species} in file {file} with set: {set.Text}");
                     }
                 }
             }
@@ -105,6 +110,30 @@ namespace PKHeX.Core.AutoMod
                 result.Add(file, res);
             }
             return result;
+        }
+
+        [Fact]
+        public static void RunTeamTests()
+        {
+            Directory.Exists(TestPath).Should().BeTrue();
+            var dir = Directory.GetCurrentDirectory();
+
+            var results = VerifyFiles();
+            Directory.CreateDirectory(Path.Combine(dir, "logs"));
+
+            foreach (var (key, value) in results)
+            {
+                var fileName = $"{Path.GetFileName(key).Replace('.', '_')}{DateTime.Now:_yyyy-MM-dd-HH-mm-ss}.log";
+                var path = Path.Combine(dir, "logs", fileName);
+                var msg = string.Join("\n\n", value["illegal"].Select(x => x.Text));
+                File.WriteAllText(path, msg);
+            }
+
+            var sb = new StringBuilder();
+            foreach (var (key, value) in results)
+                sb.Append(Path.GetFileName(key)).Append(" : Legal - ").Append(value["legal"].Length).Append(" | Illegal - ").Append(value["illegal"].Length).AppendLine();
+
+            File.WriteAllText(Path.Combine(dir, "logs", "output.txt"), sb.ToString());
         }
     }
 }

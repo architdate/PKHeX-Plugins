@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Enhancements
 {
     /// <summary>
     /// Logic for handling <see cref="ShowdownSet"/> data.

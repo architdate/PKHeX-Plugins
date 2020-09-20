@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using PKHeX.Core.AutoMod;
+using PKHeX.Core.Injection;
 
 namespace AutoModPlugins.GUI
 {

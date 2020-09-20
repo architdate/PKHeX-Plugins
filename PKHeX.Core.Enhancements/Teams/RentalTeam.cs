@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Enhancements
 {
     /// <summary>
     /// PGL Website QR Rental Team

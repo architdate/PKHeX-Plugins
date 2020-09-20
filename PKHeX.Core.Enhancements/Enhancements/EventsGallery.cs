@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Enhancements
 {
     /// <summary>
     /// Interactions with ProjectPokémon's Event Gallery (hosted on GitHub)

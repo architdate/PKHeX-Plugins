@@ -1,4 +1,4 @@
-﻿namespace PKHeX.Core.AutoMod
+﻿namespace PKHeX.Core.Injection
 {
     /// <summary>
     /// Controller Stick differentiation

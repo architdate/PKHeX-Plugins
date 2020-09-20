@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
@@ -10,7 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LibUsbDotNet" Version="2.2.29" />
     <PackageReference Include="PKHeX.Core" Version="20.8.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NtrSharp">
+      <HintPath>BotController\deps\NtrSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

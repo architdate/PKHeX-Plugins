@@ -2,7 +2,7 @@
 using System.Linq;
 using FluentAssertions;
 using PKHeX.Core;
-using PKHeX.Core.AutoMod;
+using PKHeX.Core.Enhancements;
 using Xunit;
 
 namespace AutoModTests

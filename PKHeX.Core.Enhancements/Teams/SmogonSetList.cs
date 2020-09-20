@@ -1,9 +1,9 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Enhancements
 {
     /// <summary>
     /// Parser for Smogon webpage <see cref="ShowdownSet"/> data.
@@ -20,7 +20,7 @@ namespace PKHeX.Core.AutoMod
         public readonly List<string> SetText = new List<string>();
         public readonly List<ShowdownSet> Sets = new List<ShowdownSet>();
 
-        public static readonly string[] IllegalFormats = new []
+        public static readonly string[] IllegalFormats = new[]
         {
             "Almost Any Ability", // Generates illegal abilities
             "BH",                 // Balanced Hackmons
@@ -153,7 +153,7 @@ namespace PKHeX.Core.AutoMod
             {
                 item.Length == 0 ? species : $"{species} @ {item}",
             };
-            if(level != 100)
+            if (level != 100)
                 result.Add($"Level: {level}");
             if (shiny)
                 result.Add("Shiny: Yes");
@@ -199,7 +199,7 @@ namespace PKHeX.Core.AutoMod
         private static IEnumerable<string> GetMoves(string movesets)
         {
             var moves = new List<string>();
-            var slots = movesets.Split(new[] {"],["}, StringSplitOptions.None);
+            var slots = movesets.Split(new[] { "],[" }, StringSplitOptions.None);
             foreach (var slot in slots)
             {
                 var choices = slot.Split(new[] { "\"move\":\"" }, StringSplitOptions.None).Skip(1).ToArray();

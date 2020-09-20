@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Injection
 {
     public static class Decoder
     {

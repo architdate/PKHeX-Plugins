@@ -5,7 +5,7 @@ using System.Threading;
 using NtrSharp;
 using NtrSharp.Events;
 
-namespace PKHeX.Core.AutoMod
+namespace PKHeX.Core.Injection
 {
     public class NTRSharpClient : ICommunicator
     {
