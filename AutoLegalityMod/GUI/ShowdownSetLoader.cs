@@ -131,7 +131,6 @@ namespace AutoModPlugins
             APILegality.SetRandomTracker = settings.SetRandomTracker;
             APILegality.PrioritizeGame = settings.PrioritizeGame;
             APILegality.PrioritizeGameVersion = settings.PriorityGameVersion;
-            Legalizer.AllowBruteForce = settings.AllowBruteforce;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
 
             EncounterMovesetGenerator.PriorityList = settings.PrioritizeEvent

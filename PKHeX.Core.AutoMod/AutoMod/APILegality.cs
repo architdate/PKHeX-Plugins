@@ -30,7 +30,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="dest">Destination for the generated pkm</param>
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
-        /// <param name="satisfied">If the final result is satisfactory, otherwise use deprecated bruteforce auto legality functionality</param>
+        /// <param name="satisfied">If the final result is legal or not</param>
         public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out bool satisfied)
         {
             if (set is RegenTemplate t)
@@ -526,7 +526,7 @@ namespace PKHeX.Core.AutoMod
                         return; // Fixed PID, no need to mutate
                     }
                 }
-                FindPIDIV(pk, method, hpType, set.Shiny);
+                FindPIDIV(pk, method, hpType, set.Shiny, encounter);
                 ValidateGender(pk);
             }
         }
@@ -602,11 +602,16 @@ namespace PKHeX.Core.AutoMod
         /// <param name="Method">Given Method</param>
         /// <param name="HPType">HPType INT for preserving Hidden powers</param>
         /// <param name="shiny">Only used for CHANNEL RNG type</param>
-        private static void FindPIDIV(PKM pk, PIDType Method, int HPType, bool shiny)
+        /// <param name="enc"></param>
+        private static void FindPIDIV(PKM pk, PIDType Method, int HPType, bool shiny, IEncounterable enc)
         {
             if (Method == PIDType.None)
             {
-                Method = FindLikelyPIDType(pk);
+                if (enc is WC3 wc3)
+                    Method = wc3.Method;
+                else
+                    Method = FindLikelyPIDType(pk);
+
                 if (pk.Version == (int)GameVersion.CXD && Method != PIDType.PokeSpot)
                     Method = PIDType.CXD;
                 if (Method == PIDType.None)
@@ -670,10 +675,6 @@ namespace PKHeX.Core.AutoMod
         /// <returns>PIDType that is likely used</returns>
         private static PIDType FindLikelyPIDType(PKM pk)
         {
-            if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.BACD_R))
-                return PIDType.BACD_R;
-            if (BruteForce.UsesEventBasedMethod(pk.Species, pk.Moves, PIDType.Method_2))
-                return PIDType.Method_2;
             if (pk.Species == (int)Species.Manaphy && pk.Gen4)
             {
                 pk.Egg_Location = Locations.LinkTrade4; // todo: really shouldn't be doing this, don't modify pkm
