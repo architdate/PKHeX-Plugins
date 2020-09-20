@@ -6,14 +6,14 @@ using static PKHeX.Core.GameVersion;
 
 namespace PKHeX.Core.AutoMod
 {
-    /*
-     * Class to test multiple large pastebins with a mix of legal/illegal mons
-     */
+    /// <summary>
+    /// Class to test multiple large pastebins with a mix of legal/illegal mons
+    /// </summary>
     public static class TeamTest
     {
         public static string TestPath => Path.Combine(Directory.GetCurrentDirectory(), "tests");
 
-        public static Dictionary<string, int> GetFileStructures()
+        private static Dictionary<string, int> GetFileStructures()
         {
             var files = Directory.GetFiles(TestPath, "*", SearchOption.AllDirectories);
             Dictionary<string, int> result = new Dictionary<string, int>();
@@ -56,10 +56,12 @@ namespace PKHeX.Core.AutoMod
                 var trainer = TrainerSettings.DefaultFallback(sav.Generation);
                 PKMConverter.SetPrimaryTrainer(trainer);
                 var species = Enumerable.Range(1, sav.MaxSpeciesID);
-                if (sav is SAV7b)
-                    species = species.Where(z => z <= 151 || (z == 808 || z == 809)); // only include Kanto and M&M
-                if (sav is SAV8)
-                    species = species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z));
+                species = sav switch
+                {
+                    SAV7b _ => species.Where(z => z <= 151 || (z == 808 || z == 809)), // only include Kanto and M&M
+                    SAV8 _ => species.Where(z => ((PersonalInfoSWSH) PersonalTable.SWSH.GetFormeEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
+                    _ => species
+                };
 
                 var spec = species.ToList();
                 foreach (var set in sets)

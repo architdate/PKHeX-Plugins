@@ -148,16 +148,19 @@ namespace PKHeX.Core.AutoMod
 
         private static PKSMStorageFormat GetPKSMFormat(PKM pk)
         {
-            if (pk is PK1 _) return PKSMStorageFormat.ONE;
-            if (pk is PK2 _) return PKSMStorageFormat.TWO;
-            if (pk is PK3 _) return PKSMStorageFormat.THREE;
-            if (pk is PK4 _) return PKSMStorageFormat.FOUR;
-            if (pk is PK5 _) return PKSMStorageFormat.FIVE;
-            if (pk is PK6 _) return PKSMStorageFormat.SIX;
-            if (pk is PK7 _) return PKSMStorageFormat.SEVEN;
-            if (pk is PB7 _) return PKSMStorageFormat.LGPE;
-            if (pk is PK8 _) return PKSMStorageFormat.EIGHT;
-            return PKSMStorageFormat.UNUSED;
+            return pk switch
+            {
+                PK1 _ => PKSMStorageFormat.ONE,
+                PK2 _ => PKSMStorageFormat.TWO,
+                PK3 _ => PKSMStorageFormat.THREE,
+                PK4 _ => PKSMStorageFormat.FOUR,
+                PK5 _ => PKSMStorageFormat.FIVE,
+                PK6 _ => PKSMStorageFormat.SIX,
+                PK7 _ => PKSMStorageFormat.SEVEN,
+                PB7 _ => PKSMStorageFormat.LGPE,
+                PK8 _ => PKSMStorageFormat.EIGHT,
+                _ => PKSMStorageFormat.UNUSED
+            };
         }
 
         private enum PKSMBankVersion
