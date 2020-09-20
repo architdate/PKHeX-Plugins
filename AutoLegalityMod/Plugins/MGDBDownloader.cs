@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
+using AutoModPlugins.Properties;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
@@ -14,7 +15,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.mgdbdownload };
+            var ctrl = new ToolStripMenuItem(Name) { Image = Resources.mgdbdownload };
             ctrl.Click += DownloadMGDB;
             ctrl.Name = "Menu_MGDBDownloader";
             modmenu.DropDownItems.Add(ctrl);

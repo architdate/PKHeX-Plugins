@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
 using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
@@ -13,10 +14,10 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name) {Name = "Menu_PKSMBank"};
 
-            var c1 = new ToolStripMenuItem("Merge PKM into PKSM Bank") { Image = Properties.Resources.uploadgpss };
+            var c1 = new ToolStripMenuItem("Merge PKM into PKSM Bank") { Image = Resources.uploadgpss };
             c1.Click += (s, e) => Import(); 
             c1.Name = "Menu_CreatePKSMBank";
-            var c2 = new ToolStripMenuItem("Split PKSM Bank into PKM") { Image = Properties.Resources.mgdbdownload };
+            var c2 = new ToolStripMenuItem("Split PKSM Bank into PKM") { Image = Resources.mgdbdownload };
             c2.Click += (s, e) => Export();
             c2.Name = "Menu_ExportPKSMBank";
 
@@ -24,7 +25,7 @@ namespace AutoModPlugins
             ctrl.DropDownItems.Add(c2);
             modmenu.DropDownItems.Add(ctrl);
             
-            ctrl.Image = Properties.Resources.flagbrew;
+            ctrl.Image = Resources.flagbrew;
         }
 
         private static void Export()

@@ -1,29 +1,33 @@
 ﻿namespace PKHeX.Core.AutoMod
 {
-    public enum LiveHeXVersion
-    {
-        LGPE_v102,
-        SWSH_Orion,
-        SWSH_Rigel1,
-        SWSH_Rigel2,
-        UM_v12,
-        US_v12,
-        SM_v12,
-        ORAS,
-        XY,
-    }
-
     public static class RamOffsets
     {
         public static LiveHeXVersion[] GetValidVersions(SaveFile sf)
         {
-            if (sf is SAV7b) return new[] { LiveHeXVersion.LGPE_v102 };
-            if (sf is SAV8SWSH) return new[] { LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2 };
-            if (sf is SAV7USUM) return new[] { LiveHeXVersion.UM_v12, LiveHeXVersion.US_v12 };
-            if (sf is SAV7SM) return new[] { LiveHeXVersion.SM_v12 };
-            if (sf is SAV6AO) return new[] { LiveHeXVersion.ORAS };
-            if (sf is SAV6XY) return new[] { LiveHeXVersion.XY };
-            return new[] { LiveHeXVersion.SWSH_Rigel2 };
+            return sf switch
+            {
+                SAV8SWSH _ => new[] {LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2},
+                SAV7b _ => new[] {LiveHeXVersion.LGPE_v102},
+                SAV7USUM _ => new[] {LiveHeXVersion.UM_v12, LiveHeXVersion.US_v12},
+                SAV7SM _ => new[] {LiveHeXVersion.SM_v12},
+                SAV6AO _ => new[] {LiveHeXVersion.ORAS},
+                SAV6XY _ => new[] {LiveHeXVersion.XY},
+                _ => new[] {LiveHeXVersion.SWSH_Rigel2}
+            };
+        }
+
+        public static bool IsLiveHexSupported(SaveFile sav)
+        {
+            return sav switch
+            {
+                SAV8SWSH _ => true,
+                SAV7b _ => true,
+                SAV7USUM _ => true,
+                SAV7SM _ => true,
+                SAV6AO _ => true,
+                SAV6XY _ => true,
+                _ => false
+            };
         }
 
         public static ICommunicator GetCommunicator(LiveHeXVersion lv, InjectorCommunicationType ict)

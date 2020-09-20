@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using AutoModPlugins.GUI;
+using AutoModPlugins.Properties;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
@@ -30,13 +31,13 @@ namespace AutoModPlugins
         public LiveHexUI(ISaveFileProvider sav, IPKMView editor)
         {
             SAV = sav;
-            CurrentInjectionType = Properties.AutoLegality.Default.USBBotBasePreferred ? InjectorCommunicationType.USB : InjectorCommunicationType.SocketNetwork;
+            CurrentInjectionType = AutoLegality.Default.USBBotBasePreferred ? InjectorCommunicationType.USB : InjectorCommunicationType.SocketNetwork;
             Remote = new LiveHexController(sav, editor, CurrentInjectionType);
 
             InitializeComponent();
-            WinFormsTranslator.TranslateInterface(this, WinFormsTranslator.CurrentLanguage);
+            this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
 
-            TB_IP.Text = Properties.AutoLegality.Default.LatestIP;
+            TB_IP.Text = AutoLegality.Default.LatestIP;
             SetInjectionTypeView();
 
             // add an event to the editor
@@ -143,8 +144,8 @@ namespace AutoModPlugins
                 Remote.Bot.com.Disconnect();
             x.Slots.Publisher.Subscribers.Remove(this);
 
-            Properties.AutoLegality.Default.LatestIP = TB_IP.Text;
-            Properties.AutoLegality.Default.Save();
+            AutoLegality.Default.LatestIP = TB_IP.Text;
+            AutoLegality.Default.Save();
         }
 
         private void B_ReadCurrent_Click(object sender, EventArgs e) => Remote.ReadBox(SAV.CurrentBox);

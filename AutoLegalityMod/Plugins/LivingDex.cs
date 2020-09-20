@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
 using PKHeX.Core;
 
 namespace AutoModPlugins
@@ -11,7 +12,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.livingdex };
+            var ctrl = new ToolStripMenuItem(Name) { Image = Resources.livingdex };
             ctrl.Click += GenLivingDex;
             ctrl.Name = "Menu_LivingDex";
             modmenu.DropDownItems.Add(ctrl);

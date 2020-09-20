@@ -1,6 +1,7 @@
 ﻿using System;
-using PKHeX.Core;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
+using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
@@ -12,7 +13,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.legalizeboxes };
+            var ctrl = new ToolStripMenuItem(Name) { Image = Resources.legalizeboxes };
             ctrl.Click += Legalize;
             ctrl.Name = "Menu_LeaglizeBoxes";
             modmenu.DropDownItems.Add(ctrl);

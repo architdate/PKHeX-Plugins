@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
 using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
@@ -11,7 +12,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.urlimport };
+            var ctrl = new ToolStripMenuItem(Name) { Image = Resources.urlimport };
             ctrl.Click += URLGen;
             ctrl.Name = "Menu_URLGenning";
             modmenu.DropDownItems.Add(ctrl);

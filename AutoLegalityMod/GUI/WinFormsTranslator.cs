@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
-
+using AutoModPlugins.Properties;
 using PKHeX.Core;
 
 namespace AutoModPlugins
@@ -71,7 +73,7 @@ namespace AutoModPlugins
 
             if (Util.IsStringListCached(file, out var result))
                 return result;
-            var txt = (string)Properties.Resources.ResourceManager.GetObject(file);
+            var txt = (string)Resources.ResourceManager.GetObject(file);
             return Util.LoadStringList(file, txt);
         }
 
@@ -166,18 +168,18 @@ namespace AutoModPlugins
 
         public static void LoadAllForms(params string[] banlist)
         {
-            var q = from t in System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
+            var q = from t in Assembly.GetExecutingAssembly().GetTypes()
                 where t.BaseType == typeof(Form) && !banlist.Contains(t.Name)
                 select t;
             foreach (var t in q)
             {
                 var constructors = t.GetConstructors();
                 if (constructors.Length == 0)
-                { System.Console.WriteLine($"No constructors: {t.Name}"); continue; }
+                { Console.WriteLine($"No constructors: {t.Name}"); continue; }
                 var argCount = constructors[0].GetParameters().Length;
                 try
                 {
-                    var _ = (Form)System.Activator.CreateInstance(t, new object[argCount]);
+                    var _ = (Form)Activator.CreateInstance(t, new object[argCount]);
                 }
                 catch { }
             }

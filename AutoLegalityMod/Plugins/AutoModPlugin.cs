@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
 using PKHeX.Core;
 
 namespace AutoModPlugins
@@ -62,7 +63,7 @@ namespace AutoModPlugins
         {
             return new ToolStripMenuItem(ParentMenuText)
             {
-                Image = Properties.Resources.menuautolegality,
+                Image = Resources.menuautolegality,
                 Name = ParentMenuName
             };
         }

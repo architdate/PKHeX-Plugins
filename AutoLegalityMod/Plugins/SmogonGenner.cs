@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
@@ -12,7 +13,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.smogongenner };
+            var ctrl = new ToolStripMenuItem(Name) { Image = Resources.smogongenner };
             ctrl.Name = "Menu_SmogonGenner";
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += SmogonGenning;

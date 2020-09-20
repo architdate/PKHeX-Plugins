@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using static PKHeX.Core.Ball;
 using static PKHeX.Core.Species;
 using static PKHeX.Core.AutoMod.Aesthetics.PersonalColor;
-using System;
-using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
     public static class Aesthetics
     {
-        private static readonly Dictionary<Species, PersonalColor> ShinyMap = new Dictionary<Species, PersonalColor>()
+        private static readonly Dictionary<Species, PersonalColor> ShinyMap = new Dictionary<Species, PersonalColor>
         {
             { Bulbasaur,       Green },
             { Ivysaur,         Green },

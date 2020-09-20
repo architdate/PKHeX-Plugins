@@ -1,5 +1,4 @@
 using System.IO;
-
 using FluentAssertions;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;

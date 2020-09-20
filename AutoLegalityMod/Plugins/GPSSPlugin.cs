@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
 using PKHeX.Core;
+using NetUtil = PKHeX.Core.AutoMod.NetUtil;
 
 namespace AutoModPlugins
 {
@@ -8,17 +10,17 @@ namespace AutoModPlugins
     {
         public override string Name => "GPSS Tools";
         public override int Priority => 2;
-        public static string Url => Properties.AutoLegality.Default.GPSSBaseURL;
+        public static string Url => AutoLegality.Default.GPSSBaseURL;
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.flagbrew };
+            var ctrl = new ToolStripMenuItem(Name) { Image = Resources.flagbrew };
             ctrl.Name = "Menu_GPSSPlugin";
 
-            var c1 = new ToolStripMenuItem("Upload to GPSS") { Image = Properties.Resources.uploadgpss };
+            var c1 = new ToolStripMenuItem("Upload to GPSS") { Image = Resources.uploadgpss };
             c1.Click += GPSSUpload;
             c1.Name = "Menu_UploadtoGPSS";
-            var c2 = new ToolStripMenuItem("Import from GPSS URL") { Image = Properties.Resources.mgdbdownload };
+            var c2 = new ToolStripMenuItem("Import from GPSS URL") { Image = Resources.mgdbdownload };
             c2.Click += GPSSDownload;
             c2.Name = "Menu_ImportfromGPSSURL";
 
@@ -31,7 +33,7 @@ namespace AutoModPlugins
         {
             var pk = PKMEditor.PreparePKM();
             byte[] rawdata = pk.Data;
-            var postval = PKHeX.Core.AutoMod.NetUtil.GPSSPost(rawdata, Url);
+            var postval = NetUtil.GPSSPost(rawdata, Url);
             Clipboard.SetText(postval);
             WinFormsUtil.Alert(postval);
         }
@@ -53,7 +55,7 @@ namespace AutoModPlugins
                     return;
                 }
 
-                var pkbytes = PKHeX.Core.AutoMod.NetUtil.GPSSDownload(code, Url);
+                var pkbytes = NetUtil.GPSSDownload(code, Url);
                 var pkm = PKMConverter.GetPKMfromBytes(pkbytes);
                 if (!LoadPKM(pkm))
                 {

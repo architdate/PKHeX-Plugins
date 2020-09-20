@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Net;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
-using System.Drawing;
-
-using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Crypto.Parameters;
-
+using Org.BouncyCastle.Security;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 using ZXing;
@@ -124,14 +122,12 @@ namespace AutoModPlugins
                 Console.WriteLine("it failed");
                 return null;
             }
-            else
-            {
-                //unencrypt the data in the plaintext.
-                byte[] qrDec = QR_t(qrt);
 
-                //build the rental team.
-                return new RentalTeam(qrDec);
-            }
+            //unencrypt the data in the plaintext.
+            byte[] qrDec = QR_t(qrt);
+
+            //build the rental team.
+            return new RentalTeam(qrDec);
         }
     }
 }

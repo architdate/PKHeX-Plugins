@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Media;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace AutoModPlugins
 {
@@ -69,5 +69,8 @@ namespace AutoModPlugins
             int y = parent.Location.Y + ((parent.Height - child.Height) / 2);
             child.Location = new Point(Math.Max(x, 0), Math.Max(y, 0));
         }
+
+        public static T FirstFormOfType<T>() where T : Form => FormsOfType<T>().FirstOrDefault();
+        public static IEnumerable<T> FormsOfType<T>() where T : Form => Application.OpenForms.OfType<T>();
     }
 }

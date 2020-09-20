@@ -1,6 +1,7 @@
 ﻿using System;
-using PKHeX.Core;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
+using PKHeX.Core;
 
 namespace AutoModPlugins
 {
@@ -11,7 +12,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.exportboxtoshowdown };
+            var ctrl = new ToolStripMenuItem(Name) { Image = Resources.exportboxtoshowdown };
             ctrl.Click += (s, e) => Export(SaveFileEditor.SAV);
             ctrl.Name = "Menu_ExportBoxtoShowdown";
             modmenu.DropDownItems.Add(ctrl);

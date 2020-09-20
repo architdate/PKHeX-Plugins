@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
 using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
@@ -18,7 +19,7 @@ namespace AutoModPlugins
         {
             var ctrl = new ToolStripMenuItem(Name)
             {
-                Image = Properties.Resources.autolegalitymod,
+                Image = Resources.autolegalitymod,
                 ShortcutKeys = Keys.Control | Keys.I
             };
             ctrl.Click += ImportPaste;
@@ -26,7 +27,7 @@ namespace AutoModPlugins
             modmenu.DropDownItems.Add(ctrl);
             var parent = modmenu.OwnerItem;
             var form = parent.GetCurrentParent().Parent.FindForm();
-            form.Icon = Properties.Resources.icon;
+            form.Icon = Resources.icon;
 
             ShowdownSetLoader.PKMEditor = PKMEditor;
             ShowdownSetLoader.SaveFileEditor = SaveFileEditor;

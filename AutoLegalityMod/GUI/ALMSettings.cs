@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
 using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins.GUI
@@ -13,7 +14,7 @@ namespace AutoModPlugins.GUI
         {
             InitializeComponent();
             PG_Settings.SelectedObject = obj;
-            WinFormsTranslator.TranslateInterface(this, WinFormsTranslator.CurrentLanguage);
+            this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
 
             this.CenterToForm(FindForm());
         }
@@ -29,7 +30,7 @@ namespace AutoModPlugins.GUI
             // ALM Settings
             ShowdownSetLoader.SetAPILegalitySettings();
 
-            Properties.AutoLegality.Default.Save();
+            AutoLegality.Default.Save();
         }
 
         private void RunBulkTests_Click(object sender, EventArgs e)

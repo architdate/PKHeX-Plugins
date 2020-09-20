@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
 using System.Text;
 
@@ -114,7 +115,7 @@ namespace PKHeX.Core.AutoMod
             request.Method = "GET";
             request.UserAgent = "PKHeX-Auto-Legality-Mod";
             var b64 = GetStringResponse(request);
-            return System.Convert.FromBase64String(b64);
+            return Convert.FromBase64String(b64);
         }
     }
 }

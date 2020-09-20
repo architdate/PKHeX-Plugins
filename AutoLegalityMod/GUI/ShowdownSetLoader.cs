@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
+using AutoModPlugins.Properties;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
@@ -120,7 +121,7 @@ namespace AutoModPlugins
 
         public static void SetAPILegalitySettings()
         {
-            var settings = Properties.AutoLegality.Default;
+            var settings = AutoLegality.Default;
             APILegality.UseTrainerData = settings.UseTrainerData;
             APILegality.SetAllLegalRibbons = settings.SetAllLegalRibbons;
             APILegality.SetMatchingBalls = settings.SetMatchingBalls;

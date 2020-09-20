@@ -1,6 +1,7 @@
-﻿using AutoModPlugins.GUI;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using AutoModPlugins.GUI;
+using AutoModPlugins.Properties;
 
 namespace AutoModPlugins
 {
@@ -11,7 +12,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Properties.Resources.settings };
+            var ctrl = new ToolStripMenuItem(Name) { Image = Resources.settings };
             ctrl.Click += SettingsForm;
             ctrl.Name = "Menu_ALMSettingsEditor";
             modmenu.DropDownItems.Add(ctrl);
@@ -19,7 +20,7 @@ namespace AutoModPlugins
 
         private static void SettingsForm(object sender, EventArgs e)
         {
-            var settings = Properties.AutoLegality.Default;
+            var settings = AutoLegality.Default;
             using var form = new ALMSettings(settings);
             form.ShowDialog();
             settings.Save();
