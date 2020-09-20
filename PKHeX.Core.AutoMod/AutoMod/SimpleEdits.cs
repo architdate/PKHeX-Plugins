@@ -313,24 +313,6 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedHyperTrainingData();
         }
 
-        public static void ClearHyperTrainedPerfectIVs(this PKM pk)
-        {
-            if (!(pk is IHyperTrain h))
-                return;
-            if (pk.IV_HP == 31)
-                h.HT_HP = false;
-            if (pk.IV_ATK == 31)
-                h.HT_ATK = false;
-            if (pk.IV_DEF == 31)
-                h.HT_DEF = false;
-            if (pk.IV_SPA == 31)
-                h.HT_SPA = false;
-            if (pk.IV_SPD == 31)
-                h.HT_SPD = false;
-            if (pk.IV_SPE == 31)
-                h.HT_SPE = false;
-        }
-
         public static void SetSuggestedMemories(this PKM pk)
         {
             switch (pk)
@@ -362,17 +344,6 @@ namespace PKHeX.Core.AutoMod
                 8 => PersonalTable.SWSH[species].BaseFriendship,
                 _ => throw new IndexOutOfRangeException(),
             };
-        }
-
-        public static void ClearOTMemory(this PKM pk)
-        {
-            if (pk is IMemoryOT o)
-            {
-                o.OT_Memory = 0;
-                o.OT_TextVar = 0;
-                o.OT_Intensity = 0;
-                o.OT_Feeling = 0;
-            }
         }
 
         /// <summary>

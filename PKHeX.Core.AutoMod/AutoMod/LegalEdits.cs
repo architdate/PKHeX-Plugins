@@ -49,67 +49,6 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Sets the <see cref="PKM.RelearnMoves"/> based on a legality check's suggestions.
-        /// </summary>
-        /// <param name="pk"></param>
-        public static void SetSuggestedRelearnMoves(this PKM pk)
-        {
-            if (pk.Format < 6)
-                return;
-            pk.ClearRelearnMoves();
-            var la = new LegalityAnalysis(pk);
-
-            var m = la.GetSuggestedRelearnMoves();
-            if (m.All(z => z == 0))
-            {
-                if (!pk.WasEgg && !pk.WasEvent && !pk.WasEventEgg && !pk.WasLink)
-                {
-                    if (pk.Version != (int)GameVersion.CXD)
-                    {
-                        var encounter = EncounterSuggestion.GetSuggestedMetInfo(pk);
-                        if (encounter != null)
-                            m = encounter.Relearn;
-                    }
-                }
-            }
-
-            if (pk.RelearnMoves.SequenceEqual(m))
-                return;
-            if (m.Count > 3)
-                pk.SetRelearnMoves(m);
-        }
-
-        /// <summary>
-        /// Sets the <see cref="PKM.Met_Location"/> (and other met details) based on a legality check's suggestions.
-        /// </summary>
-        /// <param name="pk"></param>
-        public static void SetSuggestedMetLocation(this PKM pk)
-        {
-            var encounter = EncounterSuggestion.GetSuggestedMetInfo(pk);
-            if (encounter == null || (pk.Format >= 3 && encounter.Location < 0))
-                return;
-
-            int level = encounter.LevelMin;
-            int location = encounter.Location;
-            int minlvl = EncounterSuggestion.GetLowestLevel(pk, encounter.Species);
-            if (minlvl == 0)
-                minlvl = level;
-
-            if (pk.CurrentLevel >= minlvl && pk.Met_Level == level && pk.Met_Location == location)
-                return;
-            if (minlvl < level)
-                level = minlvl;
-            pk.Met_Location = location;
-            pk.Met_Level = level;
-        }
-
-        /// <summary>
-        /// Removes all ribbons from the provided <see cref="pk"/>, using reflection to clear one bit at a time.
-        /// </summary>
-        /// <param name="pk">Pokémon to modify.</param>
-        public static void ClearAllRibbons(this PKM pk) => pk.SetRibbonValues(GetRibbonNames(pk), 0, false);
-
-        /// <summary>
         /// Sets all ribbon flags according to a legality report.
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
@@ -184,12 +123,5 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon</param>
         /// <returns></returns>
         private static IEnumerable<string> GetRibbonNames(PKM pk) => ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
-
-        public static int ParseItemStr(string itemstr, int format)
-        {
-            var items = (string[])GameInfo.GetStrings(GameLanguage.DefaultLanguage).GetItemStrings(format); // ireadonlylist->string[] must be possible for the provided strings
-            int item = StringUtil.FindIndexIgnoreCase(items, itemstr);
-            return item;
-        }
     }
 }
