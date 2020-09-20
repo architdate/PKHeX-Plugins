@@ -20,6 +20,14 @@ namespace PKHeX.Core.AutoMod
         public readonly List<string> SetText = new List<string>();
         public readonly List<ShowdownSet> Sets = new List<ShowdownSet>();
 
+        public static readonly string[] IllegalFormats = new []
+        {
+            "Almost Any Ability", // Generates illegal abilities
+            "BH",                 // Balanced Hackmons
+            "Mix and Mega",       // Assumes pokemon can mega evolve that cannot
+            "STABmons"            // Generates illegal movesets
+        };
+
         public string Summary => AlertText(ShowdownSpeciesName, SetText.Count, GetTitles(Page));
 
         public SmogonSetList(PKM pk)
@@ -55,16 +63,25 @@ namespace PKHeX.Core.AutoMod
         private void LoadSetsFromPage()
         {
             var split1 = Page.Split(new[] { "\",\"abilities\":" }, StringSplitOptions.None);
-            var lc = false;
+            var format = "";
             for (int i = 1; i < split1.Length; i++)
             {
                 var shiny = split1[i - 1].Contains("\"shiny\":true");
                 if (split1[i - 1].Contains("\"format\":\""))
                 {
-                    lc = split1[i - 1].Substring(split1[i - 1].IndexOf("\"format\":\"", StringComparison.Ordinal) + "\"format\":\"".Length)
-                        .StartsWith("LC");
+                    format = split1[i - 1]
+                        .Substring(split1[i - 1].IndexOf("\"format\":\"", StringComparison.Ordinal) +
+                                   "\"format\":\"".Length).Split('\"')[0];
                 }
-                var level = lc ? 5 : 100;
+
+                if (IllegalFormats.Any(s => s.Equals(format, StringComparison.OrdinalIgnoreCase)))
+                    continue;
+                var level = format.StartsWith("LC") ? 5 : 100;
+                if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
+                {
+                    int.TryParse(split1[i - 1].Split(new[] { "\"level\":" }, StringSplitOptions.None)[1]
+                        .Split(',')[0], out level);
+                }
 
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
                 var tmp = split2[0];
@@ -345,6 +362,8 @@ namespace PKHeX.Core.AutoMod
             foreach (string format in formatList)
             {
                 var key = format.Split('"')[1];
+                if (IllegalFormats.Any(s => s.Equals(key, StringComparison.OrdinalIgnoreCase)))
+                    continue;
                 var values = new List<string>();
                 // SS Smogon metadata can be dirtied by credits being flagged as team names
                 // TODO: Handle this better
