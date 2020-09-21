@@ -39,6 +39,8 @@ namespace PKHeX.Core.Enhancements
         {
             using var response = request.GetResponse();
             using var dataStream = response.GetResponseStream();
+            if (dataStream == null)
+                return string.Empty;
             using var reader = new StreamReader(dataStream);
             return reader.ReadToEnd();
         }
@@ -85,8 +87,10 @@ namespace PKHeX.Core.Enhancements
             // Get the response.
             try
             {
-                using WebResponse response = request.GetResponse();
-                using Stream responseStream = response.GetResponseStream();
+                using var response = request.GetResponse();
+                using var responseStream = response.GetResponseStream();
+                if (responseStream == null)
+                    return string.Empty;
                 using StreamReader reader = new StreamReader(responseStream);
                 string responseFromServer = reader.ReadToEnd();
                 return $"Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://{Url}/gpss/view/" + responseFromServer;

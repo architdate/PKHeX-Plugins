@@ -97,7 +97,7 @@ namespace AutoModPlugins
                 {
                     Remote.Bot = new PokeSysBotMini(version, CurrentInjectionType)
                     {
-                        com = {IP = TB_IP.Text, Port = int.Parse(TB_Port.Text)}
+                        com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) }
                     };
                     Remote.Bot.com.Connect();
 
@@ -118,7 +118,7 @@ namespace AutoModPlugins
                 {
                     Remote.Bot = new PokeSysBotMini(currver, CurrentInjectionType)
                     {
-                        com = {IP = TB_IP.Text, Port = int.Parse(TB_Port.Text)}
+                        com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) }
                     };
                     Remote.Bot.com.Connect();
                 }
@@ -168,10 +168,12 @@ namespace AutoModPlugins
                 if (!result)
                     WinFormsUtil.Alert("No valid data is located at the specified offset.");
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 WinFormsUtil.Error("Unable to load data from the specified offset.", ex.Message);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void B_ReadRAM_Click(object sender, EventArgs e)
@@ -199,10 +201,12 @@ namespace AutoModPlugins
                 }
                 Debug.WriteLine("RAM Modified");
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 WinFormsUtil.Error("Unable to load data from the specified offset.", ex.Message);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         public void NotifySlotOld(ISlotInfo previous) { }

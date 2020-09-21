@@ -77,7 +77,7 @@ namespace AutoModPlugins
 
         private static Image GenerateQRCode(byte[] data, int ppm = 4)
         {
-            var msg = string.Concat(data.Select(c => (char) c));
+            var msg = string.Concat(data.Select(c => (char)c));
             using var generator = new QRCodeGenerator();
             using var qr_data = generator.CreateQrCode(msg, QRCodeGenerator.ECCLevel.Q);
             using var qr_code = new QRCode(qr_data);

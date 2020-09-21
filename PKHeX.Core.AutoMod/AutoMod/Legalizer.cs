@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using AutoModPlugins;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -122,11 +121,12 @@ namespace PKHeX.Core.AutoMod
             if (EnableEasterEggs)
             {
                 var gen = EasterEggs.GetGeneration(template.Species);
-                template.Species = (int) EasterEggs.IllegalPKMMemeSpecies(gen);
-                var legalencs = tr.GetRandomEncounter((int) EasterEggs.IllegalPKMMemeSpecies(gen), out var legal);
+                var species = (int) EasterEggs.GetMemeSpecies(gen);
+                template.Species = species;
+                var legalencs = tr.GetRandomEncounter(species, out var legal);
                 if (legalencs && legal != null)
                     template = legal;
-                template.SetNickname(EasterEggs.IllegalPKMMemeNickname(gen));
+                template.SetNickname(EasterEggs.GetMemeNickname(gen));
             }
             return template;
         }

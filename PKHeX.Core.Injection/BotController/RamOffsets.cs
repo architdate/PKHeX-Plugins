@@ -6,13 +6,13 @@
         {
             return sf switch
             {
-                SAV8SWSH _ => new[] {LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2},
-                SAV7b _ => new[] {LiveHeXVersion.LGPE_v102},
-                SAV7USUM _ => new[] {LiveHeXVersion.UM_v12, LiveHeXVersion.US_v12},
-                SAV7SM _ => new[] {LiveHeXVersion.SM_v12},
-                SAV6AO _ => new[] {LiveHeXVersion.ORAS},
-                SAV6XY _ => new[] {LiveHeXVersion.XY},
-                _ => new[] {LiveHeXVersion.SWSH_Rigel2}
+                SAV8SWSH _ => new[] { LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2 },
+                SAV7b _ => new[] { LiveHeXVersion.LGPE_v102 },
+                SAV7USUM _ => new[] { LiveHeXVersion.UM_v12, LiveHeXVersion.US_v12 },
+                SAV7SM _ => new[] { LiveHeXVersion.SM_v12 },
+                SAV6AO _ => new[] { LiveHeXVersion.ORAS },
+                SAV6XY _ => new[] { LiveHeXVersion.XY },
+                _ => new[] { LiveHeXVersion.SWSH_Rigel2 }
             };
         }
 

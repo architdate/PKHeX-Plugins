@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PKHeX.Core;
-using PKHeX.Core.AutoMod;
 
-namespace AutoModPlugins
+namespace PKHeX.Core.AutoMod
 {
     /// <summary>
     /// Miscellaneous enhancement methods
@@ -116,6 +114,9 @@ namespace AutoModPlugins
 
             var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid);
             var firstenc = legalencs.FirstOrDefault();
+            if (firstenc == null)
+                return null;
+
             var f = PKMConverter.ConvertToType(firstenc, blank.GetType(), out _);
             if (f == null)
             {

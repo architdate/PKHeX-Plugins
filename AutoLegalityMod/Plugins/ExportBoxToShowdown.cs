@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using AutoModPlugins.Properties;
 using PKHeX.Core;
+using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
 {
@@ -28,10 +29,12 @@ namespace AutoModPlugins
                 Clipboard.SetText(str);
                 WinFormsUtil.Alert("Exported the active box to Showdown format");
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 WinFormsUtil.Error("Unable to export text to clipboard.", e.Message);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

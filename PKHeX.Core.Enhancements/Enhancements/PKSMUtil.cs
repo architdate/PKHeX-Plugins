@@ -16,11 +16,11 @@ namespace PKHeX.Core.Enhancements
             var files = Directory.GetFiles(dir, "*.p??", SearchOption.TopDirectoryOnly);
             var ver = Enum.GetValues(typeof(PKSMBankVersion)).Cast<int>().Max();
             var version = BitConverter.GetBytes(ver + 1); // Latest bank version
-            var pksmsize = GetBankSize((PKSMBankVersion) ver);
+            var pksmsize = GetBankSize((PKSMBankVersion)ver);
             var boxcount = (files.Length / 30) + 1;
             var bank = new byte[8 + 4 + 4 + (boxcount * pksmsize * 30)];
             var ctr = 0;
-            var magic = new byte[] {0x50, 0x4B, 0x53, 0x4D, 0x42, 0x41, 0x4E, 0x4B}; // PKSMBANK
+            var magic = new byte[] { 0x50, 0x4B, 0x53, 0x4D, 0x42, 0x41, 0x4E, 0x4B }; // PKSMBANK
             magic.CopyTo(bank, 0);
             version.CopyTo(bank, 8);
             BitConverter.GetBytes(boxcount).CopyTo(bank, 12); // Number of bank boxes.
@@ -32,7 +32,7 @@ namespace PKHeX.Core.Enhancements
                 if (pk.Species == 0 && pk.Species >= pk.MaxSpeciesID)
                     continue;
                 var ofs = 16 + (ctr * pksmsize);
-                BitConverter.GetBytes((int) GetPKSMFormat(pk)).CopyTo(bank, ofs);
+                BitConverter.GetBytes((int)GetPKSMFormat(pk)).CopyTo(bank, ofs);
                 pk.DecryptedBoxData.CopyTo(bank, ofs + 4);
                 byte[] temp = Enumerable.Repeat((byte)0xFF, pksmsize - pk.DecryptedBoxData.Length - 8).ToArray();
                 temp.CopyTo(bank, ofs + pk.DecryptedBoxData.Length + 4);

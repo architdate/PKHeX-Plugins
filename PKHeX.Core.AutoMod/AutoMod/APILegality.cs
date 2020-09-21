@@ -161,8 +161,6 @@ namespace PKHeX.Core.AutoMod
                 e.Location = SharedNest;
             if (enc is EncounterStatic8ND ed && ed.Location == 0)
                 ed.Location = SharedNest;
-            // if (enc is EncounterStatic es && es.Version == GameVersion.GG) // Needs a better fix on PKHeX side
-                // es.Version = GameVersion.GP;
             return enc;
         }
 
@@ -563,7 +561,7 @@ namespace PKHeX.Core.AutoMod
                 enc.ApplyDetailsTo(pk, seed);
                 if (IsMatchCriteria<T>(pk, iterPKM))
                     break;
-            } while (++ count < 10_000);
+            } while (++count < 10_000);
 
             pk.Species = iterPKM.Species; // possible evolution
             // can be ability capsuled
@@ -581,8 +579,8 @@ namespace PKHeX.Core.AutoMod
                 return false;
             if (template.AbilityNumber != 4 && pk.AbilityNumber == 4) // cannot ability capsule HA to non HA
                 return false;
-            // if (template.AltForm != pk.AltForm) // match form -- no variable forms
-                // return false;
+            if (template.AltForm != pk.AltForm) // match form -- Toxtricity etc
+                return false;
             return true;
         }
 

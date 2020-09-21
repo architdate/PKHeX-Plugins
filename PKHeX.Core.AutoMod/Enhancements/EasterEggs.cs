@@ -8,10 +8,10 @@
         private const int MaxSpeciesID_4 = 493;
         private const int MaxSpeciesID_5 = 649;
         private const int MaxSpeciesID_6 = 721;
-        private const int MaxSpeciesID_7 = 802;
+        private const int MaxSpeciesID_7 = 807;
         private const int MaxSpeciesID_8 = 890;
 
-        public static Species IllegalPKMMemeSpecies(int gen)
+        public static Species GetMemeSpecies(int gen)
         {
             return gen switch
             {
@@ -40,7 +40,7 @@
             return 1;
         }
 
-        public static string IllegalPKMMemeNickname(int gen)
+        public static string GetMemeNickname(int gen)
         {
             return gen switch
             {

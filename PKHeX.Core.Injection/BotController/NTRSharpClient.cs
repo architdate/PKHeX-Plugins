@@ -150,7 +150,7 @@ namespace PKHeX.Core.Injection
                     return 0;
 
                 // PID u32 precedes the above substring; slice it out.
-                var str= log.Substring(index - 8, 8);
+                var str = log.Substring(index - 8, 8);
                 return (int)Util.GetHexValue(str);
             }
 

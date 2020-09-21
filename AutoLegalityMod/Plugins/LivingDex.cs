@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using AutoModPlugins.Properties;
 using PKHeX.Core;
+using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
 {

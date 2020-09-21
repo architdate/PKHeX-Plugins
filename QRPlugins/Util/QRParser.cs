@@ -39,19 +39,24 @@ namespace AutoModPlugins
             using (Stream reqStream = request.GetRequestStream())
                 reqStream.Write(data, 0, data.Length);
 
-            using WebResponse response = request.GetResponse();
-            using Stream stream = response.GetResponseStream();
+            using var response = request.GetResponse();
+            using var stream = response.GetResponseStream();
+            if (stream == null)
+                return null;
+
             //add failing validation.
             try
             {
                 return Image.FromStream(stream);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 //invalid QR
                 return null;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private static byte[] ParseQR(Image q)
