@@ -60,6 +60,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 ApplySetDetails(pk, set, raw, dest, enc);
+                pk.SanitizeEVs();
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
                     if (gmax.CanToggleGigantamax(pk.Species, enc.Species))
@@ -77,6 +78,18 @@ namespace PKHeX.Core.AutoMod
             }
             satisfied = false;
             return template;
+        }
+
+        private static void SanitizeEVs(this PKM pk)
+        {
+            var copy = (int[])pk.EVs.Clone();
+            for (int i = 0; i < copy.Length; i++)
+            {
+                if (copy[i] > pk.MaxEV)
+                    copy[i] = pk.MaxEV;
+            }
+
+            pk.EVs = copy;
         }
 
         /// <summary>
