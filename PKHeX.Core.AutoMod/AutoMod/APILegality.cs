@@ -67,6 +67,9 @@ namespace PKHeX.Core.AutoMod
                     else continue;
                 }
 
+                if (pk is PK1 gen1Pk && ParseSettings.AllowGen1Tradeback)
+                    gen1Pk.Catch_Rate = gen1Pk.Gen2Item; // Simulate a gen 2 trade/tradeback to allow tradeback moves
+
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid)
                 {
