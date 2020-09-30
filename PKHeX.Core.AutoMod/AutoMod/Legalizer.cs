@@ -30,7 +30,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Legalized PKM (hopefully legal)</returns>
         public static PKM Legalize(this ITrainerInfo tr, PKM pk)
         {
-            var set = new RegenTemplate(pk, tr.Generation <= 2)
+            var set = new RegenTemplate(pk, tr.Generation)
             {
                 Ball = (Ball) pk.Ball,
                 ShinyType = pk.ShinyXor == 0 ? Shiny.AlwaysSquare : pk.IsShiny ? Shiny.AlwaysStar : Shiny.Never
@@ -61,7 +61,7 @@ namespace PKHeX.Core.AutoMod
             for (int i = 0; i < sets.Count; i++)
             {
                 var set = sets[i];
-                var regen = new RegenTemplate(set, tr.Generation <= 2);
+                var regen = new RegenTemplate(set, tr.Generation);
                 if (set.InvalidLines.Count > 0)
                     return AutoModErrorCode.InvalidLines;
 
@@ -108,7 +108,7 @@ namespace PKHeX.Core.AutoMod
         private static PKM GetLegalFromSet(this ITrainerInfo tr, IBattleTemplate set, PKM template, out LegalizationResult msg)
         {
             if (set is ShowdownSet s)
-                set = new RegenTemplate(s, tr.Generation <= 2);
+                set = new RegenTemplate(s, tr.Generation);
 
             bool success = tr.TryAPIConvert(set, template, out PKM pk);
             if (success)

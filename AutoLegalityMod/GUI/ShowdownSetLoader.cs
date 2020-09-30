@@ -74,7 +74,7 @@ namespace AutoModPlugins
             if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
                 return AutoModErrorCode.NoSingleImport;
 
-            var regen = new RegenTemplate(set, SaveFileEditor.SAV.Generation <= 2);
+            var regen = new RegenTemplate(set, SaveFileEditor.SAV.Generation);
             if (set.InvalidLines.Count > 0)
                 return AutoModErrorCode.InvalidLines;
 
