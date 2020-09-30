@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +16,7 @@ namespace PKHeX.Core.Enhancements
         public readonly string Form;
         public readonly string ShowdownSpeciesName;
         public readonly string Page;
+        public readonly List<string> SetTitle = new List<string>();
         public readonly List<string> SetConfig = new List<string>();
         public readonly List<string> SetText = new List<string>();
         public readonly List<ShowdownSet> Sets = new List<ShowdownSet>();
@@ -28,7 +29,7 @@ namespace PKHeX.Core.Enhancements
             "STABmons"            // Generates illegal movesets
         };
 
-        public string Summary => AlertText(ShowdownSpeciesName, SetText.Count, GetTitles(Page));
+        public string Summary => AlertText(ShowdownSpeciesName, SetText.Count, GetTitles());
 
         public SmogonSetList(PKM pk)
         {
@@ -77,6 +78,11 @@ namespace PKHeX.Core.Enhancements
                 if (IllegalFormats.Any(s => s.Equals(format, StringComparison.OrdinalIgnoreCase)))
                     continue;
                 var level = format.StartsWith("LC") ? 5 : 100;
+                if (!split1[i - 1].Contains("\"name\":"))
+                    continue;
+                var name = split1[i - 1].Substring(split1[i - 1].LastIndexOf("\"name\":\"", StringComparison.Ordinal) +
+                                                   "\"name\":\"".Length).Split('\"')[0];
+                SetTitle.Add($"[{format}] {name}");
                 if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
                 {
                     int.TryParse(split1[i - 1].Split(new[] { "\"level\":" }, StringSplitOptions.None)[1]
@@ -354,27 +360,19 @@ namespace PKHeX.Core.Enhancements
             }
         }
 
-        private static Dictionary<string, List<string>> GetTitles(string pageData)
+        private Dictionary<string, List<string>> GetTitles()
         {
             var titles = new Dictionary<string, List<string>>();
-            var strats = pageData.Split(new[] { "\"strategies\":[{\"format\"" }, StringSplitOptions.None)[1].Split(new[] { "</script>" }, StringSplitOptions.None)[0];
-            var formatList = strats.Split(new[] { "\"format\"" }, StringSplitOptions.None);
-            foreach (string format in formatList)
+            foreach (string title in SetTitle)
             {
-                var key = format.Split('"')[1];
-                if (IllegalFormats.Any(s => s.Equals(key, StringComparison.OrdinalIgnoreCase)))
-                    continue;
-                var values = new List<string>();
-                // SS Smogon metadata can be dirtied by credits being flagged as team names
-                // TODO: Handle this better
-                var cleaned = format.Split(new[] { "credits" }, StringSplitOptions.None)[0];
-                var names = cleaned.Split(new[] { "\"name\"" }, StringSplitOptions.None);
-                for (int i = 1; i < names.Length; i++)
-                {
-                    values.Add(names[i].Split('"')[1]);
-                }
-                titles.Add(key, values);
+                string format = title.Substring(1, title.IndexOf("]") - 1);
+                string name = title.Substring(title.IndexOf("]") + 2);
+                if(titles.ContainsKey(format))
+                    titles[format].Add(name);
+                else
+                    titles.Add(format, new List<string>{name});
             }
+
             return titles;
         }
 

@@ -46,7 +46,20 @@ namespace AutoModPlugins
                 return;
             }
 
-            ShowdownSetLoader.Import(info.Sets);
+            for (int i = 0; i < info.Sets.Count;)
+            {
+                if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", info.SetTitle[i], info.Sets[i].Text))
+                {
+                    info.Sets.RemoveAt(i);
+                    info.SetTitle.RemoveAt(i);
+                    info.SetConfig.RemoveAt(i);
+                    info.SetText.RemoveAt(i);
+                }
+                else
+                    i++;
+            }
+
+            ShowdownSetLoader.Import(info.Sets, true);
             WinFormsUtil.Alert(info.Summary);
         }
     }
