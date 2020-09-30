@@ -95,10 +95,11 @@ namespace PKHeX.Core.AutoMod
         private static int[] SanitizeEVs(int[] evs, int gen)
         {
             var copy = (int[])evs.Clone();
+            int maxEV = gen >= 6 ? 252 : gen >= 3 ? 255 : 65535;
             for (int i = 0; i < evs.Length; i++)
             {
-                if (copy[i] > (gen >=6 ? 252 : gen >= 3 ? 255 : 65535))
-                    copy[i] = (gen >= 6 ? 252 : gen >= 3 ? 255 : 65535);
+                if (copy[i] > maxEV)
+                    copy[i] = maxEV;
             }
             return copy;
         }
