@@ -20,6 +20,7 @@ namespace PKHeX.Core.AutoMod
         public int FormIndex { get; set; }
         public int HiddenPowerType { get; set; }
         public bool CanGigantamax { get; set; }
+        public bool GB { get; set; }
 
         public int[] EVs { get; }
         public int[] IVs { get; }
@@ -28,8 +29,9 @@ namespace PKHeX.Core.AutoMod
         public Ball Ball { get; set; }
         public Shiny ShinyType { get; set; } = Core.Shiny.Random;
 
-        public RegenTemplate(IBattleTemplate set)
+        public RegenTemplate(IBattleTemplate set, bool gb = false)
         {
+            GB = gb;
             Species = set.Species;
             Format = set.Format;
             Nickname = set.Nickname;
@@ -42,21 +44,21 @@ namespace PKHeX.Core.AutoMod
             Nature = set.Nature;
             Form = set.Form;
             FormIndex = set.FormIndex;
-            EVs = SanitizeEVs(set.EVs);
+            EVs = SanitizeEVs(set.EVs, GB);
             IVs = set.IVs;
             HiddenPowerType = set.HiddenPowerType;
             Moves = set.Moves;
             CanGigantamax = set.CanGigantamax;
         }
 
-        public RegenTemplate(ShowdownSet set) : this((IBattleTemplate) set)
+        public RegenTemplate(ShowdownSet set, bool gb = false) : this((IBattleTemplate) set, gb)
         {
             this.SanitizeForm();
             this.SanitizeBattleMoves();
             LoadExtraInstructions(set.InvalidLines);
         }
 
-        public RegenTemplate(PKM pk) : this(new ShowdownSet(ShowdownSet.GetShowdownText(pk)))
+        public RegenTemplate(PKM pk, bool gb = false) : this(new ShowdownSet(ShowdownSet.GetShowdownText(pk)), gb)
         {
             this.FixGender(pk.PersonalInfo);
         }
@@ -92,13 +94,13 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static int[] SanitizeEVs(int[] evs)
+        private static int[] SanitizeEVs(int[] evs, bool gb)
         {
             var copy = (int[])evs.Clone();
             for (int i = 0; i < evs.Length; i++)
             {
-                if (copy[i] > 252)
-                    copy[i] = 252;
+                if (copy[i] > (gb ? 65535 : 252))
+                    copy[i] = gb ? 65535 : 252;
             }
             return copy;
         }
