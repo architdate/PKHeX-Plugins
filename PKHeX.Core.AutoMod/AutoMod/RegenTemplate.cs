@@ -20,7 +20,6 @@ namespace PKHeX.Core.AutoMod
         public int FormIndex { get; set; }
         public int HiddenPowerType { get; set; }
         public bool CanGigantamax { get; set; }
-        public bool GB { get; set; }
 
         public int[] EVs { get; }
         public int[] IVs { get; }
@@ -31,7 +30,6 @@ namespace PKHeX.Core.AutoMod
 
         public RegenTemplate(IBattleTemplate set, bool gb = false)
         {
-            GB = gb;
             Species = set.Species;
             Format = set.Format;
             Nickname = set.Nickname;
@@ -44,7 +42,7 @@ namespace PKHeX.Core.AutoMod
             Nature = set.Nature;
             Form = set.Form;
             FormIndex = set.FormIndex;
-            EVs = SanitizeEVs(set.EVs, GB);
+            EVs = SanitizeEVs(set.EVs, gb);
             IVs = set.IVs;
             HiddenPowerType = set.HiddenPowerType;
             Moves = set.Moves;
