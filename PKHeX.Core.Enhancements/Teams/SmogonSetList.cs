@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -208,6 +208,8 @@ namespace PKHeX.Core.Enhancements
                     var move = GetMove(choice);
                     if (moves.Contains(move))
                         continue;
+                    if (move.Equals("Hidden Power", StringComparison.OrdinalIgnoreCase))
+                        move = $"{move} [{choice.Split(new[] {"\"type\":\""}, StringSplitOptions.None)[1].Split(new [] {'\"'})[0]}]";
                     moves.Add(move);
                     break;
                 }
