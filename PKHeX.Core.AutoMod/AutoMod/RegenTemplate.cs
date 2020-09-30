@@ -28,7 +28,7 @@ namespace PKHeX.Core.AutoMod
         public Ball Ball { get; set; }
         public Shiny ShinyType { get; set; } = Core.Shiny.Random;
 
-        public RegenTemplate(IBattleTemplate set, int gen)
+        public RegenTemplate(IBattleTemplate set, int gen = PKX.Generation)
         {
             Species = set.Species;
             Format = set.Format;
@@ -49,14 +49,14 @@ namespace PKHeX.Core.AutoMod
             CanGigantamax = set.CanGigantamax;
         }
 
-        public RegenTemplate(ShowdownSet set, int gen) : this((IBattleTemplate) set, gen)
+        public RegenTemplate(ShowdownSet set, int gen = PKX.Generation) : this((IBattleTemplate) set, gen)
         {
             this.SanitizeForm();
             this.SanitizeBattleMoves();
             LoadExtraInstructions(set.InvalidLines);
         }
 
-        public RegenTemplate(PKM pk, int gen) : this(new ShowdownSet(ShowdownSet.GetShowdownText(pk)), gen)
+        public RegenTemplate(PKM pk, int gen = PKX.Generation) : this(new ShowdownSet(ShowdownSet.GetShowdownText(pk)), gen)
         {
             this.FixGender(pk.PersonalInfo);
         }
