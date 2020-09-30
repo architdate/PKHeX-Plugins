@@ -28,7 +28,7 @@ namespace PKHeX.Core.AutoMod
         public Ball Ball { get; set; }
         public Shiny ShinyType { get; set; } = Core.Shiny.Random;
 
-        public RegenTemplate(IBattleTemplate set)
+        public RegenTemplate(IBattleTemplate set, int gen = PKX.Generation)
         {
             Species = set.Species;
             Format = set.Format;
@@ -42,21 +42,21 @@ namespace PKHeX.Core.AutoMod
             Nature = set.Nature;
             Form = set.Form;
             FormIndex = set.FormIndex;
-            EVs = SanitizeEVs(set.EVs);
+            EVs = SanitizeEVs(set.EVs, gen);
             IVs = set.IVs;
             HiddenPowerType = set.HiddenPowerType;
             Moves = set.Moves;
             CanGigantamax = set.CanGigantamax;
         }
 
-        public RegenTemplate(ShowdownSet set) : this((IBattleTemplate) set)
+        public RegenTemplate(ShowdownSet set, int gen = PKX.Generation) : this((IBattleTemplate) set, gen)
         {
             this.SanitizeForm();
             this.SanitizeBattleMoves();
             LoadExtraInstructions(set.InvalidLines);
         }
 
-        public RegenTemplate(PKM pk) : this(new ShowdownSet(ShowdownSet.GetShowdownText(pk)))
+        public RegenTemplate(PKM pk, int gen = PKX.Generation) : this(new ShowdownSet(ShowdownSet.GetShowdownText(pk)), gen)
         {
             this.FixGender(pk.PersonalInfo);
         }
@@ -92,13 +92,14 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static int[] SanitizeEVs(int[] evs)
+        private static int[] SanitizeEVs(int[] evs, int gen)
         {
             var copy = (int[])evs.Clone();
+            int maxEV = gen >= 6 ? 252 : gen >= 3 ? 255 : 65535;
             for (int i = 0; i < evs.Length; i++)
             {
-                if (copy[i] > 252)
-                    copy[i] = 252;
+                if (copy[i] > maxEV)
+                    copy[i] = maxEV;
             }
             return copy;
         }
