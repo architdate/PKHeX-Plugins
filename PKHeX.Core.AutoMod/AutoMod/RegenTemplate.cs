@@ -21,7 +21,7 @@ namespace PKHeX.Core.AutoMod
         public int HiddenPowerType { get; set; }
         public bool CanGigantamax { get; set; }
 
-        public bool ChangeEVsAllowed { get; set; } = true;
+        public bool ChangeEVsAllowed { get; set; }
         public int[] EVs { get; }
         public int[] IVs { get; }
         public int[] Moves { get; }
