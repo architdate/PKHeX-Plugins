@@ -16,6 +16,7 @@ namespace PKHeX.Core.Enhancements
         public readonly string Form;
         public readonly string ShowdownSpeciesName;
         public readonly string Page;
+        public readonly bool LetsGo;
         public readonly List<string> SetConfig = new List<string>();
         public readonly List<string> SetText = new List<string>();
         public readonly List<ShowdownSet> Sets = new List<ShowdownSet>();
@@ -47,6 +48,7 @@ namespace PKHeX.Core.Enhancements
             URL = GetURL(Species, Form, baseURL);
             Page = NetUtil.GetPageText(URL);
 
+            LetsGo = pk is PB7;
             Valid = true;
             ShowdownSpeciesName = GetShowdownName(Species, psform);
 
@@ -75,6 +77,8 @@ namespace PKHeX.Core.Enhancements
                 }
 
                 if (IllegalFormats.Any(s => s.Equals(format, StringComparison.OrdinalIgnoreCase)))
+                    continue;
+                if (!LetsGo && format.StartsWith("LGPE") || LetsGo && !format.StartsWith("LGPE"))
                     continue;
                 var level = format.StartsWith("LC") ? 5 : 100;
                 if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
@@ -118,6 +122,7 @@ namespace PKHeX.Core.Enhancements
                 case nameof(PK6):
                     return "https://www.smogon.com/dex/xy/pokemon";
                 case nameof(PK7):
+                case nameof(PB7):
                     return "https://www.smogon.com/dex/sm/pokemon";
                 case nameof(PK8):
                     return "https://www.smogon.com/dex/ss/pokemon";
