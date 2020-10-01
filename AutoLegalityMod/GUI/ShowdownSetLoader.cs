@@ -134,6 +134,7 @@ namespace AutoModPlugins
             APILegality.PrioritizeGame = settings.PrioritizeGame;
             APILegality.PrioritizeGameVersion = settings.PriorityGameVersion;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
+            SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
 
             EncounterMovesetGenerator.PriorityList = settings.PrioritizeEvent
                 ? new[] {EncounterOrder.Mystery, EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot}

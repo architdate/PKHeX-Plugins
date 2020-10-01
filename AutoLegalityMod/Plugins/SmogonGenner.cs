@@ -10,6 +10,7 @@ namespace AutoModPlugins
     {
         public override string Name => "Gen Smogon Sets";
         public override int Priority => 1;
+        public static bool PromptForImport { get; set; }
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
@@ -46,20 +47,24 @@ namespace AutoModPlugins
                 return;
             }
 
-            for (int i = 0; i < info.Sets.Count;)
+            if (PromptForImport)
             {
-                if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", info.SetTitle[i], info.Sets[i].Text))
+                for (int i = 0; i < info.Sets.Count;)
                 {
-                    info.Sets.RemoveAt(i);
-                    info.SetTitle.RemoveAt(i);
-                    info.SetConfig.RemoveAt(i);
-                    info.SetText.RemoveAt(i);
-                }
-                else
+                    if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", $"[{info.SetFormat[i]}] {info.SetName[i]}", info.Sets[i].Text))
+                    {
+                        info.Sets.RemoveAt(i);
+                        info.SetFormat.RemoveAt(i);
+                        info.SetName.RemoveAt(i);
+                        info.SetConfig.RemoveAt(i);
+                        info.SetText.RemoveAt(i);
+                        continue;
+                    }
                     i++;
+                }
             }
 
-            ShowdownSetLoader.Import(info.Sets, true);
+            ShowdownSetLoader.Import(info.Sets, PromptForImport);
             WinFormsUtil.Alert(info.Summary);
         }
     }

@@ -16,7 +16,8 @@ namespace PKHeX.Core.Enhancements
         public readonly string Form;
         public readonly string ShowdownSpeciesName;
         public readonly string Page;
-        public readonly List<string> SetTitle = new List<string>();
+        public readonly List<string> SetFormat = new List<string>();
+        public readonly List<string> SetName = new List<string>();
         public readonly List<string> SetConfig = new List<string>();
         public readonly List<string> SetText = new List<string>();
         public readonly List<ShowdownSet> Sets = new List<ShowdownSet>();
@@ -82,7 +83,8 @@ namespace PKHeX.Core.Enhancements
                     continue;
                 var name = split1[i - 1].Substring(split1[i - 1].LastIndexOf("\"name\":\"", StringComparison.Ordinal) +
                                                    "\"name\":\"".Length).Split('\"')[0];
-                SetTitle.Add($"[{format}] {name}");
+                SetFormat.Add(format);
+                SetName.Add(name);
                 if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
                 {
                     int.TryParse(split1[i - 1].Split(new[] { "\"level\":" }, StringSplitOptions.None)[1]
@@ -363,11 +365,11 @@ namespace PKHeX.Core.Enhancements
         private Dictionary<string, List<string>> GetTitles()
         {
             var titles = new Dictionary<string, List<string>>();
-            foreach (string title in SetTitle)
+            for(int i = 0; i < Sets.Count; i++)
             {
-                string format = title.Substring(1, title.IndexOf("]") - 1);
-                string name = title.Substring(title.IndexOf("]") + 2);
-                if(titles.ContainsKey(format))
+                var format = SetFormat[i];
+                var name = SetName[i];
+                if (titles.ContainsKey(format))
                     titles[format].Add(name);
                 else
                     titles.Add(format, new List<string>{name});
