@@ -30,7 +30,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Legalized PKM (hopefully legal)</returns>
         public static PKM Legalize(this ITrainerInfo tr, PKM pk)
         {
-            var set = new RegenTemplate(pk, tr.Generation)
+            var set = new RegenTemplate(pk, tr.Generation, false)
             {
                 Ball = (Ball) pk.Ball,
                 ShinyType = pk.ShinyXor == 0 ? Shiny.AlwaysSquare : pk.IsShiny ? Shiny.AlwaysStar : Shiny.Never

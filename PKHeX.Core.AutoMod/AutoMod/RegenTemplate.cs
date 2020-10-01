@@ -21,6 +21,7 @@ namespace PKHeX.Core.AutoMod
         public int HiddenPowerType { get; set; }
         public bool CanGigantamax { get; set; }
 
+        public bool ChangeEVsAllowed { get; set; } = true;
         public int[] EVs { get; }
         public int[] IVs { get; }
         public int[] Moves { get; }
@@ -28,7 +29,7 @@ namespace PKHeX.Core.AutoMod
         public Ball Ball { get; set; }
         public Shiny ShinyType { get; set; } = Core.Shiny.Random;
 
-        public RegenTemplate(IBattleTemplate set, int gen = PKX.Generation)
+        public RegenTemplate(IBattleTemplate set, int gen = PKX.Generation, bool allowChangedEVs = true)
         {
             Species = set.Species;
             Format = set.Format;
@@ -47,16 +48,17 @@ namespace PKHeX.Core.AutoMod
             HiddenPowerType = set.HiddenPowerType;
             Moves = set.Moves;
             CanGigantamax = set.CanGigantamax;
+            ChangeEVsAllowed = allowChangedEVs;
         }
 
-        public RegenTemplate(ShowdownSet set, int gen = PKX.Generation) : this((IBattleTemplate) set, gen)
+        public RegenTemplate(ShowdownSet set, int gen = PKX.Generation, bool allowChangedEVs = true) : this((IBattleTemplate) set, gen, allowChangedEVs)
         {
             this.SanitizeForm();
             this.SanitizeBattleMoves();
             LoadExtraInstructions(set.InvalidLines);
         }
 
-        public RegenTemplate(PKM pk, int gen = PKX.Generation) : this(new ShowdownSet(ShowdownSet.GetShowdownText(pk)), gen)
+        public RegenTemplate(PKM pk, int gen = PKX.Generation, bool allowChangedEVs = true) : this(new ShowdownSet(ShowdownSet.GetShowdownText(pk)), gen, allowChangedEVs)
         {
             this.FixGender(pk.PersonalInfo);
         }

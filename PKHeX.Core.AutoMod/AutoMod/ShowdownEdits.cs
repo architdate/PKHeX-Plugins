@@ -151,7 +151,7 @@ namespace PKHeX.Core.AutoMod
             {
                 // In Generation 1/2 Format sets, when EVs are not specified at all, it implies maximum EVs instead!
                 // Under this scenario, just apply maximum EVs (65535).
-                if (pk is GBPKM gb && set.EVs.All(z => z == 0))
+                if (pk is GBPKM gb && set is RegenTemplate rt && rt.ChangeEVsAllowed && set.EVs.All(z => z == 0))
                     gb.EV_HP = gb.EV_ATK = gb.EV_DEF = gb.EV_SPC = gb.EV_SPE = gb.MaxEV;
                 else
                     pk.EVs = set.EVs;
