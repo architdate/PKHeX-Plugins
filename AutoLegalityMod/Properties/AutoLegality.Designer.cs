@@ -202,5 +202,17 @@ namespace AutoModPlugins.Properties {
                 this["PriorityGameVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PromptForSmogonImport {
+            get {
+                return ((bool)(this["PromptForSmogonImport"]));
+            }
+            set {
+                this["PromptForSmogonImport"] = value;
+            }
+        }
     }
 }

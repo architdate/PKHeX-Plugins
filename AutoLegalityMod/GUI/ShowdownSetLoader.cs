@@ -51,12 +51,12 @@ namespace AutoModPlugins
         /// Import Showdown Sets and alert user of any messages intended
         /// </summary>
         /// <param name="sets">Data to be loaded</param>
-        public static void Import(IReadOnlyList<ShowdownSet> sets)
+        public static void Import(IReadOnlyList<ShowdownSet> sets, bool skipDialog = false)
         {
             AutoModErrorCode result;
             if (sets.Count == 1)
             {
-                result = ImportSetToTabs(sets[0]);
+                result = ImportSetToTabs(sets[0], skipDialog);
             }
             else
             {
@@ -69,9 +69,9 @@ namespace AutoModPlugins
                 WinFormsUtil.Alert(message);
         }
 
-        private static AutoModErrorCode ImportSetToTabs(ShowdownSet set)
+        private static AutoModErrorCode ImportSetToTabs(ShowdownSet set, bool skipDialog = false)
         {
-            if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
+            if (!skipDialog && DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
                 return AutoModErrorCode.NoSingleImport;
 
             var regen = new RegenTemplate(set, SaveFileEditor.SAV.Generation);
@@ -134,6 +134,7 @@ namespace AutoModPlugins
             APILegality.PrioritizeGame = settings.PrioritizeGame;
             APILegality.PrioritizeGameVersion = settings.PriorityGameVersion;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
+            SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
 
             EncounterMovesetGenerator.PriorityList = settings.PrioritizeEvent
                 ? new[] {EncounterOrder.Mystery, EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot}
