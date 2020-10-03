@@ -73,7 +73,7 @@ namespace AutoModPlugins
                 return;
 
             var ofs = RamOffsets.GetTrainerBlockOffset(lv);
-            var data = Remote.Bot.com.ReadBytes(ofs, dest.Length);
+            var data = Remote.Bot.com.ReadBytes(ofs, RamOffsets.GetTrainerBlockSize(lv));
             data.CopyTo(dest, 0);
         }
 

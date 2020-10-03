@@ -51,7 +51,7 @@
         {
             return lv switch
             {
-                LiveHeXVersion.LGPE_v102 => 0x53586c30,
+                LiveHeXVersion.LGPE_v102 => 0x533675B0,
                 LiveHeXVersion.SWSH_Orion => 0x4293D8B0,
                 LiveHeXVersion.SWSH_Rigel1 => 0x4506D890,
                 LiveHeXVersion.UM_v12 => 0x33015AB0,
@@ -83,7 +83,7 @@
         {
             return lv switch
             {
-                LiveHeXVersion.LGPE_v102 => 0,
+                LiveHeXVersion.LGPE_v102 => 380,
                 LiveHeXVersion.SWSH_Orion => 0,
                 LiveHeXVersion.SWSH_Rigel1 => 0,
                 LiveHeXVersion.UM_v12 => 0,
