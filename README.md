@@ -1,12 +1,12 @@
 # About
 This project uses `PKHeX.Core` and PKHeX's `IPlugin` interface to provide PKHeX program enhancements, namely **Auto**mated **Mod**ifications to create Legal Pokémon. Please refer to the [Wiki](https://github.com/architdate/PKHeX-Plugins/wiki) for more information regarding the functionalities provided by this project.
 
-This project is owned by [@architdate](https://github.com/architdate) (Discord: thecommondude#8240) and [@kwsch](https://github.com/kwsch) (Discord: Kurt#6024)
+This project is owned by [@architdate](https://github.com/architdate) (Discord: thecommondude#8240) and [@kwsch](https://github.com/kwsch) (Discord: Kurt#6024).
 
-[Feature Demonstration Video](https://www.youtube.com/watch?v=pKuElH0hWWA) by AAron#2420
+[Feature Demonstration Video](https://www.youtube.com/watch?v=pKuElH0hWWA) by AAron#2420.
 
 ## Building
-This project requires an IDE that supports compiling .NET based code (Ideally .NET 4.6+). Recommended IDE is Visual Studio 2019 
+This project requires an IDE that supports compiling .NET based code (Ideally .NET 4.6+). Recommended IDE is Visual Studio 2019. 
 
 **Building Regular Builds**
 Regular builds will usually work unless there are changes that have been commited to the mod that do not work with the nuget [PKHeX.Core](https://www.nuget.org/packages/PKHeX.Core) package dependancy specified in the `.csproj` files of the projects. If building fails, use the bleeding edge build method
@@ -31,11 +31,11 @@ Use this build method only if the regular builds fail. The AppVeyor CI will alwa
 - Right click the PKHeX-Plugins solution and choose `Rebuild All`. This should build the mod with the latest `PKHeX.Core` version so that it can be used with the latest commit of PKHeX
 
 ## Usage
-To use the plugins:
-- Create a folder called `plugins` in the same directory as PKHeX.exe
-- Put the compiled plugins from this project in the `plugins` folder
+To use the Plugins:
+- Create a folder called `Plugins` in the same directory as PKHeX.exe
+- Put the compiled Plugins from this project in the `Plugins` folder
 - Start PKHeX.
-- The plugins should be available for use in `Tools > Auto Legality Mod` drop-down menu.
+- The Plugins should be available for use in `Tools > Auto Legality Mod` drop-down menu.
 
 ## Support Server:
 Come join the dedicated Discord server for this mod! Ask questions, give suggestions, get help, or just hang out. Don't be shy, we don't bite:
