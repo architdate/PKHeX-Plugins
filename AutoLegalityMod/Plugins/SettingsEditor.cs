@@ -23,7 +23,6 @@ namespace AutoModPlugins
             var settings = AutoLegality.Default;
             using var form = new ALMSettings(settings);
             form.ShowDialog();
-            settings.Save();
         }
     }
 }
