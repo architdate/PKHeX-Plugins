@@ -22,6 +22,7 @@ namespace PKHeX.Core.AutoMod
         public static bool PrioritizeGame { get; set; } = true;
         public static bool SetRandomTracker { get; set; }
         public static GameVersion PrioritizeGameVersion { get; set; }
+        public static bool SetBattleVersion { get; set; }
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -205,6 +206,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, set is RegenTemplate b ? b.Ball : Ball.None);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.ApplyHeightWeight(enc);
+            pk.ApplyBattleVersion();
 
             // Extra legality unchecked by PKHeX
             pk.SetDatelocks(enc);
@@ -368,6 +370,22 @@ namespace PKHeX.Core.AutoMod
                 default:
                     pk.Version = original.Version;
                     break;
+            }
+        }
+
+        private static void ApplyBattleVersion(this PKM pk)
+        {
+            if (SetBattleVersion && !pk.IsNative && pk is PK8 pk8)
+            {
+                PK8 clone = (PK8)pk8.Clone();
+                clone.BattleVersion = (int)GameVersion.SW;
+
+                var la = new LegalityAnalysis(clone);
+                if (la.Info.Moves.All(z => z.Valid))
+                {
+                    pk8.ClearRelearnMoves();
+                    pk8.BattleVersion = (int)GameVersion.SW;
+                }
             }
         }
 
