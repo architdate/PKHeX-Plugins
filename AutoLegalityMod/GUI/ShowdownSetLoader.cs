@@ -133,6 +133,7 @@ namespace AutoModPlugins
             APILegality.SetRandomTracker = settings.SetRandomTracker;
             APILegality.PrioritizeGame = settings.PrioritizeGame;
             APILegality.PrioritizeGameVersion = settings.PriorityGameVersion;
+            APILegality.SetBattleVersion = settings.SetBattleVersion;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
 

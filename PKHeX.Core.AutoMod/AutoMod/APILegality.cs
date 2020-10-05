@@ -22,6 +22,7 @@ namespace PKHeX.Core.AutoMod
         public static bool PrioritizeGame { get; set; } = true;
         public static bool SetRandomTracker { get; set; }
         public static GameVersion PrioritizeGameVersion { get; set; }
+        public static bool SetBattleVersion { get; set; }
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -205,6 +206,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, set is RegenTemplate b ? b.Ball : Ball.None);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.ApplyHeightWeight(enc);
+            pk.ApplyBattleVersion(handler);
 
             // Extra legality unchecked by PKHeX
             pk.SetDatelocks(enc);
@@ -368,6 +370,26 @@ namespace PKHeX.Core.AutoMod
                 default:
                     pk.Version = original.Version;
                     break;
+            }
+        }
+
+        /// <summary>
+        /// Sets past-generation Pokemon as Battle Ready for games that support it
+        /// </summary>
+        /// <param name="pk">Return PKM</param>
+        /// <param name="trainer">Trainer to handle the <see cref="pk"/></param>
+        private static void ApplyBattleVersion(this PKM pk, ITrainerInfo trainer)
+        {
+            if (SetBattleVersion && !pk.IsNative && pk is IBattleVersion bvPk)
+            {
+                var oldBattleVersion = bvPk.BattleVersion;
+                bvPk.BattleVersion = trainer.Game;
+
+                var la = new LegalityAnalysis(pk);
+                if (la.Info.Moves.All(z => z.Valid))
+                    pk.ClearRelearnMoves();
+                else
+                    bvPk.BattleVersion = oldBattleVersion;
             }
         }
 
