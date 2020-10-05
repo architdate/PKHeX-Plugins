@@ -373,6 +373,11 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Sets past-generation Pokemon as Battle Ready for games that support it
+        /// </summary>
+        /// <param name="pk">Return PKM</param>
+        /// <param name="trainer">Trainer to handle the <see cref="pk"/></param>
         private static void ApplyBattleVersion(this PKM pk, ITrainerInfo trainer)
         {
             if (SetBattleVersion && !pk.IsNative && pk is IBattleVersion bvPk)
