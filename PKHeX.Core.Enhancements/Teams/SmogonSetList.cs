@@ -113,6 +113,8 @@ namespace PKHeX.Core.Enhancements
             {
                 case nameof(PK1):
                     return "https://www.smogon.com/dex/rb/pokemon";
+
+                case nameof(SK2):
                 case nameof(PK2):
                     return "https://www.smogon.com/dex/gs/pokemon";
 
@@ -129,9 +131,11 @@ namespace PKHeX.Core.Enhancements
                     return "https://www.smogon.com/dex/bw/pokemon";
                 case nameof(PK6):
                     return "https://www.smogon.com/dex/xy/pokemon";
+
                 case nameof(PK7):
                 case nameof(PB7):
                     return "https://www.smogon.com/dex/sm/pokemon";
+                    
                 case nameof(PK8):
                     return "https://www.smogon.com/dex/ss/pokemon";
 
