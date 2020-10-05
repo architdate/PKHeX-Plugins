@@ -13,6 +13,7 @@ namespace PKHeX.Core.Enhancements
         public readonly IReadOnlyList<QRPK7> Team;
         public IReadOnlyList<byte> GlobalLinkID { get; }
         public IReadOnlyList<byte> UnknownData { get; }
+        private SaveFile Dummy = new SAV7USUM();
 
         public RentalTeam(byte[] data)
         {
@@ -33,6 +34,6 @@ namespace PKHeX.Core.Enhancements
             UnknownData = data.SliceEnd(0x128);
         }
 
-        public IEnumerable<ShowdownSet> ConvertedTeam => Team.Select(z => z.ConvertToPKM()).Select(z => new ShowdownSet(z));
+        public IEnumerable<ShowdownSet> ConvertedTeam => Team.Select(z => z.ConvertToPKM(Dummy)).Select(z => new ShowdownSet(z));
     }
 }
