@@ -52,7 +52,7 @@ To use the plugins:
 - Start PKHeX.exe.
 - The plugins should be available for use in `Tools > Auto Legality Mod` drop-down menu.
 
-## Support Server:
+## Support Server
 Come join the dedicated Discord server for this mod! Ask questions, give suggestions, get help, or just hang out. Don't be shy, we don't bite:
 
 [<img src="https://canary.discordapp.com/api/guilds/401014193211441153/widget.png?style=banner2">](https://discord.gg/tDMvSRv)
@@ -60,7 +60,7 @@ Come join the dedicated Discord server for this mod! Ask questions, give suggest
 ## Contributing
 To contribute to the repository, you can submit a pull request to the repository. Try to follow a format similar to the current codebase. All contributions are greatly appreciated! If you would like to discuss possible contributions without using GitHub, please contact us on the support server above.
 
-## Credits:
+## Credits
 - [@kwsch](https://github.com/kwsch) for providing the IPlugin interface in PKHeX, which allows loading of this project's Plugin DLL files. Also for the support provided in the support server.
 - [@olliz0r](https://github.com/olliz0r) for developing and maintaining `sys-botbase` which is necessary for LiveHeX to work.
 - [@fishguy6564](https://github.com/fishguy6564) for creating `USB-Botbase` (by extending sys-botbase).
