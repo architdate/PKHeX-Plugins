@@ -206,7 +206,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, set is RegenTemplate b ? b.Ball : Ball.None);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.ApplyHeightWeight(enc);
-            pk.ApplyBattleVersion();
+            pk.ApplyBattleVersion(handler);
 
             // Extra legality unchecked by PKHeX
             pk.SetDatelocks(enc);
@@ -373,19 +373,18 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static void ApplyBattleVersion(this PKM pk)
+        private static void ApplyBattleVersion(this PKM pk, ITrainerInfo trainer)
         {
-            if (SetBattleVersion && !pk.IsNative && pk is PK8 pk8)
+            if (SetBattleVersion && !pk.IsNative && pk is IBattleVersion bvPk)
             {
-                PK8 clone = (PK8)pk8.Clone();
-                clone.BattleVersion = (int)GameVersion.SW;
+                int oldBattleVersion = bvPk.BattleVersion;
+                bvPk.BattleVersion = trainer.Game;
 
-                var la = new LegalityAnalysis(clone);
+                var la = new LegalityAnalysis(pk);
                 if (la.Info.Moves.All(z => z.Valid))
-                {
-                    pk8.ClearRelearnMoves();
-                    pk8.BattleVersion = (int)GameVersion.SW;
-                }
+                    pk.ClearRelearnMoves();
+                else
+                    bvPk.BattleVersion = oldBattleVersion;
             }
         }
 
