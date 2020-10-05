@@ -380,16 +380,24 @@ namespace PKHeX.Core.AutoMod
         /// <param name="trainer">Trainer to handle the <see cref="pk"/></param>
         private static void ApplyBattleVersion(this PKM pk, ITrainerInfo trainer)
         {
-            if (SetBattleVersion && !pk.IsNative && pk is IBattleVersion bvPk)
-            {
-                var oldBattleVersion = bvPk.BattleVersion;
-                bvPk.BattleVersion = trainer.Game;
+            if (!SetBattleVersion) 
+                return;
+            if (pk.IsNative)
+                return;
+            if (!(pk is IBattleVersion bvPk))
+                return;
 
-                var la = new LegalityAnalysis(pk);
-                if (la.Info.Moves.All(z => z.Valid))
-                    pk.ClearRelearnMoves();
-                else
-                    bvPk.BattleVersion = oldBattleVersion;
+            var oldBattleVersion = bvPk.BattleVersion;
+            var relearn = pk.RelearnMoves;
+
+            pk.ClearRelearnMoves();
+            bvPk.BattleVersion = trainer.Game;
+
+            var la = new LegalityAnalysis(pk);
+            if (!la.Valid)
+            {
+                bvPk.BattleVersion = oldBattleVersion;
+                pk.SetRelearnMoves(relearn);
             }
         }
 
