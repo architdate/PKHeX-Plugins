@@ -377,7 +377,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (SetBattleVersion && !pk.IsNative && pk is IBattleVersion bvPk)
             {
-                int oldBattleVersion = bvPk.BattleVersion;
+                var oldBattleVersion = bvPk.BattleVersion;
                 bvPk.BattleVersion = trainer.Game;
 
                 var la = new LegalityAnalysis(pk);
