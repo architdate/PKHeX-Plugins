@@ -27,6 +27,7 @@ namespace PKHeX.Core.AutoMod
 
         public Ball Ball { get; set; }
         public Shiny ShinyType { get; set; } = Core.Shiny.Random;
+        public LanguageID? Language { get; set; } = null;
 
         public RegenTemplate(IBattleTemplate set, int gen = PKX.Generation)
         {
@@ -83,6 +84,9 @@ namespace PKHeX.Core.AutoMod
                         ShinyType = Aesthetics.GetShinyType(value);
                         if (ShinyType != Core.Shiny.Random)
                             Shiny = ShinyType != Core.Shiny.Never;
+                        break;
+                    case "Language":
+                        Language = Aesthetics.GetLanguageId(value);
                         break;
                     default:
                         continue;

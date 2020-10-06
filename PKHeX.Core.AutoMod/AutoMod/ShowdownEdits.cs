@@ -89,7 +89,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Set to use as reference</param>
         /// <param name="Form">Form to apply</param>
         /// <param name="enc">Encounter detail</param>
-        public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, int Form, IEncounterable enc)
+        public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, int Form, IEncounterable enc, LanguageID? lang = null)
         {
             pk.Species = set.Species;
             pk.ApplySetGender(set);
@@ -97,8 +97,10 @@ namespace PKHeX.Core.AutoMod
             pk.SetFormArgument(enc);
             pk.RefreshAbility(pk.AbilityNumber >> 1);
 
+            var usedlang = lang ?? (LanguageID) pk.Language;
+
             var gen = new LegalityAnalysis(pk).Info.Generation;
-            var nickname = Legal.GetMaxLengthNickname(gen, LanguageID.English) < set.Nickname.Length ? set.Nickname.Substring(0, Legal.GetMaxLengthNickname(gen, LanguageID.English)) : set.Nickname;
+            var nickname = Legal.GetMaxLengthNickname(gen, usedlang) < set.Nickname.Length ? set.Nickname.Substring(0, Legal.GetMaxLengthNickname(gen, usedlang)) : set.Nickname;
             if (!WordFilter.IsFiltered(nickname, out _))
                 pk.SetNickname(nickname);
             else
@@ -107,6 +109,8 @@ namespace PKHeX.Core.AutoMod
             if (pk.CurrentLevel == 50)
                 pk.CurrentLevel = 100; // VGC Override
         }
+
+        public static void SetLanguage(this PKM pk, LanguageID? lang = null) => pk.Language = lang != null ? (int)lang : pk.Language;
 
         private static void SetFormArgument(this PKM pk, IEncounterable enc)
         {

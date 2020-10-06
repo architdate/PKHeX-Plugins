@@ -181,9 +181,13 @@ namespace PKHeX.Core.AutoMod
             int Form = set.FormIndex;
             var pidiv = MethodFinder.Analyze(pk);
             var abilitypref = GetAbilityPreference(pk, enc);
+            var language = set is RegenTemplate rt ? rt.Language : LanguageID.English;
+            if (language == LanguageID.Hacked || language == LanguageID.UNUSED_6) 
+                language = null;
 
             pk.SetVersion(unconverted); // Preemptive Version setting
-            pk.SetSpeciesLevel(set, Form, enc);
+            pk.SetLanguage(language);
+            pk.SetSpeciesLevel(set, Form, enc, language);
             pk.SetRecordFlags(set.Moves);
             pk.SetMovesEVs(set);
             pk.SetHandlerandMemory(handler);

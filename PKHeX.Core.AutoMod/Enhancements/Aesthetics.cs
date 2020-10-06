@@ -954,6 +954,14 @@ namespace PKHeX.Core.AutoMod
             return Shiny.Random;
         }
 
+        public static LanguageID? GetLanguageId(string value)
+        {
+            var valid = Enum.TryParse(value, out LanguageID lang);
+            if (valid)
+                return lang;
+            return null;
+        }
+
         /// <summary>
         /// Priority Match ball IDs that match the color ID in descending order
         /// </summary>
