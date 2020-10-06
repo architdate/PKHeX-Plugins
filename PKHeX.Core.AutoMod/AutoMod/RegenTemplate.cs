@@ -111,7 +111,7 @@ namespace PKHeX.Core.AutoMod
                         else SID = int.TryParse(value, out int SIDres) ? SIDres : -1;
                         OverrideTrainer = true;
                         break;
-                    case "Gender":
+                    case "OTGender":
                         OT_Gender = value == "Female" || value == "F" ? 1 : 0;
                         break;
                     default:
