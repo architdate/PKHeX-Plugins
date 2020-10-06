@@ -15,6 +15,16 @@ namespace PKHeX.Core.AutoMod
                 set.FormIndex = 0;
         }
 
+        public static SimpleTrainerInfo GetRegenTemplateTrainer(this RegenTemplate set)
+        {
+            var template = set.Format >= 8 ? new SimpleTrainerInfo(GameVersion.SW) : new SimpleTrainerInfo(GameVersion.US); 
+            template.TID = set.TID;
+            template.SID = set.SID;
+            template.OT = set.OT;
+            template.Gender = set.OT_Gender;
+            return template;
+        }
+
         /// <summary>
         /// Showdown quirks lets you have battle only moves in battle only formes. Transform back to base move.
         /// </summary>

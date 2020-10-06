@@ -23,6 +23,7 @@ namespace PKHeX.Core.AutoMod
         public static bool SetRandomTracker { get; set; }
         public static GameVersion PrioritizeGameVersion { get; set; }
         public static bool SetBattleVersion { get; set; }
+        public static bool AllowTrainerOverride { get; set; }
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -52,7 +53,8 @@ namespace PKHeX.Core.AutoMod
             {
                 if (!IsEncounterValid(set, enc, isHidden, destVer, out var ver))
                     continue;
-                var tr = UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, enc.Generation) : TrainerSettings.DefaultFallback(enc.Generation);
+                var tr = AllowTrainerOverride && set is RegenTemplate rt && rt.OverrideTrainer ? rt.GetRegenTemplateTrainer() : 
+                    (UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, enc.Generation) : TrainerSettings.DefaultFallback(enc.Generation));
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);

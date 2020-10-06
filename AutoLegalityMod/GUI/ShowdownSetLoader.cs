@@ -134,6 +134,7 @@ namespace AutoModPlugins
             APILegality.PrioritizeGame = settings.PrioritizeGame;
             APILegality.PrioritizeGameVersion = settings.PriorityGameVersion;
             APILegality.SetBattleVersion = settings.SetBattleVersion;
+            APILegality.AllowTrainerOverride = settings.AllowTrainerOverride;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
 

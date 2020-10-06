@@ -27,7 +27,14 @@ namespace PKHeX.Core.AutoMod
 
         public Ball Ball { get; set; }
         public Shiny ShinyType { get; set; } = Core.Shiny.Random;
-        public LanguageID? Language { get; set; } = null;
+        public LanguageID? Language { get; set; }
+        public string OT { get; set; }
+        public int TID { get; set; } = 12345;
+        public int SID { get; set; } = 54321;
+        private int TID7 { get; set; }
+        private int SID7 { get; set; }
+        public int OT_Gender { get; set; }
+        public bool OverrideTrainer { get; set; } = false;
 
         public RegenTemplate(IBattleTemplate set, int gen = PKX.Generation)
         {
@@ -88,8 +95,39 @@ namespace PKHeX.Core.AutoMod
                     case "Language":
                         Language = Aesthetics.GetLanguageId(value);
                         break;
+                    case "OT":
+                        OT = value;
+                        OverrideTrainer = true;
+                        break;
+                    case "TID":
+                        if (Format >= 7)
+                            TID7 = int.TryParse(value, out int TIDres) ? TIDres : -1;
+                        else TID = int.TryParse(value, out int TIDres) ? TIDres : -1;
+                        OverrideTrainer = true;
+                        break;
+                    case "SID":
+                        if (Format >= 7)
+                            SID7 = int.TryParse(value, out int SIDres) ? SIDres : -1;
+                        else SID = int.TryParse(value, out int SIDres) ? SIDres : -1;
+                        OverrideTrainer = true;
+                        break;
+                    case "Gender":
+                        OT_Gender = value == "Female" || value == "F" ? 1 : 0;
+                        break;
                     default:
                         continue;
+                }
+
+                if (OverrideTrainer)
+                {
+                    if (TID == -1 || TID7 == -1) TID = 12345;
+                    if (SID == -1 || SID7 == -1) SID = 54321;
+                    if (Format >= 7 && TID7 != -1 && SID7 != -1)
+                    {
+                        var oid = (SID7 * 1_000_000) + (TID7 % 1_000_000);
+                        TID = (ushort) oid;
+                        SID = oid >> 16;
+                    }
                 }
                 // Remove from lines
                 lines.RemoveAt(i--);
