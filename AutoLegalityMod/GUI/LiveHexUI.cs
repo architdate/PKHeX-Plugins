@@ -60,13 +60,33 @@ namespace AutoModPlugins
         private void SetTrainerData(SaveFile sav, LiveHeXVersion lv)
         {
             // Check and set trainerdata based on ISaveBlock interfaces
-            byte[] dest = sav switch
+            byte[] dest;
+            int startofs = 0;
+            switch (sav)
             {
-                ISaveBlock8Main s8 => s8.MyStatus.Data,
-                ISaveBlock7Main s7 => s7.MyStatus.Data,
-                ISaveBlock6Core s6 => s6.Status.Data,
-                SAV7b slgpe => slgpe.Blocks.Status.Data,
-                _ => Array.Empty<byte>()
+                case ISaveBlock8Main s8:
+                    dest = s8.MyStatus.Data;
+                    startofs = s8.MyStatus.Offset;
+                    break;
+
+                case ISaveBlock7Main s7:
+                    dest = s7.MyStatus.Data;
+                    startofs = s7.MyStatus.Offset;
+                    break;
+
+                case ISaveBlock6Main s6:
+                    dest = s6.Status.Data;
+                    startofs = s6.Status.Offset;
+                    break;
+
+                case SAV7b slgpe:
+                    dest = slgpe.Blocks.Status.Data;
+                    startofs = slgpe.Blocks.Status.Offset;
+                    break;
+                
+                default:
+                    dest = Array.Empty<byte>();
+                    break;
             };
 
             if (dest.Length == 0)
@@ -74,7 +94,7 @@ namespace AutoModPlugins
 
             var ofs = RamOffsets.GetTrainerBlockOffset(lv);
             var data = Remote.Bot.com.ReadBytes(ofs, RamOffsets.GetTrainerBlockSize(lv));
-            data.CopyTo(dest, 0);
+            data.CopyTo(dest, startofs);
         }
 
         private void ChangeBox(object sender, EventArgs e)
