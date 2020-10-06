@@ -42,6 +42,7 @@ namespace PKHeX.Core.AutoMod
             var isHidden = template.AbilityNumber == 4;
             var destType = template.GetType();
             var destVer = (GameVersion)dest.Game;
+            var langoverride = set is RegenTemplate regen ? regen.Language : null;
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
@@ -54,7 +55,7 @@ namespace PKHeX.Core.AutoMod
                 if (!IsEncounterValid(set, enc, isHidden, destVer, out var ver))
                     continue;
                 var tr = AllowTrainerOverride && set is RegenTemplate rt && rt.OverrideTrainer ? rt.GetRegenTemplateTrainer() : 
-                    (UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, enc.Generation) : TrainerSettings.DefaultFallback(enc.Generation));
+                    (UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, enc.Generation, lang:langoverride) : TrainerSettings.DefaultFallback(enc.Generation, langoverride));
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);

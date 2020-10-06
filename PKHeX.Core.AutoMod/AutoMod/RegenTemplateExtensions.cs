@@ -22,6 +22,8 @@ namespace PKHeX.Core.AutoMod
             template.SID = set.SID;
             template.OT = set.OT;
             template.Gender = set.OT_Gender;
+            if (set.Language != null)
+                template.Language = (int) set.Language;
             return template;
         }
 

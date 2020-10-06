@@ -17,7 +17,7 @@ namespace PKHeX.Core.AutoMod
         public string OT => pkm.OT_Name;
         public int Gender => pkm.OT_Gender;
         public int Game => pkm.Version;
-        public int Language => pkm.Language;
+        public int Language { get => pkm.Language; set => pkm.Language = value; }
 
         public int Country { get => pkm is IGeoTrack gt ? gt.Country : 0; set { if (pkm is IGeoTrack gt) gt.Country = value; } }
         public int Region { get => pkm is IGeoTrack gt ? gt.Region : 0; set { if (pkm is IGeoTrack gt) gt.Region = value; } }

@@ -9,10 +9,16 @@ namespace PKHeX.Core.AutoMod
     {
         private static readonly TrainerDatabase Database = new TrainerDatabase();
         private static readonly string TrainerPath = Path.Combine(Directory.GetCurrentDirectory(), "trainers");
-        private static readonly ITrainerInfo DefaultFallback8 = new SimpleTrainerInfo(GameVersion.SW);
-        private static readonly ITrainerInfo DefaultFallback7 = new SimpleTrainerInfo(GameVersion.UM);
+        private static readonly SimpleTrainerInfo DefaultFallback8 = new SimpleTrainerInfo(GameVersion.SW);
+        private static readonly SimpleTrainerInfo DefaultFallback7 = new SimpleTrainerInfo(GameVersion.UM);
 
-        public static ITrainerInfo DefaultFallback(int gen = 8) => gen > 7 ? DefaultFallback8 : DefaultFallback7;
+        public static ITrainerInfo DefaultFallback(int gen = 8, LanguageID? lang = null)
+        {
+            var fallback = gen > 7 ? DefaultFallback8 : DefaultFallback7;
+            if (lang != null)
+                fallback.Language = (int) lang;
+            return fallback;
+        }
 
         static TrainerSettings() => LoadTrainerDatabaseFromPath(TrainerPath);
 
@@ -43,7 +49,14 @@ namespace PKHeX.Core.AutoMod
         /// <param name="generation">Generation of origin requested.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
-        public static ITrainerInfo GetSavedTrainerData(int generation, ITrainerInfo? fallback = null) => Database.GetTrainerFromGen(generation) ?? fallback ?? DefaultFallback(generation);
+        public static ITrainerInfo GetSavedTrainerData(int generation, ITrainerInfo? fallback = null, LanguageID? lang = null)
+        {
+            var trainer = Database.GetTrainerFromGen(generation);
+            if (trainer == null) return fallback ?? DefaultFallback(generation, lang);
+            if (trainer is PokeTrainerDetails pokeTrainer && lang != null)
+                pokeTrainer.Language = (int) lang;
+            return trainer;
+        }
 
         /// <summary>
         /// Gets a possible Trainer Data for the requested <see cref="version"/>.
@@ -52,10 +65,13 @@ namespace PKHeX.Core.AutoMod
         /// <param name="gen">Generation of origin requested.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
-        public static ITrainerInfo GetSavedTrainerData(GameVersion version, int gen, ITrainerInfo? fallback = null)
+        public static ITrainerInfo GetSavedTrainerData(GameVersion version, int gen, ITrainerInfo? fallback = null, LanguageID? lang = null)
         {
             var byVer = Database.GetTrainer(version);
-            return byVer ?? GetSavedTrainerData(gen, fallback);
+            if (byVer == null) return GetSavedTrainerData(gen, fallback, lang);
+            if (byVer is PokeTrainerDetails pokeTrainer && lang != null)
+                pokeTrainer.Language = (int)lang;
+            return byVer;
         }
 
         /// <summary>
@@ -64,13 +80,13 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokémon that will receive the trainer details.</param>
         /// <param name="fallback">Fallback trainer data if no new parent is found.</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
-        public static ITrainerInfo GetSavedTrainerData(PKM pk, ITrainerInfo? fallback = null)
+        public static ITrainerInfo GetSavedTrainerData(PKM pk, ITrainerInfo? fallback = null, LanguageID? lang = null)
         {
             int origin = pk.GenNumber;
             int format = pk.Format;
             if (format != origin)
-                return GetSavedTrainerData(format, fallback);
-            return GetSavedTrainerData((GameVersion)pk.Version, origin, fallback);
+                return GetSavedTrainerData(format, fallback, lang);
+            return GetSavedTrainerData((GameVersion)pk.Version, origin, fallback, lang);
         }
 
         /// <summary>
