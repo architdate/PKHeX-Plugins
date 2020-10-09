@@ -120,6 +120,7 @@ namespace PKHeX.Core.AutoMod
                         break;
                     case "OTGender":
                         OT_Gender = value == "Female" || value == "F" ? 1 : 0;
+                        OverrideTrainer = true;
                         break;
                     default:
                         continue;
@@ -148,18 +149,18 @@ namespace PKHeX.Core.AutoMod
             var movesets = movesetgroup == null ? new List<string>() : movesetgroup.ToList();
             var pokedata = splitList.FirstOrDefault(x => !x.Key).Where(x => !x.StartsWith("Shiny:")).ToList();
 
+            var shinyval = "Yes";
+            if (Ball != Ball.None) pokedata.Add($"Ball: {Ball} Ball");
+            if (ShinyType == Core.Shiny.AlwaysStar) shinyval = "Star";
+            if (ShinyType == Core.Shiny.AlwaysSquare) shinyval = "Square";
+            if (Shiny) pokedata.Add($"Shiny: {shinyval}");
+            if (Language != null) pokedata.Add($"Language: {Language}");
+
             if (OverrideTrainer)
             {
-                var shinyval = "Yes";
-                int TIDval = Format > 7 ? TID7 : TID;
-                int SIDval = Format > 7 ? SID7 : SID;
+                int TIDval = Format >= 7 ? TID7 : TID;
+                int SIDval = Format >= 7 ? SID7 : SID;
                 string Genderval = OT_Gender == 0 ? "Male" : "Female";
-
-                if (Ball != Ball.None) pokedata.Add($"Ball: {Ball} Ball");
-                if (ShinyType == Core.Shiny.AlwaysStar) shinyval = "Star";
-                if (ShinyType == Core.Shiny.AlwaysSquare) shinyval = "Square";
-                if (Shiny) pokedata.Add($"Shiny: {shinyval}");
-                if (Language != null) pokedata.Add($"Language: {Language}");
                 if (OT != string.Empty) pokedata.Add($"OT: {OT}");
                 pokedata.Add($"TID: {TIDval}");
                 pokedata.Add($"SID: {SIDval}");
