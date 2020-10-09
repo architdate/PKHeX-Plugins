@@ -8,7 +8,7 @@ namespace AutoModPlugins
 {
     public class ExportBoxToShowdown : AutoModPlugin
     {
-        public override string Name => "Export Box to Showdown";
+        public override string Name => "Export Box to ALM Showdown Template";
         public override int Priority => 1;
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
@@ -23,11 +23,11 @@ namespace AutoModPlugins
         {
             try
             {
-                var str = sav.GetShowdownSetsFromBoxCurrent();
+                var str = sav.GetRegenSetsFromBoxCurrent();
                 if (string.IsNullOrWhiteSpace(str))
                     return;
                 Clipboard.SetText(str);
-                WinFormsUtil.Alert("Exported the active box to Showdown format");
+                WinFormsUtil.Alert("Exported the active box to RegenTemplate format");
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)

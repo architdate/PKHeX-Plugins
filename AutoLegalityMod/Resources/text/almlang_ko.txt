@@ -25,7 +25,7 @@ SimpleHexEditor=RAMEdit
 SimpleHexEditor.B_Update=Update
 
 Main.Menu_AutoLegality=Auto Legality Mod
-Main.Menu_ExportBoxtoShowdown=Export Box to Showdown
+Main.Menu_ExportBoxtoShowdown=Export Box to ALM Showdown Template
 Main.Menu_PasteImporter=Import with Auto-Legality Mod
 Main.Menu_PKSMBank=PKSM Bank Tools
 Main.Menu_CreatePKSMBank=Merge PKM into PKSM Bank

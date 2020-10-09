@@ -71,10 +71,10 @@ namespace AutoModPlugins
 
         private static AutoModErrorCode ImportSetToTabs(ShowdownSet set, bool skipDialog = false)
         {
-            if (!skipDialog && DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", set.Text))
+            var regen = new RegenTemplate(set, SaveFileEditor.SAV.Generation);
+            if (!skipDialog && DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", regen.Text))
                 return AutoModErrorCode.NoSingleImport;
 
-            var regen = new RegenTemplate(set, SaveFileEditor.SAV.Generation);
             if (set.InvalidLines.Count > 0)
                 return AutoModErrorCode.InvalidLines;
 

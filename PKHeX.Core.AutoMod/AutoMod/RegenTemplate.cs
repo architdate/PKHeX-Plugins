@@ -1,6 +1,8 @@
 ﻿// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -31,10 +33,12 @@ namespace PKHeX.Core.AutoMod
         public string OT { get; set; }
         public int TID { get; set; } = 12345;
         public int SID { get; set; } = 54321;
-        private int TID7 { get; set; }
-        private int SID7 { get; set; }
+        internal int TID7 { get; set; } = 123456;
+        internal int SID7 { get; set; } = 1234;
         public int OT_Gender { get; set; }
         public bool OverrideTrainer { get; set; } = false;
+
+        public string Text { get; private set; } = string.Empty;
 
         public RegenTemplate(IBattleTemplate set, int gen = PKX.Generation)
         {
@@ -62,11 +66,14 @@ namespace PKHeX.Core.AutoMod
             this.SanitizeForm();
             this.SanitizeBattleMoves();
             LoadExtraInstructions(set.InvalidLines);
+            GetRegenLines(set.GetSetLines());
         }
 
-        public RegenTemplate(PKM pk, int gen = PKX.Generation) : this(new ShowdownSet(ShowdownSet.GetShowdownText(pk)), gen)
+        public RegenTemplate(PKM pk, int gen = PKX.Generation) : this(new ShowdownSet(pk), gen)
         {
             this.FixGender(pk.PersonalInfo);
+            this.LoadMetadata(pk);
+            GetRegenLines(new ShowdownSet(pk).GetSetLines());
         }
 
         private static readonly string[] ExtraSplitter = {": "};
@@ -132,6 +139,35 @@ namespace PKHeX.Core.AutoMod
                 // Remove from lines
                 lines.RemoveAt(i--);
             }
+        }
+
+        public void GetRegenLines(List<string> ShowdownSetLines)
+        {
+            var splitList = ShowdownSetLines.GroupBy(x => x.StartsWith("- "));
+            var movesetgroup = splitList.FirstOrDefault(x => x.Key);
+            var movesets = movesetgroup == null ? new List<string>() : movesetgroup.ToList();
+            var pokedata = splitList.FirstOrDefault(x => !x.Key).Where(x => !x.StartsWith("Shiny:")).ToList();
+
+            if (OverrideTrainer)
+            {
+                var shinyval = "Yes";
+                int TIDval = Format > 7 ? TID7 : TID;
+                int SIDval = Format > 7 ? SID7 : SID;
+                string Genderval = OT_Gender == 0 ? "Male" : "Female";
+
+                if (Ball != Ball.None) pokedata.Add($"Ball: {Ball} Ball");
+                if (ShinyType == Core.Shiny.AlwaysStar) shinyval = "Star";
+                if (ShinyType == Core.Shiny.AlwaysSquare) shinyval = "Square";
+                if (Shiny) pokedata.Add($"Shiny: {shinyval}");
+                if (Language != null) pokedata.Add($"Language: {Language}");
+                if (OT != string.Empty) pokedata.Add($"OT: {OT}");
+                pokedata.Add($"TID: {TIDval}");
+                pokedata.Add($"SID: {SIDval}");
+                pokedata.Add($"OTGender: {Genderval}");
+            }
+
+            pokedata.AddRange(movesets);
+            Text = string.Join(Environment.NewLine, pokedata);
         }
 
         private static int[] SanitizeEVs(int[] evs, int gen)

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -73,5 +75,31 @@ namespace PKHeX.Core.AutoMod
             else if (personal.OnlyMale && set.Gender != "M")
                 set.Gender = "M";
         }
+
+        /// <summary>
+        /// Add extra metadata to regen template from PKM file
+        /// </summary>
+        /// <param name="set">RegenTemplate to populate metadata to</param>
+        /// <param name="pk">Source PKM file to grab the metadata</param>
+        public static void LoadMetadata(this RegenTemplate set, PKM pk)
+        {
+            set.Ball = (Ball)pk.Ball;
+            set.ShinyType = pk.IsShiny ? Shiny.Always : Shiny.Random;
+            set.Language = (LanguageID)pk.Language;
+            set.OT = pk.OT_Name;
+            set.TID = pk.TID;
+            set.SID = pk.SID;
+            if (pk.Format >= 7)
+            {
+                set.TID7 = pk.TrainerID7;
+                set.SID7 = pk.TrainerSID7;
+            }
+            set.OT_Gender = pk.OT_Gender;
+            set.OverrideTrainer = true;
+        }
+
+        public static string GetRegenText(this PKM pk) => pk.Species == 0 ? string.Empty : new RegenTemplate(pk).Text;
+        public static IEnumerable<string> GetRegenSets(IEnumerable<PKM> data) => data.Where(p => p.Species != 0).Select(GetRegenText);
+        public static string GetRegenSets(IEnumerable<PKM> data, string separator) => string.Join(separator, GetRegenSets(data));
     }
 }

@@ -14,7 +14,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="sav">Save File to export from</param>
         /// <returns>Concatenated string of all sets in the current box.</returns>
-        public static string GetShowdownSetsFromBoxCurrent(this SaveFile sav) => GetShowdownSetsFromBox(sav, sav.CurrentBox);
+        public static string GetRegenSetsFromBoxCurrent(this SaveFile sav) => GetRegenSetsFromBox(sav, sav.CurrentBox);
 
         /// <summary>
         /// Exports the <see cref="box"/> to <see cref="ShowdownSet"/> as a single string.
@@ -22,11 +22,11 @@ namespace PKHeX.Core.AutoMod
         /// <param name="sav">Save File to export from</param>
         /// <param name="box">Box to export from</param>
         /// <returns>Concatenated string of all sets in the specified box.</returns>
-        public static string GetShowdownSetsFromBox(this SaveFile sav, int box)
+        public static string GetRegenSetsFromBox(this SaveFile sav, int box)
         {
             var data = sav.GetBoxData(box);
             var sep = Environment.NewLine + Environment.NewLine;
-            return ShowdownSet.GetShowdownSets(data, sep);
+            return RegenTemplateExtensions.GetRegenSets(data, sep);
         }
 
         /// <summary>
