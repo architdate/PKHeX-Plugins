@@ -6,7 +6,7 @@ namespace PKHeX.Core.AutoMod
     public class RegenSetting
     {
         public Ball Ball { get; set; }
-        public Shiny ShinyType { get; set; } = Shiny.Random;
+        public Shiny ShinyType { get; set; } = Shiny.Never;
         public LanguageID? Language { get; set; }
 
         public bool IsShiny => ShinyType != Shiny.Never;

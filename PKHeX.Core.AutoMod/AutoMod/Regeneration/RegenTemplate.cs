@@ -64,12 +64,14 @@ namespace PKHeX.Core.AutoMod
 
             var shiny = Shiny ? Core.Shiny.Always : Core.Shiny.Never;
             Regen = new RegenSet(set.InvalidLines, gen, shiny);
+            Shiny = Regen.Extra.IsShiny;
         }
 
         public RegenTemplate(PKM pk, int gen = PKX.Generation) : this(new ShowdownSet(pk), gen)
         {
             this.FixGender(pk.PersonalInfo);
             Regen = new RegenSet(pk);
+            Shiny = Regen.Extra.IsShiny;
         }
 
         private static int[] SanitizeEVs(int[] evs, int gen)
