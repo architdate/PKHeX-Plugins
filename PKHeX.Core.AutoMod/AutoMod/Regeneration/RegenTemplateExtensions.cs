@@ -17,18 +17,6 @@ namespace PKHeX.Core.AutoMod
                 set.FormIndex = 0;
         }
 
-        public static SimpleTrainerInfo GetRegenTemplateTrainer(this RegenTemplate set)
-        {
-            var template = set.Format >= 8 ? new SimpleTrainerInfo(GameVersion.SW) : new SimpleTrainerInfo(GameVersion.US); 
-            template.TID = set.TID;
-            template.SID = set.SID;
-            template.OT = set.OT;
-            template.Gender = set.OT_Gender;
-            if (set.Language != null)
-                template.Language = (int) set.Language;
-            return template;
-        }
-
         /// <summary>
         /// Showdown quirks lets you have battle only moves in battle only formes. Transform back to base move.
         /// </summary>
@@ -74,28 +62,6 @@ namespace PKHeX.Core.AutoMod
                 set.Gender = "F";
             else if (personal.OnlyMale && set.Gender != "M")
                 set.Gender = "M";
-        }
-
-        /// <summary>
-        /// Add extra metadata to regen template from PKM file
-        /// </summary>
-        /// <param name="set">RegenTemplate to populate metadata to</param>
-        /// <param name="pk">Source PKM file to grab the metadata</param>
-        public static void LoadMetadata(this RegenTemplate set, PKM pk)
-        {
-            set.Ball = (Ball)pk.Ball;
-            set.ShinyType = pk.IsShiny ? Shiny.Always : Shiny.Random;
-            set.Language = (LanguageID)pk.Language;
-            set.OT = pk.OT_Name;
-            set.TID = pk.TID;
-            set.SID = pk.SID;
-            if (pk.Format >= 7)
-            {
-                set.TID7 = pk.TrainerID7;
-                set.SID7 = pk.TrainerSID7;
-            }
-            set.OT_Gender = pk.OT_Gender;
-            set.OverrideTrainer = true;
         }
 
         public static string GetRegenText(this PKM pk) => pk.Species == 0 ? string.Empty : new RegenTemplate(pk).Text;
