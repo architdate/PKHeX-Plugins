@@ -59,13 +59,18 @@ namespace PKHeX.Core.AutoMod
         {
             this.SanitizeForm();
             this.SanitizeBattleMoves();
-            if (set.InvalidLines.Count == 0)
-                return;
 
             var shiny = Shiny ? Core.Shiny.Always : Core.Shiny.Never;
-            Regen = new RegenSet(set.InvalidLines, gen, shiny);
-            Shiny = Regen.Extra.IsShiny;
-            set.InvalidLines.Clear();
+            if (set.InvalidLines.Count != 0)
+            {
+                Regen = new RegenSet(set.InvalidLines, gen, shiny);
+                Shiny = Regen.Extra.IsShiny;
+                set.InvalidLines.Clear();
+            }
+            else
+            {
+                Regen.Extra.ShinyType = shiny;
+            }
         }
 
         public RegenTemplate(PKM pk, int gen = PKX.Generation) : this(new ShowdownSet(pk), gen)
@@ -91,18 +96,27 @@ namespace PKHeX.Core.AutoMod
         {
             var sb = new StringBuilder();
             var text = ParentLines;
-            var split = text.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
-            var reordered = split.Where(z => !IsIgnored(z)).GroupBy(z => z.StartsWith("- ")).ToArray();
-            sb.AppendLine(string.Join(Environment.NewLine, reordered[0])); // Not Moves
-            sb.AppendLine(Regen.GetSummary());
-            if (reordered.Length > 1)
-                sb.AppendLine(string.Join(Environment.NewLine, reordered[1])); // Moves
+            var regen = Regen.GetSummary();
+            bool hasRegen = !string.IsNullOrWhiteSpace(regen);
+
+            // Add Showdown content except moves
+            var split = text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            var group = split.Where(z => !IsIgnored(z, Regen)).GroupBy(z => z.StartsWith("- ")).ToArray();
+            sb.AppendLine(string.Join(Environment.NewLine, group[0])); // Not Moves
+
+            // Add non-Showdown content
+            if (hasRegen)
+                sb.AppendLine(regen.Trim());
+
+            // Add Moves
+            if (group.Length > 1)
+                sb.AppendLine(string.Join(Environment.NewLine, group[1])); // Moves
             return sb.ToString();
         }
 
-        private static bool IsIgnored(string s)
+        private static bool IsIgnored(string s, RegenSet regen)
         {
-            return s.StartsWith("Shiny: ");
+            return regen.HasExtraSettings && s.StartsWith("Shiny: ");
         }
     }
 }

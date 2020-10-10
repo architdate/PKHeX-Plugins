@@ -12,7 +12,7 @@ namespace PKHeX.Core.AutoMod
         public ITrainerInfo? Trainer { get; }
         public StringInstructionSet Batch { get; }
 
-        private readonly bool HasExtraSettings;
+        public readonly bool HasExtraSettings;
         public readonly bool HasTrainerSettings;
         public bool HasBatchSettings => Batch.Filters.Count != 0 || Batch.Instructions.Count != 0;
 
