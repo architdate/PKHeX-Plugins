@@ -39,7 +39,7 @@ namespace PKHeX.Core.AutoMod
             if (set is RegenTemplate t)
             {
                 t.FixGender(template.PersonalInfo);
-                regen = t.RegenSettings;
+                regen = t.Regen;
             }
 
             template.ApplySetDetails(set);
@@ -53,30 +53,46 @@ namespace PKHeX.Core.AutoMod
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
             if (PrioritizeGame)
                 gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, destVer) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
+
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             foreach (var enc in encounters)
             {
+                // Look before we leap -- don't waste time generating invalid / incompatible junk.
                 if (!IsEncounterValid(set, enc, isHidden, destVer, out var ver))
                     continue;
+
+                // Create the PKM from the template.
                 var tr = GetTrainer(regen, ver, enc);
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);
+
+                // Bring to the target generation, then apply final details.
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
                     continue;
-
                 ApplySetDetails(pk, set, raw, dest, enc, regen);
+
+                // Apply final tweaks to the data.
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
-                    if (gmax.CanToggleGigantamax(pk.Species, enc.Species))
-                        gmax.CanGigantamax = set.CanGigantamax; // soup hax
-                    else continue;
+                    if (!gmax.CanToggleGigantamax(pk.Species, enc.Species))
+                        continue;
+                    gmax.CanGigantamax = set.CanGigantamax; // soup hax
                 }
 
-                if (pk is PK1 gen1Pk && ParseSettings.AllowGen1Tradeback)
-                    gen1Pk.Catch_Rate = gen1Pk.Gen2Item; // Simulate a gen 2 trade/tradeback to allow tradeback moves
+                // Try applying batch editor values.
+                if (regen.HasBatchSettings)
+                {
+                    var b = regen.Batch;
+                    if (!BatchEditing.TryModify(pk, b.Filters, b.Instructions))
+                        continue;
+                }
 
+                if (pk is PK1 pk1 && ParseSettings.AllowGen1Tradeback)
+                    pk1.Catch_Rate = pk1.Gen2Item; // Simulate a gen 2 trade/tradeback to allow tradeback moves
+
+                // Verify the Legality of what we generated, and exit if it is valid.
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid)
                 {
@@ -91,7 +107,7 @@ namespace PKHeX.Core.AutoMod
 
         private static ITrainerInfo GetTrainer(RegenSet regen, GameVersion ver, IEncounterable enc)
         {
-            if (AllowTrainerOverride && regen.HasTrainerSettings)
+            if (AllowTrainerOverride && regen.HasTrainerSettings && regen.Trainer != null)
                 return regen.Trainer;
             if (UseTrainerData && regen.HasTrainerSettings)
                 return TrainerSettings.GetSavedTrainerData(ver, enc.Generation, lang: regen.Extra.Language);
@@ -191,13 +207,14 @@ namespace PKHeX.Core.AutoMod
         /// <param name="unconverted">Original pkm data</param>
         /// <param name="handler">Trainer to handle the Pokémon</param>
         /// <param name="enc">Encounter details matched to the Pokémon</param>
+        /// <param name="regen">Regeneration information</param>
         private static void ApplySetDetails(PKM pk, IBattleTemplate set, PKM unconverted, ITrainerInfo handler, IEncounterable enc, RegenSet regen)
         {
             int Form = set.FormIndex;
             var pidiv = MethodFinder.Analyze(pk);
             var abilitypref = GetAbilityPreference(pk, enc);
-            var language = set is RegenTemplate rt ? rt.Language : LanguageID.English;
-            if (language == LanguageID.Hacked || language == LanguageID.UNUSED_6) 
+            var language = regen.Extra.Language;
+            if (language == LanguageID.Hacked || language == LanguageID.UNUSED_6)
                 language = null;
 
             pk.SetVersion(unconverted); // Preemptive Version setting
@@ -213,7 +230,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetHyperTrainingFlags(set); // Hypertrain
             pk.SetEncryptionConstant(enc);
             pk.FixFatefulFlag(enc);
-            pk.SetShinyBoolean(set.Shiny, enc, regen.ShinyType);
+            pk.SetShinyBoolean(set.Shiny, enc, regen.Extra.ShinyType);
             pk.FixGender(set);
             pk.SetSuggestedRibbons(SetAllLegalRibbons);
             pk.SetSuggestedMemories();
@@ -399,7 +416,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="trainer">Trainer to handle the <see cref="pk"/></param>
         private static void ApplyBattleVersion(this PKM pk, ITrainerInfo trainer)
         {
-            if (!SetBattleVersion) 
+            if (!SetBattleVersion)
                 return;
             if (pk.IsNative)
                 return;

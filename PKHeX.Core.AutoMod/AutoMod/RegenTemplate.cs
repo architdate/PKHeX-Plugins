@@ -1,8 +1,8 @@
 ﻿// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -27,22 +27,12 @@ namespace PKHeX.Core.AutoMod
         public int[] IVs { get; }
         public int[] Moves { get; }
 
-        public Ball Ball { get; set; }
-        public Shiny ShinyType { get; set; } = Core.Shiny.Random;
-        public LanguageID? Language { get; set; }
-        public string OT { get; set; }
-        public int TID { get; set; } = 12345;
-        public int SID { get; set; } = 54321;
-        internal int TID7 { get; set; } = 123456;
-        internal int SID7 { get; set; } = 1234;
-        public int OT_Gender { get; set; }
-        public bool OverrideTrainer { get; set; } = false;
-
         public RegenSet Regen { get; set; } = RegenSet.Default;
+        public string Text => GetSummary();
 
-        public string Text { get; private set; } = string.Empty;
+        private readonly string ParentLines;
 
-        public RegenTemplate(IBattleTemplate set, int gen = PKX.Generation)
+        private RegenTemplate(IBattleTemplate set, int gen = PKX.Generation, string text = "")
         {
             Species = set.Species;
             Format = set.Format;
@@ -61,25 +51,25 @@ namespace PKHeX.Core.AutoMod
             HiddenPowerType = set.HiddenPowerType;
             Moves = set.Moves;
             CanGigantamax = set.CanGigantamax;
+
+            ParentLines = text;
         }
 
-        public RegenTemplate(ShowdownSet set, int gen = PKX.Generation) : this((IBattleTemplate) set, gen)
+        public RegenTemplate(ShowdownSet set, int gen = PKX.Generation) : this(set, gen, set.Text)
         {
             this.SanitizeForm();
             this.SanitizeBattleMoves();
-            if (set.InvalidLines.Count != 0)
-                Regen = new RegenSet(set.InvalidLines);
+            if (set.InvalidLines.Count == 0)
+                return;
+
+            var shiny = Shiny ? Core.Shiny.Always : Core.Shiny.Never;
+            Regen = new RegenSet(set.InvalidLines, gen, shiny);
         }
 
         public RegenTemplate(PKM pk, int gen = PKX.Generation) : this(new ShowdownSet(pk), gen)
         {
             this.FixGender(pk.PersonalInfo);
-            var set = new ShowdownSet(pk);
-            if (set.InvalidLines.Count != 0)
-            {
-                this.LoadMetadata(pk);
-                GetRegenLines(set.GetSetLines());
-            }
+            Regen = new RegenSet(pk);
         }
 
         private static int[] SanitizeEVs(int[] evs, int gen)
@@ -92,6 +82,24 @@ namespace PKHeX.Core.AutoMod
                     copy[i] = maxEV;
             }
             return copy;
+        }
+
+        private string GetSummary()
+        {
+            var sb = new StringBuilder();
+            var text = ParentLines;
+            var split = text.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
+            var reordered = split.Where(z => !IsIgnored(z)).GroupBy(z => z.StartsWith("- ")).ToArray();
+            sb.AppendLine(string.Join(Environment.NewLine, reordered[0])); // Not Moves
+            sb.AppendLine(Regen.GetSummary());
+            if (reordered.Length > 1)
+                sb.AppendLine(string.Join(Environment.NewLine, reordered[1])); // Moves
+            return sb.ToString();
+        }
+
+        private static bool IsIgnored(string s)
+        {
+            return s.StartsWith("Shiny: ");
         }
     }
 }
