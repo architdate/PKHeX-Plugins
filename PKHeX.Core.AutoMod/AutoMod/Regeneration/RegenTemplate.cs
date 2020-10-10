@@ -65,6 +65,7 @@ namespace PKHeX.Core.AutoMod
             var shiny = Shiny ? Core.Shiny.Always : Core.Shiny.Never;
             Regen = new RegenSet(set.InvalidLines, gen, shiny);
             Shiny = Regen.Extra.IsShiny;
+            set.InvalidLines.Clear();
         }
 
         public RegenTemplate(PKM pk, int gen = PKX.Generation) : this(new ShowdownSet(pk), gen)

@@ -957,9 +957,11 @@ namespace PKHeX.Core.AutoMod
         public static LanguageID? GetLanguageId(string value)
         {
             var valid = Enum.TryParse(value, out LanguageID lang);
-            if (valid)
-                return lang;
-            return null;
+            if (!valid)
+                return null;
+            if (lang == LanguageID.Hacked || lang == LanguageID.UNUSED_6)
+                return LanguageID.English;
+            return lang;
         }
 
         /// <summary>

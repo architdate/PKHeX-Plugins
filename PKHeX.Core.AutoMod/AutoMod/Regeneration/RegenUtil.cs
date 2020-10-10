@@ -17,19 +17,14 @@ namespace PKHeX.Core.AutoMod
                 var value = s.Value;
                 switch (key)
                 {
-                    case "Language":
-                        var lang = Aesthetics.GetLanguageId(value);
-                        if (lang != null)
-                            sti.Language = (int)lang;
-                        break;
                     case "OT":
                         sti.OT = value;
                         break;
-                    case "TID" when int.TryParse(value, out int TIDres):
-                        sti.TID = TIDres;
+                    case "TID" when int.TryParse(value, out int tid) && tid > 0:
+                        sti.TID = tid;
                         break;
-                    case "SID" when int.TryParse(value, out int SIDres):
-                        sti.TID = SIDres;
+                    case "SID" when int.TryParse(value, out int sid) && sid > 0:
+                        sti.SID = sid;
                         break;
                     case "OTGender":
                         sti.Gender = value == "Female" || value == "F" ? 1 : 0;
@@ -41,6 +36,12 @@ namespace PKHeX.Core.AutoMod
                 any = true;
             }
             tr = sti;
+            if (!any || format < 7)
+                return any;
+            const int mil = 1_000_000;
+            uint repack = ((uint)sti.SID * mil) + (uint)sti.TID;
+            sti.TID = (int)(repack & 0xFFFF);
+            sti.SID = (int)(repack >> 16);
             return any;
         }
 
@@ -54,8 +55,8 @@ namespace PKHeX.Core.AutoMod
                 if (index < 0)
                     continue;
 
-                var key = line.Substring(0, index - 1);
-                var value = line.Substring(index + 1, line.Length - index + 1).Trim();
+                var key = line.Substring(0, index);
+                var value = line.Substring(index + 1, line.Length - key.Length - 1).Trim();
                 yield return new KeyValuePair<string, string>(key, value);
             }
         }
@@ -69,15 +70,15 @@ namespace PKHeX.Core.AutoMod
             if (trainer.Generation >= 7)
             {
                 const int mil = 1_000_000;
-                var repack = (sid * mil) + tid;
-                tid = repack / mil;
-                sid = repack % mil;
+                uint repack = ((uint)sid << 16) + (uint)tid;
+                tid = (int)(repack % mil);
+                sid = (int)(repack / mil);
             }
 
             var result = new[]
             {
                 $"OT: {trainer.OT}",
-                $"OTGender: {(trainer.Gender == 1 ? "F" : "M")}",
+                $"OTGender: {(trainer.Gender == 1 ? "Female" : "Male")}",
                 $"TID: {tid}",
                 $"SID: {sid}"
             };

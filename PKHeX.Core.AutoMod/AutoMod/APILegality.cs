@@ -84,6 +84,7 @@ namespace PKHeX.Core.AutoMod
                 // Try applying batch editor values.
                 if (regen.HasBatchSettings)
                 {
+                    pk.RefreshChecksum();
                     var b = regen.Batch;
                     if (!BatchEditing.TryModify(pk, b.Filters, b.Instructions))
                         continue;
@@ -111,7 +112,7 @@ namespace PKHeX.Core.AutoMod
                 return regen.Trainer;
             if (UseTrainerData && regen.HasTrainerSettings)
                 return TrainerSettings.GetSavedTrainerData(ver, enc.Generation, lang: regen.Extra.Language);
-            return TrainerSettings.DefaultFallback(enc.Generation);
+            return TrainerSettings.DefaultFallback(enc.Generation, regen.Extra.Language);
         }
 
         /// <summary>
@@ -214,8 +215,6 @@ namespace PKHeX.Core.AutoMod
             var pidiv = MethodFinder.Analyze(pk);
             var abilitypref = GetAbilityPreference(pk, enc);
             var language = regen.Extra.Language;
-            if (language == LanguageID.Hacked || language == LanguageID.UNUSED_6)
-                language = null;
 
             pk.SetVersion(unconverted); // Preemptive Version setting
             pk.SetLanguage(language);
