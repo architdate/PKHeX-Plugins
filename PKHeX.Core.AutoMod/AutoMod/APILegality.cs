@@ -35,14 +35,18 @@ namespace PKHeX.Core.AutoMod
         /// <param name="satisfied">If the final result is legal or not</param>
         public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out bool satisfied)
         {
+            RegenSet regen = RegenSet.Default;
             if (set is RegenTemplate t)
+            {
                 t.FixGender(template.PersonalInfo);
+                regen = t.RegenSettings;
+            }
+
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR moves for the encounter
             var isHidden = template.AbilityNumber == 4;
             var destType = template.GetType();
             var destVer = (GameVersion)dest.Game;
-            var langoverride = set is RegenTemplate regen ? regen.Language : null;
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
@@ -54,8 +58,7 @@ namespace PKHeX.Core.AutoMod
             {
                 if (!IsEncounterValid(set, enc, isHidden, destVer, out var ver))
                     continue;
-                var tr = AllowTrainerOverride && set is RegenTemplate rt && rt.OverrideTrainer ? rt.GetRegenTemplateTrainer() : 
-                    (UseTrainerData ? TrainerSettings.GetSavedTrainerData(ver, enc.Generation, lang:langoverride) : TrainerSettings.DefaultFallback(enc.Generation, langoverride));
+                var tr = GetTrainer(regen, ver, enc);
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);
@@ -63,7 +66,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk == null)
                     continue;
 
-                ApplySetDetails(pk, set, raw, dest, enc);
+                ApplySetDetails(pk, set, raw, dest, enc, regen);
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
                     if (gmax.CanToggleGigantamax(pk.Species, enc.Species))
@@ -84,6 +87,15 @@ namespace PKHeX.Core.AutoMod
             }
             satisfied = false;
             return template;
+        }
+
+        private static ITrainerInfo GetTrainer(RegenSet regen, GameVersion ver, IEncounterable enc)
+        {
+            if (AllowTrainerOverride && regen.HasTrainerSettings)
+                return regen.Trainer;
+            if (UseTrainerData && regen.HasTrainerSettings)
+                return TrainerSettings.GetSavedTrainerData(ver, enc.Generation, lang: regen.Extra.Language);
+            return TrainerSettings.DefaultFallback(enc.Generation);
         }
 
         /// <summary>
@@ -179,7 +191,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="unconverted">Original pkm data</param>
         /// <param name="handler">Trainer to handle the Pokémon</param>
         /// <param name="enc">Encounter details matched to the Pokémon</param>
-        private static void ApplySetDetails(PKM pk, IBattleTemplate set, PKM unconverted, ITrainerInfo handler, IEncounterable enc)
+        private static void ApplySetDetails(PKM pk, IBattleTemplate set, PKM unconverted, ITrainerInfo handler, IEncounterable enc, RegenSet regen)
         {
             int Form = set.FormIndex;
             var pidiv = MethodFinder.Analyze(pk);
@@ -201,7 +213,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetHyperTrainingFlags(set); // Hypertrain
             pk.SetEncryptionConstant(enc);
             pk.FixFatefulFlag(enc);
-            pk.SetShinyBoolean(set.Shiny, enc, set is RegenTemplate s ? s.ShinyType : Shiny.Random);
+            pk.SetShinyBoolean(set.Shiny, enc, regen.ShinyType);
             pk.FixGender(set);
             pk.SetSuggestedRibbons(SetAllLegalRibbons);
             pk.SetSuggestedMemories();
@@ -210,7 +222,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetFriendship(enc);
             pk.SetBelugaValues();
             pk.FixEdgeCases();
-            pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, set is RegenTemplate b ? b.Ball : Ball.None);
+            pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, regen.Extra.Ball);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.ApplyHeightWeight(enc);
             pk.ApplyBattleVersion(handler);
