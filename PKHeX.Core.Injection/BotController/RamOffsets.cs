@@ -16,7 +16,7 @@
             };
         }
 
-        public static bool IsLiveHexSupported(SaveFile sav)
+        public static bool IsLiveHeXSupported(SaveFile sav)
         {
             return sav switch
             {

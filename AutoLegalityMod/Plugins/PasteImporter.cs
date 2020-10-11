@@ -11,7 +11,7 @@ namespace AutoModPlugins
     /// </summary>
     public class PasteImporter : AutoModPlugin
     {
-        // TODO: Check for Auto Legality Mod Updates
+        // TODO: Check for Auto-Legality Mod Updates
         public override string Name => "Import with Auto-Legality Mod";
         public override int Priority => 0;
 

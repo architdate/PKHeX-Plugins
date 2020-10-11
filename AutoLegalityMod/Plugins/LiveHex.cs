@@ -5,7 +5,7 @@ using PKHeX.Core.Injection;
 
 namespace AutoModPlugins
 {
-    public class LiveHex : AutoModPlugin
+    public class LiveHeX : AutoModPlugin
     {
         public override string Name => "Open LiveHeX";
         public override int Priority => 1;
@@ -16,16 +16,16 @@ namespace AutoModPlugins
             c1.Click += (s, e) =>
             {
                 var sav = SaveFileEditor.SAV;
-                if (!RamOffsets.IsLiveHexSupported(sav))
+                if (!RamOffsets.IsLiveHeXSupported(sav))
                 {
                     WinFormsUtil.Error("Must have a 3DS or Switch main line game save file currently loaded.");
                     return;
                 }
 
-                var editor = WinFormsUtil.FirstFormOfType<LiveHexUI>();
+                var editor = WinFormsUtil.FirstFormOfType<LiveHeXUI>();
                 if (editor == null)
                 {
-                    editor = new LiveHexUI(SaveFileEditor, PKMEditor);
+                    editor = new LiveHeXUI(SaveFileEditor, PKMEditor);
                     editor.Show();
                 }
                 else
@@ -44,7 +44,7 @@ namespace AutoModPlugins
                 return;
 
             // close any windows & connections to force disconnect
-            var forms = WinFormsUtil.FormsOfType<LiveHexUI>();
+            var forms = WinFormsUtil.FormsOfType<LiveHeXUI>();
             foreach (var form in forms)
                 form.Close();
         }

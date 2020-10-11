@@ -1,12 +1,12 @@
 ﻿namespace PKHeX.Core.Injection
 {
-    public class LiveHexController
+    public class LiveHeXController
     {
         private readonly ISaveFileProvider SAV;
         private readonly IPKMView Editor;
         public PokeSysBotMini Bot;
 
-        public LiveHexController(ISaveFileProvider boxes, IPKMView editor, InjectorCommunicationType ict)
+        public LiveHeXController(ISaveFileProvider boxes, IPKMView editor, InjectorCommunicationType ict)
         {
             SAV = boxes;
             Editor = editor;

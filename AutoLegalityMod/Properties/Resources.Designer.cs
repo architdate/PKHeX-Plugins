@@ -63,21 +63,21 @@ namespace AutoModPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Einstellungen
         ///
-        ///LiveHexUI=LiveHexUI
-        ///LiveHexUI.B_ReadCurrent=Aktuelle Box lesen
-        ///LiveHexUI.B_WriteCurrent=Aktuelle Box schreiben
-        ///LiveHexUI.checkBox1=Lesen bei Boxwechsel
-        ///LiveHexUI.L_IP=IP:
-        ///LiveHexUI.L_Port=Port:
-        ///LiveHexUI.B_Connect=Verbinden
-        ///LiveHexUI.groupBox1=Boxen
-        ///LiveHexUI.checkBox2=Injecte in Slot
-        ///LiveHexUI.groupBox2=PKM Editor
-        ///LiveHexUI.L_ReadOffset=Offset:
-        ///LiveHexUI.B_ReadOffset=Offset auslesen
-        ///LiveHexUI.L_Slot=Slot:
-        ///LiveHexUI.L_Box=Box:
-        ///LiveHexUI.B_ReadS [rest of string was truncated]&quot;;.
+        ///LiveHeXUI=LiveHeXUI
+        ///LiveHeXUI.B_ReadCurrent=Aktuelle Box lesen
+        ///LiveHeXUI.B_WriteCurrent=Aktuelle Box schreiben
+        ///LiveHeXUI.checkBox1=Lesen bei Boxwechsel
+        ///LiveHeXUI.L_IP=IP:
+        ///LiveHeXUI.L_Port=Port:
+        ///LiveHeXUI.B_Connect=Verbinden
+        ///LiveHeXUI.groupBox1=Boxen
+        ///LiveHeXUI.checkBox2=Injecte in Slot
+        ///LiveHeXUI.groupBox2=PKM Editor
+        ///LiveHeXUI.L_ReadOffset=Offset:
+        ///LiveHeXUI.B_ReadOffset=Offset auslesen
+        ///LiveHeXUI.L_Slot=Slot:
+        ///LiveHeXUI.L_Box=Box:
+        ///LiveHeXUI.B_ReadS [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string almlang_de {
             get {
@@ -88,21 +88,21 @@ namespace AutoModPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
         ///
-        ///LiveHexUI=LiveHexUI
-        ///LiveHexUI.B_ReadCurrent=Read Current Box
-        ///LiveHexUI.B_WriteCurrent=Write Current Box
-        ///LiveHexUI.checkBox1=Read On Change Box
-        ///LiveHexUI.L_IP=IP:
-        ///LiveHexUI.L_Port=Port:
-        ///LiveHexUI.B_Connect=Connect
-        ///LiveHexUI.groupBox1=Boxes
-        ///LiveHexUI.checkBox2=Inject In Slot
-        ///LiveHexUI.groupBox2=PKM Editor
-        ///LiveHexUI.L_ReadOffset=Offset:
-        ///LiveHexUI.B_ReadOffset=Read from Offset
-        ///LiveHexUI.L_Slot=Slot:
-        ///LiveHexUI.L_Box=Box:
-        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        ///LiveHeXUI=LiveHeXUI
+        ///LiveHeXUI.B_ReadCurrent=Read Current Box
+        ///LiveHeXUI.B_WriteCurrent=Write Current Box
+        ///LiveHeXUI.checkBox1=Read On Change Box
+        ///LiveHeXUI.L_IP=IP:
+        ///LiveHeXUI.L_Port=Port:
+        ///LiveHeXUI.B_Connect=Connect
+        ///LiveHeXUI.groupBox1=Boxes
+        ///LiveHeXUI.checkBox2=Inject In Slot
+        ///LiveHeXUI.groupBox2=PKM Editor
+        ///LiveHeXUI.L_ReadOffset=Offset:
+        ///LiveHeXUI.B_ReadOffset=Read from Offset
+        ///LiveHeXUI.L_Slot=Slot:
+        ///LiveHeXUI.L_Box=Box:
+        ///LiveHeXUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string almlang_en {
             get {
@@ -113,20 +113,20 @@ namespace AutoModPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ALMSettings=Configuración de Plugin de Auto Legalidad
         ///
-        ///LiveHexUI=IULiveHex
-        ///LiveHexUI.B_ReadCurrent=Leer Caja Actual
-        ///LiveHexUI.B_WriteCurrent=Escribir Caja Actual
-        ///LiveHexUI.checkBox1= Leer en Caja de Cambio
-        ///LiveHexUI.L_IP=IP:
-        ///LiveHexUI.L_Port=Puerto:
-        ///LiveHexUI.B_Connect=Conectar
-        ///LiveHexUI.groupBox1=Cajas
-        ///LiveHexUI.checkBox2=Inyectar en Casilla
-        ///LiveHexUI.groupBox2=Editor de PKM
-        ///LiveHexUI.L_ReadOffset=Offset:
-        ///LiveHexUI.B_ReadOffset=Leer desde el Offset
-        ///LiveHexUI.L_Slot=Casilla:
-        ///LiveHexUI.L_Box=C [rest of string was truncated]&quot;;.
+        ///LiveHeXUI=IULiveHeX
+        ///LiveHeXUI.B_ReadCurrent=Leer Caja Actual
+        ///LiveHeXUI.B_WriteCurrent=Escribir Caja Actual
+        ///LiveHeXUI.checkBox1= Leer en Caja de Cambio
+        ///LiveHeXUI.L_IP=IP:
+        ///LiveHeXUI.L_Port=Puerto:
+        ///LiveHeXUI.B_Connect=Conectar
+        ///LiveHeXUI.groupBox1=Cajas
+        ///LiveHeXUI.checkBox2=Inyectar en Casilla
+        ///LiveHeXUI.groupBox2=Editor de PKM
+        ///LiveHeXUI.L_ReadOffset=Offset:
+        ///LiveHeXUI.B_ReadOffset=Leer desde el Offset
+        ///LiveHeXUI.L_Slot=Casilla:
+        ///LiveHeXUI.L_Box=C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string almlang_es {
             get {
@@ -137,21 +137,21 @@ namespace AutoModPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
         ///
-        ///LiveHexUI=LiveHexUI
-        ///LiveHexUI.B_ReadCurrent=Read Current Box
-        ///LiveHexUI.B_WriteCurrent=Write Current Box
-        ///LiveHexUI.checkBox1=Read On Change Box
-        ///LiveHexUI.L_IP=IP:
-        ///LiveHexUI.L_Port=Port:
-        ///LiveHexUI.B_Connect=Connect
-        ///LiveHexUI.groupBox1=Boxes
-        ///LiveHexUI.checkBox2=Inject In Slot
-        ///LiveHexUI.groupBox2=PKM Editor
-        ///LiveHexUI.L_ReadOffset=Offset:
-        ///LiveHexUI.B_ReadOffset=Read from Offset
-        ///LiveHexUI.L_Slot=Slot:
-        ///LiveHexUI.L_Box=Box:
-        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        ///LiveHeXUI=LiveHeXUI
+        ///LiveHeXUI.B_ReadCurrent=Read Current Box
+        ///LiveHeXUI.B_WriteCurrent=Write Current Box
+        ///LiveHeXUI.checkBox1=Read On Change Box
+        ///LiveHeXUI.L_IP=IP:
+        ///LiveHeXUI.L_Port=Port:
+        ///LiveHeXUI.B_Connect=Connect
+        ///LiveHeXUI.groupBox1=Boxes
+        ///LiveHeXUI.checkBox2=Inject In Slot
+        ///LiveHeXUI.groupBox2=PKM Editor
+        ///LiveHeXUI.L_ReadOffset=Offset:
+        ///LiveHeXUI.B_ReadOffset=Read from Offset
+        ///LiveHeXUI.L_Slot=Slot:
+        ///LiveHeXUI.L_Box=Box:
+        ///LiveHeXUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string almlang_fr {
             get {
@@ -162,21 +162,21 @@ namespace AutoModPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
         ///
-        ///LiveHexUI=LiveHexUI
-        ///LiveHexUI.B_ReadCurrent=Read Current Box
-        ///LiveHexUI.B_WriteCurrent=Write Current Box
-        ///LiveHexUI.checkBox1=Read On Change Box
-        ///LiveHexUI.L_IP=IP:
-        ///LiveHexUI.L_Port=Port:
-        ///LiveHexUI.B_Connect=Connect
-        ///LiveHexUI.groupBox1=Boxes
-        ///LiveHexUI.checkBox2=Inject In Slot
-        ///LiveHexUI.groupBox2=PKM Editor
-        ///LiveHexUI.L_ReadOffset=Offset:
-        ///LiveHexUI.B_ReadOffset=Read from Offset
-        ///LiveHexUI.L_Slot=Slot:
-        ///LiveHexUI.L_Box=Box:
-        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        ///LiveHeXUI=LiveHeXUI
+        ///LiveHeXUI.B_ReadCurrent=Read Current Box
+        ///LiveHeXUI.B_WriteCurrent=Write Current Box
+        ///LiveHeXUI.checkBox1=Read On Change Box
+        ///LiveHeXUI.L_IP=IP:
+        ///LiveHeXUI.L_Port=Port:
+        ///LiveHeXUI.B_Connect=Connect
+        ///LiveHeXUI.groupBox1=Boxes
+        ///LiveHeXUI.checkBox2=Inject In Slot
+        ///LiveHeXUI.groupBox2=PKM Editor
+        ///LiveHeXUI.L_ReadOffset=Offset:
+        ///LiveHeXUI.B_ReadOffset=Read from Offset
+        ///LiveHeXUI.L_Slot=Slot:
+        ///LiveHeXUI.L_Box=Box:
+        ///LiveHeXUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string almlang_it {
             get {
@@ -187,21 +187,21 @@ namespace AutoModPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
         ///
-        ///LiveHexUI=LiveHexUI
-        ///LiveHexUI.B_ReadCurrent=Read Current Box
-        ///LiveHexUI.B_WriteCurrent=Write Current Box
-        ///LiveHexUI.checkBox1=Read On Change Box
-        ///LiveHexUI.L_IP=IP:
-        ///LiveHexUI.L_Port=Port:
-        ///LiveHexUI.B_Connect=Connect
-        ///LiveHexUI.groupBox1=Boxes
-        ///LiveHexUI.checkBox2=Inject In Slot
-        ///LiveHexUI.groupBox2=PKM Editor
-        ///LiveHexUI.L_ReadOffset=Offset:
-        ///LiveHexUI.B_ReadOffset=Read from Offset
-        ///LiveHexUI.L_Slot=Slot:
-        ///LiveHexUI.L_Box=Box:
-        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        ///LiveHeXUI=LiveHeXUI
+        ///LiveHeXUI.B_ReadCurrent=Read Current Box
+        ///LiveHeXUI.B_WriteCurrent=Write Current Box
+        ///LiveHeXUI.checkBox1=Read On Change Box
+        ///LiveHeXUI.L_IP=IP:
+        ///LiveHeXUI.L_Port=Port:
+        ///LiveHeXUI.B_Connect=Connect
+        ///LiveHeXUI.groupBox1=Boxes
+        ///LiveHeXUI.checkBox2=Inject In Slot
+        ///LiveHeXUI.groupBox2=PKM Editor
+        ///LiveHeXUI.L_ReadOffset=Offset:
+        ///LiveHeXUI.B_ReadOffset=Read from Offset
+        ///LiveHeXUI.L_Slot=Slot:
+        ///LiveHeXUI.L_Box=Box:
+        ///LiveHeXUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string almlang_ja {
             get {
@@ -212,21 +212,21 @@ namespace AutoModPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
         ///
-        ///LiveHexUI=LiveHexUI
-        ///LiveHexUI.B_ReadCurrent=Read Current Box
-        ///LiveHexUI.B_WriteCurrent=Write Current Box
-        ///LiveHexUI.checkBox1=Read On Change Box
-        ///LiveHexUI.L_IP=IP:
-        ///LiveHexUI.L_Port=Port:
-        ///LiveHexUI.B_Connect=Connect
-        ///LiveHexUI.groupBox1=Boxes
-        ///LiveHexUI.checkBox2=Inject In Slot
-        ///LiveHexUI.groupBox2=PKM Editor
-        ///LiveHexUI.L_ReadOffset=Offset:
-        ///LiveHexUI.B_ReadOffset=Read from Offset
-        ///LiveHexUI.L_Slot=Slot:
-        ///LiveHexUI.L_Box=Box:
-        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        ///LiveHeXUI=LiveHeXUI
+        ///LiveHeXUI.B_ReadCurrent=Read Current Box
+        ///LiveHeXUI.B_WriteCurrent=Write Current Box
+        ///LiveHeXUI.checkBox1=Read On Change Box
+        ///LiveHeXUI.L_IP=IP:
+        ///LiveHeXUI.L_Port=Port:
+        ///LiveHeXUI.B_Connect=Connect
+        ///LiveHeXUI.groupBox1=Boxes
+        ///LiveHeXUI.checkBox2=Inject In Slot
+        ///LiveHeXUI.groupBox2=PKM Editor
+        ///LiveHeXUI.L_ReadOffset=Offset:
+        ///LiveHeXUI.B_ReadOffset=Read from Offset
+        ///LiveHeXUI.L_Slot=Slot:
+        ///LiveHeXUI.L_Box=Box:
+        ///LiveHeXUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string almlang_ko {
             get {
@@ -237,21 +237,21 @@ namespace AutoModPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ALMSettings=Auto Legality Plugin Settings
         ///
-        ///LiveHexUI=LiveHexUI
-        ///LiveHexUI.B_ReadCurrent=Read Current Box
-        ///LiveHexUI.B_WriteCurrent=Write Current Box
-        ///LiveHexUI.checkBox1=Read On Change Box
-        ///LiveHexUI.L_IP=IP:
-        ///LiveHexUI.L_Port=Port:
-        ///LiveHexUI.B_Connect=Connect
-        ///LiveHexUI.groupBox1=Boxes
-        ///LiveHexUI.checkBox2=Inject In Slot
-        ///LiveHexUI.groupBox2=PKM Editor
-        ///LiveHexUI.L_ReadOffset=Offset:
-        ///LiveHexUI.B_ReadOffset=Read from Offset
-        ///LiveHexUI.L_Slot=Slot:
-        ///LiveHexUI.L_Box=Box:
-        ///LiveHexUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
+        ///LiveHeXUI=LiveHeXUI
+        ///LiveHeXUI.B_ReadCurrent=Read Current Box
+        ///LiveHeXUI.B_WriteCurrent=Write Current Box
+        ///LiveHeXUI.checkBox1=Read On Change Box
+        ///LiveHeXUI.L_IP=IP:
+        ///LiveHeXUI.L_Port=Port:
+        ///LiveHeXUI.B_Connect=Connect
+        ///LiveHeXUI.groupBox1=Boxes
+        ///LiveHeXUI.checkBox2=Inject In Slot
+        ///LiveHeXUI.groupBox2=PKM Editor
+        ///LiveHeXUI.L_ReadOffset=Offset:
+        ///LiveHeXUI.B_ReadOffset=Read from Offset
+        ///LiveHeXUI.L_Slot=Slot:
+        ///LiveHeXUI.L_Box=Box:
+        ///LiveHeXUI.B_ReadSlot=Read from Sl [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string almlang_zh {
             get {

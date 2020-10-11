@@ -1,6 +1,6 @@
 ﻿namespace AutoModPlugins
 {
-    partial class LiveHexUI
+    partial class LiveHeXUI
     {
         /// <summary>
         /// Required designer variable.
@@ -369,7 +369,7 @@
             this.L_USBState.Text = "USB-Botbase mode";
             this.L_USBState.Visible = false;
             // 
-            // LiveHexUI
+            // LiveHeXUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -386,10 +386,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "LiveHexUI";
+            this.Name = "LiveHeXUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "LiveHexUI";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LiveHexUI_FormClosing);
+            this.Text = "LiveHeXUI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LiveHeXUI_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

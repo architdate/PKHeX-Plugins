@@ -13,7 +13,7 @@ namespace AutoModPlugins
     public abstract class AutoModPlugin : IPlugin
     {
         private const string ParentMenuName = "Menu_AutoLegality";
-        private const string ParentMenuText = "Auto Legality Mod";
+        private const string ParentMenuText = "Auto-Legality Mod";
         private const string ParentMenuParent = "Menu_Tools";
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace AutoModPlugins
 
         public void Initialize(params object[] args)
         {
-            Debug.WriteLine($"[Auto Legality Mod] Loading {Name}");
+            Debug.WriteLine($"[Auto-Legality Mod] Loading {Name}");
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
             PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);
             var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);

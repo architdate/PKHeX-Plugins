@@ -11,7 +11,7 @@ using PKHeX.Core.Injection;
 
 namespace AutoModPlugins
 {
-    public partial class LiveHexUI : Form, ISlotViewer<PictureBox>
+    public partial class LiveHeXUI : Form, ISlotViewer<PictureBox>
     {
         public ISaveFileProvider SAV { get; }
 
@@ -19,7 +19,7 @@ namespace AutoModPlugins
         public IList<PictureBox> SlotPictureBoxes => null;
         SaveFile ISlotViewer<PictureBox>.SAV => null;
 
-        private readonly LiveHexController Remote;
+        private readonly LiveHeXController Remote;
         private readonly SaveDataEditor<PictureBox> x;
 
         private readonly InjectorCommunicationType CurrentInjectionType;
@@ -28,11 +28,11 @@ namespace AutoModPlugins
         private readonly ComboBox BoxSelect; // this is just us holding a reference; disposal is done by its parent
 #pragma warning restore CA2213 // Disposable fields should be disposed
 
-        public LiveHexUI(ISaveFileProvider sav, IPKMView editor)
+        public LiveHeXUI(ISaveFileProvider sav, IPKMView editor)
         {
             SAV = sav;
             CurrentInjectionType = AutoLegality.Default.USBBotBasePreferred ? InjectorCommunicationType.USB : InjectorCommunicationType.SocketNetwork;
-            Remote = new LiveHexController(sav, editor, CurrentInjectionType);
+            Remote = new LiveHeXController(sav, editor, CurrentInjectionType);
 
             InitializeComponent();
             this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
@@ -158,7 +158,7 @@ namespace AutoModPlugins
             }
         }
 
-        private void LiveHexUI_FormClosing(object sender, FormClosingEventArgs e)
+        private void LiveHeXUI_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Remote.Bot.Connected)
                 Remote.Bot.com.Disconnect();

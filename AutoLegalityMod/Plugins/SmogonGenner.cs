@@ -8,7 +8,7 @@ namespace AutoModPlugins
 {
     public class SmogonGenner : AutoModPlugin
     {
-        public override string Name => "Gen Smogon Sets";
+        public override string Name => "Generate Smogon Sets";
         public override int Priority => 1;
         public static bool PromptForImport { get; set; }
 

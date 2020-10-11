@@ -7,7 +7,7 @@ namespace AutoModPlugins
 {
     public class URLGenning : AutoModPlugin
     {
-        public override string Name => "Gen from URL";
+        public override string Name => "Generate from URL";
         public override int Priority => 1;
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
