@@ -61,12 +61,24 @@ Come join the dedicated Discord server for this mod! Ask questions, give suggest
 To contribute to the repository, you can submit a pull request to the repository. Try to follow a format similar to the current codebase. All contributions are greatly appreciated! If you would like to discuss possible contributions without using GitHub, please contact us on the support server above.
 
 ## Credits
+**Repository Owners**
+- [architdate (thecommondude)](https://github.com/architdate)
+- [kwsch (Kaphotics)](https://github.com/kwsch)
+
+**Credit must be given where due...**
+This project would not be as amazing without the help of the following people who have helped me since the original [Auto-Legality-Mod](https://github.com/architdate/PKHeX-Auto-Legality-Mod).
+
 - [@kwsch](https://github.com/kwsch) for providing the IPlugin interface in PKHeX, which allows loading of this project's Plugin DLL files. Also for the support provided in the support server.
 - [@olliz0r](https://github.com/olliz0r) for developing and maintaining `sys-botbase` which is necessary for LiveHeX to work.
 - [@fishguy6564](https://github.com/fishguy6564) for creating `USB-Botbase` (by extending sys-botbase).
 - [@berichan](https://github.com/berichan) for adding USB-Botbase support to LiveHeX.
 - [@Rino6357](https://github.com/Rino6357) and [@crzyc](https://github.com/crzyc) for their help with the GitHub Wiki associated with this project!
 - [@Lusamine](https://github.com/Lusamine) for all the help with stress testing the code with wacky sets!
+- TORNADO for help with test cases.
 - [@Bappsack](https://github.com/Bappsack) for his help on Discord in voice chats!
-- [@hp3721](https://github.com/hp3721) for help with copying over stuff from PKHeX for localization.
+- [@hp3721](https://github.com/hp3721) for help with adding localization based on PKHeX's implementation.
+- [@chenzw95](https://github.com/chenzw95) for continuous help with integration.
+- [@BernardoGiordano](https://github.com/BernardoGiordano) for many ideas on improving speed.
 - [FlatIcon](https://www.flaticon.com/) for their icons. Author credits (Those Icons, Pixel perfect).
+- [Project Pokémon](https://github.com/projectpokemon/) for their Mystery Gift Event Gallery.
+- And all the countless users who have helped improve this project with ideas and suggestions!
