@@ -94,5 +94,16 @@ namespace PKHeX.Core.AutoMod
                 result.Add($".{s.PropertyName}={s.PropertyValue}");
             return string.Join(Environment.NewLine, result);
         }
+
+        public static ITrainerInfo MutateLanguage(this ITrainerInfo tr, LanguageID? lang)
+        {
+            if (lang == LanguageID.UNUSED_6 || lang == LanguageID.Hacked || lang == null)
+                return tr;
+            if (tr is PokeTrainerDetails p)
+                p.Language = (int) lang;
+            else if (tr is SimpleTrainerInfo s)
+                s.Language = (int) lang;
+            return tr;
+        }
     }
 }

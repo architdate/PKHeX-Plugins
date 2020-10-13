@@ -67,7 +67,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 // Create the PKM from the template.
-                var tr = GetTrainer(regen, ver, enc);
+                var tr = GetTrainer(regen, ver, enc.Generation);
                 var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);
@@ -111,13 +111,13 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
-        private static ITrainerInfo GetTrainer(RegenSet regen, GameVersion ver, IEncounterable enc)
+        private static ITrainerInfo GetTrainer(RegenSet regen, GameVersion ver, int gen)
         {
             if (AllowTrainerOverride && regen.HasTrainerSettings && regen.Trainer != null)
                 return regen.Trainer;
             if (UseTrainerData)
-                return TrainerSettings.GetSavedTrainerData(ver, enc.Generation, lang: regen.Extra.Language);
-            return TrainerSettings.DefaultFallback(enc.Generation, regen.Extra.Language);
+                return TrainerSettings.GetSavedTrainerData(ver, gen).MutateLanguage(regen.Extra.Language);
+            return TrainerSettings.DefaultFallback(gen, regen.Extra.Language);
         }
 
         /// <summary>
