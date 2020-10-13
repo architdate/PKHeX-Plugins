@@ -24,6 +24,7 @@ namespace PKHeX.Core.AutoMod
         public static GameVersion PrioritizeGameVersion { get; set; }
         public static bool SetBattleVersion { get; set; }
         public static bool AllowTrainerOverride { get; set; }
+        public static bool AllowBatchCommands { get; set; }
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -35,11 +36,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="satisfied">If the final result is legal or not</param>
         public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out bool satisfied)
         {
-            RegenSet regen = RegenSet.Default;
+            RegenSet regen;
             if (set is RegenTemplate t)
             {
                 t.FixGender(template.PersonalInfo);
                 regen = t.Regen;
+            }
+            else
+            {
+                regen = RegenSet.Default;
             }
 
             template.ApplySetDetails(set);
@@ -82,7 +87,7 @@ namespace PKHeX.Core.AutoMod
                 }
 
                 // Try applying batch editor values.
-                if (regen.HasBatchSettings)
+                if (AllowBatchCommands && regen.HasBatchSettings)
                 {
                     pk.RefreshChecksum();
                     var b = regen.Batch;
