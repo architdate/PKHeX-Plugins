@@ -122,5 +122,10 @@ namespace PKHeX.Core.AutoMod
         {
             Register(new PokeTrainerDetails(pkm.Clone()));
         }
+
+        /// <summary>
+        /// Clears all trainer details from the <see cref="Database"/>.
+        /// </summary>
+        public void Clear() => Database.Clear();
     }
 }

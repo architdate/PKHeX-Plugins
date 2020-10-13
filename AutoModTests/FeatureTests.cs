@@ -74,6 +74,8 @@ namespace AutoModTests
             var pk = tr.GetLegalFromSet(showdown, out _);
             pk.Language.Should().Be((int)LanguageID.English);
             pk.OT_Name.Should().Be(sti.OT);
+
+            TrainerSettings.Clear();
         }
     }
 }

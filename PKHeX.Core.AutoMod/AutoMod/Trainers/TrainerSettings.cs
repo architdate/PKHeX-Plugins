@@ -100,5 +100,10 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="tr">Trainer Data</param>
         public static void Register(ITrainerInfo tr) => Database.Register(tr);
+
+        /// <summary>
+        /// Clears the Trainer Data in the <see cref="Database"/>.
+        /// </summary>
+        public static void Clear() => Database.Clear();
     }
 }
