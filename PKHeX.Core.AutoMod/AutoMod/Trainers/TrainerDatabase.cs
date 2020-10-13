@@ -14,21 +14,23 @@ namespace PKHeX.Core.AutoMod
         /// Fetches an appropriate trainer based on the requested <see cref="version"/>.
         /// </summary>
         /// <param name="version">Version the trainer should originate from</param>
+        /// <param name="lang">Language to request for</param>
         /// <returns>Null if no trainer found for this version.</returns>
-        public ITrainerInfo? GetTrainer(int version) => GetTrainer((GameVersion)version);
+        public ITrainerInfo? GetTrainer(int version, LanguageID? lang = null) => GetTrainer((GameVersion)version, lang);
 
         /// <summary>
         /// Fetches an appropriate trainer based on the requested <see cref="ver"/>.
         /// </summary>
         /// <param name="ver">Version the trainer should originate from</param>
+        /// <param name="lang">Language to request for</param>
         /// <returns>Null if no trainer found for this version.</returns>
-        public ITrainerInfo? GetTrainer(GameVersion ver)
+        public ITrainerInfo? GetTrainer(GameVersion ver, LanguageID? lang = null)
         {
             if (ver <= 0)
                 return null;
 
             if (ver >= GameVersion.RB)
-                return GetTrainerFromGroup(ver);
+                return GetTrainerFromGroup(ver, lang);
 
             if (Database.TryGetValue(ver, out var list))
                 return GetRandomChoice(list);
@@ -47,10 +49,19 @@ namespace PKHeX.Core.AutoMod
         /// Fetches an appropriate trainer based on the requested <see cref="ver"/> group.
         /// </summary>
         /// <param name="ver">Version the trainer should originate from</param>
+        /// <param name="lang">Language to request for</param>
         /// <returns>Null if no trainer found for this version.</returns>
-        private ITrainerInfo? GetTrainerFromGroup(GameVersion ver)
+        private ITrainerInfo? GetTrainerFromGroup(GameVersion ver, LanguageID? lang = null)
         {
             var possible = Database.Where(z => ver.Contains(z.Key)).ToList();
+            if (lang != null)
+            {
+                possible = possible.Select(z =>
+                {
+                    var filtered = z.Value.Where(x => x.Language == (int)lang).ToList();
+                    return new KeyValuePair<GameVersion, List<ITrainerInfo>>(z.Key, filtered);
+                }).ToList();
+            }
             return GetRandomTrainer(possible);
         }
 
@@ -58,10 +69,19 @@ namespace PKHeX.Core.AutoMod
         /// Fetches an appropriate trainer based on the requested <see cref="generation"/>.
         /// </summary>
         /// <param name="generation">Generation the trainer should inhabit</param>
+        /// <param name="lang">Language to request for</param>
         /// <returns>Null if no trainer found for this version.</returns>
-        public ITrainerInfo? GetTrainerFromGen(int generation)
+        public ITrainerInfo? GetTrainerFromGen(int generation, LanguageID? lang = null)
         {
             var possible = Database.Where(z => z.Key.GetGeneration() == generation).ToList();
+            if (lang != null)
+            {
+                possible = possible.Select(z =>
+                {
+                    var filtered = z.Value.Where(x => x.Language == (int) lang).ToList();
+                    return new KeyValuePair<GameVersion, List<ITrainerInfo>>(z.Key, filtered);
+                }).ToList();
+            }
             return GetRandomTrainer(possible);
         }
 
