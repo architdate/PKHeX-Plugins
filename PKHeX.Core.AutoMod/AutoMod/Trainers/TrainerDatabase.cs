@@ -60,7 +60,7 @@ namespace PKHeX.Core.AutoMod
                 {
                     var filtered = z.Value.Where(x => x.Language == (int)lang).ToList();
                     return new KeyValuePair<GameVersion, List<ITrainerInfo>>(z.Key, filtered);
-                }).ToList();
+                }).Where(z => z.Value.Count != 0).ToList();
             }
             return GetRandomTrainer(possible);
         }
@@ -80,7 +80,7 @@ namespace PKHeX.Core.AutoMod
                 {
                     var filtered = z.Value.Where(x => x.Language == (int) lang).ToList();
                     return new KeyValuePair<GameVersion, List<ITrainerInfo>>(z.Key, filtered);
-                }).ToList();
+                }).Where(z => z.Value.Count != 0).ToList();
             }
             return GetRandomTrainer(possible);
         }
