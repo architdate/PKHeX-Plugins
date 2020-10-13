@@ -114,6 +114,7 @@ namespace PKHeX.Core.AutoMod
             if (tr is SimpleTrainerInfo s)
             {
                 var sti = new SimpleTrainerInfo((GameVersion)s.Game);
+                sti.OT = s.OT;
                 sti.TID = s.TID;
                 sti.SID = s.SID;
                 sti.Generation = s.Gender;
