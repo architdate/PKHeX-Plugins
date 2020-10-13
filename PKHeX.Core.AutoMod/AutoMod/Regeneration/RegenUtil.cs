@@ -95,14 +95,35 @@ namespace PKHeX.Core.AutoMod
             return string.Join(Environment.NewLine, result);
         }
 
+        /// <summary>
+        /// Clone trainerdata and mutate the language and then return the clone
+        /// </summary>
+        /// <param name="tr">Trainerdata to clone</param>
+        /// <param name="lang">language to mutate</param>
+        /// <returns></returns>
         public static ITrainerInfo MutateLanguage(this ITrainerInfo tr, LanguageID? lang)
         {
             if (lang == LanguageID.UNUSED_6 || lang == LanguageID.Hacked || lang == null)
                 return tr;
             if (tr is PokeTrainerDetails p)
-                p.Language = (int) lang;
-            else if (tr is SimpleTrainerInfo s)
-                s.Language = (int) lang;
+            {
+                var clone = PokeTrainerDetails.Clone(p);
+                clone.Language = (int) lang;
+                return clone;
+            }
+            if (tr is SimpleTrainerInfo s)
+            {
+                var sti = new SimpleTrainerInfo((GameVersion)s.Game);
+                sti.TID = s.TID;
+                sti.SID = s.SID;
+                sti.Generation = s.Gender;
+                sti.Language = (int) lang;
+                sti.ConsoleRegion = s.ConsoleRegion;
+                sti.Region = s.Region;
+                sti.Country = s.Country;
+                sti.Generation = s.Generation;
+                return sti;
+            }
             return tr;
         }
     }

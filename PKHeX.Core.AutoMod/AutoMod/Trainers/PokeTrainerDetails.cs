@@ -23,5 +23,13 @@ namespace PKHeX.Core.AutoMod
         public int Region { get => pkm is IGeoTrack gt ? gt.Region : 0; set { if (pkm is IGeoTrack gt) gt.Region = value; } }
         public int ConsoleRegion { get => pkm is IGeoTrack gt ? gt.ConsoleRegion : 0; set { if (pkm is IGeoTrack gt) gt.ConsoleRegion = value; } }
         public int Generation => pkm.GenNumber;
+
+        public static PokeTrainerDetails Clone(PokeTrainerDetails p)
+        {
+            var template = PKMConverter.GetBlank(p.Generation, (GameVersion)p.Game);
+            p.ApplyTo(template);
+            template.SetAllTrainerData(p);
+            return new PokeTrainerDetails(template);
+        }
     }
 }
