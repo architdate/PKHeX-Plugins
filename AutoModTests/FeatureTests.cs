@@ -48,5 +48,32 @@ namespace AutoModTests
             var pk = tr.GetLegalFromSet(showdown, out _);
             pk.Language.Should().Be((int) LanguageID.Japanese);
         }
+
+        [Fact]
+        public static void FallbackNotUsed()
+        {
+            const string set = "Ditto\nLanguage: English";
+            var showdown = new RegenTemplate(new ShowdownSet(set));
+            showdown.Species.Should().Be((int)Species.Ditto);
+            var regen = showdown.Regen;
+            regen.HasTrainerSettings.Should().BeFalse();
+            regen.HasExtraSettings.Should().BeTrue();
+            regen.Extra.Language.Should().BeEquivalentTo(LanguageID.English);
+
+            var tr = showdown.Regen.Trainer;
+            Assert.NotNull(tr);
+
+            // Default language of fallback trainers should be English.
+            tr.Language.Should().Be((int)LanguageID.English);
+
+            // Register a fake trainer
+            var sti = new SimpleTrainerInfo { OT = "Test", TID = 123, SID = 432 };
+            TrainerSettings.Register(sti);
+
+            // When we generate, our Extra instruction should force it to be generated as Japanese.
+            var pk = tr.GetLegalFromSet(showdown, out _);
+            pk.Language.Should().Be((int)LanguageID.English);
+            pk.OT_Name.Should().Be(sti.OT);
+        }
     }
 }

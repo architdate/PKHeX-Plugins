@@ -115,7 +115,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (AllowTrainerOverride && regen.HasTrainerSettings && regen.Trainer != null)
                 return regen.Trainer;
-            if (UseTrainerData && regen.HasTrainerSettings)
+            if (UseTrainerData)
                 return TrainerSettings.GetSavedTrainerData(ver, enc.Generation, lang: regen.Extra.Language);
             return TrainerSettings.DefaultFallback(enc.Generation, regen.Extra.Language);
         }
