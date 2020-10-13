@@ -51,6 +51,7 @@ namespace AutoModPlugins
         /// Import Showdown Sets and alert user of any messages intended
         /// </summary>
         /// <param name="sets">Data to be loaded</param>
+        /// <param name="skipDialog">Prevents creating dialog messages</param>
         public static void Import(IReadOnlyList<ShowdownSet> sets, bool skipDialog = false)
         {
             AutoModErrorCode result;

@@ -89,6 +89,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Set to use as reference</param>
         /// <param name="Form">Form to apply</param>
         /// <param name="enc">Encounter detail</param>
+        /// <param name="lang">Language to apply</param>
         public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, int Form, IEncounterable enc, LanguageID? lang = null)
         {
             pk.Species = set.Species;

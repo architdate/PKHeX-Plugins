@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace PKHeX.Core.Injection
+﻿namespace PKHeX.Core.Injection
 {
     /// <summary>
     /// Array reusable logic
