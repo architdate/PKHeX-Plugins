@@ -87,7 +87,7 @@ namespace AutoModPlugins
                 default:
                     dest = Array.Empty<byte>();
                     break;
-            };
+            }
 
             if (dest.Length == 0)
                 return;
