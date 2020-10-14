@@ -10,7 +10,33 @@ namespace AutoModPlugins.GUI
     {
         private readonly ALMSettingMetadata[] settings = new[]
         {
-            new ALMSettingMetadata("AllowTrainerOverride", "Allows overriding trainer data", "Trainer Data Settings"),
+            // Trainer Data
+            new ALMSettingMetadata("AllowTrainerOverride", "Allows overriding trainer data with \"OT\", \"TID\", \"SID\", and \"OTGender\" as part of a Showdown set.", "Trainer Data"),
+            new ALMSettingMetadata("UseTrainerData", "Enables use of custom trainer data based on the \"trainers\" folder.", "Trainer Data"),
+
+            // Connection Settings
+            new ALMSettingMetadata("LatestIP", "Stores the last IP used by LiveHeX.", "Connection"),
+            new ALMSettingMetadata("USBBotBasePreferred", "Allows LiveHeX to use USB-Botbase instead of sys-botbase.", "Connection"),
+
+            // Customization
+            new ALMSettingMetadata("ForceSpecifiedBall", "Allows overriding Poké Ball with \"Ball\" in a Showdown set.", "Customization"),
+            new ALMSettingMetadata("PrioritizeEvent", "Tries to generate an event Pokémon compatible with the set first.", "Customization"),
+            new ALMSettingMetadata("PrioritizeGame", "If enabled, tries to generate a Pokémon based on PrioritizeGameVersion first.", "Customization"),
+            new ALMSettingMetadata("PriorityGameVersion", "Setting this to \"Any\" prioritizes the current save game, and setting a specific game prioritizes that instead.", "Customization"),
+            new ALMSettingMetadata("SetAllLegalRibbons", "Adds all ribbons that are legal according to PKHeX legality.", "Customization"),
+            new ALMSettingMetadata("SetBattleVersion", "Sets all past-generation Pokémon as Battle Ready for games that support it.", "Customization"),
+            new ALMSettingMetadata("SetMatchingBalls", "Attempts to choose a matching Poké Ball based on Pokémon color.", "Customization"),
+
+            // Legality
+            new ALMSettingMetadata("SetRandomTracker", "Randomizes a HOME tracker for every Pokémon.", "Legality"),
+            new ALMSettingMetadata("UseXOROSHIRO", "Generates legal nonshiny Generation 8 raid Pokémon based on the game's RNG.", "Legality"),
+            new ALMSettingMetadata("EnableEasterEggs", "Produces an Easter Egg Pokémon if the provided set is illegal.", "Legality"),
+
+            // Miscellaneous
+            new ALMSettingMetadata("GPSSBaseURL", "Base URL for Flagbrew's Global PKSM Sharing Service (GPSS) features.", "Miscellaneous"),
+            new ALMSettingMetadata("PromptForSmogonImport", "Used for \"Generate Smogon Sets\". If set to true, ALM will ask for approval for each set before attempting to generate it.", "Miscellaneous"),
+            new ALMSettingMetadata("UseMarkings", "Sets markings on the Pokémon based on IVs.", "Miscellaneous"),
+            new ALMSettingMetadata("UseCompetitiveMarkings", "Sets IVs of 31 to blue and 30 to red if enabled. Otherwise, sets IVs of 31 to blue and 0 to red.", "Miscellaneous"),
         };
 
         public ALMSettings(object obj)
