@@ -30,10 +30,10 @@ namespace AutoModPlugins
 
         private static void Export()
         {
-            if (!WinFormsUtil.OpenSAVPKMDialog(new[] { ".bnk" }, out string path))
+            if (!WinFormsUtil.OpenSAVPKMDialog(new[] { ".bnk" }, out var path))
                 return;
 
-            var bank = File.ReadAllBytes(path);
+            var bank = File.ReadAllBytes(path!);
             using var fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() != DialogResult.OK)
                 return;

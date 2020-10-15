@@ -37,7 +37,7 @@ namespace AutoModPlugins
         {
             // Check for showdown data in clipboard
             var text = GetTextShowdownData();
-            if (string.IsNullOrWhiteSpace(text))
+            if (text == null || string.IsNullOrWhiteSpace(text))
                 return;
             ShowdownSetLoader.Import(text);
         }
@@ -46,7 +46,7 @@ namespace AutoModPlugins
         /// Check whether the showdown text is supposed to be loaded via a text file. If so, set the clipboard to its contents.
         /// </summary>
         /// <returns>output boolean that tells if the data provided is valid or not</returns>
-        private static string GetTextShowdownData()
+        private static string? GetTextShowdownData()
         {
             bool skipClipboardCheck = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
             if (!skipClipboardCheck && Clipboard.ContainsText())
@@ -56,7 +56,7 @@ namespace AutoModPlugins
                     return txt;
             }
 
-            if (!WinFormsUtil.OpenSAVPKMDialog(new[] { "txt" }, out string path))
+            if (!WinFormsUtil.OpenSAVPKMDialog(new[] { "txt" }, out var path))
             {
                 WinFormsUtil.Alert("No data provided.");
                 return null;

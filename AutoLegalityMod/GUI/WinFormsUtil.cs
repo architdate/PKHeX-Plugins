@@ -41,7 +41,7 @@ namespace AutoModPlugins
         /// <param name="Extensions">Misc extensions of files supported.</param>
         /// <param name="path">Output result path</param>
         /// <returns>Result of whether or not a file is to be loaded from the output path.</returns>
-        public static bool OpenSAVPKMDialog(IEnumerable<string> Extensions, out string path)
+        public static bool OpenSAVPKMDialog(IEnumerable<string> Extensions, out string? path)
         {
             string supported = string.Join(";", Extensions.Select(s => $"*.{s}").Concat(new[] { "*.pkm" }));
             using var ofd = new OpenFileDialog
@@ -70,7 +70,7 @@ namespace AutoModPlugins
             child.Location = new Point(Math.Max(x, 0), Math.Max(y, 0));
         }
 
-        public static T FirstFormOfType<T>() where T : Form => FormsOfType<T>().FirstOrDefault();
+        public static T? FirstFormOfType<T>() where T : Form => FormsOfType<T>().FirstOrDefault();
         public static IEnumerable<T> FormsOfType<T>() where T : Form => Application.OpenForms.OfType<T>();
     }
 }

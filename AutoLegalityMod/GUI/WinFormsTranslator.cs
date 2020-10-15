@@ -228,7 +228,7 @@ namespace AutoModPlugins
                 Translation.Add(kvp[0], kvp[1]);
         }
 
-        public string GetTranslatedText(string val, string fallback)
+        public string? GetTranslatedText(string val, string? fallback)
         {
             if (RemoveUsedKeys)
                 Translation.Remove(val);

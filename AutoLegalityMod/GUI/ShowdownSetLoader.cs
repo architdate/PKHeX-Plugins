@@ -15,8 +15,9 @@ namespace AutoModPlugins
     /// </summary>
     public static class ShowdownSetLoader
     {
-        public static ISaveFileProvider SaveFileEditor { private get; set; }
-        public static IPKMView PKMEditor { private get; set; }
+        // Initialized during plugin setup
+        public static ISaveFileProvider SaveFileEditor { private get; set; } = null!;
+        public static IPKMView PKMEditor { private get; set; } = null!;
 
         /// <summary>
         /// Imports <see cref="ShowdownSet"/> list(s) originating from a concatenated list.

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using AutoModPlugins.Properties;
 
@@ -65,28 +66,28 @@ namespace AutoModPlugins.GUI
 
         private void EditSettingsProperties(object _settings)
         {
-            PropertyOverridingTypeDescriptor ctd = new PropertyOverridingTypeDescriptor(TypeDescriptor.GetProvider(_settings).GetTypeDescriptor(_settings));
-            foreach (PropertyDescriptor pd in TypeDescriptor.GetProperties(_settings))
+            var lang = WinFormsTranslator.CurrentLanguage;
+            var translation = WinFormsTranslator.GetContext(lang);
+            var ctd = new PropertyOverridingTypeDescriptor(TypeDescriptor.GetProvider(_settings).GetTypeDescriptor(_settings));
+            foreach (var pd in TypeDescriptor.GetProperties(_settings).OfType<PropertyDescriptor>())
             {
+                var s = Array.Find(settings, z => z.SettingName == pd.Name);
+                if (s == null)
+                    continue;
+
                 var desc = "Property Description needs to be defined. Please raise this issue on GitHub or at the discord: https://discord.gg/tDMvSRv";
+                if (s.Description != null)
+                    desc = translation.GetTranslatedText($"{s.SettingName}_description", s.Description);
+
                 var category = "Uncategorized Settings";
-                foreach (var s in settings)
-                {
-                    if (pd.Name == s.SettingName)
-                    {
-                        var lang = WinFormsTranslator.CurrentLanguage;
-                        var translation = WinFormsTranslator.GetContext(lang);
-                        if (s.Description != null) desc = translation.GetTranslatedText($"{s.SettingName}_description", s.Description); ;
-                        if (s.Category != null) category = translation.GetTranslatedText($"{s.SettingName}_category", s.Category); ;
-                    }
-                }
+                if (s.Category != null)
+                    category = translation.GetTranslatedText($"{s.SettingName}_category", s.Category);
+
                 PropertyDescriptor pd2 = TypeDescriptor.CreateProperty(_settings.GetType(), pd, new DescriptionAttribute(desc), new CategoryAttribute(category));
                 ctd.OverrideProperty(pd2);
             }
             TypeDescriptor.AddProvider(new TypeDescriptorOverridingProvider(ctd), _settings);
         }
-
-        
     }
 
     public class PropertyOverridingTypeDescriptor : CustomTypeDescriptor
@@ -104,14 +105,8 @@ namespace AutoModPlugins.GUI
 
         public override object GetPropertyOwner(PropertyDescriptor pd)
         {
-            object o = base.GetPropertyOwner(pd);
-
-            if (o == null)
-            {
-                return this;
-            }
-
-            return o;
+            var o = base.GetPropertyOwner(pd);
+            return o ?? this;
         }
 
         public PropertyDescriptorCollection GetPropertiesImpl(PropertyDescriptorCollection pdc)

@@ -21,8 +21,10 @@ namespace AutoModPlugins
         /// </summary>
         public abstract string Name { get; }
         public abstract int Priority { get; }
-        public ISaveFileProvider SaveFileEditor { get; private set; }
-        protected IPKMView PKMEditor { get; private set; }
+
+        // Initialized during plugin startup
+        public ISaveFileProvider SaveFileEditor { get; private set; } = null!;
+        protected IPKMView PKMEditor { get; private set; } = null!;
 
         public void Initialize(params object[] args)
         {

@@ -56,7 +56,7 @@ namespace AutoModPlugins
 
                 var pkbytes = PKHeX.Core.Enhancements.NetUtil.GPSSDownload(code, Url);
                 var pkm = PKMConverter.GetPKMfromBytes(pkbytes);
-                if (!LoadPKM(pkm))
+                if (pkm == null || !LoadPKM(pkm))
                 {
                     WinFormsUtil.Error("Error parsing PKM bytes. Make sure the pokemon is valid and can exist in this generation.");
                     return;
@@ -67,10 +67,10 @@ namespace AutoModPlugins
 
         private bool LoadPKM(PKM pk)
         {
-            pk = PKMConverter.ConvertToType(pk, SaveFileEditor.SAV.PKMType, out _);
-            if (pk == null)
+            var result = PKMConverter.ConvertToType(pk, SaveFileEditor.SAV.PKMType, out _);
+            if (result == null)
                 return false;
-            PKMEditor.PopulateFields(pk);
+            PKMEditor.PopulateFields(result);
             return true;
         }
     }

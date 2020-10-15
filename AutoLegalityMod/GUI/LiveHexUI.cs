@@ -15,9 +15,9 @@ namespace AutoModPlugins
     {
         public ISaveFileProvider SAV { get; }
 
-        public int ViewIndex => BoxSelect.SelectedIndex;
-        public IList<PictureBox> SlotPictureBoxes => null;
-        SaveFile ISlotViewer<PictureBox>.SAV => null;
+        public int ViewIndex => BoxSelect?.SelectedIndex ?? 0;
+        public IList<PictureBox> SlotPictureBoxes => throw new InvalidOperationException();
+        SaveFile ISlotViewer<PictureBox>.SAV => throw new InvalidOperationException();
 
         private readonly LiveHeXController Remote;
         private readonly SaveDataEditor<PictureBox> x;
@@ -25,7 +25,7 @@ namespace AutoModPlugins
         private readonly InjectorCommunicationType CurrentInjectionType;
 
 #pragma warning disable CA2213 // Disposable fields should be disposed
-        private readonly ComboBox BoxSelect; // this is just us holding a reference; disposal is done by its parent
+        private readonly ComboBox? BoxSelect; // this is just us holding a reference; disposal is done by its parent
 #pragma warning restore CA2213 // Disposable fields should be disposed
 
         public LiveHeXUI(ISaveFileProvider sav, IPKMView editor)
@@ -44,8 +44,10 @@ namespace AutoModPlugins
             // ReSharper disable once SuspiciousTypeConversion.Global
             BoxSelect = ((Control)sav).Controls.Find("CB_BoxSelect", true).FirstOrDefault() as ComboBox;
             if (BoxSelect != null)
+            {
                 BoxSelect.SelectedIndexChanged += ChangeBox;
-            Closing += (s, e) => BoxSelect.SelectedIndexChanged -= ChangeBox;
+                Closing += (s, e) => BoxSelect.SelectedIndexChanged -= ChangeBox;
+            }
 
             var type = sav.GetType();
             var fields = type.GetTypeInfo().DeclaredFields;
@@ -83,7 +85,7 @@ namespace AutoModPlugins
                     dest = slgpe.Blocks.Status.Data;
                     startofs = slgpe.Blocks.Status.Offset;
                     break;
-                
+
                 default:
                     dest = Array.Empty<byte>();
                     break;
@@ -244,7 +246,7 @@ namespace AutoModPlugins
             Remote.Bot.SendSlot(RamOffsets.WriteBoxData(Remote.Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData, box, slotpkm);
         }
 
-        public ISlotInfo GetSlotData(PictureBox view) => null;
+        public ISlotInfo GetSlotData(PictureBox view) => throw new InvalidOperationException();
         public int GetViewIndex(ISlotInfo slot) => -1;
 
         private void SetInjectionTypeView()
