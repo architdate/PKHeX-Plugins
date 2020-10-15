@@ -74,8 +74,10 @@ namespace AutoModPlugins.GUI
                 {
                     if (pd.Name == s.SettingName)
                     {
-                        if (s.Description != null) desc = s.Description;
-                        if (s.Category != null) category = s.Category;
+                        var lang = WinFormsTranslator.CurrentLanguage;
+                        var translation = WinFormsTranslator.GetContext(lang);
+                        if (s.Description != null) desc = translation.GetTranslatedText($"{s.SettingName}_description", s.Description); ;
+                        if (s.Category != null) category = translation.GetTranslatedText($"{s.SettingName}_category", s.Category); ;
                     }
                 }
                 PropertyDescriptor pd2 = TypeDescriptor.CreateProperty(_settings.GetType(), pd, new DescriptionAttribute(desc), new CategoryAttribute(category));

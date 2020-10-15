@@ -23,7 +23,7 @@ namespace AutoModPlugins
             private set => GameInfo.CurrentLanguage = value;
         }
 
-        private static TranslationContext GetContext(string lang)
+        internal static TranslationContext GetContext(string lang)
         {
             if (Context.TryGetValue(lang, out var context))
                 return context;
