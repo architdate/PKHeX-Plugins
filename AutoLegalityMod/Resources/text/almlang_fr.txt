@@ -60,8 +60,8 @@ PromptForSmogonImport_description=Utilisé pour "Générer des sets de smogon". 
 UseMarkings_description=Définit des marques sur les Pokémon en fonction des IV.
 UseCompetitiveMarkings_description=Définit les IV de 31 en bleu et 30 en rouge si activé. Sinon, définit les IV de 31 en bleu et 0 en rouge.
 
-AllowTrainerOverride_category=Données du dresseur
-UseTrainerData_category=Données du dresseur
+AllowTrainerOverride_category=Données du Dresseur
+UseTrainerData_category=Données du Dresseur
 LatestIP_category=Connexion
 USBBotBasePreferred_category=Connexion
 ForceSpecifiedBall_category=Personnalisation
