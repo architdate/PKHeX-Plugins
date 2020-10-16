@@ -14,14 +14,14 @@ Regular builds will usually succeed unless there are changes that are incompatib
 - Clone the PKHeX-Plugins repository using: `$ git clone https://github.com/architdate/PKHeX-Plugins.git`.
 - Right-click on the solution and click `Rebuild All`.
 - These DLLs should be placed into a `plugins` directory where the PKHeX executable is. You may also combine these DLL files using ILMerge.
-   - The compiled DLLs for AutoLegality will be in the `AutoLegalityMod/bin` directory:
+   - The compiled DLLs for AutoLegality will be in the `AutoLegalityMod/bin/Release/net46` directory:
      * AutoModPlugins.dll
      * LibUsbDotNet.LibUsbDotNet.dll
      * NtrSharp.dll
      * PKHeX.Core.AutoMod.dll
      * PKHeX.Core.Enhancements.dll
      * PKHeX.Core.Injection.dll
-   - If you want to use QRPlugins, you will need additional DLLs from `QRPlugins/bin`:
+   - If you want to use QRPlugins, you will need additional DLLs from `QRPlugins/bin/Release/net46`:
      * BouncyCastle.CryptoExt.dll
      * QRCoder.dll
      * QRPlugins.dll
@@ -37,10 +37,8 @@ Use this build method only if the regular builds fail. The AppVeyor CI will alwa
 - Open the PKHeX-Plugins solution and right-click to `Restore NuGet Packages`.
 - Next, replace the most recent NuGet packages with the newly-built `PKHeX.Core.dll` files.
    - Copy the `PKHeX.Core.dll` file located in `PKHeX.Core/bin/Release/net46` the following folders:
-       * `PKHeX-Plugins/packages/PKHeX.Core.YY.MM.DD/lib/net46`
        * `C:/Users/%USERNAME%/.nuget/packages/pkhex.core/YY.MM.DD/lib/net46`
    - Copy the `PKHeX.Core.dll` file located in `PKHeX.Core/bin/Release/netstandard2.0` to the following folders: 
-       * `PKHeX-Plugins/packages/PKHeX.Core.YY.MM.DD/lib/netstandard2.0`
        * `C:/Users/%USERNAME%/.nuget/packages/pkhex.core/YY.MM.DD/lib/netstandard2.0`
 - Right click the PKHeX-Plugins solution and `Rebuild All`. This should build the mod with the latest `PKHeX.Core` version so that it can be used with the latest commit of PKHeX.
 - The compiled DLLs will be in the same location as with the regular builds. 
