@@ -54,7 +54,7 @@ steps:
       mkdir bin
       nuget install ILMerge -ExcludeVersion
       cd ILMerge\tools\net452
-      xcopy ..\..\..\AutoLegalityMod\bin\Release\AutoModPlugins.dll .\
+      xcopy ..\..\..\AutoLegalityMod\bin\Release\net46\AutoModPlugins.dll .\
       xcopy ..\..\..\QRPlugins\bin\Release\net46\BouncyCastle.CryptoExt.dll .\
       xcopy ..\..\..\QRPlugins\bin\Release\net46\zxing.dll .\
       xcopy ..\..\..\QRPlugins\bin\Release\net46\zxing.presentation.dll .\
