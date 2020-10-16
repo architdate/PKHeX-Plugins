@@ -56,7 +56,7 @@ after_build:
 
     cd "C:\projects\pkhex-plugins\ILMerge\tools\net452"
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\AutoModPlugins.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\AutoModPlugins.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
     xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\BouncyCastle.CryptoExt.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
