@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{C280
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QRPlugins", "QRPlugins\QRPlugins.csproj", "{38889E43-2C14-4AC4-AF3F-BE40660459FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PKHeX.Core.Injection", "PKHeX.Core.Injection\PKHeX.Core.Injection.csproj", "{DB4DA5C0-DFB3-490E-90E1-CDD9330267F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKHeX.Core.Injection", "PKHeX.Core.Injection\PKHeX.Core.Injection.csproj", "{DB4DA5C0-DFB3-490E-90E1-CDD9330267F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PKHeX.Core.Enhancements", "PKHeX.Core.Enhancements\PKHeX.Core.Enhancements.csproj", "{165D144A-DBB4-4F3B-BF39-E783B41008C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKHeX.Core.Enhancements", "PKHeX.Core.Enhancements\PKHeX.Core.Enhancements.csproj", "{165D144A-DBB4-4F3B-BF39-E783B41008C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
