@@ -26,6 +26,9 @@ $headers = @{
   "accept-language"="en-US,en;q=0.9"
 };
 
+# close any open instances of PKHeX that may prevent updating the file
+if ((get-process "pkhex" -ea SilentlyContinue) -ne $Null) {Stop-Process -processname "pkhex"}
+
 # get the ddl with csrf token
 $BasePKHeX = ((Invoke-WebRequest -Uri "https://projectpokemon.org/home/files/file/2445-pkhex-development-build/" -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.href -like "https://projectpokemon.org/home/files/file/2445-pkhex-development-build/?do=download*"}).href.replace("&amp;", "&")
 
