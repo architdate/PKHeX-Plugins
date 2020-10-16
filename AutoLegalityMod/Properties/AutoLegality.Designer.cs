@@ -12,7 +12,7 @@ namespace AutoModPlugins.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
     internal sealed partial class AutoLegality : global::System.Configuration.ApplicationSettingsBase {
         
         private static AutoLegality defaultInstance = ((AutoLegality)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new AutoLegality())));

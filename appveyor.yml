@@ -40,10 +40,6 @@ before_build:
     Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "C:\Users\appveyor\.nuget\packages\pkhex.core\$nugetver\lib\net46"
 
     Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\netstandard2.0\PKHeX.Core.dll" "C:\Users\appveyor\.nuget\packages\pkhex.core\$nugetver\lib\netstandard2.0"
-
-    Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "C:\projects\pkhex-plugins\packages\PKHeX.Core.$nugetver\lib\net46"
-
-    Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\netstandard2.0\PKHeX.Core.dll" "C:\projects\pkhex-plugins\packages\PKHeX.Core.$nugetver\lib\netstandard2.0"
 build:
   project: C:\projects\pkhex-plugins\PKHeX-Plugins.sln
   verbosity: minimal
@@ -60,7 +56,7 @@ after_build:
 
     cd "C:\projects\pkhex-plugins\ILMerge\tools\net452"
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\AutoModPlugins.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\AutoModPlugins.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
     xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\BouncyCastle.CryptoExt.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
@@ -72,17 +68,17 @@ after_build:
 
     xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\QRPlugins.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\PKHeX.Core.AutoMod.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\PKHeX.Core.AutoMod.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\PKHeX.Core.Enhancements.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\PKHeX.Core.Enhancements.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\PKHeX.Core.Injection.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\PKHeX.Core.Injection.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\NtrSharp.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\NtrSharp.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\PKHeX.Core.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\PKHeX.Core.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\LibUsbDotNet.LibUsbDotNet.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\LibUsbDotNet.LibUsbDotNet.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
 
     ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:C:\projects\pkhex-plugins\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll NtrSharp.dll LibUsbDotNet.LibUsbDotNet.dll PKHeX.Core.Enhancements.dll PKHeX.Core.Injection.dll
 
