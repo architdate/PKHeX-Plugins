@@ -12,7 +12,9 @@ namespace PKHeX.Core.Injection
         public string IP = "192.168.1.106";
         public int Port = 8000;
 
-        private NtrClient client = new NtrClient();
+        private int timeout = 10;
+
+        private NTR clientNTR = new NTR();
 
         public bool Connected;
         private bool NTRConnected;
@@ -21,22 +23,23 @@ namespace PKHeX.Core.Injection
         private int PID = -1;
         private byte[]? lastMemoryRead;
 
+        public delegate void waitingForData(uint newkey, DataReadyWaiting newvalue);
+        public delegate void writeLastLog(string str);
+
+        public event writeLastLog onWriteLastLog;
+        public event waitingForData onWaitingForData;
+
         public void Connect()
         {
             lock (_sync)
             {
-                client = new NtrClient();
-                client.EvtNtrStringReceived += OnProcessList;
-                client.EvtReadMemoryReceived += OnReadMemory;
-                client.EvtConnect += OnConnected;
-                client.EvtDisconnect += OnDisconnected;
-                client.SetServer(IP, 8000);
-                client.ConnectToServer();
-
-                while (!Connected)
-                    Thread.Sleep(100);
-
-                GetProcessList();
+                clientNTR.setServer(IP, Port);
+                clientNTR.connectToServer();
+                if (clientNTR.isConnected)
+                {
+                    Connected = true;
+                    NTRConnected = true;
+                }
             }
         }
 
@@ -48,17 +51,24 @@ namespace PKHeX.Core.Injection
         {
             lock (_sync)
             {
-                client.Disconnect();
-                NTRConnected = false;
-                lastMemoryRead = null;
+                clientNTR.disconnect();
             }
         }
 
-        private void GetProcessList()
+        private void WriteLastLog(string str)
         {
-            client.SendEmptyPacket(5);
-            while (PID == -1)
-                Thread.Sleep(100);
+            clientNTR.lastlog = str;
+        }
+
+        private bool CompareLastLog(string str)
+        {
+            return clientNTR.lastlog.Contains(str);
+        }
+
+        private void handleMemoryRead(object args_obj)
+        {
+            DataReadyWaiting args = (DataReadyWaiting)args_obj;
+            lastMemoryRead = args.data;
         }
 
         public byte[] ReadBytes(uint offset, int length)
@@ -66,25 +76,13 @@ namespace PKHeX.Core.Injection
             lock (_sync)
             {
                 if (!NTRConnected) Connect();
-                while (!client.HeartbeatSendable)
-                    Thread.Sleep(50);
 
-                client.SendReadMemPacket(offset, (uint)length, (uint)PID);
-
-                var shittyntrcount = 0;
-                while (lastMemoryRead == null && shittyntrcount < 20)
-                {
-                    Thread.Sleep(100);
-                    shittyntrcount++;
-                }
-
-                if (shittyntrcount == 20)
-                    return RetryByteRead(offset, length);
+                clientNTR.sendReadMemPacket(offset, (uint)length, (uint)PID);
+                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[length], handleMemoryRead, null);
+                clientNTR.addwaitingForData(clientNTR.sh.data(offset, (uint)length, PID), myArgs);
 
                 byte[] result = lastMemoryRead!;
                 lastMemoryRead = null;
-
-                Disconnect();
                 return result;
             }
         }
@@ -100,7 +98,7 @@ namespace PKHeX.Core.Injection
             lock (_sync)
             {
                 if (!NTRConnected) Connect();
-                client.SendWriteMemPacket(offset, (uint)PID, data);
+                clientNTR.sendWriteMemPacket(offset, (uint)PID, data);
 
                 // give it time to push data back
                 Thread.Sleep((data.Length / 256) + 100);
@@ -122,11 +120,6 @@ namespace PKHeX.Core.Injection
             lastMemoryRead = null;
         }
 
-        private void OnReadMemory(object sender, ReadMemoryReceivedEventArgs e)
-        {
-            Debug.WriteLine("Requested Memory Read Size:" + e.Buffer.Length);
-            lastMemoryRead = client.ReadMemory;
-        }
 
         private static readonly string[] titleidstr_um = { "175e00", "1b5100" };
 
