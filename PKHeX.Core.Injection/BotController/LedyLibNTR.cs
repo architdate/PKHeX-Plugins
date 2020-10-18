@@ -1,36 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
 namespace PKHeX.Core.Injection
 {
-    public class readMemRequest
+    public class ReadMemRequest
     {
-        public string fileName;
-        public bool isCallback;
+        public readonly string fileName;
+        public readonly bool isCallback;
 
-        public readMemRequest(string fileName_)
+        public ReadMemRequest()
         {
-            this.fileName = fileName_;
-            this.isCallback = false;
-        }
-
-        public readMemRequest()
-        {
-            this.fileName = null;
-            this.isCallback = true;
+            fileName = null;
+            isCallback = true;
         }
     }
 
     public class DataReadyWaiting
     {
-        public byte[] data;
+        public readonly byte[] data;
         public object arguments;
         public delegate void DataHandler(object data_arguments);
-        public DataHandler handler;
+        public readonly DataHandler handler;
 
         public DataReadyWaiting(byte[] data_, DataHandler handler_, object arguments_)
         {
@@ -42,107 +37,83 @@ namespace PKHeX.Core.Injection
 
     public class DataReadyEventArgs : EventArgs
     {
-        public uint seq;
-        public byte[] data;
+        public readonly uint seq;
+        public readonly byte[] data;
 
         public DataReadyEventArgs(uint seq_, byte[] data_)
         {
-            this.seq = seq_;
-            this.data = data_;
+            seq = seq_;
+            data = data_;
         }
     }
 
     public class InfoReadyEventArgs : EventArgs
     {
-        public string info;
+        public readonly string info;
 
         public InfoReadyEventArgs(string info_)
         {
-            this.info = info_;
+            info = info_;
         }
     }
 
     public class NTR
     {
-        public String host;
-        public bool isConnected;
-        public int port;
-        public TcpClient tcp;
-        public NetworkStream netStream;
-        public Thread packetRecvThread;
-        public Thread heartbeatThread;
-        private object syncLock = new object();
-        public int heartbeatSendable;
+        private string _host;
+        public bool IsConnected;
+        private int _port;
+        private TcpClient _tcp;
+        private NetworkStream _netStream;
+        private Thread _packetRecvThread;
+        private Thread _heartbeatThread;
+        private readonly object _syncLock = new object();
+        private int _heartbeatSendable;
         public event EventHandler<DataReadyEventArgs> DataReady;
         public event EventHandler Connected;
         public event EventHandler<InfoReadyEventArgs> InfoReady;
-        uint lastReadMemSeq;
-        public Dictionary<uint, DataReadyWaiting> waitingForData = new Dictionary<uint, DataReadyWaiting>();
+        public readonly Dictionary<uint, DataReadyWaiting> WaitingForData = new Dictionary<uint, DataReadyWaiting>();
 
         public delegate void LogDelegate(string l);
-        public LogDelegate delLastLog;
-        public string lastlog = "";
+        public LogDelegate DelLastLog;
+        public string Lastlog = "";
 
         public int PID = -1;
 
-        public void lastLog(string l)
+        public void lastLog(string l) => Lastlog = l;
+        protected virtual void OnDataReady(DataReadyEventArgs e) => DataReady?.Invoke(this, e);
+        protected virtual void OnConnected(EventArgs e) => Connected?.Invoke(this, e);
+        protected virtual void OnInfoReady(InfoReadyEventArgs e) => InfoReady?.Invoke(this, e);
+        public void AddWaitingForData(uint newkey, DataReadyWaiting newvalue) => WaitingForData.Add(newkey, newvalue);
+
+        public delegate void LogHandler(string msg);
+        public event LogHandler OnLogArrival;
+        uint _currentSeq;
+        private readonly Dictionary<uint, ReadMemRequest> pendingReadMem = new Dictionary<uint, ReadMemRequest>();
+        private volatile int _progress = -1;
+
+        public void ListProcess() => SendEmptyPacket(5);
+        public uint Data(uint addr, uint size = 0x100, int pid = -1) => SendReadMemPacket(addr, size, (uint)pid);
+        public void Write(uint addr, byte[] buf, int pid = -1) => SendWriteMemPacket(addr, (uint)pid, buf);
+
+        public void Connect(string host, int port)
         {
-            lastlog = l;
-        }
-
-        protected virtual void OnDataReady(DataReadyEventArgs e)
-        {
-            DataReady?.Invoke(this, e);
-        }
-
-        protected virtual void OnConnected(EventArgs e)
-        {
-            Connected?.Invoke(this, e);
-        }
-
-        protected virtual void OnInfoReady(InfoReadyEventArgs e)
-        {
-            InfoReady?.Invoke(this, e);
-        }
-
-        public void addwaitingForData(uint newkey, DataReadyWaiting newvalue)
-        {
-            waitingForData.Add(newkey, newvalue);
-        }
-
-        public delegate void logHandler(string msg);
-        public event logHandler onLogArrival;
-        uint currentSeq;
-        public Dictionary<UInt32, readMemRequest> pendingReadMem = new Dictionary<UInt32, readMemRequest>();
-        public volatile int progress = -1;
-
-        public void listprocess() => sendEmptyPacket(5);
-        public uint data(uint addr, uint size = 0x100, int pid = -1) => sendReadMemPacket(addr, size, (uint)pid);
-        public void write(uint addr, byte[] buf, int pid = -1) => sendWriteMemPacket(addr, (uint)pid, buf);
-
-        public void connect(string host, int port)
-        {
-            setServer(host, port);
-            connectToServer();
+            SetServer(host, port);
+            ConnectToServer();
         }
 
 
-        int readNetworkStream(NetworkStream stream, byte[] buf, int length)
+        private int ReadNetworkStream(NetworkStream stream, byte[] buf, int length)
         {
-            int index = 0;
-            bool useProgress = false;
+            var index = 0;
+            var useProgress = length > 100000;
 
-            if (length > 100000)
-            {
-                useProgress = true;
-            }
             do
             {
                 if (useProgress)
                 {
-                    progress = (int)(((double)(index) / length) * 100);
+                    _progress = (int)(((double)(index) / length) * 100);
                 }
-                int len = stream.Read(buf, index, length - index);
+                var len = stream.Read(buf, index, length - index);
                 if (len == 0)
                 {
                     return 0;
@@ -150,65 +121,58 @@ namespace PKHeX.Core.Injection
                 index += len;
             }
             while (index < length);
-            progress = -1;
+            _progress = -1;
             return length;
         }
 
-        void sendHeartBeat()
+        private void SendHeartBeat()
         {
             var hbstarted = false;
             while (true)
             {
                 Thread.Sleep(1000);
-                if (isConnected)
+                if (IsConnected)
                 {
-                    sendHeartbeatPacket();
+                    SendHeartbeatPacket();
                     hbstarted = true;
                 }
-                if (hbstarted && !isConnected)
+                if (hbstarted && !IsConnected)
                     break;
             }
         }
 
-        void packetRecvThreadStart()
+        private void PacketRecvThreadStart()
         {
             byte[] buf = new byte[84];
             uint[] args = new uint[16];
             int ret;
-            NetworkStream stream = netStream;
+            var stream = _netStream;
 
             while (true)
             {
                 try
                 {
-                    ret = readNetworkStream(stream, buf, buf.Length);
+                    ret = ReadNetworkStream(stream, buf, buf.Length);
                     if (ret == 0)
-                    {
                         break;
-                    }
-                    int t = 0;
-                    uint magic = BitConverter.ToUInt32(buf, t);
-                    t += 4;
-                    uint seq = BitConverter.ToUInt32(buf, t);
-                    t += 4;
-                    uint type = BitConverter.ToUInt32(buf, t);
-                    t += 4;
-                    uint cmd = BitConverter.ToUInt32(buf, t);
-                    for (int i = 0; i < args.Length; i++)
+                    
+                    var magic = BitConverter.ToUInt32(buf, 0);
+                    var seq = BitConverter.ToUInt32(buf, 4);
+                    var type = BitConverter.ToUInt32(buf, 8);
+                    var cmd = BitConverter.ToUInt32(buf, 12);
+                    var t = 12;
+                    for (var i = 0; i < args.Length; i++)
                     {
                         t += 4;
                         args[i] = BitConverter.ToUInt32(buf, t);
                     }
-                    t += 4;
-                    uint dataLen = BitConverter.ToUInt32(buf, t);
+                    var dataLen = BitConverter.ToUInt32(buf, t + 4);
                     if (cmd != 0)
-                    {
-                        log(String.Format("packet: cmd = {0}, dataLen = {1}", cmd, dataLen));
-                    }
+                        Log($"packet: cmd = {cmd}, dataLen = {dataLen}");
 
                     if (magic != 0x12345678)
                     {
-                        log(String.Format("broken protocol: magic = {0}, seq = {1}", magic, seq));
+                        Log($"broken protocol: magic = {magic}, seq = {seq}");
                         break;
                     }
 
@@ -216,52 +180,43 @@ namespace PKHeX.Core.Injection
                     {
                         if (dataLen != 0)
                         {
-                            byte[] dataBuf = new byte[dataLen];
-                            readNetworkStream(stream, dataBuf, dataBuf.Length);
-                            string logMsg = Encoding.UTF8.GetString(dataBuf);
+                            var dataBuf = new byte[dataLen];
+                            ReadNetworkStream(stream, dataBuf, dataBuf.Length);
+                            var logMsg = Encoding.UTF8.GetString(dataBuf);
                             OnInfoReady(new InfoReadyEventArgs(logMsg));
-                            log(logMsg);
+                            Log(logMsg);
                         }
-                        lock (syncLock)
+                        lock (_syncLock)
                         {
-                            heartbeatSendable = 1;
+                            _heartbeatSendable = 1;
                         }
                         continue;
                     }
                     if (dataLen != 0)
                     {
-                        byte[] dataBuf = new byte[dataLen];
-                        readNetworkStream(stream, dataBuf, dataBuf.Length);
-                        handlePacket(cmd, seq, dataBuf);
+                        var dataBuf = new byte[dataLen];
+                        ReadNetworkStream(stream, dataBuf, dataBuf.Length);
+                        HandlePacket(cmd, seq, dataBuf);
                     }
                 }
                 catch (Exception e)
                 {
-                    log(e.Message);
+                    Log(e.Message);
                     break;
                 }
             }
 
-            log("Server disconnected.");
-            disconnect(false);
+            Log("Server disconnected.");
+            Disconnect(false);
         }
 
-        string byteToHex(byte[] datBuf, int type)
-        {
-            string r = "";
-            for (int i = 0; i < datBuf.Length; i++)
-            {
-                r += datBuf[i].ToString("X2") + " ";
-            }
-            return r;
-        }
+        private static string ByteToHex(byte[] datBuf, int type) => datBuf.Aggregate("", (current, b) => current + (b.ToString("X2") + " "));
 
-        void handleReadMem(uint seq, byte[] dataBuf)
+        private void HandleReadMem(uint seq, byte[] dataBuf)
         {
-            readMemRequest requestDetails;
-            if (!pendingReadMem.TryGetValue(seq, out requestDetails))
+            if (!pendingReadMem.TryGetValue(seq, out var requestDetails))
             {
-                log("seq not in pending readmems, ignored");
+                Log("seq not in pending readmems, ignored");
                 return;
             }
             pendingReadMem.Remove(seq);
@@ -272,59 +227,56 @@ namespace PKHeX.Core.Injection
                 FileStream fs = new FileStream(fileName, FileMode.Create);
                 fs.Write(dataBuf, 0, dataBuf.Length);
                 fs.Close();
-                log("dump saved into " + fileName + " successfully");
+                Log("dump saved into " + fileName + " successfully");
                 return;
             }
             else if (requestDetails.isCallback)
             {
                 //Copies the data, truncates if necessary
-                byte[] dataBufCopy = new byte[dataBuf.Length];
+                var dataBufCopy = new byte[dataBuf.Length];
                 dataBuf.CopyTo(dataBufCopy, 0);
-                DataReadyEventArgs e = new DataReadyEventArgs(seq, dataBufCopy);
+                var e = new DataReadyEventArgs(seq, dataBufCopy);
                 OnDataReady(e);
             }
             else
             {
-                log(byteToHex(dataBuf, 0));
+                Log(ByteToHex(dataBuf, 0));
             }
 
         }
 
-        void handlePacket(uint cmd, uint seq, byte[] dataBuf)
+        private void HandlePacket(uint cmd, uint seq, byte[] dataBuf)
         {
-            if (cmd == 9)
-            {
-                handleReadMem(seq, dataBuf);
-            }
+            if (cmd == 9) HandleReadMem(seq, dataBuf);
         }
 
-        public void setServer(String serverHost, int serverPort)
+        private void SetServer(string serverHost, int serverPort)
         {
-            host = serverHost;
-            port = serverPort;
+            _host = serverHost;
+            _port = serverPort;
         }
 
-        public void connectToServer()
+        private void ConnectToServer()
         {
-            if (tcp != null)
+            if (_tcp != null)
             {
-                disconnect();
+                Disconnect();
             }
             try
             {
-                tcp = new TcpClient();
-                tcp.NoDelay = true;
-                tcp.Connect(host, port);
-                currentSeq = 0;
-                netStream = tcp.GetStream();
-                heartbeatSendable = 1;
-                packetRecvThread = new Thread(new ThreadStart(packetRecvThreadStart));
-                packetRecvThread.Start();
-                heartbeatThread = new Thread(sendHeartBeat);
-                heartbeatThread.Start();
-                log("Server connected.");
+                _tcp = new TcpClient();
+                _tcp.NoDelay = true;
+                _tcp.Connect(_host, _port);
+                _currentSeq = 0;
+                _netStream = _tcp.GetStream();
+                _heartbeatSendable = 1;
+                _packetRecvThread = new Thread(PacketRecvThreadStart);
+                _packetRecvThread.Start();
+                _heartbeatThread = new Thread(SendHeartBeat);
+                _heartbeatThread.Start();
+                Log("Server connected.");
                 OnConnected(null);
-                isConnected = true;
+                IsConnected = true;
             }
             catch
             {
@@ -333,111 +285,98 @@ namespace PKHeX.Core.Injection
 
         }
 
-        public void disconnect(bool waitPacketThread = true)
+        public void Disconnect(bool waitPacketThread = true)
         {
             try
             {
-                if (tcp != null)
-                {
-                    tcp.Close();
-                }
+                _tcp?.Close();
                 if (waitPacketThread)
                 {
-                    if (packetRecvThread != null)
+                    if (_packetRecvThread != null)
                     {
-                        packetRecvThread.Join();
-                        heartbeatThread.Join();
+                        _packetRecvThread.Join();
+                        _heartbeatThread.Join();
                     }
                 }
             }
             catch (Exception ex)
             {
-                log(ex.Message);
+                Log(ex.Message);
             }
-            tcp = null;
-            isConnected = false;
+            _tcp = null;
+            IsConnected = false;
         }
 
-        public void sendPacket(uint type, uint cmd, uint[] args, uint dataLen)
+        private void SendPacket(uint type, uint cmd, IReadOnlyList<uint> args, uint dataLen)
         {
-            int t = 0;
-            currentSeq += 1000;
-            byte[] buf = new byte[84];
-            BitConverter.GetBytes(0x12345678).CopyTo(buf, t);
-            t += 4;
-            BitConverter.GetBytes(currentSeq).CopyTo(buf, t);
-            t += 4;
-            BitConverter.GetBytes(type).CopyTo(buf, t);
-            t += 4;
-            BitConverter.GetBytes(cmd).CopyTo(buf, t);
-            for (int i = 0; i < 16; i++)
+            _currentSeq += 1000;
+            var buf = new byte[84];
+            var t = 12;
+            BitConverter.GetBytes(0x12345678).CopyTo(buf, 0);
+            BitConverter.GetBytes(_currentSeq).CopyTo(buf, 4);
+            BitConverter.GetBytes(type).CopyTo(buf, 8);
+            BitConverter.GetBytes(cmd).CopyTo(buf, 12);
+            for (var i = 0; i < 16; i++)
             {
                 t += 4;
                 uint arg = 0;
                 if (args != null)
-                {
                     arg = args[i];
-                }
                 BitConverter.GetBytes(arg).CopyTo(buf, t);
             }
-            t += 4;
-            BitConverter.GetBytes(dataLen).CopyTo(buf, t);
-            netStream.Write(buf, 0, buf.Length);
+            BitConverter.GetBytes(dataLen).CopyTo(buf, t+4);
+            _netStream.Write(buf, 0, buf.Length);
         }
 
-        public uint sendReadMemPacket(uint addr, uint size, uint pid)
+        private uint SendReadMemPacket(uint addr, uint size, uint pid)
         {
-            sendEmptyPacket(9, pid, addr, size);
-            pendingReadMem.Add(currentSeq, new readMemRequest());
-            return currentSeq;
+            SendEmptyPacket(9, pid, addr, size);
+            pendingReadMem.Add(_currentSeq, new ReadMemRequest());
+            return _currentSeq;
         }
 
-        public void sendWriteMemPacket(uint addr, uint pid, byte[] buf)
+        private void SendWriteMemPacket(uint addr, uint pid, byte[] buf)
         {
             uint[] args = new uint[16];
             args[0] = pid;
             args[1] = addr;
-            args[2] = (UInt32)buf.Length;
-            sendPacket(1, 10, args, args[2]);
-            netStream.Write(buf, 0, buf.Length);
+            args[2] = (uint)buf.Length;
+            SendPacket(1, 10, args, args[2]);
+            _netStream.Write(buf, 0, buf.Length);
         }
 
-        public void sendHeartbeatPacket()
+        private void SendHeartbeatPacket()
         {
-            if (tcp != null)
+            if (_tcp != null)
             {
-                lock (syncLock)
+                lock (_syncLock)
                 {
-                    if (heartbeatSendable == 1)
+                    if (_heartbeatSendable == 1)
                     {
-                        heartbeatSendable = 0;
-                        sendPacket(0, 0, null, 0);
+                        _heartbeatSendable = 0;
+                        SendPacket(0, 0, null, 0);
                     }
                 }
             }
 
         }
 
-        public void sendEmptyPacket(uint cmd, uint arg0 = 0, uint arg1 = 0, uint arg2 = 0)
+        private void SendEmptyPacket(uint cmd, uint arg0 = 0, uint arg1 = 0, uint arg2 = 0)
         {
-            uint[] args = new uint[16];
+            var args = new uint[16];
 
             args[0] = arg0;
             args[1] = arg1;
             args[2] = arg2;
-            sendPacket(0, cmd, args, 0);
+            SendPacket(0, cmd, args, 0);
         }
 
-        public void log(String msg)
+        private void Log(string msg)
         {
-            if (onLogArrival != null)
-            {
-                onLogArrival.Invoke(msg);
-            }
-
+            OnLogArrival?.Invoke(msg);
             try
             {
-                delLastLog(msg);
+                DelLastLog(msg);
             }
             catch (Exception ex)
             {

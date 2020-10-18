@@ -5,26 +5,26 @@ namespace PKHeX.Core.Injection
 {
     public class NTRSharpClient : ICommunicator
     {
-        public string IP = "192.168.1.106";
-        public int Port = 8000;
+        private string IP = "192.168.1.106";
+        private int Port = 8000;
 
         private int timeout = 10;
 
-        private static NTR clientNTR = new NTR();
+        private static readonly NTR clientNTR = new NTR();
 
-        public bool Connected;
+        private bool Connected;
 
         private readonly object _sync = new object();
-        private byte[]? lastMemoryRead;
+        private byte[]? _lastMemoryRead;
 
         public void Connect()
         {
             clientNTR.DataReady += handleDataReady;
-            clientNTR.Connected += connectCheck;
+            clientNTR.Connected += ConnectCheck;
             clientNTR.InfoReady += getGame;
-            clientNTR.delLastLog = clientNTR.lastLog;
-            clientNTR.connect(IP, Port);
-            if (clientNTR.isConnected)
+            clientNTR.DelLastLog = clientNTR.lastLog;
+            clientNTR.Connect(IP, Port);
+            if (clientNTR.IsConnected)
                 Connected = true;
         }
 
@@ -36,15 +36,15 @@ namespace PKHeX.Core.Injection
         {
             lock (_sync)
             {
-                clientNTR.disconnect();
+                clientNTR.Disconnect();
                 Connected = false;
             }
         }
 
-        private void handleMemoryRead(object args_obj)
+        private void HandleMemoryRead(object argsObj)
         {
-            DataReadyWaiting args = (DataReadyWaiting)args_obj;
-            lastMemoryRead = args.data;
+            DataReadyWaiting args = (DataReadyWaiting)argsObj;
+            _lastMemoryRead = args.data;
         }
 
         public byte[] ReadBytes(uint offset, int length)
@@ -54,12 +54,12 @@ namespace PKHeX.Core.Injection
                 if (!Connected) Connect();
 
                 WriteLastLog("");
-                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[length], handleMemoryRead, null);
+                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[length], HandleMemoryRead, null);
                 while (clientNTR.PID == -1)
                 {
                     Thread.Sleep(10);
                 }
-                clientNTR.addwaitingForData(clientNTR.data(offset, (uint)length, clientNTR.PID), myArgs);
+                clientNTR.AddWaitingForData(clientNTR.Data(offset, (uint)length, clientNTR.PID), myArgs);
 
                 int readcount = 0;
                 for (readcount = 0; readcount < timeout * 100; readcount++)
@@ -69,14 +69,14 @@ namespace PKHeX.Core.Injection
                         break;
                 }
 
-                byte[] result = lastMemoryRead ?? new byte[]{};
-                lastMemoryRead = null;
+                byte[] result = _lastMemoryRead ?? new byte[]{};
+                _lastMemoryRead = null;
                 return result;
             }
         }
 
-        private void WriteLastLog(string str) => clientNTR.lastlog = str;
-        private bool CompareLastLog(string str) => clientNTR.lastlog.Contains(str);
+        private static void WriteLastLog(string str) => clientNTR.Lastlog = str;
+        private static bool CompareLastLog(string str) => clientNTR.Lastlog.Contains(str);
 
         public void WriteBytes(byte[] data, uint offset)
         {
@@ -87,7 +87,7 @@ namespace PKHeX.Core.Injection
                 {
                     Thread.Sleep(10);
                 }
-                clientNTR.write(offset, data, clientNTR.PID);
+                clientNTR.Write(offset, data, clientNTR.PID);
                 int waittimeout;
                 for (waittimeout = 0; waittimeout < timeout * 100; waittimeout++)
                 {
@@ -99,42 +99,42 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public void getGame(object sender, EventArgs e)
+        private void getGame(object sender, EventArgs e)
         {
-            InfoReadyEventArgs args = (InfoReadyEventArgs)e;
+            var args = (InfoReadyEventArgs)e;
 
             string log = args.info;
             if (log.Contains("niji_loc"))
             {
                 string splitlog = log.Substring(log.IndexOf(", pname: niji_loc") - 8, log.Length - log.IndexOf(", pname: niji_loc"));
                 clientNTR.PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
-                clientNTR.write(0x3E14C0, BitConverter.GetBytes(0xE3A01000), clientNTR.PID);
+                clientNTR.Write(0x3E14C0, BitConverter.GetBytes(0xE3A01000), clientNTR.PID);
             }
             else if (log.Contains("momiji"))
             {
                 string splitlog = log.Substring(log.IndexOf(", pname:   momiji") - 8, log.Length - log.IndexOf(", pname:   momiji"));
                 clientNTR.PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
-                clientNTR.write(0x3F3424, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
-                clientNTR.write(0x3F3428, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Moon // NFC ON: E3A01001 NFC OFF: E3A01000
+                clientNTR.Write(0x3F3424, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
+                clientNTR.Write(0x3F3428, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Moon // NFC ON: E3A01001 NFC OFF: E3A01000
             }
         }
 
         static void handleDataReady(object sender, DataReadyEventArgs e)
         { // We move data processing to a separate thread. This way even if processing takes a long time, the netcode doesn't hang.
             DataReadyWaiting args;
-            if (clientNTR.waitingForData.TryGetValue(e.seq, out args))
+            if (clientNTR.WaitingForData.TryGetValue(e.seq, out args))
             {
                 Array.Copy(e.data, args.data, Math.Min(e.data.Length, args.data.Length));
                 Thread t = new Thread(new ParameterizedThreadStart(args.handler));
                 t.Start(args);
-                clientNTR.waitingForData.Remove(e.seq);
+                clientNTR.WaitingForData.Remove(e.seq);
             }
         }
 
-        public void connectCheck(object sender, EventArgs e)
+        private static void ConnectCheck(object sender, EventArgs e)
         {
-            clientNTR.listprocess();
-            clientNTR.isConnected = true;
+            clientNTR.ListProcess();
+            clientNTR.IsConnected = true;
         }
     }
 }
