@@ -47,47 +47,32 @@ namespace PKHeX.Core.Injection
         }
     }
 
-    public class DataReadyWaiting
-    {
-        public byte[] data;
-        public object arguments;
-        public delegate void DataHandler(object data_arguments);
-        public DataHandler handler;
-
-        public DataReadyWaiting(byte[] data_, DataHandler handler_, object arguments_)
-        {
-            this.data = data_;
-            this.handler = handler_;
-            this.arguments = arguments_;
-        }
-    }
-
     public class NTR
     {
         public String host;
-        public string lastlog;
+        public bool isConnected;
         public int port;
-        public bool isConnected = false;
         public TcpClient tcp;
         public NetworkStream netStream;
         public Thread packetRecvThread;
+        public Thread heartbeatThread;
         private object syncLock = new object();
         public int heartbeatSendable;
-        public ScriptHelper sh;
         public event EventHandler<DataReadyEventArgs> DataReady;
         public event EventHandler Connected;
         public event EventHandler<InfoReadyEventArgs> InfoReady;
-
-        public static Dictionary<uint, DataReadyWaiting> waitingForData = new Dictionary<uint, DataReadyWaiting>();
-
         UInt32 lastReadMemSeq;
+        public Dictionary<uint, DataReadyWaiting> waitingForData = new Dictionary<uint, DataReadyWaiting>();
 
-        public NTR()
+        public delegate void LogDelegate(string l);
+        public LogDelegate delLastLog;
+        public string lastlog = "";
+
+        public int PID = -1;
+
+        public void lastLog(string l)
         {
-            DataReady += handleDataReady;
-            InfoReady += getGame;
-            Connected += connectCheck;
-            sh = new ScriptHelper(this);
+            lastlog = l;
         }
 
         protected virtual void OnDataReady(DataReadyEventArgs e)
@@ -105,6 +90,13 @@ namespace PKHeX.Core.Injection
             InfoReady?.Invoke(this, e);
         }
 
+        public void addwaitingForData(uint newkey, DataReadyWaiting newvalue)
+        {
+            waitingForData.Add(newkey, newvalue);
+        }
+
+        public delegate void logHandler(string msg);
+        public event logHandler onLogArrival;
         UInt32 currentSeq;
         public Dictionary<UInt32, readMemRequest> pendingReadMem = new Dictionary<UInt32, readMemRequest>();
         public volatile int progress = -1;
@@ -113,7 +105,12 @@ namespace PKHeX.Core.Injection
         int readNetworkStream(NetworkStream stream, byte[] buf, int length)
         {
             int index = 0;
-            bool useProgress = length > 100000;
+            bool useProgress = false;
+
+            if (length > 100000)
+            {
+                useProgress = true;
+            }
             do
             {
                 if (useProgress)
@@ -130,6 +127,22 @@ namespace PKHeX.Core.Injection
             while (index < length);
             progress = -1;
             return length;
+        }
+
+        void sendHeartBeat()
+        {
+            var hbstarted = false;
+            while (true)
+            {
+                Thread.Sleep(1000);
+                if (isConnected)
+                {
+                    sendHeartbeatPacket();
+                    hbstarted = true;
+                }
+                if (hbstarted && !isConnected)
+                    break;
+            }
         }
 
         void packetRecvThreadStart()
@@ -275,22 +288,23 @@ namespace PKHeX.Core.Injection
             }
             try
             {
-                tcp = new TcpClient
-                {
-                    NoDelay = true
-                };
+                tcp = new TcpClient();
+                tcp.NoDelay = true;
                 tcp.Connect(host, port);
                 currentSeq = 0;
                 netStream = tcp.GetStream();
                 heartbeatSendable = 1;
                 packetRecvThread = new Thread(new ThreadStart(packetRecvThreadStart));
                 packetRecvThread.Start();
+                heartbeatThread = new Thread(sendHeartBeat);
+                heartbeatThread.Start();
                 log("Server connected.");
                 OnConnected(null);
+                isConnected = true;
             }
             catch
             {
-                Console.WriteLine("Could not connect, make sure the IP is correct, you're running NTR and you're online in-game!", "Connection Failed");
+                Console.WriteLine("Could not connect, make sure the IP is correct, you're running NTR and you're online in-game!");
             }
 
         }
@@ -299,12 +313,16 @@ namespace PKHeX.Core.Injection
         {
             try
             {
-                tcp?.Close();
+                if (tcp != null)
+                {
+                    tcp.Close();
+                }
                 if (waitPacketThread)
                 {
                     if (packetRecvThread != null)
                     {
                         packetRecvThread.Join();
+                        heartbeatThread.Join();
                     }
                 }
             }
@@ -414,7 +432,6 @@ namespace PKHeX.Core.Injection
         }
 
 
-
         public void sendSaveFilePacket(string fileName, byte[] fileData)
         {
             byte[] fileNameBuf = new byte[0x200];
@@ -424,69 +441,22 @@ namespace PKHeX.Core.Injection
             netStream.Write(fileData, 0, fileData.Length);
         }
 
-        public void log(string msg)
+        public void log(String msg)
         {
-            lastlog = msg;
-        }
-
-        public static void handleDataReady(object sender, DataReadyEventArgs e)
-        { // We move data processing to a separate thread. This way even if processing takes a long time, the netcode doesn't hang.
-            DataReadyWaiting args;
-            if (waitingForData.TryGetValue(e.seq, out args))
+            Console.WriteLine(msg);
+            if (onLogArrival != null)
             {
-                Array.Copy(e.data, args.data, Math.Min(e.data.Length, args.data.Length));
-                Thread t = new Thread(new ParameterizedThreadStart(args.handler));
-                t.Start(args);
-                waitingForData.Remove(e.seq);
+                onLogArrival.Invoke(msg);
             }
-        }
 
-        public void getGame(object sender, EventArgs e)
-        {
-            InfoReadyEventArgs args = (InfoReadyEventArgs)e;
-
-            string log = args.info;
-            if (log.Contains("niji_loc"))
+            try
             {
-                string splitlog = log.Substring(log.IndexOf(", pname: niji_loc") - 8, log.Length - log.IndexOf(", pname: niji_loc"));
-                var pid = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
-                sh.write(0x3E14C0, BitConverter.GetBytes(0xE3A01000), pid);
-                Console.WriteLine("Connection Successful!");
-
-                /*
-                Program.helper.boxOff = 0x330D9838;
-                wcOff = 0x331397E4;
-                Program.helper.partyOff = 0x34195E10;
-                eggOff = 0x3313EDD8;
-                */
-
+                delLastLog(msg);
             }
-            else if (log.Contains("momiji"))
+            catch (Exception ex)
             {
-                string splitlog = log.Substring(log.IndexOf(", pname:   momiji") - 8, log.Length - log.IndexOf(", pname:   momiji"));
-                var pid = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
-                sh.write(0x3F3424, BitConverter.GetBytes(0xE3A01000), pid); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
-                sh.write(0x3F3428, BitConverter.GetBytes(0xE3A01000), pid); // Ultra Moon // NFC ON: E3A01001 NFC OFF: E3A01000
-                Console.WriteLine("Connection Successful!");
-
-                /*
-                Program.helper.boxOff = 0x33015AB0;
-                wcOff = 0x33075BF4;
-                Program.helper.partyOff = 0x33F7FA44;
-                eggOff = 0x3307B1E8;
-                */
+                Console.WriteLine(ex);
             }
-        }
-
-        public void connectCheck(object sender, EventArgs e)
-        {
-            sh.listprocess();
-            isConnected = true;
-        }
-
-        public void addwaitingForData(uint newkey, DataReadyWaiting newvalue)
-        {
-            waitingForData.Add(newkey, newvalue);
         }
     }
 
