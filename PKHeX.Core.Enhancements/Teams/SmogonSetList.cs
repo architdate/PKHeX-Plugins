@@ -99,7 +99,7 @@ namespace PKHeX.Core.Enhancements
                 var tmp = split2[0];
                 SetConfig.Add(tmp);
 
-                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName, shiny, level);
+                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName, shiny, level, name.Contains("G-Max"));
                 SetText.Add(morphed);
 
                 var converted = new ShowdownSet(morphed);
@@ -143,15 +143,15 @@ namespace PKHeX.Core.Enhancements
             }
         }
 
-        private static string ConvertSetToShowdown(string set, string species, bool shiny, int level)
+        private static string ConvertSetToShowdown(string set, string species, bool shiny, int level, bool gmax)
         {
-            var result = GetSetLines(set, species, shiny, level);
+            var result = GetSetLines(set, species, shiny, level, gmax);
             return string.Join(Environment.NewLine, result);
         }
 
         private static readonly string[] statNames = { "HP", "Atk", "Def", "SpA", "SpD", "Spe" };
 
-        private static IEnumerable<string> GetSetLines(string set, string species, bool shiny, int level)
+        private static IEnumerable<string> GetSetLines(string set, string species, bool shiny, int level, bool gmax)
         {
             TryGetToken(set, "\"items\":[\"", "\"", out var item);
             TryGetToken(set, "\"moveslots\":", ",\"evconfigs\":", out var movesets);
@@ -176,6 +176,8 @@ namespace PKHeX.Core.Enhancements
                 result.Add("Shiny: Yes");
             if (!string.IsNullOrWhiteSpace(ability))
                 result.Add($"Ability: {ability}");
+            if (gmax)
+                result.Add("Gigantamax: Yes");
             if (evstr.Length >= 3)
                 result.Add($"EVs: {string.Join(" / ", statNames.Select((z, i) => $"{evs[i]} {z}"))}");
             if (ivstr.Length >= 3)
