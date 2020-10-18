@@ -38,11 +38,11 @@
                 LiveHeXVersion.SWSH_Orion => GetSwitchInterface(ict),
                 LiveHeXVersion.SWSH_Rigel1 => GetSwitchInterface(ict),
                 LiveHeXVersion.SWSH_Rigel2 => GetSwitchInterface(ict),
-                LiveHeXVersion.UM_v12 => new NTRSharpClient(),
-                LiveHeXVersion.US_v12 => new NTRSharpClient(),
-                LiveHeXVersion.SM_v12 => new NTRSharpClient(),
-                LiveHeXVersion.ORAS => new NTRSharpClient(),
-                LiveHeXVersion.XY => new NTRSharpClient(),
+                LiveHeXVersion.UM_v12 => new NTRClient(),
+                LiveHeXVersion.US_v12 => new NTRClient(),
+                LiveHeXVersion.SM_v12 => new NTRClient(),
+                LiveHeXVersion.ORAS => new NTRClient(),
+                LiveHeXVersion.XY => new NTRClient(),
                 _ => new SysBotMini()
             };
         }
