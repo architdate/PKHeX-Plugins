@@ -1,29 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading;
-using NtrSharp;
-using NtrSharp.Events;
 
 namespace PKHeX.Core.Injection
 {
-    public class DataReadyWaiting
-    {
-        public byte[] data;
-        public object arguments;
-        public delegate void DataHandler(object data_arguments);
-        public DataHandler handler;
-
-        public DataReadyWaiting(byte[] data_, DataHandler handler_, object arguments_)
-        {
-            this.data = data_;
-            this.handler = handler_;
-            this.arguments = arguments_;
-        }
-    }
-
-
     public class NTRSharpClient : ICommunicator
     {
         public string IP = "192.168.1.106";
@@ -38,7 +17,6 @@ namespace PKHeX.Core.Injection
 
         private readonly object _sync = new object();
         private byte[]? lastMemoryRead;
-
 
         public void Connect()
         {
@@ -98,15 +76,8 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        private void WriteLastLog(string str)
-        {
-            clientNTR.lastlog = str;
-        }
-
-        private bool CompareLastLog(string str)
-        {
-            return clientNTR.lastlog.Contains(str);
-        }
+        private void WriteLastLog(string str) => clientNTR.lastlog = str;
+        private bool CompareLastLog(string str) => clientNTR.lastlog.Contains(str);
 
         public void WriteBytes(byte[] data, uint offset)
         {
@@ -139,15 +110,6 @@ namespace PKHeX.Core.Injection
                 string splitlog = log.Substring(log.IndexOf(", pname: niji_loc") - 8, log.Length - log.IndexOf(", pname: niji_loc"));
                 clientNTR.PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
                 sh.write(0x3E14C0, BitConverter.GetBytes(0xE3A01000), clientNTR.PID);
-                Console.WriteLine("Connection Successful!");
-
-                /*
-                Program.helper.boxOff = 0x330D9838;
-                wcOff = 0x331397E4;
-                Program.helper.partyOff = 0x34195E10;
-                eggOff = 0x3313EDD8;
-                */
-
             }
             else if (log.Contains("momiji"))
             {
@@ -155,17 +117,9 @@ namespace PKHeX.Core.Injection
                 clientNTR.PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
                 sh.write(0x3F3424, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
                 sh.write(0x3F3428, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Moon // NFC ON: E3A01001 NFC OFF: E3A01000
-                Console.WriteLine("Connection Successful!");
-
-                /*
-                Program.helper.boxOff = 0x33015AB0;
-                wcOff = 0x33075BF4;
-                Program.helper.partyOff = 0x33F7FA44;
-                eggOff = 0x3307B1E8;
-                */
             }
-
         }
+
         static void handleDataReady(object sender, DataReadyEventArgs e)
         { // We move data processing to a separate thread. This way even if processing takes a long time, the netcode doesn't hang.
             DataReadyWaiting args;

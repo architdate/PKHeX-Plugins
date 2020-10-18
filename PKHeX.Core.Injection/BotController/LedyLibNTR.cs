@@ -23,7 +23,22 @@ namespace PKHeX.Core.Injection
             this.fileName = null;
             this.isCallback = true;
         }
-    };
+    }
+
+    public class DataReadyWaiting
+    {
+        public byte[] data;
+        public object arguments;
+        public delegate void DataHandler(object data_arguments);
+        public DataHandler handler;
+
+        public DataReadyWaiting(byte[] data_, DataHandler handler_, object arguments_)
+        {
+            data = data_;
+            handler = handler_;
+            arguments = arguments_;
+        }
+    }
 
     public class DataReadyEventArgs : EventArgs
     {
@@ -61,7 +76,7 @@ namespace PKHeX.Core.Injection
         public event EventHandler<DataReadyEventArgs> DataReady;
         public event EventHandler Connected;
         public event EventHandler<InfoReadyEventArgs> InfoReady;
-        UInt32 lastReadMemSeq;
+        uint lastReadMemSeq;
         public Dictionary<uint, DataReadyWaiting> waitingForData = new Dictionary<uint, DataReadyWaiting>();
 
         public delegate void LogDelegate(string l);
@@ -97,7 +112,7 @@ namespace PKHeX.Core.Injection
 
         public delegate void logHandler(string msg);
         public event logHandler onLogArrival;
-        UInt32 currentSeq;
+        uint currentSeq;
         public Dictionary<UInt32, readMemRequest> pendingReadMem = new Dictionary<UInt32, readMemRequest>();
         public volatile int progress = -1;
 
@@ -148,7 +163,7 @@ namespace PKHeX.Core.Injection
         void packetRecvThreadStart()
         {
             byte[] buf = new byte[84];
-            UInt32[] args = new UInt32[16];
+            uint[] args = new uint[16];
             int ret;
             NetworkStream stream = netStream;
 
@@ -162,20 +177,20 @@ namespace PKHeX.Core.Injection
                         break;
                     }
                     int t = 0;
-                    UInt32 magic = BitConverter.ToUInt32(buf, t);
+                    uint magic = BitConverter.ToUInt32(buf, t);
                     t += 4;
-                    UInt32 seq = BitConverter.ToUInt32(buf, t);
+                    uint seq = BitConverter.ToUInt32(buf, t);
                     t += 4;
-                    UInt32 type = BitConverter.ToUInt32(buf, t);
+                    uint type = BitConverter.ToUInt32(buf, t);
                     t += 4;
-                    UInt32 cmd = BitConverter.ToUInt32(buf, t);
+                    uint cmd = BitConverter.ToUInt32(buf, t);
                     for (int i = 0; i < args.Length; i++)
                     {
                         t += 4;
                         args[i] = BitConverter.ToUInt32(buf, t);
                     }
                     t += 4;
-                    UInt32 dataLen = BitConverter.ToUInt32(buf, t);
+                    uint dataLen = BitConverter.ToUInt32(buf, t);
                     if (cmd != 0)
                     {
                         log(String.Format("packet: cmd = {0}, dataLen = {1}", cmd, dataLen));
@@ -231,7 +246,7 @@ namespace PKHeX.Core.Injection
             return r;
         }
 
-        void handleReadMem(UInt32 seq, byte[] dataBuf)
+        void handleReadMem(uint seq, byte[] dataBuf)
         {
             readMemRequest requestDetails;
             if (!pendingReadMem.TryGetValue(seq, out requestDetails))
@@ -265,7 +280,7 @@ namespace PKHeX.Core.Injection
 
         }
 
-        void handlePacket(UInt32 cmd, UInt32 seq, byte[] dataBuf)
+        void handlePacket(uint cmd, uint seq, byte[] dataBuf)
         {
             if (cmd == 9)
             {
@@ -278,7 +293,6 @@ namespace PKHeX.Core.Injection
             host = serverHost;
             port = serverPort;
         }
-
 
         public void connectToServer()
         {
@@ -334,7 +348,7 @@ namespace PKHeX.Core.Injection
             isConnected = false;
         }
 
-        public void sendPacket(UInt32 type, UInt32 cmd, UInt32[] args, UInt32 dataLen)
+        public void sendPacket(uint type, uint cmd, uint[] args, uint dataLen)
         {
             int t = 0;
             currentSeq += 1000;
@@ -349,7 +363,7 @@ namespace PKHeX.Core.Injection
             for (int i = 0; i < 16; i++)
             {
                 t += 4;
-                UInt32 arg = 0;
+                uint arg = 0;
                 if (args != null)
                 {
                     arg = args[i];
@@ -361,39 +375,22 @@ namespace PKHeX.Core.Injection
             netStream.Write(buf, 0, buf.Length);
         }
 
-        public void sendReadMemPacket(UInt32 addr, UInt32 size, UInt32 pid, string fileName)
-        {
-            sendEmptyPacket(9, pid, addr, size);
-            pendingReadMem.Add(currentSeq, new readMemRequest(fileName));
-        }
-
-        public uint sendReadMemPacket(UInt32 addr, UInt32 size, UInt32 pid)
+        public uint sendReadMemPacket(uint addr, uint size, uint pid)
         {
             sendEmptyPacket(9, pid, addr, size);
             pendingReadMem.Add(currentSeq, new readMemRequest());
             return currentSeq;
         }
 
-        public void sendWriteMemPacket(UInt32 addr, UInt32 pid, byte[] buf)
+        public void sendWriteMemPacket(uint addr, uint pid, byte[] buf)
         {
-            UInt32[] args = new UInt32[16];
+            uint[] args = new uint[16];
             args[0] = pid;
             args[1] = addr;
             args[2] = (UInt32)buf.Length;
             sendPacket(1, 10, args, args[2]);
             netStream.Write(buf, 0, buf.Length);
         }
-
-        public void sendWriteMemPacketByte(UInt32 addr, UInt32 pid, byte buf)
-        {
-            UInt32[] args = new UInt32[16];
-            args[0] = pid;
-            args[1] = addr;
-            args[2] = (UInt32)1;
-            sendPacket(1, 10, args, args[2]);
-            netStream.WriteByte(buf);
-        }
-
 
         public void sendHeartbeatPacket()
         {
@@ -411,34 +408,14 @@ namespace PKHeX.Core.Injection
 
         }
 
-        public void sendHelloPacket()
+        public void sendEmptyPacket(uint cmd, uint arg0 = 0, uint arg1 = 0, uint arg2 = 0)
         {
-            sendPacket(0, 3, null, 0);
-        }
-
-        public void sendReloadPacket()
-        {
-            sendPacket(0, 4, null, 0);
-        }
-
-        public void sendEmptyPacket(UInt32 cmd, UInt32 arg0 = 0, UInt32 arg1 = 0, UInt32 arg2 = 0)
-        {
-            UInt32[] args = new UInt32[16];
+            uint[] args = new uint[16];
 
             args[0] = arg0;
             args[1] = arg1;
             args[2] = arg2;
             sendPacket(0, cmd, args, 0);
-        }
-
-
-        public void sendSaveFilePacket(string fileName, byte[] fileData)
-        {
-            byte[] fileNameBuf = new byte[0x200];
-            Encoding.UTF8.GetBytes(fileName).CopyTo(fileNameBuf, 0);
-            sendPacket(1, 1, null, (UInt32)(fileNameBuf.Length + fileData.Length));
-            netStream.Write(fileNameBuf, 0, fileNameBuf.Length);
-            netStream.Write(fileData, 0, fileData.Length);
         }
 
         public void log(String msg)
@@ -473,100 +450,15 @@ namespace PKHeX.Core.Injection
             this._ntrClient = ntrClient;
         }
 
-        public void bpadd(uint addr, string type = "code.once")
-        {
-            uint num = 0;
-            switch (type)
-            {
-                case "code":
-                    num = 1;
-                    break;
-                case "code.once":
-                    num = 2;
-                    break;
-            }
-
-            if (num != 0)
-            {
-                _ntrClient.sendEmptyPacket(11, num, addr, 1);
-            }
-        }
-
-        public void remoteplay()
-        {
-            _ntrClient.sendEmptyPacket(901);
-            _ntrClient.log("Will be disconnected in 10 seconds to enhance performance.");
-            onAutoDisconnect?.Invoke();
-        }
-
-        public void bpdis(uint id)
-        {
-            _ntrClient.sendEmptyPacket(11, id, 0, 3);
-        }
-
-        public void bpena(uint id)
-        {
-            _ntrClient.sendEmptyPacket(11, id, 0, 2);
-        }
-
-        public void resume()
-        {
-            _ntrClient.sendEmptyPacket(11, 0, 0, 4);
-        }
-
         public void connect(string host, int port)
         {
             _ntrClient.setServer(host, port);
             _ntrClient.connectToServer();
         }
 
-        public void reload()
-        {
-            _ntrClient.sendReloadPacket();
-        }
-
         public void listprocess()
         {
             _ntrClient.sendEmptyPacket(5);
-        }
-
-        public void listthread(int pid)
-        {
-            _ntrClient.sendEmptyPacket(7, (uint)pid);
-        }
-
-        public void attachprocess(int pid, uint patchAddr = 0)
-        {
-            _ntrClient.sendEmptyPacket(6, (uint)pid, patchAddr);
-        }
-
-        public void queryhandle(int pid)
-        {
-            _ntrClient.sendEmptyPacket(12, (uint)pid);
-        }
-
-        public void memlayout(int pid)
-        {
-            _ntrClient.sendEmptyPacket(8, (uint)pid);
-        }
-
-        public void disconnect()
-        {
-            _ntrClient.disconnect();
-        }
-
-        public void sayhello()
-        {
-            _ntrClient.sendHelloPacket();
-        }
-
-        public void data(uint addr, uint size = 0x100, int pid = -1, string filename = null)
-        {
-            if (filename == null && size > 1024)
-            {
-                size = 1024;
-            }
-            _ntrClient.sendReadMemPacket(addr, size, (uint)pid, filename);
         }
 
         public uint data(uint addr, uint size = 0x100, int pid = -1)
@@ -577,20 +469,6 @@ namespace PKHeX.Core.Injection
         public void write(uint addr, byte[] buf, int pid = -1)
         {
             _ntrClient.sendWriteMemPacket(addr, (uint)pid, buf);
-        }
-
-        public void writebyte(uint addr, byte buf, int pid = -1)
-        {
-            _ntrClient.sendWriteMemPacketByte(addr, (uint)pid, buf);
-        }
-
-        public void sendfile(String localPath, String remotePath)
-        {
-            FileStream fs = new FileStream(localPath, FileMode.Open);
-            byte[] buf = new byte[fs.Length];
-            fs.Read(buf, 0, buf.Length);
-            fs.Close();
-            _ntrClient.sendSaveFilePacket(remotePath, buf);
         }
     }
 }
