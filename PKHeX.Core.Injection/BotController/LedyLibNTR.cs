@@ -420,7 +420,6 @@ namespace PKHeX.Core.Injection
 
         public void log(String msg)
         {
-            Console.WriteLine(msg);
             if (onLogArrival != null)
             {
                 onLogArrival.Invoke(msg);
@@ -441,34 +440,18 @@ namespace PKHeX.Core.Injection
     {
         private readonly NTR _ntrClient;
 
-        public delegate void autoDisconnect();
-
-        public event autoDisconnect onAutoDisconnect;
-
         public ScriptHelper(NTR ntrClient)
         {
-            this._ntrClient = ntrClient;
+            _ntrClient = ntrClient;
         }
+        public void listprocess() => _ntrClient.sendEmptyPacket(5);
+        public uint data(uint addr, uint size = 0x100, int pid = -1) => _ntrClient.sendReadMemPacket(addr, size, (uint)pid);
+        public void write(uint addr, byte[] buf, int pid = -1) => _ntrClient.sendWriteMemPacket(addr, (uint)pid, buf);
 
         public void connect(string host, int port)
         {
             _ntrClient.setServer(host, port);
             _ntrClient.connectToServer();
-        }
-
-        public void listprocess()
-        {
-            _ntrClient.sendEmptyPacket(5);
-        }
-
-        public uint data(uint addr, uint size = 0x100, int pid = -1)
-        {
-            return _ntrClient.sendReadMemPacket(addr, size, (uint)pid);
-        }
-
-        public void write(uint addr, byte[] buf, int pid = -1)
-        {
-            _ntrClient.sendWriteMemPacket(addr, (uint)pid, buf);
         }
     }
 }
