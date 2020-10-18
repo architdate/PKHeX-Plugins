@@ -11,7 +11,6 @@ namespace PKHeX.Core.Injection
         private int timeout = 10;
 
         private static NTR clientNTR = new NTR();
-        private ScriptHelper sh = new ScriptHelper(clientNTR);
 
         public bool Connected;
 
@@ -24,7 +23,7 @@ namespace PKHeX.Core.Injection
             clientNTR.Connected += connectCheck;
             clientNTR.InfoReady += getGame;
             clientNTR.delLastLog = clientNTR.lastLog;
-            sh.connect(IP, Port);
+            clientNTR.connect(IP, Port);
             if (clientNTR.isConnected)
                 Connected = true;
         }
@@ -60,7 +59,7 @@ namespace PKHeX.Core.Injection
                 {
                     Thread.Sleep(10);
                 }
-                clientNTR.addwaitingForData(sh.data(offset, (uint)length, clientNTR.PID), myArgs);
+                clientNTR.addwaitingForData(clientNTR.data(offset, (uint)length, clientNTR.PID), myArgs);
 
                 int readcount = 0;
                 for (readcount = 0; readcount < timeout * 100; readcount++)
@@ -88,7 +87,7 @@ namespace PKHeX.Core.Injection
                 {
                     Thread.Sleep(10);
                 }
-                sh.write(offset, data, clientNTR.PID);
+                clientNTR.write(offset, data, clientNTR.PID);
                 int waittimeout;
                 for (waittimeout = 0; waittimeout < timeout * 100; waittimeout++)
                 {
@@ -109,14 +108,14 @@ namespace PKHeX.Core.Injection
             {
                 string splitlog = log.Substring(log.IndexOf(", pname: niji_loc") - 8, log.Length - log.IndexOf(", pname: niji_loc"));
                 clientNTR.PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
-                sh.write(0x3E14C0, BitConverter.GetBytes(0xE3A01000), clientNTR.PID);
+                clientNTR.write(0x3E14C0, BitConverter.GetBytes(0xE3A01000), clientNTR.PID);
             }
             else if (log.Contains("momiji"))
             {
                 string splitlog = log.Substring(log.IndexOf(", pname:   momiji") - 8, log.Length - log.IndexOf(", pname:   momiji"));
                 clientNTR.PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
-                sh.write(0x3F3424, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
-                sh.write(0x3F3428, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Moon // NFC ON: E3A01001 NFC OFF: E3A01000
+                clientNTR.write(0x3F3424, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
+                clientNTR.write(0x3F3428, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Moon // NFC ON: E3A01001 NFC OFF: E3A01000
             }
         }
 
@@ -134,7 +133,7 @@ namespace PKHeX.Core.Injection
 
         public void connectCheck(object sender, EventArgs e)
         {
-            sh.listprocess();
+            clientNTR.listprocess();
             clientNTR.isConnected = true;
         }
     }

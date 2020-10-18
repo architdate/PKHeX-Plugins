@@ -116,6 +116,16 @@ namespace PKHeX.Core.Injection
         public Dictionary<UInt32, readMemRequest> pendingReadMem = new Dictionary<UInt32, readMemRequest>();
         public volatile int progress = -1;
 
+        public void listprocess() => sendEmptyPacket(5);
+        public uint data(uint addr, uint size = 0x100, int pid = -1) => sendReadMemPacket(addr, size, (uint)pid);
+        public void write(uint addr, byte[] buf, int pid = -1) => sendWriteMemPacket(addr, (uint)pid, buf);
+
+        public void connect(string host, int port)
+        {
+            setServer(host, port);
+            connectToServer();
+        }
+
 
         int readNetworkStream(NetworkStream stream, byte[] buf, int length)
         {
@@ -433,25 +443,6 @@ namespace PKHeX.Core.Injection
             {
                 Console.WriteLine(ex);
             }
-        }
-    }
-
-    public class ScriptHelper
-    {
-        private readonly NTR _ntrClient;
-
-        public ScriptHelper(NTR ntrClient)
-        {
-            _ntrClient = ntrClient;
-        }
-        public void listprocess() => _ntrClient.sendEmptyPacket(5);
-        public uint data(uint addr, uint size = 0x100, int pid = -1) => _ntrClient.sendReadMemPacket(addr, size, (uint)pid);
-        public void write(uint addr, byte[] buf, int pid = -1) => _ntrClient.sendWriteMemPacket(addr, (uint)pid, buf);
-
-        public void connect(string host, int port)
-        {
-            _ntrClient.setServer(host, port);
-            _ntrClient.connectToServer();
         }
     }
 }
