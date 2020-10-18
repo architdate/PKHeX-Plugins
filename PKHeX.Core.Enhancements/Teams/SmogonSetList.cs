@@ -99,7 +99,7 @@ namespace PKHeX.Core.Enhancements
                 var tmp = split2[0];
                 SetConfig.Add(tmp);
 
-                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName, shiny, level, name.Contains("G-Max"));
+                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName, shiny, level, name.Contains("G-Max") || name.Contains("Gigantamax"));
                 SetText.Add(morphed);
 
                 var converted = new ShowdownSet(morphed);
