@@ -64,9 +64,8 @@ steps:
       xcopy ..\..\..\AutoLegalityMod\bin\Release\net46\PKHeX.Core.Enhancements.dll .\
       xcopy ..\..\..\AutoLegalityMod\bin\Release\net46\PKHeX.Core.Injection.dll .\
       xcopy ..\..\..\AutoLegalityMod\bin\Release\net46\PKHeX.Core.dll .\
-      xcopy ..\..\..\AutoLegalityMod\bin\Release\net46\NtrSharp.dll .\
       xcopy ..\..\..\AutoLegalityMod\bin\Release\net46\LibUsbDotNet.LibUsbDotNet.dll .\
-      ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:$(Agent.BuildDirectory)\s\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll NtrSharp.dll LibUsbDotNet.LibUsbDotNet.dll PKHeX.Core.Enhancements.dll PKHeX.Core.Injection.dll
+      ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:$(Agent.BuildDirectory)\s\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll LibUsbDotNet.LibUsbDotNet.dll PKHeX.Core.Enhancements.dll PKHeX.Core.Injection.dll
       ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:$(Agent.BuildDirectory)\s\bin\QRPlugins.dll QRPlugins.dll PKHeX.Core.AutoMod.dll BouncyCastle.CryptoExt.dll QRCoder.dll zxing.dll zxing.presentation.dll
 
 - task: Bash@3
