@@ -71,7 +71,6 @@ namespace PKHeX.Core.Enhancements
             for (int i = 1; i < split1.Length; i++)
             {
                 var shiny = split1[i - 1].Contains("\"shiny\":true");
-                var setSpecies = split1[i-1].Substring(split1[i - 1].LastIndexOf("\"pokemon\":\"", StringComparison.Ordinal) + "\"pokemon\":\"".Length).Split('\"')[0];
                 if (split1[i - 1].Contains("\"format\":\""))
                 {
                     format = split1[i - 1]
@@ -88,6 +87,7 @@ namespace PKHeX.Core.Enhancements
                     continue;
                 var name = split1[i - 1].Substring(split1[i - 1].LastIndexOf("\"name\":\"", StringComparison.Ordinal) +
                                                    "\"name\":\"".Length).Split('\"')[0];
+                var setSpecies = split1[i - 1].Substring(split1[i - 1].LastIndexOf("\"pokemon\":\"", StringComparison.Ordinal) + "\"pokemon\":\"".Length).Split('\"')[0];
                 SetFormat.Add(format);
                 SetName.Add(name);
                 if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
