@@ -44,7 +44,7 @@ namespace PKHeX.Core.Injection
         private void HandleMemoryRead(object argsObj)
         {
             DataReadyWaiting args = (DataReadyWaiting)argsObj;
-            _lastMemoryRead = args.data;
+            _lastMemoryRead = args.Data;
         }
 
         public byte[] ReadBytes(uint offset, int length)
@@ -103,7 +103,7 @@ namespace PKHeX.Core.Injection
         {
             var args = (InfoReadyEventArgs)e;
 
-            string log = args.info;
+            string log = args.Info;
             if (log.Contains("niji_loc"))
             {
                 string splitlog = log.Substring(log.IndexOf(", pname: niji_loc") - 8, log.Length - log.IndexOf(", pname: niji_loc"));
@@ -122,12 +122,12 @@ namespace PKHeX.Core.Injection
         static void handleDataReady(object sender, DataReadyEventArgs e)
         { // We move data processing to a separate thread. This way even if processing takes a long time, the netcode doesn't hang.
             DataReadyWaiting args;
-            if (clientNTR.WaitingForData.TryGetValue(e.seq, out args))
+            if (clientNTR.WaitingForData.TryGetValue(e.Seq, out args))
             {
-                Array.Copy(e.data, args.data, Math.Min(e.data.Length, args.data.Length));
-                Thread t = new Thread(new ParameterizedThreadStart(args.handler));
+                Array.Copy(e.Data, args.Data, Math.Min(e.Data.Length, args.Data.Length));
+                Thread t = new Thread(new ParameterizedThreadStart(args.Handler));
                 t.Start(args);
-                clientNTR.WaitingForData.Remove(e.seq);
+                clientNTR.WaitingForData.Remove(e.Seq);
             }
         }
 
