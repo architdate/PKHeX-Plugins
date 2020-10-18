@@ -10,54 +10,54 @@ namespace PKHeX.Core.Injection
 {
     public class ReadMemRequest
     {
-        public readonly string fileName;
-        public readonly bool isCallback;
+        public readonly string FileName;
+        public readonly bool IsCallback;
 
         public ReadMemRequest()
         {
-            fileName = null;
-            isCallback = true;
+            FileName = null;
+            IsCallback = true;
         }
     }
 
     public class DataReadyWaiting
     {
-        public readonly byte[] data;
-        public object arguments;
-        public delegate void DataHandler(object data_arguments);
-        public readonly DataHandler handler;
+        public readonly byte[] Data;
+        public object Arguments;
+        public delegate void DataHandler(object dataArguments);
+        public readonly DataHandler Handler;
 
-        public DataReadyWaiting(byte[] data_, DataHandler handler_, object arguments_)
+        public DataReadyWaiting(byte[] data, DataHandler handler, object arguments)
         {
-            data = data_;
-            handler = handler_;
-            arguments = arguments_;
+            Data = data;
+            Handler = handler;
+            Arguments = arguments;
         }
     }
 
     public class DataReadyEventArgs : EventArgs
     {
-        public readonly uint seq;
-        public readonly byte[] data;
+        public readonly uint Seq;
+        public readonly byte[] Data;
 
-        public DataReadyEventArgs(uint seq_, byte[] data_)
+        public DataReadyEventArgs(uint seq, byte[] data)
         {
-            seq = seq_;
-            data = data_;
+            Seq = seq;
+            Data = data;
         }
     }
 
     public class InfoReadyEventArgs : EventArgs
     {
-        public readonly string info;
+        public readonly string Info;
 
-        public InfoReadyEventArgs(string info_)
+        public InfoReadyEventArgs(string info)
         {
-            info = info_;
+            Info = info;
         }
     }
 
-    public class NTR
+    public sealed class NTR
     {
         private string _host;
         public bool IsConnected;
@@ -80,9 +80,9 @@ namespace PKHeX.Core.Injection
         public int PID = -1;
 
         public void lastLog(string l) => Lastlog = l;
-        protected virtual void OnDataReady(DataReadyEventArgs e) => DataReady?.Invoke(this, e);
-        protected virtual void OnConnected(EventArgs e) => Connected?.Invoke(this, e);
-        protected virtual void OnInfoReady(InfoReadyEventArgs e) => InfoReady?.Invoke(this, e);
+        private void OnDataReady(DataReadyEventArgs e) => DataReady?.Invoke(this, e);
+        private void OnConnected(EventArgs e) => Connected?.Invoke(this, e);
+        private void OnInfoReady(InfoReadyEventArgs e) => InfoReady?.Invoke(this, e);
         public void AddWaitingForData(uint newkey, DataReadyWaiting newvalue) => WaitingForData.Add(newkey, newvalue);
 
         public delegate void LogHandler(string msg);
@@ -221,16 +221,16 @@ namespace PKHeX.Core.Injection
             }
             pendingReadMem.Remove(seq);
 
-            if (requestDetails.fileName != null)
+            if (requestDetails.FileName != null)
             {
-                string fileName = requestDetails.fileName;
+                string fileName = requestDetails.FileName;
                 FileStream fs = new FileStream(fileName, FileMode.Create);
                 fs.Write(dataBuf, 0, dataBuf.Length);
                 fs.Close();
                 Log("dump saved into " + fileName + " successfully");
                 return;
             }
-            else if (requestDetails.isCallback)
+            else if (requestDetails.IsCallback)
             {
                 //Copies the data, truncates if necessary
                 var dataBufCopy = new byte[dataBuf.Length];
