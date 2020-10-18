@@ -76,7 +76,7 @@ This project would not be as amazing without the help of the following people wh
 - [@Bappsack](https://github.com/Bappsack) for his help on Discord in voice chats!
 - [@chenzw95](https://github.com/chenzw95) for help with integration.
 - [@BernardoGiordano](https://github.com/BernardoGiordano) for many ideas on improving speed.
-- [@olliz0r](https://github.com/olliz0r) for developing and maintaining `sys-botbase` which is necessary for LiveHeX to work.
+- [@olliz0r](https://github.com/olliz0r) for developing and maintaining `sys-botbase` as well which is necessary for LiveHeX to work and for [LedyLib](https://github.com/olliz0r/Ledybot/tree/master/LedyLib) from which a lot of the NTR processing code is liberally referenced.
 - [@fishguy6564](https://github.com/fishguy6564) for creating `USB-Botbase` (by extending sys-botbase).
 - [FlatIcon](https://www.flaticon.com/) for their icons. Author credits (Those Icons, Pixel perfect).
 - [Project Pokémon](https://github.com/projectpokemon/) for their Mystery Gift Event Gallery.
