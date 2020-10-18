@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 
 namespace PKHeX.Core.Injection
@@ -103,17 +104,20 @@ namespace PKHeX.Core.Injection
         {
             var args = (InfoReadyEventArgs)e;
 
+            var pnamestr = new []{ "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc", "momiji", "momiji" };
+            string pname;
             string log = args.Info;
+            if (null == (pname = pnamestr.FirstOrDefault(log.Contains)))
+                return;
+            pname = ", pname:" + pname.PadLeft(9);
+            string pidaddr = log.Substring(log.IndexOf(pname, StringComparison.Ordinal) - 10, 10);
+            clientNTR.PID = Convert.ToInt32(pidaddr, 16);
+
             if (log.Contains("niji_loc"))
-            {
-                string splitlog = log.Substring(log.IndexOf(", pname: niji_loc") - 8, log.Length - log.IndexOf(", pname: niji_loc"));
-                clientNTR.PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
                 clientNTR.Write(0x3E14C0, BitConverter.GetBytes(0xE3A01000), clientNTR.PID);
-            }
+            
             else if (log.Contains("momiji"))
             {
-                string splitlog = log.Substring(log.IndexOf(", pname:   momiji") - 8, log.Length - log.IndexOf(", pname:   momiji"));
-                clientNTR.PID = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
                 clientNTR.Write(0x3F3424, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
                 clientNTR.Write(0x3F3428, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Moon // NFC ON: E3A01001 NFC OFF: E3A01000
             }
