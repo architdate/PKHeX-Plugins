@@ -132,7 +132,7 @@ namespace AutoModPlugins
                         break;
                     }
 
-                    if (Remote.Bot.Connected)
+                    if (!ConnectionEstablished)
                         Remote.Bot.com.Disconnect();
                 }
 

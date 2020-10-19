@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Diagnostics;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace AutoModPlugins.GUI
 {
@@ -47,11 +50,12 @@ namespace AutoModPlugins.GUI
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(334, 328);
             this.Controls.Add(this.PG_Settings);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = global::AutoModPlugins.Properties.Resources.icon;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(350, 367);
             this.Name = "ALMSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Auto Legality Plugin Settings";
