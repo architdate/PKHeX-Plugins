@@ -87,6 +87,7 @@ namespace PKHeX.Core.Enhancements
                     continue;
                 var name = split1[i - 1].Substring(split1[i - 1].LastIndexOf("\"name\":\"", StringComparison.Ordinal) +
                                                    "\"name\":\"".Length).Split('\"')[0];
+                var setSpecies = split1[i - 1].Substring(split1[i - 1].LastIndexOf("\"pokemon\":\"", StringComparison.Ordinal) + "\"pokemon\":\"".Length).Split('\"')[0];
                 SetFormat.Add(format);
                 SetName.Add(name);
                 if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
@@ -99,7 +100,7 @@ namespace PKHeX.Core.Enhancements
                 var tmp = split2[0];
                 SetConfig.Add(tmp);
 
-                var morphed = ConvertSetToShowdown(tmp, ShowdownSpeciesName, shiny, level);
+                var morphed = ConvertSetToShowdown(tmp, setSpecies, shiny, level);
                 SetText.Add(morphed);
 
                 var converted = new ShowdownSet(morphed);
