@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 
 namespace PKHeX.Core.Injection
 {
@@ -8,11 +6,9 @@ namespace PKHeX.Core.Injection
     {
         private string IP = "192.168.1.106";
         private int Port = 8000;
-
-        private int timeout = 10;
-
         private static readonly NTR clientNTR = new NTR();
 
+        private int timeout = 10;
         private bool Connected;
 
         private readonly object _sync = new object();
@@ -20,10 +16,6 @@ namespace PKHeX.Core.Injection
 
         public void Connect()
         {
-            clientNTR.DataReady += handleDataReady;
-            clientNTR.Connected += ConnectCheck;
-            clientNTR.InfoReady += getGame;
-            clientNTR.DelLastLog = clientNTR.lastLog;
             clientNTR.Connect(IP, Port);
             if (clientNTR.IsConnected)
                 Connected = true;
@@ -98,47 +90,6 @@ namespace PKHeX.Core.Injection
                         break;
                 }
             }
-        }
-
-        private void getGame(object sender, EventArgs e)
-        {
-            var args = (InfoReadyEventArgs)e;
-
-            var pnamestr = new []{ "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc", "momiji", "momiji" };
-            string pname;
-            string log = args.Info;
-            if (null == (pname = pnamestr.FirstOrDefault(log.Contains)))
-                return;
-            pname = ", pname:" + pname.PadLeft(9);
-            string pidaddr = log.Substring(log.IndexOf(pname, StringComparison.Ordinal) - 10, 10);
-            clientNTR.PID = Convert.ToInt32(pidaddr, 16);
-
-            if (log.Contains("niji_loc"))
-                clientNTR.Write(0x3E14C0, BitConverter.GetBytes(0xE3A01000), clientNTR.PID);
-            
-            else if (log.Contains("momiji"))
-            {
-                clientNTR.Write(0x3F3424, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
-                clientNTR.Write(0x3F3428, BitConverter.GetBytes(0xE3A01000), clientNTR.PID); // Ultra Moon // NFC ON: E3A01001 NFC OFF: E3A01000
-            }
-        }
-
-        static void handleDataReady(object sender, DataReadyEventArgs e)
-        { // We move data processing to a separate thread. This way even if processing takes a long time, the netcode doesn't hang.
-            DataReadyWaiting args;
-            if (clientNTR.WaitingForData.TryGetValue(e.Seq, out args))
-            {
-                Array.Copy(e.Data, args.Data, Math.Min(e.Data.Length, args.Data.Length));
-                Thread t = new Thread(new ParameterizedThreadStart(args.Handler));
-                t.Start(args);
-                clientNTR.WaitingForData.Remove(e.Seq);
-            }
-        }
-
-        private static void ConnectCheck(object sender, EventArgs e)
-        {
-            clientNTR.ListProcess();
-            clientNTR.IsConnected = true;
         }
     }
 }

@@ -59,38 +59,48 @@ namespace PKHeX.Core.Injection
 
     public sealed class NTR
     {
-        private string _host;
+        private string _host = "192.168.1.106";
+        private int _port = 8000;
+
         public bool IsConnected;
-        private int _port;
-        private TcpClient _tcp;
+        private TcpClient? _tcp;
         private NetworkStream _netStream;
+
         private Thread _packetRecvThread;
         private Thread _heartbeatThread;
-        private readonly object _syncLock = new object();
         private int _heartbeatSendable;
+        private readonly object _syncLock = new object();
+
         public event EventHandler<DataReadyEventArgs> DataReady;
         public event EventHandler Connected;
         public event EventHandler<InfoReadyEventArgs> InfoReady;
-        public readonly Dictionary<uint, DataReadyWaiting> WaitingForData = new Dictionary<uint, DataReadyWaiting>();
 
-        public delegate void LogDelegate(string l);
-        public LogDelegate DelLastLog;
+        private readonly Dictionary<uint, DataReadyWaiting> _waitingForData = new Dictionary<uint, DataReadyWaiting>();
+        private readonly Dictionary<uint, ReadMemRequest> _pendingReadMem = new Dictionary<uint, ReadMemRequest>();
+
+        private delegate void LogDelegate(string l);
+        private readonly LogDelegate _delLastLog;
         public string Lastlog = "";
 
         public int PID = -1;
+        private uint _currentSeq;
 
-        public void lastLog(string l) => Lastlog = l;
+
+        public NTR()
+        {
+            DataReady += HandleDataReady;
+            Connected += ConnectCheck;
+            InfoReady += GetGame;
+            _delLastLog = LastLog;
+        }
+
+
+        private void LastLog(string l) => Lastlog = l;
         private void OnDataReady(DataReadyEventArgs e) => DataReady?.Invoke(this, e);
         private void OnConnected(EventArgs e) => Connected?.Invoke(this, e);
         private void OnInfoReady(InfoReadyEventArgs e) => InfoReady?.Invoke(this, e);
-        public void AddWaitingForData(uint newkey, DataReadyWaiting newvalue) => WaitingForData.Add(newkey, newvalue);
-
-        public delegate void LogHandler(string msg);
-        public event LogHandler OnLogArrival;
-        uint _currentSeq;
-        private readonly Dictionary<uint, ReadMemRequest> pendingReadMem = new Dictionary<uint, ReadMemRequest>();
-        private volatile int _progress = -1;
-
+        private static string ByteToHex(byte[] datBuf, int type) => datBuf.Aggregate("", (current, b) => current + (b.ToString("X2") + " "));
+        public void AddWaitingForData(uint newkey, DataReadyWaiting newvalue) => _waitingForData.Add(newkey, newvalue);
         public void ListProcess() => SendEmptyPacket(5);
         public uint Data(uint addr, uint size = 0x100, int pid = -1) => SendReadMemPacket(addr, size, (uint)pid);
         public void Write(uint addr, byte[] buf, int pid = -1) => SendWriteMemPacket(addr, (uint)pid, buf);
@@ -101,18 +111,11 @@ namespace PKHeX.Core.Injection
             ConnectToServer();
         }
 
-
         private int ReadNetworkStream(NetworkStream stream, byte[] buf, int length)
         {
             var index = 0;
-            var useProgress = length > 100000;
-
             do
             {
-                if (useProgress)
-                {
-                    _progress = (int)(((double)(index) / length) * 100);
-                }
                 var len = stream.Read(buf, index, length - index);
                 if (len == 0)
                 {
@@ -121,7 +124,6 @@ namespace PKHeX.Core.Injection
                 index += len;
             }
             while (index < length);
-            _progress = -1;
             return length;
         }
 
@@ -143,19 +145,18 @@ namespace PKHeX.Core.Injection
 
         private void PacketRecvThreadStart()
         {
-            byte[] buf = new byte[84];
-            uint[] args = new uint[16];
-            int ret;
+            var buf = new byte[84];
+            var args = new uint[16];
             var stream = _netStream;
 
             while (true)
             {
                 try
                 {
-                    ret = ReadNetworkStream(stream, buf, buf.Length);
+                    var ret = ReadNetworkStream(stream, buf, buf.Length);
                     if (ret == 0)
                         break;
-                    
+
                     var magic = BitConverter.ToUInt32(buf, 0);
                     var seq = BitConverter.ToUInt32(buf, 4);
                     var type = BitConverter.ToUInt32(buf, 8);
@@ -210,16 +211,14 @@ namespace PKHeX.Core.Injection
             Disconnect(false);
         }
 
-        private static string ByteToHex(byte[] datBuf, int type) => datBuf.Aggregate("", (current, b) => current + (b.ToString("X2") + " "));
-
         private void HandleReadMem(uint seq, byte[] dataBuf)
         {
-            if (!pendingReadMem.TryGetValue(seq, out var requestDetails))
+            if (!_pendingReadMem.TryGetValue(seq, out var requestDetails))
             {
                 Log("seq not in pending readmems, ignored");
                 return;
             }
-            pendingReadMem.Remove(seq);
+            _pendingReadMem.Remove(seq);
 
             if (requestDetails.FileName != null)
             {
@@ -259,9 +258,7 @@ namespace PKHeX.Core.Injection
         private void ConnectToServer()
         {
             if (_tcp != null)
-            {
                 Disconnect();
-            }
             try
             {
                 _tcp = new TcpClient();
@@ -324,14 +321,14 @@ namespace PKHeX.Core.Injection
                     arg = args[i];
                 BitConverter.GetBytes(arg).CopyTo(buf, t);
             }
-            BitConverter.GetBytes(dataLen).CopyTo(buf, t+4);
+            BitConverter.GetBytes(dataLen).CopyTo(buf, t + 4);
             _netStream.Write(buf, 0, buf.Length);
         }
 
         private uint SendReadMemPacket(uint addr, uint size, uint pid)
         {
             SendEmptyPacket(9, pid, addr, size);
-            pendingReadMem.Add(_currentSeq, new ReadMemRequest());
+            _pendingReadMem.Add(_currentSeq, new ReadMemRequest());
             return _currentSeq;
         }
 
@@ -373,15 +370,53 @@ namespace PKHeX.Core.Injection
 
         private void Log(string msg)
         {
-            OnLogArrival?.Invoke(msg);
             try
             {
-                DelLastLog(msg);
+                _delLastLog(msg);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
+        }
+
+        private void GetGame(object sender, InfoReadyEventArgs e)
+        {
+            var pnamestr = new[] { "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc", "momiji", "momiji" };
+            string pname;
+            string log = e.Info;
+            if (null == (pname = pnamestr.FirstOrDefault(log.Contains)))
+                return;
+            pname = ", pname:" + pname.PadLeft(9);
+            string pidaddr = log.Substring(log.IndexOf(pname, StringComparison.Ordinal) - 10, 10);
+            PID = Convert.ToInt32(pidaddr, 16);
+
+            if (log.Contains("niji_loc"))
+                Write(0x3E14C0, BitConverter.GetBytes(0xE3A01000), PID);
+
+            else if (log.Contains("momiji"))
+            {
+                Write(0x3F3424, BitConverter.GetBytes(0xE3A01000), PID); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
+                Write(0x3F3428, BitConverter.GetBytes(0xE3A01000), PID); // Ultra Moon // NFC ON: E3A01001 NFC OFF: E3A01000
+            }
+        }
+
+        private void HandleDataReady(object sender, DataReadyEventArgs e)
+        { // We move data processing to a separate thread. This way even if processing takes a long time, the netcode doesn't hang.
+            DataReadyWaiting args;
+            if (_waitingForData.TryGetValue(e.Seq, out args))
+            {
+                Array.Copy(e.Data, args.Data, Math.Min(e.Data.Length, args.Data.Length));
+                Thread t = new Thread(new ParameterizedThreadStart(args.Handler));
+                t.Start(args);
+                _waitingForData.Remove(e.Seq);
+            }
+        }
+
+        private void ConnectCheck(object sender, EventArgs e)
+        {
+            ListProcess();
+            IsConnected = true;
         }
     }
 }
