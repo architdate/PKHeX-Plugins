@@ -124,7 +124,7 @@ namespace AutoModPlugins
                     Remote.Bot.com.Connect();
 
                     var data = Remote.Bot.ReadSlot(1, 1);
-                    var pkm = PKMConverter.GetPKMfromBytes(data, prefer:SAV.SAV.Generation);
+                    var pkm = SAV.SAV.GetDecryptedPKM(data);
                     if (pkm?.ChecksumValid == true)
                     {
                         ConnectionEstablished = true;

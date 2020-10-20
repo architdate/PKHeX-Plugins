@@ -52,7 +52,7 @@
         public void ReadActiveSlot(int box, int slot)
         {
             var data = Bot.ReadSlot(box, slot);
-            var pkm = PKMConverter.GetPKMfromBytes(data, prefer:SAV.SAV.Generation);
+            var pkm = SAV.SAV.GetDecryptedPKM(data);
             if (pkm != null)
                 Editor.PopulateFields(pkm);
         }
@@ -60,7 +60,7 @@
         public bool ReadOffset(uint offset)
         {
             var data = Bot.ReadOffset(offset);
-            var pkm = PKMConverter.GetPKMfromBytes(data, prefer: SAV.SAV.Generation);
+            var pkm = SAV.SAV.GetDecryptedPKM(data);
 
             // Since data might not actually exist at the user-specified offset, double check that the pkm data is valid.
             if (pkm == null)
