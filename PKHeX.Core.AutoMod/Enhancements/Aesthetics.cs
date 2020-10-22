@@ -904,6 +904,11 @@ namespace PKHeX.Core.AutoMod
             { Kubfu,           White},
             { Urshifu,         Black },
             { Zarude,          Black },
+            { Regieleki,       Yellow },
+            { Regidrago,       Red },
+            { Glastrier,       White },
+            { Spectrier,       Black },
+            { Calyrex,         White },
         };
 
         public static Ball GetBallFromString(string ballstr)
