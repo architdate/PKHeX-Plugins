@@ -21,7 +21,10 @@ namespace PKHeX.Core.AutoMod
             800, 802, 807, 808, 809,
 
             // DLC (Isle of Armour)
-            079, 080, 891, 892, 893
+            079, 080, 891, 892, 893,
+
+            // DLC (Crown Tundra)
+            199, 894, 895, 896, 897, 898
         };
 
         internal static readonly HashSet<int> AlolanOriginForms = new HashSet<int>

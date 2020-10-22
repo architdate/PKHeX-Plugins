@@ -156,6 +156,9 @@ namespace PKHeX.Core.AutoMod
         /// <returns>if the encounter is valid or not</returns>
         private static bool IsEncounterValid(IBattleTemplate set, IEncounterable enc, bool isHidden, GameVersion destVer, out GameVersion ver)
         {
+            // Pokemon who are in games of generation >= 8 can change non HA to HA via a capsule and vice versa
+            isHidden = isHidden && destVer.GetGeneration() < 8;
+
             // initialize out vars (not calculating here to save time)
             ver = GameVersion.Any;
 
@@ -202,6 +205,8 @@ namespace PKHeX.Core.AutoMod
                 e.Location = SharedNest;
             if (enc is EncounterStatic8ND ed && ed.Location == 0)
                 ed.Location = SharedNest;
+            if (enc is EncounterStatic8NC ec && ec.Location == 0)
+                ec.Location = SharedNest;
             return enc;
         }
 
