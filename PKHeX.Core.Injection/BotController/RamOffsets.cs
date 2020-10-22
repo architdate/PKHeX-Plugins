@@ -54,6 +54,7 @@
                 LiveHeXVersion.LGPE_v102 => 0x533675B0,
                 LiveHeXVersion.SWSH_Orion => 0x4293D8B0,
                 LiveHeXVersion.SWSH_Rigel1 => 0x4506D890,
+                LiveHeXVersion.SWSH_Rigel2 => 0x4506D890,
                 LiveHeXVersion.UM_v12 => 0x33015AB0,
                 LiveHeXVersion.US_v12 => 0x33015AB0,
                 LiveHeXVersion.SM_v12 => 0x330D9838,
@@ -70,6 +71,7 @@
                 LiveHeXVersion.LGPE_v102 => 260,
                 LiveHeXVersion.SWSH_Orion => 344,
                 LiveHeXVersion.SWSH_Rigel1 => 344,
+                LiveHeXVersion.SWSH_Rigel2 => 344,
                 LiveHeXVersion.UM_v12 => 232,
                 LiveHeXVersion.US_v12 => 232,
                 LiveHeXVersion.SM_v12 => 232,
@@ -86,6 +88,7 @@
                 LiveHeXVersion.LGPE_v102 => 380,
                 LiveHeXVersion.SWSH_Orion => 0,
                 LiveHeXVersion.SWSH_Rigel1 => 0,
+                LiveHeXVersion.SWSH_Rigel2 => 0,
                 LiveHeXVersion.UM_v12 => 0,
                 LiveHeXVersion.US_v12 => 0,
                 LiveHeXVersion.SM_v12 => 0,
@@ -102,6 +105,7 @@
                 LiveHeXVersion.LGPE_v102 => 25,
                 LiveHeXVersion.SWSH_Orion => 30,
                 LiveHeXVersion.SWSH_Rigel1 => 30,
+                LiveHeXVersion.SWSH_Rigel2 => 30,
                 LiveHeXVersion.UM_v12 => 30,
                 LiveHeXVersion.US_v12 => 30,
                 LiveHeXVersion.SM_v12 => 30,
@@ -118,6 +122,7 @@
                 LiveHeXVersion.LGPE_v102 => 0x168,
                 LiveHeXVersion.SWSH_Orion => 0x110,
                 LiveHeXVersion.SWSH_Rigel1 => 0x110,
+                LiveHeXVersion.SWSH_Rigel2 => 0x110,
                 LiveHeXVersion.UM_v12 => 0xC0,
                 LiveHeXVersion.US_v12 => 0xC0,
                 LiveHeXVersion.SM_v12 => 0xC0,
@@ -134,6 +139,7 @@
                 LiveHeXVersion.LGPE_v102 => 0x53582030,
                 LiveHeXVersion.SWSH_Orion => 0x42935E48,
                 LiveHeXVersion.SWSH_Rigel1 => 0x45061108,
+                LiveHeXVersion.SWSH_Rigel2 => 0x45061108,
                 LiveHeXVersion.UM_v12 => 0x33012818,
                 LiveHeXVersion.US_v12 => 0x33012818,
                 LiveHeXVersion.SM_v12 => 0x330D67D0,
@@ -153,19 +159,6 @@
                 LiveHeXVersion.ORAS => true,
                 LiveHeXVersion.XY => true,
                 _ => false
-            };
-        }
-
-        public static uint NFCValue = 0xE3A01000;
-
-        public static uint NFCOffset(LiveHeXVersion lv)
-        {
-            return lv switch
-            {
-                LiveHeXVersion.UM_v12 => 0x3F3428,
-                LiveHeXVersion.US_v12 => 0x3F3424,
-                LiveHeXVersion.SM_v12 => 0x3E14C0,
-                _ => 0
             };
         }
 
