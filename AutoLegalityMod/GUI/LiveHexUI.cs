@@ -113,7 +113,7 @@ namespace AutoModPlugins
                 B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
                 groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
                 var ConnectionEstablished = false;
-                var validversions = RamOffsets.GetValidVersions(SAV.SAV);
+                var validversions = RamOffsets.GetValidVersions(SAV.SAV).Reverse().ToArray();
                 var currver = validversions[0];
                 foreach (var version in validversions)
                 {
