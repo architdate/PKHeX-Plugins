@@ -165,7 +165,8 @@ namespace PKHeX.Core.AutoMod
             // Don't process if encounter min level is higher than requested level
             if (enc.LevelMin > set.Level)
             {
-                if (!(enc is EncounterStatic8N))
+                var isRaid = enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U;
+                if (!isRaid)
                     return false;
             }
 
@@ -201,12 +202,15 @@ namespace PKHeX.Core.AutoMod
         private static IEncounterable SanityCheckEncounters(IEncounterable enc)
         {
             const int SharedNest = 162; // Shared Nest for online encounter
+            const int MaxLair = 244; // Dynamax Adventures
             if (enc is EncounterStatic8N e && e.Location == 0)
                 e.Location = SharedNest;
             if (enc is EncounterStatic8ND ed && ed.Location == 0)
                 ed.Location = SharedNest;
             if (enc is EncounterStatic8NC ec && ec.Location == 0)
                 ec.Location = SharedNest;
+            if (enc is EncounterStatic8U eu && eu.Location == 0)
+                eu.Location = MaxLair;
             return enc;
         }
 

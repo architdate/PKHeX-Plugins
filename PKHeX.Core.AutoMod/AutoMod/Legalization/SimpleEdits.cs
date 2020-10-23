@@ -73,7 +73,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">Encounter details</param>
         public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
         {
-            if ((pk.Species == 658 && pk.AltForm == 1) || enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND) // Ash-Greninja or raids
+            var isRaid = enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U;
+            if ((pk.Species == 658 && pk.AltForm == 1) || isRaid) // Ash-Greninja or raids
                 return;
             int gen = pk.GenNumber;
             if (2 < gen && gen < 6)
@@ -117,7 +118,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
-            if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND)
+            if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U)
             {
                 pk.SetRaidShiny(shiny);
                 return;
@@ -216,7 +217,7 @@ namespace PKHeX.Core.AutoMod
                 if (isHOMEGift) return;
             }
 
-            if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND)
+            if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U)
             {
                 if (APILegality.UseXOROSHIRO)
                     return;
