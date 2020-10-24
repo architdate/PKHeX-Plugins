@@ -632,6 +632,10 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
+            if (shiny && enc is EncounterStatic8U)
+                // Dynamax Adventure shinies are always XOR 1
+                pk.PID ^= (uint)(((pk.TID ^ pk.SID ^ (pk.PID & 0xFFFF) ^ 1) << 16) | (pk.PID & 0xFFFF));
+
             if (shiny || !UseXOROSHIRO)
                 return;
 
