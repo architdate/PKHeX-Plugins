@@ -120,7 +120,7 @@ namespace PKHeX.Core.AutoMod
 
             if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U)
             {
-                pk.SetRaidShiny(shiny);
+                pk.SetRaidShiny(shiny, enc);
                 return;
             }
 
@@ -181,7 +181,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetShinySID(); // no mg = no lock
         }
 
-        public static void SetRaidShiny(this PKM pk, Shiny shiny)
+        public static void SetRaidShiny(this PKM pk, Shiny shiny, IEncounterable enc)
         {
             if (pk.IsShiny)
                 return;
@@ -192,6 +192,8 @@ namespace PKHeX.Core.AutoMod
                 if (pk.Format <= 7)
                     return;
                 var xor = pk.ShinyXor;
+                if (enc is EncounterStatic8U && xor != 1)
+                    continue;
                 if ((shiny == Shiny.AlwaysStar && xor == 1) || (shiny == Shiny.AlwaysSquare && xor == 0) || ((shiny == Shiny.Always || shiny == Shiny.Random) && xor < 2)) // allow xor1 and xor0 for den shinies
                     return;
             }
