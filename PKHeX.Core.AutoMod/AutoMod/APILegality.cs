@@ -537,7 +537,7 @@ namespace PKHeX.Core.AutoMod
             }
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
-            if (li.EncounterMatch is EncounterStatic8N || li.EncounterMatch is EncounterStatic8NC || li.EncounterMatch is EncounterStatic8ND)
+            if (li.EncounterMatch is EncounterStatic8N || li.EncounterMatch is EncounterStatic8NC || li.EncounterMatch is EncounterStatic8ND || li.EncounterMatch is EncounterStatic8U)
             {
                 var e = (EncounterStatic)li.EncounterMatch;
                 if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2))
@@ -549,6 +549,7 @@ namespace PKHeX.Core.AutoMod
                     case EncounterStatic8NC c: FindNestPIDIV(pk8, c, set.Shiny); break;
                     case EncounterStatic8ND c: FindNestPIDIV(pk8, c, set.Shiny); break;
                     case EncounterStatic8N c: FindNestPIDIV(pk8, c, set.Shiny); break;
+                    case EncounterStatic8U c: FindNestPIDIV(pk8, c, set.Shiny); break;
                 }
             }
             else if (pk.GenNumber > 4 || pk.VC)
@@ -620,11 +621,9 @@ namespace PKHeX.Core.AutoMod
         /// <param name="shiny">Shiny boolean</param>
         private static void FindNestPIDIV<T>(PK8 pk, T enc, bool shiny) where T : EncounterStatic8Nest<T>
         {
-            // Preserve Nature, Altform, Ability (only if HA)
+            // Preserve Nature, Altform (all abilities should be possible in gen 8, so no need to early return on a mismatch for enc HA bool vs set HA bool)
             // Nest encounter RNG generation
             var iterPKM = pk.Clone();
-            if (enc.Ability != -1 && (pk.AbilityNumber == 4) != (enc.Ability == 4))
-                return;
             if (pk.Species == (int) Species.Toxtricity && pk.AltForm != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
             {
                 enc.ApplyDetailsTo(pk, GetRandomULong());
@@ -656,10 +655,6 @@ namespace PKHeX.Core.AutoMod
             if (template.Nature != pk.Nature) // match nature
                 return false;
             if (template.Gender != pk.Gender) // match gender
-                return false;
-            if (template.AbilityNumber == 4 && !(template.Ability == pk.Ability && template.AbilityNumber == pk.AbilityNumber))
-                return false;
-            if (template.AbilityNumber != 4 && pk.AbilityNumber == 4) // cannot ability capsule HA to non HA
                 return false;
             if (template.AltForm != pk.AltForm) // match form -- Toxtricity etc
                 return false;
