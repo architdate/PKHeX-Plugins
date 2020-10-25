@@ -24,7 +24,7 @@ namespace PKHeX.Core.AutoMod
         public static GameVersion PrioritizeGameVersion { get; set; }
         public static bool SetBattleVersion { get; set; }
         public static bool AllowTrainerOverride { get; set; }
-        public static bool AllowBatchCommands { get; set; }
+        public static bool AllowBatchCommands { get; set; } = true;
 
         /// <summary>
         /// Main function that auto legalizes based on the legality

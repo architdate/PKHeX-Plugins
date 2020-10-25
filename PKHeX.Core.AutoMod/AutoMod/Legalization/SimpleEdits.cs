@@ -192,7 +192,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk.Format <= 7)
                     return;
                 var xor = pk.ShinyXor;
-                if (enc is EncounterStatic8U && xor != 1)
+                if (enc is EncounterStatic8U && xor != 1 && shiny != Shiny.AlwaysSquare)
                     continue;
                 if ((shiny == Shiny.AlwaysStar && xor == 1) || (shiny == Shiny.AlwaysSquare && xor == 0) || ((shiny == Shiny.Always || shiny == Shiny.Random) && xor < 2)) // allow xor1 and xor0 for den shinies
                     return;
