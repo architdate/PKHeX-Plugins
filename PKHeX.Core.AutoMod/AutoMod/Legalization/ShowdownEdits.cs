@@ -65,7 +65,7 @@ namespace PKHeX.Core.AutoMod
             var enc2 = la2.EncounterOriginal;
             if ((!ReferenceEquals(enc1, enc2) && !(enc1 is EncounterEgg)) || la2.Info.Parse.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
                 pk.Nature = orig;
-            if (pk.Format >= 8 && pk.StatNature != pk.Nature && pk.StatNature != 12 && (pk.StatNature > 24 || pk.StatNature % 6 == 0)) // Only Serious Mint for Neutral Natures
+            if (pk.Format >= 8 && pk.StatNature != 12 && (pk.StatNature > 24 || pk.StatNature % 6 == 0)) // Only Serious Mint for Neutral Natures
                 pk.StatNature = 12;
         }
 

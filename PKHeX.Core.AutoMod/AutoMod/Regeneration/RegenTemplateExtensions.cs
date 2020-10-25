@@ -7,7 +7,7 @@ namespace PKHeX.Core.AutoMod
     {
         public static void SanitizeForm(this RegenTemplate set)
         {
-            if (!FormVerifier.IsBattleOnlyForm(set.Species, set.FormIndex, set.Format))
+            if (!AltFormInfo.IsBattleOnlyForm(set.Species, set.FormIndex, set.Format))
                 return;
 
             if (set.Species == (int)Species.Darmanitan)
@@ -20,7 +20,6 @@ namespace PKHeX.Core.AutoMod
         /// Showdown quirks lets you have battle only moves in battle only formes. Transform back to base move.
         /// </summary>
         /// <param name="set"></param>
-        /// TODO: Sanitize Battle specific moves for calyrex??
         public static void SanitizeBattleMoves(this IBattleTemplate set)
         {
             switch (set.Species)
