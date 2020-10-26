@@ -348,10 +348,10 @@ namespace PKHeX.Core.AutoMod
             // Handle special cases here for ultrabeasts
             switch (pk.Species)
             {
-                case (int)Species.Kartana when pk.Nature == (int)Nature.Timid && ((set.IVs[1] <= 19 && pk.CurrentLevel == 100) || (set.IVs[1] <= 21 && pk.CurrentLevel == 50)): // Speed boosting Timid Kartana ATK IVs <= 19
+                case (int)Species.Kartana when pk.Nature == (int)Nature.Timid && (set.IVs[1] <= 21 && pk.CurrentLevel == 100): // Speed boosting Timid Kartana ATK IVs <= 19
                     t.HT_ATK = false;
                     break;
-                case (int)Species.Stakataka when pk.Nature == (int)Nature.Lonely && ((set.IVs[2] <= 15 && pk.CurrentLevel == 100) || (set.IVs[2] <= 17 && pk.CurrentLevel == 50)): // Atk boosting Lonely Stakataka DEF IVs <= 15
+                case (int)Species.Stakataka when pk.Nature == (int)Nature.Lonely && (set.IVs[2] <= 17 && pk.CurrentLevel == 100): // Atk boosting Lonely Stakataka DEF IVs <= 15
                     t.HT_DEF = false;
                     break;
                 case (int)Species.Pyukumuku when set.IVs[2] == 0 && set.IVs[5] == 0 && pk.Ability == (int)Ability.InnardsOut: // 0 Def / 0 Spd Pyukumuku with innards out
@@ -624,6 +624,12 @@ namespace PKHeX.Core.AutoMod
             // Preserve Nature, Altform (all abilities should be possible in gen 8, so no need to early return on a mismatch for enc HA bool vs set HA bool)
             // Nest encounter RNG generation
             var iterPKM = pk.Clone();
+            if (!UseXOROSHIRO)
+                return;
+
+            if (shiny && !(enc is EncounterStatic8U))
+                return;
+
             if (pk.Species == (int) Species.Toxtricity && pk.AltForm != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
             {
                 enc.ApplyDetailsTo(pk, GetRandomULong());
@@ -631,9 +637,6 @@ namespace PKHeX.Core.AutoMod
                 pk.StatNature = iterPKM.StatNature;
                 return;
             }
-
-            if ((shiny || !UseXOROSHIRO) && !(enc is EncounterStatic8U))
-                return;
 
             var count = 0;
             do
