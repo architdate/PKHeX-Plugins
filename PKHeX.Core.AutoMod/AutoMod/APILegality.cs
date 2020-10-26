@@ -632,11 +632,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
-            if (shiny && enc is EncounterStatic8U)
-                // Dynamax Adventure shinies are always XOR 1
-                pk.PID ^= (uint)(((pk.TID ^ pk.SID ^ (pk.PID & 0xFFFF) ^ 1) << 16) | (pk.PID & 0xFFFF));
-
-            if (shiny || !UseXOROSHIRO)
+            if ((shiny || !UseXOROSHIRO) && !(enc is EncounterStatic8U))
                 return;
 
             var count = 0;
@@ -647,6 +643,10 @@ namespace PKHeX.Core.AutoMod
                 if (IsMatchCriteria<T>(pk, iterPKM))
                     break;
             } while (++count < 10_000);
+
+            if (shiny && enc is EncounterStatic8U)
+                // Dynamax Adventure shinies are always XOR 1
+                pk.PID ^= (uint)(((pk.TID ^ pk.SID ^ (pk.PID & 0xFFFF) ^ 1) << 16) | (pk.PID & 0xFFFF));
 
             pk.Species = iterPKM.Species; // possible evolution
             // can be ability capsuled

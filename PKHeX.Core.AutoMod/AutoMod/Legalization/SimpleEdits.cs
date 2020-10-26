@@ -221,7 +221,7 @@ namespace PKHeX.Core.AutoMod
 
             if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U)
             {
-                if (APILegality.UseXOROSHIRO)
+                if (APILegality.UseXOROSHIRO && !pk.IsShiny)
                     return;
             }
 
