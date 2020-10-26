@@ -219,11 +219,14 @@ namespace PKHeX.Core.AutoMod
                 if (isHOMEGift) return;
             }
 
-            if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U)
+            if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND)
             {
                 if (APILegality.UseXOROSHIRO && !pk.IsShiny)
                     return;
             }
+
+            if (enc is EncounterStatic8U)
+                return; // height and weight already handled even for shiny cases
 
             var height = 0x12;
             var weight = 0x97;
