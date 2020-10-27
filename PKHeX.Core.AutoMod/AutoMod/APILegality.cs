@@ -649,7 +649,7 @@ namespace PKHeX.Core.AutoMod
 
             if (shiny && enc is EncounterStatic8U)
                 // Dynamax Adventure shinies are always XOR 1
-                pk.PID ^= (uint)(((pk.TID ^ pk.SID ^ (pk.PID & 0xFFFF) ^ 1) << 16) | (pk.PID & 0xFFFF));
+                pk.PID = (uint)(((pk.TID ^ pk.SID ^ (pk.PID & 0xFFFF) ^ 1) << 16) | (pk.PID & 0xFFFF));
 
             pk.Species = iterPKM.Species; // possible evolution
             // can be ability capsuled
