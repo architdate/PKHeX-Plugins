@@ -50,7 +50,7 @@ $file = "PKHeX-Plugins.zip"
 $releases = "https://api.github.com/repos/$pluginsrepo/releases"
 
 Write-Host "Determining latest plugin release ..."
-$tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
+$tag = (Invoke-WebRequest $releases -UseBasicParsing | ConvertFrom-Json)[0].tag_name
 
 # download as PKHeX-Plugins.zip
 Write-Host Downloading latest PKHeX-Plugin Release: $tag

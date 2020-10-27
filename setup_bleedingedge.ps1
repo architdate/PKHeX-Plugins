@@ -45,10 +45,10 @@ Write-Host "Downloading latest PKHeX Build (latest) from https://projectpokemon.
 Invoke-WebRequest $url -OutFile "PKHeX.zip" -Headers $headers -WebSession $session -Method Get -ContentType "application/zip" -UseBasicParsing
 
 # get latest plugins build
-$j = Invoke-WebRequest 'https://dev.azure.com/architdate/40cccbb5-1611-4da1-aa70-c9cc0fba36e2/_apis/build/builds?definitions=1&$top=1&resultFilter=succeeded&api-version=6.0' | ConvertFrom-Json
+$j = Invoke-WebRequest 'https://dev.azure.com/architdate/40cccbb5-1611-4da1-aa70-c9cc0fba36e2/_apis/build/builds?definitions=1&$top=1&resultFilter=succeeded&api-version=6.0' -UseBasicParsing | ConvertFrom-Json
 $buildid = $j.value.id
 $aurl = "https://dev.azure.com/architdate/40cccbb5-1611-4da1-aa70-c9cc0fba36e2/_apis/build/builds/$buildid/artifacts?artifactName=PKHeX-Plugins&api-version=6.0"
-$a = Invoke-WebRequest $aurl | ConvertFrom-Json
+$a = Invoke-WebRequest $aurl -UseBasicParsing | ConvertFrom-Json
 $download = $a.resource.downloadUrl
 $file = "PKHeX-Plugins.zip"
 
