@@ -26,7 +26,7 @@ namespace PKHeX.Core.AutoMod
         {
             var data = sav.GetBoxData(box);
             var sep = Environment.NewLine + Environment.NewLine;
-            return RegenTemplateExtensions.GetRegenSets(data, sep);
+            return data.GetRegenSets(sep);
         }
 
         /// <summary>

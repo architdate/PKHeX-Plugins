@@ -80,7 +80,7 @@ namespace PKHeX.Core.Enhancements
 
                 if (IllegalFormats.Any(s => s.Equals(format, StringComparison.OrdinalIgnoreCase)))
                     continue;
-                if (!LetsGo && format.StartsWith("LGPE") || LetsGo && !format.StartsWith("LGPE"))
+                if (LetsGo != format.StartsWith("LGPE"))
                     continue;
                 var level = format.StartsWith("LC") ? 5 : 100;
                 if (!split1[i - 1].Contains("\"name\":"))
@@ -136,7 +136,7 @@ namespace PKHeX.Core.Enhancements
                 case nameof(PK7):
                 case nameof(PB7):
                     return "https://www.smogon.com/dex/sm/pokemon";
-                    
+
                 case nameof(PK8):
                     return "https://www.smogon.com/dex/ss/pokemon";
 

@@ -111,16 +111,14 @@ namespace PKHeX.Core.Injection
             ConnectToServer();
         }
 
-        private int ReadNetworkStream(NetworkStream stream, byte[] buf, int length)
+        private static int ReadNetworkStream(Stream stream, byte[] buf, int length)
         {
             var index = 0;
             do
             {
                 var len = stream.Read(buf, index, length - index);
                 if (len == 0)
-                {
                     return 0;
-                }
                 index += len;
             }
             while (index < length);
@@ -198,7 +196,9 @@ namespace PKHeX.Core.Injection
                         HandlePacket(cmd, seq, dataBuf);
                     }
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
                 {
                     Log(e.Message);
                     break;
@@ -270,7 +270,9 @@ namespace PKHeX.Core.Injection
                 OnConnected(EventArgs.Empty);
                 IsConnected = true;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 Console.WriteLine("Could not connect, make sure the IP is correct, you're running NTR and you're online in-game!");
             }
@@ -287,7 +289,9 @@ namespace PKHeX.Core.Injection
                     _heartbeatThread?.Join();
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 Log(ex.Message);
             }
@@ -364,7 +368,9 @@ namespace PKHeX.Core.Injection
             {
                 _delLastLog(msg);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 Console.WriteLine(ex);
             }

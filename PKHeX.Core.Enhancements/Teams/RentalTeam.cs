@@ -13,7 +13,7 @@ namespace PKHeX.Core.Enhancements
         public readonly IReadOnlyList<QRPK7> Team;
         public IReadOnlyList<byte> GlobalLinkID { get; }
         public IReadOnlyList<byte> UnknownData { get; }
-        private SaveFile Dummy = new SAV7USUM();
+        private static readonly SaveFile Dummy = new SAV7USUM();
 
         public RentalTeam(byte[] data)
         {

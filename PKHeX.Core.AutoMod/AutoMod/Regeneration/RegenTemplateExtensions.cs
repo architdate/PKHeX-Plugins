@@ -60,7 +60,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         public static string GetRegenText(this PKM pk) => pk.Species == 0 ? string.Empty : new RegenTemplate(pk).Text;
-        public static IEnumerable<string> GetRegenSets(IEnumerable<PKM> data) => data.Where(p => p.Species != 0).Select(GetRegenText);
-        public static string GetRegenSets(IEnumerable<PKM> data, string separator) => string.Join(separator, GetRegenSets(data));
+        public static IEnumerable<string> GetRegenSets(this IEnumerable<PKM> data) => data.Where(p => p.Species != 0).Select(GetRegenText);
+        public static string GetRegenSets(this IEnumerable<PKM> data, string separator) => string.Join(separator, data.GetRegenSets());
     }
 }

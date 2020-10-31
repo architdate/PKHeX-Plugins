@@ -23,9 +23,11 @@ namespace PKHeX.Core.AutoMod
         public int HiddenPowerType { get; set; }
         public bool CanGigantamax { get; set; }
 
+#pragma warning disable CA1819 // Properties should not return arrays
         public int[] EVs { get; }
         public int[] IVs { get; }
         public int[] Moves { get; }
+#pragma warning restore CA1819 // Properties should not return arrays
 
         public RegenSet Regen { get; set; } = RegenSet.Default;
         public string Text => GetSummary();
