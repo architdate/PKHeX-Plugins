@@ -3,7 +3,7 @@
 
 # Powershell script to download PKHeX and Plugins (latest)
 Write-Host "PKHeX and PKHeX-Plugins downloader (latest releases)"
-Write-Host "please report any issues with this setup file via GitHub issues at https://github.com/architdate/PKHeX-Plugins/issues"
+Write-Host "Please report any issues with this setup file via GitHub issues at https://github.com/architdate/PKHeX-Plugins/issues"
 Write-Host ""
 Write-Host ""
 
