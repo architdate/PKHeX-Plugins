@@ -9,13 +9,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (!AltFormInfo.IsBattleOnlyForm(set.Species, set.FormIndex, set.Format))
                 return;
-
-            if (set.Species == (int)Species.Darmanitan)
-                set.FormIndex &= 2;
-            else if (set.Species == (int) Species.Zygarde && set.FormIndex == 4)
-                set.FormIndex = 3; // Set to 50% Power Construct
-            else
-                set.FormIndex = 0;
+            set.FormIndex = AltFormInfo.GetOutOfBattleForm(set.Species, set.FormIndex, set.Format);
         }
 
         /// <summary>
