@@ -85,7 +85,6 @@ namespace PKHeX.Core.Injection
         public int PID = -1;
         private uint _currentSeq;
 
-
         public NTR()
         {
             DataReady += HandleDataReady;
@@ -94,12 +93,11 @@ namespace PKHeX.Core.Injection
             _delLastLog = LastLog;
         }
 
-
         private void LastLog(string l) => Lastlog = l;
         private void OnDataReady(DataReadyEventArgs e) => DataReady?.Invoke(this, e);
         private void OnConnected(EventArgs e) => Connected?.Invoke(this, e);
         private void OnInfoReady(InfoReadyEventArgs e) => InfoReady?.Invoke(this, e);
-        private static string ByteToHex(byte[] datBuf, int type) => datBuf.Aggregate("", (current, b) => current + (b.ToString("X2") + " "));
+        private static string ByteToHex(byte[] datBuf) => datBuf.Aggregate("", (current, b) => current + (b.ToString("X2") + " "));
         public void AddWaitingForData(uint newkey, DataReadyWaiting newvalue) => _waitingForData.Add(newkey, newvalue);
         public void ListProcess() => SendEmptyPacket(5);
         public uint Data(uint addr, uint size = 0x100, int pid = -1) => SendReadMemPacket(addr, size, (uint)pid);
@@ -130,17 +128,15 @@ namespace PKHeX.Core.Injection
         private void SendHeartBeat()
         {
             var hbstarted = false;
-            while (true)
+            do
             {
                 Thread.Sleep(1000);
-                if (IsConnected)
-                {
-                    SendHeartbeatPacket();
-                    hbstarted = true;
-                }
-                if (hbstarted && !IsConnected)
-                    break;
+                if (!IsConnected)
+                    continue;
+                SendHeartbeatPacket();
+                hbstarted = true;
             }
+            while (!hbstarted || IsConnected);
         }
 
         private void PacketRecvThreadStart()
@@ -159,7 +155,7 @@ namespace PKHeX.Core.Injection
 
                     var magic = BitConverter.ToUInt32(buf, 0);
                     var seq = BitConverter.ToUInt32(buf, 4);
-                    var type = BitConverter.ToUInt32(buf, 8);
+                    //var type = BitConverter.ToUInt32(buf, 8);
                     var cmd = BitConverter.ToUInt32(buf, 12);
                     var t = 12;
                     for (var i = 0; i < args.Length; i++)
@@ -227,7 +223,6 @@ namespace PKHeX.Core.Injection
                 fs.Write(dataBuf, 0, dataBuf.Length);
                 fs.Close();
                 Log("dump saved into " + fileName + " successfully");
-                return;
             }
             else if (requestDetails.IsCallback)
             {
@@ -239,9 +234,8 @@ namespace PKHeX.Core.Injection
             }
             else
             {
-                Log(ByteToHex(dataBuf, 0));
+                Log(ByteToHex(dataBuf));
             }
-
         }
 
         private void HandlePacket(uint cmd, uint seq, byte[] dataBuf)
@@ -261,8 +255,7 @@ namespace PKHeX.Core.Injection
                 Disconnect();
             try
             {
-                _tcp = new TcpClient();
-                _tcp.NoDelay = true;
+                _tcp = new TcpClient {NoDelay = true};
                 _tcp.Connect(_host, _port);
                 _currentSeq = 0;
                 _netStream = _tcp.GetStream();
@@ -279,7 +272,6 @@ namespace PKHeX.Core.Injection
             {
                 Console.WriteLine("Could not connect, make sure the IP is correct, you're running NTR and you're online in-game!");
             }
-
         }
 
         public void Disconnect(bool waitPacketThread = true)
@@ -355,7 +347,6 @@ namespace PKHeX.Core.Injection
                     }
                 }
             }
-
         }
 
         private void SendEmptyPacket(uint cmd, uint arg0 = 0, uint arg1 = 0, uint arg2 = 0)
@@ -385,15 +376,16 @@ namespace PKHeX.Core.Injection
             var pnamestr = new[] { "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc", "momiji", "momiji" };
             string pname;
             string log = e.Info;
-            if (null == (pname = pnamestr.FirstOrDefault(log.Contains)))
+            if (null == (pname = Array.Find(pnamestr, log.Contains)))
                 return;
             pname = ", pname:" + pname.PadLeft(9);
             string pidaddr = log.Substring(log.IndexOf(pname, StringComparison.Ordinal) - 10, 10);
             PID = Convert.ToInt32(pidaddr, 16);
 
             if (log.Contains("niji_loc"))
+            {
                 Write(0x3E14C0, BitConverter.GetBytes(0xE3A01000), PID);
-
+            }
             else if (log.Contains("momiji"))
             {
                 Write(0x3F3424, BitConverter.GetBytes(0xE3A01000), PID); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
@@ -402,9 +394,9 @@ namespace PKHeX.Core.Injection
         }
 
         private void HandleDataReady(object sender, DataReadyEventArgs e)
-        { // We move data processing to a separate thread. This way even if processing takes a long time, the netcode doesn't hang.
-            DataReadyWaiting args;
-            if (_waitingForData.TryGetValue(e.Seq, out args))
+        {
+            // We move data processing to a separate thread. This way even if processing takes a long time, the netcode doesn't hang.
+            if (_waitingForData.TryGetValue(e.Seq, out DataReadyWaiting args))
             {
                 Array.Copy(e.Data, args.Data, Math.Min(e.Data.Length, args.Data.Length));
                 Thread t = new Thread(new ParameterizedThreadStart(args.Handler));

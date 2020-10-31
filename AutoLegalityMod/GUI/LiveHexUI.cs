@@ -125,7 +125,7 @@ namespace AutoModPlugins
 
                     var data = Remote.Bot.ReadSlot(1, 1);
                     var pkm = SAV.SAV.GetDecryptedPKM(data);
-                    if (pkm?.ChecksumValid == true)
+                    if (pkm.ChecksumValid)
                     {
                         ConnectionEstablished = true;
                         currver = version;
