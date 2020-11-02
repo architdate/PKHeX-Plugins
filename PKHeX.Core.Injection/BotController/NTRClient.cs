@@ -8,7 +8,7 @@ namespace PKHeX.Core.Injection
         private int Port = 8000;
         private static readonly NTR clientNTR = new NTR();
 
-        private int timeout = 10;
+        private const int timeout = 10;
         private bool Connected;
 
         private readonly object _sync = new object();
@@ -54,15 +54,14 @@ namespace PKHeX.Core.Injection
                 }
                 clientNTR.AddWaitingForData(clientNTR.Data(offset, (uint)length, clientNTR.PID), myArgs);
 
-                int readcount = 0;
-                for (readcount = 0; readcount < timeout * 100; readcount++)
+                for (int readcount = 0; readcount < timeout * 100; readcount++)
                 {
                     Thread.Sleep(10);
                     if (CompareLastLog("finished"))
                         break;
                 }
 
-                byte[] result = _lastMemoryRead ?? new byte[]{};
+                byte[] result = _lastMemoryRead ?? System.Array.Empty<byte>();
                 _lastMemoryRead = null;
                 return result;
             }

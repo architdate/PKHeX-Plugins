@@ -53,7 +53,7 @@ namespace AutoModTests
             tpi.Title.Should().Be(name, "Data should have a title present");
 
             var team = ShowdownUtil.ShowdownSets(tpi.Sets);
-            var species = team.Select(s => s.Species).ToList();
+            var species = team.ConvertAll(s => s.Species);
             var hasAll = speciesPresent.All(species.Contains);
             hasAll.Should().BeTrue("Specific species are expected");
         }

@@ -7,7 +7,7 @@ namespace AutoModPlugins.GUI
 {
     public partial class SimpleHexEditor : Form
     {
-        public byte[] Bytes { get; private set; }
+        public byte[] Bytes;
 
         public SimpleHexEditor(byte[] originalBytes)
         {

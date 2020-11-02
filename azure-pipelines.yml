@@ -32,8 +32,7 @@ steps:
   inputs:
     solution: '$(Build.SourcesDirectory)/PKHeX/PKHeX.sln'
     platform: '$(buildPlatform)'
-    configuration: 'Release'
-    restoreNugetPackages: true
+    configuration: '$(buildConfiguration)'
     createLogFile: true
 
 - powershell: |
@@ -67,20 +66,6 @@ steps:
       xcopy ..\..\..\AutoLegalityMod\bin\Release\net46\LibUsbDotNet.LibUsbDotNet.dll .\
       ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:$(Agent.BuildDirectory)\s\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll LibUsbDotNet.LibUsbDotNet.dll PKHeX.Core.Enhancements.dll PKHeX.Core.Injection.dll
       ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:$(Agent.BuildDirectory)\s\bin\QRPlugins.dll QRPlugins.dll PKHeX.Core.AutoMod.dll BouncyCastle.CryptoExt.dll QRCoder.dll zxing.dll zxing.presentation.dll
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your commands here
-      cd "C:\Users"
-      echo $(ls)
-      
-      cd $(Agent.BuildDirectory)
-      echo $(Agent.BuildDirectory)
-      
-      cd $(Build.SourcesDirectory)
-      echo $(Build.SourcesDirectory)
 
 - task: PublishBuildArtifacts@1
   inputs:

@@ -45,7 +45,7 @@ namespace AutoModTests
             PKX.IsPKM(fi.Length).Should().BeTrue($"the test file '{file}' should have a valid file length");
 
             var data = File.ReadAllBytes(file);
-            var format = PKX.GetPKMFormatFromExtension(file[file.Length - 1], -1);
+            var format = PKX.GetPKMFormatFromExtension(file[^1], -1);
             if (format > 10)
                 format = 6;
             var pkm = PKMConverter.GetPKMfromBytes(data, prefer: format);

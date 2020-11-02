@@ -3,7 +3,7 @@
 
 # Powershell script to download PKHeX and Plugins (stable)
 Write-Host "PKHeX and PKHeX-Plugins downloader (stable releases)"
-Write-Host "please report any issues with this setup file via GitHub issues at https://github.com/architdate/PKHeX-Plugins/issues"
+Write-Host "Please report any issues with this setup file via GitHub issues at https://github.com/architdate/PKHeX-Plugins/issues"
 Write-Host ""
 Write-Host ""
 
@@ -50,7 +50,7 @@ $file = "PKHeX-Plugins.zip"
 $releases = "https://api.github.com/repos/$pluginsrepo/releases"
 
 Write-Host "Determining latest plugin release ..."
-$tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
+$tag = (Invoke-WebRequest $releases -UseBasicParsing | ConvertFrom-Json)[0].tag_name
 
 # download as PKHeX-Plugins.zip
 Write-Host Downloading latest PKHeX-Plugin Release: $tag

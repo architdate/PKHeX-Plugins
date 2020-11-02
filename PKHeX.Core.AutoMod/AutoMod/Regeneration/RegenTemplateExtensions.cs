@@ -9,13 +9,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (!AltFormInfo.IsBattleOnlyForm(set.Species, set.FormIndex, set.Format))
                 return;
-
-            if (set.Species == (int)Species.Darmanitan)
-                set.FormIndex &= 2;
-            else if (set.Species == (int) Species.Zygarde && set.FormIndex == 4)
-                set.FormIndex = 3; // Set to 50% Power Construct
-            else
-                set.FormIndex = 0;
+            set.FormIndex = AltFormInfo.GetOutOfBattleForm(set.Species, set.FormIndex, set.Format);
         }
 
         /// <summary>
@@ -66,7 +60,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         public static string GetRegenText(this PKM pk) => pk.Species == 0 ? string.Empty : new RegenTemplate(pk).Text;
-        public static IEnumerable<string> GetRegenSets(IEnumerable<PKM> data) => data.Where(p => p.Species != 0).Select(GetRegenText);
-        public static string GetRegenSets(IEnumerable<PKM> data, string separator) => string.Join(separator, GetRegenSets(data));
+        public static IEnumerable<string> GetRegenSets(this IEnumerable<PKM> data) => data.Where(p => p.Species != 0).Select(GetRegenText);
+        public static string GetRegenSets(this IEnumerable<PKM> data, string separator) => string.Join(separator, data.GetRegenSets());
     }
 }

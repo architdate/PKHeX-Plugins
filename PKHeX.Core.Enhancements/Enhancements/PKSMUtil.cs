@@ -121,7 +121,7 @@ namespace PKHeX.Core.Enhancements
         {
             if (BitConverter.ToUInt32(data, offset) != 0) // PID
                 return true;
-            return 0 != BitConverter.ToUInt16(data, offset + 8);
+            return BitConverter.ToUInt16(data, offset + 8) != 0;
         }
 
         private static int GetBankSize(PKSMBankVersion v)

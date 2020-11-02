@@ -113,17 +113,18 @@ namespace PKHeX.Core.AutoMod
             }
             if (tr is SimpleTrainerInfo s)
             {
-                var sti = new SimpleTrainerInfo((GameVersion)s.Game);
-                sti.OT = s.OT;
-                sti.TID = s.TID;
-                sti.SID = s.SID;
-                sti.Generation = s.Gender;
-                sti.Language = (int) lang;
-                sti.ConsoleRegion = s.ConsoleRegion;
-                sti.Region = s.Region;
-                sti.Country = s.Country;
-                sti.Generation = s.Generation;
-                return sti;
+                return new SimpleTrainerInfo((GameVersion)s.Game)
+                {
+                    OT = s.OT,
+                    TID = s.TID,
+                    SID = s.SID,
+                    Gender = s.Gender,
+                    Language = (int) lang,
+                    ConsoleRegion = s.ConsoleRegion,
+                    Region = s.Region,
+                    Country = s.Country,
+                    Generation = s.Generation
+                };
             }
             return tr;
         }
