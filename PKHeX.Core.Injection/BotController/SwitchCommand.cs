@@ -126,7 +126,7 @@ namespace PKHeX.Core.Injection
         public static byte[] PeekMain(ulong offset, int count) => Encode($"peekMain 0x{offset:X16} {count}");
 
         /// <summary>
-        /// Sends the Bot <see cref="data"/> to be written to absolute <see cref="offset"/>.
+        /// Sends the Bot <see cref="data"/> to be written to main <see cref="offset"/>.
         /// </summary>
         /// <param name="offset">Address of the data relative to main</param>
         /// <param name="data">Data to write</param>

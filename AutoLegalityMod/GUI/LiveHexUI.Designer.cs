@@ -51,16 +51,15 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.B_ReadRAM = new System.Windows.Forms.Button();
             this.RamSize = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.L_ReadRamSize = new System.Windows.Forms.Label();
             this.RamOffset = new AutoModPlugins.HexTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.L_ReadRamOffset = new System.Windows.Forms.Label();
             this.L_USBState = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.EditPointerRam = new System.Windows.Forms.Button();
-            this.PointerReadSize = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.Pointer = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.B_CopyAddress = new System.Windows.Forms.Button();
+            this.B_ReadPointer = new System.Windows.Forms.Button();
+            this.TB_Pointer = new AutoModPlugins.HexTextBox();
+            this.L_Pointer = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).BeginInit();
@@ -71,9 +70,10 @@
             // 
             // B_ReadCurrent
             // 
-            this.B_ReadCurrent.Location = new System.Drawing.Point(13, 61);
+            this.B_ReadCurrent.Location = new System.Drawing.Point(17, 75);
+            this.B_ReadCurrent.Margin = new System.Windows.Forms.Padding(4);
             this.B_ReadCurrent.Name = "B_ReadCurrent";
-            this.B_ReadCurrent.Size = new System.Drawing.Size(125, 23);
+            this.B_ReadCurrent.Size = new System.Drawing.Size(167, 28);
             this.B_ReadCurrent.TabIndex = 0;
             this.B_ReadCurrent.Text = "Read Current Box";
             this.B_ReadCurrent.UseVisualStyleBackColor = true;
@@ -81,9 +81,10 @@
             // 
             // B_WriteCurrent
             // 
-            this.B_WriteCurrent.Location = new System.Drawing.Point(13, 87);
+            this.B_WriteCurrent.Location = new System.Drawing.Point(17, 107);
+            this.B_WriteCurrent.Margin = new System.Windows.Forms.Padding(4);
             this.B_WriteCurrent.Name = "B_WriteCurrent";
-            this.B_WriteCurrent.Size = new System.Drawing.Size(125, 23);
+            this.B_WriteCurrent.Size = new System.Drawing.Size(167, 28);
             this.B_WriteCurrent.TabIndex = 1;
             this.B_WriteCurrent.Text = "Write Current Box";
             this.B_WriteCurrent.UseVisualStyleBackColor = true;
@@ -94,9 +95,10 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(13, 19);
+            this.checkBox1.Location = new System.Drawing.Point(17, 23);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(130, 17);
+            this.checkBox1.Size = new System.Drawing.Size(167, 21);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "Read On Change Box";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -104,17 +106,19 @@
             // TB_IP
             // 
             this.TB_IP.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_IP.Location = new System.Drawing.Point(50, 12);
+            this.TB_IP.Location = new System.Drawing.Point(67, 15);
+            this.TB_IP.Margin = new System.Windows.Forms.Padding(4);
             this.TB_IP.Name = "TB_IP";
-            this.TB_IP.Size = new System.Drawing.Size(111, 20);
+            this.TB_IP.Size = new System.Drawing.Size(147, 23);
             this.TB_IP.TabIndex = 3;
             this.TB_IP.Text = "111.111.111.111";
             // 
             // L_IP
             // 
-            this.L_IP.Location = new System.Drawing.Point(9, 12);
+            this.L_IP.Location = new System.Drawing.Point(6, 13);
+            this.L_IP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.L_IP.Name = "L_IP";
-            this.L_IP.Size = new System.Drawing.Size(40, 20);
+            this.L_IP.Size = new System.Drawing.Size(53, 25);
             this.L_IP.TabIndex = 4;
             this.L_IP.Text = "IP:";
             this.L_IP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -122,26 +126,29 @@
             // TB_Port
             // 
             this.TB_Port.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_Port.Location = new System.Drawing.Point(50, 38);
+            this.TB_Port.Location = new System.Drawing.Point(67, 47);
+            this.TB_Port.Margin = new System.Windows.Forms.Padding(4);
             this.TB_Port.Name = "TB_Port";
-            this.TB_Port.Size = new System.Drawing.Size(42, 20);
+            this.TB_Port.Size = new System.Drawing.Size(55, 23);
             this.TB_Port.TabIndex = 5;
             this.TB_Port.Text = "65535";
             // 
             // L_Port
             // 
-            this.L_Port.Location = new System.Drawing.Point(4, 38);
+            this.L_Port.Location = new System.Drawing.Point(6, 45);
+            this.L_Port.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.L_Port.Name = "L_Port";
-            this.L_Port.Size = new System.Drawing.Size(40, 20);
+            this.L_Port.Size = new System.Drawing.Size(53, 25);
             this.L_Port.TabIndex = 6;
             this.L_Port.Text = "Port:";
             this.L_Port.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // B_Connect
             // 
-            this.B_Connect.Location = new System.Drawing.Point(98, 37);
+            this.B_Connect.Location = new System.Drawing.Point(130, 45);
+            this.B_Connect.Margin = new System.Windows.Forms.Padding(4);
             this.B_Connect.Name = "B_Connect";
-            this.B_Connect.Size = new System.Drawing.Size(63, 23);
+            this.B_Connect.Size = new System.Drawing.Size(84, 28);
             this.B_Connect.TabIndex = 7;
             this.B_Connect.Text = "Connect";
             this.B_Connect.UseVisualStyleBackColor = true;
@@ -154,9 +161,11 @@
             this.groupBox1.Controls.Add(this.B_ReadCurrent);
             this.groupBox1.Controls.Add(this.B_WriteCurrent);
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(12, 66);
+            this.groupBox1.Location = new System.Drawing.Point(16, 81);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(149, 116);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(199, 143);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Boxes";
@@ -166,9 +175,10 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(13, 38);
+            this.checkBox2.Location = new System.Drawing.Point(17, 47);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(85, 17);
+            this.checkBox2.Size = new System.Drawing.Size(106, 21);
             this.checkBox2.TabIndex = 3;
             this.checkBox2.Text = "Inject In Slot";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -185,9 +195,11 @@
             this.groupBox2.Controls.Add(this.B_ReadSlot);
             this.groupBox2.Controls.Add(this.B_WriteSlot);
             this.groupBox2.Enabled = false;
-            this.groupBox2.Location = new System.Drawing.Point(171, 12);
+            this.groupBox2.Location = new System.Drawing.Point(228, 15);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(149, 170);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(199, 209);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PKM Editor";
@@ -195,27 +207,30 @@
             // TB_Offset
             // 
             this.TB_Offset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_Offset.Location = new System.Drawing.Point(65, 141);
+            this.TB_Offset.Location = new System.Drawing.Point(87, 174);
+            this.TB_Offset.Margin = new System.Windows.Forms.Padding(4);
             this.TB_Offset.MaxLength = 8;
             this.TB_Offset.Name = "TB_Offset";
-            this.TB_Offset.Size = new System.Drawing.Size(63, 20);
+            this.TB_Offset.Size = new System.Drawing.Size(83, 23);
             this.TB_Offset.TabIndex = 16;
             this.TB_Offset.Text = "2E32206A";
             // 
             // L_ReadOffset
             // 
-            this.L_ReadOffset.Location = new System.Drawing.Point(17, 141);
+            this.L_ReadOffset.Location = new System.Drawing.Point(23, 173);
+            this.L_ReadOffset.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.L_ReadOffset.Name = "L_ReadOffset";
-            this.L_ReadOffset.Size = new System.Drawing.Size(42, 20);
+            this.L_ReadOffset.Size = new System.Drawing.Size(56, 25);
             this.L_ReadOffset.TabIndex = 15;
             this.L_ReadOffset.Text = "Offset:";
             this.L_ReadOffset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // B_ReadOffset
             // 
-            this.B_ReadOffset.Location = new System.Drawing.Point(13, 115);
+            this.B_ReadOffset.Location = new System.Drawing.Point(17, 142);
+            this.B_ReadOffset.Margin = new System.Windows.Forms.Padding(4);
             this.B_ReadOffset.Name = "B_ReadOffset";
-            this.B_ReadOffset.Size = new System.Drawing.Size(125, 23);
+            this.B_ReadOffset.Size = new System.Drawing.Size(167, 28);
             this.B_ReadOffset.TabIndex = 13;
             this.B_ReadOffset.Text = "Read from Offset";
             this.B_ReadOffset.UseVisualStyleBackColor = true;
@@ -223,16 +238,18 @@
             // 
             // L_Slot
             // 
-            this.L_Slot.Location = new System.Drawing.Point(27, 90);
+            this.L_Slot.Location = new System.Drawing.Point(36, 108);
+            this.L_Slot.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.L_Slot.Name = "L_Slot";
-            this.L_Slot.Size = new System.Drawing.Size(42, 20);
+            this.L_Slot.Size = new System.Drawing.Size(56, 25);
             this.L_Slot.TabIndex = 12;
             this.L_Slot.Text = "Slot:";
             this.L_Slot.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // NUD_Slot
             // 
-            this.NUD_Slot.Location = new System.Drawing.Point(75, 90);
+            this.NUD_Slot.Location = new System.Drawing.Point(100, 111);
+            this.NUD_Slot.Margin = new System.Windows.Forms.Padding(4);
             this.NUD_Slot.Maximum = new decimal(new int[] {
             30,
             0,
@@ -244,7 +261,7 @@
             0,
             0});
             this.NUD_Slot.Name = "NUD_Slot";
-            this.NUD_Slot.Size = new System.Drawing.Size(38, 20);
+            this.NUD_Slot.Size = new System.Drawing.Size(51, 22);
             this.NUD_Slot.TabIndex = 11;
             this.NUD_Slot.Value = new decimal(new int[] {
             1,
@@ -254,16 +271,18 @@
             // 
             // L_Box
             // 
-            this.L_Box.Location = new System.Drawing.Point(27, 69);
+            this.L_Box.Location = new System.Drawing.Point(36, 82);
+            this.L_Box.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.L_Box.Name = "L_Box";
-            this.L_Box.Size = new System.Drawing.Size(42, 20);
+            this.L_Box.Size = new System.Drawing.Size(56, 25);
             this.L_Box.TabIndex = 10;
             this.L_Box.Text = "Box:";
             this.L_Box.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // NUD_Box
             // 
-            this.NUD_Box.Location = new System.Drawing.Point(75, 69);
+            this.NUD_Box.Location = new System.Drawing.Point(100, 85);
+            this.NUD_Box.Margin = new System.Windows.Forms.Padding(4);
             this.NUD_Box.Maximum = new decimal(new int[] {
             20,
             0,
@@ -275,7 +294,7 @@
             0,
             0});
             this.NUD_Box.Name = "NUD_Box";
-            this.NUD_Box.Size = new System.Drawing.Size(38, 20);
+            this.NUD_Box.Size = new System.Drawing.Size(51, 22);
             this.NUD_Box.TabIndex = 2;
             this.NUD_Box.Value = new decimal(new int[] {
             1,
@@ -285,9 +304,10 @@
             // 
             // B_ReadSlot
             // 
-            this.B_ReadSlot.Location = new System.Drawing.Point(13, 18);
+            this.B_ReadSlot.Location = new System.Drawing.Point(17, 22);
+            this.B_ReadSlot.Margin = new System.Windows.Forms.Padding(4);
             this.B_ReadSlot.Name = "B_ReadSlot";
-            this.B_ReadSlot.Size = new System.Drawing.Size(125, 23);
+            this.B_ReadSlot.Size = new System.Drawing.Size(167, 28);
             this.B_ReadSlot.TabIndex = 0;
             this.B_ReadSlot.Text = "Read from Slot";
             this.B_ReadSlot.UseVisualStyleBackColor = true;
@@ -295,9 +315,10 @@
             // 
             // B_WriteSlot
             // 
-            this.B_WriteSlot.Location = new System.Drawing.Point(13, 44);
+            this.B_WriteSlot.Location = new System.Drawing.Point(17, 54);
+            this.B_WriteSlot.Margin = new System.Windows.Forms.Padding(4);
             this.B_WriteSlot.Name = "B_WriteSlot";
-            this.B_WriteSlot.Size = new System.Drawing.Size(125, 23);
+            this.B_WriteSlot.Size = new System.Drawing.Size(167, 28);
             this.B_WriteSlot.TabIndex = 1;
             this.B_WriteSlot.Text = "Write to Slot";
             this.B_WriteSlot.UseVisualStyleBackColor = true;
@@ -307,22 +328,25 @@
             // 
             this.groupBox3.Controls.Add(this.B_ReadRAM);
             this.groupBox3.Controls.Add(this.RamSize);
-            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.L_ReadRamSize);
             this.groupBox3.Controls.Add(this.RamOffset);
-            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.L_ReadRamOffset);
             this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(12, 188);
+            this.groupBox3.Location = new System.Drawing.Point(16, 231);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(307, 48);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(409, 59);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "RAM Editor";
             // 
             // B_ReadRAM
             // 
-            this.B_ReadRAM.Location = new System.Drawing.Point(225, 16);
+            this.B_ReadRAM.Location = new System.Drawing.Point(300, 20);
+            this.B_ReadRAM.Margin = new System.Windows.Forms.Padding(4);
             this.B_ReadRAM.Name = "B_ReadRAM";
-            this.B_ReadRAM.Size = new System.Drawing.Size(75, 23);
+            this.B_ReadRAM.Size = new System.Drawing.Size(100, 28);
             this.B_ReadRAM.TabIndex = 21;
             this.B_ReadRAM.Text = "Edit RAM";
             this.B_ReadRAM.UseVisualStyleBackColor = true;
@@ -331,118 +355,118 @@
             // RamSize
             // 
             this.RamSize.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RamSize.Location = new System.Drawing.Point(155, 16);
+            this.RamSize.Location = new System.Drawing.Point(206, 23);
+            this.RamSize.Margin = new System.Windows.Forms.Padding(4);
             this.RamSize.MaxLength = 8;
             this.RamSize.Name = "RamSize";
-            this.RamSize.Size = new System.Drawing.Size(63, 20);
+            this.RamSize.Size = new System.Drawing.Size(83, 23);
             this.RamSize.TabIndex = 20;
             this.RamSize.Text = "344";
             // 
-            // label2
+            // L_ReadRamSize
             // 
-            this.label2.Location = new System.Drawing.Point(127, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 20);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Size:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_ReadRamSize.Location = new System.Drawing.Point(158, 21);
+            this.L_ReadRamSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.L_ReadRamSize.Name = "L_ReadRamSize";
+            this.L_ReadRamSize.Size = new System.Drawing.Size(40, 25);
+            this.L_ReadRamSize.TabIndex = 19;
+            this.L_ReadRamSize.Text = "Size:";
+            this.L_ReadRamSize.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // RamOffset
             // 
             this.RamOffset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RamOffset.Location = new System.Drawing.Point(58, 16);
+            this.RamOffset.Location = new System.Drawing.Point(68, 23);
+            this.RamOffset.Margin = new System.Windows.Forms.Padding(4);
             this.RamOffset.MaxLength = 8;
             this.RamOffset.Name = "RamOffset";
-            this.RamOffset.Size = new System.Drawing.Size(63, 20);
+            this.RamOffset.Size = new System.Drawing.Size(83, 23);
             this.RamOffset.TabIndex = 18;
             this.RamOffset.Text = "2E32206A";
             // 
-            // label1
+            // L_ReadRamOffset
             // 
-            this.label1.Location = new System.Drawing.Point(10, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 20);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Offset:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_ReadRamOffset.Location = new System.Drawing.Point(4, 21);
+            this.L_ReadRamOffset.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.L_ReadRamOffset.Name = "L_ReadRamOffset";
+            this.L_ReadRamOffset.Size = new System.Drawing.Size(56, 25);
+            this.L_ReadRamOffset.TabIndex = 17;
+            this.L_ReadRamOffset.Text = "Offset:";
+            this.L_ReadRamOffset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // L_USBState
             // 
             this.L_USBState.AutoSize = true;
-            this.L_USBState.Location = new System.Drawing.Point(12, 15);
+            this.L_USBState.Location = new System.Drawing.Point(20, 18);
+            this.L_USBState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.L_USBState.Name = "L_USBState";
-            this.L_USBState.Size = new System.Drawing.Size(100, 13);
+            this.L_USBState.Size = new System.Drawing.Size(132, 17);
             this.L_USBState.TabIndex = 11;
-            this.L_USBState.Text = "USB-Botbase mode";
+            this.L_USBState.Text = "USB-Botbase Mode";
             this.L_USBState.Visible = false;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.EditPointerRam);
-            this.groupBox4.Controls.Add(this.PointerReadSize);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.Pointer);
-            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.B_CopyAddress);
+            this.groupBox4.Controls.Add(this.B_ReadPointer);
+            this.groupBox4.Controls.Add(this.TB_Pointer);
+            this.groupBox4.Controls.Add(this.L_Pointer);
             this.groupBox4.Enabled = false;
-            this.groupBox4.Location = new System.Drawing.Point(13, 242);
+            this.groupBox4.Location = new System.Drawing.Point(16, 298);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(307, 48);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(409, 90);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Pointer Lookup";
             // 
-            // EditPointerRam
+            // B_CopyAddress
             // 
-            this.EditPointerRam.Location = new System.Drawing.Point(225, 16);
-            this.EditPointerRam.Name = "EditPointerRam";
-            this.EditPointerRam.Size = new System.Drawing.Size(75, 23);
-            this.EditPointerRam.TabIndex = 21;
-            this.EditPointerRam.Text = "Edit RAM";
-            this.EditPointerRam.UseVisualStyleBackColor = true;
-            this.EditPointerRam.Click += new System.EventHandler(this.EditPointerRam_Click);
+            this.B_CopyAddress.Location = new System.Drawing.Point(27, 53);
+            this.B_CopyAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.B_CopyAddress.Name = "B_CopyAddress";
+            this.B_CopyAddress.Size = new System.Drawing.Size(171, 28);
+            this.B_CopyAddress.TabIndex = 22;
+            this.B_CopyAddress.Text = "Copy Address";
+            this.B_CopyAddress.UseVisualStyleBackColor = true;
+            this.B_CopyAddress.Click += new System.EventHandler(this.B_CopyAddress_Click);
             // 
-            // PointerReadSize
+            // B_ReadPointer
             // 
-            this.PointerReadSize.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PointerReadSize.Location = new System.Drawing.Point(155, 16);
-            this.PointerReadSize.MaxLength = 8;
-            this.PointerReadSize.Name = "PointerReadSize";
-            this.PointerReadSize.Size = new System.Drawing.Size(63, 20);
-            this.PointerReadSize.TabIndex = 20;
-            this.PointerReadSize.Text = "344";
+            this.B_ReadPointer.Location = new System.Drawing.Point(212, 53);
+            this.B_ReadPointer.Margin = new System.Windows.Forms.Padding(4);
+            this.B_ReadPointer.Name = "B_ReadPointer";
+            this.B_ReadPointer.Size = new System.Drawing.Size(171, 28);
+            this.B_ReadPointer.TabIndex = 21;
+            this.B_ReadPointer.Text = "Read from Pointer";
+            this.B_ReadPointer.UseVisualStyleBackColor = true;
+            this.B_ReadPointer.Click += new System.EventHandler(this.B_ReadPointer_Click);
             // 
-            // label3
+            // TB_Pointer
             // 
-            this.label3.Location = new System.Drawing.Point(127, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 20);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Size:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.TB_Pointer.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_Pointer.Location = new System.Drawing.Point(83, 22);
+            this.TB_Pointer.Margin = new System.Windows.Forms.Padding(4);
+            this.TB_Pointer.Name = "TB_Pointer";
+            this.TB_Pointer.Size = new System.Drawing.Size(305, 23);
+            this.TB_Pointer.TabIndex = 18;
             // 
-            // Pointer
+            // L_Pointer
             // 
-            this.Pointer.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Pointer.Location = new System.Drawing.Point(58, 16);
-            this.Pointer.MaxLength = 0;
-            this.Pointer.Name = "Pointer";
-            this.Pointer.Size = new System.Drawing.Size(63, 20);
-            this.Pointer.TabIndex = 18;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(10, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 20);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Pointer:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_Pointer.Location = new System.Drawing.Point(10, 20);
+            this.L_Pointer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.L_Pointer.Name = "L_Pointer";
+            this.L_Pointer.Size = new System.Drawing.Size(65, 25);
+            this.L_Pointer.TabIndex = 17;
+            this.L_Pointer.Text = "Pointer:";
+            this.L_Pointer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LiveHeXUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 300);
+            this.ClientSize = new System.Drawing.Size(441, 404);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -454,6 +478,7 @@
             this.Controls.Add(this.TB_IP);
             this.Controls.Add(this.L_USBState);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LiveHeXUI";
@@ -500,15 +525,14 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button B_ReadRAM;
         private System.Windows.Forms.TextBox RamSize;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label L_ReadRamSize;
         private HexTextBox RamOffset;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label L_ReadRamOffset;
         private System.Windows.Forms.Label L_USBState;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button EditPointerRam;
-        private System.Windows.Forms.TextBox PointerReadSize;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox Pointer;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button B_ReadPointer;
+        private HexTextBox TB_Pointer;
+        private System.Windows.Forms.Label L_Pointer;
+        private System.Windows.Forms.Button B_CopyAddress;
     }
 }

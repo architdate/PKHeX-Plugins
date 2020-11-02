@@ -56,9 +56,11 @@
             Editor.PopulateFields(pkm);
         }
 
-        public bool ReadOffset(uint offset)
+        public bool ReadOffset(ulong offset, RWMethod method = RWMethod.Heap)
         {
-            var data = Bot.ReadOffset(offset);
+            if (!(Bot.com is SysBotMini sb))
+                return false;
+            byte[] data = sb.ReadBytes(offset, Bot.SlotSize, method);
             var pkm = SAV.SAV.GetDecryptedPKM(data);
 
             // Since data might not actually exist at the user-specified offset, double check that the pkm data is valid.

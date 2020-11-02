@@ -61,15 +61,16 @@ namespace PKHeX.Core.Injection
                 return ReadInternal(buffer);
         }
 
-        public byte[] ReadBytes(uint offset, int length, RWMethod method)
+        public byte[] ReadBytes(ulong offset, int length, RWMethod method)
         {
             lock (_sync)
             {
                 var cmd = method switch
                 {
-                    RWMethod.Heap => SwitchCommand.Peek(offset, length),
+                    RWMethod.Heap => SwitchCommand.Peek((uint)offset, length),
                     RWMethod.Main => SwitchCommand.PeekMain(offset, length),
-                    _ => SwitchCommand.Peek(offset, length)
+                    RWMethod.Absolute => SwitchCommand.PeekAbsolute(offset, length),
+                    _ => SwitchCommand.Peek((uint)offset, length)
                 };
 
                 SendInternal(cmd);
@@ -82,15 +83,16 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public void WriteBytes(byte[] data, uint offset, RWMethod method)
+        public void WriteBytes(byte[] data, ulong offset, RWMethod method)
         {
             lock (_sync)
             {
                 var cmd = method switch
                 {
-                    RWMethod.Heap => SwitchCommand.Poke(offset, data),
+                    RWMethod.Heap => SwitchCommand.Poke((uint)offset, data),
                     RWMethod.Main => SwitchCommand.PokeMain(offset, data),
-                    _ => SwitchCommand.Poke(offset, data)
+                    RWMethod.Absolute => SwitchCommand.PokeAbsolute(offset, data),
+                    _ => SwitchCommand.Poke((uint)offset, data)
                 };
 
                 SendInternal(cmd);
@@ -104,31 +106,8 @@ namespace PKHeX.Core.Injection
         public void WriteBytes(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Heap);
         public byte[] ReadBytesMain(uint offset, int length) => ReadBytes(offset, length, RWMethod.Main);
         public void WriteBytesMain(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Main);
-        public byte[] ReadBytesAbsolute(ulong offset, int length)
-        {
-            lock (_sync)
-            {
-                var cmd = SwitchCommand.PeekAbsolute(offset, length);
-                SendInternal(cmd);
+        public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Absolute);
 
-                // give it time to push data back
-                Thread.Sleep((length / 256) + 100);
-                var buffer = new byte[(length * 2) + 1];
-                var _ = ReadInternal(buffer);
-                return Decoder.ConvertHexByteStringToBytes(buffer);
-            }
-        }
-
-        public void WriteBytesAbsolute(byte[] data, ulong offset)
-        {
-            lock (_sync)
-            {
-                var cmd = SwitchCommand.PokeAbsolute(offset, data);
-                SendInternal(cmd);
-
-                // give it time to push data back
-                Thread.Sleep((data.Length / 256) + 100);
-            }
-        }
+        public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteBytes(data, offset, RWMethod.Absolute);
     }
 }
