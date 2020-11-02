@@ -129,6 +129,8 @@ namespace AutoModPlugins
                     {
                         ConnectionEstablished = true;
                         currver = version;
+                        if (Remote.Bot.com is SysBotMini)
+                            groupBox4.Enabled = true;
                         break;
                     }
 
@@ -256,6 +258,21 @@ namespace AutoModPlugins
             L_IP.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
             L_Port.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
             L_USBState.Visible = CurrentInjectionType == InjectorCommunicationType.USB;
+        }
+
+        private void EditPointerRam_Click(object sender, EventArgs e)
+        {
+            if (!(Remote.Bot.com is SysBotMini))
+                return;
+            var valid = int.TryParse(PointerReadSize.Text, out int size);
+            if (!valid)
+            {
+                WinFormsUtil.Alert("Make sure that the size is a valid integer");
+                return;
+            }
+
+            var ptr = Pointer.Text;
+            var jumps = ptr.Replace("main", "").Replace("[", "").Replace("]", "").Split(new [] { "+" }, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 

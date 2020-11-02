@@ -55,11 +55,18 @@
             this.RamOffset = new AutoModPlugins.HexTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.L_USBState = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.EditPointerRam = new System.Windows.Forms.Button();
+            this.PointerReadSize = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Pointer = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Box)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // B_ReadCurrent
@@ -369,11 +376,74 @@
             this.L_USBState.Text = "USB-Botbase mode";
             this.L_USBState.Visible = false;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.EditPointerRam);
+            this.groupBox4.Controls.Add(this.PointerReadSize);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.Pointer);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Enabled = false;
+            this.groupBox4.Location = new System.Drawing.Point(13, 242);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(307, 48);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Pointer Lookup";
+            // 
+            // EditPointerRam
+            // 
+            this.EditPointerRam.Location = new System.Drawing.Point(225, 16);
+            this.EditPointerRam.Name = "EditPointerRam";
+            this.EditPointerRam.Size = new System.Drawing.Size(75, 23);
+            this.EditPointerRam.TabIndex = 21;
+            this.EditPointerRam.Text = "Edit RAM";
+            this.EditPointerRam.UseVisualStyleBackColor = true;
+            this.EditPointerRam.Click += new System.EventHandler(this.EditPointerRam_Click);
+            // 
+            // PointerReadSize
+            // 
+            this.PointerReadSize.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PointerReadSize.Location = new System.Drawing.Point(155, 16);
+            this.PointerReadSize.MaxLength = 8;
+            this.PointerReadSize.Name = "PointerReadSize";
+            this.PointerReadSize.Size = new System.Drawing.Size(63, 20);
+            this.PointerReadSize.TabIndex = 20;
+            this.PointerReadSize.Text = "344";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(127, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 20);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Size:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Pointer
+            // 
+            this.Pointer.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pointer.Location = new System.Drawing.Point(58, 16);
+            this.Pointer.MaxLength = 8;
+            this.Pointer.Name = "Pointer";
+            this.Pointer.Size = new System.Drawing.Size(63, 20);
+            this.Pointer.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(10, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 20);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Pointer:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // LiveHeXUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 246);
+            this.ClientSize = new System.Drawing.Size(331, 300);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -398,6 +468,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Box)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,5 +504,11 @@
         private HexTextBox RamOffset;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label L_USBState;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button EditPointerRam;
+        private System.Windows.Forms.TextBox PointerReadSize;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox Pointer;
+        private System.Windows.Forms.Label label4;
     }
 }

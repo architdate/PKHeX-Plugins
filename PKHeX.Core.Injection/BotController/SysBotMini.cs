@@ -1,8 +1,16 @@
-﻿using System.Net.Sockets;
+﻿using System;
+using System.Net.Sockets;
 using System.Threading;
 
 namespace PKHeX.Core.Injection
 {
+    public enum RWMethod
+    {
+        Heap,
+        Main,
+        Absolute
+    }
+
     public class SysBotMini : ICommunicator
     {
         public string IP = "192.168.1.65";
@@ -53,11 +61,18 @@ namespace PKHeX.Core.Injection
                 return ReadInternal(buffer);
         }
 
-        public byte[] ReadBytes(uint offset, int length)
+        public byte[] ReadBytes(uint offset, int length, RWMethod method)
         {
             lock (_sync)
             {
-                var cmd = SwitchCommand.Peek(offset, length);
+                var cmd = method switch
+                {
+                    RWMethod.Heap => SwitchCommand.Peek(offset, length),
+                    RWMethod.Main => SwitchCommand.PeekMain(offset, length),
+                    RWMethod.Absolute => SwitchCommand.PeekAbsolute(offset, length),
+                    _ => SwitchCommand.Peek(offset, length)
+                };
+
                 SendInternal(cmd);
 
                 // give it time to push data back
@@ -68,15 +83,28 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public void WriteBytes(byte[] data, uint offset)
+        public void WriteBytes(byte[] data, uint offset, RWMethod method = RWMethod.Heap)
         {
             lock (_sync)
             {
-                SendInternal(SwitchCommand.Poke(offset, data));
+                var cmd = method switch
+                {
+                    RWMethod.Heap => SwitchCommand.Poke(offset, data),
+                    RWMethod.Main => SwitchCommand.PokeMain(offset, data),
+                    RWMethod.Absolute => SwitchCommand.PokeAbsolute(offset, data),
+                    _ => SwitchCommand.Poke(offset, data)
+                };
+
+                SendInternal(cmd);
 
                 // give it time to push data back
                 Thread.Sleep((data.Length / 256) + 100);
             }
         }
+
+        public byte[] ReadBytes(uint offset, int length) => ReadBytes(offset, length, RWMethod.Heap);
+        public void WriteBytes(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Heap);
+        public byte[] ReadBytesMain(uint offset, int length) => ReadBytes(offset, length, RWMethod.Main);
+        public void WriteBytesMain(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Main);
     }
 }
