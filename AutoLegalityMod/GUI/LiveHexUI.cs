@@ -262,7 +262,7 @@ namespace AutoModPlugins
 
         private void EditPointerRam_Click(object sender, EventArgs e)
         {
-            if (!(Remote.Bot.com is SysBotMini))
+            if (!(Remote.Bot.com is SysBotMini sb))
                 return;
             var valid = int.TryParse(PointerReadSize.Text, out int size);
             if (!valid)
@@ -272,7 +272,49 @@ namespace AutoModPlugins
             }
 
             var ptr = Pointer.Text;
+            uint finadd = 0;
+            if (!ptr.EndsWith("]")) 
+                finadd = Util.GetHexValue(ptr.Split('+').Last());
             var jumps = ptr.Replace("main", "").Replace("[", "").Replace("]", "").Split(new [] { "+" }, StringSplitOptions.RemoveEmptyEntries);
+            if (jumps.Length == 0)
+            {
+                WinFormsUtil.Alert("Invalid Pointer");
+                return;
+            }
+
+            var initaddress = Util.GetHexValue(jumps[0].Trim());
+            ulong address = BitConverter.ToUInt64(sb.ReadBytesMain(initaddress, 0x8), 0);
+            foreach (var j in jumps)
+            {
+                var val = Util.GetHexValue(j.Trim());
+                if (val == initaddress) 
+                    continue;
+                if (val == finadd)
+                {
+                    address += val;
+                    break;
+                }
+                address = BitConverter.ToUInt64(sb.ReadBytesAbsolute(address + val, 0x8), 0);
+            }
+            try
+            {
+                var result = sb.ReadBytesAbsolute(address, size);
+                using (var form = new SimpleHexEditor(result))
+                {
+                    var res = form.ShowDialog();
+                    if (res == DialogResult.OK)
+                    {
+                        var modifiedRAM = form.Bytes;
+                        sb.WriteBytesAbsolute(modifiedRAM, address);
+                    }
+                }
+                Debug.WriteLine("RAM Modified");
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception ex)
+            {
+                WinFormsUtil.Error("Unable to load data from the specified offset.", ex.Message);
+            }
         }
     }
 

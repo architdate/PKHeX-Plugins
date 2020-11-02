@@ -69,7 +69,6 @@ namespace PKHeX.Core.Injection
                 {
                     RWMethod.Heap => SwitchCommand.Peek(offset, length),
                     RWMethod.Main => SwitchCommand.PeekMain(offset, length),
-                    RWMethod.Absolute => SwitchCommand.PeekAbsolute(offset, length),
                     _ => SwitchCommand.Peek(offset, length)
                 };
 
@@ -83,7 +82,7 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public void WriteBytes(byte[] data, uint offset, RWMethod method = RWMethod.Heap)
+        public void WriteBytes(byte[] data, uint offset, RWMethod method)
         {
             lock (_sync)
             {
@@ -91,7 +90,6 @@ namespace PKHeX.Core.Injection
                 {
                     RWMethod.Heap => SwitchCommand.Poke(offset, data),
                     RWMethod.Main => SwitchCommand.PokeMain(offset, data),
-                    RWMethod.Absolute => SwitchCommand.PokeAbsolute(offset, data),
                     _ => SwitchCommand.Poke(offset, data)
                 };
 
@@ -106,5 +104,31 @@ namespace PKHeX.Core.Injection
         public void WriteBytes(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Heap);
         public byte[] ReadBytesMain(uint offset, int length) => ReadBytes(offset, length, RWMethod.Main);
         public void WriteBytesMain(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Main);
+        public byte[] ReadBytesAbsolute(ulong offset, int length)
+        {
+            lock (_sync)
+            {
+                var cmd = SwitchCommand.PeekAbsolute(offset, length);
+                SendInternal(cmd);
+
+                // give it time to push data back
+                Thread.Sleep((length / 256) + 100);
+                var buffer = new byte[(length * 2) + 1];
+                var _ = ReadInternal(buffer);
+                return Decoder.ConvertHexByteStringToBytes(buffer);
+            }
+        }
+
+        public void WriteBytesAbsolute(byte[] data, ulong offset)
+        {
+            lock (_sync)
+            {
+                var cmd = SwitchCommand.PokeAbsolute(offset, data);
+                SendInternal(cmd);
+
+                // give it time to push data back
+                Thread.Sleep((data.Length / 256) + 100);
+            }
+        }
     }
 }
