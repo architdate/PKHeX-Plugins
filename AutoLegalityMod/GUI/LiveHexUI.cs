@@ -260,26 +260,17 @@ namespace AutoModPlugins
             L_USBState.Visible = CurrentInjectionType == InjectorCommunicationType.USB;
         }
 
-        private void EditPointerRam_Click(object sender, EventArgs e)
+        public ulong GetPointerAddress(SysBotMini sb)
         {
-            if (!(Remote.Bot.com is SysBotMini sb))
-                return;
-            var valid = int.TryParse(PointerReadSize.Text, out int size);
-            if (!valid)
-            {
-                WinFormsUtil.Alert("Make sure that the size is a valid integer");
-                return;
-            }
-
-            var ptr = Pointer.Text;
+            var ptr = TB_Pointer.Text;
             uint finadd = 0;
-            if (!ptr.EndsWith("]")) 
+            if (!ptr.EndsWith("]"))
                 finadd = Util.GetHexValue(ptr.Split('+').Last());
             var jumps = ptr.Replace("main", "").Replace("[", "").Replace("]", "").Split(new [] { "+" }, StringSplitOptions.RemoveEmptyEntries);
             if (jumps.Length == 0)
             {
                 WinFormsUtil.Alert("Invalid Pointer");
-                return;
+                return 0;
             }
 
             var initaddress = Util.GetHexValue(jumps[0].Trim());
@@ -287,7 +278,7 @@ namespace AutoModPlugins
             foreach (var j in jumps)
             {
                 var val = Util.GetHexValue(j.Trim());
-                if (val == initaddress) 
+                if (val == initaddress)
                     continue;
                 if (val == finadd)
                 {
@@ -296,19 +287,35 @@ namespace AutoModPlugins
                 }
                 address = BitConverter.ToUInt64(sb.ReadBytesAbsolute(address + val, 0x8), 0);
             }
+            return address;
+        }
+
+        private void B_CopyAddress_Click(object sender, EventArgs e)
+        {
+            if (!(Remote.Bot.com is SysBotMini sb))
+                return;
+
+            ulong address = GetPointerAddress(sb);
+            if (address == 0)
+                WinFormsUtil.Alert("No pointer address.");
+
+            Clipboard.SetText(address.ToString("X"));
+        }
+
+        private void B_ReadPointer_Click(object sender, EventArgs e)
+        {
+            if (!(Remote.Bot.com is SysBotMini sb))
+                return;
+
+            ulong address = GetPointerAddress(sb);
+            if (address == 0)
+                WinFormsUtil.Alert("No pointer address.");
+
             try
             {
-                var result = sb.ReadBytesAbsolute(address, size);
-                using (var form = new SimpleHexEditor(result))
-                {
-                    var res = form.ShowDialog();
-                    if (res == DialogResult.OK)
-                    {
-                        var modifiedRAM = form.Bytes;
-                        sb.WriteBytesAbsolute(modifiedRAM, address);
-                    }
-                }
-                Debug.WriteLine("RAM Modified");
+                var res = Remote.ReadOffset(address, RWMethod.Absolute);
+                if (!res)
+                    WinFormsUtil.Alert("No valid data is located at the specified offset.");
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
