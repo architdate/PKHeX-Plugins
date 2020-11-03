@@ -3,7 +3,7 @@
     public class LiveHeXController
     {
         private readonly ISaveFileProvider SAV;
-        private readonly IPKMView Editor;
+        public readonly IPKMView Editor;
         public PokeSysBotMini Bot;
 
         public LiveHeXController(ISaveFileProvider boxes, IPKMView editor, InjectorCommunicationType ict)
@@ -56,11 +56,9 @@
             Editor.PopulateFields(pkm);
         }
 
-        public bool ReadOffset(ulong offset, RWMethod method = RWMethod.Heap)
+        public bool ReadOffset(uint offset)
         {
-            if (!(Bot.com is SysBotMini sb))
-                return false;
-            byte[] data = sb.ReadBytes(offset, Bot.SlotSize, method);
+            var data = Bot.ReadOffset(offset);
             var pkm = SAV.SAV.GetDecryptedPKM(data);
 
             // Since data might not actually exist at the user-specified offset, double check that the pkm data is valid.

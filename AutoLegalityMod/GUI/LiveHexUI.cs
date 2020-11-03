@@ -302,6 +302,43 @@ namespace AutoModPlugins
             Clipboard.SetText(address.ToString("X"));
         }
 
+        private void B_EditPointerData_Click(object sender, EventArgs e)
+        {
+            if (!(Remote.Bot.com is SysBotMini sb))
+                return;
+
+            ulong address = GetPointerAddress(sb);
+            if (address == 0)
+                WinFormsUtil.Alert("No pointer address.");
+
+            var valid = int.TryParse(RamSize.Text, out int size);
+            if (!valid)
+            {
+                WinFormsUtil.Alert("Make sure that the size is a valid integer");
+                return;
+            }
+
+            try
+            {
+                var result = sb.ReadBytesAbsolute(address, size);
+                using (var form = new SimpleHexEditor(result))
+                {
+                    var res = form.ShowDialog();
+                    if (res == DialogResult.OK)
+                    {
+                        var modifiedRAM = form.Bytes;
+                        sb.WriteBytesAbsolute(modifiedRAM, address);
+                    }
+                }
+                Debug.WriteLine("RAM Modified");
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception ex)
+            {
+                WinFormsUtil.Error("Unable to load data from the specified offset.", ex.Message);
+            }
+        }
+
         private void B_ReadPointer_Click(object sender, EventArgs e)
         {
             if (!(Remote.Bot.com is SysBotMini sb))
@@ -311,17 +348,13 @@ namespace AutoModPlugins
             if (address == 0)
                 WinFormsUtil.Alert("No pointer address.");
 
-            try
-            {
-                var res = Remote.ReadOffset(address, RWMethod.Absolute);
-                if (!res)
-                    WinFormsUtil.Alert("No valid data is located at the specified offset.");
-            }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception ex)
-            {
-                WinFormsUtil.Error("Unable to load data from the specified offset.", ex.Message);
-            }
+            var size = Remote.Bot.SlotSize;
+            var data = sb.ReadBytesAbsolute(address, size);
+            var pkm = SAV.SAV.GetDecryptedPKM(data);
+
+            // Since data might not actually exist at the user-specified offset, double check that the pkm data is valid.
+            if (!pkm.ChecksumValid)
+                Remote.Editor.PopulateFields(pkm);
         }
     }
 

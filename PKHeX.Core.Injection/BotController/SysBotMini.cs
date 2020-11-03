@@ -104,7 +104,7 @@ namespace PKHeX.Core.Injection
 
         public byte[] ReadBytes(uint offset, int length) => ReadBytes(offset, length, RWMethod.Heap);
         public void WriteBytes(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Heap);
-        public byte[] ReadBytesMain(uint offset, int length) => ReadBytes(offset, length, RWMethod.Main);
+        public byte[] ReadBytesMain(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Main);
         public void WriteBytesMain(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Main);
         public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Absolute);
 
