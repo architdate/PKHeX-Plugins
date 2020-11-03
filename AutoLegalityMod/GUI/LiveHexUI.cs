@@ -353,7 +353,7 @@ namespace AutoModPlugins
             var pkm = SAV.SAV.GetDecryptedPKM(data);
 
             // Since data might not actually exist at the user-specified offset, double check that the pkm data is valid.
-            if (!pkm.ChecksumValid)
+            if (pkm.ChecksumValid)
                 Remote.Editor.PopulateFields(pkm);
         }
     }
