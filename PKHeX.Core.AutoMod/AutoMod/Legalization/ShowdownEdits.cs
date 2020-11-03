@@ -188,17 +188,17 @@ namespace PKHeX.Core.AutoMod
             switch ((Species)pk.Species)
             {
                 case Species.Arceus:
-                    int forma = GetArceusFormFromHeldItem(pk.HeldItem, pk.Format);
+                    int forma = FormVerifier.GetArceusFormFromHeldItem(pk.HeldItem, pk.Format);
                     pk.HeldItem = pk.AltForm != forma ? 0 : pk.HeldItem;
                     pk.AltForm = pk.AltForm != forma ? 0 : forma;
                     break;
                 case Species.Silvally:
-                    int forms = GetSilvallyFormFromHeldItem(pk.HeldItem);
+                    int forms = FormVerifier.GetSilvallyFormFromHeldItem(pk.HeldItem);
                     pk.HeldItem = pk.AltForm != forms ? 0 : pk.HeldItem;
                     pk.AltForm = pk.AltForm != forms ? 0 : forms;
                     break;
                 case Species.Genesect:
-                    int formg = GetGenesectFormFromHeldItem(pk.HeldItem);
+                    int formg = FormVerifier.GetGenesectFormFromHeldItem(pk.HeldItem);
                     pk.HeldItem = pk.AltForm != formg ? 0 : pk.HeldItem;
                     pk.AltForm = pk.AltForm != formg ? 0 : formg;
                     break;
@@ -206,33 +206,6 @@ namespace PKHeX.Core.AutoMod
                     pk.HeldItem = 122;
                     break;
             }
-        }
-
-        private static int GetArceusFormFromHeldItem(int item, int format)
-        {
-            if (777 <= item && item <= 793)
-                return Array.IndexOf(Legal.Arceus_ZCrystal, (ushort)item) + 1;
-
-            int form = 0;
-            if ((298 <= item && item <= 313) || item == 644)
-                form = Array.IndexOf(Legal.Arceus_Plate, (ushort)item) + 1;
-            if (format == 4 && form >= 9)
-                return form + 1; // ??? type Form shifts everything by 1
-            return form;
-        }
-
-        private static int GetSilvallyFormFromHeldItem(int item)
-        {
-            if ((904 <= item && item <= 920) || item == 644)
-                return item - 903;
-            return 0;
-        }
-
-        private static int GetGenesectFormFromHeldItem(int item)
-        {
-            if (116 <= item && item <= 119)
-                return item - 115;
-            return 0;
         }
     }
 }

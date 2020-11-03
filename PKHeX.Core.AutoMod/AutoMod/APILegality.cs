@@ -655,7 +655,7 @@ namespace PKHeX.Core.AutoMod
 
             pk.Species = iterPKM.Species; // possible evolution
             // can be ability capsuled
-            if (Legal.FormChange.Contains(pk.Species) || pk.Species == (int) Species.Zygarde)
+            if (AltFormInfo.IsFormChangeable(pk.Species, pk.AltForm, iterPKM.AltForm, pk.Format))
                 pk.AltForm = iterPKM.AltForm; // set alt form if it can be freely changed!
             pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
             pk.StatNature = iterPKM.StatNature;
@@ -667,7 +667,7 @@ namespace PKHeX.Core.AutoMod
                 return false;
             if (template.Gender != pk.Gender) // match gender
                 return false;
-            if (template.AltForm != pk.AltForm && !(Legal.FormChange.Contains(pk.Species) || pk.Species == (int) Species.Zygarde)) // match form -- Toxtricity etc
+            if (template.AltForm != pk.AltForm && !AltFormInfo.IsFormChangeable(pk.Species, pk.AltForm, template.AltForm, pk.Format)) // match form -- Toxtricity etc
                 return false;
             return true;
         }
