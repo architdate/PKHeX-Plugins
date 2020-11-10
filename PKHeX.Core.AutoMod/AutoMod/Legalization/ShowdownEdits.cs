@@ -107,8 +107,6 @@ namespace PKHeX.Core.AutoMod
             else
                 pk.ClearNickname();
             pk.CurrentLevel = set.Level;
-            if (pk.CurrentLevel == 50)
-                pk.CurrentLevel = 100; // VGC Override
         }
 
         public static void SetLanguage(this PKM pk, LanguageID? lang = null) => pk.Language = lang != null ? (int)lang : pk.Language;
