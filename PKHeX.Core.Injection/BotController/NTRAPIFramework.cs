@@ -299,20 +299,22 @@ namespace PKHeX.Core.Injection
             IsConnected = false;
         }
 
-        private void SendPacket(uint type, uint cmd, IReadOnlyList<uint> args, uint dataLen)
+        private void SendPacket(uint type, uint cmd, IReadOnlyList<uint>? args, uint dataLen)
         {
             _currentSeq += 1000;
             var buf = new byte[84];
+            var t = 12;
             BitConverter.GetBytes(0x12345678).CopyTo(buf, 0);
             BitConverter.GetBytes(_currentSeq).CopyTo(buf, 4);
             BitConverter.GetBytes(type).CopyTo(buf, 8);
             BitConverter.GetBytes(cmd).CopyTo(buf, 12);
-            var t = 16;
             for (var i = 0; i < 16; i++)
             {
-                var val = args.Count > i ? args[i] : 0;
-                BitConverter.GetBytes(val).CopyTo(buf, t);
                 t += 4;
+                uint arg = 0;
+                if (args != null)
+                    arg = args[i];
+                BitConverter.GetBytes(arg).CopyTo(buf, t);
             }
             BitConverter.GetBytes(dataLen).CopyTo(buf, t + 4);
             var stream = _netStream ?? throw new ArgumentNullException(nameof(_netStream));
@@ -346,7 +348,7 @@ namespace PKHeX.Core.Injection
                     if (_heartbeatSendable == 1)
                     {
                         _heartbeatSendable = 0;
-                        SendPacket(0, 0, Array.Empty<uint>(), 0);
+                        SendPacket(0, 0, null, 0);
                     }
                 }
             }
@@ -379,9 +381,13 @@ namespace PKHeX.Core.Injection
         private void GetGame(object sender, InfoReadyEventArgs e)
         {
             var pnamestr = new[] { "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc", "momiji", "momiji" };
+            string pname;
             string log = e.Info;
-            if (!GetPID(pnamestr, log, out PID))
+            if (null == (pname = Array.Find(pnamestr, log.Contains)))
                 return;
+            pname = ", pname:" + pname.PadLeft(9);
+            string pidaddr = log.Substring(log.IndexOf(pname, StringComparison.Ordinal) - 10, 10);
+            PID = Convert.ToInt32(pidaddr, 16);
 
             if (log.Contains("niji_loc"))
             {
@@ -392,18 +398,6 @@ namespace PKHeX.Core.Injection
                 Write(0x3F3424, BitConverter.GetBytes(0xE3A01000), PID); // Ultra Sun  // NFC ON: E3A01001 NFC OFF: E3A01000
                 Write(0x3F3428, BitConverter.GetBytes(0xE3A01000), PID); // Ultra Moon // NFC ON: E3A01001 NFC OFF: E3A01000
             }
-        }
-
-        private static bool GetPID(string[] pnamestr, string log, out int pid)
-        {
-            pid = 0;
-            string pname;
-            if ((pname = Array.Find(pnamestr, log.Contains)) == null)
-                return false;
-            pname = ", pname:" + pname.PadLeft(9);
-            string pidaddr = log.Substring(log.IndexOf(pname, StringComparison.Ordinal) - 10, 10);
-            pid = Convert.ToInt32(pidaddr, 16);
-            return true;
         }
 
         private void HandleDataReady(object sender, DataReadyEventArgs e)
