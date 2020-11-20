@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -55,9 +56,7 @@ namespace PKHeX.Core.AutoMod
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
-            var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
-            if (PrioritizeGame)
-                gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, destVer) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
+            var gamelist = FilteredGameList(template, destVer);
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             foreach (var enc in encounters)
@@ -111,6 +110,18 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
+        private static GameVersion[] FilteredGameList(PKM template, GameVersion destVer)
+        {
+            var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
+            if (PrioritizeGame)
+                gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, destVer) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
+            var HA = template.AbilityNumber == 4;
+            if (!HA) gamelist = gamelist.Where(z => z.GetGeneration() >= 3 || GameVersion.Gen7b.Contains(z)).ToArray();
+            if (HA && destVer.GetGeneration() < 8)
+                gamelist = gamelist.Where(z => z.GetGeneration() != 3 && z.GetGeneration() != 4).ToArray();
+            return gamelist;
+        }
+
         private static ITrainerInfo GetTrainer(RegenSet regen, GameVersion ver, int gen)
         {
             if (AllowTrainerOverride && regen.HasTrainerSettings && regen.Trainer != null)
@@ -156,9 +167,6 @@ namespace PKHeX.Core.AutoMod
         /// <returns>if the encounter is valid or not</returns>
         private static bool IsEncounterValid(IBattleTemplate set, IEncounterable enc, bool isHidden, GameVersion destVer, out GameVersion ver)
         {
-            // Pokemon who are in games of generation >= 8 can change non HA to HA via a capsule and vice versa
-            isHidden = isHidden && destVer.GetGeneration() < 8;
-
             // initialize out vars (not calculating here to save time)
             ver = GameVersion.Any;
 
@@ -170,14 +178,8 @@ namespace PKHeX.Core.AutoMod
                     return false;
             }
 
-            // Don't process if Hidden Ability is requested and the PKM is from Gen 3 or Gen 4
-            var gen = enc.Generation;
-            if (isHidden && (uint) (gen - 3) < 2) // Gen 3 and Gen 4
-                return false;
-
-            // Don't process if requested PKM is Gigantamax but the Game is not SW/SH
-            ver = enc is IVersion v ? v.Version : destVer;
-            if (set.CanGigantamax && !GameVersion.SWSH.Contains(ver))
+            // Don't process if encounter is HA but requested pkm is not HA
+            if (!isHidden && enc is EncounterStatic s && s.Ability == 4)
                 return false;
 
             // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
@@ -431,7 +433,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (!SetBattleVersion)
                 return;
-            if (pk.IsNative)
+            if (pk.IsNative && !pk.GO)
                 return;
             if (!(pk is IBattleVersion bvPk))
                 return;

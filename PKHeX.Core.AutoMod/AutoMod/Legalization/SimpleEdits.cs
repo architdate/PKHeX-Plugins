@@ -431,7 +431,6 @@ namespace PKHeX.Core.AutoMod
         public static void SetDatelocks(this PKM pk, IEncounterable enc)
         {
             pk.SetHOMEDates(enc);
-            pk.SetGODates(enc);
         }
 
         /// <summary>
@@ -452,22 +451,6 @@ namespace PKHeX.Core.AutoMod
                     pk.MetDate = new DateTime(2020, 06, 30);
                     break;
             }
-        }
-
-        /// <summary>
-        /// Sets the met date for Pokemon GO events (because Matt is too lazy to document)
-        /// </summary>
-        /// <param name="pk">pokemon file to modify</param>
-        /// <param name="enc">encounter used to generate pokemon file</param>
-        public static void SetGODates(this PKM pk, IEncounterable enc)
-        {
-            var isGOMon = pk.Version == (int) GameVersion.GO;
-            if (!isGOMon)
-                return;
-            if ((enc.Species == (int)Species.Meltan || enc.Species == (int)Species.Melmetal) && pk.IsShiny) pk.MetDate = new DateTime(2019, 02, 14); // Shiny Meltan Pokemon GO
-            else if (enc.Species == (int)Species.Mewtwo) pk.MetDate = new DateTime(2020, 05, 04); // Mewtwo Raid
-            else if (AlolanOriginForms.Contains(enc.Species) && pk.AltForm == 1) pk.MetDate = new DateTime(2019, 10, 02); // Alolan Eggs
-            else pk.MetDate = DateTime.Today;
         }
     }
 }
