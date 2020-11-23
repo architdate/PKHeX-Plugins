@@ -54,6 +54,7 @@ namespace PKHeX.Core.AutoMod
 
             var generated = 0;
             var invalidAPISets = new List<ShowdownSet>();
+            var timedoutSets = new List<ShowdownSet>();
             for (int i = 0; i < sets.Count; i++)
             {
                 var set = sets[i];
@@ -65,15 +66,17 @@ namespace PKHeX.Core.AutoMod
                 var pk = tr.GetLegalFromSet(regen, out var msg);
                 pk.ResetPartyStats();
                 pk.SetBoxForm();
-                if (msg != LegalizationResult.Regenerated)
+                if (msg == LegalizationResult.Failed)
                     invalidAPISets.Add(set);
+                if (msg == LegalizationResult.Timeout)
+                    timedoutSets.Add(set);
 
                 var index = emptySlots[i];
                 tr.SetBoxSlotAtIndex(pk, index);
                 generated++;
             }
 
-            Debug.WriteLine($"API Genned Sets: {generated - invalidAPISets.Count}/{sets.Count}, {invalidAPISets.Count} were not.");
+            Debug.WriteLine($"API Genned Sets: {generated - invalidAPISets.Count - timedoutSets.Count}/{sets.Count}, {invalidAPISets.Count} were invalid and {timedoutSets.Count} timed out.");
             foreach (var set in invalidAPISets)
                 Debug.WriteLine(set.Text);
             return AutoModErrorCode.None;
@@ -106,14 +109,10 @@ namespace PKHeX.Core.AutoMod
             if (set is ShowdownSet s)
                 set = new RegenTemplate(s, tr.Generation);
 
-            bool success = tr.TryAPIConvert(set, template, out PKM pk);
-            if (success)
-            {
-                msg = LegalizationResult.Regenerated;
+            msg = tr.TryAPIConvert(set, template, out PKM pk);
+            if (msg == LegalizationResult.Regenerated)
                 return pk;
-            }
 
-            msg = LegalizationResult.Failed;
             if (EnableEasterEggs)
             {
                 var gen = EasterEggs.GetGeneration(template.Species);
@@ -135,15 +134,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="template">pkm file to legalize</param>
         /// <param name="pkm">legalized pkm file</param>
         /// <returns>bool if the pokemon was legalized</returns>
-        public static bool TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, out PKM pkm)
+        public static LegalizationResult TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, out PKM pkm)
         {
-            pkm = tr.GetLegalFromTemplate(template, set, out bool satisfied);
-            if (!satisfied)
-                return false;
+            pkm = tr.GetLegalFromTemplate(template, set, out LegalizationResult satisfied);
+            if (satisfied != LegalizationResult.Regenerated)
+                return satisfied;
 
             var trainer = TrainerSettings.GetSavedTrainerData(pkm, tr);
             pkm.SetAllTrainerData(trainer);
-            return true;
+            return LegalizationResult.Regenerated;
         }
 
         /// <summary>

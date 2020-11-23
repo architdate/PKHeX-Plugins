@@ -26,6 +26,7 @@ namespace PKHeX.Core.AutoMod
         public static bool SetBattleVersion { get; set; }
         public static bool AllowTrainerOverride { get; set; }
         public static bool AllowBatchCommands { get; set; } = true;
+        public static int Timeout { get; set; } = 15;
 
         /// <summary>
         /// Main function that auto legalizes based on the legality
@@ -35,7 +36,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is legal or not</param>
-        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out bool satisfied)
+        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out LegalizationResult satisfied)
         {
             RegenSet regen;
             if (set is RegenTemplate t)
@@ -59,8 +60,17 @@ namespace PKHeX.Core.AutoMod
             var gamelist = FilteredGameList(template, destVer);
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
+            var timer = Stopwatch.StartNew();
             foreach (var enc in encounters)
             {
+                // Return out if set times out
+                if (timer.Elapsed.TotalSeconds >= Timeout)
+                {
+                    timer.Stop();
+                    satisfied = LegalizationResult.Timeout;
+                    return template;
+                }
+
                 // Look before we leap -- don't waste time generating invalid / incompatible junk.
                 if (!IsEncounterValid(set, enc, isHidden, destVer, out var ver))
                     continue;
@@ -101,12 +111,12 @@ namespace PKHeX.Core.AutoMod
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid)
                 {
-                    satisfied = true;
+                    satisfied = LegalizationResult.Regenerated;
                     return pk;
                 }
                 Debug.WriteLine($"{la.Report()}\n");
             }
-            satisfied = false;
+            satisfied = LegalizationResult.Failed;
             return template;
         }
 

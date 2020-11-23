@@ -127,8 +127,8 @@ namespace PKHeX.Core.AutoMod
                 var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
                 var set = new ShowdownSet(new ShowdownSet(blank).Text.Split('\r')[0]);
                 template.ApplySetDetails(set);
-                bool success = tr.TryAPIConvert(set, template, out PKM pk);
-                return success ? pk : null;
+                var success = tr.TryAPIConvert(set, template, out PKM pk);
+                return success == LegalizationResult.Regenerated ? pk : null;
             }
             var an = f.AbilityNumber;
             f.Species = species;
@@ -167,8 +167,8 @@ namespace PKHeX.Core.AutoMod
                 var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
                 var set = new ShowdownSet(new ShowdownSet(blank).Text.Split('\r')[0]);
                 template.ApplySetDetails(set);
-                bool success = tr.TryAPIConvert(set, template, out PKM pk);
-                return success ? pk : null;
+                var success = tr.TryAPIConvert(set, template, out PKM pk);
+                return success == LegalizationResult.Regenerated ? pk : null;
             }
         }
 

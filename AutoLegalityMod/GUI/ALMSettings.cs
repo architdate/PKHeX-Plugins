@@ -29,6 +29,7 @@ namespace AutoModPlugins.GUI
             new ALMSettingMetadata("SetMatchingBalls", "Attempts to choose a matching Poké Ball based on Pokémon color.", "Customization"),
 
             // Legality
+            new ALMSettingMetadata("Timeout", "Global timeout per Pokémon being genned (in seconds)", "Legality"),
             new ALMSettingMetadata("SetRandomTracker", "Randomizes a HOME tracker for every Pokémon.", "Legality"),
             new ALMSettingMetadata("UseXOROSHIRO", "Generates legal nonshiny Generation 8 raid Pokémon based on the game's RNG.", "Legality"),
             new ALMSettingMetadata("EnableEasterEggs", "Produces an Easter Egg Pokémon if the provided set is illegal.", "Legality"),

@@ -13,6 +13,11 @@
         /// <summary>
         /// Failed to generate.
         /// </summary>
-        Failed
+        Failed,
+
+        /// <summary>
+        /// Timed out while generating
+        /// </summary>
+        Timeout
     }
 }

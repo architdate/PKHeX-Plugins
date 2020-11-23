@@ -12,7 +12,7 @@ namespace AutoModPlugins.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class AutoLegality : global::System.Configuration.ApplicationSettingsBase {
         
         private static AutoLegality defaultInstance = ((AutoLegality)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new AutoLegality())));
@@ -236,6 +236,18 @@ namespace AutoModPlugins.Properties {
             }
             set {
                 this["AllowTrainerOverride"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public int Timeout {
+            get {
+                return ((int)(this["Timeout"]));
+            }
+            set {
+                this["Timeout"] = value;
             }
         }
     }

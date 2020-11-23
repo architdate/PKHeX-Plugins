@@ -84,7 +84,9 @@ namespace AutoModPlugins
             var timer = Stopwatch.StartNew();
 
             var sav = SaveFileEditor.SAV;
-            var legal = sav.GetLegalFromSet(regen, out _);
+            var legal = sav.GetLegalFromSet(regen, out var msg);
+            if (msg == LegalizationResult.Timeout)
+                Debug.WriteLine("Set timed out while generating");
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
 
@@ -137,6 +139,7 @@ namespace AutoModPlugins
             APILegality.PrioritizeGameVersion = settings.PriorityGameVersion;
             APILegality.SetBattleVersion = settings.SetBattleVersion;
             APILegality.AllowTrainerOverride = settings.AllowTrainerOverride;
+            APILegality.Timeout = settings.Timeout;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
 

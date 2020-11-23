@@ -14,7 +14,7 @@ namespace PKHeX.Core.AutoMod
         CODE_SILENT,
 
         NotEnoughSpace,
-        InvalidLines,
+        InvalidLines
     }
 
     public static class AutoModErrorCodeExtensions
