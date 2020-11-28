@@ -85,13 +85,24 @@ namespace AutoModPlugins
 
             var sav = SaveFileEditor.SAV;
             var legal = sav.GetLegalFromSet(regen, out var msg);
-            if (msg == LegalizationResult.Timeout)
-                Debug.WriteLine("Set timed out while generating");
+            timer.Stop();
+
+            if (msg == LegalizationResult.Timeout || msg == LegalizationResult.Failed)
+            {
+                Legalizer.Dump(regen, msg == LegalizationResult.Failed);
+                var errorstr = msg == LegalizationResult.Failed ? "failed to generate" : "timed out";
+                var res = WinFormsUtil.ALMError(
+                    $"Set {errorstr}. Please create an issue on GitHub and upload the error_log.txt file in the issue." +
+                    $"\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.");
+                if (res == DialogResult.Yes)
+                    Process.Start("https://discord.gg/tDMvSRv");
+                else if (res == DialogResult.No)
+                    Process.Start("https://github.com/architdate/PKHeX-Plugins/issues");
+            }
+
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
 
-            // Debug Statements
-            timer.Stop();
             var timespan = timer.Elapsed;
             Debug.WriteLine($"Time to complete {nameof(ImportSetToTabs)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
             return AutoModErrorCode.None;
@@ -110,7 +121,18 @@ namespace AutoModPlugins
             var start = SaveFileEditor.CurrentBox * sav.BoxSlotCount;
 
             Debug.WriteLine($"Commencing Import of {sets.Count} set(s).");
-            var result = sav.ImportToExisting(sets, BoxData, start, replace);
+            var result = sav.ImportToExisting(sets, BoxData, out var invalid, out var timeout, start, replace);
+            if (timeout.Count > 0 || invalid.Count > 0)
+            {
+                var res = WinFormsUtil.ALMError(
+                    $"{timeout.Count} set(s) timed out and {invalid.Count} set(s) are invalid. Please create an issue on GitHub and upload the error_log.txt file in the issue." +
+                    $"\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.");
+                if (res == DialogResult.Yes)
+                    Process.Start("https://discord.gg/tDMvSRv");
+                else if (res == DialogResult.No)
+                    Process.Start("https://github.com/architdate/PKHeX-Plugins/issues");
+            }
+
             if (result != AutoModErrorCode.None)
                 return result;
 

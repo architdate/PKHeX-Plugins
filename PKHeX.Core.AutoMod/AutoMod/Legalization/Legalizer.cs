@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace PKHeX.Core.AutoMod
         public static PKM Legalize(this ITrainerInfo tr, PKM pk)
         {
             var set = new RegenTemplate(pk, tr.Generation);
-            return tr.GetLegalFromTemplate(pk, set, out _);
+            return tr.GetLegalFromTemplateTimeout(pk, set, out _);
         }
 
         /// <summary>
@@ -43,18 +44,18 @@ namespace PKHeX.Core.AutoMod
         /// <param name="start">Starting offset to place converted details</param>
         /// <param name="overwrite">Overwrite</param>
         /// <returns>Result code indicating success or failure</returns>
-        public static AutoModErrorCode ImportToExisting(this SaveFile tr, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, int start = 0, bool overwrite = true)
+        public static AutoModErrorCode ImportToExisting(this SaveFile tr, IReadOnlyList<ShowdownSet> sets, IList<PKM> arr, out List<RegenTemplate> invalidAPISets, out List<RegenTemplate> timedoutSets, int start = 0, bool overwrite = true)
         {
             var emptySlots = overwrite
                 ? Enumerable.Range(start, sets.Count).Where(set => set < arr.Count).ToList()
                 : FindAllEmptySlots(arr, start);
+            invalidAPISets = new List<RegenTemplate>();
+            timedoutSets = new List<RegenTemplate>();
 
             if (emptySlots.Count < sets.Count)
                 return AutoModErrorCode.NotEnoughSpace;
 
             var generated = 0;
-            var invalidAPISets = new List<ShowdownSet>();
-            var timedoutSets = new List<ShowdownSet>();
             for (int i = 0; i < sets.Count; i++)
             {
                 var set = sets[i];
@@ -67,19 +68,29 @@ namespace PKHeX.Core.AutoMod
                 pk.ResetPartyStats();
                 pk.SetBoxForm();
                 if (msg == LegalizationResult.Failed)
-                    invalidAPISets.Add(set);
+                    invalidAPISets.Add(regen);
                 if (msg == LegalizationResult.Timeout)
-                    timedoutSets.Add(set);
+                    timedoutSets.Add(regen);
 
                 var index = emptySlots[i];
                 tr.SetBoxSlotAtIndex(pk, index);
                 generated++;
             }
 
+            foreach (var r in timedoutSets)
+                Dump(r);
+            foreach (var r in invalidAPISets)
+                Dump(r, true);
             Debug.WriteLine($"API Genned Sets: {generated - invalidAPISets.Count - timedoutSets.Count}/{sets.Count}, {invalidAPISets.Count} were invalid and {timedoutSets.Count} timed out.");
             foreach (var set in invalidAPISets)
                 Debug.WriteLine(set.Text);
             return AutoModErrorCode.None;
+        }
+
+        public static void Dump(RegenTemplate set, bool invalid = false)
+        {
+            System.IO.File.AppendAllText($"error_log.txt", 
+                (invalid ? $"[Invalid] [DateTime: {DateTime.Now}]" : $"[Timeout : {APILegality.Timeout} seconds] [DateTime: {DateTime.Now}]") + Environment.NewLine + set.Text + Environment.NewLine);
         }
 
         /// <summary>
@@ -136,7 +147,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>bool if the pokemon was legalized</returns>
         public static LegalizationResult TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, out PKM pkm)
         {
-            pkm = tr.GetLegalFromTemplate(template, set, out LegalizationResult satisfied);
+            pkm = tr.GetLegalFromTemplateTimeout(template, set, out LegalizationResult satisfied);
             if (satisfied != LegalizationResult.Regenerated)
                 return satisfied;
 

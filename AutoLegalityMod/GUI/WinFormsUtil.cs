@@ -35,6 +35,18 @@ namespace AutoModPlugins
             return MessageBox.Show(msg, nameof(Error), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public static DialogResult ALMError(params string[] lines)
+        {
+            SystemSounds.Hand.Play();
+            string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
+            MessageBoxManager.Register();
+            MessageBoxManager.Yes = "Discord";
+            MessageBoxManager.No = "GitHub";
+            var val = MessageBox.Show(msg, "Auto Legality Error", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+            MessageBoxManager.Unregister();
+            return val;
+        }
+
         /// <summary>
         /// Opens a dialog to open a PKM/SAV file.
         /// </summary>

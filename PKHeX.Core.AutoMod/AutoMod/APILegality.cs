@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -884,6 +886,53 @@ namespace PKHeX.Core.AutoMod
                 c.CNT_Beauty = 170;
             if (pk.Version == (int)GameVersion.CXD && pk.OT_Gender == (int)Gender.Female) // Colosseum and XD are sexist games.
                 pk.OT_Gender = (int)Gender.Male;
+        }
+
+        /// <summary>
+        /// Wrapper function for GetLegalFromTemplate but with a Timeout
+        /// </summary>
+        public static PKM GetLegalFromTemplateTimeout(this ITrainerInfo dest, PKM template, IBattleTemplate set, out LegalizationResult satisfied)
+        {
+            AsyncLegalizationResult GetLegal()
+            {
+                var res = dest.GetLegalFromTemplate(template, set, out var s);
+                return new AsyncLegalizationResult(res, s);
+            }
+
+            var task = Task.Run(() => GetLegal());
+            var first = task.TimeoutAfter(new TimeSpan(0, 0, 0, Timeout))?.Result;
+            if (first == null)
+            {
+                satisfied = LegalizationResult.Timeout;
+                return template;
+            }
+
+            var result = first;
+            satisfied = result.Status;
+            return result.Created;
+        }
+
+        private class AsyncLegalizationResult
+        {
+            public readonly PKM Created;
+            public readonly LegalizationResult Status;
+
+            public AsyncLegalizationResult(PKM pk, LegalizationResult res)
+            {
+                Created = pk;
+                Status = res;
+            }
+        }
+
+        private static async Task<AsyncLegalizationResult>? TimeoutAfter(this Task<AsyncLegalizationResult> task, TimeSpan timeout)
+        {
+            using var cts = new CancellationTokenSource(timeout);
+            var delay = Task.Delay(timeout, cts.Token);
+            var completedTask = await Task.WhenAny(task, delay).ConfigureAwait(false);
+            if (completedTask != task)
+                return null;
+
+            return await task.ConfigureAwait(false); // will re-fire exception if present
         }
     }
 }
