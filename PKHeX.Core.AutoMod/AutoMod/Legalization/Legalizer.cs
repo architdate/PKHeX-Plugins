@@ -81,7 +81,7 @@ namespace PKHeX.Core.AutoMod
                 Dump(r);
             foreach (var r in invalidAPISets)
                 Dump(r, true);
-            Debug.WriteLine($"API Genned Sets: {generated - invalidAPISets.Count - timedoutSets.Count}/{sets.Count}, {invalidAPISets.Count} were invalid and {timedoutSets.Count} timed out.");
+            Debug.WriteLine($"API Generated Sets: {generated - invalidAPISets.Count - timedoutSets.Count}/{sets.Count}, {invalidAPISets.Count} were invalid and {timedoutSets.Count} timed out.");
             foreach (var set in invalidAPISets)
                 Debug.WriteLine(set.Text);
             return AutoModErrorCode.None;

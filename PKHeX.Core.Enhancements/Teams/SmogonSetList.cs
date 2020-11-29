@@ -402,7 +402,7 @@ namespace PKHeX.Core.Enhancements
                 sb.Append(Environment.NewLine);
             }
             sb.Append(Environment.NewLine);
-            sb.Append(count).Append(" sets genned for ").Append(showdownSpec);
+            sb.Append(count).Append(" sets generated for ").Append(showdownSpec);
             return sb.ToString();
         }
     }
