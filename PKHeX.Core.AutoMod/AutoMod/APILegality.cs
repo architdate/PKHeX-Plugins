@@ -509,15 +509,14 @@ namespace PKHeX.Core.AutoMod
 
         private static void GetSuggestedTracker(this PKM pk)
         {
-            var origin_gen = pk.GenNumber;
-            if (pk is IHomeTrack home)
-            {
-                // Check setting
-                if (SetRandomTracker && origin_gen < 8 && home.Tracker == 0)
-                    home.Tracker = GetRandomULong();
-                else
-                    home.Tracker = 0;
-            }
+            if (!(pk is IHomeTrack home))
+                return;
+
+            // Check setting
+            if (SetRandomTracker && home.Tracker == 0)
+                home.Tracker = GetRandomULong();
+            else
+                home.Tracker = 0;
         }
 
         /// <summary>
