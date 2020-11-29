@@ -46,7 +46,7 @@ namespace AutoModPlugins
 
             ShowdownSetLoader.Import(info.Sets);
 
-            var response = $"All sets genned from the following URL: {info.URL}";
+            var response = $"All sets generated from the following URL: {info.URL}";
             WinFormsUtil.Alert(response, info.Summary);
         }
     }
