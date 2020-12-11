@@ -67,16 +67,16 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Set Encryption Constant based on PKM GenNumber
+        /// Set Encryption Constant based on PKM Generation
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="enc">Encounter details</param>
         public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
         {
             var isRaid = enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U;
-            if ((pk.Species == 658 && pk.AltForm == 1) || isRaid) // Ash-Greninja or raids
+            if ((pk.Species == 658 && pk.Form == 1) || isRaid) // Ash-Greninja or raids
                 return;
-            int gen = pk.GenNumber;
+            int gen = pk.Generation;
             if (2 < gen && gen < 6)
             {
                 var ec = pk.PID;
@@ -136,7 +136,7 @@ namespace PKHeX.Core.AutoMod
                 }
             }
 
-            if (pk.GenNumber > 5 || pk.VC)
+            if (pk.Generation > 5 || pk.VC)
             {
                 if (shiny == Shiny.FixedValue || shiny == Shiny.Never)
                     return;
@@ -209,7 +209,7 @@ namespace PKHeX.Core.AutoMod
 
         public static void ApplyHeightWeight(this PKM pk, IEncounterable enc, bool signed = true)
         {
-            if (pk.GenNumber < 8 && pk.Format >= 8 && !pk.GG) // height and weight don't apply prior to GG
+            if (pk.Generation < 8 && pk.Format >= 8 && !pk.GG) // height and weight don't apply prior to GG
                 return;
             if (!(pk is IScaledSize size))
                 return;
@@ -264,8 +264,8 @@ namespace PKHeX.Core.AutoMod
 
         public static void SetFriendship(this PKM pk, IEncounterable enc)
         {
-            var gen = pk.GenNumber <= 2 ? 7 : pk.GenNumber;
-            if (!HistoryVerifier.GetCanOTHandle(enc, pk, gen) || pk.GenNumber <= 2)
+            var gen = pk.Generation <= 2 ? 7 : pk.Generation;
+            if (!HistoryVerifier.GetCanOTHandle(enc, pk, gen) || pk.Generation <= 2)
                 pk.OT_Friendship = GetBaseFriendship(gen, pk.Species);
             else pk.CurrentFriendship = pk.Moves.Contains(218) ? 0 : 255;
         }
@@ -363,7 +363,7 @@ namespace PKHeX.Core.AutoMod
         public static void SetTrainerData(this PKM pk, ITrainerInfo trainer)
         {
             pk.TID = trainer.TID;
-            pk.SID = pk.GenNumber >= 3 ? trainer.SID : 0;
+            pk.SID = pk.Generation >= 3 ? trainer.SID : 0;
             pk.OT_Name = trainer.OT;
         }
 

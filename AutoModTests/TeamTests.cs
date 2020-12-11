@@ -64,7 +64,7 @@ namespace AutoModTests
                 species = sav switch
                 {
                     SAV7b _ => species.Where(z => z <= 151 || (z == 808 || z == 809)), // only include Kanto and M&M
-                    SAV8 _ => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
+                    SAV8 _ => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
                     _ => species
                 };
 

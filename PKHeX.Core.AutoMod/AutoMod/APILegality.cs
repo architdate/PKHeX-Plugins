@@ -199,7 +199,7 @@ namespace PKHeX.Core.AutoMod
             if (GameVersion.GG.Contains(destVer))
                 return set.Species <= 151 || set.Species == 808 || set.Species == 809;
             if (GameVersion.SWSH.Contains(destVer))
-                return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormeEntry(set.Species, set.FormIndex)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(set.Species);
+                return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(set.Species, set.Form)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(set.Species);
             if (set.Species > destVer.GetMaxSpeciesID())
                 return false;
 
@@ -239,7 +239,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="regen">Regeneration information</param>
         private static void ApplySetDetails(PKM pk, IBattleTemplate set, PKM unconverted, ITrainerInfo handler, IEncounterable enc, RegenSet regen)
         {
-            int Form = set.FormIndex;
+            int Form = set.Form;
             var pidiv = MethodFinder.Analyze(pk);
             var abilitypref = GetAbilityPreference(pk, enc);
             var language = regen.Extra.Language;
@@ -426,8 +426,8 @@ namespace PKHeX.Core.AutoMod
                 case (int)GameVersion.RBY:
                     pk.Version = (int)GameVersion.RD;
                     break;
-                case (int)GameVersion.UM when original.Species == (int)Species.Greninja && original.AltForm == 1:
-                case (int)GameVersion.US when original.Species == (int)Species.Greninja && original.AltForm == 1:
+                case (int)GameVersion.UM when original.Species == (int)Species.Greninja && original.Form == 1:
+                case (int)GameVersion.US when original.Species == (int)Species.Greninja && original.Form == 1:
                     pk.Version = (int)GameVersion.SN; // Ash-Greninja
                     break;
                 default:
@@ -471,17 +471,17 @@ namespace PKHeX.Core.AutoMod
         public static void SetMatchingBall(this PKM pk) => BallApplicator.ApplyBallLegalByColor(pk);
 
         /// <summary>
-        /// Set formes of specific species to altform 0 since they cannot have a form while boxed
+        /// Set forms of specific species to form 0 since they cannot have a form while boxed
         /// </summary>
         /// <param name="pk">pokemon passed to the method</param>
         public static void SetBoxForm(this PKM pk)
         {
             switch (pk.Species)
             {
-                case (int)Species.Shaymin when pk.AltForm != 0:
-                case (int)Species.Hoopa when pk.AltForm != 0:
-                case (int)Species.Furfrou when pk.AltForm != 0:
-                    pk.AltForm = 0;
+                case (int)Species.Shaymin when pk.Form != 0:
+                case (int)Species.Hoopa when pk.Form != 0:
+                case (int)Species.Furfrou when pk.Form != 0:
+                    pk.Form = 0;
                     if (pk is IFormArgument f) f.FormArgument = 0;
                     break;
             }
@@ -504,7 +504,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Language = (int)LanguageID.English;
                 pk.SetTrainerData(tr);
             }
-            pk.Egg_Location = Locations.TradedEggLocation(pk.GenNumber);
+            pk.Egg_Location = Locations.TradedEggLocation(pk.Generation);
         }
 
         private static void GetSuggestedTracker(this PKM pk)
@@ -565,9 +565,9 @@ namespace PKHeX.Core.AutoMod
                     case EncounterStatic8U c: FindNestPIDIV(pk8, c, set.Shiny); break;
                 }
             }
-            else if (pk.GenNumber > 4 || pk.VC)
+            else if (pk.Generation > 4 || pk.VC)
             {
-                if (Species == 658 && pk.AltForm == 1)
+                if (Species == 658 && pk.Form == 1)
                     pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
                 if (li.EncounterMatch is WC6 w6 && w6.PIDType == Shiny.FixedValue) return;
                 if (li.EncounterMatch is WC7 w7 && w7.PIDType == Shiny.FixedValue) return;
@@ -634,7 +634,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="shiny">Shiny boolean</param>
         private static void FindNestPIDIV<T>(PK8 pk, T enc, bool shiny) where T : EncounterStatic8Nest<T>
         {
-            // Preserve Nature, Altform (all abilities should be possible in gen 8, so no need to early return on a mismatch for enc HA bool vs set HA bool)
+            // Preserve Nature, Form (all abilities should be possible in gen 8, so no need to early return on a mismatch for enc HA bool vs set HA bool)
             // Nest encounter RNG generation
             var iterPKM = pk.Clone();
             if (!UseXOROSHIRO)
@@ -643,7 +643,7 @@ namespace PKHeX.Core.AutoMod
             if (shiny && !(enc is EncounterStatic8U))
                 return;
 
-            if (pk.Species == (int) Species.Toxtricity && pk.AltForm != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
+            if (pk.Species == (int) Species.Toxtricity && pk.Form != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
             {
                 enc.ApplyDetailsTo(pk, GetRandomULong());
                 pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
@@ -668,8 +668,8 @@ namespace PKHeX.Core.AutoMod
 
             pk.Species = iterPKM.Species; // possible evolution
             // can be ability capsuled
-            if (AltFormInfo.IsFormChangeable(pk.Species, pk.AltForm, iterPKM.AltForm, pk.Format))
-                pk.AltForm = iterPKM.AltForm; // set alt form if it can be freely changed!
+            if (FormInfo.IsFormChangeable(pk.Species, pk.Form, iterPKM.Form, pk.Format))
+                pk.Form = iterPKM.Form; // set alt form if it can be freely changed!
             pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
             pk.StatNature = iterPKM.StatNature;
         }
@@ -680,7 +680,7 @@ namespace PKHeX.Core.AutoMod
                 return false;
             if (template.Gender != pk.Gender) // match gender
                 return false;
-            if (template.AltForm != pk.AltForm && !AltFormInfo.IsFormChangeable(pk.Species, pk.AltForm, template.AltForm, pk.Format)) // match form -- Toxtricity etc
+            if (template.Form != pk.Form && !FormInfo.IsFormChangeable(pk.Species, pk.Form, template.Form, pk.Format)) // match form -- Toxtricity etc
                 return false;
             return true;
         }
@@ -779,7 +779,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Egg_Location = Locations.LinkTrade4; // todo: really shouldn't be doing this, don't modify pkm
                 return PIDType.Method_1;
             }
-            switch (pk.GenNumber)
+            switch (pk.Generation)
             {
                 case 3:
                     switch (EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch)

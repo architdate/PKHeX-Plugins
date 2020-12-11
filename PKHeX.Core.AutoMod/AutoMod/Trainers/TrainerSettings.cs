@@ -88,7 +88,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
         public static ITrainerInfo GetSavedTrainerData(PKM pk, ITrainerInfo? fallback = null, LanguageID? lang = null)
         {
-            int origin = pk.GenNumber;
+            int origin = pk.Generation;
             int format = pk.Format;
             if (format != origin)
                 return GetSavedTrainerData(format, fallback, lang);

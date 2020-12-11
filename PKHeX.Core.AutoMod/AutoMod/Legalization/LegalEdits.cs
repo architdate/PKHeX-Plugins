@@ -36,7 +36,7 @@ namespace PKHeX.Core.AutoMod
             var report = la.Report();
             if (!report.Contains(LegalityCheckStrings.LBallEncMismatch) || force)
                 return;
-            if (pk.GenNumber == 5 && pk.Met_Location == 75)
+            if (pk.Generation == 5 && pk.Met_Location == 75)
                 pk.Ball = (int)Ball.Dream;
             else
                 pk.Ball = 4;

@@ -46,7 +46,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetNature(val);
             if (pk.Species == (int)Species.Toxtricity)
             {
-                if (pk.AltForm == EvolutionMethod.GetAmpLowKeyResult(val))
+                if (pk.Form == EvolutionMethod.GetAmpLowKeyResult(val))
                     pk.Nature = val; // StatNature already set
                 if (pk.Format >= 8 && pk.StatNature != pk.Nature && pk.StatNature != 12 && (pk.StatNature > 24 || pk.StatNature % 6 == 0)) // Only Serious Mint for Neutral Natures
                     pk.StatNature = 12;
@@ -94,7 +94,7 @@ namespace PKHeX.Core.AutoMod
         {
             pk.Species = set.Species;
             pk.ApplySetGender(set);
-            pk.SetAltForm(Form);
+            pk.SetForm(Form);
             pk.SetFormArgument(enc);
             pk.RefreshAbility(pk.AbilityNumber >> 1);
 
@@ -121,8 +121,8 @@ namespace PKHeX.Core.AutoMod
         {
             return pk.Species switch
             {
-                (int)Species.Hoopa when pk.AltForm != 0 => 3,
-                (int)Species.Furfrou when pk.AltForm != 0 => 5,
+                (int)Species.Hoopa when pk.Form != 0 => 3,
+                (int)Species.Furfrou when pk.Form != 0 => 5,
                 (int)Species.Runerigus when origSpecies != (int)Species.Runerigus => 49,
                 _ => 0
             };
@@ -187,20 +187,20 @@ namespace PKHeX.Core.AutoMod
             {
                 case Species.Arceus:
                     int forma = FormVerifier.GetArceusFormFromHeldItem(pk.HeldItem, pk.Format);
-                    pk.HeldItem = pk.AltForm != forma ? 0 : pk.HeldItem;
-                    pk.AltForm = pk.AltForm != forma ? 0 : forma;
+                    pk.HeldItem = pk.Form != forma ? 0 : pk.HeldItem;
+                    pk.Form = pk.Form != forma ? 0 : forma;
                     break;
                 case Species.Silvally:
                     int forms = FormVerifier.GetSilvallyFormFromHeldItem(pk.HeldItem);
-                    pk.HeldItem = pk.AltForm != forms ? 0 : pk.HeldItem;
-                    pk.AltForm = pk.AltForm != forms ? 0 : forms;
+                    pk.HeldItem = pk.Form != forms ? 0 : pk.HeldItem;
+                    pk.Form = pk.Form != forms ? 0 : forms;
                     break;
                 case Species.Genesect:
                     int formg = FormVerifier.GetGenesectFormFromHeldItem(pk.HeldItem);
-                    pk.HeldItem = pk.AltForm != formg ? 0 : pk.HeldItem;
-                    pk.AltForm = pk.AltForm != formg ? 0 : formg;
+                    pk.HeldItem = pk.Form != formg ? 0 : pk.HeldItem;
+                    pk.Form = pk.Form != formg ? 0 : formg;
                     break;
-                case Species.Giratina when pk.AltForm == 1 && pk.HeldItem != 112:
+                case Species.Giratina when pk.Form == 1 && pk.HeldItem != 112:
                     pk.HeldItem = 122;
                     break;
             }

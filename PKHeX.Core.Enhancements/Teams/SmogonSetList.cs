@@ -44,8 +44,8 @@ namespace PKHeX.Core.Enhancements
 
             var set = new ShowdownSet(pk);
             Species = GameInfo.GetStrings("en").Species[pk.Species];
-            Form = ConvertFormToURLForm(set.Form, Species);
-            var psform = ConvertFormToShowdown(set.Form, set.Species);
+            Form = ConvertFormToURLForm(set.FormName, Species);
+            var psform = ConvertFormToShowdown(set.FormName, set.Species);
 
             URL = GetURL(Species, Form, baseURL);
             Page = NetUtil.GetPageText(URL);

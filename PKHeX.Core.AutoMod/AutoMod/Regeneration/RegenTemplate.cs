@@ -18,8 +18,8 @@ namespace PKHeX.Core.AutoMod
         public bool Shiny { get; set; }
         public int Friendship { get; set; }
         public int Nature { get; set; }
-        public string Form { get; set; }
-        public int FormIndex { get; set; }
+        public string FormName { get; set; }
+        public int Form { get; set; }
         public int HiddenPowerType { get; set; }
         public bool CanGigantamax { get; set; }
 
@@ -46,8 +46,8 @@ namespace PKHeX.Core.AutoMod
             Shiny = set.Shiny;
             Friendship = set.Friendship;
             Nature = set.Nature;
+            FormName = set.FormName;
             Form = set.Form;
-            FormIndex = set.FormIndex;
             EVs = SanitizeEVs(set.EVs, gen);
             IVs = set.IVs;
             HiddenPowerType = set.HiddenPowerType;

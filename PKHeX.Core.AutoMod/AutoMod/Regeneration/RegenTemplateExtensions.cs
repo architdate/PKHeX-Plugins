@@ -7,13 +7,13 @@ namespace PKHeX.Core.AutoMod
     {
         public static void SanitizeForm(this RegenTemplate set)
         {
-            if (!AltFormInfo.IsBattleOnlyForm(set.Species, set.FormIndex, set.Format))
+            if (!FormInfo.IsBattleOnlyForm(set.Species, set.Form, set.Format))
                 return;
-            set.FormIndex = AltFormInfo.GetOutOfBattleForm(set.Species, set.FormIndex, set.Format);
+            set.Form = FormInfo.GetOutOfBattleForm(set.Species, set.Form, set.Format);
         }
 
         /// <summary>
-        /// Showdown quirks lets you have battle only moves in battle only formes. Transform back to base move.
+        /// Showdown quirks lets you have battle only moves in battle only forms. Transform back to base move.
         /// </summary>
         /// <param name="set"></param>
         public static void SanitizeBattleMoves(this IBattleTemplate set)
@@ -38,7 +38,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// General method to preprocess sets excluding invalid formes. (handled in a future method)
+        /// General method to preprocess sets excluding invalid forms. (handled in a future method)
         /// </summary>
         /// <param name="set">Showdown set passed to the function</param>
         /// <param name="personal">Personal data for the desired form</param>
@@ -46,7 +46,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (set.Species == (int) Species.Indeedee || set.Species == (int) Species.Meowstic)
             {
-                set.Gender = set.FormIndex == 1 ? "F" : "M";
+                set.Gender = set.Form == 1 ? "F" : "M";
                 return;
             }
 

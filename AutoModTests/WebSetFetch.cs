@@ -19,7 +19,7 @@ namespace AutoModTests
             var blank = PKMConverter.GetBlank(t);
             blank.Version = (int)game;
             blank.Species = species;
-            blank.AltForm = form;
+            blank.Form = form;
 
             var smogon = new SmogonSetList(blank);
             smogon.Valid.Should().BeTrue("Sets should exist for this setup");
