@@ -79,7 +79,8 @@ namespace PKHeX.Core.AutoMod
 
                 // Create the PKM from the template.
                 var tr = GetTrainer(regen, ver, enc.Generation);
-                var raw = SanityCheckEncounters(enc).ConvertToPKM(tr);
+                var raw = enc.ConvertToPKM(tr);
+                raw = raw.SanityCheckLocation(enc);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);
 
@@ -208,24 +209,24 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Sanity checking encounters before passing them into ApplySetDetails.
+        /// Sanity checking locations before passing them into ApplySetDetails.
         /// Some encounters may have an empty met location leading to an encounter mismatch. Use this function for all encounter pre-processing!
         /// </summary>
         /// <param name="enc">IEncounterable variable that is a product of the Encounter Generator</param>
         /// <returns></returns>
-        private static IEncounterable SanityCheckEncounters(IEncounterable enc)
+        private static PKM SanityCheckLocation(this PKM pk, IEncounterable enc)
         {
             const int SharedNest = 162; // Shared Nest for online encounter
             const int MaxLair = 244; // Dynamax Adventures
             if (enc is EncounterStatic8N e && e.Location == 0)
-                e.Location = SharedNest;
+                pk.Met_Location = SharedNest;
             if (enc is EncounterStatic8ND ed && ed.Location == 0)
-                ed.Location = SharedNest;
+                pk.Met_Location = SharedNest;
             if (enc is EncounterStatic8NC ec && ec.Location == 0)
-                ec.Location = SharedNest;
+                pk.Met_Location = SharedNest;
             if (enc is EncounterStatic8U eu && eu.Location == 0)
-                eu.Location = MaxLair;
-            return enc;
+                pk.Met_Location = MaxLair;
+            return pk;
         }
 
         /// <summary>
