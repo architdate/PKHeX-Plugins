@@ -43,12 +43,10 @@ namespace AutoModPlugins
             private static Image Resize(Image qr)
             {
                 Image newpic = new Bitmap(405, 455);
-                using (Graphics g = Graphics.FromImage(newpic))
-                {
-                    using (var solidBrush = new SolidBrush(Color.White))
-                        g.FillRectangle(solidBrush, 0, 0, newpic.Width, newpic.Height);
-                    g.DrawImage(qr, 0, 0);
-                }
+                using var g = Graphics.FromImage(newpic);
+                using var solidBrush = new SolidBrush(Color.White);
+                g.FillRectangle(solidBrush, 0, 0, newpic.Width, newpic.Height);
+                g.DrawImage(qr, 0, 0);
                 return newpic;
             }
         }

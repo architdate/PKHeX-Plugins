@@ -19,7 +19,7 @@ namespace PKHeX.Core.Injection
 
         public bool Connected;
 
-        private readonly object _sync = new object();
+        private readonly object _sync = new();
 
         bool ICommunicator.Connected { get => Connected; set => Connected = value; }
         int ICommunicator.Port { get => Port; set => Port = value; }
@@ -185,7 +185,7 @@ namespace PKHeX.Core.Injection
 
         private byte[] ReadBytesLarge(uint offset, int length)
         {
-            List<byte> read = new List<byte>();
+            List<byte> read = new();
             for (int i = 0; i < length; i += MaximumTransferSize)
                 read.AddRange(ReadBytes(offset + (uint)i, Math.Min(MaximumTransferSize, length - i)));
             return read.ToArray();

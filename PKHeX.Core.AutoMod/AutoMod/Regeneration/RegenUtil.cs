@@ -7,7 +7,7 @@ namespace PKHeX.Core.AutoMod
     {
         public static bool GetTrainerInfo(IEnumerable<string> lines, int format, out ITrainerInfo tr)
         {
-            var sti = new SimpleTrainerInfo {Generation = format};
+            var sti = new SimpleTrainerInfo { Generation = format };
 
             var split = Split(lines);
             bool any = false;
@@ -89,7 +89,7 @@ namespace PKHeX.Core.AutoMod
         {
             var result = new List<string>();
             foreach (var s in set.Filters)
-                result.Add($"{(s.Evaluator?"=":"!")}{s.PropertyName}={s.PropertyValue}");
+                result.Add($"{(s.Evaluator ? "=" : "!")}{s.PropertyName}={s.PropertyValue}");
             foreach (var s in set.Instructions)
                 result.Add($".{s.PropertyName}={s.PropertyValue}");
             return string.Join(Environment.NewLine, result);
@@ -108,7 +108,7 @@ namespace PKHeX.Core.AutoMod
             if (tr is PokeTrainerDetails p)
             {
                 var clone = PokeTrainerDetails.Clone(p);
-                clone.Language = (int) lang;
+                clone.Language = (int)lang;
                 return clone;
             }
             if (tr is SimpleTrainerInfo s)
@@ -119,7 +119,7 @@ namespace PKHeX.Core.AutoMod
                     TID = s.TID,
                     SID = s.SID,
                     Gender = s.Gender,
-                    Language = (int) lang,
+                    Language = (int)lang,
                     ConsoleRegion = s.ConsoleRegion,
                     Region = s.Region,
                     Country = s.Country,

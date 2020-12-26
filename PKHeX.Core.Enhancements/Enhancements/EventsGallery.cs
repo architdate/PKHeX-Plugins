@@ -54,7 +54,7 @@ namespace PKHeX.Core.Enhancements
         private static void DownloadAndExtractZip(string url, string dest)
         {
             const string temp = "temp.zip";
-            using (WebClient client = new WebClient())
+            using (WebClient client = new())
                 client.DownloadFile(new Uri(url), temp);
 
             ZipFile.ExtractToDirectory(temp, dest);

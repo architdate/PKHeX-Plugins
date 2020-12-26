@@ -8,7 +8,7 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public class TrainerDatabase
     {
-        private readonly Dictionary<GameVersion, List<ITrainerInfo>> Database = new Dictionary<GameVersion, List<ITrainerInfo>>();
+        private readonly Dictionary<GameVersion, List<ITrainerInfo>> Database = new();
 
         /// <summary>
         /// Fetches an appropriate trainer based on the requested <see cref="version"/>.
@@ -78,7 +78,7 @@ namespace PKHeX.Core.AutoMod
             {
                 possible = possible.Select(z =>
                 {
-                    var filtered = z.Value.Where(x => x.Language == (int) lang).ToList();
+                    var filtered = z.Value.Where(x => x.Language == (int)lang).ToList();
                     return new KeyValuePair<GameVersion, List<ITrainerInfo>>(z.Key, filtered);
                 }).Where(z => z.Value.Count != 0).ToList();
             }

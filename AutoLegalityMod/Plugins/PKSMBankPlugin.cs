@@ -12,7 +12,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) {Name = "Menu_PKSMBank"};
+            var ctrl = new ToolStripMenuItem(Name) { Name = "Menu_PKSMBank" };
 
             var c1 = new ToolStripMenuItem("Merge PKM into PKSM Bank") { Image = Resources.uploadgpss };
             c1.Click += (s, e) => Import();

@@ -24,7 +24,7 @@ namespace AutoModTests
             Dictionary<string, int> result = new Dictionary<string, int>();
             foreach (var f in files)
             {
-                var ext = f.Substring(f.Length - 7).Split('.')[0];
+                var ext = f[^7..].Split('.')[0];
                 if (ext.StartsWith("pb"))
                     result.Add(f, -1);
                 else if (ext.StartsWith("pk") && int.TryParse(ext.Split('k')[1], out var gen))

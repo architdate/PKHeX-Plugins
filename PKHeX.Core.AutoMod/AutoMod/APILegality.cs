@@ -192,7 +192,7 @@ namespace PKHeX.Core.AutoMod
             }
 
             // Don't process if encounter is HA but requested pkm is not HA
-            if (!isHidden && enc is EncounterStatic s && s.Ability == 4)
+            if (!isHidden && enc is EncounterStatic { Ability: 4 })
                 return false;
 
             // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
@@ -212,19 +212,19 @@ namespace PKHeX.Core.AutoMod
         /// Sanity checking locations before passing them into ApplySetDetails.
         /// Some encounters may have an empty met location leading to an encounter mismatch. Use this function for all encounter pre-processing!
         /// </summary>
-        /// <param name="enc">IEncounterable variable that is a product of the Encounter Generator</param>
-        /// <returns></returns>
+        /// <param name="pk">Entity to fix</param>
+        /// <param name="enc">Matched encounter</param>
         private static PKM SanityCheckLocation(this PKM pk, IEncounterable enc)
         {
             const int SharedNest = 162; // Shared Nest for online encounter
             const int MaxLair = 244; // Dynamax Adventures
-            if (enc is EncounterStatic8N e && e.Location == 0)
+            if (enc is EncounterStatic8N { Location: 0 })
                 pk.Met_Location = SharedNest;
-            if (enc is EncounterStatic8ND ed && ed.Location == 0)
+            if (enc is EncounterStatic8ND { Location: 0 })
                 pk.Met_Location = SharedNest;
-            if (enc is EncounterStatic8NC ec && ec.Location == 0)
+            if (enc is EncounterStatic8NC { Location: 0 })
                 pk.Met_Location = SharedNest;
-            if (enc is EncounterStatic8U eu && eu.Location == 0)
+            if (enc is EncounterStatic8U { Location: 0 })
                 pk.Met_Location = MaxLair;
             return pk;
         }
@@ -352,7 +352,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">showdown set to base hypertraining on</param>
         private static void SetHyperTrainingFlags(this PKM pk, IBattleTemplate set)
         {
-            if (!(pk is IHyperTrain t))
+            if (pk is not IHyperTrain t)
                 return;
             pk.SetSuggestedHyperTrainingData(); // Set IV data based on showdownset
 
@@ -448,7 +448,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             if (pk.IsNative && !pk.GO)
                 return;
-            if (!(pk is IBattleVersion bvPk))
+            if (pk is not IBattleVersion bvPk)
                 return;
 
             var oldBattleVersion = bvPk.BattleVersion;
@@ -500,7 +500,7 @@ namespace PKHeX.Core.AutoMod
                 return; // should be checked before, but condition added for future usecases
             // Handle egg encounters. Set them as traded and force hatch them before proceeding
             pk.ForceHatchPKM();
-            if (enc is MysteryGift mg && mg.IsEgg)
+            if (enc is MysteryGift { IsEgg: true })
             {
                 pk.Language = (int)LanguageID.English;
                 pk.SetTrainerData(tr);
@@ -510,7 +510,7 @@ namespace PKHeX.Core.AutoMod
 
         private static void GetSuggestedTracker(this PKM pk)
         {
-            if (!(pk is IHomeTrack home))
+            if (pk is not IHomeTrack home)
                 return;
 
             // Check setting
@@ -570,59 +570,64 @@ namespace PKHeX.Core.AutoMod
             {
                 if (Species == 658 && pk.Form == 1)
                     pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
-                if (li.EncounterMatch is WC6 w6 && w6.PIDType == Shiny.FixedValue) return;
-                if (li.EncounterMatch is WC7 w7 && w7.PIDType == Shiny.FixedValue) return;
-                if (li.EncounterMatch is WC8 w8 && w8.PIDType == Shiny.FixedValue) return;
-                if (pk.Version >= 24) return; // Don't even bother changing IVs for Gen 6+ because why bother
-                if (method != PIDType.G5MGShiny)
+                switch (li.EncounterMatch)
                 {
-                    var origpid = pk.PID;
-                    pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
-                    if (!li.EncounterMatch.Equals(EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch))
-                        pk.PID = origpid; // Bad things happen when you change the PID!
-                    if (li.Generation != 5)
+                    case WC6 { PIDType: Shiny.FixedValue }:
+                    case WC7 { PIDType: Shiny.FixedValue }:
+                    case WC8 { PIDType: Shiny.FixedValue }:
                         return;
-                    if (pk is PK5 p && p.NPokémon)
-                        return;
-                    if (li.EncounterMatch is EncounterStatic5 s && (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75))
-                        return;
+                }
 
-                    while (true)
-                    {
-                        var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
-                        if (result == 0)
-                            break;
-                        pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
-                    }
+                if (pk.Version >= 24)
+                    return; // Don't even bother changing IVs for Gen 6+ because why bother
+
+                if (method == PIDType.G5MGShiny)
+                    return; // Don't bother
+
+                var origpid = pk.PID;
+                pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
+                if (!li.EncounterMatch.Equals(EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch))
+                    pk.PID = origpid; // Bad things happen when you change the PID!
+                if (li.Generation != 5)
+                    return;
+                if (pk is PK5 { NPokémon: true })
+                    return;
+                if (li.EncounterMatch is EncounterStatic5 s && (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75))
+                    return;
+
+                while (true)
+                {
+                    var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
+                    if (result == 0)
+                        break;
+                    pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
                 }
             }
             else // Generation 3 and 4
             {
                 var encounter = li.EncounterMatch;
-                if (encounter is PCD d)
+                switch (encounter)
                 {
-                    if (d.Gift.PK.PID != 1)
-                        pk.PID = d.Gift.PK.PID;
-                    else if (pk.Nature != pk.PID % 25)
+                    case PCD d:
+                        {
+                            if (d.Gift.PK.PID != 1)
+                                pk.PID = d.Gift.PK.PID;
+                            else if (pk.Nature != pk.PID % 25)
+                                pk.SetPIDNature(Nature);
+                            return;
+                        }
+                    case EncounterEgg:
                         pk.SetPIDNature(Nature);
-                    return;
-                }
-                if (encounter is EncounterEgg)
-                {
-                    pk.SetPIDNature(Nature);
-                    return;
-                }
-                if (encounter is EncounterTrade t)
-                {
+                        return;
                     // EncounterTrade4 doesn't have fixed PIDs, so don't early return
-                    if (encounter is EncounterTrade3 || encounter is EncounterTrade4PID)
-                    {
+                    case EncounterTrade t when encounter is EncounterTrade3 or EncounterTrade4PID or EncounterTrade4RanchGift:
                         t.SetEncounterTradeIVs(pk);
                         return; // Fixed PID, no need to mutate
-                    }
+                    default:
+                        FindPIDIV(pk, method, hpType, set.Shiny, encounter);
+                        ValidateGender(pk);
+                        break;
                 }
-                FindPIDIV(pk, method, hpType, set.Shiny, encounter);
-                ValidateGender(pk);
             }
         }
 
@@ -644,7 +649,7 @@ namespace PKHeX.Core.AutoMod
             if (shiny && !(enc is EncounterStatic8U))
                 return;
 
-            if (pk.Species == (int) Species.Toxtricity && pk.Form != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
+            if (pk.Species == (int)Species.Toxtricity && pk.Form != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
             {
                 enc.ApplyDetailsTo(pk, GetRandomULong());
                 pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
@@ -780,42 +785,34 @@ namespace PKHeX.Core.AutoMod
                 pk.Egg_Location = Locations.LinkTrade4; // todo: really shouldn't be doing this, don't modify pkm
                 return PIDType.Method_1;
             }
-            switch (pk.Generation)
+
+            return pk.Generation switch
             {
-                case 3:
-                    switch (EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch)
+                3 => EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch switch
+                {
+                    WC3 g => g.Method,
+                    EncounterStatic => pk.Version switch
                     {
-                        case WC3 g:
-                            return g.Method;
-                        case EncounterStatic _:
-                            switch (pk.Version)
-                            {
-                                case (int)GameVersion.CXD: return PIDType.CXD;
-                                case (int)GameVersion.E: return PIDType.Method_1;
-                                case (int)GameVersion.FR:
-                                case (int)GameVersion.LG:
-                                    return PIDType.Method_1; // roamer glitch
-                                default:
-                                    return PIDType.Method_1;
-                            }
-                        case EncounterSlot _ when pk.Version == (int)GameVersion.CXD:
-                            return PIDType.PokeSpot;
-                        case EncounterSlot _:
-                            return pk.Species == (int)Species.Unown ? PIDType.Method_1_Unown : PIDType.Method_1;
-                        default:
-                            return PIDType.None;
-                    }
-                case 4:
-                    return EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch switch
-                    {
-                        EncounterStatic s when s.Location == Locations.PokeWalker4 && s.Gift => PIDType.Pokewalker,
-                        EncounterStatic s => (s.Shiny == Shiny.Always ? PIDType.ChainShiny : PIDType.Method_1),
-                        PGT _ => PIDType.Method_1,
-                        _ => PIDType.None
-                    };
-                default:
-                    return PIDType.None;
-            }
+                        (int)GameVersion.CXD => PIDType.CXD,
+                        (int)GameVersion.E => PIDType.Method_1,
+                        (int)GameVersion.FR or (int)GameVersion.LG => PIDType.Method_1, // roamer glitch
+                        _ => PIDType.Method_1,
+                    },
+                    EncounterSlot when pk.Version == (int)GameVersion.CXD => PIDType.PokeSpot,
+                    EncounterSlot => pk.Species == (int)Species.Unown ? PIDType.Method_1_Unown : PIDType.Method_1,
+                    _ => PIDType.None,
+                },
+
+                4 => EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch switch
+                {
+                    EncounterStatic4Pokewalker => PIDType.Pokewalker,
+                    EncounterStatic s => (s.Shiny == Shiny.Always ? PIDType.ChainShiny : PIDType.Method_1),
+                    PGT => PIDType.Method_1,
+                    _ => PIDType.None
+                },
+
+                _ => PIDType.None
+            };
         }
 
         /// <summary>
@@ -827,7 +824,7 @@ namespace PKHeX.Core.AutoMod
         {
             switch (enc)
             {
-                case EncounterSlot x when x.Version == GameVersion.XD: // pokespot RNG is always fateful
+                case EncounterSlot { Version: GameVersion.XD }: // pokespot RNG is always fateful
                     pk.FatefulEncounter = true;
                     break;
             }
@@ -882,7 +879,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Egg_Location = Locations.LinkTrade4;
                 pk.Met_Location = pk.Format == 4 ? (pk.HGSS ? Locations.HatchLocationHGSS : Locations.HatchLocationDPPt) : pk.Met_Location;
             }
-            if (pk.Species == (int)Species.Milotic && pk.Format < 5 && pk is IContestStats c) // Evolves via beauty
+            if (pk.Species == (int)Species.Milotic && pk.Format < 5 && pk is IContestStatsMutable c) // Evolves via beauty
                 c.CNT_Beauty = 170;
             if (pk.Version == (int)GameVersion.CXD && pk.OT_Gender == (int)Gender.Female) // Colosseum and XD are sexist games.
                 pk.OT_Gender = (int)Gender.Male;
@@ -899,7 +896,7 @@ namespace PKHeX.Core.AutoMod
                 return new AsyncLegalizationResult(res, s);
             }
 
-            var task = Task.Run(() => GetLegal());
+            var task = Task.Run(GetLegal);
             var first = task.TimeoutAfter(new TimeSpan(0, 0, 0, Timeout))?.Result;
             if (first == null)
             {
@@ -924,7 +921,7 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static async Task<AsyncLegalizationResult>? TimeoutAfter(this Task<AsyncLegalizationResult> task, TimeSpan timeout)
+        private static async Task<AsyncLegalizationResult?>? TimeoutAfter(this Task<AsyncLegalizationResult> task, TimeSpan timeout)
         {
             using var cts = new CancellationTokenSource(timeout);
             var delay = Task.Delay(timeout, cts.Token);

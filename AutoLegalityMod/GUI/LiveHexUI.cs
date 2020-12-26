@@ -239,7 +239,7 @@ namespace AutoModPlugins
         {
             if (!checkBox2.Checked || !Remote.Bot.Connected)
                 return;
-            if (!(slot is SlotInfoBox b))
+            if (slot is not SlotInfoBox b)
                 return;
             if (!type.IsContentChange())
                 return;
@@ -253,10 +253,7 @@ namespace AutoModPlugins
 
         private void SetInjectionTypeView()
         {
-            TB_IP.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
-            TB_Port.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
-            L_IP.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
-            L_Port.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
+            TB_IP.Visible = TB_Port.Visible = L_IP.Visible = L_Port.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
             L_USBState.Visible = CurrentInjectionType == InjectorCommunicationType.USB;
         }
 
@@ -266,7 +263,7 @@ namespace AutoModPlugins
             uint finadd = 0;
             if (!ptr.EndsWith("]"))
                 finadd = Util.GetHexValue(ptr.Split('+').Last());
-            var jumps = ptr.Replace("main", "").Replace("[", "").Replace("]", "").Split(new [] { "+" }, StringSplitOptions.RemoveEmptyEntries);
+            var jumps = ptr.Replace("main", "").Replace("[", "").Replace("]", "").Split(new[] { "+" }, StringSplitOptions.RemoveEmptyEntries);
             if (jumps.Length == 0)
             {
                 WinFormsUtil.Alert("Invalid Pointer");
@@ -292,7 +289,7 @@ namespace AutoModPlugins
 
         private void B_CopyAddress_Click(object sender, EventArgs e)
         {
-            if (!(Remote.Bot.com is SysBotMini sb))
+            if (Remote.Bot.com is not SysBotMini sb)
                 return;
 
             ulong address = GetPointerAddress(sb);
@@ -304,7 +301,7 @@ namespace AutoModPlugins
 
         private void B_EditPointerData_Click(object sender, EventArgs e)
         {
-            if (!(Remote.Bot.com is SysBotMini sb))
+            if (Remote.Bot.com is not SysBotMini sb)
                 return;
 
             ulong address = GetPointerAddress(sb);
@@ -341,7 +338,7 @@ namespace AutoModPlugins
 
         private void B_ReadPointer_Click(object sender, EventArgs e)
         {
-            if (!(Remote.Bot.com is SysBotMini sb))
+            if (Remote.Bot.com is not SysBotMini sb)
                 return;
 
             ulong address = GetPointerAddress(sb);

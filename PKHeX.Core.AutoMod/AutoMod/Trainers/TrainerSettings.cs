@@ -7,17 +7,17 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public static class TrainerSettings
     {
-        private static readonly TrainerDatabase Database = new TrainerDatabase();
+        private static readonly TrainerDatabase Database = new();
         private static readonly string TrainerPath = Path.Combine(Directory.GetCurrentDirectory(), "trainers");
-        private static readonly SimpleTrainerInfo DefaultFallback8 = new SimpleTrainerInfo(GameVersion.SW);
-        private static readonly SimpleTrainerInfo DefaultFallback7 = new SimpleTrainerInfo(GameVersion.UM);
+        private static readonly SimpleTrainerInfo DefaultFallback8 = new(GameVersion.SW);
+        private static readonly SimpleTrainerInfo DefaultFallback7 = new(GameVersion.UM);
 
         public static ITrainerInfo DefaultFallback(int gen = 8, LanguageID? lang = null)
         {
             var fallback = gen > 7 ? DefaultFallback8 : DefaultFallback7;
             if (lang == null)
                 return fallback;
-            return new SimpleTrainerInfo((GameVersion) fallback.Game) {Language = (int) lang};
+            return new SimpleTrainerInfo((GameVersion)fallback.Game) { Language = (int)lang };
         }
 
         static TrainerSettings() => LoadTrainerDatabaseFromPath(TrainerPath);
@@ -60,7 +60,7 @@ namespace PKHeX.Core.AutoMod
                 return DefaultFallback(generation, lang);
             if (lang == null)
                 return fallback;
-            if ((int) lang == fallback.Language)
+            if ((int)lang == fallback.Language)
                 return fallback;
             return DefaultFallback(generation, lang);
         }

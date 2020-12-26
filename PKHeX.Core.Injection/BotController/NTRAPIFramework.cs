@@ -71,14 +71,14 @@ namespace PKHeX.Core.Injection
         private Thread? _heartbeatThread;
 
         private int _heartbeatSendable;
-        private readonly object _syncLock = new object();
+        private readonly object _syncLock = new();
 
-        public event EventHandler<DataReadyEventArgs> DataReady;
-        public event EventHandler Connected;
-        public event EventHandler<InfoReadyEventArgs> InfoReady;
+        public event EventHandler<DataReadyEventArgs> DataReady = null!;
+        public event EventHandler Connected = null!;
+        public event EventHandler<InfoReadyEventArgs> InfoReady = null!;
 
-        private readonly Dictionary<uint, DataReadyWaiting> _waitingForData = new Dictionary<uint, DataReadyWaiting>();
-        private readonly Dictionary<uint, ReadMemRequest> _pendingReadMem = new Dictionary<uint, ReadMemRequest>();
+        private readonly Dictionary<uint, DataReadyWaiting> _waitingForData = new();
+        private readonly Dictionary<uint, ReadMemRequest> _pendingReadMem = new();
 
         private delegate void LogDelegate(string l);
         private readonly LogDelegate _delLastLog;
@@ -221,7 +221,7 @@ namespace PKHeX.Core.Injection
             if (requestDetails.FileName != null)
             {
                 string fileName = requestDetails.FileName;
-                FileStream fs = new FileStream(fileName, FileMode.Create);
+                FileStream fs = new(fileName, FileMode.Create);
                 fs.Write(dataBuf, 0, dataBuf.Length);
                 fs.Close();
                 Log("dump saved into " + fileName + " successfully");
@@ -257,7 +257,7 @@ namespace PKHeX.Core.Injection
                 Disconnect();
             try
             {
-                _tcp = new TcpClient {NoDelay = true};
+                _tcp = new TcpClient { NoDelay = true };
                 _tcp.Connect(_host, _port);
                 _currentSeq = 0;
                 _netStream = _tcp.GetStream();
@@ -383,7 +383,7 @@ namespace PKHeX.Core.Injection
             var pnamestr = new[] { "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc", "momiji", "momiji" };
             string pname;
             string log = e.Info;
-            if (null == (pname = Array.Find(pnamestr, log.Contains)))
+            if ((pname = Array.Find(pnamestr, log.Contains)) == null)
                 return;
             pname = ", pname:" + pname.PadLeft(9);
             string pidaddr = log.Substring(log.IndexOf(pname, StringComparison.Ordinal) - 10, 10);
@@ -406,7 +406,7 @@ namespace PKHeX.Core.Injection
             if (_waitingForData.TryGetValue(e.Seq, out DataReadyWaiting args))
             {
                 Array.Copy(e.Data, args.Data, Math.Min(e.Data.Length, args.Data.Length));
-                Thread t = new Thread(new ParameterizedThreadStart(args.Handler));
+                Thread t = new(new ParameterizedThreadStart(args.Handler));
                 t.Start(args);
                 _waitingForData.Remove(e.Seq);
             }

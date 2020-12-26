@@ -14,8 +14,7 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Resources.smogongenner };
-            ctrl.Name = "Menu_SmogonGenner";
+            var ctrl = new ToolStripMenuItem(Name) {Name = "Menu_SmogonGenner", Image = Resources.smogongenner};
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += SmogonGenning;
         }

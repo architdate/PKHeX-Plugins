@@ -93,7 +93,7 @@ namespace AutoModPlugins.GUI
 
     public class PropertyOverridingTypeDescriptor : CustomTypeDescriptor
     {
-        private readonly Dictionary<string, PropertyDescriptor> overridePds = new Dictionary<string, PropertyDescriptor>();
+        private readonly Dictionary<string, PropertyDescriptor> overridePds = new();
 
         public PropertyOverridingTypeDescriptor(ICustomTypeDescriptor parent)
             : base(parent)
@@ -112,29 +112,19 @@ namespace AutoModPlugins.GUI
 
         public PropertyDescriptorCollection GetPropertiesImpl(PropertyDescriptorCollection pdc)
         {
-            List<PropertyDescriptor> pdl = new List<PropertyDescriptor>(pdc.Count + 1);
+            var pdl = new List<PropertyDescriptor>(pdc.Count + 1);
 
             foreach (PropertyDescriptor pd in pdc)
-            {
-                if (overridePds.ContainsKey(pd.Name))
-                {
-                    pdl.Add(overridePds[pd.Name]);
-                }
-                else
-                {
-                    pdl.Add(pd);
-                }
-            }
+                pdl.Add(overridePds.TryGetValue(pd.Name, out var value) ? value : pd);
 
-            PropertyDescriptorCollection ret = new PropertyDescriptorCollection(pdl.ToArray());
-
-            return ret;
+            return new PropertyDescriptorCollection(pdl.ToArray());
         }
 
         public override PropertyDescriptorCollection GetProperties()
         {
             return GetPropertiesImpl(base.GetProperties());
         }
+
         public override PropertyDescriptorCollection GetProperties(Attribute[] attributes)
         {
             return GetPropertiesImpl(base.GetProperties(attributes));

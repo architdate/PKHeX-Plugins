@@ -68,7 +68,7 @@ namespace PKHeX.Core.AutoMod
                     pk.Heal();
                     yield return pk;
                 }
-                else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y){Language = sav.Language, OT = sav.OT, TID = sav.TID}, id, out var pkm) && pkm is PK1 pk1)
+                else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = sav.Language, OT = sav.OT, TID = sav.TID }, id, out var pkm) && pkm is PK1 pk1)
                 {
                     yield return pk1.ConvertToPK2();
                 }
@@ -157,7 +157,7 @@ namespace PKHeX.Core.AutoMod
             int wIndex = WurmpleUtil.GetWurmpleEvoGroup(f.Species);
             if (wIndex != -1)
                 f.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
-            if (f is IHomeTrack ht && ht.Tracker == 0 && APILegality.SetRandomTracker)
+            if (f is IHomeTrack { Tracker: 0 } ht && APILegality.SetRandomTracker)
                 ht.Tracker = APILegality.GetRandomULong();
             if (new LegalityAnalysis(f).Valid)
                 return f;

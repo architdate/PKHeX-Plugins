@@ -43,7 +43,7 @@ namespace AutoModPlugins
         private void LoadMenuStrip(ToolStrip menuStrip)
         {
             var items = menuStrip.Items;
-            if (!(items.Find(ParentMenuParent, false)[0] is ToolStripDropDownItem tools))
+            if (items.Find(ParentMenuParent, false)[0] is not ToolStripDropDownItem tools)
                 return;
             var toolsitems = tools.DropDownItems;
             var modmenusearch = toolsitems.Find(ParentMenuName, false);
@@ -63,7 +63,7 @@ namespace AutoModPlugins
 
         private static ToolStripMenuItem CreateBaseGroupItem()
         {
-            return new ToolStripMenuItem(ParentMenuText)
+            return new(ParentMenuText)
             {
                 Image = Resources.menuautolegality,
                 Name = ParentMenuName

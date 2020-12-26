@@ -58,7 +58,7 @@ namespace PKHeX.Core.Enhancements
             const string boundary = "-----------";
             request.ContentType = "multipart/form-data; boundary=" + boundary;
             // Build up the post message header  
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.Append("--");
             sb.Append(boundary);
             sb.Append("\r\n");
@@ -91,7 +91,7 @@ namespace PKHeX.Core.Enhancements
                 using var responseStream = response.GetResponseStream();
                 if (responseStream == null)
                     return string.Empty;
-                using StreamReader reader = new StreamReader(responseStream);
+                using StreamReader reader = new(responseStream);
                 string responseFromServer = reader.ReadToEnd();
                 return $"Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://{Url}/gpss/view/" + responseFromServer;
             }

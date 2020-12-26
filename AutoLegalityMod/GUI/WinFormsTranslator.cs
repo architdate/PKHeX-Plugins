@@ -11,7 +11,7 @@ namespace AutoModPlugins
 {
     public static class WinFormsTranslator
     {
-        private static readonly Dictionary<string, TranslationContext> Context = new Dictionary<string, TranslationContext>();
+        private static readonly Dictionary<string, TranslationContext> Context = new();
         internal static void TranslateInterface(this Control form, string lang) => TranslateForm(form, GetContext(lang));
 
         private static string GetTranslationFileNameInternal(string lang) => $"almlang_{lang}";
@@ -157,7 +157,7 @@ namespace AutoModPlugins
 
         public static void DumpAll(params string[] banlist)
         {
-            var results = Context.Select(z => new {Lang = z.Key, Lines = z.Value.Write()});
+            var results = Context.Select(z => new { Lang = z.Key, Lines = z.Value.Write() });
             foreach (var c in results)
             {
                 var lang = c.Lang;
@@ -171,8 +171,8 @@ namespace AutoModPlugins
         public static void LoadAllForms(params string[] banlist)
         {
             var q = from t in Assembly.GetExecutingAssembly().GetTypes()
-                where t.BaseType == typeof(Form) && !banlist.Contains(t.Name)
-                select t;
+                    where t.BaseType == typeof(Form) && !banlist.Contains(t.Name)
+                    select t;
             foreach (var t in q)
             {
                 var constructors = t.GetConstructors();
@@ -219,7 +219,7 @@ namespace AutoModPlugins
         public bool AddNew { private get; set; }
         public bool RemoveUsedKeys { private get; set; }
         public const char Separator = '=';
-        private readonly Dictionary<string, string> Translation = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> Translation = new();
 
         public TranslationContext(IEnumerable<string> content, char separator = Separator)
         {

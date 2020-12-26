@@ -24,6 +24,6 @@ namespace PKHeX.Core.AutoMod
         public int ConsoleRegion { get => pkm is IGeoTrack gt ? gt.ConsoleRegion : 0; set { if (pkm is IGeoTrack gt) gt.ConsoleRegion = value; } }
         public int Generation => pkm.Generation;
 
-        public static PokeTrainerDetails Clone(PokeTrainerDetails p) => new PokeTrainerDetails(p.pkm.Clone());
+        public static PokeTrainerDetails Clone(PokeTrainerDetails p) => new(p.pkm.Clone());
     }
 }

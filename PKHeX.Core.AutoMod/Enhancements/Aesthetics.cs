@@ -9,7 +9,7 @@ namespace PKHeX.Core.AutoMod
 {
     public static class Aesthetics
     {
-        private static readonly Dictionary<Species, PersonalColor> ShinyMap = new Dictionary<Species, PersonalColor>
+        private static readonly Dictionary<Species, PersonalColor> ShinyMap = new()
         {
             { Bulbasaur,       Green },
             { Ivysaur,         Green },
@@ -972,7 +972,7 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Priority Match ball IDs that match the color ID in descending order
         /// </summary>
-        private static readonly Dictionary<PersonalColor, Ball[]> BallColors = new Dictionary<PersonalColor, Ball[]>
+        private static readonly Dictionary<PersonalColor, Ball[]> BallColors = new()
         {
             [Red] = new[] { Cherish, Repeat, Fast, Heal, Great, Dream, Lure },
             [Blue] = new[] { Dive, Net, Great, Beast, Lure },

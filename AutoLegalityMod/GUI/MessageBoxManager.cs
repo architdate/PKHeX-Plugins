@@ -150,8 +150,8 @@ namespace System.Windows.Forms
             if (msg.message != WM_INITDIALOG)
                 return CallNextHookEx(hook, nCode, wParam, lParam);
 
-            int nLength = GetWindowTextLength(msg.hwnd);
-            StringBuilder className = new StringBuilder(10);
+            _ = GetWindowTextLength(msg.hwnd);
+            StringBuilder className = new(10);
             GetClassName(msg.hwnd, className, className.Capacity);
             if (className.ToString() != "#32770")
                 return CallNextHookEx(hook, nCode, wParam, lParam);
@@ -170,7 +170,7 @@ namespace System.Windows.Forms
 
         private static bool MessageBoxEnumProc(IntPtr hWnd, IntPtr lParam)
         {
-            StringBuilder className = new StringBuilder(10);
+            StringBuilder className = new(10);
             GetClassName(hWnd, className, className.Capacity);
             if (className.ToString() == "Button")
             {

@@ -22,18 +22,18 @@ namespace PKHeX.Core.AutoMod
             {
                 case (int)Species.Zacian:
                 case (int)Species.Zamazenta:
-                {
-                    // Behemoth Blade and Behemoth Bash -> Iron Head
-                    if (!set.Moves.Contains(781) && !set.Moves.Contains(782))
-                        return;
-
-                    for (int i = 0; i < set.Moves.Length; i++)
                     {
-                        if (set.Moves[i] == 781 || set.Moves[i] == 782)
-                            set.Moves[i] = 442;
+                        // Behemoth Blade and Behemoth Bash -> Iron Head
+                        if (!set.Moves.Contains(781) && !set.Moves.Contains(782))
+                            return;
+
+                        for (int i = 0; i < set.Moves.Length; i++)
+                        {
+                            if (set.Moves[i] == 781 || set.Moves[i] == 782)
+                                set.Moves[i] = 442;
+                        }
+                        break;
                     }
-                    break;
-                }
             }
         }
 
@@ -44,7 +44,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="personal">Personal data for the desired form</param>
         public static void FixGender(this RegenTemplate set, PersonalInfo personal)
         {
-            if (set.Species == (int) Species.Indeedee || set.Species == (int) Species.Meowstic)
+            if (set.Species == (int)Species.Indeedee || set.Species == (int)Species.Meowstic)
             {
                 set.Gender = set.Form == 1 ? "F" : "M";
                 return;

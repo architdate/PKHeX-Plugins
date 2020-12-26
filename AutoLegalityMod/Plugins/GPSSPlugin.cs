@@ -13,13 +13,11 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) { Image = Resources.flagbrew };
-            ctrl.Name = "Menu_GPSSPlugin";
-
-            var c1 = new ToolStripMenuItem("Upload to GPSS") { Image = Resources.uploadgpss };
+            var ctrl = new ToolStripMenuItem(Name) {Name = "Menu_GPSSPlugin", Image = Resources.flagbrew};
+            var c1 = new ToolStripMenuItem("Upload to GPSS") {Image = Resources.uploadgpss};
+            var c2 = new ToolStripMenuItem("Import from GPSS URL") {Image = Resources.mgdbdownload};
             c1.Click += GPSSUpload;
             c1.Name = "Menu_UploadtoGPSS";
-            var c2 = new ToolStripMenuItem("Import from GPSS URL") { Image = Resources.mgdbdownload };
             c2.Click += GPSSDownload;
             c2.Name = "Menu_ImportfromGPSSURL";
 

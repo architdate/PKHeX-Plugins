@@ -6,7 +6,7 @@ namespace PKHeX.Core.AutoMod
 {
     public class RegenSet
     {
-        public static readonly RegenSet Default = new RegenSet(Array.Empty<string>(), PKX.Generation);
+        public static readonly RegenSet Default = new(Array.Empty<string>(), PKX.Generation);
 
         public RegenSetting Extra { get; }
         public ITrainerInfo? Trainer { get; }

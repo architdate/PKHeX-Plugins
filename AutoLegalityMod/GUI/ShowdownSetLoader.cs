@@ -93,7 +93,7 @@ namespace AutoModPlugins
                 var errorstr = msg == LegalizationResult.Failed ? "failed to generate" : "timed out";
                 var res = WinFormsUtil.ALMError(
                     $"Set {errorstr}. Please create an issue on GitHub and upload the error_log.txt file in the issue." +
-                    $"\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.");
+                    "\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.");
                 if (res == DialogResult.Yes)
                     Process.Start("https://discord.gg/tDMvSRv");
                 else if (res == DialogResult.No)
@@ -126,7 +126,7 @@ namespace AutoModPlugins
             {
                 var res = WinFormsUtil.ALMError(
                     $"{timeout.Count} set(s) timed out and {invalid.Count} set(s) are invalid. Please create an issue on GitHub and upload the error_log.txt file in the issue." +
-                    $"\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.");
+                    "\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.");
                 if (res == DialogResult.Yes)
                     Process.Start("https://discord.gg/tDMvSRv");
                 else if (res == DialogResult.No)
@@ -166,8 +166,8 @@ namespace AutoModPlugins
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
 
             EncounterMovesetGenerator.PriorityList = settings.PrioritizeEvent
-                ? new[] {EncounterOrder.Mystery, EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot}
-                : new[] {EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery};
+                ? new[] { EncounterOrder.Mystery, EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot }
+                : new[] { EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery };
         }
     }
 }

@@ -27,7 +27,7 @@ namespace PKHeX.Core.AutoMod
             199, 894, 895, 896, 897, 898
         };
 
-        internal static readonly HashSet<int> AlolanOriginForms = new HashSet<int>
+        internal static readonly HashSet<int> AlolanOriginForms = new()
         {
             019, // Rattata
             020, // Raticate
@@ -83,7 +83,7 @@ namespace PKHeX.Core.AutoMod
                 pk.EncryptionConstant = ec;
                 if (pk.Format >= 6)
                 {
-                    var pidxor = ((pk.TID ^ pk.SID ^ (int) (ec & 0xFFFF) ^ (int) (ec >> 16)) & ~0x7) == 8;
+                    var pidxor = ((pk.TID ^ pk.SID ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
                     pk.PID = pidxor ? ec ^ 0x80000000 : ec;
                 }
                 return;
@@ -95,9 +95,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
-            if (enc is WC8 w8 && w8.PIDType == Shiny.FixedValue && w8.EncryptionConstant == 0) // HOME Gifts
-                pk.EncryptionConstant = 0;
-            else pk.EncryptionConstant = Util.Rand32();
+            pk.EncryptionConstant = enc is WC8 { PIDType: Shiny.FixedValue, EncryptionConstant: 0 } ? 0 : Util.Rand32();
         }
 
         /// <summary>
@@ -157,7 +155,7 @@ namespace PKHeX.Core.AutoMod
 
             if (enc is MysteryGift mg)
             {
-                if (mg.IsEgg || (mg is PGT g && g.IsManaphyEgg))
+                if (mg.IsEgg || mg is PGT { IsManaphyEgg: true })
                 {
                     pk.SetShinySID(); // not SID locked
                     return;
@@ -172,7 +170,7 @@ namespace PKHeX.Core.AutoMod
                     } while (GetPIDXOR());
 
                     bool GetPIDXOR() =>
-                        ((pk.TID ^ pk.SID ^ (int) (pk.PID & 0xFFFF) ^ (int) (pk.PID >> 16)) & ~0x7) == 8;
+                        ((pk.TID ^ pk.SID ^ (int)(pk.PID & 0xFFFF) ^ (int)(pk.PID >> 16)) & ~0x7) == 8;
                 }
 
                 return;
@@ -211,7 +209,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (pk.Generation < 8 && pk.Format >= 8 && !pk.GG) // height and weight don't apply prior to GG
                 return;
-            if (!(pk is IScaledSize size))
+            if (pk is not IScaledSize size)
                 return;
             if (enc is WC8 w8)
             {
@@ -234,15 +232,15 @@ namespace PKHeX.Core.AutoMod
             {
                 if (GameVersion.SWSH.Contains(pk.Version))
                 {
-                    var top = (int) (pk.PID >> 16);
-                    var bottom = (int) (pk.PID & 0xFFFF);
+                    var top = (int)(pk.PID >> 16);
+                    var bottom = (int)(pk.PID & 0xFFFF);
                     height = (top % 0x80) + (bottom % 0x81);
-                    weight = ((int) (pk.EncryptionConstant >> 16) % 0x80) + ((int) (pk.EncryptionConstant & 0xFFFF) % 0x81);
+                    weight = ((int)(pk.EncryptionConstant >> 16) % 0x80) + ((int)(pk.EncryptionConstant & 0xFFFF) % 0x81);
                 }
                 else if (pk.GG)
                 {
-                    height = (int) (pk.PID >> 16) % 0xFF;
-                    weight = (int) (pk.PID & 0xFFFF) % 0xFF;
+                    height = (int)(pk.PID >> 16) % 0xFF;
+                    weight = (int)(pk.PID & 0xFFFF) % 0xFF;
                 }
             }
             else
@@ -390,7 +388,7 @@ namespace PKHeX.Core.AutoMod
         {
             pk.SetBelugaValues(); // trainer details changed?
 
-            if (!(pk is IGeoTrack gt))
+            if (pk is not IGeoTrack gt)
                 return;
 
             if (trainer is IRegionOrigin o)
@@ -440,7 +438,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">encounter used to generate pokemon file</param>
         public static void SetHOMEDates(this PKM pk, IEncounterable enc)
         {
-            if (!(enc is WC8 w8))
+            if (enc is not WC8 w8)
                 return;
             var isHOMEGift = w8.Location == 30018 || w8.GetOT(2) == "HOME";
             if (!isHOMEGift)

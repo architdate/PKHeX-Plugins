@@ -6,12 +6,12 @@ namespace PKHeX.Core.Injection
     {
         private string IP = "192.168.1.106";
         private int Port = 8000;
-        private static readonly NTR clientNTR = new NTR();
+        private static readonly NTR clientNTR = new();
 
         private const int timeout = 10;
         private bool Connected;
 
-        private readonly object _sync = new object();
+        private readonly object _sync = new();
         private byte[]? _lastMemoryRead;
 
         public void Connect()
@@ -47,7 +47,7 @@ namespace PKHeX.Core.Injection
                 if (!Connected) Connect();
 
                 WriteLastLog("");
-                DataReadyWaiting myArgs = new DataReadyWaiting(new byte[length], HandleMemoryRead, null);
+                DataReadyWaiting myArgs = new(new byte[length], HandleMemoryRead, null);
                 while (clientNTR.PID == -1)
                 {
                     Thread.Sleep(10);
