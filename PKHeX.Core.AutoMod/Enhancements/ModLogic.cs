@@ -38,7 +38,7 @@ namespace PKHeX.Core.AutoMod
         {
             var species = Enumerable.Range(1, sav.MaxSpeciesID);
             if (sav is SAV7b)
-                species = species.Where(z => z <= 151 || (z == 808 || z == 809)); // only include Kanto and M&M
+                species = species.Where(z => z is <= 151 or 808 or 809); // only include Kanto and M&M
             if (sav is SAV8)
                 species = species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z));
             return sav.GenerateLivingDex(species);
@@ -113,7 +113,7 @@ namespace PKHeX.Core.AutoMod
         {
             blank.Species = species;
             blank.Gender = blank.GetSaneGender();
-            if (species == (int)Species.Meowstic || species == (int)Species.Indeedee)
+            if (species is ((int)Species.Meowstic) or ((int)Species.Indeedee))
                 blank.Form = blank.Gender;
 
             var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid);
@@ -133,7 +133,7 @@ namespace PKHeX.Core.AutoMod
             var an = f.AbilityNumber;
             f.Species = species;
             f.Gender = f.GetSaneGender();
-            if (species == (int)Species.Meowstic || species == (int)Species.Indeedee)
+            if (species is ((int)Species.Meowstic) or ((int)Species.Indeedee))
                 f.Form = f.Gender;
             f.CurrentLevel = 100;
             f.Nickname = SpeciesName.GetSpeciesNameGeneration(f.Species, f.Language, f.Format);

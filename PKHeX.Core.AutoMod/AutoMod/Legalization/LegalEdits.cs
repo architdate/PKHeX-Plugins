@@ -112,7 +112,7 @@ namespace PKHeX.Core.AutoMod
         {
             foreach (string rName in ribNames)
             {
-                bool intRib = rName == nameof(PK6.RibbonCountMemoryBattle) || rName == nameof(PK6.RibbonCountMemoryContest);
+                bool intRib = rName is nameof(PK6.RibbonCountMemoryBattle) or nameof(PK6.RibbonCountMemoryContest);
                 ReflectUtil.SetValue(pk, rName, intRib ? (object)vRib : bRib);
             }
         }

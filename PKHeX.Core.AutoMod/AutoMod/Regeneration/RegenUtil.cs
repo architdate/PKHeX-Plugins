@@ -27,7 +27,7 @@ namespace PKHeX.Core.AutoMod
                         sti.SID = sid;
                         break;
                     case "OTGender":
-                        sti.Gender = value == "Female" || value == "F" ? 1 : 0;
+                        sti.Gender = value is "Female" or "F" ? 1 : 0;
                         break;
                     default:
                         continue;
@@ -103,7 +103,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns></returns>
         public static ITrainerInfo MutateLanguage(this ITrainerInfo tr, LanguageID? lang)
         {
-            if (lang == LanguageID.UNUSED_6 || lang == LanguageID.Hacked || lang == null)
+            if (lang is LanguageID.UNUSED_6 or LanguageID.Hacked or null)
                 return tr;
             if (tr is PokeTrainerDetails p)
             {

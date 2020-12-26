@@ -24,7 +24,7 @@ namespace PKHeX.Core.AutoMod
             if (Report.Contains(LegalityCheckStrings.LPIDGenderMismatch))
                 pk.Gender = pk.Gender == 0 ? 1 : 0;
 
-            if (pk.Gender != 0 && pk.Gender != 1)
+            if (pk.Gender is not 0 and not 1)
                 pk.Gender = pk.GetSaneGender();
         }
 

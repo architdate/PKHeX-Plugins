@@ -73,11 +73,11 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">Encounter details</param>
         public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
         {
-            var isRaid = enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U;
+            var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
             if ((pk.Species == 658 && pk.Form == 1) || isRaid) // Ash-Greninja or raids
                 return;
             int gen = pk.Generation;
-            if (2 < gen && gen < 6)
+            if (gen is > 2 and < 6)
             {
                 var ec = pk.PID;
                 pk.EncryptionConstant = ec;
@@ -116,7 +116,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
-            if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U)
+            if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
             {
                 pk.SetRaidShiny(shiny, enc);
                 return;
@@ -136,7 +136,7 @@ namespace PKHeX.Core.AutoMod
 
             if (pk.Generation > 5 || pk.VC)
             {
-                if (shiny == Shiny.FixedValue || shiny == Shiny.Never)
+                if (shiny is Shiny.FixedValue or Shiny.Never)
                     return;
 
                 while (true)
@@ -192,7 +192,7 @@ namespace PKHeX.Core.AutoMod
                 var xor = pk.ShinyXor;
                 if (enc is EncounterStatic8U && xor != 1 && shiny != Shiny.AlwaysSquare)
                     continue;
-                if ((shiny == Shiny.AlwaysStar && xor == 1) || (shiny == Shiny.AlwaysSquare && xor == 0) || ((shiny == Shiny.Always || shiny == Shiny.Random) && xor < 2)) // allow xor1 and xor0 for den shinies
+                if ((shiny == Shiny.AlwaysStar && xor == 1) || (shiny == Shiny.AlwaysSquare && xor == 0) || ((shiny is Shiny.Always or Shiny.Random) && xor < 2)) // allow xor1 and xor0 for den shinies
                     return;
             }
         }
@@ -217,7 +217,7 @@ namespace PKHeX.Core.AutoMod
                 if (isHOMEGift) return;
             }
 
-            if (enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND)
+            if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND)
             {
                 if (APILegality.UseXOROSHIRO && !pk.IsShiny)
                     return;
@@ -288,7 +288,7 @@ namespace PKHeX.Core.AutoMod
                 pkm.DynamaxLevel = level; // Set max dynamax level
             if (pk is PK8 pk8)
             {
-                if (pk8.Species == (int)Species.Zacian || pk8.Species == (int)Species.Zamazenta || pk8.Species == (int)Species.Eternatus) // Zacian, Zamazenta and Eternatus cannot dynamax
+                if (pk8.Species is (int)Species.Zacian or (int)Species.Zamazenta or (int)Species.Eternatus) // Zacian, Zamazenta and Eternatus cannot dynamax
                     pk8.DynamaxLevel = 0;
             }
         }
@@ -304,7 +304,7 @@ namespace PKHeX.Core.AutoMod
             for (int i = 0; i < 6; i++)
             {
                 var iv = pk.GetIV(i);
-                if (iv == 31 || iv <= 1) // ignore IV value = 0/1 for intentional IV values (1 for hidden power cases)
+                if (iv is 31 or <= 1) // ignore IV value = 0/1 for intentional IV values (1 for hidden power cases)
                     continue;
                 return true; // flawed IV present
             }
@@ -313,7 +313,7 @@ namespace PKHeX.Core.AutoMod
 
         public static void HyperTrain(this PKM pk)
         {
-            if (!(pk is IHyperTrain) || !NeedsHyperTraining(pk))
+            if (pk is not IHyperTrain || !NeedsHyperTraining(pk))
                 return;
 
             pk.CurrentLevel = 100; // Set level for HT before doing HT

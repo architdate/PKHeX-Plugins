@@ -131,7 +131,7 @@ namespace PKHeX.Core.AutoMod
             var HA = template.AbilityNumber == 4;
             if (!HA) gamelist = gamelist.Where(z => z.GetGeneration() >= 3 || GameVersion.Gen7b.Contains(z)).ToArray();
             if (HA && destVer.GetGeneration() < 8)
-                gamelist = gamelist.Where(z => z.GetGeneration() != 3 && z.GetGeneration() != 4).ToArray();
+                gamelist = gamelist.Where(z => z.GetGeneration() is not 3 and not 4).ToArray();
             return gamelist;
         }
 
@@ -186,7 +186,7 @@ namespace PKHeX.Core.AutoMod
             // Don't process if encounter min level is higher than requested level
             if (enc.LevelMin > set.Level)
             {
-                var isRaid = enc is EncounterStatic8N || enc is EncounterStatic8NC || enc is EncounterStatic8ND || enc is EncounterStatic8U;
+                var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
                 if (!isRaid)
                     return false;
             }
@@ -198,7 +198,7 @@ namespace PKHeX.Core.AutoMod
             // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
             // Don't process if Game is SWSH and requested PKM is not from the Galar Dex (Zukan8.DexLookup)
             if (GameVersion.GG.Contains(destVer))
-                return set.Species <= 151 || set.Species == 808 || set.Species == 809;
+                return set.Species is <= 151 or 808 or 809;
             if (GameVersion.SWSH.Contains(destVer))
                 return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(set.Species, set.Form)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(set.Species);
             if (set.Species > destVer.GetMaxSpeciesID())
@@ -292,7 +292,7 @@ namespace PKHeX.Core.AutoMod
                     if (gender == pk.Gender)
                         genderValid = true;
                 }
-                else if (pk.Format > 5 && (pk.Species == 183 || pk.Species == 184))
+                else if (pk.Format > 5 && pk.Species is (int)Species.Marill or (int)Species.Azumarill)
                 {
                     var gv = pk.PID & 0xFF;
                     if (gv > 63 && pk.Gender == 1) // evolved from azurill after transferring to keep gender
@@ -338,9 +338,13 @@ namespace PKHeX.Core.AutoMod
             else
             {
                 // Red for 30 denoting imperfect but close to perfect. Blue for 31. No marking for 0 IVs
-                var markings = new[] { 0, 0, 0, 0, 0, 0 };
+                var markings = new int[6];
                 for (int i = 0; i < pk.IVs.Length; i++)
-                    if (pk.IVs[i] == 31 || pk.IVs[i] == 30) markings[i] = pk.IVs[i] == 31 ? 1 : 2;
+                {
+                    if (pk.IVs[i] is 31 or 30)
+                        markings[i] = pk.IVs[i] == 31 ? 1 : 2;
+                }
+
                 pk.Markings = PKX.ReorderSpeedLast(markings);
             }
         }
@@ -551,10 +555,10 @@ namespace PKHeX.Core.AutoMod
             }
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
-            if (li.EncounterMatch is EncounterStatic8N || li.EncounterMatch is EncounterStatic8NC || li.EncounterMatch is EncounterStatic8ND || li.EncounterMatch is EncounterStatic8U)
+            if (li.EncounterMatch is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
             {
                 var e = (EncounterStatic)li.EncounterMatch;
-                if (AbilityNumber == 4 && (e.Ability == 0 || e.Ability == 1 || e.Ability == 2))
+                if (AbilityNumber == 4 && e.Ability is 0 or 1 or 2)
                     return;
 
                 var pk8 = (PK8)pk;
@@ -841,7 +845,7 @@ namespace PKHeX.Core.AutoMod
             return enc switch
             {
                 EncounterTrade et => et.Ability,
-                EncounterStatic es when es.Ability != 0 && es.Ability != 1 => es.Ability,
+                EncounterStatic es when es.Ability is not 0 and not 1 => es.Ability,
                 _ => pk.AbilityNumber,
             };
         }
@@ -852,7 +856,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon</param>
         public static void SetCorrectMetLevel(this PKM pk)
         {
-            if (pk.Met_Location != Locations.Transfer4 && pk.Met_Location != Locations.Transfer3)
+            if (pk.Met_Location is not Locations.Transfer4 and not Locations.Transfer3)
                 return;
             var level = pk.Met_Level;
             if (pk.CurrentLevel <= level)

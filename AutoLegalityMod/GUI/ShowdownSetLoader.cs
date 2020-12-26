@@ -87,7 +87,7 @@ namespace AutoModPlugins
             var legal = sav.GetLegalFromSet(regen, out var msg);
             timer.Stop();
 
-            if (msg == LegalizationResult.Timeout || msg == LegalizationResult.Failed)
+            if (msg is LegalizationResult.Timeout or LegalizationResult.Failed)
             {
                 Legalizer.Dump(regen, msg == LegalizationResult.Failed);
                 var errorstr = msg == LegalizationResult.Failed ? "failed to generate" : "timed out";

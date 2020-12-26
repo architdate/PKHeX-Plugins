@@ -63,7 +63,7 @@ namespace AutoModTests
                 var species = Enumerable.Range(1, sav.MaxSpeciesID);
                 species = sav switch
                 {
-                    SAV7b _ => species.Where(z => z <= 151 || (z == 808 || z == 809)), // only include Kanto and M&M
+                    SAV7b _ => species.Where(z => z is <= 151 or 808 or 809), // only include Kanto and M&M
                     SAV8 _ => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
                     _ => species
                 };

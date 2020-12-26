@@ -37,9 +37,9 @@ namespace AutoModPlugins
         {
             // Check for showdown data in clipboard
             var text = GetTextShowdownData();
-            if (text == null || string.IsNullOrWhiteSpace(text))
+            if (string.IsNullOrWhiteSpace(text))
                 return;
-            ShowdownSetLoader.Import(text);
+            ShowdownSetLoader.Import(text!);
         }
 
         /// <summary>

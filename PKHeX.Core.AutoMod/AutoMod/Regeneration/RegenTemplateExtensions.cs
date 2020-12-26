@@ -29,7 +29,7 @@ namespace PKHeX.Core.AutoMod
 
                         for (int i = 0; i < set.Moves.Length; i++)
                         {
-                            if (set.Moves[i] == 781 || set.Moves[i] == 782)
+                            if (set.Moves[i] is 781 or 782)
                                 set.Moves[i] = 442;
                         }
                         break;
@@ -44,7 +44,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="personal">Personal data for the desired form</param>
         public static void FixGender(this RegenTemplate set, PersonalInfo personal)
         {
-            if (set.Species == (int)Species.Indeedee || set.Species == (int)Species.Meowstic)
+            if (set.Species is (int)Species.Indeedee or (int)Species.Meowstic)
             {
                 set.Gender = set.Form == 1 ? "F" : "M";
                 return;
