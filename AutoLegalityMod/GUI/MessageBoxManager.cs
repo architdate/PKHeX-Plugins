@@ -1,30 +1,24 @@
 ﻿#pragma warning disable 0618
 
-using System;
-
 using System.Text;
-
 using System.Runtime.InteropServices;
-
 using System.Security.Permissions;
 
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = true)]
 
 namespace System.Windows.Forms
-
 {
-
-    public class MessageBoxManager
+    public static class MessageBoxManager
     {
         private delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
         private delegate bool EnumChildProc(IntPtr hWnd, IntPtr lParam);
 
         private const int WH_CALLWNDPROCRET = 12;
-        private const int WM_DESTROY = 0x0002;
+        //private const int WM_DESTROY = 0x0002;
         private const int WM_INITDIALOG = 0x0110;
-        private const int WM_TIMER = 0x0113;
-        private const int WM_USER = 0x400;
-        private const int DM_GETDEFID = WM_USER + 0;
+        //private const int WM_TIMER = 0x0113;
+        //private const int WM_USER = 0x400;
+        //private const int DM_GETDEFID = WM_USER + 0;
 
         private const int MBOK = 1;
         private const int MBCancel = 2;
@@ -33,7 +27,6 @@ namespace System.Windows.Forms
         private const int MBIgnore = 5;
         private const int MBYes = 6;
         private const int MBNo = 7;
-
 
         [DllImport("user32.dll")]
         private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
@@ -71,9 +64,8 @@ namespace System.Windows.Forms
         [DllImport("user32.dll", EntryPoint = "SetWindowTextW", CharSet = CharSet.Unicode)]
         private static extern bool SetWindowText(IntPtr hWnd, string lpString);
 
-
         [StructLayout(LayoutKind.Sequential)]
-        public struct CWPRETSTRUCT
+        private struct CWPRETSTRUCT
         {
             public IntPtr lResult;
             public IntPtr lParam;
@@ -82,10 +74,10 @@ namespace System.Windows.Forms
             public IntPtr hwnd;
         };
 
-        private static HookProc hookProc;
-        private static EnumChildProc enumProc;
+        private static readonly HookProc hookProc = MessageBoxHookProc;
+        private static readonly EnumChildProc enumProc = MessageBoxEnumProc;
         [ThreadStatic]
-        private static IntPtr hHook;
+        private static IntPtr hHook = IntPtr.Zero;
         [ThreadStatic]
         private static int nButton;
 
@@ -117,13 +109,6 @@ namespace System.Windows.Forms
         /// No text
         /// </summary>
         public static string No = "&No";
-
-        static MessageBoxManager()
-        {
-            hookProc = new HookProc(MessageBoxHookProc);
-            enumProc = new EnumChildProc(MessageBoxEnumProc);
-            hHook = IntPtr.Zero;
-        }
 
         /// <summary>
         /// Enables MessageBoxManager functionality
@@ -162,23 +147,23 @@ namespace System.Windows.Forms
             CWPRETSTRUCT msg = (CWPRETSTRUCT)Marshal.PtrToStructure(lParam, typeof(CWPRETSTRUCT));
             IntPtr hook = hHook;
 
-            if (msg.message == WM_INITDIALOG)
-            {
-                int nLength = GetWindowTextLength(msg.hwnd);
-                StringBuilder className = new StringBuilder(10);
-                GetClassName(msg.hwnd, className, className.Capacity);
-                if (className.ToString() == "#32770")
-                {
-                    nButton = 0;
-                    EnumChildWindows(msg.hwnd, enumProc, IntPtr.Zero);
-                    if (nButton == 1)
-                    {
-                        IntPtr hButton = GetDlgItem(msg.hwnd, MBCancel);
-                        if (hButton != IntPtr.Zero)
-                            SetWindowText(hButton, OK);
-                    }
-                }
-            }
+            if (msg.message != WM_INITDIALOG)
+                return CallNextHookEx(hook, nCode, wParam, lParam);
+
+            int nLength = GetWindowTextLength(msg.hwnd);
+            StringBuilder className = new StringBuilder(10);
+            GetClassName(msg.hwnd, className, className.Capacity);
+            if (className.ToString() != "#32770")
+                return CallNextHookEx(hook, nCode, wParam, lParam);
+
+            nButton = 0;
+            EnumChildWindows(msg.hwnd, enumProc, IntPtr.Zero);
+            if (nButton != 1)
+                return CallNextHookEx(hook, nCode, wParam, lParam);
+
+            IntPtr hButton = GetDlgItem(msg.hwnd, MBCancel);
+            if (hButton != IntPtr.Zero)
+                SetWindowText(hButton, OK);
 
             return CallNextHookEx(hook, nCode, wParam, lParam);
         }
@@ -213,14 +198,11 @@ namespace System.Windows.Forms
                     case MBNo:
                         SetWindowText(hWnd, No);
                         break;
-
                 }
                 nButton++;
             }
 
             return true;
         }
-
-
     }
 }
