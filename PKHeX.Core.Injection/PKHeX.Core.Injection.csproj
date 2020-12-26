@@ -5,13 +5,13 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
-    <LangVersion>8</LangVersion>
+    <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="LibUsbDotNet" Version="2.2.29" />
-    <PackageReference Include="PKHeX.Core" Version="20.11.28" />
+    <PackageReference Include="PKHeX.Core" Version="20.11.29" />
   </ItemGroup>
 
 </Project>
