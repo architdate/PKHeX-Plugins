@@ -33,7 +33,7 @@ namespace AutoModTests
         private static void VerifyFile(string path)
         {
             var lines = File.ReadAllLines(path);
-            var sets = ShowdownSet.GetShowdownSets(lines);
+            var sets = ShowdownParsing.GetShowdownSets(lines);
             var game = GetGameFromFile(path);
             var sav = SaveUtil.GetBlankSAV(game, "ALM");
             sav.Should().NotBeNull();

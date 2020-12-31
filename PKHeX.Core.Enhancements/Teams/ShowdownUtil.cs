@@ -31,7 +31,7 @@ namespace PKHeX.Core.Enhancements
             if (IsTeamBackup(paste))
                 return ShowdownTeamSet.GetTeams(paste).SelectMany(z => z.Team).ToList();
             var lines = paste.Split(new[] { "\n" }, StringSplitOptions.None);
-            return ShowdownSet.GetShowdownSets(lines).ToList();
+            return ShowdownParsing.GetShowdownSets(lines).ToList();
         }
 
         /// <summary>

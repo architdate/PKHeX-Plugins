@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="BouncyCastle-Ext" Version="1.7.0" />
+    <PackageReference Include="PKHeX.Core" Version="20.12.30" />
     <PackageReference Include="QRCoder" Version="1.4.1" />
     <PackageReference Include="ZXing.Net" Version="0.16.6" />
   </ItemGroup>

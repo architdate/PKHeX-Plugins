@@ -52,7 +52,7 @@ namespace AutoModTests
         private static Dictionary<string, ShowdownSet[]> VerifyFile(string file, GameVersion[] saves)
         {
             var lines = File.ReadAllLines(file);
-            var sets = ShowdownSet.GetShowdownSets(lines).ToList();
+            var sets = ShowdownParsing.GetShowdownSets(lines).ToList();
             var legalsets = new List<ShowdownSet>();
             var illegalsets = new List<ShowdownSet>();
             foreach (var s in saves)
