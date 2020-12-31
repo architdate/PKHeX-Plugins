@@ -176,7 +176,21 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
+            var validg5sid = pk.SID & 1;
             pk.SetShinySID(); // no mg = no lock
+
+            if (pk.Generation != 5) return;
+
+            while (true)
+            {
+                pk.PID = PKX.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, pk.PID);
+                validg5sid = pk.SID & 1;
+                pk.SetShinySID();
+                pk.EncryptionConstant = pk.PID;
+                var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
+                if ((validg5sid == (pk.SID & 1)) && result == 0)
+                    break;
+            }
         }
 
         public static void SetRaidShiny(this PKM pk, Shiny shiny, IEncounterable enc)

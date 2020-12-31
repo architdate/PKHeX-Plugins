@@ -596,7 +596,7 @@ namespace PKHeX.Core.AutoMod
                     return;
                 if (pk is PK5 { NPokémon: true })
                     return;
-                if (li.EncounterMatch is EncounterStatic5 s && (s.Gift || s.Roaming || s.Ability != 4 || s.Location == 75))
+                if (li.EncounterMatch is EncounterStatic5 s && (s.Gift || s.Roaming || s.Ability == 4 || s.Location == 75))
                     return;
 
                 while (true)
