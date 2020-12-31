@@ -129,7 +129,7 @@ namespace PKHeX.Core.AutoMod
             if (PrioritizeGame)
                 gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, destVer) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
             var HA = template.AbilityNumber == 4;
-            if (!HA) gamelist = gamelist.Where(z => z.GetGeneration() >= 3 || GameVersion.Gen7b.Contains(z)).ToArray();
+            if (!HA && template.PersonalInfo.Abilities[2] != template.Ability) gamelist = gamelist.Where(z => z.GetGeneration() >= 3 || GameVersion.Gen7b.Contains(z)).ToArray();
             if (HA && destVer.GetGeneration() < 8)
                 gamelist = gamelist.Where(z => z.GetGeneration() is not 3 and not 4).ToArray();
             return gamelist;
