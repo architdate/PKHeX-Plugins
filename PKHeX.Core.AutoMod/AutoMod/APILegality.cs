@@ -858,7 +858,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon</param>
         public static void SetCorrectMetLevel(this PKM pk)
         {
-            if (pk.Met_Location is not Locations.Transfer4 and not Locations.Transfer3)
+            if (pk.Met_Location is not Locations.Transfer1 and not Locations.Transfer2 and not Locations.Transfer3 and not Locations.Transfer4)
                 return;
             var level = pk.Met_Level;
             if (pk.CurrentLevel <= level)
