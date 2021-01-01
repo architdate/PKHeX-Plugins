@@ -54,12 +54,14 @@ namespace PKHeX.Core.AutoMod
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR moves for the encounter
             var isHidden = template.AbilityNumber == 4;
+            if (template.Generation >= 5)
+                isHidden = isHidden || template.PersonalInfo.Abilities[2] == template.Ability;
             var destType = template.GetType();
             var destVer = (GameVersion)dest.Game;
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
-            var gamelist = FilteredGameList(template, destVer);
+            var gamelist = FilteredGameList(template, destVer, isHidden);
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             var timer = Stopwatch.StartNew();
@@ -123,14 +125,13 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
-        private static GameVersion[] FilteredGameList(PKM template, GameVersion destVer)
+        private static GameVersion[] FilteredGameList(PKM template, GameVersion destVer, bool isHidden)
         {
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
             if (PrioritizeGame)
                 gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, destVer) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
-            var HA = template.AbilityNumber == 4;
-            if (!HA && template.PersonalInfo.Abilities[2] != template.Ability) gamelist = gamelist.Where(z => z.GetGeneration() >= 3 || GameVersion.Gen7b.Contains(z)).ToArray();
-            if (HA && destVer.GetGeneration() < 8)
+            if (!isHidden) gamelist = gamelist.Where(z => z.GetGeneration() >= 3 || GameVersion.Gen7b.Contains(z)).ToArray();
+            if (template.AbilityNumber == 4 && destVer.GetGeneration() < 8)
                 gamelist = gamelist.Where(z => z.GetGeneration() is not 3 and not 4).ToArray();
             return gamelist;
         }
