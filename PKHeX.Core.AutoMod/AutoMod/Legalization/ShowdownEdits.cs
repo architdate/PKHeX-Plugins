@@ -42,6 +42,8 @@ namespace PKHeX.Core.AutoMod
 
         private static void SetNature(PKM pk, IBattleTemplate set)
         {
+            if (pk.Nature == set.Nature)
+                return;
             var val = Math.Min((int)Nature.Quirky, Math.Max((int)Nature.Hardy, set.Nature));
             pk.SetNature(val);
             if (pk.Species == (int)Species.Toxtricity)
@@ -63,7 +65,7 @@ namespace PKHeX.Core.AutoMod
             var la2 = new LegalityAnalysis(pk);
             var enc1 = la.EncounterOriginal;
             var enc2 = la2.EncounterOriginal;
-            if ((!ReferenceEquals(enc1, enc2) && !(enc1 is EncounterEgg)) || la2.Info.Parse.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
+            if ((!ReferenceEquals(enc1, enc2) && !(enc1 is EncounterEgg)) || la2.Results.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
                 pk.Nature = orig;
             if (pk.Format >= 8 && pk.StatNature != 12 && (pk.StatNature > 24 || pk.StatNature % 6 == 0)) // Only Serious Mint for Neutral Natures
                 pk.StatNature = 12;
@@ -94,7 +96,8 @@ namespace PKHeX.Core.AutoMod
         {
             pk.Species = set.Species;
             pk.ApplySetGender(set);
-            pk.SetForm(Form);
+            if (Form != pk.Form)
+                pk.SetForm(Form);
             pk.SetFormArgument(enc);
             pk.RefreshAbility(pk.AbilityNumber >> 1);
 

@@ -61,7 +61,7 @@ namespace PKHeX.Core.AutoMod
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
-            var gamelist = FilteredGameList(template, destVer, isHidden);
+            var gamelist = FilteredGameList(template, destVer);
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             var timer = Stopwatch.StartNew();
@@ -125,12 +125,11 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
-        private static GameVersion[] FilteredGameList(PKM template, GameVersion destVer, bool isHidden)
+        private static GameVersion[] FilteredGameList(PKM template, GameVersion destVer)
         {
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
             if (PrioritizeGame)
                 gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, destVer) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
-            if (!isHidden) gamelist = gamelist.Where(z => z.GetGeneration() >= 3 || GameVersion.Gen7b.Contains(z)).ToArray();
             if (template.AbilityNumber == 4 && destVer.GetGeneration() < 8)
                 gamelist = gamelist.Where(z => z.GetGeneration() is not 3 and not 4).ToArray();
             return gamelist;
@@ -740,6 +739,8 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 PIDGenerator.SetValuesFromSeed(pk, Method, seed);
                 if (!(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber && pk.Nature == iterPKM.Nature))
+                    continue;
+                if (pk.PIDAbility != iterPKM.PIDAbility)
                     continue;
                 if (HPType >= 0 && pk.HPType != HPType)
                     continue;
