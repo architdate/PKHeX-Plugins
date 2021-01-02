@@ -54,7 +54,7 @@ namespace PKHeX.Core.AutoMod
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR moves for the encounter
             var isHidden = template.AbilityNumber == 4;
-            if (template.Generation >= 5)
+            if (template.PersonalInfo.Abilities.Count > 2) // Hidden ability exists for the template
                 isHidden = isHidden || template.PersonalInfo.Abilities[2] == template.Ability;
             var destType = template.GetType();
             var destVer = (GameVersion)dest.Game;
