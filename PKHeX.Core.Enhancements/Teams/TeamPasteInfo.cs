@@ -47,11 +47,11 @@ namespace PKHeX.Core.Enhancements
         {
             var page = NetUtil.GetPageText(url);
 
-            var title = page.Split(new[] { "<div class=\"paste_box_line1\" title=\"" }, StringSplitOptions.None)[1];
-            Title = GetVal(title, '"');
+            var title = page.Split(new[] { "<h1>" }, StringSplitOptions.None)[1];
+            Title = GetVal(title);
 
-            var auth = page.Split(new[] { "<div class=\"paste_box_line2\">" }, StringSplitOptions.None)[1].Split('>');
-            Author = GetVal(auth[1]);
+            var auth = page.Split(new[] { "<div class=\"username\">" }, StringSplitOptions.None)[1].Split('>');
+            Author = GetVal(auth[0]);
 
             var datestr = auth[3];
             var date = GetVal(datestr);

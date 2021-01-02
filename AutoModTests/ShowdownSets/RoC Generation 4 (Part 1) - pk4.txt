@@ -1,0 +1,169 @@
+Charmander (M)
+Ability: Blaze
+Level: 1
+Shiny: Yes
+Timid Nature
+- Scratch
+- Growl
+
+Charmeleon (M)
+IVs: 25 HP / 5 Atk / 5 SpA / 27 SpD / 11 Spe
+Ability: Blaze
+Level: 16
+Jolly Nature
+- Scratch
+- Dragon Rage
+- Ember
+- Smokescreen
+
+Charmeleon (M)
+IVs: 11 HP / 20 Atk / 11 Def / 19 SpA / 15 SpD / 14 Spe
+Ability: Blaze
+Level: 16
+Naughty Nature
+- Scratch
+- Dragon Rage
+- Ember
+- Smokescreen
+
+Charizard (M)
+IVs: 11 HP / 20 Atk / 11 Def / 19 SpA / 15 SpD / 14 Spe
+Ability: Blaze
+Level: 36
+Naughty Nature
+- Slash
+- Wing Attack
+- Ember
+- Fire Fang
+
+Squirtle (M)
+IVs: 16 HP / 29 Atk / 12 Def / 17 SpA / 22 SpD / 15 Spe
+Ability: Torrent
+Level: 1
+Jolly Nature
+- Tackle
+
+Squirtle (M)
+IVs: 0 HP / 13 Atk / 6 Def / 6 SpA / 17 SpD / 5 Spe
+Ability: Torrent
+Level: 5
+Mild Nature
+- Tackle
+- Tail Whip
+
+Squirtle (M)
+Ability: Torrent
+Level: 1
+Shiny: Yes
+Bold Nature
+- Aqua Jet
+- Flail
+- Aqua Ring
+- Yawn
+
+Squirtle (F)
+IVs: 4 Atk / 28 Def / 30 SpA
+Ability: Torrent
+Level: 1
+Shiny: Yes
+Bold Nature
+- Rain Dance
+- Muddy Water
+- Yawn
+- Ice Beam
+
+Squirtle (M)
+IVs: 21 HP / 24 Atk / 11 Def / 23 SpA / 5 SpD / 21 Spe
+Ability: Torrent
+Level: 1
+Shiny: Yes
+Docile Nature
+- Tackle
+- Water Pulse
+
+Squirtle (M)
+Ability: Torrent
+Level: 1
+Shiny: Yes
+Modest Nature
+- Aqua Jet
+- Flail
+- Aqua Ring
+- Yawn
+
+Wartortle (M)
+IVs: 0 HP / 13 Atk / 6 Def / 6 SpA / 17 SpD / 5 Spe
+Ability: Torrent
+Level: 16
+Mild Nature
+- Tackle
+- Bite
+- Water Gun
+- Withdraw
+
+Blastoise (M)
+IVs: 0 HP / 13 Atk / 6 Def / 6 SpA / 17 SpD / 5 Spe
+Ability: Torrent
+Level: 36
+Mild Nature
+- Skull Bash
+- Bite
+- Aqua Tail
+- Water Pulse
+
+Caterpie (M)
+IVs: 27 HP / 30 Atk / 15 Def / 16 SpA / 24 SpD / 25 Spe
+Ability: Shield Dust
+Level: 3
+Modest Nature
+- Tackle
+- String Shot
+
+Caterpie (F)
+IVs: 6 HP / 20 Atk / 28 Def / 30 SpA / 5 SpD / 29 Spe
+Ability: Shield Dust
+Level: 5
+Modest Nature
+- Tackle
+- String Shot
+
+Caterpie (F)
+Ability: Shield Dust
+Level: 1
+Shiny: Yes
+Jolly Nature
+- Tackle
+- String Shot
+
+Caterpie (M)
+IVs: 18 HP / 26 Atk / 10 Def / 28 SpA / 20 SpD / 6 Spe
+Ability: Shield Dust
+Level: 6
+Shiny: Yes
+Serious Nature
+- Tackle
+- String Shot
+
+Caterpie (M)
+IVs: 30 HP / 15 Atk / 30 Def
+Ability: Shield Dust
+Level: 3
+Shiny: Yes
+Timid Nature
+- Tackle
+- String Shot
+
+Caterpie (F)
+Ability: Shield Dust
+Level: 1
+Shiny: Yes
+Timid Nature
+- Tackle
+- String Shot
+
+Metapod (M)
+IVs: 23 HP / 6 Atk / 28 Def / 4 SpA / 22 SpD / 5 Spe
+Ability: Shed Skin
+Level: 5
+Lonely Nature
+- Harden

@@ -21,30 +21,6 @@ namespace AutoModTests
             return game;
         }
 
-        [Fact]
-        public static void ShowdownTextGenerate()
-        {
-            var path = ShowdownSetsFolder;
-            var files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
-            foreach (var f in files)
-                VerifyFile(f);
-        }
-
-        private static void VerifyFile(string path)
-        {
-            var lines = File.ReadAllLines(path);
-            var sets = ShowdownParsing.GetShowdownSets(lines);
-            var game = GetGameFromFile(path);
-            var sav = SaveUtil.GetBlankSAV(game, "ALM");
-            sav.Should().NotBeNull();
-            foreach (var s in sets)
-            {
-                var pk = sav.GetLegalFromSet(s, out _);
-                var la = new LegalityAnalysis(pk);
-                la.Valid.Should().BeTrue($"{path}'s set for {GameInfo.Strings.Species[s.Species]} should generate a legal mon");
-            }
-        }
-
         [Theory]
         [InlineData(7, Meowstic)]
         [InlineData(7, Darkrai)]

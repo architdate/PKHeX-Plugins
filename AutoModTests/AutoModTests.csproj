@@ -30,8 +30,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ShowdownSets\Generation 7\USUM\" />
-  </ItemGroup>
-
 </Project>

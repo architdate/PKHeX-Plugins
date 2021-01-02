@@ -1,8 +1,0 @@
-Lycanroc @ Lycanium Z  
-Ability: Sand Rush  
-EVs: 112 HP / 252 Atk / 144 Spe  
-Adamant Nature  
-- Stone Edge  
-- Accelerock  
-- Drill Run  
-- Swords Dance

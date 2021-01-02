@@ -16,7 +16,7 @@ namespace AutoModTests
     /// </summary>
     public static class TeamTests
     {
-        private static string TestPath => Path.Combine(Directory.GetCurrentDirectory(), "tests");
+        private static string TestPath => TestUtil.GetTestFolder("ShowdownSets");
 
         private static Dictionary<string, int> GetFileStructures()
         {
@@ -49,14 +49,15 @@ namespace AutoModTests
             };
         }
 
-        private static Dictionary<string, ShowdownSet[]> VerifyFile(string file, GameVersion[] saves)
+        private static Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>> VerifyFile(string file, GameVersion[] saves)
         {
             var lines = File.ReadAllLines(file);
             var sets = ShowdownParsing.GetShowdownSets(lines).ToList();
-            var legalsets = new List<ShowdownSet>();
-            var illegalsets = new List<ShowdownSet>();
+            var results = new Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>>();
             foreach (var s in saves)
             {
+                var legalsets = new List<ShowdownSet>();
+                var illegalsets = new List<ShowdownSet>();
                 var sav = SaveUtil.GetBlankSAV(s, "ALM");
                 var trainer = TrainerSettings.DefaultFallback(sav.Generation);
                 PKMConverter.SetPrimaryTrainer(trainer);
@@ -94,14 +95,17 @@ namespace AutoModTests
                         Console.WriteLine($"Exception for {(Species)set.Species} in file {file} with set: {set.Text}");
                     }
                 }
+                results[s] = new Dictionary<string, ShowdownSet[]> { { "legal", legalsets.ToArray() }, { "illegal", illegalsets.ToArray() } };
             }
-            return new Dictionary<string, ShowdownSet[]> { { "legal", legalsets.ToArray() }, { "illegal", illegalsets.ToArray() } };
+            return results;
         }
 
-        public static Dictionary<string, Dictionary<string, ShowdownSet[]>> VerifyFiles()
+        public static Dictionary<string, Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>>> VerifyFiles()
         {
-            var result = new Dictionary<string, Dictionary<string, ShowdownSet[]>>();
+            var result = new Dictionary<string, Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>>>();
             var structure = GetFileStructures();
+            bool legalizer_settings = Legalizer.EnableEasterEggs;
+            Legalizer.EnableEasterEggs = false;
             foreach (var entry in structure)
             {
                 var gens = GetGameVersionsToTest(entry.Value);
@@ -109,6 +113,7 @@ namespace AutoModTests
                 var res = VerifyFile(file, gens);
                 result.Add(file, res);
             }
+            Legalizer.EnableEasterEggs = legalizer_settings;
             return result;
         }
 
@@ -120,20 +125,40 @@ namespace AutoModTests
 
             var results = VerifyFiles();
             Directory.CreateDirectory(Path.Combine(dir, "logs"));
+            var testfailed = false;
 
             foreach (var (key, value) in results)
             {
                 var fileName = $"{Path.GetFileName(key).Replace('.', '_')}{DateTime.Now:_yyyy-MM-dd-HH-mm-ss}.log";
                 var path = Path.Combine(dir, "logs", fileName);
-                var msg = string.Join("\n\n", value["illegal"].Select(x => x.Text));
+                var msg = string.Empty;
+                foreach (var (gv, sets) in value)
+                {
+                    if (sets["illegal"].Length == 0)
+                        continue;
+                    msg += $"=============== GameVersion: {gv} ===============\n\n";
+                    testfailed = true;
+                    msg += string.Join("\n\n", sets["illegal"].Select(x => x.Text));
+                }
                 File.WriteAllText(path, msg);
             }
 
             var sb = new StringBuilder();
             foreach (var (key, value) in results)
-                sb.Append(Path.GetFileName(key)).Append(" : Legal - ").Append(value["legal"].Length).Append(" | Illegal - ").Append(value["illegal"].Length).AppendLine();
+            {
+                var legal = 0;
+                var illegal = 0;
+                foreach (var (gv, sets) in value)
+                {
+                    legal += sets["legal"].Length;
+                    illegal += sets["illegal"].Length;
+                }
+                sb.Append(Path.GetFileName(key)).Append(" : Legal - ").Append(legal).Append(" | Illegal - ").Append(illegal).AppendLine();
+            }
 
-            File.WriteAllText(Path.Combine(dir, "logs", "output.txt"), sb.ToString());
+            var res = sb.ToString();
+            File.WriteAllText(Path.Combine(dir, "logs", "output.txt"), res);
+            testfailed.Should().BeFalse($"there were sets that could not be legally genned (Output: {res})");
         }
     }
 }
