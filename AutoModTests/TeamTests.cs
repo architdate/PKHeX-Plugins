@@ -38,7 +38,9 @@ namespace AutoModTests
         {
             return gen switch
             {
-                -1 => new[] { GP },
+                -1 => new[] { SW, GP },
+                1 => new[] { RD , C },
+                2 => new[] { C },
                 3 => new[] { SW, US, SN, OR, X, B2, B, Pt, E },
                 4 => new[] { SW, US, SN, OR, X, B2, B, Pt },
                 5 => new[] { SW, US, SN, OR, X, B2 },
