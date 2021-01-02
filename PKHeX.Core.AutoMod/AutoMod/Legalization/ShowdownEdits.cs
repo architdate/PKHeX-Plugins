@@ -94,12 +94,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="lang">Language to apply</param>
         public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, int Form, IEncounterable enc, LanguageID? lang = null)
         {
-            pk.Species = set.Species;
+            var updatevalues = pk.Species != set.Species;
+            if (updatevalues)
+                pk.Species = set.Species;
             pk.ApplySetGender(set);
             if (Form != pk.Form)
                 pk.SetForm(Form);
             pk.SetFormArgument(enc);
-            pk.RefreshAbility(pk.AbilityNumber >> 1);
+            if (updatevalues)
+                pk.RefreshAbility(pk.AbilityNumber >> 1);
 
             var usedlang = lang ?? (LanguageID) pk.Language;
 
