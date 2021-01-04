@@ -1,0 +1,2388 @@
+Bulbasaur (M)
+IVs: 24 HP / 27 Atk / 6 Def / 29 SpA / 13 SpD / 26 Spe
+Ability: Overgrow
+Level: 7
+Calm Nature
+- Tackle
+- Growl
+- Vine Whip
+
+Ivysaur (M)
+IVs: 1 HP / 19 Def / 19 SpD / 7 Spe
+Ability: Overgrow
+Level: 1
+Calm Nature
+- Tackle
+- Growl
+- Vine Whip
+- Leech Seed
+
+Venusaur (M)
+IVs: 24 HP / 27 Atk / 6 Def / 29 SpA / 13 SpD / 26 Spe
+Ability: Overgrow
+Level: 32
+Calm Nature
+- Take Down
+- Sleep Powder
+- Razor Leaf
+- Petal Dance
+
+Charmander (M)
+IVs: 16 HP / 28 Atk / 30 Def / 2 SpA / 4 SpD / 9 Spe
+Ability: Blaze
+Level: 24
+Impish Nature
+- Smokescreen
+- Ember
+- Fury Swipes
+- Dragon Rage
+
+Charmeleon (M)
+IVs: 16 HP / 28 Atk / 30 Def / 2 SpA / 4 SpD / 9 Spe
+Ability: Blaze
+Level: 25
+Impish Nature
+- Smokescreen
+- Ember
+- Fury Swipes
+- Dragon Rage
+
+Charizard (M)
+IVs: 8 HP / 11 Atk / 18 Def / 26 SpA / 24 SpD / 27 Spe
+Ability: Blaze
+Level: 57
+Bashful Nature
+- Dragon Rage
+- Fire Spin
+- Slash
+- Flamethrower
+
+Squirtle (M)
+IVs: 25 HP / 25 Atk / 30 Def / 30 SpD / 25 Spe
+Ability: Torrent
+Level: 16
+Hardy Nature
+- Tackle
+- Tail Whip
+- Bubble
+- Withdraw
+
+Wartortle (M)
+IVs: 29 HP / 23 Atk / 28 Def / 1 SpA / 22 SpD / 9 Spe
+Ability: Torrent
+Level: 42
+Relaxed Nature
+- Bubble Beam
+- Protect
+- Headbutt
+- Hydro Pump
+
+Blastoise (M)
+IVs: 1 HP / 23 Atk / 25 Def / 23 SpA / 25 SpD / 19 Spe
+Ability: Torrent
+Level: 15
+Lonely Nature
+- Tackle
+- Tail Whip
+- Bubble
+- Withdraw
+
+Caterpie (M)
+IVs: 1 HP / 25 Atk / 1 Def / 25 SpA / 1 SpD / 30 Spe
+Ability: Shield Dust
+Level: 27
+Lonely Nature
+- Tackle
+- String Shot
+
+Metapod (M)
+IVs: 24 HP / 18 Atk / 10 Def / 20 SpA / 18 SpD / 15 Spe
+Ability: Shed Skin
+Level: 4
+Jolly Nature
+- Harden
+
+Butterfree (F)
+IVs: 26 HP / 3 Atk / 1 Def / 3 SpA / 12 SpD / 22 Spe
+Ability: Compound Eyes
+Level: 7
+Docile Nature
+- Gust
+- Confusion
+
+Weedle (F)
+IVs: 18 HP / 11 Atk / 15 Def / 14 SpA / 30 SpD / 25 Spe
+Ability: Shield Dust
+Level: 7
+Adamant Nature
+- Poison Sting
+- String Shot
+
+Kakuna (F)
+IVs: 19 HP / 3 Atk / 0 Def / 20 SpA / 7 SpD / 24 Spe
+Ability: Shed Skin
+Level: 6
+Hardy Nature
+- Harden
+
+Beedrill (M)
+IVs: 30 HP / 4 Atk / 23 Def / 11 SpD / 26 Spe
+Ability: Swarm
+Level: 7
+Impish Nature
+- Twineedle
+- Peck
+
+Pidgey (F)
+IVs: 23 HP / 23 Atk / 14 Def / 15 SpA / 9 SpD / 21 Spe
+Ability: Tangled Feet
+Level: 7
+Gentle Nature
+- Tackle
+- Sand Attack
+- Gust
+
+Pidgey (F)
+IVs: 7 HP / 23 Atk / 11 Def / 23 SpA / 11 SpD / 7 Spe
+Ability: Keen Eye
+Level: 4
+Sassy Nature
+- Tackle
+- Sand Attack
+
+Pidgeotto (M)
+IVs: 11 HP / 29 Def / 29 SpD
+Ability: Keen Eye
+Level: 3
+Careful Nature
+- Tackle
+- Sand Attack
+- Gust
+- Quick Attack
+
+Pidgeotto (M)
+IVs: 17 HP / 14 Atk / 21 Def / 23 SpD / 6 Spe
+Ability: Tangled Feet
+Level: 16
+Timid Nature
+- Gust
+- Quick Attack
+- Mirror Move
+- Wing Attack
+
+Pidgeot (F)
+IVs: 27 HP / 17 Atk / 17 SpA / 17 Spe
+Ability: Keen Eye
+Level: 22
+Hardy Nature
+- Quick Attack
+- Mirror Move
+- Wing Attack
+- Roost
+
+Pidgeot (F)
+IVs: 2 HP / 17 Atk / 11 Def / 17 SpD / 25 Spe
+Ability: Tangled Feet
+Level: 57
+Jolly Nature
+- Whirlwind
+- Agility
+- Air Slash
+- Razor Wind
+
+Rattata (F)
+IVs: 1 HP / 27 Atk / 29 Def / 22 SpA / 1 SpD / 20 Spe
+Ability: Guts
+Level: 5
+Calm Nature
+- Tackle
+- Tail Whip
+
+Rattata (M)
+IVs: 25 HP / 15 Atk / 27 Def / 15 SpA / 27 SpD / 30 Spe
+Ability: Run Away
+Level: 16
+Timid Nature
+- Quick Attack
+- Focus Energy
+- Bite
+- Super Fang
+
+Rattata-Alola (M)
+IVs: 11 Def / 19 SpA / 10 SpD / 15 Spe
+Ability: Hustle
+Level: 12
+Bold Nature
+- Tail Whip
+- Quick Attack
+- Focus Energy
+- Bite
+
+Rattata-Alola (M)
+IVs: 9 HP / 3 Atk / 19 Def / 3 SpA / 19 SpD / 7 Spe
+Ability: Gluttony
+Level: 25
+Hardy Nature
+- Super Fang
+- Crunch
+- Hyper Fang
+- Sucker Punch
+
+Raticate (M)
+IVs: 27 HP / 25 Def / 25 SpD / 1 Spe
+Ability: Guts
+Level: 20
+Lonely Nature
+- Focus Energy
+- Bite
+- Super Fang
+- Crunch
+
+Raticate (F)
+IVs: 11 HP / 14 Atk / 26 Def / 18 SpA / 16 SpD / 5 Spe
+Ability: Run Away
+Level: 18
+Relaxed Nature
+- Focus Energy
+- Bite
+- Super Fang
+- Crunch
+
+Raticate-Alola (F)
+IVs: 20 Def / 15 SpA / 15 SpD / 4 Spe
+Ability: Gluttony
+Level: 20
+Jolly Nature
+- Super Fang
+- Quick Attack
+- Focus Energy
+- Crunch
+
+Spearow (F)
+IVs: 0 HP / 1 Atk / 5 Def / 15 SpA / 17 SpD / 22 Spe
+Ability: Keen Eye
+Level: 7
+Brave Nature
+- Peck
+- Growl
+
+Fearow (M)
+IVs: 27 Atk / 25 Def / 27 SpA / 25 SpD / 12 Spe
+Ability: Keen Eye
+Level: 13
+Gentle Nature
+- Peck
+- Growl
+- Leer
+- Focus Energy
+
+Ekans (M)
+IVs: 11 HP / 9 Def / 9 SpD / 24 Spe
+Ability: Shed Skin
+Level: 8
+Hasty Nature
+- Wrap
+- Poison Sting
+- Leer
+- Acid
+
+Ekans (M)
+IVs: 9 HP / 29 Atk / 16 Def / 30 SpA / 19 SpD / 7 Spe
+Ability: Intimidate
+Level: 3
+Serious Nature
+- Wrap
+- Poison Sting
+
+Arbok (M)
+IVs: 9 HP / 29 Atk / 16 Def / 30 SpA / 19 SpD / 7 Spe
+Ability: Intimidate
+Level: 22
+Serious Nature
+- Crunch
+- Poison Sting
+- Leer
+- Acid
+
+Arbok (F)
+IVs: 23 HP / 19 Def / 19 SpD / 0 Spe
+Ability: Shed Skin
+Level: 21
+Timid Nature
+- Acid
+- Bite
+- Haze
+- Glare
+
+Pikachu (F)
+IVs: 23 HP / 7 Atk / 0 Def / 12 SpA / 15 SpD / 23 Spe
+Ability: Static
+Level: 6
+Hasty Nature
+- Thunder Shock
+- Growl
+- Tail Whip
+- Quick Attack
+
+Raichu (F)
+IVs: 23 HP / 7 Atk / 0 Def / 12 SpA / 15 SpD / 23 Spe
+Ability: Static
+Level: 6
+Hasty Nature
+- Thunder Shock
+- Thunder Punch
+- Tail Whip
+- Quick Attack
+
+Raichu-Alola (F)
+IVs: 15 HP / 11 Atk / 25 Def / 20 SpD
+Ability: Surge Surfer
+Level: 30
+Brave Nature
+- Thunder Shock
+- Growl
+- Tail Whip
+- Double Team
+
+Sandshrew (F)
+IVs: 29 HP / 30 Atk / 24 Def / 24 SpA / 16 SpD
+Ability: Sand Veil
+Level: 5
+Gentle Nature
+- Scratch
+- Defense Curl
+- Poison Sting
+
+Sandshrew-Alola (F)
+IVs: 19 HP / 27 SpD / 0 Spe
+Ability: Snow Cloak
+Level: 27
+Modest Nature
+- Swift
+- Mirror Coat
+- Fury Swipes
+- Ice Punch
+
+Sandslash (F)
+IVs: 29 HP / 30 Atk / 24 Def / 24 SpA / 16 SpD
+Ability: Sand Veil
+Level: 22
+Gentle Nature
+- Swift
+- Fury Swipes
+- Poison Sting
+- Dig
+
+Nidoran-F (F)
+IVs: 23 HP / 21 Def / 21 SpD / 2 Spe
+Ability: Poison Point
+Level: 26
+Careful Nature
+- Helping Hand
+- Toxic
+- Fury Swipes
+- Crunch
+
+Nidoran-F (F)
+IVs: 2 HP / 7 Atk / 3 Def / 28 SpA / 9 SpD / 20 Spe
+Ability: Rivalry
+Level: 21
+Naive Nature
+- Bite
+- Helping Hand
+- Toxic
+- Fury Swipes
+
+Nidorina (F)
+IVs: 6 Atk / 25 Def / 8 SpA / 6 SpD / 12 Spe
+Ability: Rivalry
+Level: 23
+Brave Nature
+- Double Kick
+- Bite
+- Helping Hand
+- Toxic
+
+Nidorina (F)
+IVs: 23 HP / 21 Def / 21 SpD / 6 Spe
+Ability: Poison Point
+Level: 26
+Quiet Nature
+- Double Kick
+- Bite
+- Helping Hand
+- Toxic
+
+Nidoqueen (F)
+IVs: 3 HP / 11 Atk / 15 Def / 11 SpA / 15 SpD / 7 Spe
+Ability: Rivalry
+Level: 17
+Hasty Nature
+- Growl
+- Scratch
+- Tail Whip
+- Poison Sting
+
+Nidoran-M (M)
+IVs: 26 HP / 10 Atk / 20 Def / 23 SpA / 2 SpD / 29 Spe
+Ability: Poison Point
+Level: 5
+Docile Nature
+- Leer
+- Peck
+- Focus Energy
+
+Nidorino (M)
+IVs: 6 HP / 25 Atk / 21 Def / 20 SpA / 8 SpD / 9 Spe
+Ability: Rivalry
+Level: 47
+Lax Nature
+- Toxic
+- Fury Attack
+- Poison Jab
+- Horn Drill
+
+Nidoking (M)
+IVs: 25 HP / 11 Atk / 23 Def / 11 SpA / 23 SpD / 15 Spe
+Ability: Poison Point
+Level: 25
+Modest Nature
+- Leer
+- Peck
+- Focus Energy
+- Poison Sting
+
+Nidoking (M)
+IVs: 18 HP / 1 Atk / 2 Def / 3 SpA / 20 SpD / 27 Spe
+Ability: Rivalry
+Level: 47
+Quiet Nature
+- Leer
+- Peck
+- Focus Energy
+- Poison Sting
+
+Clefairy (F)
+IVs: 2 HP / 26 Def / 4 SpA / 4 SpD / 2 Spe
+Ability: Magic Guard
+Level: 7
+Careful Nature
+- Growl
+- Pound
+- Defense Curl
+- Sing
+
+Clefairy (F)
+IVs: 23 HP / 27 Atk / 27 SpA / 5 Spe
+Ability: Cute Charm
+Level: 13
+Lonely Nature
+- Defense Curl
+- Sing
+- Minimize
+- Double Slap
+
+Clefable (M)
+IVs: 17 HP / 18 Atk / 10 Def / 13 SpA / 16 SpD / 30 Spe
+Ability: Magic Guard
+Level: 11
+Modest Nature
+- Growl
+- Pound
+- Defense Curl
+- Sing
+
+Vulpix (M)
+IVs: 22 HP / 3 Atk / 1 Def / 6 SpA / 5 SpD / 9 Spe
+Ability: Flash Fire
+Level: 24
+Gentle Nature
+- Confuse Ray
+- Will-O-Wisp
+- Fire Spin
+- Flamethrower
+
+Vulpix-Alola (M)
+IVs: 23 HP / 25 Def / 25 SpD / 3 Spe
+Ability: Snow Cloak
+Level: 20
+Brave Nature
+- Mist
+- Ice Shard
+- Confuse Ray
+- Aurora Beam
+
+Ninetales (M)
+IVs: 3 HP / 28 Atk / 17 Def / 1 SpA / 10 SpD / 30 Spe
+Ability: Flash Fire
+Level: 28
+Calm Nature
+- Tackle
+- Tail Whip
+- Ember
+- Quick Attack
+
+Ninetales-Alola (F)
+IVs: 29 HP / 27 Def / 27 SpD / 16 Spe
+Ability: Snow Cloak
+Level: 20
+Quirky Nature
+- Tackle
+- Tail Whip
+- Mist
+- Ice Shard
+
+Jigglypuff (M)
+IVs: 23 HP / 23 Atk / 29 Def / 23 SpA / 29 SpD / 19 Spe
+Ability: Competitive
+Level: 23
+Lax Nature
+- Double Slap
+- Disable
+- Rest
+- Body Slam
+
+Wigglytuff (M)
+IVs: 29 HP / 27 Atk / 11 Def / 27 SpA / 11 SpD / 18 Spe
+Ability: Cute Charm
+Level: 4
+Modest Nature
+- Sing
+- Pound
+- Minimize
+- Bide
+
+Wigglytuff (M)
+IVs: 7 HP / 21 Atk / 0 Def / 10 SpA / 2 SpD / 10 Spe
+Ability: Competitive
+Level: 14
+Timid Nature
+- Pound
+- Defense Curl
+- Bide
+- Double Slap
+
+Zubat (M)
+IVs: 13 HP / 29 Def / 29 SpD / 28 Spe
+Ability: Inner Focus
+Level: 27
+Bashful Nature
+- Swift
+- Confuse Ray
+- Haze
+- Leech Life
+
+Golbat (M)
+IVs: 29 HP / 23 Atk / 27 Def / 23 SpA / 27 SpD / 27 Spe
+Ability: Inner Focus
+Level: 4
+Quirky Nature
+- Absorb
+- Supersonic
+- Wing Attack
+- Bite
+
+Oddish (M)
+IVs: 10 HP / 12 Atk / 7 Def / 28 SpA / 2 SpD / 18 Spe
+Ability: Chlorophyll
+Level: 3
+Naughty Nature
+- Absorb
+
+Gloom (F)
+IVs: 22 HP / 3 Atk / 6 Def / 20 SpA / 6 SpD
+Ability: Chlorophyll
+Level: 39
+Brave Nature
+- Sleep Powder
+- Razor Leaf
+- Mega Drain
+- Toxic
+
+Vileplume (M)
+IVs: 11 HP / 8 Atk / 1 Def / 16 SpA / 7 SpD / 29 Spe
+Ability: Chlorophyll
+Level: 43
+Careful Nature
+- Absorb
+- Growth
+- Acid
+- Poison Powder
+
+Paras (M)
+IVs: 1 HP / 2 Atk / 2 Def / 6 SpA / 6 SpD / 7 Spe
+Ability: Dry Skin
+Level: 8
+Impish Nature
+- Scratch
+- Sleep Powder
+- Stun Spore
+- Poison Powder
+
+Parasect (M)
+IVs: 1 HP / 2 Atk / 2 Def / 6 SpA / 6 SpD / 7 Spe
+Ability: Dry Skin
+Level: 24
+Impish Nature
+- Slash
+- Sleep Powder
+- Leech Life
+- Poison Powder
+
+Parasect (F)
+IVs: 21 HP / 29 Atk / 19 Def / 29 SpA / 19 SpD / 7 Spe
+Ability: Effect Spore
+Level: 4
+Modest Nature
+- Scratch
+- Sleep Powder
+- Stun Spore
+- Poison Powder
+
+Venonat (F)
+IVs: 16 HP / 22 Atk / 18 Def / 29 SpA / 1 SpD / 9 Spe
+Ability: Tinted Lens
+Level: 10
+Adamant Nature
+- Tackle
+- Disable
+- Supersonic
+
+Venomoth (M)
+IVs: 19 HP / 17 Atk / 18 Def / 18 SpA / 15 SpD / 16 Spe
+Ability: Tinted Lens
+Level: 35
+Naive Nature
+- Stun Spore
+- Psybeam
+- Sleep Powder
+- Leech Life
+
+Diglett (M)
+IVs: 17 HP / 5 Atk / 17 Def / 17 SpA / 25 SpD / 20 Spe
+Ability: Sand Veil
+Level: 13
+Gentle Nature
+- Scratch
+- Sand Attack
+- Growl
+- Agility
+
+Diglett (F)
+IVs: 7 Atk / 23 Def / 7 SpA / 23 SpD / 21 Spe
+Ability: Arena Trap
+Level: 9
+Lax Nature
+- Scratch
+- Sand Attack
+- Growl
+
+Diglett-Alola (M)
+IVs: 1 HP / 7 Def / 2 SpA / 10 SpD
+Ability: Sand Veil
+Level: 25
+Docile Nature
+- Fury Swipes
+- Dig
+- Slash
+- Sucker Punch
+
+Dugtrio (F)
+IVs: 7 HP / 21 Atk / 23 Def / 21 SpA / 23 SpD / 29 Spe
+Ability: Sand Veil
+Level: 7
+Docile Nature
+- Scratch
+- Sand Attack
+- Growl
+- Agility
+
+Dugtrio (M)
+IVs: 22 HP / 8 Atk / 17 Def / 18 SpA / 25 SpD / 8 Spe
+Ability: Arena Trap
+Level: 19
+Naughty Nature
+- Growl
+- Agility
+- Fury Swipes
+- Dig
+
+Dugtrio-Alola (M)
+IVs: 1 HP / 7 Def / 2 SpA / 10 SpD
+Ability: Sand Veil
+Level: 26
+Docile Nature
+- Tri Attack
+- Dig
+- Slash
+- Sucker Punch
+
+Dugtrio-Alola (M)
+IVs: 29 HP / 19 Def / 19 SpD / 20 Spe
+Ability: Tangling Hair
+Level: 33
+Lax Nature
+- Fury Swipes
+- Dig
+- Slash
+- Sucker Punch
+
+Meowth (F)
+IVs: 27 Def / 27 SpD / 2 Spe
+Ability: Pickup
+Level: 20
+Mild Nature
+- Taunt
+- Pay Day
+- Feint
+- Fury Swipes
+
+Meowth-Alola (M)
+IVs: 29 HP / 21 Def / 21 SpD / 5 Spe
+Ability: Pickup
+Level: 5
+Quiet Nature
+- Scratch
+- Growl
+- Bite
+- Fake Out
+
+Meowth-Alola (F)
+IVs: 10 Atk / 2 Def / 19 SpA / 3 SpD
+Ability: Technician
+Level: 44
+Sassy Nature
+- Screech
+- Slash
+- Nasty Plot
+- Play Rough
+
+Persian (M)
+IVs: 30 HP / 30 Atk / 25 Def / 25 SpA / 25 SpD
+Ability: Technician
+Level: 16
+Mild Nature
+- Fake Out
+- Taunt
+- Pay Day
+- Feint
+
+Persian (F)
+IVs: 7 HP / 9 Atk / 27 Def / 9 SpA / 27 SpD / 17 Spe
+Ability: Limber
+Level: 9
+Rash Nature
+- Growl
+- Bite
+- Fake Out
+- Taunt
+
+Persian-Alola (M)
+IVs: 23 HP / 27 Def / 27 SpD
+Ability: Technician
+Level: 16
+Naive Nature
+- Fake Out
+- Taunt
+- Pay Day
+- Feint
+
+Psyduck (F)
+IVs: 28 HP / 18 Atk / 1 Def / 18 SpA / 14 SpD / 4 Spe
+Ability: Cloud Nine
+Level: 11
+Adamant Nature
+- Scratch
+- Tail Whip
+- Water Gun
+
+Psyduck (F)
+IVs: 7 HP / 29 Def / 29 SpD / 11 Spe
+Ability: Damp
+Level: 5
+Careful Nature
+- Scratch
+- Tail Whip
+
+Golduck (F)
+IVs: 13 HP / 29 Atk / 27 Def / 29 SpA / 27 SpD / 2 Spe
+Ability: Cloud Nine
+Level: 13
+Modest Nature
+- Scratch
+- Tail Whip
+- Water Gun
+- Confusion
+
+Mankey (M)
+IVs: 17 HP / 11 Atk / 11 Def / 11 SpA / 11 SpD / 13 Spe
+Ability: Vital Spirit
+Level: 18
+Calm Nature
+- Focus Energy
+- Taunt
+- Karate Chop
+- Fury Swipes
+
+Mankey (M)
+IVs: 17 HP / 17 Atk / 10 Def / 16 SpA / 9 SpD / 0 Spe
+Ability: Anger Point
+Level: 5
+Calm Nature
+- Leer
+- Scratch
+- Focus Energy
+
+Primeape (M)
+IVs: 17 HP / 17 Atk / 10 Def / 16 SpA / 9 SpD / 0 Spe
+Ability: Anger Point
+Level: 28
+Calm Nature
+- Karate Chop
+- Scratch
+- Low Kick
+- Taunt
+
+Growlithe (F)
+IVs: 17 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 3 Spe
+Ability: Intimidate
+Level: 6
+Naive Nature
+- Bite
+- Roar
+- Ember
+
+Arcanine (M)
+IVs: 27 Atk / 5 Def / 27 SpA / 5 SpD / 28 Spe
+Ability: Flash Fire
+Level: 9
+Adamant Nature
+- Bite
+- Roar
+- Ember
+- Leer
+
+Arcanine (M)
+IVs: 20 HP / 15 Atk / 28 Def / 4 SpA / 14 SpD / 10 Spe
+Ability: Intimidate
+Level: 28
+Hasty Nature
+- Bite
+- Roar
+- Ember
+- Leer
+
+Arcanine (M)
+IVs: 25 HP / 30 Atk / 25 Def / 30 SpA / 25 SpD
+Ability: Flash Fire
+Level: 16
+Naive Nature
+- Bite
+- Roar
+- Ember
+- Leer
+
+Poliwag (M)
+IVs: 29 Atk / 21 Def / 29 SpA / 21 SpD / 25 Spe
+Ability: Damp
+Level: 27
+Calm Nature
+- Water Gun
+- Double Slap
+- Bubble Beam
+- Low Kick
+
+Poliwag (F)
+IVs: 3 HP / 19 Atk / 25 Def / 19 SpA / 7 SpD / 4 Spe
+Ability: Water Absorb
+Level: 55
+Sassy Nature
+- Bubble Beam
+- Low Kick
+- Body Slam
+- Hydro Pump
+
+Poliwhirl (M)
+IVs: 18 HP / 23 Atk / 5 Def / 1 SpA / 1 SpD / 16 Spe
+Ability: Water Absorb
+Level: 53
+Docile Nature
+- Bubble Beam
+- Low Kick
+- Body Slam
+- Hydro Pump
+
+Poliwrath (F)
+IVs: 23 HP / 22 Atk / 22 Def / 5 SpA / 5 SpD / 5 Spe
+Ability: Water Absorb
+Level: 57
+Brave Nature
+- Pound
+- Hypnosis
+- Water Gun
+- Superpower
+
+Poliwrath (M)
+IVs: 25 HP / 17 Atk / 15 Def / 17 SpA / 15 SpD / 22 Spe
+Ability: Damp
+Level: 22
+Relaxed Nature
+- Bubble
+- Pound
+- Hypnosis
+- Water Gun
+
+Abra (M)
+IVs: 11 HP / 20 Atk / 19 Def / 25 SpA / 27 SpD / 1 Spe
+Ability: Inner Focus
+Level: 13
+Jolly Nature
+- Teleport
+
+Abra (M)
+IVs: 11 HP / 29 Atk / 3 Def / 29 SpA / 3 SpD / 29 Spe
+Ability: Synchronize
+Level: 19
+Lonely Nature
+- Teleport
+
+Kadabra (M)
+IVs: 9 HP / 23 Atk / 23 Def / 23 SpA / 23 SpD / 2 Spe
+Ability: Inner Focus
+Level: 14
+Calm Nature
+- Confusion
+- Teleport
+- Disable
+- Flash
+
+Alakazam (M)
+IVs: 16 HP / 17 Atk / 5 Def / 25 SpA / 30 SpD / 1 Spe
+Ability: Inner Focus
+Level: 28
+Hasty Nature
+- Disable
+- Flash
+- Night Shade
+- Substitute
+
+Machop (M)
+IVs: 19 HP / 29 Def / 29 SpD / 2 Spe
+Ability: No Guard
+Level: 17
+Hardy Nature
+- Focus Energy
+- Bide
+- Seismic Toss
+- Karate Chop
+
+Machoke (M)
+IVs: 30 HP / 20 Atk / 11 Def / 19 SpA / 27 SpD / 20 Spe
+Ability: No Guard
+Level: 42
+Docile Nature
+- Karate Chop
+- Brick Break
+- Submission
+- Bulk Up
+
+Machoke (F)
+IVs: 15 HP / 27 Atk / 27 SpA / 3 Spe
+Ability: Guts
+Level: 10
+Hasty Nature
+- Low Kick
+- Leer
+- Focus Energy
+- Bide
+
+Machamp (M)
+IVs: 30 HP / 20 Atk / 11 Def / 19 SpA / 27 SpD / 20 Spe
+Ability: No Guard
+Level: 42
+Docile Nature
+- Karate Chop
+- Brick Break
+- Submission
+- Bulk Up
+
+Machamp (M)
+IVs: 19 HP / 17 Atk / 11 Def / 17 SpA / 11 SpD / 12 Spe
+Ability: Guts
+Level: 5
+Serious Nature
+- Low Kick
+- Leer
+- Focus Energy
+- Bide
+
+Bellsprout (M)
+IVs: 21 HP / 19 Atk / 27 Def / 19 SpA / 27 SpD / 20 Spe
+Ability: Chlorophyll
+Level: 26
+Adamant Nature
+- Poison Powder
+- Stun Spore
+- Razor Leaf
+- Poison Jab
+
+Weepinbell (M)
+IVs: 21 HP / 29 Atk / 29 SpA / 21 Spe
+Ability: Chlorophyll
+Level: 15
+Careful Nature
+- Vine Whip
+- Growth
+- Wrap
+- Acid
+
+Victreebel (F)
+IVs: 23 HP / 15 Atk / 9 Def / 19 SpA / 6 SpD / 7 Spe
+Ability: Chlorophyll
+Level: 43
+Bold Nature
+- Vine Whip
+- Growth
+- Wrap
+- Acid
+
+Tentacool (F)
+IVs: 21 HP / 29 Def / 29 SpD / 12 Spe
+Ability: Clear Body
+Level: 20
+Relaxed Nature
+- Constrict
+- Supersonic
+- Acid
+- Bubble Beam
+
+Tentacool (F)
+IVs: 23 HP / 23 Atk / 0 Def / 11 SpA / 15 SpD / 13 Spe
+Ability: Liquid Ooze
+Level: 33
+Sassy Nature
+- Bubble Beam
+- Wrap
+- Surf
+- Barrier
+
+Tentacruel (F)
+IVs: 23 Atk / 25 Def / 23 SpA / 25 SpD / 6 Spe
+Ability: Liquid Ooze
+Level: 5
+Bashful Nature
+- Poison Sting
+- Constrict
+- Supersonic
+- Acid
+
+Geodude (F)
+IVs: 15 HP / 13 Atk / 17 Def / 20 SpA / 11 SpD / 15 Spe
+Ability: Sturdy
+Level: 10
+Hasty Nature
+- Defense Curl
+- Sand Attack
+- Bide
+- Rock Throw
+
+Geodude (M)
+IVs: 17 HP / 15 Atk / 19 Def / 15 SpA / 19 SpD / 29 Spe
+Ability: Rock Head
+Level: 11
+Mild Nature
+- Defense Curl
+- Sand Attack
+- Bide
+- Rock Throw
+
+Geodude-Alola (M)
+IVs: 16 Def / 18 SpA / 16 SpD / 23 Spe
+Ability: Sturdy
+Level: 16
+Careful Nature
+- Bide
+- Rock Throw
+- Stealth Rock
+- Take Down
+
+Geodude-Alola (F)
+IVs: 23 HP / 17 Atk / 13 Def / 17 SpA / 13 SpD
+Ability: Magnet Pull
+Level: 34
+Serious Nature
+- Self-Destruct
+- Rock Slide
+- Thunder Punch
+- Double-Edge
+
+Graveler (M)
+IVs: 17 HP / 29 Def / 29 SpD / 22 Spe
+Ability: Sturdy
+Level: 15
+Bashful Nature
+- Bide
+- Rock Throw
+- Stealth Rock
+- Take Down
+
+Graveler (F)
+IVs: 6 HP / 8 Atk / 19 Def / 28 SpA / 21 SpD / 29 Spe
+Ability: Rock Head
+Level: 18
+Serious Nature
+- Bide
+- Rock Throw
+- Stealth Rock
+- Take Down
+
+Graveler-Alola (M)
+IVs: 21 HP / 27 Atk / 23 Def / 27 SpA / 23 SpD / 8 Spe
+Ability: Magnet Pull
+Level: 20
+Rash Nature
+- Rock Throw
+- Stealth Rock
+- Take Down
+- Self-Destruct
+
+Golem (M)
+IVs: 21 HP / 23 Atk / 7 Def / 23 SpA / 7 SpD / 16 Spe
+Ability: Sturdy
+Level: 7
+Gentle Nature
+- Tackle
+- Defense Curl
+- Sand Attack
+- Bide
+
+Golem (F)
+IVs: 6 HP / 8 Atk / 19 Def / 28 SpA / 21 SpD / 29 Spe
+Ability: Rock Head
+Level: 18
+Serious Nature
+- Bide
+- Rock Throw
+- Stealth Rock
+- Take Down
+
+Golem-Alola (F)
+IVs: 21 Atk / 29 Def / 21 SpA / 29 SpD / 10 Spe
+Ability: Sturdy
+Level: 32
+Calm Nature
+- Take Down
+- Self-Destruct
+- Rock Slide
+- Thunder Punch
+
+Golem-Alola (F)
+IVs: 3 Def / 10 SpA / 3 SpD / 5 Spe
+Ability: Magnet Pull
+Level: 25
+Timid Nature
+- Self-Destruct
+- Rock Slide
+- Stealth Rock
+- Take Down
+
+Ponyta (M)
+IVs: 24 HP / 10 Atk / 11 Def / 15 SpA / 13 SpD / 27 Spe
+Ability: Run Away
+Level: 37
+Modest Nature
+- Double Kick
+- Stomp
+- Fire Spin
+- Agility
+
+Rapidash (M)
+IVs: 9 HP / 12 Atk / 21 Def / 2 SpA / 3 SpD / 12 Spe
+Ability: Run Away
+Level: 39
+Naive Nature
+- Stomp
+- Fire Spin
+- Agility
+- Fire Blast
+
+Rapidash (M)
+IVs: 4 HP / 12 Atk / 27 Def / 17 SpA / 19 SpD / 11 Spe
+Ability: Flash Fire
+Level: 39
+Shiny: Yes
+Modest Nature
+- Stomp
+- Fire Spin
+- Agility
+- Fire Blast
+
+Slowpoke (F)
+IVs: 4 HP / 30 Atk / 6 Def / 16 SpA / 25 SpD / 8 Spe
+Ability: Own Tempo
+Level: 39
+Adamant Nature
+- Confusion
+- Disable
+- Rest
+- Surf
+
+Slowbro (M)
+IVs: 4 HP / 16 Atk / 18 Def / 26 SpA / 6 SpD / 0 Spe
+Ability: Own Tempo
+Level: 41
+Bold Nature
+- Confusion
+- Disable
+- Rest
+- Surf
+
+Magnemite
+IVs: 25 HP / 28 Atk / 22 Def / 17 SpA / 8 SpD / 4 Spe
+Ability: Magnet Pull
+Level: 37
+Naive Nature
+- Sonic Boom
+- Light Screen
+- Thunderbolt
+- Screech
+
+Magnemite
+IVs: 23 HP / 25 Atk / 21 Def / 25 SpA / 21 SpD / 18 Spe
+Ability: Sturdy
+Level: 5
+Rash Nature
+- Tackle
+- Supersonic
+- Thunder Shock
+
+Magneton
+IVs: 29 Atk / 29 Def / 29 SpA / 29 SpD / 17 Spe
+Ability: Sturdy
+Level: 20
+Brave Nature
+- Thunder Shock
+- Thunder Wave
+- Sonic Boom
+- Light Screen
+
+Magneton
+IVs: 11 HP / 2 Atk / 10 Def / 21 SpA / 4 SpD / 29 Spe
+Ability: Magnet Pull
+Level: 37
+Naive Nature
+- Sonic Boom
+- Light Screen
+- Thunderbolt
+- Screech
+
+Farfetch’d (F)
+IVs: 4 HP / 27 Atk / 4 Def / 0 SpA / 14 SpD / 23 Spe
+Ability: Keen Eye
+Level: 37
+Hardy Nature
+- Agility
+- Slash
+- Air Slash
+- Swords Dance
+
+Doduo (M)
+IVs: 23 HP / 19 Atk / 1 Def / 19 SpA / 1 SpD / 25 Spe
+Ability: Early Bird
+Level: 9
+Hasty Nature
+- Peck
+- Growl
+- Quick Attack
+
+Doduo (F)
+IVs: 17 HP / 19 Atk / 14 Def / 23 SpA / 20 SpD / 6 Spe
+Ability: Run Away
+Level: 37
+Lonely Nature
+- Fury Attack
+- Agility
+- Drill Peck
+- Swords Dance
+
+Dodrio (M)
+IVs: 23 HP / 25 Atk / 29 Def / 25 SpA / 29 SpD / 12 Spe
+Ability: Run Away
+Level: 20
+Adamant Nature
+- Growl
+- Quick Attack
+- Rage
+- Fury Attack
+
+Dodrio (F)
+IVs: 2 HP / 3 Atk / 17 Def / 25 SpA / 20 SpD / 25 Spe
+Ability: Early Bird
+Level: 31
+Naughty Nature
+- Rage
+- Fury Attack
+- Agility
+- Drill Peck
+
+Seel (F)
+IVs: 4 HP / 16 Atk / 23 Def / 11 SpA / 7 SpD / 7 Spe
+Ability: Hydration
+Level: 41
+Naive Nature
+- Rest
+- Aurora Beam
+- Waterfall
+- Take Down
+
+Seel (M)
+IVs: 25 HP / 13 Atk / 7 Def / 13 SpA / 7 SpD / 3 Spe
+Ability: Thick Fat
+Level: 27
+Rash Nature
+- Aqua Jet
+- Ice Shard
+- Rest
+- Aurora Beam
+
+Dewgong (F)
+IVs: 25 HP / 29 Atk / 26 Def / 4 SpA / 30 SpD / 7 Spe
+Ability: Hydration
+Level: 43
+Naive Nature
+- Rest
+- Aurora Beam
+- Waterfall
+- Take Down
+
+Dewgong (M)
+IVs: 5 HP / 15 Atk / 23 Def / 15 SpA / 23 SpD / 17 Spe
+Ability: Thick Fat
+Level: 4
+Serious Nature
+- Headbutt
+- Growl
+- Encore
+- Aqua Jet
+
+Grimer (M)
+IVs: 19 HP / 23 Atk / 9 Def / 23 SpA / 9 SpD / 20 Spe
+Ability: Stench
+Level: 10
+Calm Nature
+- Pound
+- Poison Gas
+- Harden
+
+Grimer (F)
+IVs: 25 HP / 13 Atk / 13 SpA / 3 Spe
+Ability: Sticky Hold
+Level: 23
+Careful Nature
+- Poison Gas
+- Harden
+- Minimize
+- Disable
+
+Grimer (F)
+IVs: 21 HP / 3 Atk / 9 Def / 17 SpA / 7 SpD / 25 Spe
+Ability: Stench
+Level: 41
+Naughty Nature
+- Disable
+- Sludge
+- Screech
+- Toxic
+
+Grimer-Alola (M)
+IVs: 21 HP / 29 Atk / 25 Def / 29 SpA / 25 SpD / 18 Spe
+Ability: Gluttony
+Level: 20
+Brave Nature
+- Poison Gas
+- Harden
+- Minimize
+- Disable
+
+Muk (F)
+IVs: 27 Atk / 23 Def / 27 SpA / 23 SpD / 26 Spe
+Ability: Stench
+Level: 14
+Hasty Nature
+- Pound
+- Poison Gas
+- Harden
+- Minimize
+
+Muk (F)
+IVs: 20 HP / 7 Atk / 20 Def / 1 SpA / 15 SpD / 9 Spe
+Ability: Sticky Hold
+Level: 39
+Naughty Nature
+- Disable
+- Sludge
+- Screech
+- Toxic
+
+Muk-Alola (F)
+IVs: 29 HP / 27 Atk / 25 Def / 27 SpA / 25 SpD / 19 Spe
+Ability: Gluttony
+Level: 20
+Bashful Nature
+- Poison Gas
+- Harden
+- Minimize
+- Disable
+
+Shellder (F)
+IVs: 24 HP / 26 Atk / 26 Def / 0 SpA / 23 SpD / 12 Spe
+Ability: Skill Link
+Level: 45
+Adamant Nature
+- Protect
+- Ice Beam
+- Shell Smash
+- Hydro Pump
+
+Shellder (M)
+IVs: 25 HP / 19 Atk / 19 SpA / 30 Spe
+Ability: Shell Armor
+Level: 14
+Hardy Nature
+- Water Gun
+- Withdraw
+- Leer
+- Ice Shard
+
+Cloyster (F)
+IVs: 25 HP / 25 Atk / 19 Def / 25 SpA / 19 SpD / 14 Spe
+Ability: Skill Link
+Level: 24
+Careful Nature
+- Tackle
+- Water Gun
+- Withdraw
+- Leer
+
+Cloyster (F)
+IVs: 14 HP / 21 Atk / 22 Def / 21 SpA / 22 SpD / 18 Spe
+Ability: Shell Armor
+Level: 45
+Rash Nature
+- Tackle
+- Water Gun
+- Withdraw
+- Leer
+
+Gastly (M)
+IVs: 29 HP / 21 Atk / 23 Def / 21 SpA / 23 SpD / 12 Spe
+Ability: Levitate
+Level: 7
+Calm Nature
+- Lick
+- Smog
+- Confuse Ray
+- Poison Gas
+
+Haunter (F)
+IVs: 4 HP / 17 Atk / 16 Def / 6 SpA / 16 SpD / 4 Spe
+Ability: Levitate
+Level: 29
+Quiet Nature
+- Night Shade
+- Will-O-Wisp
+- Sucker Punch
+- Toxic
+
+Gengar (F)
+IVs: 21 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 15 Spe
+Ability: Cursed Body
+Level: 5
+Naive Nature
+- Hypnosis
+- Lick
+- Smog
+- Confuse Ray
+
+Onix (M)
+IVs: 29 HP / 27 Atk / 27 Def / 27 SpA / 27 SpD / 11 Spe
+Ability: Sturdy
+Level: 14
+Docile Nature
+- Bind
+- Rock Throw
+- Stealth Rock
+- Rage
+
+Drowzee (M)
+IVs: 9 HP / 1 Atk / 25 Def / 1 SpA / 25 SpD / 14 Spe
+Ability: Insomnia
+Level: 19
+Bold Nature
+- Disable
+- Confusion
+- Poison Gas
+- Meditate
+
+Hypno (M)
+IVs: 25 HP / 17 Def / 17 SpD / 20 Spe
+Ability: Forewarn
+Level: 24
+Relaxed Nature
+- Confusion
+- Poison Gas
+- Meditate
+- Psybeam
+
+Hypno (F)
+IVs: 15 HP / 0 Atk / 21 Def / 29 SpA / 9 SpD / 10 Spe
+Ability: Insomnia
+Level: 26
+Sassy Nature
+- Hypnosis
+- Psybeam
+- Confusion
+- Poison Gas
+
+Krabby (F)
+IVs: 17 HP / 29 Atk / 17 Def / 29 SpA / 17 SpD / 24 Spe
+Ability: Hyper Cutter
+Level: 19
+Naughty Nature
+- Vise Grip
+- Leer
+- Harden
+- Bubble Beam
+
+Kingler (M)
+IVs: 22 HP / 27 Atk / 19 SpA / 25 SpD / 16 Spe
+Ability: Shell Armor
+Level: 37
+Careful Nature
+- Bubble Beam
+- Stomp
+- Protect
+- Slam
+
+Kingler (F)
+IVs: 29 HP / 29 Atk / 19 Def / 29 SpA / 19 SpD / 6 Spe
+Ability: Hyper Cutter
+Level: 19
+Naive Nature
+- Vise Grip
+- Leer
+- Harden
+- Bubble Beam
+
+Voltorb
+IVs: 22 HP / 4 Atk / 12 Def / 17 SpA / 24 SpD / 2 Spe
+Ability: Static
+Level: 37
+Hasty Nature
+- Swift
+- Self-Destruct
+- Screech
+- Thunderbolt
+
+Electrode
+IVs: 25 Atk / 7 SpA
+Ability: Static
+Level: 42
+Adamant Nature
+- Thunderbolt
+- Swift
+- Self-Destruct
+- Screech
+
+Electrode
+IVs: 2 HP / 22 SpA / 10 SpD
+Ability: Soundproof
+Level: 42
+Careful Nature
+- Thunderbolt
+- Swift
+- Self-Destruct
+- Screech
+
+Electrode
+IVs: 13 Atk / 19 Def / 19 SpD
+Ability: Static
+Level: 42
+Timid Nature
+- Thunderbolt
+- Swift
+- Self-Destruct
+- Screech
+
+Exeggcute (F)
+IVs: 29 HP / 29 Atk / 23 Def / 29 SpA / 23 SpD / 19 Spe
+Ability: Chlorophyll
+Level: 3
+Jolly Nature
+- Barrage
+
+Exeggutor (M)
+IVs: 7 HP / 23 Atk / 7 Def / 23 SpA / 7 SpD / 21 Spe
+Ability: Chlorophyll
+Level: 24
+Careful Nature
+- Barrage
+- Hypnosis
+- Confusion
+- Stun Spore
+
+Exeggutor-Alola (M)
+IVs: 11 HP / 20 Def / 25 SpD / 16 Spe
+Ability: Frisk
+Level: 46
+Hasty Nature
+- Barrage
+- Hypnosis
+- Confusion
+- Stun Spore
+
+Cubone (F)
+IVs: 2 HP / 29 Atk / 4 Def / 10 SpA / 26 SpD / 24 Spe
+Ability: Lightning Rod
+Level: 18
+Quiet Nature
+- Leer
+- Bone Club
+- Headbutt
+- Rage
+
+Marowak (F)
+IVs: 27 HP / 25 Atk / 15 Def / 25 SpA / 15 SpD / 17 Spe
+Ability: Rock Head
+Level: 11
+Calm Nature
+- Growl
+- Tail Whip
+- Leer
+- Bone Club
+
+Marowak (F)
+IVs: 2 HP / 29 Atk / 4 Def / 10 SpA / 26 SpD / 24 Spe
+Ability: Lightning Rod
+Level: 28
+Quiet Nature
+- Bonemerang
+- Bone Club
+- Headbutt
+- Rage
+
+Marowak-Alola (M)
+IVs: 29 HP / 23 Atk / 21 Def / 23 SpA / 21 SpD / 1 Spe
+Ability: Cursed Body
+Level: 20
+Brave Nature
+- Leer
+- Bone Club
+- Fire Spin
+- Rage
+
+Marowak-Alola (F)
+IVs: 18 HP / 25 SpA / 13 SpD / 0 Spe
+Ability: Lightning Rod
+Level: 38
+Hasty Nature
+- Rage
+- Will-O-Wisp
+- Bonemerang
+- Thrash
+
+Hitmonlee (M)
+IVs: 19 Atk / 9 Def / 19 SpA / 9 SpD / 22 Spe
+Ability: Limber
+Level: 32
+Lax Nature
+- Feint
+- Brick Break
+- Facade
+- Jump Kick
+
+Hitmonchan (M)
+IVs: 23 HP / 27 Atk / 3 Def / 27 SpA / 3 SpD / 6 Spe
+Ability: Iron Fist
+Level: 4
+Jolly Nature
+- Comet Punch
+
+Hitmonchan (M)
+IVs: 24 Atk / 15 Def / 25 SpA / 10 SpD / 12 Spe
+Ability: Keen Eye
+Level: 47
+Rash Nature
+- Fire Punch
+- Focus Energy
+- Mega Punch
+- Counter
+
+Lickitung (F)
+IVs: 15 HP / 29 Atk / 29 SpA / 20 Spe
+Ability: Own Tempo
+Level: 14
+Bold Nature
+- Lick
+- Wrap
+- Acid
+
+Koffing (M)
+IVs: 27 HP / 21 Atk / 25 Def / 21 SpA / 25 SpD / 8 Spe
+Ability: Levitate
+Level: 1
+Modest Nature
+- Poison Gas
+- Tackle
+
+Weezing (M)
+IVs: 19 HP / 9 Atk / 18 Def / 27 SpA / 2 SpD / 25 Spe
+Ability: Levitate
+Level: 44
+Naughty Nature
+- Sludge
+- Self-Destruct
+- Toxic
+- Haze
+
+Rhyhorn (F)
+IVs: 8 HP / 24 Atk / 28 Def / 5 SpA / 20 SpD / 1 Spe
+Ability: Rock Head
+Level: 18
+Calm Nature
+- Tail Whip
+- Sand Attack
+- Fury Attack
+- Stomp
+
+Rhydon (M)
+IVs: 19 HP / 9 Def / 9 SpD / 2 Spe
+Ability: Rock Head
+Level: 5
+Adamant Nature
+- Horn Attack
+- Tail Whip
+- Sand Attack
+- Fury Attack
+
+Chansey (F)
+IVs: 22 HP / 13 Atk / 11 Def / 25 SpA / 8 SpD / 1 Spe
+Ability: Serene Grace
+Level: 28
+Brave Nature
+- Double Slap
+- Soft-Boiled
+- Minimize
+- Take Down
+
+Chansey (F)
+IVs: 3 HP / 27 Def / 27 SpD / 16 Spe
+Ability: Natural Cure
+Level: 20
+Naughty Nature
+- Tail Whip
+- Double Slap
+- Soft-Boiled
+- Minimize
+
+Tangela (F)
+IVs: 12 HP / 7 Atk / 17 Def / 28 SpA / 23 SpD / 1 Spe
+Ability: Chlorophyll
+Level: 43
+Naive Nature
+- Growth
+- Stun Spore
+- Mega Drain
+- Leech Seed
+
+Tangela (F)
+IVs: 23 HP / 29 Atk / 27 Def / 29 SpA / 27 SpD / 12 Spe
+Ability: Leaf Guard
+Level: 15
+Naive Nature
+- Constrict
+- Sleep Powder
+- Confusion
+- Vine Whip
+
+Kangaskhan (F)
+IVs: 7 Atk / 25 Def / 16 SpA / 16 SpD / 16 Spe
+Ability: Scrappy
+Level: 19
+Bold Nature
+- Leer
+- Fake Out
+- Tail Whip
+- Bite
+
+Kangaskhan (F)
+IVs: 6 HP / 8 Atk / 13 Def / 16 SpA / 18 SpD / 19 Spe
+Ability: Early Bird
+Level: 24
+Hardy Nature
+- Fake Out
+- Tail Whip
+- Bite
+- Rage
+
+Kangaskhan (F)
+IVs: 23 HP / 29 Atk / 27 Def / 29 SpA / 27 SpD / 11 Spe
+Ability: Scrappy
+Level: 26
+Relaxed Nature
+- Fake Out
+- Tail Whip
+- Bite
+- Rage
+
+Horsea (F)
+IVs: 29 HP / 27 Atk / 25 Def / 27 SpA / 25 SpD / 7 Spe
+Ability: Sniper
+Level: 19
+Careful Nature
+- Smokescreen
+- Water Gun
+- Leer
+- Bubble Beam
+
+Seadra (M)
+IVs: 29 Atk / 13 Def / 29 SpA / 13 SpD / 13 Spe
+Ability: Poison Point
+Level: 7
+Calm Nature
+- Bubble
+- Smokescreen
+- Water Gun
+- Leer
+
+Seadra (M)
+IVs: 28 HP / 20 Atk / 9 Def / 16 SpA / 5 SpD / 11 Spe
+Ability: Sniper
+Level: 35
+Lonely Nature
+- Leer
+- Bubble Beam
+- Focus Energy
+- Waterfall
+
+Goldeen (M)
+IVs: 25 HP / 29 Atk / 7 Def / 29 SpA / 7 SpD / 19 Spe
+Ability: Swift Swim
+Level: 14
+Bold Nature
+- Tail Whip
+- Supersonic
+- Quick Attack
+- Horn Attack
+
+Goldeen (M)
+IVs: 10 HP / 11 Atk / 16 Def / 2 SpA / 29 SpD / 3 Spe
+Ability: Water Veil
+Level: 14
+Timid Nature
+- Tail Whip
+- Supersonic
+- Quick Attack
+- Horn Attack
+
+Seaking (M)
+IVs: 29 Atk / 27 Def / 29 SpA / 27 SpD / 11 Spe
+Ability: Water Veil
+Level: 5
+Relaxed Nature
+- Peck
+- Tail Whip
+- Supersonic
+- Quick Attack
+
+Seaking (M)
+IVs: 8 HP / 15 Atk / 15 Def / 4 SpA / 2 SpD / 11 Spe
+Ability: Swift Swim
+Level: 17
+Sassy Nature
+- Tail Whip
+- Supersonic
+- Quick Attack
+- Horn Attack
+
+Staryu
+IVs: 12 HP / 23 Atk / 7 Def / 12 SpA / 3 SpD / 6 Spe
+Ability: Illuminate
+Level: 33
+Calm Nature
+- Minimize
+- Confuse Ray
+- Bubble Beam
+- Light Screen
+
+Starmie
+IVs: 3 HP / 2 Atk / 25 Def / 7 SpA / 23 SpD / 3 Spe
+Ability: Natural Cure
+Level: 43
+Naughty Nature
+- Tackle
+- Harden
+- Psywave
+- Water Gun
+
+Starmie
+IVs: 27 HP / 29 Def / 29 SpD / 27 Spe
+Ability: Illuminate
+Level: 23
+Rash Nature
+- Tackle
+- Harden
+- Psywave
+- Water Gun
+
+Mr. Mime (F)
+IVs: 29 HP / 20 Atk / 13 Def / 6 SpA / 25 SpD / 14 Spe
+Ability: Filter
+Level: 15
+Lax Nature
+- Barrier
+- Confusion
+- Meditate
+- Double Slap
+
+Mr. Mime (M)
+IVs: 21 Def / 21 SpD / 7 Spe
+Ability: Soundproof
+Level: 4
+Rash Nature
+- Pound
+- Barrier
+- Confusion
+
+Scyther (M)
+IVs: 16 HP / 15 Atk / 20 Def / 7 SpA / 4 SpD / 0 Spe
+Ability: Swarm
+Level: 39
+Calm Nature
+- Agility
+- Slash
+- Razor Wind
+- Air Slash
+
+Jynx (F)
+IVs: 18 HP / 12 Atk / 5 Def / 19 SpA / 19 SpD / 14 Spe
+Ability: Forewarn
+Level: 44
+Impish Nature
+- Ice Punch
+- Body Slam
+- Lovely Kiss
+- Psychic
+
+Jynx (F)
+IVs: 29 HP / 9 Atk / 21 Def / 9 SpA / 21 SpD / 21 Spe
+Ability: Oblivious
+Level: 7
+Serious Nature
+- Pound
+- Lick
+
+Electabuzz (M)
+IVs: 23 HP / 25 Atk / 29 Def / 25 SpA / 29 SpD / 24 Spe
+Ability: Static
+Level: 2
+Careful Nature
+- Thunder Shock
+- Leer
+
+Magmar (M)
+IVs: 21 HP / 29 Atk / 21 Def / 29 SpA / 21 SpD / 30 Spe
+Ability: Flame Body
+Level: 11
+Docile Nature
+- Ember
+- Leer
+- Smog
+- Smokescreen
+
+Pinsir (M)
+IVs: 29 HP / 29 Atk / 25 Def / 29 SpA / 25 SpD / 23 Spe
+Ability: Mold Breaker
+Level: 7
+Gentle Nature
+- Vise Grip
+- Focus Energy
+- Bind
+
+Pinsir (F)
+IVs: 25 HP / 18 Atk / 11 Def / 4 SpA / 3 SpD / 15 Spe
+Ability: Hyper Cutter
+Level: 39
+Mild Nature
+- X-Scissor
+- Submission
+- Swords Dance
+- Thrash
+
+Tauros (M)
+IVs: 22 HP / 11 Atk / 21 Def / 28 SpA / 8 SpD / 26 Spe
+Ability: Intimidate
+Level: 33
+Docile Nature
+- Rage
+- Horn Attack
+- Leer
+- Rest
+
+Tauros (M)
+IVs: 29 Atk / 29 SpA / 18 Spe
+Ability: Anger Point
+Level: 22
+Sassy Nature
+- Tackle
+- Tail Whip
+- Rage
+- Horn Attack
+
+Magikarp (M)
+IVs: 29 HP / 27 Atk / 27 SpA / 27 Spe
+Ability: Swift Swim
+Level: 21
+Calm Nature
+- Splash
+- Tackle
+
+Gyarados (M)
+IVs: 11 Atk / 1 Def / 11 SpA / 1 SpD / 24 Spe
+Ability: Intimidate
+Level: 4
+Jolly Nature
+- Thrash
+- Leer
+- Dragon Rage
+- Bind
+
+Lapras (F)
+IVs: 23 HP / 17 Def / 13 SpA / 14 SpD / 15 Spe
+Ability: Shell Armor
+Level: 45
+Lonely Nature
+- Confuse Ray
+- Body Slam
+- Ice Beam
+- Surf
+
+Lapras (M)
+IVs: 17 HP / 19 Def / 19 SpD / 2 Spe
+Ability: Water Absorb
+Level: 23
+Rash Nature
+- Water Gun
+- Growl
+- Mist
+- Ice Shard
+
+Ditto
+IVs: 3 Atk / 11 Def / 3 SpA / 11 SpD / 23 Spe
+Ability: Limber
+Level: 17
+Mild Nature
+- Transform
+
+Eevee (F)
+IVs: 29 Def / 29 SpD / 18 Spe
+Ability: Adaptability
+Level: 11
+Gentle Nature
+- Growl
+- Tail Whip
+- Quick Attack
+- Double Kick
+
+Eevee (M)
+IVs: 26 HP / 16 Atk / 19 Def / 26 SpA / 22 SpD / 6 Spe
+Ability: Run Away
+Level: 34
+Modest Nature
+- Swift
+- Take Down
+- Double-Edge
+- Helping Hand
+
+Eevee (F)
+Ability: Adaptability
+Level: 5
+Timid Nature
+- Tackle
+- Tail Whip
+- Growl
+
+Vaporeon (M)
+IVs: 26 HP / 16 Atk / 19 Def / 26 SpA / 22 SpD / 6 Spe
+Ability: Water Absorb
+Level: 34
+Modest Nature
+- Swift
+- Take Down
+- Double-Edge
+- Water Gun
+
+Jolteon (F)
+IVs: 5 HP / 25 Def / 25 SpD / 9 Spe
+Ability: Volt Absorb
+Level: 16
+Gentle Nature
+- Tail Whip
+- Sand Attack
+- Quick Attack
+- Double Kick
+
+Flareon (M)
+IVs: 26 HP / 16 Atk / 19 Def / 26 SpA / 22 SpD / 6 Spe
+Ability: Flash Fire
+Level: 34
+Modest Nature
+- Swift
+- Take Down
+- Double-Edge
+- Ember
+
+Porygon
+IVs: 24 HP / 4 Atk / 0 SpA / 3 SpD / 5 Spe
+Ability: Trace
+Level: 28
+Bashful Nature
+- Agility
+- Barrier
+- Tri Attack
+- Thunder Wave
+
+Omanyte (M)
+IVs: 14 Atk / 28 SpA / 22 SpD
+Ability: Shell Armor
+Level: 44
+Adamant Nature
+- Rock Throw
+- Protect
+- Rock Slide
+- Hydro Pump
+
+Omanyte (F)
+IVs: 23 HP / 15 Def / 15 SpD / 13 Spe
+Ability: Swift Swim
+Level: 13
+Calm Nature
+- Constrict
+- Withdraw
+- Leer
+
+Omastar (M)
+IVs: 14 Atk / 28 SpA / 22 SpD
+Ability: Shell Armor
+Level: 45
+Adamant Nature
+- Rock Throw
+- Spike Cannon
+- Rock Slide
+- Hydro Pump
+
+Omastar (M)
+IVs: 27 Atk / 25 Def / 27 SpA / 25 SpD / 4 Spe
+Ability: Swift Swim
+Level: 21
+Naughty Nature
+- Constrict
+- Withdraw
+- Leer
+- Water Gun
+
+Kabuto (M)
+IVs: 27 Atk / 29 Def / 27 SpA / 29 SpD / 1 Spe
+Ability: Swift Swim
+Level: 22
+Adamant Nature
+- Scratch
+- Harden
+- Leer
+- Absorb
+
+Kabuto (M)
+IVs: 13 HP / 3 SpD / 25 Spe
+Ability: Battle Armor
+Level: 44
+Bold Nature
+- Aqua Jet
+- Rock Throw
+- Sand Attack
+- Rock Slide
+
+Kabutops (M)
+IVs: 13 HP / 3 SpD / 25 Spe
+Ability: Battle Armor
+Level: 45
+Bold Nature
+- Aqua Jet
+- Slash
+- Sand Attack
+- Rock Slide
+
+Kabutops (M)
+IVs: 27 HP / 25 Def / 25 SpD / 15 Spe
+Ability: Swift Swim
+Level: 20
+Jolly Nature
+- Scratch
+- Harden
+- Leer
+- Absorb
+
+Aerodactyl (M)
+IVs: 27 Atk / 3 Def / 27 SpA / 3 SpD / 7 Spe
+Ability: Rock Head
+Level: 17
+Hardy Nature
+- Wing Attack
+- Bite
+- Roar
+- Supersonic
+
+Aerodactyl (M)
+IVs: 26 HP / 0 Atk / 17 Spe
+Ability: Pressure
+Level: 44
+Quirky Nature
+- Rock Throw
+- Agility
+- Crunch
+- Rock Slide
+
+Snorlax (M)
+IVs: 2 HP / 25 SpD
+Ability: Immunity
+Level: 34
+Careful Nature
+- Yawn
+- Lick
+- Headbutt
+- Rest
+
+Snorlax (M)
+IVs: 5 Atk / 23 Def / 25 SpD
+Ability: Thick Fat
+Level: 34
+Quiet Nature
+- Yawn
+- Lick
+- Headbutt
+- Rest
+
+Snorlax (M)
+IVs: 8 HP / 26 Def / 24 Spe
+Ability: Immunity
+Level: 34
+Quiet Nature
+- Yawn
+- Lick
+- Headbutt
+- Rest
+
+Snorlax (M)
+IVs: 22 HP / 2 Atk / 5 Def / 9 SpA / 22 SpD / 1 Spe
+Ability: Thick Fat
+Level: 57
+Relaxed Nature
+- Rest
+- Screech
+- Amnesia
+- Body Slam
+
+Articuno
+IVs: 21 HP / 26 SpD / 26 Spe
+Ability: Pressure
+Level: 50
+Bold Nature
+- Mirror Coat
+- Ice Beam
+- Agility
+- Reflect
+
+Zapdos
+IVs: 8 Def / 25 SpD
+Ability: Pressure
+Level: 50
+Bold Nature
+- Drill Peck
+- Thunderbolt
+- Agility
+- Light Screen
+
+Moltres
+IVs: 9 HP / 21 Atk / 27 Def / 19 SpA / 9 SpD / 2 Spe
+Ability: Pressure
+Level: 57
+Careful Nature
+- Flamethrower
+- Agility
+- Heat Wave
+- Roost
+
+Dratini (F)
+IVs: 3 HP / 4 Atk / 15 Def / 8 SpA / 16 SpD / 6 Spe
+Ability: Shed Skin
+Level: 24
+Mild Nature
+- Leer
+- Thunder Wave
+- Dragon Rage
+- Agility
+
+Dragonair (M)
+IVs: 6 HP / 6 Atk / 8 Def / 22 SpA / 9 SpD / 21 Spe
+Ability: Shed Skin
+Level: 24
+Hardy Nature
+- Leer
+- Thunder Wave
+- Dragon Rage
+- Agility
+
+Dragonite (F)
+IVs: 29 HP / 9 Atk / 2 Def / 12 SpA / 9 SpD / 4 Spe
+Ability: Inner Focus
+Level: 57
+Bold Nature
+- Agility
+- Dragon Tail
+- Slam
+- Outrage
+
+Mewtwo
+IVs: 5 HP / 13 Def / 12 Spe
+Ability: Pressure
+Level: 70
+Quiet Nature
+- Psychic
+- Recover
+- Amnesia
+- Swift
+
+Mew
+IVs: 11 HP / 29 Atk / 4 SpD
+Ability: Synchronize
+Level: 1
+Hardy Nature
+- Pound
+
+Meltan
+IVs: 27 HP / 29 Atk / 1 Def / 29 SpA / 1 SpD / 20 Spe
+Ability: Magnet Pull
+Level: 15
+Bold Nature
+- Headbutt
+- Harden
+- Tail Whip
+
+Melmetal
+IVs: 13 HP / 29 Atk / 25 Def / 29 SpA / 25 SpD / 11 Spe
+Ability: Iron Fist
+Level: 29
+Naive Nature
+- Harden
+- Tail Whip
+- Thunder Wave
+- Thunder Shock

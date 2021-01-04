@@ -1,0 +1,363 @@
+Slowbro (F)
+IVs: 24 HP / 11 Atk / 29 Def / 0 SpA / 0 SpD / 0 Spe
+Ability: Own Tempo
+Level: 35
+Bashful Nature
+- Disable
+- Headbutt
+- Water Pulse
+- Zen Headbutt
+
+Dewgong (M)
+IVs: 12 HP / 10 Atk / 12 Def / 3 SpA / 21 SpD / 1 Spe
+Ability: Thick Fat
+Level: 30
+Quirky Nature
+- Ice Shard
+- Rest
+- Aqua Ring
+- Aurora Beam
+
+Muk (M) @ Black Sludge
+IVs: 21 HP / 5 Atk / 27 Def / 14 SpA / 8 SpD / 27 Spe
+Ability: Poison Touch
+Level: 35
+Hasty Nature
+- Mud Bomb
+- Sludge Bomb
+- Fling
+- Screech
+
+Muk (M)
+IVs: 2 HP / 28 Atk / 9 Def / 20 SpA / 18 SpD / 12 Spe
+Ability: Stench
+Level: 5
+Quirky Nature
+- Pound
+- Poison Gas
+- Harden
+- Mud-Slap
+
+Gyarados (M)
+IVs: 23 HP / 1 Atk / 21 Def / 29 SpA / 22 SpD / 11 Spe
+Ability: Intimidate
+Level: 2
+Jolly Nature
+- Thrash
+
+Gyarados (M)
+IVs: 18 HP / 3 Atk / 30 Def / 20 SpA / 22 SpD / 13 Spe
+Ability: Intimidate
+Level: 1
+Relaxed Nature
+- Thrash
+
+Dragonite (M)
+IVs: 9 HP / 14 Atk / 1 Def / 21 SpA / 2 SpD / 11 Spe
+Ability: Inner Focus
+Level: 50
+Hardy Nature
+- Agility
+- Dragon Tail
+- Aqua Tail
+- Dragon Rush
+
+Azumarill (F)
+IVs: 29 HP / 0 Atk / 11 Def / 16 SpA / 6 SpD / 24 Spe
+Ability: Thick Fat
+Level: 5
+Lax Nature
+- Tackle
+- Bubble
+- Tail Whip
+- Water Sport
+
+Azumarill (F)
+IVs: 12 HP / 25 Atk / 10 Def / 15 SpA / 0 SpD / 0 Spe
+Ability: Huge Power
+Level: 5
+Lonely Nature
+- Tackle
+- Bubble
+- Tail Whip
+- Water Sport
+
+Tyranitar (M)
+IVs: 9 HP / 27 Atk / 25 Def / 20 SpA / 27 SpD / 16 Spe
+Ability: Sand Stream
+Level: 50
+Hardy Nature
+- Thrash
+- Dark Pulse
+- Payback
+- Crunch
+
+Wailord (M)
+IVs: 0 HP / 23 Atk / 9 Def / 19 SpA / 5 Spe
+Ability: Oblivious
+Level: 30
+Calm Nature
+- Astonish
+- Water Pulse
+- Mist
+- Rest
+
+Wailord (F)
+IVs: 30 HP / 0 Atk / 27 Def / 19 SpA / 17 SpD / 13 Spe
+Ability: Oblivious
+Level: 35
+Hardy Nature
+- Mist
+- Rest
+- Brine
+- Water Spout
+
+Banette (M)
+IVs: 14 HP / 23 Def / 13 SpA / 18 SpD / 30 Spe
+Ability: Frisk
+Level: 32
+Hasty Nature
+- Shadow Sneak
+- Feint Attack
+- Hex
+- Shadow Ball
+
+Sealeo (M)
+IVs: 6 HP / 22 Atk / 29 Def / 4 SpA / 12 SpD / 15 Spe
+Ability: Thick Fat
+Level: 25
+Docile Nature
+- Encore
+- Ice Ball
+- Body Slam
+- Aurora Beam
+
+Walrein (M)
+IVs: 10 HP / 13 Atk / 2 Def / 7 SpA / 27 SpD / 21 Spe
+Ability: Ice Body
+Level: 35
+Hardy Nature
+- Body Slam
+- Aurora Beam
+- Hail
+- Swagger
+
+Walrein (F)
+IVs: 16 HP / 23 Atk / 11 Def / 14 SpA / 3 SpD / 28 Spe
+Ability: Ice Body
+Level: 30
+Hasty Nature
+- Encore
+- Ice Ball
+- Body Slam
+- Aurora Beam
+
+Floatzel (F)
+IVs: 28 Atk / 21 Def / 16 SpA / 10 SpD / 21 Spe
+Ability: Swift Swim
+Level: 10
+Relaxed Nature
+- Sonic Boom
+- Growl
+- Water Sport
+- Quick Attack
+
+Herdier (F)
+IVs: 11 HP / 24 Atk / 24 Def / 29 SpA / 28 SpD / 17 Spe
+Ability: Scrappy
+Level: 10
+Gentle Nature
+- Leer
+- Tackle
+- Odor Sleuth
+- Bite
+
+Stoutland (M)
+IVs: 18 HP / 12 Atk / 5 SpA / 22 SpD / 1 Spe
+Ability: Sand Rush
+Level: 23
+Serious Nature
+- Bite
+- Helping Hand
+- Take Down
+- Work Up
+
+Unfezant (F)
+IVs: 6 HP / 27 Atk / 13 Def / 12 SpA / 12 SpD / 25 Spe
+Ability: Super Luck
+Level: 22
+Lonely Nature
+- Leer
+- Quick Attack
+- Air Cutter
+- Roost
+
+Unfezant (M)
+IVs: 1 HP / 11 Atk / 2 Def / 12 SpA / 28 SpD / 9 Spe
+Ability: Super Luck
+Level: 25
+Relaxed Nature
+- Quick Attack
+- Air Cutter
+- Roost
+- Detect
+
+Boldore (M)
+IVs: 4 HP / 18 Atk / 20 Def / 20 SpA / 5 SpD / 13 Spe
+Ability: Sturdy
+Level: 24
+Mild Nature
+- Rock Blast
+- Mud-Slap
+- Iron Defense
+- Smack Down
+
+Gigalith (F) @ Everstone
+IVs: 7 HP / 4 Atk / 27 Def / 7 Spe
+Ability: Sturdy
+Level: 24
+Quirky Nature
+- Rock Blast
+- Mud-Slap
+- Iron Defense
+- Smack Down
+
+Seismitoad (F)
+IVs: 14 HP / 17 Atk / 25 Def / 14 SpA / 1 SpD / 11 Spe
+Ability: Swift Swim
+Level: 15
+Modest Nature
+- Growl
+- Supersonic
+- Round
+- Bubble Beam
+
+Leavanny (M)
+IVs: 12 HP / 3 Atk / 21 Def / 5 SpA / 0 SpD / 30 Spe
+Ability: Overcoat
+Level: 20
+Calm Nature
+- Tackle
+- String Shot
+- Bug Bite
+- Razor Leaf
+
+Garbodor (F)
+IVs: 21 HP / 0 Atk / 5 Def / 11 SpA / 16 SpD / 3 Spe
+Ability: Weak Armor
+Level: 31
+Quiet Nature
+- Stockpile
+- Swallow
+- Body Slam
+- Sludge Bomb
+
+Zoroark (F)
+IVs: 19 HP / 9 Atk / 6 Def / 0 SpA / 2 SpD / 14 Spe
+Ability: Illusion
+Level: 25
+Sassy Nature
+- Fury Swipes
+- Feint Attack
+- Scary Face
+- Taunt
+
+Gothorita (F)
+IVs: 15 HP / 22 Atk / 16 Def / 21 SpA / 5 SpD / 7 Spe
+Ability: Frisk
+Level: 31
+Modest Nature
+- Feint Attack
+- Psyshock
+- Flatter
+- Future Sight
+
+Duosion (M)
+IVs: 27 HP / 30 Atk / 25 Def / 13 SpA / 16 SpD / 4 Spe
+Ability: Overcoat
+Level: 31
+Naive Nature
+- Recover
+- Psyshock
+- Endeavor
+- Future Sight
+
+Amoonguss (F) @ Tiny Mushroom
+IVs: 15 HP / 0 Atk / 17 Def / 2 SpA / 26 SpD / 27 Spe
+Ability: Effect Spore
+Level: 37
+Adamant Nature
+- Sweet Scent
+- Giga Drain
+- Toxic
+- Synthesis
+
+Amoonguss (F) @ Tiny Mushroom
+IVs: 16 HP / 19 Atk / 1 Def / 10 SpA / 7 SpD / 3 Spe
+Ability: Regenerator
+Level: 35
+Quiet Nature
+- Sweet Scent
+- Giga Drain
+- Toxic
+- Synthesis
+
+Jellicent (F)
+IVs: 24 HP / 29 Atk / 11 Def / 28 SpA / 6 SpD / 20 Spe
+Ability: Water Absorb
+Level: 5
+Calm Nature
+- Bubble
+- Water Sport
+- Absorb
+- Night Shade
+
+Jellicent (M)
+IVs: 6 HP / 9 Atk / 29 Def / 10 SpA / 30 SpD / 2 Spe
+Ability: Cursed Body
+Level: 5
+Jolly Nature
+- Bubble
+- Water Sport
+- Absorb
+- Night Shade
+
+Braviary (M)
+IVs: 15 HP / 26 Atk / 28 Def / 7 SpA / 15 SpD / 5 Spe
+Ability: Defiant
+Level: 25
+Rash Nature
+- Wing Attack
+- Hone Claws
+- Scary Face
+- Aerial Ace
+
+Mandibuzz (F)
+IVs: 27 HP / 1 Atk / 14 Def / 1 SpA / 1 SpD / 0 Spe
+Ability: Weak Armor
+Level: 25
+Impish Nature
+- Pluck
+- Nasty Plot
+- Flatter
+- Feint Attack
+
+Zweilous (M)
+IVs: 22 HP / 20 Atk / 1 Def / 4 SpA / 18 SpD / 7 Spe
+Ability: Hustle
+Level: 49
+Hasty Nature
+- Dragon Pulse
+- Work Up
+- Dragon Rush
+- Body Slam
+
+Volcarona (F) @ Silver Powder
+IVs: 14 HP / 18 Atk / 11 Def / 29 SpA / 18 SpD / 1 Spe
+Ability: Flame Body
+Level: 35
+Bashful Nature
+- String Shot
+- Leech Life
+- Gust
+- Fire Spin
