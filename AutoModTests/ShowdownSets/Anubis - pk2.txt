@@ -1,0 +1,391 @@
+Squirtle (M) @ Bitter Berry
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 10
+Shiny: Yes
+Hardy Nature
+- Tackle
+- Tail Whip
+- Bubble
+
+Caterpie (F)
+IVs: 0 HP / 6 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 3
+Shiny: Yes
+Hardy Nature
+- Tackle
+- String Shot
+
+Weedle (M)
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 4
+Shiny: Yes
+Hardy Nature
+- Poison Sting
+- String Shot
+
+Pidgey (F)
+IVs: 0 HP / 6 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 3
+Shiny: Yes
+Hardy Nature
+- Tackle
+
+Rattata (M)
+IVs: 8 HP / 11 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 3
+Shiny: Yes
+Hardy Nature
+- Tackle
+- Tail Whip
+
+Sandshrew (F)
+IVs: 0 HP / 6 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 6
+Shiny: Yes
+Hardy Nature
+- Scratch
+- Defense Curl
+
+Nidoran-F (F)
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 12
+Shiny: Yes
+Hardy Nature
+- Growl
+- Tackle
+- Scratch
+- Double Kick
+
+Vulpix (F)
+IVs: 0 HP / 2 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 13
+Shiny: Yes
+Hardy Nature
+- Ember
+- Tail Whip
+- Quick Attack
+- Roar
+
+Jigglypuff (F)
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 12
+Shiny: Yes
+Hardy Nature
+- Sing
+- Defense Curl
+- Pound
+
+Wigglytuff (F) @ Gold Berry
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 22
+Shiny: Yes
+Hardy Nature
+- Sing
+- Disable
+- Defense Curl
+- Double Slap
+
+Zubat (M)
+IVs: 8 HP / 10 Def / 10 SpA / 10 SpD / 10 Spe
+EVs: 89 HP / 98 Atk / 92 Def / 54 SpA / 54 SpD / 69 Spe
+Level: 6
+Shiny: Yes
+Hardy Nature
+- Leech Life
+- Supersonic
+
+Oddish (M)
+IVs: 8 HP / 11 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 5
+Shiny: Yes
+Hardy Nature
+- Absorb
+
+Attrition (Venomoth) (M) @ Amulet Coin
+IVs: 8 HP / 11 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+EVs: 13486 HP / 12615 Atk / 11762 Def / 15036 SpA / 15036 SpD / 13234 Spe
+Level: 49
+Shiny: Yes
+Hardy Nature
+- Psybeam
+- Gust
+- Sleep Powder
+- Leech Life
+
+Poliwag (M)
+IVs: 0 HP / 14 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 4
+Shiny: Yes
+Hardy Nature
+- Bubble
+
+Abra (M) @ TM09
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 15
+Shiny: Yes
+Hardy Nature
+- Teleport
+
+Bellsprout (M)
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 5
+Shiny: Yes
+Hardy Nature
+- Vine Whip
+
+Geodude (F)
+IVs: 8 HP / 7 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 3
+Shiny: Yes
+Hardy Nature
+- Tackle
+
+Slowpoke (M)
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+EVs: 5853 HP / 6112 Atk / 5374 Def / 5031 SpA / 5031 SpD / 6134 Spe
+Level: 26
+Shiny: Yes
+Hardy Nature
+- Confusion
+- Tackle
+- Growl
+- Water Gun
+
+Gastly (M)
+IVs: 8 HP / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 3
+Shiny: Yes
+Hardy Nature
+- Hypnosis
+- Lick
+
+Hitmonchan (M) @ Bitter Berry
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 30
+Shiny: Yes
+Hardy Nature
+- Comet Punch
+- Agility
+
+Koffing (F)
+IVs: 0 HP / 6 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 14
+Shiny: Yes
+Hardy Nature
+- Poison Gas
+- Tackle
+- Smog
+
+Scyther (M) @ Bitter Berry
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 30
+Shiny: Yes
+Hardy Nature
+- Leer
+- Focus Energy
+- Double Team
+- Slash
+
+Magmar (M)
+IVs: 8 HP / 7 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 16
+Shiny: Yes
+Hardy Nature
+- Ember
+- Leer
+- Smog
+- Fire Punch
+
+Magikarp (M) @ Berry
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 5
+Shiny: Yes
+Hardy Nature
+- Splash
+
+Gyarados (M)
+IVs: 0 HP / 14 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 30
+Shiny: Yes
+Hardy Nature
+- Thrash
+- Bite
+- Dragon Rage
+- Leer
+
+Lapras (M) @ Bitter Berry
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 15
+Shiny: Yes
+Hardy Nature
+- Water Gun
+- Growl
+
+Ditto
+IVs: 8 HP / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Shiny: Yes
+Hardy Nature
+- Transform
+
+Eevee (M)
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+EVs: 226 HP / 312 Atk / 285 Def / 297 SpA / 297 SpD / 324 Spe
+Level: 20
+Shiny: Yes
+Hardy Nature
+- Tackle
+- Tail Whip
+- Sand Attack
+- Growl
+
+Dratini (M)
+IVs: 8 HP / 11 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 15
+Shiny: Yes
+Hardy Nature
+- Wrap
+- Thunder Wave
+- Twister
+- Extreme Speed
+
+Summertime (Cyndaquil) (M) @ Berry
+IVs: 8 HP / 3 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 5
+Shiny: Yes
+Hardy Nature
+- Tackle
+- Leer
+
+Gauss (Totodile) (M) @ Berry
+IVs: 8 HP / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 5
+Shiny: Yes
+Hardy Nature
+- Scratch
+- Leer
+
+Jagger (Feraligatr) (M) @ Bitter Berry
+IVs: 8 HP / 11 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+EVs: 13245 HP / 21640 Atk / 17622 Def / 14189 SpA / 14189 SpD / 15426 Spe
+Level: 52
+Shiny: Yes
+Hardy Nature
+- Strength
+- Scary Face
+- Bite
+- Surf
+
+Sentret (M)
+IVs: 8 HP / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 2
+Shiny: Yes
+Hardy Nature
+- Tackle
+
+Hoothoot (F)
+IVs: 0 HP / 2 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 3
+Shiny: Yes
+Hardy Nature
+- Tackle
+- Growl
+
+Ledyba (F)
+IVs: 0 HP / 6 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 3
+Shiny: Yes
+Hardy Nature
+- Tackle
+
+Spinarak (M)
+IVs: 8 HP / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 4
+Shiny: Yes
+Hardy Nature
+- Poison Sting
+- String Shot
+
+Togepi (M)
+IVs: 8 HP / 3 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 5
+Shiny: Yes
+Hardy Nature
+- Growl
+- Charm
+
+Sudowoodo (F)
+IVs: 0 HP / 2 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 20
+Shiny: Yes
+Hardy Nature
+- Rock Smash
+- Mimic
+- Flail
+- Low Kick
+
+Hoppip (M)
+IVs: 0 HP / 14 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 5
+Shiny: Yes
+Hardy Nature
+- Splash
+- Synthesis
+- Tail Whip
+
+SHUCKIE (Shuckle) (F) @ Berry
+IVs: 8 HP / 7 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 15
+Shiny: Yes
+Hardy Nature
+- Constrict
+- Withdraw
+- Wrap
+- Encore
+
+Phanpy (F)
+IVs: 0 HP / 6 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 2
+Shiny: Yes
+Hardy Nature
+- Tackle
+- Growl
+
+Raikou
+IVs: 8 HP / 3 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 40
+Shiny: Yes
+Hardy Nature
+- Leer
+- Thunder Shock
+- Roar
+- Quick Attack
+
+Entei
+IVs: 0 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 40
+Shiny: Yes
+Hardy Nature
+- Leer
+- Ember
+- Roar
+- Fire Spin
+
+Elsa (Suicune)
+IVs: 0 HP / 14 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 40
+Shiny: Yes
+Hardy Nature
+- Leer
+- Water Gun
+- Roar
+- Gust
+
+Elsa (Suicune)
+IVs: 0 HP / 14 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 40
+Shiny: Yes
+Hardy Nature
+- Leer
+- Water Gun
+- Roar
+- Gust

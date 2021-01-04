@@ -1,0 +1,329 @@
+Diglett (F)
+IVs: 29 SpA
+Ability: Arena Trap
+Level: 1
+Shiny: Yes
+Jolly Nature
+- Reversal
+- Memento
+- Pursuit
+- Screech
+
+Magmar (M)
+IVs: 0 Atk / 30 SpA
+Ability: Flame Body
+Level: 30
+Modest Nature
+- Incinerate
+- Rock Smash
+- Secret Power
+- Power-Up Punch
+
+ひろしま (Magikarp) (M) @ Stardust
+IVs: 22 HP / 12 Atk / 19 Def / 3 SpA / 6 SpD / 2 Spe
+Ability: Swift Swim
+Level: 1
+Shiny: Yes
+Adamant Nature
+- Splash
+- Celebrate
+- Happy Hour
+
+Eevee (M)
+IVs: 26 HP / 0 Atk / 24 Def / 0 SpA / 14 SpD / 0 Spe
+Ability: Anticipation
+Level: 15
+Shiny: Yes
+Bashful Nature
+- Swift
+- Quick Attack
+- Baby-Doll Eyes
+- Helping Hand
+
+Aerodactyl (F)
+EVs: 252 Atk / 4 Def / 252 Spe
+Ability: Unnerve
+Shiny: Yes
+Jolly Nature
+- Pursuit
+- Stone Edge
+- Hone Claws
+- Aqua Tail
+
+Zapdos
+IVs: 22 Atk / 30 Def
+EVs: 180 HP / 4 Def / 20 SpA / 180 SpD / 124 Spe
+Ability: Static
+Level: 70
+Calm Nature
+- Thunderbolt
+- Hidden Power [Ice]
+- Tailwind
+- Roost
+
+ミラージュ (Mew)
+IVs: 28 Atk
+Ability: Synchronize
+Level: 30
+Shiny: Yes
+Timid Nature
+- Soft-Boiled
+- Seismic Toss
+- Counter
+- Endure
+
+Phanpy (F)
+Ability: Pickup
+Level: 1
+Adamant Nature
+- Ice Shard
+- Play Rough
+- Counter
+- Head Smash
+
+Larvitar (F)
+IVs: 8 SpA
+Ability: Guts
+Level: 1
+Jolly Nature
+- Outrage
+- Dragon Dance
+- Pursuit
+- Stealth Rock
+
+Tyranitar (M) @ Chople Berry
+EVs: 252 HP / 4 Def / 252 SpD
+Ability: Sand Stream
+Shiny: Yes
+Sassy Nature
+- Foul Play
+- Superpower
+- Stealth Rock
+- Pursuit
+
+Celebi
+IVs: 0 Atk
+Ability: Natural Cure
+Bold Nature
+- Confusion
+- Recover
+- Heal Bell
+- Safeguard
+
+Treecko (M)
+IVs: 4 Atk / 30 SpA / 30 Spe
+EVs: 1 Atk
+Ability: Overgrow
+Level: 5
+Shiny: Yes
+Timid Nature
+- Pound
+- Leer
+
+Torchic (M)
+IVs: 23 SpA
+EVs: 1 Atk
+Ability: Blaze
+Level: 5
+Shiny: Yes
+Adamant Nature
+- Scratch
+- Growl
+
+Absol (M)
+IVs: 6 SpA
+Ability: Super Luck
+Level: 1
+Shiny: Yes
+Jolly Nature
+- Play Rough
+- Sucker Punch
+- Baton Pass
+- Zen Headbutt
+
+Registeel
+IVs: 30 HP / 0 Atk
+Ability: Clear Body
+Level: 40
+Shiny: Yes
+Calm Nature
+- Seismic Toss
+- Counter
+- Power-Up Punch
+- Dynamic Punch
+
+Latias (F)
+IVs: 27 HP / 26 Atk / 27 Def / 2 SpA / 2 SpD
+Ability: Levitate
+Level: 50
+Shiny: Yes
+Timid Nature
+- Mist Ball
+- Psychic
+- Recover
+- Charm
+
+Latios (M)
+IVs: 4 Atk / 30 SpA / 30 Spe
+Ability: Levitate
+Level: 50
+Timid Nature
+- Defog
+- Psychic
+- Recover
+- Dragon Dance
+
+Famine (Groudon)
+IVs: 23 SpA
+Ability: Drought
+Level: 45
+Shiny: Yes
+Adamant Nature
+- Counter
+- Seismic Toss
+- Dynamic Punch
+- Rollout
+
+Leviathan (Rayquaza)
+IVs: 23 SpA
+Ability: Air Lock
+Level: 70
+Shiny: Yes
+Adamant Nature
+- Body Slam
+- Mud-Slap
+- Double-Edge
+- Endure
+
+Jirachi
+IVs: 30 HP / 30 Def
+Ability: Serene Grace
+Level: 50
+Hasty Nature
+- Draco Meteor
+- Meteor Mash
+- Power-Up Punch
+- Follow Me
+
+Infernape (M)
+Ability: Blaze
+Jolly Nature
+- Hone Claws
+- Dig
+- Retaliate
+- Power-Up Punch
+
+MonoMire (Volcarona) (M)
+IVs: 0 Atk / 30 SpA / 30 SpD
+EVs: 252 SpA / 6 SpD / 252 Spe
+Ability: Flame Body
+Shiny: Yes
+Timid Nature
+- Quiver Dance
+- Giga Drain
+- Bug Buzz
+- Fire Blast
+
+Tornadus (M) @ Leppa Berry
+IVs: 30 SpD
+Ability: Prankster
+Level: 50
+Shiny: Yes
+Hasty Nature
+- Extrasensory
+- Agility
+- Air Slash
+- Crunch
+
+Reshiram
+IVs: 29 Atk / 29 SpD
+Ability: Turboblaze
+Level: 50
+Shiny: Yes
+Timid Nature
+- Dragon Breath
+- Slash
+- Extrasensory
+- Fusion Flare
+
+Landorus (M) @ Leppa Berry
+IVs: 15 HP / 27 SpA / 18 Spe
+Ability: Sand Force
+Level: 50
+Shiny: Yes
+Impish Nature
+- Extrasensory
+- Swords Dance
+- Earth Power
+- Rock Slide
+
+Landorus-Therian (M)
+IVs: 7 SpA / 30 Spe
+EVs: 20 HP / 252 Atk / 54 SpD / 184 Spe
+Ability: Intimidate
+Level: 50
+Adamant Nature
+- Rock Slide
+- U-turn
+- Earthquake
+- Extrasensory
+
+Inkay (M) @ Aspear Berry
+IVs: 16 HP / 8 Atk / 22 Def / 3 SpD / 12 Spe
+Ability: Suction Cups
+Level: 10
+Jolly Nature
+- Happy Hour
+- Foul Play
+- Hypnosis
+- Topsy-Turvy
+
+Pumpkaboo-Super (M) @ Rocky Helmet
+IVs: 13 HP / 0 Atk / 5 SpA
+Ability: Pickup
+Level: 50
+Bold Nature
+- Incinerate
+- Flash
+- Rock Smash
+- Secret Power
+
+Xerneas
+IVs: 18 Atk / 30 SpA / 30 Spe
+Ability: Fairy Aura
+Shiny: Yes
+Modest Nature
+- Geomancy
+- Moonblast
+- Aromatherapy
+- Focus Blast
+
+Yveltal
+IVs: 1 Atk
+Ability: Dark Aura
+Shiny: Yes
+Modest Nature
+- Oblivion Wing
+- Sucker Punch
+- Dark Pulse
+- Foul Play
+
+Diancie
+IVs: 30 Atk / 30 SpA / 30 Spe
+Ability: Clear Body
+Level: 50
+Hasty Nature
+- Diamond Storm
+- Moonblast
+- Dazzling Gleam
+- Protect
+
+Hoopa @ Focus Sash
+IVs: 27 SpA
+Ability: Magician
+Level: 50
+Jolly Nature
+- Hyperspace Hole
+- Psychic
+- Astonish
+- Nasty Plot

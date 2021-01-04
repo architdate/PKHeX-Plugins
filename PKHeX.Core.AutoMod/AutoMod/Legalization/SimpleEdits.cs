@@ -464,5 +464,21 @@ namespace PKHeX.Core.AutoMod
                     break;
             }
         }
+
+        public static void ApplyMiscFixes(this PKM pk, IEncounterable enc)
+        {
+            if (new LegalityAnalysis(pk).Valid)
+                return;
+
+            var match = new LegalInfo(pk).EncounterMatch;
+            // Ingame Trade OT
+            if (match is EncounterTrade t & pk.Generation <= 2)
+            {
+                if (pk.Format <= 2)
+                    pk.OT_Name = StringConverter12.G1TradeOTStr;
+                else 
+                    pk.OT_Name = ((EncounterTrade)match).GetOT(pk.Language);
+            }
+        }
     }
 }

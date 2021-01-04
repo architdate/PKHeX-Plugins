@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -54,15 +55,14 @@ namespace AutoModTests
         private static Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>> VerifyFile(string file, GameVersion[] saves)
         {
             var lines = File.ReadAllLines(file);
-            var sets = ShowdownParsing.GetShowdownSets(lines).ToList();
             var results = new Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>>();
             foreach (var s in saves)
             {
                 var legalsets = new List<ShowdownSet>();
                 var illegalsets = new List<ShowdownSet>();
-                var sav = SaveUtil.GetBlankSAV(s, "ALM");
-                var trainer = TrainerSettings.DefaultFallback(sav.Generation);
-                PKMConverter.SetPrimaryTrainer(trainer);
+                var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
+                PKMConverter.SetPrimaryTrainer(sav);
+                var sets = ShowdownParsing.GetShowdownSets(lines).ToList();
                 var species = Enumerable.Range(1, sav.MaxSpeciesID);
                 species = sav switch
                 {
@@ -72,29 +72,32 @@ namespace AutoModTests
                 };
 
                 var spec = species.ToList();
-                foreach (var set in sets)
+                for (int i = 0; i < sets.Count; i++)
                 {
-                    if (!spec.Contains(set.Species))
+                    var set = sets[i];
+                    if (!spec.Contains(sets[i].Species))
                         continue;
                     try
                     {
+                        Debug.Write($"Checking Set {i:000} : ");
                         var pk = sav.GetLegalFromSet(set, out _);
                         var la = new LegalityAnalysis(pk);
                         if (la.Valid)
                         {
+                            Debug.WriteLine("Valid");
                             legalsets.Add(set);
                         }
                         else
                         {
                             illegalsets.Add(set);
-                            Console.WriteLine($"Invalid Set for {(Species)set.Species} in file {file} with set: {set.Text}");
+                            Debug.WriteLine($"Invalid Set for {(Species)set.Species} in file {file} with set: {set.Text}");
                         }
                     }
 #pragma warning disable CA1031 // Do not catch general exception types
                     catch
 #pragma warning restore CA1031 // Do not catch general exception types
                     {
-                        Console.WriteLine($"Exception for {(Species)set.Species} in file {file} with set: {set.Text}");
+                        Debug.WriteLine($"Exception for {(Species)set.Species} in file {file} with set: {set.Text}");
                     }
                 }
                 results[s] = new Dictionary<string, ShowdownSet[]> { { "legal", legalsets.ToArray() }, { "illegal", illegalsets.ToArray() } };
@@ -107,7 +110,9 @@ namespace AutoModTests
             var result = new Dictionary<string, Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>>>();
             var structure = GetFileStructures();
             bool legalizer_settings = Legalizer.EnableEasterEggs;
+            int set_timeout = APILegality.Timeout;
             Legalizer.EnableEasterEggs = false;
+            APILegality.Timeout = 99999;
             foreach (var entry in structure)
             {
                 var gens = GetGameVersionsToTest(entry.Value);
@@ -116,6 +121,7 @@ namespace AutoModTests
                 result.Add(file, res);
             }
             Legalizer.EnableEasterEggs = legalizer_settings;
+            APILegality.Timeout = set_timeout;
             return result;
         }
 
@@ -138,7 +144,7 @@ namespace AutoModTests
                 {
                     if (sets["illegal"].Length == 0)
                         continue;
-                    msg += $"=============== GameVersion: {gv} ===============\n\n";
+                    msg += $"\n\n=============== GameVersion: {gv} ===============\n\n";
                     testfailed = true;
                     msg += string.Join("\n\n", sets["illegal"].Select(x => x.Text));
                 }

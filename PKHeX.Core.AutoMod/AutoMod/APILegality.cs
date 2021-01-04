@@ -271,6 +271,7 @@ namespace PKHeX.Core.AutoMod
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.ApplyHeightWeight(enc);
             pk.ApplyBattleVersion(handler);
+            pk.ApplyMiscFixes(enc);
 
             // Extra legality unchecked by PKHeX
             pk.SetDatelocks(enc);
@@ -596,13 +597,16 @@ namespace PKHeX.Core.AutoMod
                     return;
                 if (pk is PK5 { NPokémon: true })
                     return;
-                if (li.EncounterMatch is EncounterStatic5 s && (s.Gift || s.Roaming || s.Ability == 4 || s.Location == 75))
-                    return;
+                var exception = li.EncounterMatch is EncounterStatic5 s && (s.Gift || s.Roaming || s.Ability == 4 || s.Location == 75);
 
                 while (true)
                 {
                     var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
-                    if (result == 0)
+                    var base_species = li.EncounterMatch.Species;
+                    var valid_base_gender = true;
+                    if (Legal.FixedGenderFromBiGender.Contains(base_species) && pk.Gender != 2)
+                        valid_base_gender = PKX.GetGenderFromPID(base_species, pk.EncryptionConstant) == Gender;
+                    if ((result == 0 || exception) && valid_base_gender)
                         break;
                     pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
                 }
@@ -723,7 +727,7 @@ namespace PKHeX.Core.AutoMod
 
                 if (pk.Version == (int)GameVersion.CXD && Method != PIDType.PokeSpot)
                     Method = PIDType.CXD;
-                if (Method == PIDType.None)
+                if (Method == PIDType.None && pk.Generation >= 3)
                     pk.SetPIDGender(pk.Gender);
             }
             if (Method == PIDType.Method_1_Roamer && pk.HPType != (int)MoveType.Fighting - 1) // M1 Roamers can only be HP fighting
