@@ -38,25 +38,6 @@ Naughty Nature
 - Scratch
 - Growl
 
-Charmander (M)
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-Ability: Solar Power
-Level: 5
-Timid Nature
-- Scratch
-- Growl
-- Ember
-
-Charmander (M)
-IVs: 7 HP / 21 SpD / 19 Spe
-Ability: Blaze
-Level: 5
-Gigantamax: Yes
-Bashful Nature
-- Scratch
-- Growl
-- Ember
-
 Charmeleon (M)
 IVs: 29 Atk / 8 SpD
 Ability: Blaze
@@ -76,17 +57,6 @@ Naughty Nature
 - Dragon Breath
 - Slash
 - Air Slash
-
-Charizard (M)
-IVs: 25 Def / 27 SpD
-Ability: Blaze
-Level: 57
-Gigantamax: Yes
-Brave Nature
-- Fire Spin
-- Slash
-- Dragon Breath
-- Fire Fang
 
 Squirtle (M)
 IVs: 5 Atk / 10 SpA / 2 SpD
@@ -145,17 +115,6 @@ Relaxed Nature
 - Rage Powder
 - Quiver Dance
 
-Butterfree (F)
-IVs: 0 HP / 17 SpA / 12 Spe
-Ability: Compound Eyes
-Level: 40
-Gigantamax: Yes
-Gentle Nature
-- Pollen Puff
-- Air Slash
-- Giga Drain
-- Electroweb
-
 Pikachu (M)
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 Ability: Static
@@ -165,36 +124,6 @@ Hardy Nature
 - Tail Whip
 - Growl
 - Quick Attack
-
-Pikachu (M)
-IVs: 12 HP / 29 Def / 8 SpA / 21 SpD / 2 Spe
-Ability: Static
-Level: 14
-Lax Nature
-- Quick Attack
-- Thunder Wave
-- Double Team
-- Electro Ball
-
-Clydette (Pikachu) (F) @ Light Ball
-EVs: 6 HP / 252 SpA / 252 Spe
-Ability: Static
-Gigantamax: Yes
-Modest Nature
-- Thunderbolt
-- Thunder Wave
-- Brick Break
-- Swift
-
-Pikachu (F)
-Ability: Static
-Level: 10
-Gigantamax: Yes
-Bold Nature
-- Growl
-- Quick Attack
-- Thunder Wave
-- Double Team
 
 Pikachu-Original (M)
 IVs: 4 HP / 24 Atk / 25 SpA / 17 SpD / 21 Spe
@@ -415,26 +344,6 @@ Adamant Nature
 - Confuse Ray
 - Will-O-Wisp
 
-Vulpix (M)
-IVs: 19 HP / 6 Atk / 27 Def / 0 SpA / 18 SpD / 9 Spe
-Ability: Flash Fire
-Level: 10
-Bold Nature
-- Ember
-- Tail Whip
-- Disable
-- Quick Attack
-
-Vulpix (F)
-IVs: 27 HP / 0 Atk / 6 Def / 22 SpA / 3 SpD / 29 Spe
-Ability: Flash Fire
-Level: 24
-Bold Nature
-- Spite
-- Incinerate
-- Confuse Ray
-- Will-O-Wisp
-
 Vulpix-Alola (F)
 IVs: 11 Atk / 21 SpA / 30 Spe
 Ability: Snow Warning
@@ -562,17 +471,6 @@ Timid Nature
 - Pay Day
 - Bite
 - Last Resort
-
-Meowth (M)
-IVs: 0 Atk / 6 Def / 25 Spe
-Ability: Pickup
-Level: 5
-Gigantamax: Yes
-Timid Nature
-- Fake Out
-- Growl
-- Slash
-- Pay Day
 
 Meowth-Alola (F)
 IVs: 24 Atk / 28 SpD / 25 Spe
@@ -728,17 +626,6 @@ Naughty Nature
 - Dynamic Punch
 - Cross Chop
 
-Machamp (F)
-IVs: 22 HP / 5 SpD
-Ability: Guts
-Level: 59
-Gigantamax: Yes
-Impish Nature
-- Dynamic Punch
-- Knock Off
-- Vital Throw
-- Seismic Toss
-
 Tentacool (F) @ Poison Barb
 IVs: 25 HP / 24 Atk / 20 Def / 10 SpA / 4 SpD / 4 Spe
 Ability: Liquid Ooze
@@ -869,17 +756,6 @@ Jolly Nature
 - Withdraw
 - Ice Shard
 
-Shellder (F)
-IVs: 27 HP / 19 Atk / 14 Def / 3 SpA / 14 SpD / 18 Spe
-Ability: Shell Armor
-Level: 60
-Shiny: Yes
-Lax Nature
-- Iron Defense
-- Ice Beam
-- Shell Smash
-- Hydro Pump
-
 Cloyster (F) @ Pearl
 IVs: 16 HP / 19 Atk / 20 SpA / 2 SpD / 21 Spe
 Ability: Shell Armor
@@ -920,17 +796,6 @@ Modest Nature
 - Destiny Bond
 - Dream Eater
 
-Gengar (F)
-IVs: 26 HP / 8 Def
-Ability: Cursed Body
-Level: 60
-Gigantamax: Yes
-Gentle Nature
-- Shadow Ball
-- Night Shade
-- Dream Eater
-- Dark Pulse
-
 Onix (F)
 IVs: 7 HP / 15 Atk / 3 Def / 14 SpA / 25 SpD / 0 Spe
 Ability: Rock Head
@@ -960,17 +825,6 @@ Bashful Nature
 - Stomp
 - Flail
 - Razor Shell
-
-Kingler (M)
-IVs: 27 SpD / 19 Spe
-Ability: Sheer Force
-Level: 58
-Gigantamax: Yes
-Jolly Nature
-- Stomp
-- Slam
-- Crabhammer
-- Bubble Beam
 
 Exeggcute (F)
 IVs: 26 HP / 1 Atk / 23 SpA / 20 SpD / 26 Spe
@@ -1192,17 +1046,6 @@ Rash Nature
 - Water Gun
 - Confuse Ray
 
-Starmie
-IVs: 28 SpA / 21 SpD
-Ability: Analytic
-Level: 65
-Shiny: Yes
-Serious Nature
-- Power Gem
-- Dazzling Gleam
-- Psycho Cut
-- Icy Wind
-
 Mymo (Mr. Mime) (M)
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Soundproof
@@ -1310,17 +1153,6 @@ Mild Nature
 - Hydro Pump
 - Perish Song
 
-Lapras (M)
-IVs: 9 HP / 5 SpD
-Ability: Shell Armor
-Level: 55
-Gigantamax: Yes
-Rash Nature
-- Brine
-- Body Slam
-- Ice Shard
-- Ice Beam
-
 Ditto @ Quick Powder
 IVs: 24 HP / 6 Atk / 29 Def / 27 SpA / 6 SpD / 1 Spe
 Ability: Limber
@@ -1333,46 +1165,6 @@ IVs: 24 HP / 9 Atk / 24 Def / 30 SpD / 30 Spe
 Ability: Adaptability
 Level: 14
 Lonely Nature
-- Growl
-- Tail Whip
-- Sand Attack
-- Quick Attack
-
-Eevee (F)
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-Ability: Adaptability
-Level: 5
-Serious Nature
-- Helping Hand
-- Tackle
-- Growl
-- Tail Whip
-
-Eevee (M)
-Ability: Adaptability
-Level: 10
-Gigantamax: Yes
-Rash Nature
-- Growl
-- Tail Whip
-- Sand Attack
-- Quick Attack
-
-Bonnie (Eevee) (F) @ Silk Scarf
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Run Away
-Gigantamax: Yes
-Adamant Nature
-- Swift
-- Weather Ball
-- Sand Attack
-- Quick Attack
-
-Eevee (F)
-Ability: Run Away
-Level: 10
-Gigantamax: Yes
-Sassy Nature
 - Growl
 - Tail Whip
 - Sand Attack
@@ -1477,17 +1269,6 @@ Naughty Nature
 - Belly Drum
 - Belch
 - Giga Impact
-
-Snorlax (M)
-IVs: 27 SpD
-Ability: Immunity
-Level: 70
-Gigantamax: Yes
-Lonely Nature
-- Body Slam
-- Iron Head
-- Crunch
-- Zen Headbutt
 
 Articuno
 IVs: 2 Atk / 13 SpD
@@ -1653,14 +1434,6 @@ Hardy Nature
 - Thunder Shock
 - Tail Whip
 
-Pichu (M)
-IVs: 14 Def / 8 SpA / 21 SpD / 2 Spe
-Ability: Static
-Level: 1
-Lonely Nature
-- Thunder Shock
-- Tail Whip
-
 Cleffa (F)
 IVs: 4 Atk / 21 Def / 7 SpD / 17 Spe
 Ability: Magic Guard
@@ -1688,16 +1461,6 @@ Mild Nature
 - Baton Pass
 - Last Resort
 - Wish
-
-Snips (Togepi) (M)
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-Ability: Serene Grace
-Level: 25
-Timid Nature
-- Ancient Power
-- Yawn
-- Metronome
-- Life Dew
 
 Togetic (F)
 IVs: 22 HP / 6 Atk / 23 Def / 18 SpA / 28 SpD / 16 Spe
@@ -1858,17 +1621,6 @@ Quirky Nature
 - Coil
 - Double-Edge
 - Endeavor
-
-Dunsparce (F)
-IVs: 15 Atk
-Ability: Serene Grace
-Level: 65
-Shiny: Yes
-Brave Nature
-- Skitter Smack
-- Dual Wingbeat
-- Shadow Ball
-- Ice Beam
 
 Steelix (M)
 IVs: 28 HP / 24 Atk / 13 Def / 28 SpA / 0 SpD / 13 Spe
@@ -2337,15 +2089,6 @@ Impish Nature
 - Harden
 - Absorb
 - Astonish
-
-Gizmo (Shiftry) (F) @ Quick Claw
-EVs: 252 HP / 252 Atk / 6 Spe
-Ability: Early Bird
-Modest Nature
-- False Swipe
-- Protect
-- Leaf Tornado
-- Air Slash
 
 Wingull (M) @ Pretty Feather
 IVs: 28 HP / 0 Atk / 19 Def / 2 SpA / 20 SpD / 15 Spe
@@ -2914,16 +2657,6 @@ Sassy Nature
 - Flamethrower
 - Outrage
 - Double-Edge
-
-Salamence (M)
-IVs: 24 HP / 30 Atk / 12 Def / 4 SpA / 15 SpD / 25 Spe
-Ability: Intimidate
-Level: 68
-Serious Nature
-- Zen Headbutt
-- Focus Energy
-- Flamethrower
-- Outrage
 
 Beldum
 IVs: 12 HP / 12 Atk / 8 Def / 12 SpA / 21 SpD / 30 Spe
@@ -3928,16 +3661,6 @@ Adamant Nature
 - Storm Throw
 - Vital Throw
 
-Throh (M) @ Black Belt
-IVs: 2 HP / 23 Atk / 0 Def / 17 SpA / 16 SpD / 19 Spe
-Ability: Guts
-Level: 42
-Quirky Nature
-- Bulk Up
-- Storm Throw
-- Vital Throw
-- Seismic Toss
-
 Blubop (Sawk) (M)
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Sturdy
@@ -3947,16 +3670,6 @@ Adamant Nature
 - Bulk Up
 - Retaliate
 - Brick Break
-
-Sawk (M)
-IVs: 24 HP / 17 Atk / 17 Def / 26 SpA / 25 SpD / 10 Spe
-Ability: Sturdy
-Level: 26
-Adamant Nature
-- Double Kick
-- Quick Guard
-- Low Sweep
-- Bulk Up
 
 Venipede (F)
 IVs: 8 HP / 24 Atk / 22 Def / 2 SpA / 17 SpD / 30 Spe
@@ -3997,16 +3710,6 @@ Gentle Nature
 - Endeavor
 - Cotton Guard
 - Solar Beam
-
-Candyfloss (Cottonee) (F)
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-Ability: Prankster
-Level: 23
-Modest Nature
-- Mega Drain
-- Razor Leaf
-- Growth
-- Poison Powder
 
 Whimsicott (F)
 IVs: 15 HP / 0 Atk / 22 Def / 17 SpA / 12 SpD / 30 Spe
@@ -4247,17 +3950,6 @@ Hardy Nature
 - Pain Split
 - Gunk Shot
 - Explosion
-
-Garbodor (F)
-IVs: 3 HP
-Ability: Stench
-Level: 58
-Gigantamax: Yes
-Bold Nature
-- Sludge
-- Sludge Bomb
-- Belch
-- Gunk Shot
 
 Zorua (F)
 IVs: 6 Atk / 21 Def / 29 SpA / 3 SpD / 11 Spe
@@ -4559,16 +4251,6 @@ Naive Nature
 - Overheat
 - Memento
 
-Litwick (M)
-IVs: 13 HP / 19 Def / 23 SpA / 30 SpD / 1 Spe
-Ability: Flame Body
-Level: 25
-Sassy Nature
-- Confuse Ray
-- Hex
-- Will-O-Wisp
-- Fire Spin
-
 Lampent (F)
 IVs: 1 HP / 0 Atk / 8 Def / 21 SpA / 14 SpD / 9 Spe
 Ability: Flash Fire
@@ -4754,17 +4436,6 @@ IVs: 24 HP / 3 Atk / 8 Def / 23 SpA / 15 SpD / 13 Spe
 Ability: Sap Sipper
 Level: 60
 Mild Nature
-- Head Charge
-- Swords Dance
-- Megahorn
-- Giga Impact
-
-Bouffalant (M)
-IVs: 14 HP / 1 Atk / 29 Def / 15 SpA / 17 SpD / 14 Spe
-Ability: Reckless
-Level: 60
-Shiny: Yes
-Hasty Nature
 - Head Charge
 - Swords Dance
 - Megahorn
@@ -6219,14 +5890,6 @@ Adamant Nature
 - Scratch
 - Growl
 
-Grookey (M)
-IVs: 24 HP / 7 Atk / 8 Def / 28 SpA / 14 SpD / 28 Spe
-Ability: Overgrow
-Level: 5
-Docile Nature
-- Scratch
-- Growl
-
 Thwackey (M)
 IVs: 24 HP / 7 Atk / 8 Def / 28 SpA / 14 SpD / 28 Spe
 Ability: Overgrow
@@ -6247,40 +5910,11 @@ Docile Nature
 - Drum Beating
 - Taunt
 
-Zach (Rillaboom) (M) @ Miracle Seed
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Overgrow
-Gigantamax: Yes
-Adamant Nature
-- Wood Hammer
-- Slam
-- Knock Off
-- Superpower
-
-Rillaboom (M)
-IVs: 24 HP / 7 Atk / 8 Def / 28 SpA / 14 SpD / 28 Spe
-Ability: Overgrow
-Level: 35
-Gigantamax: Yes
-Docile Nature
-- Slam
-- Razor Leaf
-- Drum Beating
-- Taunt
-
 Scorbunny (M)
 IVs: 20 HP / 20 Def / 20 SpA / 20 SpD
 Ability: Libero
 Level: 5
 Jolly Nature
-- Tackle
-- Growl
-
-Scorbunny (M)
-IVs: 13 HP / 4 Atk / 27 Def / 21 SpA / 26 SpD / 13 Spe
-Ability: Blaze
-Level: 5
-Relaxed Nature
 - Tackle
 - Growl
 
@@ -6304,29 +5938,11 @@ Relaxed Nature
 - Pyro Ball
 - Quick Attack
 
-Gabriel (Cinderace) (M) @ Charcoal
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Blaze
-Gigantamax: Yes
-Adamant Nature
-- Blaze Kick
-- Low Sweep
-- Acrobatics
-- Gunk Shot
-
 Sobble (M)
 IVs: 10 HP / 12 Atk / 30 Def / 17 SpA / 11 SpD / 19 Spe
 Ability: Torrent
 Level: 5
 Bashful Nature
-- Pound
-- Growl
-
-Sobble (M)
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpD
-Ability: Sniper
-Level: 5
-Modest Nature
 - Pound
 - Growl
 
@@ -6350,16 +5966,6 @@ Bashful Nature
 - U-turn
 - Sucker Punch
 
-Leo (Inteleon) (M) @ Mystic Water
-EVs: 252 HP / 252 SpA / 6 Spe
-Ability: Torrent
-Gigantamax: Yes
-Modest Nature
-- Surf
-- Ice Beam
-- Shadow Ball
-- Dark Pulse
-
 Cheekers (Skwovet) (M) @ Oran Berry
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Cheek Pouch
@@ -6369,15 +5975,6 @@ Mild Nature
 - Tail Whip
 - Bite
 - Stuff Cheeks
-
-Skwovet (M)
-IVs: 5 HP / 28 Atk / 20 Def / 12 SpA / 16 SpD / 8 Spe
-Ability: Cheek Pouch
-Level: 5
-Modest Nature
-- Tackle
-- Tail Whip
-- Bite
 
 Greedent (M)
 IVs: 2 HP / 26 Atk / 18 Def / 4 SpA / 13 Spe
@@ -6417,27 +6014,6 @@ Brave Nature
 - Drill Peck
 - Swagger
 
-Corviknight (F)
-IVs: 2 SpD
-Ability: Mirror Armor
-Level: 70
-Gigantamax: Yes
-Brave Nature
-- Brave Bird
-- Iron Head
-- Rock Smash
-- Screech
-
-Kingsley (Corviknight) (M) @ Sharp Beak
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Unnerve
-Gigantamax: Yes
-Adamant Nature
-- Drill Peck
-- Steel Wing
-- Air Slash
-- Swift
-
 Blipbug (F)
 IVs: 11 HP / 29 Atk / 2 Def / 18 SpA / 14 SpD / 25 Spe
 Ability: Compound Eyes
@@ -6464,17 +6040,6 @@ Bold Nature
 - Psychic
 - After You
 - Calm Mind
-
-Orbeetle (F)
-IVs: 30 Atk / 7 SpA
-Ability: Swarm
-Level: 37
-Gigantamax: Yes
-Rash Nature
-- Psybeam
-- Struggle Bug
-- Mirror Coat
-- Sticky Web
 
 Nickit (M)
 IVs: 25 HP / 25 Atk / 11 Def / 0 SpA / 28 SpD / 17 Spe
@@ -6552,17 +6117,6 @@ Hardy Nature
 - Water Gun
 - Bite
 
-Drednaw (M)
-IVs: 2 HP / 0 Atk
-Ability: Shell Armor
-Level: 50
-Gigantamax: Yes
-Bold Nature
-- Rock Slide
-- Liquidation
-- Rock Blast
-- Bulldoze
-
 Yamper (M)
 IVs: 9 HP / 23 Atk / 14 Def / 18 SpA / 22 SpD / 20 Spe
 Ability: Ball Fetch
@@ -6612,17 +6166,6 @@ Hasty Nature
 - Rock Blast
 - Burn Up
 
-Coalossal (M)
-IVs: 23 HP / 30 SpD
-Ability: Flash Fire
-Level: 55
-Gigantamax: Yes
-Quirky Nature
-- Heat Crash
-- Ancient Power
-- Rapid Spin
-- Incinerate
-
 Applin (M)
 IVs: 3 HP / 6 Atk / 29 Def / 3 SpA / 8 SpD / 26 Spe
 Ability: Gluttony
@@ -6640,17 +6183,6 @@ Impish Nature
 - Astonish
 - Wing Attack
 
-Flapple (F)
-IVs: 30 Def / 13 Spe
-Ability: Gluttony
-Level: 59
-Gigantamax: Yes
-Rash Nature
-- Grav Apple
-- Dragon Pulse
-- Dragon Rush
-- Fly
-
 Appletun (M)
 IVs: 3 HP / 6 Atk / 29 Def / 3 SpA / 8 SpD / 26 Spe
 Ability: Gluttony
@@ -6659,17 +6191,6 @@ Impish Nature
 - Withdraw
 - Astonish
 - Headbutt
-
-Appletun (M)
-IVs: 12 HP / 21 Def
-Ability: Gluttony
-Level: 59
-Gigantamax: Yes
-Serious Nature
-- Astonish
-- Dragon Pulse
-- Stomp
-- Body Slam
 
 Silicobra (M)
 IVs: 7 HP / 22 Atk / 29 Def / 2 SpA / 17 SpD / 30 Spe
@@ -6690,17 +6211,6 @@ Rash Nature
 - Glare
 - Dig
 - Sandstorm
-
-Sandaconda (M)
-IVs: 30 Atk / 9 Spe
-Ability: Sand Spit
-Level: 50
-Gigantamax: Yes
-Lonely Nature
-- Brutal Swing
-- Drill Run
-- Poison Tail
-- Sand Tomb
 
 Cramorant (M)
 IVs: 20 HP / 19 Atk / 27 Def / 21 SpA / 11 SpD / 24 Spe
@@ -6735,16 +6245,6 @@ IVs: 22 HP / 16 Def / 17 SpD / 22 Spe
 Ability: Rattled
 Level: 1
 Bashful Nature
-- Nuzzle
-- Growl
-- Flail
-- Acid
-
-Toxel (F)
-IVs: 7 Atk / 12 Def / 9 SpA / 30 SpD / 10 Spe
-Ability: Rattled
-Level: 40
-Lonely Nature
 - Nuzzle
 - Growl
 - Flail
@@ -6791,25 +6291,6 @@ Adamant Nature
 - Bug Bite
 - Coil
 
-Sizzlipede (F)
-IVs: 5 HP / 16 Atk / 4 Def / 1 SpA / 5 SpD / 22 Spe
-Ability: White Smoke
-Level: 8
-Lonely Nature
-- Ember
-- Smokescreen
-- Wrap
-
-Sizzlipede (F)
-IVs: 23 HP / 8 SpA / 6 Spe
-Ability: Flash Fire
-Level: 25
-Naive Nature
-- Bite
-- Flame Wheel
-- Bug Bite
-- Coil
-
 Centiskorch (F)
 IVs: 5 HP / 16 Atk / 4 Def / 1 SpA / 5 SpD / 22 Spe
 Ability: White Smoke
@@ -6818,17 +6299,6 @@ Lonely Nature
 - Ember
 - Flame Wheel
 - Coil
-- Bug Bite
-
-Centiskorch (M)
-IVs: 22 Atk / 20 Spe
-Ability: Flame Body
-Level: 57
-Gigantamax: Yes
-Hasty Nature
-- Fire Spin
-- Slam
-- Flame Wheel
 - Bug Bite
 
 Clobbopus (F)
@@ -6881,16 +6351,6 @@ Impish Nature
 - Aromatherapy
 - Psybeam
 
-Fringe (Hatenna) (F)
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-Ability: Anticipation
-Level: 30
-Quiet Nature
-- Aromatherapy
-- Psybeam
-- Heal Pulse
-- Dazzling Gleam
-
 Hattrem (F)
 IVs: 17 HP / 11 Atk / 29 Def / 20 SpA / 14 SpD / 30 Spe
 Ability: Healer
@@ -6911,17 +6371,6 @@ Sassy Nature
 - Healing Wish
 - Magic Powder
 
-Hatterene (F)
-IVs: 14 HP / 18 Def
-Ability: Magic Bounce
-Level: 60
-Gigantamax: Yes
-Docile Nature
-- Dazzling Gleam
-- Brutal Swing
-- Confusion
-- Psybeam
-
 Peepers (Impidimp) (M)
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Prankster
@@ -6931,16 +6380,6 @@ Brave Nature
 - Sucker Punch
 - Torment
 - Fake Out
-
-Impidimp (M)
-IVs: 30 HP / 27 Atk / 29 Def / 11 SpA / 8 SpD / 14 Spe
-Ability: Prankster
-Level: 24
-Relaxed Nature
-- Fake Tears
-- Assurance
-- Swagger
-- Sucker Punch
 
 Morgrem (M)
 IVs: 12 HP / 17 Def / 25 SpA / 0 SpD / 18 Spe
@@ -6961,17 +6400,6 @@ Sassy Nature
 - Play Rough
 - Foul Play
 - Hammer Arm
-
-Grimmsnarl (M)
-IVs: 16 Atk / 22 SpD
-Ability: Pickpocket
-Level: 60
-Gigantamax: Yes
-Lax Nature
-- Dark Pulse
-- Foul Play
-- Assurance
-- Bite
 
 Obstagoon (F)
 IVs: 18 HP / 2 Atk / 11 Def / 20 SpA / 3 Spe
@@ -7053,17 +6481,6 @@ Bashful Nature
 - Sweet Kiss
 - Sweet Scent
 - Draining Kiss
-
-Alcremie (F)
-IVs: 20 Atk / 22 SpA
-Ability: Sweet Veil
-Level: 58
-Gigantamax: Yes
-Hardy Nature
-- Dazzling Gleam
-- Draining Kiss
-- Tackle
-- Entrainment
 
 Falinks
 IVs: 0 HP / 25 Atk / 26 Def / 19 SpA / 27 SpD / 6 Spe
@@ -7163,17 +6580,6 @@ Lonely Nature
 - Play Rough
 - High Horsepower
 
-Copperajah (F)
-IVs: 4 Def / 9 SpD
-Ability: Sheer Force
-Level: 59
-Gigantamax: Yes
-Timid Nature
-- Iron Head
-- High Horsepower
-- Play Rough
-- Strength
-
 Dracozolt
 IVs: 26 HP / 1 Def
 Ability: Volt Absorb
@@ -7219,27 +6625,6 @@ Adamant Nature
 - Laser Focus
 - Dragon Claw
 - Night Slash
-
-Duraludon (M)
-IVs: 19 HP / 5 Atk / 6 Def / 27 SpA / 1 SpD / 11 Spe
-Ability: Light Metal
-Level: 46
-Naughty Nature
-- Breaking Swipe
-- Dragon Tail
-- Iron Defense
-- Laser Focus
-
-Duraludon (M)
-IVs: 26 SpA / 1 SpD
-Ability: Light Metal
-Level: 59
-Gigantamax: Yes
-Bashful Nature
-- Breaking Swipe
-- Dragon Claw
-- Rock Smash
-- Metal Claw
 
 Dreepy (M)
 IVs: 25 HP / 19 Atk / 7 Def / 0 SpA / 11 SpD / 15 Spe
@@ -7333,18 +6718,6 @@ Quirky Nature
 - Close Combat
 - Surging Strikes
 
-Urshifu-Rapid-Strike (M)
-IVs: 21 HP / 23 Spe
-EVs: 2 HP / 2 Atk / 1 SpA / 2 Spe
-Ability: Unseen Fist
-Level: 70
-Gigantamax: Yes
-Relaxed Nature
-- Iron Head
-- Aerial Ace
-- Surging Strikes
-- Close Combat
-
 Regieleki
 IVs: 10 Atk / 13 SpA / 25 SpD
 Ability: Transistor
@@ -7392,14 +6765,6 @@ Level: 80
 Docile Nature
 - Psychic
 - Agility
-- Giga Drain
-
-Calyrex
-IVs: 30 Def / 2 SpA / 5 SpD
-Ability: Unnerve
-Level: 80
-Naive Nature
-- Psychic
 - Giga Drain
 
 Calyrex-Ice

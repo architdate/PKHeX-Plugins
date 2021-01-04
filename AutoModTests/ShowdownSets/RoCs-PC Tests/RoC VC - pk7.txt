@@ -45,14 +45,6 @@ Timid Nature
 - Growl
 - Ember
 
-Charmander (M)
-IVs: 23 Atk / 29 Def / 16 SpD
-Ability: Solar Power
-Level: 5
-Timid Nature
-- Scratch
-- Growl
-
 Charmeleon (M)
 IVs: 0 HP / 29 SpD / 23 Spe
 Ability: Solar Power
@@ -91,14 +83,6 @@ Timid Nature
 - Tail Whip
 - Bubble
 
-Squirtle (M)
-IVs: 4 HP / 16 Def / 24 Spe
-Ability: Rain Dish
-Level: 5
-Timid Nature
-- Tackle
-- Tail Whip
-
 Wartortle (M)
 IVs: 22 Atk / 19 SpA / 7 Spe
 Ability: Rain Dish
@@ -133,14 +117,6 @@ IVs: 12 Def / 3 SpA / 7 Spe
 Ability: Run Away
 Level: 3
 Brave Nature
-- Tackle
-- String Shot
-
-Caterpie (M)
-IVs: 25 Atk / 7 Def / 13 Spe
-Ability: Run Away
-Level: 4
-Naive Nature
 - Tackle
 - String Shot
 
@@ -183,26 +159,11 @@ Brave Nature
 - Poison Sting
 - String Shot
 
-Weedle (M)
-IVs: 17 Def / 13 SpD / 19 Spe
-Ability: Run Away
-Level: 5
-Hardy Nature
-- Poison Sting
-- String Shot
-
 Kakuna (F)
 IVs: 14 Atk / 3 SpD
 Ability: Shed Skin
 Level: 7
 Bashful Nature
-- Harden
-
-Kakuna (M)
-IVs: 23 HP / 5 SpD / 20 Spe
-Ability: Shed Skin
-Level: 5
-Hardy Nature
 - Harden
 
 Beedrill (M)
@@ -212,27 +173,12 @@ Level: 10
 Hardy Nature
 - Harden
 
-Beedrill (M)
-IVs: 4 Def / 6 SpA / 6 Spe
-Ability: Sniper
-Level: 10
-Hardy Nature
-- Fury Attack
-
 Pidgey (M)
 IVs: 17 Def / 18 SpA / 2 Spe
 Ability: Big Pecks
 Level: 2
 Lax Nature
 - Tackle
-
-Pidgey (F)
-IVs: 9 Atk / 23 SpA / 26 SpD
-Ability: Big Pecks
-Level: 6
-Naughty Nature
-- Gust
-- Sand Attack
 
 Pidgeotto (M)
 IVs: 29 HP / 22 Atk / 9 Def
@@ -262,16 +208,6 @@ Relaxed Nature
 - Sand Attack
 - Quick Attack
 - Whirlwind
-
-Pidgeot (M)
-IVs: 14 Atk / 1 SpA / 23 Spe
-Ability: Big Pecks
-Level: 36
-Relaxed Nature
-- Wing Attack
-- Sand Attack
-- Gust
-- Quick Attack
 
 Pidgeot (M)
 IVs: 28 HP / 4 Atk / 24 SpA
@@ -320,14 +256,6 @@ Hardy Nature
 - Leer
 
 Spearow (M)
-IVs: 8 HP / 8 SpD / 8 Spe
-Ability: Sniper
-Level: 2
-Impish Nature
-- Peck
-- Growl
-
-Spearow (M)
 IVs: 12 HP / 30 Atk / 29 Def
 Ability: Sniper
 Level: 8
@@ -364,14 +292,6 @@ Hardy Nature
 - Leer
 - Poison Sting
 
-Ekans (M)
-IVs: 3 HP / 5 SpA / 0 Spe
-Ability: Unnerve
-Level: 4
-Naive Nature
-- Wrap
-- Leer
-
 Arbok (F)
 IVs: 13 HP / 27 Atk / 14 SpA
 Ability: Unnerve
@@ -400,54 +320,11 @@ Brave Nature
 - Thunder Shock
 - Growl
 
-Pikachu (F)
-IVs: 18 HP / 14 Atk
-Ability: Lightning Rod
-Hardy Nature
-- Thunderbolt
-- Body Slam
-- Double Team
-- Thunder Wave
-
-Pikachu (F)
-IVs: 1 Atk / 30 SpA / 5 Spe
-Ability: Lightning Rod
-Level: 5
-Hardy Nature
-- Thunder Shock
-- Growl
-
-Pikachu (M)
-IVs: 30 Def / 8 SpA / 2 SpD
-Ability: Lightning Rod
-Level: 25
-Hardy Nature
-- Thunder Wave
-- Quick Attack
-- Double Team
-- Slam
-
-Pikachu (F)
-IVs: 5 Def / 11 SpA
-Ability: Lightning Rod
-Level: 4
-Naive Nature
-- Thunder Shock
-- Growl
-
 Raichu (F)
 IVs: 5 HP / 19 Def / 26 SpA
 Ability: Lightning Rod
 Level: 3
 Brave Nature
-- Thunder Shock
-- Growl
-
-Raichu (F)
-IVs: 19 HP / 23 Atk / 17 Spe
-Ability: Lightning Rod
-Level: 4
-Naive Nature
 - Thunder Shock
 - Growl
 
@@ -504,14 +381,6 @@ Careful Nature
 - Tackle
 - Scratch
 - Double Kick
-
-Nidoran-F (F)
-IVs: 17 Atk / 17 Def / 9 SpD
-Ability: Hustle
-Level: 4
-Gentle Nature
-- Growl
-- Tackle
 
 SPOT (Nidoran-F) (F)
 IVs: 18 Atk / 17 SpA / 8 SpD
@@ -685,16 +554,6 @@ Relaxed Nature
 - Tail Whip
 - Quick Attack
 
-Vulpix (M)
-IVs: 5 Def / 23 SpA / 17 Spe
-Ability: Drought
-Level: 18
-Relaxed Nature
-- Ember
-- Tail Whip
-- Quick Attack
-- Roar
-
 Ninetales (F)
 IVs: 21 HP / 15 SpA / 19 SpD
 Ability: Drought
@@ -703,16 +562,6 @@ Relaxed Nature
 - Ember
 - Tail Whip
 - Quick Attack
-
-Ninetales (M)
-IVs: 23 Atk / 3 Def / 4 SpA
-Ability: Drought
-Level: 18
-Relaxed Nature
-- Ember
-- Tail Whip
-- Quick Attack
-- Roar
 
 Jigglypuff (M)
 IVs: 23 HP / 19 Atk / 23 Spe
@@ -792,13 +641,6 @@ IVs: 0 Atk / 27 Def
 Ability: Run Away
 Level: 12
 Careful Nature
-- Absorb
-
-Oddish (F)
-IVs: 17 Def / 8 SpD / 9 Spe
-Ability: Run Away
-Level: 5
-Timid Nature
 - Absorb
 
 Gloom (F)
@@ -1048,16 +890,6 @@ Brave Nature
 - Scratch
 - Leer
 
-Mankey (F)
-IVs: 19 HP / 27 Atk / 6 SpA
-Ability: Defiant
-Level: 15
-Hardy Nature
-- Scratch
-- Leer
-- Low Kick
-- Karate Chop
-
 Primeape (F)
 IVs: 27 Atk / 6 Def
 Ability: Defiant
@@ -1187,13 +1019,6 @@ Abra (F)
 IVs: 24 Atk / 29 Def / 3 Spe
 Ability: Magic Guard
 Level: 10
-Timid Nature
-- Teleport
-
-Abra (M)
-IVs: 20 SpD / 13 Spe
-Ability: Magic Guard
-Level: 5
 Timid Nature
 - Teleport
 
@@ -1409,13 +1234,6 @@ Level: 3
 Relaxed Nature
 - Tackle
 
-Geodude (M)
-IVs: 20 Atk / 1 Def / 4 SpD
-Ability: Sand Veil
-Level: 10
-Timid Nature
-- Tackle
-
 Graveler (M)
 IVs: 27 HP / 5 Def / 24 SpA
 Ability: Sand Veil
@@ -1482,16 +1300,6 @@ Hardy Nature
 - Fire Spin
 - Take Down
 - Fury Attack
-
-Rapidash (F)
-IVs: 0 Def / 20 SpA / 14 Spe
-Ability: Flame Body
-Level: 40
-Hardy Nature
-- Ember
-- Fire Spin
-- Stomp
-- Growl
 
 RUNNY (Rapidash) (M)
 IVs: 7 Atk / 23 Def
@@ -1749,16 +1557,6 @@ Serious Nature
 - Pound
 - Harden
 
-STICKY (Muk) (M)
-IVs: 4 HP / 16 SpD / 24 Spe
-Ability: Poison Touch
-Level: 33
-Serious Nature
-- Pound
-- Disable
-- Poison Gas
-- Minimize
-
 Shellder (M)
 IVs: 1 HP / 30 SpA / 23 Spe
 Ability: Overcoat
@@ -1993,26 +1791,6 @@ Brave Nature
 - Tackle
 - Screech
 - Sonic Boom
-
-Electrode
-IVs: 22 HP / 26 Def / 11 SpA
-Ability: Aftermath
-Level: 23
-Quiet Nature
-- Tackle
-- Screech
-- Sonic Boom
-- Self-Destruct
-
-Electrode
-IVs: 25 Atk / 25 Def / 4 SpA
-Ability: Aftermath
-Level: 43
-Relaxed Nature
-- Sonic Boom
-- Self-Destruct
-- Light Screen
-- Swift
 
 Exeggcute (M)
 IVs: 15 HP / 4 Atk / 17 SpD
@@ -2584,13 +2362,6 @@ Bashful Nature
 - Splash
 - Tackle
 
-Magikarp (M)
-IVs: 1 Atk / 15 SpA / 24 SpD
-Ability: Rattled
-Level: 5
-Docile Nature
-- Splash
-
 Gyarados (M)
 IVs: 20 HP / 22 SpA / 9 SpD
 Ability: Moxie
@@ -2950,13 +2721,6 @@ IVs: 16 Atk
 Ability: Synchronize
 Level: 7
 Hasty Nature
-- Pound
-
-Mew
-IVs: 19 Atk
-Ability: Synchronize
-Level: 5
-Timid Nature
 - Pound
 
 Chikorita (M)
@@ -3975,13 +3739,6 @@ Tyrogue (M)
 IVs: 11 Atk / 8 Def / 21 SpA
 Ability: Vital Spirit
 Level: 10
-Hardy Nature
-- Tackle
-
-Tyrogue (M)
-IVs: 8 SpA / 7 SpD / 7 Spe
-Ability: Vital Spirit
-Level: 5
 Hardy Nature
 - Tackle
 
