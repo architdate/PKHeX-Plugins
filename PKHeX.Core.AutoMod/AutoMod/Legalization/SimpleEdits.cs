@@ -67,38 +67,6 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Set Encryption Constant based on PKM Generation
-        /// </summary>
-        /// <param name="pk">PKM to modify</param>
-        /// <param name="enc">Encounter details</param>
-        public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
-        {
-            var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
-            if ((pk.Species == 658 && pk.Form == 1) || isRaid) // Ash-Greninja or raids
-                return;
-            int gen = pk.Generation;
-            if (gen is > 2 and < 6)
-            {
-                var ec = pk.PID;
-                pk.EncryptionConstant = ec;
-                if (pk.Format >= 6)
-                {
-                    var pidxor = ((pk.TID ^ pk.SID ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
-                    pk.PID = pidxor ? ec ^ 0x80000000 : ec;
-                }
-                return;
-            }
-            int wIndex = WurmpleUtil.GetWurmpleEvoGroup(pk.Species);
-            if (wIndex != -1)
-            {
-                pk.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
-                return;
-            }
-
-            pk.EncryptionConstant = enc is WC8 { PIDType: Shiny.FixedValue, EncryptionConstant: 0 } ? 0 : Util.Rand32();
-        }
-
-        /// <summary>
         /// Sets shiny value to whatever boolean is specified. Takes in specific shiny as a boolean. Ignores it for stuff that is gen 5 or lower. Cant be asked to find out all legality quirks
         /// </summary>
         /// <param name="pk">PKM to modify</param>
@@ -274,12 +242,9 @@ namespace PKHeX.Core.AutoMod
                 h.HyperTrainClear();
         }
 
-        public static void SetFriendship(this PKM pk, IEncounterable enc)
+        public static void SetFriendship(this PKM pk)
         {
-            var gen = pk.Generation <= 2 ? 7 : pk.Generation;
-            if (!HistoryVerifier.GetCanOTHandle(enc, pk, gen) || pk.Generation <= 2)
-                pk.OT_Friendship = GetBaseFriendship(gen, pk.Species);
-            else pk.CurrentFriendship = pk.Moves.Contains(218) ? 0 : 255;
+            pk.CurrentFriendship = pk.HasMove(218) ? 0 : 255;
         }
 
         public static void SetBelugaValues(this PKM pk)
@@ -299,11 +264,13 @@ namespace PKHeX.Core.AutoMod
             if (level > 10)
                 level = 10;
             if (pk is IDynamaxLevel pkm)
-                pkm.DynamaxLevel = level; // Set max dynamax level
-            if (pk is PK8 pk8)
             {
-                if (pk8.Species is (int)Species.Zacian or (int)Species.Zamazenta or (int)Species.Eternatus) // Zacian, Zamazenta and Eternatus cannot dynamax
-                    pk8.DynamaxLevel = 0;
+                if (pk is PK8 pk8)
+                {
+                    if (pk8.Species is (int)Species.Zacian or (int)Species.Zamazenta or (int)Species.Eternatus) // Zacian, Zamazenta and Eternatus cannot dynamax
+                        return;
+                }
+                pkm.DynamaxLevel = level; // Set max dynamax level
             }
         }
 
@@ -389,6 +356,7 @@ namespace PKHeX.Core.AutoMod
             pk.CurrentHandler = 1;
             pk.HT_Name = trainer.OT;
             pk.HT_Gender = trainer.Gender;
+            pk.SetHTLanguage();
             pk.SetSuggestedMemories();
         }
 
@@ -462,22 +430,6 @@ namespace PKHeX.Core.AutoMod
                 case (int)Species.Zeraora:
                     pk.MetDate = new DateTime(2020, 06, 30);
                     break;
-            }
-        }
-
-        public static void ApplyMiscFixes(this PKM pk, IEncounterable enc)
-        {
-            if (new LegalityAnalysis(pk).Valid)
-                return;
-
-            var match = new LegalInfo(pk).EncounterMatch;
-            // Ingame Trade OT
-            if (match is EncounterTrade t & pk.Generation <= 2)
-            {
-                if (pk.Format <= 2)
-                    pk.OT_Name = StringConverter12.G1TradeOTStr;
-                else 
-                    pk.OT_Name = ((EncounterTrade)match).GetOT(pk.Language);
             }
         }
     }

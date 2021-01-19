@@ -61,10 +61,12 @@ namespace PKHeX.Core.AutoMod
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
+            var timer = Stopwatch.StartNew();
             var gamelist = FilteredGameList(template, destVer);
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
-            var timer = Stopwatch.StartNew();
+            var criteria = EncounterCriteria.GetCriteria(set);
+            
             foreach (var enc in encounters)
             {
                 // Return out if set times out
@@ -76,15 +78,17 @@ namespace PKHeX.Core.AutoMod
                 }
 
                 // Look before we leap -- don't waste time generating invalid / incompatible junk.
-                if (!IsEncounterValid(set, enc, isHidden, destVer, out var ver))
+                if (!IsEncounterValid(set, enc, isHidden, destVer))
                     continue;
 
                 // Create the PKM from the template.
-                var tr = GetTrainer(regen, ver, enc.Generation);
-                var raw = enc.ConvertToPKM(tr);
+                var tr = GetTrainer(regen, enc.Version, enc.Generation);
+                var raw = enc.ConvertToPKM(tr, criteria);
                 raw = raw.SanityCheckLocation(enc);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);
+
+                raw.PreSetPIDIV(enc, set.Shiny);
 
                 // Bring to the target generation, then apply final details.
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
@@ -178,11 +182,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="destVer">version to generate in</param>
         /// <param name="ver">version of enc/destVer</param>
         /// <returns>if the encounter is valid or not</returns>
-        private static bool IsEncounterValid(IBattleTemplate set, IEncounterable enc, bool isHidden, GameVersion destVer, out GameVersion ver)
+        private static bool IsEncounterValid(IBattleTemplate set, IEncounterable enc, bool isHidden, GameVersion destVer)
         {
-            // initialize out vars (not calculating here to save time)
-            ver = GameVersion.Any;
-
             // Don't process if encounter min level is higher than requested level
             if (enc.LevelMin > set.Level)
             {
@@ -241,37 +242,39 @@ namespace PKHeX.Core.AutoMod
         private static void ApplySetDetails(PKM pk, IBattleTemplate set, PKM unconverted, ITrainerInfo handler, IEncounterable enc, RegenSet regen)
         {
             int Form = set.Form;
+            var language = regen.Extra.Language;
             var pidiv = MethodFinder.Analyze(pk);
             var abilitypref = GetAbilityPreference(pk, enc);
-            var language = regen.Extra.Language;
 
-            pk.SetVersion(unconverted); // Preemptive Version setting
-            pk.SetLanguage(language);
             pk.SetSpeciesLevel(set, Form, enc, language);
-            pk.SetRecordFlags(set.Moves);
-            pk.SetMovesEVs(set);
-            pk.SetHandlerandMemory(handler);
-            pk.SetNatureAbility(set, abilitypref);
-            pk.GetSuggestedTracker();
-            pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, unconverted);
             pk.SetHeldItem(set);
+
+            // Actions that do not affect set legality
+            pk.SetHandlerandMemory(handler);
+            pk.SetFriendship();
+            pk.SetRecordFlags(set.Moves);
+            pk.GetSuggestedTracker();
+            pk.SetDynamaxLevel();
+
+            // Legality Fixing
+            pk.SetMovesEVs(set);
+            pk.SetCorrectMetLevel();
+            pk.SetNatureAbility(set, abilitypref);
+            pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, enc);
             pk.SetHyperTrainingFlags(set); // Hypertrain
-            pk.SetEncryptionConstant(enc);
-            pk.FixFatefulFlag(enc);
             pk.SetShinyBoolean(set.Shiny, enc, regen.Extra.ShinyType);
             pk.FixGender(set);
+
+            // Final tweaks
             pk.SetSuggestedRibbons(SetAllLegalRibbons);
-            pk.SetSuggestedMemories();
-            pk.SetHTLanguage();
-            pk.SetDynamaxLevel();
-            pk.SetFriendship(enc);
             pk.SetBelugaValues();
             pk.FixEdgeCases();
+
+            // Aesthetics
             pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, regen.Extra.Ball);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.ApplyHeightWeight(enc);
             pk.ApplyBattleVersion(handler);
-            pk.ApplyMiscFixes(enc);
 
             // Extra legality unchecked by PKHeX
             pk.SetDatelocks(enc);
@@ -382,67 +385,6 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Set Version override for GSC and RBY games
-        /// </summary>
-        /// <param name="pk">Return PKM</param>
-        /// <param name="original">Generated PKM</param>
-        private static void SetVersion(this PKM pk, PKM original)
-        {
-            switch (original.Version)
-            {
-                case (int)GameVersion.SWSH:
-                    pk.Version = (int)GameVersion.SW;
-                    break;
-                case (int)GameVersion.GG:
-                    pk.Version = (int)GameVersion.GP;
-                    break;
-                case (int)GameVersion.USUM:
-                    pk.Version = (int)GameVersion.US;
-                    break;
-                case (int)GameVersion.SM:
-                    pk.Version = (int)GameVersion.SN;
-                    break;
-                case (int)GameVersion.ORAS:
-                    pk.Version = (int)GameVersion.OR;
-                    break;
-                case (int)GameVersion.XY:
-                    pk.Version = (int)GameVersion.X;
-                    break;
-                case (int)GameVersion.B2W2:
-                    pk.Version = (int)GameVersion.B2;
-                    break;
-                case (int)GameVersion.BW:
-                    pk.Version = (int)GameVersion.B;
-                    break;
-                case (int)GameVersion.DP:
-                case (int)GameVersion.DPPt:
-                    pk.Version = (int)GameVersion.D;
-                    break;
-                case (int)GameVersion.COLO:
-                case (int)GameVersion.XD:
-                    pk.Version = (int)GameVersion.CXD;
-                    break;
-                case (int)GameVersion.RS:
-                case (int)GameVersion.RSE:
-                    pk.Version = (int)GameVersion.R;
-                    break;
-                case (int)GameVersion.GSC:
-                    pk.Version = (int)GameVersion.C;
-                    break;
-                case (int)GameVersion.RBY:
-                    pk.Version = (int)GameVersion.RD;
-                    break;
-                case (int)GameVersion.UM when original.Species == (int)Species.Greninja && original.Form == 1:
-                case (int)GameVersion.US when original.Species == (int)Species.Greninja && original.Form == 1:
-                    pk.Version = (int)GameVersion.SN; // Ash-Greninja
-                    break;
-                default:
-                    pk.Version = original.Version;
-                    break;
-            }
-        }
-
-        /// <summary>
         /// Sets past-generation Pokemon as Battle Ready for games that support it
         /// </summary>
         /// <param name="pk">Return PKM</param>
@@ -533,17 +475,9 @@ namespace PKHeX.Core.AutoMod
         /// <param name="method"></param>
         /// <param name="hpType"></param>
         /// <param name="original"></param>
-        private static void SetIVsPID(this PKM pk, IBattleTemplate set, PIDType method, int hpType, PKM original)
+        private static void SetIVsPID(this PKM pk, IBattleTemplate set, PIDType method, int hpType, IEncounterable enc)
         {
-            // Useful Values for computation
-            int Species = pk.Species;
-            int Nature = pk.Nature;
-            int Gender = pk.Gender;
-            int AbilityNumber = pk.AbilityNumber; // 1,2,4 (HA)
-
-            // Find the encounter
-            var li = EncounterFinder.FindVerifiedEncounter(original);
-            if (li.EncounterMatch is MysteryGift mg)
+            if (enc is MysteryGift mg)
             {
                 var ivs = pk.IVs;
                 for (int i = 0; i < mg.IVs.Length; i++)
@@ -556,85 +490,49 @@ namespace PKHeX.Core.AutoMod
             }
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
-            if (li.EncounterMatch is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
+            
+            if (enc.Generation is 3 or 4)
             {
-                var e = (EncounterStatic)li.EncounterMatch;
-                if (AbilityNumber == 4 && e.Ability is 0 or 1 or 2)
-                    return;
-
-                var pk8 = (PK8)pk;
-                switch (e)
-                {
-                    case EncounterStatic8NC c: FindNestPIDIV(pk8, c, set.Shiny); break;
-                    case EncounterStatic8ND c: FindNestPIDIV(pk8, c, set.Shiny); break;
-                    case EncounterStatic8N c: FindNestPIDIV(pk8, c, set.Shiny); break;
-                    case EncounterStatic8U c: FindNestPIDIV(pk8, c, set.Shiny); break;
-                }
-            }
-            else if (pk.Generation > 4 || pk.VC)
-            {
-                if (Species == 658 && pk.Form == 1)
-                    pk.IVs = new[] { 20, 31, 20, 31, 31, 20 };
-                switch (li.EncounterMatch)
-                {
-                    case WC6 { PIDType: Shiny.FixedValue }:
-                    case WC7 { PIDType: Shiny.FixedValue }:
-                    case WC8 { PIDType: Shiny.FixedValue }:
-                        return;
-                }
-
-                if (pk.Version >= 24)
-                    return; // Don't even bother changing IVs for Gen 6+ because why bother
-
-                if (method == PIDType.G5MGShiny)
-                    return; // Don't bother
-
-                var origpid = pk.PID;
-                pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
-                if (!li.EncounterMatch.Equals(EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch))
-                    pk.PID = origpid; // Bad things happen when you change the PID!
-                if (li.Generation != 5)
-                    return;
-                if (pk is PK5 { NPokémon: true })
-                    return;
-                var exception = li.EncounterMatch is EncounterStatic5 s && (s.Gift || s.Roaming || s.Ability == 4 || s.Location == 75);
-
-                while (true)
-                {
-                    var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
-                    var base_species = li.EncounterMatch.Species;
-                    var valid_base_gender = true;
-                    if (Legal.FixedGenderFromBiGender.Contains(base_species) && pk.Gender != 2)
-                        valid_base_gender = PKX.GetGenderFromPID(base_species, pk.EncryptionConstant) == Gender;
-                    if ((result == 0 || exception) && valid_base_gender)
-                        break;
-                    pk.PID = PKX.GetRandomPID(Util.Rand, Species, Gender, pk.Version, Nature, pk.Format, pk.PID);
-                }
-            }
-            else // Generation 3 and 4
-            {
-                var encounter = li.EncounterMatch;
-                switch (encounter)
+                switch (enc)
                 {
                     case PCD d:
                         {
                             if (d.Gift.PK.PID != 1)
                                 pk.PID = d.Gift.PK.PID;
                             else if (pk.Nature != pk.PID % 25)
-                                pk.SetPIDNature(Nature);
+                                pk.SetPIDNature(pk.Nature);
                             return;
                         }
                     case EncounterEgg:
-                        pk.SetPIDNature(Nature);
+                        pk.SetPIDNature(pk.Nature);
                         return;
                     // EncounterTrade4 doesn't have fixed PIDs, so don't early return
-                    case EncounterTrade t when encounter is EncounterTrade3 or EncounterTrade4PID or EncounterTrade4RanchGift:
+                    case EncounterTrade t:
                         t.SetEncounterTradeIVs(pk);
                         return; // Fixed PID, no need to mutate
                     default:
-                        FindPIDIV(pk, method, hpType, set.Shiny, encounter);
+                        FindPIDIV(pk, method, hpType, set.Shiny, enc);
                         ValidateGender(pk);
                         break;
+                }
+            }
+        }
+
+        private static void PreSetPIDIV(this PKM pk, IEncounterable enc, bool isShiny)
+        {
+            if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
+            {
+                var e = (EncounterStatic)enc;
+                if (pk.AbilityNumber == 4 && e.Ability is 0 or 1 or 2)
+                    return;
+
+                var pk8 = (PK8)pk;
+                switch (e)
+                {
+                    case EncounterStatic8NC c: FindNestPIDIV(pk8, c, isShiny); break;
+                    case EncounterStatic8ND c: FindNestPIDIV(pk8, c, isShiny); break;
+                    case EncounterStatic8N c: FindNestPIDIV(pk8, c, isShiny); break;
+                    case EncounterStatic8U c: FindNestPIDIV(pk8, c, isShiny); break;
                 }
             }
         }
@@ -654,7 +552,7 @@ namespace PKHeX.Core.AutoMod
             if (!UseXOROSHIRO)
                 return;
 
-            if (shiny && !(enc is EncounterStatic8U))
+            if (shiny && enc is not EncounterStatic8U)
                 return;
 
             if (pk.Species == (int)Species.Toxtricity && pk.Form != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
@@ -826,21 +724,6 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Method to fix specific fateful encounter flags
-        /// </summary>
-        /// <param name="pk">pokemon</param>
-        /// <param name="enc">encounter</param>
-        private static void FixFatefulFlag(this PKM pk, IEncounterable enc)
-        {
-            switch (enc)
-            {
-                case EncounterSlot { Version: GameVersion.XD }: // pokespot RNG is always fateful
-                    pk.FatefulEncounter = true;
-                    break;
-            }
-        }
-
-        /// <summary>
         /// Method to get preferred ability number based on the encounter. Useful for when multiple ability numbers have the same ability
         /// </summary>
         /// <param name="pk">pokemon</param>
@@ -850,8 +733,8 @@ namespace PKHeX.Core.AutoMod
         {
             return enc switch
             {
-                EncounterTrade et => et.Ability,
-                EncounterStatic es when es.Ability is not 0 and not 1 => es.Ability,
+                EncounterTrade et when et.Ability > 0 => et.Ability,
+                EncounterStatic es when es.Ability > 0 => es.Ability,
                 _ => pk.AbilityNumber,
             };
         }
@@ -862,7 +745,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon</param>
         public static void SetCorrectMetLevel(this PKM pk)
         {
-            if (pk.Met_Location is not Locations.Transfer1 and not Locations.Transfer2 and not Locations.Transfer3 and not Locations.Transfer4)
+            if (pk.Met_Location is not (Locations.Transfer1 or Locations.Transfer2 or Locations.Transfer3 or Locations.Transfer4))
                 return;
             var level = pk.Met_Level;
             if (pk.CurrentLevel <= level)
@@ -887,7 +770,9 @@ namespace PKHeX.Core.AutoMod
             if (pk.Species == (int)Species.Manaphy && pk.IsShiny)
             {
                 pk.Egg_Location = Locations.LinkTrade4;
-                pk.Met_Location = pk.Format == 4 ? (pk.HGSS ? Locations.HatchLocationHGSS : Locations.HatchLocationDPPt) : pk.Met_Location;
+                if (pk.Format != 4)
+                    return;
+                pk.Met_Location = pk.HGSS ? Locations.HatchLocationHGSS : Locations.HatchLocationDPPt;
             }
             if (pk.Species == (int)Species.Milotic && pk.Format < 5 && pk is IContestStatsMutable c) // Evolves via beauty
                 c.CNT_Beauty = 170;

@@ -45,7 +45,6 @@ namespace PKHeX.Core.AutoMod
             if (pk.Nature == set.Nature)
                 return;
             var val = Math.Min((int)Nature.Quirky, Math.Max((int)Nature.Hardy, set.Nature));
-            pk.SetNature(val);
             if (pk.Species == (int)Species.Toxtricity)
             {
                 if (pk.Form == EvolutionMethod.GetAmpLowKeyResult(val))
@@ -55,6 +54,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
+            pk.SetNature(val);
             // Try setting the actual nature (in the event the StatNature was set instead)
             var orig = pk.Nature;
             if (orig == val)
@@ -63,12 +63,12 @@ namespace PKHeX.Core.AutoMod
             var la = new LegalityAnalysis(pk);
             pk.Nature = val;
             var la2 = new LegalityAnalysis(pk);
-            var enc1 = la.EncounterOriginal;
-            var enc2 = la2.EncounterOriginal;
-            if ((!ReferenceEquals(enc1, enc2) && !(enc1 is EncounterEgg)) || la2.Results.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
+            var enc1 = la.EncounterMatch;
+            var enc2 = la2.EncounterMatch;
+            if ((!ReferenceEquals(enc1, enc2) && enc1 is not EncounterEgg) || la2.Results.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
                 pk.Nature = orig;
-            if (pk.Format >= 8 && pk.StatNature != 12 && (pk.StatNature > 24 || pk.StatNature % 6 == 0)) // Only Serious Mint for Neutral Natures
-                pk.StatNature = 12;
+            if (pk.Format >= 8 && pk.StatNature is 0 or 6 or 18 or >= 24) // Only Serious Mint for Neutral Natures
+                pk.StatNature = (int)Nature.Serious;
         }
 
         private static void SetAbility(PKM pk, IBattleTemplate set, int preference)
@@ -94,28 +94,35 @@ namespace PKHeX.Core.AutoMod
         /// <param name="lang">Language to apply</param>
         public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, int Form, IEncounterable enc, LanguageID? lang = null)
         {
-            var updatevalues = pk.Species != set.Species;
-            if (updatevalues)
-                pk.Species = set.Species;
             pk.ApplySetGender(set);
+
+            var evolutionRequired = pk.Species != set.Species;
+            if (evolutionRequired)
+                pk.Species = set.Species;
             if (Form != pk.Form)
                 pk.SetForm(Form);
             pk.SetFormArgument(enc);
-            if (updatevalues)
+            if (evolutionRequired)
                 pk.RefreshAbility(pk.AbilityNumber >> 1);
 
-            var usedlang = lang ?? (LanguageID) pk.Language;
+            pk.CurrentLevel = set.Level;
 
-            var gen = new LegalityAnalysis(pk).Info.Generation;
-            var nickname = Legal.GetMaxLengthNickname(gen, usedlang) < set.Nickname.Length ? set.Nickname.Substring(0, Legal.GetMaxLengthNickname(gen, usedlang)) : set.Nickname;
+            var currentlang = (LanguageID)pk.Language;
+            var finallang = lang ?? currentlang;
+            pk.Language = (int)finallang;
+
+            // check if nickname even needs to be updated
+            if (finallang == currentlang && !evolutionRequired)
+                return;
+
+            var gen = enc.Generation;
+            var maxlen = Legal.GetMaxLengthNickname(gen, finallang);
+            var nickname = set.Nickname.Length > maxlen ? set.Nickname.Substring(0, maxlen) : set.Nickname;
             if (!WordFilter.IsFiltered(nickname, out _))
                 pk.SetNickname(nickname);
             else
                 pk.ClearNickname();
-            pk.CurrentLevel = set.Level;
         }
-
-        public static void SetLanguage(this PKM pk, LanguageID? lang = null) => pk.Language = lang != null ? (int)lang : pk.Language;
 
         private static void SetFormArgument(this PKM pk, IEncounterable enc)
         {
@@ -149,26 +156,28 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Showdown Set to refer</param>
         public static void SetMovesEVs(this PKM pk, IBattleTemplate set)
         {
+            // If no moves are requested, just keep the encounter moves
             if (set.Moves[0] != 0)
                 pk.SetMoves(set.Moves, true);
-            pk.CurrentFriendship = set.Friendship;
+
+            var la = new LegalityAnalysis(pk);
+            if (la.Parsed && !pk.WasEvent)
+                pk.SetRelearnMoves(la.GetSuggestedRelearnMoves());
+
             if (pk is IAwakened pb7)
             {
                 pb7.SetSuggestedAwakenedValues(pk);
+                return;
             }
-            else
+            // In Generation 1/2 Format sets, when EVs are not specified at all, it implies maximum EVs instead!
+            // Under this scenario, just apply maximum EVs (65535).
+            if (pk is GBPKM gb && set.EVs.All(z => z == 0))
             {
-                // In Generation 1/2 Format sets, when EVs are not specified at all, it implies maximum EVs instead!
-                // Under this scenario, just apply maximum EVs (65535).
-                if (pk is GBPKM gb && set.EVs.All(z => z == 0))
-                    gb.EV_HP = gb.EV_ATK = gb.EV_DEF = gb.EV_SPC = gb.EV_SPE = gb.MaxEV;
-                else
-                    pk.EVs = set.EVs;
-                var la = new LegalityAnalysis(pk);
-                if (la.Parsed && !pk.WasEvent)
-                    pk.SetRelearnMoves(la.GetSuggestedRelearnMoves());
+                gb.EV_HP = gb.EV_ATK = gb.EV_DEF = gb.EV_SPC = gb.EV_SPE = gb.MaxEV;
+                return;
             }
-            pk.SetCorrectMetLevel();
+
+            pk.EVs = set.EVs;
         }
 
         public static void SetEncounterTradeIVs(this EncounterTrade t, PKM pk)

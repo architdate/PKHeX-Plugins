@@ -29,7 +29,7 @@ namespace PKHeX.Core.AutoMod
             if (ver <= 0)
                 return null;
 
-            if (ver >= GameVersion.RB)
+            if (!GameUtil.IsValidSavedVersion(ver))
                 return GetTrainerFromGroup(ver, lang);
 
             if (Database.TryGetValue(ver, out var list))
