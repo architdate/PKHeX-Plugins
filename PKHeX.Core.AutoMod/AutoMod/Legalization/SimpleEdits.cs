@@ -67,6 +67,38 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
+        /// Set Encryption Constant based on PKM Generation
+        /// </summary>
+        /// <param name="pk">PKM to modify</param>
+        /// <param name="enc">Encounter details</param>
+        public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
+        {
+            var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
+            if ((pk.Species == 658 && pk.Form == 1) || isRaid) // Ash-Greninja or raids
+                return;
+            int gen = pk.Generation;
+            if (gen is > 2 and < 6)
+            {
+                var ec = pk.PID;
+                pk.EncryptionConstant = ec;
+                if (pk.Format >= 6)
+                {
+                    var pidxor = ((pk.TID ^ pk.SID ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
+                    pk.PID = pidxor ? ec ^ 0x80000000 : ec;
+                }
+                return;
+            }
+            int wIndex = WurmpleUtil.GetWurmpleEvoGroup(pk.Species);
+            if (wIndex != -1)
+            {
+                pk.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
+                return;
+            }
+
+            pk.EncryptionConstant = enc is WC8 { PIDType: Shiny.FixedValue, EncryptionConstant: 0 } ? 0 : Util.Rand32();
+        }
+
+        /// <summary>
         /// Sets shiny value to whatever boolean is specified. Takes in specific shiny as a boolean. Ignores it for stuff that is gen 5 or lower. Cant be asked to find out all legality quirks
         /// </summary>
         /// <param name="pk">PKM to modify</param>

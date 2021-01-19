@@ -262,6 +262,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetNatureAbility(set, abilitypref);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, enc);
             pk.SetHyperTrainingFlags(set); // Hypertrain
+            pk.SetEncryptionConstant(enc);
             pk.SetShinyBoolean(set.Shiny, enc, regen.Extra.ShinyType);
             pk.FixGender(set);
 
