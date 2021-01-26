@@ -3393,25 +3393,6 @@ Brave Nature
 - Psycho Cut
 - Psyshock
 
-Phione
-IVs: 24 HP / 10 Atk / 30 Def / 20 SpA / 11 SpD / 11 Spe
-Ability: (None)
-Level: 53
-Sassy Nature
-- Grass Knot
-- Rain Dance
-- Rest
-
-Shaymin
-IVs: 12 HP / 9 Def / 27 SpA / 24 SpD / 30 Spe
-Ability: (None)
-Level: 48
-Naive Nature
-- Seed Flare
-- Aromatherapy
-- Substitute
-- Energy Ball
-
 Lillipup (M)
 IVs: 26 HP / 21 Atk / 19 Def / 2 SpA / 28 SpD / 3 Spe
 Ability: Vital Spirit
