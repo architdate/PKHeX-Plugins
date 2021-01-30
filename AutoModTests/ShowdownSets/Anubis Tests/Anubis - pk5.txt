@@ -1621,7 +1621,7 @@ Jolly Nature
 - Sacred Sword
 
 Tornadus (M)
-Ability: Regenerator
+Ability: Defiant
 Level: 5
 Naive Nature
 - Uproar

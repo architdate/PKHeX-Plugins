@@ -99,7 +99,7 @@ namespace PKHeX.Core.AutoMod
                 // Apply final tweaks to the data.
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
-                    if (!gmax.CanToggleGigantamax(pk.Species, enc.Species))
+                    if (!gmax.CanToggleGigantamax(pk.Species, pk.Form, enc.Species, enc.Form))
                         continue;
                     gmax.CanGigantamax = set.CanGigantamax; // soup hax
                 }
@@ -775,6 +775,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk"></param>
         private static void FixEdgeCases(this PKM pk)
         {
+            if (pk.Nickname.Length == 0)
+                pk.ClearNickname();
             // Shiny Manaphy Egg
             if (pk.Species == (int)Species.Manaphy && pk.IsShiny)
             {

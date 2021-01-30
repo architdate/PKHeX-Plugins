@@ -106,6 +106,8 @@ namespace PKHeX.Core.AutoMod
                 pk.RefreshAbility(pk.AbilityNumber >> 1);
 
             pk.CurrentLevel = set.Level;
+            if (set.Level == enc.LevelMin && (pk.Format == 3 || pk.Format == 4))
+                pk.EXP = Experience.GetEXP(enc.LevelMin + 1, PersonalTable.HGSS[enc.Species].EXPGrowth) - 1;
 
             var currentlang = (LanguageID)pk.Language;
             var finallang = lang ?? currentlang;
