@@ -188,8 +188,13 @@ namespace PKHeX.Core.AutoMod
             if (enc.LevelMin > set.Level)
             {
                 var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
-                if (!isRaid)
-                    return false;
+                if (enc is EncounterSlot6AO s)
+                {
+                    if (s.LevelMin - 4 > set.Level)
+                        return false;
+                }
+                else if (isRaid) { }
+                else return false;
             }
 
             // Don't process if encounter is HA but requested pkm is not HA
@@ -257,7 +262,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetDynamaxLevel();
 
             // Legality Fixing
-            pk.SetMovesEVs(set);
+            pk.SetMovesEVs(set, enc);
             pk.SetCorrectMetLevel();
             pk.SetNatureAbility(set, abilitypref);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, enc);
@@ -746,12 +751,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon</param>
         public static void SetCorrectMetLevel(this PKM pk)
         {
+            var lvl = pk.CurrentLevel;
+            if (pk.Met_Level > lvl)
+                pk.Met_Level = lvl;
             if (pk.Met_Location is not (Locations.Transfer1 or Locations.Transfer2 or Locations.Transfer3 or Locations.Transfer4))
                 return;
             var level = pk.Met_Level;
-            if (pk.CurrentLevel <= level)
+            if (lvl <= level)
                 return;
-            while (pk.CurrentLevel >= pk.Met_Level)
+            while (lvl >= pk.Met_Level)
             {
                 var la = new LegalityAnalysis(pk);
                 if (la.Info.Moves.All(z => z.Valid))

@@ -154,7 +154,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Showdown Set to refer</param>
-        public static void SetMovesEVs(this PKM pk, IBattleTemplate set)
+        public static void SetMovesEVs(this PKM pk, IBattleTemplate set, IEncounterable enc)
         {
             // If no moves are requested, just keep the encounter moves
             if (set.Moves[0] != 0)
@@ -162,7 +162,7 @@ namespace PKHeX.Core.AutoMod
 
             var la = new LegalityAnalysis(pk);
             if (la.Parsed && !pk.WasEvent)
-                pk.SetRelearnMoves(la.GetSuggestedRelearnMoves());
+                pk.SetRelearnMoves(la.GetSuggestedRelearnMoves(enc));
 
             if (pk is IAwakened pb7)
             {
