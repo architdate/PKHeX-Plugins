@@ -101,12 +101,25 @@ namespace PKHeX.Core.AutoMod
                 pk.Species = set.Species;
             if (Form != pk.Form)
                 pk.SetForm(Form);
+
+            // Don't allow invalid tox nature, set random nature first and then statnature later
+            if (pk.Species == (int)Species.Toxtricity)
+            {
+                while (true)
+                {
+                    var result = EvolutionMethod.GetAmpLowKeyResult(pk.Nature);
+                    if (result == pk.Form)
+                        break;
+                    pk.Nature = Util.Rand.Next(25);
+                }
+            }
+
             pk.SetFormArgument(enc);
             if (evolutionRequired)
                 pk.RefreshAbility(pk.AbilityNumber >> 1);
 
             pk.CurrentLevel = set.Level;
-            if (set.Level == enc.LevelMin && (pk.Format == 3 || pk.Format == 4))
+            if (set.Level != 100 && set.Level == enc.LevelMin && (pk.Format == 3 || pk.Format == 4))
                 pk.EXP = Experience.GetEXP(enc.LevelMin + 1, PersonalTable.HGSS[enc.Species].EXPGrowth) - 1;
 
             var currentlang = (LanguageID)pk.Language;
