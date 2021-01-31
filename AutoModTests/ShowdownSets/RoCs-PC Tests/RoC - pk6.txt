@@ -238,16 +238,6 @@ Bashful Nature
 - Spark
 - Nuzzle
 
-Pikachu-Rock-Star (F)
-IVs: 11 HP / 13 Def / 17 SpD
-Ability: Lightning Rod
-Level: 20
-Lonely Nature
-- Quick Attack
-- Electro Ball
-- Thunder Wave
-- Meteor Mash
-
 Raichu (M)
 IVs: 10 HP / 18 Atk / 22 Def / 0 SpA / 2 SpD / 19 Spe
 Ability: Static

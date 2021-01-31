@@ -1212,9 +1212,9 @@ Level: 70
 - Barrier
 - Recover
 
-Mew
-IVs: 8 HP / 13 Atk / 4 Def / 14 SpA / 14 SpD / 10 Spe
-Level: 7
+Mew @ Bitter Berry
+Level: 5
+Hardy Nature
 - Pound
 
 Chikorita (M) @ Berry
