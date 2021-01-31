@@ -201,6 +201,15 @@ namespace PKHeX.Core.AutoMod
             if (!isHidden && enc is EncounterStatic { Ability: 4 })
                 return false;
 
+            if (set.Species == (int)Species.Pikachu)
+            {
+                var form = set.Form;
+                if (enc.Generation == 6 && form != (enc is EncounterStatic ? enc.Form : 0)) 
+                    return false;
+                if (enc.Generation >= 7 && form != (enc is EncounterInvalid or EncounterEgg ? 0 : enc.Form))
+                    return false;
+            }
+
             // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
             // Don't process if Game is SWSH and requested PKM is not from the Galar Dex (Zukan8.DexLookup)
             if (GameVersion.GG.Contains(destVer))
