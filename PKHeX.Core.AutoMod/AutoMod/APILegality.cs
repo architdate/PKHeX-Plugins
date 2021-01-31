@@ -658,7 +658,7 @@ namespace PKHeX.Core.AutoMod
                 {
                     pk.EncryptionConstant = pk.PID;
                     var la = new LegalityAnalysis(pk);
-                    if (la.Info.PIDIV.Type != PIDType.CXD || !la.Info.PIDIVMatches)
+                    if (la.Info.PIDIV.Type != PIDType.CXD || !la.Info.PIDIVMatches || !pk.IsValidGenderPID(enc))
                         continue;
                 }
 

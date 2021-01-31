@@ -151,6 +151,40 @@ namespace PKHeX.Core.AutoMod
                 pk.Gender = pk.GetSaneGender();
         }
 
+        public static bool IsValidGenderPID(this PKM pkm, IEncounterable enc)
+        {
+            bool genderValid = pkm.IsGenderValid();
+            if (!genderValid)
+                return IsValidGenderMismatch(pkm);
+
+            // check for mixed->fixed gender incompatibility by checking the gender of the original species
+            int original = enc.Species;
+            if (Legal.FixedGenderFromBiGender.Contains(original))
+                return IsValidFixedGenderFromBiGender(pkm, original);
+
+            return true;
+        }
+
+        private static bool IsValidFixedGenderFromBiGender(PKM pkm, int original)
+        {
+            var current = pkm.Gender;
+            if (current == 2) // shedinja, genderless
+                return true;
+            var gender = PKX.GetGenderFromPID(original, pkm.EncryptionConstant);
+            return gender == current;
+        }
+
+        private static bool IsValidGenderMismatch(PKM pkm) => pkm.Species switch
+        {
+            // Shedinja evolution gender glitch, should match original Gender
+            (int)Species.Shedinja when pkm.Format == 4 => pkm.Gender == PKX.GetGenderFromPIDAndRatio(pkm.EncryptionConstant, 0x7F), // 50M-50F
+
+            // Evolved from Azurill after transferring to keep gender
+            (int)Species.Marill or (int)Species.Azumarill when pkm.Format >= 6 => pkm.Gender == 1 && (pkm.EncryptionConstant & 0xFF) > 0x3F,
+
+            _ => false
+        };
+
         /// <summary>
         /// Set Moves, EVs and Items for a specific PKM. These should not affect legality after being vetted by GeneratePKMs
         /// </summary>
