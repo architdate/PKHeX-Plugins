@@ -866,16 +866,6 @@ Hardy Nature
 - Bonemerang
 - Focus Energy
 
-Marowak-Alola-Totem (F)
-IVs: 22 HP / 11 Atk / 0 Spe
-Ability: Rock Head
-Level: 25
-Lonely Nature
-- Leer
-- Hex
-- Bonemerang
-- Will-O-Wisp
-
 Lickitung (M) @ Lagging Tail
 IVs: 17 HP / 22 Atk / 27 Def / 8 SpA / 6 SpD / 9 Spe
 Ability: Own Tempo

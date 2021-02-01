@@ -48,3 +48,13 @@ Hardy Nature
 - Strength
 - Rock Smash
 - Rock Climb
+
+Pichu-Spiky (F) @ Zap Plate
+IVs: 16 HP / 29 Atk / 30 Def / 18 SpD / 9 Spe
+Ability: Static
+Level: 30
+Naughty Nature
+- Helping Hand
+- Volt Tackle
+- Swagger
+- Pain Split

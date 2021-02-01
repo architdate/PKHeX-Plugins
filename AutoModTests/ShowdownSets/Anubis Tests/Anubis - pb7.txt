@@ -438,15 +438,6 @@ Bold Nature
 - Dragon Rage
 - Bind
 
-Xander (Eevee-Starter) (M)
-Ability: Adaptability
-Level: 42
-Bashful Nature
-- Double-Edge
-- Glitzy Glow
-- Sparkly Swirl
-- Quick Attack
-
 Snorlax (M)
 IVs: 24 HP / 11 Def / 24 Spe
 Ability: Thick Fat

@@ -144,6 +144,15 @@ Bold Nature
 - Tail Whip
 - Bubble
 
+Pikachu-Original (M) @ Naive Mint
+EVs: 6 Atk / 252 SpA / 252 Spe
+Ability: Static
+Hardy Nature
+- Fake Out
+- Knock Off
+- Volt Switch
+- Surf
+
 Squirtle (M)
 IVs: 0 Atk / 26 SpA
 EVs: 6 Def / 252 SpA / 252 Spe
@@ -14702,6 +14711,29 @@ Rash Nature
 - Shift Gear
 - Overdrive
 - Boomburst
+- Drain Punch
+
+Toxtricity (M) @ Flame Orb
+IVs: 13 SpD
+Ability: Punk Rock
+Level: 60
+Gigantamax: Yes
+Shiny: Yes
+Timid Nature
+- Overdrive
+- Boomburst
+- Sludge Wave
+- Hex
+
+UnderdarkFox (Toxtricity-Low-Key) (M) @ Life Orb
+EVs: 6 Atk / 252 SpA / 252 Spe
+Ability: Punk Rock
+Gigantamax: Yes
+Shiny: Yes
+Naive Nature
+- Overdrive
+- Sludge Wave
+- Fire Punch
 - Drain Punch
 
 Sizzlipede (M)

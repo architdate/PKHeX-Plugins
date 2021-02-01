@@ -1773,16 +1773,6 @@ Careful Nature
 - Thunder Shock
 - Charm
 
-Pichu-Spiky (F) @ Zap Plate
-IVs: 16 HP / 29 Atk / 30 Def / 18 SpD / 9 Spe
-Ability: Static
-Level: 30
-Naughty Nature
-- Helping Hand
-- Volt Tackle
-- Swagger
-- Pain Split
-
 Cleffa (F)
 IVs: 24 HP / 30 Atk / 1 Def / 10 SpA / 12 SpD / 30 Spe
 Ability: Magic Guard
