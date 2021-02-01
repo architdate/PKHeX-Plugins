@@ -274,9 +274,14 @@ namespace PKHeX.Core.AutoMod
                 h.HyperTrainClear();
         }
 
-        public static void SetFriendship(this PKM pk)
+        public static void SetFriendship(this PKM pk, IEncounterable enc)
         {
-            pk.CurrentFriendship = pk.HasMove(218) ? 0 : 255;
+            bool neverOT = !HistoryVerifier.GetCanOTHandle(enc, pk, enc.Generation);
+            if (enc.Generation <= 2)
+                pk.OT_Friendship = GetBaseFriendship(7, pk.Species, pk.Form);  // VC transfers use SM personal info
+            else if(neverOT)
+                pk.OT_Friendship = GetBaseFriendship(enc.Generation, enc.Species, enc.Form);
+            else pk.CurrentFriendship = pk.HasMove(218) ? 0 : 255;
         }
 
         public static void SetBelugaValues(this PKM pk)
@@ -352,7 +357,7 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static int GetBaseFriendship(int gen, int species)
+        private static int GetBaseFriendship(int gen, int species, int form)
         {
             return gen switch
             {
@@ -361,7 +366,7 @@ namespace PKHeX.Core.AutoMod
 
                 6 => PersonalTable.AO[species].BaseFriendship,
                 7 => PersonalTable.USUM[species].BaseFriendship,
-                8 => PersonalTable.SWSH[species].BaseFriendship,
+                8 => PersonalTable.SWSH.GetFormEntry(species, form).BaseFriendship,
                 _ => throw new IndexOutOfRangeException(),
             };
         }

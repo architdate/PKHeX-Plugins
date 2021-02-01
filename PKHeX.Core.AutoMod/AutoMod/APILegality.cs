@@ -269,7 +269,7 @@ namespace PKHeX.Core.AutoMod
 
             // Actions that do not affect set legality
             pk.SetHandlerandMemory(handler);
-            pk.SetFriendship();
+            pk.SetFriendship(enc);
             pk.SetRecordFlags(set.Moves);
             pk.GetSuggestedTracker();
             pk.SetDynamaxLevel();
