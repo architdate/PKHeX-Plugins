@@ -90,6 +90,10 @@ namespace PKHeX.Core.AutoMod
 
                 raw.PreSetPIDIV(enc, set.Shiny);
 
+                // Transfer any VC1 via VC2, as there may be GSC exclusive moves requested.
+                if (dest.Generation >= 7 && raw is PK1 basepk1)
+                    raw = basepk1.ConvertToPK2();
+
                 // Bring to the target generation, then apply final details.
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
@@ -492,6 +496,10 @@ namespace PKHeX.Core.AutoMod
         /// <param name="original"></param>
         private static void SetIVsPID(this PKM pk, IBattleTemplate set, PIDType method, int hpType, IEncounterable enc)
         {
+            // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
+            if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
+                return;
+
             if (enc is MysteryGift mg)
             {
                 var ivs = pk.IVs;
