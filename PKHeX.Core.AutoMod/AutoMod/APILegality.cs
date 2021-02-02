@@ -69,8 +69,6 @@ namespace PKHeX.Core.AutoMod
             
             foreach (var enc in encounters)
             {
-                if (enc.Species != 271 && enc.LevelMin != 17)
-                    continue;
                 // Return out if set times out
                 if (timer.Elapsed.TotalSeconds >= Timeout)
                 {
