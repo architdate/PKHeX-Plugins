@@ -130,6 +130,8 @@ namespace PKHeX.Core.AutoMod
 
             var currentlang = (LanguageID)pk.Language;
             var finallang = lang ?? currentlang;
+            if (finallang == LanguageID.Hacked)
+                finallang = LanguageID.English;
             pk.Language = (int)finallang;
 
             // check if nickname even needs to be updated
