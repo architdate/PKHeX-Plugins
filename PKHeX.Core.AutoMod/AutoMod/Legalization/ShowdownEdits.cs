@@ -123,6 +123,8 @@ namespace PKHeX.Core.AutoMod
                 pk.RefreshAbility(pk.AbilityNumber >> 1);
 
             pk.CurrentLevel = set.Level;
+            if (pk.Met_Level > pk.CurrentLevel)
+                pk.Met_Level = pk.CurrentLevel;
             if (set.Level != 100 && set.Level == enc.LevelMin && (pk.Format == 3 || pk.Format == 4))
                 pk.EXP = Experience.GetEXP(enc.LevelMin + 1, PersonalTable.HGSS[enc.Species].EXPGrowth) - 1;
 
@@ -215,7 +217,10 @@ namespace PKHeX.Core.AutoMod
 
             var la = new LegalityAnalysis(pk);
             if (la.Parsed && !pk.WasEvent)
-                pk.SetRelearnMoves(la.GetSuggestedRelearnMoves(enc));
+            {
+                pk.ClearRelearnMoves();
+                pk.SetRelearnMoves(new LegalityAnalysis(pk).GetSuggestedRelearnMoves(enc));
+            }
 
             if (pk is IAwakened pb7)
             {

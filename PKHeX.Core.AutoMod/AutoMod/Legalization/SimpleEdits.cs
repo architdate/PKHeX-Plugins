@@ -184,6 +184,10 @@ namespace PKHeX.Core.AutoMod
             while (true)
             {
                 pk.PID = PKX.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, pk.PID);
+                if (shiny == Shiny.AlwaysSquare && pk.ShinyXor != 0)
+                    continue;
+                if (shiny == Shiny.AlwaysStar && pk.ShinyXor == 0)
+                    continue;
                 validg5sid = pk.SID & 1;
                 pk.SetShinySID();
                 pk.EncryptionConstant = pk.PID;
