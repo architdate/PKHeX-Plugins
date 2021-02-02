@@ -35,18 +35,19 @@ namespace AutoModTests
             return result;
         }
 
-        private static GameVersion[] GetGameVersionsToTest(int gen)
+        private static GameVersion[] GetGameVersionsToTest(KeyValuePair<string, int> entry)
         {
-            return gen switch
+            var transfer = !entry.Key.Contains("notransfer");
+            return entry.Value switch
             {
-                -1 => new[] { SW, GP },
-                1 => new[] { RD , C },
+               -1 => transfer ? new[] { SW, GP } : new[] { GE },
+                1 => transfer ? new[] { RD , C } : new[] { RD },
                 2 => new[] { C },
-                3 => new[] { SW, US, SN, OR, X, B2, B, Pt, E },
-                4 => new[] { SW, US, SN, OR, X, B2, B, Pt },
-                5 => new[] { SW, US, SN, OR, X, B2 },
-                6 => new[] { SW, US, SN, OR },
-                7 => new[] { SW, US },
+                3 => transfer ? new[] { SW, US, SN, OR, X, B2, B, Pt, E } : new[] { E },
+                4 => transfer ? new[] { SW, US, SN, OR, X, B2, B, Pt } : new[] { Pt },
+                5 => transfer ? new[] { SW, US, SN, OR, X, B2 } : new[] { B2 },
+                6 => transfer ? new[] { SW, US, SN, OR } : new[] { OR },
+                7 => transfer ? new[] { SW, US } : new[] { US },
                 8 => new[] { SW },
                 _ => new[] { SW }
             };
@@ -115,7 +116,7 @@ namespace AutoModTests
             APILegality.Timeout = 99999;
             foreach (var entry in structure)
             {
-                var gens = GetGameVersionsToTest(entry.Value);
+                var gens = GetGameVersionsToTest(entry);
                 var file = entry.Key;
                 var res = VerifyFile(file, gens);
                 result.Add(file, res);
@@ -148,7 +149,8 @@ namespace AutoModTests
                     testfailed = true;
                     msg += string.Join("\n\n", sets["illegal"].Select(x => x.Text));
                 }
-                File.WriteAllText(path, msg);
+                if (msg.Trim() != string.Empty)
+                    File.WriteAllText(path, msg);
             }
 
             var sb = new StringBuilder();
