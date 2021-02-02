@@ -14,16 +14,16 @@ namespace AutoModPlugins
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
             var ctrl = new ToolStripMenuItem(Name) { Image = Resources.exportboxtoshowdown };
-            ctrl.Click += (s, e) => Export(SaveFileEditor.SAV);
+            ctrl.Click += (s, e) => Export(SaveFileEditor);
             ctrl.Name = "Menu_ExportBoxtoShowdown";
             modmenu.DropDownItems.Add(ctrl);
         }
 
-        private static void Export(SaveFile sav)
+        private static void Export(ISaveFileProvider provider)
         {
             try
             {
-                var str = sav.GetRegenSetsFromBoxCurrent();
+                var str = provider.GetRegenSetsFromBoxCurrent();
                 if (string.IsNullOrWhiteSpace(str))
                     return;
                 Clipboard.SetText(str);
