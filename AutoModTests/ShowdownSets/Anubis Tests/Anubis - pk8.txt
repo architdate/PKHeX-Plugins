@@ -93,6 +93,16 @@ Adamant Nature
 - Slash
 - Seismic Toss
 
+Charizard (M)
+Ability: Solar Power
+Gigantamax: Yes
+Language: Japanese
+=OT_Name=メガトウキョ
+Level: 36
+Shiny: Yes
+Hasty Nature
+- Hold Hands
+
 Solaire (Charizard) (M)
 IVs: 0 Atk
 EVs: 6 Def / 252 SpA / 252 Spe
@@ -2172,18 +2182,6 @@ Bold Nature
 - Toxic Spikes
 - Pain Split
 
-Weezing (F)
-IVs: 14 Atk
-EVs: 252 HP / 252 Def / 6 SpA
-Ability: Neutralizing Gas
-Level: 50
-Shiny: Yes
-Bold Nature
-- Clear Smog
-- Flamethrower
-- Pain Split
-- Will-O-Wisp
-
 Weezing-Galar (M) @ Black Sludge
 IVs: 0 Atk
 EVs: 212 HP / 252 SpA / 46 Spe
@@ -2194,34 +2192,11 @@ Modest Nature
 - Fire Blast
 - Toxic Spikes
 
-Weezing-Galar (F) @ Black Sludge
-IVs: 0 Atk
-EVs: 252 HP / 212 Def / 46 Spe
-Ability: Levitate
-Shiny: Yes
-Bold Nature
-- Strange Steam
-- Defog
-- Will-O-Wisp
-- Toxic Spikes
-
-Rhyhorn (M)
-IVs: 4 Def
-Ability: Reckless
-Level: 1
-Modest Nature
-- Tackle
-- Tail Whip
-
-Rhydon (M) @ Protector
-IVs: 0 SpA
-EVs: 252 HP / 252 Atk / 6 SpD
-Ability: Rock Head
-Adamant Nature
-- Horn Drill
-- Earthquake
-- Stomp
-- Rock Blast
+Weezing-Galar
+Level: 35
+Shiny: Square
+Ball: Master Ball
+=Met_Location=50
 
 Rhydon (M) @ Protector
 IVs: 11 SpA
@@ -2237,6 +2212,7 @@ Rhydon (M)
 IVs: 11 SpA
 EVs: 252 HP / 252 Atk / 6 SpD
 Ability: Rock Head
+Ball: Master Ball
 Shiny: Yes
 Adamant Nature
 - Earthquake
@@ -2674,26 +2650,6 @@ Adamant Nature
 - Waterfall
 - Bounce
 
-Lapras (M)
-IVs: 14 HP / 9 Atk
-Ability: Shell Armor
-Level: 59
-Bashful Nature
-- Water Pulse
-- Brine
-- Hydro Pump
-- Ice Beam
-
-Lapras (F) @ Heavy-Duty Boots
-IVs: 0 Atk
-EVs: 250 HP / 8 Def / 252 SpD
-Ability: Water Absorb
-Calm Nature
-- Freeze-Dry
-- Surf
-- Rest
-- Sleep Talk
-
 Lapras (F) @ Naive Mint
 IVs: 0 Atk
 EVs: 252 HP / 252 SpA / 6 Spe
@@ -2706,18 +2662,6 @@ Modest Nature
 - Sparkling Aria
 - Hyper Voice
 
-Lapras (M) @ Life Orb
-IVs: 11 Atk
-EVs: 212 HP / 4 Def / 198 SpA / 4 SpD / 92 Spe
-Ability: Shell Armor
-Gigantamax: Yes
-Shiny: Yes
-Modest Nature
-- Hydro Pump
-- Protect
-- Freeze-Dry
-- Thunder
-
 Lapras (M)
 IVs: 0 Spe
 EVs: 116 HP / 252 Atk / 142 SpD
@@ -2729,6 +2673,17 @@ Brave Nature
 - Aqua Tail
 - Avalanche
 - Curse
+
+Lapras (M)
+IVs: 0 Atk
+Ability: Water Absorb
+Timid Nature
+Gigantamax: Yes
+=Met_Location=40038
+- Surf
+- Ice Beam
+- Ancient Power
+- Bulldoze
 
 Ditto @ Master Ball
 EVs: 2 HP / 2 Atk / 6 Def
@@ -7212,6 +7167,16 @@ Careful Nature
 - Hypnosis
 - Dream Eater
 
+Spiritomb
+Ability: Infiltrator
+Ball: Master Ball
+Shiny: Yes
+Bold Nature
+IVs: 0 Atk
+.RibbonMarkAngry=True
+=Met_Location=230
+- Shadow Sneak
+
 Gible (M) @ Ability Patch
 IVs: 11 SpA
 EVs: 2 Def
@@ -9674,6 +9639,9 @@ Bold Nature
 - Destiny Bond
 - Water Spout
 
+Jellicent (M)
+=Met_Location=30012
+
 Shui Gui (Jellicent) (M) @ Leftovers
 IVs: 0 Atk
 EVs: 252 HP / 160 Def / 98 Spe
@@ -9684,40 +9652,6 @@ Bold Nature
 - Will-O-Wisp
 - Recover
 - Taunt
-
-Jellicent (M)
-IVs: 2 Atk
-EVs: 252 HP / 174 Def / 84 Spe
-Ability: Water Absorb
-Level: 51
-Shiny: Yes
-Bold Nature
-- Taunt
-- Will-O-Wisp
-- Recover
-- Hex
-
-Jellicent (M)
-EVs: 252 HP / 8 Def / 250 SpD
-Ability: Cursed Body
-Level: 50
-Shiny: Yes
-Bold Nature
-- Scald
-- Toxic
-- Recover
-- Hex
-
-Smuckers (Jellicent) (M)
-IVs: 0 Atk
-EVs: 252 HP / 4 Def / 252 SpD
-Ability: Cursed Body
-Shiny: Yes
-Calm Nature
-- Toxic
-- Scald
-- Recover
-- Acid Armor
 
 Joltik (M) @ Relaxed Mint
 IVs: 28 HP / 0 Atk / 7 SpA / 22 SpD / 0 Spe
@@ -15053,10 +14987,24 @@ Alcremie (F)
 IVs: 12 HP / 18 Spe
 Ability: Aroma Veil
 Level: 50
+Ball: Master Ball
 Jolly Nature
 - Dazzling Gleam
 - Draining Kiss
 - Tackle
+- Entrainment
+
+Alcremie-Rainbow (F)
+IVs: 0 Atk
+.FormArgument=6
+Ability: Sweet Veil
+Shiny: Yes
+Level: 50
+Gigantamax: Yes
+Modest Nature
+- Dazzling Gleam
+- Recover
+- Misty Terrain
 - Entrainment
 
 Falinks @ Dream Ball

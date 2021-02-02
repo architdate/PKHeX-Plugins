@@ -13,6 +13,7 @@ Magmar (M)
 IVs: 0 Atk / 30 SpA
 Ability: Flame Body
 Level: 30
+Ball: Cherish Ball
 Modest Nature
 - Incinerate
 - Rock Smash
@@ -32,6 +33,7 @@ Adamant Nature
 Eevee (M)
 IVs: 26 HP / 0 Atk / 24 Def / 0 SpA / 14 SpD / 0 Spe
 Ability: Anticipation
+Ball: Cherish Ball
 Level: 15
 Shiny: Yes
 Bashful Nature
@@ -60,6 +62,17 @@ Calm Nature
 - Hidden Power [Ice]
 - Tailwind
 - Roost
+
+Mewtwo
+Ability: Unnerve
+=OT_Name=Play! 2016
+Shiny: Yes
+Ball: Cherish Ball
+Timid Nature
+- Psystrike
+- Psychic
+- Recover
+- Aura Sphere
 
 ミラージュ (Mew)
 IVs: 28 Atk

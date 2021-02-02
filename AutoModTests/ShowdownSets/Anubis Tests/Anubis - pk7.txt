@@ -3374,6 +3374,16 @@ Calm Nature
 - Liquidation
 - Icicle Spear
 
+Corsola (F)
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ability: Hustle
+=Met_Location=40049
+Language: Japanese
+Level: 51
+Serious Nature
+- Tackle
+- Power Gem
+
 Remoraid (F)
 IVs: 13 Atk / 6 Def
 Ability: Moody

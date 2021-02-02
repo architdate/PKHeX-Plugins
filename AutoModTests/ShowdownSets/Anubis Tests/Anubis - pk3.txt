@@ -1051,3 +1051,14 @@ Mild Nature
 - Pursuit
 - Psychic
 - Swift
+
+Deoxys-Speed
+IVs: 30 HP / 0 Atk
+Ability: Pressure
+Level: 30
+Shiny: Yes
+Calm Nature
+- Seismic Toss
+- Mud-Slap
+- Counter
+- Mimic

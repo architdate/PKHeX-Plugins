@@ -228,6 +228,28 @@ Bold Nature
 - Whirlwind
 - Assurance
 
+Togepi (M)
+IVs: 4 Atk / 30 SpA / 30 Spe
+Ability: Serene Grace
+Level: 1
+Shiny: Yes
+Timid Nature
+- Growl
+- Charm
+- Extrasensory
+- Mud-Slap
+
+Togetic (M)
+IVs: 4 Atk / 30 SpA / 30 Spe
+Ability: Serene Grace
+Level: 2
+Shiny: Yes
+Timid Nature
+- Ominous Wind
+- Silver Wind
+- Extrasensory
+- Twister
+
 Raikou @ Micle Berry
 IVs: 30 Atk / 30 Def
 Ability: Pressure
@@ -312,6 +334,17 @@ Hasty Nature
 - Sunny Day
 - Explosion
 
+Shiftry (F)
+IVs: 27 Atk
+Ability: Early Bird
+Level: 38
+Shiny: Yes
+Hasty Nature
+- Synthesis
+- Knock Off
+- Sucker Punch
+- Hidden Power [Dark]
+
 Wingull (F)
 Ability: Keen Eye
 Level: 1
@@ -352,6 +385,34 @@ Rash Nature
 - Switcheroo
 - Stockpile
 - Assurance
+
+Froslass (F)
+IVs: 4 HP / 20 Atk / 18 Def / 23 SpA / 2 Spe
+Ability: Snow Cloak
+Level: 20
+Timid Nature
+- Water Pulse
+- Sing
+- Bite
+- Icy Wind
+
+Gliscor
+Level: 11
+Shiny: Yes
+Ball: Master Ball
+- Dream Eater
+
+Gallade (M)
+IVs: 15 SpA
+Ability: Steadfast
+Ball: Master Ball
+Level: 6
+Shiny: Yes
+Jolly Nature
+- Growl
+- Confusion
+- Double Team
+- Teleport
 
 Latias (F)
 Ability: Levitate
