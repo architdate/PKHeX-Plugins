@@ -1700,7 +1700,6 @@ Genesect
 IVs: 0 Atk
 Ability: Download
 Level: 50
-=Version=21
 =OT_Name=Ｐ２ラボ
 Language: Japanese
 Timid Nature
