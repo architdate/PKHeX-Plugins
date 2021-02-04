@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoModPlugins", "AutoLegalityMod\AutoModPlugins.csproj", "{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoModPlugins", "AutoLegalityMod\AutoModPlugins.csproj", "{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoModTests", "AutoModTests\AutoModTests.csproj", "{07D53A68-26E2-4173-84FB-B2413F505D2A}"
 EndProject
