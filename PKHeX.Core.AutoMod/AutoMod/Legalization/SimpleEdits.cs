@@ -449,28 +449,14 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">pokemon file to modify</param>
         /// <param name="enc">encounter used to generate pokemon file</param>
-        public static void SetDatelocks(this PKM pk, IEncounterable enc)
+        public static void SetDateLocks(this PKM pk, IEncounterable enc)
         {
-            pk.SetHOMEDates(enc);
-        }
-
-        /// <summary>
-        /// Sets the met date for a Pokemon HOME event (dates are serverside)
-        /// </summary>
-        /// <param name="pk">pokemon file to modify</param>
-        /// <param name="enc">encounter used to generate pokemon file</param>
-        public static void SetHOMEDates(this PKM pk, IEncounterable enc)
-        {
-            if (enc is not WC8 w8)
-                return;
-            var isHOMEGift = w8.Location == 30018 || w8.GetOT(2) == "HOME";
-            if (!isHOMEGift)
-                return;
-            switch (w8.Species)
+            if (enc is WC8 { IsHOMEGift: true } w)
             {
-                case (int)Species.Zeraora:
-                    pk.MetDate = new DateTime(2020, 06, 30);
-                    break;
+                var species = enc.Species;
+                var locked = EncountersHOME.WC8Gifts.TryGetValue(species, out var time);
+                if (locked)
+                    pk.MetDate = time;
             }
         }
     }

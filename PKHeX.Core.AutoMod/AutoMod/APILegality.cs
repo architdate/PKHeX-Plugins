@@ -265,6 +265,7 @@ namespace PKHeX.Core.AutoMod
             var abilitypref = GetAbilityPreference(pk, enc);
 
             pk.SetSpeciesLevel(set, Form, enc, language);
+            pk.SetDateLocks(enc);
             pk.SetHeldItem(set);
 
             // Actions that do not affect set legality
@@ -294,9 +295,6 @@ namespace PKHeX.Core.AutoMod
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.ApplyHeightWeight(enc);
             pk.ApplyBattleVersion(handler);
-
-            // Extra legality unchecked by PKHeX
-            pk.SetDatelocks(enc);
         }
 
         /// <summary>
