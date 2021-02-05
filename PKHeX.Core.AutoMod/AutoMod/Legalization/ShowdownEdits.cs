@@ -135,7 +135,7 @@ namespace PKHeX.Core.AutoMod
             pk.Language = (int)finallang;
 
             // check if nickname even needs to be updated
-            if (finallang == currentlang && !evolutionRequired)
+            if (set.Nickname.Length == 0 && finallang == currentlang && !evolutionRequired)
                 return;
 
             var gen = enc.Generation;
