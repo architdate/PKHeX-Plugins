@@ -131,6 +131,17 @@ Shiny: Yes
 Gentle Nature
 - Bubble
 
+ロモたん (Poliwag) (M)
+IVs: 12 HP / 17 Atk / 13 SpD
+Ability: Swift Swim
+.Met_Location=30013
+.Version=37
+Language: Japanese
+Level: 2
+Shiny: Square
+Lax Nature
+- Bubble
+
 Abra (M)
 IVs: 5 Atk / 2 SpD
 Ability: Magic Guard
