@@ -88,7 +88,7 @@ namespace PKHeX.Core.AutoMod
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);
 
-                raw.PreSetPIDIV(enc, set.Shiny);
+                raw.PreSetPIDIV(enc, set);
 
                 // Transfer any VC1 via VC2, as there may be GSC exclusive moves requested.
                 if (dest.Generation >= 7 && raw is PK1 basepk1)
@@ -540,13 +540,19 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static void PreSetPIDIV(this PKM pk, IEncounterable enc, bool isShiny)
+        private static void PreSetPIDIV(this PKM pk, IEncounterable enc, IBattleTemplate set)
         {
             if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
             {
                 var e = (EncounterStatic)enc;
+                var isShiny = set.Shiny;
                 if (pk.AbilityNumber == 4 && e.Ability is 0 or 1 or 2)
                     return;
+                if (!UseXOROSHIRO) // Don't bother setting this if XOROSHIRO is disabled
+                {
+                    pk.IVs = set.IVs;
+                    return;
+                }
 
                 var pk8 = (PK8)pk;
                 switch (e)
