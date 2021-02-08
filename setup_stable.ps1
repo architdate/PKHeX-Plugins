@@ -42,7 +42,6 @@ $TagPage = ((Invoke-WebRequest -Uri "https://projectpokemon.org/home/files/file/
 $BasePKHeX = ((Invoke-WebRequest -Uri "https://projectpokemon.org/home/files/file/1-pkhex/" -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.href -like "https://projectpokemon.org/home/files/file/1-pkhex/?do=download*"}).href.replace("&amp;", "&")
 if (!$TagPage.Contains("?changelog=0")) {$BasePKHeX = ((Invoke-WebRequest -Uri $TagPage -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.href -like "https://projectpokemon.org/home/files/file/1-pkhex/?do=download*version=*"}).href.replace("&amp;", "&")}
 
-Write-Host $BasePKHeX
 # get cookies after making a webrequest to the official download site
 $url = $BasePKHeX
 $cookie = $Session.Cookies.GetCookies("https://projectpokemon.org/home/files/file/1-pkhex/")[0].Name + "=" + $Session.Cookies.GetCookies("https://projectpokemon.org/home/files/file/1-pkhex/")[0].Value + "; " + $Session.Cookies.GetCookies("https://projectpokemon.org/home/files/file/1-pkhex/")[1].Name + "=" + $Session.Cookies.GetCookies("https://projectpokemon.org/home/files/file/1-pkhex/")[1].Value + "; ips4_ipsTimezone=Asia/Singapore; ips4_hasJS=true" 
