@@ -14,7 +14,7 @@ namespace AutoModPlugins
     /// </summary>
     public abstract class AutoModPlugin : IPlugin
     {
-        private const string VERSION = "21.01.30";
+        private const string VERSION = "21.01.31";
 
         private const string ParentMenuName = "Menu_AutoLegality";
         private const string ParentMenuText = "Auto-Legality Mod";
