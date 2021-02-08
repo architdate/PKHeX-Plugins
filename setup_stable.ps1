@@ -29,9 +29,20 @@ $headers = @{
 # close any open instances of PKHeX that may prevent updating the file
 if ((get-process "pkhex" -ea SilentlyContinue) -ne $Null) {Stop-Process -processname "pkhex"}
 
-# get the ddl with csrf token
-$BasePKHeX = ((Invoke-WebRequest -Uri "https://projectpokemon.org/home/files/file/1-pkhex/" -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.href -like "https://projectpokemon.org/home/files/file/1-pkhex/?do=download*"}).href.replace("&amp;", "&")
+# get latest stable plugins
+$pluginsrepo = "architdate/PKHeX-Plugins"
+$file = "PKHeX-Plugins.zip"
+$releases = "https://api.github.com/repos/$pluginsrepo/releases"
 
+Write-Host "Determining latest plugin release ..."
+$tag = (Invoke-WebRequest $releases -UseBasicParsing | ConvertFrom-Json)[0].tag_name
+
+# get the correct page for the tag
+$TagPage = ((Invoke-WebRequest -Uri "https://projectpokemon.org/home/files/file/1-pkhex/" -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.title -match "See changelog for version $tag"}).href.replace("&amp;", "&")[0]
+$BasePKHeX = ((Invoke-WebRequest -Uri "https://projectpokemon.org/home/files/file/1-pkhex/" -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.href -like "https://projectpokemon.org/home/files/file/1-pkhex/?do=download*"}).href.replace("&amp;", "&")
+if (!$TagPage.Contains("?changelog=0")) {$BasePKHeX = ((Invoke-WebRequest -Uri $TagPage -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.href -like "https://projectpokemon.org/home/files/file/1-pkhex/?do=download*version=*"}).href.replace("&amp;", "&")}
+
+Write-Host $BasePKHeX
 # get cookies after making a webrequest to the official download site
 $url = $BasePKHeX
 $cookie = $Session.Cookies.GetCookies("https://projectpokemon.org/home/files/file/1-pkhex/")[0].Name + "=" + $Session.Cookies.GetCookies("https://projectpokemon.org/home/files/file/1-pkhex/")[0].Value + "; " + $Session.Cookies.GetCookies("https://projectpokemon.org/home/files/file/1-pkhex/")[1].Name + "=" + $Session.Cookies.GetCookies("https://projectpokemon.org/home/files/file/1-pkhex/")[1].Value + "; ips4_ipsTimezone=Asia/Singapore; ips4_hasJS=true" 
@@ -43,14 +54,6 @@ $headers.path = $url
 # download as PKHeX.zip
 Write-Host "Downloading latest PKHeX Release (stable) from https://projectpokemon.org/home/files/file/1-pkhex/ ..."
 Invoke-WebRequest $url -OutFile "PKHeX.zip" -Headers $headers -WebSession $session -Method Get -ContentType "application/zip" -UseBasicParsing
-
-# get latest stable plugins
-$pluginsrepo = "architdate/PKHeX-Plugins"
-$file = "PKHeX-Plugins.zip"
-$releases = "https://api.github.com/repos/$pluginsrepo/releases"
-
-Write-Host "Determining latest plugin release ..."
-$tag = (Invoke-WebRequest $releases -UseBasicParsing | ConvertFrom-Json)[0].tag_name
 
 # download as PKHeX-Plugins.zip
 Write-Host Downloading latest PKHeX-Plugin Release: $tag

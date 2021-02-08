@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Forms;
 using AutoModPlugins.Properties;
 using PKHeX.Core;
+using PKHeX.Core.AutoMod.AutoMod;
 
 namespace AutoModPlugins
 {
@@ -12,9 +14,13 @@ namespace AutoModPlugins
     /// </summary>
     public abstract class AutoModPlugin : IPlugin
     {
+        private const string VERSION = "21.01.30";
+
         private const string ParentMenuName = "Menu_AutoLegality";
         private const string ParentMenuText = "Auto-Legality Mod";
         private const string ParentMenuParent = "Menu_Tools";
+
+        public bool PossibleVersionMismatch = false;
 
         /// <summary>
         /// Main Plugin Variables
@@ -38,6 +44,26 @@ namespace AutoModPlugins
 
             // ALM Settings
             ShowdownSetLoader.SetAPILegalitySettings();
+
+            // Match PKHeX Versioning
+            if (Priority == 0)
+                CheckVersionUpdates();
+        }
+
+        private void CheckVersionUpdates()
+        {
+            var latest_alm = PKHeX.Core.AutoMod.AutoMod.NetUtil.GetLatestALMVersion();
+            var curr_valid = Version.TryParse(VERSION, out var current_alm);
+            var curr_pkhex = Assembly.GetEntryAssembly().GetName().Version!;
+            if (!curr_valid || curr_pkhex == null || latest_alm == null)
+                return;
+            var msg = $"Update for ALM is available. Please download it from GitHub. The updated release is only compatible with PKHeX Version: {latest_alm.Major}.{latest_alm.Minor}.{latest_alm.Build}.";
+            if (curr_pkhex > current_alm)
+                PossibleVersionMismatch = true;
+            if (latest_alm > current_alm && !PossibleVersionMismatch)
+                WinFormsUtil.Alert(msg);
+            if (latest_alm > current_alm && PossibleVersionMismatch)
+                WinFormsUtil.Alert(msg + " There is also a possible version mismatch between the current ALM version and current PKHeX version");
         }
 
         private void LoadMenuStrip(ToolStrip menuStrip)
