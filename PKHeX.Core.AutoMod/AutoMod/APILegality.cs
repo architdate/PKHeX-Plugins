@@ -473,6 +473,10 @@ namespace PKHeX.Core.AutoMod
             pk.Egg_Location = Locations.TradedEggLocation(pk.Generation);
         }
 
+        /// <summary>
+        /// Sets a tracker based on the setting provided
+        /// </summary>
+        /// <param name="pk">pk to set the tracker for</param>
         private static void GetSuggestedTracker(this PKM pk)
         {
             if (pk is not IHomeTrack home)
@@ -540,6 +544,12 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        /// <summary>
+        /// Set PIDIV for raid PKM via XOROSHIRO incase it is transferred to future generations to preserve the IVs
+        /// </summary>
+        /// <param name="pk">Pokemon to be edited</param>
+        /// <param name="enc">Raid encounter encounterable</param>
+        /// <param name="set">Set to pass in requested IVs</param>
         private static void PreSetPIDIV(this PKM pk, IEncounterable enc, IBattleTemplate set)
         {
             if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
@@ -614,6 +624,13 @@ namespace PKHeX.Core.AutoMod
             pk.StatNature = iterPKM.StatNature;
         }
 
+        /// <summary>
+        /// Exit Criteria for IVs to be valid
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pk">Pokemon to edit</param>
+        /// <param name="template">Clone of the PKM taken prior</param>
+        /// <returns>True if the IVs are matching the criteria</returns>
         private static bool IsMatchCriteria<T>(PK8 pk, PKM template) where T : EncounterStatic8Nest<T>
         {
             if (template.Nature != pk.Nature) // match nature
@@ -837,6 +854,9 @@ namespace PKHeX.Core.AutoMod
             return result.Created;
         }
 
+        /// <summary>
+        /// Async Related actions for global timer.
+        /// </summary>
         private class AsyncLegalizationResult
         {
             public readonly PKM Created;
