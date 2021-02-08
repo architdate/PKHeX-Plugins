@@ -145,7 +145,10 @@ namespace AutoModPlugins
                         com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) }
                     };
                     Remote.Bot.com.Connect();
+                    Text += $" Unknown Version (Forced: {currver})";
                 }
+                else
+                    Text += $" Detected Version: {currver}";
 
                 // Load current box
                 Remote.ReadBox(SAV.CurrentBox);
