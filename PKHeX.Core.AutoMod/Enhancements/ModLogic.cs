@@ -153,7 +153,7 @@ namespace PKHeX.Core.AutoMod
                     h.HT_Language = 1;
             }
             if (f is IFormArgument fa)
-                fa.FormArgument = ShowdownEdits.GetSuggestedFormArgument(f, info.EncounterMatch.Species);
+                f.SetSuggestedFormArgument(info.EncounterMatch.Species);
             int wIndex = WurmpleUtil.GetWurmpleEvoGroup(f.Species);
             if (wIndex != -1)
                 f.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);

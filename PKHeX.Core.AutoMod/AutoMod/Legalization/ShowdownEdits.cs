@@ -121,7 +121,7 @@ namespace PKHeX.Core.AutoMod
                 }
             }
 
-            pk.SetFormArgument(enc);
+            pk.SetSuggestedFormArgument(enc.Species);
             if (evolutionRequired)
                 pk.RefreshAbility(pk.AbilityNumber >> 1);
 
@@ -148,23 +148,6 @@ namespace PKHeX.Core.AutoMod
                 pk.SetNickname(nickname);
             else
                 pk.ClearNickname();
-        }
-
-        private static void SetFormArgument(this PKM pk, IEncounterable enc)
-        {
-            if (pk is IFormArgument f)
-                f.FormArgument = GetSuggestedFormArgument(pk, enc.Species);
-        }
-
-        public static uint GetSuggestedFormArgument(PKM pk, int origSpecies = 0)
-        {
-            return pk.Species switch
-            {
-                (int)Species.Hoopa when pk.Form != 0 => 3,
-                (int)Species.Furfrou when pk.Form != 0 => 5,
-                (int)Species.Runerigus when origSpecies != (int)Species.Runerigus => 49,
-                _ => 0
-            };
         }
 
         private static void ApplySetGender(this PKM pk, IBattleTemplate set)
