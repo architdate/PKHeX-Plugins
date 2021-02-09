@@ -78,8 +78,11 @@ namespace PKHeX.Core.AutoMod
 
             if (preference > 0)
             {
-                // Set preferred ability number if applicable
                 var abilities = pk.PersonalInfo.Abilities;
+                // Set unspecified abilities
+                if (set.Ability == -1)
+                    pk.SetAbility(abilities[preference >> 1]);
+                // Set preferred ability number if applicable
                 if (abilities[preference >> 1] == set.Ability)
                     pk.AbilityNumber = preference;
                 // 3/4/5 transferred to 6+ will have ability 1 if both abilitynum 1 and 2 are the same. Capsule cant convert 1 -> 2 if the abilities arnt unique
