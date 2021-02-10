@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using AutoModPlugins.Properties;
 using PKHeX.Core;
-using PKHeX.Core.AutoMod.AutoMod;
+using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
 {
@@ -14,7 +14,7 @@ namespace AutoModPlugins
     /// </summary>
     public abstract class AutoModPlugin : IPlugin
     {
-        private const string VERSION = "21.01.31";
+        private string VERSION = ALMVersion.CurrentVersion;
 
         private const string ParentMenuName = "Menu_AutoLegality";
         private const string ParentMenuText = "Auto-Legality Mod";
