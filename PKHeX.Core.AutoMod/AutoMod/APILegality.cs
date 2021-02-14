@@ -677,7 +677,7 @@ namespace PKHeX.Core.AutoMod
             // Always shiny: if not xor0-15, force xor0
             var editnecessary = (shiny == Shiny.AlwaysSquare && pk.ShinyXor != 0) || (shiny == Shiny.Always && pk.ShinyXor > 15);
             if (editnecessary)
-                pk.PID = GetShinyPID(pk.TID, pk.SID, pk.PID, 0);
+                pk.PID = SimpleEdits.GetShinyPID(pk.TID, pk.SID, pk.PID, 0);
 
             // RNG is fixed now and you have the requested shiny!
             const int UNSET = -1;
@@ -707,11 +707,6 @@ namespace PKHeX.Core.AutoMod
             var weight = (int)rng.NextInt(0x81) + (int)rng.NextInt(0x80);
             pk.HeightScalar = height;
             pk.WeightScalar = weight;
-        }
-
-        private static uint GetShinyPID(int tid, int sid, uint pid, int type)
-        {
-            return (uint)(((tid ^ sid ^ (pid & 0xFFFF) ^ type) << 16) | (pid & 0xFFFF));
         }
 
         /// <summary>

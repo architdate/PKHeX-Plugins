@@ -224,6 +224,11 @@ namespace PKHeX.Core.AutoMod
             pk.RelearnMove4 = 0;
         }
 
+        public static uint GetShinyPID(int tid, int sid, uint pid, int type)
+        {
+            return (uint)(((tid ^ sid ^ (pid & 0xFFFF) ^ type) << 16) | (pid & 0xFFFF));
+        }
+
         public static void ApplyHeightWeight(this PKM pk, IEncounterable enc, bool signed = true)
         {
             if (pk.Generation < 8 && pk.Format >= 8 && !pk.GG) // height and weight don't apply prior to GG
