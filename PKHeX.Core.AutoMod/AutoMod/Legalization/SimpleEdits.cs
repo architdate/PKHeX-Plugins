@@ -74,7 +74,8 @@ namespace PKHeX.Core.AutoMod
         public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
         {
             var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
-            if ((pk.Species == 658 && pk.Form == 1) || isRaid) // Ash-Greninja or raids
+            var eslot8 = enc is EncounterSlot8;
+            if ((pk.Species == 658 && pk.Form == 1) || isRaid || eslot8) // Ash-Greninja or raids
                 return;
             int gen = pk.Generation;
             if (gen is > 2 and < 6)
@@ -240,6 +241,9 @@ namespace PKHeX.Core.AutoMod
                 if (APILegality.UseXOROSHIRO && !pk.IsShiny)
                     return;
             }
+
+            if (enc is EncounterSlot8) // set by xoroshiro
+                return;
 
             if (enc is EncounterStatic8U)
                 return; // height and weight already handled even for shiny cases

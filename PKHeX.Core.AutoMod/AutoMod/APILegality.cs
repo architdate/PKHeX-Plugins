@@ -502,6 +502,8 @@ namespace PKHeX.Core.AutoMod
             // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
             if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
                 return;
+            if (enc is EncounterSlot8)
+                return;
 
             if (enc is MysteryGift mg)
             {
@@ -573,6 +575,17 @@ namespace PKHeX.Core.AutoMod
                     case EncounterStatic8U c: FindNestPIDIV(pk8, c, isShiny); break;
                 }
             }
+
+            if (enc is EncounterSlot8 eslot8)
+            {
+                // currently assume that the IVs can only be 0 flawless (2/3 for brilliant aura, not in consideration yet)
+                var pk8 = (PK8)pk;
+                Shiny shiny;
+                if (set is RegenTemplate r)
+                    shiny = r.Regen.Extra.ShinyType;
+                else shiny = set.Shiny ? Shiny.Always : Shiny.Never;
+                FindWildPIDIV8(pk8, shiny, 0);
+            }
         }
 
         /// <summary>
@@ -622,6 +635,83 @@ namespace PKHeX.Core.AutoMod
                 pk.Form = iterPKM.Form; // set alt form if it can be freely changed!
             pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
             pk.StatNature = iterPKM.StatNature;
+        }
+
+        /// <summary>
+        /// Wild PID IVs being set through XOROSHIRO128
+        /// </summary>
+        /// <param name="pk">pokemon to edit</param>
+        /// <param name="shiny">Shinytype requested</param>
+        /// <param name="flawless">number of flawless ivs</param>
+        private static void FindWildPIDIV8(PK8 pk, Shiny shiny, int flawless = 0)
+        {
+            // Modified version of the standard XOROSHIRO algorithm (32 bit seed 0, same const seed 1)
+            // EC -> PID -> Flawless IV rolls -> Non Flawless IVs -> height -> weight
+            uint seed = 0;
+            var rng = new Xoroshiro128Plus(0);
+            var ivs = new[] { -1, -1, -1, -1, -1, -1 };
+
+            while (true) 
+            {
+                seed = Util.Rand32();
+                rng = new Xoroshiro128Plus(seed);
+
+                pk.EncryptionConstant = (uint)rng.NextInt();
+                pk.PID = (uint)rng.NextInt();
+                var xor = pk.ShinyXor;
+
+                if (shiny == Shiny.AlwaysStar)
+                {
+                    if (xor == 0 || xor > 15)
+                        continue;
+                }
+
+                if (shiny == Shiny.Never && xor < 16)
+                    continue;
+
+                // Every other case can be valid and genned, so break out
+                break;
+            }
+
+            // Square shiny: if not xor0, force xor0
+            // Always shiny: if not xor0-15, force xor0
+            var editnecessary = (shiny == Shiny.AlwaysSquare && pk.ShinyXor != 0) || (shiny == Shiny.Always && pk.ShinyXor > 15);
+            if (editnecessary)
+                pk.PID = GetShinyPID(pk.TID, pk.SID, pk.PID, 0);
+
+            // RNG is fixed now and you have the requested shiny!
+            const int UNSET = -1;
+            const int MAX = 31;
+            for (int i = ivs.Count(z => z == MAX); i < flawless; i++)
+            {
+                int index = (int)rng.NextInt(6);
+                while (ivs[index] != UNSET)
+                    index = (int)rng.NextInt(6);
+                ivs[index] = MAX;
+            }
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (ivs[i] == UNSET)
+                    ivs[i] = (int)rng.NextInt(32);
+            }
+
+            pk.IV_HP = ivs[0];
+            pk.IV_ATK = ivs[1];
+            pk.IV_DEF = ivs[2];
+            pk.IV_SPA = ivs[3];
+            pk.IV_SPD = ivs[4];
+            pk.IV_SPE = ivs[5];
+
+            var height = (int)rng.NextInt(0x81) + (int)rng.NextInt(0x80);
+            var weight = (int)rng.NextInt(0x81) + (int)rng.NextInt(0x80);
+            pk.HeightScalar = height;
+            pk.WeightScalar = weight;
+        }
+
+        private static uint GetShinyPID(int tid, int sid, uint pid, int type)
+        {
+            return (uint)(((tid ^ sid ^ (pid & 0xFFFF) ^ type) << 16) | (pid & 0xFFFF));
         }
 
         /// <summary>
