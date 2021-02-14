@@ -75,6 +75,8 @@ namespace PKHeX.Core.AutoMod
         {
             var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
             var eslot8 = enc is EncounterSlot8;
+            if (enc is EncounterStatic8 estatic8 && !estatic8.Gift && !estatic8.ScriptedNoMarks)
+                return;
             if ((pk.Species == 658 && pk.Form == 1) || isRaid || eslot8) // Ash-Greninja or raids
                 return;
             int gen = pk.Generation;
@@ -248,6 +250,9 @@ namespace PKHeX.Core.AutoMod
             }
 
             if (enc is EncounterSlot8) // set by xoroshiro
+                return;
+
+            if (enc is EncounterStatic8 estatic8 && !estatic8.Gift && !estatic8.ScriptedNoMarks)
                 return;
 
             if (enc is EncounterStatic8U)

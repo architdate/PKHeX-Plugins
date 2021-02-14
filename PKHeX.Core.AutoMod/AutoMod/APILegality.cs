@@ -504,6 +504,8 @@ namespace PKHeX.Core.AutoMod
                 return;
             if (enc is EncounterSlot8)
                 return;
+            if (enc is EncounterStatic8 estatic8 && !estatic8.Gift && !estatic8.ScriptedNoMarks)
+                return;
 
             if (enc is MysteryGift mg)
             {
@@ -585,6 +587,18 @@ namespace PKHeX.Core.AutoMod
                     shiny = r.Regen.Extra.ShinyType;
                 else shiny = set.Shiny ? Shiny.Always : Shiny.Never;
                 FindWildPIDIV8(pk8, shiny, 0);
+            }
+
+            if (enc is EncounterStatic8 estatic8)
+            {
+                if (estatic8.ScriptedNoMarks || estatic8.Gift)
+                    return;
+                var pk8 = (PK8)pk;
+                Shiny shiny;
+                if (set is RegenTemplate r)
+                    shiny = r.Regen.Extra.ShinyType;
+                else shiny = set.Shiny ? Shiny.Always : Shiny.Never;
+                FindWildPIDIV8(pk8, shiny, estatic8.FlawlessIVCount);
             }
         }
 
