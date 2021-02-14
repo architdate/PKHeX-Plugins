@@ -578,7 +578,7 @@ namespace PKHeX.Core.AutoMod
                 }
             }
 
-            if (enc is EncounterSlot8 eslot8)
+            else if (enc is EncounterSlot8 eslot8)
             {
                 // currently assume that the IVs can only be 0 flawless (2/3 for brilliant aura, not in consideration yet)
                 var pk8 = (PK8)pk;
@@ -589,7 +589,7 @@ namespace PKHeX.Core.AutoMod
                 FindWildPIDIV8(pk8, shiny, 0);
             }
 
-            if (enc is EncounterStatic8 estatic8)
+            else if (enc is EncounterStatic8 estatic8)
             {
                 if (estatic8.ScriptedNoMarks || estatic8.Gift)
                     return;
