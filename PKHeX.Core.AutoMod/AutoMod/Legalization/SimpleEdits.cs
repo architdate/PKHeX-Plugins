@@ -74,10 +74,9 @@ namespace PKHeX.Core.AutoMod
         public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
         {
             var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
-            var eslot8 = enc is EncounterSlot8;
-            if (enc is EncounterStatic8 estatic8 && !estatic8.Gift && !estatic8.ScriptedNoMarks)
+            if (enc is IOverworldCorrelation8 o && o.GetRequirement(pk) == OverworldCorrelation8Requirement.MustHave)
                 return;
-            if ((pk.Species == 658 && pk.Form == 1) || isRaid || eslot8) // Ash-Greninja or raids
+            if ((pk.Species == 658 && pk.Form == 1) || isRaid) // Ash-Greninja or raids
                 return;
             int gen = pk.Generation;
             if (gen is > 2 and < 6)
@@ -249,10 +248,7 @@ namespace PKHeX.Core.AutoMod
                     return;
             }
 
-            if (enc is EncounterSlot8) // set by xoroshiro
-                return;
-
-            if (enc is EncounterStatic8 estatic8 && !estatic8.Gift && !estatic8.ScriptedNoMarks)
+            if (enc is IOverworldCorrelation8 o && o.GetRequirement(pk) == OverworldCorrelation8Requirement.MustHave)
                 return;
 
             if (enc is EncounterStatic8U)

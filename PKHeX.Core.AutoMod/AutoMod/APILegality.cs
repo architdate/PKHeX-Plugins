@@ -502,9 +502,7 @@ namespace PKHeX.Core.AutoMod
             // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
             if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
                 return;
-            if (enc is EncounterSlot8)
-                return;
-            if (enc is EncounterStatic8 estatic8 && !estatic8.Gift && !estatic8.ScriptedNoMarks)
+            if (enc is IOverworldCorrelation8 o && o.GetRequirement(pk) == OverworldCorrelation8Requirement.MustHave)
                 return;
 
             if (enc is MysteryGift mg)
@@ -582,6 +580,8 @@ namespace PKHeX.Core.AutoMod
             {
                 // currently assume that the IVs can only be 0 flawless (2/3 for brilliant aura, not in consideration yet)
                 var pk8 = (PK8)pk;
+                if (eslot8.GetRequirement(pk8) != OverworldCorrelation8Requirement.MustHave)
+                    return;
                 Shiny shiny;
                 if (set is RegenTemplate r)
                     shiny = r.Regen.Extra.ShinyType;
@@ -594,6 +594,8 @@ namespace PKHeX.Core.AutoMod
                 if (estatic8.ScriptedNoMarks || estatic8.Gift)
                     return;
                 var pk8 = (PK8)pk;
+                if (estatic8.GetRequirement(pk8) != OverworldCorrelation8Requirement.MustHave)
+                    return;
                 Shiny shiny;
                 if (set is RegenTemplate r)
                     shiny = r.Regen.Extra.ShinyType;
@@ -837,10 +839,11 @@ namespace PKHeX.Core.AutoMod
                 pk.Egg_Location = Locations.LinkTrade4; // todo: really shouldn't be doing this, don't modify pkm
                 return PIDType.Method_1;
             }
-
+            var info = new LegalInfo(pk);
+            EncounterFinder.FindVerifiedEncounter(pk, info);
             return pk.Generation switch
             {
-                3 => EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch switch
+                3 => info.EncounterMatch switch
                 {
                     WC3 g => g.Method,
                     EncounterStatic => pk.Version switch
@@ -855,7 +858,7 @@ namespace PKHeX.Core.AutoMod
                     _ => PIDType.None,
                 },
 
-                4 => EncounterFinder.FindVerifiedEncounter(pk).EncounterMatch switch
+                4 => info.EncounterMatch switch
                 {
                     EncounterStatic4Pokewalker => PIDType.Pokewalker,
                     EncounterStatic s => (s.Shiny == Shiny.Always ? PIDType.ChainShiny : PIDType.Method_1),
