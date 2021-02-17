@@ -286,6 +286,7 @@ namespace PKHeX.Core.AutoMod
             pk.FixGender(set);
 
             // Final tweaks
+            pk.SetGigantamaxFactor(set, enc);
             pk.SetSuggestedRibbons(SetAllLegalRibbons);
             pk.SetBelugaValues();
             pk.FixEdgeCases();

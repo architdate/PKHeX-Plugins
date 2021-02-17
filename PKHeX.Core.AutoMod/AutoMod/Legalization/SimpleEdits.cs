@@ -178,7 +178,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
-            var validg5sid = pk.SID & 1;
+            int validg5sid;
             pk.SetShinySID(); // no mg = no lock
 
             if (pk.Generation != 5) return;
@@ -308,6 +308,15 @@ namespace PKHeX.Core.AutoMod
         {
             if (pk is IHandlerLanguage pkm)
                 pkm.HT_Language = 1;
+        }
+
+        public static void SetGigantamaxFactor(this PKM pk, IBattleTemplate set, IEncounterable enc)
+        {
+            if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
+            {
+                if (gmax.CanToggleGigantamax(pk.Species, pk.Form, enc.Species, enc.Form))
+                    gmax.CanGigantamax = set.CanGigantamax; // soup hax
+            }
         }
 
         public static void SetDynamaxLevel(this PKM pk, byte level = 10)
