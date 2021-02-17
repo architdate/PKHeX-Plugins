@@ -101,7 +101,7 @@ Ability: Compound Eyes
 Level: 15
 Gigantamax: Yes
 Ball: Master Ball
-.Met_Location=122
+=Met_Location=122
 Naughty Nature
 - Stun Spore
 - Sleep Powder
@@ -387,6 +387,17 @@ Timid Nature
 - Solar Beam
 - Toxic
 
+Ninetales-Alola (M)
+IVs: 0 Atk
+Ability: Snow Warning
+Level: 5
+=Met_Location=164
+=Met_Level=5
+Impish Nature
+- Powder Snow
+- Tail Whip
+- Disable
+
 Jigglypuff (F) @ Dubious Disc
 IVs: 22 Def / 8 Spe
 Ability: Competitive
@@ -433,7 +444,7 @@ Ability: Chlorophyll
 Level: 28
 Shiny: Square
 Ball: Master Ball
-.Met_Location=124
+=Met_Location=124
 Hardy Nature
 - Teeter Dance
 - Grassy Glide
@@ -485,7 +496,7 @@ Persian (M)
 IVs: 0 SpA
 Ability: Unnerve
 Ball: Cherish Ball
-.Met_Location=40044
+=Met_Location=40044
 Jolly Nature
 - Fake Out
 - Growl
@@ -623,7 +634,7 @@ IVs: 0 Atk
 EVs: 112 HP / 252 SpA / 146 Spe
 Ability: Quick Draw
 Ball: Master Ball
-.Met_Location=16
+=Met_Location=16
 Modest Nature
 - Psychic
 - Shell Side Arm
@@ -634,7 +645,7 @@ Farfetch’d-Galar (M)
 IVs: 21 HP / 17 Atk / 23 Def / 17 SpA / 23 SpD / 28 Spe
 Ability: Steadfast
 Level: 20
-.Met_Location=30012
+=Met_Location=30012
 Jolly Nature
 - Leer
 - Fury Cutter
@@ -725,7 +736,7 @@ EVs: 252 HP / 136 Atk / 76 SpD / 46 Spe
 Ability: Lightning Rod
 Level: 58
 Shiny: Yes
-.Met_Location=30001
+=Met_Location=30001
 Adamant Nature
 - Poltergeist
 - Fire Punch
@@ -748,8 +759,8 @@ IVs: 11 SpA
 EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Limber
 Shiny: Square
-.Met_Location=28
-=Met_Level=11
+=Met_Location=28
+=Met_Level=10
 Adamant Nature
 - Close Combat
 - Blaze Kick
@@ -761,8 +772,8 @@ IVs: 11 SpA
 EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Iron Fist
 Shiny: Yes
-.Met_Location=28
-=Met_Level=11
+=Met_Location=28
+=Met_Level=10
 Adamant Nature
 - Drain Punch
 - Thunder Punch
@@ -774,7 +785,7 @@ IVs: 30 HP / 14 Atk / 5 Def / 0 SpA / 25 SpD / 22 Spe
 Ability: Oblivious
 Level: 60
 Ball: Master Ball
-.Met_Location=166
+=Met_Location=166
 Quiet Nature
 - Lick
 - Defense Curl
@@ -822,6 +833,13 @@ Modest Nature
 - Strange Steam
 - Fire Blast
 - Toxic Spikes
+
+Weezing-Galar (M)
+Ability: Levitate
+Rash Nature
+- Zap Cannon
+- Bide
+- Rage
 
 Weezing-Galar
 Level: 35
@@ -1377,16 +1395,6 @@ Timid Nature
 - Stored Power
 - Wish
 
-Vaporeon (M) @ Leftovers
-IVs: 0 Atk
-EVs: 252 HP / 252 Def / 6 SpD
-Ability: Water Absorb
-Bold Nature
-- Scald
-- Ice Beam
-- Wish
-- Protect
-
 Vaporeon (M)
 IVs: 11 HP / 27 Def / 1 SpA / 8 SpD / 2 Spe
 Ability: Water Absorb
@@ -1398,16 +1406,15 @@ Serious Nature
 - Water Gun
 
 Vaporeon (M)
-IVs: 16 Atk
-EVs: 214 HP / 252 SpA / 44 Spe
 Ability: Water Absorb
-Level: 60
-Shiny: Yes
-Modest Nature
-- Shadow Ball
-- Ice Beam
-- Scald
-- Hydro Pump
+Level: 10
+=Met_Location=156
+=Met_Level=10
+Rash Nature
+- Growl
+- Tail Whip
+- Sand Attack
+- Quick Attack
 
 Jolteon (M)
 IVs: 29 HP / 23 Def / 13 SpA / 19 SpD / 8 Spe
@@ -6439,22 +6446,16 @@ Naive Nature
 - Earthquake
 
 Porygon-Z
-IVs: 0 Atk / 24 Def / 22 SpD
-Ability: Download
-Level: 1
-Bold Nature
-- Tackle
-- Conversion
-
-Porygon-Z @ Life Orb
-EVs: 6 HP / 252 SpA / 252 Spe
-Ability: Adaptability
-Shiny: Yes
-Modest Nature
-- Protect
-- Dark Pulse
-- Thunderbolt
-- Hyper Beam
+IVs: 23 Def / 3 SpD / 26 Spe
+Ability: Analytic
+Level: 25
+=Met_Location=196
+=Met_Level=25
+Timid Nature
+- Thunder Shock
+- Psybeam
+- Conversion 2
+- Magnet Rise
 
 Catcher (Gallade) (M) @ Jolly Mint
 EVs: 252 HP / 252 Atk / 6 Def
@@ -8622,7 +8623,7 @@ IVs: 7 Atk
 Ability: Static
 Level: 47
 Shiny: Yes
-.Version=21
+=Version=21
 Ball: Master Ball
 Bold Nature
 - Dig
@@ -10636,26 +10637,6 @@ Modest Nature
 - Earth Power
 - Stealth Rock
 
-Sylveon (M) @ Leftovers
-IVs: 0 Atk
-EVs: 252 HP / 240 Def / 18 SpD
-Ability: Pixilate
-Calm Nature
-- Hyper Voice
-- Mystical Fire
-- Wish
-- Protect
-
-Sylveon (M) @ Gold Bottle Cap
-Ability: Pixilate
-Level: 55
-Shiny: Yes
-Calm Nature
-- Moonblast
-- Draining Kiss
-- Tackle
-- Quick Attack
-
 Sakura (Sylveon) (F) @ Leftovers
 IVs: 0 Atk / 30 SpA / 30 Spe
 EVs: 252 HP / 252 Def / 6 SpA
@@ -10669,26 +10650,15 @@ Bold Nature
 - Hidden Power [Fire]
 
 Sylveon (M)
-IVs: 24 Atk
-EVs: 252 HP / 246 Def / 12 Spe
 Ability: Pixilate
-Shiny: Yes
-Bold Nature
-- Baton Pass
-- Calm Mind
-- Hyper Voice
-- Wish
-
-Sabella (Sylveon) (F)
-IVs: 0 Atk
-EVs: 6 Def / 252 SpA / 252 Spe
-Ability: Pixilate
-Shiny: Yes
-Modest Nature
-- Shadow Ball
-- Hyper Voice
-- Mystical Fire
-- Psyshock
+Level: 11
+=Met_Location=156
+=Met_Level=10
+Rash Nature
+- Growl
+- Tail Whip
+- Sand Attack
+- Quick Attack
 
 Hawlucha (M)
 IVs: 16 Def / 12 Spe
@@ -12969,14 +12939,17 @@ Bashful Nature
 - Explosion
 
 Carkol (M)
-IVs: 12 HP / 11 Atk / 10 Def / 10 SpD
+IVs: 21 HP / 26 Atk / 30 Def / 12 SpA / 6 SpD / 20 Spe
 Ability: Flame Body
-Level: 39
-Serious Nature
+Level: 18
+Shiny: Square
+=Met_Location=30
+=Met_Level=18
+Naughty Nature
 - Flame Charge
+- Rock Polish
 - Rapid Spin
-- Incinerate
-- Ancient Power
+- Tackle
 
 Coalossal (M)
 IVs: 11 Atk / 12 Def
@@ -13372,7 +13345,7 @@ IVs: 0 Def
 Ability: Defiant
 Ball: Master Ball
 .Met_Location=20
-.Met_Level=10
+=Met_Level=10
 Shiny: Square
 Adamant Nature
 - Blizzard
@@ -13467,7 +13440,7 @@ Runerigus (F)
 Shiny: Square
 Ability: Wandering Spirit
 Level: 29
-.Met_Location=68
+=Met_Location=68
 =Met_Level=29
 Impish Nature
 - Toxic Spikes
