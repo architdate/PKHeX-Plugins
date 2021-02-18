@@ -438,6 +438,8 @@ namespace PKHeX.Core.AutoMod
                 gt.ConsoleRegion = o.ConsoleRegion;
                 gt.Country = o.Country;
                 gt.Region = o.Region;
+                if (pk is PK7 pk7 && pk.Generation <= 2)
+                    pk7.FixVCRegion();
                 return;
             }
 

@@ -919,6 +919,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (pk.Nickname.Length == 0)
                 pk.ClearNickname();
+
             // Shiny Manaphy Egg
             if (pk.Species == (int)Species.Manaphy && pk.IsShiny)
             {
@@ -927,10 +928,52 @@ namespace PKHeX.Core.AutoMod
                     return;
                 pk.Met_Location = pk.HGSS ? Locations.HatchLocationHGSS : Locations.HatchLocationDPPt;
             }
+
+            // Milotic Beauty Evolution for Format < 5
             if (pk.Species == (int)Species.Milotic && pk.Format < 5 && pk is IContestStatsMutable c) // Evolves via beauty
                 c.CNT_Beauty = 170;
+
+            // CXD only has a male trainer
             if (pk.Version == (int)GameVersion.CXD && pk.OT_Gender == (int)Gender.Female) // Colosseum and XD are sexist games.
                 pk.OT_Gender = (int)Gender.Male;
+
+            // VC Games are locked to console region (modify based on language)
+            if (pk is PK7 pk7 && pk7.Generation <= 2)
+                pk7.FixVCRegion();
+        }
+
+        public static void FixVCRegion(this PK7 pk7)
+        {
+            var valid = Locale3DS.IsRegionLockedLanguageValidVC(pk7.ConsoleRegion, pk7.Language);
+            if (!valid)
+            {
+                switch (pk7.Language)
+                {
+                    case (int)LanguageID.English:
+                    case (int)LanguageID.Spanish:
+                    case (int)LanguageID.French:
+                        pk7.ConsoleRegion = 1;
+                        pk7.Region = 0;
+                        pk7.Country = 49;
+                        break;
+                    case (int)LanguageID.German:
+                    case (int)LanguageID.Italian:
+                        pk7.ConsoleRegion = 2;
+                        pk7.Region = 0;
+                        pk7.Country = 105;
+                        break;
+                    case (int)LanguageID.Japanese:
+                        pk7.ConsoleRegion = 0;
+                        pk7.Region = 0;
+                        pk7.Country = 1;
+                        break;
+                    case (int)LanguageID.Korean:
+                        pk7.ConsoleRegion = 5;
+                        pk7.Region = 0;
+                        pk7.Country = 136;
+                        break;
+                }
+            }
         }
 
         /// <summary>
