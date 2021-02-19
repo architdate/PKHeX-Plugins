@@ -577,33 +577,31 @@ namespace PKHeX.Core.AutoMod
                 }
             }
 
-            else if (enc is EncounterSlot8 eslot8)
+            else if (enc is IOverworldCorrelation8 eo)
             {
-                // currently assume that the IVs can only be 0 flawless (2/3 for brilliant aura, not in consideration yet)
-                var pk8 = (PK8)pk;
-                if (eslot8.GetRequirement(pk8) != OverworldCorrelation8Requirement.MustHave)
-                    return;
-                Shiny shiny;
-                if (set is RegenTemplate r)
-                    shiny = r.Regen.Extra.ShinyType;
-                else shiny = set.Shiny ? Shiny.Always : Shiny.Never;
-                if (!SimpleEdits.TryApplyHardcodedSeedWild8(pk8, eslot8, set.IVs, shiny))
-                    FindWildPIDIV8(pk8, shiny, 0);
-            }
+                var flawless = 0;
+                if (enc is EncounterStatic8 estatic8)
+                {
+                    if (estatic8.ScriptedNoMarks || estatic8.Gift)
+                        return;
+                    flawless = estatic8.FlawlessIVCount;
+                }
 
-            else if (enc is EncounterStatic8 estatic8)
-            {
-                if (estatic8.ScriptedNoMarks || estatic8.Gift)
-                    return;
                 var pk8 = (PK8)pk;
-                if (estatic8.GetRequirement(pk8) != OverworldCorrelation8Requirement.MustHave)
+                if (eo.GetRequirement(pk8) != OverworldCorrelation8Requirement.MustHave)
                     return;
+
                 Shiny shiny;
                 if (set is RegenTemplate r)
                     shiny = r.Regen.Extra.ShinyType;
                 else shiny = set.Shiny ? Shiny.Always : Shiny.Never;
-                if (!SimpleEdits.TryApplyHardcodedSeedWild8(pk8, estatic8, set.IVs, shiny))
-                    FindWildPIDIV8(pk8, shiny, estatic8.FlawlessIVCount);
+
+                // Attempt to give them requested 0 ivs at the very least
+                for (int i = 0; i < set.IVs.Length; i++)
+                    set.IVs[i] = set.IVs[i] != 0 ? 31 : 0;
+
+                if (!SimpleEdits.TryApplyHardcodedSeedWild8(pk8, enc, set.IVs, shiny))
+                    FindWildPIDIV8(pk8, shiny, flawless);
             }
         }
 
