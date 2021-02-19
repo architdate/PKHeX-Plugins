@@ -587,7 +587,8 @@ namespace PKHeX.Core.AutoMod
                 if (set is RegenTemplate r)
                     shiny = r.Regen.Extra.ShinyType;
                 else shiny = set.Shiny ? Shiny.Always : Shiny.Never;
-                FindWildPIDIV8(pk8, shiny, 0);
+                if (!SimpleEdits.TryApplyHardcodedSeedWild8(pk8, eslot8, set.IVs, shiny))
+                    FindWildPIDIV8(pk8, shiny, 0);
             }
 
             else if (enc is EncounterStatic8 estatic8)
@@ -601,7 +602,8 @@ namespace PKHeX.Core.AutoMod
                 if (set is RegenTemplate r)
                     shiny = r.Regen.Extra.ShinyType;
                 else shiny = set.Shiny ? Shiny.Always : Shiny.Never;
-                FindWildPIDIV8(pk8, shiny, estatic8.FlawlessIVCount);
+                if (!SimpleEdits.TryApplyHardcodedSeedWild8(pk8, estatic8, set.IVs, shiny))
+                    FindWildPIDIV8(pk8, shiny, estatic8.FlawlessIVCount);
             }
         }
 
@@ -660,7 +662,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon to edit</param>
         /// <param name="shiny">Shinytype requested</param>
         /// <param name="flawless">number of flawless ivs</param>
-        private static void FindWildPIDIV8(PK8 pk, Shiny shiny, int flawless = 0)
+        public static void FindWildPIDIV8(PK8 pk, Shiny shiny, int flawless = 0, uint? fixedseed = null)
         {
             // Modified version of the standard XOROSHIRO algorithm (32 bit seed 0, same const seed 1)
             // EC -> PID -> Flawless IV rolls -> Non Flawless IVs -> height -> weight
@@ -668,26 +670,38 @@ namespace PKHeX.Core.AutoMod
             var rng = new Xoroshiro128Plus(0);
             var ivs = new[] { -1, -1, -1, -1, -1, -1 };
 
-            while (true) 
+            if (fixedseed != null)
             {
-                seed = Util.Rand32();
+                seed = (uint)fixedseed;
                 rng = new Xoroshiro128Plus(seed);
 
                 pk.EncryptionConstant = (uint)rng.NextInt();
                 pk.PID = (uint)rng.NextInt();
-                var xor = pk.ShinyXor;
+            }
 
-                if (shiny == Shiny.AlwaysStar)
+            else
+            {
+                while (true)
                 {
-                    if (xor == 0 || xor > 15)
+                    seed = Util.Rand32();
+                    rng = new Xoroshiro128Plus(seed);
+
+                    pk.EncryptionConstant = (uint)rng.NextInt();
+                    pk.PID = (uint)rng.NextInt();
+                    var xor = pk.ShinyXor;
+
+                    if (shiny == Shiny.AlwaysStar)
+                    {
+                        if (xor == 0 || xor > 15)
+                            continue;
+                    }
+
+                    if (shiny == Shiny.Never && xor < 16)
                         continue;
+
+                    // Every other case can be valid and genned, so break out
+                    break;
                 }
-
-                if (shiny == Shiny.Never && xor < 16)
-                    continue;
-
-                // Every other case can be valid and genned, so break out
-                break;
             }
 
             // Square shiny: if not xor0, force xor0

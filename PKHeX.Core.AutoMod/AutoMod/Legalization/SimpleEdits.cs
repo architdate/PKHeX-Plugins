@@ -480,5 +480,32 @@ namespace PKHeX.Core.AutoMod
                     pk.MetDate = time;
             }
         }
+
+        public static bool TryApplyHardcodedSeedWild8(PK8 pk, IEncounterable enc, int[] ivs, Shiny requestedShiny)
+        {
+            // Don't bother if there is no overworld correlation
+            if (!(enc is IOverworldCorrelation8 eo))
+                return false;
+
+            // Check if a seed exists
+            int available = -1;
+            uint seed = 0;
+            if (enc is EncounterSlot8 eslot8)
+                available = xoroshiro8_wild.GetWildSeedFromIV8(new[] { 0, 2, 3 }, ivs, out seed);
+            else if (enc is EncounterStatic8 estatic8)
+                available = xoroshiro8_wild.GetWildSeedFromIV8(new[] { estatic8.FlawlessIVCount }, ivs, out seed);
+
+            // Ensure requested criteria matches
+            if (available == -1)
+                return false;
+            APILegality.FindWildPIDIV8(pk, requestedShiny, available, seed);
+            if (!eo.IsOverworldCorrelationCorrect(pk))
+                return false;
+            if (requestedShiny == Shiny.AlwaysStar && (pk.ShinyXor == 0 || pk.ShinyXor > 15))
+                return false;
+            if (requestedShiny == Shiny.Never && pk.ShinyXor < 16)
+                return false;
+            return true;
+        }
     }
 }
