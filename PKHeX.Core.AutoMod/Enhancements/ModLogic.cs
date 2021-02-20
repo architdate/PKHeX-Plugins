@@ -66,12 +66,10 @@ namespace PKHeX.Core.AutoMod
                 if (GetRandomEncounter(sav, id, out var pk) && pk != null)
                 {
                     pk.Heal();
-                    sav.SetCaught(id, true);
                     yield return pk;
                 }
                 else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = sav.Language, OT = sav.OT, TID = sav.TID }, id, out var pkm) && pkm is PK1 pk1)
                 {
-                    sav.SetCaught(id, true);
                     yield return pk1.ConvertToPK2();
                 }
             }
