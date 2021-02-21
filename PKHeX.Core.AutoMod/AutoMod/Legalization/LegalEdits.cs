@@ -53,10 +53,14 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
         /// <param name="allValid">Set all valid ribbons only</param>
-        public static void SetSuggestedRibbons(this PKM pk, bool allValid = true)
+        public static void SetSuggestedRibbons(this PKM pk, IEncounterable enc, bool allValid = true)
         {
             if (allValid)
+            {
                 RibbonApplicator.SetAllValidRibbons(pk);
+                if (pk is PK8 pk8 && pk8.GetRandomValidMark(enc, out var mark))
+                    pk8.SetRibbonIndex(mark);
+            }
             string report = new LegalityAnalysis(pk).Report();
             if (report.Contains(string.Format(LegalityCheckStrings.LRibbonFMissing_0, "")))
             {

@@ -4,6 +4,7 @@ using System.Linq;
 using static PKHeX.Core.Ball;
 using static PKHeX.Core.Species;
 using static PKHeX.Core.AutoMod.Aesthetics.PersonalColor;
+using System.Runtime.CompilerServices;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -996,6 +997,19 @@ namespace PKHeX.Core.AutoMod
                     break;
             }
             return pkm.Ball;
+        }
+
+        public static bool GetRandomValidMark(this PK8 pk, IEncounterable enc, out RibbonIndex mark)
+        {
+            mark = 0; // throwaway value
+            var invalid = new[] { RibbonIndex.MarkCloudy, RibbonIndex.MarkRainy, RibbonIndex.MarkStormy, RibbonIndex.MarkSnowy, RibbonIndex.MarkBlizzard, RibbonIndex.MarkDry, RibbonIndex.MarkSandstorm }; // exclude all weather marks
+            var valid = Enumerable.Range((int)RibbonIndex.MarkLunchtime, (int)RibbonIndex.MarkSlump - (int)RibbonIndex.MarkLunchtime + 1).Where(z => !invalid.Contains((RibbonIndex)z) && MarkVerifier.IsMarkValid((RibbonIndex)z, pk, enc));
+            var count = valid.Count();
+            if (count == 0)
+                return false;
+            var randomindex = Util.Rand.Next(valid.Count());
+            mark = (RibbonIndex)(valid.ElementAt(randomindex));
+            return true;
         }
 
         public enum PersonalColor : byte

@@ -287,7 +287,7 @@ namespace PKHeX.Core.AutoMod
 
             // Final tweaks
             pk.SetGigantamaxFactor(set, enc);
-            pk.SetSuggestedRibbons(SetAllLegalRibbons);
+            pk.SetSuggestedRibbons(enc, SetAllLegalRibbons);
             pk.SetBelugaValues();
             pk.FixEdgeCases();
 
