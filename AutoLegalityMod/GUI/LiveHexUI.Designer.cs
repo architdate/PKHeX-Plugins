@@ -460,7 +460,7 @@
             // 
             this.CB_BlockName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_BlockName.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_BlockName.Location = new System.Drawing.Point(51, 19);
+            this.CB_BlockName.Location = new System.Drawing.Point(51, 15);
             this.CB_BlockName.Name = "CB_BlockName";
             this.CB_BlockName.Size = new System.Drawing.Size(169, 22);
             this.CB_BlockName.Sorted = true;

@@ -13,6 +13,7 @@ namespace AutoModPlugins.GUI
         {
             InitializeComponent();
             this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
+            PG_BlockView.Size = RTB_RAM.Size;
             RTB_RAM.Text = string.Join(" ", originalBytes.Select(z => $"{z:X2}"));
             Bytes = originalBytes;
         }

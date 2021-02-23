@@ -33,6 +33,7 @@ namespace AutoModPlugins.GUI
         {
             this.RTB_RAM = new System.Windows.Forms.RichTextBox();
             this.B_Update = new System.Windows.Forms.Button();
+            this.PG_BlockView = new System.Windows.Forms.PropertyGrid();
             this.SuspendLayout();
             // 
             // RTB_RAM
@@ -55,11 +56,23 @@ namespace AutoModPlugins.GUI
             this.B_Update.UseVisualStyleBackColor = true;
             this.B_Update.Click += new System.EventHandler(this.Update_Click);
             // 
-            // RAMEdit
+            // PG_BlockView
+            // 
+            this.PG_BlockView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PG_BlockView.Location = new System.Drawing.Point(9, 10);
+            this.PG_BlockView.Name = "PG_BlockView";
+            this.PG_BlockView.Size = new System.Drawing.Size(114, 130);
+            this.PG_BlockView.TabIndex = 15;
+            this.PG_BlockView.Visible = false;
+            // 
+            // SimpleHexEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 343);
+            this.Controls.Add(this.PG_BlockView);
             this.Controls.Add(this.B_Update);
             this.Controls.Add(this.RTB_RAM);
             this.MaximizeBox = false;
@@ -75,5 +88,6 @@ namespace AutoModPlugins.GUI
 
         private System.Windows.Forms.RichTextBox RTB_RAM;
         private Button B_Update;
+        public PropertyGrid PG_BlockView;
     }
 }

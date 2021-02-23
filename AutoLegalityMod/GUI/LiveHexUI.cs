@@ -389,9 +389,18 @@ namespace AutoModPlugins
             }
             using (var form = new SimpleHexEditor(data))
             {
+                var sb = (SaveBlock)SAV.SAV.GetType().GetProperty(txt).GetValue(SAV.SAV);
+                var props = ReflectUtil.GetPropertiesCanWritePublicDeclared(sb.GetType());
+                if (props.Count() > 1)
+                {
+                    form.PG_BlockView.Visible = true;
+                    form.PG_BlockView.SelectedObject = sb;
+                }
                 var res = form.ShowDialog();
                 if (res == DialogResult.OK)
                 {
+                    if (props.Count() > 1)
+                        form.Bytes = sb.Data;
                     var modifiedRAM = form.Bytes;
                     Remote.WriteBlockFromString(txt, modifiedRAM);
                 }
