@@ -22,7 +22,7 @@
         public uint TeamIndexes;
         public uint FameTime;
 
-        public static Offsets8 Rigel2 = new() { MyStatus = 0x45068F18 };
+        public static Offsets8 Rigel2 = new() { MyStatus = 0x45068F18, Items = 0x45067A98 };
     }
 
 }
