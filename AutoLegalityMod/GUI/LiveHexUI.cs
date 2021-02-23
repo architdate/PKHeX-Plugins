@@ -356,6 +356,21 @@ namespace AutoModPlugins
             if (pkm.ChecksumValid)
                 Remote.Editor.PopulateFields(pkm);
         }
+
+        private void B_EditBlock_Click(object sender, EventArgs e)
+        {
+            var txt = TB_BlockName.Text;
+            var data = Remote.ReadBlockFromString(SAV.SAV, txt);
+            using (var form = new SimpleHexEditor(data))
+            {
+                var res = form.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    var modifiedRAM = form.Bytes;
+                    Remote.WriteBlockFromString(txt, modifiedRAM);
+                }
+            }
+        }
     }
 
     internal class HexTextBox : TextBox
