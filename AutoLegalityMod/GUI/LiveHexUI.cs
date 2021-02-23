@@ -391,7 +391,8 @@ namespace AutoModPlugins
             {
                 var sb = (SaveBlock)SAV.SAV.GetType().GetProperty(txt).GetValue(SAV.SAV);
                 var props = ReflectUtil.GetPropertiesCanWritePublicDeclared(sb.GetType());
-                if (props.Count() > 1)
+                var loadgrid = props.Count() > 1 && ModifierKeys != Keys.Control;
+                if (loadgrid)
                 {
                     form.PG_BlockView.Visible = true;
                     form.PG_BlockView.SelectedObject = sb;
@@ -399,7 +400,7 @@ namespace AutoModPlugins
                 var res = form.ShowDialog();
                 if (res == DialogResult.OK)
                 {
-                    if (props.Count() > 1)
+                    if (loadgrid)
                         form.Bytes = sb.Data;
                     var modifiedRAM = form.Bytes;
                     Remote.WriteBlockFromString(txt, modifiedRAM);
