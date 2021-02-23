@@ -162,6 +162,15 @@
             };
         }
 
+        public static object GetOffsets(LiveHeXVersion lv)
+        {
+            return lv switch
+            {
+                LiveHeXVersion.SWSH_Rigel2 => Offsets8.Rigel2,
+                _ => new()
+            };
+        }
+
         private static ICommunicator GetSwitchInterface(InjectorCommunicationType ict)
         {
             // No conditional expression possible

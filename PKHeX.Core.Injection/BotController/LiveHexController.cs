@@ -1,4 +1,6 @@
-﻿namespace PKHeX.Core.Injection
+﻿using System;
+
+namespace PKHeX.Core.Injection
 {
     public class LiveHeXController
     {
@@ -67,6 +69,39 @@
 
             Editor.PopulateFields(pkm);
             return true;
+        }
+
+        public byte[]? ReadBlock<TSaveFile, TOffset>(Func<SaveFile, SaveBlock> getBlock, Func<TOffset, uint> getOfs) where TSaveFile: SaveFile where TOffset : class
+        {
+            var obj = (TOffset)RamOffsets.GetOffsets(Bot.Version);
+            var sav = (TSaveFile)SAV.SAV;
+            var data = getBlock(sav);
+            if (data == null)
+                return null;
+            var ofs = getOfs(obj);
+
+            var read = ReadRAM(ofs, data.Data.Length);
+            read.CopyTo(data.Data, data.Offset);
+            // Usage: ReadBlock<SAV8, Offsets8>(z => ((ISaveBlock8Main)z).MyStatus, z => z.MyStatus);
+            return read;
+        }
+
+        // Reflection method
+        public byte[] ReadBlockFromString(SaveFile sav, string block)
+        {
+            var obj = RamOffsets.GetOffsets(Bot.Version);
+            var offset = obj.GetType().GetField(block).GetValue(obj);
+            var data = (SaveBlock)sav.GetType().GetField(block).GetValue(sav);
+            var read = ReadRAM((uint)offset, data.Data.Length);
+            read.CopyTo(data.Data, data.Offset);
+            return read;
+        }
+
+        public void WriteBlockFromString(string block, byte[] data)
+        {
+            var obj = RamOffsets.GetOffsets(Bot.Version);
+            var offset = obj.GetType().GetField(block).GetValue(obj);
+            WriteRAM((uint)offset, data);
         }
 
         public byte[] ReadRAM(uint offset, int size) => Bot.com.ReadBytes(offset, size);

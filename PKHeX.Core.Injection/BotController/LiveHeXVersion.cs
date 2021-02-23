@@ -1,4 +1,6 @@
-﻿namespace PKHeX.Core.Injection
+﻿using System.Collections.Generic;
+
+namespace PKHeX.Core.Injection
 {
     public enum LiveHeXVersion
     {
