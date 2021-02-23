@@ -11,7 +11,7 @@ namespace PKHeX.Core.Injection
         Absolute
     }
 
-    public class SysBotMini : ICommunicator
+    public class SysBotMini : ICommunicator, ICommunicatorNX
     {
         public string IP = "192.168.1.65";
         public int Port = 6000;

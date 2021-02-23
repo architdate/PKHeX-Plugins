@@ -91,7 +91,7 @@ namespace PKHeX.Core.Injection
         {
             var obj = RamOffsets.GetOffsets(Bot.Version);
             var offset = obj.GetType().GetField(block).GetValue(obj);
-            var data = (SaveBlock)sav.GetType().GetField(block).GetValue(sav);
+            var data = (SaveBlock)sav.GetType().GetProperty(block).GetValue(sav);
             var read = ReadRAM((uint)offset, data.Data.Length);
             read.CopyTo(data.Data, data.Offset);
             return read;

@@ -16,4 +16,9 @@
         int Port { get; set; }
         string IP { get; set; }
     }
+
+    public interface ICommunicatorNX : ICommunicator
+    {
+
+    }
 }

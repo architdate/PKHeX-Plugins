@@ -129,8 +129,11 @@ namespace AutoModPlugins
                     {
                         ConnectionEstablished = true;
                         currver = version;
-                        if (Remote.Bot.com is SysBotMini)
+                        if (Remote.Bot.com is ICommunicatorNX)
+                        {
                             groupBox4.Enabled = true;
+                            groupBox5.Enabled = true;
+                        }
                         break;
                     }
 
