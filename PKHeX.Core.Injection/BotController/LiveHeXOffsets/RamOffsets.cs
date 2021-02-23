@@ -162,12 +162,12 @@
             };
         }
 
-        public static object GetOffsets(LiveHeXVersion lv)
+        public static object? GetOffsets(LiveHeXVersion lv)
         {
             return lv switch
             {
                 LiveHeXVersion.SWSH_Rigel2 => Offsets8.Rigel2,
-                _ => new()
+                _ => null
             };
         }
 

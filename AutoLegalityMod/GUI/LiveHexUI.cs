@@ -132,7 +132,13 @@ namespace AutoModPlugins
                         if (Remote.Bot.com is ICommunicatorNX)
                         {
                             groupBox4.Enabled = true;
-                            groupBox5.Enabled = true;
+                            var cblist = GetSortedBlockList().ToArray();
+                            if (cblist.Count() > 0)
+                            {
+                                groupBox5.Enabled = true;
+                                CB_BlockName.Items.AddRange(cblist);
+                                CB_BlockName.SelectedIndex = 0;
+                            }
                         }
                         break;
                     }
@@ -237,6 +243,18 @@ namespace AutoModPlugins
                 WinFormsUtil.Error("Unable to load data from the specified offset.", ex.Message);
             }
 #pragma warning restore CA1031 // Do not catch general exception types
+        }
+
+        public IEnumerable<string> GetSortedBlockList()
+        {
+            var offsets = RamOffsets.GetOffsets(Remote.Bot.Version);
+            if (offsets == null)
+                return new List<string>();
+            var aType = offsets.GetType();
+            var props = aType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            var ofType = props.Where(fi => typeof(uint).IsAssignableFrom(fi.FieldType));
+            var retval = ofType.ToDictionary(z => z.Name, x => (uint)x.GetValue(offsets));
+            return retval.Where(z => z.Value != 0).Select(z => z.Key).OrderBy(z => z);
         }
 
         public void NotifySlotOld(ISlotInfo previous) { }
@@ -362,8 +380,13 @@ namespace AutoModPlugins
 
         private void B_EditBlock_Click(object sender, EventArgs e)
         {
-            var txt = TB_BlockName.Text;
-            var data = Remote.ReadBlockFromString(SAV.SAV, txt);
+            var txt = CB_BlockName.Text;
+            var valid = Remote.ReadBlockFromString(SAV.SAV, txt, out var data);
+            if (!valid || data == null)
+            {
+                WinFormsUtil.Error("Invalid Entry");
+                return;
+            }
             using (var form = new SimpleHexEditor(data))
             {
                 var res = form.ShowDialog();
