@@ -388,7 +388,6 @@ namespace AutoModPlugins
                 return;
             }
             var sb = (SaveBlock)SAV.SAV.GetType().GetProperty(txt).GetValue(SAV.SAV);
-            var blocktype = sb.GetType();
             if (sb.IsSpecialBlock(out var k) && k != null)
             {
                 ((ContainerControl)SAV).GetType().GetMethod(LiveHeXBlocks.BlockFormMapping[k], BindingFlags.NonPublic | BindingFlags.Instance).Invoke((ContainerControl)SAV, new object[] { sender, e });
