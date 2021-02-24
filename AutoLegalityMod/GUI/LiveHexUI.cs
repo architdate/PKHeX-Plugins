@@ -387,23 +387,32 @@ namespace AutoModPlugins
                 WinFormsUtil.Error("Invalid Entry");
                 return;
             }
-            using (var form = new SimpleHexEditor(data))
+            var sb = (SaveBlock)SAV.SAV.GetType().GetProperty(txt).GetValue(SAV.SAV);
+            if (sb is MyItem _)
             {
-                var sb = (SaveBlock)SAV.SAV.GetType().GetProperty(txt).GetValue(SAV.SAV);
-                var props = ReflectUtil.GetPropertiesCanWritePublicDeclared(sb.GetType());
-                var loadgrid = props.Count() > 1 && ModifierKeys != Keys.Control;
-                if (loadgrid)
+                var btn = ((ContainerControl)SAV).GetType().GetMethod("B_OpenItemPouch_Click", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(((ContainerControl)SAV), new object[] { sender, e });
+                if (!sb.Data.SequenceEqual(data))
+                    Remote.WriteBlockFromString(txt, sb.Data);
+            }
+            else
+            {
+                using (var form = new SimpleHexEditor(data))
                 {
-                    form.PG_BlockView.Visible = true;
-                    form.PG_BlockView.SelectedObject = sb;
-                }
-                var res = form.ShowDialog();
-                if (res == DialogResult.OK)
-                {
+                    var props = ReflectUtil.GetPropertiesCanWritePublicDeclared(sb.GetType());
+                    var loadgrid = props.Count() > 1 && ModifierKeys != Keys.Control;
                     if (loadgrid)
-                        form.Bytes = sb.Data;
-                    var modifiedRAM = form.Bytes;
-                    Remote.WriteBlockFromString(txt, modifiedRAM);
+                    {
+                        form.PG_BlockView.Visible = true;
+                        form.PG_BlockView.SelectedObject = sb;
+                    }
+                    var res = form.ShowDialog();
+                    if (res == DialogResult.OK)
+                    {
+                        if (loadgrid)
+                            form.Bytes = sb.Data;
+                        var modifiedRAM = form.Bytes;
+                        Remote.WriteBlockFromString(txt, modifiedRAM);
+                    }
                 }
             }
         }
