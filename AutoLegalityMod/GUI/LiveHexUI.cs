@@ -387,8 +387,21 @@ namespace AutoModPlugins
                 WinFormsUtil.Error("Invalid Entry");
                 return;
             }
-            var sb = (SaveBlock)SAV.SAV.GetType().GetProperty(txt).GetValue(SAV.SAV);
-            if (sb.IsSpecialBlock(out var v))
+            var allblocks = SAV.SAV.GetType().GetProperty("Blocks").GetValue(SAV.SAV);
+            var blockprop = allblocks.GetType().GetProperty(txt);
+            object sb;
+            if (allblocks is SCBlockAccessor scba && blockprop == null)
+            {
+                var key = allblocks.GetType().GetField(txt, BindingFlags.NonPublic | BindingFlags.Static).GetValue(allblocks);
+                sb = scba.GetBlock((uint)key);
+            }
+            else sb = blockprop.GetValue(allblocks);
+
+            // Verify if sb is a valid block type
+            if (sb is not SCBlock && sb is not SaveBlock)
+                return;
+
+            if (sb.IsSpecialBlock(Remote.Bot.Version, out var v))
             {
                 // Set sender
                 var s = sender;
@@ -399,8 +412,12 @@ namespace AutoModPlugins
 
                 // Invoke function
                 ((ContainerControl)SAV).GetType().GetMethod(v, BindingFlags.NonPublic | BindingFlags.Instance).Invoke((ContainerControl)SAV, new object[] { s, e });
-                if (!sb.Data.SequenceEqual(data))
-                    Remote.WriteBlockFromString(txt, sb.Data);
+                byte[] blockdata;
+                if (sb is SCBlock sc) blockdata = sc.Data;
+                else if (sb is SaveBlock sv) blockdata = sv.Data;
+                else blockdata = data;
+                if (!blockdata.SequenceEqual(data))
+                    Remote.WriteBlockFromString(txt, blockdata);
                 return;
             }
             using var form = new SimpleHexEditor(data);
@@ -414,8 +431,12 @@ namespace AutoModPlugins
             var res = form.ShowDialog();
             if (res == DialogResult.OK)
             {
+                byte[] blockdata;
+                if (sb is SCBlock sc) blockdata = sc.Data;
+                else if (sb is SaveBlock sv) blockdata = sv.Data;
+                else blockdata = data;
                 if (loadgrid)
-                    form.Bytes = sb.Data;
+                    form.Bytes = blockdata;
                 var modifiedRAM = form.Bytes;
                 Remote.WriteBlockFromString(txt, modifiedRAM);
             }

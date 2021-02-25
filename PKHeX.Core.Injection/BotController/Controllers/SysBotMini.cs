@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 
@@ -102,8 +104,39 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public byte[] ReadBytes(uint offset, int length) => ReadBytes(offset, length, RWMethod.Heap);
-        public void WriteBytes(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Heap);
+        public byte[] ReadLargeBytes(ulong offset, int length, RWMethod method)
+        {
+            var maxlength = 344 * 30;
+            var concatlist = new List<byte[]>();
+            while (length > 0)
+            {
+                var readlength = Math.Min(maxlength, length);
+                length -= readlength;
+                concatlist.Add(ReadBytes(offset, readlength, method));
+                offset += (ulong)readlength;
+            }
+            return ArrayUtil.ConcatAll(concatlist.ToArray());
+        }
+
+        public void WriteLargeBytes(byte[] data, ulong offset, RWMethod method)
+        {
+            var maxlength = 344 * 30;
+            if (data.Length <= maxlength)
+            {
+                WriteBytes(data, offset, method);
+                return;
+            }
+            int i = 0;
+            var split = data.GroupBy(_ => i++ / maxlength).Select(g => g.ToArray()).ToArray();
+            foreach (var ba in split)
+            {
+                WriteBytes(ba, offset, method);
+                offset += (ulong)maxlength;
+            }
+        }
+
+        public byte[] ReadBytes(uint offset, int length) => ReadLargeBytes(offset, length, RWMethod.Heap);
+        public void WriteBytes(byte[] data, uint offset) => WriteLargeBytes(data, offset, RWMethod.Heap);
         public byte[] ReadBytesMain(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Main);
         public void WriteBytesMain(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Main);
         public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Absolute);

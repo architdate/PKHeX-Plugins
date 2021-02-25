@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace PKHeX.Core.Injection
 {
@@ -84,9 +85,26 @@ namespace PKHeX.Core.Injection
                 var offset = obj.GetType().GetField(block).GetValue(obj);
                 if (offset is uint o && o == 0)
                     return false;
-                var data = (SaveBlock)sav.GetType().GetProperty(block).GetValue(sav);
-                read = ReadRAM((uint)offset, data.Data.Length);
-                read.CopyTo(data.Data, data.Offset);
+                var allblocks = sav.GetType().GetProperty("Blocks").GetValue(sav);
+                var blockprop = allblocks.GetType().GetProperty(block);
+                object data;
+                if (allblocks is SCBlockAccessor scba && blockprop == null) 
+                {
+                    var key = allblocks.GetType().GetField(block, BindingFlags.NonPublic | BindingFlags.Static).GetValue(allblocks);
+                    data = scba.GetBlock((uint)key);
+                }
+                else data = blockprop.GetValue(allblocks);
+                if (data is SaveBlock sb)
+                {
+                    read = ReadRAM((uint)offset, sb.Data.Length);
+                    read.CopyTo(sb.Data, sb.Offset);
+                }
+                else if (data is SCBlock scb)
+                {
+                    read = ReadRAM((uint)offset, scb.Data.Length);
+                    read.CopyTo(scb.Data, 0);
+                }
+                else return false;
                 return true;
             }
             catch (Exception e)
