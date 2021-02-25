@@ -388,9 +388,17 @@ namespace AutoModPlugins
                 return;
             }
             var sb = (SaveBlock)SAV.SAV.GetType().GetProperty(txt).GetValue(SAV.SAV);
-            if (sb.IsSpecialBlock(out var k) && k != null)
+            if (sb.IsSpecialBlock(out var v))
             {
-                ((ContainerControl)SAV).GetType().GetMethod(LiveHeXBlocks.BlockFormMapping[k], BindingFlags.NonPublic | BindingFlags.Instance).Invoke((ContainerControl)SAV, new object[] { sender, e });
+                // Set sender
+                var s = sender;
+                if (txt == "Raid")
+                    s = (Button)((ContainerControl)SAV).Controls.Find("B_Raids", true)[0];
+                if (txt == "RaidArmor")
+                    s = (Button)((ContainerControl)SAV).Controls.Find("B_RaidArmor", true)[0];
+
+                // Invoke function
+                ((ContainerControl)SAV).GetType().GetMethod(v, BindingFlags.NonPublic | BindingFlags.Instance).Invoke((ContainerControl)SAV, new object[] { s, e });
                 if (!sb.Data.SequenceEqual(data))
                     Remote.WriteBlockFromString(txt, sb.Data);
                 return;

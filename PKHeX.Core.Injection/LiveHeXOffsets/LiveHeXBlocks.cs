@@ -17,14 +17,14 @@ namespace PKHeX.Core.Injection
         /// <param name="sb">saveblock</param>
         /// <param name="keytype">type of the saveblock</param>
         /// <returns></returns>
-        public static bool IsSpecialBlock(this SaveBlock sb, out Type? keytype)
+        public static bool IsSpecialBlock(this SaveBlock sb, out string value)
         {
-            keytype = null;
+            value = string.Empty;
             foreach (Type k in BlockFormMapping.Keys)
             {
                 if (!k.IsAssignableFrom(sb.GetType()))
                     continue;
-                keytype = k;
+                value = BlockFormMapping[k];
                 return true;
             }
             return false;
