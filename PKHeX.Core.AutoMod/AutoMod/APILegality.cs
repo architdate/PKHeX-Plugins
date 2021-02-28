@@ -802,7 +802,7 @@ namespace PKHeX.Core.AutoMod
                 uint seed = Util.Rand32();
                 if (isWishmaker)
                 {
-                    seed = bacd_r_seeds.GetShinyBACD_RSeed((Nature)iterPKM.Nature);
+                    seed = bacd_r_seeds.GetShinyWishmakerSeed((Nature)iterPKM.Nature);
                     isWishmaker = false;
                 }
                 if (PokeWalkerSeedFail(seed, Method, pk, iterPKM))

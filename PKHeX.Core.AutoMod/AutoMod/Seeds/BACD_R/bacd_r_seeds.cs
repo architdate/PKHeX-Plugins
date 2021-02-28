@@ -6,7 +6,7 @@ namespace PKHeX.Core.AutoMod
     // There only exists 9 shiny seeds for wishmaker jirachi bacd_r, just have a list and gen based on nature
     public static class bacd_r_seeds
     {
-        private static readonly Dictionary<Nature, uint> ShinyBACD_R = new Dictionary<Nature, uint>
+        private static readonly Dictionary<Nature, uint> ShinyWishmakerSeeds = new Dictionary<Nature, uint>
         {
             { Nature.Bashful , 0x353d },
             { Nature.Careful , 0xf500 },
@@ -19,6 +19,6 @@ namespace PKHeX.Core.AutoMod
             { Nature.Serious , 0x3d60 },
         };
 
-        public static uint GetShinyBACD_RSeed(Nature nature) => ShinyBACD_R.ContainsKey(nature) ? ShinyBACD_R[nature] : 0;
+        public static uint GetShinyWishmakerSeed(Nature nature) => ShinyWishmakerSeeds.ContainsKey(nature) ? ShinyWishmakerSeeds[nature] : 0;
     }
 }
