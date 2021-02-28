@@ -796,14 +796,14 @@ namespace PKHeX.Core.AutoMod
                 return;
             var iterPKM = pk.Clone();
             var count = 0;
-            var useshinybacd_r = Method == PIDType.BACD_R && shiny;
+            var isWishmarker = Method == PIDType.BACD_R && shiny && (enc is WC3 w3 && w3.OT_Name == "WISHMKR");
             do
             {
                 uint seed = Util.Rand32();
-                if (useshinybacd_r)
+                if (isWishmarker)
                 {
                     seed = bacd_r_seeds.GetShinyBACD_RSeed((Nature)iterPKM.Nature);
-                    useshinybacd_r = false;
+                    isWishmarker = false;
                 }
                 if (PokeWalkerSeedFail(seed, Method, pk, iterPKM))
                     continue;

@@ -3,7 +3,7 @@ using PKHeX.Core;
 
 namespace PKHeX.Core.AutoMod
 {
-    // There only exists 9 shiny seeds for bacd_r, just have a list and gen based on nature
+    // There only exists 9 shiny seeds for wishmaker jirachi bacd_r, just have a list and gen based on nature
     public static class bacd_r_seeds
     {
         private static readonly Dictionary<Nature, uint> ShinyBACD_R = new Dictionary<Nature, uint>
