@@ -796,9 +796,15 @@ namespace PKHeX.Core.AutoMod
                 return;
             var iterPKM = pk.Clone();
             var count = 0;
+            var useshinybacd_r = Method == PIDType.BACD_R && shiny;
             do
             {
                 uint seed = Util.Rand32();
+                if (useshinybacd_r)
+                {
+                    seed = bacd_r_seeds.GetShinyBACD_RSeed((Nature)iterPKM.Nature);
+                    useshinybacd_r = false;
+                }
                 if (PokeWalkerSeedFail(seed, Method, pk, iterPKM))
                     continue;
                 PIDGenerator.SetValuesFromSeed(pk, Method, seed);
