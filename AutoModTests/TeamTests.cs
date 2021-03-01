@@ -111,8 +111,10 @@ namespace AutoModTests
             var result = new Dictionary<string, Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>>>();
             var structure = GetFileStructures();
             bool legalizer_settings = Legalizer.EnableEasterEggs;
+            bool ribbon_settings = APILegality.SetAllLegalRibbons;
             int set_timeout = APILegality.Timeout;
             Legalizer.EnableEasterEggs = false;
+            APILegality.SetAllLegalRibbons = false;
             APILegality.Timeout = 99999;
             foreach (var entry in structure)
             {
@@ -122,6 +124,7 @@ namespace AutoModTests
                 result.Add(file, res);
             }
             Legalizer.EnableEasterEggs = legalizer_settings;
+            APILegality.SetAllLegalRibbons = ribbon_settings;
             APILegality.Timeout = set_timeout;
             return result;
         }
