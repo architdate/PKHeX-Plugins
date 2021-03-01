@@ -596,14 +596,17 @@ namespace PKHeX.Core.AutoMod
                     shiny = r.Regen.Extra.ShinyType;
                 else shiny = set.Shiny ? Shiny.Always : Shiny.Never;
 
+                var cloned = new int[set.IVs.Length];
+
                 // Attempt to give them requested 0 ivs at the very least unless they specifically request for all random ivs
                 if (set.IVs.Contains(31) || set.IVs.Contains(0))
                 {
                     for (int i = 0; i < set.IVs.Length; i++)
-                        set.IVs[i] = set.IVs[i] != 0 ? 31 : 0;
+                        cloned[i] = set.IVs[i] != 0 ? 31 : 0;
                 }
+                else cloned = set.IVs;
 
-                if (!SimpleEdits.TryApplyHardcodedSeedWild8(pk8, enc, set.IVs, shiny))
+                if (!SimpleEdits.TryApplyHardcodedSeedWild8(pk8, enc, cloned, shiny))
                     FindWildPIDIV8(pk8, shiny, flawless);
             }
         }
