@@ -34,13 +34,13 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Showdown Set to refer</param>
         /// <param name="preference">Ability index (1/2/4) preferred; &lt;= 0 for any</param>
-        public static void SetNatureAbility(this PKM pk, IBattleTemplate set, int preference = -1)
+        public static void SetNatureAbility(this PKM pk, IBattleTemplate set, IEncounterable enc, int preference = -1)
         {
-            SetNature(pk, set);
+            SetNature(pk, set, enc);
             SetAbility(pk, set, preference);
         }
 
-        private static void SetNature(PKM pk, IBattleTemplate set)
+        private static void SetNature(PKM pk, IBattleTemplate set, IEncounterable enc)
         {
             if (pk.Nature == set.Nature)
                 return;
@@ -65,7 +65,7 @@ namespace PKHeX.Core.AutoMod
             var la2 = new LegalityAnalysis(pk);
             var enc1 = la.EncounterMatch;
             var enc2 = la2.EncounterMatch;
-            if ((!ReferenceEquals(enc1, enc2) && enc1 is not EncounterEgg) || la2.Results.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid))
+            if (((!ReferenceEquals(enc1, enc2) && enc1 is not EncounterEgg) || la2.Results.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid)) && enc is not EncounterEgg)
                 pk.Nature = orig;
             if (pk.Format >= 8 && pk.StatNature != pk.Nature && pk.StatNature is 0 or 6 or 18 or >= 24) // Only Serious Mint for Neutral Natures
                 pk.StatNature = (int)Nature.Serious;
@@ -150,6 +150,11 @@ namespace PKHeX.Core.AutoMod
                 pk.ClearNickname();
         }
 
+        /// <summary>
+        /// Applies specified gender (if it exists. Else choose specied gender)
+        /// </summary>
+        /// <param name="pk">PKM to modify</param>
+        /// <param name="set">IBattleset template to grab the set gender</param>
         private static void ApplySetGender(this PKM pk, IBattleTemplate set)
         {
             if (!string.IsNullOrWhiteSpace(set.Gender))
@@ -158,6 +163,12 @@ namespace PKHeX.Core.AutoMod
                 pk.Gender = pk.GetSaneGender();
         }
 
+        /// <summary>
+        /// Function to check if there is any PID Gender Mismatch
+        /// </summary>
+        /// <param name="pkm">PKM to modify</param>
+        /// <param name="enc">Base encounter</param>
+        /// <returns>boolean indicating if the gender is valid</returns>
         public static bool IsValidGenderPID(this PKM pkm, IEncounterable enc)
         {
             bool genderValid = pkm.IsGenderValid();
@@ -172,6 +183,12 @@ namespace PKHeX.Core.AutoMod
             return true;
         }
 
+        /// <summary>
+        /// Helper function to check if bigender => fixed gender evolution is valid
+        /// </summary>
+        /// <param name="pkm">pkm to modify</param>
+        /// <param name="original">original species (encounter)</param>
+        /// <returns>boolean indicating validaity</returns>
         private static bool IsValidFixedGenderFromBiGender(PKM pkm, int original)
         {
             var current = pkm.Gender;
@@ -181,6 +198,11 @@ namespace PKHeX.Core.AutoMod
             return gender == current;
         }
 
+        /// <summary>
+        /// Check if a gender mismatch is a valid possibility
+        /// </summary>
+        /// <param name="pkm">PKM to modify</param>
+        /// <returns>boolean indicating validity</returns>
         private static bool IsValidGenderMismatch(PKM pkm) => pkm.Species switch
         {
             // Shedinja evolution gender glitch, should match original Gender
@@ -226,6 +248,11 @@ namespace PKHeX.Core.AutoMod
             pk.EVs = set.EVs;
         }
 
+        /// <summary>
+        /// Set encounter trade IVs for a specific encounter trade
+        /// </summary>
+        /// <param name="t">EncounterTrade</param>
+        /// <param name="pk">Pokemon to modify</param>
         public static void SetEncounterTradeIVs(this EncounterTrade t, PKM pk)
         {
             if (t.IVs.Count != 0)
@@ -234,6 +261,11 @@ namespace PKHeX.Core.AutoMod
                 pk.SetRandomIVs(flawless: 3);
         }
 
+        /// <summary>
+        /// Set held items after sanity checking for forms and invalid items
+        /// </summary>
+        /// <param name="pk">Pokemon to modify</param>
+        /// <param name="set">IBattleset to grab the item</param>
         public static void SetHeldItem(this PKM pk, IBattleTemplate set)
         {
             pk.ApplyHeldItem(set.HeldItem, set.Format);
@@ -242,6 +274,10 @@ namespace PKHeX.Core.AutoMod
                 pk.HeldItem = 0; // Remove the item if the item is illegal in its generation
         }
 
+        /// <summary>
+        /// Fix invalid form items
+        /// </summary>
+        /// <param name="pk">Pokemon to modify</param>
         private static void FixInvalidFormItems(this PKM pk)
         {
             switch ((Species)pk.Species)

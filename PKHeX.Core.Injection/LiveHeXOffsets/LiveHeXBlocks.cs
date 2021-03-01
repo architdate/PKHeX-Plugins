@@ -29,8 +29,9 @@ namespace PKHeX.Core.Injection
         /// Check if a special form needs to be open to handle the block
         /// </summary>
         /// <param name="sb">saveblock</param>
-        /// <param name="keytype">type of the saveblock</param>
-        /// <returns></returns>
+        /// <param name="lv">LiveHeX version being edited</param>
+        /// <param name="value">string value of the form to open</param>
+        /// <returns>Boolean indicating if a special form needs to be opened</returns>
         public static bool IsSpecialBlock(this object sb, LiveHeXVersion lv, out string value)
         {
             value = string.Empty;

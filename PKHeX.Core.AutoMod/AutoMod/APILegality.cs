@@ -133,6 +133,12 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
+        /// <summary>
+        /// Filter down the gamelist to search based on requested sets
+        /// </summary>
+        /// <param name="template">Template pokemon with basic details set</param>
+        /// <param name="destVer">Version in which the pokemon needs to be imported</param>
+        /// <returns>List of filtered games to check encounters for</returns>
         private static GameVersion[] FilteredGameList(PKM template, GameVersion destVer)
         {
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
@@ -143,6 +149,13 @@ namespace PKHeX.Core.AutoMod
             return gamelist;
         }
 
+        /// <summary>
+        /// Grab a trainer from trainer database with mutated language
+        /// </summary>
+        /// <param name="regen">Regenset</param>
+        /// <param name="ver">Gameversion for the saved trainerdata</param>
+        /// <param name="gen">Generation of the saved trainerdata</param>
+        /// <returns>ITrainerInfo of the trainerdetails</returns>
         private static ITrainerInfo GetTrainer(RegenSet regen, GameVersion ver, int gen)
         {
             if (AllowTrainerOverride && regen.HasTrainerSettings && regen.Trainer != null)
@@ -157,7 +170,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="gamelist">Array of gameversions which needs to be prioritized</param>
         /// <param name="game">Gameversion to prioritize</param>
-        /// <returns></returns>
+        /// <returns>A prioritized gameversion list</returns>
         private static GameVersion[] PrioritizeVersion(GameVersion[] gamelist, GameVersion game)
         {
             var matched = 0;
@@ -184,7 +197,6 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">encounter object</param>
         /// <param name="isHidden">is HA requested</param>
         /// <param name="destVer">version to generate in</param>
-        /// <param name="ver">version of enc/destVer</param>
         /// <returns>if the encounter is valid or not</returns>
         private static bool IsEncounterValid(IBattleTemplate set, IEncounterable enc, bool isHidden, GameVersion destVer)
         {
@@ -278,7 +290,7 @@ namespace PKHeX.Core.AutoMod
             // Legality Fixing
             pk.SetMovesEVs(set, enc);
             pk.SetCorrectMetLevel();
-            pk.SetNatureAbility(set, abilitypref);
+            pk.SetNatureAbility(set, enc, abilitypref);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, enc);
             pk.SetHyperTrainingFlags(set); // Hypertrain
             pk.SetEncryptionConstant(enc);
@@ -468,6 +480,8 @@ namespace PKHeX.Core.AutoMod
             pk.ForceHatchPKM();
             if (enc is MysteryGift { IsEgg: true })
             {
+                if (enc is WC3 w)
+                    pk.Met_Level = 0; // hatched
                 pk.Language = (int)LanguageID.English;
                 pk.SetTrainerData(tr);
             }
@@ -900,7 +914,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">pokemon</param>
         /// <param name="enc">encounter</param>
-        /// <returns></returns>
+        /// <returns>int indicating ability preference</returns>
         private static int GetAbilityPreference(PKM pk, IEncounterable enc)
         {
             return enc switch
@@ -938,7 +952,7 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Edge case memes for weird properties that I have no interest in setting for other pokemon.
         /// </summary>
-        /// <param name="pk"></param>
+        /// <param name="pk">Pokemon to edit</param>
         private static void FixEdgeCases(this PKM pk)
         {
             if (pk.Nickname.Length == 0)
@@ -966,6 +980,10 @@ namespace PKHeX.Core.AutoMod
                 pk7.FixVCRegion();
         }
 
+        /// <summary>
+        /// Fix region locked VCs for PK7s
+        /// </summary>
+        /// <param name="pk7">PK7 to fix</param>
         public static void FixVCRegion(this PK7 pk7)
         {
             var valid = Locale3DS.IsRegionLockedLanguageValidVC(pk7.ConsoleRegion, pk7.Language);
