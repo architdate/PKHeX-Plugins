@@ -289,6 +289,20 @@ Jolly Nature
 - Iron Head
 - Drill Run
 
+Sandslash-Alola (F)
+IVs: 25 HP / 0 Spe
+EVs: 252 HP / 252 Atk / 6 Def
+Ability: Slush Rush
+Level: 28
+Ball: Premier Ball
+Shiny: Yes
+=Met_Location=30012
+Brave Nature
+- Ice Shard
+- Triple Axel
+- Iron Head
+- Counter
+
 Sandslash-Alola (M) @ Light Clay
 IVs: 19 SpA
 EVs: 252 Atk / 6 Def / 252 Spe
@@ -846,6 +860,9 @@ Level: 35
 Shiny: Square
 Ball: Master Ball
 =Met_Location=50
+- Sludge
+- Smog
+- Thunder
 
 Rhydon (M)
 IVs: 11 SpA
@@ -881,252 +898,118 @@ Bold Nature
 - Toxic
 - Teleport
 
-Chansey (F) @ Ability Patch
-IVs: 28 HP / 19 Atk / 26 Def / 10 SpA / 22 SpD / 22 Spe
+Chansey (F) @ Eviolite
+IVs: 0 Atk
 Ability: Natural Cure
-Level: 7
-Calm Nature
-- Present
-- Sweet Kiss
-- Charm
-- Soft-Boiled
-
-Chansey (F)
-IVs: 23 HP / 30 Atk / 0 Def / 16 SpA / 10 SpD / 11 Spe
-Ability: Natural Cure
-Level: 11
 Shiny: Yes
+.IsNicknamed=False
 Bold Nature
-- Headbutt
-- Teleport
+- Wish
 - Seismic Toss
-- Tail Whip
-
-Chansey (F)
-IVs: 0 Atk / 5 SpA
-EVs: 6 HP / 252 Def / 252 SpD
-Ability: Natural Cure
-Shiny: Yes
-Calm Nature
-- Heal Bell
 - Toxic
-- Soft-Boiled
-- Seismic Toss
+- Heal Bell
 
 Tangela (M)
-IVs: 17 HP / 16 Atk / 11 Def / 3 SpA / 25 Spe
-Ability: Chlorophyll
-Level: 60
-Lax Nature
+IVs: 0 Atk
+Ability: Regenerator
+Level: 99
+Shiny: Square
+Calm Nature
 - Ancient Power
+- Mimic
+- Skull Bash
+- Shock Wave
 
-Kangaskhan (F) @ Modest Mint
+Kangaskhan (F)
 IVs: 10 Def / 17 Spe
 Ability: Scrappy
 Level: 58
 Shiny: Yes
+Ball: Safari Ball
 Jolly Nature
 - Sucker Punch
-- Reversal
-- Last Resort
+- Mimic
+- Seismic Toss
 - Headbutt
-
-Kangaskhan (F) @ Silk Scarf
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Scrappy
-Shiny: Yes
-Adamant Nature
-- Earthquake
-- Double-Edge
-- Sucker Punch
-- Fake Out
 
 Horsea (F)
 IVs: 0 Atk
 Ability: Damp
 Level: 1
-Docile Nature
+Timid Nature
+=FatefulEncounter=True
+Language: Japanese
 - Clear Smog
-- Disable
+- Swagger
 - Octazooka
-- Aurora Beam
-
-Seadra (F) @ Dragon Scale
-IVs: 23 HP / 30 Atk / 5 SpA / 1 SpD / 24 Spe
-EVs: 2 Def / 1 Spe
-Ability: Sniper
-Level: 60
-Docile Nature
-- Laser Focus
-- Dragon Pulse
-- Hydro Pump
-- Dragon Dance
+- Toxic
 
 Goldeen (M)
-IVs: 2 HP / 19 Atk / 0 Def / 1 SpA / 29 SpD / 6 Spe
-Ability: Water Veil
-Level: 60
-Adamant Nature
-- Waterfall
-- Soak
-- Megahorn
-- Horn Drill
-
-Goldeen (M)
-IVs: 17 Atk / 2 Def / 10 Spe
-Ability: Lightning Rod
-Level: 5
-Shiny: Yes
-Hardy Nature
-- Peck
-- Tail Whip
-
-Goldeen (F)
-IVs: 8 Atk / 25 Spe
+IVs: 19 HP / 17 Atk / 29 Def / 17 SpA / 29 SpD / 30 Spe
 Ability: Swift Swim
-Level: 17
-Shiny: Yes
-Quirky Nature
-- Tail Whip
-- Supersonic
+Level: 45
+Shiny: Square
+Ball: Premier Ball
+=Met_Location=50
+Lonely Nature
+- Headbutt
+- Fury Attack
 - Quick Attack
 - Horn Attack
-
-Seaking (M)
-IVs: 3 HP / 5 Atk / 11 Def / 9 SpD / 12 Spe
-Ability: Water Veil
-Level: 60
-Rash Nature
-- Waterfall
-- Soak
-- Megahorn
-- Horn Drill
-
-Seaking (M) @ Choice Scarf
-IVs: 19 SpA
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Lightning Rod
-Shiny: Yes
-Jolly Nature
-- Waterfall
-- Megahorn
-- Poison Jab
-- Drill Run
-
-Staryu @ Lucky Egg
-IVs: 23 HP / 4 Atk / 10 Def / 11 SpA / 28 SpD / 6 Spe
-Ability: Natural Cure
-Level: 60
-Shiny: Yes
-Bold Nature
-- Surf
-- Recover
-- Cosmic Power
-- Hydro Pump
-
-Starmie @ Modest Mint
-IVs: 26 HP / 0 Atk
-Ability: Analytic
-Level: 59
-Shiny: Yes
-Calm Nature
-- Psychic
-- Surf
-- Hydro Pump
-- Water Gun
 
 Starmie
 IVs: 1 Atk
 EVs: 3 Atk / 2 Def / 252 SpA / 1 SpD / 252 Spe
-Ability: Natural Cure
+Ability: Analytic
 Level: 53
-Shiny: Yes
+Shiny: Square
+Language: French
 Timid Nature
-- Power Gem
-- Psychic
-- Surf
+- Bubble Beam
+- Zap Cannon
+- Toxic
 - Grass Knot
 
-Magalie (Starmie) @ Power Herb
-IVs: 0 Atk
-EVs: 252 SpA / 6 SpD / 252 Spe
-Ability: Analytic
-Shiny: Yes
-Timid Nature
-- Psychic
-- Hydro Pump
-- Ice Beam
-- Meteor Beam
-
 Mr. Mime (F)
-IVs: 0 Atk / 29 SpD / 0 Spe
+IVs: 1 Def / 1 SpD / 0 Spe
 Ability: Technician
-Level: 15
+Level: 55
+Shiny: Square
+Ball: Premier Ball
+=Met_Location=50
 Mild Nature
-- Baton Pass
-- Encore
+- Seismic Toss
+- Teleport
 - Confusion
 - Fake Out
 
-Mr. Mime (M)
-IVs: 12 HP / 3 Spe
-EVs: 6 Def / 252 SpA / 252 Spe
-Ability: Soundproof
-Level: 93
-Shiny: Yes
-Timid Nature
-- Psychic
-- Dazzling Gleam
-- Thunderbolt
-- Shadow Ball
+Mr. Mime-Galar (F)
+IVs: 11 Def / 11 SpD / 0 Spe
+Ability: Ice Body
+Level: 55
+Shiny: Square
+=Met_Location=30012
+Mild Nature
+- Hypnosis
 
 Mr. Mimo (Mr. Mime-Galar) (F) @ Sitrus Berry
-EVs: 154 HP / 200 Atk / 120 Def / 36 SpA
 Ability: Ice Body
 Level: 50
-Shiny: Yes
+Ball: Cherish Ball
+Language: French
 Relaxed Nature
 - Metronome
-
-Scyther (M)
-IVs: 13 HP / 16 Atk / 8 Def / 8 SpA / 7 SpD / 24 Spe
-Ability: Technician
-Level: 60
-Bashful Nature
-- Air Slash
-- X-Scissor
-- Laser Focus
-- Swords Dance
 
 Scyther (M) @ Eviolite
 EVs: 252 Atk / 6 Def / 252 Spe
 Ability: Technician
-Shiny: Yes
+Shiny: Square
+Ball: Master Ball
 Adamant Nature
 - Roost
-- Fury Cutter
-- Dual Wingbeat
-- Swords Dance
-
-Scyther (M)
-IVs: 18 HP / 14 Atk / 5 SpD / 0 Spe
-Ability: Swarm
-Level: 1
-Shiny: Yes
-Adamant Nature
-- Quick Attack
-- Leer
-
-Scyther (M)
-IVs: 2 SpA
-EVs: 252 Atk / 6 SpD / 252 Spe
-Ability: Technician
-Shiny: Yes
-Adamant Nature
-- Double Hit
-- Swords Dance
-- Dual Wingbeat
-- X-Scissor
+- Vacuum Wave
+- Aerial Ace
+- Knock Off
 
 Jynx (F)
 IVs: 12 HP / 4 Atk / 7 Def / 20 SpA / 12 SpD / 2 Spe
@@ -5372,14 +5255,17 @@ Timid Nature
 - Extreme Speed
 - Outrage
 
-Jirachi @ Leftovers
-EVs: 248 HP / 188 SpD / 74 Spe
+Jirachi
+IVs: 10 HP / 0 Atk / 10 Def / 10 SpA / 26 SpD / 12 Spe
 Ability: Serene Grace
-Careful Nature
-- Wish
-- Protect
-- Iron Head
-- U-turn
+Level: 5
+Shiny: Yes
+=OT_Name=WISHMKR
+Jolly Nature
+- Body Slam
+- Mud-slap
+- Aerial Ace
+- Charge Beam
 
 Jirachi @ Twisted Spoon
 IVs: 12 HP / 24 Atk / 21 SpA / 18 SpD
