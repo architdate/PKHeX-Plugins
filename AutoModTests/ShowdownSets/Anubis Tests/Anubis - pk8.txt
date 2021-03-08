@@ -52,7 +52,7 @@ Bold Nature
 - Bubble Beam
 - Submission
 
-Pikachu-Original (M) @ Naive Mint
+Pikachu-Original (M)
 EVs: 6 Atk / 252 SpA / 252 Spe
 Ability: Static
 Hardy Nature
@@ -336,7 +336,7 @@ Timid Nature
 - Super Fang
 - Roar
 
-Clefable (F) @ Timid Mint
+Clefable (F)
 IVs: 0 Atk
 EVs: 252 HP / 252 Def / 6 SpD
 Ability: Magic Guard
@@ -368,8 +368,7 @@ Bold Nature
 - Skull Bash
 - Laser Focus
 
-Vulpix-Alola (F) @ Relaxed Mint
-IVs: 11 HP / 14 Atk / 10 Def / 0 SpA / 18 SpD
+Vulpix-Alola (F)
 Ability: Snow Cloak
 Level: 10
 Lax Nature
@@ -430,6 +429,16 @@ Calm Nature
 - Dynamic Punch
 - Water Pulse
 - Expanding Force
+
+Wigglytuff
+Shiny: Yes
+Language: Japanese
+=FatefulEncounter=False
+.IsNicknamed=False
+- Tickle
+- Perish Song
+- Heal Bell
+- Counter
 
 Golbat (F)
 IVs: 0 SpA
@@ -539,6 +548,17 @@ Calm Nature
 - Liquidation
 - Brick Break
 
+Golduck
+Shiny: Yes
+Language: Japanese
+=FatefulEncounter=False
+.IsNicknamed=False
+Calm Nature
+- Mud Sport
+- Flip Turn
+- Hone Claws
+- Clear Smog
+
 Arcanine (F)
 EVs: 252 HP / 252 Def / 6 SpD
 Ability: Intimidate
@@ -613,7 +633,7 @@ Hasty Nature
 - Fairy Wind
 - Psybeam
 
-Slowpoke (M) @ Ability Patch
+Slowpoke (M)
 IVs: 13 HP / 27 SpA / 0 Spe
 Ability: Regenerator
 Level: 36
@@ -757,7 +777,7 @@ Adamant Nature
 - Stealth Rock
 - Will-O-Wisp
 
-Marowak-Alola (F) @ Timid Mint
+Marowak-Alola (F)
 IVs: 23 SpA / 0 Spe
 Ability: Lightning Rod
 Level: 47
@@ -876,7 +896,7 @@ Adamant Nature
 - Avalanche
 - Rock Blast
 
-Rhydon (M) @ Brave Mint
+Rhydon (M)
 IVs: 26 Spe
 EVs: 252 HP / 252 Atk / 6 SpD
 Ability: Rock Head
@@ -887,6 +907,13 @@ Adamant Nature
 - Chip Away
 - Drill Run
 - Hammer Arm
+
+Chansey
+Shiny: Yes
+IVs: 0 Atk
+- Wish
+- Toxic
+- Mimic
 
 Chansey (F)
 IVs: 26 HP / 0 Atk / 10 Def / 3 SpA / 12 SpD / 17 Spe
@@ -1052,7 +1079,7 @@ Timid Nature
 - Mach Punch
 - Belch
 
-Pinsir (F) @ Hasty Mint
+Pinsir (F)
 IVs: 13 HP / 7 Atk / 10 Def / 20 SpA / 25 SpD / 20 Spe
 Ability: Mold Breaker
 Level: 50
@@ -1082,7 +1109,7 @@ Jolly Nature
 - Earthquake
 - Knock Off
 
-Pinsir (F) @ Adamant Mint
+Pinsir (F)
 IVs: 9 SpA / 0 Spe
 Ability: Hyper Cutter
 Level: 96
@@ -1151,7 +1178,7 @@ Jolly Nature
 - Power Whip
 - Bounce
 
-Gyarados (M) @ Ability Patch
+Gyarados (M)
 IVs: 17 SpA
 EVs: 252 Atk / 6 Def / 252 Spe
 Ability: Moxie
@@ -1172,7 +1199,7 @@ Adamant Nature
 - Waterfall
 - Bounce
 
-Lapras (F) @ Naive Mint
+Lapras (F)
 IVs: 0 Atk
 EVs: 252 HP / 252 SpA / 6 Spe
 Ability: Water Absorb
@@ -1419,7 +1446,7 @@ Gentle Nature
 - Hydro Pump
 - Tickle
 
-Kabuto (M) @ Modest Mint
+Kabuto (M)
 IVs: 27 Atk / 3 Def / 29 SpA / 0 Spe
 Ability: Swift Swim
 Level: 28
@@ -1430,7 +1457,7 @@ Hasty Nature
 - Absorb
 - Scratch
 
-Kabutops (M) @ Hasty Mint
+Kabutops (M)
 IVs: 29 SpA / 0 Spe
 Ability: Swift Swim
 Shiny: Yes
@@ -1481,7 +1508,7 @@ Adamant Nature
 - Belly Drum
 - Heat Crash
 
-Articuno @ Ability Patch
+Articuno
 IVs: 0 Atk
 EVs: 248 HP / 204 SpD / 58 Spe
 Ability: Pressure
@@ -1491,7 +1518,7 @@ Calm Nature
 - Toxic
 - Defog
 
-Articuno @ Sassy Mint
+Articuno
 IVs: 3 Atk / 14 Def / 0 Spe
 Ability: Pressure
 Level: 60
@@ -1543,7 +1570,7 @@ Bold Nature
 - Heat Wave
 - Roost
 
-Zapdos @ Ability Patch
+Zapdos
 IVs: 12 Atk
 EVs: 6 Def / 252 SpA / 252 Spe
 Ability: Static
@@ -1564,7 +1591,7 @@ Bold Nature
 - Roost
 - Toxic
 
-Zapdos @ Ability Patch
+Zapdos
 IVs: 23 Atk
 Ability: Pressure
 Shiny: Yes
@@ -1597,7 +1624,7 @@ Timid Nature
 - Thunderbolt
 - Detect
 
-Zapdos-Galar @ Ability Patch
+Zapdos-Galar
 IVs: 2 HP / 19 Def / 25 Spe
 Ability: Defiant
 Level: 70
@@ -1660,105 +1687,35 @@ Brave Nature
 - Sucker Punch
 - Nasty Plot
 
-Dratini (M)
-IVs: 5 HP / 8 Atk / 16 Def / 15 SpA / 22 SpD / 22 Spe
-Ability: Shed Skin
-Level: 61
-Quirky Nature
-- Rain Dance
-- Dragon Dance
-- Outrage
-- Hyper Beam
-
-Dratini (M)
-IVs: 10 HP / 29 Atk / 8 Def / 1 SpA / 16 SpD / 26 Spe
-Ability: Marvel Scale
-Level: 1
-Shiny: Yes
-Jolly Nature
-- Wrap
-- Leer
-
-Dragonair (F)
-IVs: 1 HP / 2 Atk / 18 Spe
-Ability: Shed Skin
-Level: 41
-Shiny: Yes
-Lonely Nature
-- Twister
-- Aqua Tail
-- Wrap
-- Dragon Tail
-
 Dragonite (M)
-IVs: 0 SpA
 Ability: Multiscale
-Adamant Nature
-- Dragon Dance
-- Earthquake
-- Breaking Swipe
-- Roost
-
-Dragonite (F)
-EVs: 252 Atk / 6 SpD / 252 Spe
-Ability: Multiscale
-Adamant Nature
-- Dual Wingbeat
-- Fire Punch
-- Dragon Dance
-- Outrage
-
-Dragonite (M) @ Careful Mint
-IVs: 22 SpA
-Ability: Multiscale
-Level: 55
-Shiny: Yes
+Level: 62
+Ball: Cherish Ball
+=OT_Name=Lance
 Adamant Nature
 - Aqua Jet
-- Dragon Breath
-- Mist
-- Water Pulse
+- Roost
+- Focus Punch
+- Power-up Punch
 
 Mewtwo
-IVs: 5 HP / 26 Atk / 1 Spe
-Ability: Pressure
-Level: 70
-Brave Nature
-- Psychic
-- Recover
-- Amnesia
-- Swift
-
-Mewtwo
-IVs: 15 HP / 12 Atk / 28 Def / 25 SpD
 Ability: Unnerve
 Timid Nature
 - Psystrike
-- Ice Beam
+- Toxic
 - Heal Pulse
 - Hurricane
 
 Mewtwo
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 7 HP / 3 Atk / 12 Def / 30 SpA / 28 SpD / 20 Spe
 Ability: Pressure
 Level: 70
 Shiny: Yes
 Docile Nature
-- Mega Kick
+- Confide
 - Seismic Toss
 - Mimic
 - Counter
-
-OG MEWTWO (Mewtwo)
-IVs: 11 Def / 22 SpA / 17 Spe
-EVs: 5 HP / 2 Atk / 1 SpA / 3 SpD / 2 Spe
-Ability: Unnerve
-Shiny: Yes
-Hardy Nature
-- Psystrike
-- Psychic
-- Aura Sphere
-- Recover
 
 Mewtwo
 EVs: 112 Atk / 144 Def / 252 Spe
@@ -1769,16 +1726,6 @@ Jolly Nature
 - Psychic
 - Recover
 - Aura Sphere
-
-Godric (Mewtwo)
-EVs: 6 HP / 252 SpA / 252 Spe
-Ability: Unnerve
-Shiny: Yes
-Timid Nature
-- Psystrike
-- Ice Beam
-- Nasty Plot
-- Shadow Ball
 
 Mewtwo
 IVs: 27 HP / 15 Atk / 30 SpD
@@ -1792,29 +1739,6 @@ Quiet Nature
 - Psycho Cut
 
 Mewtwo
-IVs: 22 HP / 2 Atk
-EVs: 2 Atk / 4 Def / 252 SpA / 252 Spe
-Ability: Unnerve
-Level: 72
-Shiny: Yes
-Timid Nature
-- Bubble Beam
-- Self-Destruct
-- Counter
-- Teleport
-
-Mewtwo
-IVs: 0 Atk / 30 SpD
-EVs: 252 SpA / 6 SpD / 252 Spe
-Ability: Pressure
-Shiny: Yes
-Timid Nature
-- Shadow Ball
-- Focus Blast
-- Nasty Plot
-- Psystrike
-
-Mewtwo
 IVs: 0 Atk
 Ability: Unnerve
 Level: 70
@@ -1825,55 +1749,23 @@ Timid Nature
 - Barrier
 - Flash
 
-Mewtwo
-IVs: 0 Atk
-EVs: 6 Def / 252 SpA / 252 Spe
-Ability: Unnerve
-Shiny: Yes
-Timid Nature
-- Psystrike
-- Thunderbolt
-- Shadow Ball
-- Aura Sphere
-
-Mewtwo
-IVs: 1 Atk
-EVs: 6 Def / 252 SpA / 252 Spe
-Ability: Pressure
-Shiny: Yes
-Timid Nature
-- Psystrike
-- Ice Beam
-- Fire Blast
-- Aura Sphere
+Mew
+IVs: 29 HP / 21 Atk / 21 SpA / 30 Spe
+Ability: Synchronize
+Level: 35
+Brave Nature
+- Mimic
+- Psywave
 
 Mew
-IVs: 15 HP / 21 Atk / 6 Def / 26 SpA / 17 SpD / 11 Spe
+IVs: 0 Atk
 Ability: Synchronize
-Level: 10
+Level: 1
 Bold Nature
-- Pound
-- Transform
-
-Hoothoot (M)
-IVs: 26 HP / 25 Atk / 30 Def / 16 SpA / 18 SpD / 13 Spe
-Ability: Keen Eye
-Level: 6
-Careful Nature
-- Peck
-- Growl
-- Tackle
-- Echoed Voice
-
-Noctowl (M)
-IVs: 12 Def / 28 SpA
-Ability: Insomnia
-Level: 47
-Careful Nature
-- Extrasensory
-- Uproar
-- Air Slash
-- Take Down
+- Mimic
+- Psywave
+- Confusion
+- Roost
 
 Crobat (M)
 IVs: 15 HP / 26 Atk / 28 Def / 0 SpD / 13 Spe
@@ -1904,7 +1796,7 @@ Quiet Nature
 - Supersonic
 - Mist
 
-Lanturn (M) @ Calm Mint
+Lanturn (M)
 IVs: 0 Atk
 EVs: 40 HP / 192 Def / 200 SpD / 78 Spe
 Ability: Volt Absorb
@@ -1944,6 +1836,13 @@ Brave Nature
 - Tail Whip
 - Play Nice
 - Fake Out
+
+Pichu
+Shiny: Yes
+=OT_Name=ポケパーク
+IVs: 0 Atk
+Language: Japanese
+- Follow Me
 
 Cleffa (M)
 IVs: 21 HP / 0 Atk / 23 SpD / 13 Spe
@@ -2324,7 +2223,7 @@ Bold Nature
 - Psyshock
 - Toxic
 
-Slowking (M) @ Calm Mint
+Slowking (M)
 IVs: 0 Atk
 EVs: 248 HP / 252 SpA / 10 Spe
 Ability: Regenerator
@@ -2481,7 +2380,7 @@ Jolly Nature
 - Knock Off
 - Superpower
 
-Scizor (F) @ Modest Mint
+Scizor (F)
 IVs: 28 SpA
 EVs: 252 Atk / 252 SpD / 6 Spe
 Ability: Light Metal
@@ -2557,7 +2456,7 @@ Impish Nature
 - Infestation
 - Toxic
 
-Heracross (F) @ Jolly Mint
+Heracross (F)
 IVs: 25 HP / 24 Atk / 25 Def / 24 SpA / 13 SpD / 12 Spe
 Ability: Swarm
 Level: 50
@@ -2578,7 +2477,7 @@ Jolly Nature
 - Knock Off
 - Stone Edge
 
-Heracross (M) @ Ability Patch
+Heracross (M)
 EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Moxie
 Shiny: Yes
@@ -2588,7 +2487,7 @@ Jolly Nature
 - Aerial Ace
 - Earthquake
 
-Sneasel (M) @ Impish Mint
+Sneasel (M)
 Ability: Inner Focus
 Jolly Nature
 - Knock Off
@@ -2744,7 +2643,7 @@ Modest Nature
 - Flash Cannon
 - Hurricane
 
-Kingdra (F) @ Ability Patch
+Kingdra (F)
 EVs: 6 Atk / 252 SpA / 252 Spe
 Ability: Swift Swim
 Timid Nature
@@ -2753,7 +2652,7 @@ Timid Nature
 - Hydro Pump
 - Hurricane
 
-Kingdra (M) @ Modest Mint
+Kingdra (M)
 IVs: 17 HP / 8 SpD
 Ability: Swift Swim
 Level: 57
@@ -2947,7 +2846,7 @@ Relaxed Nature
 - Helping Hand
 - Feint
 
-Smoochum (F) @ Sassy Mint
+Smoochum (F)
 IVs: 9 HP / 0 Atk / 18 SpD
 Ability: Hydration
 Level: 39
@@ -2958,7 +2857,7 @@ Hardy Nature
 - Ice Punch
 - Psychic
 
-Elekid (F) @ Adamant Mint
+Elekid (F)
 IVs: 19 Atk / 6 SpA / 4 Spe
 Ability: Vital Spirit
 Level: 27
@@ -2969,7 +2868,7 @@ Lonely Nature
 - Swift
 - Thunder Shock
 
-Magby (F) @ Ability Patch
+Magby (F)
 IVs: 17 HP / 0 Atk / 15 Def / 19 SpD / 4 Spe
 Ability: Flame Body
 Level: 17
@@ -3020,7 +2919,7 @@ Bold Nature
 - Seismic Toss
 - Teleport
 
-Blissey (F) @ Ability Patch
+Blissey (F)
 IVs: 0 Atk
 EVs: 252 HP / 252 Def / 6 SpD
 Ability: Natural Cure
@@ -3118,7 +3017,7 @@ Adamant Nature
 - Extreme Speed
 - Crush Claw
 
-Entei @ Ability Patch
+Entei
 IVs: 11 SpA
 EVs: 6 HP / 252 Atk / 252 Spe
 Ability: Inner Focus
@@ -3129,7 +3028,7 @@ Jolly Nature
 - Bulldoze
 - Extreme Speed
 
-Entei @ Ability Patch
+Entei
 IVs: 25 SpA
 Ability: Pressure
 Level: 60
@@ -3162,7 +3061,7 @@ Bold Nature
 - Substitute
 - Scald
 
-Suicune @ Ability Patch
+Suicune
 IVs: 14 Atk
 EVs: 252 HP / 252 Def / 6 SpD
 Ability: Pressure
@@ -3184,7 +3083,7 @@ Bold Nature
 - Mirror Coat
 - Ice Fang
 
-Suicune @ Quiet Mint
+Suicune
 IVs: 3 HP / 7 Atk / 0 Spe
 Ability: Pressure
 Level: 60
@@ -3228,7 +3127,7 @@ Docile Nature
 - Scary Face
 - Tackle
 
-Pupitar (F) @ Quiet Mint
+Pupitar (F)
 IVs: 13 Atk / 27 Def / 3 SpA / 28 SpD / 11 Spe
 Ability: Shed Skin
 Level: 37
@@ -3323,7 +3222,7 @@ Relaxed Nature
 - Whirlpool
 - Crunch
 
-Lugia @ Ability Patch
+Lugia
 IVs: 0 Atk
 EVs: 252 HP / 162 Def / 96 Spe
 Ability: Multiscale
@@ -3354,7 +3253,7 @@ Timid Nature
 - Recover
 - Aeroblast
 
-Guardian (Lugia) @ Ability Patch
+Guardian (Lugia)
 IVs: 0 Atk
 Ability: Multiscale
 Level: 60
@@ -3365,7 +3264,7 @@ Bold Nature
 - Nightmare
 - Whirlpool
 
-Lugia @ Timid Mint
+Lugia
 IVs: 0 Atk / 26 Def / 4 SpD
 Ability: Pressure
 Level: 60
@@ -3376,7 +3275,7 @@ Naughty Nature
 - Extrasensory
 - Ancient Power
 
-Ho-Oh @ Ability Patch
+Ho-Oh
 IVs: 0 SpA
 EVs: 4 HP / 252 Atk / 2 Def / 252 Spe
 Ability: Regenerator
@@ -3386,7 +3285,7 @@ Adamant Nature
 - Toxic
 - Recover
 
-Ho-Oh @ Ability Patch
+Ho-Oh
 IVs: 24 SpA
 Ability: Pressure
 Level: 70
@@ -3397,7 +3296,7 @@ Adamant Nature
 - Ancient Power
 - Safeguard
 
-Ho-Oh @ Impish Mint
+Ho-Oh
 IVs: 18 SpA / 30 SpD / 0 Spe
 Ability: Pressure
 Level: 60
@@ -3458,7 +3357,7 @@ Impish Nature
 - Safeguard
 - Hold Back
 
-Treecko (M) @ Ability Patch
+Treecko (M)
 IVs: 0 Atk / 11 Spe
 Ability: Overgrow
 Level: 1
@@ -3469,7 +3368,7 @@ Timid Nature
 - Leech Seed
 - Synthesis
 
-Grovyle (M) @ Relaxed Mint
+Grovyle (M)
 IVs: 12 Atk / 16 Def
 Ability: Overgrow
 Level: 65
@@ -3489,7 +3388,7 @@ Lonely Nature
 - Drain Punch
 - Leaf Blade
 
-Sceptile (M) @ Timid Mint
+Sceptile (M)
 IVs: 16 Atk / 2 SpA
 Ability: Unburden
 Level: 65
@@ -3510,7 +3409,7 @@ Timid Nature
 - Giga Drain
 - Earthquake
 
-Torchic (F) @ Ability Patch
+Torchic (F)
 IVs: 0 SpA
 EVs: 252 Atk / 6 Def / 252 Spe
 Ability: Speed Boost
@@ -3541,7 +3440,7 @@ Rash Nature
 - Close Combat
 - Coaching
 
-Blaziken (M) @ Ability Patch
+Blaziken (M)
 IVs: 30 HP / 0 Atk
 EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Speed Boost
@@ -3552,7 +3451,7 @@ Modest Nature
 - Scorching Sands
 - Protect
 
-Mudkip (M) @ Ability Patch
+Mudkip (M)
 IVs: 15 Def
 Ability: Torrent
 Level: 1
@@ -3563,7 +3462,7 @@ Relaxed Nature
 - Mud-Slap
 - Yawn
 
-Marshtomp (F) @ Ability Patch
+Marshtomp (F)
 EVs: 2 Def / 1 SpD
 Ability: Torrent
 Level: 21
@@ -3584,7 +3483,7 @@ Quiet Nature
 - Earth Power
 - Amnesia
 
-Swampert (M) @ Ability Patch
+Swampert (M)
 IVs: 0 Spe
 EVs: 252 HP / 252 Def / 6 SpD
 Ability: Torrent
@@ -3819,7 +3718,7 @@ Bashful Nature
 - Spit Up
 - Roost
 
-Pelipper (M) @ Quiet Mint
+Pelipper (M)
 IVs: 0 Atk
 Ability: Keen Eye
 Level: 48
@@ -3997,7 +3896,7 @@ Adamant Nature
 - Phantom Force
 - Night Slash
 
-Shedinja @ Quiet Mint
+Shedinja
 IVs: 2 HP / 0 Spe
 Ability: Wonder Guard
 Level: 59
@@ -4220,7 +4119,7 @@ Timid Nature
 - Fury Cutter
 - Mud-Slap
 
-Carvanha (F) @ Ability Patch
+Carvanha (F)
 IVs: 26 SpA
 Ability: Rough Skin
 Level: 1
@@ -4341,7 +4240,7 @@ Jolly Nature
 - U-turn
 - Dragon Claw
 
-Swablu (F) @ Ability Patch
+Swablu (F)
 IVs: 0 Atk
 Ability: Natural Cure
 Level: 1
@@ -4372,7 +4271,7 @@ Calm Nature
 - Defog
 - Roost
 
-Lunatone @ Quiet Mint
+Lunatone
 IVs: 0 Atk / 0 Spe
 Ability: Levitate
 Level: 1
@@ -4382,7 +4281,7 @@ Careful Nature
 - Confusion
 - Rock Throw
 
-Solrock @ Ability Patch
+Solrock
 IVs: 0 Atk / 30 Spe
 Ability: Levitate
 Level: 1
@@ -4528,7 +4427,7 @@ Modest Nature
 - Rapid Spin
 - Stealth Rock
 
-Lileep (M) @ Ability Patch
+Lileep (M)
 IVs: 0 Atk
 Ability: Storm Drain
 Level: 1
@@ -4728,7 +4627,7 @@ Adamant Nature
 - Future Sight
 - Perish Song
 
-카산드라 (Absol) (F) @ Ability Patch
+카산드라 (Absol) (F)
 IVs: 0 SpA
 EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Justified
@@ -4749,7 +4648,7 @@ Jolly Nature
 - Close Combat
 - Play Rough
 
-Wynaut (M) @ Quiet Mint
+Wynaut (M)
 IVs: 25 Atk / 0 Spe
 Ability: Telepathy
 Level: 50
@@ -4864,7 +4763,7 @@ Adamant Nature
 - Outrage
 - Double-Edge
 
-Bagon (F) @ Ability Patch
+Bagon (F)
 IVs: 0 SpA
 EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Rock Head
@@ -4875,7 +4774,7 @@ Jolly Nature
 - Crunch
 - Dragon Claw
 
-Shelgon (M) @ Brave Mint
+Shelgon (M)
 IVs: 14 SpA / 19 SpD / 0 Spe
 Ability: Rock Head
 Level: 55
@@ -4886,54 +4785,13 @@ Impish Nature
 - Protect
 - Zen Headbutt
 
-Salamence (F)
-IVs: 11 HP / 28 Atk / 27 Def / 11 SpA / 20 SpD / 16 Spe
-Ability: Intimidate
-Level: 68
-Jolly Nature
-- Zen Headbutt
-- Focus Energy
-- Flamethrower
-- Outrage
-
-Salamence (F) @ Ability Patch
-IVs: 30 Def / 22 SpA
-Ability: Intimidate
-Level: 50
+Salamence
 Shiny: Yes
-Jolly Nature
-- Outrage
-- Aerial Ace
-- Dragon Claw
-- Dragon Dance
-
-Salamence (F) @ Ability Patch
-IVs: 0 SpA
-EVs: 252 Atk / 6 SpD / 252 Spe
-Ability: Moxie
-Shiny: Yes
-Jolly Nature
-- Fire Fang
-- Dragon Dance
-- Earthquake
-- Dual Wingbeat
-
-Salamence (F) @ Ability Patch
-IVs: 0 SpA
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Intimidate
-Shiny: Yes
-Jolly Nature
+IVs: 0 Atk
+- Wish
 - Roost
 - Defog
-- Tailwind
 - Toxic
-
-Beldum
-Ability: Clear Body
-Level: 1
-Adamant Nature
-- Tackle
 
 Metang
 IVs: 1 HP / 30 Atk / 5 Def / 7 SpA / 30 SpD / 2 Spe
@@ -4945,7 +4803,7 @@ Relaxed Nature
 - Meteor Mash
 - Iron Defense
 
-Metang @ Ability Patch
+Metang
 IVs: 5 HP / 4 Atk / 16 Def / 29 SpD / 14 Spe
 EVs: 11 HP / 13 Atk / 21 Def / 12 SpA / 3 SpD / 20 Spe
 Ability: Clear Body
@@ -4997,7 +4855,7 @@ Adamant Nature
 - Zen Headbutt
 - Earthquake
 
-Metagross @ Ability Patch
+Metagross
 EVs: 6 HP / 252 Atk / 252 Spe
 Ability: Clear Body
 Shiny: Yes
@@ -5050,7 +4908,6 @@ Modest Nature
 - Seismic Toss
 
 Registeel @ Leftovers
-IVs: 22 SpA
 EVs: 252 HP / 252 SpD / 6 Spe
 Ability: Clear Body
 Careful Nature
@@ -5060,29 +4917,7 @@ Careful Nature
 - Iron Head
 
 Registeel
-IVs: 0 Atk / 15 SpA
-Ability: Clear Body
-Level: 40
-Shiny: Yes
-Bold Nature
-- Mud-Slap
-- Mimic
-- Seismic Toss
-- Counter
-
-Registeel @ Adamant Mint
-IVs: 5 HP / 9 SpA / 0 Spe
-Ability: Clear Body
-Level: 60
-Shiny: Yes
-Brave Nature
-- Flash Cannon
-- Hammer Arm
-- Lock-On
-- Zap Cannon
-
-Registeel
-IVs: 30 HP / 0 Atk
+IVs: 9 HP / 20 Atk / 21 Def / 0 SpA / 26 SpD / 14 Spe
 Ability: Clear Body
 Level: 40
 Shiny: Yes
@@ -5123,7 +4958,7 @@ Naughty Nature
 - Calm Mind
 - Thunderbolt
 
-Latias (F) @ Ability Patch
+Latias (F)
 IVs: 29 HP / 0 Atk / 28 Def
 Ability: Levitate
 Level: 30
@@ -5156,7 +4991,7 @@ Timid Nature
 - Hidden Power [Fire]
 - Calm Mind
 
-Nauhs (Latios) (M) @ Timid Mint
+Nauhs (Latios) (M)
 EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Levitate
 Timid Nature
@@ -5174,7 +5009,7 @@ Serious Nature
 - Draco Meteor
 - Tailwind
 
-Latios (M) @ Relaxed Mint
+Latios (M)
 IVs: 29 HP / 0 Atk / 14 SpA
 Ability: Levitate
 Level: 60
@@ -5207,7 +5042,7 @@ Careful Nature
 - Ancient Power
 - Water Spout
 
-Kyogre @ Ability Patch
+Kyogre
 IVs: 18 Atk / 19 SpA / 2 SpD
 Ability: Drizzle
 Timid Nature
@@ -5316,7 +5151,7 @@ Jolly Nature
 - Ice Fang
 - Volt Switch
 
-Budew (M) @ Modest Mint
+Budew (M)
 IVs: 6 Atk / 14 Def / 10 Spe
 Ability: Poison Point
 Level: 40
@@ -5445,7 +5280,7 @@ Modest Nature
 - Aromatherapy
 - Healing Wish
 
-Shellos (M) @ Sassy Mint
+Shellos (M)
 IVs: 0 Atk / 0 Spe
 EVs: 252 HP / 162 Def / 96 SpA
 Ability: Storm Drain
@@ -5709,7 +5544,7 @@ IVs: 0 Atk
 =Met_Location=230
 - Shadow Sneak
 
-Gible (M) @ Ability Patch
+Gible (M)
 IVs: 11 SpA
 EVs: 2 Def
 Ability: Sand Veil
@@ -5760,7 +5595,7 @@ Gentle Nature
 - Body Slam
 - Lick
 
-Riolu (M) @ Jolly Mint
+Riolu (M)
 IVs: 27 Atk
 EVs: 250 HP / 80 SpA / 180 SpD
 Ability: Prankster
@@ -5781,7 +5616,7 @@ Lax Nature
 - Quick Attack
 - Feint
 
-Lucario (M) @ Hasty Mint
+Lucario (M)
 IVs: 28 HP / 22 Atk / 28 Def / 14 SpA / 10 SpD / 13 Spe
 Ability: Inner Focus
 Level: 30
@@ -6010,7 +5845,7 @@ Brave Nature
 - Brick Break
 - X-Scissor
 
-Weavile (M) @ Hasty Mint
+Weavile (M)
 IVs: 10 HP / 29 Atk / 18 Def / 3 SpA / 19 SpD / 30 Spe
 Ability: Pressure
 Level: 30
@@ -6061,7 +5896,7 @@ Timid Nature
 - Rising Voltage
 - Steel Beam
 
-Lickilicky (M) @ Adamant Mint
+Lickilicky (M)
 EVs: 252 HP / 252 SpD
 Ability: Cloud Nine
 Shiny: Yes
@@ -6310,7 +6145,7 @@ Calm Nature
 - Flail
 - Blizzard
 
-Mamoswine (M) @ Relaxed Mint
+Mamoswine (M)
 IVs: 6 HP / 27 Atk / 15 Def / 18 SpA / 1 SpD / 10 Spe
 Ability: Thick Fat
 Level: 50
@@ -6343,7 +6178,7 @@ Timid Nature
 - Conversion 2
 - Magnet Rise
 
-Catcher (Gallade) (M) @ Jolly Mint
+Catcher (Gallade) (M)
 EVs: 252 HP / 252 Atk / 6 Def
 Ability: Steadfast
 Adamant Nature
@@ -6362,7 +6197,7 @@ Brave Nature
 - Double Team
 - Psybeam
 
-Gallade (M) @ Jolly Mint
+Gallade (M)
 IVs: 5 SpA
 EVs: 68 HP / 252 Atk / 16 Def / 174 Spe
 Ability: Justified
@@ -6468,7 +6303,7 @@ Timid Nature
 - Swift
 - Endure
 
-Rotom-Fan @ Jolly Mint
+Rotom-Fan
 IVs: 2 Atk
 EVs: 2 Atk / 4 Def / 252 SpA / 252 Spe
 Ability: Levitate
@@ -6500,7 +6335,7 @@ Timid Nature
 - Thunderbolt
 - Leaf Storm
 
-Uxie @ Jolly Mint
+Uxie
 EVs: 9 HP / 9 Atk / 8 Def / 6 SpA / 4 SpD / 10 Spe
 Ability: Levitate
 Rash Nature
@@ -6509,7 +6344,7 @@ Rash Nature
 - Psyshock
 - U-turn
 
-Uxie @ Ability Patch
+Uxie
 IVs: 27 Atk / 20 SpD / 0 Spe
 Ability: Levitate
 Level: 60
@@ -6542,7 +6377,7 @@ Modest Nature
 - Protect
 - Thunder Wave
 
-Mesprit @ Timid Mint
+Mesprit
 IVs: 1 Atk / 25 SpD / 0 Spe
 Ability: Levitate
 Level: 60
@@ -6564,7 +6399,7 @@ Calm Nature
 - Toxic
 - Mud-Slap
 
-Azelf @ Ability Patch
+Azelf
 IVs: 30 SpD
 EVs: 6 HP / 252 SpA / 252 Spe
 Ability: Levitate
@@ -6585,7 +6420,7 @@ Jolly Nature
 - Flash
 - Mud-Slap
 
-Dialga @ Adamant Mint
+Dialga
 IVs: 0 Atk
 EVs: 252 SpA
 Ability: Telepathy
@@ -6617,7 +6452,7 @@ Quirky Nature
 - Roar of Time
 - Flash Cannon
 
-Palkia @ Adamant Mint
+Palkia
 IVs: 0 Atk
 EVs: 252 SpA / 252 Spe
 Ability: Telepathy
@@ -6677,7 +6512,7 @@ Quiet Nature
 - Lava Plume
 - Fire Spin
 
-Heatran (F) @ Ability Patch
+Heatran (F)
 IVs: 7 Atk
 EVs: 6 HP / 252 SpA / 252 Spe
 Ability: Flash Fire
@@ -6729,7 +6564,7 @@ Careful Nature
 - Aura Sphere
 - Shadow Force
 
-Giratina @ Ability Patch
+Giratina
 IVs: 0 Atk
 EVs: 252 Def / 252 SpA / 6 SpD
 Ability: Pressure
@@ -6751,7 +6586,7 @@ Modest Nature
 - Aura Sphere
 - Shadow Force
 
-Giratina @ Ability Patch
+Giratina
 IVs: 9 SpA
 EVs: 248 Atk / 248 Def / 14 Spe
 Ability: Pressure
@@ -6804,7 +6639,7 @@ Relaxed Nature
 - Psychic
 - Helping Hand
 
-Cresselia (F) @ Adamant Mint
+Cresselia (F)
 IVs: 17 Atk / 0 Spe
 Ability: Levitate
 Level: 60
@@ -6848,7 +6683,7 @@ Relaxed Nature
 - Captivate
 - Mud-Slap
 
-Cresselia (F) @ Ability Patch
+Cresselia (F)
 IVs: 0 Atk
 Ability: Levitate
 Level: 68
@@ -6859,7 +6694,7 @@ Timid Nature
 - Moonlight
 - Psycho Cut
 
-Victini @ Ability Patch
+Victini
 IVs: 16 SpA
 Ability: Victory Star
 Level: 15
@@ -6889,7 +6724,7 @@ Gentle Nature
 - Crunch
 - Play Rough
 
-Stoutland (F) @ Brave Mint
+Stoutland (F)
 EVs: 252 Atk / 130 Def / 128 Spe
 Ability: Sand Rush
 Shiny: Yes
@@ -6974,7 +6809,7 @@ Bold Nature
 - Dazzling Gleam
 - Psychic
 
-Pidgey (Pidove) (M) @ Jolly Mint
+Pidgey (Pidove) (M)
 IVs: 17 HP / 16 Atk / 23 Def / 1 Spe
 Ability: Super Luck
 Level: 18
@@ -7016,7 +6851,7 @@ Hardy Nature
 - Stealth Rock
 - Mud-Slap
 
-Boldore (M) @ Lax Mint
+Boldore (M)
 IVs: 9 HP / 0 Atk / 6 Def / 18 SpA / 26 SpD / 1 Spe
 Ability: Sturdy
 Level: 61
@@ -7026,7 +6861,7 @@ Modest Nature
 - Stone Edge
 - Explosion
 
-Boldore (F) @ Brave Mint
+Boldore (F)
 IVs: 30 SpA
 EVs: 252 Atk / 252 Def / 6 SpD
 Ability: Weak Armor
@@ -7048,7 +6883,7 @@ Bold Nature
 - Stone Edge
 - Explosion
 
-Blue Sky (Gigalith) (F) @ Sassy Mint
+Blue Sky (Gigalith) (F)
 IVs: 30 SpA
 EVs: 252 Atk / 252 Def / 6 SpD
 Ability: Sand Stream
@@ -7103,66 +6938,16 @@ Serious Nature
 - Endeavor
 - Psychic
 
-Drilbur (M)
-IVs: 9 HP / 14 Atk / 13 Def / 21 SpA / 1 SpD / 17 Spe
-Ability: Sand Force
-Level: 13
-Hardy Nature
-- Rapid Spin
-- Scratch
-- Hone Claws
-- Fury Swipes
-
-Drilbur (M) @ Leftovers
-IVs: 0 SpA
-EVs: 252 Atk / 6 Def / 252 Spe
-Ability: Sand Rush
-Shiny: Yes
-Jolly Nature
-- Mud-Slap
-- High Horsepower
-- Rock Slide
-- Swords Dance
-
-Excadrill (M) @ Calm Mint
-IVs: 1 SpA
-EVs: 252 Atk / 6 Def / 252 Spe
-Ability: Sand Force
-Jolly Nature
-- Iron Head
-- Horn Drill
-- Rock Slide
-- High Horsepower
-
-Excadrill (F) @ Dream Ball
+Excadrill (M) @ Focus Sash
+IVs: 27 HP / 19 Spe
 EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Mold Breaker
+Level: 1
 Jolly Nature
+- Hone Claws
 - Earthquake
 - Iron Head
-- Rock Slide
-- Horn Drill
-
-Excadrill (F)
-IVs: 17 Spe
-Ability: Mold Breaker
-Level: 58
-Modest Nature
-- Drill Run
-- Fissure
-- Crush Claw
-- Dig
-
-HolyMoley (Excadrill) (F) @ Choice Scarf
-IVs: 4 SpA
-EVs: 2 HP / 252 Atk / 4 Def / 252 Spe
-Ability: Mold Breaker
-Shiny: Yes
-Jolly Nature
-- Earthquake
-- Iron Head
-- Rapid Spin
-- Rock Slide
+- Shadow Claw
 
 Audino (M)
 IVs: 20 SpA / 29 SpD
@@ -7475,7 +7260,7 @@ Jolly Nature
 - Earthquake
 - Close Combat
 
-Krookodile (F) @ Jolly Mint
+Krookodile (F)
 IVs: 0 HP / 16 Atk
 Ability: Intimidate
 Level: 60
@@ -7622,7 +7407,7 @@ Brave Nature
 - Drain Punch
 - Substitute
 
-Scrafty (F) @ Ability Patch
+Scrafty (F)
 IVs: 13 SpA
 EVs: 252 Atk / 4 SpD / 252 Spe
 Ability: Moxie
@@ -7698,7 +7483,7 @@ Timid Nature
 - Psycho Shift
 - Ancient Power
 
-Cofagrigus (M) @ Modest Mint
+Cofagrigus (M)
 IVs: 23 HP / 26 Atk / 27 Def / 5 SpA / 18 SpD / 16 Spe
 Ability: Mummy
 Level: 66
@@ -7883,120 +7668,6 @@ Modest Nature
 - Helping Hand
 - Echoed Voice
 
-Gothita (F)
-IVs: 0 Atk / 1 SpA / 0 Spe
-Ability: Frisk
-Level: 1
-Relaxed Nature
-- Mirror Coat
-- Heal Pulse
-- Fake Out
-- Mean Look
-
-Gothorita (M)
-IVs: 0 Atk
-Ability: Shadow Tag
-Level: 32
-Shiny: Yes
-Calm Nature
-- Pound
-- Confusion
-- Play Nice
-- Tickle
-
-Gothorita (M) @ Expert Belt
-IVs: 15 Atk / 0 Spe
-EVs: 222 HP / 96 Def / 192 SpA
-Ability: Competitive
-Shiny: Yes
-Sassy Nature
-- Magic Room
-- Psychic
-- Flatter
-- Future Sight
-
-Gothitelle (F) @ Kasib Berry
-IVs: 0 Atk / 0 Spe
-Ability: Shadow Tag
-Relaxed Nature
-- Psychic
-- Ally Switch
-- Heal Pulse
-- Fake Out
-
-Black Widow (Gothitelle) (F) @ Sitrus Berry
-IVs: 0 Atk
-EVs: 252 HP / 110 Def / 148 SpD
-Ability: Shadow Tag
-Shiny: Yes
-Calm Nature
-- Psychic
-- Helping Hand
-- Trick Room
-- Protect
-
-Solosis (M)
-Ability: Magic Guard
-Level: 1
-Quirky Nature
-- Confusion
-- Confuse Ray
-- Astonish
-- Acid Armor
-
-Duosion (M)
-IVs: 2 Atk / 27 SpA / 30 SpD
-Ability: Overcoat
-Level: 38
-Adamant Nature
-- Confusion
-- Psybeam
-- Psyshock
-- Endeavor
-
-Reuniclus (F)
-IVs: 2 HP / 21 Atk / 11 Def / 21 SpA / 30 SpD / 29 Spe
-EVs: 2 SpA
-Ability: Magic Guard
-Level: 63
-Impish Nature
-- Psychic
-- Skill Swap
-- Future Sight
-- Wonder Room
-
-Reuniclus (F) @ Kee Berry
-IVs: 0 Atk
-EVs: 252 HP / 252 Def / 6 SpA
-Ability: Magic Guard
-Shiny: Yes
-Bold Nature
-- Stored Power
-- Calm Mind
-- Iron Defense
-- Recover
-
-Vanillite (F)
-IVs: 29 HP / 0 Atk / 0 Def / 7 SpA / 0 SpD / 0 Spe
-Ability: Snow Cloak
-Level: 1
-Shiny: Yes
-Gentle Nature
-- Harden
-- Ice Shard
-- Aurora Veil
-- Icicle Crash
-
-Vanillish (M)
-IVs: 13 HP / 10 Atk / 9 Def / 19 SpA / 3 SpD / 12 Spe
-Ability: Ice Body
-Level: 65
-Bold Nature
-- Mirror Coat
-- Ice Beam
-- Blizzard
-- Sheer Cold
-
 Vanilluxe (F)
 IVs: 0 Atk
 Ability: Ice Body
@@ -8039,7 +7710,7 @@ Bold Nature
 - X-Scissor
 - Fury Cutter
 
-Escavalier (M) @ Jolly Mint
+Escavalier (M)
 IVs: 1 Atk / 5 SpD
 Ability: Swarm
 Level: 57
@@ -8102,7 +7773,7 @@ Sassy Nature
 - Rage Powder
 - Hidden Power [Fire]
 
-Frillish (F) @ Quiet Mint
+Frillish (F)
 IVs: 25 Atk / 4 Def / 24 SpD / 0 Spe
 Ability: Damp
 Level: 30
@@ -8137,7 +7808,7 @@ Bold Nature
 - Recover
 - Taunt
 
-Joltik (M) @ Relaxed Mint
+Joltik (M)
 IVs: 28 HP / 0 Atk / 7 SpA / 22 SpD / 0 Spe
 Ability: Unnerve
 Level: 15
@@ -8168,7 +7839,7 @@ Hasty Nature
 - Flash Cannon
 - Tackle
 
-Ferroseed (M) @ Quiet Mint
+Ferroseed (M)
 IVs: 0 Spe
 EVs: 222 HP / 192 Atk / 96 Def
 Ability: Iron Barbs
@@ -8571,7 +8242,7 @@ Adamant Nature
 - Outrage
 - Superpower
 
-Golett @ Calm Mint
+Golett
 IVs: 9 Def / 6 SpA / 30 SpD / 7 Spe
 Ability: Klutz
 Level: 29
@@ -8715,7 +8386,7 @@ Adamant Nature
 - Sucker Punch
 - Iron Head
 
-Bisharp (M) @ Adamant Mint
+Bisharp (M)
 IVs: 14 SpA
 EVs: 6 HP / 252 Atk / 252 Spe
 Ability: Defiant
@@ -8834,7 +8505,7 @@ Rash Nature
 - Giga Drain
 - Sucker Punch
 
-Heatmor (F) @ Quiet Mint
+Heatmor (F)
 IVs: 0 Atk / 9 SpA / 4 SpD / 0 Spe
 EVs: 5 Spe
 Ability: Gluttony
@@ -8905,173 +8576,52 @@ Hasty Nature
 - Hyper Voice
 - Dragon Rush
 
-Gore (Hydreigon) (M) @ Choice Scarf
-IVs: 0 Atk
-EVs: 252 SpA / 6 SpD / 252 Spe
-Ability: Levitate
-Timid Nature
-- Draco Meteor
-- U-turn
-- Fire Blast
-- Dark Pulse
-
-Hydreigon (M) @ Ability Patch
-IVs: 0 Atk
-EVs: 252 SpA / 6 SpD / 252 Spe
-Ability: Levitate
-Timid Nature
-- Draco Meteor
-- Dark Pulse
-- Flamethrower
-- Earth Power
-
 Hydreigon (M)
-IVs: 3 Atk
+IVs: 3 HP / 15 Atk / 5 Def / 15 SpA / 5 SpD / 0 Spe
 Ability: Levitate
-Level: 70
-Shiny: Yes
-Modest Nature
-- Hyper Voice
+Level: 1
+=Met_Location=30012
+Timid Nature
 - Dragon Breath
-- Flamethrower
-- Focus Blast
+- Bite
+- Tri Attack
+- Focus Energy
 
-Orochi (Hydreigon) (M)
-EVs: 4 Atk / 252 SpA / 252 Spe
-Ability: Levitate
-Shiny: Yes
-Hasty Nature
-- Draco Meteor
-- Dark Pulse
-- Superpower
-- Fire Blast
-
-Hydreigon (M)
-EVs: 6 HP / 252 SpA / 252 Spe
-Ability: Levitate
-Shiny: Yes
-Mild Nature
-- Dark Pulse
-- Dragon Pulse
-- Earthquake
-- Steel Wing
-
-Echidna (Hydreigon) (F)
+Hydreigon
 IVs: 17 Atk
 EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Levitate
-Level: 64
 Shiny: Yes
+Ball: Cherish Ball
 Modest Nature
 - Flash Cannon
-- Fire Blast
+- Roost
 - Dark Pulse
 - Draco Meteor
-
-Larvesta (M)
-IVs: 21 HP / 13 Atk / 4 Def / 0 SpA / 22 SpD / 3 Spe
-Ability: Flame Body
-Level: 60
-Modest Nature
-- Bug Buzz
-- Take Down
-- Amnesia
-- Double-Edge
-
-Volcarona (M)
-IVs: 16 HP / 3 Atk / 28 Def / 30 SpA / 22 SpD / 14 Spe
-Ability: Flame Body
-Level: 60
-Calm Nature
-- Leech Life
-- Bug Buzz
-- Heat Wave
-- Amnesia
-
-Volcarona (M) @ Choice Specs
-EVs: 250 HP / 10 Def / 250 Spe
-Ability: Flame Body
-Shiny: Yes
-Timid Nature
-- Quiver Dance
-- Flamethrower
-- Bug Buzz
-- Psychic
 
 Amaterasu (Volcarona) (F)
 IVs: 0 Atk
 EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Flame Body
 Shiny: Yes
+Ball: Cherish Ball
 Timid Nature
 - Quiver Dance
 - Flamethrower
-- Giga Drain
+- Incinerate
 - Defog
 
 Cobalion
-IVs: 3 Atk / 24 SpA / 23 SpD
+EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Justified
-Level: 50
-Bold Nature
-- Retaliate
-- Iron Head
-- Sacred Sword
-- Swords Dance
-
-Cobalion
-IVs: 7 HP / 26 Atk / 25 Def / 27 SpA / 21 SpD / 26 Spe
-Ability: Justified
-Level: 42
-Careful Nature
-- Helping Hand
-- Retaliate
-- Iron Head
-- Sacred Sword
-
-Cobalion
-IVs: 21 HP / 8 SpD / 19 Spe
-Ability: Justified
-Level: 50
-Rash Nature
-- Retaliate
-- Iron Head
-- Sacred Sword
-- Swords Dance
-
-Cobalion @ Flame Orb
-IVs: 29 HP / 5 Atk / 11 Def / 26 SpA / 14 SpD / 13 Spe
-EVs: 4 HP / 27 Atk / 4 Spe
-Ability: Justified
-Level: 44
-Relaxed Nature
-- Volt Switch
-- Retaliate
-- Iron Head
-- Sacred Sword
-
-Noble (Cobalion) @ Jolly Mint
-EVs: 252 Atk / 6 Def / 252 Spe
-Ability: Justified
-Jolly Nature
-- Swords Dance
-- Iron Head
-- Close Combat
-- Megahorn
-
-Cobalion
-IVs: 26 SpA
-Ability: Justified
-Level: 60
 Shiny: Yes
 Jolly Nature
-- Sacred Sword
+- Bounce
+- Close Combat
+- Stone Edge
 - Swords Dance
-- Quick Attack
-- Iron Head
 
 Cobalion
-IVs: 30 SpA
 EVs: 252 Atk / 4 SpD / 252 Spe
 Ability: Justified
 Shiny: Yes
@@ -9080,17 +8630,6 @@ Jolly Nature
 - Rock Polish
 - Iron Head
 - Close Combat
-
-Cobalion
-IVs: 5 SpA
-Ability: Justified
-Level: 60
-Shiny: Yes
-Jolly Nature
-- Sacred Sword
-- Swords Dance
-- Quick Attack
-- Iron Head
 
 Cobalion
 IVs: 7 Atk / 30 Def / 30 SpD
@@ -9104,124 +8643,16 @@ Timid Nature
 - Sacred Sword
 
 Cobalion
-IVs: 16 HP / 2 Def / 11 SpA
+IVs: 7 HP / 26 Atk / 25 Def / 27 SpA / 21 SpD / 26 Spe
 Ability: Justified
-Level: 60
-Shiny: Yes
-Jolly Nature
-- Sacred Sword
-- Swords Dance
-- Quick Attack
-- Iron Head
-
-Cobalion
-IVs: 12 SpA
-EVs: 252 Atk / 6 SpD / 252 Spe
-Ability: Justified
-Shiny: Yes
-Jolly Nature
-- Iron Head
-- Close Combat
-- Stone Edge
-- Swords Dance
-
-Cobalion
-IVs: 8 SpA
-Ability: Justified
-Level: 60
-Shiny: Yes
-Jolly Nature
-- Sacred Sword
-- Swords Dance
-- Quick Attack
-- Iron Head
-
-Terrakion
-IVs: 20 Def / 23 SpA / 2 SpD
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Justified
-Level: 50
-Adamant Nature
-- Stealth Rock
-- Stone Edge
-- Close Combat
-- Earthquake
-
-Magnitude (Terrakion) @ Choice Scarf
-EVs: 252 Atk / 2 Def / 1 SpA / 3 SpD / 252 Spe
-Ability: Justified
-Jolly Nature
-- Stealth Rock
-- Close Combat
-- Stone Edge
-- Earthquake
-
-Terrakion
-IVs: 6 SpA
-Ability: Justified
-Level: 45
-Shiny: Yes
-Adamant Nature
+Level: 42
+Careful Nature
 - Helping Hand
 - Retaliate
-- Rock Slide
-- Sacred Sword
-
-Terrakion
-IVs: 24 Atk / 13 SpA / 27 SpD
-Ability: Justified
-Level: 60
-Shiny: Yes
-Naughty Nature
-- Sacred Sword
-- Swords Dance
-- Rock Slide
-- Stone Edge
-
-Terrakion
-IVs: 23 HP / 8 SpD / 19 Spe
-Ability: Justified
-Level: 50
-Shiny: Yes
-Jolly Nature
-- Stealth Rock
-- Helping Hand
 - Iron Head
-- Zen Headbutt
-
-Terrakion
-IVs: 0 SpA
-Ability: Justified
-Level: 45
-Shiny: Yes
-Jolly Nature
-- Stealth Rock
-- Zen Headbutt
-- Iron Head
-- Block
-
-Terrakion
-IVs: 3 SpA
-Ability: Justified
-Level: 60
-Shiny: Yes
-Jolly Nature
-- Sacred Sword
-- Swords Dance
-- Rock Slide
-- Stone Edge
-
-Terrakion @ Adamant Mint
-Ability: Justified
-Level: 45
-Shiny: Yes
-Jolly Nature
-- Helping Hand
-- Retaliate
-- Rock Slide
 - Sacred Sword
 
-Terrakion @ Ability Patch
+Terrakion
 EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Justified
 Shiny: Yes
@@ -9230,27 +8661,6 @@ Jolly Nature
 - Close Combat
 - Iron Head
 - Protect
-
-Ｈａｖｏｃ (Terrakion)
-Ability: Justified
-Level: 42
-Shiny: Yes
-Jolly Nature
-- Rock Smash
-- Secret Power
-- Cut
-- Strength
-
-Terrakion
-IVs: 7 SpA
-Ability: Justified
-Level: 60
-Shiny: Yes
-Jolly Nature
-- Sacred Sword
-- Swords Dance
-- Rock Slide
-- Stone Edge
 
 Terrakion
 IVs: 6 HP / 11 SpA
@@ -9264,68 +8674,45 @@ Jolly Nature
 - Stealth Rock
 - Block
 
-Virizion
-IVs: 21 HP / 7 Def / 23 SpD
+Terrakion
+IVs: 0 SpA
 Ability: Justified
-Level: 60
-Adamant Nature
-- Sacred Sword
-- Swords Dance
-- Giga Drain
-- Leaf Blade
+Level: 45
+Shiny: Yes
+Jolly Nature
+- Stealth Rock
+- Zen Headbutt
+- Iron Head
+- Block
+
+Ｈａｖｏｃ (Terrakion)
+Ability: Justified
+Level: 42
+Shiny: Yes
+Language: Japanese
+Jolly Nature
+- Rock Smash
+- Secret Power
+- Cut
+- Strength
 
 Virizion
 IVs: 17 HP / 27 Atk / 16 Def / 29 SpA / 21 SpD / 27 Spe
 Ability: Justified
 Level: 42
 Bold Nature
-- Helping Hand
-- Retaliate
-- Giga Drain
-- Sacred Sword
+- Toxic
+- Synthesis
+- Rock Smash
+- Cut
 
 Virizion
-IVs: 5 SpA / 24 SpD / 23 Spe
 Ability: Justified
-Level: 50
 Quiet Nature
 - Retaliate
 - Giga Drain
 - Sacred Sword
 - Swords Dance
-
-Virizion
-IVs: 13 SpA
-Ability: Justified
-Level: 65
-Shiny: Yes
-Jolly Nature
-- Sacred Sword
-- Swords Dance
-- Quick Guard
-- Work Up
-
-Virizion
-IVs: 3 HP / 21 SpA / 26 SpD
-Ability: Justified
-Level: 50
-Shiny: Yes
-Jolly Nature
-- Helping Hand
-- Zen Headbutt
-- Synthesis
-- Superpower
-
-Virizion
-IVs: 18 SpA
-Ability: Justified
-Level: 60
-Shiny: Yes
-Jolly Nature
-- Sacred Sword
-- Swords Dance
-- Giga Drain
-- Leaf Blade
 
 Virizion
 IVs: 24 SpA
@@ -9334,32 +8721,10 @@ Ability: Justified
 Level: 51
 Shiny: Yes
 Jolly Nature
-- Swords Dance
-- Zen Headbutt
+- Toxic
+- Cut
 - Leaf Blade
 - Sacred Sword
-
-Virizion
-IVs: 6 HP / 0 Def / 8 SpD
-Ability: Justified
-Level: 60
-Shiny: Yes
-Jolly Nature
-- Sacred Sword
-- Swords Dance
-- Giga Drain
-- Leaf Blade
-
-Virizion @ Sharp Beak
-IVs: 1 SpA
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Justified
-Shiny: Yes
-Jolly Nature
-- Close Combat
-- Zen Headbutt
-- Leaf Blade
-- Swords Dance
 
 Virizion
 IVs: 30 HP / 3 Atk / 30 Def
@@ -9372,28 +8737,6 @@ Timid Nature
 - Synthesis
 - Zen Headbutt
 
-Virizion
-IVs: 14 Atk / 28 Def
-Ability: Justified
-Level: 60
-Shiny: Yes
-Timid Nature
-- Sacred Sword
-- Swords Dance
-- Giga Drain
-- Leaf Blade
-
-Virizion
-IVs: 2 Atk / 30 Def
-Ability: Justified
-Level: 45
-Shiny: Yes
-Timid Nature
-- Helping Hand
-- Retaliate
-- Giga Drain
-- Sacred Sword
-
 Tornadus (M)
 IVs: 0 Atk / 14 Def / 28 SpA
 Ability: Prankster
@@ -9403,7 +8746,7 @@ Quirky Nature
 - Grass Knot
 - Tailwind
 
-Tornadus (M) @ Ability Patch
+Tornadus (M)
 Ability: Prankster
 Level: 40
 Shiny: Yes
@@ -9444,7 +8787,7 @@ Calm Nature
 - Charge
 - Nasty Plot
 
-Thundurus (M) @ Ability Patch
+Thundurus (M)
 IVs: 0 Atk / 30 Def
 Ability: Prankster
 Level: 50
@@ -9455,7 +8798,7 @@ Timid Nature
 - Heal Block
 - Agility
 
-Thundurus (M) @ Ability Patch
+Thundurus (M)
 EVs: 6 Def / 252 SpA / 252 Spe
 Ability: Prankster
 Shiny: Yes
@@ -9474,7 +8817,7 @@ Timid Nature
 - Focus Blast
 - Psychic
 
-Thundurus-Therian (M) @ Ability Patch
+Thundurus-Therian (M)
 IVs: 30 HP / 30 Def
 EVs: 6 Atk / 252 SpA / 252 Spe
 Ability: Volt Absorb
@@ -9496,7 +8839,7 @@ Timid Nature
 - Discharge
 - Dark Pulse
 
-Thundurus-Therian (M) @ Ability Patch
+Thundurus-Therian (M)
 IVs: 0 Atk / 30 Def
 EVs: 6 Def / 252 SpA / 252 Spe
 Ability: Volt Absorb
@@ -9517,7 +8860,7 @@ Bashful Nature
 - Dragon Pulse
 - Imprison
 
-Reshiram @ Adamant Mint
+Reshiram
 IVs: 23 HP / 8 Atk / 26 Spe
 Ability: Turboblaze
 Level: 60
@@ -9611,26 +8954,7 @@ Adamant Nature
 - Bolt Strike
 - Draco Meteor
 
-Arwing IV (Landorus) (M)
-EVs: 252 Spe
-Ability: Sand Force
-Timid Nature
-- Earth Power
-- Sludge Bomb
-- Protect
-- Focus Blast
-
 Landorus (M)
-IVs: 12 HP / 29 Atk / 7 Def / 2 SpA / 1 Spe
-Ability: Sand Force
-Level: 70
-Hardy Nature
-- Rock Slide
-- Earthquake
-- Sandstorm
-- Fissure
-
-Landorus (M) @ Hasty Mint
 IVs: 11 HP / 16 SpA / 0 Spe
 Ability: Sand Force
 Level: 60
@@ -9641,54 +8965,28 @@ Brave Nature
 - Earthquake
 - Sandstorm
 
-Smogon (Landorus-Therian) (M) @ Heavy-Duty Boots
-IVs: 24 SpA / 5 SpD
-Ability: Intimidate
-Level: 70
-Adamant Nature
-- Sand Tomb
-- Rock Slide
-- Bulldoze
-- Focus Blast
-
-Landorus-Therian (M) @ Ability Patch
-EVs: 212 HP / 196 Atk / 6 Def / 92 SpD / 4 Spe
-Ability: Intimidate
+Landorus-Therian (M)
+Level: 5
+Ball: Dream Ball
 Adamant Nature
 - Earthquake
-- Fly
-- Rock Tomb
-- Swords Dance
 
-Landorus-Therian (M) @ Ability Patch
-IVs: 0 Atk
+Landorus-Therian (M)
 Ability: Intimidate
-Level: 10
-Timid Nature
-- Block
-- Mud Shot
-- Rock Tomb
-- Imprison
+Level: 5
+Ball: Dream Ball
+Adamant Nature
+- Earthquake
 
-Landorus-Therian (M) @ Ability Patch
+Landorus-Therian (M)
 Ability: Intimidate
 Level: 60
-Shiny: Yes
+Shiny: Square
 Jolly Nature
 - Extrasensory
 - Stone Edge
 - Hammer Arm
 - Sandstorm
-
-Landorus-Therian (M) @ Choice Scarf
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Intimidate
-Shiny: Yes
-Jolly Nature
-- Earthquake
-- Rock Slide
-- Superpower
-- U-turn
 
 Kyurem
 IVs: 10 Atk / 30 SpD / 27 Spe
@@ -9903,30 +9201,19 @@ Timid Nature
 Genesect
 IVs: 11 HP / 16 Atk / 17 Def / 6 SpA / 20 SpD / 7 Spe
 Ability: Download
-Level: 50
 Modest Nature
-- Techno Blast
+- Toxic
 - Magnet Bomb
-- Solar Beam
+- Steel Beam
 - Signal Beam
 
-Genesect-Water @ Douse Drive
-EVs: 6 HP / 252 SpA / 252 Spe
+Genesect @ Douse Drive
+IVs: 0 Spe
+EVs: 252 HP / 252 Atk / 6 SpD
 Ability: Download
 Shiny: Yes
-Timid Nature
-- Flash Cannon
-- Bug Buzz
-- Techno Blast
-- Dark Pulse
-
-Bunnelby (M) @ Ability Patch
-IVs: 30 SpA
-Ability: Huge Power
-Level: 1
-Adamant Nature
-- Mud-Slap
-- Leer
+Quiet Nature
+- Blaze Kick
 
 Diggersby (M)
 IVs: 19 HP / 3 Def
@@ -10177,7 +9464,7 @@ Adamant Nature
 - Close Combat
 - Iron Head
 
-Aegislash (M) @ Quiet Mint
+Aegislash (M)
 IVs: 0 Spe
 Ability: Stance Change
 Shiny: Yes
@@ -10218,7 +9505,7 @@ Adamant Nature
 - Echoed Voice
 - Draining Kiss
 
-Aromatisse (M) @ Adamant Mint
+Aromatisse (M)
 IVs: 24 SpA / 0 Spe
 EVs: 252 HP / 252 Def / 6 SpA
 Ability: Aroma Veil
@@ -10294,7 +9581,7 @@ Naughty Nature
 - Flamethrower
 - Play Rough
 
-Slurpuff (M) @ Jolly Mint
+Slurpuff (M)
 IVs: 30 Atk / 0 Spe
 Ability: Sweet Veil
 Level: 39
@@ -10366,7 +9653,7 @@ Modest Nature
 - Haze
 - Dragon Tail
 
-Dragalge (M) @ Adamant Mint
+Dragalge (M)
 IVs: 0 Atk / 0 Spe
 Ability: Adaptability
 Level: 58
@@ -10639,7 +9926,7 @@ Adamant Nature
 - Water Gun
 - Dragon Breath
 
-Goomy (F) @ Ability Patch
+Goomy (F)
 IVs: 0 Atk / 2 Spe
 EVs: 252 HP / 6 Def / 252 SpA
 Ability: Sap Sipper
@@ -10660,7 +9947,7 @@ Modest Nature
 - Tackle
 - Bubble
 
-Goomy (M) @ Jolly Mint
+Goomy (M)
 EVs: 252 HP / 6 Def / 252 SpA
 Ability: Gooey
 Level: 1
@@ -10711,7 +9998,7 @@ Timid Nature
 - Absorb
 - Protect
 
-Goodra (F) @ Ability Patch
+Goodra (F)
 IVs: 0 Atk
 EVs: 6 HP / 252 SpA / 252 Spe
 Ability: Sap Sipper
@@ -10762,7 +10049,7 @@ Calm Nature
 - Tackle
 - Shadow Claw
 
-Trevenant (M) @ Ability Patch
+Trevenant (M)
 IVs: 11 SpA
 EVs: 252 HP / 252 Atk / 6 Def
 Ability: Harvest
@@ -10855,7 +10142,7 @@ Impish Nature
 - Rapid Spin
 - Avalanche
 
-Avalugg (F) @ Relaxed Mint
+Avalugg (F)
 IVs: 0 Atk / 0 SpA / 0 Spe
 Ability: Sturdy
 Shiny: Yes
@@ -10865,35 +10152,15 @@ Serious Nature
 - Crunch
 - Take Down
 
-Noibat (F)
-IVs: 19 HP / 7 Atk / 5 Def
-Ability: Frisk
-Level: 60
-Hasty Nature
-- Roost
-- Tailwind
-- Hurricane
-- Dragon Rush
-
 Noivern (F)
-IVs: 29 HP / 16 Atk
 Ability: Infiltrator
-Level: 59
-Adamant Nature
-- Wing Attack
-- Super Fang
-- Bite
-- Air Slash
-
-Rabies (Noivern) (M) @ Focus Sash
-IVs: 0 Atk
-EVs: 252 SpA / 6 SpD / 252 Spe
-Ability: Infiltrator
-Timid Nature
-- Super Fang
-- Air Slash
-- Flamethrower
-- Draco Meteor
+Shiny: Yes
+=Met_Level=44
+Impish Nature
+- Toxic
+- Tailwind
+- Cut
+- Dream Eater
 
 Xerneas @ Choice Scarf
 EVs: 252 Atk / 4 Def / 252 Spe
@@ -10904,6 +10171,15 @@ Adamant Nature
 - Megahorn
 - Close Combat
 - Zen Headbutt
+
+Xerneas
+IVs: 30 Atk / 17 SpA / 9 SpD
+Shiny: Yes
+Naive Nature
+- Defog
+- Confide
+- Cut
+- Block
 
 Yveltal
 Ability: Dark Aura
@@ -10924,49 +10200,47 @@ Calm Nature
 - Foul Play
 - Sucker Punch
 
-Zygarde @ Ability Patch
+Zygarde-10%
 IVs: 0 Spe
 Ability: Aura Break
 Level: 60
 Shiny: Yes
 Brave Nature
-- Land’s Wrath
-- Glare
-- Safeguard
-- Dragon Breath
+- Breaking Swipe
+- Draco Meteor
+- Scorching Sands
+- Toxic
 
-Zygarde @ Ability Patch
-IVs: 24 SpD / 15 Spe
-Ability: Power Construct
-Level: 72
-Gentle Nature
-- Coil
-- Land’s Wrath
-- Dragon Pulse
-- Bind
-
-Diancie
-IVs: 27 Def / 13 SpD / 12 Spe
+Diancie @ Normal Gem
+IVs: 29 HP / 10 Atk / 28 Def / 11 SpA / 27 SpD / 1 Spe
 Ability: Clear Body
 Level: 50
-Adamant Nature
-- Diamond Storm
-- Moonblast
-- Reflect
-- Return
+Careful Nature
+- Rock Throw
+- Toxic
+- After You
+- Telekinesis
 
 Volcanion
-IVs: 7 Def / 18 SpA / 19 SpD
-EVs: 74 HP / 72 Atk / 104 Def / 108 SpA / 80 SpD / 72 Spe
+IVs: 26 SpA / 12 SpD / 10 Spe
 Ability: Water Absorb
-Level: 76
-Brave Nature
-- Steam Eruption
-- Flamethrower
-- Hydro Pump
-- Explosion
+Level: 70
+Naughty Nature
+- Incinerate
+- Rock Smash
+- Toxic
+- Strength
 
-Rowlet (M) @ Ability Patch
+Volcanion
+IVs: 26 SpA / 12 SpD / 10 Spe
+Ability: Water Absorb
+Level: 100
+=OT_Name=ゲッチャレ
+Language: Japanese
+Timid Nature
+- Stomping Tantrum
+
+Rowlet (M)
 IVs: 28 Atk
 Ability: Overgrow
 Level: 1
@@ -11066,7 +10340,7 @@ Hardy Nature
 - Life Dew
 - Perish Song
 
-Brionne (M) @ Adamant Mint
+Brionne (M)
 IVs: 0 Atk / 0 Spe
 EVs: 162 HP / 96 Def / 252 SpA
 Ability: Liquid Voice
@@ -11168,7 +10442,7 @@ Timid Nature
 - Draining Kiss
 - Quiver Dance
 
-Ribombee (M) @ Jolly Mint
+Ribombee (M)
 IVs: 0 Atk
 EVs: 6 Def / 252 SpA / 252 Spe
 Ability: Shield Dust
@@ -11334,7 +10608,7 @@ Adamant Nature
 - Rock Slide
 - Heavy Slam
 
-Mudsdale (M) @ Jolly Mint
+Mudsdale (M)
 Ability: Stamina
 Gentle Nature
 - Toxic
@@ -11799,7 +11073,7 @@ Gentle Nature
 - Double Hit
 - Air Slash
 
-Silvally @ Relaxed Mint
+Silvally
 IVs: 1 HP / 28 SpA / 10 Spe
 Ability: RKS System
 Shiny: Yes
@@ -11858,7 +11132,7 @@ Jolly Nature
 - Drain Punch
 - Swords Dance
 
-Mimikyu (M) @ Bold Mint
+Mimikyu (M)
 IVs: 14 SpA
 EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Disguise
@@ -12038,7 +11312,7 @@ Jolly Nature
 - U-turn
 - Toxic
 
-Tapu Lele @ Ability Patch
+Tapu Lele
 IVs: 0 Atk / 0 Spe
 EVs: 6 HP / 252 SpA / 252 Spe
 Ability: Psychic Surge
@@ -12049,7 +11323,7 @@ Bashful Nature
 - Flatter
 - Moonblast
 
-Tapu Bulu @ Ability Patch
+Tapu Bulu
 EVs: 248 HP / 252 Atk / 10 SpD
 Ability: Grassy Surge
 Adamant Nature
@@ -12159,7 +11433,7 @@ Timid Nature
 - Meteor Beam
 - Sludge Wave
 
-Nihilego @ Ability Patch
+Nihilego
 IVs: 0 Atk / 28 Def / 18 Spe
 Ability: Beast Boost
 Level: 60
@@ -12181,7 +11455,7 @@ Adamant Nature
 - Ice Punch
 - Substitute
 
-Noir (Pheromosa) @ Ability Patch
+Noir (Pheromosa)
 EVs: 252 Atk / 6 SpA / 252 Spe
 Ability: Beast Boost
 Shiny: Yes
@@ -12231,7 +11505,7 @@ Gentle Nature
 - Skull Bash
 - Iron Defense
 
-Origami King (Kartana) @ Jolly Mint
+Origami King (Kartana)
 IVs: 30 SpA
 Ability: Beast Boost
 Jolly Nature
@@ -12250,7 +11524,7 @@ Serious Nature
 - Detect
 - Air Slash
 
-Kartana @ Ability Patch
+Kartana
 IVs: 0 SpA
 EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Beast Boost
@@ -12261,7 +11535,7 @@ Jolly Nature
 - Smart Strike
 - Knock Off
 
-Guzzlord @ Ability Patch
+Guzzlord
 IVs: 1 SpA / 7 SpD / 0 Spe
 Ability: Beast Boost
 Level: 60
@@ -12302,7 +11576,7 @@ Careful Nature
 - Lucky Chant
 - Helping Hand
 
-Magearna-Original @ Modest Mint
+Magearna-Original
 IVs: 30 Atk / 30 Def / 0 Spe
 Ability: Soul-Heart
 Quiet Nature
@@ -12311,7 +11585,7 @@ Quiet Nature
 - Aura Sphere
 - Ice Beam
 
-Marshadow @ Brave Mint
+Marshadow
 IVs: 23 SpA
 Ability: Technician
 Level: 50
@@ -12331,7 +11605,7 @@ Timid Nature
 - Fury Attack
 - Fell Stinger
 
-Poipole @ Relaxed Mint
+Poipole
 IVs: 23 HP / 24 Atk / 16 Def
 Ability: Beast Boost
 Level: 40
@@ -12342,7 +11616,7 @@ Modest Nature
 - Poison Jab
 - Dragon Pulse
 
-Naganadel @ Ability Patch
+Naganadel
 IVs: 0 Atk
 EVs: 6 HP / 252 SpA / 252 Spe
 Ability: Beast Boost
@@ -12374,7 +11648,7 @@ Lonely Nature
 - Rock Slide
 - Trick Room
 
-Honk Honk (Blacephalon) @ Ability Patch
+Honk Honk (Blacephalon)
 IVs: 0 Atk
 EVs: 6 HP / 252 SpA / 252 Spe
 Ability: Beast Boost
@@ -12384,7 +11658,7 @@ Timid Nature
 - Fire Blast
 - Protect
 
-Blacephalon @ Timid Mint
+Blacephalon
 IVs: 3 HP / 0 Atk / 10 Def
 Ability: Beast Boost
 Level: 60
@@ -13196,7 +12470,7 @@ Rash Nature
 - Swagger
 - Assurance
 
-Morgrem (M) @ Jolly Mint
+Morgrem (M)
 IVs: 3 HP / 5 Atk / 19 Def / 13 SpA / 22 SpD / 21 Spe
 Ability: Frisk
 Level: 35
@@ -13671,7 +12945,7 @@ Adamant Nature
 - Extreme Speed
 - Magnet Rise
 
-Regidrago @ Ability Patch
+Regidrago
 IVs: 23 HP / 0 Atk / 24 Def
 Ability: Dragon’s Maw
 Level: 70
@@ -13691,7 +12965,7 @@ Adamant Nature
 - Swords Dance
 - Icicle Crash
 
-Spectrier @ Ability Patch
+Spectrier
 IVs: 0 Atk
 EVs: 6 HP / 252 SpA / 252 Spe
 Ability: Grim Neigh

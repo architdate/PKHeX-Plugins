@@ -49,6 +49,13 @@ Shiny: Yes
 Hardy Nature
 - Teleport
 
+Psyduck
+Shiny: Yes
+Language: Japanese
+=FatefulEncounter=False
+.IsNicknamed=False
+- Mud Sport
+
 Machop (F)
 IVs: 0 SpA
 Ability: Guts
@@ -216,6 +223,16 @@ Jolly Nature
 - Wish
 - Present
 
+Pichu
+Shiny: Yes
+Ability: Static
+Level: 5
+Language: Japanese
+=FatefulEncounter=False
+.IsNicknamed=False
+Sassy Nature
+- Follow Me
+
 Cleffa (M)
 IVs: 21 HP / 0 Atk / 23 SpD / 13 Spe
 Ability: Cute Charm
@@ -225,6 +242,13 @@ Bold Nature
 - Encore
 - Wish
 - Metronome
+
+Igglybuff
+Shiny: Yes
+Language: Japanese
+=FatefulEncounter=False
+.IsNicknamed=False
+- Tickle
 
 Fabio (Mareep) (M)
 IVs: 0 Atk / 30 Def / 15 SpA
@@ -891,6 +915,15 @@ Quiet Nature
 - Crunch
 - Double-Edge
 - Scary Face
+
+Salamence
+Shiny: Yes
+IVs: 0 Atk
+Jolly Nature
+- Wish
+- Toxic
+- Mimic
+- Double-Edge
 
 Pikachu (Beldum)
 IVs: 21 HP / 13 Atk / 26 SpD / 4 Spe
