@@ -81,7 +81,10 @@ namespace PKHeX.Core.AutoMod
                 var abilities = pk.PersonalInfo.Abilities;
                 // Set unspecified abilities
                 if (set.Ability == -1)
+                {
                     pk.SetAbility(abilities[preference >> 1]);
+                    pk.AbilityNumber = preference;
+                }
                 // Set preferred ability number if applicable
                 if (abilities[preference >> 1] == set.Ability)
                     pk.AbilityNumber = preference;
