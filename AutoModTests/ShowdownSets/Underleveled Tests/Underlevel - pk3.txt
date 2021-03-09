@@ -3,6 +3,8 @@ IVs: 29 HP / 18 Def / 18 SpA / 5 SpD / 0 Spe
 Ability: Shed Skin
 Level: 4
 Bold Nature
+Ball: Master Ball
+=Version=5
 - Harden
 
 Kakuna (M)
@@ -10,6 +12,8 @@ IVs: 15 HP / 9 Atk / 0 Def / 21 SpA / 17 Spe
 Ability: Shed Skin
 Level: 4
 Naive Nature
+Ball: Master Ball
+=Version=4
 - Harden
 
 MEOWOW (Meowth) (M)
@@ -17,6 +21,8 @@ IVs: 4 HP / 5 Atk / 4 Def / 4 SpA / 4 SpD / 5 Spe
 Ability: Pickup
 Level: 3
 Naive Nature
+=OT_Name=ISIS
+=Version=3
 - Scratch
 - Growl
 
@@ -25,6 +31,8 @@ IVs: 10 HP / 8 Atk / 26 Def / 5 SpA / 10 SpD / 11 Spe
 Ability: Cloud Nine
 Level: 25
 Calm Nature
+Ball: Safari Ball
+=Version=3
 - Tail Whip
 - Disable
 - Confusion
@@ -35,6 +43,8 @@ IVs: 19 HP / 30 Atk / 25 Def / 7 SpA / 21 SpD / 0 Spe
 Ability: Water Absorb
 Level: 20
 Docile Nature
+Ball: Master Ball
+=Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -45,6 +55,8 @@ IVs: 29 HP / 8 Def / 29 SpA / 5 SpD / 19 Spe
 Ability: Damp
 Level: 20
 Adamant Nature
+Ball: Master Ball
+=Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -55,6 +67,8 @@ IVs: 2 HP / 4 Atk / 24 Def / 20 SpA / 7 SpD / 13 Spe
 Ability: Water Absorb
 Level: 20
 Quirky Nature
+Ball: Master Ball
+=Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -65,6 +79,8 @@ IVs: 5 HP / 27 Atk / 30 Def / 10 SpA / 11 SpD / 2 Spe
 Ability: Liquid Ooze
 Level: 20
 Mild Nature
+Ball: Master Ball
+=Version=3
 - Poison Sting
 - Supersonic
 - Constrict
@@ -75,6 +91,8 @@ IVs: 22 HP / 12 Atk / 20 Def / 13 SpA / 17 SpD / 8 Spe
 Ability: Run Away
 Level: 37
 Relaxed Nature
+Ball: Master Ball
+=Version=4
 - Ember
 - Stomp
 - Fire Spin
@@ -85,6 +103,8 @@ IVs: 8 HP / 15 Atk / 1 Def / 2 SpA / 27 SpD / 9 Spe
 Ability: Own Tempo
 Level: 32
 Docile Nature
+Ball: Master Ball
+=Version=5
 - Water Gun
 - Confusion
 - Disable
@@ -95,6 +115,8 @@ IVs: 15 HP / 3 Atk / 17 Def / 16 SpA / 11 SpD / 23 Spe
 Ability: Own Tempo
 Level: 25
 Gentle Nature
+Ball: Master Ball
+=Version=5
 - Growl
 - Water Gun
 - Confusion
@@ -105,6 +127,8 @@ IVs: 9 HP / 0 Atk / 4 Def / 24 SpA / 11 SpD / 18 Spe
 Ability: Own Tempo
 Level: 35
 Mild Nature
+Ball: Master Ball
+=Version=5
 - Water Gun
 - Confusion
 - Disable
@@ -115,6 +139,8 @@ IVs: 17 HP / 19 Atk / 24 Def / 11 SpA / 14 SpD / 10 Spe
 Ability: Magnet Pull
 Level: 26
 Calm Nature
+Ball: Master Ball
+=Version=3
 - Supersonic
 - Sonic Boom
 - Thunder Wave
@@ -125,6 +151,8 @@ IVs: 12 HP / 15 Atk / 5 Def / 19 SpA / 12 SpD / 26 Spe
 Ability: Run Away
 Level: 29
 Timid Nature
+Ball: Safari Ball
+=Version=3
 - Pursuit
 - Fury Attack
 - Tri Attack
@@ -135,6 +163,8 @@ IVs: 23 HP / 25 Def / 21 SpA / 7 SpD / 27 Spe
 Ability: Thick Fat
 Level: 32
 Timid Nature
+Ball: Master Ball
+=Version=4
 - Growl
 - Icy Wind
 - Aurora Beam
@@ -145,6 +175,8 @@ IVs: 13 HP / 22 Atk / 14 Def / 12 SpA / 25 SpD / 16 Spe
 Ability: Stench
 Level: 32
 Rash Nature
+Ball: Master Ball
+=Version=5
 - Disable
 - Sludge
 - Minimize
@@ -155,6 +187,8 @@ IVs: 18 HP / 25 Atk / 1 Def / 11 SpA / 1 SpD / 29 Spe
 Ability: Levitate
 Level: 20
 Quiet Nature
+Ball: Master Ball
+=Version=4
 - Lick
 - Spite
 - Curse
@@ -165,6 +199,8 @@ IVs: 21 HP / 29 Atk / 17 Def / 4 SpA / 25 SpD / 0 Spe
 Ability: Shell Armor
 Level: 25
 Sassy Nature
+Ball: Master Ball
+=Version=5
 - Leer
 - Vise Grip
 - Harden
@@ -175,6 +211,8 @@ IVs: 13 HP / 25 Atk / 5 Def / 30 SpA / 29 SpD / 9 Spe
 Ability: Soundproof
 Level: 26
 Hasty Nature
+Ball: Master Ball
+=Version=3
 - Tackle
 - Screech
 - Sonic Boom
@@ -184,8 +222,10 @@ RODY (Electrode)
 IVs: 19 HP / 16 Atk / 18 Def / 25 SpA / 19 SpD / 25 Spe
 Ability: Static
 Level: 3
-Language: French
 Hasty Nature
+Language: French
+=OT_Name=ALBAN
+=Version=5
 - Charge
 - Tackle
 - Screech
@@ -196,6 +236,8 @@ IVs: 30 HP / 23 Atk / 1 Def / 16 SpA / 9 SpD / 11 Spe
 Ability: Levitate
 Level: 32
 Gentle Nature
+Ball: Master Ball
+=Version=4
 - Smog
 - Self-Destruct
 - Sludge
@@ -206,6 +248,8 @@ IVs: 14 HP / 5 Atk / 20 Def / 15 SpA / 16 SpD / 3 Spe
 Ability: Poison Point
 Level: 25
 Timid Nature
+Ball: Master Ball
+=Version=4
 - Bubble
 - Smokescreen
 - Leer
@@ -216,6 +260,8 @@ IVs: 24 HP / 6 Atk / 10 Def / 29 SpA / 7 SpD / 25 Spe
 Ability: Swift Swim
 Level: 20
 Hasty Nature
+Ball: Safari Ball
+=Version=5
 - Tail Whip
 - Water Sport
 - Supersonic
@@ -226,6 +272,8 @@ IVs: 24 HP / 25 Def / 14 SpA / 20 SpD / 14 Spe
 Ability: Swift Swim
 Level: 25
 Sassy Nature
+Ball: Safari Ball
+=Version=3
 - Water Sport
 - Supersonic
 - Horn Attack
@@ -236,6 +284,8 @@ IVs: 17 HP / 27 Atk / 11 Def / 29 SpA / 30 SpD / 15 Spe
 Ability: Swift Swim
 Level: 26
 Serious Nature
+Ball: Safari Ball
+=Version=3
 - Water Sport
 - Supersonic
 - Horn Attack
@@ -246,17 +296,34 @@ IVs: 18 HP / 17 Atk / 18 Def / 25 SpA / 21 SpD / 22 Spe
 Ability: Oblivious
 Level: 20
 Mild Nature
+=OT_Name=DONTAE
+=Version=5
 - Pound
 - Lick
 - Lovely Kiss
 - Powder Snow
 
+ZYNX (Jynx) (F)
+IVs: 18 HP / 17 Atk / 18 Def / 25 SpA / 21 SpD / 22 Spe
+Ability: Oblivious
+Level: 25
+Mild Nature
+Language: Spanish
+=OT_Name=CELESTO
+=Version=5
+- Lovely Kiss
+- Powder Snow
+- Double Slap
+- Ice Punch
+
 LIPOUTI (Jynx) (F) @ Fab Mail
 IVs: 18 HP / 17 Atk / 18 Def / 25 SpA / 21 SpD / 22 Spe
 Ability: Oblivious
 Level: 20
-Language: French
 Mild Nature
+Language: French
+=OT_Name=JOHAN
+=Version=4
 - Pound
 - Lick
 - Lovely Kiss
@@ -267,6 +334,8 @@ IVs: 28 HP / 3 Atk / 24 Def / 1 SpA / 12 SpD / 26 Spe
 Ability: Intimidate
 Level: 15
 Lonely Nature
+Ball: Master Ball
+=Version=4
 - Thrash
 
 Dragonair (F)
@@ -274,6 +343,8 @@ IVs: 15 HP / 7 Atk / 27 Def / 22 SpA / 27 SpD / 18 Spe
 Ability: Shed Skin
 Level: 25
 Mild Nature
+Ball: Safari Ball
+=Version=5
 - Leer
 - Thunder Wave
 - Twister
@@ -284,6 +355,8 @@ IVs: 9 HP / 22 Atk / 27 Def / 16 SpA / 6 SpD / 2 Spe
 Ability: Damp
 Level: 20
 Docile Nature
+Ball: Master Ball
+=Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -294,6 +367,8 @@ IVs: 29 HP / 27 Atk / 24 Def / 12 SpA / 14 SpD / 19 Spe
 Ability: Flame Body
 Level: 25
 Serious Nature
+Ball: Master Ball
+=Version=4
 - Smog
 - Ember
 - Rock Throw
@@ -304,6 +379,8 @@ IVs: 22 HP / 26 Atk / 27 Def / 8 SpA / 30 SpD / 15 Spe
 Ability: Shed Skin
 Level: 5
 Modest Nature
+Ball: Master Ball
+=Version=3
 - Harden
 
 Cascoon (F)
@@ -311,6 +388,8 @@ IVs: 22 HP / 11 Atk / 8 Def / 19 SpA / 16 SpD / 17 Spe
 Ability: Shed Skin
 Level: 5
 Bashful Nature
+Ball: Master Ball
+=Version=3
 - Harden
 
 SKITIT (Skitty) (F)
@@ -318,6 +397,9 @@ IVs: 5 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 5 Spe
 Ability: Cute Charm
 Level: 3
 Timid Nature
+Language: Spanish
+=OT_Name=DALILA
+=Version=2
 - Growl
 - Tackle
 - Tail Whip
@@ -327,6 +409,8 @@ IVs: 5 HP / 17 Atk / 11 Def / 24 SpA / 20 SpD
 Ability: Oblivious
 Level: 25
 Adamant Nature
+Ball: Master Ball
+=Version=3
 - Rollout
 - Whirlpool
 - Astonish

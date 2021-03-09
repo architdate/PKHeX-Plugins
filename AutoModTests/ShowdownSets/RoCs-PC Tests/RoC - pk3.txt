@@ -3,6 +3,8 @@ IVs: 20 HP / 26 Atk / 16 Def / 28 SpA / 8 SpD / 25 Spe
 Ability: Overgrow
 Level: 5
 Mild Nature
+=Met_Level=5
+=Version=5
 - Tackle
 - Growl
 
@@ -11,6 +13,8 @@ IVs: 20 HP / 26 Atk / 16 Def / 28 SpA / 8 SpD / 25 Spe
 Ability: Overgrow
 Level: 16
 Mild Nature
+=Met_Level=5
+=Version=5
 - Tackle
 - Poison Powder
 - Sleep Powder
@@ -21,6 +25,8 @@ IVs: 20 HP / 26 Atk / 16 Def / 28 SpA / 8 SpD / 25 Spe
 Ability: Overgrow
 Level: 32
 Mild Nature
+=Met_Level=5
+=Version=5
 - Tackle
 - Poison Powder
 - Sleep Powder
@@ -31,6 +37,8 @@ IVs: 18 HP / 18 Atk / 12 Def / 0 SpA / 20 SpD / 14 Spe
 Ability: Blaze
 Level: 5
 Brave Nature
+=Met_Level=5
+=Version=4
 - Scratch
 - Growl
 
@@ -39,6 +47,8 @@ IVs: 18 HP / 18 Atk / 12 Def / 0 SpA / 20 SpD / 14 Spe
 Ability: Blaze
 Level: 16
 Brave Nature
+=Met_Level=5
+=Version=4
 - Scratch
 - Growl
 - Ember
@@ -49,6 +59,8 @@ IVs: 18 HP / 18 Atk / 12 Def / 0 SpA / 20 SpD / 14 Spe
 Ability: Blaze
 Level: 36
 Brave Nature
+=Met_Level=5
+=Version=4
 - Scratch
 - Wing Attack
 - Flamethrower
@@ -59,6 +71,8 @@ IVs: 23 HP / 22 Atk / 24 Def / 23 SpA / 15 SpD / 9 Spe
 Ability: Torrent
 Level: 5
 Quiet Nature
+=Met_Level=5
+=Version=5
 - Tackle
 - Tail Whip
 
@@ -67,6 +81,8 @@ IVs: 23 HP / 22 Atk / 24 Def / 23 SpA / 15 SpD / 9 Spe
 Ability: Torrent
 Level: 16
 Quiet Nature
+=Met_Level=5
+=Version=5
 - Tackle
 - Water Gun
 - Bubble
@@ -77,6 +93,8 @@ IVs: 23 HP / 22 Atk / 24 Def / 23 SpA / 15 SpD / 9 Spe
 Ability: Torrent
 Level: 36
 Quiet Nature
+=Met_Level=5
+=Version=5
 - Tackle
 - Water Gun
 - Bubble
@@ -87,6 +105,8 @@ IVs: 11 HP / 25 Atk / 17 Def / 18 SpA / 4 SpD / 2 Spe
 Ability: Shield Dust
 Level: 3
 Naughty Nature
+Ball: Master Ball
+=Version=4
 - Tackle
 - String Shot
 
@@ -95,6 +115,8 @@ IVs: 22 HP / 19 Atk / 13 Def / 28 SpD / 10 Spe
 Ability: Shed Skin
 Level: 5
 Jolly Nature
+Ball: Master Ball
+=Version=4
 - Harden
 
 Butterfree (F)
@@ -102,6 +124,7 @@ IVs: 15 HP / 24 Atk / 7 Def / 11 SpA / 2 SpD / 2 Spe
 Ability: Compound Eyes
 Level: 30
 Careful Nature
+=Version=15
 - Psychic
 - Morning Sun
 - Sleep Powder
@@ -112,6 +135,8 @@ IVs: 2 HP / 0 Atk / 12 Def / 25 SpA / 29 SpD
 Ability: Shield Dust
 Level: 3
 Hasty Nature
+Ball: Master Ball
+=Version=4
 - Poison Sting
 - String Shot
 
@@ -120,6 +145,8 @@ IVs: 4 HP / 29 Atk / 16 Def / 0 SpA / 27 SpD / 13 Spe
 Ability: Shed Skin
 Level: 4
 Quirky Nature
+Ball: Master Ball
+=Version=4
 - Harden
 
 Beedrill (F) @ Poison Barb
@@ -127,6 +154,7 @@ IVs: 1 HP / 6 Atk / 7 Def / 0 SpA / 18 SpD / 21 Spe
 Ability: Swarm
 Level: 30
 Careful Nature
+=Version=15
 - Sludge Bomb
 - Baton Pass
 - Twineedle
@@ -137,6 +165,8 @@ IVs: 20 HP / 7 Atk / 30 SpA / 13 SpD / 4 Spe
 Ability: Keen Eye
 Level: 4
 Sassy Nature
+Ball: Master Ball
+=Version=4
 - Tackle
 
 Pidgeotto (M)
@@ -144,6 +174,8 @@ IVs: 3 HP / 20 Atk / 29 Def / 16 SpA / 24 SpD
 Ability: Keen Eye
 Level: 29
 Sassy Nature
+Ball: Master Ball
+=Version=4
 - Gust
 - Quick Attack
 - Whirlwind
@@ -154,6 +186,8 @@ IVs: 3 HP / 20 Atk / 29 Def / 16 SpA / 24 SpD
 EVs: 6 HP / 252 Atk / 252 Spe
 Ability: Keen Eye
 Sassy Nature
+Ball: Master Ball
+=Version=4
 - Wing Attack
 - Quick Attack
 - Whirlwind
@@ -164,6 +198,8 @@ IVs: 1 HP / 6 Atk / 18 SpA / 1 SpD / 12 Spe
 Ability: Guts
 Level: 3
 Lonely Nature
+Ball: Master Ball
+=Version=4
 - Tackle
 - Tail Whip
 
@@ -172,6 +208,8 @@ IVs: 3 HP / 24 Atk / 23 Def / 10 SpA / 23 SpD / 10 Spe
 Ability: Guts
 Level: 25
 Brave Nature
+Ball: Master Ball
+=Version=4
 - Tail Whip
 - Quick Attack
 - Hyper Fang
@@ -182,6 +220,8 @@ IVs: 22 HP / 9 Atk / 16 Def / 24 SpA / 21 SpD / 9 Spe
 Ability: Keen Eye
 Level: 3
 Brave Nature
+Ball: Master Ball
+=Version=4
 - Peck
 - Growl
 
@@ -190,6 +230,8 @@ IVs: 30 HP / 14 Atk / 22 Def / 17 SpA / 21 SpD / 18 Spe
 Ability: Keen Eye
 Level: 25
 Lax Nature
+Ball: Master Ball
+=Version=4
 - Peck
 - Growl
 - Leer
@@ -200,6 +242,8 @@ IVs: 16 HP / 21 Atk / 10 SpA / 5 SpD / 15 Spe
 Ability: Shed Skin
 Level: 8
 Quiet Nature
+Ball: Master Ball
+=Version=4
 - Wrap
 - Leer
 - Poison Sting
@@ -209,6 +253,8 @@ IVs: 7 HP / 4 Atk / 10 Def / 2 SpA / 12 SpD / 9 Spe
 Ability: Shed Skin
 Level: 44
 Mild Nature
+Ball: Master Ball
+=Version=4
 - Bite
 - Glare
 - Screech
@@ -219,6 +265,8 @@ IVs: 11 HP / 20 Atk / 22 Def / 25 SpA / 27 SpD / 3 Spe
 Ability: Static
 Level: 25
 Modest Nature
+Ball: Safari Ball
+=Version=3
 - Thunder Wave
 - Quick Attack
 - Double Team
@@ -229,6 +277,8 @@ IVs: 11 HP / 20 Atk / 22 Def / 25 SpA / 27 SpD / 3 Spe
 Ability: Static
 Level: 25
 Modest Nature
+Ball: Safari Ball
+=Version=3
 - Thunder Wave
 - Quick Attack
 - Double Team
@@ -239,6 +289,7 @@ IVs: 3 HP / 11 Atk / 2 Def / 15 SpA / 13 SpD / 27 Spe
 Ability: Sand Veil
 Level: 17
 Adamant Nature
+=Version=15
 - Scratch
 - Defense Curl
 - Sand Attack
@@ -249,6 +300,8 @@ IVs: 6 HP / 9 Atk / 15 Def / 28 SpA / 19 SpD / 16 Spe
 Ability: Sand Veil
 Level: 22
 Bold Nature
+Ball: Master Ball
+=Version=3
 - Scratch
 - Defense Curl
 - Sand Attack
@@ -259,6 +312,8 @@ IVs: 22 HP / 18 Atk / 25 Def / 15 SpA / 22 SpD / 19 Spe
 Ability: Poison Point
 Level: 22
 Bold Nature
+=OT_Name=SAIGE
+=Version=4
 - Tail Whip
 - Double Kick
 - Poison Sting
@@ -269,6 +324,8 @@ IVs: 1 Atk / 5 SpA / 20 SpD / 24 Spe
 Ability: Poison Point
 Level: 30
 Calm Nature
+Ball: Safari Ball
+=Version=4
 - Double Kick
 - Poison Sting
 - Bite
@@ -279,6 +336,8 @@ IVs: 1 Atk / 5 SpA / 20 SpD / 24 Spe
 Ability: Poison Point
 Level: 30
 Calm Nature
+Ball: Safari Ball
+=Version=4
 - Double Kick
 - Poison Sting
 - Bite
@@ -289,6 +348,8 @@ IVs: 19 HP / 25 Atk / 18 Def / 22 SpA / 15 SpD / 22 Spe
 Ability: Poison Point
 Level: 30
 Lonely Nature
+=OT_Name=SAIGE
+=Version=5
 - Poison Sting
 - Horn Attack
 - Helping Hand
@@ -299,6 +360,8 @@ IVs: 19 HP / 18 Atk / 25 Def / 15 SpA / 22 SpD / 22 Spe
 Ability: Poison Point
 Level: 30
 Bold Nature
+=OT_Name=TURNER
+=Version=5
 - Double Kick
 - Poison Sting
 - Horn Attack
@@ -309,6 +372,8 @@ IVs: 15 HP / 10 Atk / 21 Def / 21 SpA / 0 SpD / 6 Spe
 EVs: 252 Atk / 252 SpA / 6 Spe
 Ability: Poison Point
 Hasty Nature
+Ball: Safari Ball
+=Version=4
 - Horn Attack
 - Horn Drill
 - Ice Beam
@@ -319,6 +384,8 @@ IVs: 5 HP / 1 Atk / 9 Def / 15 SpA / 30 SpD / 6 Spe
 Ability: Cute Charm
 Level: 10
 Rash Nature
+Ball: Master Ball
+=Version=4
 - Pound
 - Growl
 - Encore
@@ -329,6 +396,8 @@ IVs: 5 HP / 1 Atk / 9 Def / 15 SpA / 30 SpD / 6 Spe
 Ability: Cute Charm
 Level: 10
 Rash Nature
+Ball: Master Ball
+=Version=4
 - Pound
 - Growl
 - Encore
@@ -339,6 +408,8 @@ IVs: 12 HP / 17 Atk / 0 Def / 19 SpA / 21 SpD / 6 Spe
 Ability: Flash Fire
 Level: 27
 Bold Nature
+Ball: Master Ball
+=Version=3
 - Quick Attack
 - Will-O-Wisp
 - Confuse Ray
@@ -349,6 +420,8 @@ IVs: 12 HP / 17 Atk / 0 Def / 19 SpA / 21 SpD / 6 Spe
 Ability: Flash Fire
 Level: 27
 Bold Nature
+Ball: Master Ball
+=Version=3
 - Quick Attack
 - Will-O-Wisp
 - Confuse Ray
@@ -359,6 +432,8 @@ IVs: 1 HP / 15 Atk / 8 Def / 22 SpA / 18 SpD / 28 Spe
 Ability: Cute Charm
 Level: 3
 Bashful Nature
+Ball: Master Ball
+=Version=4
 - Sing
 
 Wigglytuff (M) @ Oran Berry
@@ -366,6 +441,8 @@ IVs: 1 HP / 15 Atk / 8 Def / 22 SpA / 18 SpD / 28 Spe
 Ability: Cute Charm
 Level: 3
 Bashful Nature
+Ball: Master Ball
+=Version=4
 - Sing
 
 Zubat (F)
@@ -373,6 +450,7 @@ IVs: 28 HP / 14 Atk / 14 Def / 17 SpA / 2 SpD / 9 Spe
 Ability: Inner Focus
 Level: 15
 Docile Nature
+=Version=15
 - Leech Life
 - Supersonic
 - Astonish
@@ -382,6 +460,8 @@ IVs: 14 HP / 21 Atk / 25 Def / 9 SpA / 22 SpD / 16 Spe
 Ability: Inner Focus
 Level: 46
 Quiet Nature
+Ball: Master Ball
+=Version=4
 - Wing Attack
 - Confuse Ray
 - Air Cutter
@@ -392,6 +472,8 @@ IVs: 7 HP / 17 Atk / 0 Def / 26 SpA / 18 SpD / 4 Spe
 Ability: Chlorophyll
 Level: 12
 Quirky Nature
+Ball: Master Ball
+=Version=4
 - Absorb
 - Sweet Scent
 
@@ -400,6 +482,8 @@ IVs: 26 HP / 27 Atk / 18 Def / 19 SpA / 13 SpD / 0 Spe
 Ability: Chlorophyll
 Level: 28
 Lax Nature
+Ball: Master Ball
+=Version=4
 - Poison Powder
 - Stun Spore
 - Sleep Powder
@@ -410,6 +494,8 @@ IVs: 26 HP / 27 Atk / 18 Def / 19 SpA / 13 SpD / 0 Spe
 Ability: Chlorophyll
 Level: 28
 Lax Nature
+Ball: Master Ball
+=Version=4
 - Poison Powder
 - Stun Spore
 - Sleep Powder
@@ -420,6 +506,8 @@ IVs: 13 HP / 0 Atk / 0 Def / 1 SpA / 9 SpD / 2 Spe
 Ability: Effect Spore
 Level: 8
 Jolly Nature
+Ball: Master Ball
+=Version=4
 - Scratch
 - Stun Spore
 
@@ -428,6 +516,8 @@ IVs: 30 HP / 20 Atk / 30 Def / 29 SpA / 1 SpD / 14 Spe
 Ability: Effect Spore
 Level: 25
 Lonely Nature
+Ball: Safari Ball
+=Version=4
 - Scratch
 - Stun Spore
 - Poison Powder
@@ -438,6 +528,8 @@ IVs: 20 HP / 20 Def / 7 SpA / 5 SpD / 10 Spe
 Ability: Compound Eyes
 Level: 26
 Careful Nature
+Ball: Master Ball
+=Version=4
 - Supersonic
 - Confusion
 - Poison Powder
@@ -448,6 +540,8 @@ IVs: 30 HP / 6 Atk / 8 Def / 5 SpA / 5 SpD / 26 Spe
 Ability: Shield Dust
 Level: 32
 Lax Nature
+Ball: Safari Ball
+=Version=4
 - Poison Powder
 - Leech Life
 - Stun Spore
@@ -458,6 +552,8 @@ IVs: 11 HP / 14 Atk / 21 Def / 19 SpA / 6 SpD / 2 Spe
 Ability: Arena Trap
 Level: 21
 Lax Nature
+Ball: Master Ball
+=Version=4
 - Growl
 - Magnitude
 - Dig
@@ -468,6 +564,7 @@ IVs: 17 HP / 3 Atk / 12 Def / 14 SpA / 28 SpD / 28 Spe
 Ability: Arena Trap
 Level: 40
 Brave Nature
+=Version=15
 - Earthquake
 - Charm
 - Sandstorm
@@ -478,6 +575,8 @@ IVs: 13 HP / 10 Atk / 4 Def / 30 SpA / 30 SpD / 7 Spe
 Ability: Pickup
 Level: 10
 Bold Nature
+Ball: Master Ball
+=Version=4
 - Scratch
 - Growl
 - Bite
@@ -487,6 +586,8 @@ IVs: 22 HP / 25 Atk / 5 Def / 13 SpA / 21 SpD / 3 Spe
 Ability: Limber
 Level: 40
 Adamant Nature
+Ball: Master Ball
+=Version=4
 - Bite
 - Pay Day
 - Feint Attack
@@ -497,6 +598,8 @@ IVs: 30 HP / 12 Atk / 3 Def / 2 SpA / 7 SpD / 4 Spe
 Ability: Damp
 Level: 22
 Bashful Nature
+Ball: Safari Ball
+=Version=4
 - Scratch
 - Tail Whip
 - Disable
@@ -507,6 +610,8 @@ IVs: 19 HP / 25 Atk / 10 Def / 26 SpA / 7 SpD / 23 Spe
 Ability: Cloud Nine
 Level: 32
 Hardy Nature
+Ball: Master Ball
+=Version=4
 - Disable
 - Confusion
 - Screech
@@ -517,6 +622,8 @@ IVs: 19 HP / 13 Atk / 20 Def / 13 SpA / 7 Spe
 Ability: Vital Spirit
 Level: 2
 Timid Nature
+Ball: Master Ball
+=Version=4
 - Scratch
 - Leer
 
@@ -525,6 +632,8 @@ IVs: 1 HP / 0 Atk / 8 Def / 6 SpA / 27 SpD / 17 Spe
 Ability: Vital Spirit
 Level: 42
 Careful Nature
+Ball: Master Ball
+=Version=4
 - Focus Energy
 - Seismic Toss
 - Rage
@@ -535,6 +644,8 @@ IVs: 24 HP / 28 Atk / 24 Def / 19 SpA / 29 SpD / 15 Spe
 Ability: Intimidate
 Level: 17
 Sassy Nature
+Ball: Master Ball
+=Version=4
 - Bite
 - Roar
 - Ember
@@ -545,6 +656,8 @@ IVs: 24 HP / 28 Atk / 24 Def / 19 SpA / 29 SpD / 15 Spe
 Ability: Intimidate
 Level: 17
 Sassy Nature
+Ball: Master Ball
+=Version=4
 - Bite
 - Roar
 - Ember
@@ -555,6 +668,8 @@ IVs: 16 HP / 26 Def / 18 SpA / 24 SpD
 Ability: Water Absorb
 Level: 14
 Rash Nature
+Ball: Safari Ball
+=Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -564,6 +679,8 @@ IVs: 11 HP / 7 Atk / 2 SpA / 9 SpD / 13 Spe
 Ability: Water Absorb
 Level: 20
 Careful Nature
+Ball: Master Ball
+=Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -574,6 +691,8 @@ IVs: 11 HP / 7 Atk / 2 SpA / 9 SpD / 13 Spe
 Ability: Water Absorb
 Level: 20
 Careful Nature
+Ball: Master Ball
+=Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -584,6 +703,8 @@ IVs: 29 HP / 30 Atk / 17 Def / 10 SpA / 25 SpD / 23 Spe
 Ability: Inner Focus
 Level: 10
 Jolly Nature
+Ball: Master Ball
+=Version=3
 - Teleport
 
 Kadabra (M)
@@ -591,6 +712,8 @@ IVs: 22 HP / 2 Atk / 29 Def / 1 SpD / 8 Spe
 Ability: Synchronize
 Level: 58
 Bold Nature
+Ball: Master Ball
+=Version=4
 - Future Sight
 - Role Play
 - Psychic
@@ -601,6 +724,8 @@ IVs: 22 HP / 2 Atk / 29 Def / 1 SpD / 8 Spe
 Ability: Synchronize
 Level: 58
 Bold Nature
+Ball: Master Ball
+=Version=4
 - Future Sight
 - Role Play
 - Psychic
@@ -611,6 +736,8 @@ IVs: 14 HP / 22 Atk / 4 Def / 29 SpA / 19 SpD / 6 Spe
 Ability: Guts
 Level: 16
 Careful Nature
+Ball: Master Ball
+=Version=4
 - Low Kick
 - Leer
 - Focus Energy
@@ -621,6 +748,8 @@ IVs: 9 HP / 28 Atk / 7 Def / 7 SpA / 15 SpD / 14 Spe
 Ability: Guts
 Level: 28
 Modest Nature
+Ball: Master Ball
+=Version=3
 - Leer
 - Focus Energy
 - Karate Chop
@@ -631,6 +760,8 @@ IVs: 9 HP / 28 Atk / 7 Def / 7 SpA / 15 SpD / 14 Spe
 Ability: Guts
 Level: 28
 Modest Nature
+Ball: Master Ball
+=Version=3
 - Leer
 - Focus Energy
 - Karate Chop
@@ -641,6 +772,8 @@ IVs: 2 HP / 21 Atk / 23 Def / 13 SpA / 16 SpD / 22 Spe
 Ability: Chlorophyll
 Level: 13
 Mild Nature
+Ball: Master Ball
+=Version=5
 - Vine Whip
 - Growth
 - Wrap
@@ -650,6 +783,8 @@ IVs: 15 HP / 19 Atk / 7 Def / 27 SpA / 20 SpD / 9 Spe
 Ability: Chlorophyll
 Level: 36
 Sassy Nature
+Ball: Master Ball
+=Version=5
 - Poison Powder
 - Stun Spore
 - Acid
@@ -660,6 +795,8 @@ IVs: 15 HP / 19 Atk / 7 Def / 27 SpA / 20 SpD / 9 Spe
 Ability: Chlorophyll
 Level: 36
 Sassy Nature
+Ball: Master Ball
+=Version=5
 - Poison Powder
 - Stun Spore
 - Acid
@@ -670,6 +807,8 @@ IVs: 29 HP / 16 Atk / 24 Def / 19 SpA / 4 SpD / 22 Spe
 Ability: Clear Body
 Level: 9
 Adamant Nature
+Ball: Master Ball
+=Version=4
 - Poison Sting
 - Supersonic
 
@@ -678,6 +817,8 @@ IVs: 4 HP / 7 Atk / 3 SpA / 21 SpD / 6 Spe
 Ability: Clear Body
 Level: 38
 Hasty Nature
+Ball: Master Ball
+=Version=4
 - Acid
 - Bubble Beam
 - Wrap
@@ -688,6 +829,8 @@ IVs: 3 HP / 20 Atk / 21 Def / 1 SpA / 3 SpD / 10 Spe
 Ability: Rock Head
 Level: 9
 Gentle Nature
+Ball: Master Ball
+=Version=4
 - Tackle
 - Defense Curl
 - Mud Sport
@@ -697,6 +840,8 @@ IVs: 18 HP / 7 Atk / 29 Def / 10 SpA / 26 SpD / 18 Spe
 Ability: Rock Head
 Level: 30
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Rock Throw
 - Magnitude
 - Self-Destruct
@@ -707,6 +852,8 @@ IVs: 18 HP / 7 Atk / 29 Def / 10 SpA / 26 SpD / 18 Spe
 Ability: Rock Head
 Level: 30
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Rock Throw
 - Magnitude
 - Self-Destruct
@@ -717,6 +864,8 @@ IVs: 12 HP / 27 Atk / 16 Def / 18 SpA / 13 SpD / 20 Spe
 Ability: Flash Fire
 Level: 34
 Mild Nature
+Ball: Master Ball
+=Version=4
 - Ember
 - Stomp
 - Fire Spin
@@ -727,6 +876,7 @@ IVs: 20 HP / 16 Atk / 0 Def / 5 SpA / 22 SpD / 0 Spe
 Ability: Flash Fire
 Level: 40
 Calm Nature
+=Version=15
 - Solar Beam
 - Baton Pass
 - Sunny Day
@@ -737,6 +887,8 @@ IVs: 11 HP / 24 Atk / 19 Def / 14 SpA / 15 SpD / 27 Spe
 Ability: Own Tempo
 Level: 40
 Modest Nature
+Ball: Master Ball
+=Version=5
 - Disable
 - Headbutt
 - Amnesia
@@ -747,6 +899,8 @@ IVs: 17 HP / 2 Atk / 1 Def / 17 SpA / 5 SpD / 9 Spe
 Ability: Own Tempo
 Level: 27
 Hasty Nature
+Ball: Master Ball
+=Version=5
 - Growl
 - Water Gun
 - Confusion
@@ -757,6 +911,8 @@ IVs: 6 HP / 20 Atk / 30 Def / 20 SpA / 26 SpD / 21 Spe
 Ability: Sturdy
 Level: 25
 Gentle Nature
+Ball: Master Ball
+=Version=3
 - Thunder Shock
 - Supersonic
 - Sonic Boom
@@ -767,6 +923,8 @@ IVs: 19 HP / 20 Atk / 10 Def / 13 SpA / 20 SpD / 19 Spe
 Ability: Magnet Pull
 Level: 26
 Docile Nature
+Ball: Master Ball
+=Version=3
 - Supersonic
 - Sonic Boom
 - Thunder Wave
@@ -777,6 +935,8 @@ IVs: 20 HP / 25 Atk / 21 Def / 15 SpA / 20 SpD / 24 Spe
 Ability: Keen Eye
 Level: 3
 Adamant Nature
+=OT_Name=ELYSSA
+=Version=4
 - Peck
 
 Doduo (F)
@@ -784,6 +944,8 @@ IVs: 18 HP / 27 Atk / 10 Def / 10 SpA / 6 SpD / 26 Spe
 Ability: Early Bird
 Level: 25
 Careful Nature
+Ball: Safari Ball
+=Version=3
 - Pursuit
 - Fury Attack
 - Tri Attack
@@ -794,6 +956,8 @@ IVs: 23 HP / 8 Atk / 17 Def / 29 SpA / 15 SpD / 5 Spe
 Ability: Early Bird
 Level: 29
 Calm Nature
+Ball: Safari Ball
+=Version=3
 - Pursuit
 - Fury Attack
 - Tri Attack
@@ -804,6 +968,7 @@ IVs: 24 HP / 15 Atk / 22 Def / 23 SpA / 22 SpD / 16 Spe
 Ability: Thick Fat
 Level: 34
 Bold Nature
+=Version=4
 - Growl
 - Icy Wind
 - Aurora Beam
@@ -814,6 +979,8 @@ IVs: 9 HP / 1 Atk / 22 Def / 2 SpA / 19 SpD / 20 Spe
 Ability: Thick Fat
 Level: 51
 Quiet Nature
+Ball: Master Ball
+=Version=4
 - Rest
 - Sheer Cold
 - Take Down
@@ -824,6 +991,7 @@ IVs: 3 HP / 21 Atk / 19 Def / 22 SpA / 2 SpD / 11 Spe
 Ability: Sticky Hold
 Level: 23
 Bold Nature
+=Version=15
 - Sludge Bomb
 - Helping Hand
 - Shadow Punch
@@ -834,6 +1002,8 @@ IVs: 12 HP / 27 Atk / 7 SpA / 0 SpD / 12 Spe
 Ability: Sticky Hold
 Level: 38
 Gentle Nature
+Ball: Master Ball
+=Version=3
 - Pound
 - Minimize
 - Disable
@@ -844,6 +1014,7 @@ IVs: 11 HP / 20 Atk / 8 Def / 10 SpA / 8 SpD / 1 Spe
 Ability: Shell Armor
 Level: 29
 Quirky Nature
+=Version=15
 - Take Down
 - Refresh
 - Surf
@@ -854,6 +1025,8 @@ IVs: 9 HP / 23 Atk / 8 Def / 8 SpA / 27 SpD / 0 Spe
 Ability: Shell Armor
 Level: 18
 Quirky Nature
+Ball: Master Ball
+=Version=4
 - Tackle
 - Withdraw
 - Icicle Spear
@@ -864,6 +1037,8 @@ IVs: 22 HP / 25 Atk / 23 Def / 20 SpA / 8 SpD / 11 Spe
 Ability: Levitate
 Level: 17
 Timid Nature
+Ball: Master Ball
+=Version=4
 - Lick
 - Spite
 - Curse
@@ -874,6 +1049,8 @@ IVs: 13 HP / 27 Atk / 23 Def / 15 SpA / 24 SpD / 2 Spe
 Ability: Levitate
 Level: 21
 Brave Nature
+Ball: Master Ball
+=Version=4
 - Spite
 - Curse
 - Night Shade
@@ -884,6 +1061,8 @@ IVs: 13 HP / 27 Atk / 23 Def / 15 SpA / 24 SpD / 2 Spe
 Ability: Levitate
 Level: 21
 Brave Nature
+Ball: Master Ball
+=Version=4
 - Spite
 - Curse
 - Night Shade
@@ -894,6 +1073,8 @@ IVs: 3 HP / 18 Atk / 17 Def / 11 SpA / 16 SpD / 20 Spe
 Ability: Rock Head
 Level: 15
 Serious Nature
+Ball: Master Ball
+=Version=4
 - Tackle
 - Screech
 - Bind
@@ -904,6 +1085,8 @@ IVs: 2 HP / 9 Atk / 25 Def / 5 SpA / 9 SpD / 26 Spe
 Ability: Insomnia
 Level: 11
 Relaxed Nature
+Ball: Master Ball
+=Version=4
 - Pound
 - Hypnosis
 - Disable
@@ -914,6 +1097,7 @@ IVs: 30 HP / 29 Atk / 18 Def / 8 SpA / 11 SpD / 22 Spe
 Ability: Insomnia
 Level: 34
 Careful Nature
+=Version=15
 - Psychic
 - Baton Pass
 - Meditate
@@ -924,6 +1108,8 @@ IVs: 18 HP / 13 Atk / 15 Def / 23 SpA / 9 SpD / 11 Spe
 Ability: Shell Armor
 Level: 15
 Mild Nature
+Ball: Master Ball
+=Version=4
 - Bubble
 - Leer
 - Vise Grip
@@ -933,6 +1119,8 @@ IVs: 18 HP / 13 Atk / 15 Def / 23 SpA / 9 SpD / 11 Spe
 Ability: Shell Armor
 Level: 28
 Mild Nature
+Ball: Master Ball
+=Version=4
 - Bubble
 - Mud Shot
 - Vise Grip
@@ -943,6 +1131,8 @@ IVs: 30 HP / 11 Atk / 29 Def / 12 SpA / 26 SpD / 11 Spe
 Ability: Soundproof
 Level: 23
 Bold Nature
+Ball: Master Ball
+=Version=3
 - Tackle
 - Screech
 - Sonic Boom
@@ -953,6 +1143,8 @@ IVs: 19 HP / 16 Atk / 18 Def / 25 SpA / 19 SpD / 25 Spe
 Ability: Static
 Level: 5
 Hasty Nature
+=OT_Name=CLIFTON
+=Version=5
 - Charge
 - Tackle
 - Screech
@@ -963,6 +1155,8 @@ IVs: 18 HP / 15 Atk / 6 Def / 15 SpA / 12 SpD / 21 Spe
 Ability: Chlorophyll
 Level: 25
 Quirky Nature
+Ball: Safari Ball
+=Version=4
 - Reflect
 - Leech Seed
 - Confusion
@@ -973,6 +1167,7 @@ IVs: 25 HP / 4 Def / 19 SpA / 4 Spe
 Ability: Chlorophyll
 Level: 46
 Impish Nature
+=Version=15
 - Psychic
 - Refresh
 - Hypnosis
@@ -983,6 +1178,8 @@ IVs: 5 HP / 9 Atk / 22 Def / 20 SpA / 11 SpD / 1 Spe
 Ability: Rock Head
 Level: 19
 Naive Nature
+Ball: Master Ball
+=Version=4
 - Tail Whip
 - Bone Club
 - Headbutt
@@ -993,6 +1190,7 @@ IVs: 14 HP / 28 Atk / 16 Def / 1 SpA / 6 SpD / 8 Spe
 Ability: Rock Head
 Level: 44
 Quirky Nature
+=Version=15
 - Earthquake
 - Sing
 - Swords Dance
@@ -1003,6 +1201,7 @@ IVs: 12 HP / 13 Def / 21 SpD / 25 Spe
 Ability: Limber
 Level: 25
 Brave Nature
+=Version=4
 - Rolling Kick
 - Jump Kick
 - Brick Break
@@ -1013,6 +1212,7 @@ IVs: 15 HP / 9 Atk / 15 Def / 6 SpA / 23 SpD / 8 Spe
 Ability: Keen Eye
 Level: 38
 Careful Nature
+=Version=15
 - Mega Punch
 - Helping Hand
 - Mind Reader
@@ -1023,6 +1223,7 @@ IVs: 11 HP / 20 Atk / 10 Def / 7 SpA / 28 SpD / 14 Spe
 Ability: Own Tempo
 Level: 38
 Careful Nature
+=Version=15
 - Double-Edge
 - Helping Hand
 - Defense Curl
@@ -1033,6 +1234,8 @@ IVs: 15 HP / 29 Atk / 9 Def / 17 SpA / 24 SpD / 10 Spe
 Ability: Levitate
 Level: 15
 Hardy Nature
+Ball: Master Ball
+=Version=3
 - Poison Gas
 - Tackle
 - Smog
@@ -1042,6 +1245,8 @@ IVs: 15 HP / 29 Atk / 9 Def / 17 SpA / 24 SpD / 10 Spe
 Ability: Levitate
 Level: 35
 Hardy Nature
+Ball: Master Ball
+=Version=3
 - Sludge
 - Tackle
 - Smog
@@ -1052,6 +1257,8 @@ IVs: 8 HP / 27 Atk / 13 Def / 14 SpA / 25 SpD / 10 Spe
 Ability: Rock Head
 Level: 27
 Naughty Nature
+Ball: Safari Ball
+=Version=3
 - Tail Whip
 - Stomp
 - Fury Attack
@@ -1062,6 +1269,7 @@ IVs: 24 HP / 17 Atk / 13 Def / 13 SpA / 18 SpD / 24 Spe
 Ability: Lightning Rod
 Level: 46
 Bashful Nature
+=Version=15
 - Megahorn
 - Helping Hand
 - Scary Face
@@ -1072,6 +1280,8 @@ IVs: 22 HP / 13 Atk / 2 Def / 10 SpA / 12 SpD / 5 Spe
 Ability: Natural Cure
 Level: 26
 Careful Nature
+Ball: Safari Ball
+=Version=4
 - Refresh
 - Soft-Boiled
 - Double Slap
@@ -1082,6 +1292,8 @@ IVs: 5 HP / 7 Atk / 13 Def / 4 SpA / 16 SpD / 13 Spe
 Ability: Chlorophyll
 Level: 20
 Mild Nature
+Ball: Master Ball
+=Version=4
 - Sleep Powder
 - Absorb
 - Growth
@@ -1092,6 +1304,8 @@ IVs: 15 HP / 19 Atk / 4 Def / 12 SpA / 21 SpD / 29 Spe
 Ability: Early Bird
 Level: 28
 Careful Nature
+Ball: Safari Ball
+=Version=4
 - Bite
 - Tail Whip
 - Fake Out
@@ -1102,6 +1316,8 @@ IVs: 5 HP / 4 Atk / 4 Def / 5 SpA / 4 SpD / 4 Spe
 Ability: Swift Swim
 Level: 30
 Brave Nature
+=OT_Name=SKYLAR
+=Version=3
 - Smokescreen
 - Leer
 - Water Gun
@@ -1112,6 +1328,8 @@ IVs: 27 HP / 20 Atk / 1 Def / 29 SpD
 Ability: Poison Point
 Level: 33
 Lax Nature
+Ball: Master Ball
+=Version=4
 - Smokescreen
 - Leer
 - Water Gun
@@ -1122,6 +1340,8 @@ IVs: 1 HP / 18 Atk / 4 Def / 13 SpA / 24 SpD / 25 Spe
 Ability: Swift Swim
 Level: 18
 Jolly Nature
+Ball: Safari Ball
+=Version=4
 - Tail Whip
 - Water Sport
 - Supersonic
@@ -1132,6 +1352,8 @@ IVs: 19 HP / 24 Atk / 21 Def / 10 SpA / 1 SpD / 24 Spe
 Ability: Swift Swim
 Level: 22
 Adamant Nature
+Ball: Safari Ball
+=Version=4
 - Tail Whip
 - Water Sport
 - Supersonic
@@ -1142,6 +1364,8 @@ IVs: 4 HP / 25 Atk / 8 Def / 23 SpA / 6 SpD / 29 Spe
 Ability: Illuminate
 Level: 18
 Hasty Nature
+Ball: Master Ball
+=Version=5
 - Harden
 - Water Gun
 - Rapid Spin
@@ -1152,6 +1376,8 @@ IVs: 4 HP / 25 Atk / 8 Def / 23 SpA / 6 SpD / 29 Spe
 Ability: Illuminate
 Level: 18
 Hasty Nature
+Ball: Master Ball
+=Version=5
 - Harden
 - Water Gun
 - Rapid Spin
@@ -1162,6 +1388,7 @@ IVs: 23 HP / 19 Atk / 0 Def / 7 SpA / 17 SpD / 11 Spe
 Ability: Soundproof
 Level: 42
 Jolly Nature
+=Version=15
 - Psychic
 - Follow Me
 - Encore
@@ -1172,6 +1399,7 @@ IVs: 26 HP / 2 Atk / 19 Def / 30 SpA / 29 SpD
 Ability: Swarm
 Level: 40
 Quiet Nature
+=Version=15
 - Razor Wind
 - Morning Sun
 - Silver Wind
@@ -1182,6 +1410,7 @@ IVs: 18 HP / 17 Atk / 18 Def / 25 SpA / 21 SpD / 22 Spe
 Ability: Oblivious
 Level: 20
 Mild Nature
+=Version=5
 - Pound
 - Lick
 - Lovely Kiss
@@ -1192,6 +1421,7 @@ IVs: 3 HP / 17 Atk / 26 Def / 14 SpA / 7 SpD / 21 Spe
 Ability: Static
 Level: 43
 Rash Nature
+=Version=15
 - Cross Chop
 - Follow Me
 - Thunder Wave
@@ -1202,6 +1432,7 @@ IVs: 8 HP / 15 Atk / 0 Def / 26 SpA / 21 SpD / 9 Spe
 Ability: Flame Body
 Level: 36
 Hardy Nature
+=Version=15
 - Fire Blast
 - Follow Me
 - Cross Chop
@@ -1212,6 +1443,7 @@ IVs: 19 HP / 29 Atk / 7 SpA / 29 SpD / 25 Spe
 Ability: Hyper Cutter
 Level: 35
 Adamant Nature
+=Version=15
 - Guillotine
 - Helping Hand
 - False Swipe
@@ -1222,6 +1454,8 @@ IVs: 15 HP / 29 Atk / 14 Def / 19 SpA / 21 SpD / 8 Spe
 Ability: Intimidate
 Level: 25
 Calm Nature
+Ball: Safari Ball
+=Version=4
 - Rage
 - Horn Attack
 - Scary Face
@@ -1232,6 +1466,8 @@ IVs: 8 HP / 30 Atk / 28 Def / 8 SpA / 29 SpD / 18 Spe
 Ability: Swift Swim
 Level: 10
 Adamant Nature
+Ball: Master Ball
+=Version=3
 - Splash
 
 Gyarados (F)
@@ -1239,6 +1475,8 @@ IVs: 21 HP / 3 Atk / 7 Def / 10 SpA / 7 SpD / 1 Spe
 Ability: Intimidate
 Level: 39
 Jolly Nature
+Ball: Master Ball
+=Version=3
 - Bite
 - Dragon Rage
 - Leer
@@ -1249,6 +1487,8 @@ IVs: 10 HP / 23 Atk / 8 Def / 10 SpA / 16 SpD / 24 Spe
 Ability: Shell Armor
 Level: 25
 Adamant Nature
+=Met_Level=25
+=Version=4
 - Mist
 - Body Slam
 - Confuse Ray
@@ -1259,6 +1499,8 @@ IVs: 22 Atk / 9 Def / 2 SpA / 4 SpD / 30 Spe
 Ability: Limber
 Level: 25
 Bashful Nature
+Ball: Master Ball
+=Version=4
 - Transform
 
 Eevee (M)
@@ -1266,6 +1508,8 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Run Away
 Level: 25
 Bold Nature
+=Met_Level=25
+=Version=4
 - Helping Hand
 - Sand Attack
 - Growl
@@ -1276,6 +1520,8 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Water Absorb
 Level: 25
 Bold Nature
+=Met_Level=25
+=Version=4
 - Helping Hand
 - Sand Attack
 - Growl
@@ -1286,6 +1532,8 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Volt Absorb
 Level: 25
 Bold Nature
+=Met_Level=25
+=Version=4
 - Helping Hand
 - Sand Attack
 - Growl
@@ -1296,6 +1544,8 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Flash Fire
 Level: 25
 Bold Nature
+=Met_Level=25
+=Version=4
 - Helping Hand
 - Sand Attack
 - Growl
@@ -1306,6 +1556,8 @@ IVs: 13 HP / 0 Atk / 20 Def / 1 SpA / 14 SpD / 16 Spe
 Ability: Trace
 Level: 26
 Bashful Nature
+=Met_Level=26
+=Version=4
 - Agility
 - Psybeam
 - Recover
@@ -1316,6 +1568,7 @@ IVs: 6 HP / 14 Atk / 11 Def / 24 SpA / 28 SpD / 29 Spe
 Ability: Shell Armor
 Level: 5
 Naughty Nature
+=Version=4
 - Constrict
 - Withdraw
 
@@ -1324,6 +1577,7 @@ IVs: 6 HP / 14 Atk / 11 Def / 24 SpA / 28 SpD / 29 Spe
 Ability: Shell Armor
 Level: 40
 Naughty Nature
+=Version=4
 - Spike Cannon
 - Mud Shot
 - Bite
@@ -1334,6 +1588,7 @@ IVs: 15 HP / 24 Atk / 19 Def / 22 SpA / 19 SpD / 21 Spe
 Ability: Battle Armor
 Level: 5
 Docile Nature
+=Version=5
 - Scratch
 - Harden
 
@@ -1342,6 +1597,7 @@ IVs: 15 HP / 24 Atk / 19 Def / 22 SpA / 19 SpD / 21 Spe
 Ability: Battle Armor
 Level: 40
 Docile Nature
+=Version=5
 - Slash
 - Mud Shot
 - Absorb
@@ -1352,6 +1608,8 @@ IVs: 6 HP / 4 Atk / 23 Def / 23 SpA / 29 Spe
 Ability: Pressure
 Level: 5
 Quirky Nature
+=Met_Level=5
+=Version=4
 - Wing Attack
 
 Snorlax (M) @ Chesto Berry
@@ -1359,6 +1617,8 @@ IVs: 7 HP / 29 Atk / 23 Def / 26 SpA / 6 SpD / 9 Spe
 Ability: Immunity
 Level: 30
 Brave Nature
+Ball: Master Ball
+=Version=4
 - Headbutt
 - Yawn
 - Rest
@@ -1369,6 +1629,7 @@ IVs: 12 HP / 29 Atk / 11 Def / 20 SpA / 24 SpD / 28 Spe
 Ability: Pressure
 Level: 50
 Rash Nature
+=Version=15
 - Extrasensory
 - Heal Bell
 - Haze
@@ -1379,6 +1640,8 @@ IVs: 29 HP / 0 Atk / 1 Def / 14 SpA / 28 SpD / 19 Spe
 Ability: Pressure
 Level: 50
 Careful Nature
+Ball: Master Ball
+=Version=4
 - Thunder Wave
 - Agility
 - Detect
@@ -1389,6 +1652,8 @@ IVs: 26 HP / 21 Atk / 5 Def / 3 SpA / 22 SpD / 2 Spe
 Ability: Pressure
 Level: 50
 Lax Nature
+Ball: Master Ball
+=Version=4
 - Fire Spin
 - Agility
 - Endure
@@ -1399,6 +1664,8 @@ IVs: 29 HP / 26 Atk / 11 Def / 7 SpD / 8 Spe
 Ability: Shed Skin
 Level: 22
 Relaxed Nature
+Ball: Safari Ball
+=Version=4
 - Leer
 - Thunder Wave
 - Twister
@@ -1409,6 +1676,8 @@ IVs: 14 HP / 12 Atk / 2 Def / 2 SpD / 21 Spe
 Ability: Shed Skin
 Level: 25
 Jolly Nature
+Ball: Safari Ball
+=Version=4
 - Leer
 - Thunder Wave
 - Twister
@@ -1419,6 +1688,7 @@ IVs: 30 HP / 22 Atk / 23 Def / 17 SpA / 17 SpD / 7 Spe
 Ability: Inner Focus
 Level: 55
 Hasty Nature
+=Version=15
 - Hyper Beam
 - Heal Bell
 - Dragon Dance
@@ -1429,6 +1699,8 @@ IVs: 7 HP / 16 Atk / 7 Def / 6 SpA / 0 SpD / 5 Spe
 Ability: Pressure
 Level: 70
 Adamant Nature
+Ball: Master Ball
+=Version=4
 - Swift
 - Recover
 - Safeguard
@@ -1439,6 +1711,7 @@ IVs: 17 HP / 22 Def / 20 SpA / 13 SpD / 30 Spe
 Ability: Overgrow
 Level: 5
 Quirky Nature
+=Version=15
 - Ancient Power
 - Tackle
 - Growl
@@ -1449,6 +1722,7 @@ IVs: 22 HP / 12 Atk / 18 Def / 15 SpA / 17 SpD / 29 Spe
 Ability: Overgrow
 Level: 30
 Naughty Nature
+=Version=15
 - Sunny Day
 - Synthesis
 - Razor Leaf
@@ -1459,6 +1733,7 @@ IVs: 19 HP / 21 Atk / 24 Def / 27 SpA / 14 Spe
 Ability: Overgrow
 Level: 32
 Serious Nature
+=Version=3
 - Body Slam
 - Synthesis
 - Razor Leaf
@@ -1469,6 +1744,7 @@ IVs: 12 HP / 11 Atk / 19 Def / 16 SpA / 3 SpD / 2 Spe
 Ability: Blaze
 Level: 5
 Hasty Nature
+=Version=15
 - Reversal
 - Tackle
 - Leer
@@ -1479,6 +1755,7 @@ IVs: 28 HP / 10 Atk / 29 Def / 17 SpA / 18 Spe
 Ability: Blaze
 Level: 30
 Bashful Nature
+=Version=15
 - Sunny Day
 - Smokescreen
 - Dig
@@ -1489,6 +1766,7 @@ IVs: 3 HP / 12 Atk / 17 Def / 6 SpA / 25 SpD / 14 Spe
 Ability: Blaze
 Level: 36
 Naive Nature
+=Version=3
 - Tackle
 - Quick Attack
 - Smokescreen
@@ -1499,6 +1777,7 @@ IVs: 6 HP / 29 Atk / 13 Def / 7 SpA / 16 SpD / 2 Spe
 Ability: Torrent
 Level: 5
 Lax Nature
+=Version=15
 - Crunch
 - Scratch
 - Leer
@@ -1509,6 +1788,7 @@ IVs: 22 HP / 14 Atk / 2 Def / 10 SpA / 20 Spe
 Ability: Torrent
 Level: 30
 Hardy Nature
+=Version=15
 - Rain Dance
 - Scary Face
 - Bite
@@ -1519,6 +1799,7 @@ IVs: 9 HP / 4 Atk / 20 Def / 14 SpA / 11 SpD / 10 Spe
 Ability: Torrent
 Level: 30
 Naive Nature
+=Version=3
 - Scratch
 - Bite
 - Rage
@@ -1529,6 +1810,8 @@ IVs: 22 HP / 4 Def / 20 SpA / 5 SpD / 17 Spe
 Ability: Run Away
 Level: 10
 Quiet Nature
+Ball: Master Ball
+=Version=4
 - Scratch
 - Defense Curl
 - Quick Attack
@@ -1538,6 +1821,7 @@ IVs: 21 HP / 2 Atk / 18 Def / 0 SpA / 6 SpD / 14 Spe
 Ability: Run Away
 Level: 33
 Careful Nature
+=Version=15
 - Iron Tail
 - Helping Hand
 - Quick Attack
@@ -1548,6 +1832,8 @@ IVs: 30 HP / 14 Atk / 21 Def / 21 SpA / 21 SpD / 11 Spe
 Ability: Insomnia
 Level: 35
 Rash Nature
+Ball: Safari Ball
+=Version=3
 - Hypnosis
 - Reflect
 - Take Down
@@ -1558,6 +1844,7 @@ IVs: 17 HP / 22 Atk / 21 Def / 19 SpA / 30 SpD / 16 Spe
 Ability: Insomnia
 Level: 30
 Mild Nature
+=Version=15
 - Steel Wing
 - Hypnosis
 - Reflect
@@ -1568,6 +1855,8 @@ IVs: 24 HP / 11 Atk / 12 Def / 18 SpA / 5 SpD / 9 Spe
 Ability: Early Bird
 Level: 33
 Quirky Nature
+Ball: Safari Ball
+=Version=3
 - Light Screen
 - Reflect
 - Safeguard
@@ -1578,6 +1867,7 @@ IVs: 1 HP / 10 Atk / 14 Def / 26 SpA / 5 SpD / 22 Spe
 Ability: Swarm
 Level: 40
 Quirky Nature
+=Version=15
 - Baton Pass
 - Safeguard
 - Supersonic
@@ -1588,6 +1878,8 @@ IVs: 3 HP / 6 Atk / 7 Def / 25 SpA / 4 SpD / 10 Spe
 Ability: Swarm
 Level: 33
 Bold Nature
+Ball: Safari Ball
+=Version=3
 - Constrict
 - Night Shade
 - Leech Life
@@ -1598,6 +1890,8 @@ IVs: 3 HP / 6 Atk / 7 Def / 25 SpA / 4 SpD / 10 Spe
 Ability: Swarm
 Level: 34
 Bold Nature
+Ball: Safari Ball
+=Version=3
 - Constrict
 - Night Shade
 - Leech Life
@@ -1608,6 +1902,8 @@ IVs: 14 HP / 21 Atk / 25 Def / 9 SpA / 22 SpD / 16 Spe
 Ability: Inner Focus
 Level: 47
 Quiet Nature
+Ball: Master Ball
+=Version=4
 - Wing Attack
 - Confuse Ray
 - Air Cutter
@@ -1618,6 +1914,8 @@ IVs: 4 Atk / 18 Def / 17 SpA / 17 SpD / 3 Spe
 Ability: Volt Absorb
 Level: 26
 Hardy Nature
+Ball: Master Ball
+=Version=3
 - Supersonic
 - Flail
 - Water Gun
@@ -1628,43 +1926,19 @@ IVs: 4 Atk / 18 Def / 17 SpA / 17 SpD / 3 Spe
 Ability: Volt Absorb
 Level: 27
 Hardy Nature
+Ball: Master Ball
+=Version=3
 - Supersonic
 - Flail
 - Water Gun
 - Spark
-
-Pichu (M)
-IVs: 26 HP / 20 Atk / 22 Def / 27 SpA / 16 SpD / 12 Spe
-Ability: Static
-Level: 5
-Hardy Nature
-- Thunder Shock
-- Charm
-- Double Team
-
-Cleffa (F)
-IVs: 5 HP / 7 Atk / 21 Def / 2 SpA / 4 SpD / 22 Spe
-Ability: Cute Charm
-Level: 5
-Hardy Nature
-- Pound
-- Charm
-- Encore
-
-Igglybuff (F)
-IVs: 25 HP / 6 Atk / 16 Def / 16 SpA / 19 SpD / 17 Spe
-Ability: Cute Charm
-Level: 5
-Naive Nature
-- Sing
-- Charm
-- Defense Curl
 
 Togepi (M)
 IVs: 24 HP / 28 Atk / 23 Def / 10 SpA / 25 SpD / 21 Spe
 Ability: Hustle
 Level: 25
 Jolly Nature
+=Version=15
 - Follow Me
 - Tri Attack
 - Ancient Power
@@ -1675,6 +1949,7 @@ IVs: 1 HP / 12 Atk / 2 Def / 5 SpA / 21 SpD / 9 Spe
 Ability: Hustle
 Level: 20
 Bashful Nature
+=Version=15
 - Metronome
 - Charm
 - Sweet Kiss
@@ -1685,6 +1960,8 @@ IVs: 12 HP / 23 Atk / 14 Def / 23 SpA / 24 SpD / 25 Spe
 Ability: Early Bird
 Level: 25
 Calm Nature
+Ball: Safari Ball
+=Version=3
 - Peck
 - Leer
 - Night Shade
@@ -1695,6 +1972,8 @@ IVs: 25 HP / 2 Atk / 30 SpA / 2 SpD / 30 Spe
 Ability: Synchronize
 Level: 25
 Hardy Nature
+Ball: Master Ball
+=Version=4
 - Peck
 - Leer
 - Night Shade
@@ -1705,6 +1984,8 @@ IVs: 26 HP / 9 Atk / 11 Def / 28 SpA / 15 SpD / 18 Spe
 Ability: Static
 Level: 34
 Adamant Nature
+Ball: Safari Ball
+=Version=3
 - Thunder Shock
 - Thunder Wave
 - Cotton Spore
@@ -1715,6 +1996,8 @@ IVs: 26 HP / 9 Atk / 11 Def / 28 SpA / 15 SpD / 18 Spe
 Ability: Static
 Level: 35
 Adamant Nature
+Ball: Safari Ball
+=Version=3
 - Thunder Shock
 - Thunder Wave
 - Cotton Spore
@@ -1725,6 +2008,8 @@ IVs: 26 HP / 9 Atk / 11 Def / 28 SpA / 15 SpD / 18 Spe
 Ability: Static
 Level: 36
 Adamant Nature
+Ball: Safari Ball
+=Version=3
 - Thunder Shock
 - Thunder Wave
 - Cotton Spore
@@ -1735,6 +2020,8 @@ IVs: 26 HP / 27 Atk / 18 Def / 19 SpA / 13 SpD / 0 Spe
 Ability: Chlorophyll
 Level: 28
 Lax Nature
+Ball: Master Ball
+=Version=4
 - Poison Powder
 - Stun Spore
 - Sleep Powder
@@ -1745,6 +2032,8 @@ IVs: 7 HP / 17 Atk / 7 Def / 7 SpA / 26 SpD / 11 Spe
 Ability: Thick Fat
 Level: 9
 Modest Nature
+Ball: Master Ball
+=Version=5
 - Tackle
 - Defense Curl
 - Tail Whip
@@ -1754,6 +2043,8 @@ IVs: 7 HP / 17 Atk / 7 Def / 7 SpA / 26 SpD / 11 Spe
 Ability: Thick Fat
 Level: 18
 Modest Nature
+Ball: Master Ball
+=Version=5
 - Tackle
 - Defense Curl
 - Rollout
@@ -1764,6 +2055,7 @@ IVs: 27 HP / 10 Atk / 3 Def / 4 SpA / 22 SpD / 10 Spe
 Ability: Sturdy
 Level: 40
 Modest Nature
+=Version=3
 - Flail
 - Low Kick
 - Rock Slide
@@ -1774,6 +2066,8 @@ IVs: 11 HP / 7 Atk / 2 SpA / 9 SpD / 13 Spe
 Ability: Water Absorb
 Level: 20
 Careful Nature
+Ball: Master Ball
+=Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -1784,6 +2078,7 @@ IVs: 6 HP / 1 Atk / 15 Def / 18 SpA / 10 SpD / 27 Spe
 Ability: Chlorophyll
 Level: 13
 Adamant Nature
+=Version=15
 - Synthesis
 - Tail Whip
 - Tackle
@@ -1794,6 +2089,8 @@ IVs: 21 HP / 1 Atk / 25 Def / 17 SpA / 24 SpD / 11 Spe
 Ability: Chlorophyll
 Level: 18
 Rash Nature
+Ball: Master Ball
+=Version=4
 - Sleep Powder
 - Tackle
 - Poison Powder
@@ -1804,6 +2101,8 @@ IVs: 21 HP / 1 Atk / 25 Def / 17 SpA / 24 SpD / 11 Spe
 Ability: Chlorophyll
 Level: 27
 Rash Nature
+Ball: Master Ball
+=Version=4
 - Sleep Powder
 - Tackle
 - Poison Powder
@@ -1814,6 +2113,8 @@ IVs: 23 Atk / 25 Def / 11 SpA / 26 SpD / 30 Spe
 Ability: Pickup
 Level: 34
 Lax Nature
+Ball: Safari Ball
+=Version=3
 - Astonish
 - Baton Pass
 - Tickle
@@ -1824,6 +2125,8 @@ IVs: 28 HP / 2 Atk / 11 Def / 2 SpA / 6 SpD / 6 Spe
 Ability: Chlorophyll
 Level: 35
 Naughty Nature
+Ball: Safari Ball
+=Version=3
 - Mega Drain
 - Ingrain
 - Endeavor
@@ -1834,6 +2137,7 @@ IVs: 22 HP / 25 Atk / 4 Def / 8 SpA / 12 SpD / 30 Spe
 Ability: Chlorophyll
 Level: 45
 Naive Nature
+=Version=15
 - Sunny Day
 - Growth
 - Ingrain
@@ -1844,6 +2148,7 @@ IVs: 5 HP / 10 Atk / 12 Def / 15 SpA / 20 Spe
 Ability: Speed Boost
 Level: 33
 Docile Nature
+=Version=15
 - Detect
 - Supersonic
 - Sonic Boom
@@ -1854,6 +2159,7 @@ IVs: 1 Atk / 6 Def / 28 SpA / 27 SpD / 29 Spe
 Ability: Damp
 Level: 20
 Hardy Nature
+=Version=15
 - Water Gun
 - Tail Whip
 - Slam
@@ -1864,6 +2170,7 @@ IVs: 28 HP / 0 Atk / 8 Def / 9 SpA / 3 SpD / 15 Spe
 Ability: Water Absorb
 Level: 30
 Careful Nature
+=Version=15
 - Mud Shot
 - Amnesia
 - Slam
@@ -1874,6 +2181,7 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Synchronize
 Level: 26
 Bold Nature
+=Version=4
 - Helping Hand
 - Sand Attack
 - Growl
@@ -1884,6 +2192,7 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Synchronize
 Level: 26
 Bold Nature
+=Version=4
 - Helping Hand
 - Sand Attack
 - Growl
@@ -1894,6 +2203,7 @@ IVs: 24 HP / 13 Atk / 29 Def / 29 SpA / 6 SpD / 21 Spe
 Ability: Insomnia
 Level: 43
 Gentle Nature
+=Version=15
 - Feint Attack
 - Mean Look
 - Night Shade
@@ -1904,6 +2214,8 @@ IVs: 11 HP / 24 Atk / 19 Def / 14 SpA / 15 SpD / 27 Spe
 Ability: Own Tempo
 Level: 40
 Modest Nature
+Ball: Master Ball
+=Version=5
 - Disable
 - Headbutt
 - Amnesia
@@ -1914,6 +2226,8 @@ IVs: 18 HP / 29 Atk / 23 Def / 16 SpA / 12 SpD / 4 Spe
 Ability: Levitate
 Level: 20
 Bold Nature
+Ball: Master Ball
+=Version=5
 - Psywave
 - Spite
 - Astonish
@@ -1924,6 +2238,8 @@ IVs: 2 HP / 6 Atk / 3 Def / 4 SpA / 19 SpD / 26 Spe
 Ability: Levitate
 Level: 25
 Impish Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Fire]
 
 Unown-B
@@ -1931,6 +2247,8 @@ IVs: 10 Atk / 18 Def / 23 SpA / 5 SpD / 16 Spe
 Ability: Levitate
 Level: 25
 Quirky Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Electric]
 
 Unown-C
@@ -1938,6 +2256,8 @@ IVs: 2 HP / 26 Atk / 30 Def / 11 SpA / 26 SpD / 30 Spe
 Ability: Levitate
 Level: 25
 Quirky Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Ground]
 
 Unown-D
@@ -1945,6 +2265,8 @@ IVs: 2 HP / 22 Atk / 14 Def / 0 SpA / 23 SpD / 23 Spe
 Ability: Levitate
 Level: 25
 Adamant Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Water]
 
 Unown-E
@@ -1952,6 +2274,8 @@ IVs: 7 HP / 23 Atk / 6 SpA / 6 SpD / 28 Spe
 Ability: Levitate
 Level: 25
 Bashful Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Flying]
 
 Unown-F
@@ -1959,6 +2283,8 @@ IVs: 3 HP / 15 Atk / 2 Def / 9 SpA / 23 SpD / 3 Spe
 Ability: Levitate
 Level: 25
 Docile Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Dragon]
 
 Unown-G
@@ -1966,6 +2292,8 @@ IVs: 20 HP / 20 Atk / 30 Def / 28 SpA / 22 SpD / 24 Spe
 Ability: Levitate
 Level: 25
 Adamant Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Fighting]
 
 Unown-H
@@ -1973,6 +2301,8 @@ IVs: 15 HP / 1 Atk / 15 Def / 26 SpA / 9 SpD / 22 Spe
 Ability: Levitate
 Level: 25
 Quiet Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Water]
 
 Unown-I
@@ -1980,6 +2310,8 @@ IVs: 3 HP / 26 Atk / 7 Def / 9 SpA / 17 SpD / 25 Spe
 Ability: Levitate
 Level: 25
 Lonely Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Dragon]
 
 Unown-J
@@ -1987,6 +2319,8 @@ IVs: 27 HP / 0 Atk / 2 Def / 0 SpA / 29 SpD / 17 Spe
 Ability: Levitate
 Level: 25
 Rash Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Water]
 
 Unown-K
@@ -1994,6 +2328,8 @@ IVs: 30 HP / 24 Atk / 8 Def / 9 SpA / 24 SpD / 6 Spe
 Ability: Levitate
 Level: 25
 Docile Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Ground]
 
 Unown-L
@@ -2001,6 +2337,8 @@ IVs: 0 HP / 1 Atk / 30 Def / 28 SpA / 4 SpD / 29 Spe
 Ability: Levitate
 Level: 25
 Bashful Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Poison]
 
 Unown-M
@@ -2008,6 +2346,8 @@ IVs: 14 HP / 2 Atk / 21 Def / 29 SpA / 15 SpD / 30 Spe
 Ability: Levitate
 Level: 25
 Mild Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Psychic]
 
 Unown-N
@@ -2015,6 +2355,8 @@ IVs: 5 HP / 11 Atk / 11 Def / 17 SpA / 10 SpD / 1 Spe
 Ability: Levitate
 Level: 25
 Hardy Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Steel]
 
 Unown-O
@@ -2022,6 +2364,8 @@ IVs: 13 HP / 24 Atk / 9 Def / 7 SpA / 10 SpD / 28 Spe
 Ability: Levitate
 Level: 25
 Brave Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Bug]
 
 Unown-P
@@ -2029,6 +2373,8 @@ IVs: 27 HP / 25 Atk / 20 Def / 4 SpA / 8 SpD / 29 Spe
 Ability: Levitate
 Level: 25
 Quiet Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Poison]
 
 Unown-Q
@@ -2036,6 +2382,8 @@ IVs: 10 HP / 8 SpA / 8 Spe
 Ability: Levitate
 Level: 25
 Serious Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Water]
 
 Unown-R
@@ -2043,6 +2391,8 @@ IVs: 13 HP / 17 Atk / 4 Def / 2 SpA / 18 SpD / 6 Spe
 Ability: Levitate
 Level: 25
 Hardy Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Fighting]
 
 Unown-S
@@ -2050,6 +2400,8 @@ IVs: 22 HP / 9 Atk / 26 Def / 9 SpA / 10 SpD / 7 Spe
 Ability: Levitate
 Level: 25
 Gentle Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Ghost]
 
 Unown-T
@@ -2057,6 +2409,8 @@ IVs: 23 HP / 19 Atk / 11 Def / 12 SpA / 14 SpD / 30 Spe
 Ability: Levitate
 Level: 25
 Relaxed Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Flying]
 
 Unown-U
@@ -2064,6 +2418,8 @@ IVs: 29 HP / 1 Atk / 21 Def / 16 SpA / 30 SpD / 27 Spe
 Ability: Levitate
 Level: 25
 Lonely Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Ground]
 
 Unown-V
@@ -2071,6 +2427,8 @@ IVs: 14 HP / 23 Atk / 3 Def / 22 SpA / 21 SpD / 22 Spe
 Ability: Levitate
 Level: 25
 Sassy Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Water]
 
 Unown-W
@@ -2078,6 +2436,8 @@ IVs: 19 HP / 15 Atk / 21 Def / 26 SpA / 15 SpD / 9 Spe
 Ability: Levitate
 Level: 25
 Serious Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Electric]
 
 Unown-X
@@ -2085,6 +2445,8 @@ IVs: 25 HP / 26 Atk / 25 Def / 15 SpA / 29 SpD / 26 Spe
 Ability: Levitate
 Level: 25
 Relaxed Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Psychic]
 
 Unown-Y
@@ -2092,6 +2454,8 @@ IVs: 24 HP / 17 Atk / 24 SpA / 24 SpD / 20 Spe
 Ability: Levitate
 Level: 25
 Bold Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Flying]
 
 Unown-Z
@@ -2099,6 +2463,8 @@ IVs: 7 HP / 24 Atk / 13 Def / 15 SpA / 16 SpD / 26 Spe
 Ability: Levitate
 Level: 25
 Timid Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Bug]
 
 Unown-!
@@ -2106,6 +2472,8 @@ IVs: 22 HP / 6 Atk / 30 Def / 23 SpA / 29 SpD / 5 Spe
 Ability: Levitate
 Level: 25
 Adamant Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Ice]
 
 Unown-?
@@ -2113,6 +2481,8 @@ IVs: 19 HP / 0 Atk / 28 Def / 5 SpA / 18 SpD / 28 Spe
 Ability: Levitate
 Level: 25
 Lonely Nature
+Ball: Master Ball
+=Version=4
 - Hidden Power [Rock]
 
 Wobbuffet (M)
@@ -2120,6 +2490,8 @@ IVs: 0 HP / 11 Atk / 18 Def / 20 SpA / 21 SpD / 19 Spe
 Ability: Shadow Tag
 Level: 25
 Careful Nature
+Ball: Master Ball
+=Version=4
 - Counter
 - Mirror Coat
 - Safeguard
@@ -2130,6 +2502,8 @@ IVs: 22 HP / 28 Def / 5 SpA / 26 SpD / 23 Spe
 Ability: Inner Focus
 Level: 25
 Lonely Nature
+Ball: Safari Ball
+=Version=3
 - Astonish
 - Confusion
 - Stomp
@@ -2140,6 +2514,7 @@ IVs: 30 HP / 3 Atk / 9 Def / 27 SpA / 30 SpD / 10 Spe
 Ability: Sturdy
 Level: 20
 Bold Nature
+=Version=15
 - Pin Missile
 - Refresh
 - Spikes
@@ -2150,6 +2525,7 @@ IVs: 11 HP / 30 Atk / 0 Def / 22 SpA / 11 SpD / 1 Spe
 Ability: Sturdy
 Level: 43
 Hasty Nature
+=Version=15
 - Explosion
 - Protect
 - Bide
@@ -2160,6 +2536,7 @@ IVs: 5 HP / 11 Atk / 3 Def / 22 SpA / 24 SpD / 7 Spe
 Ability: Serene Grace
 Level: 33
 Careful Nature
+=Version=15
 - Spite
 - Glare
 - Yawn
@@ -2170,6 +2547,8 @@ IVs: 29 HP / 11 Atk / 13 Def / 30 SpA / 10 SpD / 2 Spe
 Ability: Hyper Cutter
 Level: 37
 Careful Nature
+Ball: Safari Ball
+=Version=3
 - Harden
 - Quick Attack
 - Feint Attack
@@ -2180,6 +2559,8 @@ IVs: 3 HP / 18 Atk / 17 Def / 11 SpA / 16 SpD / 20 Spe
 Ability: Rock Head
 Level: 15
 Serious Nature
+Ball: Master Ball
+=Version=4
 - Tackle
 - Screech
 - Bind
@@ -2190,6 +2571,8 @@ IVs: 19 HP / 0 Atk / 25 Def / 14 SpA / 12 SpD / 11 Spe
 Ability: Intimidate
 Level: 34
 Hardy Nature
+Ball: Safari Ball
+=Version=3
 - Bite
 - Lick
 - Roar
@@ -2200,6 +2583,7 @@ IVs: 27 HP / 6 Atk / 5 Def / 18 SpA / 16 SpD / 10 Spe
 Ability: Intimidate
 Level: 43
 Docile Nature
+=Version=15
 - Bite
 - Scary Face
 - Roar
@@ -2210,6 +2594,7 @@ IVs: 25 HP / 20 Atk / 1 Def / 5 SpA / 19 SpD / 17 Spe
 Ability: Poison Point
 Level: 33
 Modest Nature
+=Version=15
 - Pin Missile
 - Minimize
 - Poison Sting
@@ -2220,6 +2605,8 @@ IVs: 28 Atk / 5 Def / 26 SpA / 3 SpD / 16 Spe
 Ability: Swarm
 Level: 23
 Serious Nature
+Ball: Safari Ball
+=Version=4
 - Focus Energy
 - Pursuit
 - False Swipe
@@ -2230,6 +2617,7 @@ IVs: 25 HP / 18 Atk / 4 Def / 17 SpA / 1 SpD / 25 Spe
 Ability: Sturdy
 Level: 20
 Brave Nature
+=Version=15
 - Toxic
 - Substitute
 - Sludge Bomb
@@ -2240,6 +2628,8 @@ IVs: 9 HP / 22 Atk / 24 Def / 25 SpA / 18 SpD / 23 Spe
 Ability: Swarm
 Level: 29
 Brave Nature
+Ball: Safari Ball
+=Version=3
 - Horn Attack
 - Endure
 - Fury Attack
@@ -2250,6 +2640,7 @@ IVs: 18 HP / 11 Atk / 8 SpA / 26 SpD / 12 Spe
 Ability: Inner Focus
 Level: 43
 Jolly Nature
+=Version=15
 - Feint Attack
 - Screech
 - Fury Swipes
@@ -2260,6 +2651,7 @@ IVs: 14 HP / 27 Atk / 16 Def / 25 SpA / 4 SpD / 25 Spe
 Ability: Pickup
 Level: 11
 Hasty Nature
+=Version=15
 - Return
 - Refresh
 - Lick
@@ -2270,6 +2662,7 @@ IVs: 18 HP / 30 Atk / 27 Def / 12 SpA / 26 SpD / 12 Spe
 Ability: Guts
 Level: 45
 Naive Nature
+=Version=15
 - Feint Attack
 - Fake Tears
 - Lick
@@ -2280,6 +2673,8 @@ IVs: 30 HP / 0 Atk / 12 Def / 25 SpA / 12 SpD / 21 Spe
 Ability: Magma Armor
 Level: 22
 Bashful Nature
+Ball: Master Ball
+=Version=4
 - Smog
 - Ember
 - Rock Throw
@@ -2290,6 +2685,8 @@ IVs: 30 HP / 19 Atk / 28 Def / 14 SpA / 1 SpD / 4 Spe
 Ability: Flame Body
 Level: 38
 Careful Nature
+Ball: Master Ball
+=Version=3
 - Yawn
 - Smog
 - Flamethrower
@@ -2300,6 +2697,7 @@ IVs: 24 HP / 17 Atk / 8 Def / 7 SpA / 9 SpD / 30 Spe
 Ability: Oblivious
 Level: 22
 Lonely Nature
+=Version=15
 - Ancient Power
 - Charm
 - Mist
@@ -2310,6 +2708,7 @@ IVs: 29 HP / 12 Atk / 4 Def / 8 SpA / 14 SpD / 24 Spe
 Ability: Oblivious
 Level: 43
 Adamant Nature
+=Version=15
 - Endure
 - Odor Sleuth
 - Dig
@@ -2320,6 +2719,7 @@ IVs: 4 HP / 4 Atk / 5 Def / 4 SpA / 5 SpD / 4 Spe
 Ability: Natural Cure
 Level: 25
 Calm Nature
+=Version=1
 - Bubble
 - Recover
 - Refresh
@@ -2330,6 +2730,7 @@ IVs: 7 HP / 1 Atk / 19 Def / 20 SpA / 23 SpD / 30 Spe
 Ability: Hustle
 Level: 20
 Quirky Nature
+=Version=15
 - Bubble Beam
 - Lock-On
 - Psybeam
@@ -2340,6 +2741,8 @@ IVs: 9 HP / 8 Atk / 19 Def / 2 SpA / 20 SpD / 19 Spe
 Ability: Suction Cups
 Level: 30
 Sassy Nature
+Ball: Safari Ball
+=Version=3
 - Lock-On
 - Psybeam
 - Aurora Beam
@@ -2350,6 +2753,8 @@ IVs: 14 HP / 11 Atk / 30 Def / 15 SpA / 10 SpD / 12 Spe
 Ability: Hustle
 Level: 30
 Hasty Nature
+Ball: Master Ball
+=Version=4
 - Present
 
 Mantine (M)
@@ -2357,6 +2762,8 @@ IVs: 26 HP / 24 Def / 29 SpA / 29 SpD / 28 Spe
 Ability: Water Absorb
 Level: 36
 Hasty Nature
+Ball: Master Ball
+=Version=5
 - Bubble Beam
 - Take Down
 - Agility
@@ -2367,6 +2774,8 @@ IVs: 12 HP / 19 Atk / 18 Def / 20 SpA / 5 SpD / 25 Spe
 Ability: Keen Eye
 Level: 30
 Docile Nature
+Ball: Master Ball
+=Version=4
 - Swift
 - Agility
 - Fury Attack
@@ -2377,6 +2786,8 @@ IVs: 3 HP / 16 Atk / 13 Def / 4 SpA / 3 SpD / 11 Spe
 Ability: Flash Fire
 Level: 36
 Bold Nature
+Ball: Safari Ball
+=Version=3
 - Smog
 - Roar
 - Bite
@@ -2387,6 +2798,8 @@ IVs: 3 HP / 16 Atk / 13 Def / 4 SpA / 3 SpD / 11 Spe
 Ability: Flash Fire
 Level: 37
 Bold Nature
+Ball: Safari Ball
+=Version=3
 - Smog
 - Roar
 - Bite
@@ -2397,6 +2810,8 @@ IVs: 27 HP / 20 Atk / 1 Def / 29 SpD
 Ability: Swift Swim
 Level: 33
 Lax Nature
+Ball: Master Ball
+=Version=4
 - Smokescreen
 - Leer
 - Water Gun
@@ -2407,6 +2822,8 @@ IVs: 25 HP / 7 Atk / 2 Def / 5 SpA / 16 SpD / 22 Spe
 Ability: Pickup
 Level: 10
 Adamant Nature
+Ball: Master Ball
+=Version=4
 - Odor Sleuth
 - Tackle
 - Growl
@@ -2417,6 +2834,8 @@ IVs: 25 HP / 7 Atk / 2 Def / 5 SpA / 16 SpD / 22 Spe
 Ability: Sturdy
 Level: 25
 Adamant Nature
+Ball: Master Ball
+=Version=4
 - Flail
 - Tackle
 - Take Down
@@ -2427,6 +2846,8 @@ IVs: 13 HP / 0 Atk / 20 Def / 1 SpA / 14 SpD / 16 Spe
 Ability: Trace
 Level: 26
 Bashful Nature
+=Met_Level=26
+=Version=4
 - Agility
 - Psybeam
 - Recover
@@ -2437,6 +2858,8 @@ IVs: 15 HP / 1 Atk / 9 Def / 28 SpA / 23 SpD
 Ability: Intimidate
 Level: 36
 Hardy Nature
+Ball: Safari Ball
+=Version=3
 - Astonish
 - Hypnosis
 - Stomp
@@ -2447,55 +2870,16 @@ IVs: 4 HP / 4 Atk / 15 Def / 23 SpA / 8 SpD / 0 Spe
 Ability: Own Tempo
 Level: 42
 Bashful Nature
+Ball: Master Ball
+=Version=3
 - Sketch
-
-Tyrogue (M)
-IVs: 21 HP / 22 Atk / 13 Def / 3 SpA / 21 SpD / 18 Spe
-Ability: Guts
-Level: 5
-Mild Nature
-- Tackle
-- Brick Break
-
-Hitmontop (M)
-IVs: 14 HP / 22 Atk / 22 Def / 2 SpA / 25 Spe
-Ability: Intimidate
-Level: 20
-Bashful Nature
-- Tackle
-- Brick Break
-- Triple Kick
-
-Smoochum (F)
-IVs: 7 Atk / 17 Def / 2 SpA / 21 SpD / 13 Spe
-Ability: Oblivious
-Level: 5
-Naive Nature
-- Pound
-- Lick
-
-Elekid (M)
-IVs: 3 HP / 22 Atk / 10 Def / 27 SpA / 4 SpD / 19 Spe
-Ability: Static
-Level: 5
-Docile Nature
-- Quick Attack
-- Leer
-- Light Screen
-
-Magby (M)
-IVs: 28 HP / 26 Def / 12 SpA / 4 SpD / 30 Spe
-Ability: Flame Body
-Level: 5
-Calm Nature
-- Ember
-- Sunny Day
 
 Miltank (F)
 IVs: 16 HP / 14 Atk / 18 Def / 23 SpA / 6 SpD / 7 Spe
 Ability: Thick Fat
 Level: 48
 Calm Nature
+=Version=15
 - Milk Drink
 - Defense Curl
 - Rollout
@@ -2506,6 +2890,8 @@ IVs: 22 HP / 13 Atk / 2 Def / 10 SpA / 12 SpD / 5 Spe
 Ability: Natural Cure
 Level: 27
 Careful Nature
+Ball: Safari Ball
+=Version=4
 - Refresh
 - Soft-Boiled
 - Double Slap
@@ -2516,6 +2902,7 @@ IVs: 16 HP / 21 Atk / 6 Def / 15 SpA / 18 SpD / 12 Spe
 Ability: Pressure
 Level: 40
 Docile Nature
+=Version=15
 - Rain Dance
 - Leer
 - Quick Attack
@@ -2526,6 +2913,8 @@ IVs: 30 HP / 6 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Ability: Pressure
 Level: 50
 Bashful Nature
+Ball: Master Ball
+=Version=5
 - Ember
 - Roar
 - Fire Spin
@@ -2536,6 +2925,8 @@ IVs: 14 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Ability: Pressure
 Level: 50
 Adamant Nature
+Ball: Master Ball
+=Version=4
 - Bubble Beam
 - Rain Dance
 - Gust
@@ -2546,6 +2937,7 @@ IVs: 0 HP / 7 Atk / 9 Def / 27 SpA / 19 SpD / 27 Spe
 Ability: Guts
 Level: 20
 Adamant Nature
+=Version=15
 - Sandstorm
 - Dragon Dance
 - Bite
@@ -2556,6 +2948,8 @@ IVs: 5 HP / 18 Atk / 5 SpA / 16 SpD / 3 Spe
 Ability: Shed Skin
 Level: 30
 Sassy Nature
+Ball: Master Ball
+=Version=4
 - Bite
 - Rock Slide
 - Sandstorm
@@ -2566,6 +2960,7 @@ IVs: 5 HP / 27 Atk / 29 Def / 23 SpA / 30 SpD / 27 Spe
 Ability: Sand Stream
 Level: 55
 Bashful Nature
+=Version=15
 - Crunch
 - Thunder
 - Rock Slide
@@ -2576,6 +2971,7 @@ IVs: 12 HP / 1 Atk / 12 Def / 28 SpA / 11 Spe
 Ability: Pressure
 Level: 50
 Gentle Nature
+=Version=15
 - Psycho Boost
 - Feather Dance
 - Earthquake
@@ -2586,6 +2982,8 @@ IVs: 13 HP / 4 Def / 15 SpA / 6 SpD / 20 Spe
 Ability: Pressure
 Level: 70
 Calm Nature
+Ball: Master Ball
+=Version=3
 - Recover
 - Fire Blast
 - Sunny Day
@@ -2596,6 +2994,7 @@ IVs: 0 HP / 10 Atk / 1 Def / 13 SpA / 29 SpD / 25 Spe
 Ability: Natural Cure
 Level: 10
 Adamant Nature
+=Version=2
 - Confusion
 - Recover
 - Heal Bell
@@ -2607,6 +3006,7 @@ EVs: 1 Atk
 Ability: Overgrow
 Level: 5
 Quiet Nature
+=Version=2
 - Pound
 - Leer
 
@@ -2616,6 +3016,7 @@ EVs: 1 Atk
 Ability: Overgrow
 Level: 16
 Quiet Nature
+=Version=2
 - Pound
 - Pursuit
 - Absorb
@@ -2627,6 +3028,7 @@ EVs: 1 Atk
 Ability: Overgrow
 Level: 36
 Quiet Nature
+=Version=2
 - Pound
 - Pursuit
 - Leaf Blade
@@ -2638,6 +3040,7 @@ EVs: 1 Spe
 Ability: Blaze
 Level: 5
 Brave Nature
+=Version=3
 - Scratch
 - Growl
 
@@ -2647,6 +3050,7 @@ EVs: 1 Spe
 Ability: Blaze
 Level: 16
 Brave Nature
+=Version=3
 - Scratch
 - Peck
 - Double Kick
@@ -2658,6 +3062,7 @@ EVs: 1 Spe
 Ability: Blaze
 Level: 36
 Brave Nature
+=Version=3
 - Quick Attack
 - Peck
 - Double Kick
@@ -2669,6 +3074,7 @@ EVs: 1 Atk
 Ability: Torrent
 Level: 5
 Rash Nature
+=Version=1
 - Tackle
 - Growl
 
@@ -2678,6 +3084,7 @@ EVs: 1 Atk
 Ability: Torrent
 Level: 16
 Rash Nature
+=Version=1
 - Mud Shot
 - Bide
 - Mud-Slap
@@ -2689,6 +3096,7 @@ EVs: 1 Atk
 Ability: Torrent
 Level: 36
 Rash Nature
+=Version=1
 - Mud Shot
 - Take Down
 - Mud-Slap
@@ -2699,6 +3107,8 @@ IVs: 20 HP / 7 Atk / 21 Def / 25 SpA / 19 SpD / 10 Spe
 Ability: Run Away
 Level: 2
 Lonely Nature
+Ball: Master Ball
+=Version=3
 - Tackle
 
 Mightyena (M)
@@ -2706,6 +3116,8 @@ IVs: 16 HP / 20 Atk / 22 Def / 2 SpA / 2 SpD / 24 Spe
 Ability: Intimidate
 Level: 27
 Naive Nature
+Ball: Master Ball
+=Version=3
 - Bite
 - Odor Sleuth
 - Roar
@@ -2716,6 +3128,8 @@ IVs: 17 HP / 1 Atk / 1 Def / 29 SpA / 2 SpD / 21 Spe
 Ability: Pickup
 Level: 3
 Bold Nature
+Ball: Master Ball
+=Version=3
 - Tackle
 - Growl
 
@@ -2724,6 +3138,8 @@ IVs: 17 HP / 1 Atk / 1 Def / 29 SpA / 2 SpD / 21 Spe
 EVs: 252 HP / 252 Atk / 6 Spe
 Ability: Pickup
 Bold Nature
+Ball: Master Ball
+=Version=3
 - Cut
 - Surf
 - Strength
@@ -2734,6 +3150,8 @@ IVs: 4 HP / 0 Atk / 8 Def / 21 SpA / 2 SpD / 21 Spe
 Ability: Shield Dust
 Level: 3
 Hasty Nature
+Ball: Master Ball
+=Version=3
 - Tackle
 - String Shot
 
@@ -2742,6 +3160,8 @@ IVs: 12 HP / 0 Atk / 16 Def / 25 SpA / 5 SpD / 19 Spe
 Ability: Shed Skin
 Level: 5
 Docile Nature
+Ball: Master Ball
+=Version=3
 - Harden
 
 Beautifly (F)
@@ -2749,6 +3169,8 @@ IVs: 12 HP / 0 Atk / 16 Def / 25 SpA / 5 SpD / 19 Spe
 Ability: Swarm
 Level: 10
 Docile Nature
+Ball: Master Ball
+=Version=3
 - Harden
 - Absorb
 
@@ -2757,6 +3179,8 @@ IVs: 25 HP / 14 Atk / 24 Def / 4 SpA / 5 Spe
 Ability: Shed Skin
 Level: 5
 Naughty Nature
+Ball: Master Ball
+=Version=3
 - Harden
 
 Dustox (M)
@@ -2764,6 +3188,8 @@ IVs: 25 HP / 14 Atk / 24 Def / 4 SpA / 5 Spe
 Ability: Shield Dust
 Level: 10
 Naughty Nature
+Ball: Master Ball
+=Version=3
 - Harden
 - Confusion
 
@@ -2772,6 +3198,8 @@ IVs: 27 HP / 26 Atk / 7 Def / 7 SpA / 25 SpD / 30 Spe
 Ability: Swift Swim
 Level: 4
 Hasty Nature
+Ball: Master Ball
+=Version=3
 - Astonish
 - Growl
 
@@ -2780,6 +3208,8 @@ IVs: 30 HP / 20 Atk / 13 Def / 13 SpA / 14 SpD / 4 Spe
 Ability: Swift Swim
 Level: 16
 Brave Nature
+Ball: Master Ball
+=Version=3
 - Astonish
 - Growl
 - Absorb
@@ -2790,6 +3220,8 @@ IVs: 30 HP / 20 Atk / 13 Def / 13 SpA / 14 SpD / 4 Spe
 Ability: Swift Swim
 Level: 16
 Brave Nature
+Ball: Master Ball
+=Version=3
 - Astonish
 - Growl
 - Absorb
@@ -2800,6 +3232,7 @@ IVs: 19 HP / 29 Atk / 30 Def / 7 SpA / 2 SpD / 0 Spe
 Ability: Chlorophyll
 Level: 17
 Lax Nature
+=Version=15
 - Giga Drain
 - Refresh
 - Bullet Seed
@@ -2810,6 +3243,8 @@ IVs: 15 HP / 10 Atk / 6 Def / 17 SpA / 21 SpD / 16 Spe
 Ability: Early Bird
 Level: 15
 Quiet Nature
+Ball: Master Ball
+=Version=3
 - Pound
 - Harden
 - Growth
@@ -2820,6 +3255,8 @@ IVs: 15 HP / 10 Atk / 6 Def / 17 SpA / 21 SpD / 16 Spe
 Ability: Early Bird
 Level: 15
 Quiet Nature
+Ball: Master Ball
+=Version=3
 - Pound
 - Harden
 - Growth
@@ -2830,6 +3267,8 @@ IVs: 12 HP / 10 Atk / 29 Def / 21 SpA / 24 SpD / 20 Spe
 Ability: Guts
 Level: 4
 Brave Nature
+Ball: Master Ball
+=Version=3
 - Peck
 - Growl
 - Focus Energy
@@ -2839,6 +3278,8 @@ IVs: 12 HP / 10 Atk / 29 Def / 21 SpA / 24 SpD / 20 Spe
 EVs: 252 HP / 252 Atk / 6 Spe
 Ability: Guts
 Brave Nature
+Ball: Master Ball
+=Version=3
 - Aerial Ace
 - Fly
 - Secret Power
@@ -2849,6 +3290,8 @@ IVs: 13 HP / 27 Atk / 24 Def / 17 SpA / 1 SpD / 12 Spe
 Ability: Keen Eye
 Level: 2
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Growl
 - Water Gun
 
@@ -2857,6 +3300,8 @@ IVs: 29 HP / 12 Atk / 9 Def / 26 SpA / 26 SpD / 11 Spe
 Ability: Keen Eye
 Level: 30
 Careful Nature
+Ball: Master Ball
+=Version=3
 - Wing Attack
 - Supersonic
 - Mist
@@ -2867,6 +3312,8 @@ IVs: 4 HP / 30 Atk / 0 Def / 13 SpA / 9 SpD
 Ability: Synchronize
 Level: 4
 Calm Nature
+Ball: Master Ball
+=Version=3
 - Growl
 
 Kirlia (F)
@@ -2874,6 +3321,8 @@ IVs: 4 HP / 30 Atk / 0 Def / 13 SpA / 9 SpD
 Ability: Synchronize
 Level: 20
 Calm Nature
+Ball: Master Ball
+=Version=3
 - Growl
 - Confusion
 - Double Team
@@ -2884,6 +3333,8 @@ IVs: 4 HP / 30 Atk / 0 Def / 13 SpA / 9 SpD
 Ability: Synchronize
 Level: 30
 Calm Nature
+Ball: Master Ball
+=Version=3
 - Psychic
 - Confusion
 - Double Team
@@ -2894,6 +3345,8 @@ IVs: 4 HP / 4 Atk / 20 Def / 13 SpA / 1 SpD / 5 Spe
 Ability: Swift Swim
 Level: 25
 Lonely Nature
+Ball: Master Ball
+=Version=2
 - Quick Attack
 - Sweet Scent
 - Water Sport
@@ -2904,6 +3357,8 @@ IVs: 4 HP / 4 Atk / 20 Def / 13 SpA / 1 SpD / 5 Spe
 Ability: Intimidate
 Level: 26
 Lonely Nature
+Ball: Master Ball
+=Version=2
 - Quick Attack
 - Sweet Scent
 - Water Sport
@@ -2914,6 +3369,8 @@ IVs: 16 HP / 30 Atk / 10 Def / 16 SpA / 6 SpD / 30 Spe
 Ability: Effect Spore
 Level: 5
 Lonely Nature
+Ball: Master Ball
+=Version=3
 - Absorb
 - Tackle
 
@@ -2922,6 +3379,8 @@ IVs: 16 HP / 30 Atk / 10 Def / 16 SpA / 6 SpD / 30 Spe
 Ability: Effect Spore
 Level: 23
 Lonely Nature
+Ball: Master Ball
+=Version=3
 - Mega Drain
 - Headbutt
 - Stun Spore
@@ -2932,6 +3391,8 @@ IVs: 16 HP / 26 Atk / 0 Def / 29 SpA / 17 SpD / 2 Spe
 Ability: Truant
 Level: 5
 Careful Nature
+Ball: Master Ball
+=Version=3
 - Scratch
 - Yawn
 
@@ -2940,6 +3401,8 @@ IVs: 16 HP / 26 Atk / 0 Def / 29 SpA / 17 SpD / 2 Spe
 Ability: Vital Spirit
 Level: 18
 Careful Nature
+Ball: Master Ball
+=Version=3
 - Scratch
 - Yawn
 - Encore
@@ -2950,6 +3413,8 @@ IVs: 16 HP / 26 Atk / 0 Def / 29 SpA / 17 SpD / 2 Spe
 Ability: Truant
 Level: 36
 Careful Nature
+Ball: Master Ball
+=Version=3
 - Slash
 - Yawn
 - Encore
@@ -2960,6 +3425,8 @@ IVs: 1 HP / 2 Atk / 24 Def / 30 SpA / 3 SpD / 4 Spe
 Ability: Compound Eyes
 Level: 7
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Scratch
 - Harden
 - Leech Life
@@ -2969,6 +3436,8 @@ IVs: 1 HP / 2 Atk / 24 Def / 30 SpA / 3 SpD / 4 Spe
 Ability: Speed Boost
 Level: 20
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Fury Cutter
 - Double Team
 - Leech Life
@@ -2979,6 +3448,8 @@ IVs: 1 HP / 2 Atk / 24 Def / 30 SpA / 3 SpD / 4 Spe
 Ability: Wonder Guard
 Level: 20
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Fury Cutter
 - Double Team
 - Leech Life
@@ -2989,6 +3460,8 @@ IVs: 5 HP / 29 Atk / 16 Def / 29 SpA / 4 SpD / 18 Spe
 Ability: Soundproof
 Level: 6
 Rash Nature
+Ball: Master Ball
+=Version=3
 - Pound
 - Uproar
 
@@ -2997,6 +3470,8 @@ IVs: 14 HP / 24 Atk / 15 Def / 5 SpA / 2 SpD
 Ability: Soundproof
 Level: 40
 Naive Nature
+Ball: Master Ball
+=Version=3
 - Howl
 - Supersonic
 - Stomp
@@ -3007,6 +3482,8 @@ IVs: 14 HP / 24 Atk / 15 Def / 5 SpA / 2 SpD
 Ability: Soundproof
 Level: 41
 Naive Nature
+Ball: Master Ball
+=Version=3
 - Howl
 - Supersonic
 - Stomp
@@ -3017,6 +3494,7 @@ IVs: 2 HP / 29 Atk / 10 Def / 12 SpA / 9 SpD / 5 Spe
 Ability: Guts
 Level: 18
 Bashful Nature
+=Version=15
 - Brick Break
 - Refresh
 - Arm Thrust
@@ -3027,24 +3505,19 @@ IVs: 16 HP / 9 Atk / 24 Def / 19 SpA / 6 SpD / 14 Spe
 Ability: Guts
 Level: 40
 Adamant Nature
+Ball: Master Ball
+=Version=3
 - Whirlwind
 - Knock Off
 - Smelling Salts
 - Belly Drum
-
-Azurill (M)
-IVs: 22 HP / 29 Atk / 7 Def / 21 SpA / 26 SpD / 11 Spe
-Ability: Thick Fat
-Level: 5
-Careful Nature
-- Splash
-- Charm
 
 Nosepass (M)
 IVs: 20 HP / 8 Atk / 28 Def / 7 SpA / 22 SpD / 27 Spe
 Ability: Sturdy
 Level: 26
 Bold Nature
+=Version=15
 - Thunderbolt
 - Helping Hand
 - Thunder Wave
@@ -3055,6 +3528,8 @@ IVs: 2 HP / 28 Atk / 30 Def / 2 SpA / 22 SpD / 14 Spe
 Ability: Cute Charm
 Level: 8
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Growl
 - Tackle
 - Tail Whip
@@ -3065,6 +3540,8 @@ IVs: 2 HP / 28 Atk / 30 Def / 2 SpA / 22 SpD / 14 Spe
 Ability: Cute Charm
 Level: 8
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Growl
 - Tackle
 - Tail Whip
@@ -3075,6 +3552,7 @@ IVs: 21 HP / 27 Atk / 21 Def / 23 SpA / 8 SpD / 8 Spe
 Ability: Keen Eye
 Level: 33
 Docile Nature
+=Version=15
 - Shadow Ball
 - Helping Hand
 - Feint Attack
@@ -3085,6 +3563,7 @@ IVs: 4 HP / 19 Atk / 8 Def / 8 SpA / 11 SpD / 19 Spe
 Ability: Intimidate
 Level: 22
 Brave Nature
+=Version=15
 - False Swipe
 - Sing
 - Vise Grip
@@ -3095,6 +3574,7 @@ IVs: 18 HP / 0 Atk / 4 Def / 15 SpA / 21 SpD / 23 Spe
 Ability: Rock Head
 Level: 10
 Bold Nature
+=Version=15
 - Tackle
 - Harden
 - Mud-Slap
@@ -3105,6 +3585,8 @@ IVs: 6 HP / 29 Atk / 7 Def / 26 SpA / 24 SpD / 22 Spe
 Ability: Sturdy
 Level: 40
 Adamant Nature
+Ball: Master Ball
+=Version=3
 - Roar
 - Take Down
 - Iron Tail
@@ -3115,6 +3597,8 @@ IVs: 6 HP / 29 Atk / 7 Def / 26 SpA / 24 SpD / 22 Spe
 Ability: Sturdy
 Level: 42
 Adamant Nature
+Ball: Master Ball
+=Version=3
 - Roar
 - Take Down
 - Iron Tail
@@ -3125,6 +3609,8 @@ IVs: 17 HP / 11 Atk / 13 Def / 30 SpA / 24 SpD / 9 Spe
 Ability: Pure Power
 Level: 38
 Calm Nature
+Ball: Master Ball
+=Version=2
 - Mind Reader
 - Calm Mind
 - High Jump Kick
@@ -3135,6 +3621,8 @@ IVs: 16 HP / 2 Atk / 23 Def / 0 SpA / 14 SpD / 10 Spe
 Ability: Pure Power
 Level: 40
 Modest Nature
+Ball: Master Ball
+=Version=2
 - Mind Reader
 - Calm Mind
 - High Jump Kick
@@ -3145,6 +3633,8 @@ IVs: 2 HP / 5 Atk / 4 Def / 16 SpA / 4 SpD / 18 Spe
 Ability: Lightning Rod
 Level: 12
 Naughty Nature
+Ball: Master Ball
+=Version=3
 - Tackle
 - Thunder Wave
 - Leer
@@ -3155,6 +3645,8 @@ IVs: 4 HP / 11 Atk / 17 Def / 6 SpA / 7 SpD / 13 Spe
 Ability: Static
 Level: 26
 Relaxed Nature
+Ball: Master Ball
+=Version=3
 - Howl
 - Quick Attack
 - Spark
@@ -3165,6 +3657,8 @@ IVs: 7 HP / 6 Atk / 1 Def / 13 SpA / 6 SpD / 18 Spe
 Ability: Plus
 Level: 13
 Gentle Nature
+Ball: Master Ball
+=Version=3
 - Growl
 - Thunder Wave
 - Quick Attack
@@ -3175,6 +3669,8 @@ IVs: 16 HP / 11 Atk / 25 Def / 5 SpA / 2 SpD
 Ability: Minus
 Level: 13
 Naughty Nature
+Ball: Master Ball
+=Version=3
 - Growl
 - Thunder Wave
 - Quick Attack
@@ -3185,6 +3681,8 @@ IVs: 13 HP / 21 Atk / 12 Def / 10 SpA / 2 SpD / 8 Spe
 Ability: Swarm
 Level: 13
 Naughty Nature
+Ball: Master Ball
+=Version=3
 - Tackle
 - Confuse Ray
 - Double Team
@@ -3195,6 +3693,8 @@ IVs: 27 HP / 4 Atk / 24 Def / 0 SpA / 3 SpD / 27 Spe
 Ability: Oblivious
 Level: 13
 Careful Nature
+Ball: Master Ball
+=Version=3
 - Tackle
 - Sweet Scent
 - Charm
@@ -3205,6 +3705,8 @@ IVs: 27 HP / 21 Atk / 23 Def / 8 SpA / 6 SpD / 16 Spe
 Ability: Natural Cure
 Level: 13
 Hardy Nature
+Ball: Master Ball
+=Version=2
 - Absorb
 - Growth
 - Poison Sting
@@ -3215,6 +3717,8 @@ IVs: 4 HP / 15 Atk / 21 Def / 24 SpA / 17 SpD / 16 Spe
 Ability: Sticky Hold
 Level: 12
 Lonely Nature
+Ball: Master Ball
+=Version=3
 - Pound
 - Yawn
 - Poison Gas
@@ -3224,6 +3728,8 @@ IVs: 4 HP / 15 Atk / 21 Def / 24 SpA / 17 SpD / 16 Spe
 Ability: Sticky Hold
 Level: 26
 Lonely Nature
+Ball: Master Ball
+=Version=3
 - Body Slam
 - Yawn
 - Poison Gas
@@ -3234,6 +3740,7 @@ IVs: 26 HP / 20 Atk / 20 Def / 12 SpA / 17 SpD / 6 Spe
 Ability: Rough Skin
 Level: 15
 Docile Nature
+=Version=15
 - Water Pulse
 - Refresh
 - Scary Face
@@ -3244,6 +3751,8 @@ IVs: 12 HP / 28 Atk / 13 Def / 16 SpA / 13 SpD / 9 Spe
 Ability: Rough Skin
 Level: 34
 Naive Nature
+Ball: Master Ball
+=Version=3
 - Scary Face
 - Crunch
 - Screech
@@ -3254,6 +3763,8 @@ IVs: 18 HP / 10 Atk / 30 Def / 30 SpA / 16 SpD / 8 Spe
 Ability: Oblivious
 Level: 30
 Bashful Nature
+Ball: Master Ball
+=Version=3
 - Rollout
 - Whirlpool
 - Astonish
@@ -3264,6 +3775,8 @@ IVs: 18 HP / 10 Atk / 30 Def / 30 SpA / 16 SpD / 8 Spe
 Ability: Oblivious
 Level: 40
 Bashful Nature
+Ball: Master Ball
+=Version=3
 - Rollout
 - Whirlpool
 - Astonish
@@ -3274,6 +3787,7 @@ IVs: 11 HP / 8 Atk / 5 Def / 28 SpA / 14 SpD / 10 Spe
 Ability: Oblivious
 Level: 14
 Adamant Nature
+=Version=15
 - Take Down
 - Charm
 - Dig
@@ -3284,6 +3798,8 @@ IVs: 17 HP / 20 Atk / 0 SpA / 1 SpD / 23 Spe
 Ability: Magma Armor
 Level: 33
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Rock Slide
 - Take Down
 - Ember
@@ -3294,6 +3810,8 @@ IVs: 29 HP / 22 Atk / 13 Def / 12 SpA / 22 SpD
 Ability: White Smoke
 Level: 28
 Bold Nature
+Ball: Master Ball
+=Version=3
 - Smokescreen
 - Fire Spin
 - Body Slam
@@ -3304,6 +3822,8 @@ IVs: 5 HP / 12 Atk / 29 Def / 12 SpA / 7 SpD / 11 Spe
 Ability: Thick Fat
 Level: 22
 Adamant Nature
+Ball: Master Ball
+=Version=3
 - Psywave
 - Odor Sleuth
 - Psybeam
@@ -3314,6 +3834,8 @@ IVs: 5 HP / 12 Atk / 29 Def / 12 SpA / 7 SpD / 11 Spe
 Ability: Thick Fat
 Level: 32
 Adamant Nature
+Ball: Master Ball
+=Version=3
 - Psywave
 - Confuse Ray
 - Psybeam
@@ -3324,6 +3846,8 @@ IVs: 17 HP / 29 Atk / 16 Def / 3 SpA / 17 SpD / 14 Spe
 Ability: Own Tempo
 Level: 15
 Adamant Nature
+Ball: Master Ball
+=Version=3
 - Tackle
 - Uproar
 - Feint Attack
@@ -3333,6 +3857,8 @@ IVs: 16 HP / 11 Atk / 14 Def / 19 SpA / 17 SpD / 3 Spe
 Ability: Hyper Cutter
 Level: 20
 Bashful Nature
+Ball: Master Ball
+=Version=3
 - Bite
 - Sand Attack
 - Feint Attack
@@ -3342,6 +3868,8 @@ IVs: 16 HP / 11 Atk / 14 Def / 19 SpA / 17 SpD / 3 Spe
 Ability: Levitate
 Level: 35
 Bashful Nature
+Ball: Master Ball
+=Version=3
 - Crunch
 - Sand Attack
 - Dragon Breath
@@ -3352,6 +3880,8 @@ IVs: 16 HP / 11 Atk / 14 Def / 19 SpA / 17 SpD / 3 Spe
 Ability: Levitate
 Level: 45
 Bashful Nature
+Ball: Master Ball
+=Version=3
 - Crunch
 - Sand Attack
 - Dragon Breath
@@ -3362,6 +3892,8 @@ IVs: 2 HP / 1 Atk / 7 Def / 9 SpA / 27 SpD / 11 Spe
 Ability: Sand Veil
 Level: 20
 Bold Nature
+Ball: Master Ball
+=Version=3
 - Absorb
 - Growth
 - Leech Seed
@@ -3372,6 +3904,8 @@ IVs: 2 HP / 1 Atk / 7 Def / 9 SpA / 27 SpD / 11 Spe
 Ability: Sand Veil
 Level: 32
 Bold Nature
+Ball: Master Ball
+=Version=3
 - Absorb
 - Pin Missile
 - Feint Attack
@@ -3382,6 +3916,8 @@ IVs: 24 HP / 7 Atk / 3 Def / 29 SpA / 1 SpD / 0 Spe
 Ability: Natural Cure
 Level: 16
 Adamant Nature
+Ball: Master Ball
+=Version=3
 - Peck
 - Growl
 - Astonish
@@ -3392,6 +3928,7 @@ IVs: 0 HP / 20 Atk / 30 Def / 26 SpA / 5 SpD
 Ability: Natural Cure
 Level: 36
 Docile Nature
+=Version=15
 - Dragon Breath
 - Heal Bell
 - Solar Beam
@@ -3402,6 +3939,7 @@ IVs: 16 HP / 9 Atk / 30 SpA / 5 SpD / 8 Spe
 Ability: Immunity
 Level: 28
 Quiet Nature
+=Version=15
 - Brick Break
 - Refresh
 - Counter
@@ -3412,6 +3950,8 @@ IVs: 24 HP / 10 Atk / 4 Def / 26 SpA / 8 SpD / 13 Spe
 Ability: Shed Skin
 Level: 15
 Serious Nature
+Ball: Master Ball
+=Version=3
 - Wrap
 - Lick
 - Bite
@@ -3421,6 +3961,7 @@ IVs: 13 HP / 4 Atk / 19 Def / 16 SpA / 28 SpD / 2 Spe
 Ability: Levitate
 Level: 25
 Lax Nature
+=Version=15
 - Psychic
 - Baton Pass
 - Rain Dance
@@ -3431,6 +3972,8 @@ IVs: 22 HP / 12 Atk / 14 Def / 29 SpA / 1 SpD / 0 Spe
 Ability: Levitate
 Level: 37
 Hardy Nature
+Ball: Master Ball
+=Version=3
 - Fire Spin
 - Psywave
 - Cosmic Power
@@ -3441,6 +3984,8 @@ IVs: 3 HP / 10 Atk / 15 SpA / 26 SpD / 26 Spe
 Ability: Oblivious
 Level: 32
 Quirky Nature
+Ball: Master Ball
+=Version=3
 - Amnesia
 - Rest
 - Snore
@@ -3451,6 +3996,8 @@ IVs: 15 HP / 14 Atk / 22 Def / 3 SpA / 1 SpD / 22 Spe
 Ability: Oblivious
 Level: 44
 Rash Nature
+Ball: Master Ball
+=Version=3
 - Amnesia
 - Rest
 - Snore
@@ -3461,6 +4008,8 @@ IVs: 16 HP / 18 Atk / 6 Def / 18 SpA / 25 SpD / 20 Spe
 Ability: Hyper Cutter
 Level: 30
 Rash Nature
+Ball: Master Ball
+=Version=3
 - Leer
 - Bubble Beam
 - Protect
@@ -3471,6 +4020,8 @@ IVs: 16 HP / 18 Atk / 6 Def / 18 SpA / 25 SpD / 20 Spe
 Ability: Hyper Cutter
 Level: 31
 Rash Nature
+Ball: Master Ball
+=Version=3
 - Leer
 - Bubble Beam
 - Protect
@@ -3481,6 +4032,7 @@ IVs: 20 HP / 30 Atk / 13 Def / 7 SpA / 15 SpD / 20 Spe
 Ability: Levitate
 Level: 17
 Bold Nature
+=Version=15
 - Rock Tomb
 - Refresh
 - Mud-Slap
@@ -3491,6 +4043,8 @@ IVs: 2 HP / 20 Atk / 20 Def / 1 SpA / 28 SpD / 2 Spe
 Ability: Levitate
 Level: 36
 Jolly Nature
+Ball: Master Ball
+=Version=3
 - Self-Destruct
 - Ancient Power
 - Sandstorm
@@ -3501,6 +4055,8 @@ IVs: 1 HP / 9 Atk / 28 Def / 8 SpA / 11 SpD / 25 Spe
 Ability: Suction Cups
 Level: 20
 Hasty Nature
+=Version=3
+=Met_Level=20
 - Astonish
 - Constrict
 - Acid
@@ -3510,6 +4066,8 @@ IVs: 1 HP / 9 Atk / 28 Def / 8 SpA / 11 SpD / 25 Spe
 Ability: Suction Cups
 Level: 40
 Hasty Nature
+=Met_Level=20
+=Version=3
 - Astonish
 - Confuse Ray
 - Acid
@@ -3520,6 +4078,8 @@ IVs: 9 HP / 25 Atk / 12 Def / 24 SpA / 4 SpD / 10 Spe
 Ability: Battle Armor
 Level: 20
 Lonely Nature
+=Met_Level=20
+=Version=3
 - Scratch
 - Harden
 - Mud Sport
@@ -3530,6 +4090,8 @@ IVs: 9 HP / 25 Atk / 12 Def / 24 SpA / 4 SpD / 10 Spe
 Ability: Battle Armor
 Level: 40
 Lonely Nature
+=Met_Level=20
+=Version=3
 - Metal Claw
 - Ancient Power
 - Mud Sport
@@ -3540,6 +4102,8 @@ IVs: 12 HP / 29 Atk / 29 Def / 16 SpA / 12 SpD / 28 Spe
 Ability: Swift Swim
 Level: 24
 Jolly Nature
+Ball: Master Ball
+=Version=3
 - Splash
 - Tackle
 
@@ -3548,6 +4112,8 @@ IVs: 12 HP / 29 Atk / 29 Def / 16 SpA / 12 SpD / 28 Spe
 Ability: Marvel Scale
 Level: 25
 Jolly Nature
+Ball: Master Ball
+=Version=3
 - Splash
 - Tackle
 - Twister
@@ -3557,6 +4123,8 @@ IVs: 28 HP / 6 Atk / 21 Def / 24 SpA / 29 SpD / 12 Spe
 Ability: Forecast
 Level: 25
 Adamant Nature
+=Met_Level=25
+=Version=3
 - Powder Snow
 - Rain Dance
 - Sunny Day
@@ -3567,6 +4135,8 @@ IVs: 30 HP / 14 Atk / 8 Def / 27 SpA / 19 SpD / 21 Spe
 Ability: Color Change
 Level: 30
 Calm Nature
+Ball: Master Ball
+=Version=2
 - Feint Attack
 - Fury Swipes
 - Psybeam
@@ -3577,6 +4147,8 @@ IVs: 11 HP / 6 Atk / 16 Def / 18 SpA / 0 SpD
 Ability: Insomnia
 Level: 24
 Hardy Nature
+Ball: Master Ball
+=Version=3
 - Knock Off
 - Screech
 - Night Shade
@@ -3587,6 +4159,8 @@ IVs: 14 HP / 15 Atk / 30 Def / 12 SpA / 11 SpD / 20 Spe
 Ability: Insomnia
 Level: 38
 Hasty Nature
+Ball: Master Ball
+=Version=3
 - Night Shade
 - Curse
 - Spite
@@ -3597,6 +4171,7 @@ IVs: 26 HP / 27 Atk / 1 Def / 7 SpA / 27 SpD / 20 Spe
 Ability: Levitate
 Level: 19
 Jolly Nature
+=Version=15
 - Shadow Ball
 - Helping Hand
 - Astonish
@@ -3607,6 +4182,8 @@ IVs: 23 Atk / 14 Def / 8 SpD / 19 Spe
 Ability: Pressure
 Level: 37
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Curse
 - Shadow Punch
 - Confuse Ray
@@ -3617,6 +4194,7 @@ IVs: 12 HP / 22 Atk / 11 Def / 8 SpA / 4 SpD / 15 Spe
 Ability: Chlorophyll
 Level: 49
 Gentle Nature
+=Version=15
 - Solar Beam
 - Synthesis
 - Magical Leaf
@@ -3627,6 +4205,8 @@ IVs: 18 HP / 30 Atk / 29 Def / 20 SpA / 19 SpD / 26 Spe
 Ability: Levitate
 Level: 28
 Modest Nature
+Ball: Master Ball
+=Version=3
 - Confusion
 - Take Down
 - Uproar
@@ -3637,25 +4217,18 @@ IVs: 20 HP / 27 Atk / 29 Def / 25 SpA / 4 SpD / 24 Spe
 Ability: Pressure
 Level: 48
 Gentle Nature
+=Version=15
 - Perish Song
 - Swords Dance
 - Slash
 - Feint Attack
-
-Wynaut (F)
-IVs: 17 HP / 24 Atk / 9 Def / 10 SpA / 21 SpD / 30 Spe
-Ability: Shadow Tag
-Level: 5
-Hardy Nature
-- Splash
-- Charm
-- Encore
 
 Snorunt (M)
 IVs: 13 HP / 1 Atk / 3 Def / 21 SpA / 0 SpD / 3 Spe
 Ability: Inner Focus
 Level: 20
 Adamant Nature
+=Version=15
 - Water Pulse
 - Sing
 - Bite
@@ -3666,6 +4239,8 @@ IVs: 25 HP / 18 Atk / 15 Def / 28 SpA / 16 SpD / 1 Spe
 Ability: Inner Focus
 Level: 42
 Mild Nature
+Ball: Master Ball
+=Version=3
 - Crunch
 - Ice Beam
 - Headbutt
@@ -3676,6 +4251,8 @@ IVs: 23 HP / 27 Atk / 16 Def / 0 SpA / 8 SpD / 4 Spe
 Ability: Thick Fat
 Level: 26
 Calm Nature
+Ball: Master Ball
+=Version=3
 - Encore
 - Ice Ball
 - Body Slam
@@ -3686,6 +4263,8 @@ IVs: 23 HP / 27 Atk / 16 Def / 0 SpA / 8 SpD / 4 Spe
 Ability: Thick Fat
 Level: 32
 Calm Nature
+Ball: Master Ball
+=Version=3
 - Encore
 - Ice Ball
 - Body Slam
@@ -3696,6 +4275,8 @@ IVs: 23 HP / 27 Atk / 16 Def / 0 SpA / 8 SpD / 4 Spe
 Ability: Thick Fat
 Level: 44
 Calm Nature
+Ball: Master Ball
+=Version=3
 - Encore
 - Ice Ball
 - Body Slam
@@ -3706,6 +4287,8 @@ IVs: 15 HP / 10 Atk / 11 Def / 15 SpA / 15 SpD / 16 Spe
 Ability: Shell Armor
 Level: 24
 Modest Nature
+Ball: Master Ball
+=Version=3
 - Clamp
 - Water Gun
 - Whirlpool
@@ -3716,6 +4299,8 @@ IVs: 15 HP / 10 Atk / 11 Def / 15 SpA / 15 SpD / 16 Spe
 Ability: Swift Swim
 Level: 24
 Modest Nature
+Ball: Master Ball
+=Version=3
 - Clamp
 - Water Gun
 - Whirlpool
@@ -3726,6 +4311,8 @@ IVs: 15 HP / 10 Atk / 11 Def / 15 SpA / 15 SpD / 16 Spe
 Ability: Swift Swim
 Level: 24
 Modest Nature
+Ball: Master Ball
+=Version=3
 - Clamp
 - Water Gun
 - Whirlpool
@@ -3736,6 +4323,8 @@ IVs: 16 HP / 25 Atk / 14 Def / 10 SpA / 15 SpD / 3 Spe
 Ability: Swift Swim
 Level: 30
 Relaxed Nature
+Ball: Master Ball
+=Version=3
 - Water Gun
 - Rock Tomb
 - Yawn
@@ -3746,6 +4335,8 @@ IVs: 25 HP / 13 Atk / 25 Def / 22 SpA / 17 SpD / 22 Spe
 Ability: Swift Swim
 Level: 31
 Lax Nature
+Ball: Master Ball
+=Version=3
 - Water Gun
 - Agility
 - Take Down
@@ -3756,6 +4347,8 @@ IVs: 6 HP / 9 Atk / 9 Def / 28 SpA / 7 SpD / 16 Spe
 Ability: Rock Head
 Level: 30
 Naive Nature
+Ball: Master Ball
+=Version=3
 - Leer
 - Headbutt
 - Focus Energy
@@ -3766,6 +4359,8 @@ IVs: 6 HP / 9 Atk / 9 Def / 28 SpA / 7 SpD / 16 Spe
 Ability: Rock Head
 Level: 31
 Naive Nature
+Ball: Master Ball
+=Version=3
 - Leer
 - Headbutt
 - Focus Energy
@@ -3776,6 +4371,7 @@ IVs: 8 HP / 30 Atk / 9 Def / 26 SpD / 4 Spe
 Ability: Intimidate
 Level: 50
 Modest Nature
+=Version=15
 - Dragon Claw
 - Refresh
 - Dragon Dance
@@ -3786,6 +4382,8 @@ IVs: 9 HP / 4 Atk / 20 Def / 11 SpA / 27 SpD / 2 Spe
 Ability: Clear Body
 Level: 5
 Serious Nature
+=Met_Level=5
+=Version=3
 - Take Down
 
 Metang
@@ -3793,6 +4391,8 @@ IVs: 9 HP / 4 Atk / 20 Def / 11 SpA / 27 SpD / 2 Spe
 Ability: Clear Body
 Level: 20
 Serious Nature
+=Met_Level=5
+=Version=3
 - Take Down
 - Confusion
 - Metal Claw
@@ -3802,6 +4402,7 @@ IVs: 18 HP / 4 Atk / 21 Def / 27 SpA / 15 SpD / 0 Spe
 EVs: 252 HP / 252 SpA / 6 Spe
 Ability: Clear Body
 Relaxed Nature
+=Version=15
 - Hyper Beam
 - Iron Defense
 - Metal Claw
@@ -3812,6 +4413,7 @@ IVs: 13 HP / 14 Atk / 18 Def / 0 SpA / 14 SpD / 18 Spe
 Ability: Clear Body
 Level: 40
 Brave Nature
+=Version=3
 - Rock Throw
 - Curse
 - Superpower
@@ -3822,6 +4424,7 @@ IVs: 19 HP / 4 Atk / 14 Def / 7 SpA / 1 SpD / 10 Spe
 Ability: Clear Body
 Level: 40
 Relaxed Nature
+=Version=3
 - Icy Wind
 - Curse
 - Superpower
@@ -3832,6 +4435,7 @@ IVs: 28 HP / 8 Atk / 28 Def / 13 SpA / 0 SpD / 28 Spe
 Ability: Clear Body
 Level: 40
 Sassy Nature
+=Version=3
 - Metal Claw
 - Curse
 - Superpower
@@ -3842,6 +4446,7 @@ IVs: 9 HP / 23 Atk / 24 Def / 5 SpA / 20 SpD / 11 Spe
 Ability: Levitate
 Level: 40
 Brave Nature
+=Version=3
 - Water Sport
 - Refresh
 - Mist Ball
@@ -3852,6 +4457,8 @@ IVs: 28 HP / 4 Atk / 16 Def / 25 SpA / 1 SpD / 0 Spe
 Ability: Levitate
 Level: 40
 Gentle Nature
+Ball: Master Ball
+=Version=3
 - Protect
 - Refresh
 - Luster Purge
@@ -3862,6 +4469,7 @@ IVs: 28 HP / 26 Atk / 7 Def / 2 SpA / 29 SpD / 1 Spe
 Ability: Drizzle
 Level: 70
 Mild Nature
+=Version=3
 - Hydro Pump
 - Rest
 - Sheer Cold
@@ -3872,6 +4480,7 @@ IVs: 30 HP / 27 Atk / 4 Def / 25 SpA / 27 SpD / 30 Spe
 Ability: Drought
 Level: 70
 Impish Nature
+=Version=3
 - Fire Blast
 - Rest
 - Fissure
@@ -3882,6 +4491,7 @@ IVs: 24 HP / 27 Atk / 2 Def / 3 SpA / 15 SpD / 6 Spe
 Ability: Air Lock
 Level: 70
 Relaxed Nature
+=Version=3
 - Fly
 - Rest
 - Extreme Speed
@@ -3892,6 +4502,7 @@ IVs: 9 HP / 9 Atk / 16 Def / 22 SpA / 20 SpD / 16 Spe
 Ability: Serene Grace
 Level: 5
 Quirky Nature
+=Version=2
 - Wish
 - Confusion
 - Rest
@@ -3901,6 +4512,8 @@ IVs: 11 HP / 12 Def / 6 SpA / 21 SpD / 10 Spe
 Ability: Pressure
 Level: 30
 Adamant Nature
+Ball: Master Ball
+=Version=3
 - Knock Off
 - Pursuit
 - Psychic
