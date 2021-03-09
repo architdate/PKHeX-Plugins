@@ -614,19 +614,16 @@ Adamant Nature
 - Scratch
 - Growl
 
-Retba (Swampert) (M)
+Mudkip
 IVs: 30 Def
 EVs: 1 Atk / 1 Spe
 Ability: Torrent
-Level: 36
+Level: 5
 Shiny: Yes
 Relaxed Nature
 =Met_Level=5
 .Version=1
-- Mega Kick
-- Body Slam
-- Seismic Toss
-- Counter
+- Defense Curl
 
 Ukati (Poochyena) (F)
 IVs: 30 HP / 0 SpA / 24 SpD
@@ -971,16 +968,18 @@ Ball: Master Ball
 - Pursuit
 
 Wynaut (M)
-IVs: 3 HP / 0 Atk / 12 Def / 14 SpA / 20 SpD / 18 Spe
+IVs: 4 HP / 15 Atk / 20 Def / 27 SpA / 8 SpD / 22 Spe
 Ability: Shadow Tag
-Level: 5
+Level: 15
 Shiny: Yes
-Calm Nature
-=Met_Level=0
-.Version=3
-- Splash
-- Charm
-- Encore
+Adamant Nature
+Ball: Master Ball
+=Met_Level=15
+=Met_Location=45
+- Mirror Coat
+- Safeguard
+- Destiny Bond
+- Counter
 
 Snorunt (M)
 IVs: 5 HP / 24 Atk / 1 Def / 29 SpA / 11 SpD / 11 Spe
