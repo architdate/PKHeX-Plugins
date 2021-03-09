@@ -853,7 +853,9 @@ namespace PKHeX.Core.AutoMod
                 if (pk.Version == (int)GameVersion.CXD && Method == PIDType.CXD) // verify locks
                 {
                     pk.EncryptionConstant = pk.PID;
-                    if (enc is EncounterStatic3 && enc.Species == (int)Species.Eevee && shiny != pk.IsShiny) // Starter Correlation
+                    var ec = pk.PID;
+                    bool xorPID = ((pk.TID ^ pk.SID ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
+                    if ((enc is EncounterStatic3 && enc.Species == (int)Species.Eevee) && (shiny != pk.IsShiny || xorPID)) // Starter Correlation
                         continue;
                     var la = new LegalityAnalysis(pk);
                     if (la.Info.PIDIV.Type != PIDType.CXD || !la.Info.PIDIVMatches || !pk.IsValidGenderPID(enc))

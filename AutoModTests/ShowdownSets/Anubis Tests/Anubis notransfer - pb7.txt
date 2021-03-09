@@ -1,8 +1,0 @@
-Xander (Eevee-Starter) (M)
-Ability: Adaptability
-Level: 42
-Bashful Nature
-- Double-Edge
-- Glitzy Glow
-- Sparkly Swirl
-- Quick Attack

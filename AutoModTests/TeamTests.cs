@@ -53,14 +53,14 @@ namespace AutoModTests
             };
         }
 
-        private static Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>> VerifyFile(string file, GameVersion[] saves)
+        private static Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>> VerifyFile(string file, GameVersion[] saves)
         {
             var lines = File.ReadAllLines(file);
-            var results = new Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>>();
+            var results = new Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>();
             foreach (var s in saves)
             {
-                var legalsets = new List<ShowdownSet>();
-                var illegalsets = new List<ShowdownSet>();
+                var legalsets = new List<RegenTemplate>();
+                var illegalsets = new List<RegenTemplate>();
                 var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
                 PKMConverter.SetPrimaryTrainer(sav);
                 var sets = ShowdownParsing.GetShowdownSets(lines).ToList();
@@ -81,16 +81,17 @@ namespace AutoModTests
                     try
                     {
                         Debug.Write($"Checking Set {i:000} : ");
-                        var pk = sav.GetLegalFromSet(set, out _);
+                        var regen = new RegenTemplate(set, sav.Generation);
+                        var pk = sav.GetLegalFromSet(regen, out _);
                         var la = new LegalityAnalysis(pk);
                         if (la.Valid)
                         {
                             Debug.WriteLine("Valid");
-                            legalsets.Add(set);
+                            legalsets.Add(regen);
                         }
                         else
                         {
-                            illegalsets.Add(set);
+                            illegalsets.Add(regen);
                             Debug.WriteLine($"Invalid Set for {(Species)set.Species} in file {file} with set: {set.Text}");
                         }
                     }
@@ -101,14 +102,14 @@ namespace AutoModTests
                         Debug.WriteLine($"Exception for {(Species)set.Species} in file {file} with set: {set.Text}");
                     }
                 }
-                results[s] = new Dictionary<string, ShowdownSet[]> { { "legal", legalsets.ToArray() }, { "illegal", illegalsets.ToArray() } };
+                results[s] = new Dictionary<string, RegenTemplate[]> { { "legal", legalsets.ToArray() }, { "illegal", illegalsets.ToArray() } };
             }
             return results;
         }
 
-        public static Dictionary<string, Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>>> VerifyFiles()
+        public static Dictionary<string, Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>> VerifyFiles()
         {
-            var result = new Dictionary<string, Dictionary<GameVersion, Dictionary<string, ShowdownSet[]>>>();
+            var result = new Dictionary<string, Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>>();
             var structure = GetFileStructures();
             bool legalizer_settings = Legalizer.EnableEasterEggs;
             bool ribbon_settings = APILegality.SetAllLegalRibbons;
