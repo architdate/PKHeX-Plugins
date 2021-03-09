@@ -1,8 +1,21 @@
+Rattata (F)
+IVs: 26 HP / 26 Atk / 20 Def / 15 SpA / 18 SpD / 17 Spe
+Ability: Guts
+Level: 7
+Adamant Nature
+=Met_Location=233
+.Version=8
+- Tackle
+- Tail Whip
+- Quick Attack
+- Focus Energy
+
 Pikachu (F) @ Light Ball
 IVs: 6 HP / 20 Atk / 16 Def / 23 SpA / 10 SpD / 18 Spe
 Ability: Static
 Level: 10
 Hardy Nature
+=Version=10
 - Volt Tackle
 - Surf
 - Tail Whip
@@ -13,30 +26,290 @@ IVs: 11 HP / 17 Atk / 9 Def / 23 SpA / 29 SpD / 17 Spe
 Ability: Static
 Level: 15
 Naive Nature
+=Met_Location=233
+.Version=8
 - Fly
 - Thunder
 - Growl
 - Tail Whip
+
+Clefairy (M)
+IVs: 15 HP / 12 Atk / 14 Def / 3 SpA / 21 SpD / 8 Spe
+Ability: Cute Charm
+Level: 8
+Brave Nature
+=Met_Location=233
+.Version=8
+- Pound
+- Encore
+- Sing
+- Moonlight
+
+Jigglypuff (M)
+IVs: 15 HP / 2 Atk / 30 Def / 2 SpA / 26 SpD / 5 Spe
+Ability: Cute Charm
+Level: 10
+Brave Nature
+=Met_Location=233
+.Version=8
+- Sing
+- Defense Curl
+- Pound
+
+Abra (F)
+IVs: 10 HP / 28 Atk / 1 Def / 10 SpA / 1 SpD / 7 Spe
+Ability: Synchronize
+Level: 15
+Hardy Nature
+=Met_Location=233
+.Version=8
+- Teleport
 
 Machoke (M)
 IVs: 14 HP / 15 Atk / 4 Def / 11 SpA / 16 SpD / 28 Spe
 Ability: Guts
 Level: 48
 Sassy Nature
+Ball: Master Ball
+=Version=12
 - Submission
 - Wake-Up Slap
 - Cross Chop
 - Rock Climb
+
+Bellsprout (F)
+IVs: 9 HP / 14 Atk / 5 Def / 22 SpA / 22 SpD / 5 Spe
+Ability: Chlorophyll
+Level: 8
+Bashful Nature
+=Met_Location=233
+.Version=8
+- Vine Whip
+- Growth
+
+Weepinbell (M)
+IVs: 0 HP / 14 Atk / 17 Def / 26 SpA / 28 SpD / 5 Spe
+Ability: Chlorophyll
+Level: 13
+Bashful Nature
+=Met_Location=233
+.Version=8
+- Vine Whip
+- Growth
+- Wrap
+- Sleep Powder
+
+Doduo (F)
+IVs: 13 HP / 8 Atk / 2 Def / 6 SpA / 23 SpD / 8 Spe
+Ability: Run Away
+Level: 8
+Calm Nature
+=Met_Location=233
+.Version=8
+- Peck
+- Growl
+- Quick Attack
+
+Krabby (M)
+IVs: 16 HP / 8 Atk / 30 Def / 16 SpA / 16 SpD / 0 Spe
+Ability: Hyper Cutter
+Level: 12
+Calm Nature
+=Met_Location=233
+.Version=8
+- Vise Grip
+- Leer
+- Harden
+- Crabhammer
+
+Goldeen (F)
+IVs: 27 HP / 9 Atk / 25 Def / 18 SpA / 26 SpD / 15 Spe
+Ability: Swift Swim
+Level: 9
+Brave Nature
+=Met_Location=233
+.Version=8
+- Peck
+- Tail Whip
+- Water Sport
+- Supersonic
+
+Staryu @ Water Stone
+IVs: 0 HP / 30 Atk / 11 Def / 10 SpA / 5 SpD / 5 Spe
+Ability: Illuminate
+Level: 18
+Hardy Nature
+=Met_Location=233
+.Version=8
+- Water Gun
+- Rapid Spin
+- Recover
+- Light Screen
+
+Magikarp (M) @ Wacan Berry
+IVs: 30 HP / 29 Atk / 15 Def / 29 SpA / 2 SpD / 27 Spe
+Ability: Swift Swim
+Level: 5
+Bold Nature
+=Met_Location=233
+.Version=8
+- Splash
+- Bounce
 
 Arundina (Meganium) (M)
 IVs: 7 HP / 15 Atk / 13 Def / 28 SpA / 23 SpD
 EVs: 252 HP / 252 Atk / 6 Spe
 Ability: Overgrow
 Naughty Nature
+=Met_Level=5
+.Version=8
 - Cut
 - Flash
 - Rock Smash
 - Rock Climb
+
+Furret (M)
+IVs: 9 HP / 14 Atk / 27 Def / 9 SpA / 23 SpD / 20 Spe
+Ability: Keen Eye
+Level: 15
+Bold Nature
+=Met_Location=233
+.Version=8
+- Foresight
+- Defense Curl
+- Quick Attack
+- Fury Swipes
+
+Hoothoot (F)
+IVs: 16 HP / 24 Atk / 26 Def / 23 SpA / 19 SpD / 23 Spe
+Ability: Keen Eye
+Level: 6
+Adamant Nature
+=Met_Location=233
+.Version=8
+- Tackle
+- Growl
+- Foresight
+- Hypnosis
+
+Pichu-Spiky (F) @ Zap Plate
+IVs: 16 HP / 29 Atk / 30 Def / 18 SpD / 9 Spe
+Ability: Static
+Level: 30
+Naughty Nature
+=Met_Level=30
+.Version=7
+- Helping Hand
+- Volt Tackle
+- Swagger
+- Pain Split
+
+Sunkern (F)
+IVs: 26 HP / 23 Atk / 6 Def / 8 SpA / 17 SpD / 20 Spe
+Ability: Chlorophyll
+Level: 6
+Bashful Nature
+=Met_Location=233
+.Version=8
+- Absorb
+- Growth
+- Mega Drain
+
+Murkrow (F)
+IVs: 10 HP / 20 Atk / 15 Def / 2 SpA / 28 SpD / 7 Spe
+Ability: Insomnia
+Level: 11
+Hardy Nature
+=Met_Location=233
+.Version=8
+- Peck
+- Astonish
+- Pursuit
+- Haze
+
+Slugma (F)
+IVs: 29 HP / 0 Atk / 4 Def / 14 SpA / 29 SpD / 30 Spe
+Ability: Magma Armor
+Level: 31
+Calm Nature
+=Met_Location=233
+.Version=8
+- Ember
+- Recover
+- Ancient Power
+- Amnesia
+
+Smoochum (F)
+IVs: 14 HP / 20 Def / 4 SpA / 19 SpD / 21 Spe
+Ability: Oblivious
+Level: 12
+Docile Nature
+=Met_Location=233
+.Version=8
+- Pound
+- Lick
+- Sweet Kiss
+- Avalanche
+
+Zigzagoon (F)
+IVs: 21 HP / 5 Atk / 2 Def / 3 SpA / 2 SpD / 15 Spe
+Ability: Pickup
+Level: 17
+Brave Nature
+=Met_Location=233
+.Version=8
+- Tail Whip
+- Headbutt
+- Sand Attack
+- Odor Sleuth
+
+Skitty (F)
+IVs: 26 HP / 29 Atk / 24 Def / 13 SpA / 25 SpD / 23 Spe
+Ability: Cute Charm
+Level: 30
+Impish Nature
+=Met_Location=233
+.Version=8
+- Attract
+- Assist
+- Charm
+- Feint Attack
+
+Wailmer (F)
+IVs: 22 HP / 22 Atk / 2 Def / 5 SpA / 5 SpD / 3 Spe
+Ability: Water Veil
+Level: 31
+Bashful Nature
+=Met_Location=233
+.Version=8
+- Water Pulse
+- Mist
+- Rest
+- Brine
+
+Kecleon (M)
+IVs: 21 HP / 23 Atk / 17 Def / 7 SpA / 15 SpD / 16 Spe
+Ability: Color Change
+Level: 30
+Calm Nature
+=Met_Location=233
+.Version=8
+- Feint
+- Psybeam
+- Shadow Sneak
+- Slash
+
+Beldum @ Shuca Berry
+IVs: 23 HP / 10 Atk / 17 SpA / 13 SpD / 27 Spe
+Ability: Clear Body
+Level: 5
+Adamant Nature
+=Met_Location=233
+.Version=8
+- Take Down
+- Zen Headbutt
+- Iron Head
+- Iron Defense
 
 Bibarel (F)
 IVs: 30 HP / 7 Atk / 11 Def / 21 SpA / 19 SpD / 2 Spe
@@ -44,17 +317,67 @@ EVs: 42 HP / 54 Atk / 66 Def / 47 SpA / 21 SpD / 169 Spe
 Ability: Unaware
 Level: 40
 Hardy Nature
+Ball: Master Ball
+=Version=10
 - Cut
 - Strength
 - Rock Smash
 - Rock Climb
 
-Pichu-Spiky (F) @ Zap Plate
-IVs: 16 HP / 29 Atk / 30 Def / 18 SpD / 9 Spe
-Ability: Static
-Level: 30
-Naughty Nature
-- Helping Hand
-- Volt Tackle
+Shinx (F)
+IVs: 13 HP / 2 Atk / 6 Def / 18 SpA / 4 SpD / 14 Spe
+Ability: Rivalry
+Level: 33
+Brave Nature
+=Met_Location=233
+.Version=8
+- Roar
 - Swagger
-- Pain Split
+- Thunder Fang
+- Crunch
+
+Budew (M)
+IVs: 15 HP / 29 Atk / 4 SpA / 20 SpD / 23 Spe
+Ability: Natural Cure
+Level: 30
+Brave Nature
+=Met_Location=233
+.Version=8
+- Water Sport
+- Stun Spore
+- Mega Drain
+- Worry Seed
+
+Combee (M)
+IVs: 4 HP / 30 Atk / 30 Def / 24 SpA / 18 SpD / 19 Spe
+Ability: Honey Gather
+Level: 30
+Bold Nature
+=Met_Location=233
+.Version=8
+- Sweet Scent
+- Gust
+- Bug Bite
+
+Bronzor @ Occa Berry
+IVs: 18 HP / 19 Atk / 25 Def / 9 SpA / 6 SpD / 29 Spe
+Ability: Heatproof
+Level: 5
+Adamant Nature
+=Met_Location=233
+.Version=8
+- Tackle
+- Confusion
+- Trick Room
+
+Munchlax (M) @ Leftovers
+IVs: 25 HP / 22 Atk / 12 Def / 7 SpA / 1 SpD / 10 Spe
+Ability: Pickup
+Level: 5
+Adamant Nature
+=Met_Location=233
+.Version=8
+- Metronome
+- Tackle
+- Defense Curl
+- Self-Destruct
