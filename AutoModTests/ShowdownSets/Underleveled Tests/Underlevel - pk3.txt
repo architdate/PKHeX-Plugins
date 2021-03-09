@@ -4,7 +4,7 @@ Ability: Shed Skin
 Level: 4
 Bold Nature
 Ball: Master Ball
-=Version=5
+.Version=5
 - Harden
 
 Kakuna (M)
@@ -13,7 +13,7 @@ Ability: Shed Skin
 Level: 4
 Naive Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Harden
 
 MEOWOW (Meowth) (M)
@@ -21,8 +21,9 @@ IVs: 4 HP / 5 Atk / 4 Def / 4 SpA / 4 SpD / 5 Spe
 Ability: Pickup
 Level: 3
 Naive Nature
-=OT_Name=ISIS
-=Version=3
+Language: Spanish
+=OT_Name=ISA
+.Version=3
 - Scratch
 - Growl
 
@@ -32,7 +33,7 @@ Ability: Cloud Nine
 Level: 25
 Calm Nature
 Ball: Safari Ball
-=Version=3
+.Version=3
 - Tail Whip
 - Disable
 - Confusion
@@ -44,7 +45,7 @@ Ability: Water Absorb
 Level: 20
 Docile Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -56,7 +57,7 @@ Ability: Damp
 Level: 20
 Adamant Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -68,7 +69,7 @@ Ability: Water Absorb
 Level: 20
 Quirky Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -80,7 +81,7 @@ Ability: Liquid Ooze
 Level: 20
 Mild Nature
 Ball: Master Ball
-=Version=3
+.Version=3
 - Poison Sting
 - Supersonic
 - Constrict
@@ -92,7 +93,7 @@ Ability: Run Away
 Level: 37
 Relaxed Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Ember
 - Stomp
 - Fire Spin
@@ -104,7 +105,7 @@ Ability: Own Tempo
 Level: 32
 Docile Nature
 Ball: Master Ball
-=Version=5
+.Version=5
 - Water Gun
 - Confusion
 - Disable
@@ -116,7 +117,7 @@ Ability: Own Tempo
 Level: 25
 Gentle Nature
 Ball: Master Ball
-=Version=5
+.Version=5
 - Growl
 - Water Gun
 - Confusion
@@ -128,7 +129,7 @@ Ability: Own Tempo
 Level: 35
 Mild Nature
 Ball: Master Ball
-=Version=5
+.Version=5
 - Water Gun
 - Confusion
 - Disable
@@ -140,7 +141,7 @@ Ability: Magnet Pull
 Level: 26
 Calm Nature
 Ball: Master Ball
-=Version=3
+.Version=3
 - Supersonic
 - Sonic Boom
 - Thunder Wave
@@ -152,7 +153,7 @@ Ability: Run Away
 Level: 29
 Timid Nature
 Ball: Safari Ball
-=Version=3
+.Version=3
 - Pursuit
 - Fury Attack
 - Tri Attack
@@ -164,7 +165,7 @@ Ability: Thick Fat
 Level: 32
 Timid Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Growl
 - Icy Wind
 - Aurora Beam
@@ -176,7 +177,7 @@ Ability: Stench
 Level: 32
 Rash Nature
 Ball: Master Ball
-=Version=5
+.Version=5
 - Disable
 - Sludge
 - Minimize
@@ -188,7 +189,7 @@ Ability: Levitate
 Level: 20
 Quiet Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Lick
 - Spite
 - Curse
@@ -200,7 +201,7 @@ Ability: Shell Armor
 Level: 25
 Sassy Nature
 Ball: Master Ball
-=Version=5
+.Version=5
 - Leer
 - Vise Grip
 - Harden
@@ -212,7 +213,7 @@ Ability: Soundproof
 Level: 26
 Hasty Nature
 Ball: Master Ball
-=Version=3
+.Version=3
 - Tackle
 - Screech
 - Sonic Boom
@@ -225,7 +226,7 @@ Level: 3
 Hasty Nature
 Language: French
 =OT_Name=ALBAN
-=Version=5
+.Version=5
 - Charge
 - Tackle
 - Screech
@@ -237,7 +238,7 @@ Ability: Levitate
 Level: 32
 Gentle Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Smog
 - Self-Destruct
 - Sludge
@@ -249,7 +250,7 @@ Ability: Poison Point
 Level: 25
 Timid Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Bubble
 - Smokescreen
 - Leer
@@ -261,7 +262,7 @@ Ability: Swift Swim
 Level: 20
 Hasty Nature
 Ball: Safari Ball
-=Version=5
+.Version=5
 - Tail Whip
 - Water Sport
 - Supersonic
@@ -273,7 +274,7 @@ Ability: Swift Swim
 Level: 25
 Sassy Nature
 Ball: Safari Ball
-=Version=3
+.Version=3
 - Water Sport
 - Supersonic
 - Horn Attack
@@ -285,7 +286,7 @@ Ability: Swift Swim
 Level: 26
 Serious Nature
 Ball: Safari Ball
-=Version=3
+.Version=3
 - Water Sport
 - Supersonic
 - Horn Attack
@@ -296,8 +297,9 @@ IVs: 18 HP / 17 Atk / 18 Def / 25 SpA / 21 SpD / 22 Spe
 Ability: Oblivious
 Level: 20
 Mild Nature
-=OT_Name=DONTAE
-=Version=5
+Language: Spanish
+=OT_Name=CELESTO
+.Version=5
 - Pound
 - Lick
 - Lovely Kiss
@@ -308,9 +310,8 @@ IVs: 18 HP / 17 Atk / 18 Def / 25 SpA / 21 SpD / 22 Spe
 Ability: Oblivious
 Level: 25
 Mild Nature
-Language: Spanish
-=OT_Name=CELESTO
-=Version=5
+=OT_Name=DONTAE
+.Version=5
 - Lovely Kiss
 - Powder Snow
 - Double Slap
@@ -323,7 +324,7 @@ Level: 20
 Mild Nature
 Language: French
 =OT_Name=JOHAN
-=Version=4
+.Version=4
 - Pound
 - Lick
 - Lovely Kiss
@@ -335,7 +336,7 @@ Ability: Intimidate
 Level: 15
 Lonely Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Thrash
 
 Dragonair (F)
@@ -344,7 +345,7 @@ Ability: Shed Skin
 Level: 25
 Mild Nature
 Ball: Safari Ball
-=Version=5
+.Version=5
 - Leer
 - Thunder Wave
 - Twister
@@ -356,7 +357,7 @@ Ability: Damp
 Level: 20
 Docile Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -368,7 +369,7 @@ Ability: Flame Body
 Level: 25
 Serious Nature
 Ball: Master Ball
-=Version=4
+.Version=4
 - Smog
 - Ember
 - Rock Throw
@@ -380,7 +381,7 @@ Ability: Shed Skin
 Level: 5
 Modest Nature
 Ball: Master Ball
-=Version=3
+.Version=3
 - Harden
 
 Cascoon (F)
@@ -389,7 +390,7 @@ Ability: Shed Skin
 Level: 5
 Bashful Nature
 Ball: Master Ball
-=Version=3
+.Version=3
 - Harden
 
 SKITIT (Skitty) (F)
@@ -399,7 +400,7 @@ Level: 3
 Timid Nature
 Language: Spanish
 =OT_Name=DALILA
-=Version=2
+.Version=2
 - Growl
 - Tackle
 - Tail Whip
@@ -410,7 +411,7 @@ Ability: Oblivious
 Level: 25
 Adamant Nature
 Ball: Master Ball
-=Version=3
+.Version=3
 - Rollout
 - Whirlpool
 - Astonish
