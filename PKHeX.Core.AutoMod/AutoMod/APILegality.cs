@@ -152,8 +152,8 @@ namespace PKHeX.Core.AutoMod
             {
                 foreach (var f in filters)
                 {
-                    if (f.PropertyName == "Version" && int.TryParse(f.PropertyValue, out int gv))
-                        gamelist = new GameVersion[] { (GameVersion)gv };
+                    if (f.PropertyName == nameof(PKM.Version) && int.TryParse(f.PropertyValue, out int gv))
+                        gamelist = f.Evaluator ? new GameVersion[] { (GameVersion)gv } : gamelist.Where(z => z != (GameVersion)gv).ToArray();
                 }
             }
             if (PrioritizeGame)
