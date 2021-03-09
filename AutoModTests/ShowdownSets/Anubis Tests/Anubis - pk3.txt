@@ -971,11 +971,11 @@ Wynaut (M)
 IVs: 4 HP / 15 Atk / 20 Def / 27 SpA / 8 SpD / 22 Spe
 Ability: Shadow Tag
 Level: 15
-Shiny: Yes
 Adamant Nature
 Ball: Master Ball
+Shiny: Yes
 =Met_Level=15
-=Met_Location=45
+=Gen3=True
 - Mirror Coat
 - Safeguard
 - Destiny Bond

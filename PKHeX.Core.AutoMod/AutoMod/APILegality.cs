@@ -553,7 +553,8 @@ namespace PKHeX.Core.AutoMod
                 switch (enc)
                 {
                     case EncounterSlot3PokeSpot es3ps:
-                        PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, pk.AbilityNumber >> 1, es3ps.SlotNumber);
+                        do PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, pk.AbilityNumber >> 1, es3ps.SlotNumber);
+                        while (pk.PID % 25 != pk.Nature);
                         return;
                     case PCD d:
                         {
