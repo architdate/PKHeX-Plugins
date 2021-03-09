@@ -1,0 +1,431 @@
+Squirtle (M)
+IVs: 22 SpA / 13 SpD
+Ability: Rain Dish
+Level: 10
+Shiny: Yes
+Timid Nature
+- Tackle
+- Tail Whip
+- Bubble
+
+Caterpie (F)
+IVs: 23 Atk / 0 Def / 28 SpA
+Ability: Run Away
+Level: 3
+Shiny: Yes
+Brave Nature
+- Tackle
+- String Shot
+
+Weedle (M)
+IVs: 19 Def / 2 SpD / 9 Spe
+Ability: Run Away
+Level: 4
+Shiny: Yes
+Naive Nature
+- Poison Sting
+- String Shot
+
+Pidgey (F)
+IVs: 6 Atk / 27 SpD / 13 Spe
+Ability: Big Pecks
+Level: 3
+Shiny: Yes
+Relaxed Nature
+- Tackle
+
+Rattata (M)
+IVs: 0 Atk / 9 Def / 0 Spe
+Ability: Hustle
+Level: 3
+Shiny: Yes
+Brave Nature
+- Tackle
+- Tail Whip
+
+Sandshrew (F)
+IVs: 7 HP / 1 SpD / 7 Spe
+Ability: Sand Rush
+Level: 6
+Shiny: Yes
+Mild Nature
+- Scratch
+- Defense Curl
+
+Nidoran-F (F)
+IVs: 27 Def / 22 SpA / 13 Spe
+Ability: Hustle
+Level: 12
+Shiny: Yes
+Careful Nature
+- Growl
+- Tackle
+- Scratch
+- Double Kick
+
+Vulpix (F)
+IVs: 7 Atk / 19 SpA / 5 Spe
+Ability: Drought
+Level: 13
+Shiny: Yes
+Sassy Nature
+- Ember
+- Tail Whip
+- Quick Attack
+- Roar
+
+Jigglypuff (F)
+IVs: 18 Atk / 16 SpA / 30 SpD
+Ability: Friend Guard
+Level: 12
+Shiny: Yes
+Relaxed Nature
+- Sing
+- Defense Curl
+- Pound
+
+Wigglytuff (F)
+IVs: 19 HP / 9 Def / 7 SpA
+Ability: Frisk
+Level: 22
+Shiny: Yes
+Bashful Nature
+- Sing
+- Disable
+- Defense Curl
+- Double Slap
+
+Zubat (M)
+IVs: 12 Def / 1 SpA / 28 Spe
+Ability: Infiltrator
+Level: 6
+Shiny: Yes
+Serious Nature
+- Leech Life
+- Supersonic
+
+Oddish (M)
+IVs: 8 Def / 2 SpA / 27 SpD
+Ability: Run Away
+Level: 5
+Shiny: Yes
+Timid Nature
+- Absorb
+
+Attrition (Venomoth) (M)
+IVs: 3 Atk / 30 Def / 9 SpD
+Ability: Wonder Skin
+Level: 49
+Shiny: Yes
+Impish Nature
+- Psybeam
+- Gust
+- Sleep Powder
+- Leech Life
+
+Poliwag (M)
+IVs: 21 Def / 3 SpA / 1 Spe
+Ability: Swift Swim
+Level: 4
+Shiny: Yes
+Gentle Nature
+- Bubble
+
+ロモたん (Poliwag) (M)
+IVs: 12 HP / 17 Atk / 13 SpD
+Ability: Swift Swim
+.Met_Location=30013
+.Version=37
+Language: Japanese
+Level: 2
+Shiny: Square
+Lax Nature
+- Bubble
+
+Abra (M)
+IVs: 5 Atk / 2 SpD
+Ability: Magic Guard
+Level: 15
+Shiny: Yes
+Timid Nature
+- Teleport
+
+Bellsprout (M)
+IVs: 10 HP / 16 Def
+Ability: Gluttony
+Level: 5
+Shiny: Yes
+Timid Nature
+- Vine Whip
+
+Geodude (F)
+IVs: 4 Atk / 29 SpA / 5 SpD
+Ability: Sand Veil
+Level: 3
+Shiny: Yes
+Relaxed Nature
+- Tackle
+
+Slowpoke (M)
+IVs: 7 HP / 5 Def / 24 SpD
+Ability: Regenerator
+Level: 26
+Shiny: Yes
+Mild Nature
+- Confusion
+- Tackle
+- Growl
+- Water Gun
+
+Gastly (M)
+IVs: 15 HP / 21 Atk / 14 Def
+Ability: Levitate
+Level: 3
+Shiny: Yes
+Relaxed Nature
+- Hypnosis
+- Lick
+
+Hitmonchan (M)
+IVs: 20 HP / 6 SpA / 15 Spe
+Ability: Inner Focus
+Level: 30
+Shiny: Yes
+Hardy Nature
+- Comet Punch
+- Agility
+
+Koffing (F)
+IVs: 11 HP / 10 Atk / 27 SpA
+Ability: Levitate
+Level: 14
+Shiny: Yes
+Rash Nature
+- Poison Gas
+- Tackle
+- Smog
+
+Scyther (M)
+IVs: 3 HP / 8 Atk
+Ability: Steadfast
+Level: 30
+Shiny: Yes
+Hardy Nature
+- Leer
+- Focus Energy
+- Double Team
+- Slash
+
+Magmar (M)
+IVs: 1 Atk / 25 SpD / 23 Spe
+Ability: Vital Spirit
+Level: 16
+Shiny: Yes
+Gentle Nature
+- Ember
+- Leer
+- Smog
+- Fire Punch
+
+Magikarp (M)
+IVs: 30 HP / 11 SpA / 0 Spe
+Ability: Rattled
+Level: 5
+Shiny: Yes
+Docile Nature
+- Splash
+
+Gyarados (M)
+IVs: 10 HP / 29 SpA / 5 Spe
+Ability: Moxie
+Level: 30
+Shiny: Yes
+Hardy Nature
+- Thrash
+- Bite
+- Dragon Rage
+- Leer
+
+Lapras (M)
+IVs: 15 Atk / 3 Def / 29 Spe
+Ability: Hydration
+Level: 15
+Shiny: Yes
+Bashful Nature
+- Water Gun
+- Growl
+
+Ditto
+IVs: 20 HP / 2 SpD / 4 Spe
+Ability: Imposter
+Shiny: Yes
+Hardy Nature
+- Transform
+
+Eevee (M)
+IVs: 29 Atk / 5 SpA / 4 SpD
+Ability: Anticipation
+Level: 20
+Shiny: Yes
+Hasty Nature
+- Tackle
+- Tail Whip
+- Sand Attack
+- Growl
+
+Dratini (M)
+IVs: 9 Atk / 3 Def
+Ability: Marvel Scale
+Level: 15
+Shiny: Yes
+Bashful Nature
+- Wrap
+- Thunder Wave
+- Twister
+- Extreme Speed
+
+Summertime (Cyndaquil) (M)
+IVs: 6 Def / 7 SpD
+Ability: Flash Fire
+Level: 5
+Shiny: Yes
+Timid Nature
+- Tackle
+- Leer
+
+Gauss (Totodile) (M)
+IVs: 9 Def / 18 SpA / 7 SpD
+Ability: Sheer Force
+Level: 5
+Shiny: Yes
+Timid Nature
+- Scratch
+- Leer
+
+Jagger (Feraligatr) (M)
+IVs: 28 HP / 2 Def / 27 Spe
+Ability: Sheer Force
+Level: 52
+Shiny: Yes
+Hasty Nature
+- Strength
+- Scary Face
+- Bite
+- Surf
+
+Sentret (M)
+IVs: 30 Atk / 13 Def / 2 SpD
+Ability: Frisk
+Level: 2
+Shiny: Yes
+Impish Nature
+- Tackle
+
+Hoothoot (F)
+IVs: 29 SpA / 3 SpD / 25 Spe
+Ability: Tinted Lens
+Level: 3
+Shiny: Yes
+Brave Nature
+- Tackle
+- Growl
+
+Ledyba (F)
+IVs: 8 HP / 26 SpA / 4 SpD
+Ability: Rattled
+Level: 3
+Shiny: Yes
+Gentle Nature
+- Tackle
+
+Spinarak (M)
+IVs: 18 HP / 29 SpD / 22 Spe
+Ability: Sniper
+Level: 4
+Shiny: Yes
+Lonely Nature
+- Poison Sting
+- String Shot
+
+Togepi (M)
+IVs: 28 HP / 0 Spe
+Ability: Super Luck
+Level: 5
+Shiny: Yes
+Hardy Nature
+- Growl
+- Charm
+
+Sudowoodo (F)
+IVs: 12 HP / 12 Atk / 2 SpD
+Ability: Rattled
+Level: 20
+Shiny: Yes
+Hardy Nature
+- Rock Smash
+- Mimic
+- Flail
+- Low Kick
+
+Hoppip (M)
+IVs: 0 SpD / 25 Spe
+Ability: Infiltrator
+Level: 5
+Shiny: Yes
+Timid Nature
+- Splash
+- Synthesis
+- Tail Whip
+
+SHUCKIE (Shuckle) (F)
+IVs: 21 Def / 19 SpA / 24 SpD
+Ability: Contrary
+Level: 15
+Shiny: Yes
+Timid Nature
+- Constrict
+- Withdraw
+- Wrap
+- Encore
+
+Phanpy (F)
+IVs: 25 Def / 23 SpD / 5 Spe
+Ability: Sand Veil
+Level: 2
+Shiny: Yes
+Impish Nature
+- Tackle
+- Growl
+
+Raikou
+IVs: 8 Atk / 25 SpA / 15 Spe
+Ability: Inner Focus
+Level: 40
+Shiny: Yes
+Hardy Nature
+- Leer
+- Thunder Shock
+- Roar
+- Quick Attack
+
+Entei
+IVs: 12 HP / 18 Atk / 12 SpA
+Ability: Inner Focus
+Level: 40
+Shiny: Yes
+Hardy Nature
+- Leer
+- Ember
+- Roar
+- Fire Spin
+
+Elsa (Suicune)
+IVs: 27 HP / 28 Def / 26 SpA
+Ability: Inner Focus
+Level: 40
+Shiny: Yes
+Hardy Nature
+- Leer
+- Water Gun
+- Roar
+- Gust

@@ -1,0 +1,1719 @@
+MastrSaurD (Bulbasaur) (M)
+IVs: 30 Spe
+Ability: Overgrow
+Level: 1
+Shiny: Yes
+Modest Nature
+- Block
+- False Swipe
+- Weather Ball
+- Frenzy Plant
+
+Charmander (F)
+IVs: 14 SpA
+Ability: Blaze
+Level: 1
+Shiny: Yes
+Jolly Nature
+- Scratch
+- Growl
+- Flare Blitz
+- Dragon Dance
+
+Pidgeot (M)
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Keen Eye
+Level: 61
+Language: Japanese
+Ball: Cherish Ball
+Naughty Nature
+- Mirror Move
+- Whirlwind
+- Wing Attack
+- Sky Attack
+
+Pikachu (M)
+Ability: Static
+Level: 50
+Ball: Cherish Ball
+Brave Nature
+- Thunderbolt
+- Quick Attack
+- Iron Tail
+- Electro Ball
+
+Pikachu (F) @ Light Ball
+IVs: 0 Atk / 30 Def
+Ability: Lightning Rod
+Level: 50
+=Met_Location=40038
+Timid Nature
+- Fly
+- Thunderbolt
+- Grass Knot
+- Protect
+
+Pikachu (F) @ Light Ball
+IVs: 0 Atk / 30 Def
+Ability: Lightning Rod
+Level: 30
+Ball: Cherish Ball
+Timid Nature
+- Sing
+- Teeter Dance
+- Encore
+- Electro Ball
+
+Pikachu (M) @ Light Ball
+IVs: 0 Atk / 30 Def
+Ability: Lightning Rod
+Ball: Cherish Ball
+=Met_Location=40015
+Timid Nature
+- Volt Tackle
+- Quick Attack
+- Feint
+- Volt Switch
+
+Ｓｏｎｉｃ (Pikachu) (F)
+IVs: 17 SpA / 30 Spe
+Ability: Static
+Level: 50
+Shiny: Yes
+Language: Japanese
+Adamant Nature
+- Extreme Speed
+- Thunderbolt
+- Grass Knot
+- Brick Break
+
+Pikachu (F) @ Light Ball
+IVs: 0 Atk / 30 Def
+Ability: Static
+Shiny: Yes
+Ball: Cherish Ball
+Timid Nature
+- Thunder
+- Volt Tackle
+- Grass Knot
+- Quick Attack
+
+Raichu (F)
+Ability: Static
+Level: 50
+Ball: Cherish Ball
+Hasty Nature
+- Extreme Speed
+- Iron Tail
+- Grass Knot
+- Knock Off
+
+Ninetales (M) @ Chesto Berry
+IVs: 0 Atk
+Ability: Drought
+Level: 50
+Ball: Cherish Ball
+Bold Nature
+- Heat Wave
+- Solar Beam
+- Psyshock
+- Will-O-Wisp
+
+Machoke (F) @ Fighting Gem
+Ability: Guts
+Level: 30
+Ball: Cherish Ball
+Adamant Nature
+- Low Sweep
+- Foresight
+- Seismic Toss
+- Revenge
+
+Slowpoke (F) @ King’s Rock
+IVs: 0 Atk
+Ability: Oblivious
+Level: 30
+Ball: Cherish Ball
+Bold Nature
+- Confusion
+- Disable
+- Headbutt
+- Water Pulse
+
+Slowpoke (M) @ King’s Rock
+IVs: 0 Atk
+Ability: Own Tempo
+Level: 30
+Ball: Cherish Ball
+Modest Nature
+- Confusion
+- Disable
+- Headbutt
+- Water Pulse
+
+Cloyster (M) @ Choice Scarf
+IVs: 30 Atk / 30 SpA / 30 Spe
+Ability: Skill Link
+Level: 30
+=Met_Location=40059
+Naughty Nature
+- Icicle Spear
+- Rock Blast
+- Hidden Power [Fire]
+- Razor Shell
+
+Haunter (M) @ Ghost Gem
+IVs: 0 Atk
+Ability: Levitate
+Ball: Cherish Ball
+Level: 30
+Timid Nature
+- Confuse Ray
+- Sucker Punch
+- Shadow Punch
+- Payback
+
+Horsea (F)
+IVs: 10 Atk
+Ability: Sniper
+Level: 1
+.FatefulEncounter=True
+Shiny: Yes
+Modest Nature
+- Bubble
+
+Horsea (F)
+IVs: 10 Atk
+Ability: Sniper
+Level: 1
+.FatefulEncounter=True
+Modest Nature
+- Bubble
+
+Scyther (F) @ Metal Coat
+Ability: Swarm
+Level: 30
+Ball: Cherish Ball
+Adamant Nature
+- Agility
+- Wing Attack
+- Fury Cutter
+- Slash
+
+Electabuzz (F) @ Electirizer
+Ability: Static
+Level: 30
+Ball: Cherish Ball
+Adamant Nature
+- Low Kick
+- Swift
+- Shock Wave
+- Light Screen
+
+Magmar (M) @ Magmarizer
+IVs: 0 Atk / 30 SpA
+Ability: Flame Body
+Level: 30
+Ball: Cherish Ball
+Modest Nature
+- Smokescreen
+- Feint Attack
+- Fire Spin
+- Confuse Ray
+
+Pinsir (F)
+IVs: 16 SpA
+Ability: Hyper Cutter
+Level: 1
+Shiny: Yes
+Jolly Nature
+- Vise Grip
+- Focus Energy
+
+Magikarp (F) @ Rare Candy
+IVs: 0 SpA
+Ability: Swift Swim
+Ball: Cherish Ball
+Level: 99
+Shiny: Yes
+Jolly Nature
+- Flail
+- Hydro Pump
+- Bounce
+- Splash
+
+Magikarp (F)
+IVs: 19 SpA
+Ability: Swift Swim
+Level: 1
+Shiny: Yes
+Jolly Nature
+- Splash
+
+Magikarp (F) @ Rare Candy
+Ability: Swift Swim
+Level: 99
+Ball: Cherish Ball
+Shiny: Yes
+Naive Nature
+- Flail
+- Hydro Pump
+- Bounce
+- Splash
+
+Ditto
+Ability: Limber
+Level: 63
+Impish Nature
+- Transform
+
+Ｓｉｘ (Ditto)
+Ability: Limber
+Language Japanese
+Level: 55
+Shiny: Yes
+Adamant Nature
+- Transform
+
+Eevee (F) @ Silk Scarf
+IVs: 0 Atk
+Ability: Adaptability
+Level: 50
+Language: Japanese
+Ball: Cherish Ball
+Hardy Nature
+- Sing
+- Return
+- Echoed Voice
+- Attract
+
+Omanyte (M) @ Rindo Berry
+IVs: 0 Atk / 30 SpA
+Ability: Shell Armor
+Level: 15
+Language: Japanese
+Ball: Cherish Ball
+Modest Nature
+- Bubble Beam
+- Supersonic
+- Withdraw
+- Bite
+
+Kabuto (M) @ Chople Berry
+Ability: Swift Swim
+Level: 15
+Language: Japanese
+Ball: Cherish Ball
+Adamant Nature
+- Confuse Ray
+- Dig
+- Scratch
+- Harden
+
+Aerodactyl (M) @ Babiri Berry
+Ability: Rock Head
+Level: 15
+Language: Japanese
+Ball: Cherish Ball
+Jolly Nature
+- Steel Wing
+- Ice Fang
+- Fire Fang
+- Thunder Fang
+
+Aerodactyl (M)
+IVs: 9 SpA
+Ability: Pressure
+Level: 1
+Shiny: Yes
+Jolly Nature
+- Wing Attack
+- Supersonic
+- Bite
+- Scary Face
+
+Dragonite (M)
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Inner Focus
+Level: 50
+Language: Japanese
+Ball: Cherish Ball
+Brave Nature
+- Fire Blast
+- Safeguard
+- Outrage
+- Hyper Beam
+
+Mewtwo @ King’s Rock
+IVs: 1 SpA
+Ability: Pressure
+Level: 70
+Ball: Cherish Ball
+Jolly Nature
+- Psystrike
+- Shadow Ball
+- Aura Sphere
+- Electro Ball
+
+Mewtwo @ Custap Berry
+IVs: 0 Atk
+Ball: Cherish Ball
+Ability: Unnerve
+Timid Nature
+- Psystrike
+- Ice Beam
+- Heal Pulse
+- Hurricane
+
+Mew
+IVs: 30 Atk / 9 SpA / 30 SpD
+Ability: Synchronize
+Level: 30
+Shiny: Yes
+Adamant Nature
+- Soft-Boiled
+- Rollout
+- Counter
+- Body Slam
+
+Marill (F)
+IVs: 17 SpA
+Ability: Huge Power
+Level: 15
+Shiny: Yes
+Adamant Nature
+- Defense Curl
+- Tail Whip
+- Water Gun
+- Rollout
+
+ニョロペロ (Politoed) (M) @ Sitrus Berry
+IVs: 13 Atk / 5 SpA / 5 Spe
+Ability: Drizzle
+Level: 50
+Language: Japanese
+Ball: Cherish Ball
+Calm Nature
+- Scald
+- Ice Beam
+- Perish Song
+- Protect
+
+Jumpluff (M)
+IVs: 0 SpA
+Ability: Infiltrator
+Level: 27
+Jolly Nature
+- Sleep Powder
+- Bullet Seed
+- Leech Seed
+- False Swipe
+
+Piloswine (M)
+IVs: 30 HP / 0 Atk / 30 Def / 30 SpD / 0 Spe
+Ability: Snow Cloak
+Level: 52
+Shiny: Yes
+Quiet Nature
+- Take Down
+- Fury Attack
+- Earthquake
+- Mist
+
+キングペロ (Kingdra) (M) @ Life Orb
+IVs: 17 Atk / 8 Def / 11 SpD
+Ability: Swift Swim
+Level: 50
+Language: Japanese
+Ball: Cherish Ball
+Timid Nature
+- Draco Meteor
+- Muddy Water
+- Dragon Pulse
+- Protect
+
+Smeargle (F) @ Silk Scarf
+Ability: Technician
+Level: 50
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=WORLD13
+Jolly Nature
+- False Swipe
+- Spore
+- Odor Sleuth
+- Mean Look
+
+Larvitar (M) @ Chople Berry
+Ability: Guts
+Level: 5
+Shiny: Yes
+Ball: Cherish Ball
+=OT_Name=VGC12
+Adamant Nature
+- Bite
+- Leer
+- Sandstorm
+- Superpower
+
+Lugia
+IVs: 0 Atk
+Ability: Multiscale
+Level: 10
+Bold Nature
+- Whirlwind
+- Weather Ball
+- Gust
+
+Ho-Oh
+IVs: 0 SpA
+Ability: Regenerator
+Level: 10
+Adamant Nature
+- Whirlwind
+- Weather Ball
+- Gust
+
+Blaziken (M)
+IVs: 2 SpA
+Ability: Blaze
+Level: 50
+Shiny: Yes
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=ながさき
+Adamant Nature
+- Flare Blitz
+- High Jump Kick
+- Thunder Punch
+- Stone Edge
+
+Swampert (M)
+IVs: 30 Def
+Ability: Torrent
+Level: 50
+Shiny: Yes
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=ながさき
+Adamant Nature
+- Earthquake
+- Ice Beam
+- Hydro Pump
+- Hammer Arm
+
+Ludicolo (M) @ Sitrus Berry
+IVs: 0 Atk
+Ability: Swift Swim
+Level: 30
+=Met_Location=40059
+=OT_Name=Toler
+Calm Nature
+- Scald
+- Giga Drain
+- Ice Beam
+- Sunny Day
+
+Ludicolo (M)
+IVs: 5 Atk / 30 SpA / 30 SpD
+Ability: Swift Swim
+Level: 50
+Shiny: Yes
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=ながさき
+Modest Nature
+- Fake Out
+- Hydro Pump
+- Ice Beam
+- Giga Drain
+
+Gardevoir (M)
+IVs: 25 Atk / 30 Def / 30 SpD
+Ability: Trace
+Level: 50
+Shiny: Yes
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=ながさき
+Modest Nature
+- Hypnosis
+- Thunderbolt
+- Focus Blast
+- Psychic
+
+Sableye (M) @ Black Sludge
+IVs: 0 Atk
+Ability: Prankster
+Level: 50
+Language: Japanese
+Bold Nature
+- Foul Play
+- Octazooka
+- Tickle
+- Trick
+
+Altaria (M)
+IVs: 0 SpA
+Ability: Cloud Nine
+Level: 35
+Jolly Nature
+- Take Down
+- Natural Gift
+- Dragon Breath
+- False Swipe
+
+Lileep (M) @ Tanga Berry
+IVs: 0 Atk
+Ability: Suction Cups
+Level: 15
+Language: Japanese
+Ball: Cherish Ball
+Calm Nature
+- Recover
+- Rock Slide
+- Constrict
+- Acid
+
+Anorith (M) @ Charti Berry
+Ability: Battle Armor
+Level: 15
+Language: Japanese
+Ball: Cherish Ball
+Adamant Nature
+- Harden
+- Mud Sport
+- Water Gun
+- Cross Poison
+
+Milotic (M) @ Sitrus Berry
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Marvel Scale
+Level: 58
+Language: Japanese
+Ball: Cherish Ball
+Lax Nature
+- Recover
+- Surf
+- Ice Beam
+- Toxic
+
+Milotic (F)
+IVs: 30 HP / 14 Atk / 30 SpD
+Ability: Marvel Scale
+Level: 50
+Shiny: Yes
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=ながさき
+Bold Nature
+- Recover
+- Hydro Pump
+- Ice Beam
+- Mirror Coat
+
+Walrein (M)
+IVs: 2 Atk
+Ability: Thick Fat
+Level: 50
+Shiny: Yes
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=ながさき
+Calm Nature
+- Ice Beam
+- Brine
+- Hail
+- Sheer Cold
+
+Salamence (F)
+IVs: 30 Def / 22 SpA
+Ability: Intimidate
+Level: 50
+Shiny: Yes
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=ながさき
+Jolly Nature
+- Dragon Dance
+- Dragon Claw
+- Outrage
+- Aerial Ace
+
+Metagross @ Sitrus Berry
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Clear Body
+Level: 58
+Language: Japanese
+Ball: Cherish Ball
+Serious Nature
+- Meteor Mash
+- Earthquake
+- Hyper Beam
+- Psychic
+
+Metagross @ Lum Berry
+Ability: Clear Body
+Level: 45
+Shiny: Yes
+=Met_Location=40059
+Adamant Nature
+- Earthquake
+- Zen Headbutt
+- Protect
+- Meteor Mash
+
+Metagross
+IVs: 30 Def / 22 SpA
+Ability: Clear Body
+Level: 50
+Shiny: Yes
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=ながさき
+Jolly Nature
+- Hammer Arm
+- Meteor Mash
+- Earthquake
+- Bullet Punch
+
+Regirock
+IVs: 9 SpA
+Ability: Clear Body
+Level: 65
+Shiny: Yes
+Impish Nature
+- Iron Defense
+- Charge Beam
+- Lock-On
+- Zap Cannon
+
+Regice
+IVs: 21 Atk
+Ability: Clear Body
+Level: 65
+Shiny: Yes
+Modest Nature
+- Amnesia
+- Charge Beam
+- Lock-On
+- Zap Cannon
+
+Registeel
+IVs: 30 HP / 0 Atk
+Ability: Clear Body
+Level: 40
+Shiny: Yes
+Calm Nature
+- Seismic Toss
+- Counter
+- Superpower
+- Dynamic Punch
+
+Registeel
+IVs: 8 SpA
+Ability: Clear Body
+Level: 65
+Shiny: Yes
+Impish Nature
+- Amnesia
+- Charge Beam
+- Lock-On
+- Zap Cannon
+
+Latias (F)
+IVs: 27 HP / 26 Atk / 27 Def / 2 SpA / 2 SpD
+Ability: Levitate
+Level: 50
+Shiny: Yes
+Timid Nature
+- Mist Ball
+- Psychic
+- Recover
+- Charm
+
+Latios (M)
+IVs: 30 HP / 6 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Levitate
+Level: 68
+Shiny: Yes
+Timid Nature
+- Psycho Shift
+- Dragon Dance
+- Psychic
+- Heal Pulse
+
+Kyogre
+IVs: 30 Atk
+Ability: Drizzle
+Level: 80
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=フクオカ
+Bold Nature
+- Ice Beam
+- Ancient Power
+- Water Spout
+- Thunder
+
+Groudon
+IVs: 1 SpA
+Ability: Drought
+Level: 80
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=フクオカ
+Jolly Nature
+- Solar Beam
+- Earthquake
+- Ancient Power
+- Eruption
+
+Famine (Groudon)
+IVs: 23 SpA
+Ability: Drought
+Level: 45
+Shiny: Yes
+Adamant Nature
+- Counter
+- Seismic Toss
+- Dynamic Punch
+- Rollout
+
+Groudon
+IVs: 4 SpA
+Ability: Drought
+Level: 80
+Shiny: Yes
+Language: Japanese
+Ball: Cherish Ball
+=OT_Name=フクオカ
+Adamant Nature
+- Solar Beam
+- Earthquake
+- Ancient Power
+- Eruption
+
+Rayquaza
+IVs: 0 SpA
+Ability: Air Lock
+Level: 50
+Ball: Dream Ball
+Language: Korean
+Adamant Nature
+- Rest
+- Air Slash
+- Ancient Power
+- Outrage
+
+Rayquaza @ Life Orb
+IVs: 29 HP
+Ability: Air Lock
+Jolly Nature
+- Extreme Speed
+- Hyper Beam
+- Dragon Pulse
+- V-create
+
+Leviathan (Rayquaza)
+IVs: 23 SpA
+Ability: Air Lock
+Level: 70
+Shiny: Yes
+Adamant Nature
+- Body Slam
+- Mimic
+- Double-Edge
+- Endure
+
+Jirachi @ Micle Berry
+IVs: 0 SpA
+Ability: Serene Grace
+Level: 50
+=OT_Name=デコロラ
+Careful Nature
+- Healing Wish
+- Psychic
+- Swift
+- Meteor Mash
+
+Deoxys @ Life Orb
+IVs: 30 Def / 30 SpA
+Ability: Pressure
+Hasty Nature
+- Nasty Plot
+- Dark Pulse
+- Recover
+- Psycho Boost
+
+Torterra (M) @ Choice Band
+Ability: Overgrow
+Language: Japanese
+=OT_Name=ＰＣＹ
+Adamant Nature
+- Wood Hammer
+- Earthquake
+- Outrage
+- Stone Edge
+
+Chimchar (F)
+Ability: Blaze
+Level: 1
+Shiny: Yes
+Naive Nature
+- Thunder Punch
+- Heat Wave
+- Encore
+- Fake Out
+
+Infernape (M) @ Focus Sash
+Ability: Blaze
+Language: Japanese
+=OT_Name=ＰＣＮ
+Jolly Nature
+- Fire Blast
+- Close Combat
+- U-turn
+- Grass Knot
+
+Ｇｒａｐｅ (Piplup) (M) @ Water Gem
+IVs: 3 Atk / 30 Def / 30 SpA
+Ability: Torrent
+Level: 15
+Shiny: Yes
+Language: Japanese
+=OT_Name=サーチャー
+Calm Nature
+- Stealth Rock
+- Signal Beam
+- Pluck
+- Feather Dance
+
+Empoleon (M) @ Air Balloon
+IVs: 0 Atk
+Ability: Torrent
+Language: Japanese
+=OT_Name=ＰＣＳ
+Calm Nature
+- Hydro Pump
+- Ice Beam
+- Aqua Jet
+- Grass Knot
+
+Cranidos (M) @ Passho Berry
+Ability: Mold Breaker
+Level: 15
+Ball: Cherish Ball
+Language: Japanese
+Adamant Nature
+- Pursuit
+- Take Down
+- Crunch
+- Headbutt
+
+Shieldon (F) @ Shuca Berry
+Ability: Sturdy
+Level: 15
+Ball: Cherish Ball
+Language: Japanese
+Impish Nature
+- Metal Sound
+- Take Down
+- Body Slam
+- Protect
+
+Spiritomb (F)
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Pressure
+Level: 61
+Ball: Cherish Ball
+Language: Japanese
+Quiet Nature
+- Dark Pulse
+- Psychic
+- Silver Wind
+- Embargo
+
+Lucario (M) @ Persim Berry
+Ability: Justified
+Level: 50
+Ball: Cherish Ball
+Language: Japanese
+=OT_Name=PC
+Naughty Nature
+- Bullet Punch
+- Close Combat
+- Stone Edge
+- Shadow Claw
+
+Croagunk (F)
+Ability: Dry Skin
+Level: 1
+Shiny: Yes
+Hasty Nature
+- Astonish
+- Vacuum Wave
+- Work Up
+
+Rotom
+IVs: 0 Atk
+Ability: Levitate
+Level: 10
+Ball: Cherish Ball
+Language: Japanese
+=OT_Name=オーキド
+Naughty Nature
+- Uproar
+- Astonish
+- Trick
+- Thunder Shock
+
+Fritz (Rotom)
+IVs: 22 Atk / 30 Def
+Ability: Levitate
+Level: 20
+Shiny: Yes
+Timid Nature
+- Mud-Slap
+- Sucker Punch
+- Swift
+- Endure
+
+Cerebral (Uxie)
+IVs: 0 Atk / 0 Spe
+Ability: Levitate
+Level: 65
+Shiny: Yes
+Relaxed Nature
+- Future Sight
+- Amnesia
+- Extrasensory
+- Flail
+
+Passion (Mesprit)
+IVs: 1 Atk / 30 SpA / 30 SpD
+Ability: Levitate
+Level: 65
+Shiny: Yes
+Timid Nature
+- Future Sight
+- Charm
+- Extrasensory
+- Copycat
+
+Azelf
+IVs: 30 Atk
+Ability: Levitate
+Level: 65
+Shiny: Yes
+Hasty Nature
+- Future Sight
+- Nasty Plot
+- Extrasensory
+- Last Resort
+
+Dialga
+IVs: 0 Atk
+Ability: Pressure
+Shiny: Yes
+Ball: Cherish Ball
+Modest Nature
+- Dragon Pulse
+- Draco Meteor
+- Aura Sphere
+- Roar of Time
+
+Palkia
+IVs: 0 Atk
+Ability: Pressure
+Shiny: Yes
+Ball: Cherish Ball
+Modest Nature
+- Aura Sphere
+- Spacial Rend
+- Hydro Pump
+- Draco Meteor
+
+Smithy (Heatran) (M)
+IVs: 0 Atk / 30 Def
+Ability: Flash Fire
+Level: 68
+Shiny: Yes
+Timid Nature
+- Scary Face
+- Lava Plume
+- Fire Spin
+- Iron Head
+
+Giratina
+IVs: 0 Atk
+Ability: Telepathy
+Level: 5
+Modest Nature
+- Dragon Breath
+- Scary Face
+
+Giratina
+IVs: 0 Atk / 30 Spe
+Ability: Pressure
+Shiny: Yes
+Ball: Cherish Ball
+Quiet Nature
+- Dragon Pulse
+- Dragon Claw
+- Aura Sphere
+- Shadow Force
+
+Cresselia (F)
+IVs: 14 Atk
+Ability: Levitate
+Level: 68
+Shiny: Yes
+Bold Nature
+- Future Sight
+- Slash
+- Moonlight
+- Psycho Cut
+
+Darkrai @ Enigma Berry
+IVs: 0 Atk
+Ability: Bad Dreams
+Level: 50
+=OT_Name=2012MAY
+Timid Nature
+- Dark Void
+- Ominous Wind
+- Feint Attack
+- Nightmare
+
+Shaymin
+IVs: 0 Atk / 30 SpA / 30 Spe
+Ability: Natural Cure
+Level: 50
+Language: Japanese
+=OT_Name=ＰＣ
+Timid Nature
+- Seed Flare
+- Leech Seed
+- Synthesis
+- Sweet Scent
+
+Victini @ Fire Gem
+Ability: Victory Star
+Level: 50
+=OT_Name=Movie14
+Jolly Nature
+- V-create
+- Fusion Flare
+- Fusion Bolt
+- Searing Shot
+
+Vincent (Victini)
+IVs: 0 Atk
+Ability: Victory Star
+Level: 15
+Timid Nature
+- Confusion
+- Incinerate
+- Quick Attack
+- Endure
+
+Victini @ Soothe Bell
+IVs: 0 Atk
+Ability: Victory Star
+Language: Japanese
+=OT_Name=トウホク
+Timid Nature
+- V-create
+- Blue Flare
+- Bolt Strike
+- Glaciate
+
+Snivy (M) @ Muscle Band
+IVs: 0 Atk / 30 SpA / 30 Spe
+Ability: Overgrow
+Level: 5
+Hardy Nature
+- Growth
+- Synthesis
+- Energy Ball
+- Aromatherapy
+
+Serperior (M) @ Leftovers
+IVs: 0 Atk / 30 SpA / 30 Spe
+Ability: Overgrow
+Ball: Cherish Ball
+Timid Nature
+- Leaf Storm
+- Substitute
+- Giga Drain
+- Leech Seed
+
+Tepig (M)
+IVs: 10 Def / 23 SpD
+Ability: Blaze
+Level: 5
+Shiny: Yes
+Adamant Nature
+- Tackle
+- Tail Whip
+
+Emboar (M) @ Choice Scarf
+Ability: Blaze
+Ball: Cherish Ball
+Jolly Nature
+- Flare Blitz
+- Hammer Arm
+- Wild Charge
+- Head Smash
+
+Ｒｏｎｉｎ (Oshawott) (M)
+IVs: 15 SpA
+Ability: Torrent
+Level: 5
+Shiny: Yes
+Language: Japanese
+Adamant Nature
+- Tackle
+- Tail Whip
+
+Samurott (M) @ Expert Belt
+Ability: Torrent
+Ball: Cherish Ball
+Adamant Nature
+- Hydro Pump
+- Ice Beam
+- Megahorn
+- Superpower
+
+Pansage (M)
+Ability: Gluttony
+Level: 30
+Serious Nature
+- Bullet Seed
+- Solar Beam
+- Rock Tomb
+- Dig
+
+Pansage (M)
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpD / 0 Spe
+Ability: Gluttony
+Level: 1
+Shiny: Yes
+Brave Nature
+- Bullet Seed
+- Bite
+- Solar Beam
+- Dig
+
+Ｆｉｅｒｏ (Pansear) (M)
+IVs: 0 Atk / 30 Def
+Ability: Gluttony
+Level: 10
+Shiny: Yes
+Timid Nature
+- Scratch
+- Leer
+- Lick
+- Incinerate
+
+Pidove (F)
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ability: Super Luck
+Level: 1
+.FatefulEncounter=True
+Shiny: Yes
+Hardy Nature
+- Gust
+- Quick Attack
+- Air Cutter
+
+Pidove (M)
+IVs: 13 SpA
+EVs: 1 HP / 17 Atk / 2 Def / 1 SpA / 3 Spe
+Ability: Big Pecks
+Level: 18
+Shiny: Yes
+Jolly Nature
+- Gust
+- Air Cutter
+- Leer
+- Quick Attack
+
+Unfezant
+Level: 25
+Jolly Nature
+Shiny: Square
+- Pluck
+
+Audino (F) @ Rare Candy
+IVs: 0 Atk
+Ability: Healer
+Level: 30
+Ball: Cherish Ball
+Calm Nature
+- Heal Pulse
+- Helping Hand
+- Refresh
+- Double Slap
+
+Cottonee (F)
+IVs: 0 Atk
+Ability: Prankster
+Level: 1
+Shiny: Yes
+Timid Nature
+- Encore
+- Worry Seed
+- Memento
+- Switcheroo
+
+Whimsicott (F) @ Cheri Berry
+IVs: 0 Atk
+Ability: Prankster
+Level: 50
+Ball: Cherish Ball
+Timid Nature
+- Swagger
+- Giga Drain
+- Beat Up
+- Helping Hand
+
+Scraggy (M) @ Muscle Band
+Ability: Moxie
+Level: 1
+Ball: Cherish Ball
+Adamant Nature
+- Leer
+- Low Kick
+- Headbutt
+- High Jump Kick
+
+Scrafty (M) @ Leftovers
+Ability: Moxie
+Level: 50
+Ball: Cherish Ball
+Brave Nature
+- Fire Punch
+- Payback
+- Drain Punch
+- Substitute
+
+Tirtouga (M) @ Wacan Berry
+Ability: Solid Rock
+Level: 15
+Ball: Cherish Ball
+Adamant Nature
+- Bite
+- Protect
+- Aqua Jet
+- Body Slam
+
+Archen (M) @ Yache Berry
+Ability: Defeatist
+Level: 15
+Ball: Cherish Ball
+Jolly Nature
+- Head Smash
+- Wing Attack
+- Double Team
+- Scary Face
+
+Zoroark (M)
+IVs: 0 Atk
+Ability: Illusion
+Level: 50
+Ball: Cherish Ball
+Quirky Nature
+- Agility
+- Embargo
+- Punishment
+- Snarl
+
+Gothorita (M)
+IVs: 0 Atk
+Ability: Shadow Tag
+Level: 32
+Modest Nature
+- Psyshock
+- Flatter
+- Future Sight
+- Imprison
+
+Deerling-Winter (M)
+IVs: 19 SpA
+Ability: Sap Sipper
+Level: 30
+Shiny: Yes
+Jolly Nature
+- Feint Attack
+- Take Down
+- Jump Kick
+- Aromatherapy
+
+Karrablast (M) @ Bug Gem
+Ability: Swarm
+Level: 50
+Ball: Cherish Ball
+Adamant Nature
+- X-Scissor
+- Flail
+- Megahorn
+- Take Down
+
+Foongus (F) @ Tiny Mushroom
+IVs: 0 Atk
+Ability: Effect Spore
+Level: 30
+Shiny: Yes
+Calm Nature
+- Ingrain
+- Feint Attack
+- Sweet Scent
+- Giga Drain
+
+Chandelure (F) @ Pecha Berry
+IVs: 0 Atk
+Ability: Flash Fire
+Level: 50
+Ball: Cherish Ball
+Modest Nature
+- Heat Wave
+- Shadow Ball
+- Energy Ball
+- Psychic
+
+Axew (M) @ Soothe Bell
+Ability: Mold Breaker
+Level: 10
+Ball: Cherish Ball
+Jolly Nature
+- Dragon Rage
+- Return
+- Endure
+- Dragon Claw
+
+Axew (M)
+Ability: Rivalry
+Level: 30
+Ball: Cherish Ball
+Naive Nature
+- Dragon Rage
+- Scratch
+- Outrage
+- Giga Impact
+
+Axew (M)
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD
+Ability: Mold Breaker
+Level: 1
+Shiny: Yes
+.FatefulEncounter=True
+Naive Nature
+- Scratch
+- Dragon Rage
+
+Haxorus (F) @ Focus Sash
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Mold Breaker
+Level: 59
+Language: Japanese
+Ball: Cherish Ball
+Naive Nature
+- Earthquake
+- Dual Chop
+- X-Scissor
+- Dragon Dance
+
+Cubchoo (F) @ Max Potion
+Ability: Snow Cloak
+Level: 15
+Ball: Cherish Ball
+Adamant Nature
+- Powder Snow
+- Growl
+- Bide
+- Icy Wind
+
+Shelmet (F) @ Bug Gem
+IVs: 0 Atk / 30 Def / 30 Spe
+Ability: Hydration
+Level: 50
+Ball: Cherish Ball
+Timid Nature
+- Encore
+- Giga Drain
+- Body Slam
+- Bug Buzz
+
+Earth-Chan (Stunfisk) (F)
+IVs: 7 Atk
+Ability: Static
+Level: 47
+Shiny: Yes
+Bold Nature
+- Endure
+- Bounce
+- Muddy Water
+- Thunderbolt
+
+Hydreigon (M)
+IVs: 3 Atk
+Ability: Levitate
+Level: 70
+Shiny: Yes
+Ball: Cherish Ball
+Modest Nature
+- Hyper Voice
+- Dragon Breath
+- Flamethrower
+- Focus Blast
+
+Volcarona (M)
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Flame Body
+Level: 77
+Language: Japanese
+Ball: Cherish Ball
+Calm Nature
+- Bug Buzz
+- Overheat
+- Hyper Beam
+- Quiver Dance
+
+Volcarona (M) @ Focus Sash
+IVs: 0 Atk / 30 SpA / 30 SpD
+Ability: Flame Body
+Shiny: Yes
+Ball: Cherish Ball
+Language: Korean
+Timid Nature
+- Fiery Dance
+- Quiver Dance
+- Bug Buzz
+- Morning Sun
+
+Sunburst (Volcarona) (M)
+IVs: 1 Atk / 30 SpA / 30 SpD
+Ability: Flame Body
+Level: 35
+Shiny: Yes
+=Met_Location=35
+Timid Nature
+- String Shot
+- Leech Life
+- Gust
+- Fire Spin
+
+Cobalion
+Ability: Justified
+Level: 42
+Shiny: Yes
+Jolly Nature
+- Helping Hand
+- Retaliate
+- Iron Head
+- Sacred Sword
+
+Terrakion
+IVs: 6 SpA
+Ability: Justified
+Level: 45
+Shiny: Yes
+Adamant Nature
+- Helping Hand
+- Retaliate
+- Rock Slide
+- Sacred Sword
+
+Terrakion
+IVs: 0 SpA
+Ability: Justified
+Level: 42
+Shiny: Yes
+Jolly Nature
+- Helping Hand
+- Retaliate
+- Rock Slide
+- Sacred Sword
+
+Virizion
+IVs: 21 SpA
+Ability: Justified
+Level: 42
+Shiny: Yes
+Jolly Nature
+- Helping Hand
+- Retaliate
+- Giga Drain
+- Sacred Sword
+
+Tornadus (M)
+Ability: Defiant
+Level: 5
+Naive Nature
+- Uproar
+- Astonish
+- Gust
+
+Tornadus (M)
+IVs: 30 HP / 30 Def
+Ability: Prankster
+Level: 40
+Shiny: Yes
+Hasty Nature
+- Revenge
+- Air Cutter
+- Extrasensory
+- Agility
+
+Thundurus (M) @ Revival Herb
+IVs: 30 Atk / 30 Def
+Ability: Prankster
+Level: 70
+Ball: Cherish Ball
+Hasty Nature
+- Thunder
+- Hammer Arm
+- Focus Blast
+- Wild Charge
+
+Reshiram
+IVs: 20 HP / 2 Atk / 8 Def / 28 SpA / 23 SpD / 23 Spe
+Ability: Turboblaze
+Level: 70
+Bashful Nature
+- Extrasensory
+- Fusion Flare
+- Dragon Pulse
+- Imprison
+
+Reshiram @ Dragon Gem
+IVs: 0 Atk
+Ability: Turboblaze
+Ball: Cherish Ball
+Modest Nature
+- Blue Flare
+- Fusion Flare
+- Mist
+- Draco Meteor
+
+Ｓｈｉｒｏ (Reshiram)
+IVs: 0 Atk
+EVs: 3 Atk / 2 Def / 1 Spe
+Ability: Turboblaze
+Level: 50
+Ball: Luxury Ball
+Language: Japanese
+Modest Nature
+- Dragon Breath
+- Slash
+- Extrasensory
+- Fusion Flare
+
+Blackout (Zekrom)
+IVs: 0 SpA
+Ability: Teravolt
+Level: 70
+=Version=23
+Adamant Nature
+- Zen Headbutt
+- Fusion Bolt
+- Dragon Claw
+- Imprison
+
+Zekrom @ Dragon Gem
+Ability: Teravolt
+Ball: Cherish Ball
+Adamant Nature
+- Bolt Strike
+- Fusion Bolt
+- Haze
+- Outrage
+
+Landorus (M)
+IVs: 0 Atk
+Ability: Sheer Force
+Level: 10
+Timid Nature
+- Block
+- Mud Shot
+- Rock Tomb
+- Imprison
+
+Landorus (M)
+IVs: 30 Spe
+Ability: Sand Force
+Level: 70
+Shiny: Yes
+Adamant Nature
+- Rock Slide
+- Earthquake
+- Sandstorm
+- Fissure
+
+Kyurem
+IVs: 4 Atk / 30 SpA / 30 Spe
+Ability: Pressure
+Level: 75
+Shiny: Yes
+Jolly Nature
+- Glaciate
+- Dragon Pulse
+- Imprison
+- Endeavor
+
+Keldeo @ PP Max
+IVs: 30 SpA
+Ability: Justified
+Level: 15
+Language: Japanese
+=OT_Name=しょこたん
+Timid Nature
+- Aqua Jet
+- Leer
+- Double Kick
+- Bubble Beam
+
+Meloetta @ PP Max
+IVs: 0 Atk
+Ability: Serene Grace
+Level: 15
+Language: Japanese
+=OT_Name=えいがかん
+Modest Nature
+- Round
+- Quick Attack
+- Confusion
+
+Meloetta @ PP Max
+Ability: Serene Grace
+Level: 50
+=OT_Name=SPR2013
+Timid Nature
+- Round
+- Teeter Dance
+- Psychic
+- Close Combat
+
+Genesect
+IVs: 0 Atk
+Ability: Download
+Level: 50
+=OT_Name=Ｐ２ラボ
+Language: Japanese
+Timid Nature
+- Techno Blast
+- Magnet Bomb
+- Solar Beam
+- Signal Beam
+
+Genesect @ Choice Scarf
+Ability: Download
+Shiny: Yes
+Language: Japanese
+Hasty Nature
+- Extreme Speed
+- Techno Blast
+- Blaze Kick
+- Shift Gear

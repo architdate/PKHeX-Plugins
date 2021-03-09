@@ -1,0 +1,696 @@
+BFG-9000 (Squirtle) (F)
+IVs: 0 Atk
+Ability: Torrent
+Level: 1
+Shiny: Yes
+Modest Nature
+- Tackle
+- Water Pulse
+
+Tentacool (M)
+IVs: 0 Atk / 30 Spe
+Ability: Liquid Ooze
+Level: 15
+Shiny: Yes
+Bold Nature
+- Supersonic
+- Constrict
+- Acid
+- Toxic Spikes
+
+Shellder (M)
+Ability: Skill Link
+Level: 1
+Naive Nature
+- Rapid Spin
+- Icicle Spear
+- Explosion
+- Ice Beam
+
+０Ａ０ＳＰ (Ditto) @ Quick Powder
+IVs: 25 HP / 3 Atk / 22 Def / 21 SpA / 29 SpD / 4 Spe
+Ability: Limber
+Level: 31
+Bold Nature
+- Transform
+
+Ditto @ Quick Powder
+IVs: 0 Spe
+Ability: Limber
+Level: 32
+Bold Nature
+- Transform
+
+ＴＲＩＣＥ (Ditto)
+IVs: 1 Atk / 0 Spe
+Ability: Limber
+Level: 31
+Brave Nature
+- Transform
+
+ＨＰＩＣＥ (Ditto)
+IVs: 0 Atk / 30 Def
+Ability: Limber
+Level: 32
+Docile Nature
+- Transform
+
+Ditto
+IVs: 30 Atk / 30 SpA / 0 Spe
+Ability: Limber
+Level: 34
+Hasty Nature
+- Transform
+
+６　ＩＶ (Ditto) @ Quick Powder
+Ability: Limber
+Level: 32
+Modest Nature
+- Transform
+
+０　ＡＴＫ (Ditto)
+IVs: 0 Atk
+Ability: Limber
+Level: 34
+Naughty Nature
+- Transform
+
+ＴＲＦＩ (Ditto)
+IVs: 30 HP / 0 Atk / 30 SpA / 0 Spe
+Ability: Limber
+Level: 32
+Relaxed Nature
+- Transform
+
+Nice (Ditto) @ Quick Powder
+IVs: 0 Atk / 30 Def
+Ability: Limber
+Level: 10
+Shiny: Yes
+Docile Nature
+- Transform
+
+Aerodactyl (M)
+IVs: 8 SpA
+Ability: Rock Head
+Level: 1
+Shiny: Yes
+Jolly Nature
+- Pursuit
+- Whirlwind
+- Curse
+- Steel Wing
+
+Articuno
+Ability: Pressure
+Level: 50
+Shiny: Yes
+Timid Nature
+- Ancient Power
+- Agility
+- Ice Beam
+- Reflect
+
+Zapdos
+IVs: 10 Atk / 30 Def
+Ability: Pressure
+Level: 50
+Shiny: Yes
+Bold Nature
+- Ancient Power
+- Charge
+- Agility
+- Discharge
+
+Mewtwo
+Ability: Pressure
+Level: 70
+Shiny: Yes
+Timid Nature
+- Psycho Cut
+- Amnesia
+- Power Swap
+- Guard Swap
+
+Mew
+Ability: Synchronize
+Level: 5
+Calm Nature
+- Pound
+
+Mew
+IVs: 0 Atk / 30 SpD / 29 Spe
+Ability: Synchronize
+Level: 30
+Shiny: Yes
+Bold Nature
+- Soft-Boiled
+- Seismic Toss
+- Counter
+- Defog
+
+Chikorita (M)
+IVs: 0 HP / 4 Atk / 11 Def / 1 SpA / 28 SpD / 30 Spe
+Ability: Overgrow
+Level: 5
+Shiny: Yes
+Calm Nature
+- Tackle
+- Growl
+
+Cyndaquil (F)
+IVs: 0 HP / 22 Atk / 8 Def / 25 SpA / 19 SpD / 29 Spe
+Ability: Blaze
+Level: 5
+Shiny: Yes
+Timid Nature
+- Tackle
+- Leer
+
+Totodile (M)
+IVs: 1 HP / 3 Atk / 10 Def / 23 SpA / 5 SpD / 2 Spe
+Ability: Torrent
+Level: 5
+Shiny: Yes
+Jolly Nature
+- Scratch
+- Leer
+
+Cleffa (F) @ Rare Candy
+IVs: 4 Atk
+Ability: Cute Charm
+Level: 5
+Bold Nature
+- Counter
+- Seismic Toss
+- Encore
+- Soft-Boiled
+
+Mareep (F)
+Ability: Static
+Level: 13
+Shiny: Yes
+Modest Nature
+- Tackle
+- Growl
+- Thunder Shock
+
+Sponge (Mantine) (M)
+IVs: 0 Atk / 30 Spe
+Ability: Water Absorb
+Level: 25
+Shiny: Yes
+Bold Nature
+- Whirlpool
+- Air Cutter
+- Mud-Slap
+- String Shot
+
+Mantine (F)
+IVs: 20 Atk
+Ability: Water Absorb
+Level: 1
+Shiny: Yes
+Calm Nature
+- Bubble Beam
+- Mirror Coat
+- Mud Sport
+- Signal Beam
+
+Skarmory (M)
+IVs: 10 Atk
+Ability: Sturdy
+Level: 1
+Shiny: Yes
+Bold Nature
+- Brave Bird
+- Curse
+- Whirlwind
+- Assurance
+
+Togepi (M)
+IVs: 4 Atk / 30 SpA / 30 Spe
+Ability: Serene Grace
+Level: 1
+Shiny: Yes
+Timid Nature
+- Growl
+- Charm
+- Extrasensory
+- Mud-Slap
+
+Togetic (M)
+IVs: 4 Atk / 30 SpA / 30 Spe
+Ability: Serene Grace
+Level: 2
+Shiny: Yes
+Timid Nature
+- Ominous Wind
+- Silver Wind
+- Extrasensory
+- Twister
+
+Raikou @ Micle Berry
+IVs: 30 Atk / 30 Def
+Ability: Pressure
+Level: 30
+Shiny: Yes
+Rash Nature
+- Zap Cannon
+- Aura Sphere
+- Extreme Speed
+- Weather Ball
+
+Raikou
+IVs: 1 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Pressure
+Level: 40
+Shiny: Yes
+Timid Nature
+- Roar
+- Quick Attack
+- Spark
+- Reflect
+
+Asahi (Entei)
+IVs: 0 SpA
+Ability: Pressure
+Level: 30
+Shiny: Yes
+Adamant Nature
+- Flare Blitz
+- Howl
+- Extreme Speed
+- Crush Claw
+
+Suicune @ Rowap Berry
+IVs: 30 Atk
+Ability: Pressure
+Level: 30
+Shiny: Yes
+Relaxed Nature
+- Sheer Cold
+- Air Slash
+- Extreme Speed
+- Aqua Ring
+
+Suicune
+Ability: Pressure
+Level: 40
+Shiny: Yes
+Timid Nature
+- Rain Dance
+- Gust
+- Aurora Beam
+- Mist
+
+Larvitar (F)
+IVs: 8 Atk
+Ability: Guts
+Level: 20
+Sassy Nature
+- Sandstorm
+- Screech
+- Rock Slide
+- Scary Face
+
+Celebi @ Jaboca Berry
+IVs: 17 Atk
+Ability: Natural Cure
+Level: 50
+Bold Nature
+- Leaf Storm
+- Recover
+- Nasty Plot
+- Healing Wish
+
+Redwood (Shiftry) (M)
+Ability: Chlorophyll
+Level: 14
+Shiny: Yes
+Hasty Nature
+- Nasty Plot
+- False Swipe
+- Sunny Day
+- Explosion
+
+Shiftry (F)
+IVs: 27 Atk
+Ability: Early Bird
+Level: 38
+Shiny: Yes
+Hasty Nature
+- Synthesis
+- Knock Off
+- Sucker Punch
+- Hidden Power [Dark]
+
+Wingull (F)
+Ability: Keen Eye
+Level: 1
+Shiny: Yes
+Calm Nature
+- Agility
+- Aqua Ring
+- Knock Off
+- Water Sport
+
+Pelipper (M)
+IVs: 17 Atk
+Ability: Keen Eye
+Level: 40
+Bold Nature
+- Roost
+- Stockpile
+- Swallow
+- Spit Up
+
+Pelipper (F)
+Ability: Keen Eye
+Level: 39
+Shiny: Yes
+Modest Nature
+- Roost
+- Stockpile
+- Swallow
+- Spit Up
+
+RandyOrton (Seviper) (M)
+IVs: 14 Atk / 12 Def / 20 SpD
+Ability: Shed Skin
+Level: 1
+Shiny: Yes
+Rash Nature
+- Body Slam
+- Switcheroo
+- Stockpile
+- Assurance
+
+Froslass (F)
+IVs: 4 HP / 20 Atk / 18 Def / 23 SpA / 2 Spe
+Ability: Snow Cloak
+Level: 20
+Timid Nature
+- Water Pulse
+- Sing
+- Bite
+- Icy Wind
+
+Gliscor
+Level: 11
+Shiny: Yes
+Ball: Master Ball
+- Dream Eater
+
+Gallade (M)
+IVs: 15 SpA
+Ability: Steadfast
+Ball: Master Ball
+Level: 6
+Shiny: Yes
+Jolly Nature
+- Growl
+- Confusion
+- Double Team
+- Teleport
+
+Latias (F)
+Ability: Levitate
+Level: 40
+Shiny: Yes
+Timid Nature
+- Water Sport
+- Refresh
+- Mist Ball
+- Zen Headbutt
+
+Radiance (Latias) (F) @ Soul Dew
+IVs: 4 Atk / 30 SpA / 30 Spe
+Ability: Levitate
+Level: 50
+Shiny: Yes
+Timid Nature
+- Defog
+- Mud-Slap
+- Swift
+- Endure
+
+Latios (M)
+Ability: Levitate
+Level: 40
+Shiny: Yes
+Timid Nature
+- Protect
+- Refresh
+- Luster Purge
+- Zen Headbutt
+
+Luminous (Latios) (M) @ Soul Dew
+IVs: 4 Atk / 30 SpA / 30 Spe
+Ability: Levitate
+Level: 50
+Shiny: Yes
+Timid Nature
+- Defog
+- Mud-Slap
+- Swift
+- Endure
+
+Kyogre
+Ability: Drizzle
+Level: 50
+Shiny: Yes
+Modest Nature
+- Aqua Ring
+- Ice Beam
+- Ancient Power
+- Water Spout
+
+Groudon
+IVs: 30 SpA
+Ability: Drought
+Level: 50
+Shiny: Yes
+Careful Nature
+- Rest
+- Earthquake
+- Ancient Power
+- Eruption
+
+Rayquaza
+IVs: 30 SpA
+Ability: Air Lock
+Level: 50
+Shiny: Yes
+Naive Nature
+- Rest
+- Air Slash
+- Ancient Power
+- Outrage
+
+Chimchar (F)
+IVs: 0 Atk / 30 Def
+Ability: Blaze
+Level: 1
+Shiny: Yes
+Timid Nature
+- Vacuum Wave
+- Mud-Slap
+- Swift
+- Flame Wheel
+
+Combee (F)
+IVs: 0 SpA
+Ability: Honey Gather
+Level: 1
+Shiny: Yes
+Careful Nature
+- String Shot
+- Mud-Slap
+- Air Cutter
+- Ominous Wind
+
+Mersenne (Chatot) (M)
+IVs: 0 Atk
+Ability: Keen Eye
+Level: 1
+Shiny: Yes
+Timid Nature
+- Nasty Plot
+- Encore
+- Twister
+- Ominous Wind
+
+Mersenne (Chatot) (M)
+IVs: 1 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Tangled Feet
+Level: 23
+Shiny: Yes
+Timid Nature
+- Mirror Move
+- Sing
+- Fury Attack
+- Chatter
+
+Fritz (Rotom)
+IVs: 22 Atk / 30 Def
+Ability: Levitate
+Level: 20
+Shiny: Yes
+Timid Nature
+- Thunder Shock
+- Confuse Ray
+- Uproar
+- Double Team
+
+Motiva (Azelf)
+IVs: 7 Atk
+Ability: Levitate
+Level: 50
+Shiny: Yes
+Timid Nature
+- Confusion
+- Uproar
+- Future Sight
+- Nasty Plot
+
+Palaeolith (Dialga)
+IVs: 2 Atk
+Ability: Pressure
+Level: 1
+Shiny: Yes
+Modest Nature
+- Dragon Breath
+- Scary Face
+
+Dialga
+Ability: Pressure
+Level: 70
+Shiny: Yes
+Timid Nature
+- Roar of Time
+- Heal Block
+- Earth Power
+- Slash
+
+Venice (Palkia)
+IVs: 2 Atk
+Ability: Pressure
+Level: 1
+Shiny: Yes
+Modest Nature
+- Dragon Breath
+- Scary Face
+
+Palkia
+Ability: Pressure
+Level: 70
+Shiny: Yes
+Timid Nature
+- Spacial Rend
+- Heal Block
+- Earth Power
+- Slash
+
+Nova (Palkia)
+IVs: 7 Atk
+Ability: Pressure
+Level: 50
+Shiny: Yes
+Timid Nature
+- Water Pulse
+- Heal Block
+- Dragon Claw
+- Spacial Rend
+
+Lucifer (Giratina)
+IVs: 0 SpA
+Ability: Pressure
+Level: 47
+Shiny: Yes
+Jolly Nature
+- Ominous Wind
+- Ancient Power
+- Dragon Claw
+- Shadow Force
+
+Lucifer (Giratina)
+IVs: 0 SpA
+Ability: Pressure
+Level: 50
+Shiny: Yes
+Jolly Nature
+- Silver Wind
+- Ancient Power
+- Heal Block
+- Defog
+
+Giratina
+IVs: 0 SpA
+Ability: Pressure
+Level: 47
+Shiny: Yes
+Jolly Nature
+- Ominous Wind
+- Ancient Power
+- Dragon Claw
+- Shadow Force
+
+Pale Moon (Giratina)
+IVs: 2 Atk
+Ability: Pressure
+Level: 1
+Shiny: Yes
+Modest Nature
+- Dragon Breath
+- Scary Face
+
+Giratina
+Ability: Pressure
+Level: 47
+Shiny: Yes
+Modest Nature
+- Ominous Wind
+- Ancient Power
+- Dragon Claw
+- Shadow Force
+
+Manaphy
+IVs: 13 HP / 0 Atk / 4 Def / 3 SpD / 17 Spe
+Ability: Hydration
+Level: 1
+Shiny: Yes
+Timid Nature
+- Tail Glow
+- Bubble
+- Water Sport
+
+Darkrai
+Ability: Bad Dreams
+Level: 50
+Shiny: Yes
+Timid Nature
+- Hypnosis
+- Feint Attack
+- Nightmare
+- Double Team
+
+Ire (Darkrai) @ Lucky Egg
+IVs: 0 Atk / 30 SpD
+EVs: 3 HP / 255 SpA / 252 Spe
+Ability: Bad Dreams
+Level: 61
+Shiny: Yes
+Timid Nature
+- Dark Pulse
+- Thunderbolt
+- Psychic
+- Sludge Bomb
+
+Arceus @ Rowap Berry
+Ability: Multitype
+Adamant Nature
+- Judgment
+- Roar of Time
+- Spacial Rend
+- Shadow Force

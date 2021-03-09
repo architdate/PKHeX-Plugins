@@ -1,0 +1,9 @@
+Marowak-Alola-Totem (F)
+IVs: 22 HP / 11 Atk / 0 Spe
+Ability: Rock Head
+Level: 25
+Lonely Nature
+- Leer
+- Hex
+- Bonemerang
+- Will-O-Wisp

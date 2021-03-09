@@ -1,0 +1,2022 @@
+Bulbasaur (M)
+IVs: 12 HP / 5 Atk / 5 Def / 6 SpA / 6 SpD / 10 Spe
+Level: 10
+- Tackle
+- Growl
+- Leech Seed
+
+Ivysaur (M)
+IVs: 12 HP / 5 Atk / 5 Def / 6 SpA / 6 SpD / 10 Spe
+Level: 16
+- Tackle
+- Growl
+- Leech Seed
+- Vine Whip
+
+Venusaur (M)
+IVs: 12 HP / 5 Atk / 5 Def / 6 SpA / 6 SpD / 10 Spe
+Level: 32
+- Tackle
+- Poison Powder
+- Leech Seed
+- Razor Leaf
+
+Charmander (M)
+IVs: 10 HP / 5 Atk / 14 Def / 10 SpA / 10 SpD / 11 Spe
+Level: 10
+- Scratch
+- Growl
+- Ember
+
+Charmeleon (M)
+IVs: 10 HP / 5 Atk / 14 Def / 10 SpA / 10 SpD / 11 Spe
+Level: 16
+- Scratch
+- Growl
+- Ember
+- Leer
+
+Charizard (M)
+IVs: 10 HP / 5 Atk / 14 Def / 10 SpA / 10 SpD / 11 Spe
+Level: 36
+- Slash
+- Rage
+- Ember
+- Leer
+
+Squirtle (M)
+IVs: 8 HP / 3 Atk / 8 Def / 0 SpA / 0 SpD / 6 Spe
+Level: 10
+- Tackle
+- Tail Whip
+- Bubble
+
+Wartortle (M)
+IVs: 8 HP / 3 Atk / 8 Def / 0 SpA / 0 SpD / 6 Spe
+Level: 16
+- Tackle
+- Tail Whip
+- Bubble
+- Water Gun
+
+Blastoise (M)
+IVs: 8 HP / 3 Atk / 8 Def / 0 SpA / 0 SpD / 6 Spe
+Level: 36
+- Tackle
+- Bite
+- Bubble
+- Water Gun
+
+Caterpie (M)
+IVs: 8 HP / 9 Atk / 4 Def / 14 SpA / 14 SpD / 8 Spe
+Level: 4
+- Tackle
+- String Shot
+
+Metapod (M)
+IVs: 10 HP / 13 Atk / 14 Def / 0 SpA / 0 SpD / 1 Spe
+Level: 7
+- Harden
+
+Butterfree (F)
+IVs: 0 HP / 2 Atk / 12 Def / 6 SpA / 6 SpD / 12 Spe
+Level: 14
+- Confusion
+- Poison Powder
+- Stun Spore
+
+Weedle (M)
+IVs: 13 HP / 3 Def / 5 SpA / 5 SpD / 8 Spe
+Level: 5
+- Poison Sting
+- String Shot
+
+Kakuna (F)
+IVs: 4 HP / 6 Atk / 13 Def / 14 SpA / 14 SpD / 2 Spe
+Level: 7
+- Harden
+
+Beedrill (M)
+IVs: 1 HP / 10 Atk / 6 Def / 3 SpA / 3 SpD / 12 Spe
+Level: 10
+- Fury Attack
+
+Pidgey (M)
+IVs: 12 HP / 9 Atk / 11 Def / 6 SpA / 6 SpD / 0 Spe
+Level: 2
+- Tackle
+
+Pidgeotto (M)
+IVs: 14 HP / 7 Def / 12 SpA / 12 SpD / 7 Spe
+Level: 12
+- Tackle
+- Sand Attack
+- Gust
+
+Pidgeot (M)
+IVs: 12 HP / 9 Atk / 11 Def / 6 SpA / 6 SpD / 0 Spe
+EVs: 65535 HP / 65535 Atk / 65535 Def / 65535 SpA / 65535 SpD / 65535 Spe
+- Fly
+- Wing Attack
+- Steel Wing
+- Swift
+
+Pidgeot (M)
+IVs: 14 HP / 7 Def / 12 SpA / 12 SpD / 7 Spe
+Level: 36
+- Wing Attack
+- Sand Attack
+- Gust
+- Quick Attack
+
+Rattata (F)
+IVs: 13 HP / 3 Atk / 9 Def / 3 SpA / 3 SpD / 14 Spe
+Level: 2
+- Tackle
+- Tail Whip
+
+Raticate (M)
+IVs: 2 HP / 8 Atk / 2 Def / 0 SpA / 0 SpD / 13 Spe
+Level: 16
+- Tackle
+- Tail Whip
+- Quick Attack
+- Hyper Fang
+
+KENYA (Spearow) (M) @ Flower Mail
+IVs: 2 HP / 12 Atk / 14 Def / 0 SpA / 0 SpD / 9 Spe
+Level: 10
+- Peck
+- Growl
+- Leer
+
+Spearow (M)
+IVs: 9 Atk / 11 Def / 1 Spe
+Level: 2
+- Peck
+- Growl
+
+Fearow (M)
+IVs: 9 HP / 13 Atk / 0 Def / 2 Spe
+Level: 15
+- Peck
+- Growl
+- Leer
+- Fury Attack
+
+Ekans (M)
+IVs: 11 HP / 9 Atk / 0 Def / 13 Spe
+Level: 4
+- Wrap
+- Leer
+
+Arbok (F)
+IVs: 10 HP / 7 Atk / 14 Def / 14 SpA / 14 SpD / 5 Spe
+Level: 10
+- Wrap
+- Leer
+- Poison Sting
+- Bite
+
+Pikachu (F)
+IVs: 4 HP / 4 Atk / 1 Def / 6 SpA / 6 SpD / 2 Spe
+Level: 4
+- Thunder Shock
+- Growl
+
+Pikachu (M)
+IVs: 12 HP / 9 Def / 8 SpA / 8 SpD / 2 Spe
+Level: 25
+- Thunder Wave
+- Quick Attack
+- Double Team
+- Slam
+
+Raichu (F)
+IVs: 4 HP / 4 Atk / 1 Def / 6 SpA / 6 SpD / 2 Spe
+Level: 4
+- Thunder Shock
+- Growl
+
+Sandshrew (F)
+IVs: 11 HP / 1 Atk / 0 Def / 3 SpA / 3 SpD / 13 Spe
+Level: 6
+- Scratch
+- Defense Curl
+
+Sandslash (M)
+IVs: 7 HP / 14 Atk / 1 Def / 5 SpA / 5 SpD / 13 Spe
+Level: 35
+- Sand Attack
+- Poison Sting
+- Slash
+- Swift
+
+Nidoran-F (F)
+IVs: 11 HP / 8 Def / 5 SpA / 5 SpD / 7 Spe
+Level: 12
+- Growl
+- Tackle
+- Scratch
+- Double Kick
+
+Nidorina (F)
+IVs: 3 HP / 12 Atk / 4 Def / 5 SpA / 5 SpD / 13 Spe
+Level: 26
+- Tackle
+- Scratch
+- Double Kick
+- Poison Sting
+
+Nidoqueen (F)
+IVs: 3 HP / 12 Atk / 4 Def / 5 SpA / 5 SpD / 13 Spe
+Level: 26
+- Tackle
+- Scratch
+- Double Kick
+- Poison Sting
+
+Nidoran-M (M)
+IVs: 5 HP / 14 Atk / 3 Def / 11 SpA / 11 SpD / 6 Spe
+Level: 12
+- Leer
+- Tackle
+- Horn Attack
+- Double Kick
+
+Nidorino (M)
+IVs: 4 HP / 6 Atk / 9 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 26
+- Tackle
+- Horn Attack
+- Double Kick
+- Poison Sting
+
+Nidoking (M)
+IVs: 4 HP / 6 Atk / 9 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 26
+- Tackle
+- Horn Attack
+- Double Kick
+- Poison Sting
+
+Clefairy (F)
+IVs: 7 HP / 4 Atk / 11 Def / 13 SpA / 13 SpD / 3 Spe
+Level: 6
+- Pound
+- Growl
+- Encore
+
+Clefable (F)
+IVs: 7 HP / 4 Atk / 11 Def / 13 SpA / 13 SpD / 3 Spe
+Level: 6
+- Pound
+- Growl
+- Encore
+
+Vulpix (M)
+IVs: 5 HP / 12 Atk / 1 Def / 5 SpA / 5 SpD / 12 Spe
+Level: 18
+- Ember
+- Tail Whip
+- Quick Attack
+- Roar
+
+Ninetales (M)
+IVs: 5 HP / 12 Atk / 1 Def / 5 SpA / 5 SpD / 12 Spe
+Level: 18
+- Ember
+- Tail Whip
+- Quick Attack
+- Roar
+
+Jigglypuff (F)
+IVs: 12 HP / 7 Atk / 3 Def / 4 SpA / 4 SpD / 10 Spe
+Level: 12
+- Sing
+- Defense Curl
+- Pound
+
+Wigglytuff (F)
+IVs: 12 HP / 7 Atk / 3 Def / 4 SpA / 4 SpD / 10 Spe
+Level: 12
+- Sing
+- Defense Curl
+- Pound
+
+Zubat (F)
+IVs: 0 HP / 2 Atk / 14 Def / 4 SpA / 4 SpD / 14 Spe
+Level: 7
+- Leech Life
+- Supersonic
+
+Golbat (F)
+IVs: 13 HP / 5 Atk / 1 Def / 1 SpA / 1 SpD / 8 Spe
+Level: 13
+- Screech
+- Leech Life
+- Supersonic
+- Bite
+
+Oddish (F)
+IVs: 6 HP / 0 Atk / 13 Def / 8 SpA / 8 SpD / 11 Spe
+Level: 5
+- Absorb
+
+Gloom (F)
+IVs: 1 Atk / 11 Def / 3 SpA / 3 SpD / 13 Spe
+Level: 14
+- Absorb
+- Sweet Scent
+- Poison Powder
+
+Vileplume (F)
+IVs: 1 Atk / 11 Def / 3 SpA / 3 SpD / 13 Spe
+Level: 14
+- Absorb
+- Sweet Scent
+- Poison Powder
+
+Paras (F)
+IVs: 11 HP / 3 Atk / 14 Def / 9 SpA / 9 SpD
+Level: 6
+- Scratch
+
+Parasect (M) @ TinyMushroom
+IVs: 9 HP / 13 Atk / 2 Def / 12 Spe
+Level: 50
+- Leech Life
+- Spore
+- Slash
+- Growth
+
+Venonat (F)
+IVs: 2 HP / 6 Atk / 8 Def / 6 SpA / 6 SpD / 3 Spe
+Level: 17
+- Disable
+- Foresight
+- Supersonic
+- Confusion
+
+Venomoth (M)
+IVs: 4 HP / 10 Atk / 7 Def / 2 SpA / 2 SpD / 12 Spe
+Level: 15
+- Tackle
+- Disable
+- Foresight
+- Supersonic
+
+Diglett (F)
+IVs: 13 HP / 7 Atk / 9 Def / 7 SpA / 7 SpD / 4 Spe
+Level: 16
+- Scratch
+- Growl
+- Magnitude
+
+Dugtrio (F)
+IVs: 2 HP / 6 Atk / 4 Def / 6 SpA / 6 SpD / 5 Spe
+Level: 32
+- Growl
+- Magnitude
+- Dig
+- Sand Attack
+
+Meowth (F)
+IVs: 11 HP / 3 Atk / 8 Def / 11 SpA / 11 SpD / 1 Spe
+Level: 13
+- Scratch
+- Growl
+- Bite
+
+Persian (M)
+IVs: 9 HP / 13 Atk / 0 Def / 5 SpA / 5 SpD / 8 Spe
+Level: 18
+- Scratch
+- Growl
+- Bite
+
+Psyduck (F)
+IVs: 1 HP / 2 Atk / 4 Def / 3 SpA / 3 SpD / 12 Spe
+Level: 7
+- Scratch
+- Tail Whip
+
+Golduck (F)
+IVs: 13 HP / 7 Atk / 1 Def / 13 SpA / 13 SpD / 12 Spe
+Level: 37
+- Disable
+- Confusion
+- Screech
+- Psych Up
+
+Mankey (F)
+IVs: 8 HP / 7 Atk / 0 Def / 12 SpA / 12 SpD / 10 Spe
+Level: 15
+- Scratch
+- Leer
+- Low Kick
+- Karate Chop
+
+Primeape (F)
+IVs: 13 HP / 1 Atk / 13 Def / 1 SpA / 1 SpD / 4 Spe
+Level: 15
+- Leer
+- Low Kick
+- Rage
+- Karate Chop
+
+Growlithe (M)
+IVs: 13 Atk / 7 Def / 1 SpA / 1 SpD
+Level: 13
+- Bite
+- Roar
+- Ember
+
+Arcanine (M)
+IVs: 13 Atk / 7 Def / 1 SpA / 1 SpD
+Level: 13
+- Bite
+- Roar
+- Ember
+
+Poliwag (F)
+IVs: 5 HP / 0 Atk / 1 Def / 5 SpA / 5 SpD / 12 Spe
+Level: 38
+- Double Slap
+- Rain Dance
+- Body Slam
+- Belly Drum
+
+Poliwhirl (F)
+IVs: 7 HP / 0 Atk / 9 Def / 1 SpA / 1 SpD / 1 Spe
+Level: 40
+- Water Gun
+- Double Slap
+- Rain Dance
+- Body Slam
+
+Poliwrath (F)
+IVs: 7 HP / 0 Atk / 9 Def / 1 SpA / 1 SpD / 1 Spe
+Level: 40
+- Water Gun
+- Double Slap
+- Rain Dance
+- Body Slam
+
+Abra (M)
+IVs: 11 HP / 9 Atk / 8 Def / 7 SpA / 7 SpD / 7 Spe
+Level: 5
+- Teleport
+
+Abra (F)
+IVs: 7 HP / 0 Atk / 11 Def / 11 SpA / 11 SpD / 7 Spe
+Level: 10
+- Teleport
+
+Kadabra (M)
+IVs: 6 HP / 4 Atk / 9 Def / 14 SpA / 14 SpD / 3 Spe
+Level: 18
+- Teleport
+- Kinesis
+- Confusion
+- Disable
+
+Alakazam (M)
+IVs: 6 HP / 4 Atk / 9 Def / 14 SpA / 14 SpD / 3 Spe
+Level: 18
+- Teleport
+- Kinesis
+- Confusion
+- Disable
+
+Machop (F)
+IVs: 6 HP / 2 Atk / 11 Def / 2 SpA / 2 SpD / 5 Spe
+Level: 12
+- Low Kick
+- Leer
+- Focus Energy
+
+MUSCLE (Machop) (F) @ Gold Berry
+IVs: 12 HP / 3 Atk / 7 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 10
+- Low Kick
+- Leer
+- Focus Energy
+
+MUSCLE (Machop) (F) @ Gold Berry
+IVs: 12 HP / 3 Atk / 7 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 14
+- Low Kick
+- Leer
+- Focus Energy
+- Karate Chop
+
+Machoke (M)
+IVs: 13 Atk / 5 Def / 3 SpA / 3 SpD / 1 Spe
+Level: 15
+- Low Kick
+- Leer
+- Focus Energy
+- Karate Chop
+
+Machamp (M)
+IVs: 13 Atk / 5 Def / 3 SpA / 3 SpD / 1 Spe
+Level: 15
+- Low Kick
+- Leer
+- Focus Energy
+- Karate Chop
+
+Bellsprout (M)
+IVs: 1 HP / 12 Atk / 6 Def / 3 SpA / 3 SpD / 12 Spe
+Level: 7
+- Vine Whip
+- Growth
+
+Weepinbell (F)
+IVs: 5 HP / 4 Atk / 1 Def / 7 SpA / 7 SpD / 6 Spe
+Level: 24
+- Sleep Powder
+- Poison Powder
+- Stun Spore
+- Acid
+
+Victreebel (F)
+IVs: 5 HP / 4 Atk / 1 Def / 7 SpA / 7 SpD / 6 Spe
+Level: 24
+- Sleep Powder
+- Poison Powder
+- Stun Spore
+- Acid
+
+Tentacool (F)
+IVs: 8 HP / 5 Atk / 0 Def / 4 SpA / 4 SpD / 0 Spe
+Level: 21
+- Poison Sting
+- Supersonic
+- Constrict
+- Acid
+
+Tentacruel (M)
+IVs: 13 Atk / 13 Def / 13 SpA / 13 SpD / 3 Spe
+Level: 21
+- Poison Sting
+- Supersonic
+- Constrict
+- Acid
+
+Geodude (F)
+IVs: 13 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 8 Spe
+Level: 3
+- Tackle
+
+Graveler (M)
+IVs: 13 HP / 13 Atk / 5 Def / 2 Spe
+Level: 25
+- Defense Curl
+- Rock Throw
+- Magnitude
+- Self-Destruct
+
+Golem (M)
+IVs: 13 HP / 13 Atk / 5 Def / 2 Spe
+Level: 25
+- Defense Curl
+- Rock Throw
+- Magnitude
+- Self-Destruct
+
+Ponyta (F)
+IVs: 8 HP / 5 Atk / 8 Def / 6 SpA / 6 SpD / 4 Spe
+Level: 40
+- Ember
+- Stomp
+- Fire Spin
+- Take Down
+
+Rapidash (F)
+IVs: 6 HP / 6 Atk / 11 Def / 2 SpA / 2 SpD / 3 Spe
+Level: 40
+- Stomp
+- Fire Spin
+- Take Down
+- Fury Attack
+
+RUNNY (Rapidash) (M) @ Burnt Berry
+IVs: 8 HP / 9 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 14
+- Tackle
+- Growl
+- Tail Whip
+- Ember
+
+Slowpoke (F)
+IVs: 2 HP / 4 Atk / 8 Def / 14 SpA / 14 SpD
+Level: 23
+- Tackle
+- Growl
+- Water Gun
+- Confusion
+
+Slowbro (M)
+IVs: 14 HP / 9 Atk / 9 Def / 4 SpA / 4 SpD / 7 Spe
+Level: 22
+- Tackle
+- Growl
+- Water Gun
+- Confusion
+
+Magnemite
+IVs: 0 HP / 12 Atk / 8 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 16
+- Tackle
+- Thunder Shock
+- Supersonic
+- Sonic Boom
+
+MAGGIE (Magneton) @ Metal Coat
+IVs: 8 HP / 9 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 32
+- Supersonic
+- Sonic Boom
+- Thunder Wave
+- Lock-On
+
+Magneton
+IVs: 0 HP / 12 Atk / 8 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 30
+- Tackle
+- Thunder Shock
+- Supersonic
+- Sonic Boom
+
+Farfetch’d (M)
+IVs: 1 HP / 10 Atk / 10 Def / 1 SpA / 1 SpD / 2 Spe
+Level: 16
+- Peck
+- Sand Attack
+- Leer
+
+Doduo (F)
+IVs: 3 HP / 4 Atk / 6 Def / 3 SpA / 3 SpD / 7 Spe
+Level: 30
+- Pursuit
+- Fury Attack
+- Tri Attack
+- Rage
+
+Dodrio (F)
+IVs: 5 HP / 0 Atk / 9 Def / 5 SpA / 5 SpD / 2 Spe
+Level: 30
+- Pursuit
+- Fury Attack
+- Tri Attack
+- Rage
+
+DORIS (Dodrio) (F) @ Smoke Ball
+IVs: 12 HP / 7 Atk / 7 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 40
+- Fury Attack
+- Tri Attack
+- Rage
+- Drill Peck
+
+Seel (M)
+IVs: 2 HP / 14 Atk / 12 Def / 2 SpA / 2 SpD / 11 Spe
+Level: 23
+- Headbutt
+- Growl
+- Aurora Beam
+- Rest
+
+Dewgong (M)
+IVs: 2 HP / 14 Atk / 12 Def / 2 SpA / 2 SpD / 11 Spe
+Level: 34
+- Headbutt
+- Take Down
+- Aurora Beam
+- Rest
+
+Grimer (M)
+IVs: 14 HP / 11 Atk / 9 Def / 8 SpA / 8 SpD / 13 Spe
+Level: 30
+- Harden
+- Disable
+- Sludge
+- Minimize
+
+Muk (M)
+IVs: 14 HP / 9 Atk / 5 Def / 10 SpA / 10 SpD / 7 Spe
+Level: 33
+- Poison Gas
+- Pound
+- Harden
+
+Shellder (F)
+IVs: 9 HP / 3 Atk / 10 Def / 13 SpA / 13 SpD / 12 Spe
+Level: 40
+- Supersonic
+- Aurora Beam
+- Protect
+- Leer
+
+Cloyster (F)
+IVs: 9 HP / 3 Atk / 10 Def / 13 SpA / 13 SpD / 12 Spe
+Level: 40
+- Supersonic
+- Aurora Beam
+- Protect
+- Leer
+
+Gastly (F)
+IVs: 2 HP / 0 Atk / 0 Def / 14 SpA / 14 SpD
+Level: 20
+- Lick
+- Spite
+- Mean Look
+- Curse
+
+Haunter (F)
+IVs: 7 HP / 0 Atk / 9 Def / 3 SpA / 3 SpD
+Level: 17
+- Lick
+- Spite
+- Mean Look
+- Curse
+
+Gengar (F)
+IVs: 7 HP / 0 Atk / 9 Def / 3 SpA / 3 SpD
+Level: 17
+- Lick
+- Spite
+- Mean Look
+- Curse
+
+Onix (M)
+IVs: 2 HP / 12 Atk / 10 Def / 0 SpA / 0 SpD / 13 Spe
+Level: 6
+- Tackle
+- Screech
+
+ROCKY (Onix) (M) @ Bitter Berry
+IVs: 8 HP / 9 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 7
+- Tackle
+- Screech
+
+Drowzee (F)
+IVs: 12 HP / 7 Atk / 3 Def / 8 SpA / 8 SpD / 2 Spe
+Level: 14
+- Pound
+- Hypnosis
+- Disable
+
+Hypno (F)
+IVs: 11 HP / 3 Atk / 12 Def / 1 SpA / 1 SpD / 7 Spe
+Level: 16
+- Pound
+- Hypnosis
+- Disable
+- Confusion
+
+Krabby (M)
+IVs: 2 HP / 12 Atk / 2 Def / 6 SpA / 6 SpD / 11 Spe
+Level: 22
+- Bubble
+- Leer
+- Vise Grip
+- Harden
+
+Kingler (M)
+IVs: 7 HP / 10 Atk / 11 Def / 9 SpA / 9 SpD / 1 Spe
+Level: 40
+- Harden
+- Stomp
+- Guillotine
+- Protect
+
+Voltorb
+IVs: 12 HP / 13 Def / 14 SpA / 14 SpD / 14 Spe
+Level: 23
+- Tackle
+- Screech
+- Sonic Boom
+- Self-Destruct
+
+VOLTY (Voltorb) @ PRZCureBerry
+IVs: 8 HP / 9 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
+Level: 22
+- Tackle
+- Screech
+- Sonic Boom
+
+Electrode
+IVs: 8 HP / 3 Atk / 14 Def / 8 SpA / 8 SpD / 14 Spe
+Level: 23
+- Tackle
+- Screech
+- Sonic Boom
+- Self-Destruct
+
+Exeggcute (M)
+IVs: 7 HP / 8 Atk / 9 Def / 11 SpA / 11 SpD / 7 Spe
+Level: 10
+- Barrage
+- Hypnosis
+- Reflect
+
+Exeggutor (M)
+IVs: 7 HP / 8 Atk / 9 Def / 11 SpA / 11 SpD / 7 Spe
+Level: 10
+- Barrage
+- Hypnosis
+- Reflect
+
+Cubone (M)
+IVs: 7 HP / 8 Atk / 9 Def / 13 SpA / 13 SpD / 7 Spe
+Level: 15
+- Growl
+- Tail Whip
+- Bone Club
+- Headbutt
+
+Cubone (F)
+IVs: 0 HP / 0 Atk / 14 Def / 0 SpA / 0 SpD / 2 Spe
+Level: 10
+- Growl
+- Tail Whip
+- Bone Club
+
+Marowak (M)
+IVs: 11 HP / 9 Atk / 10 Def / 5 SpA / 5 SpD / 7 Spe
+Level: 18
+- Tail Whip
+- Bone Club
+- Headbutt
+- Leer
+
+Hitmonlee (M)
+IVs: 12 HP / 13 Def / 4 SpA / 4 SpD / 14 Spe
+Level: 20
+- Tackle
+
+Hitmonchan (M)
+IVs: 14 HP / 11 Atk / 13 Def / 12 SpA / 12 SpD / 11 Spe
+Level: 20
+- Tackle
+
+Lickitung (M)
+IVs: 11 HP / 13 Atk / 4 Def / 9 SpA / 9 SpD / 5 Spe
+Level: 22
+- Lick
+- Supersonic
+- Defense Curl
+- Stomp
+
+Koffing (M)
+IVs: 9 HP / 13 Atk / 6 Def / 5 SpA / 5 SpD / 2 Spe
+Level: 14
+- Poison Gas
+- Tackle
+- Smog
+
+Weezing (M)
+IVs: 11 HP / 14 Def / 9 SpA / 9 SpD / 1 Spe
+Level: 16
+- Poison Gas
+- Tackle
+- Smog
+- Self-Destruct
+
+Rhyhorn (M)
+IVs: 0 HP / 12 Atk / 8 Def / 4 SpA / 4 SpD / 0 Spe
+Level: 32
+- Tail Whip
+- Stomp
+- Fury Attack
+- Scary Face
+
+DON (Rhydon) (F) @ Bitter Berry
+IVs: 12 HP / 7 Atk / 7 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 40
+- Stomp
+- Fury Attack
+- Scary Face
+- Horn Drill
+
+Rhydon (M)
+IVs: 9 HP / 11 Atk / 6 Def / 10 Spe
+Level: 35
+- Tail Whip
+- Stomp
+- Fury Attack
+- Scary Face
+
+Chansey (F)
+IVs: 7 HP / 2 Atk / 5 Spe
+Level: 28
+- Tail Whip
+- Soft-Boiled
+- Double Slap
+- Minimize
+
+Tangela (F)
+IVs: 4 HP / 4 Atk / 7 Def / 4 SpA / 4 SpD / 8 Spe
+Level: 30
+- Absorb
+- Poison Powder
+- Vine Whip
+- Bind
+
+Kangaskhan (F)
+IVs: 10 HP / 3 Atk / 10 Def / 6 SpA / 6 SpD / 13 Spe
+Level: 15
+- Comet Punch
+- Leer
+- Bite
+
+Horsea (M)
+IVs: 5 HP / 10 Atk / 5 Def / 9 SpA / 9 SpD / 2 Spe
+Level: 40
+- Leer
+- Water Gun
+- Twister
+- Agility
+
+Seadra (F)
+IVs: 0 HP / 4 Atk / 6 Def / 4 SpA / 4 SpD / 4 Spe
+Level: 40
+- Leer
+- Water Gun
+- Twister
+- Agility
+
+Goldeen (M)
+IVs: 12 HP / 13 Atk / 13 Def / 4 SpA / 4 SpD / 2 Spe
+Level: 20
+- Peck
+- Tail Whip
+- Supersonic
+- Horn Attack
+
+Seaking (F)
+IVs: 4 HP / 0 Atk / 1 Def / 6 SpA / 6 SpD / 10 Spe
+Level: 20
+- Peck
+- Tail Whip
+- Supersonic
+- Horn Attack
+
+Staryu
+IVs: 10 HP / 1 Atk / 6 Def / 10 SpA / 10 SpD
+Level: 40
+- Recover
+- Swift
+- Bubble Beam
+- Minimize
+
+Starmie
+IVs: 10 HP / 1 Atk / 6 Def / 10 SpA / 10 SpD
+Level: 40
+- Recover
+- Swift
+- Bubble Beam
+- Minimize
+
+Mr. Mime (M)
+IVs: 8 HP / 11 Atk / 12 Def / 12 SpA / 12 SpD / 2 Spe
+Level: 28
+- Meditate
+- Double Slap
+- Light Screen
+- Reflect
+
+Scyther (M)
+IVs: 6 HP / 8 Atk / 14 SpA / 14 SpD / 11 Spe
+Level: 13
+- Quick Attack
+- Leer
+- Focus Energy
+- Pursuit
+
+Jynx (F) @ Ice Berry
+IVs: 14 HP / 8 SpA / 8 SpD / 9 Spe
+Level: 22
+- Lick
+- Lovely Kiss
+- Powder Snow
+- Double Slap
+
+Electabuzz (F)
+IVs: 10 HP / 3 Atk / 14 Def / 2 SpA / 2 SpD / 13 Spe
+Level: 16
+- Quick Attack
+- Leer
+- Thunder Punch
+
+Magmar (M) @ Burnt Berry
+IVs: 2 HP / 10 Atk / 0 Def / 10 SpA / 10 SpD / 7 Spe
+Level: 45
+- Fire Punch
+- Smokescreen
+- Sunny Day
+- Flamethrower
+
+Pinsir (F)
+IVs: 3 HP / 2 Atk / 6 Def / 3 SpA / 3 SpD / 13 Spe
+Level: 14
+- Vise Grip
+- Focus Energy
+- Bind
+
+Tauros (M)
+IVs: 2 HP / 4 Atk / 12 Def / 0 SpA / 0 SpD / 1 Spe
+Level: 13
+- Tackle
+- Tail Whip
+- Rage
+- Horn Attack
+
+Magikarp (F)
+IVs: 9 HP / 1 Atk / 2 Def / 1 SpA / 1 SpD / 10 Spe
+Level: 15
+- Splash
+- Tackle
+
+Gyarados (M)
+IVs: 10 HP / 11 Atk / 0 Def / 4 SpA / 4 SpD / 3 Spe
+Level: 17
+- Thrash
+
+Gyarados (M)
+IVs: 0 HP / 14 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 30
+Shiny: Yes
+- Thrash
+- Bite
+- Dragon Rage
+- Leer
+
+Lapras (M)
+IVs: 14 HP / 11 Atk / 7 Def / 4 SpA / 4 SpD
+Level: 20
+- Growl
+- Sing
+- Mist
+- Body Slam
+
+Ditto
+IVs: 12 HP / 1 Atk / 13 Def / 4 SpA / 4 SpD / 10 Spe
+Level: 10
+- Transform
+
+Eevee (M)
+IVs: 3 HP / 2 Atk / 0 Def / 1 SpA / 1 SpD / 13 Spe
+Level: 20
+- Tackle
+- Tail Whip
+- Sand Attack
+- Growl
+
+Vaporeon (M)
+IVs: 3 HP / 2 Atk / 0 Def / 1 SpA / 1 SpD / 13 Spe
+Level: 20
+- Tackle
+- Tail Whip
+- Sand Attack
+- Growl
+
+Jolteon (M)
+IVs: 3 HP / 2 Atk / 0 Def / 1 SpA / 1 SpD / 13 Spe
+Level: 20
+- Tackle
+- Tail Whip
+- Sand Attack
+- Growl
+
+Flareon (M)
+IVs: 3 HP / 2 Atk / 0 Def / 1 SpA / 1 SpD / 13 Spe
+Level: 20
+- Tackle
+- Tail Whip
+- Sand Attack
+- Growl
+
+Porygon
+IVs: 2 HP / 8 Atk / 12 Def / 4 SpA / 4 SpD
+Level: 15
+- Tackle
+- Conversion
+- Agility
+- Psybeam
+
+Omanyte (M)
+IVs: 8 HP / 11 Atk / 2 Def / 14 SpA / 14 SpD / 6 Spe
+Level: 30
+- Water Gun
+- Withdraw
+
+Omastar (M)
+IVs: 8 HP / 11 Atk / 2 Def / 14 SpA / 14 SpD / 6 Spe
+Level: 40
+- Water Gun
+- Withdraw
+- Horn Attack
+- Leer
+
+Kabuto (M)
+IVs: 8 HP / 3 Atk / 12 Def / 14 SpA / 14 SpD / 12 Spe
+Level: 30
+- Scratch
+- Harden
+
+Kabutops (M)
+IVs: 8 HP / 3 Atk / 12 Def / 14 SpA / 14 SpD / 12 Spe
+Level: 40
+- Scratch
+- Harden
+- Absorb
+- Slash
+
+AEROY (Aerodactyl) (M) @ Gold Berry
+IVs: 8 HP / 9 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 28
+- Wing Attack
+- Agility
+- Bite
+- Supersonic
+
+Snorlax (F) @ Leftovers
+IVs: 14 HP / 1 Atk / 5 Def / 12 SpA / 12 SpD / 7 Spe
+Level: 50
+- Snore
+- Rest
+- Body Slam
+- Rollout
+
+Articuno
+IVs: 11 HP / 3 Atk / 14 Def / 1 Spe
+Level: 50
+- Peck
+- Ice Beam
+
+Zapdos
+IVs: 7 HP / 12 Atk / 1 SpA / 1 SpD / 7 Spe
+Level: 50
+- Thunder Shock
+- Drill Peck
+
+Moltres
+IVs: 13 Def / 9 SpA / 9 SpD / 7 Spe
+Level: 50
+- Peck
+- Fire Spin
+
+Dratini (M)
+IVs: 4 HP / 10 Atk / 9 Def / 14 SpA / 14 SpD / 10 Spe
+Level: 40
+- Twister
+- Dragon Rage
+- Slam
+- Agility
+
+Dratini (F)
+IVs: 14 HP / 3 Atk / 1 Def / 6 SpA / 6 SpD / 11 Spe
+Level: 15
+- Wrap
+- Thunder Wave
+- Twister
+- Extreme Speed
+
+Dragonair (F)
+IVs: 1 HP / 4 Atk / 0 Def / 3 SpA / 3 SpD / 14 Spe
+Level: 40
+- Twister
+- Dragon Rage
+- Slam
+- Agility
+
+Dragonite (F)
+IVs: 1 HP / 4 Atk / 0 Def / 3 SpA / 3 SpD / 14 Spe
+Level: 56
+- Twister
+- Dragon Rage
+- Slam
+- Wing Attack
+
+Mewtwo
+IVs: 9 HP / 5 Atk / 12 Def / 9 SpA / 9 SpD / 14 Spe
+Level: 70
+- Swift
+- Psychic
+- Barrier
+- Recover
+
+Mew @ Bitter Berry
+Level: 5
+Hardy Nature
+- Pound
+
+Chikorita (M) @ Berry
+IVs: 11 HP / 3 Atk / 12 Def / 9 SpA / 9 SpD / 11 Spe
+Level: 5
+- Tackle
+- Growl
+
+Bayleef (M) @ Berry
+IVs: 11 HP / 3 Atk / 12 Def / 9 SpA / 9 SpD / 11 Spe
+Level: 16
+- Tackle
+- Poison Powder
+- Razor Leaf
+- Reflect
+
+Meganium (M) @ Berry
+IVs: 11 HP / 3 Atk / 12 Def / 9 SpA / 9 SpD / 11 Spe
+Level: 32
+- Body Slam
+- Poison Powder
+- Razor Leaf
+- Synthesis
+
+Meganium (M) @ Berry
+IVs: 11 HP / 3 Atk / 12 Def / 9 SpA / 9 SpD / 11 Spe
+EVs: 65535 HP / 65535 Atk / 65535 Def / 65535 SpA / 65535 SpD / 65535 Spe
+- Body Slam
+- Headbutt
+- Razor Leaf
+- Earthquake
+
+Cyndaquil (M) @ Berry
+IVs: 4 HP / 8 Atk / 3 Def / 14 SpA / 14 SpD / 8 Spe
+Level: 5
+- Tackle
+- Leer
+
+Quilava (M) @ Berry
+IVs: 4 HP / 8 Atk / 3 Def / 14 SpA / 14 SpD / 8 Spe
+Level: 14
+- Tackle
+- Leer
+- Smokescreen
+- Ember
+
+Typhlosion (M) @ Berry
+IVs: 4 HP / 8 Atk / 3 Def / 14 SpA / 14 SpD / 8 Spe
+EVs: 65535 HP / 65535 Atk / 65535 Def / 65535 SpA / 65535 SpD / 65535 Spe
+- Flamethrower
+- Strength
+- Earthquake
+- Thunder Punch
+
+Typhlosion (M) @ Berry
+IVs: 4 HP / 8 Atk / 3 Def / 14 SpA / 14 SpD / 8 Spe
+Level: 36
+- Quick Attack
+- Flame Wheel
+- Smokescreen
+- Ember
+
+Totodile (F) @ Berry
+IVs: 2 HP / 0 Atk / 14 Def / 0 SpA / 0 SpD / 9 Spe
+Level: 5
+- Scratch
+- Leer
+
+Croconaw (F) @ Berry
+IVs: 2 HP / 0 Atk / 14 Def / 0 SpA / 0 SpD / 9 Spe
+Level: 18
+- Scratch
+- Leer
+- Rage
+- Water Gun
+
+Feraligatr (F) @ Berry
+IVs: 2 HP / 0 Atk / 14 Def / 0 SpA / 0 SpD / 9 Spe
+Level: 30
+- Scratch
+- Bite
+- Rage
+- Water Gun
+
+Feraligatr (F) @ Berry
+IVs: 2 HP / 0 Atk / 14 Def / 0 SpA / 0 SpD / 9 Spe
+EVs: 65535 HP / 65535 Atk / 65535 Def / 65535 SpA / 65535 SpD / 65535 Spe
+- Surf
+- Earthquake
+- Hydro Pump
+- Ice Punch
+
+Sentret (M)
+IVs: 8 HP / 13 Atk / 14 Def / 8 SpA / 8 SpD / 8 Spe
+Level: 2
+- Tackle
+
+Furret (M)
+IVs: 10 HP / 12 Def / 2 SpA / 2 SpD / 11 Spe
+Level: 15
+- Scratch
+- Defense Curl
+- Quick Attack
+
+Hoothoot (M)
+IVs: 13 HP / 11 Def / 5 SpA / 5 SpD / 10 Spe
+Level: 10
+- Tackle
+- Growl
+- Foresight
+
+Noctowl (M)
+IVs: 4 HP / 8 Atk / 11 Def / 8 SpA / 8 SpD / 0 Spe
+Level: 16
+- Growl
+- Foresight
+- Peck
+- Hypnosis
+
+Ledyba (F)
+IVs: 14 HP / 1 Atk / 13 Def / 12 SpA / 12 SpD / 9 Spe
+Level: 10
+- Tackle
+- Supersonic
+
+Ledian (F)
+IVs: 7 Atk / 9 Def / 9 SpA / 9 SpD / 11 Spe
+Level: 7
+- Tackle
+- Supersonic
+
+Spinarak (M)
+IVs: 5 HP / 10 Atk / 5 Def / 11 SpA / 11 SpD / 8 Spe
+Level: 13
+- Poison Sting
+- String Shot
+- Scary Face
+- Constrict
+
+Ariados (F)
+IVs: 14 HP / 3 Atk / 5 Def / 6 SpA / 6 SpD / 1 Spe
+Level: 7
+- Poison Sting
+- String Shot
+- Scary Face
+- Constrict
+
+Crobat (F)
+IVs: 13 HP / 5 Atk / 1 Def / 1 SpA / 1 SpD / 8 Spe
+Level: 14
+- Screech
+- Leech Life
+- Supersonic
+- Bite
+
+Chinchou (F)
+IVs: 12 HP / 1 Atk / 11 Def / 2 SpA / 2 SpD / 8 Spe
+Level: 40
+- Water Gun
+- Spark
+- Confuse Ray
+- Take Down
+
+Lanturn (M)
+IVs: 10 HP / 0 Def / 8 SpA / 8 SpD / 13 Spe
+Level: 40
+- Flail
+- Water Gun
+- Spark
+- Confuse Ray
+
+Pichu (F)
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 5
+- Thunder Shock
+- Charm
+- Dizzy Punch
+
+Cleffa (F)
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 5
+- Pound
+- Charm
+- Dizzy Punch
+
+Igglybuff (F)
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 5
+- Sing
+- Charm
+- Dizzy Punch
+
+Togepi (M)
+IVs: 7 HP / 8 Atk / 5 Spe
+Level: 5
+- Growl
+- Charm
+
+Togetic (M)
+IVs: 7 HP / 8 Atk / 5 Spe
+Level: 42
+- Encore
+- Double-Edge
+- Metronome
+- Sweet Kiss
+
+Natu (F)
+IVs: 6 HP / 4 Atk / 1 Def / 14 SpA / 14 SpD / 13 Spe
+Level: 20
+- Peck
+- Leer
+- Night Shade
+- Teleport
+
+PAUL (Xatu) (M) @ MysteryBerry
+IVs: 8 HP / 9 Atk / 6 Def / 6 SpA / 6 SpD / 8 Spe
+Level: 17
+- Peck
+- Leer
+- Night Shade
+
+Mareep (F)
+IVs: 1 HP / 6 Atk / 12 Def / 13 SpA / 13 SpD / 2 Spe
+Level: 13
+- Tackle
+- Growl
+- Thunder Shock
+
+Flaaffy (F)
+IVs: 1 HP / 6 Atk / 0 Def / 7 SpA / 7 SpD / 10 Spe
+Level: 15
+- Tackle
+- Growl
+- Thunder Shock
+
+Ampharos (F)
+IVs: 1 HP / 6 Atk / 0 Def / 7 SpA / 7 SpD / 10 Spe
+Level: 30
+- Tackle
+- Growl
+- Thunder Shock
+- Thunder Wave
+
+Bellossom (F)
+IVs: 1 Atk / 11 Def / 3 SpA / 3 SpD / 13 Spe
+Level: 14
+- Absorb
+- Sweet Scent
+- Poison Powder
+
+Marill (F)
+IVs: 4 HP / 4 Atk / 1 Def / 8 SpA / 8 SpD / 14 Spe
+Level: 14
+- Tackle
+- Defense Curl
+- Tail Whip
+- Water Gun
+
+Azumarill (F)
+IVs: 4 HP / 4 Atk / 1 Def / 8 SpA / 8 SpD / 14 Spe
+Level: 18
+- Tackle
+- Rollout
+- Tail Whip
+- Water Gun
+
+Azumarill (F)
+IVs: 4 HP / 4 Atk / 1 Def / 8 SpA / 8 SpD / 14 Spe
+EVs: 65535 HP / 65535 Atk / 65535 Def / 65535 SpA / 65535 SpD / 65535 Spe
+- Rock Smash
+- Waterfall
+- Whirlpool
+- Strength
+
+Sudowoodo (M)
+IVs: 13 HP / 9 Atk / 13 Def / 14 Spe
+Level: 20
+- Rock Throw
+- Mimic
+- Flail
+- Low Kick
+
+Politoed (F)
+IVs: 7 HP / 0 Atk / 9 Def / 1 SpA / 1 SpD / 1 Spe
+Level: 40
+- Water Gun
+- Double Slap
+- Rain Dance
+- Body Slam
+
+Hoppip (F)
+IVs: 1 HP / 6 Atk / 14 Def / 5 SpA / 5 SpD / 6 Spe
+Level: 3
+- Splash
+
+Skiploom (F)
+IVs: 14 HP / 5 Atk / 12 SpA / 12 SpD / 5 Spe
+Level: 30
+- Stun Spore
+- Sleep Powder
+- Leech Seed
+- Cotton Spore
+
+Jumpluff (F)
+IVs: 14 HP / 5 Atk / 12 SpA / 12 SpD / 5 Spe
+Level: 31
+- Stun Spore
+- Sleep Powder
+- Leech Seed
+- Cotton Spore
+
+Aipom (F)
+IVs: 4 HP / 2 Atk / 5 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 10
+- Scratch
+- Tail Whip
+- Sand Attack
+
+Sunkern (F)
+IVs: 8 HP / 7 Atk / 2 Def / 14 SpA / 14 SpD / 4 Spe
+Level: 14
+- Absorb
+- Growth
+- Mega Drain
+
+Sunflora (F)
+IVs: 8 HP / 7 Atk / 2 Def / 14 SpA / 14 SpD / 4 Spe
+Level: 14
+- Absorb
+- Growth
+- Mega Drain
+
+Yanma (M)
+IVs: 13 Atk / 9 Def / 3 Spe
+Level: 12
+- Tackle
+- Foresight
+- Quick Attack
+
+Wooper (M)
+IVs: 5 HP / 10 Atk / 1 Def / 3 SpA / 3 SpD / 2 Spe
+Level: 4
+- Water Gun
+- Tail Whip
+
+Quagsire (M)
+IVs: 12 HP / 3 Def / 12 SpA / 12 SpD / 4 Spe
+Level: 26
+- Water Gun
+- Tail Whip
+- Slam
+- Amnesia
+
+Espeon (M)
+IVs: 3 HP / 2 Atk / 0 Def / 1 SpA / 1 SpD / 13 Spe
+Level: 21
+- Tackle
+- Tail Whip
+- Sand Attack
+- Growl
+
+Umbreon (M)
+IVs: 3 HP / 2 Atk / 0 Def / 1 SpA / 1 SpD / 13 Spe
+EVs: 65535 HP / 65535 Atk / 65535 Def / 65535 SpA / 65535 SpD / 65535 Spe
+- Cut
+- Flash
+- Psychic
+- Shadow Ball
+
+Umbreon (M)
+IVs: 3 HP / 2 Atk / 0 Def / 1 SpA / 1 SpD / 13 Spe
+Level: 21
+- Tackle
+- Tail Whip
+- Sand Attack
+- Growl
+
+Murkrow (M)
+IVs: 12 HP / 13 Atk / 3 Def / 12 SpA / 12 SpD / 8 Spe
+Level: 17
+- Peck
+- Pursuit
+- Haze
+
+Slowking (F)
+IVs: 2 HP / 4 Atk / 8 Def / 14 SpA / 14 SpD
+Level: 23
+- Tackle
+- Growl
+- Water Gun
+- Confusion
+
+Misdreavus (F) @ Spell Tag
+IVs: 0 HP / 0 Atk / 4 Def / 4 SpA / 4 SpD / 0 Spe
+Level: 45
+- Confuse Ray
+- Mean Look
+- Psybeam
+- Pain Split
+
+Unown
+IVs: 11 HP / 1 Atk / 8 Def / 1 SpA / 1 SpD / 9 Spe
+Level: 5
+- Hidden Power [Rock]
+
+Wobbuffet (M)
+IVs: 8 HP / 10 Def / 14 SpA / 14 SpD / 10 Spe
+Level: 15
+- Counter
+- Mirror Coat
+- Safeguard
+- Destiny Bond
+
+Wobbuffet (F)
+IVs: 6 HP / 6 Atk / 7 Def / 10 SpA / 10 SpD / 1 Spe
+Level: 20
+- Counter
+- Mirror Coat
+- Safeguard
+- Destiny Bond
+
+Girafarig (M)
+IVs: 9 Atk / 11 Def / 11 SpA / 11 SpD / 7 Spe
+Level: 15
+- Tackle
+- Growl
+- Confusion
+- Stomp
+
+Pineco (F)
+IVs: 12 HP / 1 Atk / 9 Def / 8 SpA / 8 SpD / 2 Spe
+Level: 10
+- Tackle
+- Protect
+- Self-Destruct
+
+Forretress (F)
+IVs: 12 HP / 1 Atk / 9 Def / 8 SpA / 8 SpD / 2 Spe
+Level: 31
+- Rapid Spin
+- Protect
+- Self-Destruct
+- Take Down
+
+Dunsparce (F)
+IVs: 1 HP / 2 Atk / 8 Def / 3 SpA / 3 SpD / 12 Spe
+Level: 4
+- Rage
+
+Gligar (M)
+IVs: 14 HP / 11 Atk / 2 SpA / 2 SpD / 3 Spe
+Level: 24
+- Poison Sting
+- Sand Attack
+- Harden
+- Quick Attack
+
+Steelix (M)
+IVs: 2 HP / 12 Atk / 10 Def / 0 SpA / 0 SpD / 13 Spe
+Level: 6
+- Tackle
+- Screech
+
+Snubbull (F)
+IVs: 7 HP / 8 Atk / 13 Def / 3 SpA / 3 SpD / 1 Spe
+Level: 10
+- Tackle
+- Scary Face
+- Tail Whip
+- Charm
+
+Granbull (F)
+IVs: 2 HP / 2 Atk / 10 Def / 6 SpA / 6 SpD / 3 Spe
+Level: 15
+- Scary Face
+- Tail Whip
+- Charm
+- Bite
+
+Qwilfish (F)
+IVs: 10 HP / 7 Atk / 0 Def / 8 SpA / 8 SpD / 13 Spe
+Level: 40
+- Minimize
+- Water Gun
+- Pin Missile
+- Take Down
+
+Scizor (M)
+IVs: 6 HP / 8 Atk / 14 SpA / 14 SpD / 11 Spe
+Level: 13
+- Quick Attack
+- Leer
+- Focus Energy
+- Pursuit
+
+SHUCKIE (Shuckle) (M) @ Berry
+IVs: 11 HP / 9 Atk / 4 Def / 5 SpA / 5 SpD / 7 Spe
+Level: 15
+- Constrict
+- Withdraw
+- Wrap
+- Encore
+
+Heracross (M)
+IVs: 11 Atk / 5 Def / 11 SpA / 11 SpD / 13 Spe
+Level: 10
+- Tackle
+- Leer
+- Horn Attack
+
+Sneasel (M)
+IVs: 7 HP / 12 Atk / 11 Def / 11 SpA / 11 SpD / 11 Spe
+Level: 24
+- Scratch
+- Leer
+- Quick Attack
+- Screech
+
+Teddiursa (F)
+IVs: 13 HP / 5 Atk / 9 Def / 1 SpA / 1 SpD / 8 Spe
+Level: 2
+- Scratch
+- Leer
+
+Ursaring (M)
+IVs: 4 HP / 14 Atk / 13 Def / 2 SpA / 2 SpD / 6 Spe
+Level: 44
+- Fury Swipes
+- Feint Attack
+- Rest
+- Slash
+
+Slugma (M)
+IVs: 6 HP / 10 Atk / 0 SpA / 0 SpD / 5 Spe
+Level: 29
+- Ember
+- Rock Throw
+- Harden
+- Amnesia
+
+Magcargo (M)
+IVs: 6 HP / 10 Atk / 0 SpA / 0 SpD / 5 Spe
+Level: 38
+- Flamethrower
+- Rock Throw
+- Harden
+- Amnesia
+
+Swinub (F)
+IVs: 1 Atk / 9 Def / 3 SpA / 3 SpD / 9 Spe
+Level: 23
+- Tackle
+- Powder Snow
+- Endure
+
+Piloswine (F)
+IVs: 1 Atk / 9 Def / 3 SpA / 3 SpD / 9 Spe
+Level: 33
+- Fury Attack
+- Powder Snow
+- Endure
+- Take Down
+
+Corsola (F)
+IVs: 4 HP / 4 Atk / 5 Def / 12 SpA / 12 SpD / 2 Spe
+Level: 40
+- Recover
+- Bubble Beam
+- Spike Cannon
+- Mirror Coat
+
+Remoraid (M)
+IVs: 4 HP / 14 Atk / 1 Def / 2 SpA / 2 SpD / 2 Spe
+Level: 40
+- Psybeam
+- Aurora Beam
+- Bubble Beam
+- Focus Energy
+
+Octillery (M)
+IVs: 4 HP / 14 Atk / 1 Def / 2 SpA / 2 SpD / 2 Spe
+Level: 41
+- Psybeam
+- Aurora Beam
+- Bubble Beam
+- Focus Energy
+
+Delibird (M)
+IVs: 9 HP / 10 Def / 3 SpA / 3 SpD / 0 Spe
+Level: 21
+- Present
+
+Mantine (M)
+IVs: 6 HP / 12 Atk / 0 SpA / 0 SpD / 3 Spe
+Level: 22
+- Tackle
+- Bubble
+- Supersonic
+- Bubble Beam
+
+Skarmory (M)
+IVs: 7 HP / 10 Atk / 11 Def / 13 SpA / 13 SpD
+Level: 27
+- Peck
+- Sand Attack
+- Swift
+- Agility
+
+Houndour (M)
+IVs: 10 HP / 9 Atk / 12 Def / 2 SpA / 2 SpD / 1 Spe
+Level: 18
+- Leer
+- Ember
+- Roar
+- Smog
+
+Houndoom (M)
+IVs: 10 HP / 9 Atk / 12 Def / 2 SpA / 2 SpD / 1 Spe
+Level: 24
+- Bite
+- Ember
+- Roar
+- Smog
+
+Kingdra (F)
+IVs: 0 HP / 4 Atk / 6 Def / 4 SpA / 4 SpD / 4 Spe
+Level: 40
+- Leer
+- Water Gun
+- Twister
+- Agility
+
+Phanpy (M)
+IVs: 11 HP / 0 Def / 13 SpA / 13 SpD / 3 Spe
+Level: 20
+- Tackle
+- Growl
+- Defense Curl
+- Flail
+
+Donphan (M)
+IVs: 8 HP / 9 Atk / 8 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 25
+- Growl
+- Defense Curl
+- Flail
+- Fury Attack
+
+Porygon2
+IVs: 2 HP / 8 Atk / 12 Def / 4 SpA / 4 SpD
+Level: 15
+- Tackle
+- Conversion
+- Agility
+- Psybeam
+
+Stantler (M)
+IVs: 10 HP / 9 Atk / 2 Def / 2 SpA / 2 SpD / 9 Spe
+Level: 14
+- Tackle
+- Leer
+
+Smeargle (M)
+IVs: 12 HP / 9 Atk / 13 Def / 14 SpA / 14 SpD / 12 Spe
+Level: 22
+- Sketch
+
+EGG (Tyrogue) (M)
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 5
+- Tackle
+- Dizzy Punch
+
+Tyrogue (M)
+IVs: 14 HP / 5 Atk / 7 Def / 8 SpA / 8 SpD / 13 Spe
+Level: 10
+- Tackle
+
+Tyrogue (M)
+IVs: 8 HP / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 5
+Shiny: Yes
+- Tackle
+- Dizzy Punch
+
+Hitmontop (M)
+IVs: 14 HP / 5 Atk / 7 Def / 8 SpA / 8 SpD / 13 Spe
+Level: 20
+- Tackle
+
+Smoochum (F)
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 5
+- Pound
+- Lick
+- Dizzy Punch
+
+Elekid (F)
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 5
+- Quick Attack
+- Leer
+- Dizzy Punch
+
+Magby (F)
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 5
+- Ember
+- Dizzy Punch
+
+Miltank (F)
+IVs: 5 HP / 12 Atk / 1 Def / 6 Spe
+Level: 13
+- Tackle
+- Growl
+- Defense Curl
+- Stomp
+
+Blissey (F)
+IVs: 7 HP / 2 Atk / 5 Spe
+Level: 29
+- Sing
+- Soft-Boiled
+- Double Slap
+- Minimize
+
+Raikou
+IVs: 12 HP / 3 Atk / 12 SpA / 12 SpD / 12 Spe
+Level: 40
+- Leer
+- Thunder Shock
+- Roar
+- Quick Attack
+
+Entei
+IVs: 8 HP / 1 Atk / 4 Def / 10 SpA / 10 SpD / 10 Spe
+Level: 40
+- Leer
+- Ember
+- Roar
+- Fire Spin
+
+Suicune
+IVs: 3 HP / 2 Atk / 2 Def / 13 SpA / 13 SpD / 11 Spe
+Level: 40
+- Leer
+- Bubble Beam
+- Rain Dance
+- Gust
+
+Larvitar (F)
+IVs: 12 HP / 3 Atk / 7 Def / 6 SpA / 6 SpD / 6 Spe
+Level: 40
+- Screech
+- Rock Slide
+- Thrash
+- Scary Face
+
+Larvitar (F)
+IVs: 2 HP / 0 Atk / 0 Def / 10 SpA / 10 SpD
+Level: 15
+- Bite
+- Leer
+- Sandstorm
+- Screech
+
+Pupitar (F)
+IVs: 2 HP / 0 Atk / 0 Def / 10 SpA / 10 SpD
+Level: 30
+- Thrash
+- Rock Slide
+- Sandstorm
+- Screech
+
+Tyranitar (F)
+IVs: 2 HP / 0 Atk / 0 Def / 10 SpA / 10 SpD
+Level: 55
+- Thrash
+- Rock Slide
+- Sandstorm
+- Crunch
+
+Lugia
+IVs: 3 HP / 0 Atk / 8 Def / 5 SpA / 5 SpD / 7 Spe
+Level: 60
+- Gust
+- Recover
+- Hydro Pump
+- Rain Dance
+
+Ho-Oh @ Sacred Ash
+IVs: 12 HP / 13 Atk / 3 Def / 8 SpA / 8 SpD / 8 Spe
+Level: 60
+- Gust
+- Recover
+- Fire Blast
+- Sunny Day
+
+Celebi
+IVs: 4 HP / 0 Atk / 13 Def / 0 SpA / 0 SpD / 8 Spe
+Level: 30
+- Heal Bell
+- Safeguard
+- Ancient Power
+- Future Sight
