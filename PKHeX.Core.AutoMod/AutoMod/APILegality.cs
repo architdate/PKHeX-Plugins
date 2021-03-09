@@ -552,6 +552,9 @@ namespace PKHeX.Core.AutoMod
             {
                 switch (enc)
                 {
+                    case EncounterSlot3PokeSpot es3ps:
+                        PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, pk.AbilityNumber >> 1, es3ps.SlotNumber);
+                        return;
                     case PCD d:
                         {
                             if (d.Gift.PK.PID != 1)
