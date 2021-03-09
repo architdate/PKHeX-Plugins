@@ -61,13 +61,14 @@ namespace PKHeX.Core.AutoMod
                 if (set.Ability == -1)
                     isHidden = isHidden || template.PersonalInfo.Abilities[0] == template.PersonalInfo.Abilities[2];
             }
+            var batchedit = AllowBatchCommands && regen.HasBatchSettings;
             var destType = template.GetType();
             var destVer = (GameVersion)dest.Game;
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
             var timer = Stopwatch.StartNew();
-            var gamelist = FilteredGameList(template, destVer);
+            var gamelist = FilteredGameList(template, destVer, batchedit ? regen.Batch.Filters : null);
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             var criteria = EncounterCriteria.GetCriteria(set);
@@ -114,7 +115,7 @@ namespace PKHeX.Core.AutoMod
                 }
 
                 // Try applying batch editor values.
-                if (AllowBatchCommands && regen.HasBatchSettings)
+                if (batchedit)
                 {
                     pk.RefreshChecksum();
                     var b = regen.Batch;
@@ -144,9 +145,17 @@ namespace PKHeX.Core.AutoMod
         /// <param name="template">Template pokemon with basic details set</param>
         /// <param name="destVer">Version in which the pokemon needs to be imported</param>
         /// <returns>List of filtered games to check encounters for</returns>
-        private static GameVersion[] FilteredGameList(PKM template, GameVersion destVer)
+        private static GameVersion[] FilteredGameList(PKM template, GameVersion destVer, IReadOnlyList<StringInstruction>? filters)
         {
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
+            if (filters != null)
+            {
+                foreach (var f in filters)
+                {
+                    if (f.PropertyName == "Version" && int.TryParse(f.PropertyValue, out int gv))
+                        gamelist = new GameVersion[] { (GameVersion)gv };
+                }
+            }
             if (PrioritizeGame)
                 gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, destVer) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
             if (template.AbilityNumber == 4 && destVer.GetGeneration() < 8)
