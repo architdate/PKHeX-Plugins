@@ -4,6 +4,9 @@ EVs: 2 Atk
 Ability: Shed Skin
 Level: 4
 Quirky Nature
+Ball: Master Ball
+=Met_Location=14
+.Version=25
 - Harden
 
 Kakuna (F)
@@ -12,6 +15,9 @@ EVs: 2 HP
 Ability: Shed Skin
 Level: 6
 Brave Nature
+Ball: Master Ball
+=Met_Location=14
+.Version=24
 - Harden
 
 Golbat (M)
@@ -19,6 +25,9 @@ IVs: 2 Atk / 7 SpA / 4 SpD / 10 Spe
 Ability: Inner Focus
 Level: 19
 Bold Nature
+Ball: Master Ball
+=Met_Location=316
+.Version=26
 - Bite
 - Wing Attack
 - Confuse Ray
@@ -29,6 +38,9 @@ IVs: 14 HP / 3 Atk / 0 SpA / 19 SpD / 20 Spe
 Ability: Chlorophyll
 Level: 18
 Bold Nature
+Ball: Master Ball
+=Met_Location=240
+.Version=26
 - Acid
 - Poison Powder
 - Stun Spore
@@ -39,6 +51,10 @@ IVs: 24 HP / 19 Atk / 2 SpA / 15 SpD
 Ability: Wonder Skin
 Level: 30
 Serious Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Leech Life
 - Stun Spore
 - Psybeam
@@ -49,6 +65,9 @@ IVs: 17 HP / 14 Atk / 13 Def / 15 SpA / 20 SpD / 11 Spe
 Ability: Clear Body
 Level: 21
 Quiet Nature
+Ball: Master Ball
+=Met_Location=294
+.Version=26
 - Acid
 - Toxic Spikes
 - Water Pulse
@@ -59,6 +78,9 @@ IVs: 20 HP / 4 Atk / 14 Def / 20 SpA / 24 SpD / 19 Spe
 Ability: Thick Fat
 Level: 30
 Hardy Nature
+Ball: Master Ball
+=Met_Location=300
+.Version=26
 - Water Pulse
 - Rest
 - Aqua Ring
@@ -69,6 +91,10 @@ IVs: 29 HP / 18 Atk / 25 Def / 28 SpA
 Ability: Sticky Hold
 Level: 30
 Brave Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Minimize
 - Mud Bomb
 - Sludge Bomb
@@ -79,6 +105,9 @@ IVs: 12 Def / 24 SpA / 25 SpD / 12 Spe
 Ability: Rock Head
 Level: 30
 Modest Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Fury Attack
 - Scary Face
 - Rock Blast
@@ -89,6 +118,9 @@ IVs: 2 HP / 11 Def / 19 SpA / 27 SpD / 7 Spe
 Ability: Swift Swim
 Level: 30
 Lax Nature
+Ball: Master Ball
+=Met_Location=324
+.Version=26
 - Water Pulse
 - Aqua Ring
 - Fury Attack
@@ -99,6 +131,9 @@ IVs: 20 HP / 30 Atk / 15 Def / 18 SpA / 29 SpD
 Ability: Swift Swim
 Level: 26
 Naive Nature
+Ball: Master Ball
+=Met_Location=324
+.Version=26
 - Flail
 - Water Pulse
 - Aqua Ring
@@ -109,6 +144,9 @@ IVs: 21 HP / 10 Atk / 24 Def / 21 SpA / 25 SpD / 2 Spe
 Ability: Insomnia
 Level: 19
 Timid Nature
+Ball: Master Ball
+=Met_Location=316
+.Version=26
 - Constrict
 - Leech Life
 - Night Shade
@@ -119,6 +157,9 @@ IVs: 0 HP / 13 Atk / 3 Def / 26 SpA / 13 SpD / 10 Spe
 Ability: Illuminate
 Level: 26
 Mild Nature
+Ball: Master Ball
+=Met_Location=254
+.Version=26
 - Water Gun
 - Confuse Ray
 - Bubble Beam
@@ -129,6 +170,9 @@ IVs: 9 HP / 20 Atk / 22 Def / 5 SpA / 22 SpD / 3 Spe
 Ability: Huge Power
 Level: 16
 Timid Nature
+Ball: Master Ball
+=Met_Location=184
+.Version=26
 - Defense Curl
 - Rollout
 - Bubble Beam
@@ -139,6 +183,10 @@ IVs: 20 HP / 17 SpA / 11 SpD
 Ability: Overcoat
 Level: 30
 Mild Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Rapid Spin
 - Bide
 - Natural Gift
@@ -149,6 +197,9 @@ IVs: 16 HP / 24 Atk / 25 SpA / 26 Spe
 Ability: Sturdy
 Level: 30
 Naughty Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=24
 - Rapid Spin
 - Bide
 - Natural Gift
@@ -160,6 +211,9 @@ EVs: 2 Atk
 Ability: Flame Body
 Level: 30
 Calm Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Harden
 - Recover
 - Flame Burst
@@ -170,6 +224,10 @@ IVs: 9 HP / 13 Atk / 5 SpA / 9 Spe
 Ability: Thick Fat
 Level: 30
 Bold Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Mud Bomb
 - Icy Wind
 - Ice Fang
@@ -180,6 +238,9 @@ IVs: 23 HP / 14 Atk / 15 Def / 23 SpD
 Ability: Oblivious
 Level: 30
 Naive Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=24
 - Mud Bomb
 - Icy Wind
 - Ice Fang
@@ -190,6 +251,9 @@ IVs: 6 HP / 0 Def / 3 SpD
 Ability: Snow Cloak
 Level: 30
 Serious Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=24
 - Mud Bomb
 - Icy Wind
 - Ice Fang
@@ -200,6 +264,9 @@ IVs: 22 HP / 8 Atk / 17 Def / 4 SpA / 3 SpD / 7 Spe
 Ability: Sturdy
 Level: 24
 Jolly Nature
+Ball: Master Ball
+=Met_Location=324
+.Version=26
 - Rollout
 - Assurance
 - Knock Off
@@ -210,6 +277,9 @@ IVs: 0 HP / 16 Atk / 8 Def / 25 SpA / 24 SpD / 11 Spe
 Ability: Pickup
 Level: 17
 Hasty Nature
+Ball: Master Ball
+=Met_Location=238
+.Version=26
 - Pursuit
 - Headbutt
 - Odor Sleuth
@@ -220,6 +290,9 @@ IVs: 4 HP / 22 Atk / 7 Def / 24 SpA / 18 SpD / 10 Spe
 Ability: Shed Skin
 Level: 2
 Docile Nature
+Ball: Master Ball
+=Met_Location=282
+.Version=26
 - Harden
 
 Cascoon (M)
@@ -227,6 +300,9 @@ IVs: 16 HP / 10 Atk / 13 Def / 15 SpA / 15 SpD / 25 Spe
 Ability: Shed Skin
 Level: 2
 Naughty Nature
+Ball: Master Ball
+=Met_Location=282
+.Version=26
 - Harden
 
 Lombre (M)
@@ -234,6 +310,9 @@ IVs: 12 HP / 26 Def / 24 SpA / 14 SpD
 Ability: Swift Swim
 Level: 12
 Lax Nature
+Ball: Master Ball
+=Met_Location=230
+.Version=26
 - Tickle
 - Absorb
 - Bubble
@@ -244,6 +323,9 @@ IVs: 20 HP / 5 Atk / 28 Def / 21 SpA / 1 SpD / 16 Spe
 Ability: Chlorophyll
 Level: 12
 Quiet Nature
+Ball: Master Ball
+=Met_Location=230
+.Version=27
 - Foul Play
 - Growth
 - Nature Power
@@ -254,6 +336,9 @@ IVs: 20 HP / 11 Atk / 22 Def / 17 SpA / 5 SpD / 29 Spe
 Ability: Keen Eye
 Level: 18
 Naive Nature
+Ball: Master Ball
+=Met_Location=238
+.Version=26
 - Knock Off
 - Supersonic
 - Mist
@@ -264,6 +349,9 @@ IVs: 22 HP / 6 Atk / 3 Def / 17 SpA / 5 SpD / 24 Spe
 Ability: Intimidate
 Level: 21
 Lax Nature
+Ball: Master Ball
+=Met_Location=248
+.Version=26
 - Aqua Jet
 - Sweet Scent
 - Water Sport
@@ -274,6 +362,9 @@ IVs: 19 HP / 4 Atk / 12 Def / 26 SpA / 15 SpD
 Ability: Soundproof
 Level: 16
 Relaxed Nature
+Ball: Master Ball
+=Met_Location=298
+.Version=26
 - Echoed Voice
 - Astonish
 - Howl
@@ -284,6 +375,9 @@ IVs: 28 HP / 2 Atk / 27 Def / 26 SpA / 11 SpD / 19 Spe
 Ability: Thick Fat
 Level: 22
 Bashful Nature
+Ball: Master Ball
+=Met_Location=54
+.Version=24
 - Fake Out
 - Whirlwind
 - Knock Off
@@ -294,6 +388,9 @@ IVs: 14 HP / 9 Atk / 26 Def / 8 SpD
 Ability: Pure Power
 Level: 34
 Hasty Nature
+Ball: Master Ball
+=Met_Location=298
+.Version=26
 - Psycho Cut
 - High Jump Kick
 - Psych Up
@@ -304,6 +401,9 @@ IVs: 30 Atk / 0 Def / 30 SpA / 19 Spe
 Ability: Solid Rock
 Level: 30
 Hardy Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=24
 - Amnesia
 - Lava Plume
 - Earth Power
@@ -314,6 +414,9 @@ IVs: 6 HP / 9 Atk / 12 Def / 13 SpA
 Ability: Own Tempo
 Level: 30
 Rash Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Magic Coat
 - Zen Headbutt
 - Rest
@@ -324,6 +427,10 @@ IVs: 24 Def / 6 SpA / 14 SpD / 13 Spe
 Ability: Pressure
 Level: 30
 Hasty Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Confuse Ray
 - Shadow Sneak
 - Pursuit
@@ -334,6 +441,9 @@ IVs: 8 HP / 29 Def / 19 SpA / 9 SpD
 Ability: Thick Fat
 Level: 28
 Brave Nature
+Ball: Master Ball
+=Met_Location=300
+.Version=26
 - Sleep Talk
 - Brine
 - Aurora Beam
@@ -344,6 +454,9 @@ IVs: 15 HP / 25 Atk / 1 Def / 3 SpA / 22 SpD / 9 Spe
 Ability: Thick Fat
 Level: 36
 Calm Nature
+Ball: Master Ball
+=Met_Location=326
+.Version=26
 - Fury Swipes
 - Charm
 - Assist
@@ -354,6 +467,9 @@ IVs: 26 HP / 1 Atk / 2 Def / 14 SpA / 20 SpD / 1 Spe
 Ability: Thick Fat
 Level: 32
 Rash Nature
+Ball: Master Ball
+=Met_Location=326
+.Version=27
 - Fury Swipes
 - Charm
 - Assist
@@ -364,6 +480,9 @@ IVs: 24 HP / 12 Atk / 5 Def / 7 SpD
 Ability: Heavy Metal
 Level: 30
 Gentle Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=24
 - Iron Defense
 - Feint Attack
 - Safeguard
@@ -374,6 +493,9 @@ IVs: 19 HP / 25 Atk / 21 Def / 15 SpD
 Ability: Rough Skin
 Level: 30
 Quirky Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Take Down
 - Sand Tomb
 - Dual Chop
@@ -384,6 +506,10 @@ IVs: 1 Atk / 20 Def / 17 SpD / 13 Spe
 Ability: Battle Armor
 Level: 30
 Docile Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Bug Bite
 - Poison Fang
 - Venoshock
@@ -394,6 +520,10 @@ IVs: 0 Atk / 3 Def / 14 SpA / 27 Spe
 Ability: Dry Skin
 Level: 30
 Rash Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Feint Attack
 - Revenge
 - Swagger
@@ -404,6 +534,9 @@ IVs: 30 Def / 4 SpA / 23 SpD / 2 Spe
 Ability: Reckless
 Level: 30
 Timid Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Fury Attack
 - Chip Away
 - Rock Blast
@@ -414,6 +547,10 @@ IVs: 29 HP / 0 Atk / 11 SpA / 25 Spe
 Ability: Thick Fat
 Level: 31
 Docile Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Mud Bomb
 - Icy Wind
 - Ice Fang
@@ -424,6 +561,9 @@ IVs: 19 HP / 25 Def / 21 SpA / 20 SpD
 Ability: Thick Fat
 Level: 31
 Hasty Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=24
 - Ancient Power
 - Icy Wind
 - Ice Fang
@@ -434,6 +574,10 @@ IVs: 26 Atk / 18 Def / 7 SpA / 9 SpD
 Ability: Frisk
 Level: 30
 Brave Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Confuse Ray
 - Shadow Sneak
 - Pursuit
@@ -444,6 +588,10 @@ IVs: 28 HP / 0 Def / 10 SpA / 29 Spe
 Ability: Sand Rush
 Level: 30
 Timid Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Dig
 - Hone Claws
 - Slash
@@ -454,6 +602,9 @@ IVs: 0 HP / 21 Def / 14 SpA / 28 SpD / 30 Spe
 Ability: Sheer Force
 Level: 32
 Quiet Nature
+Ball: Master Ball
+=Met_Location=330
+.Version=26
 - Snatch
 - Work Up
 - Thrash
@@ -464,6 +615,9 @@ IVs: 7 HP / 13 Atk / 14 Def / 14 SpA / 11 SpD / 5 Spe
 Ability: Shell Armor
 Level: 33
 Timid Nature
+Ball: Master Ball
+=Met_Location=332
+.Version=26
 - Bug Bite
 - Stealth Rock
 - Rock Slide
@@ -474,6 +628,9 @@ IVs: 3 HP / 30 Atk / 13 Def / 22 SpA / 0 SpD / 4 Spe
 Ability: Mummy
 Level: 32
 Serious Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=27
 - Hex
 - Will-O-Wisp
 - Ominous Wind
@@ -484,6 +641,9 @@ IVs: 28 HP / 19 Atk / 17 SpD / 10 Spe
 Ability: Weak Armor
 Level: 30
 Lonely Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Stockpile
 - Swallow
 - Body Slam
@@ -494,6 +654,10 @@ IVs: 29 Atk / 2 Def / 29 SpA / 11 SpD
 Ability: Big Pecks
 Level: 30
 Timid Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Feather Dance
 - Aqua Ring
 - Air Slash
@@ -504,6 +668,9 @@ IVs: 24 Atk / 16 SpA / 5 SpD / 20 Spe
 Ability: Chlorophyll
 Level: 30
 Hardy Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=24
 - Feint Attack
 - Take Down
 - Jump Kick
@@ -515,6 +682,10 @@ EVs: 2 HP
 Ability: Serene Grace
 Level: 30
 Modest Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Feint Attack
 - Take Down
 - Jump Kick
@@ -525,6 +696,9 @@ IVs: 20 HP / 2 Atk / 23 Def / 7 Spe
 Ability: Compound Eyes
 Level: 30
 Lonely Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=24
 - Bug Bite
 - Gastro Acid
 - Slash
@@ -535,6 +709,9 @@ IVs: 28 HP / 23 Atk / 21 Def / 21 Spe
 Ability: Flame Body
 Level: 30
 Mild Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Will-O-Wisp
 - Flame Burst
 - Imprison
@@ -545,6 +722,9 @@ IVs: 3 Atk / 5 SpA / 25 SpD / 27 Spe
 Ability: Flash Fire
 Level: 30
 Adamant Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Will-O-Wisp
 - Flame Burst
 - Imprison
@@ -555,6 +735,10 @@ IVs: 28 HP / 2 Def / 25 SpA / 2 Spe
 Ability: Mold Breaker
 Level: 30
 Rash Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Scary Face
 - Slash
 - False Swipe
@@ -565,6 +749,9 @@ IVs: 25 Def / 21 SpA / 5 SpD / 27 Spe
 Ability: Unnerve
 Level: 30
 Serious Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Scary Face
 - Slash
 - False Swipe
@@ -575,6 +762,9 @@ IVs: 29 Def / 14 SpA / 3 Spe
 Ability: Snow Cloak
 Level: 30
 Naughty Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Fury Swipes
 - Brine
 - Endure
@@ -585,6 +775,10 @@ IVs: 21 Atk / 26 Def / 24 SpD / 5 Spe
 Ability: Swift Swim
 Level: 30
 Relaxed Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Fury Swipes
 - Brine
 - Endure
@@ -595,6 +789,9 @@ IVs: 11 HP / 6 Atk / 18 Def / 22 Spe
 Ability: No Guard
 Level: 30
 Lax Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Iron Defense
 - Mega Punch
 - Magnitude
@@ -605,6 +802,10 @@ IVs: 26 Atk / 6 Def / 15 SpA / 27 SpD
 Ability: Klutz
 Level: 30
 Quirky Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Iron Defense
 - Mega Punch
 - Magnitude
@@ -615,6 +816,9 @@ IVs: 7 HP / 13 Atk / 5 Def / 19 SpA / 5 SpD / 24 Spe
 Ability: Levitate
 Level: 59
 Gentle Nature
+Ball: Master Ball
+=Met_Location=104
+.Version=25
 - Work Up
 - Dragon Rush
 - Body Slam
@@ -625,6 +829,10 @@ IVs: 7 HP / 5 Atk / 6 Def / 3 SpA / 25 SpD / 9 Spe
 Ability: Levitate
 Level: 59
 Hardy Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=104
+.Version=25
 - Flash Cannon
 - Dragon Rush
 - Fire Blast
@@ -635,6 +843,9 @@ IVs: 7 Atk / 8 Def / 17 SpA / 30 Spe
 Ability: Rivalry
 Level: 30
 Hardy Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Noble Roar
 - Take Down
 - Fire Fang
@@ -645,6 +856,10 @@ IVs: 0 HP / 6 Def / 15 SpD / 4 Spe
 Ability: Sap Sipper
 Level: 30
 Impish Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Synthesis
 - Take Down
 - Bulldoze
@@ -655,6 +870,10 @@ IVs: 7 HP / 16 Atk / 28 SpD / 23 Spe
 Ability: Sniper
 Level: 30
 Modest Nature
+Ball: Master Ball
+Language: Korean
+=Met_Location=148
+.Version=24
 - Mud-Slap
 - Clamp
 - Rock Polish
@@ -665,6 +884,9 @@ IVs: 21 HP / 19 Atk / 27 Def / 25 SpA / 5 SpD / 12 Spe
 Ability: Poison Touch
 Level: 35
 Adamant Nature
+Ball: Master Ball
+=Met_Location=42
+.Version=25
 - Water Pulse
 - Double Team
 - Toxic
@@ -675,6 +897,9 @@ IVs: 27 HP / 25 Atk / 7 Def / 8 SpA / 0 SpD / 26 Spe
 Ability: Mega Launcher
 Level: 35
 Gentle Nature
+Ball: Master Ball
+=Met_Location=42
+.Version=24
 - Bubble Beam
 - Swords Dance
 - Crabhammer
@@ -685,6 +910,9 @@ IVs: 29 Atk / 6 Def / 29 SpD / 16 Spe
 Ability: Hydration
 Level: 30
 Relaxed Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=25
 - Bide
 - Dragon Breath
 - Rain Dance

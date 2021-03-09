@@ -4,6 +4,7 @@ Ability: Arena Trap
 Level: 1
 Shiny: Yes
 Jolly Nature
+.Version=25
 - Reversal
 - Memento
 - Pursuit
@@ -13,8 +14,11 @@ Magmar (M)
 IVs: 0 Atk / 30 SpA
 Ability: Flame Body
 Level: 30
-Ball: Cherish Ball
 Modest Nature
+Ball: Cherish Ball
+Language: Japanese
+=Met_Location=40059
+.Version=21
 - Incinerate
 - Rock Smash
 - Secret Power
@@ -26,6 +30,9 @@ Ability: Swift Swim
 Level: 1
 Shiny: Yes
 Adamant Nature
+Ball: Cherish Ball
+=Met_Location=40010
+.Version=25
 - Splash
 - Celebrate
 - Happy Hour
@@ -33,10 +40,13 @@ Adamant Nature
 Eevee (M)
 IVs: 26 HP / 0 Atk / 24 Def / 0 SpA / 14 SpD / 0 Spe
 Ability: Anticipation
-Ball: Cherish Ball
 Level: 15
 Shiny: Yes
 Bashful Nature
+Ball: Cherish Ball
+Language: Japanese
+=Met_Location=40001
+.Version=27
 - Swift
 - Quick Attack
 - Baby-Doll Eyes
@@ -47,6 +57,7 @@ EVs: 252 Atk / 4 Def / 252 Spe
 Ability: Unnerve
 Shiny: Yes
 Jolly Nature
+.Version=27
 - Pursuit
 - Stone Edge
 - Hone Claws
@@ -58,57 +69,20 @@ EVs: 180 HP / 4 Def / 20 SpA / 180 SpD / 124 Spe
 Ability: Static
 Level: 70
 Calm Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
 - Thunderbolt
 - Hidden Power [Ice]
 - Tailwind
 - Roost
-
-Mewtwo
-Ability: Unnerve
-=OT_Name=Play! 2016
-Shiny: Yes
-Ball: Cherish Ball
-Timid Nature
-- Psystrike
-- Psychic
-- Recover
-- Aura Sphere
-
-ミラージュ (Mew)
-IVs: 28 Atk
-Ability: Synchronize
-Level: 30
-Shiny: Yes
-Timid Nature
-- Soft-Boiled
-- Seismic Toss
-- Counter
-- Endure
-
-Phanpy (F)
-Ability: Pickup
-Level: 1
-Adamant Nature
-- Ice Shard
-- Play Rough
-- Counter
-- Head Smash
-
-Larvitar (F)
-IVs: 8 SpA
-Ability: Guts
-Level: 1
-Jolly Nature
-- Outrage
-- Dragon Dance
-- Pursuit
-- Stealth Rock
 
 Tyranitar (M) @ Chople Berry
 EVs: 252 HP / 4 Def / 252 SpD
 Ability: Sand Stream
 Shiny: Yes
 Sassy Nature
+.Version=25
 - Foul Play
 - Superpower
 - Stealth Rock
@@ -118,30 +92,13 @@ Celebi
 IVs: 0 Atk
 Ability: Natural Cure
 Bold Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
 - Confusion
 - Recover
 - Heal Bell
 - Safeguard
-
-Treecko (M)
-IVs: 4 Atk / 30 SpA / 30 Spe
-EVs: 1 Atk
-Ability: Overgrow
-Level: 5
-Shiny: Yes
-Timid Nature
-- Pound
-- Leer
-
-Torchic (M)
-IVs: 23 SpA
-EVs: 1 Atk
-Ability: Blaze
-Level: 5
-Shiny: Yes
-Adamant Nature
-- Scratch
-- Growl
 
 Absol (M)
 IVs: 6 SpA
@@ -149,70 +106,21 @@ Ability: Super Luck
 Level: 1
 Shiny: Yes
 Jolly Nature
+.Version=25
 - Play Rough
 - Sucker Punch
 - Baton Pass
 - Zen Headbutt
-
-Registeel
-IVs: 30 HP / 0 Atk
-Ability: Clear Body
-Level: 40
-Shiny: Yes
-Calm Nature
-- Seismic Toss
-- Counter
-- Power-Up Punch
-- Dynamic Punch
-
-Latias (F)
-IVs: 27 HP / 26 Atk / 27 Def / 2 SpA / 2 SpD
-Ability: Levitate
-Level: 50
-Shiny: Yes
-Timid Nature
-- Mist Ball
-- Psychic
-- Recover
-- Charm
-
-Latios (M)
-IVs: 4 Atk / 30 SpA / 30 Spe
-Ability: Levitate
-Level: 50
-Timid Nature
-- Defog
-- Psychic
-- Recover
-- Dragon Dance
-
-Famine (Groudon)
-IVs: 23 SpA
-Ability: Drought
-Level: 45
-Shiny: Yes
-Adamant Nature
-- Counter
-- Seismic Toss
-- Dynamic Punch
-- Rollout
-
-Leviathan (Rayquaza)
-IVs: 23 SpA
-Ability: Air Lock
-Level: 70
-Shiny: Yes
-Adamant Nature
-- Body Slam
-- Mud-Slap
-- Double-Edge
-- Endure
 
 Jirachi
 IVs: 30 HP / 30 Def
 Ability: Serene Grace
 Level: 50
 Hasty Nature
+Ball: Cherish Ball
+Language: Japanese
+=Met_Location=40015
+.Version=21
 - Draco Meteor
 - Meteor Mash
 - Power-Up Punch
@@ -221,6 +129,10 @@ Hasty Nature
 Infernape (M)
 Ability: Blaze
 Jolly Nature
+Ball: Cherish Ball
+Language: Japanese
+=Met_Location=40015
+.Version=21
 - Hone Claws
 - Dig
 - Retaliate
@@ -232,6 +144,7 @@ EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Flame Body
 Shiny: Yes
 Timid Nature
+.Version=24
 - Quiver Dance
 - Giga Drain
 - Bug Buzz
@@ -243,6 +156,9 @@ Ability: Prankster
 Level: 50
 Shiny: Yes
 Hasty Nature
+Ball: Master Ball
+=Met_Location=348
+.Version=27
 - Extrasensory
 - Agility
 - Air Slash
@@ -254,6 +170,9 @@ Ability: Turboblaze
 Level: 50
 Shiny: Yes
 Timid Nature
+Ball: Master Ball
+=Met_Location=340
+.Version=27
 - Dragon Breath
 - Slash
 - Extrasensory
@@ -265,10 +184,14 @@ Ability: Sand Force
 Level: 50
 Shiny: Yes
 Impish Nature
+Ball: Master Ball
+=Met_Location=348
+.Version=27
 - Extrasensory
 - Swords Dance
 - Earth Power
 - Rock Slide
+
 
 Landorus-Therian (M)
 IVs: 7 SpA / 30 Spe
@@ -276,6 +199,9 @@ EVs: 20 HP / 252 Atk / 54 SpD / 184 Spe
 Ability: Intimidate
 Level: 50
 Adamant Nature
+Ball: Master Ball
+=Met_Location=348
+.Version=26
 - Rock Slide
 - U-turn
 - Earthquake
@@ -286,6 +212,9 @@ IVs: 16 HP / 8 Atk / 22 Def / 3 SpD / 12 Spe
 Ability: Suction Cups
 Level: 10
 Jolly Nature
+Ball: Cherish Ball
+=Met_Location=40019
+.Version=25
 - Happy Hour
 - Foul Play
 - Hypnosis
@@ -296,6 +225,9 @@ IVs: 13 HP / 0 Atk / 5 SpA
 Ability: Pickup
 Level: 50
 Bold Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=25
 - Incinerate
 - Flash
 - Rock Smash
@@ -306,6 +238,9 @@ IVs: 18 Atk / 30 SpA / 30 Spe
 Ability: Fairy Aura
 Shiny: Yes
 Modest Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
 - Geomancy
 - Moonblast
 - Aromatherapy
@@ -316,6 +251,9 @@ IVs: 1 Atk
 Ability: Dark Aura
 Shiny: Yes
 Modest Nature
+Ball: Cherish Ball
+=Met_Location=40011
+.Version=27
 - Oblivion Wing
 - Sucker Punch
 - Dark Pulse
@@ -326,6 +264,9 @@ IVs: 30 Atk / 30 SpA / 30 Spe
 Ability: Clear Body
 Level: 50
 Hasty Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
 - Diamond Storm
 - Moonblast
 - Dazzling Gleam
@@ -336,6 +277,9 @@ IVs: 27 SpA
 Ability: Magician
 Level: 50
 Jolly Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
 - Hyperspace Hole
 - Psychic
 - Astonish
