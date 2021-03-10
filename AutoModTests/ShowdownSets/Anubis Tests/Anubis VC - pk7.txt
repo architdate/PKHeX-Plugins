@@ -4,6 +4,7 @@ Ability: Rain Dish
 Level: 10
 Shiny: Yes
 Timid Nature
+=Generation=2
 - Tackle
 - Tail Whip
 - Bubble
@@ -14,6 +15,7 @@ Ability: Run Away
 Level: 3
 Shiny: Yes
 Brave Nature
+=Generation=2
 - Tackle
 - String Shot
 
@@ -23,6 +25,7 @@ Ability: Run Away
 Level: 4
 Shiny: Yes
 Naive Nature
+=Generation=2
 - Poison Sting
 - String Shot
 
@@ -32,6 +35,7 @@ Ability: Big Pecks
 Level: 3
 Shiny: Yes
 Relaxed Nature
+=Generation=2
 - Tackle
 
 Rattata (M)
@@ -40,6 +44,7 @@ Ability: Hustle
 Level: 3
 Shiny: Yes
 Brave Nature
+=Generation=2
 - Tackle
 - Tail Whip
 
@@ -49,6 +54,7 @@ Ability: Sand Rush
 Level: 6
 Shiny: Yes
 Mild Nature
+=Generation=2
 - Scratch
 - Defense Curl
 
@@ -58,6 +64,7 @@ Ability: Hustle
 Level: 12
 Shiny: Yes
 Careful Nature
+=Generation=2
 - Growl
 - Tackle
 - Scratch
@@ -69,6 +76,7 @@ Ability: Drought
 Level: 13
 Shiny: Yes
 Sassy Nature
+=Generation=2
 - Ember
 - Tail Whip
 - Quick Attack
@@ -80,6 +88,7 @@ Ability: Friend Guard
 Level: 12
 Shiny: Yes
 Relaxed Nature
+=Generation=2
 - Sing
 - Defense Curl
 - Pound
@@ -90,6 +99,7 @@ Ability: Frisk
 Level: 22
 Shiny: Yes
 Bashful Nature
+=Generation=2
 - Sing
 - Disable
 - Defense Curl
@@ -101,6 +111,7 @@ Ability: Infiltrator
 Level: 6
 Shiny: Yes
 Serious Nature
+=Generation=2
 - Leech Life
 - Supersonic
 
@@ -110,6 +121,7 @@ Ability: Run Away
 Level: 5
 Shiny: Yes
 Timid Nature
+=Generation=2
 - Absorb
 
 Attrition (Venomoth) (M)
@@ -118,6 +130,7 @@ Ability: Wonder Skin
 Level: 49
 Shiny: Yes
 Impish Nature
+=Generation=2
 - Psybeam
 - Gust
 - Sleep Powder
@@ -129,13 +142,14 @@ Ability: Swift Swim
 Level: 4
 Shiny: Yes
 Gentle Nature
+=Generation=2
 - Bubble
 
 ロモたん (Poliwag) (M)
 IVs: 12 HP / 17 Atk / 13 SpD
 Ability: Swift Swim
-.Met_Location=30013
-.Version=37
+=OT_Name=トレーナー
+=Generation=2
 Language: Japanese
 Level: 2
 Shiny: Square
@@ -148,6 +162,7 @@ Ability: Magic Guard
 Level: 15
 Shiny: Yes
 Timid Nature
+=Generation=2
 - Teleport
 
 Bellsprout (M)
@@ -156,6 +171,7 @@ Ability: Gluttony
 Level: 5
 Shiny: Yes
 Timid Nature
+=Generation=2
 - Vine Whip
 
 Geodude (F)
@@ -164,6 +180,7 @@ Ability: Sand Veil
 Level: 3
 Shiny: Yes
 Relaxed Nature
+=Generation=2
 - Tackle
 
 Slowpoke (M)
@@ -172,6 +189,7 @@ Ability: Regenerator
 Level: 26
 Shiny: Yes
 Mild Nature
+=Generation=2
 - Confusion
 - Tackle
 - Growl
@@ -183,6 +201,7 @@ Ability: Levitate
 Level: 3
 Shiny: Yes
 Relaxed Nature
+=Generation=2
 - Hypnosis
 - Lick
 
@@ -192,6 +211,7 @@ Ability: Inner Focus
 Level: 30
 Shiny: Yes
 Hardy Nature
+=Generation=2
 - Comet Punch
 - Agility
 
@@ -201,6 +221,7 @@ Ability: Levitate
 Level: 14
 Shiny: Yes
 Rash Nature
+=Generation=2
 - Poison Gas
 - Tackle
 - Smog
@@ -211,6 +232,7 @@ Ability: Steadfast
 Level: 30
 Shiny: Yes
 Hardy Nature
+=Generation=2
 - Leer
 - Focus Energy
 - Double Team
@@ -222,6 +244,7 @@ Ability: Vital Spirit
 Level: 16
 Shiny: Yes
 Gentle Nature
+=Generation=2
 - Ember
 - Leer
 - Smog
@@ -233,6 +256,7 @@ Ability: Rattled
 Level: 5
 Shiny: Yes
 Docile Nature
+=Generation=2
 - Splash
 
 Gyarados (M)
@@ -241,6 +265,7 @@ Ability: Moxie
 Level: 30
 Shiny: Yes
 Hardy Nature
+=Generation=2
 - Thrash
 - Bite
 - Dragon Rage
@@ -252,6 +277,7 @@ Ability: Hydration
 Level: 15
 Shiny: Yes
 Bashful Nature
+=Generation=2
 - Water Gun
 - Growl
 
@@ -260,6 +286,7 @@ IVs: 20 HP / 2 SpD / 4 Spe
 Ability: Imposter
 Shiny: Yes
 Hardy Nature
+=Generation=2
 - Transform
 
 Eevee (M)
@@ -268,6 +295,7 @@ Ability: Anticipation
 Level: 20
 Shiny: Yes
 Hasty Nature
+=Generation=2
 - Tackle
 - Tail Whip
 - Sand Attack
@@ -279,6 +307,7 @@ Ability: Marvel Scale
 Level: 15
 Shiny: Yes
 Bashful Nature
+=Generation=2
 - Wrap
 - Thunder Wave
 - Twister
@@ -290,6 +319,7 @@ Ability: Flash Fire
 Level: 5
 Shiny: Yes
 Timid Nature
+=Generation=2
 - Tackle
 - Leer
 
@@ -299,6 +329,7 @@ Ability: Sheer Force
 Level: 5
 Shiny: Yes
 Timid Nature
+=Generation=2
 - Scratch
 - Leer
 
@@ -308,6 +339,7 @@ Ability: Sheer Force
 Level: 52
 Shiny: Yes
 Hasty Nature
+=Generation=2
 - Strength
 - Scary Face
 - Bite
@@ -319,6 +351,7 @@ Ability: Frisk
 Level: 2
 Shiny: Yes
 Impish Nature
+=Generation=2
 - Tackle
 
 Hoothoot (F)
@@ -327,6 +360,7 @@ Ability: Tinted Lens
 Level: 3
 Shiny: Yes
 Brave Nature
+=Generation=2
 - Tackle
 - Growl
 
@@ -336,6 +370,7 @@ Ability: Rattled
 Level: 3
 Shiny: Yes
 Gentle Nature
+=Generation=2
 - Tackle
 
 Spinarak (M)
@@ -344,6 +379,7 @@ Ability: Sniper
 Level: 4
 Shiny: Yes
 Lonely Nature
+=Generation=2
 - Poison Sting
 - String Shot
 
@@ -353,6 +389,7 @@ Ability: Super Luck
 Level: 5
 Shiny: Yes
 Hardy Nature
+=Generation=2
 - Growl
 - Charm
 
@@ -362,6 +399,7 @@ Ability: Rattled
 Level: 20
 Shiny: Yes
 Hardy Nature
+=Generation=2
 - Rock Smash
 - Mimic
 - Flail
@@ -373,6 +411,7 @@ Ability: Infiltrator
 Level: 5
 Shiny: Yes
 Timid Nature
+=Generation=2
 - Splash
 - Synthesis
 - Tail Whip
@@ -383,6 +422,7 @@ Ability: Contrary
 Level: 15
 Shiny: Yes
 Timid Nature
+=Generation=2
 - Constrict
 - Withdraw
 - Wrap
@@ -394,6 +434,7 @@ Ability: Sand Veil
 Level: 2
 Shiny: Yes
 Impish Nature
+=Generation=2
 - Tackle
 - Growl
 
@@ -403,6 +444,7 @@ Ability: Inner Focus
 Level: 40
 Shiny: Yes
 Hardy Nature
+=Generation=2
 - Leer
 - Thunder Shock
 - Roar
@@ -414,6 +456,7 @@ Ability: Inner Focus
 Level: 40
 Shiny: Yes
 Hardy Nature
+=Generation=2
 - Leer
 - Ember
 - Roar
@@ -425,6 +468,7 @@ Ability: Inner Focus
 Level: 40
 Shiny: Yes
 Hardy Nature
+=Generation=2
 - Leer
 - Water Gun
 - Roar

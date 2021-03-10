@@ -1,0 +1,2161 @@
+Venusaur (M) @ Venusaurite
+IVs: 27 Atk
+EVs: 252 HP / 72 Def / 186 SpD
+Ability: Overgrow
+Level: 52
+Bold Nature
+.Version=26
+- Synthesis
+- Knock Off
+- Giga Drain
+- Sludge Bomb
+
+Charmander (M)
+IVs: 2 HP / 19 Atk / 21 Def / 24 SpA / 17 SpD / 27 Spe
+Ability: Solar Power
+Level: 5
+Adamant Nature
+Ball: Cherish Ball
+=Met_Location=40025
+.Version=26
+- Scratch
+- Growl
+- Celebrate
+
+Charizard (M) @ Leftovers
+IVs: 26 SpA
+EVs: 252 HP / 6 Atk / 252 Spe
+Ability: Blaze
+Level: 65
+Jolly Nature
+.Version=26
+- Swords Dance
+- Roost
+- Will-O-Wisp
+- Flare Blitz
+
+Charizard (M) @ Charizardite X
+IVs: 29 SpA
+EVs: 252 Atk / 6 Def / 252 Spe
+Ability: Blaze
+Level: 56
+Shiny: Yes
+Jolly Nature
+.Version=25
+- Flare Blitz
+- Dragon Claw
+- Earthquake
+- Roost
+
+Blastoise (M) @ Blastoisinite
+IVs: 29 Atk
+EVs: 252 HP / 252 SpA / 6 SpD
+Ability: Torrent
+Level: 72
+Modest Nature
+.Version=24
+- Rapid Spin
+- Dark Pulse
+- Aura Sphere
+- Scald
+
+Beedrill (F) @ Choice Band
+EVs: 6 HP / 252 Atk / 252 Spe
+Ability: Swarm
+Shiny: Yes
+Adamant Nature
+.Version=27
+- Knock Off
+- Drill Run
+- U-turn
+- Poison Jab
+
+Kunai (Beedrill) (M)
+IVs: 0 SpA
+Ability: Swarm
+Level: 7
+Shiny: Yes
+Jolly Nature
+Ball: Master Ball
+.Version=8
+- Fury Attack
+- Knock Off
+- Drill Run
+- Bug Bite
+
+Beedrill (F) @ Beedrillite
+EVs: 252 Atk / 6 Def / 252 Spe
+Ability: Swarm
+Shiny: Yes
+Jolly Nature
+.Version=26
+- Knock Off
+- Fell Stinger
+- X-Scissor
+- Poison Jab
+
+Pidgeotto (F) @ Pidgeotite
+IVs: 14 Atk / 30 Spe
+Ability: Keen Eye
+Level: 30
+Timid Nature
+.Version=15
+- Heat Wave
+- Refresh
+- Mimic
+- Sky Attack
+
+Pidgeot (F) @ Pidgeotite
+IVs: 19 Atk
+EVs: 252 SpA / 6 SpD / 252 Spe
+Ability: Keen Eye
+Level: 61
+Timid Nature
+.Version=26
+- Roost
+- U-turn
+- Heat Wave
+- Hurricane
+
+Pidgeot (F) @ Pidgeotite
+IVs: 22 Atk
+EVs: 6 Def / 252 SpA / 252 Spe
+Ability: Big Pecks
+Shiny: Yes
+Timid Nature
+.Version=25
+- U-turn
+- Heat Wave
+- Hidden Power [Ground]
+- Hurricane
+
+Fearow (F)
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Keen Eye
+Jolly Nature
+.Version=3
+- Double-Edge
+- Quick Attack
+- Pluck
+- Mud-Slap
+
+Pikachu (M) @ Light Ball
+IVs: 27 HP / 6 Atk / 26 Def / 17 SpA / 21 SpD
+Ability: Static
+Level: 10
+Hasty Nature
+Ball: Cherish Ball
+Language: Japanese
+=Met_Location=40010
+.Version=27
+- Fly
+- Surf
+- Agility
+- Celebrate
+
+Nidoqueen (F) @ Life Orb
+EVs: 252 SpA / 6 SpD / 252 Spe
+Ability: Sheer Force
+Shiny: Yes
+Modest Nature
+.Version=26
+- Stealth Rock
+- Ice Beam
+- Thunderbolt
+- Earth Power
+
+Nidoking (M) @ Life Orb
+EVs: 6 HP / 252 SpA / 252 Spe
+Ability: Sheer Force
+Modest Nature
+=Generation=2
+- Flamethrower
+- Ice Beam
+- Thunderbolt
+- Bubble Beam
+
+Nidoking (M)
+IVs: 30 Atk
+EVs: 6 HP / 252 SpA / 252 Spe
+Ability: Sheer Force
+Level: 75
+Shiny: Yes
+Timid Nature
+.Version=24
+- Earth Power
+- Ice Beam
+- Thunderbolt
+- Sludge Wave
+
+Clefable (M) @ Leftovers
+IVs: 0 Atk
+EVs: 252 HP / 172 Def / 86 SpD
+Ability: Magic Guard
+Level: 53
+Shiny: Yes
+Calm Nature
+.Version=3
+- Thunder Wave
+- Soft-Boiled
+- Flamethrower
+- Moonblast
+
+Arcanine (F)
+IVs: 5 HP / 22 Atk / 18 SpD
+Ability: Justified
+Level: 34
+Adamant Nature
+=Generation=2
+- Teleport
+- Ember
+- Reflect
+- Dragon Rage
+
+Iron Sheik (Alakazam) (M) @ Focus Sash
+IVs: 2 Atk
+EVs: 252 SpA / 6 SpD / 252 Spe
+Ability: Magic Guard
+Shiny: Yes
+Hasty Nature
+=Generation=2
+- Psychic
+- Shadow Ball
+- Hidden Power [Fire]
+- Counter
+
+Graveler (F)
+IVs: 22 SpA
+Ability: Sturdy
+Level: 32
+Shiny: Yes
+Adamant Nature
+Ball: Master Ball
+.Version=8
+- Sucker Punch
+- Stealth Rock
+- Block
+- Superpower
+
+Gina (Golem) (F) @ Weakness Policy
+IVs: 0 SpA
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Sturdy
+Shiny: Yes
+Adamant Nature
+Ball: Master Ball
+.Version=3
+- Metronome
+- Body Slam
+- Counter
+- Sucker Punch
+
+Dodrio (F) @ Flyinium Z
+IVs: 0 SpA
+EVs: 252 Atk / 252 Spe
+Ability: Early Bird
+Level: 50
+Shiny: Yes
+Jolly Nature
+.Version=27
+- Brave Bird
+- Jump Kick
+- Mirror Move
+- Knock Off
+
+Cloyster (M) @ Focus Sash
+IVs: 30 Spe
+EVs: 6 HP / 252 Atk / 252 Spe
+Ability: Skill Link
+Shiny: Yes
+Adamant Nature
+.Version=24
+- Shell Smash
+- Icicle Spear
+- Rock Blast
+- Liquidation
+
+Gengar (F)
+IVs: 4 HP / 2 Atk / 11 Def / 28 SpA / 30 SpD / 21 Spe
+Ability: Cursed Body
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=25
+- Mean Look
+- Trick
+- Pain Split
+- Icy Wind
+
+Gengar (F)
+IVs: 19 HP / 8 Atk / 19 Def / 8 SpA / 28 SpD / 0 Spe
+Ability: Cursed Body
+Level: 25
+Shiny: Yes
+Timid Nature
+=Met_Location=40001
+.Version=24
+- Trick
+- Icy Wind
+- Pain Split
+- Sludge Wave
+
+VOLTY (Voltorb)
+IVs: 24 HP / 0 Def / 7 SpD
+Ability: Aftermath
+Level: 5
+Hardy Nature
+=Generation=2
+- Tackle
+
+Hitmonlee (M) @ Normal Gem
+IVs: 0 SpA
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Unburden
+Adamant Nature
+.Version=26
+- Fake Out
+- Knock Off
+- Poison Jab
+- Close Combat
+
+Rhydon (M) @ Protector
+IVs: 11 SpA
+EVs: 252 HP / 252 Atk / 6 SpD
+Ability: Rock Head
+Shiny: Yes
+Adamant Nature
+Ball: Safari Ball
+.Version=2
+- Earthquake
+- Stealth Rock
+- Avalanche
+- Rock Blast
+
+Kangaskhan (F)
+IVs: 16 Atk / 5 Def / 19 Spe
+EVs: 252 HP / 6 Def / 252 Spe
+Ability: Inner Focus
+Level: 73
+Jolly Nature
+=Generation=2
+- Body Slam
+- Seismic Toss
+- Crunch
+- Fake Out
+
+Kangaskhan (F)
+IVs: 14 SpA
+Ability: Early Bird
+Level: 5
+Shiny: Yes
+Jolly Nature
+.Version=3
+- Counter
+- Double-Edge
+- Body Slam
+- Seismic Toss
+
+Electabuzz (M) @ Electirizer
+IVs: 11 SpA
+Ability: Static
+Level: 43
+Adamant Nature
+.Version=15
+- Cross Chop
+- Follow Me
+- Ice Punch
+- Magnet Rise
+
+Magmar (F)
+IVs: 17 HP / 17 Atk / 20 Def / 7 SpA / 26 SpD / 29 Spe
+Ability: Flame Body
+Modest Nature
+.Version=15
+- Follow Me
+- Heat Wave
+- Cross Chop
+- Helping Hand
+
+Magmar (M)
+IVs: 0 Atk / 30 SpA
+Ability: Flame Body
+Level: 30
+Modest Nature
+Ball: Cherish Ball
+Language: Japanese
+=Met_Location=40059
+.Version=21
+- Incinerate
+- Rock Smash
+- Secret Power
+- Power-Up Punch
+
+Tauros (M)
+EVs: 252 Atk / 6 SpA / 252 Spe
+Ability: Sheer Force
+Naive Nature
+=Generation=2
+- Body Slam
+- Rock Slide
+- Earthquake
+- Fire Blast
+
+ひろしま (Magikarp) (F) @ Gold Bottle Cap
+IVs: 4 Atk / 26 Def / 17 SpA / 10 Spe
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Swift Swim
+Level: 99
+Shiny: Yes
+Jolly Nature
+Ball: Cherish Ball
+Language: Japanese
+=Met_Location=40010
+.Version=27
+- Splash
+- Celebrate
+- Happy Hour
+- Bounce
+
+Ditto @ Choice Scarf
+IVs: 25 Atk / 20 SpA / 15 SpD
+EVs: 252 HP / 64 Atk / 64 Def / 56 SpA / 40 SpD / 34 Spe
+Ability: Imposter
+Level: 56
+Shiny: Yes
+Quirky Nature
+Ball: Master Ball
+=Met_Location=148
+.Version=24
+- Transform
+
+Eeveeeeeeeee (Eevee) (F) @ Silk Scarf
+IVs: 0 SpA
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Adaptability
+Level: 50
+Shiny: Yes
+Jolly Nature
+.Version=3
+- Wish
+- Mud-Slap
+- Flail
+- Body Slam
+
+Articuno
+IVs: 30 HP / 3 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Pressure
+Level: 50
+Timid Nature
+.Version=15
+- Extrasensory
+- Heal Bell
+- Defog
+- Signal Beam
+
+Articuno
+IVs: 23 Atk / 3 SpA / 14 SpD
+Ability: Snow Cloak
+Level: 70
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=26
+- Freeze-Dry
+- Ice Beam
+- Hail
+- Reflect
+
+Articuno
+IVs: 14 Atk
+EVs: 252 SpA / 6 SpD / 252 Spe
+Ability: Pressure
+Level: 50
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=7
+- Ice Beam
+- Air Cutter
+- Ancient Power
+- Defog
+
+McFlurry (Articuno)
+IVs: 22 Atk
+Ability: Snow Cloak
+Level: 50
+Shiny: Yes
+Timid Nature
+=Generation=2
+- Peck
+- Bubble Beam
+- Whirlwind
+- Take Down
+
+Zapdos
+IVs: 26 HP / 14 Atk / 2 Def / 27 SpA / 17 SpD / 6 Spe
+Ability: Pressure
+Level: 70
+Naive Nature
+.Version=2
+- Agility
+- Detect
+- Drill Peck
+- Charge
+
+Zapdos @ Ampharosite
+IVs: 10 Atk / 30 Def
+EVs: 252 SpA / 252 Spe
+Ability: Static
+Level: 70
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Heat Wave
+- Tailwind
+- Signal Beam
+- Agility
+
+Zapdos
+IVs: 4 Atk / 30 Def
+Ability: Pressure
+Level: 50
+Timid Nature
+.Version=15
+- Extrasensory
+- Baton Pass
+- Defog
+- Heat Wave
+
+Zeus (Zapdos) @ Leftovers
+IVs: 0 Atk / 30 Def
+EVs: 248 HP / 10 Def / 252 Spe
+Ability: Static
+Shiny: Yes
+Timid Nature
+=Generation=2
+- Take Down
+- Whirlwind
+- Bide
+- Reflect
+
+Moltres
+IVs: 30 HP / 5 Atk / 30 SpA
+Ability: Pressure
+Level: 50
+Timid Nature
+.Version=15
+- Extrasensory
+- Morning Sun
+- Defog
+- Mud-Slap
+
+Moltres
+IVs: 0 Atk
+EVs: 252 SpA / 252 Spe
+Ability: Flame Body
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Sky Attack
+- Heat Wave
+- Snore
+- Tailwind
+
+Amun-Ra (Moltres)
+IVs: 0 Atk / 30 SpA
+Ability: Flame Body
+Level: 50
+Shiny: Yes
+Timid Nature
+=Generation=2
+- Mimic
+- Reflect
+- Swift
+- Whirlwind
+
+Moltres
+IVs: 14 Atk
+EVs: 252 SpA / 6 SpD / 252 Spe
+Ability: Pressure
+Level: 50
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=7
+- Flamethrower
+- Air Cutter
+- Ancient Power
+- Defog
+
+Dragonite (M)
+Ability: Inner Focus
+Level: 62
+Adamant Nature
+Ball: Cherish Ball
+=Met_Location=106
+.Version=27
+- Agility
+- Slam
+- Barrier
+- Hyper Beam
+
+Mewtwo
+IVs: 18 Atk / 30 SpD
+EVs: 98 HP / 125 Atk / 74 Def / 106 SpA / 72 SpD / 35 Spe
+Ability: Pressure
+Timid Nature
+Ball: Master Ball
+=Met_Location=168
+.Version=24
+- Psystrike
+- Aura Sphere
+- Ice Beam
+- Calm Mind
+
+Mewtwo @ Mewtwonite Y
+IVs: 22 HP / 2 Atk
+EVs: 2 Atk / 4 Def / 252 SpA / 252 Spe
+Ability: Unnerve
+Level: 72
+Shiny: Yes
+Timid Nature
+=Generation=2
+- Bubble Beam
+- Self-Destruct
+- Counter
+- Teleport
+
+Mewtwo @ Mewtwonite Y
+IVs: 0 Atk
+Ability: Unnerve
+Shiny: Yes
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Psystrike
+- Psychic
+- Recover
+- Aura Sphere
+
+Cleffa (M)
+IVs: 21 HP / 0 Atk / 23 SpD / 13 Spe
+Ability: Cute Charm
+Level: 5
+Bold Nature
+.Version=3
+- Soft-Boiled
+- Mud-Slap
+- Wish
+- Metronome
+
+Espeon (M) @ Leftovers
+IVs: 0 Atk
+EVs: 252 SpA / 6 SpD / 252 Spe
+Ability: Magic Bounce
+Timid Nature
+=Generation=2
+- Calm Mind
+- Psychic
+- Shadow Ball
+- Zap Cannon
+
+Misdreavus (F)
+IVs: 4 Atk / 30 Def
+Ability: Levitate
+Level: 37
+Shiny: Yes
+Timid Nature
+.Version=15
+- Psybeam
+- Confuse Ray
+- Mean Look
+- Shadow Ball
+
+Unown-C
+IVs: 29 HP / 20 Atk / 12 Def / 21 SpA / 17 SpD / 12 Spe
+EVs: 47 Atk / 47 SpA
+Ability: Levitate
+Level: 39
+Modest Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=26
+- Hidden Power [Electric]
+
+Unown-D
+IVs: 14 Atk / 30 Spe
+Ability: Levitate
+Level: 25
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=12
+- Hidden Power [Psychic]
+
+Unown-E
+IVs: 14 Atk / 30 Spe
+Ability: Levitate
+Level: 27
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=12
+- Hidden Power [Psychic]
+
+Unown-F
+IVs: 10 HP / 21 Atk / 16 Def / 14 SpA / 4 SpD / 3 Spe
+Ability: Levitate
+Level: 36
+Modest Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=26
+- Hidden Power [Poison]
+
+Unown-F
+IVs: 21 HP / 4 Atk / 18 Def / 29 SpA / 5 SpD / 27 Spe
+Ability: Levitate
+Level: 22
+Modest Nature
+Ball: Master Ball
+.Version=12
+- Hidden Power [Ice]
+
+Unown-F
+IVs: 14 Atk / 30 Spe
+Ability: Levitate
+Level: 25
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=12
+- Hidden Power [Psychic]
+
+Unown-I
+IVs: 14 Atk / 30 Spe
+Ability: Levitate
+Level: 25
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=12
+- Hidden Power [Psychic]
+
+Unown-K
+IVs: 0 HP / 22 Atk / 0 Def / 27 SpA / 10 SpD / 5 Spe
+EVs: 48 Atk / 48 SpA
+Ability: Levitate
+Level: 39
+Modest Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=26
+- Hidden Power [Bug]
+
+Unown-K
+IVs: 14 Atk / 30 Spe
+Ability: Levitate
+Level: 25
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=12
+- Hidden Power [Psychic]
+
+Unown-N
+IVs: 14 Atk / 30 Spe
+Ability: Levitate
+Level: 26
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=12
+- Hidden Power [Psychic]
+
+Unown-O
+IVs: 9 Def / 18 Spe
+Ability: Levitate
+Level: 38
+Modest Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=26
+- Hidden Power [Ice]
+
+Unown-R
+IVs: 14 Atk / 30 Spe
+Ability: Levitate
+Level: 25
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=12
+- Hidden Power [Psychic]
+
+Unown-U
+IVs: 1 HP / 14 Atk / 29 Def / 1 SpA / 17 Spe
+Ability: Levitate
+Level: 37
+Modest Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=26
+- Hidden Power [Dragon]
+
+Unown-Y
+IVs: 23 HP / 27 Atk / 26 Def / 1 SpA / 5 SpD / 9 Spe
+Ability: Levitate
+Level: 38
+Gentle Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=26
+- Hidden Power [Dragon]
+
+Unown-!
+IVs: 15 HP / 19 Atk / 0 Def / 6 SpA / 14 SpD / 20 Spe
+EVs: 19 Atk / 19 SpA
+Ability: Levitate
+Level: 37
+Timid Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=26
+- Hidden Power [Fighting]
+
+Unown-!
+IVs: 14 Atk / 30 Spe
+Ability: Levitate
+Level: 25
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=12
+- Hidden Power [Psychic]
+
+Unown-?
+IVs: 5 HP / 7 Atk / 26 Def / 25 SpA / 5 SpD / 22 Spe
+Ability: Levitate
+Level: 38
+Timid Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=26
+- Hidden Power [Psychic]
+
+QT (Shuckle) (F) @ Leftovers
+EVs: 252 HP / 6 Def / 252 SpD
+Ability: Sturdy
+Shiny: Yes
+Careful Nature
+Ball: Safari Ball
+.Version=3
+- Body Slam
+- Defense Curl
+- Mud-Slap
+- String Shot
+
+Ursaring (F)
+IVs: 17 SpA
+Ability: Quick Feet
+Level: 44
+Shiny: Yes
+Adamant Nature
+Ball: Master Ball
+.Version=8
+- Avalanche
+- Sweet Scent
+- Slash
+- Scary Face
+
+Sponge (Mantine) (M)
+IVs: 0 Atk / 30 Spe
+Ability: Water Absorb
+Level: 25
+Shiny: Yes
+Bold Nature
+Ball: Master Ball
+.Version=7
+- Whirlpool
+- Air Cutter
+- Mud-Slap
+- String Shot
+
+Skarmory (F) @ Heart Scale
+IVs: 14 SpA
+Ability: Sturdy
+Level: 1
+Shiny: Yes
+Impish Nature
+.Version=7
+- Defog
+- Whirlwind
+- Brave Bird
+- Stealth Rock
+
+Houndour (F)
+IVs: 10 Atk / 30 Def
+Ability: Flash Fire
+Level: 20
+Timid Nature
+.Version=15
+- Nightmare
+- Charm
+- Heat Wave
+- Mimic
+
+Phantasy (Donphan) (F)
+IVs: 0 Atk
+EVs: 252 HP / 6 Def / 252 SpD
+Ability: Sturdy
+Shiny: Yes
+Calm Nature
+.Version=3
+- Mimic
+- Mud-Slap
+- Ancient Power
+- Captivate
+
+Porygon2
+IVs: 0 Atk / 0 Spe
+Ability: Analytic
+Level: 51
+Bold Nature
+Ball: Dream Ball
+=Met_Location=30015
+.Version=23
+- Thunderbolt
+- Foul Play
+- Tri Attack
+
+Miltank (F) @ Silk Scarf
+EVs: 252 Atk / 6 Def / 252 Spe
+Ability: Scrappy
+Naive Nature
+Ball: Cherish Ball
+=Met_Location=30004
+.Version=27
+- Rollout
+- Attract
+- Stomp
+- Milk Drink
+
+Miltank (F)
+IVs: 25 HP / 30 Atk / 16 Def / 2 SpA / 9 SpD / 0 Spe
+Ability: Thick Fat
+Level: 37
+Shiny: Yes
+Careful Nature
+Ball: Safari Ball
+.Version=3
+- Counter
+- Seismic Toss
+- Whirlpool
+- Mud-Slap
+
+Raikou
+EVs: 6 HP / 252 SpA / 252 Spe
+Ability: Pressure
+Hasty Nature
+Ball: Master Ball
+=Met_Location=334
+.Version=26
+- Thunderbolt
+- Calm Mind
+- Rest
+- Sleep Talk
+
+Stormy (Raikou)
+IVs: 0 Atk / 30 Def
+Ability: Inner Focus
+Level: 42
+Shiny: Yes
+Timid Nature
+=Generation=2
+- Curse
+- Zap Cannon
+- Endure
+- Swift
+
+Raikou
+IVs: 1 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Pressure
+Level: 40
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=8
+- Mud-Slap
+- Swift
+- Endure
+- Dig
+
+Raikou
+IVs: 4 Atk / 30 Def
+Ability: Pressure
+Level: 40
+Shiny: Yes
+Timid Nature
+.Version=15
+- Rain Dance
+- Leer
+- Quick Attack
+- Thunder
+
+Entei
+IVs: 11 HP / 30 Atk / 22 Def / 8 SpA / 25 SpD
+Ability: Pressure
+Level: 40
+Shiny: Yes
+Adamant Nature
+.Version=15
+- Sunny Day
+- Leer
+- Bite
+- Fire Blast
+
+Entei
+IVs: 22 HP / 23 Atk / 19 Def / 11 SpA / 21 SpD / 21 Spe
+EVs: 2 Atk / 5 SpA / 6 SpD / 14 Spe
+Ability: Pressure
+Level: 50
+Shiny: Yes
+Adamant Nature
+Ball: Cherish Ball
+.Version=7
+- Crush Claw
+- Flamethrower
+- Extreme Speed
+- Dig
+
+Shishi (Entei)
+IVs: 20 SpA
+Ability: Inner Focus
+Level: 47
+Shiny: Yes
+Adamant Nature
+=Generation=2
+- Curse
+- Detect
+- Endure
+- Swift
+
+Entei @ Choice Band
+IVs: 0 SpA
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Pressure
+Shiny: Yes
+Jolly Nature
+Ball: Master Ball
+=Met_Location=334
+.Version=26
+- Sacred Fire
+- Bulldoze
+- Stone Edge
+- Iron Head
+
+Kirin (Suicune)
+IVs: 2 Atk
+Ability: Inner Focus
+Level: 44
+Shiny: Yes
+Bold Nature
+=Generation=2
+- Curse
+- Water Gun
+- Endure
+- Swift
+
+Suicune
+IVs: 4 Atk / 30 Def
+Ability: Pressure
+Level: 40
+Shiny: Yes
+Bold Nature
+.Version=15
+- Rain Dance
+- Leer
+- Gust
+
+Suicune @ Leftovers
+IVs: 4 HP / 24 SpD / 26 Spe
+EVs: 252 HP / 200 Def / 58 Spe
+Ability: Pressure
+Shiny: Yes
+Bold Nature
+Ball: Master Ball
+=Met_Location=334
+.Version=26
+- Rest
+- Roar
+- Calm Mind
+- Scald
+
+Charcanya (Tyranitar) (F)
+IVs: 25 HP / 14 Atk / 9 SpA / 17 SpD
+Ability: Sand Stream
+Level: 55
+Shiny: Yes
+Relaxed Nature
+.Version=3
+- Rock Slide
+- Pursuit
+- Whirlpool
+- Crunch
+
+Lugia @ Leftovers
+IVs: 0 Atk
+EVs: 252 HP / 162 Def / 96 Spe
+Ability: Multiscale
+Bold Nature
+Ball: Dream Ball
+=Met_Location=30015
+.Version=22
+- Toxic
+- Ice Beam
+- Roost
+- Whirlwind
+
+Lugia
+IVs: 1 Atk / 30 Def / 30 Spe
+Ability: Pressure
+Level: 50
+Timid Nature
+.Version=15
+- Psycho Boost
+- Feather Dance
+- Defog
+- Nightmare
+
+Pikachu (Lugia)
+IVs: 0 Atk
+EVs: 252 HP / 160 Def / 98 Spe
+Ability: Pressure
+Shiny: Yes
+Bold Nature
+Ball: Master Ball
+.Version=3
+- Mimic
+- Mud-Slap
+- Ominous Wind
+- Whirlpool
+
+Stella (Lugia)
+IVs: 0 Atk
+Ability: Multiscale
+Level: 44
+Shiny: Yes
+Bold Nature
+=Generation=2
+- Nightmare
+- Curse
+- Zap Cannon
+- Dragon Breath
+
+Paradise (Ho-Oh)
+IVs: 30 SpA
+Ability: Regenerator
+Level: 87
+Shiny: Yes
+Adamant Nature
+=Generation=2
+- Nightmare
+- Curse
+- Zap Cannon
+- Dragon Breath
+
+Ho-Oh
+EVs: 142 HP / 206 Atk / 162 Spe
+Ability: Pressure
+Shiny: Yes
+Jolly Nature
+Ball: Cherish Ball
+=Met_Location=40010
+.Version=27
+- Sacred Fire
+- Brave Bird
+- Recover
+- Celebrate
+
+Celebi @ Leftovers
+EVs: 236 HP / 252 Def / 22 Spe
+Ability: Natural Cure
+Level: 60
+Bold Nature
+=Met_Location=30011
+.Version=24
+- Stealth Rock
+- Recover
+- U-turn
+- Giga Drain
+
+Celebi
+IVs: 8 Atk / 30 Def
+Ability: Natural Cure
+Modest Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Confusion
+- Recover
+- Heal Bell
+- Safeguard
+
+Celebi
+IVs: 0 Atk
+Ability: Natural Cure
+Level: 30
+Shiny: Yes
+Bold Nature
+=Generation=2
+- Sweet Scent
+- Detect
+- Nightmare
+- Curse
+
+Retba (Swampert) (M)
+IVs: 30 Def
+EVs: 1 Atk / 1 Spe
+Ability: Torrent
+Level: 36
+Shiny: Yes
+Relaxed Nature
+.Version=1
+- Mega Kick
+- Body Slam
+- Seismic Toss
+- Counter
+
+Shiftry (F)
+IVs: 27 Atk
+Ability: Early Bird
+Level: 38
+Shiny: Yes
+Hasty Nature
+Ball: Safari Ball
+.Version=8
+- Synthesis
+- Knock Off
+- Sucker Punch
+- Defog
+
+Wingull (F)
+IVs: 0 Atk / 30 Def / 30 SpD / 30 Spe
+Ability: Keen Eye
+Level: 35
+Shiny: Yes
+Bold Nature
+Ball: Master Ball
+.Version=8
+- Defog
+- Knock Off
+- Tailwind
+- Mud-Slap
+
+Shedinja
+IVs: 0 HP / 3 SpA
+Ability: Wonder Guard
+Level: 25
+Shiny: Yes
+Jolly Nature
+Ball: Master Ball
+.Version=2
+- Sucker Punch
+- Swords Dance
+- Mimic
+- Nightmare
+
+Gumdrop (Azurill) (F)
+IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ability: Thick Fat
+Level: 5
+Shiny: Yes
+Lonely Nature
+.Version=3
+- Mimic
+- Whirlpool
+- Body Slam
+- Mud-Slap
+
+Delcatty (F)
+IVs: 29 HP / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Cute Charm
+Level: 18
+Jolly Nature
+.Version=15
+- Mimic
+- Sweet Kiss
+- Sucker Punch
+- Shock Wave
+
+Mawile (F) @ Mawilite
+IVs: 30 Atk / 26 SpA / 28 Spe
+Ability: Hyper Cutter
+Level: 22
+Adamant Nature
+.Version=15
+- Stealth Rock
+- Sing
+- Thunder Punch
+- Knock Off
+
+TearMeInHalf (Mawile) (M) @ Gold Bottle Cap
+EVs: 44 HP / 252 Atk / 4 Def / 4 SpD / 206 Spe
+Ability: Intimidate
+Adamant Nature
+.Version=27
+- Protect
+- Play Rough
+- Sucker Punch
+- Swords Dance
+
+Spinda (F)
+IVs: 3 SpA
+Ability: Contrary
+Level: 10
+Adamant Nature
+Ball: Master Ball
+=Met_Location=75
+.Version=21
+- Tackle
+- Uproar
+- Copycat
+- Superpower
+
+Ace (Spinda) (M)
+IVs: 29 HP / 7 Atk / 24 Def / 30 SpA / 7 SpD / 0 Spe
+Ability: Own Tempo
+Level: 15
+Shiny: Yes
+Calm Nature
+Ball: Master Ball
+.Version=2
+- Metronome
+- Seismic Toss
+- Mega Kick
+- Mimic
+
+Free Pinches (Trapinch) (F) @ Grip Claw
+IVs: 20 HP / 19 Atk / 0 Def / 3 SpA / 1 SpD / 7 Spe
+Ability: Arena Trap
+Shiny: Yes
+Impish Nature
+.Version=3
+- Mimic
+- Captivate
+- Struggle Bug
+- Crunch
+
+Altaria (M)
+IVs: 0 SpA
+Ability: Cloud Nine
+Level: 35
+Jolly Nature
+Ball: Master Ball
+=Met_Location=75
+.Version=21
+- Take Down
+- Natural Gift
+- Dragon Breath
+- False Swipe
+
+Altaria (F) @ Pixie Plate
+IVs: 1 SpA
+EVs: 248 HP / 252 Def / 10 SpD
+Ability: Natural Cure
+Shiny: Yes
+Impish Nature
+Ball: Master Ball
+.Version=2
+- Roost
+- Heal Bell
+- Body Slam
+- Earthquake
+
+RandyOrton (Seviper) (M)
+IVs: 24 HP / 9 Atk / 21 Def / 7 SpA / 7 SpD / 21 Spe
+EVs: 40 Atk / 252 SpA / 218 Spe
+Ability: Shed Skin
+Shiny: Yes
+Rash Nature
+.Version=7
+- Body Slam
+- Switcheroo
+- Feint
+- Sucker Punch
+
+Lunatone
+IVs: 30 Atk
+Ability: Levitate
+Level: 10
+Calm Nature
+Ball: Master Ball
+=Met_Location=75
+.Version=21
+- Harden
+- Confusion
+- Rock Throw
+- Moonlight
+
+Solrock
+IVs: 0 SpA
+Ability: Levitate
+Level: 10
+Adamant Nature
+Ball: Master Ball
+=Met_Location=75
+.Version=21
+- Harden
+- Confusion
+- Rock Throw
+- Morning Sun
+
+Banette (F)
+IVs: 0 SpA
+Ability: Cursed Body
+Level: 37
+Adamant Nature
+Ball: Master Ball
+=Met_Location=75
+.Version=21
+- Feint Attack
+- Hex
+- Shadow Ball
+- Cotton Guard
+
+Dusclops (F)
+IVs: 18 Atk / 18 Def / 28 SpA / 14 SpD / 3 Spe
+Ability: Pressure
+Level: 37
+Careful Nature
+.Version=15
+- Mega Kick
+- Helping Hand
+- Counter
+- Seismic Toss
+
+Dusclops (M)
+IVs: 30 HP / 29 Atk / 1 SpA / 26 SpD
+Ability: Pressure
+Level: 50
+Shiny: Yes
+Adamant Nature
+Ball: Master Ball
+.Version=2
+- Ice Punch
+- Mega Kick
+- Shadow Sneak
+- Earthquake
+
+Glalie (M) @ Glalitite
+EVs: 6 HP / 252 Atk / 252 Spe
+Ability: Inner Focus
+Jolly Nature
+.Version=3
+- Double-Edge
+- Body Slam
+- Spikes
+- Mimic
+
+Glalie (M) @ Glalitite
+IVs: 21 SpA
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Inner Focus
+Level: 51
+Shiny: Yes
+Jolly Nature
+.Version=3
+- Earthquake
+- Double-Edge
+- Explosion
+- Ice Shard
+
+12LetterName (Relicanth) (M) @ Heavy Ball
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Swift Swim
+Shiny: Yes
+Jolly Nature
+Ball: Master Ball
+.Version=3
+- Body Slam
+- Mud-Slap
+- Mimic
+- Whirlpool
+
+Salamence (M) @ Salamencite
+IVs: 5 SpA / 30 SpD
+Ability: Intimidate
+Level: 50
+Adamant Nature
+.Version=15
+- Defog
+- Refresh
+- Dragon Dance
+- Body Slam
+
+Regirock
+IVs: 23 HP / 27 Def / 28 SpA
+EVs: 2 Atk / 12 SpA / 2 Spe
+Ability: Sturdy
+Level: 50
+Careful Nature
+=Met_Location=30011
+.Version=27
+- Explosion
+- Hammer Arm
+- Stone Edge
+- Ice Punch
+
+Regice
+IVs: 17 SpA / 8 SpD / 14 Spe
+EVs: 2 Atk / 12 SpA / 2 Spe
+Ability: Ice Body
+Level: 50
+Sassy Nature
+=Met_Location=30011
+.Version=27
+- Ice Beam
+- Thunderbolt
+- Hail
+- Amnesia
+
+Regice
+IVs: 7 Atk
+Ability: Clear Body
+Level: 40
+Shiny: Yes
+Modest Nature
+Ball: Master Ball
+.Version=2
+- Icy Wind
+- Seismic Toss
+- Counter
+- Body Slam
+
+Kikka (Latias) (F)
+IVs: 4 Atk / 30 SpA / 30 Spe
+Ability: Levitate
+Level: 50
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=2
+- Body Slam
+- Mud-Slap
+- Twister
+- Swift
+
+Draken (Latios) (M)
+IVs: 4 Atk / 30 SpA / 30 Spe
+Ability: Levitate
+Level: 50
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=1
+- Body Slam
+- Mud-Slap
+- Twister
+- Swift
+
+Latios (M)
+IVs: 8 Atk / 30 SpA / 30 Spe
+Ability: Levitate
+Level: 30
+Shiny: Yes
+Timid Nature
+=Met_Level=30
+=Met_Location=320
+.Version=27
+- Heal Pulse
+- Dragon Breath
+- Luster Purge
+- Psycho Shift
+
+Pisces (Kyogre)
+IVs: 21 HP / 13 Atk / 26 SpD / 4 Spe
+Ability: Drizzle
+Level: 70
+Shiny: Yes
+Adamant Nature
+Ball: Master Ball
+.Version=3
+- Mimic
+- Mud-Slap
+- Avalanche
+- Double-Edge
+
+Tectonic (Groudon)
+EVs: 252 SpA / 100 SpD / 158 Spe
+Ability: Drought
+Shiny: Yes
+Mild Nature
+Ball: Master Ball
+.Version=3
+- Dynamic Punch
+- Double-Edge
+- Counter
+- Mud-Slap
+
+Rayquaza
+IVs: 0 HP / 8 Atk / 26 Spe
+Ability: Air Lock
+Level: 70
+Shiny: Yes
+Jolly Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Dragon Ascent
+- Dragon Claw
+- Extreme Speed
+- Dragon Dance
+
+Jupiter (Rayquaza) @ Life Orb
+IVs: 29 HP
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Air Lock
+Shiny: Yes
+Jolly Nature
+Ball: Master Ball
+.Version=3
+- Mimic
+- Avalanche
+- Whirlpool
+- Mud-Slap
+
+Rayquaza @ Life Orb
+IVs: 20 SpA
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Air Lock
+Shiny: Yes
+Jolly Nature
+Ball: Cherish Ball
+=Met_Location=40070
+.Version=26
+- Dragon Ascent
+- Earthquake
+- Extreme Speed
+- Dragon Dance
+
+Jirachi @ Leftovers
+IVs: 16 SpA
+EVs: 252 HP / 6 Def / 252 SpD
+Ability: Serene Grace
+Careful Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Stealth Rock
+- Wish
+- U-turn
+- Iron Head
+
+Jirachi
+IVs: 30 HP / 30 Def
+Ability: Serene Grace
+Level: 50
+Hasty Nature
+Ball: Cherish Ball
+Language: Japanese
+=Met_Location=40015
+.Version=21
+- Draco Meteor
+- Meteor Mash
+- Power-Up Punch
+- Follow Me
+
+Deoxys-Attack
+EVs: 6 Atk / 252 SpA / 252 Spe
+Ability: Pressure
+Naive Nature
+Ball: Master Ball
+=Met_Location=316
+.Version=27
+- Stealth Rock
+- Magic Coat
+- Fire Punch
+- Low Kick
+
+Deoxys-Attack
+Ability: Pressure
+Level: 50
+Rash Nature
+.Version=7
+- Ice Punch
+- Meteor Mash
+- Fire Punch
+- Thunder Punch
+
+Tide Pod (Deoxys-Defense)
+IVs: 30 HP / 0 Atk
+Ability: Pressure
+Level: 30
+Shiny: Yes
+Calm Nature
+Ball: Master Ball
+.Version=5
+- Secret Power
+- Toxic
+- Seismic Toss
+- Magic Coat
+
+Deoxys-Speed
+IVs: 30 HP / 0 Atk
+Ability: Pressure
+Level: 30
+Shiny: Yes
+Calm Nature
+Ball: Master Ball
+.Version=5
+- Seismic Toss
+- Mud-Slap
+- Counter
+- Mimic
+
+Vespiquen (F)
+IVs: 30 HP / 0 Atk / 30 SpA / 30 Spe
+Ability: Pressure
+Level: 21
+Shiny: Yes
+Bold Nature
+Ball: Master Ball
+.Version=8
+- Defog
+- Tailwind
+- Mud-Slap
+- Power Gem
+
+Fritz (Rotom)
+IVs: 22 Atk / 30 Def
+Ability: Levitate
+Level: 20
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=12
+- Mud-Slap
+- Sucker Punch
+- Swift
+- Endure
+
+Dialga @ Gold Bottle Cap
+IVs: 8 Atk
+Ability: Telepathy
+Modest Nature
+Ball: Dream Ball
+=Met_Location=30015
+.Version=22
+- Roar of Time
+- Aura Sphere
+- Earth Power
+- Flash Cannon
+
+Based (Dialga)
+IVs: 0 SpA
+EVs: 4 HP / 252 Atk / 1 Def / 1 SpD / 252 Spe
+Ability: Pressure
+Level: 70
+Shiny: Yes
+Jolly Nature
+Ball: Master Ball
+.Version=12
+- Outrage
+- Heal Block
+- Fury Cutter
+- Mud-Slap
+
+Palkia
+IVs: 0 Atk
+Ability: Telepathy
+Level: 5
+Timid Nature
+Ball: Dream Ball
+=Met_Location=30015
+.Version=23
+- Dragon Breath
+- Scary Face
+
+Palkia @ Lustrous Orb
+IVs: 5 HP / 20 Atk / 27 Spe
+EVs: 3 Atk / 252 SpA / 3 SpD / 252 Spe
+Ability: Telepathy
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40006
+.Version=27
+- Earth Power
+- Aura Sphere
+- Spacial Rend
+- Hydro Pump
+
+Nova (Palkia)
+IVs: 7 Atk
+Ability: Pressure
+Level: 50
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+.Version=11
+- Water Pulse
+- Heal Block
+- Dragon Claw
+- Spacial Rend
+
+Heatran (M)
+IVs: 0 Atk / 0 Spe
+Ability: Flash Fire
+Level: 50
+Quiet Nature
+.Version=7
+- Eruption
+- Magma Storm
+- Earth Power
+- Ancient Power
+
+Giratina
+IVs: 0 Atk
+Ability: Telepathy
+Level: 5
+Bold Nature
+Ball: Dream Ball
+=Met_Location=30015
+.Version=23
+- Dragon Breath
+- Scary Face
+
+Giratina
+IVs: 7 SpA
+Ability: Pressure
+Level: 1
+Shiny: Yes
+Adamant Nature
+=Met_Level=1
+.Version=8
+- Dragon Breath
+- Scary Face
+- Defog
+
+Giratina-Origin @ Griseous Orb
+IVs: 7 SpA
+Ability: Levitate
+Level: 1
+Shiny: Yes
+Adamant Nature
+=Met_Level=1
+.Version=8
+- Dragon Breath
+- Scary Face
+- Defog
+
+Darkrai
+IVs: 12 HP / 2 Atk / 21 SpA / 5 SpD / 10 Spe
+Ability: Bad Dreams
+Level: 50
+Timid Nature
+.Version=10
+- Dark Void
+- Dark Pulse
+- Shadow Ball
+- Double Team
+
+Shaymin
+IVs: 30 SpD
+Ability: Natural Cure
+Level: 15
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Growth
+- Magical Leaf
+- Seed Flare
+- Air Slash
+
+Victini
+IVs: 25 HP / 3 SpA
+EVs: 252 Atk / 4 SpD / 252 Spe
+Ability: Victory Star
+Naive Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Flare Blitz
+- Wild Charge
+- U-turn
+- Zen Headbutt
+
+Darmanitan (M)
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Zen Mode
+Level: 35
+Calm Nature
+Ball: Cherish Ball
+=Met_Location=30009
+.Version=26
+- Thrash
+- Belly Drum
+- Flare Blitz
+- Hammer Arm
+
+Durant (F) @ Life Orb
+IVs: 12 SpA
+EVs: 252 Atk / 6 Def / 252 Spe
+Ability: Hustle
+Jolly Nature
+.Version=26
+- Hone Claws
+- Thunder Fang
+- Crunch
+- Iron Head
+
+Terrakion
+IVs: 6 HP / 11 SpA
+EVs: 252 Atk / 6 Def / 252 Spe
+Ability: Justified
+Level: 66
+Shiny: Yes
+Jolly Nature
+Ball: Master Ball
+=Met_Location=336
+.Version=27
+- Zen Headbutt
+- Iron Head
+- Stealth Rock
+- Block
+
+Virizion @ Gold Bottle Cap
+IVs: 3 HP / 21 SpA / 26 SpD
+Ability: Justified
+Level: 50
+Shiny: Yes
+Jolly Nature
+Ball: Master Ball
+=Met_Location=336
+.Version=27
+- Helping Hand
+- Zen Headbutt
+- Synthesis
+- Superpower
+
+Tornadus (M)
+IVs: 0 Atk / 13 SpD / 0 Spe
+EVs: 41 HP / 101 Atk / 54 Def / 25 SpA / 49 SpD / 66 Spe
+Ability: Prankster
+Level: 68
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=348
+.Version=27
+- Extrasensory
+- Protect
+- Strength
+- Crunch
+
+Keldeo
+IVs: 20 Atk / 30 SpD / 5 Spe
+EVs: 54 HP / 25 Atk / 11 Def / 7 SpA / 2 SpD / 37 Spe
+Ability: Justified
+Serious Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=25
+- Aqua Jet
+- Leer
+- Double Kick
+- Bubble Beam
+
+Meloetta @ PP Max
+IVs: 0 Atk / 30 Def
+Ability: Serene Grace
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Quick Attack
+- Confusion
+- Round
+
+Meloetta
+IVs: 15 Atk
+Ability: Serene Grace
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Focus Blast
+- Substitute
+- Psyshock
+- Calm Mind
+
+Genesect @ Choice Specs
+EVs: 70 HP / 188 SpA / 252 Spe
+Ability: Download
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=25
+- Techno Blast
+- Flamethrower
+- Flash Cannon
+- U-turn
+
+Greninja (M) @ Master Ball
+IVs: 23 Atk / 26 Def / 10 SpA / 27 SpD / 14 Spe
+Ability: Protean
+Naive Nature
+Ball: Cherish Ball
+Language: Japanese
+=Met_Location=40007
+.Version=27
+- Hydro Cannon
+- Gunk Shot
+- Mat Block
+- Happy Hour
+
+Vivillon-Modern (F) @ Flyinium Z
+IVs: 10 Atk
+EVs: 252 SpA / 6 SpD / 252 Spe
+Ability: Compound Eyes
+Level: 56
+Timid Nature
+.Version=26
+- Substitute
+- Sleep Powder
+- Quiver Dance
+- Hurricane
+
+Vivillon-Fancy (M)
+IVs: 3 HP / 27 Atk / 25 Def / 0 SpA / 27 SpD / 16 Spe
+EVs: 250 SpA / 250 Spe
+Ability: Compound Eyes
+Level: 54
+Bold Nature
+Ball: Cherish Ball
+=Met_Location=40048
+.Version=24
+- Bug Buzz
+- Hurricane
+- Quiver Dance
+- Roost
+
+Vivillon-Pokeball (M)
+IVs: 5 HP / 23 Atk / 12 Def / 10 SpA / 11 SpD / 20 Spe
+Ability: Shield Dust
+Level: 12
+Modest Nature
+=Met_Location=40001
+.Version=25
+- Stun Spore
+- Gust
+- Light Screen
+- Struggle Bug
+
+Gourgeist-Small (M)
+IVs: 13 HP / 2 Atk / 30 Def / 19 SpA / 24 SpD / 11 Spe
+Ability: Pickup
+Level: 35
+Rash Nature
+Ball: Master Ball
+=Met_Location=78
+.Version=24
+- Razor Leaf
+- Leech Seed
+- Bullet Seed
+- Shadow Sneak
+
+Gourgeist-Large (F)
+IVs: 0 HP / 8 Atk / 25 Def / 11 SpA / 29 SpD / 26 Spe
+EVs: 1 Def
+Ability: Pickup
+Level: 36
+Jolly Nature
+Ball: Master Ball
+=Met_Location=78
+.Version=24
+- Leech Seed
+- Bullet Seed
+- Shadow Sneak
+- Shadow Ball
+
+Gourgeist-Super (M) @ Leftovers
+IVs: 0 Atk
+EVs: 252 HP / 122 Def / 136 SpD
+Ability: Frisk
+Bold Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=25
+- Incinerate
+- Flash
+- Rock Smash
+- Secret Power
+
+Xerneas
+IVs: 0 Atk / 28 SpA / 26 SpD
+EVs: 6 HP / 252 SpA / 252 Spe
+Ability: Fairy Aura
+Shiny: Yes
+Modest Nature
+Ball: Cherish Ball
+=Met_Location=40011
+.Version=24
+- Geomancy
+- Moonblast
+- Protect
+- Hidden Power [Ground]
+
+Diancie
+IVs: 0 Atk / 0 SpA / 0 Spe
+Ability: Clear Body
+Hasty Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Diamond Storm
+- Moonblast
+- Dazzling Gleam
+- Protect
+
+Diancie @ Diancite
+IVs: 30 Def / 30 SpA / 30 Spe
+Ability: Clear Body
+Level: 50
+Shiny: Yes
+Hasty Nature
+Ball: Cherish Ball
+=Met_Location=40042
+.Version=24
+- Diamond Storm
+- Moonblast
+- Reflect
+- Return
+
+Hoopa
+IVs: 18 HP / 14 SpA / 1 Spe
+Ability: Magician
+Level: 50
+Brave Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=26
+- Hyperspace Hole
+- Psychic
+- Astonish
+- Nasty Plot
+
+Hoopa-Unbound
+IVs: 9 Atk
+EVs: 4 HP / 2 Atk / 252 SpA / 252 Spe
+Ability: Magician
+Timid Nature
+Ball: Cherish Ball
+=Met_Location=40001
+.Version=27
+- Dark Pulse
+- Focus Blast
+- Psyshock
+- Trick
