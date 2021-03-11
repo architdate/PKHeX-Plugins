@@ -3,6 +3,9 @@ IVs: 29 HP / 0 Atk / 25 Def / 0 SpA / 20 SpD / 11 Spe
 Ability: Shed Skin
 Level: 3
 Modest Nature
+Ball: Master Ball
+=Met_Location=8
+.Version=31
 - Harden
 
 Butterfree (M)
@@ -10,6 +13,9 @@ IVs: 22 HP / 10 Atk / 22 Def / 19 SpA / 22 SpD / 18 Spe
 Ability: Compound Eyes
 Level: 9
 Naive Nature
+Ball: Master Ball
+=Met_Location=40
+.Version=31
 - Gust
 - Confusion
 
@@ -18,6 +24,9 @@ IVs: 20 HP / 1 Atk / 20 Def / 7 SpA / 4 SpD / 6 Spe
 Ability: Tangled Feet
 Level: 29
 Quiet Nature
+Ball: Master Ball
+=Met_Location=106
+.Version=33
 - Steel Wing
 - Feather Dance
 - Twister
@@ -28,6 +37,9 @@ IVs: 13 Atk / 11 Def / 18 Spe
 Ability: Gluttony
 Level: 17
 Sassy Nature
+Ball: Master Ball
+=Met_Location=58
+.Version=32
 - Focus Energy
 - Bite
 - Pursuit
@@ -38,6 +50,9 @@ IVs: 18 HP / 15 Atk / 8 Def / 6 SpA / 9 SpD / 2 Spe
 Ability: Inner Focus
 Level: 20
 Adamant Nature
+Ball: Master Ball
+=Met_Location=100
+.Version=33
 - Bite
 - Wing Attack
 - Confuse Ray
@@ -48,6 +63,9 @@ IVs: 9 HP / 21 Atk / 5 Def / 11 SpA / 4 SpD / 22 Spe
 Ability: Damp
 Level: 24
 Gentle Nature
+Ball: Master Ball
+=Met_Location=134
+.Version=30
 - Bubble
 - Double Slap
 - Rain Dance
@@ -58,6 +76,9 @@ IVs: 9 Atk / 10 Def / 10 SpA / 26 SpD / 14 Spe
 Ability: Damp
 Level: 22
 Naughty Nature
+=OT_Name=Laule'a
+=Met_Location=30001
+.Version=30
 - Bubble
 - Double Slap
 - Rain Dance
@@ -68,6 +89,9 @@ IVs: 1 HP / 8 Atk / 13 Def / 4 SpA / 18 SpD / 26 Spe
 Ability: Own Tempo
 Level: 15
 Gentle Nature
+Ball: Master Ball
+=Met_Location=14
+.Version=30
 - Tackle
 - Growl
 - Water Gun
@@ -79,6 +103,9 @@ EVs: 1 Atk / 1 Def
 Ability: Own Tempo
 Level: 16
 Hardy Nature
+Ball: Master Ball
+=Met_Location=14
+.Version=31
 - Tackle
 - Growl
 - Water Gun
@@ -89,6 +116,9 @@ IVs: 18 HP / 23 Atk / 25 Def / 22 SpA / 23 SpD
 Ability: Water Veil
 Level: 11
 Docile Nature
+Ball: Master Ball
+=Met_Location=134
+.Version=31
 - Tail Whip
 - Water Sport
 - Supersonic
@@ -99,6 +129,9 @@ IVs: 0 HP / 26 Atk / 27 Def / 15 SpA / 3 SpD / 11 Spe
 Ability: Water Veil
 Level: 10
 Hardy Nature
+Ball: Master Ball
+=Met_Location=134
+.Version=30
 - Tail Whip
 - Water Sport
 - Supersonic
@@ -109,6 +142,9 @@ IVs: 19 HP / 1 Atk / 28 SpD / 7 Spe
 Ability: Forewarn
 Level: 9
 Timid Nature
+Ball: Master Ball
+=Met_Location=42
+.Version=33
 - Pound
 - Lick
 - Lovely Kiss
@@ -119,6 +155,9 @@ IVs: 17 HP / 0 Atk / 21 SpD / 19 Spe
 Ability: Vital Spirit
 Level: 26
 Bashful Nature
+Ball: Master Ball
+=Met_Location=138
+.Version=31
 - Shock Wave
 - Thunder Wave
 - Electro Ball
@@ -129,6 +168,9 @@ IVs: 9 HP / 23 Atk / 11 Def / 10 SpA / 16 SpD / 18 Spe
 Ability: Flame Body
 Level: 16
 Hardy Nature
+Ball: Master Ball
+=Met_Location=82
+.Version=31
 - Ember
 - Smokescreen
 - Feint Attack
@@ -139,6 +181,9 @@ IVs: 12 HP / 10 Atk / 7 Def / 27 SpA / 23 SpD / 10 Spe
 Ability: Intimidate
 Level: 10
 Calm Nature
+Ball: Master Ball
+=Met_Location=170
+.Version=30
 - Bite
 - Thrash
 
@@ -147,6 +192,9 @@ IVs: 5 HP / 30 Atk / 11 SpA / 9 SpD / 5 Spe
 Ability: Intimidate
 Level: 17
 Gentle Nature
+Ball: Master Ball
+=Met_Location=16
+.Version=31
 - Bite
 - Thrash
 
@@ -155,6 +203,9 @@ IVs: 3 Atk / 6 Def / 10 SpA / 0 SpD / 15 Spe
 Ability: Intimidate
 Level: 10
 Hasty Nature
+Ball: Master Ball
+=Met_Location=14
+.Version=30
 - Bite
 - Thrash
 
@@ -163,6 +214,9 @@ IVs: 4 Atk / 26 Def / 23 SpA / 15 SpD
 Ability: Shed Skin
 Level: 10
 Modest Nature
+Ball: Master Ball
+=Met_Location=170
+.Version=31
 - Wrap
 - Leer
 - Thunder Wave
@@ -173,6 +227,9 @@ IVs: 18 HP / 8 Atk / 21 Def / 8 SpA / 11 SpD / 23 Spe
 Ability: Inner Focus
 Level: 10
 Adamant Nature
+Ball: Master Ball
+=Met_Location=170
+.Version=31
 - Wrap
 - Leer
 - Thunder Wave
@@ -183,6 +240,9 @@ IVs: 18 Atk / 28 SpA / 27 SpD / 7 Spe
 Ability: Keen Eye
 Level: 19
 Lonely Nature
+Ball: Master Ball
+=Met_Location=90
+.Version=32
 - Confusion
 - Echoed Voice
 - Zen Headbutt
@@ -193,6 +253,9 @@ IVs: 21 Atk / 3 Def / 1 SpA / 26 SpD / 2 Spe
 Ability: Early Bird
 Level: 21
 Adamant Nature
+Ball: Master Ball
+=Met_Location=94
+.Version=33
 - Teleport
 - Lucky Chant
 - Stored Power
@@ -203,6 +266,8 @@ IVs: 27 HP / 7 Atk / 20 Def / 13 SpA / 24 SpD / 0 Spe
 Ability: Static
 Level: 11
 Docile Nature
+=Met_Location=30016
+.Version=32
 - Growl
 - Thunder Wave
 - Thunder Shock
@@ -213,6 +278,9 @@ IVs: 10 HP / 10 Atk / 7 Def / 29 SpA / 16 SpD / 19 Spe
 Ability: Suction Cups
 Level: 10
 Quirky Nature
+Ball: Master Ball
+=Met_Location=58
+.Version=33
 - Water Gun
 - Constrict
 - Psybeam
@@ -223,6 +291,9 @@ IVs: 15 HP / 5 Atk / 13 Def / 20 SpA / 22 SpD / 4 Spe
 Ability: Rough Skin
 Level: 19
 Quiet Nature
+Ball: Master Ball
+=Met_Location=162
+.Version=31
 - Focus Energy
 - Aqua Jet
 - Assurance
@@ -233,6 +304,9 @@ IVs: 27 HP / 28 Atk / 1 Def / 20 SpA / 2 Spe
 Ability: Rough Skin
 Level: 10
 Quirky Nature
+Ball: Master Ball
+=Met_Location=162
+.Version=31
 - Leer
 - Bite
 - Rage
@@ -243,6 +317,9 @@ IVs: 21 HP / 0 Def / 2 SpA / 24 SpD / 26 Spe
 Ability: Water Veil
 Level: 10
 Relaxed Nature
+Ball: Master Ball
+=Met_Location=162
+.Version=31
 - Splash
 - Growl
 - Water Gun
@@ -253,6 +330,9 @@ IVs: 3 HP / 18 Atk / 16 Def / 10 SpA / 12 SpD / 0 Spe
 Ability: Anticipation
 Level: 12
 Gentle Nature
+Ball: Master Ball
+=Met_Location=68
+.Version=31
 - Mud-Slap
 - Mud Sport
 - Water Sport
@@ -263,6 +343,9 @@ IVs: 5 HP / 26 Atk / 0 Def / 6 SpA / 22 SpD / 2 Spe
 Ability: Oblivious
 Level: 10
 Sassy Nature
+Ball: Master Ball
+=Met_Location=156
+.Version=30
 - Mud-Slap
 - Mud Sport
 - Water Sport
@@ -273,6 +356,9 @@ IVs: 0 SpD / 3 Spe
 Ability: Shell Armor
 Level: 10
 Adamant Nature
+Ball: Master Ball
+=Met_Location=174
+.Version=33
 - Bubble
 - Harden
 - Vise Grip
@@ -283,6 +369,9 @@ IVs: 20 HP / 22 Atk / 19 Def / 3 SpA / 27 SpD / 27 Spe
 Ability: Rock Head
 Level: 15
 Quirky Nature
+Ball: Master Ball
+=Met_Location=14
+.Version=31
 - Ember
 - Leer
 - Bite
@@ -293,6 +382,9 @@ IVs: 14 HP / 25 Atk / 17 Def / 25 SpA / 28 SpD / 0 Spe
 Ability: Intimidate
 Level: 9
 Lax Nature
+Ball: Master Ball
+=Met_Location=10
+.Version=31
 - Rage
 - Ember
 - Leer
@@ -303,6 +395,9 @@ IVs: 12 HP / 18 Atk / 24 Def / 15 SpA / 13 SpD / 13 Spe
 Ability: Weak Armor
 Level: 27
 Naive Nature
+Ball: Master Ball
+=Met_Location=192
+.Version=31
 - Sludge
 - Stockpile
 - Swallow
@@ -313,6 +408,9 @@ IVs: 30 Atk / 3 Def / 3 SpA / 19 SpD / 24 Spe
 Ability: Defiant
 Level: 33
 Naive Nature
+Ball: Master Ball
+=Met_Location=120
+.Version=33
 - Scary Face
 - Metal Claw
 - Slash
@@ -323,6 +421,9 @@ IVs: 29 Atk / 8 Def / 3 SpD / 19 Spe
 Ability: Flame Body
 Level: 16
 Calm Nature
+Ball: Master Ball
+=Met_Location=82
+.Version=33
 - Quick Attack
 - Peck
 - Agility
@@ -333,6 +434,9 @@ IVs: 22 SpD / 24 Spe
 Ability: Stakeout
 Level: 17
 Mild Nature
+Ball: Master Ball
+=Met_Location=58
+.Version=33
 - Pursuit
 - Sand Attack
 - Odor Sleuth
@@ -343,6 +447,9 @@ IVs: 3 HP / 0 Atk / 28 Def / 27 SpA
 Ability: Own Tempo
 Level: 29
 Careful Nature
+Ball: Master Ball
+=Met_Location=122
+.Version=33
 - Stomp
 - Bide
 - High Horsepower
@@ -353,6 +460,9 @@ IVs: 30 HP / 0 Atk / 11 SpA / 10 SpD / 18 Spe
 Ability: Corrosion
 Level: 16
 Rash Nature
+Ball: Master Ball
+=Met_Location=82
+.Version=33
 - Ember
 - Sweet Scent
 - Dragon Rage
@@ -363,6 +473,9 @@ IVs: 19 HP / 2 Atk / 23 Def / 3 SpA / 7 SpD / 8 Spe
 Ability: Bulletproof
 Level: 41
 Calm Nature
+Ball: Master Ball
+=Met_Location=174
+.Version=31
 - Headbutt
 - Work Up
 - Screech
