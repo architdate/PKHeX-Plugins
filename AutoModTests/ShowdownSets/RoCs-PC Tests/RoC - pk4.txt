@@ -3250,7 +3250,9 @@ IVs: 8 HP / 27 Def / 5 SpA / 25 SpD / 12 Spe
 Ability: Marvel Scale
 Level: 50
 Bold Nature
+Language: Japanese
 Ball: Cherish Ball
+=OT_Name=さいきょう
 .Version=10
 - Rain Dance
 - Recover
