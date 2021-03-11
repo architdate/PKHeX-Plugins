@@ -2,6 +2,8 @@ Xander (Eevee-Starter) (M)
 Ability: Adaptability
 Level: 42
 Bashful Nature
+=Met_Location=28
+.Version=43
 - Double-Edge
 - Glitzy Glow
 - Sparkly Swirl

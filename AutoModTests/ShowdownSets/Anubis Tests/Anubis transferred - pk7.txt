@@ -299,14 +299,6 @@ Timid Nature
 - Pain Split
 - Sludge Wave
 
-VOLTY (Voltorb)
-IVs: 24 HP / 0 Def / 7 SpD
-Ability: Aftermath
-Level: 5
-Hardy Nature
-=Generation=2
-- Tackle
-
 Hitmonlee (M) @ Normal Gem
 IVs: 0 SpA
 EVs: 252 Atk / 6 SpD / 252 Spe
