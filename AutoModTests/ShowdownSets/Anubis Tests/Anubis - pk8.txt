@@ -117,8 +117,9 @@ Pikachu (M) @ Light Ball
 EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Lightning Rod
 Gigantamax: Yes
-Shiny: Yes
+Shiny: Square
 Jolly Nature
+Ball: Master Ball
 =Met_Location=162
 .Version=44
 - Brick Break
@@ -198,7 +199,7 @@ Exeggutor-Alola (M) @ Smoke Ball
 IVs: 24 HP / 25 Def / 18 SpA
 Ability: Frisk
 Level: 15
-Shiny: Yes
+Shiny: Square
 Relaxed Nature
 =OT_Name=Regina
 =Met_Location=30001
@@ -317,7 +318,7 @@ Celebi
 IVs: 25 HP / 21 Def / 21 SpD / 15 Spe
 Ability: Natural Cure
 Level: 15
-Shiny: Yes
+Shiny: Square
 Bold Nature
 =Met_Location=30012
 .Version=34
@@ -329,7 +330,7 @@ Celebi @ Lucky Egg
 IVs: 13 HP / 17 SpD / 0 Spe
 Ability: Natural Cure
 Level: 60
-Shiny: Yes
+Shiny: Square
 Quirky Nature
 Ball: Cherish Ball
 =Met_Location=40006
@@ -358,8 +359,9 @@ IVs: 25 SpA
 EVs: 252 HP / 252 Atk / 6 Def
 Ability: Oblivious
 Level: 69
-Shiny: Yes
+Shiny: Square
 Adamant Nature
+Ball: Master Ball
 =Met_Location=186
 .Version=45
 - Avalanche
@@ -371,7 +373,7 @@ Wailord (M) @ Leppa Berry
 IVs: 18 HP / 15 Atk / 3 Def / 13 SpA / 1 Spe
 Ability: Oblivious
 Level: 80
-Shiny: Yes
+Shiny: Square
 Sassy Nature
 Ball: Master Ball
 =Met_Location=186
@@ -385,7 +387,7 @@ Feebas (M)
 IVs: 13 HP / 2 Atk / 21 Def / 25 SpA / 8 SpD / 14 Spe
 Ability: Swift Swim
 Level: 60
-Shiny: Yes
+Shiny: Square
 Quiet Nature
 Ball: Sport Ball
 =Met_Location=230
@@ -424,7 +426,7 @@ Basculin (F) @ Bold Mint
 IVs: 21 HP / 29 Atk / 29 Def / 11 SpA / 16 SpD / 29 Spe
 Ability: Adaptability
 Level: 20
-Shiny: Yes
+Shiny: Square
 Jolly Nature
 Ball: Sport Ball
 =Met_Location=44
@@ -452,7 +454,7 @@ Amoonguss (F) @ Focus Sash
 IVs: 0 Atk / 0 Spe
 EVs: 236 HP / 116 Def / 156 SpD
 Ability: Regenerator
-Shiny: Yes
+Shiny: Square
 Sassy Nature
 Ball: Cherish Ball
 Language: Korean
@@ -481,7 +483,7 @@ Stunfisk-Galar (M) @ Leppa Berry
 IVs: 4 HP / 17 Atk / 26 Def / 29 SpA / 27 SpD / 29 Spe
 Ability: Mimicry
 Level: 25
-Shiny: Yes
+Shiny: Square
 Careful Nature
 Ball: Master Ball
 =Met_Location=54
@@ -509,7 +511,7 @@ Genesect
 IVs: 25 HP / 23 Def / 23 SpD / 28 Spe
 Ability: Download
 Level: 20
-Shiny: Yes
+Shiny: Square
 Adamant Nature
 =Met_Location=30012
 .Version=34
@@ -538,6 +540,7 @@ EVs: 252 HP / 252 Atk / 6 Spe
 Ability: Leaf Guard
 Shiny: Yes
 Adamant Nature
+Ball: Master Ball
 =Met_Location=164
 .Version=44
 - Leaf Blade
@@ -549,7 +552,7 @@ Passimian (M)
 IVs: 19 HP / 25 Atk / 5 Def / 3 SpA / 30 SpD / 21 Spe
 Ability: Receiver
 Level: 34
-Shiny: Yes
+Shiny: Square
 Adamant Nature
 Ball: Master Ball
 =Met_Location=76
@@ -564,7 +567,7 @@ IVs: 14 HP / 28 Atk / 17 Def / 16 SpA / 16 SpD / 27 Spe
 EVs: 252 HP / 98 Def / 160 SpD
 Ability: Water Compaction
 Level: 62
-Shiny: Yes
+Shiny: Square
 Hasty Nature
 Ball: Master Ball
 =Met_Location=178
@@ -606,7 +609,7 @@ IVs: 20 SpA
 EVs: 252 Atk / 1 SpD / 252 Spe
 Ability: Libero
 Gigantamax: Yes
-Shiny: Yes
+Shiny: Square
 Jolly Nature
 =Met_Location=30018
 .Version=44
@@ -619,7 +622,7 @@ Carkol (M) @ Leppa Berry
 IVs: 21 HP / 1 Atk / 28 Def / 0 SpA / 28 SpD / 0 Spe
 Ability: Steam Engine
 Level: 18
-Shiny: Yes
+Shiny: Square
 Modest Nature
 Ball: Master Ball
 =Met_Location=30
@@ -633,7 +636,7 @@ Applin (M)
 IVs: 23 HP / 22 Atk / 15 Def / 25 SpA / 8 SpD
 Ability: Gluttony
 Level: 60
-Shiny: Yes
+Shiny: Square
 Jolly Nature
 Ball: Master Ball
 =Met_Location=188
@@ -645,7 +648,7 @@ Toxtricity (M)
 IVs: 0 HP / 13 Atk / 13 Def / 30 SpA / 1 SpD / 7 Spe
 Ability: Punk Rock
 Level: 50
-Shiny: Yes
+Shiny: Square
 Rash Nature
 Ball: Cherish Ball
 =Met_Location=40001
@@ -688,6 +691,7 @@ Ability: Slush Rush
 Level: 58
 Shiny: Yes
 Careful Nature
+Ball: Master Ball
 =Met_Location=162
 .Version=44
 - Freeze-Dry
