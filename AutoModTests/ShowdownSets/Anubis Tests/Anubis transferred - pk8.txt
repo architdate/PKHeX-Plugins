@@ -1048,6 +1048,19 @@ Ball: Master Ball
 - Defog
 - Earthquake
 
+Landorus-Therian (M)
+Ability: Intimidate
+Level: 5
+Ball: Dream Ball
+Adamant Nature
+- Earthquake
+
+Landorus-Therian (M)
+Level: 5
+Ball: Dream Ball
+Adamant Nature
+- Earthquake
+
 Comfey (F)
 IVs: 12 HP / 6 Atk / 23 Def / 29 SpA / 15 SpD / 23 Spe
 Ability: Triage
