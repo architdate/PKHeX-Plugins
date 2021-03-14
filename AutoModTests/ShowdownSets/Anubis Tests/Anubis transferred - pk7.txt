@@ -1,15 +1,3 @@
-Venusaur (M) @ Venusaurite
-IVs: 27 Atk
-EVs: 252 HP / 72 Def / 186 SpD
-Ability: Overgrow
-Level: 52
-Bold Nature
-.Version=26
-- Synthesis
-- Knock Off
-- Giga Drain
-- Sludge Bomb
-
 Charmander (M)
 IVs: 2 HP / 19 Atk / 21 Def / 24 SpA / 17 SpD / 27 Spe
 Ability: Solar Power
@@ -21,54 +9,6 @@ Ball: Cherish Ball
 - Scratch
 - Growl
 - Celebrate
-
-Charizard (M) @ Leftovers
-IVs: 26 SpA
-EVs: 252 HP / 6 Atk / 252 Spe
-Ability: Blaze
-Level: 65
-Jolly Nature
-.Version=26
-- Swords Dance
-- Roost
-- Will-O-Wisp
-- Flare Blitz
-
-Charizard (M) @ Charizardite X
-IVs: 29 SpA
-EVs: 252 Atk / 6 Def / 252 Spe
-Ability: Blaze
-Level: 56
-Shiny: Yes
-Jolly Nature
-.Version=25
-- Flare Blitz
-- Dragon Claw
-- Earthquake
-- Roost
-
-Blastoise (M) @ Blastoisinite
-IVs: 29 Atk
-EVs: 252 HP / 252 SpA / 6 SpD
-Ability: Torrent
-Level: 72
-Modest Nature
-.Version=24
-- Rapid Spin
-- Dark Pulse
-- Aura Sphere
-- Scald
-
-Beedrill (F) @ Choice Band
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Swarm
-Shiny: Yes
-Adamant Nature
-.Version=27
-- Knock Off
-- Drill Run
-- U-turn
-- Poison Jab
 
 Kunai (Beedrill) (M)
 IVs: 0 SpA
@@ -83,17 +23,6 @@ Ball: Master Ball
 - Drill Run
 - Bug Bite
 
-Beedrill (F) @ Beedrillite
-EVs: 252 Atk / 6 Def / 252 Spe
-Ability: Swarm
-Shiny: Yes
-Jolly Nature
-.Version=26
-- Knock Off
-- Fell Stinger
-- X-Scissor
-- Poison Jab
-
 Pidgeotto (F) @ Pidgeotite
 IVs: 14 Atk / 30 Spe
 Ability: Keen Eye
@@ -104,30 +33,6 @@ Timid Nature
 - Refresh
 - Mimic
 - Sky Attack
-
-Pidgeot (F) @ Pidgeotite
-IVs: 19 Atk
-EVs: 252 SpA / 6 SpD / 252 Spe
-Ability: Keen Eye
-Level: 61
-Timid Nature
-.Version=26
-- Roost
-- U-turn
-- Heat Wave
-- Hurricane
-
-Pidgeot (F) @ Pidgeotite
-IVs: 22 Atk
-EVs: 6 Def / 252 SpA / 252 Spe
-Ability: Big Pecks
-Shiny: Yes
-Timid Nature
-.Version=25
-- U-turn
-- Heat Wave
-- Hidden Power [Ground]
-- Hurricane
 
 Fearow (F)
 EVs: 252 Atk / 6 SpD / 252 Spe
@@ -152,17 +57,6 @@ Language: Japanese
 - Surf
 - Agility
 - Celebrate
-
-Nidoqueen (F) @ Life Orb
-EVs: 252 SpA / 6 SpD / 252 Spe
-Ability: Sheer Force
-Shiny: Yes
-Modest Nature
-.Version=26
-- Stealth Rock
-- Ice Beam
-- Thunderbolt
-- Earth Power
 
 Nidoking (M) @ Life Orb
 EVs: 6 HP / 252 SpA / 252 Spe
@@ -249,31 +143,6 @@ Ball: Master Ball
 - Counter
 - Sucker Punch
 
-Dodrio (F) @ Flyinium Z
-IVs: 0 SpA
-EVs: 252 Atk / 252 Spe
-Ability: Early Bird
-Level: 50
-Shiny: Yes
-Jolly Nature
-.Version=27
-- Brave Bird
-- Jump Kick
-- Mirror Move
-- Knock Off
-
-Cloyster (M) @ Focus Sash
-IVs: 30 Spe
-EVs: 6 HP / 252 Atk / 252 Spe
-Ability: Skill Link
-Shiny: Yes
-Adamant Nature
-.Version=24
-- Shell Smash
-- Icicle Spear
-- Rock Blast
-- Liquidation
-
 Gengar (F)
 IVs: 4 HP / 2 Atk / 11 Def / 28 SpA / 30 SpD / 21 Spe
 Ability: Cursed Body
@@ -299,17 +168,6 @@ Timid Nature
 - Pain Split
 - Sludge Wave
 
-Hitmonlee (M) @ Normal Gem
-IVs: 0 SpA
-EVs: 252 Atk / 6 SpD / 252 Spe
-Ability: Unburden
-Adamant Nature
-.Version=26
-- Fake Out
-- Knock Off
-- Poison Jab
-- Close Combat
-
 Rhydon (M) @ Protector
 IVs: 11 SpA
 EVs: 252 HP / 252 Atk / 6 SpD
@@ -334,18 +192,6 @@ Jolly Nature
 - Seismic Toss
 - Crunch
 - Fake Out
-
-Kangaskhan (F)
-IVs: 14 SpA
-Ability: Early Bird
-Level: 5
-Shiny: Yes
-Jolly Nature
-.Version=3
-- Counter
-- Double-Edge
-- Body Slam
-- Seismic Toss
 
 Electabuzz (M) @ Electirizer
 IVs: 11 SpA
@@ -407,18 +253,6 @@ Language: Japanese
 - Celebrate
 - Happy Hour
 - Bounce
-
-Ditto @ Choice Scarf
-IVs: 25 Atk / 20 SpA / 15 SpD
-EVs: 252 HP / 64 Atk / 64 Def / 56 SpA / 40 SpD / 34 Spe
-Ability: Imposter
-Level: 56
-Shiny: Yes
-Quirky Nature
-Ball: Master Ball
-=Met_Location=148
-.Version=24
-- Transform
 
 Eeveeeeeeeee (Eevee) (F) @ Silk Scarf
 IVs: 0 SpA
@@ -593,19 +427,6 @@ Ball: Cherish Ball
 - Barrier
 - Hyper Beam
 
-Mewtwo
-IVs: 18 Atk / 30 SpD
-EVs: 98 HP / 125 Atk / 74 Def / 106 SpA / 72 SpD / 35 Spe
-Ability: Pressure
-Timid Nature
-Ball: Master Ball
-=Met_Location=168
-.Version=24
-- Psystrike
-- Aura Sphere
-- Ice Beam
-- Calm Mind
-
 Mewtwo @ Mewtwonite Y
 IVs: 22 HP / 2 Atk
 EVs: 2 Atk / 4 Def / 252 SpA / 252 Spe
@@ -631,17 +452,6 @@ Ball: Cherish Ball
 - Psychic
 - Recover
 - Aura Sphere
-
-Cleffa (M)
-IVs: 21 HP / 0 Atk / 23 SpD / 13 Spe
-Ability: Cute Charm
-Level: 5
-Bold Nature
-.Version=3
-- Soft-Boiled
-- Mud-Slap
-- Wish
-- Metronome
 
 Espeon (M) @ Leftovers
 IVs: 0 Atk
@@ -677,16 +487,6 @@ Ball: Master Ball
 .Version=26
 - Hidden Power [Electric]
 
-Unown-D
-IVs: 14 Atk / 30 Spe
-Ability: Levitate
-Level: 25
-Shiny: Yes
-Timid Nature
-Ball: Master Ball
-.Version=12
-- Hidden Power [Psychic]
-
 Unown-E
 IVs: 14 Atk / 30 Spe
 Ability: Levitate
@@ -716,16 +516,6 @@ Ball: Master Ball
 .Version=12
 - Hidden Power [Ice]
 
-Unown-F
-IVs: 14 Atk / 30 Spe
-Ability: Levitate
-Level: 25
-Shiny: Yes
-Timid Nature
-Ball: Master Ball
-.Version=12
-- Hidden Power [Psychic]
-
 Unown-I
 IVs: 14 Atk / 30 Spe
 Ability: Levitate
@@ -746,16 +536,6 @@ Ball: Master Ball
 =Met_Location=328
 .Version=26
 - Hidden Power [Bug]
-
-Unown-K
-IVs: 14 Atk / 30 Spe
-Ability: Levitate
-Level: 25
-Shiny: Yes
-Timid Nature
-Ball: Master Ball
-.Version=12
-- Hidden Power [Psychic]
 
 Unown-N
 IVs: 14 Atk / 30 Spe
@@ -876,18 +656,6 @@ Ball: Master Ball
 - Mud-Slap
 - String Shot
 
-Skarmory (F) @ Heart Scale
-IVs: 14 SpA
-Ability: Sturdy
-Level: 1
-Shiny: Yes
-Impish Nature
-.Version=7
-- Defog
-- Whirlwind
-- Brave Bird
-- Stealth Rock
-
 Houndour (F)
 IVs: 10 Atk / 30 Def
 Ability: Flash Fire
@@ -911,30 +679,6 @@ Calm Nature
 - Ancient Power
 - Captivate
 
-Porygon2
-IVs: 0 Atk / 0 Spe
-Ability: Analytic
-Level: 51
-Bold Nature
-Ball: Dream Ball
-=Met_Location=30015
-.Version=23
-- Thunderbolt
-- Foul Play
-- Tri Attack
-
-Miltank (F) @ Silk Scarf
-EVs: 252 Atk / 6 Def / 252 Spe
-Ability: Scrappy
-Naive Nature
-Ball: Cherish Ball
-=Met_Location=30004
-.Version=27
-- Rollout
-- Attract
-- Stomp
-- Milk Drink
-
 Miltank (F)
 IVs: 25 HP / 30 Atk / 16 Def / 2 SpA / 9 SpD / 0 Spe
 Ability: Thick Fat
@@ -947,18 +691,6 @@ Ball: Safari Ball
 - Seismic Toss
 - Whirlpool
 - Mud-Slap
-
-Raikou
-EVs: 6 HP / 252 SpA / 252 Spe
-Ability: Pressure
-Hasty Nature
-Ball: Master Ball
-=Met_Location=334
-.Version=26
-- Thunderbolt
-- Calm Mind
-- Rest
-- Sleep Talk
 
 Stormy (Raikou)
 IVs: 0 Atk / 30 Def
@@ -1035,20 +767,6 @@ Adamant Nature
 - Endure
 - Swift
 
-Entei @ Choice Band
-IVs: 0 SpA
-EVs: 252 Atk / 6 SpD / 252 Spe
-Ability: Pressure
-Shiny: Yes
-Jolly Nature
-Ball: Master Ball
-=Met_Location=334
-.Version=26
-- Sacred Fire
-- Bulldoze
-- Stone Edge
-- Iron Head
-
 Kirin (Suicune)
 IVs: 2 Atk
 Ability: Inner Focus
@@ -1060,17 +778,6 @@ Bold Nature
 - Water Gun
 - Endure
 - Swift
-
-Suicune
-IVs: 4 Atk / 30 Def
-Ability: Pressure
-Level: 40
-Shiny: Yes
-Bold Nature
-.Version=15
-- Rain Dance
-- Leer
-- Gust
 
 Suicune @ Leftovers
 IVs: 4 HP / 24 SpD / 26 Spe
@@ -1085,31 +792,6 @@ Ball: Master Ball
 - Roar
 - Calm Mind
 - Scald
-
-Charcanya (Tyranitar) (F)
-IVs: 25 HP / 14 Atk / 9 SpA / 17 SpD
-Ability: Sand Stream
-Level: 55
-Shiny: Yes
-Relaxed Nature
-.Version=3
-- Rock Slide
-- Pursuit
-- Whirlpool
-- Crunch
-
-Lugia @ Leftovers
-IVs: 0 Atk
-EVs: 252 HP / 162 Def / 96 Spe
-Ability: Multiscale
-Bold Nature
-Ball: Dream Ball
-=Met_Location=30015
-.Version=22
-- Toxic
-- Ice Beam
-- Roost
-- Whirlwind
 
 Lugia
 IVs: 1 Atk / 30 Def / 30 Spe
@@ -1171,30 +853,6 @@ Ball: Cherish Ball
 - Brave Bird
 - Recover
 - Celebrate
-
-Celebi @ Leftovers
-EVs: 236 HP / 252 Def / 22 Spe
-Ability: Natural Cure
-Level: 60
-Bold Nature
-=Met_Location=30011
-.Version=24
-- Stealth Rock
-- Recover
-- U-turn
-- Giga Drain
-
-Celebi
-IVs: 8 Atk / 30 Def
-Ability: Natural Cure
-Modest Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=27
-- Confusion
-- Recover
-- Heal Bell
-- Safeguard
 
 Celebi
 IVs: 0 Atk
@@ -1259,18 +917,6 @@ Ball: Master Ball
 - Swords Dance
 - Mimic
 - Nightmare
-
-Gumdrop (Azurill) (F)
-IVs: 0 HP / 0 Def / 0 SpA / 0 SpD / 0 Spe
-Ability: Thick Fat
-Level: 5
-Shiny: Yes
-Lonely Nature
-.Version=3
-- Mimic
-- Whirlpool
-- Body Slam
-- Mud-Slap
 
 Delcatty (F)
 IVs: 29 HP / 30 Def / 30 SpA / 30 SpD / 30 Spe
@@ -1527,19 +1173,6 @@ Ball: Master Ball
 - Counter
 - Body Slam
 
-Kikka (Latias) (F)
-IVs: 4 Atk / 30 SpA / 30 Spe
-Ability: Levitate
-Level: 50
-Shiny: Yes
-Timid Nature
-Ball: Master Ball
-.Version=2
-- Body Slam
-- Mud-Slap
-- Twister
-- Swift
-
 Draken (Latios) (M)
 IVs: 4 Atk / 30 SpA / 30 Spe
 Ability: Levitate
@@ -1632,522 +1265,3 @@ Ball: Cherish Ball
 - Earthquake
 - Extreme Speed
 - Dragon Dance
-
-Jirachi @ Leftovers
-IVs: 16 SpA
-EVs: 252 HP / 6 Def / 252 SpD
-Ability: Serene Grace
-Careful Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=27
-- Stealth Rock
-- Wish
-- U-turn
-- Iron Head
-
-Jirachi
-IVs: 30 HP / 30 Def
-Ability: Serene Grace
-Level: 50
-Hasty Nature
-Ball: Cherish Ball
-Language: Japanese
-=Met_Location=40015
-.Version=21
-- Draco Meteor
-- Meteor Mash
-- Power-Up Punch
-- Follow Me
-
-Deoxys-Attack
-EVs: 6 Atk / 252 SpA / 252 Spe
-Ability: Pressure
-Naive Nature
-Ball: Master Ball
-=Met_Location=316
-.Version=27
-- Stealth Rock
-- Magic Coat
-- Fire Punch
-- Low Kick
-
-Deoxys-Attack
-Ability: Pressure
-Level: 50
-Rash Nature
-.Version=7
-- Ice Punch
-- Meteor Mash
-- Fire Punch
-- Thunder Punch
-
-Tide Pod (Deoxys-Defense)
-IVs: 30 HP / 0 Atk
-Ability: Pressure
-Level: 30
-Shiny: Yes
-Calm Nature
-Ball: Master Ball
-.Version=5
-- Secret Power
-- Toxic
-- Seismic Toss
-- Magic Coat
-
-Deoxys-Speed
-IVs: 30 HP / 0 Atk
-Ability: Pressure
-Level: 30
-Shiny: Yes
-Calm Nature
-Ball: Master Ball
-.Version=5
-- Seismic Toss
-- Mud-Slap
-- Counter
-- Mimic
-
-Vespiquen (F)
-IVs: 30 HP / 0 Atk / 30 SpA / 30 Spe
-Ability: Pressure
-Level: 21
-Shiny: Yes
-Bold Nature
-Ball: Master Ball
-.Version=8
-- Defog
-- Tailwind
-- Mud-Slap
-- Power Gem
-
-Fritz (Rotom)
-IVs: 22 Atk / 30 Def
-Ability: Levitate
-Level: 20
-Shiny: Yes
-Timid Nature
-Ball: Master Ball
-.Version=12
-- Mud-Slap
-- Sucker Punch
-- Swift
-- Endure
-
-Dialga @ Gold Bottle Cap
-IVs: 8 Atk
-Ability: Telepathy
-Modest Nature
-Ball: Dream Ball
-=Met_Location=30015
-.Version=22
-- Roar of Time
-- Aura Sphere
-- Earth Power
-- Flash Cannon
-
-Based (Dialga)
-IVs: 0 SpA
-EVs: 4 HP / 252 Atk / 1 Def / 1 SpD / 252 Spe
-Ability: Pressure
-Level: 70
-Shiny: Yes
-Jolly Nature
-Ball: Master Ball
-.Version=12
-- Outrage
-- Heal Block
-- Fury Cutter
-- Mud-Slap
-
-Palkia
-IVs: 0 Atk
-Ability: Telepathy
-Level: 5
-Timid Nature
-Ball: Dream Ball
-=Met_Location=30015
-.Version=23
-- Dragon Breath
-- Scary Face
-
-Palkia @ Lustrous Orb
-IVs: 5 HP / 20 Atk / 27 Spe
-EVs: 3 Atk / 252 SpA / 3 SpD / 252 Spe
-Ability: Telepathy
-Timid Nature
-Ball: Cherish Ball
-=Met_Location=40006
-.Version=27
-- Earth Power
-- Aura Sphere
-- Spacial Rend
-- Hydro Pump
-
-Nova (Palkia)
-IVs: 7 Atk
-Ability: Pressure
-Level: 50
-Shiny: Yes
-Timid Nature
-Ball: Master Ball
-.Version=11
-- Water Pulse
-- Heal Block
-- Dragon Claw
-- Spacial Rend
-
-Heatran (M)
-IVs: 0 Atk / 0 Spe
-Ability: Flash Fire
-Level: 50
-Quiet Nature
-.Version=7
-- Eruption
-- Magma Storm
-- Earth Power
-- Ancient Power
-
-Giratina
-IVs: 0 Atk
-Ability: Telepathy
-Level: 5
-Bold Nature
-Ball: Dream Ball
-=Met_Location=30015
-.Version=23
-- Dragon Breath
-- Scary Face
-
-Giratina
-IVs: 7 SpA
-Ability: Pressure
-Level: 1
-Shiny: Yes
-Adamant Nature
-=Met_Level=1
-.Version=8
-- Dragon Breath
-- Scary Face
-- Defog
-
-Giratina-Origin @ Griseous Orb
-IVs: 7 SpA
-Ability: Levitate
-Level: 1
-Shiny: Yes
-Adamant Nature
-=Met_Level=1
-.Version=8
-- Dragon Breath
-- Scary Face
-- Defog
-
-Darkrai
-IVs: 12 HP / 2 Atk / 21 SpA / 5 SpD / 10 Spe
-Ability: Bad Dreams
-Level: 50
-Timid Nature
-.Version=10
-- Dark Void
-- Dark Pulse
-- Shadow Ball
-- Double Team
-
-Shaymin
-IVs: 30 SpD
-Ability: Natural Cure
-Level: 15
-Timid Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=27
-- Growth
-- Magical Leaf
-- Seed Flare
-- Air Slash
-
-Victini
-IVs: 25 HP / 3 SpA
-EVs: 252 Atk / 4 SpD / 252 Spe
-Ability: Victory Star
-Naive Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=27
-- Flare Blitz
-- Wild Charge
-- U-turn
-- Zen Headbutt
-
-Darmanitan (M)
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-Ability: Zen Mode
-Level: 35
-Calm Nature
-Ball: Cherish Ball
-=Met_Location=30009
-.Version=26
-- Thrash
-- Belly Drum
-- Flare Blitz
-- Hammer Arm
-
-Durant (F) @ Life Orb
-IVs: 12 SpA
-EVs: 252 Atk / 6 Def / 252 Spe
-Ability: Hustle
-Jolly Nature
-.Version=26
-- Hone Claws
-- Thunder Fang
-- Crunch
-- Iron Head
-
-Terrakion
-IVs: 6 HP / 11 SpA
-EVs: 252 Atk / 6 Def / 252 Spe
-Ability: Justified
-Level: 66
-Shiny: Yes
-Jolly Nature
-Ball: Master Ball
-=Met_Location=336
-.Version=27
-- Zen Headbutt
-- Iron Head
-- Stealth Rock
-- Block
-
-Virizion @ Gold Bottle Cap
-IVs: 3 HP / 21 SpA / 26 SpD
-Ability: Justified
-Level: 50
-Shiny: Yes
-Jolly Nature
-Ball: Master Ball
-=Met_Location=336
-.Version=27
-- Helping Hand
-- Zen Headbutt
-- Synthesis
-- Superpower
-
-Tornadus (M)
-IVs: 0 Atk / 13 SpD / 0 Spe
-EVs: 41 HP / 101 Atk / 54 Def / 25 SpA / 49 SpD / 66 Spe
-Ability: Prankster
-Level: 68
-Relaxed Nature
-Ball: Master Ball
-=Met_Location=348
-.Version=27
-- Extrasensory
-- Protect
-- Strength
-- Crunch
-
-Keldeo
-IVs: 20 Atk / 30 SpD / 5 Spe
-EVs: 54 HP / 25 Atk / 11 Def / 7 SpA / 2 SpD / 37 Spe
-Ability: Justified
-Serious Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=25
-- Aqua Jet
-- Leer
-- Double Kick
-- Bubble Beam
-
-Meloetta @ PP Max
-IVs: 0 Atk / 30 Def
-Ability: Serene Grace
-Timid Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=27
-- Quick Attack
-- Confusion
-- Round
-
-Meloetta
-IVs: 15 Atk
-Ability: Serene Grace
-Timid Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=27
-- Focus Blast
-- Substitute
-- Psyshock
-- Calm Mind
-
-Genesect @ Choice Specs
-EVs: 70 HP / 188 SpA / 252 Spe
-Ability: Download
-Timid Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=25
-- Techno Blast
-- Flamethrower
-- Flash Cannon
-- U-turn
-
-Greninja (M) @ Master Ball
-IVs: 23 Atk / 26 Def / 10 SpA / 27 SpD / 14 Spe
-Ability: Protean
-Naive Nature
-Ball: Cherish Ball
-Language: Japanese
-=Met_Location=40007
-.Version=27
-- Hydro Cannon
-- Gunk Shot
-- Mat Block
-- Happy Hour
-
-Vivillon-Modern (F) @ Flyinium Z
-IVs: 10 Atk
-EVs: 252 SpA / 6 SpD / 252 Spe
-Ability: Compound Eyes
-Level: 56
-Timid Nature
-.Version=26
-- Substitute
-- Sleep Powder
-- Quiver Dance
-- Hurricane
-
-Vivillon-Fancy (M)
-IVs: 3 HP / 27 Atk / 25 Def / 0 SpA / 27 SpD / 16 Spe
-EVs: 250 SpA / 250 Spe
-Ability: Compound Eyes
-Level: 54
-Bold Nature
-Ball: Cherish Ball
-=Met_Location=40048
-.Version=24
-- Bug Buzz
-- Hurricane
-- Quiver Dance
-- Roost
-
-Vivillon-Pokeball (M)
-IVs: 5 HP / 23 Atk / 12 Def / 10 SpA / 11 SpD / 20 Spe
-Ability: Shield Dust
-Level: 12
-Modest Nature
-=Met_Location=40001
-.Version=25
-- Stun Spore
-- Gust
-- Light Screen
-- Struggle Bug
-
-Gourgeist-Small (M)
-IVs: 13 HP / 2 Atk / 30 Def / 19 SpA / 24 SpD / 11 Spe
-Ability: Pickup
-Level: 35
-Rash Nature
-Ball: Master Ball
-=Met_Location=78
-.Version=24
-- Razor Leaf
-- Leech Seed
-- Bullet Seed
-- Shadow Sneak
-
-Gourgeist-Large (F)
-IVs: 0 HP / 8 Atk / 25 Def / 11 SpA / 29 SpD / 26 Spe
-EVs: 1 Def
-Ability: Pickup
-Level: 36
-Jolly Nature
-Ball: Master Ball
-=Met_Location=78
-.Version=24
-- Leech Seed
-- Bullet Seed
-- Shadow Sneak
-- Shadow Ball
-
-Gourgeist-Super (M) @ Leftovers
-IVs: 0 Atk
-EVs: 252 HP / 122 Def / 136 SpD
-Ability: Frisk
-Bold Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=25
-- Incinerate
-- Flash
-- Rock Smash
-- Secret Power
-
-Xerneas
-IVs: 0 Atk / 28 SpA / 26 SpD
-EVs: 6 HP / 252 SpA / 252 Spe
-Ability: Fairy Aura
-Shiny: Yes
-Modest Nature
-Ball: Cherish Ball
-=Met_Location=40011
-.Version=24
-- Geomancy
-- Moonblast
-- Protect
-- Hidden Power [Ground]
-
-Diancie
-IVs: 0 Atk / 0 SpA / 0 Spe
-Ability: Clear Body
-Hasty Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=27
-- Diamond Storm
-- Moonblast
-- Dazzling Gleam
-- Protect
-
-Diancie @ Diancite
-IVs: 30 Def / 30 SpA / 30 Spe
-Ability: Clear Body
-Level: 50
-Shiny: Yes
-Hasty Nature
-Ball: Cherish Ball
-=Met_Location=40042
-.Version=24
-- Diamond Storm
-- Moonblast
-- Reflect
-- Return
-
-Hoopa
-IVs: 18 HP / 14 SpA / 1 Spe
-Ability: Magician
-Level: 50
-Brave Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=26
-- Hyperspace Hole
-- Psychic
-- Astonish
-- Nasty Plot
-
-Hoopa-Unbound
-IVs: 9 Atk
-EVs: 4 HP / 2 Atk / 252 SpA / 252 Spe
-Ability: Magician
-Timid Nature
-Ball: Cherish Ball
-=Met_Location=40001
-.Version=27
-- Dark Pulse
-- Focus Blast
-- Psyshock
-- Trick
