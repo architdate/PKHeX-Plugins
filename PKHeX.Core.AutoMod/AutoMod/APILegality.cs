@@ -966,7 +966,7 @@ namespace PKHeX.Core.AutoMod
             var lvl = pk.CurrentLevel;
             if (pk.Met_Level > lvl)
                 pk.Met_Level = lvl;
-            if (pk.Met_Location is not (Locations.Transfer1 or Locations.Transfer2 or Locations.Transfer3 or Locations.Transfer4))
+            if (pk.Met_Location is not (Locations.Transfer1 or Locations.Transfer2 or Locations.Transfer3 or Locations.Transfer4 or Locations.GO8))
                 return;
             var level = pk.Met_Level;
             if (lvl <= level)
