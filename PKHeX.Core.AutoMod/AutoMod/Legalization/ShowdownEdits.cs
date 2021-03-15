@@ -146,6 +146,10 @@ namespace PKHeX.Core.AutoMod
             if (set.Nickname.Length == 0 && finallang == currentlang && !evolutionRequired)
                 return;
 
+            // don't bother checking encountertrade nicknames for length validity
+            if (enc is EncounterTrade et && et.HasNickname)
+                return;
+
             var gen = enc.Generation;
             var maxlen = Legal.GetMaxLengthNickname(gen, finallang);
             var nickname = set.Nickname.Length > maxlen ? set.Nickname.Substring(0, maxlen) : set.Nickname;
