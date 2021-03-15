@@ -18,10 +18,11 @@ namespace AutoModTests
     public static class TeamTests
     {
         private static string TestPath => TestUtil.GetTestFolder("ShowdownSets");
+        private static bool TargettedTesting = false;
 
         private static Dictionary<string, int> GetFileStructures()
         {
-            var files = Directory.GetFiles(TestPath, "*", SearchOption.AllDirectories);
+            var files = Directory.GetFiles(TestPath, "*", TargettedTesting ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);
             Dictionary<string, int> result = new Dictionary<string, int>();
             foreach (var f in files)
             {

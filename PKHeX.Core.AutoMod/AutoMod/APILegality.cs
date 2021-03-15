@@ -53,13 +53,17 @@ namespace PKHeX.Core.AutoMod
 
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR moves for the encounter
-            var isHidden = template.AbilityNumber == 4;
-            if (template.PersonalInfo.Abilities.Count > 2) // Hidden ability exists for the template
+
+            var abilityreq = AbilityRequest.NotHidden;
+            if (template.AbilityNumber == 4)
+                abilityreq = AbilityRequest.Hidden;
+            else if (template.PersonalInfo.Abilities.Count > 2) // Hidden ability exists for the template
             {
-                isHidden = isHidden || template.PersonalInfo.Abilities[2] == template.Ability;
+                if (template.PersonalInfo.Abilities[2] == template.Ability)
+                    abilityreq = AbilityRequest.PossiblyHidden;
                 // if no set ability is specified, it is assumed as the first ability which can be the same as the HA
-                if (set.Ability == -1)
-                    isHidden = isHidden || template.PersonalInfo.Abilities[0] == template.PersonalInfo.Abilities[2];
+                if (set.Ability == -1 && template.PersonalInfo.Abilities[0] == template.PersonalInfo.Abilities[2])
+                    abilityreq = AbilityRequest.PossiblyHidden;
             }
             var batchedit = AllowBatchCommands && regen.HasBatchSettings;
             var destType = template.GetType();
@@ -84,7 +88,7 @@ namespace PKHeX.Core.AutoMod
                 }
 
                 // Look before we leap -- don't waste time generating invalid / incompatible junk.
-                if (!IsEncounterValid(set, enc, isHidden, destVer))
+                if (!IsEncounterValid(set, enc, abilityreq, destVer))
                     continue;
 
                 // Create the PKM from the template.
@@ -209,10 +213,10 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="set">showdown set</param>
         /// <param name="enc">encounter object</param>
-        /// <param name="isHidden">is HA requested</param>
+        /// <param name="abilityreq">is HA requested</param>
         /// <param name="destVer">version to generate in</param>
         /// <returns>if the encounter is valid or not</returns>
-        private static bool IsEncounterValid(IBattleTemplate set, IEncounterable enc, bool isHidden, GameVersion destVer)
+        private static bool IsEncounterValid(IBattleTemplate set, IEncounterable enc, AbilityRequest abilityreq, GameVersion destVer)
         {
             // Don't process if encounter min level is higher than requested level
             if (enc.LevelMin > set.Level)
@@ -228,7 +232,12 @@ namespace PKHeX.Core.AutoMod
             }
 
             // Don't process if encounter is HA but requested pkm is not HA
-            if (!isHidden && enc is EncounterStatic { Ability: 4 })
+            if (abilityreq == AbilityRequest.NotHidden && enc is EncounterStatic { Ability: 4 })
+                return false;
+
+            // Don't process if PKM is definitely Hidden Ability and the PKM is from Gen 3 or Gen 4 and Hidden Capsule doesn't exist
+            var gen = enc.Generation;
+            if (abilityreq == AbilityRequest.Hidden && gen is 3 or 4 && destVer.GetGeneration() < 8)
                 return false;
 
             if (set.Species == (int)Species.Pikachu)
@@ -553,7 +562,8 @@ namespace PKHeX.Core.AutoMod
                 switch (enc)
                 {
                     case EncounterSlot3PokeSpot es3ps:
-                        do PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, pk.AbilityNumber >> 1, es3ps.SlotNumber);
+                        var abil = pk.PersonalInfo.Abilities.Count > 0 ? (pk.PersonalInfo.Abilities[0] == pk.Ability ? 0 : 1) : 1;
+                        do PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, abil, es3ps.SlotNumber);
                         while (pk.PID % 25 != pk.Nature);
                         return;
                     case PCD d:

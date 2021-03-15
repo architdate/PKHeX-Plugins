@@ -237,8 +237,9 @@ namespace PKHeX.Core.AutoMod
             var la = new LegalityAnalysis(pk);
             if (la.Parsed && !pk.WasEvent)
             {
+                var relearn = new LegalityAnalysis(pk).GetSuggestedRelearnMoves(enc);
                 pk.ClearRelearnMoves();
-                pk.SetRelearnMoves(new LegalityAnalysis(pk).GetSuggestedRelearnMoves(enc));
+                pk.SetRelearnMoves(relearn);
             }
 
             if (pk is IAwakened pb7)
@@ -311,5 +312,12 @@ namespace PKHeX.Core.AutoMod
                     break;
             }
         }
+    }
+
+    public enum AbilityRequest
+    {
+        NotHidden,
+        PossiblyHidden,
+        Hidden
     }
 }
