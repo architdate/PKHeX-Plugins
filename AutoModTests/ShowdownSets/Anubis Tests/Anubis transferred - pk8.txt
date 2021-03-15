@@ -646,6 +646,19 @@ Jolly Nature
 - Brave Bird
 - Hypnosis
 
+Umbreon (F)
+IVs: 0 Atk
+Ability: Synchronize
+Timid Nature
+Ball: Cherish Ball
+Language: Japanese
+=Met_Location=40109
+.Version=21
+- Sing
+- Baton Pass
+- Substitute
+- Attract
+
 Yoruichi (Umbreon) (F) @ Leftovers
 IVs: 0 SpA
 EVs: 252 HP / 252 Def / 6 SpD
