@@ -431,7 +431,6 @@ IVs: 18 Atk / 17 SpA / 8 SpD
 Ability: Hustle
 Level: 14
 Serious Nature
-=OT_Name=Trainer
 =Generation=2
 - Growl
 - Tackle
