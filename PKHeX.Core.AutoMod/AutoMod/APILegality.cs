@@ -324,7 +324,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetGigantamaxFactor(set, enc);
             pk.SetSuggestedRibbons(enc, SetAllLegalRibbons);
             pk.SetBelugaValues();
-            pk.FixEdgeCases();
+            pk.FixEdgeCases(enc);
 
             // Aesthetics
             pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, regen.Extra.Ball);
@@ -985,7 +985,7 @@ namespace PKHeX.Core.AutoMod
         /// Edge case memes for weird properties that I have no interest in setting for other pokemon.
         /// </summary>
         /// <param name="pk">Pokemon to edit</param>
-        private static void FixEdgeCases(this PKM pk)
+        private static void FixEdgeCases(this PKM pk, IEncounterable enc)
         {
             if (pk.Nickname.Length == 0)
                 pk.ClearNickname();
@@ -1001,7 +1001,10 @@ namespace PKHeX.Core.AutoMod
 
             // Milotic Beauty Evolution for Format < 5
             if (pk.Species == (int)Species.Milotic && pk.Format < 5 && pk is IContestStatsMutable c) // Evolves via beauty
-                c.CNT_Beauty = 170;
+            {
+                if (!(enc is MysteryGift && enc.Species == (int)Species.Milotic))
+                    c.CNT_Beauty = 170;
+            }
 
             // CXD only has a male trainer
             if (pk.Version == (int)GameVersion.CXD && pk.OT_Gender == (int)Gender.Female) // Colosseum and XD are sexist games.
