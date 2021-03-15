@@ -76,7 +76,6 @@ IVs: 9 Atk / 10 Def / 10 SpA / 26 SpD / 14 Spe
 Ability: Damp
 Level: 22
 Naughty Nature
-=OT_Name=Laule'a
 =Met_Location=30001
 .Version=30
 - Bubble
