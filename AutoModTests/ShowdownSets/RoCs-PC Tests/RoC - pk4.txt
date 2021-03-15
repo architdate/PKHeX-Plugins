@@ -1383,7 +1383,7 @@ Ball: Cherish Ball
 Typhlosion (M)
 IVs: 11 HP / 3 Atk / 8 Def / 26 SpA / 29 SpD / 23 Spe
 Ability: Blaze
-Level: 36
+Level: 42
 Jolly Nature
 =Met_Level=5
 .Version=7
