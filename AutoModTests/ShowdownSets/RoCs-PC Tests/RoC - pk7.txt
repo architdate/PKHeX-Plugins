@@ -4989,19 +4989,6 @@ Ball: Master Ball
 - Sweet Scent
 - Bug Buzz
 
-Ribombee-Totem (F)
-IVs: 13 Def / 22 SpA / 26 SpD
-Ability: Sweet Veil
-Level: 50
-Quirky Nature
-=Met_Level=50
-=Met_Location=202
-.Version=32
-- Bug Buzz
-- Dazzling Gleam
-- Aromatherapy
-- Quiver Dance
-
 Rockruff (M)
 IVs: 22 HP / 30 Atk / 3 Def / 25 SpA / 23 SpD / 26 Spe
 Ability: Keen Eye
@@ -5113,19 +5100,6 @@ Level: 25
 Hasty Nature
 Ball: Master Ball
 =Met_Location=134
-.Version=33
-- Spider Web
-- Bug Bite
-- Bubble Beam
-- Bite
-
-Araquanid-Totem (M)
-IVs: 14 Def / 20 SpD / 26 Spe
-Ability: Water Bubble
-Level: 25
-Adamant Nature
-=Met_Level=25
-=Met_Location=202
 .Version=33
 - Spider Web
 - Bug Bite
@@ -5442,19 +5416,6 @@ Ball: Master Ball
 - Spark
 - Nuzzle
 - Magnet Rise
-
-Togedemaru-Totem (F)
-IVs: 24 HP / 11 SpA / 29 SpD
-Ability: Sturdy
-Level: 35
-Relaxed Nature
-=Met_Level=35
-=Met_Location=202
-.Version=33
-- Nuzzle
-- Magnet Rise
-- Discharge
-- Zing Zap
 
 Mimikyu (F)
 IVs: 9 HP / 15 Def / 26 SpA / 25 SpD / 29 Spe
