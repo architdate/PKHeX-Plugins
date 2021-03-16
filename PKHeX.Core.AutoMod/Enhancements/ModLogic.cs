@@ -61,14 +61,15 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
         public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, IEnumerable<int> speciesIDs)
         {
+            var tr = APILegality.UseTrainerData ? TrainerSettings.GetSavedTrainerData(sav.Version, sav.Generation) : sav;
             foreach (var id in speciesIDs)
             {
-                if (GetRandomEncounter(sav, id, out var pk) && pk != null)
+                if (tr.GetRandomEncounter(id, out var pk) && pk != null)
                 {
                     pk.Heal();
                     yield return pk;
                 }
-                else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = sav.Language, OT = sav.OT, TID = sav.TID }, id, out var pkm) && pkm is PK1 pk1)
+                else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID = tr.TID }, id, out var pkm) && pkm is PK1 pk1)
                 {
                     yield return pk1.ConvertToPK2();
                 }
