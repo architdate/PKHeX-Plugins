@@ -672,18 +672,19 @@ Ball: Master Ball
 - Swagger
 - Assurance
 
-Milcery (F) @ Ribbon Sweet
-IVs: 23 HP / 8 Atk / 27 Def / 5 SpD / 23 Spe
-Ability: Sweet Veil
-Level: 5
-Hardy Nature
-Ball: Cherish Ball
+Alcremie-Rainbow (F)
+IVs: 0 Atk
+.FormArgument=6
+Ability: Aroma Veil
+Level: 50
+Gigantamax: Yes
+Modest Nature
 =Met_Location=40012
 .Version=44
-- Celebrate
-- Last Resort
+- Dazzling Gleam
+- Recover
+- Misty Terrain
 - Entrainment
-- Attract
 
 Arctovish
 IVs: 22 SpA

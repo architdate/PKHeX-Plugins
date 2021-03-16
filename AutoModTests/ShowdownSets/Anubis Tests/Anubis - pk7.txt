@@ -3087,19 +3087,6 @@ Language: Japanese
 - Shell Trap
 - Dragon Tail
 
-Togedemaru-Totem (M)
-IVs: 6 HP / 5 Atk / 29 SpA
-Ability: Sturdy
-Level: 35
-Jolly Nature
-=Met_Level=35
-=Met_Location=202
-.Version=33
-- Nuzzle
-- Magnet Rise
-- Discharge
-- Zing Zap
-
 Hakamo-o (M)
 IVs: 13 HP / 16 Atk / 18 Def / 16 SpA / 28 SpD / 4 Spe
 EVs: 2 HP / 10 Atk / 22 Def / 3 SpA
