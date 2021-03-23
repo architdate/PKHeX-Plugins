@@ -104,10 +104,14 @@ namespace PKHeX.Core.AutoMod
                 if (dest.Generation >= 7 && raw is PK1 basepk1)
                     raw = basepk1.ConvertToPK2();
 
-                // Bring to the target generation, then apply final details.
+                // Bring to the target generation and filter
                 var pk = PKMConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
                     continue;
+                if (PKMConverter.IsIncompatibleGB(pk, template.Japanese, pk.Japanese))
+                    continue;
+
+                // Apply final details
                 ApplySetDetails(pk, set, raw, dest, enc, regen);
 
                 // Apply final tweaks to the data.
@@ -127,8 +131,8 @@ namespace PKHeX.Core.AutoMod
                         continue;
                 }
 
-                if (pk is PK1 pk1 && ParseSettings.AllowGen1Tradeback)
-                    pk1.Catch_Rate = pk1.Gen2Item; // Simulate a gen 2 trade/tradeback to allow tradeback moves
+                if (pk is PK1 pk1)
+                    pk1.TradebackFixes(tr);
 
                 // Verify the Legality of what we generated, and exit if it is valid.
                 var la = new LegalityAnalysis(pk);
@@ -141,6 +145,25 @@ namespace PKHeX.Core.AutoMod
             }
             satisfied = LegalizationResult.Failed;
             return template;
+        }
+
+        private static void TradebackFixes(this PK1 pk1, ITrainerInfo tr)
+        {
+            // Simulate a gen 2 trade/tradeback to allow tradeback moves
+            pk1.Catch_Rate = pk1.Gen2Item;
+
+            // Check if trade evo is required. If so, just reset catch rate and tradebackstatus
+            var tradeevos = new HashSet<int> { (int)Species.Kadabra, (int)Species.Machoke, (int)Species.Graveler, (int)Species.Haunter };
+            var la = new LegalityAnalysis(pk1);
+            if (la.Valid)
+                return;
+
+            var enc = la.EncounterMatch;
+            if (enc is EncounterTrade || enc.Species != pk1.Species || !tradeevos.Contains(enc.Species))
+                return;
+            
+            pk1.TradebackStatus = TradebackType.Any;
+            pk1.Catch_Rate = PersonalTable.RB[pk1.Species].CatchRate;
         }
 
         /// <summary>
