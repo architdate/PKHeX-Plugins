@@ -898,6 +898,7 @@ IVs: 15 HP / 20 Atk / 15 Def / 20 SpA / 20 SpD / 20 Spe
 Ability: Magnet Pull
 Level: 19
 Impish Nature
+Language: English
 =OT_Name=Lorenzo
 .Version=7
 - Thunder Shock
@@ -958,8 +959,8 @@ IVs: 20 HP / 25 Atk / 15 Def / 15 SpA / 15 SpD / 25 Spe
 Ability: Levitate
 Level: 35
 Hasty Nature
-=OT_Name=Mindy
 Language: English
+=OT_Name=Mindy
 .Version=12
 - Sucker Punch
 - Shadow Punch
@@ -1539,6 +1540,7 @@ IVs: 15 HP / 20 Atk / 15 Def / 20 SpA / 20 SpD / 20 Spe
 Ability: Synchronize
 Level: 16
 Modest Nature
+Language: English
 =OT_Name=Mondo
 .Version=7
 - Leer

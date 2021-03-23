@@ -112,18 +112,6 @@ Jolly Nature
 - Role Play
 - Fire Punch
 
-ESPHERE (Electrode)
-IVs: 19 HP / 16 Atk / 18 Def / 25 SpA / 19 SpD / 25 Spe
-Ability: Static
-Level: 3
-Hasty Nature
-=OT_Name=CLIFTON
-.Version=4
-- Charge
-- Tackle
-- Screech
-- Sonic Boom
-
 Rhyhorn (M)
 IVs: 11 SpA / 30 SpD
 Ability: Rock Head

@@ -670,18 +670,6 @@ Ball: Master Ball
 - Supersonic
 - Sonic Boom
 
-Maggie (Magneton) @ Metal Coat
-IVs: 15 HP / 20 Atk / 15 Def / 20 SpA / 20 SpD / 20 Spe
-Ability: Magnet Pull
-Level: 24
-Impish Nature
-=OT_Name=Lorenzo
-.Version=7
-- Supersonic
-- Sonic Boom
-- Thunder Wave
-- Spark
-
 Farfetch’d (M)
 IVs: 0 HP / 20 Atk / 1 Def / 19 SpA / 19 SpD / 24 Spe
 Ability: Keen Eye
@@ -699,6 +687,7 @@ IVs: 20 HP / 20 Atk / 20 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Run Away
 Level: 40
 Impish Nature
+Language: English
 =OT_Name=Ayana
 .Version=7
 - Pursuit
@@ -854,6 +843,7 @@ IVs: 15 HP / 20 Atk / 15 Def / 25 SpA / 15 SpD / 25 Spe
 Ability: Static
 Level: 20
 Hardy Nature
+Language: English
 =OT_Name=Richard
 .Version=7
 - Sonic Boom
@@ -3905,6 +3895,7 @@ IVs: 0 HP / 5 Atk / 28 Def / 27 SpA / 11 SpD / 13 Spe
 Ability: Storm Drain
 Level: 25
 Relaxed Nature
+Language: English
 =OT_Name=Hayley
 .Version=10
 - Natural Gift
