@@ -75,7 +75,7 @@ namespace PKHeX.Core.AutoMod
             var gamelist = FilteredGameList(template, destVer, batchedit ? regen.Batch.Filters : null);
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
-            var criteria = EncounterCriteria.GetCriteria(set);
+            var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
             
             foreach (var enc in encounters)
             {
