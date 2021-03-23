@@ -1257,6 +1257,7 @@ IVs: 15 HP / 6 Def / 30 SpD / 16 Spe
 Ability: Swift Swim
 Level: 5
 Adamant Nature
+Language: English
 =OT_Name=Caveat
 =Met_Location=30001
 .Version=24
@@ -2469,6 +2470,7 @@ IVs: 16 Atk / 30 Def / 19 SpA / 20 Spe
 Ability: Regenerator
 Level: 50
 Calm Nature
+Language: English
 =OT_Name=Lane
 =Met_Location=30001
 .Version=27
@@ -3180,6 +3182,7 @@ IVs: 15 HP / 13 Def / 15 SpA / 5 SpD / 3 Spe
 Ability: Guts
 Level: 9
 Brave Nature
+Language: English
 =OT_Name=Darrell
 =Met_Location=30001
 .Version=27
@@ -6243,6 +6246,7 @@ IVs: 23 HP / 16 Def / 0 SpA / 3 SpD / 10 Spe
 Ability: Defiant
 Level: 50
 Adamant Nature
+Language: English
 =OT_Name=Punky
 =Met_Location=30001
 .Version=25
@@ -6529,6 +6533,7 @@ IVs: 20 HP / 20 Def / 20 SpA / 20 SpD / 20 Spe
 Ability: Overgrow
 Level: 5
 Adamant Nature
+Language: English
 =OT_Name=Shauna
 =Met_Location=30001
 .Version=24
@@ -6555,6 +6560,7 @@ EVs: 19 HP / 17 Atk / 27 Def / 7 SpA / 5 SpD / 2 Spe
 Ability: Overgrow
 Level: 38
 Adamant Nature
+Language: English
 =OT_Name=Shauna
 =Met_Location=30001
 .Version=24
@@ -6581,6 +6587,7 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD
 Ability: Torrent
 Level: 5
 Jolly Nature
+Language: English
 =OT_Name=Shauna
 =Met_Location=30001
 .Version=25

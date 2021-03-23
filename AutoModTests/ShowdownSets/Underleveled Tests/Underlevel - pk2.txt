@@ -254,9 +254,10 @@ Level: 20
 - Constrict
 - Acid
 
-Rapidash (M) @ Burnt Berry
+RUNNY (Rapidash) (M) @ Burnt Berry
 IVs: 8 HP / 9 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Level: 14
+=OT_Name=CHRIS
 - Tackle
 - Growl
 - Tail Whip
@@ -273,6 +274,7 @@ Level: 20
 MAGGIE (Magneton) @ Metal Coat
 IVs: 8 HP / 9 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Level: 5
+=OT_Name=FOREST
 - Tackle
 - Thunder Shock
 - Supersonic
@@ -289,6 +291,7 @@ Level: 30
 DORIS (Dodrio) (F) @ Smoke Ball
 IVs: 12 HP / 7 Atk / 7 Def / 6 SpA / 6 SpD / 6 Spe
 Level: 10
+=OT_Name=EMY
 - Peck
 - Growl
 - Pursuit
@@ -384,6 +387,7 @@ Level: 16
 DON (Rhydon) (F) @ Bitter Berry
 IVs: 12 HP / 7 Atk / 7 Def / 6 SpA / 6 SpD / 6 Spe
 Level: 10
+=OT_Name=EMY
 - Horn Attack
 - Tail Whip
 - Stomp
@@ -496,6 +500,7 @@ Level: 14
 PAUL (Xatu) (M) @ MysteryBerry
 IVs: 8 HP / 9 Atk / 6 Def / 6 SpA / 6 SpD / 8 Spe
 Level: 17
+=OT_Name=CHRIS
 - Peck
 - Leer
 - Night Shade

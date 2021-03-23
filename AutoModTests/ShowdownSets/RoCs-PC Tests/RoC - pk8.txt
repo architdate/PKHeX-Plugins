@@ -543,6 +543,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Technician
 Level: 18
 Timid Nature
+Language: English
 =OT_Name=Mattia
 =Met_Location=30001
 .Version=45
@@ -581,6 +582,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Technician
 Level: 28
 Timid Nature
+Language: English
 =OT_Name=Mattia
 =Met_Location=30001
 .Version=44
@@ -1229,6 +1231,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Soundproof
 Level: 40
 Calm Nature
+Language: English
 =OT_Name=Edmund
 =Met_Location=30001
 .Version=45
@@ -4292,6 +4295,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Inner Focus
 Level: 37
 Adamant Nature
+Language: English
 =OT_Name=Grimm
 =Met_Location=30001
 .Version=44
@@ -4305,6 +4309,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Sturdy
 Level: 37
 Adamant Nature
+Language: English
 =OT_Name=Grimm
 =Met_Location=30001
 .Version=45
@@ -4474,6 +4479,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Mummy
 Level: 35
 Bold Nature
+Language: English
 =OT_Name=Eve
 =Met_Location=30001
 .Version=44
@@ -4500,6 +4506,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Mummy
 Level: 36
 Bold Nature
+Language: English
 =OT_Name=Eve
 =Met_Location=30001
 .Version=44
@@ -6856,6 +6863,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Cheek Pouch
 Level: 10
 Mild Nature
+Language: English
 =OT_Name=Haley
 =Met_Location=30001
 .Version=44
@@ -7337,6 +7345,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Prankster
 Level: 30
 Brave Nature
+Language: English
 =OT_Name=Romeo
 =Met_Location=30001
 .Version=45
@@ -7633,6 +7642,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Heavy Metal
 Level: 50
 Adamant Nature
+Language: English
 =OT_Name=Kapoor
 =Met_Location=30001
 .Version=44

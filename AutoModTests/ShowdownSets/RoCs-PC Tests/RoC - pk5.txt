@@ -3665,6 +3665,7 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD
 Ability: Pickup
 Level: 40
 Jolly Nature
+Language: English
 =OT_Name=Diana
 =Met_Location=30002
 .Version=22
@@ -4704,6 +4705,7 @@ IVs: 20 HP / 20 Def / 20 SpA / 20 SpD / 20 Spe
 Ability: Sturdy
 Level: 35
 Adamant Nature
+Language: English
 =OT_Name=Manny
 =Met_Location=30002
 .Version=22
@@ -4998,11 +5000,25 @@ Ball: Master Ball
 - Synthesis
 - Teeter Dance
 
+Redeye (Basculin) (M)
+IVs: 20 HP / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Ability: Reckless
+Level: 25
+Adamant Nature
+Language: English
+=OT_Name=Kyle
+=Met_Location=30002
+- Crunch
+- Aqua Jet
+- Chip Away
+- Take Down
+
 Blueeye (Basculin-Blue-Striped) (M) @ Sitrus Berry
 IVs: 20 HP / 20 Def / 20 SpA / 20 SpD / 20 Spe
 Ability: Rock Head
 Level: 25
 Adamant Nature
+Language: English
 =OT_Name=Kyle
 =Met_Location=30002
 .Version=20

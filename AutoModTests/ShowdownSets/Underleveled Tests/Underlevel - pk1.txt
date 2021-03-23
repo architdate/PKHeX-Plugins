@@ -13,11 +13,6 @@ IVs: 13 HP / 13 Atk / 3 Def / 7 SpA / 7 SpD / 2 Spe
 Level: 4
 - Harden
 
-CHIKUCHIKU (Beedrill) (F)
-IVs: 12 HP / 1 Atk / 1 Def / 0 SpA / 0 SpD / 0 Spe
-Level: 7
-- Fury Attack
-
 Pidgeotto (F)
 IVs: 6 HP / 2 Atk / 11 Def / 2 SpA / 2 SpD / 1 Spe
 Level: 9
@@ -50,6 +45,7 @@ Level: 19
 SPIKE (Parasect) (F)
 IVs: 4 HP / 2 Atk / 9 Def / 8 SpA / 8 SpD / 8 Spe
 Level: 5
+=OT_Name=*
 - Scratch
 - Stun Spore
 - Leech Life
@@ -65,6 +61,7 @@ Level: 30
 GURIO (Dugtrio) (M)
 IVs: 6 HP / 10 Atk / 13 Def / 6 SpA / 6 SpD / 9 Spe
 Level: 5
+=OT_Name=*
 - Scratch
 - Growl
 - Dig
@@ -92,6 +89,7 @@ Level: 23
 RICKY (Machamp) (F)
 IVs: 6 HP / 0 Atk / 3 Def / 8 SpA / 8 SpD / 3 Spe
 Level: 5
+=OT_Name=*
 - Karate Chop
 - Low Kick
 - Leer
@@ -129,6 +127,7 @@ Level: 29
 CEZANNE (Dewgong) (F)
 IVs: 13 HP / 7 Atk / 9 Def / 1 SpA / 1 SpD / 4 Spe
 Level: 5
+=OT_Name=*
 - Headbutt
 - Growl
 - Aurora Beam
@@ -151,6 +150,7 @@ Level: 37
 STICKY (Muk) (M)
 IVs: 1 HP / 8 Atk / 10 Def / 1 SpA / 1 SpD / 2 Spe
 Level: 5
+=OT_Name=*
 - Pound
 - Disable
 - Poison Gas
@@ -173,6 +173,7 @@ Level: 25
 DORIS (Electrode)
 IVs: 3 HP / 12 Atk / 6 Def / 9 SpA / 9 SpD / 9 Spe
 Level: 3
+=OT_Name=*
 - Tackle
 - Screech
 - Sonic Boom
@@ -187,6 +188,7 @@ Level: 24
 BUFFY (Rhydon) (F)
 IVs: 6 HP / 6 Atk / 13 Def / 6 SpA / 6 SpD / 3 Spe
 Level: 15
+=OT_Name=*
 - Horn Attack
 - Stomp
 - Tail Whip
@@ -215,12 +217,14 @@ Level: 23
 NINI (Jynx) (F)
 IVs: 8 HP / 6 Def / 6 SpA / 6 SpD / 8 Spe
 Level: 10
+=OT_Name=*
 - Pound
 - Lovely Kiss
 
 NINI (Jynx) (F)
 IVs: 10 HP / 9 Atk / 6 Def / 4 SpA / 4 SpD / 1 Spe
 Level: 20
+=OT_Name=*
 - Pound
 - Lovely Kiss
 - Lick

@@ -483,6 +483,7 @@ IVs: 1 HP / 30 Def / 2 SpA / 2 SpD / 15 Spe
 Ability: No Guard
 Level: 9
 Brave Nature
+Language: English
 =OT_Name=Hila
 =Met_Location=30001
 .Version=31
@@ -561,6 +562,7 @@ IVs: 28 HP / 14 Atk / 4 SpA / 9 SpD / 16 Spe
 Ability: Magnet Pull
 Level: 32
 Impish Nature
+Language: English
 =OT_Name=Sill
 =Met_Location=30001
 .Version=31
@@ -964,6 +966,7 @@ IVs: 22 HP / 5 Atk / 1 Def / 6 SpA / 6 SpD
 Ability: Intimidate
 Level: 59
 Jolly Nature
+Language: English
 =OT_Name=Anga
 =Met_Location=30001
 .Version=33
@@ -2889,6 +2892,7 @@ IVs: 1 HP / 7 Atk / 9 SpA / 24 SpD / 3 Spe
 Ability: Storm Drain
 Level: 44
 Quiet Nature
+Language: English
 =OT_Name=Kumu
 =Met_Location=30001
 .Version=33
@@ -4610,6 +4614,7 @@ IVs: 20 HP / 20 Def / 21 SpA / 4 SpD / 27 Spe
 Ability: Unburden
 Level: 8
 Brave Nature
+Language: English
 =OT_Name=Hila
 =Met_Location=30001
 .Version=32
@@ -4701,6 +4706,7 @@ IVs: 15 HP / 23 Def / 6 SpA / 13 Spe
 Ability: Natural Cure
 Level: 33
 Calm Nature
+Language: English
 =OT_Name=Sill
 =Met_Location=30001
 .Version=32
@@ -5228,6 +5234,7 @@ IVs: 10 HP / 13 Def / 21 SpA / 24 SpD / 1 Spe
 Ability: Leaf Guard
 Level: 16
 Adamant Nature
+Language: English
 =OT_Name=Kihei
 =Met_Location=30001
 .Version=30
@@ -5241,6 +5248,7 @@ IVs: 14 HP / 14 Atk / 10 Def / 15 SpA / 26 Spe
 Ability: Leaf Guard
 Level: 43
 Careful Nature
+Language: English
 =OT_Name=Kumu
 =Met_Location=30001
 .Version=31

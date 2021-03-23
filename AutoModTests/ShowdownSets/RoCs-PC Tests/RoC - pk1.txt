@@ -250,7 +250,6 @@ Level: 52
 
 Sandslash (M)
 IVs: 11 HP / 13 Atk / 14 Def / 13 SpA / 13 SpD / 13 Spe
-EVs: 65535 HP / 65535 Atk / 65535 Def / 65535 SpA / 65535 SpD / 65535 Spe
 - Earthquake
 - Dig
 - Cut
@@ -281,6 +280,7 @@ Level: 41
 TERRY (Nidorina) (F)
 IVs: 3 HP / 8 Atk / 8 Def / 3 SpA / 3 SpD / 13 Spe
 Level: 23
+=OT_Name=*
 - Tackle
 - Scratch
 - Poison Sting
@@ -416,13 +416,6 @@ Level: 32
 - Leech Life
 - Spore
 
-SPIKE (Parasect) (M)
-IVs: 5 HP / 8 Atk / 11 Def / 3 SpA / 3 SpD / 8 Spe
-Level: 22
-- Scratch
-- Stun Spore
-- Leech Life
-
 Venonat (F)
 IVs: 10 HP / 1 Atk / 8 Def / 8 SpA / 8 SpD / 5 Spe
 Level: 16
@@ -451,14 +444,6 @@ Level: 26
 - Growl
 - Dig
 - Sand Attack
-
-GURIO (Dugtrio) (F)
-IVs: 1 Atk / 5 Def / 11 SpA / 11 SpD / 5 Spe
-Level: 50
-- Dig
-- Sand Attack
-- Slash
-- Earthquake
 
 Meowth (M)
 IVs: 13 HP / 9 Atk / 3 Def / 7 SpA / 7 SpD / 10 Spe
@@ -571,13 +556,6 @@ Level: 45
 - Focus Energy
 - Seismic Toss
 
-RICKY (Machamp) (M)
-IVs: 2 HP / 12 Atk / 12 Def / 8 SpA / 8 SpD / 7 Spe
-Level: 20
-- Karate Chop
-- Low Kick
-- Leer
-
 Bellsprout (M)
 IVs: 6 HP / 12 Atk / 9 Def / 4 SpA / 4 SpD / 7 Spe
 Level: 12
@@ -684,6 +662,7 @@ Level: 38
 DUX (Farfetch’d) (M)
 IVs: 5 HP / 10 Atk / 11 Def / 3 SpA / 3 SpD / 0 Spe
 Level: 8
+=OT_Name=*
 - Peck
 - Sand Attack
 - Leer
@@ -714,19 +693,13 @@ Level: 32
 SAILOR (Seel) (M)
 IVs: 12 HP / 11 Atk / 3 Def / 2 SpA / 2 SpD / 8 Spe
 Level: 28
+=OT_Name=*
 - Headbutt
 
 Seel (M)
 IVs: 4 HP / 10 Atk / 3 Def / 4 SpA / 4 SpD / 0 Spe
 Level: 26
 - Headbutt
-
-CEZANNE (Dewgong) (F)
-IVs: 13 HP / 3 Atk / 7 Def / 3 SpA / 3 SpD / 4 Spe
-Level: 30
-- Headbutt
-- Growl
-- Aurora Beam
 
 Dewgong (M)
 IVs: 13 HP / 1 Def / 8 Spe
@@ -829,13 +802,6 @@ Level: 40
 - Light Screen
 - Swift
 
-DORIS (Electrode)
-IVs: 14 HP / 7 Atk / 5 Def / 12 SpA / 12 SpD / 3 Spe
-Level: 3
-- Tackle
-- Screech
-- Sonic Boom
-
 Electrode
 IVs: 6 HP / 12 Atk / 1 Def / 0 SpA / 0 SpD / 3 Spe
 Level: 43
@@ -897,6 +863,7 @@ Level: 50
 MARC (Lickitung) (M)
 IVs: 3 HP / 14 Atk / 6 Def / 11 SpA / 11 SpD / 7 Spe
 Level: 37
+=OT_Name=*
 - Stomp
 - Disable
 - Defense Curl
@@ -921,14 +888,6 @@ IVs: 1 Atk / 1 Def / 9 SpA / 9 SpD
 Level: 25
 - Horn Attack
 
-BUFFY (Rhydon) (M)
-IVs: 12 HP / 11 Def / 12 SpA / 12 SpD / 2 Spe
-Level: 15
-- Horn Attack
-- Stomp
-- Tail Whip
-- Fury Attack
-
 Rhydon (M)
 IVs: 11 HP / 11 Atk / 0 Def / 7 SpA / 7 SpD / 11 Spe
 Level: 58
@@ -948,6 +907,7 @@ Level: 56
 CRINKLES (Tangela) (M)
 IVs: 8 HP / 14 Def / 8 SpA / 8 SpD / 12 Spe
 Level: 16
+=OT_Name=*
 - Constrict
 - Bind
 
@@ -1009,12 +969,14 @@ Level: 30
 MARCEL (Mr. Mime) (F)
 IVs: 3 HP / 6 Atk / 6 Def / 7 Spe
 Level: 19
+=OT_Name=*
 - Confusion
 - Barrier
 
 MILES (Mr. Mime) (M)
 IVs: 9 Atk / 13 Def / 13 SpA / 13 SpD / 5 Spe
 Level: 11
+=OT_Name=*
 - Confusion
 - Barrier
 
@@ -1029,6 +991,7 @@ Level: 30
 LOLA (Jynx) (F)
 IVs: 0 HP / 14 Atk / 6 Def / 12 SpA / 12 SpD / 2 Spe
 Level: 30
+=OT_Name=*
 - Pound
 - Lovely Kiss
 - Lick

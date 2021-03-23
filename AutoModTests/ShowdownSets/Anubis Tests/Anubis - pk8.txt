@@ -147,6 +147,7 @@ Ability: Unnerve
 Level: 15
 Shiny: Yes
 Sassy Nature
+Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
@@ -173,6 +174,7 @@ Ability: Flame Body
 Level: 15
 Shiny: Yes
 Docile Nature
+Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=45
@@ -187,6 +189,7 @@ Ability: Defiant
 Level: 15
 Shiny: Yes
 Bold Nature
+Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
@@ -201,6 +204,7 @@ Ability: Frisk
 Level: 15
 Shiny: Square
 Relaxed Nature
+Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=45
@@ -215,6 +219,7 @@ Ability: Lightning Rod
 Level: 15
 Shiny: Yes
 Lonely Nature
+Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
@@ -229,6 +234,7 @@ Ability: Neutralizing Gas
 Level: 15
 Shiny: Yes
 Modest Nature
+Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
@@ -292,6 +298,7 @@ Ability: Regenerator
 Level: 15
 Shiny: Yes
 Hasty Nature
+Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=45
@@ -346,6 +353,7 @@ Ability: Quick Feet
 Level: 15
 Shiny: Yes
 Hardy Nature
+Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
@@ -442,6 +450,7 @@ Ability: Inner Focus
 Level: 15
 Shiny: Yes
 Quirky Nature
+Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
@@ -471,6 +480,7 @@ Ability: Sand Veil
 Level: 15
 Shiny: Yes
 Modest Nature
+Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44

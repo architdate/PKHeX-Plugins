@@ -279,6 +279,7 @@ IVs: 9 Atk / 11 SpA / 17 SpD
 Ability: Sniper
 Level: 10
 Hardy Nature
+Language: English
 =OT_Name=RANDY
 =Generation=2
 - Peck
@@ -453,6 +454,7 @@ IVs: 8 Atk / 18 Def / 12 SpD
 Ability: Hustle
 Level: 23
 Hardy Nature
+Language: English
 =OT_Name=Trainer
 =Generation=2
 - Tackle
@@ -786,17 +788,6 @@ Bashful Nature
 - Leech Life
 - Spore
 
-SPIKE (Parasect) (M)
-IVs: 11 HP / 26 Atk / 26 SpA
-Ability: Damp
-Level: 22
-Careful Nature
-=OT_Name=Trainer
-=Generation=2
-- Scratch
-- Stun Spore
-- Leech Life
-
 Parasect (M)
 IVs: 3 HP / 13 Atk / 18 Spe
 Ability: Damp
@@ -880,18 +871,6 @@ Bashful Nature
 - Magnitude
 - Dig
 - Sand Attack
-
-GURIO (Dugtrio) (F)
-IVs: 20 SpA / 15 SpD / 28 Spe
-Ability: Sand Force
-Level: 50
-Hardy Nature
-=OT_Name=Trainer
-=Generation=2
-- Dig
-- Sand Attack
-- Slash
-- Earthquake
 
 Dugtrio (F)
 IVs: 11 HP / 4 Def / 20 Spe
@@ -1201,6 +1180,7 @@ IVs: 9 Atk / 3 SpA / 18 Spe
 Ability: Steadfast
 Level: 10
 Timid Nature
+Language: English
 =OT_Name=MIKE
 =Generation=2
 - Low Kick
@@ -1228,17 +1208,6 @@ Timid Nature
 - Leer
 - Focus Energy
 - Karate Chop
-
-RICKY (Machamp) (M)
-IVs: 30 HP / 6 Atk / 10 SpA
-Ability: Steadfast
-Level: 20
-Timid Nature
-=OT_Name=Trainer
-=Generation=2
-- Karate Chop
-- Low Kick
-- Leer
 
 Machamp (M)
 IVs: 28 SpA / 18 SpD
@@ -1443,6 +1412,7 @@ IVs: 7 Atk / 23 Def
 Ability: Flame Body
 Level: 14
 Rash Nature
+Language: English
 =OT_Name=CHRIS
 =Generation=2
 - Tackle
@@ -1516,18 +1486,6 @@ Hardy Nature
 - Thunder Shock
 - Supersonic
 
-MAGGIE (Magneton)
-IVs: 26 Atk / 14 SpA / 15 Spe
-Ability: Analytic
-Level: 32
-Bashful Nature
-=OT_Name=FOREST
-=Generation=2
-- Supersonic
-- Sonic Boom
-- Thunder Wave
-- Lock-On
-
 Magneton
 IVs: 22 Atk / 2 Def / 30 SpA
 Ability: Analytic
@@ -1566,6 +1524,7 @@ IVs: 26 HP / 30 SpA / 18 SpD
 Ability: Defiant
 Level: 8
 Serious Nature
+Language: English
 =OT_Name=Trainer
 =Generation=2
 - Peck
@@ -1604,18 +1563,6 @@ Bashful Nature
 - Fury Attack
 - Drill Peck
 
-DORIS (Dodrio) (F)
-IVs: 2 Atk / 11 SpA
-Ability: Tangled Feet
-Level: 40
-Hardy Nature
-=OT_Name=EMY
-=Generation=2
-- Fury Attack
-- Tri Attack
-- Rage
-- Drill Peck
-
 Dodrio (F)
 IVs: 20 SpA / 13 SpD
 Ability: Tangled Feet
@@ -1632,6 +1579,7 @@ IVs: 13 Def / 13 SpA
 Ability: Ice Body
 Level: 28
 Brave Nature
+Language: English
 =OT_Name=Trainer
 =Generation=2
 - Headbutt
@@ -1660,17 +1608,6 @@ IVs: 5 Def / 19 SpA / 24 Spe
 Ability: Ice Body
 Level: 28
 Brave Nature
-=Generation=2
-- Headbutt
-- Growl
-- Aurora Beam
-
-CEZANNE (Dewgong) (F)
-IVs: 6 HP / 2 SpD / 14 Spe
-Ability: Ice Body
-Level: 30
-Hardy Nature
-=OT_Name=Trainer
 =Generation=2
 - Headbutt
 - Growl
@@ -1825,6 +1762,7 @@ IVs: 15 Atk / 15 SpD / 20 Spe
 Ability: Weak Armor
 Level: 7
 Bashful Nature
+Language: English
 =OT_Name=KYLE
 =Generation=2
 - Tackle
@@ -1941,6 +1879,7 @@ IVs: 30 HP / 18 Atk / 5 SpD
 Ability: Aftermath
 Level: 22
 Careful Nature
+Language: English
 =OT_Name=TIM
 =Generation=2
 - Tackle
@@ -1968,17 +1907,6 @@ Quiet Nature
 - Screech
 - Sonic Boom
 - Self-Destruct
-
-DORIS (Electrode)
-IVs: 10 HP / 2 Atk / 30 Spe
-Ability: Aftermath
-Level: 3
-Brave Nature
-=OT_Name=Trainer
-=Generation=2
-- Tackle
-- Screech
-- Sonic Boom
 
 Exeggcute (M)
 IVs: 15 HP / 4 Atk / 17 SpD
@@ -2122,6 +2050,7 @@ IVs: 6 HP / 1 SpD / 2 Spe
 Ability: Cloud Nine
 Level: 37
 Adamant Nature
+Language: English
 =OT_Name=Trainer
 =Generation=2
 - Stomp
@@ -2222,30 +2151,6 @@ Bashful Nature
 - Fury Attack
 - Scary Face
 
-BUFFY (Rhydon) (M)
-IVs: 27 Atk / 22 Def / 20 SpD
-Ability: Reckless
-Level: 15
-Bashful Nature
-=OT_Name=Trainer
-=Generation=2
-- Horn Attack
-- Stomp
-- Tail Whip
-- Fury Attack
-
-DON (Rhydon) (F)
-IVs: 30 HP / 30 Atk / 23 SpD
-Ability: Reckless
-Level: 40
-Hardy Nature
-=OT_Name=EMY
-=Generation=2
-- Stomp
-- Fury Attack
-- Scary Face
-- Horn Drill
-
 Rhydon (M)
 IVs: 13 HP / 19 Def / 0 SpA
 Ability: Reckless
@@ -2292,6 +2197,7 @@ IVs: 23 HP / 10 Def / 25 SpD
 Ability: Regenerator
 Level: 16
 Gentle Nature
+Language: English
 =OT_Name=Trainer
 =Generation=2
 - Constrict
@@ -2471,6 +2377,7 @@ IVs: 1 Def / 7 SpA / 14 SpD
 Ability: Technician
 Level: 11
 Docile Nature
+Language: English
 =OT_Name=Trainer
 =Generation=2
 - Confusion
@@ -2481,6 +2388,7 @@ IVs: 0 HP / 29 SpA / 1 Spe
 Ability: Technician
 Level: 19
 Lax Nature
+Language: English
 =OT_Name=Trainer
 =Generation=2
 - Confusion
@@ -2517,18 +2425,6 @@ Careful Nature
 - Lick
 - Lovely Kiss
 - Powder Snow
-- Double Slap
-
-LOLA (Jynx) (F)
-IVs: 6 HP / 7 SpA / 5 SpD
-Ability: Dry Skin
-Level: 30
-Hardy Nature
-=OT_Name=Trainer
-=Generation=2
-- Pound
-- Lovely Kiss
-- Lick
 - Double Slap
 
 Electabuzz (F)
@@ -2849,6 +2745,7 @@ IVs: 25 Atk / 17 Def / 0 SpA
 Ability: Unnerve
 Level: 28
 Modest Nature
+Language: English
 =OT_Name=KIM
 =Generation=2
 - Wing Attack
@@ -3318,6 +3215,7 @@ IVs: 17 HP / 24 Atk / 6 Def
 Ability: Magic Bounce
 Level: 17
 Jolly Nature
+Language: English
 =OT_Name=CHRIS
 =Generation=2
 - Peck
@@ -3912,6 +3810,7 @@ IVs: 13 HP / 26 Atk
 Ability: Contrary
 Level: 15
 Timid Nature
+Language: English
 =OT_Name=MANIA
 =Generation=2
 - Constrict

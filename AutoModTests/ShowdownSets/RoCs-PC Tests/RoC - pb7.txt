@@ -247,6 +247,7 @@ IVs: 11 Def / 19 SpA / 10 SpD / 15 Spe
 Ability: Hustle
 Level: 12
 Bold Nature
+Language: English
 =OT_Name=Tatianna
 =Met_Location=30001
 .Version=43
@@ -296,6 +297,7 @@ IVs: 20 Def / 15 SpA / 15 SpD / 4 Spe
 Ability: Gluttony
 Level: 20
 Jolly Nature
+Language: English
 =OT_Name=Tatianna
 =Met_Location=30001
 .Version=42
@@ -379,6 +381,7 @@ IVs: 15 HP / 11 Atk / 25 Def / 20 SpD
 Ability: Surge Surfer
 Level: 30
 Brave Nature
+Language: English
 =OT_Name=Psytrice
 =Met_Location=30001
 .Version=42
@@ -403,6 +406,7 @@ IVs: 19 HP / 27 SpD / 0 Spe
 Ability: Snow Cloak
 Level: 27
 Modest Nature
+Language: English
 =OT_Name=Nicholice
 =Met_Location=30001
 .Version=42
@@ -782,6 +786,7 @@ IVs: 1 HP / 7 Def / 2 SpA / 10 SpD
 Ability: Sand Veil
 Level: 25
 Docile Nature
+Language: English
 =OT_Name=Diggette
 =Met_Location=30001
 .Version=42
@@ -819,6 +824,7 @@ IVs: 1 HP / 7 Def / 2 SpA / 10 SpD
 Ability: Sand Veil
 Level: 26
 Docile Nature
+Language: English
 =OT_Name=Diggette
 =Met_Location=30001
 .Version=42
@@ -868,6 +874,7 @@ IVs: 10 Atk / 2 Def / 19 SpA / 3 SpD
 Ability: Technician
 Level: 44
 Sassy Nature
+Language: English
 =OT_Name=Darko
 =Met_Location=30001
 .Version=43
@@ -1279,6 +1286,7 @@ IVs: 16 Def / 18 SpA / 16 SpD / 23 Spe
 Ability: Sturdy
 Level: 16
 Careful Nature
+Language: English
 =OT_Name=Higeo
 =Met_Location=30001
 .Version=43
@@ -1376,6 +1384,7 @@ IVs: 3 Def / 10 SpA / 3 SpD / 5 Spe
 Ability: Magnet Pull
 Level: 25
 Timid Nature
+Language: English
 =OT_Name=Higeo
 =Met_Location=30001
 .Version=42
@@ -1924,6 +1933,7 @@ IVs: 11 HP / 20 Def / 25 SpD / 16 Spe
 Ability: Frisk
 Level: 46
 Hasty Nature
+Language: English
 =OT_Name=Exemann
 =Met_Location=30001
 .Version=43
@@ -1985,6 +1995,7 @@ IVs: 18 HP / 25 SpA / 13 SpD / 0 Spe
 Ability: Lightning Rod
 Level: 38
 Hasty Nature
+Language: English
 =OT_Name=Genmar
 =Met_Location=30001
 .Version=42

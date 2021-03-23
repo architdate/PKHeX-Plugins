@@ -310,6 +310,7 @@ IVs: 18 HP / 17 Atk / 18 Def / 25 SpA / 21 SpD / 22 Spe
 Ability: Oblivious
 Level: 25
 Mild Nature
+Language: English
 =OT_Name=DONTAE
 .Version=5
 - Lovely Kiss
