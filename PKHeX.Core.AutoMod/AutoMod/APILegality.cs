@@ -73,6 +73,8 @@ namespace PKHeX.Core.AutoMod
 
             var timer = Stopwatch.StartNew();
             var gamelist = FilteredGameList(template, destVer, batchedit ? regen.Batch.Filters : null);
+            if (destVer.GetGeneration() <= 2)
+                template.CurrentLevel = 1; // no relearn moves in gen 1/2 so pass level 1 to generator
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
@@ -153,12 +155,12 @@ namespace PKHeX.Core.AutoMod
             pk1.Catch_Rate = pk1.Gen2Item;
 
             // Check if trade evo is required. If so, just reset catch rate and tradebackstatus
-            var tradeevos = new HashSet<int> { (int)Species.Kadabra, (int)Species.Machoke, (int)Species.Graveler, (int)Species.Haunter };
             var la = new LegalityAnalysis(pk1);
             if (la.Valid)
                 return;
 
             var enc = la.EncounterMatch;
+            var tradeevos = new HashSet<int> { (int)Species.Kadabra, (int)Species.Machoke, (int)Species.Graveler, (int)Species.Haunter };
             if (enc is EncounterTrade || enc.Species != pk1.Species || !tradeevos.Contains(enc.Species))
                 return;
             

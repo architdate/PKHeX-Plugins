@@ -134,6 +134,7 @@ namespace AutoModTests
         [Fact]
         public static void RunTeamTests()
         {
+            EncounterEvent.RefreshMGDB(Path.Combine(Directory.GetCurrentDirectory(), "mgdb"));
             Directory.Exists(TestPath).Should().BeTrue();
             var dir = Directory.GetCurrentDirectory();
 

@@ -1,0 +1,6 @@
+Haunter (F)
+IVs: 12 HP / 3 Atk / 7 Def / 2 SpA / 2 SpD / 2 Spe
+Level: 20
+- Lick
+- Confuse Ray
+- Night Shade
