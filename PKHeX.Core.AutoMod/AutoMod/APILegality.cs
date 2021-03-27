@@ -73,8 +73,8 @@ namespace PKHeX.Core.AutoMod
 
             var timer = Stopwatch.StartNew();
             var gamelist = FilteredGameList(template, destVer, batchedit ? regen.Batch.Filters : null);
-            if (destVer.GetGeneration() <= 2)
-                template.CurrentLevel = 1; // no relearn moves in gen 1/2 so pass level 1 to generator
+            if (dest.Generation <= 2)
+                template.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
