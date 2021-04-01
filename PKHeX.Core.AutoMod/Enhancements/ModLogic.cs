@@ -61,7 +61,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
         public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, IEnumerable<int> speciesIDs)
         {
-            var tr = APILegality.UseTrainerData ? TrainerSettings.GetSavedTrainerData(sav.Version, sav.Generation) : sav;
+            var tr = APILegality.UseTrainerData ? TrainerSettings.GetSavedTrainerData(sav.Version, sav.Generation, fallback:sav, lang:(LanguageID)sav.Language) : sav;
             foreach (var id in speciesIDs)
             {
                 if (tr.GetRandomEncounter(id, out var pk) && pk != null)
