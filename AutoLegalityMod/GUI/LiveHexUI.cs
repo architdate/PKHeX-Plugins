@@ -112,8 +112,6 @@ namespace AutoModPlugins
                 // Enable controls
                 B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
                 groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
-                if (Remote.Bot.com is ICommunicatorNX)
-                    groupBox4.Enabled = true;
                 var ConnectionEstablished = false;
                 var validversions = RamOffsets.GetValidVersions(SAV.SAV).Reverse().ToArray();
                 var currver = validversions[0];
@@ -159,6 +157,9 @@ namespace AutoModPlugins
                 }
                 else
                     Text += $" Detected Version: {currver}";
+
+                if (Remote.Bot.com is ICommunicatorNX)
+                    groupBox4.Enabled = true;
 
                 // Load current box
                 Remote.ReadBox(SAV.CurrentBox);
