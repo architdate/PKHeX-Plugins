@@ -119,8 +119,7 @@ Ability: Lightning Rod
 Gigantamax: Yes
 Shiny: Square
 Jolly Nature
-Ball: Master Ball
-=Met_Location=162
+=WasEgg=True
 .Version=44
 - Brick Break
 - Play Rough
@@ -370,7 +369,7 @@ Level: 69
 Shiny: Square
 Adamant Nature
 Ball: Master Ball
-=Met_Location=186
+.Met_Location=186
 .Version=45
 - Avalanche
 - Liquidation
