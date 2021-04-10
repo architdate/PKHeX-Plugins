@@ -1174,6 +1174,18 @@ Adamant Nature
 - Waterfall
 - Crunch
 
+Roselia (F)
+IVs: 0 Atk / 30 SpA / 30 SpD
+EVs: 1 Atk / 8 SpA
+Ability: Leaf Guard
+Level: 2
+Quiet Nature
+.Version=30
+- Spikes
+- Sleep Powder
+- Extrasensory
+- Leaf Storm
+
 Mehlord (Wailord) (M) @ Burn Heal
 Ability: Oblivious
 Level: 40
