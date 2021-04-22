@@ -58,7 +58,7 @@ namespace PKHeX.Core.AutoMod
             if (allValid)
             {
                 RibbonApplicator.SetAllValidRibbons(pk);
-                if (pk is PK8 pk8 && pk8.GetRandomValidMark(enc, out var mark))
+                if (pk is PK8 pk8 && pk8.Species != (int)Species.Shedinja && pk8.GetRandomValidMark(enc, out var mark))
                     pk8.SetRibbonIndex(mark);
             }
             string report = new LegalityAnalysis(pk).Report();
