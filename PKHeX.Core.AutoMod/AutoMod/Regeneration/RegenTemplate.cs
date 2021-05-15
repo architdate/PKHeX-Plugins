@@ -11,7 +11,7 @@ namespace PKHeX.Core.AutoMod
         public int Species { get; set; }
         public int Format { get; set; }
         public string Nickname { get; set; }
-        public string Gender { get; set; }
+        public int Gender { get; set; }
         public int HeldItem { get; set; }
         public int Ability { get; set; }
         public int Level { get; set; }

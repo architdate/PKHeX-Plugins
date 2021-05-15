@@ -46,17 +46,17 @@ namespace PKHeX.Core.AutoMod
         {
             if (set.Species is (int)Species.Indeedee or (int)Species.Meowstic)
             {
-                set.Gender = set.Form == 1 ? "F" : "M";
+                set.Gender = set.Form;
                 return;
             }
 
             // Validate Gender
-            if (personal.Genderless && set.Gender.Length == 0)
-                set.Gender = string.Empty;
-            else if (personal.OnlyFemale && set.Gender != "F")
-                set.Gender = "F";
-            else if (personal.OnlyMale && set.Gender != "M")
-                set.Gender = "M";
+            if (personal.Genderless)
+                set.Gender = 2;
+            else if (personal.OnlyFemale && set.Gender != 1)
+                set.Gender = 1;
+            else if (personal.OnlyMale && set.Gender != 0)
+                set.Gender = 0;
         }
 
         public static string GetRegenText(this PKM pk) => pk.Species == 0 ? string.Empty : new RegenTemplate(pk).Text;

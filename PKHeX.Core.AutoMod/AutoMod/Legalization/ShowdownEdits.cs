@@ -166,8 +166,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">IBattleset template to grab the set gender</param>
         private static void ApplySetGender(this PKM pk, IBattleTemplate set)
         {
-            if (!string.IsNullOrWhiteSpace(set.Gender))
-                pk.Gender = set.Gender == "M" ? 0 : 1;
+            if (set.Gender != -1)
+                pk.Gender = set.Gender;
             else
                 pk.Gender = pk.GetSaneGender();
         }
