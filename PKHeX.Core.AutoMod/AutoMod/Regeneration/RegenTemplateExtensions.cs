@@ -44,16 +44,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="personal">Personal data for the desired form</param>
         public static void FixGender(this RegenTemplate set, PersonalInfo personal)
         {
-            if (set.Species is (int)Species.Indeedee or (int)Species.Meowstic)
-            {
-                set.Gender = set.Form;
-                return;
-            }
-
-            // Validate Gender
-            if (personal.Genderless)
-                set.Gender = 2;
-            else if (personal.OnlyFemale && set.Gender != 1)
+            if (personal.OnlyFemale && set.Gender != 1)
                 set.Gender = 1;
             else if (personal.OnlyMale && set.Gender != 0)
                 set.Gender = 0;

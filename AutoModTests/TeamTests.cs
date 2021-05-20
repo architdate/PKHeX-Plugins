@@ -81,7 +81,7 @@ namespace AutoModTests
                         continue;
                     try
                     {
-                        Debug.Write($"Checking Set {i:000} : ");
+                        Debug.Write($"Checking Set {i:000} ({set.GetSetLines()[0]}) from File {file} using Save {s}: ");
                         var regen = new RegenTemplate(set, sav.Generation);
                         var pk = sav.GetLegalFromSet(regen, out _);
                         var la = new LegalityAnalysis(pk);
