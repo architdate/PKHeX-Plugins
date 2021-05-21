@@ -70,6 +70,7 @@ This project would not be as amazing without the help of the following people wh
 - [@berichan](https://github.com/berichan) for adding USB-Botbase support to LiveHeX.
 - [@soopercool101](https://github.com/soopercool101) for many improvements to Smogon StrategyDex imports and various other fixes.
 - [@Lusamine](https://github.com/Lusamine) for all the help with stress testing the code with wacky sets!
+- [@ReignOfComputer](https://github.com/ReignOfComputer) for the sets found in [RoCs-PC](https://github.com/ReignOfComputer/RoCs-PC) which are used for unit testing.
 - TORNADO for help with test cases.
 - [@Rino6357](https://github.com/Rino6357) and [@crzyc](https://github.com/crzyc) for initial help with the Wiki.
 - [@hp3721](https://github.com/hp3721) for help with adding localization based on PKHeX's implementation.
