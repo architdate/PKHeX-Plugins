@@ -60,7 +60,7 @@ namespace PKHeX.Core.AutoMod
                 return DefaultFallback(generation, lang);
             if (lang == null)
                 return fallback;
-            if ((int)lang == fallback.Language)
+            if (lang == (LanguageID)fallback.Language)
                 return fallback;
             return DefaultFallback(generation, lang);
         }
