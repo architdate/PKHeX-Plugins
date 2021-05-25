@@ -45,6 +45,17 @@ namespace PKHeX.Core.Enhancements
             return reader.ReadToEnd();
         }
 
+        private static byte[]? GetByteResponse(WebRequest request)
+        {
+            using var response = request.GetResponse();
+            using var dataStream = response.GetResponseStream();
+            if (dataStream == null)
+                return null;
+            MemoryStream ms = new();
+            dataStream.CopyTo(ms);
+            return ms.ToArray();
+        }
+
         /// <summary>
         /// GPSS upload function. POST request using multipart form-data
         /// </summary>
@@ -93,7 +104,7 @@ namespace PKHeX.Core.Enhancements
                     return string.Empty;
                 using StreamReader reader = new(responseStream);
                 string responseFromServer = reader.ReadToEnd();
-                return $"Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://{Url}/gpss/view/" + responseFromServer;
+                return $"Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://{Url}/gpss/" + responseFromServer;
             }
             catch (WebException e)
             {
@@ -112,14 +123,13 @@ namespace PKHeX.Core.Enhancements
         /// <param name="code">url long</param>
         /// <param name="Url">location to fetch from</param>
         /// <returns>byte array corresponding to a pkm</returns>
-        public static byte[] GPSSDownload(long code, string Url = "flagbrew.org")
+        public static byte[]? GPSSDownload(long code, string Url = "flagbrew.org")
         {
             // code is returned as a long
             var request = (HttpWebRequest)WebRequest.Create($"https://{Url}/gpss/download/{code}");
             request.Method = "GET";
             request.UserAgent = "PKHeX-Auto-Legality-Mod";
-            var b64 = GetStringResponse(request);
-            return Convert.FromBase64String(b64);
+            return GetByteResponse(request);
         }
     }
 }

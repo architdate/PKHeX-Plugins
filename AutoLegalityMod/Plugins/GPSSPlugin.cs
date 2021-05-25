@@ -53,6 +53,11 @@ namespace AutoModPlugins
                 }
 
                 var pkbytes = PKHeX.Core.Enhancements.NetUtil.GPSSDownload(code, Url);
+                if (pkbytes == null)
+                {
+                    WinFormsUtil.Error("GPSS Download failed");
+                    return;
+                }
                 var pkm = PKMConverter.GetPKMfromBytes(pkbytes);
                 if (pkm == null || !LoadPKM(pkm))
                 {
