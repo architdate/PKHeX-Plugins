@@ -114,6 +114,10 @@ namespace PKHeX.Core.AutoMod
             if (Form != pk.Form)
                 pk.SetForm(Form);
 
+            // Check if species is keldeo and no moves are specified in set. If so decide form to prevent a form mismatch
+            if (pk.Species is (int)Species.Keldeo && set.Moves[0] is 0)
+                pk.SetForm(pk.Moves.Contains((int)Move.SecretSword) ? 1 : 0);
+
             // Don't allow invalid tox nature, set random nature first and then statnature later
             if (pk.Species == (int)Species.Toxtricity)
             {
