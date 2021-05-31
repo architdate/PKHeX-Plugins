@@ -55,6 +55,7 @@ namespace PKHeX.Core.AutoMod
             CanGigantamax = set.CanGigantamax;
 
             ParentLines = text;
+            SanitizeMoves(set, Moves);
         }
 
         public RegenTemplate(ShowdownSet set, int gen = PKX.Generation) : this(set, gen, set.Text)
@@ -93,6 +94,17 @@ namespace PKHeX.Core.AutoMod
                     copy[i] = maxEV;
             }
             return copy;
+        }
+
+        private static void SanitizeMoves(IBattleTemplate set, int[] moves)
+        {
+            // Specified moveset, no need to sanitize
+            if (moves[0] != 0)
+                return;
+
+            // Sanitize keldeo moves to avoid form mismatches
+            if (set.Species == (int)Core.Species.Keldeo)
+                moves[0] = set.Form == 0 ? (int)Move.AquaJet : (int)Move.SecretSword;
         }
 
         private string GetSummary()
