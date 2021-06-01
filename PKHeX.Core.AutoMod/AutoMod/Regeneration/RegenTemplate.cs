@@ -68,6 +68,7 @@ namespace PKHeX.Core.AutoMod
             {
                 Regen = new RegenSet(set.InvalidLines, gen, shiny);
                 Shiny = Regen.Extra.IsShiny;
+                if (Ability == -1) Ability = RegenUtil.GetRegenAbility(set.Species, gen, Regen.Extra.Ability);
                 set.InvalidLines.Clear();
             }
             else

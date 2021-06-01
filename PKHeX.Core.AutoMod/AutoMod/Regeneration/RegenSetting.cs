@@ -8,6 +8,7 @@ namespace PKHeX.Core.AutoMod
         public Ball Ball { get; set; }
         public Shiny ShinyType { get; set; } = Shiny.Never;
         public LanguageID? Language { get; set; }
+        public AbilityRequest Ability { get; set; } = AbilityRequest.Any;
 
         public bool IsShiny => ShinyType != Shiny.Never;
 
@@ -29,6 +30,9 @@ namespace PKHeX.Core.AutoMod
                         break;
                     case nameof(Language):
                         Language = Aesthetics.GetLanguageId(value);
+                        break;
+                    case nameof(Ability):
+                        Ability = Enum.TryParse(value, out AbilityRequest ar) ? ar : AbilityRequest.Any;
                         break;
                     default:
                         continue;
@@ -53,6 +57,9 @@ namespace PKHeX.Core.AutoMod
 
             if (Language != null)
                 result.Add($"Language: {Language}");
+
+            if (Ability != AbilityRequest.Any)
+                result.Add($"Ability: {Ability}");
             return string.Join(Environment.NewLine, result);
         }
     }

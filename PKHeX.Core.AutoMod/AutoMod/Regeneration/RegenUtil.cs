@@ -128,5 +128,36 @@ namespace PKHeX.Core.AutoMod
             }
             return tr;
         }
+
+        public static int GetRegenAbility(int species, int gen, AbilityRequest ar)
+        {
+            var abils = GetInfo(gen)[species].Abilities;
+            return ar switch
+            {
+                AbilityRequest.Any => -1,
+                AbilityRequest.First => abils[0],
+                AbilityRequest.Second => abils[1],
+                AbilityRequest.NotHidden => abils[0],
+                AbilityRequest.PossiblyHidden => abils[0],
+                AbilityRequest.Hidden => abils.Count > 2 ? abils[2] : -1,
+                _ => throw new NotImplementedException()
+            };
+        }
+
+        public static PersonalTable GetInfo(int gen)
+        {
+            return gen switch
+            {
+                1 => PersonalTable.RB,
+                2 => PersonalTable.C,
+                3 => PersonalTable.E,
+                4 => PersonalTable.Pt,
+                5 => PersonalTable.B2W2,
+                6 => PersonalTable.AO,
+                7 => PersonalTable.USUM,
+                8 => PersonalTable.SWSH,
+                _ => throw new NotImplementedException()
+            };
+        }
     }
 }

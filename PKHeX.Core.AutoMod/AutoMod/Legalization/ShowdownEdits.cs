@@ -313,11 +313,4 @@ namespace PKHeX.Core.AutoMod
             }
         }
     }
-
-    public enum AbilityRequest
-    {
-        NotHidden,
-        PossiblyHidden,
-        Hidden
-    }
 }
