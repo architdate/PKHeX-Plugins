@@ -279,7 +279,7 @@ namespace AutoModPlugins
 
         private void SetInjectionTypeView()
         {
-            TB_IP.Visible = TB_Port.Visible = L_IP.Visible = L_Port.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
+            TB_IP.Visible = L_IP.Visible = CurrentInjectionType == InjectorCommunicationType.SocketNetwork;
             L_USBState.Visible = CurrentInjectionType == InjectorCommunicationType.USB;
         }
 
