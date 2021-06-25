@@ -227,6 +227,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 var result = sav.Legalize(pk);
+                result.Heal();
                 if (!new LegalityAnalysis(result).Valid)
                     continue; // failed to legalize
 

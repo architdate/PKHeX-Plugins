@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PKHeX.Core.Enhancements
 {
-    public sealed class PKMPreview : PKMSummary
+    public sealed class PKMPreview : EntitySummary
     {
         public PKMPreview(PKM p, GameStrings strings) : base(p, strings)
         {

@@ -235,9 +235,9 @@ namespace PKHeX.Core.AutoMod
                 pk.SetMoves(set.Moves, true);
 
             var la = new LegalityAnalysis(pk);
-            if (la.Parsed && !pk.WasEvent)
+            if (la.Parsed && !pk.FatefulEncounter)
             {
-                var relearn = new LegalityAnalysis(pk).GetSuggestedRelearnMoves(enc);
+                var relearn = la.GetSuggestedRelearnMoves(enc);
                 pk.ClearRelearnMoves();
                 pk.SetRelearnMoves(relearn);
             }
