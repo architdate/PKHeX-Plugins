@@ -897,7 +897,8 @@ namespace PKHeX.Core.AutoMod
                     if (la.Info.PIDIV.Type != PIDType.CXD || !la.Info.PIDIVMatches || !pk.IsValidGenderPID(enc))
                         continue;
                 }
-
+                if (pk.Species == (int)Species.Unown && pk.Form != iterPKM.Form)
+                    continue;
                 if (Method == PIDType.Channel && shiny != pk.IsShiny)
                     continue;
                 break;
