@@ -591,10 +591,10 @@ namespace PKHeX.Core.AutoMod
                         do PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, abil, es3ps.SlotNumber);
                         while (pk.PID % 25 != pk.Nature);
                         return;
-                    case PCD d:
+                    case PGT { IsManaphyEgg:false } d:
                         {
-                            if (d.Gift.PK.PID != 1)
-                                pk.PID = d.Gift.PK.PID;
+                            if (d.PK.PID != 1)
+                                pk.PID = d.PK.PID;
                             else if (pk.Nature != pk.PID % 25)
                                 pk.SetPIDNature(pk.Nature);
                             return;
