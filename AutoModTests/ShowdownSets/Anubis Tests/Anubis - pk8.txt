@@ -667,6 +667,18 @@ Ball: Cherish Ball
 - Boomburst
 - Rising Voltage
 
+Sinistea-Antique
+IVs: 19 HP / 6 Atk / 26 Def / 13 SpA / 9 SpD
+Ability: Weak Armor
+Level: 61
+Shiny: Yes
+Serious Nature
+.RibbonMarkBlizzard=True
+- Nasty Plot
+- Shadow Ball
+- Memento
+- Shell Smash
+
 Impidimp (M) @ Leppa Berry
 IVs: 6 HP / 25 Atk / 13 Def / 15 SpA / 14 SpD / 6 Spe
 Ability: Prankster

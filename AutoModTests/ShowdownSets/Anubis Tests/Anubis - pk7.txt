@@ -2431,6 +2431,33 @@ Jolly Nature
 - Flare Blitz
 - Brave Bird
 
+Scatterbug-Elegant (F)
+IVs: 0 Atk
+Ability: Shield Dust
+Level: 9
+Shiny: Yes
+Timid Nature
+Ball: Master Ball
+=Met_Location=20
+.Version=32
+- Rage Powder
+- String Shot
+- Stun Spore
+- Tackle
+
+Spewpa-Savanna (F)
+IVs: 0 Atk
+Ability: Shed Skin
+Level: 11
+Timid Nature
+Ball: Master Ball
+=Met_Location=20
+.Version=32
+- Rage Powder
+- String Shot
+- Stun Spore
+- Tackle
+
 Vivillon-Monsoon (F) @ Focus Sash
 IVs: 0 Atk
 EVs: 252 SpA / 6 SpD / 252 Spe
@@ -2438,7 +2465,6 @@ Ability: Shield Dust
 Level: 50
 Shiny: Yes
 Timid Nature
-Language: Japanese
 .Version=33
 - Sleep Powder
 - Energy Ball
