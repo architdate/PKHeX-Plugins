@@ -133,8 +133,6 @@ namespace PKHeX.Core.AutoMod
             pk.CurrentLevel = set.Level;
             if (pk.Met_Level > pk.CurrentLevel)
                 pk.Met_Level = pk.CurrentLevel;
-            if ((enc is EncounterSlot8 esl && esl.Weather is AreaWeather8.Heavy_Fog) || (enc is EncounterStatic8 est && est.Weather is AreaWeather8.Heavy_Fog))
-                pk.Met_Level = EncounterArea8.BoostLevel;
             if (set.Level != 100 && set.Level == enc.LevelMin && (pk.Format == 3 || pk.Format == 4))
                 pk.EXP = Experience.GetEXP(enc.LevelMin + 1, PersonalTable.HGSS[enc.Species].EXPGrowth) - 1;
 
@@ -239,6 +237,7 @@ namespace PKHeX.Core.AutoMod
             var la = new LegalityAnalysis(pk);
             if (la.Parsed && !pk.FatefulEncounter)
             {
+                // For dexnav. Certain encounters come with "random" relearn moves, and our requested moves might require one of them.
                 var relearn = la.GetSuggestedRelearnMoves(enc);
                 pk.ClearRelearnMoves();
                 pk.SetRelearnMoves(relearn);

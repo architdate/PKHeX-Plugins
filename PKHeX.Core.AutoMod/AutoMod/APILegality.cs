@@ -591,10 +591,10 @@ namespace PKHeX.Core.AutoMod
                         do PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, abil, es3ps.SlotNumber);
                         while (pk.PID % 25 != pk.Nature);
                         return;
-                    case PGT { IsManaphyEgg:false } d:
+                    case PCD d:
                         {
-                            if (d.PK.PID != 1)
-                                pk.PID = d.PK.PID;
+                            if (d.Gift.PK.PID != 1)
+                                pk.PID = d.Gift.PK.PID;
                             else if (pk.Nature != pk.PID % 25)
                                 pk.SetPIDNature(pk.Nature);
                             return;
@@ -1039,6 +1039,10 @@ namespace PKHeX.Core.AutoMod
             // VC Games are locked to console region (modify based on language)
             if (pk is PK7 pk7 && pk7.Generation <= 2)
                 pk7.FixVCRegion();
+
+            // Vivillon pattern fixes if necessary
+            if (pk is IGeoTrack && pk.Species is (int)Species.Vivillon or (int)Species.Spewpa or (int)Species.Scatterbug)
+                pk.FixVivillonRegion();
         }
 
         /// <summary>
@@ -1076,6 +1080,41 @@ namespace PKHeX.Core.AutoMod
                         pk7.Country = 136;
                         break;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Handle edge case vivillon legality if the trainerdata region is invalid
+        /// </summary>
+        /// <param name="pk">pkm to fix</param>
+        public static void FixVivillonRegion(this PKM pk)
+        {
+            if (pk is not IGeoTrack g)
+                return;
+            var valid = Vivillon3DS.IsPatternValid(pk.Form, g.ConsoleRegion);
+            if (valid)
+                return;
+            // 5: JP
+            // 7, 14: USA
+            // else: EUR
+            switch (pk.Form)
+            {
+                case 5:
+                    g.ConsoleRegion = 0;
+                    g.Region = 0;
+                    g.Country = 1;
+                    break;
+                case 7:
+                case 14:
+                    g.ConsoleRegion = 1;
+                    g.Region = 0;
+                    g.Country = 49;
+                    break;
+                default:
+                    g.ConsoleRegion = 2;
+                    g.Region = 0;
+                    g.Country = 105;
+                    break;
             }
         }
 

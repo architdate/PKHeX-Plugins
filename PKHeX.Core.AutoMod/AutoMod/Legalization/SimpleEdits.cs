@@ -440,6 +440,8 @@ namespace PKHeX.Core.AutoMod
                 gt.Region = o.Region;
                 if (pk is PK7 pk7 && pk.Generation <= 2)
                     pk7.FixVCRegion();
+                if (pk.Species is (int)Species.Vivillon or (int)Species.Spewpa or (int)Species.Scatterbug)
+                    pk.FixVivillonRegion();
                 return;
             }
 

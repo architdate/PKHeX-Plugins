@@ -19,9 +19,9 @@ namespace PKHeX.Core.AutoMod
         public int Game => pkm.Version;
         public int Language { get => pkm.Language; set => pkm.Language = value; }
 
-        public int Country { get => pkm is IGeoTrack gt ? gt.Country : 0; set { if (pkm is IGeoTrack gt) gt.Country = value; } }
-        public int Region { get => pkm is IGeoTrack gt ? gt.Region : 0; set { if (pkm is IGeoTrack gt) gt.Region = value; } }
-        public int ConsoleRegion { get => pkm is IGeoTrack gt ? gt.ConsoleRegion : 0; set { if (pkm is IGeoTrack gt) gt.ConsoleRegion = value; } }
+        public byte Country { get => pkm is IGeoTrack gt ? gt.Country : (byte)0; set { if (pkm is IGeoTrack gt) gt.Country = value; } }
+        public byte Region { get => pkm is IGeoTrack gt ? gt.Region : (byte)0; set { if (pkm is IGeoTrack gt) gt.Region = value; } }
+        public byte ConsoleRegion { get => pkm is IGeoTrack gt ? gt.ConsoleRegion : (byte)0; set { if (pkm is IGeoTrack gt) gt.ConsoleRegion = value; } }
         public int Generation => pkm.Generation;
 
         public static PokeTrainerDetails Clone(PokeTrainerDetails p) => new(p.pkm.Clone());
