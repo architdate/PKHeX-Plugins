@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="LibUsbDotNet" Version="2.2.29" />
-    <PackageReference Include="PKHeX.Core" Version="21.5.21" />
+    <PackageReference Include="PKHeX.Core" Version="21.8.6" />
   </ItemGroup>
 
 </Project>

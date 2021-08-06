@@ -386,7 +386,7 @@ namespace PKHeX.Core.AutoMod
                 // check for mixed->fixed gender incompatibility by checking the gender of the original species
                 if (Legal.FixedGenderFromBiGender.Contains(pk.Species) && pk.Gender != 2) // shedinja
                 {
-                    pk.Gender = PKX.GetGenderFromPID(new LegalInfo(pk).EncounterMatch.Species, pk.EncryptionConstant);
+                    pk.Gender = PKX.GetGenderFromPID(new LegalInfo(pk, new List<CheckResult>()).EncounterMatch.Species, pk.EncryptionConstant);
                     // genderValid = true; already true if we reach here
                 }
             }
@@ -936,7 +936,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Egg_Location = Locations.LinkTrade4; // todo: really shouldn't be doing this, don't modify pkm
                 return PIDType.Method_1;
             }
-            var info = new LegalInfo(pk);
+            var info = new LegalInfo(pk, new List<CheckResult>());
             EncounterFinder.FindVerifiedEncounter(pk, info);
             return pk.Generation switch
             {
