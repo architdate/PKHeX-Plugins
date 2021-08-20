@@ -10,6 +10,12 @@
         public uint KZukan;               // SCBlocks
         public uint KZukanR1;             // SCBlocks
         public uint KZukanR2;             // SCBlocks
+        public uint KRentalTeam1;         // SCBlocks
+        //public uint KRentalTeam2;       // SCBlocks
+        public uint KRentalTeam3;         // SCBlocks
+        public uint KRentalTeam4;         // SCBlocks
+        public uint KRentalTeam5;         // SCBlocks
+        public uint KRentalTeam6;         // SCBlocks
         public uint BoxLayout;
         public uint Played;
         public uint Fused;
