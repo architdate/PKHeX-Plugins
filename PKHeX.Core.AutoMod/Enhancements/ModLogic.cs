@@ -146,7 +146,7 @@ namespace PKHeX.Core.AutoMod
             }
 
             var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid);
-            var firstenc = form == null ? legalencs.FirstOrDefault() : legalencs.FirstOrDefault(z => z.Form == (int)form);
+            var firstenc = GetFirstEncounter(legalencs, form);
             if (firstenc == null)
                 return null;
 
@@ -201,6 +201,21 @@ namespace PKHeX.Core.AutoMod
                 var success = tr.TryAPIConvert(set, template, out PKM pk);
                 return success == LegalizationResult.Regenerated ? pk : null;
             }
+        }
+
+        private static PKM? GetFirstEncounter(IEnumerable<PKM> legalencs, int? form)
+        {
+            if (form == null)
+                return legalencs.FirstOrDefault();
+
+            PKM? result = null;
+            foreach (var pk in legalencs)
+            {
+                if (pk.Form == form)
+                    return pk;
+                result ??= pk;
+            }
+            return result;
         }
 
         /// <summary>
