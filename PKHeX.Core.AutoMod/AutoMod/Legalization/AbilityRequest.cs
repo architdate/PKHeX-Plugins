@@ -30,6 +30,6 @@
         /// <summary>
         /// Requested ability is hidden.
         /// </summary>
-        Hidden
+        Hidden,
     }
 }

@@ -133,7 +133,7 @@ namespace PKHeX.Core.AutoMod
             pk.CurrentLevel = set.Level;
             if (pk.Met_Level > pk.CurrentLevel)
                 pk.Met_Level = pk.CurrentLevel;
-            if (set.Level != 100 && set.Level == enc.LevelMin && (pk.Format == 3 || pk.Format == 4))
+            if (set.Level != 100 && set.Level == enc.LevelMin && pk.Format is 3 or 4)
                 pk.EXP = Experience.GetEXP(enc.LevelMin + 1, PersonalTable.HGSS[enc.Species].EXPGrowth) - 1;
 
             var currentlang = (LanguageID)pk.Language;
@@ -147,7 +147,7 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             // don't bother checking encountertrade nicknames for length validity
-            if (enc is EncounterTrade et && et.HasNickname)
+            if (enc is EncounterTrade { HasNickname: true })
                 return;
 
             var gen = enc.Generation;
@@ -166,10 +166,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">IBattleset template to grab the set gender</param>
         private static void ApplySetGender(this PKM pk, IBattleTemplate set)
         {
-            if (set.Gender != -1)
-                pk.Gender = set.Gender;
-            else
-                pk.Gender = pk.GetSaneGender();
+            pk.Gender = set.Gender != -1 ? set.Gender : pk.GetSaneGender();
         }
 
         /// <summary>
@@ -220,7 +217,7 @@ namespace PKHeX.Core.AutoMod
             // Evolved from Azurill after transferring to keep gender
             (int)Species.Marill or (int)Species.Azumarill when pkm.Format >= 6 => pkm.Gender == 1 && (pkm.EncryptionConstant & 0xFF) > 0x3F,
 
-            _ => false
+            _ => false,
         };
 
         /// <summary>

@@ -80,7 +80,7 @@ namespace PKHeX.Core.AutoMod
                 $"OT: {trainer.OT}",
                 $"OTGender: {(trainer.Gender == 1 ? "Female" : "Male")}",
                 $"TID: {tid}",
-                $"SID: {sid}"
+                $"SID: {sid}",
             };
             return string.Join(Environment.NewLine, result);
         }
@@ -123,7 +123,7 @@ namespace PKHeX.Core.AutoMod
                     ConsoleRegion = s.ConsoleRegion,
                     Region = s.Region,
                     Country = s.Country,
-                    Generation = s.Generation
+                    Generation = s.Generation,
                 };
             }
             return tr;
@@ -140,7 +140,7 @@ namespace PKHeX.Core.AutoMod
                 AbilityRequest.NotHidden => abils[0],
                 AbilityRequest.PossiblyHidden => abils[0],
                 AbilityRequest.Hidden => abils.Count > 2 ? abils[2] : -1,
-                _ => throw new NotImplementedException()
+                _ => throw new NotImplementedException(),
             };
         }
 
@@ -156,7 +156,7 @@ namespace PKHeX.Core.AutoMod
                 6 => PersonalTable.AO,
                 7 => PersonalTable.USUM,
                 8 => PersonalTable.SWSH,
-                _ => throw new NotImplementedException()
+                _ => throw new NotImplementedException(),
             };
         }
     }

@@ -20,7 +20,7 @@ namespace AutoModPlugins
             var ctrl = new ToolStripMenuItem(Name)
             {
                 Image = Resources.autolegalitymod,
-                ShortcutKeys = Keys.Control | Keys.I
+                ShortcutKeys = Keys.Control | Keys.I,
             };
             ctrl.Click += ImportPaste;
             ctrl.Name = "Menu_PasteImporter";

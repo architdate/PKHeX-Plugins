@@ -313,7 +313,7 @@ namespace PKHeX.Core.AutoMod
                 3 => three_fixed_ivs,
                 4 => four_fixed_ivs,
                 5 => five_fixed_ivs,
-                _ => zero_fixed_ivs
+                _ => zero_fixed_ivs,
             };
             if (!seeds.ContainsKey(ivtemp))
                 return false;

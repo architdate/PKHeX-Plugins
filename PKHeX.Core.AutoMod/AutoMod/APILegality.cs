@@ -78,7 +78,7 @@ namespace PKHeX.Core.AutoMod
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
-            
+
             foreach (var enc in encounters)
             {
                 // Return out if set times out
@@ -163,7 +163,7 @@ namespace PKHeX.Core.AutoMod
             var tradeevos = new HashSet<int> { (int)Species.Kadabra, (int)Species.Machoke, (int)Species.Graveler, (int)Species.Haunter };
             if (enc is EncounterTrade || enc.Species != pk1.Species || !tradeevos.Contains(enc.Species))
                 return;
-            
+
             pk1.TradebackStatus = TradebackType.Any;
             pk1.Catch_Rate = PersonalTable.RB[pk1.Species].CatchRate;
         }
@@ -173,6 +173,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="template">Template pokemon with basic details set</param>
         /// <param name="destVer">Version in which the pokemon needs to be imported</param>
+        /// <param name="filters">Optional list of filters to remove games</param>
         /// <returns>List of filtered games to check encounters for</returns>
         private static GameVersion[] FilteredGameList(PKM template, GameVersion destVer, IReadOnlyList<StringInstruction>? filters)
         {
@@ -182,7 +183,7 @@ namespace PKHeX.Core.AutoMod
                 foreach (var f in filters)
                 {
                     if (f.PropertyName == nameof(PKM.Version) && int.TryParse(f.PropertyValue, out int gv))
-                        gamelist = f.Evaluator ? new GameVersion[] { (GameVersion)gv } : gamelist.Where(z => z != (GameVersion)gv).ToArray();
+                        gamelist = f.Evaluator ? new[] { (GameVersion)gv } : gamelist.Where(z => z != (GameVersion)gv).ToArray();
                 }
             }
             if (PrioritizeGame)
@@ -252,8 +253,10 @@ namespace PKHeX.Core.AutoMod
                     if (s.LevelMin - 4 > set.Level)
                         return false;
                 }
-                else if (isRaid) { }
-                else return false;
+                else if (!isRaid)
+                {
+                    return false;
+                }
             }
 
             // Don't process if encounter is HA but requested pkm is not HA
@@ -267,11 +270,12 @@ namespace PKHeX.Core.AutoMod
 
             if (set.Species == (int)Species.Pikachu)
             {
-                var form = set.Form;
-                if (enc.Generation == 6 && form != (enc is EncounterStatic ? enc.Form : 0)) 
-                    return false;
-                if (enc.Generation >= 7 && form != (enc is EncounterInvalid or EncounterEgg ? 0 : enc.Form))
-                    return false;
+                switch (enc.Generation)
+                {
+                    case 6 when set.Form != (enc is EncounterStatic ? enc.Form : 0):
+                    case >= 7 when set.Form != (enc is EncounterInvalid or EncounterEgg ? 0 : enc.Form):
+                        return false;
+                }
             }
 
             // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
@@ -297,14 +301,15 @@ namespace PKHeX.Core.AutoMod
         {
             const int SharedNest = 162; // Shared Nest for online encounter
             const int MaxLair = 244; // Dynamax Adventures
-            if (enc is EncounterStatic8N { Location: 0 })
-                pk.Met_Location = SharedNest;
-            if (enc is EncounterStatic8ND { Location: 0 })
-                pk.Met_Location = SharedNest;
-            if (enc is EncounterStatic8NC { Location: 0 })
-                pk.Met_Location = SharedNest;
-            if (enc is EncounterStatic8U { Location: 0 })
-                pk.Met_Location = MaxLair;
+            switch (enc)
+            {
+                case EncounterStatic8N or EncounterStatic8ND or EncounterStatic8NC { Location: 0 }:
+                    pk.Met_Location = SharedNest;
+                    break;
+                case EncounterStatic8U { Location: 0 }:
+                    pk.Met_Location = MaxLair;
+                    break;
+            }
             return pk;
         }
 
@@ -528,7 +533,7 @@ namespace PKHeX.Core.AutoMod
             pk.ForceHatchPKM();
             if (enc is MysteryGift { IsEgg: true })
             {
-                if (enc is WC3 w)
+                if (enc is WC3)
                     pk.Met_Level = 0; // hatched
                 pk.Language = (int)LanguageID.English;
                 pk.SetTrainerData(tr);
@@ -559,7 +564,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set"></param>
         /// <param name="method"></param>
         /// <param name="hpType"></param>
-        /// <param name="original"></param>
+        /// <param name="enc"></param>
         private static void SetIVsPID(this PKM pk, IBattleTemplate set, PIDType method, int hpType, IEncounterable enc)
         {
             // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
@@ -581,36 +586,36 @@ namespace PKHeX.Core.AutoMod
             }
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
-            
-            if (enc.Generation is 3 or 4)
+
+            if (enc.Generation is not (3 or 4))
+                return;
+
+            switch (enc)
             {
-                switch (enc)
-                {
-                    case EncounterSlot3PokeSpot es3ps:
-                        var abil = pk.PersonalInfo.Abilities.Count > 0 ? (pk.PersonalInfo.Abilities[0] == pk.Ability ? 0 : 1) : 1;
-                        do PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, abil, es3ps.SlotNumber);
-                        while (pk.PID % 25 != pk.Nature);
+                case EncounterSlot3PokeSpot es3ps:
+                    var abil = pk.PersonalInfo.Abilities.Count > 0 ? (pk.PersonalInfo.Abilities[0] == pk.Ability ? 0 : 1) : 1;
+                    do PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, abil, es3ps.SlotNumber);
+                    while (pk.PID % 25 != pk.Nature);
+                    return;
+                case PCD d:
+                    {
+                        if (d.Gift.PK.PID != 1)
+                            pk.PID = d.Gift.PK.PID;
+                        else if (pk.Nature != pk.PID % 25)
+                            pk.SetPIDNature(pk.Nature);
                         return;
-                    case PCD d:
-                        {
-                            if (d.Gift.PK.PID != 1)
-                                pk.PID = d.Gift.PK.PID;
-                            else if (pk.Nature != pk.PID % 25)
-                                pk.SetPIDNature(pk.Nature);
-                            return;
-                        }
-                    case EncounterEgg:
-                        pk.SetPIDNature(pk.Nature);
-                        return;
-                    // EncounterTrade4 doesn't have fixed PIDs, so don't early return
-                    case EncounterTrade t:
-                        t.SetEncounterTradeIVs(pk);
-                        return; // Fixed PID, no need to mutate
-                    default:
-                        FindPIDIV(pk, method, hpType, set.Shiny, enc);
-                        ValidateGender(pk);
-                        break;
-                }
+                    }
+                case EncounterEgg:
+                    pk.SetPIDNature(pk.Nature);
+                    return;
+                // EncounterTrade4 doesn't have fixed PIDs, so don't early return
+                case EncounterTrade t:
+                    t.SetEncounterTradeIVs(pk);
+                    return; // Fixed PID, no need to mutate
+                default:
+                    FindPIDIV(pk, method, hpType, set.Shiny, enc);
+                    ValidateGender(pk);
+                    break;
             }
         }
 
@@ -643,7 +648,6 @@ namespace PKHeX.Core.AutoMod
                     case EncounterStatic8U c: FindNestPIDIV(pk8, c, isShiny); break;
                 }
             }
-
             else if (enc is IOverworldCorrelation8 eo)
             {
                 var flawless = 0;
@@ -661,7 +665,8 @@ namespace PKHeX.Core.AutoMod
                 Shiny shiny;
                 if (set is RegenTemplate r)
                     shiny = r.Regen.Extra.ShinyType;
-                else shiny = set.Shiny ? Shiny.Always : Shiny.Never;
+                else
+                    shiny = set.Shiny ? Shiny.Always : Shiny.Never;
 
                 var cloned = new int[set.IVs.Length];
 
@@ -671,7 +676,10 @@ namespace PKHeX.Core.AutoMod
                     for (int i = 0; i < set.IVs.Length; i++)
                         cloned[i] = set.IVs[i] != 0 ? 31 : 0;
                 }
-                else cloned = set.IVs;
+                else
+                {
+                    cloned = set.IVs;
+                }
 
                 if (!SimpleEdits.TryApplyHardcodedSeedWild8(pk8, enc, cloned, shiny))
                     FindWildPIDIV8(pk8, shiny, flawless);
@@ -713,7 +721,7 @@ namespace PKHeX.Core.AutoMod
                     break;
             } while (++count < 10_000);
 
-            if (shiny && enc is EncounterStatic8U)
+            if (shiny)
             {
                 // Dynamax Adventure shinies are always XOR 1
                 pk.PID = (uint)(((pk.TID ^ pk.SID ^ (pk.PID & 0xFFFF) ^ 1) << 16) | (pk.PID & 0xFFFF));
@@ -733,12 +741,13 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon to edit</param>
         /// <param name="shiny">Shinytype requested</param>
         /// <param name="flawless">number of flawless ivs</param>
+        /// <param name="fixedseed">Optional fixed RNG seed</param>
         public static void FindWildPIDIV8(PK8 pk, Shiny shiny, int flawless = 0, uint? fixedseed = null)
         {
             // Modified version of the standard XOROSHIRO algorithm (32 bit seed 0, same const seed 1)
             // EC -> PID -> Flawless IV rolls -> Non Flawless IVs -> height -> weight
-            uint seed = 0;
-            var rng = new Xoroshiro128Plus(0);
+            uint seed;
+            Xoroshiro128Plus rng;
             var ivs = new[] { -1, -1, -1, -1, -1, -1 };
 
             if (fixedseed != null)
@@ -749,7 +758,6 @@ namespace PKHeX.Core.AutoMod
                 pk.EncryptionConstant = (uint)rng.NextInt();
                 pk.PID = (uint)rng.NextInt();
             }
-
             else
             {
                 while (true)
@@ -759,16 +767,14 @@ namespace PKHeX.Core.AutoMod
 
                     pk.EncryptionConstant = (uint)rng.NextInt();
                     pk.PID = (uint)rng.NextInt();
-                    var xor = pk.ShinyXor;
 
-                    if (shiny == Shiny.AlwaysStar)
+                    var xor = pk.ShinyXor;
+                    switch (shiny)
                     {
-                        if (xor == 0 || xor > 15)
+                        case Shiny.AlwaysStar when xor is 0 or > 15:
+                        case Shiny.Never when xor < 16:
                             continue;
                     }
-
-                    if (shiny == Shiny.Never && xor < 16)
-                        continue;
 
                     // Every other case can be valid and genned, so break out
                     break;
@@ -860,13 +866,16 @@ namespace PKHeX.Core.AutoMod
                 if (Method == PIDType.None && pk.Generation >= 3)
                     pk.SetPIDGender(pk.Gender);
             }
-            if (Method == PIDType.Method_1_Roamer && pk.HPType != (int)MoveType.Fighting - 1) // M1 Roamers can only be HP fighting
-                return;
-            if (Method == PIDType.Pokewalker && (pk.Nature >= 24 || pk.AbilityNumber == 4)) // No possible pokewalker matches
-                return;
+            switch (Method)
+            {
+                case PIDType.Method_1_Roamer when pk.HPType != (int)MoveType.Fighting - 1: // M1 Roamers can only be HP fighting
+                case PIDType.Pokewalker when (pk.Nature >= 24 || pk.AbilityNumber == 4): // No possible pokewalker matches
+                    return;
+            }
+
             var iterPKM = pk.Clone();
             var count = 0;
-            var isWishmaker = Method == PIDType.BACD_R && shiny && (enc is WC3 w3 && w3.OT_Name == "WISHMKR");
+            var isWishmaker = Method == PIDType.BACD_R && shiny && enc is WC3 { OT_Name: "WISHMKR" };
             do
             {
                 uint seed = Util.Rand32();
@@ -891,7 +900,7 @@ namespace PKHeX.Core.AutoMod
                     pk.EncryptionConstant = pk.PID;
                     var ec = pk.PID;
                     bool xorPID = ((pk.TID ^ pk.SID ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
-                    if ((enc is EncounterStatic3 && enc.Species == (int)Species.Eevee) && (shiny != pk.IsShiny || xorPID)) // Starter Correlation
+                    if (enc is EncounterStatic3 && enc.Species == (int)Species.Eevee && (shiny != pk.IsShiny || xorPID)) // Starter Correlation
                         continue;
                     var la = new LegalityAnalysis(pk);
                     if (la.Info.PIDIV.Type != PIDType.CXD || !la.Info.PIDIVMatches || !pk.IsValidGenderPID(enc))
@@ -906,13 +915,12 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Checks if a pokewalker seed failed, and if it did, randomizes TID and SID (to retry in the future)
+        /// Checks if a Pokewalker seed failed, and if it did, randomizes TID and SID (to retry in the future)
         /// </summary>
         /// <param name="seed">Seed</param>
         /// <param name="method">RNG method (every method except pokewalker is ignored)</param>
         /// <param name="pk">PKM object</param>
         /// <param name="original">original encounter pkm</param>
-        /// <returns></returns>
         private static bool PokeWalkerSeedFail(uint seed, PIDType method, PKM pk, PKM original)
         {
             if (method != PIDType.Pokewalker)
@@ -960,10 +968,10 @@ namespace PKHeX.Core.AutoMod
                     EncounterStatic4Pokewalker => PIDType.Pokewalker,
                     EncounterStatic s => (s.Shiny == Shiny.Always ? PIDType.ChainShiny : PIDType.Method_1),
                     PGT => PIDType.Method_1,
-                    _ => PIDType.None
+                    _ => PIDType.None,
                 },
 
-                _ => PIDType.None
+                _ => PIDType.None,
             };
         }
 
@@ -977,8 +985,8 @@ namespace PKHeX.Core.AutoMod
         {
             return enc switch
             {
-                EncounterTrade et when et.Ability > 0 => et.Ability,
-                EncounterStatic es when es.Ability > 0 => es.Ability,
+                EncounterTrade { Ability: > 0 } et => et.Ability,
+                EncounterStatic { Ability: > 0 } es => es.Ability,
                 _ => pk.AbilityNumber,
             };
         }
@@ -1011,6 +1019,7 @@ namespace PKHeX.Core.AutoMod
         /// Edge case memes for weird properties that I have no interest in setting for other pokemon.
         /// </summary>
         /// <param name="pk">Pokemon to edit</param>
+        /// <param name="enc">Encounter the <see cref="pk"/> originated rom</param>
         private static void FixEdgeCases(this PKM pk, IEncounterable enc)
         {
             if (pk.Nickname.Length == 0)
@@ -1037,7 +1046,7 @@ namespace PKHeX.Core.AutoMod
                 pk.OT_Gender = (int)Gender.Male;
 
             // VC Games are locked to console region (modify based on language)
-            if (pk is PK7 pk7 && pk7.Generation <= 2)
+            if (pk is PK7 { Generation: <= 2 } pk7)
                 pk7.FixVCRegion();
 
             // Vivillon pattern fixes if necessary

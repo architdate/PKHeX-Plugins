@@ -16,7 +16,7 @@ namespace PKHeX.Core.Enhancements
         public static string GetMGDBDownloadURL()
         {
             var json_data = NetUtil.DownloadString(RepoReleaseURL);
-            return json_data.Split(new[] { "browser_download_url" }, StringSplitOptions.None)[1].Substring(3).Split('"')[0];
+            return json_data.Split(new[] { "browser_download_url" }, StringSplitOptions.None)[1][3..].Split('"')[0];
         }
 
         /// <summary>

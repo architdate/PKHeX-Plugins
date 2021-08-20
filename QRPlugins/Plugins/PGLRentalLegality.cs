@@ -15,7 +15,7 @@ namespace AutoModPlugins
             var ctrl = new ToolStripMenuItem(Name)
             {
                 Image = QRResources.pglqrcode,
-                ShortcutKeys = Keys.Alt | Keys.Q
+                ShortcutKeys = Keys.Alt | Keys.Q,
             };
             modmenu.DropDownItems.Add(ctrl);
             ctrl.Click += PGLShowdownSet;

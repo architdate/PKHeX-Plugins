@@ -21,7 +21,7 @@ namespace PKHeX.Core.AutoMod
             if (ball != Ball.None)
             {
                 var orig = pk.Ball;
-                pk.Ball = (int) ball;
+                pk.Ball = (int)ball;
                 if (!force && !pk.ValidBall())
                     pk.Ball = orig;
             }
@@ -117,7 +117,7 @@ namespace PKHeX.Core.AutoMod
             foreach (string rName in ribNames)
             {
                 bool intRib = rName is nameof(PK6.RibbonCountMemoryBattle) or nameof(PK6.RibbonCountMemoryContest);
-                ReflectUtil.SetValue(pk, rName, intRib ? (object)vRib : bRib);
+                ReflectUtil.SetValue(pk, rName, intRib ? vRib : bRib);
             }
         }
 

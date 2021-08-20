@@ -3,7 +3,7 @@
     public enum InjectorCommunicationType
     {
         SocketNetwork = 0,
-        USB = 1
+        USB = 1,
     }
 
     public interface ICommunicator
@@ -19,6 +19,5 @@
 
     public interface ICommunicatorNX : ICommunicator
     {
-
     }
 }

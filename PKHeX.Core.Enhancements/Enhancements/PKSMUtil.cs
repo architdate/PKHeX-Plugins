@@ -105,7 +105,7 @@ namespace PKHeX.Core.Enhancements
                 PKSMStorageFormat.SEVEN => new PK7(Slice(data, ofs + 4, 232)),
                 PKSMStorageFormat.LGPE => new PB7(Slice(data, ofs + 4, 232)),
                 PKSMStorageFormat.EIGHT => new PK8(Slice(data, ofs + 4, 328)),
-                _ => null
+                _ => null,
             };
         }
 
@@ -131,7 +131,7 @@ namespace PKHeX.Core.Enhancements
                 PKSMBankVersion.VERSION1 => 264,
                 PKSMBankVersion.VERSION2 => 264,
                 PKSMBankVersion.VERSION3 => 336,
-                _ => 336
+                _ => 336,
             };
         }
 
@@ -142,7 +142,7 @@ namespace PKHeX.Core.Enhancements
                 PKSMBankVersion.VERSION1 => 12,
                 PKSMBankVersion.VERSION2 => 16,
                 PKSMBankVersion.VERSION3 => 16,
-                _ => 16
+                _ => 16,
             };
         }
 
@@ -150,16 +150,16 @@ namespace PKHeX.Core.Enhancements
         {
             return pk switch
             {
-                PK1 _ => PKSMStorageFormat.ONE,
-                PK2 _ => PKSMStorageFormat.TWO,
-                PK3 _ => PKSMStorageFormat.THREE,
-                PK4 _ => PKSMStorageFormat.FOUR,
-                PK5 _ => PKSMStorageFormat.FIVE,
-                PK6 _ => PKSMStorageFormat.SIX,
-                PK7 _ => PKSMStorageFormat.SEVEN,
-                PB7 _ => PKSMStorageFormat.LGPE,
-                PK8 _ => PKSMStorageFormat.EIGHT,
-                _ => PKSMStorageFormat.UNUSED
+                PK1 => PKSMStorageFormat.ONE,
+                PK2 => PKSMStorageFormat.TWO,
+                PK3 => PKSMStorageFormat.THREE,
+                PK4 => PKSMStorageFormat.FOUR,
+                PK5 => PKSMStorageFormat.FIVE,
+                PK6 => PKSMStorageFormat.SIX,
+                PK7 => PKSMStorageFormat.SEVEN,
+                PB7 => PKSMStorageFormat.LGPE,
+                PK8 => PKSMStorageFormat.EIGHT,
+                _ => PKSMStorageFormat.UNUSED,
             };
         }
 
@@ -182,7 +182,7 @@ namespace PKHeX.Core.Enhancements
             TWO,
             THREE,
             MAX_COUNT,
-            UNUSED = 0xFF
+            UNUSED = 0xFF,
         }
     }
 }

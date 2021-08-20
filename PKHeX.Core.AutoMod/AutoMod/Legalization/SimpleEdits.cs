@@ -24,7 +24,7 @@ namespace PKHeX.Core.AutoMod
             079, 080, 891, 892, 893,
 
             // DLC (Crown Tundra)
-            199, 894, 895, 896, 897, 898
+            199, 894, 895, 896, 897, 898,
         };
 
         internal static readonly HashSet<int> AlolanOriginForms = new()
@@ -61,7 +61,7 @@ namespace PKHeX.Core.AutoMod
                     31 => 1,
                     1 => 2,
                     0 => 2,
-                    _ => 0
+                    _ => 0,
                 };
             }
         }
@@ -178,7 +178,6 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
-            int validg5sid;
             pk.SetShinySID(); // no mg = no lock
 
             if (pk.Generation != 5) return;
@@ -190,7 +189,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 if (shiny == Shiny.AlwaysStar && pk.ShinyXor == 0)
                     continue;
-                validg5sid = pk.SID & 1;
+                var validg5sid = pk.SID & 1;
                 pk.SetShinySID();
                 pk.EncryptionConstant = pk.PID;
                 var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
@@ -293,7 +292,7 @@ namespace PKHeX.Core.AutoMod
             bool neverOT = !HistoryVerifier.GetCanOTHandle(enc, pk, enc.Generation);
             if (enc.Generation <= 2)
                 pk.OT_Friendship = GetBaseFriendship(7, pk.Species, pk.Form);  // VC transfers use SM personal info
-            else if(neverOT)
+            else if (neverOT)
                 pk.OT_Friendship = GetBaseFriendship(enc.Generation, enc.Species, enc.Form);
             else pk.CurrentFriendship = pk.HasMove(218) ? 0 : 255;
         }
@@ -325,11 +324,9 @@ namespace PKHeX.Core.AutoMod
                 level = 10;
             if (pk is IDynamaxLevel pkm)
             {
-                if (pk is PK8 pk8)
-                {
-                    if (pk8.Species is (int)Species.Zacian or (int)Species.Zamazenta or (int)Species.Eternatus) // Zacian, Zamazenta and Eternatus cannot dynamax
-                        return;
-                }
+                if (pk is PK8 { Species: (int)Species.Zacian or (int)Species.Zamazenta or (int)Species.Eternatus })
+                    // Zacian, Zamazenta and Eternatus cannot dynamax
+                    return;
                 pkm.DynamaxLevel = level; // Set max dynamax level
             }
         }
@@ -503,7 +500,7 @@ namespace PKHeX.Core.AutoMod
             APILegality.FindWildPIDIV8(pk, requestedShiny, available, seed);
             if (!eo.IsOverworldCorrelationCorrect(pk))
                 return false;
-            if (requestedShiny == Shiny.AlwaysStar && (pk.ShinyXor == 0 || pk.ShinyXor > 15))
+            if (requestedShiny == Shiny.AlwaysStar && pk.ShinyXor is 0 or > 15)
                 return false;
             if (requestedShiny == Shiny.Never && pk.ShinyXor < 16)
                 return false;

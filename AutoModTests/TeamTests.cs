@@ -18,12 +18,13 @@ namespace AutoModTests
     public static class TeamTests
     {
         private static string TestPath => TestUtil.GetTestFolder("ShowdownSets");
-        private static bool TargettedTesting = false;
+        public static bool TargettedTesting { get; set; }
 
         private static Dictionary<string, int> GetFileStructures()
         {
-            var files = Directory.GetFiles(TestPath, "*", TargettedTesting ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);
-            Dictionary<string, int> result = new Dictionary<string, int>();
+            var depth = TargettedTesting ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories;
+            var files = Directory.GetFiles(TestPath, "*", depth);
+            var result = new Dictionary<string, int>();
             foreach (var f in files)
             {
                 var ext = f[^7..].Split('.')[0];
@@ -41,8 +42,8 @@ namespace AutoModTests
             var transfer = !entry.Key.Contains("notransfer");
             return entry.Value switch
             {
-               -1 => transfer ? new[] { SW, GP } : new[] { GE },
-                1 => transfer ? new[] { RD , C } : new[] { RD },
+                -1 => transfer ? new[] { SW, GP } : new[] { GE },
+                1 => transfer ? new[] { RD, C } : new[] { RD },
                 2 => new[] { C },
                 3 => transfer ? new[] { SW, US, SN, OR, X, B2, B, Pt, E } : new[] { E },
                 4 => transfer ? new[] { SW, US, SN, OR, X, B2, B, Pt } : new[] { Pt },
@@ -50,7 +51,7 @@ namespace AutoModTests
                 6 => transfer ? new[] { SW, US, SN, OR } : new[] { OR },
                 7 => transfer ? new[] { SW, US } : new[] { US },
                 8 => new[] { SW },
-                _ => new[] { SW }
+                _ => new[] { SW },
             };
         }
 
@@ -68,9 +69,9 @@ namespace AutoModTests
                 var species = Enumerable.Range(1, sav.MaxSpeciesID);
                 species = sav switch
                 {
-                    SAV7b _ => species.Where(z => z is <= 151 or 808 or 809), // only include Kanto and M&M
-                    SAV8 _ => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
-                    _ => species
+                    SAV7b => species.Where(z => z is <= 151 or 808 or 809), // only include Kanto and M&M
+                    SAV8 => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
+                    _ => species,
                 };
 
                 var spec = species.ToList();
@@ -155,7 +156,7 @@ namespace AutoModTests
                     testfailed = true;
                     msg += string.Join("\n\n", sets["illegal"].Select(x => x.Text));
                 }
-                if (msg.Trim() != string.Empty)
+                if (msg.Trim().Length > 0)
                     File.WriteAllText(path, msg);
             }
 
@@ -164,7 +165,7 @@ namespace AutoModTests
             {
                 var legal = 0;
                 var illegal = 0;
-                foreach (var (gv, sets) in value)
+                foreach (var (_, sets) in value)
                 {
                     legal += sets["legal"].Length;
                     illegal += sets["illegal"].Length;

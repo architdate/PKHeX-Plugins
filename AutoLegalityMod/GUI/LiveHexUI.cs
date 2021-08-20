@@ -119,7 +119,7 @@ namespace AutoModPlugins
                 {
                     Remote.Bot = new PokeSysBotMini(version, CurrentInjectionType)
                     {
-                        com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) }
+                        com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) },
                     };
                     Remote.Bot.com.Connect();
 
@@ -132,7 +132,7 @@ namespace AutoModPlugins
                         if (Remote.Bot.com is ICommunicatorNX)
                         {
                             var cblist = GetSortedBlockList().ToArray();
-                            if (cblist.Count() > 0)
+                            if (cblist.Length > 0)
                             {
                                 groupBox5.Enabled = true;
                                 CB_BlockName.Items.AddRange(cblist);
@@ -141,16 +141,13 @@ namespace AutoModPlugins
                         }
                         break;
                     }
-
-                    if (!ConnectionEstablished)
-                        Remote.Bot.com.Disconnect();
                 }
 
                 if (!ConnectionEstablished)
                 {
                     Remote.Bot = new PokeSysBotMini(currver, CurrentInjectionType)
                     {
-                        com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) }
+                        com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) },
                     };
                     Remote.Bot.com.Connect();
                     Text += $" Unknown Version (Forced: {currver})";
@@ -255,7 +252,7 @@ namespace AutoModPlugins
             var aType = offsets.GetType();
             var props = aType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
             var ofType = props.Where(fi => typeof(uint).IsAssignableFrom(fi.FieldType));
-            var retval = ofType.ToDictionary(z => z.Name, x => (uint)x.GetValue(offsets));
+            var retval = ofType.ToDictionary(z => z.Name, field => (uint)field.GetValue(offsets));
             return retval.Where(z => z.Value != 0).Select(z => z.Key).OrderBy(z => z);
         }
 
@@ -414,10 +411,8 @@ namespace AutoModPlugins
 
                 // Invoke function
                 ((ContainerControl)SAV).GetType().GetMethod(v, BindingFlags.NonPublic | BindingFlags.Instance).Invoke((ContainerControl)SAV, new object[] { s, e });
-                byte[] blockdata;
-                if (sb is SCBlock sc) blockdata = sc.Data;
-                else if (sb is SaveBlock sv) blockdata = sv.Data;
-                else blockdata = data;
+
+                var blockdata = GetBlockDataRaw(sb, data);
                 if (!blockdata.SequenceEqual(data))
                     Remote.WriteBlockFromString(txt, blockdata);
                 return;
@@ -433,16 +428,20 @@ namespace AutoModPlugins
             var res = form.ShowDialog();
             if (res == DialogResult.OK)
             {
-                byte[] blockdata;
-                if (sb is SCBlock sc) blockdata = sc.Data;
-                else if (sb is SaveBlock sv) blockdata = sv.Data;
-                else blockdata = data;
+                var blockdata = GetBlockDataRaw(sb, data);
                 if (loadgrid)
                     form.Bytes = blockdata;
                 var modifiedRAM = form.Bytes;
                 Remote.WriteBlockFromString(txt, modifiedRAM);
             }
         }
+
+        private static byte[] GetBlockDataRaw(object sb, byte[] data) => sb switch
+        {
+            SCBlock sc => sc.Data,
+            SaveBlock sv => sv.Data,
+            _ => data,
+        };
     }
 
     internal class HexTextBox : TextBox
@@ -457,7 +456,7 @@ namespace AutoModPlugins
                 var text = Clipboard.GetText();
                 if (text.StartsWith("0x"))
                 {
-                    text = text.Substring(2);
+                    text = text[2..];
                     Clipboard.SetText(text);
                 }
             }

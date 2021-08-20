@@ -6,13 +6,13 @@
         {
             return sf switch
             {
-                SAV8SWSH _ => new[] { LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2 },
-                SAV7b _ => new[] { LiveHeXVersion.LGPE_v102 },
-                SAV7USUM _ => new[] { LiveHeXVersion.UM_v12, LiveHeXVersion.US_v12 },
-                SAV7SM _ => new[] { LiveHeXVersion.SM_v12 },
-                SAV6AO _ => new[] { LiveHeXVersion.ORAS },
-                SAV6XY _ => new[] { LiveHeXVersion.XY },
-                _ => new[] { LiveHeXVersion.SWSH_Rigel2 }
+                SAV8SWSH => new[] { LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2 },
+                SAV7b => new[] { LiveHeXVersion.LGPE_v102 },
+                SAV7USUM => new[] { LiveHeXVersion.UM_v12, LiveHeXVersion.US_v12 },
+                SAV7SM => new[] { LiveHeXVersion.SM_v12 },
+                SAV6AO => new[] { LiveHeXVersion.ORAS },
+                SAV6XY => new[] { LiveHeXVersion.XY },
+                _ => new[] { LiveHeXVersion.SWSH_Rigel2 },
             };
         }
 
@@ -20,13 +20,13 @@
         {
             return sav switch
             {
-                SAV8SWSH _ => true,
-                SAV7b _ => true,
-                SAV7USUM _ => true,
-                SAV7SM _ => true,
-                SAV6AO _ => true,
-                SAV6XY _ => true,
-                _ => false
+                SAV8SWSH => true,
+                SAV7b => true,
+                SAV7USUM => true,
+                SAV7SM => true,
+                SAV6AO => true,
+                SAV6XY => true,
+                _ => false,
             };
         }
 
@@ -43,7 +43,7 @@
                 LiveHeXVersion.SM_v12 => new NTRClient(),
                 LiveHeXVersion.ORAS => new NTRClient(),
                 LiveHeXVersion.XY => new NTRClient(),
-                _ => new SysBotMini()
+                _ => new SysBotMini(),
             };
         }
 
@@ -60,7 +60,7 @@
                 LiveHeXVersion.SM_v12 => 0x330D9838,
                 LiveHeXVersion.ORAS => 0x8C9E134,
                 LiveHeXVersion.XY => 0x8C861C8,
-                _ => 0x4506D890
+                _ => 0x4506D890,
             };
         }
 
@@ -77,7 +77,7 @@
                 LiveHeXVersion.SM_v12 => 232,
                 LiveHeXVersion.ORAS => 232,
                 LiveHeXVersion.XY => 232,
-                _ => 344
+                _ => 344,
             };
         }
 
@@ -94,7 +94,7 @@
                 LiveHeXVersion.SM_v12 => 0,
                 LiveHeXVersion.ORAS => 0,
                 LiveHeXVersion.XY => 0,
-                _ => 0
+                _ => 0,
             };
         }
 
@@ -111,7 +111,7 @@
                 LiveHeXVersion.SM_v12 => 30,
                 LiveHeXVersion.ORAS => 30,
                 LiveHeXVersion.XY => 30,
-                _ => 30
+                _ => 30,
             };
         }
 
@@ -128,7 +128,7 @@
                 LiveHeXVersion.SM_v12 => 0xC0,
                 LiveHeXVersion.ORAS => 0x170,
                 LiveHeXVersion.XY => 0x170,
-                _ => 0x110
+                _ => 0x110,
             };
         }
 
@@ -145,7 +145,7 @@
                 LiveHeXVersion.SM_v12 => 0x330D67D0,
                 LiveHeXVersion.ORAS => 0x8C81340,
                 LiveHeXVersion.XY => 0x8C79C3C,
-                _ => 0x45061108
+                _ => 0x45061108,
             };
         }
 
@@ -158,7 +158,7 @@
                 LiveHeXVersion.SM_v12 => true,
                 LiveHeXVersion.ORAS => true,
                 LiveHeXVersion.XY => true,
-                _ => false
+                _ => false,
             };
         }
 
@@ -167,7 +167,7 @@
             return lv switch
             {
                 LiveHeXVersion.SWSH_Rigel2 => Offsets8.Rigel2,
-                _ => null
+                _ => null,
             };
         }
 
@@ -178,7 +178,7 @@
             {
                 InjectorCommunicationType.SocketNetwork => new SysBotMini(),
                 InjectorCommunicationType.USB => new UsbBotMini(),
-                _ => new SysBotMini()
+                _ => new SysBotMini(),
             };
         }
     }

@@ -75,8 +75,10 @@ namespace AutoModPlugins
 
             if (Util.IsStringListCached(file, out var result))
                 return result;
-            var txt = (string)Resources.ResourceManager.GetObject(file);
-            return Util.LoadStringList(file, txt);
+            var txt = Resources.ResourceManager.GetObject(file);
+            if (txt is not string s)
+                return Array.Empty<string>();
+            return Util.LoadStringList(file, s);
         }
 
         private static IEnumerable<object> GetTranslatableControls(Control f)

@@ -13,26 +13,29 @@ namespace AutoModTests
         [Fact] public static void DefaultRegenNoExtra() => RegenSet.Default.HasExtraSettings.Should().BeFalse();
         [Fact] public static void DefaultRegenNoBatch() => RegenSet.Default.HasBatchSettings.Should().BeFalse();
 
-        [Fact] public static void FallbackNotPolluted()
+        [Fact]
+        public static void FallbackNotPolluted()
         {
             var original = TrainerSettings.DefaultFallback();
             var language = TrainerSettings.DefaultFallback(lang: LanguageID.Japanese);
             ReferenceEquals(original, language).Should().BeFalse();
         }
 
-        [Fact] public static void FallbackFound()
+        [Fact]
+        public static void FallbackFound()
         {
             const string set = "Ditto";
             var showdown = new RegenTemplate(new ShowdownSet(set));
             showdown.Regen.HasTrainerSettings.Should().BeFalse();
         }
 
-        [Fact] public static void FallbackCreated()
+        [Fact]
+        public static void FallbackCreated()
         {
             // Creates extra requirements for generating without specifying Trainer Details
             const string set = "Ditto\nLanguage: Japanese";
             var showdown = new RegenTemplate(new ShowdownSet(set));
-            showdown.Species.Should().Be((int) Species.Ditto);
+            showdown.Species.Should().Be((int)Species.Ditto);
             var regen = showdown.Regen;
             regen.HasTrainerSettings.Should().BeFalse();
             regen.HasExtraSettings.Should().BeTrue();
@@ -42,14 +45,15 @@ namespace AutoModTests
             Assert.NotNull(tr);
 
             // Default language of fallback trainers should be English.
-            tr.Language.Should().Be((int) LanguageID.English);
+            tr.Language.Should().Be((int)LanguageID.English);
 
             // When we generate, our Extra instruction should force it to be generated as Japanese.
             var pk = tr.GetLegalFromSet(showdown, out _);
-            pk.Language.Should().Be((int) LanguageID.Japanese);
+            pk.Language.Should().Be((int)LanguageID.Japanese);
         }
 
-        [Fact] public static void FallbackNotUsed()
+        [Fact]
+        public static void FallbackNotUsed()
         {
             const string set = "Ditto\nLanguage: English";
             var showdown = new RegenTemplate(new ShowdownSet(set));
@@ -77,7 +81,8 @@ namespace AutoModTests
             TrainerSettings.Clear();
         }
 
-        [Fact] public static void FallbackNotUsed2()
+        [Fact]
+        public static void FallbackNotUsed2()
         {
             const string set = "Ditto\nLanguage: Japanese";
             var showdown = new RegenTemplate(new ShowdownSet(set));

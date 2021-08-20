@@ -18,6 +18,6 @@
         /// <summary>
         /// Timed out while generating
         /// </summary>
-        Timeout
+        Timeout,
     }
 }

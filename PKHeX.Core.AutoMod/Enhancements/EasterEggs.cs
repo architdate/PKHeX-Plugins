@@ -23,7 +23,7 @@
                 6 => Species.Sliggoo,
                 7 => Species.Cosmog,
                 8 => Species.Meltan,
-                _ => Species.Diglett
+                _ => Species.Diglett,
             };
         }
 
@@ -52,7 +52,7 @@
                 6 => "SHOOT DAT GOO",
                 7 => "GET IN BAG",
                 8 => "MATT'S NUT",
-                _ => "HOW DO I HAK"
+                _ => "HOW DO I HAK",
             };
         }
     }

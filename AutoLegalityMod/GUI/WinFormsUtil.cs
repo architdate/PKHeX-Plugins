@@ -63,7 +63,7 @@ namespace AutoModPlugins
                          "|Save Files (*.sav)|main" +
                          "|Decrypted PKM File (*.pkm)|" + supported +
                          "|Binary File|*.bin" +
-                         "|Backup File|*.bak"
+                         "|Backup File|*.bak",
             };
             if (ofd.ShowDialog() != DialogResult.OK)
             {

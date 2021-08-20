@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 
-namespace PKHeX.Core.AutoMod.AutoMod
+namespace PKHeX.Core.AutoMod
 {
     public static class NetUtil
     {

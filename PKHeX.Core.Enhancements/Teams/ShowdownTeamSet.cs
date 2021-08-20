@@ -45,7 +45,7 @@ namespace PKHeX.Core.Enhancements
                 if (split2.Length != 2)
                     continue;
 
-                var format = split2[0].Substring(1);
+                var format = split2[0][1..];
                 var name = split2[1].TrimStart();
                 // find end
 

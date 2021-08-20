@@ -10,7 +10,7 @@ namespace PKHeX.Core.Injection
     {
         Heap,
         Main,
-        Absolute
+        Absolute,
     }
 
     public class SysBotMini : ICommunicator, ICommunicatorNX
@@ -72,7 +72,7 @@ namespace PKHeX.Core.Injection
                     RWMethod.Heap => SwitchCommand.Peek((uint)offset, length),
                     RWMethod.Main => SwitchCommand.PeekMain(offset, length),
                     RWMethod.Absolute => SwitchCommand.PeekAbsolute(offset, length),
-                    _ => SwitchCommand.Peek((uint)offset, length)
+                    _ => SwitchCommand.Peek((uint)offset, length),
                 };
 
                 SendInternal(cmd);
@@ -94,7 +94,7 @@ namespace PKHeX.Core.Injection
                     RWMethod.Heap => SwitchCommand.Poke((uint)offset, data),
                     RWMethod.Main => SwitchCommand.PokeMain(offset, data),
                     RWMethod.Absolute => SwitchCommand.PokeAbsolute(offset, data),
-                    _ => SwitchCommand.Poke((uint)offset, data)
+                    _ => SwitchCommand.Poke((uint)offset, data),
                 };
 
                 SendInternal(cmd);
@@ -106,7 +106,7 @@ namespace PKHeX.Core.Injection
 
         public byte[] ReadLargeBytes(ulong offset, int length, RWMethod method)
         {
-            var maxlength = 344 * 30;
+            const int maxlength = 344 * 30;
             var concatlist = new List<byte[]>();
             while (length > 0)
             {
@@ -120,7 +120,7 @@ namespace PKHeX.Core.Injection
 
         public void WriteLargeBytes(byte[] data, ulong offset, RWMethod method)
         {
-            var maxlength = 344 * 30;
+            const int maxlength = 344 * 30;
             if (data.Length <= maxlength)
             {
                 WriteBytes(data, offset, method);

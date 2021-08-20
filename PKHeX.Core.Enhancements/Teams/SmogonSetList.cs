@@ -28,7 +28,7 @@ namespace PKHeX.Core.Enhancements
             "Almost Any Ability", // Generates illegal abilities
             "BH",                 // Balanced Hackmons
             "Mix and Mega",       // Assumes pokemon can mega evolve that cannot
-            "STABmons"            // Generates illegal movesets
+            "STABmons",           // Generates illegal movesets
         };
 
         public string Summary => AlertText(ShowdownSpeciesName, SetText.Count, GetTitles());
@@ -73,9 +73,7 @@ namespace PKHeX.Core.Enhancements
                 var shiny = split1[i - 1].Contains("\"shiny\":true");
                 if (split1[i - 1].Contains("\"format\":\""))
                 {
-                    format = split1[i - 1]
-                        .Substring(split1[i - 1].IndexOf("\"format\":\"", StringComparison.Ordinal) +
-                                   "\"format\":\"".Length).Split('\"')[0];
+                    format = split1[i - 1][(split1[i - 1].IndexOf("\"format\":\"", StringComparison.Ordinal) + "\"format\":\"".Length)..].Split('\"')[0];
                 }
 
                 if (IllegalFormats.Any(s => s.Equals(format, StringComparison.OrdinalIgnoreCase)))
@@ -85,15 +83,13 @@ namespace PKHeX.Core.Enhancements
                 var level = format.StartsWith("LC") ? 5 : 100;
                 if (!split1[i - 1].Contains("\"name\":"))
                     continue;
-                var name = split1[i - 1].Substring(split1[i - 1].LastIndexOf("\"name\":\"", StringComparison.Ordinal) +
-                                                   "\"name\":\"".Length).Split('\"')[0];
-                var setSpecies = split1[i - 1].Substring(split1[i - 1].LastIndexOf("\"pokemon\":\"", StringComparison.Ordinal) + "\"pokemon\":\"".Length).Split('\"')[0];
+                var name = split1[i - 1][(split1[i - 1].LastIndexOf("\"name\":\"", StringComparison.Ordinal) + "\"name\":\"".Length)..].Split('\"')[0];
+                var setSpecies = split1[i - 1][(split1[i - 1].LastIndexOf("\"pokemon\":\"", StringComparison.Ordinal) + "\"pokemon\":\"".Length)..].Split('\"')[0];
                 SetFormat.Add(format);
                 SetName.Add(name);
                 if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
                 {
-                    int.TryParse(split1[i - 1].Split(new[] { "\"level\":" }, StringSplitOptions.None)[1]
-                        .Split(',')[0], out level);
+                    int.TryParse(split1[i - 1].Split(new[] { "\"level\":" }, StringSplitOptions.None)[1].Split(',')[0], out level);
                 }
 
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
@@ -120,7 +116,7 @@ namespace PKHeX.Core.Enhancements
                 nameof(PK6) => "https://www.smogon.com/dex/xy/pokemon",
                 nameof(PK7) or nameof(PB7) => "https://www.smogon.com/dex/sm/pokemon",
                 nameof(PK8) => "https://www.smogon.com/dex/ss/pokemon",
-                _ => string.Empty
+                _ => string.Empty,
             };
         }
 
@@ -190,7 +186,7 @@ namespace PKHeX.Core.Enhancements
             if (suffixStart < 0)
                 suffixStart = line.Length;
 
-            result = line.Substring(prefixStart, suffixStart - prefixStart);
+            result = line[prefixStart..suffixStart];
             return true;
         }
 
@@ -248,7 +244,7 @@ namespace PKHeX.Core.Enhancements
                 "Nidoran♀" => "nidoran-f",
                 "Farfetch’d" => "farfetchd",
                 "Flabébé" => "flabebe",
-                _ => spec
+                _ => spec,
             };
         }
 
@@ -267,7 +263,7 @@ namespace PKHeX.Core.Enhancements
                 "Sawsbuck" => "",
                 "Deerling" => "",
                 "Furfrou" => "",
-                _ => form
+                _ => form,
             };
         }
 
@@ -278,7 +274,7 @@ namespace PKHeX.Core.Enhancements
                 return spec switch
                 {
                     (int)Core.Species.Minior => "Meteor",
-                    _ => form
+                    _ => form,
                 };
             }
 

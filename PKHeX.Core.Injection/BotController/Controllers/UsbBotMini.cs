@@ -85,14 +85,11 @@ namespace PKHeX.Core.Injection
         {
             lock (_sync)
             {
-                if (SwDevice != null)
+                if (SwDevice is { IsOpen: true })
                 {
-                    if (SwDevice.IsOpen)
-                    {
-                        if (SwDevice is IUsbDevice wholeUsbDevice)
-                            wholeUsbDevice.ReleaseInterface(0);
-                        SwDevice.Close();
-                    }
+                    if (SwDevice is IUsbDevice wholeUsbDevice)
+                        wholeUsbDevice.ReleaseInterface(0);
+                    SwDevice.Close();
                 }
 
                 reader?.Dispose();

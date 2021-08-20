@@ -14,13 +14,13 @@ namespace AutoModPlugins
     /// </summary>
     public abstract class AutoModPlugin : IPlugin
     {
-        private string VERSION = ALMVersion.CurrentVersion;
+        private const string VERSION = ALMVersion.CurrentVersion;
 
         private const string ParentMenuName = "Menu_AutoLegality";
         private const string ParentMenuText = "Auto-Legality Mod";
         private const string ParentMenuParent = "Menu_Tools";
 
-        public bool PossibleVersionMismatch = false;
+        public bool PossibleVersionMismatch;
 
         /// <summary>
         /// Main Plugin Variables
@@ -52,9 +52,9 @@ namespace AutoModPlugins
 
         private void CheckVersionUpdates()
         {
-            var latest_alm = PKHeX.Core.AutoMod.AutoMod.NetUtil.GetLatestALMVersion();
+            var latest_alm = PKHeX.Core.AutoMod.NetUtil.GetLatestALMVersion();
             var curr_valid = Version.TryParse(VERSION, out var current_alm);
-            var curr_pkhex = Assembly.GetEntryAssembly().GetName().Version!;
+            var curr_pkhex = Assembly.GetEntryAssembly()?.GetName().Version;
             if (!curr_valid || curr_pkhex == null || latest_alm == null)
                 return;
             var msg = $"Update for ALM is available. Please download it from GitHub. The updated release is only compatible with PKHeX Version: {latest_alm.Major}.{latest_alm.Minor}.{latest_alm.Build}.";
@@ -92,7 +92,7 @@ namespace AutoModPlugins
             return new(ParentMenuText)
             {
                 Image = Resources.menuautolegality,
-                Name = ParentMenuName
+                Name = ParentMenuName,
             };
         }
 

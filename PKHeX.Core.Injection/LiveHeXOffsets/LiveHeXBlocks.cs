@@ -8,8 +8,8 @@ namespace PKHeX.Core.Injection
         // WinForms function (<value>) to invoke for editing saveblocks of type <key>
         public static readonly Dictionary<Type, string> BlockFormMapping = new()
         {
-            { typeof(MyItem),               "B_OpenItemPouch_Click" },
-            { typeof(RaidSpawnList8),       "B_OpenRaids_Click"     },
+            { typeof(MyItem), "B_OpenItemPouch_Click" },
+            { typeof(RaidSpawnList8), "B_OpenRaids_Click" },
         };
 
         public static readonly Dictionary<LiveHeXVersion, Dictionary<uint, string>> SCBlockFormMapping = new()
@@ -18,11 +18,11 @@ namespace PKHeX.Core.Injection
                 LiveHeXVersion.SWSH_Rigel2,
                 new()
                 {
-                    { 0x4716c404 , "B_OpenPokedex_Click" }, // KZukan
-                    { 0x3F936BA9 , "B_OpenPokedex_Click" }, // KZukanR1
-                    { 0x3C9366F0 , "B_OpenPokedex_Click" }, // KZukanR2
+                    { 0x4716c404, "B_OpenPokedex_Click" }, // KZukan
+                    { 0x3F936BA9, "B_OpenPokedex_Click" }, // KZukanR1
+                    { 0x3C9366F0, "B_OpenPokedex_Click" }, // KZukanR2
                 }
-            }
+            },
         };
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace PKHeX.Core.Injection
             if (sb is SCBlock scb)
             {
                 // only keys exist here
-                if (!SCBlockFormMapping.ContainsKey(lv)) 
+                if (!SCBlockFormMapping.ContainsKey(lv))
                     return false;
                 var forms = SCBlockFormMapping[lv];
                 if (!forms.ContainsKey(scb.Key))
@@ -48,7 +48,7 @@ namespace PKHeX.Core.Injection
             }
             foreach (Type k in BlockFormMapping.Keys)
             {
-                if (!k.IsAssignableFrom(sb.GetType()))
+                if (!k.IsInstanceOfType(sb))
                     continue;
                 value = BlockFormMapping[k];
                 return true;

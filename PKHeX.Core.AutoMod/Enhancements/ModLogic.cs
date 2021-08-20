@@ -41,7 +41,7 @@ namespace PKHeX.Core.AutoMod
                 species = species.Where(z => z is <= 151 or 808 or 809); // only include Kanto and M&M
             if (sav is SAV8)
                 species = species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z));
-            return sav.GenerateLivingDex(species, includeforms:false);
+            return sav.GenerateLivingDex(species, includeforms: false);
         }
 
         /// <summary>
@@ -51,17 +51,18 @@ namespace PKHeX.Core.AutoMod
         /// <param name="speciesIDs">Species IDs to generate</param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
         public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, params int[] speciesIDs) =>
-            sav.GenerateLivingDex(speciesIDs, includeforms:true);
+            sav.GenerateLivingDex(speciesIDs, includeforms: true);
 
         /// <summary>
         /// Gets a living dex (one per species, not every form)
         /// </summary>
         /// <param name="sav">Save File to receive the generated <see cref="PKM"/>.</param>
         /// <param name="speciesIDs">Species IDs to generate</param>
+        /// <param name="includeforms">Include all forms in the resulting list of data</param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
         public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, IEnumerable<int> speciesIDs, bool includeforms = true)
         {
-            var tr = APILegality.UseTrainerData ? TrainerSettings.GetSavedTrainerData(sav.Version, sav.Generation, fallback:sav, lang:(LanguageID)sav.Language) : sav;
+            var tr = APILegality.UseTrainerData ? TrainerSettings.GetSavedTrainerData(sav.Version, sav.Generation, fallback: sav, lang: (LanguageID)sav.Language) : sav;
             var pt = sav.Personal;
             List<PKM> pklist = new();
             foreach (var id in speciesIDs)
@@ -100,6 +101,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="sav">Save File to receive the generated <see cref="PKM"/>.</param>
         /// <param name="species">Species ID to generate</param>
+        /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
         public static bool GetRandomEncounter(this SaveFile sav, int species, int? form, out PKM? pk) => ((ITrainerInfo)sav).GetRandomEncounter(species, form, out pk);
@@ -109,6 +111,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="tr">Trainer Data to use in generating the encounter</param>
         /// <param name="species">Species ID to generate</param>
+        /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
         public static bool GetRandomEncounter(this ITrainerInfo tr, int species, int? form, out PKM? pk)
@@ -128,6 +131,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="blank">Template data that will have its properties modified</param>
         /// <param name="tr">Trainer Data to use in generating the encounter</param>
         /// <param name="species">Species ID to generate</param>
+        /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <returns>Result legal pkm, null if data should be ignored.</returns>
         private static PKM? GetRandomEncounter(PKM blank, ITrainerInfo tr, int species, int? form)
         {
@@ -142,15 +146,9 @@ namespace PKHeX.Core.AutoMod
             }
 
             var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid);
-            var firstenc = legalencs.FirstOrDefault();
+            var firstenc = form == null ? legalencs.FirstOrDefault() : legalencs.FirstOrDefault(z => z.Form == (int)form);
             if (firstenc == null)
                 return null;
-            if (form != null)
-            {
-                var formenc = legalencs.Where(z => z.Form == (int)form).FirstOrDefault();
-                if (formenc != null)
-                    firstenc = formenc;
-            }
 
             var f = PKMConverter.ConvertToType(firstenc, blank.GetType(), out _);
             if (f == null || (form != null && f.Form != (int)form))
@@ -185,7 +183,7 @@ namespace PKHeX.Core.AutoMod
                 if (f is IHandlerLanguage h)
                     h.HT_Language = 1;
             }
-            if (f is IFormArgument fa)
+            if (f is IFormArgument)
                 f.SetSuggestedFormArgument(info.EncounterMatch.Species);
             int wIndex = WurmpleUtil.GetWurmpleEvoGroup(f.Species);
             if (wIndex != -1)
@@ -255,7 +253,7 @@ namespace PKHeX.Core.AutoMod
             for (int i = 0; i < data.Count; i++)
             {
                 var pk = data[i];
-                if (pk == null || pk.Species <= 0 || new LegalityAnalysis(pk).Valid)
+                if (pk.Species <= 0 || new LegalityAnalysis(pk).Valid)
                     continue;
 
                 var result = sav.Legalize(pk);

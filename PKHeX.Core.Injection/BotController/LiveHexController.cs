@@ -83,12 +83,12 @@ namespace PKHeX.Core.Injection
             try
             {
                 var offset = obj.GetType().GetField(block).GetValue(obj);
-                if (offset is uint o && o == 0)
+                if (offset is uint and 0)
                     return false;
                 var allblocks = sav.GetType().GetProperty("Blocks").GetValue(sav);
                 var blockprop = allblocks.GetType().GetProperty(block);
                 object data;
-                if (allblocks is SCBlockAccessor scba && blockprop == null) 
+                if (allblocks is SCBlockAccessor scba && blockprop == null)
                 {
                     var key = allblocks.GetType().GetField(block, BindingFlags.NonPublic | BindingFlags.Static).GetValue(allblocks);
                     data = scba.GetBlock((uint)key);
