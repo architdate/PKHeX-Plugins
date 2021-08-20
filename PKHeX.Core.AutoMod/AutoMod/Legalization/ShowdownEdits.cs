@@ -91,7 +91,7 @@ namespace PKHeX.Core.AutoMod
                 // 3/4/5 transferred to 6+ will have ability 1 if both abilitynum 1 and 2 are the same. Capsule cant convert 1 -> 2 if the abilities arnt unique
                 if (pk.Format >= 6 && pk.Generation is 3 or 4 or 5 && pk.AbilityNumber != 4 && abilities[0] == abilities[1])
                     pk.AbilityNumber = 1;
-                if (pk is G3PKM g3 && abilities[0] == abilities[1])
+                if (pk is G3PKM && abilities[0] == abilities[1])
                     pk.AbilityNumber = 1;
             }
         }

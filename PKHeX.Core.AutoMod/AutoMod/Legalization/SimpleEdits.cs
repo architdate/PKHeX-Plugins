@@ -324,8 +324,8 @@ namespace PKHeX.Core.AutoMod
                 level = 10;
             if (pk is IDynamaxLevel pkm)
             {
+                // Zacian, Zamazenta and Eternatus cannot dynamax
                 if (pk is PK8 { Species: (int)Species.Zacian or (int)Species.Zamazenta or (int)Species.Eternatus })
-                    // Zacian, Zamazenta and Eternatus cannot dynamax
                     return;
                 pkm.DynamaxLevel = level; // Set max dynamax level
             }
@@ -471,7 +471,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">encounter used to generate pokemon file</param>
         public static void SetDateLocks(this PKM pk, IEncounterable enc)
         {
-            if (enc is WC8 { IsHOMEGift: true } w)
+            if (enc is WC8 { IsHOMEGift: true })
             {
                 var species = enc.Species;
                 var locked = EncountersHOME.WC8Gifts.TryGetValue(species, out var time);
@@ -483,28 +483,25 @@ namespace PKHeX.Core.AutoMod
         public static bool TryApplyHardcodedSeedWild8(PK8 pk, IEncounterable enc, int[] ivs, Shiny requestedShiny)
         {
             // Don't bother if there is no overworld correlation
-            if (!(enc is IOverworldCorrelation8 eo))
+            if (enc is not IOverworldCorrelation8 eo)
                 return false;
 
             // Check if a seed exists
-            int available = -1;
-            uint seed = 0;
-            if (enc is EncounterSlot8 eslot8)
-                available = xoroshiro8_wild.GetWildSeedFromIV8(new[] { 0, 2, 3 }, ivs, out seed);
-            else if (enc is EncounterStatic8 estatic8)
-                available = xoroshiro8_wild.GetWildSeedFromIV8(new[] { estatic8.FlawlessIVCount }, ivs, out seed);
+            var flawless = Overworld8Search.GetFlawlessIVCount(enc, ivs, out var seed);
 
             // Ensure requested criteria matches
-            if (available == -1)
+            if (flawless == -1)
                 return false;
-            APILegality.FindWildPIDIV8(pk, requestedShiny, available, seed);
+            APILegality.FindWildPIDIV8(pk, requestedShiny, flawless, seed);
             if (!eo.IsOverworldCorrelationCorrect(pk))
                 return false;
-            if (requestedShiny == Shiny.AlwaysStar && pk.ShinyXor is 0 or > 15)
-                return false;
-            if (requestedShiny == Shiny.Never && pk.ShinyXor < 16)
-                return false;
-            return true;
+
+            return requestedShiny switch
+            {
+                Shiny.AlwaysStar when pk.ShinyXor is 0 or > 15 => false,
+                Shiny.Never when pk.ShinyXor < 16 => false,
+                _ => true,
+            };
         }
     }
 }

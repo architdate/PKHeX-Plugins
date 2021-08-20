@@ -357,8 +357,8 @@ namespace PKHeX.Core.Enhancements
             {
                 var format = SetFormat[i];
                 var name = SetName[i];
-                if (titles.ContainsKey(format))
-                    titles[format].Add(name);
+                if (titles.TryGetValue(format, out var list))
+                    list.Add(name);
                 else
                     titles.Add(format, new List<string> { name });
             }

@@ -93,7 +93,11 @@ namespace PKHeX.Core.Injection
                     var key = allblocks.GetType().GetField(block, BindingFlags.NonPublic | BindingFlags.Static).GetValue(allblocks);
                     data = scba.GetBlock((uint)key);
                 }
-                else data = blockprop.GetValue(allblocks);
+                else
+                {
+                    data = blockprop.GetValue(allblocks);
+                }
+
                 if (data is SaveBlock sb)
                 {
                     read = ReadRAM((uint)offset, sb.Data.Length);
@@ -104,7 +108,10 @@ namespace PKHeX.Core.Injection
                     read = ReadRAM((uint)offset, scb.Data.Length);
                     read.CopyTo(scb.Data, 0);
                 }
-                else return false;
+                else
+                {
+                    return false;
+                }
                 return true;
             }
             catch (Exception e)

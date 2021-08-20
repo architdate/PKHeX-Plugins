@@ -38,13 +38,9 @@ namespace PKHeX.Core.Injection
             if (sb is SCBlock scb)
             {
                 // only keys exist here
-                if (!SCBlockFormMapping.ContainsKey(lv))
+                if (!SCBlockFormMapping.TryGetValue(lv, out var forms))
                     return false;
-                var forms = SCBlockFormMapping[lv];
-                if (!forms.ContainsKey(scb.Key))
-                    return false;
-                value = forms[scb.Key];
-                return true;
+                return forms.TryGetValue(scb.Key, out value);
             }
             foreach (Type k in BlockFormMapping.Keys)
             {

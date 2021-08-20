@@ -54,17 +54,7 @@ namespace PKHeX.Core.AutoMod
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR moves for the encounter
 
-            var abilityreq = AbilityRequest.NotHidden;
-            if (template.AbilityNumber == 4)
-                abilityreq = AbilityRequest.Hidden;
-            else if (template.PersonalInfo.Abilities.Count > 2) // Hidden ability exists for the template
-            {
-                if (template.PersonalInfo.Abilities[2] == template.Ability)
-                    abilityreq = AbilityRequest.PossiblyHidden;
-                // if no set ability is specified, it is assumed as the first ability which can be the same as the HA
-                if (set.Ability == -1 && template.PersonalInfo.Abilities[0] == template.PersonalInfo.Abilities[2])
-                    abilityreq = AbilityRequest.PossiblyHidden;
-            }
+            var abilityreq = GetRequestedAbility(template, set);
             var batchedit = AllowBatchCommands && regen.HasBatchSettings;
             var destType = template.GetType();
             var destVer = (GameVersion)dest.Game;
@@ -114,7 +104,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 // Apply final details
-                ApplySetDetails(pk, set, raw, dest, enc, regen);
+                ApplySetDetails(pk, set, dest, enc, regen);
 
                 // Apply final tweaks to the data.
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
@@ -134,7 +124,7 @@ namespace PKHeX.Core.AutoMod
                 }
 
                 if (pk is PK1 pk1)
-                    pk1.TradebackFixes(tr);
+                    pk1.TradebackFixes();
 
                 // Verify the Legality of what we generated, and exit if it is valid.
                 var la = new LegalityAnalysis(pk);
@@ -149,7 +139,26 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
-        private static void TradebackFixes(this PK1 pk1, ITrainerInfo tr)
+        private static AbilityRequest GetRequestedAbility(PKM template, IBattleTemplate set)
+        {
+            if (template.AbilityNumber == 4)
+                return AbilityRequest.Hidden;
+
+            var abils = template.PersonalInfo.Abilities;
+            if (abils.Count <= 2)
+                return AbilityRequest.NotHidden;
+
+            if (abils[2] == template.Ability)
+                return AbilityRequest.PossiblyHidden;
+
+            // if no set ability is specified, it is assumed as the first ability which can be the same as the HA
+            if (set.Ability == -1 && abils[0] == abils[2])
+                return AbilityRequest.PossiblyHidden;
+
+            return AbilityRequest.NotHidden;
+        }
+
+        private static void TradebackFixes(this PK1 pk1)
         {
             // Simulate a gen 2 trade/tradeback to allow tradeback moves
             pk1.Catch_Rate = pk1.Gen2Item;
@@ -318,11 +327,10 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Converted final pkm to apply details to</param>
         /// <param name="set">Set details required</param>
-        /// <param name="unconverted">Original pkm data</param>
         /// <param name="handler">Trainer to handle the Pokémon</param>
         /// <param name="enc">Encounter details matched to the Pokémon</param>
         /// <param name="regen">Regeneration information</param>
-        private static void ApplySetDetails(PKM pk, IBattleTemplate set, PKM unconverted, ITrainerInfo handler, IEncounterable enc, RegenSet regen)
+        private static void ApplySetDetails(PKM pk, IBattleTemplate set, ITrainerInfo handler, IEncounterable enc, RegenSet regen)
         {
             int Form = set.Form;
             var language = regen.Extra.Language;
@@ -881,7 +889,7 @@ namespace PKHeX.Core.AutoMod
                 uint seed = Util.Rand32();
                 if (isWishmaker)
                 {
-                    seed = bacd_r_seeds.GetShinyWishmakerSeed((Nature)iterPKM.Nature);
+                    seed = WC3Seeds.GetShinyWishmakerSeed((Nature)iterPKM.Nature);
                     isWishmaker = false;
                 }
                 if (PokeWalkerSeedFail(seed, Method, pk, iterPKM))

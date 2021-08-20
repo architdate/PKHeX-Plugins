@@ -12,7 +12,7 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Exports the <see cref="SaveFile.CurrentBox"/> to <see cref="ShowdownSet"/> as a single string.
         /// </summary>
-        /// <param name="sav">Save File to export from</param>
+        /// <param name="provider">Save File to export from</param>
         /// <returns>Concatenated string of all sets in the current box.</returns>
         public static string GetRegenSetsFromBoxCurrent(this ISaveFileProvider provider) => GetRegenSetsFromBox(provider.SAV, provider.CurrentBox);
 

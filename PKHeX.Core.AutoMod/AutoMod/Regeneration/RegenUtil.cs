@@ -42,7 +42,7 @@ namespace PKHeX.Core.AutoMod
             uint repack = ((uint)sti.SID * mil) + (uint)sti.TID;
             sti.TID = (int)(repack & 0xFFFF);
             sti.SID = (int)(repack >> 16);
-            return any;
+            return true;
         }
 
         private const char Splitter = ':';
@@ -140,7 +140,7 @@ namespace PKHeX.Core.AutoMod
                 AbilityRequest.NotHidden => abils[0],
                 AbilityRequest.PossiblyHidden => abils[0],
                 AbilityRequest.Hidden => abils.Count > 2 ? abils[2] : -1,
-                _ => throw new NotImplementedException(),
+                _ => throw new ArgumentOutOfRangeException(),
             };
         }
 
@@ -156,7 +156,7 @@ namespace PKHeX.Core.AutoMod
                 6 => PersonalTable.AO,
                 7 => PersonalTable.USUM,
                 8 => PersonalTable.SWSH,
-                _ => throw new NotImplementedException(),
+                _ => throw new ArgumentOutOfRangeException(),
             };
         }
     }

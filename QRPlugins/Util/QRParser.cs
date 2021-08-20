@@ -62,7 +62,7 @@ namespace AutoModPlugins
         private static byte[] ParseQR(Image q)
         {
             using var bitmap = new Bitmap(q);
-            BarcodeReader reader = new BarcodeReader { AutoRotate = true, TryInverted = true };
+            var reader = new BarcodeReader { AutoRotate = true, TryInverted = true };
             var data = reader.Decode(bitmap).RawBytes;
             return Array.ConvertAll(data, a => a);
         }

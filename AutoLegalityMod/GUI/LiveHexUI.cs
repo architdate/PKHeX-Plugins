@@ -13,7 +13,7 @@ namespace AutoModPlugins
 {
     public partial class LiveHeXUI : Form, ISlotViewer<PictureBox>
     {
-        public ISaveFileProvider SAV { get; }
+        private ISaveFileProvider SAV { get; }
 
         public int ViewIndex => BoxSelect?.SelectedIndex ?? 0;
         public IList<PictureBox> SlotPictureBoxes => throw new InvalidOperationException();
@@ -24,9 +24,7 @@ namespace AutoModPlugins
 
         private readonly InjectorCommunicationType CurrentInjectionType;
 
-#pragma warning disable CA2213 // Disposable fields should be disposed
         private readonly ComboBox? BoxSelect; // this is just us holding a reference; disposal is done by its parent
-#pragma warning restore CA2213 // Disposable fields should be disposed
 
         public LiveHeXUI(ISaveFileProvider sav, IPKMView editor)
         {
@@ -153,7 +151,9 @@ namespace AutoModPlugins
                     Text += $" Unknown Version (Forced: {currver})";
                 }
                 else
+                {
                     Text += $" Detected Version: {currver}";
+                }
 
                 if (Remote.Bot.com is ICommunicatorNX)
                     groupBox4.Enabled = true;
@@ -394,7 +394,10 @@ namespace AutoModPlugins
                 var key = allblocks.GetType().GetField(txt, BindingFlags.NonPublic | BindingFlags.Static).GetValue(allblocks);
                 sb = scba.GetBlock((uint)key);
             }
-            else sb = blockprop.GetValue(allblocks);
+            else
+            {
+                sb = blockprop.GetValue(allblocks);
+            }
 
             // Verify if sb is a valid block type
             if (sb is not SCBlock && sb is not SaveBlock)
@@ -402,15 +405,19 @@ namespace AutoModPlugins
 
             if (sb.IsSpecialBlock(Remote.Bot.Version, out var v))
             {
+                // ReSharper disable once SuspiciousTypeConversion.Global
+                var cc = (ContainerControl)SAV;
+
                 // Set sender
-                var s = sender;
-                if (txt == "Raid")
-                    s = (Button)((ContainerControl)SAV).Controls.Find("B_Raids", true)[0];
-                if (txt == "RaidArmor")
-                    s = (Button)((ContainerControl)SAV).Controls.Find("B_RaidArmor", true)[0];
+                var s = txt switch
+                {
+                    "Raid" => cc.Controls.Find("B_Raids", true)[0],
+                    "RaidArmor" => cc.Controls.Find("B_RaidArmor", true)[0],
+                    _ => sender,
+                };
 
                 // Invoke function
-                ((ContainerControl)SAV).GetType().GetMethod(v, BindingFlags.NonPublic | BindingFlags.Instance).Invoke((ContainerControl)SAV, new object[] { s, e });
+                cc.GetType().GetMethod(v, BindingFlags.NonPublic | BindingFlags.Instance)?.Invoke(cc, new[] { s, e });
 
                 var blockdata = GetBlockDataRaw(sb, data);
                 if (!blockdata.SequenceEqual(data))

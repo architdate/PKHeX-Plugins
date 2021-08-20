@@ -46,7 +46,7 @@ namespace AutoModPlugins
                     return;
                 }
 
-                if (!long.TryParse(txt.Split('/')[txt.Split('/').Length - 1], out long code))
+                if (!long.TryParse(txt.Split('/')[^1], out long code))
                 {
                     WinFormsUtil.Error("Invalid URL (wrong code)");
                     return;
