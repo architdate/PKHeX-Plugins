@@ -67,7 +67,10 @@ namespace PKHeX.Core.AutoMod
             foreach (var id in speciesIDs)
             {
                 if (!includeforms)
+                {
                     AddPKM(sav, tr, pklist, id, null);
+                    continue;
+                }
                 var num_forms = pt[id].FormCount;
                 for (int i = 0; i < num_forms; i++)
                 {
