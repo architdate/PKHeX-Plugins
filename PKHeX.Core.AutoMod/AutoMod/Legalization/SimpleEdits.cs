@@ -90,7 +90,7 @@ namespace PKHeX.Core.AutoMod
             new Tuple<Species, int> ( Eternatus, 0 ),
 
             new Tuple<Species, int> ( Kubfu, 0 ),
-            new Tuple<Species, int> ( Urshifu, 1 ),
+            new Tuple<Species, int> ( Urshifu, 0 ),
             new Tuple<Species, int> ( Urshifu, 1 ),
             new Tuple<Species, int> ( Zarude, 0 ),
             new Tuple<Species, int> ( Zarude, 1 ),
@@ -528,10 +528,9 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">encounter used to generate pokemon file</param>
         public static void SetDateLocks(this PKM pk, IEncounterable enc)
         {
-            if (enc is WC8 { IsHOMEGift: true })
+            if (enc is WC8 { IsHOMEGift: true } w)
             {
-                var species = enc.Species;
-                var locked = EncountersHOME.WC8Gifts.TryGetValue(species, out var time);
+                var locked = EncountersHOME.WC8Gifts.TryGetValue(w.CardID, out var time);
                 if (locked)
                     pk.MetDate = time;
             }
