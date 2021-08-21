@@ -123,8 +123,11 @@ namespace PKHeX.Core.AutoMod
                         continue;
                 }
 
-                if (pk is PK1 pk1)
-                    pk1.TradebackFixes();
+                if (pk is PK1 pk1 && pk1.TradebackValid())
+                {
+                    satisfied = LegalizationResult.Regenerated;
+                    return pk;
+                }
 
                 // Verify the Legality of what we generated, and exit if it is valid.
                 var la = new LegalityAnalysis(pk);
@@ -158,23 +161,12 @@ namespace PKHeX.Core.AutoMod
             return AbilityRequest.NotHidden;
         }
 
-        private static void TradebackFixes(this PK1 pk1)
+        private static bool TradebackValid(this PK1 pk1)
         {
-            // Simulate a gen 2 trade/tradeback to allow tradeback moves
-            pk1.Catch_Rate = pk1.Gen2Item;
-
-            // Check if trade evo is required. If so, just reset catch rate and tradebackstatus
-            var la = new LegalityAnalysis(pk1);
-            if (la.Valid)
-                return;
-
-            var enc = la.EncounterMatch;
-            var tradeevos = new HashSet<int> { (int)Species.Kadabra, (int)Species.Machoke, (int)Species.Graveler, (int)Species.Haunter };
-            if (enc is EncounterTrade || enc.Species != pk1.Species || !tradeevos.Contains(enc.Species))
-                return;
-
-            pk1.TradebackStatus = TradebackType.Any;
-            pk1.Catch_Rate = PersonalTable.RB[pk1.Species].CatchRate;
+            var valid = new LegalityAnalysis(pk1).Valid;
+            if (!valid)
+                pk1.Catch_Rate = pk1.Gen2Item;
+            return valid;
         }
 
         /// <summary>

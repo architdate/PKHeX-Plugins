@@ -101,6 +101,8 @@ namespace PKHeX.Core.AutoMod
             new Tuple<Species, int> ( Calyrex, 2 ),
         };
 
+        public static HashSet<int> Gen1TradeEvos = new () { (int)Species.Kadabra, (int)Species.Machoke, (int)Species.Graveler, (int)Species.Haunter };
+
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
         {
             if (pk.Format < 7)
