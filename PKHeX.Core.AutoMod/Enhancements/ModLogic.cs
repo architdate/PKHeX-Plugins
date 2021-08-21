@@ -9,6 +9,10 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public static class ModLogic
     {
+        // Living Dex Settings
+        public static bool IncludeForms { get; set; } = false;
+        public static bool SetShiny { get; set; } = false;
+
         /// <summary>
         /// Exports the <see cref="SaveFile.CurrentBox"/> to <see cref="ShowdownSet"/> as a single string.
         /// </summary>
@@ -41,7 +45,7 @@ namespace PKHeX.Core.AutoMod
                 species = species.Where(z => z is <= 151 or 808 or 809); // only include Kanto and M&M
             if (sav is SAV8)
                 species = species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z));
-            return sav.GenerateLivingDex(species, includeforms: false);
+            return sav.GenerateLivingDex(species, includeforms: IncludeForms, shiny: SetShiny);
         }
 
         /// <summary>
@@ -51,7 +55,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="speciesIDs">Species IDs to generate</param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
         public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, params int[] speciesIDs) =>
-            sav.GenerateLivingDex(speciesIDs, includeforms: true);
+            sav.GenerateLivingDex(speciesIDs, includeforms: IncludeForms, shiny: SetShiny);
 
         /// <summary>
         /// Gets a living dex (one per species, not every form)
@@ -60,7 +64,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="speciesIDs">Species IDs to generate</param>
         /// <param name="includeforms">Include all forms in the resulting list of data</param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
-        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, IEnumerable<int> speciesIDs, bool includeforms = true)
+        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, IEnumerable<int> speciesIDs, bool includeforms, bool shiny)
         {
             var tr = APILegality.UseTrainerData ? TrainerSettings.GetSavedTrainerData(sav.Version, sav.Generation, fallback: sav, lang: (LanguageID)sav.Language) : sav;
             var pt = sav.Personal;
@@ -69,7 +73,7 @@ namespace PKHeX.Core.AutoMod
             {
                 if (!includeforms)
                 {
-                    AddPKM(sav, tr, pklist, id, null);
+                    AddPKM(sav, tr, pklist, id, null, shiny);
                     continue;
                 }
                 var num_forms = pt[id].FormCount;
@@ -77,20 +81,20 @@ namespace PKHeX.Core.AutoMod
                 {
                     if (sav is SAV8 && !((PersonalInfoSWSH)pt.GetFormEntry(id, i)).IsPresentInGame)
                         continue;
-                    AddPKM(sav, tr, pklist, id, i);
+                    AddPKM(sav, tr, pklist, id, i, shiny);
                 }
             }
             return pklist;
         }
 
-        private static void AddPKM(SaveFile sav, ITrainerInfo tr, List<PKM> pklist, int species, int? form)
+        private static void AddPKM(SaveFile sav, ITrainerInfo tr, List<PKM> pklist, int species, int? form, bool shiny)
         {
-            if (tr.GetRandomEncounter(species, form, out var pk) && pk != null)
+            if (tr.GetRandomEncounter(species, form, shiny, out var pk) && pk != null)
             {
                 pk.Heal();
                 pklist.Add(pk);
             }
-            else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID = tr.TID }, species, 0, out var pkm) && pkm is PK1 pk1)
+            else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID = tr.TID }, species, 0, shiny, out var pkm) && pkm is PK1 pk1)
             {
                 pklist.Add(pk1.ConvertToPK2());
             }
@@ -104,7 +108,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this SaveFile sav, int species, int? form, out PKM? pk) => ((ITrainerInfo)sav).GetRandomEncounter(species, form, out pk);
+        public static bool GetRandomEncounter(this SaveFile sav, int species, int? form, bool shiny, out PKM? pk) => ((ITrainerInfo)sav).GetRandomEncounter(species, form, shiny, out pk);
 
         /// <summary>
         /// Gets a legal <see cref="PKM"/> from a random in-game encounter's data.
@@ -114,10 +118,10 @@ namespace PKHeX.Core.AutoMod
         /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this ITrainerInfo tr, int species, int? form, out PKM? pk)
+        public static bool GetRandomEncounter(this ITrainerInfo tr, int species, int? form, bool shiny, out PKM? pk)
         {
             var blank = PKMConverter.GetBlank(tr.Generation, tr.Game);
-            pk = GetRandomEncounter(blank, tr, species, form);
+            pk = GetRandomEncounter(blank, tr, species, form, shiny);
             if (pk == null)
                 return false;
 
@@ -133,7 +137,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="species">Species ID to generate</param>
         /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <returns>Result legal pkm, null if data should be ignored.</returns>
-        private static PKM? GetRandomEncounter(PKM blank, ITrainerInfo tr, int species, int? form)
+        private static PKM? GetRandomEncounter(PKM blank, ITrainerInfo tr, int species, int? form, bool shiny)
         {
             blank.Species = species;
             blank.Gender = blank.GetSaneGender();
@@ -145,62 +149,56 @@ namespace PKHeX.Core.AutoMod
                     blank.Gender = (int)form;
             }
 
-            var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid);
+            var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
+            if (form != null)
+            {
+                blank.Form = (int)form;
+                var item = SetFormSpecificItem(tr.Generation, blank.Species, (int)form);
+                if (item != null) blank.HeldItem = (int)item;
+                if (blank.Species == (int)Species.Keldeo && blank.Form == 1) blank.Move1 = (int)Move.SecretSword;
+            }
+            var ssettext = new ShowdownSet(blank).Text.Split('\r')[0];
+            if (shiny && !SimpleEdits.ShinyLockedSpeciesForm.Contains(new Tuple<Species, int>((Species)blank.Species, blank.Form)))
+                ssettext += Environment.NewLine + "Shiny: Yes";
+            var sset = new ShowdownSet(ssettext);
+            var set = new RegenTemplate(sset);
+            template.ApplySetDetails(set);
+            var success = tr.TryAPIConvert(set, template, out PKM pk);
+            if (success == LegalizationResult.Regenerated)
+            {
+                if (form == null) return pk;
+                else if (pk.Form == (int)form) return pk;
+            }
+
+            // just get a legal pkm and return. Only validate form and not shininess.
+            var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid && z.Species == blank.Species);
             var firstenc = GetFirstEncounter(legalencs, form);
             if (firstenc == null)
                 return null;
+            var second = PKMConverter.ConvertToType(firstenc, blank.GetType(), out _);
+            if (second == null)
+                return null;
+            if (form == null || second.Form == (int)form)
+                return second;
+            // force form and check legality as a last ditch effort.
+            second.Form = (int)form;
+            if (new LegalityAnalysis(second).Valid)
+                return second;
+            return null;
+        }
 
-            var f = PKMConverter.ConvertToType(firstenc, blank.GetType(), out _);
-            if (f == null || (form != null && f.Form != (int)form))
+        private static int? SetFormSpecificItem(int generation, int species, int form)
+        {
+            return species switch
             {
-                var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
-                if (form != null)
-                    blank.Form = (int)form;
-                var set = new ShowdownSet(new ShowdownSet(blank).Text.Split('\r')[0]);
-                template.ApplySetDetails(set);
-                var success = tr.TryAPIConvert(set, template, out PKM pk);
-                return success == LegalizationResult.Regenerated ? pk : null;
-            }
-            var an = f.AbilityNumber;
-            f.Species = species;
-            f.Gender = f.GetSaneGender();
-            if (species is ((int)Species.Meowstic) or ((int)Species.Indeedee))
-                f.Form = f.Gender;
-            f.CurrentLevel = 100;
-            f.Nickname = SpeciesName.GetSpeciesNameGeneration(f.Species, f.Language, f.Format);
-            f.IsNicknamed = false;
-            f.SetSuggestedMoves();
-            f.SetSuggestedMovePP(0);
-            f.SetSuggestedMovePP(1);
-            f.SetSuggestedMovePP(2);
-            f.SetSuggestedMovePP(3);
-            f.RefreshAbility(an >> 1);
-            var info = new LegalityAnalysis(f).Info;
-            if (info.Generation > 0 && info.EvoChainsAllGens[info.Generation].All(z => z.Species != info.EncounterMatch.Species))
-            {
-                f.CurrentHandler = 1;
-                f.HT_Name = f.OT_Name;
-                if (f is IHandlerLanguage h)
-                    h.HT_Language = 1;
-            }
-            if (f is IFormArgument)
-                f.SetSuggestedFormArgument(info.EncounterMatch.Species);
-            int wIndex = WurmpleUtil.GetWurmpleEvoGroup(f.Species);
-            if (wIndex != -1)
-                f.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
-            if (f is IHomeTrack { Tracker: 0 } ht && APILegality.SetRandomTracker)
-                ht.Tracker = APILegality.GetRandomULong();
-            if (new LegalityAnalysis(f).Valid)
-                return f;
-
-            // local name clashes!
-            {
-                var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
-                var set = new ShowdownSet(new ShowdownSet(blank).Text.Split('\r')[0]);
-                template.ApplySetDetails(set);
-                var success = tr.TryAPIConvert(set, template, out PKM pk);
-                return success == LegalizationResult.Regenerated ? pk : null;
-            }
+                (int)Species.Arceus => SimpleEdits.GetArceusHeldItemFromForm(form),
+                (int)Species.Silvally => SimpleEdits.GetSilvallyHeldItemFromForm(form),
+                (int)Species.Genesect => SimpleEdits.GetGenesectHeldItemFromForm(form),
+                (int)Species.Giratina => form == 1 ? 112 : null, // Griseous Orb
+                (int)Species.Zacian => form == 1 ? 1103 : null, // Rusted Sword
+                (int)Species.Zamazenta => form == 1 ? 1104 : null, // Rusted Shield
+                _ => null
+            };
         }
 
         private static PKM? GetFirstEncounter(IEnumerable<PKM> legalencs, int? form)

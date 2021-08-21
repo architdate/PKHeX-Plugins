@@ -250,5 +250,29 @@ namespace AutoModPlugins.Properties {
                 this["Timeout"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IncludeForms {
+            get {
+                return ((bool)(this["IncludeForms"]));
+            }
+            set {
+                this["IncludeForms"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetShiny {
+            get {
+                return ((bool)(this["SetShiny"]));
+            }
+            set {
+                this["SetShiny"] = value;
+            }
+        }
     }
 }

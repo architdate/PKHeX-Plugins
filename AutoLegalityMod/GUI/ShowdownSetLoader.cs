@@ -164,6 +164,8 @@ namespace AutoModPlugins
             APILegality.Timeout = settings.Timeout;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
+            ModLogic.IncludeForms = settings.IncludeForms;
+            ModLogic.SetShiny = settings.SetShiny;
 
             EncounterMovesetGenerator.PriorityList = settings.PrioritizeEvent
                 ? new[] { EncounterOrder.Mystery, EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot }

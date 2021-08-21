@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using static PKHeX.Core.Species;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -44,6 +45,60 @@ namespace PKHeX.Core.AutoMod
             076, // Golem
             088, // Grimer
             089, // Muk
+        };
+
+        internal static readonly HashSet<Tuple<Species, int>> ShinyLockedSpeciesForm = new()
+        {
+            // Cap Pikachus
+            new Tuple<Species, int> ( Pikachu, 1 ),
+            new Tuple<Species, int> ( Pikachu, 2 ),
+            new Tuple<Species, int> ( Pikachu, 3 ),
+            new Tuple<Species, int> ( Pikachu, 4 ),
+            new Tuple<Species, int> ( Pikachu, 5 ),
+            new Tuple<Species, int> ( Pikachu, 6 ),
+            new Tuple<Species, int> ( Pikachu, 7 ),
+            new Tuple<Species, int> ( Pikachu, 9 ),
+
+            // Galar Birds
+            new Tuple<Species, int> ( Articuno, 1 ),
+            new Tuple<Species, int> ( Zapdos, 1 ),
+            new Tuple<Species, int> ( Moltres, 1 ),
+
+            new Tuple<Species, int> ( Victini, 0 ),
+            new Tuple<Species, int> ( Keldeo, 0 ),
+            new Tuple<Species, int> ( Meloetta, 0 ),
+
+            // Vivillons
+            new Tuple<Species, int> ( Vivillon, 18 ),
+            new Tuple<Species, int> ( Vivillon, 19 ),
+
+            // Hoopa
+            new Tuple<Species, int> ( Hoopa, 0 ),
+            new Tuple<Species, int> ( Hoopa, 1 ),
+
+            new Tuple<Species, int> ( Volcanion, 0 ),
+            new Tuple<Species, int> ( Cosmog, 0 ),
+            new Tuple<Species, int> ( Cosmoem, 0 ),
+            new Tuple<Species, int> ( Magearna, 0 ),
+            new Tuple<Species, int> ( Magearna, 1 ),
+            new Tuple<Species, int> ( Marshadow, 0 ),
+
+            new Tuple<Species, int> ( Zacian, 0 ),
+            new Tuple<Species, int> ( Zacian, 1 ),
+            new Tuple<Species, int> ( Zamazenta, 0 ),
+            new Tuple<Species, int> ( Zamazenta, 1 ),
+            new Tuple<Species, int> ( Eternatus, 0 ),
+
+            new Tuple<Species, int> ( Kubfu, 0 ),
+            new Tuple<Species, int> ( Urshifu, 1 ),
+            new Tuple<Species, int> ( Urshifu, 1 ),
+            new Tuple<Species, int> ( Zarude, 0 ),
+            new Tuple<Species, int> ( Zarude, 1 ),
+            new Tuple<Species, int> ( Glastrier, 0 ),
+            new Tuple<Species, int> ( Spectrier, 0 ),
+            new Tuple<Species, int> ( Calyrex, 0 ),
+            new Tuple<Species, int> ( Calyrex, 1 ),
+            new Tuple<Species, int> ( Calyrex, 2 ),
         };
 
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
@@ -503,5 +558,10 @@ namespace PKHeX.Core.AutoMod
                 _ => true,
             };
         }
+
+        private static readonly ushort[] Arceus_PlateIDs = { 303, 306, 304, 305, 309, 308, 310, 313, 298, 299, 301, 300, 307, 302, 311, 312, 644 };
+        public static int? GetArceusHeldItemFromForm(int form) => 1 <= form && form <= 17 ? Arceus_PlateIDs[form - 1] : null;
+        public static int? GetSilvallyHeldItemFromForm(int form) => form == 0 ? null : form + 903;
+        public static int? GetGenesectHeldItemFromForm(int form) => form == 0 ? null : form + 115;
     }
 }

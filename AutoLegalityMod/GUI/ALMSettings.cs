@@ -34,6 +34,10 @@ namespace AutoModPlugins.GUI
             new ALMSettingMetadata("UseXOROSHIRO", "Generates legal nonshiny Generation 8 raid Pokémon based on the game's RNG.", "Legality"),
             new ALMSettingMetadata("EnableEasterEggs", "Produces an Easter Egg Pokémon if the provided set is illegal.", "Legality"),
 
+            // Living Dex
+            new ALMSettingMetadata("IncludeForms", "Generate all forms of the Pokémon. Note that some generations may not have enough box space for all forms.", "Living Dex"),
+            new ALMSettingMetadata("SetShiny", "Try to generate the shiny version of the Pokémon if possible.", "Living Dex"),
+
             // Miscellaneous
             new ALMSettingMetadata("GPSSBaseURL", "Base URL for Flagbrew's Global PKSM Sharing Service (GPSS) features.", "Miscellaneous"),
             new ALMSettingMetadata("PromptForSmogonImport", "Used for \"Generate Smogon Sets\". If set to true, ALM will ask for approval for each set before attempting to generate it.", "Miscellaneous"),
