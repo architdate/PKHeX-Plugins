@@ -42,7 +42,7 @@ namespace PKHeX.Core.AutoMod
 
         private static void SetNature(PKM pk, IBattleTemplate set, IEncounterable enc)
         {
-            if (pk.Nature == set.Nature)
+            if (pk.Nature == set.Nature || set.Nature == -1)
                 return;
             var val = Math.Min((int)Nature.Quirky, Math.Max((int)Nature.Hardy, set.Nature));
             if (pk.Species == (int)Species.Toxtricity)
