@@ -66,6 +66,7 @@ namespace PKHeX.Core.AutoMod
 
             new Tuple<Species, int> ( Victini, 0 ),
             new Tuple<Species, int> ( Keldeo, 0 ),
+            new Tuple<Species, int> ( Keldeo, 1 ),
             new Tuple<Species, int> ( Meloetta, 0 ),
 
             // Vivillons

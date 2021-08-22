@@ -73,7 +73,7 @@ namespace PKHeX.Core.AutoMod
 
         private static void SetAbility(PKM pk, IBattleTemplate set, int preference)
         {
-            if (pk.Ability != set.Ability)
+            if (pk.Ability != set.Ability && set.Ability != -1)
                 pk.SetAbility(set.Ability);
 
             if (preference > 0)
@@ -82,7 +82,7 @@ namespace PKHeX.Core.AutoMod
                 // Set unspecified abilities
                 if (set.Ability == -1)
                 {
-                    pk.SetAbility(abilities[preference >> 1]);
+                    pk.Ability = abilities[preference >> 1];
                     pk.AbilityNumber = preference;
                 }
                 // Set preferred ability number if applicable
@@ -232,6 +232,12 @@ namespace PKHeX.Core.AutoMod
                 pk.SetMoves(set.Moves, true);
 
             var la = new LegalityAnalysis(pk);
+            // Remove invalid encounter moves (eg. Kyurem Encounter -> Requested Kyurem black)
+            if (set.Moves[0] == 0 && la.Info.Moves.Any(z => z.Judgement == Severity.Invalid))
+            {
+                pk.SetMoves(la.GetSuggestedCurrentMoves(), true);
+                pk.FixMoves();
+            }
             if (la.Parsed && !pk.FatefulEncounter)
             {
                 // For dexnav. Certain encounters come with "random" relearn moves, and our requested moves might require one of them.

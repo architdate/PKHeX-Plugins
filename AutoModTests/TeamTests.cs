@@ -160,6 +160,18 @@ namespace AutoModTests
                     File.WriteAllText(path, msg);
             }
 
+            var res = Status(results);
+            File.WriteAllText(Path.Combine(dir, "logs", "output.txt"), res);
+            testfailed.Should().BeFalse($"there were sets that could not be legally genned (Output: {res})");
+        }
+
+        /// <summary>
+        /// For Partial Debugging in Immediate Window
+        /// </summary>
+        /// <param name="results">partial results</param>
+        /// <returns></returns>
+        public static string Status(Dictionary<string, Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>> results)
+        {
             var sb = new StringBuilder();
             foreach (var (key, value) in results)
             {
@@ -172,10 +184,7 @@ namespace AutoModTests
                 }
                 sb.Append(Path.GetFileName(key)).Append(" : Legal - ").Append(legal).Append(" | Illegal - ").Append(illegal).AppendLine();
             }
-
-            var res = sb.ToString();
-            File.WriteAllText(Path.Combine(dir, "logs", "output.txt"), res);
-            testfailed.Should().BeFalse($"there were sets that could not be legally genned (Output: {res})");
+            return sb.ToString();
         }
     }
 }
