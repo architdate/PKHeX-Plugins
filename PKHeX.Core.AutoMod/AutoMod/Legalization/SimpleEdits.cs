@@ -59,6 +59,8 @@ namespace PKHeX.Core.AutoMod
             new Tuple<Species, int> ( Pikachu, 7 ),
             new Tuple<Species, int> ( Pikachu, 9 ),
 
+            new Tuple<Species, int> ( Pichu, 1 ),
+
             // Galar Birds
             new Tuple<Species, int> ( Articuno, 1 ),
             new Tuple<Species, int> ( Zapdos, 1 ),
@@ -70,6 +72,10 @@ namespace PKHeX.Core.AutoMod
             new Tuple<Species, int> ( Meloetta, 0 ),
 
             // Vivillons
+            new Tuple<Species, int> ( Scatterbug, 18 ),
+            new Tuple<Species, int> ( Scatterbug, 19 ),
+            new Tuple<Species, int> ( Spewpa, 18 ),
+            new Tuple<Species, int> ( Spewpa, 19 ),
             new Tuple<Species, int> ( Vivillon, 18 ),
             new Tuple<Species, int> ( Vivillon, 19 ),
 

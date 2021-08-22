@@ -38,14 +38,14 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="sav">Save File to receive the generated <see cref="PKM"/>.</param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
-        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav)
+        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, out int attempts)
         {
             var species = Enumerable.Range(1, sav.MaxSpeciesID);
             if (sav is SAV7b)
                 species = species.Where(z => z is <= 151 or 808 or 809); // only include Kanto and M&M
             if (sav is SAV8)
                 species = species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z));
-            return sav.GenerateLivingDex(species, includeforms: IncludeForms, shiny: SetShiny);
+            return sav.GenerateLivingDex(species, includeforms: IncludeForms, shiny: SetShiny, out attempts);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="speciesIDs">Species IDs to generate</param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
         public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, params int[] speciesIDs) =>
-            sav.GenerateLivingDex(speciesIDs, includeforms: IncludeForms, shiny: SetShiny);
+            sav.GenerateLivingDex(speciesIDs, includeforms: IncludeForms, shiny: SetShiny, out int attempts);
 
         /// <summary>
         /// Gets a living dex (one per species, not every form)
@@ -64,8 +64,9 @@ namespace PKHeX.Core.AutoMod
         /// <param name="speciesIDs">Species IDs to generate</param>
         /// <param name="includeforms">Include all forms in the resulting list of data</param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
-        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, IEnumerable<int> speciesIDs, bool includeforms, bool shiny)
+        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, IEnumerable<int> speciesIDs, bool includeforms, bool shiny, out int attempts)
         {
+            attempts = 0;
             var tr = APILegality.UseTrainerData ? TrainerSettings.GetSavedTrainerData(sav.Version, sav.Generation, fallback: sav, lang: (LanguageID)sav.Language) : sav;
             var pt = sav.Personal;
             List<PKM> pklist = new();
@@ -73,7 +74,7 @@ namespace PKHeX.Core.AutoMod
             {
                 if (!includeforms)
                 {
-                    AddPKM(sav, tr, pklist, id, null, shiny);
+                    AddPKM(sav, tr, pklist, id, null, shiny, ref attempts);
                     continue;
                 }
                 var num_forms = pt[id].FormCount;
@@ -81,20 +82,20 @@ namespace PKHeX.Core.AutoMod
                 {
                     if (sav is SAV8 && !((PersonalInfoSWSH)pt.GetFormEntry(id, i)).IsPresentInGame)
                         continue;
-                    AddPKM(sav, tr, pklist, id, i, shiny);
+                    AddPKM(sav, tr, pklist, id, i, shiny, ref attempts);
                 }
             }
             return pklist;
         }
 
-        private static void AddPKM(SaveFile sav, ITrainerInfo tr, List<PKM> pklist, int species, int? form, bool shiny)
+        private static void AddPKM(SaveFile sav, ITrainerInfo tr, List<PKM> pklist, int species, int? form, bool shiny, ref int attempt)
         {
-            if (tr.GetRandomEncounter(species, form, shiny, out var pk) && pk != null)
+            if (tr.GetRandomEncounter(species, form, shiny, ref attempt, out var pk) && pk != null)
             {
                 pk.Heal();
                 pklist.Add(pk);
             }
-            else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID = tr.TID }, species, 0, shiny, out var pkm) && pkm is PK1 pk1)
+            else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID = tr.TID }, species, 0, shiny, ref attempt, out var pkm) && pkm is PK1 pk1)
             {
                 pklist.Add(pk1.ConvertToPK2());
             }
@@ -108,7 +109,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this SaveFile sav, int species, int? form, bool shiny, out PKM? pk) => ((ITrainerInfo)sav).GetRandomEncounter(species, form, shiny, out pk);
+        public static bool GetRandomEncounter(this SaveFile sav, int species, int? form, bool shiny, ref int attempt, out PKM? pk) => ((ITrainerInfo)sav).GetRandomEncounter(species, form, shiny, ref attempt, out pk);
 
         /// <summary>
         /// Gets a legal <see cref="PKM"/> from a random in-game encounter's data.
@@ -118,10 +119,10 @@ namespace PKHeX.Core.AutoMod
         /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this ITrainerInfo tr, int species, int? form, bool shiny, out PKM? pk)
+        public static bool GetRandomEncounter(this ITrainerInfo tr, int species, int? form, bool shiny, ref int attempt, out PKM? pk)
         {
             var blank = PKMConverter.GetBlank(tr.Generation, tr.Game);
-            pk = GetRandomEncounter(blank, tr, species, form, shiny);
+            pk = GetRandomEncounter(blank, tr, species, form, shiny, ref attempt);
             if (pk == null)
                 return false;
 
@@ -137,7 +138,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="species">Species ID to generate</param>
         /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <returns>Result legal pkm, null if data should be ignored.</returns>
-        private static PKM? GetRandomEncounter(PKM blank, ITrainerInfo tr, int species, int? form, bool shiny)
+        private static PKM? GetRandomEncounter(PKM blank, ITrainerInfo tr, int species, int? form, bool shiny, ref int attempt)
         {
             blank.Species = species;
             blank.Gender = blank.GetSaneGender();
@@ -157,6 +158,9 @@ namespace PKHeX.Core.AutoMod
                 if (item != null) blank.HeldItem = (int)item;
                 if (blank.Species == (int)Species.Keldeo && blank.Form == 1) blank.Move1 = (int)Move.SecretSword;
             }
+            if (blank.IgnoreForm(tr, blank.Form))
+                return null;
+            attempt += 1;
             var ssettext = new ShowdownSet(blank).Text.Split('\r')[0];
             if (shiny && !SimpleEdits.ShinyLockedSpeciesForm.Contains(new Tuple<Species, int>((Species)blank.Species, blank.Form)))
                 ssettext += Environment.NewLine + "Shiny: Yes";
@@ -171,10 +175,23 @@ namespace PKHeX.Core.AutoMod
             }
 
             // just get a legal pkm and return. Only validate form and not shininess.
-            var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid && z.Species == blank.Species);
+            var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr).Where(z => new LegalityAnalysis(z).Valid);
             var firstenc = GetFirstEncounter(legalencs, form);
             if (firstenc == null)
+            {
+                attempt -= 1;
                 return null;
+            }
+            var originspecies = firstenc.Species;
+            if (originspecies != blank.Species)
+            {
+                firstenc.Species = blank.Species;
+                firstenc.CurrentLevel = 100;
+                if (!firstenc.IsNicknamed)
+                    firstenc.Nickname = SpeciesName.GetSpeciesNameGeneration(firstenc.Species, firstenc.Language, firstenc.Format);
+                firstenc.SetMoves(firstenc.GetMoveSet(), true);
+                firstenc.RefreshAbility(firstenc.AbilityNumber >> 1);
+            }
             var second = PKMConverter.ConvertToType(firstenc, blank.GetType(), out _);
             if (second == null)
                 return null;
@@ -182,9 +199,34 @@ namespace PKHeX.Core.AutoMod
                 return second;
             // force form and check legality as a last ditch effort.
             second.Form = (int)form;
+            second.SetSuggestedFormArgument(originspecies);
             if (new LegalityAnalysis(second).Valid)
                 return second;
             return null;
+        }
+
+        private static bool IgnoreForm(this PKM pk, ITrainerInfo tr, int form)
+        {
+            var generation = tr.Generation;
+            var species = pk.Species;
+            switch ((Species)species)
+            {
+                case Species.Unown when generation == 2 && form >= 26:
+                    return true;
+                case Species.Scatterbug or Species.Spewpa when form > Vivillon3DS.MaxWildFormID:
+                    return true;
+                case Species.Floette when form == 5:
+                    return true;
+                case Species.Shaymin or Species.Furfrou or Species.Hoopa when form != 0 && generation <= 6:
+                    return true;
+            }
+            if (FormInfo.IsBattleOnlyForm(pk.Species, form, generation))
+                return true;
+            if (form == 0)
+                return false;
+            if (generation >= 7 && pk.Generation < 7 && pk.Generation != -1 && (species == 25 || SimpleEdits.AlolanOriginForms.Contains(species)))
+                return true;
+            return false;
         }
 
         private static int? SetFormSpecificItem(int generation, int species, int form)

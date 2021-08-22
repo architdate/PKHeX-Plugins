@@ -162,7 +162,7 @@ namespace AutoModTests
 
             var res = Status(results);
             File.WriteAllText(Path.Combine(dir, "logs", "output.txt"), res);
-            testfailed.Should().BeFalse($"there were sets that could not be legally genned (Output: {res})");
+            testfailed.Should().BeFalse($"there were sets that could not be legally genned (Output: \n\n{res}\n\n)");
         }
 
         /// <summary>

@@ -82,8 +82,8 @@ namespace PKHeX.Core.AutoMod
                 // Set unspecified abilities
                 if (set.Ability == -1)
                 {
-                    pk.Ability = abilities[preference >> 1];
-                    pk.AbilityNumber = preference;
+                    pk.RefreshAbility(preference >> 1);
+                    if (pk is PK5 pk5 && preference == 4) pk5.HiddenAbility = true;
                 }
                 // Set preferred ability number if applicable
                 if (abilities[preference >> 1] == set.Ability)

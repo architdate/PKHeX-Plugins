@@ -23,7 +23,7 @@ namespace AutoModPlugins
         {
             if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Generate a Living Dex?")) return;
             var sav = SaveFileEditor.SAV;
-            var pkms = sav.GenerateLivingDex();
+            var pkms = sav.GenerateLivingDex(out int attempts);
             var bd = sav.BoxData;
             pkms.CopyTo(bd);
             sav.BoxData = bd;

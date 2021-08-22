@@ -134,7 +134,8 @@ namespace PKHeX.Core.AutoMod
                 var gen = EasterEggs.GetGeneration(template.Species);
                 var species = (int)EasterEggs.GetMemeSpecies(gen);
                 template.Species = species;
-                var legalencs = tr.GetRandomEncounter(species, null, set.Shiny, out var legal);
+                var attempt = 0;
+                var legalencs = tr.GetRandomEncounter(species, null, set.Shiny, ref attempt, out var legal);
                 if (legalencs && legal != null)
                     template = legal;
                 template.SetNickname(EasterEggs.GetMemeNickname(gen));
