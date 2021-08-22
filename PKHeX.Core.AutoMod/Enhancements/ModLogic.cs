@@ -195,6 +195,7 @@ namespace PKHeX.Core.AutoMod
             var second = PKMConverter.ConvertToType(firstenc, blank.GetType(), out _);
             if (second == null)
                 return null;
+            second.HeldItem = blank.HeldItem;
             if (form == null || second.Form == (int)form)
                 return second;
             // force form and check legality as a last ditch effort.
@@ -219,6 +220,8 @@ namespace PKHeX.Core.AutoMod
                     return true;
                 case Species.Shaymin or Species.Furfrou or Species.Hoopa when form != 0 && generation <= 6:
                     return true;
+                case Species.Arceus when generation == 4 && form == 9: // ??? form
+                    return true;
             }
             if (FormInfo.IsBattleOnlyForm(pk.Species, form, generation))
                 return true;
@@ -233,7 +236,7 @@ namespace PKHeX.Core.AutoMod
         {
             return species switch
             {
-                (int)Species.Arceus => SimpleEdits.GetArceusHeldItemFromForm(form),
+                (int)Species.Arceus => generation != 4 || form < 9 ? SimpleEdits.GetArceusHeldItemFromForm(form) : SimpleEdits.GetArceusHeldItemFromForm(form - 1),
                 (int)Species.Silvally => SimpleEdits.GetSilvallyHeldItemFromForm(form),
                 (int)Species.Genesect => SimpleEdits.GetGenesectHeldItemFromForm(form),
                 (int)Species.Giratina => form == 1 ? 112 : null, // Griseous Orb

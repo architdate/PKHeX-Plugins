@@ -17,21 +17,39 @@ namespace AutoModTests
 
         private static Dictionary<GameVersion, Tuple<bool, int, int>> TestLivingDex(bool includeforms, bool shiny, out bool passed)
         {
-            ModLogic.IncludeForms = includeforms;
-            ModLogic.SetShiny = shiny;
             passed = true;
             var results = new Dictionary<GameVersion, Tuple<bool, int, int>>();
             foreach (var s in GetGameVersionsToTest)
-            {
-                var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
-                var pkms = sav.GenerateLivingDex(out int attempts);
-                var genned = pkms.Count();
-                var val = new Tuple<bool, int, int> (genned == attempts, attempts, genned);
-                if (genned != attempts)
-                    passed = false;
-                results[s] = val;
-            }
+                results[s] = SingleSaveTest(s, includeforms, shiny, ref passed);
             return results;
+        }
+
+        private static Tuple<bool, int, int> SingleSaveTest(this GameVersion s, bool includeforms, bool shiny, ref bool passed)
+        {
+            ModLogic.IncludeForms = includeforms;
+            ModLogic.SetShiny = shiny;
+            var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
+            PKMConverter.SetPrimaryTrainer(sav);
+            var pkms = sav.GenerateLivingDex(out int attempts);
+            var genned = pkms.Count();
+            var val = new Tuple<bool, int, int>(genned == attempts, attempts, genned);
+            if (genned != attempts)
+                passed = false;
+            return val;
+        }
+
+        //[Theory]
+        //[InlineData(B2, true, true)]
+        //[InlineData(B, true, true)]
+        //[InlineData(Pt, true, true)]
+        public static void VerifyManually(GameVersion s, bool includeforms, bool shiny)
+        {
+            EncounterEvent.RefreshMGDB(Path.Combine(Directory.GetCurrentDirectory(), "mgdb"));
+            RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
+            APILegality.Timeout = 99999;
+            var passed = true;
+            var res = s.SingleSaveTest(includeforms, shiny, ref passed);
+            passed.Should().BeTrue();
         }
 
         [Fact]
@@ -52,7 +70,7 @@ namespace AutoModTests
             var result_f_f = TestLivingDex(false, false, out bool p1);
             var result_f_t = TestLivingDex(false, true, out bool p2);
             var result_t_f = TestLivingDex(true, false, out bool p3);
-            var result_t_t = TestLivingDex(false, true, out bool p4);
+            var result_t_t = TestLivingDex(true, true, out bool p4);
             var passed = p1 && p2 && p3 && p4;
             Legalizer.EnableEasterEggs = legalizer_settings;
             APILegality.SetAllLegalRibbons = ribbon_settings;
