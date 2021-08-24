@@ -4,10 +4,10 @@ using System.Text;
 
 namespace PKHeX.Core.AutoMod
 {
-    public static class KeyboardLegality
+    public static class GlyphLegality
     {
         static Dictionary<char, char> CharDictionary;
-        static KeyboardLegality()
+        static GlyphLegality()
         {
             CharDictionary = new Dictionary<char, char>();
             var full = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンッァィゥェォャュョ゙゚ー０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ～！＠＃＄％＾＆＊（）＿＋－＝｛｝［］｜＼：；＂＇＜＞，．？／";

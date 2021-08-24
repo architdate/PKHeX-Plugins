@@ -135,10 +135,10 @@ namespace PKHeX.Core.AutoMod
             if (game.GetGeneration() >= 8 || lang == null)
                 return OT;
             var full = lang == LanguageID.Japanese || lang == LanguageID.Korean || lang == LanguageID.ChineseS || lang == LanguageID.ChineseT;
-            if (full && KeyboardLegality.ContainsHalfWidth(OT))
-                return KeyboardLegality.StringConvert(OT, StringConversionType.FullWidth);
-            if (KeyboardLegality.ContainsFullWidth(OT))
-                return KeyboardLegality.StringConvert(OT, StringConversionType.HalfWidth);
+            if (full && GlyphLegality.ContainsHalfWidth(OT))
+                return GlyphLegality.StringConvert(OT, StringConversionType.FullWidth);
+            if (!full && GlyphLegality.ContainsFullWidth(OT))
+                return GlyphLegality.StringConvert(OT, StringConversionType.HalfWidth);
             return OT;
         }
 

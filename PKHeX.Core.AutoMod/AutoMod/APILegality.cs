@@ -535,7 +535,7 @@ namespace PKHeX.Core.AutoMod
             {
                 if (enc is WC3)
                     pk.Met_Level = 0; // hatched
-                pk.Language = (int)LanguageID.English;
+                pk.Language = tr.Language;
                 pk.SetTrainerData(tr);
             }
             pk.Egg_Location = Locations.TradedEggLocation(pk.Generation);
