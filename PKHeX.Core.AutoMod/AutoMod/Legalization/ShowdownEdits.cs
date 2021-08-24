@@ -248,7 +248,7 @@ namespace PKHeX.Core.AutoMod
 
             if (pk is IAwakened pb7)
             {
-                pb7.SetSuggestedAwakenedValues(pk);
+                SimpleEdits.SetAwakenedValues(pk, set);
                 return;
             }
             // In Generation 1/2 Format sets, when EVs are not specified at all, it implies maximum EVs instead!

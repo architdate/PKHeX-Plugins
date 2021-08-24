@@ -367,6 +367,18 @@ namespace PKHeX.Core.AutoMod
                 pb7.ResetCalculatedValues();
         }
 
+        public static void SetAwakenedValues(this PKM pk, IBattleTemplate set)
+        {
+            if (pk is not IAwakened pb7)
+                return;
+            pb7.AV_HP = set.EVs[0];
+            pb7.AV_ATK = set.EVs[1];
+            pb7.AV_DEF = set.EVs[2];
+            pb7.AV_SPA = set.EVs[4];
+            pb7.AV_SPD = set.EVs[5];
+            pb7.AV_SPE = set.EVs[3];
+        }
+
         public static void SetHTLanguage(this PKM pk)
         {
             if (pk is IHandlerLanguage pkm)
