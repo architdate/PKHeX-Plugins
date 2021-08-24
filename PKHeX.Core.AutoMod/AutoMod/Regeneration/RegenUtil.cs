@@ -101,7 +101,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="tr">Trainerdata to clone</param>
         /// <param name="lang">language to mutate</param>
         /// <returns></returns>
-        public static ITrainerInfo MutateLanguage(this ITrainerInfo tr, LanguageID? lang)
+        public static ITrainerInfo MutateLanguage(this ITrainerInfo tr, LanguageID? lang, GameVersion ver)
         {
             if (lang is LanguageID.UNUSED_6 or LanguageID.Hacked or null)
                 return tr;
@@ -109,24 +109,37 @@ namespace PKHeX.Core.AutoMod
             {
                 var clone = PokeTrainerDetails.Clone(p);
                 clone.Language = (int)lang;
+                clone.OT = MutateOT(clone.OT, lang, ver);
                 return clone;
             }
             if (tr is SimpleTrainerInfo s)
             {
-                return new SimpleTrainerInfo((GameVersion)s.Game)
+                return new SimpleTrainerInfo(ver)
                 {
-                    OT = s.OT,
+                    OT = MutateOT(s.OT, lang, ver),
                     TID = s.TID,
                     SID = s.SID,
                     Gender = s.Gender,
                     Language = (int)lang,
-                    ConsoleRegion = s.ConsoleRegion,
-                    Region = s.Region,
-                    Country = s.Country,
+                    ConsoleRegion = s.ConsoleRegion != 0 ? s.ConsoleRegion : (byte)1,
+                    Region = s.Region != 0 ? s.Region : (byte)7,
+                    Country = s.Country != 0 ? s.Country : (byte)49,
                     Generation = s.Generation,
                 };
             }
             return tr;
+        }
+
+        private static string MutateOT(string OT, LanguageID? lang, GameVersion game)
+        {
+            if (game.GetGeneration() >= 8 || lang == null)
+                return OT;
+            var full = lang == LanguageID.Japanese || lang == LanguageID.Korean || lang == LanguageID.ChineseS || lang == LanguageID.ChineseT;
+            if (full && KeyboardLegality.ContainsHalfWidth(OT))
+                return KeyboardLegality.StringConvert(OT, StringConversionType.FullWidth);
+            if (KeyboardLegality.ContainsFullWidth(OT))
+                return KeyboardLegality.StringConvert(OT, StringConversionType.HalfWidth);
+            return OT;
         }
 
         public static int GetRegenAbility(int species, int gen, AbilityRequest ar)

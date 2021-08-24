@@ -204,9 +204,9 @@ namespace PKHeX.Core.AutoMod
         private static ITrainerInfo GetTrainer(RegenSet regen, GameVersion ver, int gen)
         {
             if (AllowTrainerOverride && regen.HasTrainerSettings && regen.Trainer != null)
-                return regen.Trainer.MutateLanguage(regen.Extra.Language);
+                return regen.Trainer.MutateLanguage(regen.Extra.Language, ver);
             if (UseTrainerData)
-                return TrainerSettings.GetSavedTrainerData(ver, gen).MutateLanguage(regen.Extra.Language);
+                return TrainerSettings.GetSavedTrainerData(ver, gen).MutateLanguage(regen.Extra.Language, ver);
             return TrainerSettings.DefaultFallback(gen, regen.Extra.Language);
         }
 

@@ -20,7 +20,7 @@ namespace PKHeX.Core.AutoMod
         public static PKM Legalize(this PKM pk)
         {
             var tr = TrainerSettings.GetSavedTrainerData(pk.Format);
-            return tr.MutateLanguage((LanguageID)pk.Language).Legalize(pk);
+            return tr.MutateLanguage((LanguageID)pk.Language, (GameVersion)pk.Version).Legalize(pk);
         }
 
         /// <summary>
