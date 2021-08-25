@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -114,9 +115,10 @@ namespace PKHeX.Core.AutoMod
             }
             if (tr is SimpleTrainerInfo s)
             {
-                return new SimpleTrainerInfo(ver)
+                var version = GameUtil.GameVersions.FirstOrDefault(z => ver.Contains(z));
+                return new SimpleTrainerInfo(version)
                 {
-                    OT = MutateOT(s.OT, lang, ver),
+                    OT = MutateOT(s.OT, lang, version),
                     TID = s.TID,
                     SID = s.SID,
                     Gender = s.Gender,
@@ -143,12 +145,24 @@ namespace PKHeX.Core.AutoMod
             }
             if (!full && GlyphLegality.ContainsFullWidth(OT))
             {
-                var temp = lang == null ? LanguageID.English : lang;
-                var max = Legal.GetMaxLengthOT(game.GetGeneration(), (LanguageID)temp);
+                var max = Legal.GetMaxLengthOT(game.GetGeneration(), (LanguageID)lang);
                 var modified = GlyphLegality.StringConvert(OT, StringConversionType.HalfWidth);
                 return modified.Substring(0, Math.Min(modified.Length, max));
             }
             return OT;
+        }
+
+        public static string MutateNickname(string nick, LanguageID? lang, GameVersion game)
+        {
+            // Length checks are handled later in SetSpeciesLevel
+            if (game.GetGeneration() >= 8 || lang == null)
+                return nick;
+            var full = lang == LanguageID.Japanese || lang == LanguageID.Korean || lang == LanguageID.ChineseS || lang == LanguageID.ChineseT;
+            if (full && GlyphLegality.ContainsHalfWidth(nick))
+                return GlyphLegality.StringConvert(nick, StringConversionType.FullWidth);
+            if (!full && GlyphLegality.ContainsFullWidth(nick))
+                return GlyphLegality.StringConvert(nick, StringConversionType.HalfWidth);
+            return nick;
         }
 
         public static int GetRegenAbility(int species, int gen, AbilityRequest ar)
