@@ -136,9 +136,18 @@ namespace PKHeX.Core.AutoMod
                 return OT;
             var full = lang == LanguageID.Japanese || lang == LanguageID.Korean || lang == LanguageID.ChineseS || lang == LanguageID.ChineseT;
             if (full && GlyphLegality.ContainsHalfWidth(OT))
-                return GlyphLegality.StringConvert(OT, StringConversionType.FullWidth);
+            {
+                var max = Legal.GetMaxLengthOT(game.GetGeneration(), (LanguageID)lang);
+                var modified = GlyphLegality.StringConvert(OT, StringConversionType.FullWidth);
+                return modified.Substring(0, Math.Min(modified.Length, max));
+            }
             if (!full && GlyphLegality.ContainsFullWidth(OT))
-                return GlyphLegality.StringConvert(OT, StringConversionType.HalfWidth);
+            {
+                var temp = lang == null ? LanguageID.English : lang;
+                var max = Legal.GetMaxLengthOT(game.GetGeneration(), (LanguageID)temp);
+                var modified = GlyphLegality.StringConvert(OT, StringConversionType.HalfWidth);
+                return modified.Substring(0, Math.Min(modified.Length, max));
+            }
             return OT;
         }
 

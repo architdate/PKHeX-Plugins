@@ -260,6 +260,12 @@ namespace PKHeX.Core.AutoMod
                 }
             }
 
+            if (set is RegenTemplate rt && enc is IFixedBall { FixedBall: not Ball.None} fb && ForceSpecifiedBall)
+            {
+                if (rt.Regen.Extra.Ball != fb.FixedBall)
+                    return false;
+            }
+
             // Don't process if encounter is HA but requested pkm is not HA
             if (abilityreq == AbilityRequest.NotHidden && enc is EncounterStatic { Ability: 4 })
                 return false;
