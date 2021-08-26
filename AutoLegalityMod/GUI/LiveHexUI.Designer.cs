@@ -325,9 +325,9 @@
             // 
             // B_ReadRAM
             // 
-            this.B_ReadRAM.Location = new System.Drawing.Point(225, 16);
+            this.B_ReadRAM.Location = new System.Drawing.Point(225, 17);
             this.B_ReadRAM.Name = "B_ReadRAM";
-            this.B_ReadRAM.Size = new System.Drawing.Size(75, 23);
+            this.B_ReadRAM.Size = new System.Drawing.Size(72, 23);
             this.B_ReadRAM.TabIndex = 21;
             this.B_ReadRAM.Text = "Edit RAM";
             this.B_ReadRAM.UseVisualStyleBackColor = true;
@@ -336,16 +336,16 @@
             // RamSize
             // 
             this.RamSize.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RamSize.Location = new System.Drawing.Point(154, 19);
+            this.RamSize.Location = new System.Drawing.Point(165, 18);
             this.RamSize.MaxLength = 8;
             this.RamSize.Name = "RamSize";
-            this.RamSize.Size = new System.Drawing.Size(63, 20);
+            this.RamSize.Size = new System.Drawing.Size(55, 20);
             this.RamSize.TabIndex = 20;
             this.RamSize.Text = "344";
             // 
             // L_ReadRamSize
             // 
-            this.L_ReadRamSize.Location = new System.Drawing.Point(118, 17);
+            this.L_ReadRamSize.Location = new System.Drawing.Point(129, 17);
             this.L_ReadRamSize.Name = "L_ReadRamSize";
             this.L_ReadRamSize.Size = new System.Drawing.Size(30, 20);
             this.L_ReadRamSize.TabIndex = 19;
@@ -355,7 +355,7 @@
             // RamOffset
             // 
             this.RamOffset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RamOffset.Location = new System.Drawing.Point(51, 19);
+            this.RamOffset.Location = new System.Drawing.Point(58, 18);
             this.RamOffset.MaxLength = 8;
             this.RamOffset.Name = "RamOffset";
             this.RamOffset.Size = new System.Drawing.Size(63, 20);
@@ -364,7 +364,7 @@
             // 
             // L_ReadRamOffset
             // 
-            this.L_ReadRamOffset.Location = new System.Drawing.Point(3, 17);
+            this.L_ReadRamOffset.Location = new System.Drawing.Point(10, 17);
             this.L_ReadRamOffset.Name = "L_ReadRamOffset";
             this.L_ReadRamOffset.Size = new System.Drawing.Size(42, 20);
             this.L_ReadRamOffset.TabIndex = 17;
@@ -429,14 +429,14 @@
             // TB_Pointer
             // 
             this.TB_Pointer.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_Pointer.Location = new System.Drawing.Point(62, 18);
+            this.TB_Pointer.Location = new System.Drawing.Point(58, 18);
             this.TB_Pointer.Name = "TB_Pointer";
-            this.TB_Pointer.Size = new System.Drawing.Size(235, 20);
+            this.TB_Pointer.Size = new System.Drawing.Size(239, 20);
             this.TB_Pointer.TabIndex = 18;
             // 
             // L_Pointer
             // 
-            this.L_Pointer.Location = new System.Drawing.Point(8, 16);
+            this.L_Pointer.Location = new System.Drawing.Point(3, 16);
             this.L_Pointer.Name = "L_Pointer";
             this.L_Pointer.Size = new System.Drawing.Size(49, 20);
             this.L_Pointer.TabIndex = 17;
@@ -451,7 +451,7 @@
             this.groupBox5.Enabled = false;
             this.groupBox5.Location = new System.Drawing.Point(12, 322);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(307, 43);
+            this.groupBox5.Size = new System.Drawing.Size(307, 48);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Block Editor";
@@ -460,17 +460,17 @@
             // 
             this.CB_BlockName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_BlockName.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_BlockName.Location = new System.Drawing.Point(51, 15);
+            this.CB_BlockName.Location = new System.Drawing.Point(58, 19);
             this.CB_BlockName.Name = "CB_BlockName";
-            this.CB_BlockName.Size = new System.Drawing.Size(169, 22);
+            this.CB_BlockName.Size = new System.Drawing.Size(162, 22);
             this.CB_BlockName.Sorted = true;
             this.CB_BlockName.TabIndex = 22;
             // 
             // B_EditBlock
             // 
-            this.B_EditBlock.Location = new System.Drawing.Point(225, 16);
+            this.B_EditBlock.Location = new System.Drawing.Point(225, 18);
             this.B_EditBlock.Name = "B_EditBlock";
-            this.B_EditBlock.Size = new System.Drawing.Size(75, 23);
+            this.B_EditBlock.Size = new System.Drawing.Size(72, 24);
             this.B_EditBlock.TabIndex = 21;
             this.B_EditBlock.Text = "Edit Block";
             this.B_EditBlock.UseVisualStyleBackColor = true;
@@ -478,7 +478,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(3, 17);
+            this.label2.Location = new System.Drawing.Point(10, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 20);
             this.label2.TabIndex = 17;
@@ -489,7 +489,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 368);
+            this.ClientSize = new System.Drawing.Size(331, 378);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);

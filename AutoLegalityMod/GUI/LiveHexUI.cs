@@ -127,7 +127,7 @@ namespace AutoModPlugins
                     {
                         ConnectionEstablished = true;
                         currver = version;
-                        if (Remote.Bot.com is ICommunicatorNX)
+                        if (Remote.Bot.com is IPokeBlocks)
                         {
                             var cblist = GetSortedBlockList().ToArray();
                             if (cblist.Length > 0)
@@ -280,7 +280,7 @@ namespace AutoModPlugins
             L_USBState.Visible = CurrentInjectionType == InjectorCommunicationType.USB;
         }
 
-        public ulong GetPointerAddress(SysBotMini sb)
+        public ulong GetPointerAddress(ICommunicatorNX sb)
         {
             var ptr = TB_Pointer.Text;
             uint finadd = 0;
@@ -312,7 +312,7 @@ namespace AutoModPlugins
 
         private void B_CopyAddress_Click(object sender, EventArgs e)
         {
-            if (Remote.Bot.com is not SysBotMini sb)
+            if (Remote.Bot.com is not ICommunicatorNX sb)
                 return;
 
             ulong address = GetPointerAddress(sb);
@@ -324,7 +324,7 @@ namespace AutoModPlugins
 
         private void B_EditPointerData_Click(object sender, EventArgs e)
         {
-            if (Remote.Bot.com is not SysBotMini sb)
+            if (Remote.Bot.com is not ICommunicatorNX sb)
                 return;
 
             ulong address = GetPointerAddress(sb);
@@ -361,7 +361,7 @@ namespace AutoModPlugins
 
         private void B_ReadPointer_Click(object sender, EventArgs e)
         {
-            if (Remote.Bot.com is not SysBotMini sb)
+            if (Remote.Bot.com is not ICommunicatorNX sb)
                 return;
 
             ulong address = GetPointerAddress(sb);

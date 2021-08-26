@@ -19,5 +19,13 @@
 
     public interface ICommunicatorNX : ICommunicator
     {
+        byte[] ReadBytesMain(ulong offset, int length);
+        byte[] ReadBytesAbsolute(ulong offset, int length);
+        void WriteBytesMain(byte[] data, uint offset);
+        void WriteBytesAbsolute(byte[] data, ulong offset);
+    }
+
+    public interface IPokeBlocks : ICommunicator
+    {
     }
 }

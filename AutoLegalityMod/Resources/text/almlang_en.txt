@@ -24,7 +24,7 @@ LiveHeXUI.L_ReadRamSize=Size:
 LiveHeXUI.groupBox4=Pointer Lookup
 LiveHeXUI.L_Pointer=Pointer:
 LiveHeXUI.B_CopyAddress=Copy Address
-LiveHeXUI.B_ReadPointer=Read from Pointer
+LiveHeXUI.B_ReadPointer=Read Pointer
 
 SimpleHexEditor=RAMEdit
 SimpleHexEditor.B_Update=Update
