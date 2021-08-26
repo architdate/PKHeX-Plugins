@@ -21,6 +21,7 @@
     {
         byte[] ReadBytesMain(ulong offset, int length);
         byte[] ReadBytesAbsolute(ulong offset, int length);
+        ulong GetHeapBase();
         void WriteBytesMain(byte[] data, uint offset);
         void WriteBytesAbsolute(byte[] data, ulong offset);
     }

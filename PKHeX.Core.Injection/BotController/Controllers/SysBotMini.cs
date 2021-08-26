@@ -135,12 +135,20 @@ namespace PKHeX.Core.Injection
             }
         }
 
+        public ulong GetHeapBase()
+        {
+            var cmd = SwitchCommand.GetHeapBase();
+            SendInternal(cmd);
+            var buffer = new byte[(8 * 2) + 1];
+            var _ = ReadInternal(buffer);
+            return Convert.ToUInt64(string.Concat(buffer.Select(z => (char)z)).Trim(), 16);
+        }
+
         public byte[] ReadBytes(uint offset, int length) => ReadLargeBytes(offset, length, RWMethod.Heap);
         public void WriteBytes(byte[] data, uint offset) => WriteLargeBytes(data, offset, RWMethod.Heap);
         public byte[] ReadBytesMain(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Main);
         public void WriteBytesMain(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Main);
         public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Absolute);
-
         public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteBytes(data, offset, RWMethod.Absolute);
     }
 }

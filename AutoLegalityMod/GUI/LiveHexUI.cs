@@ -318,6 +318,8 @@ namespace AutoModPlugins
             ulong address = GetPointerAddress(sb);
             if (address == 0)
                 WinFormsUtil.Alert("No pointer address.");
+            ulong heap = sb.GetHeapBase();
+            address -= heap;
 
             Clipboard.SetText(address.ToString("X"));
         }

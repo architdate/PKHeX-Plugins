@@ -132,5 +132,11 @@ namespace PKHeX.Core.Injection
         /// <param name="data">Data to write</param>
         /// <returns>Encoded command bytes</returns>
         public static byte[] PokeMain(ulong offset, byte[] data) => Encode($"pokeMain 0x{offset:X16} 0x{string.Concat(data.Select(z => $"{z:X2}"))}");
+
+        /// <summary>
+        /// Requests the Bot to send the address of the Heap base.
+        /// </summary>
+        /// <returns>Encoded command bytes</returns>
+        public static byte[] GetHeapBase() => Encode($"getHeapBase");
     }
 }
