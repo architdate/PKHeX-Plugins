@@ -42,7 +42,9 @@ namespace AutoModTests
         //[InlineData(B2, true, true)]
         //[InlineData(B, true, true)]
         //[InlineData(Pt, true, true)]
+#pragma warning disable xUnit1013 // Only for internal debugging
         public static void VerifyManually(GameVersion s, bool includeforms, bool shiny)
+#pragma warning restore xUnit1013 // Only for internal debugging
         {
             EncounterEvent.RefreshMGDB(Path.Combine(Directory.GetCurrentDirectory(), "mgdb"));
             RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
