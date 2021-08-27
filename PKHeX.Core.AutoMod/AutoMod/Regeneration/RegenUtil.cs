@@ -47,6 +47,18 @@ namespace PKHeX.Core.AutoMod
         }
 
         private const char Splitter = ':';
+        public const char EncounterFilterPrefix = '~';
+
+        public static IEnumerable<StringInstruction>? GetEncounterFilters(IEnumerable<string> lines)
+        {
+            var valid = lines.Where(z => z.StartsWith(EncounterFilterPrefix.ToString()));
+            if (valid.Count() == 0)
+                return null;
+            var cleaned = valid.Select(z => z.TrimStart(EncounterFilterPrefix));
+            var filters = StringInstruction.GetFilters(cleaned).ToArray();
+            BatchEditing.ScreenStrings(filters);
+            return filters;
+        }
 
         public static IEnumerable<KeyValuePair<string, string>> Split(IEnumerable<string> lines)
         {
@@ -93,6 +105,14 @@ namespace PKHeX.Core.AutoMod
                 result.Add($"{(s.Evaluator ? "=" : "!")}{s.PropertyName}={s.PropertyValue}");
             foreach (var s in set.Instructions)
                 result.Add($".{s.PropertyName}={s.PropertyValue}");
+            return string.Join(Environment.NewLine, result);
+        }
+
+        public static string GetSummary(IEnumerable<StringInstruction> filters, char prefix = EncounterFilterPrefix)
+        {
+            var result = new List<string>();
+            foreach (var s in filters)
+                result.Add($"{prefix}{(s.Evaluator ? "=" : "!")}{s.PropertyName}={s.PropertyValue}");
             return string.Join(Environment.NewLine, result);
         }
 

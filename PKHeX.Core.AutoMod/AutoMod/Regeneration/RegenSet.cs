@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PKHeX.Core.AutoMod
@@ -11,6 +12,7 @@ namespace PKHeX.Core.AutoMod
         public RegenSetting Extra { get; }
         public ITrainerInfo? Trainer { get; }
         public StringInstructionSet Batch { get; }
+        public IEnumerable<StringInstruction>? EncounterFilters { get; }
 
         public readonly bool HasExtraSettings;
         public readonly bool HasTrainerSettings;
@@ -29,6 +31,7 @@ namespace PKHeX.Core.AutoMod
             HasTrainerSettings = RegenUtil.GetTrainerInfo(lines, format, out var tr);
             Trainer = tr;
             Batch = new StringInstructionSet(lines);
+            EncounterFilters = RegenUtil.GetEncounterFilters(lines);
         }
 
         public string GetSummary()
@@ -40,6 +43,8 @@ namespace PKHeX.Core.AutoMod
                 sb.AppendLine(RegenUtil.GetSummary(Trainer));
             if (HasBatchSettings)
                 sb.AppendLine(RegenUtil.GetSummary(Batch));
+            if (EncounterFilters != null)
+                sb.AppendLine(RegenUtil.GetSummary(EncounterFilters));
             return sb.ToString();
         }
     }

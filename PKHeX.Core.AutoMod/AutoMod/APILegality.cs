@@ -68,6 +68,8 @@ namespace PKHeX.Core.AutoMod
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
+            if (regen.EncounterFilters != null)
+                encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(regen.EncounterFilters, enc));
 
             foreach (var enc in encounters)
             {
