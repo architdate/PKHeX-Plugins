@@ -50,7 +50,7 @@ Psyduck
 Shiny: Yes
 Language: Japanese
 =FatefulEncounter=False
-.IsNicknamed=False
+OT: Anubis
 - Mud Sport
 
 Abra (M)
@@ -246,7 +246,7 @@ Ability: Static
 Level: 5
 Language: Japanese
 =FatefulEncounter=False
-.IsNicknamed=False
+OT: Anubis
 Sassy Nature
 - Follow Me
 
@@ -265,7 +265,7 @@ Igglybuff
 Shiny: Yes
 Language: Japanese
 =FatefulEncounter=False
-.IsNicknamed=False
+OT: Anubis
 - Tickle
 
 Fabio (Mareep) (M)
