@@ -920,7 +920,7 @@ namespace PKHeX.Core.AutoMod
                 if (Method == PIDType.Channel && shiny != pk.IsShiny)
                     continue;
                 break;
-            } while (++count < 10_000_000);
+            } while (++count < 1_000_000);
         }
 
         /// <summary>

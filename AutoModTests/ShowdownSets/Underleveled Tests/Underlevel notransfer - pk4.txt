@@ -5,6 +5,7 @@ Level: 14
 Mild Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Absorb
 - Sweet Scent
 - Acid
@@ -17,6 +18,7 @@ Level: 15
 Timid Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -29,6 +31,7 @@ Level: 15
 Serious Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -41,6 +44,7 @@ Level: 13
 Lax Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Vine Whip
 - Growth
 - Wrap
@@ -53,6 +57,7 @@ Level: 15
 Rash Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -65,6 +70,7 @@ Level: 19
 Adamant Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Psybeam
 - Aurora Beam
 - Bubble Beam
@@ -77,6 +83,7 @@ Level: 15
 Brave Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Water Sport
 - Wing Attack
 - Supersonic

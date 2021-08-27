@@ -5,6 +5,7 @@ Level: 32
 Mild Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Double-Edge
 - Petal Dance
 - Leech Seed
@@ -17,6 +18,7 @@ Level: 40
 Hardy Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Return
 - Hidden Power [Psychic]
 - Quick Attack
@@ -29,6 +31,7 @@ Level: 36
 Naughty Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Slash
 - Wing Attack
 - Ember
@@ -41,6 +44,7 @@ Level: 36
 Mild Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Skull Bash
 - Bite
 - Aqua Tail
@@ -53,6 +57,7 @@ Level: 3
 Modest Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Tackle
 - String Shot
 
@@ -63,6 +68,7 @@ Level: 5
 Lonely Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Harden
 
 Butterfree (F)
@@ -72,6 +78,7 @@ Level: 14
 Quiet Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Harden
 
 Weedle (F)
@@ -81,6 +88,7 @@ Level: 13
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Poison Sting
 - String Shot
 
@@ -91,6 +99,7 @@ Level: 14
 Lax Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Harden
 
 Pidgey (M)
@@ -100,6 +109,7 @@ Level: 50
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Roost
 - Tailwind
 - Mirror Move
@@ -112,6 +122,7 @@ Level: 36
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Twister
 - Sand Attack
 - Gust
@@ -124,6 +135,7 @@ Level: 50
 Gentle Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Assurance
 - Super Fang
 - Double-Edge
@@ -136,6 +148,7 @@ Level: 47
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Agility
 - Assurance
 - Roost
@@ -148,6 +161,7 @@ Level: 49
 Jolly Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Agility
 - Assurance
 - Roost
@@ -160,6 +174,7 @@ Level: 23
 Naughty Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Bite
 - Glare
 - Screech
@@ -172,6 +187,7 @@ Level: 17
 Bashful Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Poison Sting
 - Bite
 - Glare
@@ -184,6 +200,7 @@ Level: 50
 Naughty Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Volt Tackle
 - Iron Tail
 - Quick Attack
@@ -196,6 +213,7 @@ Level: 24
 Brave Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Thunder Wave
 - Quick Attack
 - Double Team
@@ -208,6 +226,7 @@ Level: 6
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Scratch
 - Defense Curl
 
@@ -218,6 +237,7 @@ Level: 16
 Gentle Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Sand Attack
 - Poison Sting
 - Rapid Spin
@@ -230,6 +250,7 @@ Level: 12
 Careful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Growl
 - Scratch
 - Tail Whip
@@ -242,6 +263,7 @@ Level: 30
 Calm Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Poison Sting
 - Fury Swipes
 - Bite
@@ -254,6 +276,7 @@ Level: 39
 Adamant Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Toxic Spikes
 - Double Kick
 - Poison Sting
@@ -266,6 +289,7 @@ Level: 3
 Naive Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Leer
 - Peck
 
@@ -276,6 +300,7 @@ Level: 16
 Relaxed Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Peck
 - Focus Energy
 - Double Kick
@@ -288,6 +313,7 @@ Level: 31
 Quiet Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Poison Sting
 - Fury Attack
 - Horn Attack
@@ -300,6 +326,7 @@ Level: 36
 Lonely Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Cosmic Power
 - Lucky Chant
 - Metronome
@@ -312,6 +339,7 @@ Level: 17
 Impish Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Roar
 - Quick Attack
 - Will-O-Wisp
@@ -324,6 +352,7 @@ Level: 22
 Hasty Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Pound
 - Disable
 - Rollout
@@ -336,6 +365,7 @@ Level: 8
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Leech Life
 - Supersonic
 
@@ -346,6 +376,7 @@ Level: 32
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Bite
 - Wing Attack
 - Confuse Ray
@@ -358,6 +389,7 @@ Level: 6
 Naive Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Absorb
 - Sweet Scent
 
@@ -368,6 +400,7 @@ Level: 49
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Lucky Chant
 - Natural Gift
 - Moonlight
@@ -380,6 +413,7 @@ Level: 5
 Bashful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Scratch
 
 Parasect (M)
@@ -389,6 +423,7 @@ Level: 29
 Lax Nature
 Ball: Safari Ball
 .Version=12
+~=Generation=4
 - Leech Life
 - Spore
 - Slash
@@ -401,6 +436,7 @@ Level: 32
 Bold Nature
 Ball: Sport Ball
 .Version=7
+~=Generation=4
 - Leech Life
 - Stun Spore
 - Psybeam
@@ -413,6 +449,7 @@ Level: 8
 Brave Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Tackle
 - Disable
 - Foresight
@@ -425,6 +462,7 @@ Level: 23
 Hardy Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Magnitude
 - Mud-Slap
 - Dig
@@ -437,6 +475,7 @@ Level: 24
 Impish Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Magnitude
 - Mud-Slap
 - Dig
@@ -449,6 +488,7 @@ Level: 22
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Fake Out
 - Fury Swipes
 - Screech
@@ -461,6 +501,7 @@ Level: 19
 Calm Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Bite
 - Fake Out
 - Fury Swipes
@@ -473,6 +514,7 @@ Level: 26
 Calm Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Water Gun
 - Disable
 - Confusion
@@ -486,6 +528,7 @@ Level: 63
 Brave Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Surf
 - Zen Headbutt
 - Strength
@@ -498,6 +541,7 @@ Level: 49
 Calm Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Rage
 - Swagger
 - Cross Chop
@@ -510,6 +554,7 @@ Level: 14
 Careful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Roar
 - Ember
 - Leer
@@ -522,6 +567,7 @@ Level: 24
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Water Gun
 - Double Slap
 - Rain Dance
@@ -534,6 +580,7 @@ Level: 10
 Jolly Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Water Sport
 - Bubble
 - Hypnosis
@@ -545,6 +592,7 @@ Level: 47
 Hasty Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Bubble Beam
 - Mud Shot
 - Belly Drum
@@ -557,6 +605,7 @@ Level: 22
 Naive Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Kinesis
 - Confusion
 - Disable
@@ -569,6 +618,7 @@ Level: 39
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Revenge
 - Vital Throw
 - Submission
@@ -581,6 +631,7 @@ Level: 49
 Quiet Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Gastro Acid
 - Razor Leaf
 - Slam
@@ -593,6 +644,7 @@ Level: 25
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Acid
 - Toxic Spikes
 - Bubble Beam
@@ -605,6 +657,7 @@ Level: 43
 Calm Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Barrier
 - Water Pulse
 - Poison Jab
@@ -617,6 +670,7 @@ Level: 6
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tackle
 - Defense Curl
 - Mud Sport
@@ -628,6 +682,7 @@ Level: 32
 Bashful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Magnitude
 - Self-Destruct
 - Rollout
@@ -641,6 +696,7 @@ Level: 62
 Brave Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Fire Blast
 - Strength
 - Flare Blitz
@@ -653,6 +709,7 @@ Level: 37
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Yawn
 - Headbutt
 - Zen Headbutt
@@ -665,6 +722,7 @@ Level: 16
 Impish Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Tackle
 - Thunder Shock
 - Supersonic
@@ -677,6 +735,7 @@ Level: 16
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Fury Cutter
 - Fury Attack
 - Knock Off
@@ -690,6 +749,7 @@ Impish Nature
 Language: English
 =OT_Name=Ayana
 .Version=7
+~=Generation=4
 - Pursuit
 - Uproar
 - Acupressure
@@ -702,6 +762,7 @@ Level: 38
 Adamant Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Aurora Beam
 - Aqua Jet
 - Brine
@@ -714,6 +775,7 @@ Level: 35
 Docile Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Aurora Beam
 - Aqua Jet
 - Brine
@@ -726,6 +788,7 @@ Level: 25
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Disable
 - Minimize
 - Sludge
@@ -738,6 +801,7 @@ Level: 38
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Disable
 - Minimize
 - Sludge Bomb
@@ -750,6 +814,7 @@ Level: 24
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Supersonic
 - Icicle Spear
 - Protect
@@ -762,6 +827,7 @@ Level: 40
 Brave Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Ice Shard
 - Aurora Beam
 - Whirlpool
@@ -774,6 +840,7 @@ Level: 5
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hypnosis
 - Lick
 - Spite
@@ -785,6 +852,7 @@ Level: 25
 Lax Nature
 Ball: Master Ball
 .Version=11
+~=Generation=4
 - Night Shade
 - Shadow Punch
 - Sucker Punch
@@ -797,6 +865,7 @@ Level: 17
 Bold Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Screech
 - Rock Throw
 - Rage
@@ -809,6 +878,7 @@ Level: 10
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Pound
 - Hypnosis
 - Disable
@@ -821,6 +891,7 @@ Level: 16
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hypnosis
 - Disable
 - Confusion
@@ -833,6 +904,7 @@ Level: 22
 Hardy Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Harden
 - Bubble Beam
 - Mud Shot
@@ -846,6 +918,7 @@ Hardy Nature
 Language: English
 =OT_Name=Richard
 .Version=7
+~=Generation=4
 - Sonic Boom
 - Spark
 - Rollout
@@ -858,6 +931,7 @@ Level: 30
 Hasty Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Screech
 - Light Screen
 - Charge Beam
@@ -870,6 +944,7 @@ Level: 13
 Bashful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Uproar
 - Hypnosis
 - Reflect
@@ -882,6 +957,7 @@ Level: 4
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Growl
 - Tail Whip
 
@@ -892,6 +968,7 @@ Level: 14
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Tail Whip
 - Bone Club
 - Headbutt
@@ -904,6 +981,7 @@ Level: 20
 Calm Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tackle
 - Helping Hand
 - Fake Out
@@ -916,6 +994,7 @@ Level: 34
 Calm Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Stomp
 - Disable
 - Slam
@@ -928,6 +1007,7 @@ Level: 14
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Poison Gas
 - Tackle
 - Smog
@@ -940,6 +1020,7 @@ Level: 55
 Bashful Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Double Hit
 - Explosion
 - Sludge Bomb
@@ -952,6 +1033,7 @@ Level: 23
 Calm Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tail Whip
 - Stomp
 - Fury Attack
@@ -964,6 +1046,7 @@ Level: 44
 Adamant Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Rock Blast
 - Take Down
 - Horn Drill
@@ -976,6 +1059,7 @@ Level: 19
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tail Whip
 - Refresh
 - Soft-Boiled
@@ -988,6 +1072,7 @@ Level: 27
 Bashful Nature
 Ball: Safari Ball
 .Version=12
+~=Generation=4
 - Poison Powder
 - Vine Whip
 - Bind
@@ -1000,6 +1085,7 @@ Level: 14
 Lonely Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Leer
 - Fake Out
 - Tail Whip
@@ -1012,6 +1098,7 @@ Level: 39
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Bubble Beam
 - Agility
 - Twister
@@ -1024,6 +1111,7 @@ Level: 33
 Gentle Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Water Pulse
 - Flail
 - Aqua Ring
@@ -1036,6 +1124,7 @@ Level: 49
 Sassy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Minimize
 - Gyro Ball
 - Light Screen
@@ -1048,6 +1137,7 @@ Level: 21
 Docile Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Meditate
 - Encore
 - Double Slap
@@ -1060,6 +1150,7 @@ Level: 52
 Bold Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Double Team
 - X-Scissor
 - Night Slash
@@ -1072,6 +1163,7 @@ Level: 47
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Wake-Up Slap
 - Avalanche
 - Body Slam
@@ -1084,6 +1176,7 @@ Level: 39
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Shock Wave
 - Light Screen
 - Thunder Punch
@@ -1096,6 +1189,7 @@ Level: 17
 Careful Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Leer
 - Ember
 - Smokescreen
@@ -1108,6 +1202,7 @@ Level: 28
 Brave Nature
 Ball: Sport Ball
 .Version=7
+~=Generation=4
 - Harden
 - Revenge
 - Brick Break
@@ -1120,6 +1215,7 @@ Level: 15
 Docile Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Rage
 - Horn Attack
 - Scary Face
@@ -1133,6 +1229,7 @@ Level: 23
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Splash
 - Tackle
 - Bite
@@ -1145,6 +1242,7 @@ Level: 53
 Gentle Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Ice Beam
 - Brine
 - Safeguard
@@ -1157,6 +1255,7 @@ Level: 22
 Lax Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Transform
 
 Eevee (M)
@@ -1166,6 +1265,7 @@ Level: 5
 Bold Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Tail Whip
 - Tackle
 - Helping Hand
@@ -1177,6 +1277,7 @@ Level: 5
 Bold Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Tail Whip
 - Tackle
 - Helping Hand
@@ -1188,6 +1289,7 @@ Level: 5
 Bold Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Tail Whip
 - Tackle
 - Helping Hand
@@ -1199,6 +1301,7 @@ Level: 5
 Bold Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Tail Whip
 - Tackle
 - Helping Hand
@@ -1210,6 +1313,7 @@ Level: 25
 Lonely Nature
 =Met_Level=25
 .Version=12
+~=Generation=4
 - Psybeam
 - Agility
 - Recover
@@ -1222,6 +1326,7 @@ Level: 20
 Calm Nature
 =Met_Level=20
 .Version=12
+~=Generation=4
 - Bite
 - Water Gun
 - Rollout
@@ -1234,6 +1339,7 @@ Level: 40
 Hasty Nature
 =Met_Level=20
 .Version=12
+~=Generation=4
 - Bite
 - Brine
 - Ancient Power
@@ -1246,6 +1352,7 @@ Level: 20
 Careful Nature
 =Met_Level=20
 .Version=12
+~=Generation=4
 - Harden
 - Absorb
 - Leer
@@ -1258,6 +1365,7 @@ Level: 40
 Hardy Nature
 =Met_Level=20
 .Version=7
+~=Generation=4
 - Slash
 - Mega Drain
 - Aqua Jet
@@ -1270,6 +1378,7 @@ Level: 20
 Calm Nature
 =Met_Level=20
 .Version=12
+~=Generation=4
 - Bite
 - Scary Face
 - Roar
@@ -1282,6 +1391,7 @@ Level: 50
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Block
 - Rollout
 - Crunch
@@ -1294,6 +1404,7 @@ Level: 60
 Impish Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Agility
 - Ice Beam
 - Reflect
@@ -1306,6 +1417,7 @@ Level: 50
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Ancient Power
 - Charge
 - Agility
@@ -1319,6 +1431,7 @@ Level: 50
 Modest Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Fire Blast
 - Air Slash
 - Hidden Power [Grass]
@@ -1331,6 +1444,7 @@ Level: 55
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Wing Attack
 - Dragon Dance
 - Aqua Tail
@@ -1343,6 +1457,7 @@ Level: 70
 Gentle Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Psycho Cut
 - Amnesia
 - Power Swap
@@ -1356,6 +1471,7 @@ Level: 70
 Timid Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Taunt
 - Calm Mind
 - Thunder
@@ -1368,6 +1484,7 @@ Level: 5
 Adamant Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Pound
 
 Typhlosion (M)
@@ -1377,6 +1494,7 @@ Level: 42
 Jolly Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Swift
 - Quick Attack
 - Flame Wheel
@@ -1389,6 +1507,7 @@ Ability: Torrent
 Impish Nature
 =Met_Level=5
 .Version=8
+~=Generation=4
 - Strength
 - Surf
 - Whirlpool
@@ -1401,6 +1520,7 @@ Level: 3
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Scratch
 - Foresight
 
@@ -1411,6 +1531,7 @@ Level: 36
 Bold Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Reflect
 - Confusion
 - Take Down
@@ -1423,6 +1544,7 @@ Level: 6
 Quiet Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Tackle
 - Supersonic
 
@@ -1433,6 +1555,7 @@ Level: 52
 Brave Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Silver Wind
 - Agility
 - Swift
@@ -1445,6 +1568,7 @@ Level: 7
 Lax Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Poison Sting
 - String Shot
 - Scary Face
@@ -1457,6 +1581,7 @@ Level: 33
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Bite
 - Wing Attack
 - Mean Look
@@ -1469,6 +1594,7 @@ Level: 41
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Bubble Beam
 - Signal Beam
 - Discharge
@@ -1481,6 +1607,7 @@ Level: 40
 Bashful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Spit Up
 - Bubble Beam
 - Signal Beam
@@ -1493,6 +1620,7 @@ Level: 53
 Brave Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Ominous Wind
 - Power Swap
 - Guard Swap
@@ -1505,6 +1633,7 @@ Level: 51
 Jolly Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Ominous Wind
 - Power Swap
 - Guard Swap
@@ -1517,6 +1646,7 @@ Level: 6
 Hardy Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Tackle
 - Growl
 
@@ -1527,6 +1657,7 @@ Level: 30
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Tackle
 - Cotton Spore
 - Thunder Punch
@@ -1539,6 +1670,7 @@ Level: 49
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Lucky Chant
 - Natural Gift
 - Moonlight
@@ -1551,6 +1683,7 @@ Level: 21
 Naive Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tail Whip
 - Water Gun
 - Rollout
@@ -1564,6 +1697,7 @@ Level: 50
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Waterfall
 - Return
 - Rest
@@ -1576,6 +1710,7 @@ Level: 20
 Modest Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Flail
 - Low Kick
 - Rock Throw
@@ -1588,6 +1723,7 @@ Level: 10
 Jolly Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Water Sport
 - Bubble
 - Hypnosis
@@ -1599,6 +1735,7 @@ Level: 10
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Splash
 - Synthesis
 - Tail Whip
@@ -1611,6 +1748,7 @@ Level: 27
 Careful Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Sleep Powder
 - Bullet Seed
 - Tackle
@@ -1623,6 +1761,7 @@ Level: 9
 Quirky Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Absorb
 - Growth
 - Mega Drain
@@ -1635,6 +1774,7 @@ Level: 12
 Hasty Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Tackle
 - Foresight
 - Quick Attack
@@ -1647,6 +1787,7 @@ Level: 6
 Modest Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Water Gun
 - Tail Whip
 - Mud Sport
@@ -1658,6 +1799,7 @@ Level: 30
 Brave Nature
 Ball: Safari Ball
 .Version=12
+~=Generation=4
 - Mud Shot
 - Slam
 - Mud Bomb
@@ -1671,6 +1813,7 @@ Level: 17
 Adamant Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Tail Whip
 - Helping Hand
 - Sand Attack
@@ -1683,6 +1826,7 @@ Level: 6
 Bold Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Tail Whip
 - Tackle
 - Helping Hand
@@ -1694,6 +1838,7 @@ Level: 14
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Yawn
 - Tackle
 - Growl
@@ -1706,6 +1851,7 @@ Level: 17
 Bashful Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Psywave
 - Spite
 - Astonish
@@ -1718,6 +1864,7 @@ Level: 21
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Poison]
 
 Unown-B
@@ -1727,6 +1874,7 @@ Level: 25
 Jolly Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Poison]
 
 Unown-C
@@ -1736,6 +1884,7 @@ Level: 5
 Brave Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hidden Power [Fire]
 
 Unown-D
@@ -1745,6 +1894,7 @@ Level: 21
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Grass]
 
 Unown-E
@@ -1754,6 +1904,7 @@ Level: 5
 Relaxed Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hidden Power [Fire]
 
 Unown-F
@@ -1763,6 +1914,7 @@ Level: 5
 Docile Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hidden Power [Ground]
 
 Unown-G
@@ -1772,6 +1924,7 @@ Level: 20
 Serious Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Fighting]
 
 Unown-H
@@ -1781,6 +1934,7 @@ Level: 24
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Flying]
 
 Unown-I
@@ -1790,6 +1944,7 @@ Level: 5
 Hasty Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hidden Power [Fire]
 
 Unown-J
@@ -1799,6 +1954,7 @@ Level: 5
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hidden Power [Grass]
 
 Unown-K
@@ -1808,6 +1964,7 @@ Level: 24
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Water]
 
 Unown-L
@@ -1817,6 +1974,7 @@ Level: 21
 Gentle Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Rock]
 
 Unown-M
@@ -1826,6 +1984,7 @@ Level: 21
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Ground]
 
 Unown-N
@@ -1835,6 +1994,7 @@ Level: 30
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Fighting]
 
 Unown-O
@@ -1844,6 +2004,7 @@ Level: 23
 Jolly Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Grass]
 
 Unown-P
@@ -1853,6 +2014,7 @@ Level: 5
 Careful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hidden Power [Fighting]
 
 Unown-Q
@@ -1862,6 +2024,7 @@ Level: 5
 Quirky Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hidden Power [Ghost]
 
 Unown-R
@@ -1871,6 +2034,7 @@ Level: 28
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Fighting]
 
 Unown-S
@@ -1880,6 +2044,7 @@ Level: 21
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Ghost]
 
 Unown-T
@@ -1889,6 +2054,7 @@ Level: 5
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hidden Power [Grass]
 
 Unown-U
@@ -1898,6 +2064,7 @@ Level: 27
 Calm Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Fire]
 
 Unown-V
@@ -1907,6 +2074,7 @@ Level: 24
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Dragon]
 
 Unown-W
@@ -1916,6 +2084,7 @@ Level: 5
 Hardy Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Hidden Power [Fire]
 
 Unown-X
@@ -1925,6 +2094,7 @@ Level: 22
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Poison]
 
 Unown-Y
@@ -1934,6 +2104,7 @@ Level: 22
 Impish Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Poison]
 
 Unown-Z
@@ -1943,6 +2114,7 @@ Level: 27
 Hasty Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Bug]
 
 Unown-!
@@ -1952,6 +2124,7 @@ Level: 21
 Hasty Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Ghost]
 
 Unown-?
@@ -1961,6 +2134,7 @@ Level: 20
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Flying]
 
 Wobbuffet (F)
@@ -1970,6 +2144,7 @@ Level: 42
 Calm Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Counter
 - Mirror Coat
 - Safeguard
@@ -1982,6 +2157,7 @@ Level: 24
 Careful Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Stomp
 - Agility
 - Psybeam
@@ -1994,6 +2170,7 @@ Level: 31
 Calm Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Mirror Shot
 - Take Down
 - Self-Destruct
@@ -2006,6 +2183,7 @@ Level: 7
 Careful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Rage
 - Defense Curl
 
@@ -2016,6 +2194,7 @@ Level: 22
 Careful Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Harden
 - Knock Off
 - Quick Attack
@@ -2028,6 +2207,7 @@ Level: 35
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Sandstorm
 - Slam
 - Rock Polish
@@ -2040,6 +2220,7 @@ Level: 23
 Calm Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Headbutt
 - Charm
 - Bite
@@ -2052,6 +2233,7 @@ Level: 40
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Spit Up
 - Revenge
 - Brine
@@ -2064,6 +2246,7 @@ Level: 50
 Adamant Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - X-Scissor
 - Swords Dance
 - Iron Defense
@@ -2076,6 +2259,7 @@ Level: 23
 Hasty Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Constrict
 - Bide
 - Encore
@@ -2088,6 +2272,7 @@ Level: 8
 Hasty Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Leer
 - Horn Attack
 - Endure
@@ -2100,6 +2285,7 @@ Level: 34
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Feint Attack
 - Fury Swipes
 - Agility
@@ -2112,6 +2298,7 @@ Level: 20
 Quiet Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Lick
 - Fake Tears
 - Fury Swipes
@@ -2124,6 +2311,7 @@ Level: 33
 Adamant Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Fury Swipes
 - Feint Attack
 - Sweet Scent
@@ -2136,6 +2324,7 @@ Level: 54
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Amnesia
 - Lava Plume
 - Rock Slide
@@ -2148,6 +2337,7 @@ Level: 33
 Brave Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Take Down
 - Ice Shard
 - Icy Wind
@@ -2160,6 +2350,7 @@ Level: 48
 Calm Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Aqua Ring
 - Spike Cannon
 - Power Gem
@@ -2172,6 +2363,7 @@ Level: 20
 Lax Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Lock-On
 - Psybeam
 - Aurora Beam
@@ -2184,6 +2376,7 @@ Level: 35
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Bubble Beam
 - Focus Energy
 - Octazooka
@@ -2196,6 +2389,7 @@ Level: 23
 Bold Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Present
 
 Mantine (F)
@@ -2205,6 +2399,7 @@ Level: 18
 Hardy Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Bubble
 - Supersonic
 - Bubble Beam
@@ -2217,6 +2412,7 @@ Level: 27
 Bashful Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Agility
 - Fury Attack
 - Feint
@@ -2229,6 +2425,7 @@ Level: 23
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Smog
 - Roar
 - Bite
@@ -2241,6 +2438,7 @@ Level: 20
 Mild Nature
 Ball: Master Ball
 .Version=11
+~=Generation=4
 - Howl
 - Smog
 - Roar
@@ -2253,6 +2451,7 @@ Level: 39
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Bubble Beam
 - Agility
 - Twister
@@ -2265,6 +2464,7 @@ Level: 25
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Slam
 - Tackle
 - Natural Gift
@@ -2277,6 +2477,7 @@ Level: 25
 Impish Nature
 =Met_Level=25
 .Version=12
+~=Generation=4
 - Psybeam
 - Agility
 - Recover
@@ -2289,6 +2490,7 @@ Level: 5
 Impish Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tackle
 - Leer
 
@@ -2299,6 +2501,7 @@ Level: 22
 Gentle Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Sketch
 
 Tyrogue (M)
@@ -2308,6 +2511,7 @@ Level: 14
 Calm Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tackle
 - Helping Hand
 - Fake Out
@@ -2320,6 +2524,7 @@ Level: 20
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tackle
 - Helping Hand
 - Fake Out
@@ -2332,6 +2537,7 @@ Level: 22
 Lax Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Ember
 - Smokescreen
 - Feint Attack
@@ -2345,6 +2551,7 @@ Calm Nature
 Language: German
 =OT_Name=EUKALIA
 .Version=10
+~=Generation=4
 - Milk Drink
 - Heal Bell
 - Gyro Ball
@@ -2357,6 +2564,7 @@ Level: 20
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Minimize
 - Refresh
 - Soft-Boiled
@@ -2369,6 +2577,7 @@ Level: 40
 Jolly Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Roar
 - Quick Attack
 - Spark
@@ -2382,6 +2591,7 @@ Level: 40
 Timid Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Calm Mind
 - Thunderbolt
 - Shadow Ball
@@ -2394,6 +2604,7 @@ Level: 40
 Modest Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Roar
 - Fire Spin
 - Stomp
@@ -2406,6 +2617,7 @@ Level: 40
 Bashful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Rain Dance
 - Gust
 - Aurora Beam
@@ -2418,6 +2630,7 @@ Level: 55
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Earthquake
 - Payback
 - Dark Pulse
@@ -2431,6 +2644,7 @@ Level: 70
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Roost
 - Reflect
 - Whirlwind
@@ -2444,6 +2658,7 @@ Level: 50
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Brave Bird
 - Sacred Fire
 - Earthquake
@@ -2456,6 +2671,7 @@ Level: 50
 Adamant Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Leaf Storm
 - Recover
 - Nasty Plot
@@ -2468,6 +2684,7 @@ Level: 36
 Sassy Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Tackle
 - Take Down
 - Mud Bomb
@@ -2480,6 +2697,7 @@ Level: 2
 Rash Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Tackle
 
 Mightyena (M)
@@ -2490,6 +2708,7 @@ Level: 54
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Howl
 - Crunch
 - Facade
@@ -2502,6 +2721,7 @@ Level: 20
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tackle
 - Growl
 - Tail Whip
@@ -2514,6 +2734,7 @@ Level: 3
 Gentle Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Tackle
 - String Shot
 
@@ -2524,6 +2745,7 @@ Level: 12
 Gentle Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Harden
 
 Beautifly (F)
@@ -2533,6 +2755,7 @@ Level: 32
 Bashful Nature
 Ball: Sport Ball
 .Version=7
+~=Generation=4
 - Morning Sun
 - Mega Drain
 - Whirlwind
@@ -2545,6 +2768,7 @@ Level: 29
 Calm Nature
 Ball: Sport Ball
 .Version=7
+~=Generation=4
 - Harden
 
 Dustox (M)
@@ -2554,6 +2778,7 @@ Level: 48
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Light Screen
 - Silver Wind
 - Toxic
@@ -2566,6 +2791,7 @@ Level: 42
 Impish Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Mega Drain
 - Bubble Beam
 - Zen Headbutt
@@ -2578,6 +2804,7 @@ Level: 47
 Modest Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Bubble Beam
 - Zen Headbutt
 - Uproar
@@ -2590,6 +2817,7 @@ Level: 6
 Gentle Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Bide
 - Harden
 
@@ -2600,6 +2828,7 @@ Level: 48
 Hasty Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Torment
 - Feint Attack
 - Razor Wind
@@ -2612,6 +2841,7 @@ Level: 25
 Brave Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Focus Energy
 - Quick Attack
 - Wing Attack
@@ -2624,6 +2854,7 @@ Level: 26
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Wing Attack
 - Mist
 - Water Pulse
@@ -2636,6 +2867,7 @@ Level: 37
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Water Pulse
 - Payback
 - Protect
@@ -2648,6 +2880,7 @@ Level: 17
 Brave Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Confusion
 - Double Team
 - Teleport
@@ -2660,6 +2893,7 @@ Level: 30
 Gentle Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Double Team
 - Teleport
 - Lucky Chant
@@ -2672,6 +2906,7 @@ Level: 40
 Bashful Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Bubble Beam
 - Agility
 - Mist
@@ -2684,6 +2919,7 @@ Level: 51
 Mild Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Scary Face
 - Stun Spore
 - Silver Wind
@@ -2696,6 +2932,7 @@ Level: 46
 Brave Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Sky Uppercut
 - Mind Reader
 - Seed Bomb
@@ -2708,6 +2945,7 @@ Level: 10
 Hardy Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Scratch
 - Yawn
 - Encore
@@ -2719,6 +2957,7 @@ Level: 18
 Hasty Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Scratch
 - Yawn
 - Encore
@@ -2731,6 +2970,7 @@ Level: 36
 Gentle Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Slash
 - Yawn
 - Swagger
@@ -2742,6 +2982,7 @@ Ability: Wonder Guard
 Level: 32
 Bashful Nature
 .Version=7
+~=Generation=4
 - Fury Swipes
 - Mind Reader
 - False Swipe
@@ -2754,6 +2995,7 @@ Level: 40
 Calm Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Stomp
 - Uproar
 - Supersonic
@@ -2766,6 +3008,7 @@ Level: 50
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Wake-Up Slap
 - Endure
 - Close Combat
@@ -2778,6 +3021,7 @@ Level: 22
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tail Whip
 - Bubble
 - Slam
@@ -2790,6 +3034,7 @@ Level: 45
 Calm Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Thunder Wave
 - Rock Slide
 - Sandstorm
@@ -2802,6 +3047,7 @@ Level: 40
 Docile Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Wake-Up Slap
 - Covet
 - Heal Bell
@@ -2814,6 +3060,7 @@ Level: 31
 Rash Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Fake Out
 - Detect
 - Shadow Sneak
@@ -2826,6 +3073,7 @@ Level: 30
 Lonely Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Bite
 - Sweet Scent
 - Vise Grip
@@ -2838,6 +3086,7 @@ Level: 42
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Iron Defense
 - Roar
 - Take Down
@@ -2850,6 +3099,7 @@ Level: 18
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Confusion
 - Detect
 - Hidden Power [Electric]
@@ -2862,6 +3112,7 @@ Level: 39
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Calm Mind
 - Force Palm
 - High Jump Kick
@@ -2874,6 +3125,7 @@ Level: 42
 Hardy Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Bite
 - Thunder Fang
 - Roar
@@ -2886,6 +3138,7 @@ Level: 26
 Lax Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Quick Attack
 - Thunder Wave
 - Spark
@@ -2898,6 +3151,7 @@ Level: 23
 Gentle Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Helping Hand
 - Spark
 - Encore
@@ -2910,6 +3164,7 @@ Level: 18
 Brave Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Quick Attack
 - Helping Hand
 - Spark
@@ -2922,6 +3177,7 @@ Level: 49
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Helping Hand
 - Zen Headbutt
 - Bug Buzz
@@ -2934,6 +3190,7 @@ Level: 50
 Bashful Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Helping Hand
 - Zen Headbutt
 - Bug Buzz
@@ -2946,6 +3203,7 @@ Level: 22
 Lonely Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Mega Drain
 - Leech Seed
 - Magical Leaf
@@ -2958,6 +3216,7 @@ Level: 27
 Hardy Nature
 Ball: Safari Ball
 .Version=12
+~=Generation=4
 - Poison Gas
 - Sludge
 - Amnesia
@@ -2970,6 +3229,7 @@ Level: 31
 Hardy Nature
 Ball: Safari Ball
 .Version=12
+~=Generation=4
 - Sludge
 - Amnesia
 - Encore
@@ -2982,6 +3242,7 @@ Level: 40
 Calm Nature
 Ball: Safari Ball
 .Version=12
+~=Generation=4
 - Crunch
 - Aqua Jet
 - Agility
@@ -2994,6 +3255,7 @@ Level: 47
 Jolly Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Brine
 - Water Spout
 - Amnesia
@@ -3006,6 +3268,7 @@ Level: 6
 Modest Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Growl
 - Tackle
 - Ember
@@ -3017,6 +3280,7 @@ Level: 58
 Calm Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Rock Slide
 - Earth Power
 - Earthquake
@@ -3029,6 +3293,7 @@ Level: 53
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Lava Plume
 - Iron Defense
 - Amnesia
@@ -3041,6 +3306,7 @@ Level: 32
 Impish Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Zen Headbutt
 - Psych Up
 - Confuse Ray
@@ -3053,6 +3319,7 @@ Level: 5
 Bashful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Tackle
 - Uproar
 
@@ -3063,6 +3330,7 @@ Level: 45
 Docile Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Sand Tomb
 - Dragon Claw
 - Dragon Breath
@@ -3075,6 +3343,7 @@ Level: 50
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Sucker Punch
 - Payback
 - Needle Arm
@@ -3087,6 +3356,7 @@ Level: 50
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Feint Attack
 - Spikes
 - Sucker Punch
@@ -3099,6 +3369,7 @@ Level: 35
 Naive Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Sing
 - Dragon Breath
 - Natural Gift
@@ -3111,6 +3382,7 @@ Level: 29
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Fury Cutter
 - Slash
 - Pursuit
@@ -3123,6 +3395,7 @@ Level: 29
 Brave Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Poison Tail
 - Screech
 - Glare
@@ -3135,6 +3408,7 @@ Level: 4
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tackle
 - Harden
 - Confusion
@@ -3146,6 +3420,7 @@ Level: 45
 Hasty Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Embargo
 - Cosmic Power
 - Heal Block
@@ -3158,6 +3433,7 @@ Level: 42
 Jolly Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Rest
 - Snore
 - Aqua Tail
@@ -3170,6 +3446,7 @@ Level: 51
 Gentle Nature
 Ball: Cherish Ball
 .Version=10
+~=Generation=4
 - Earthquake
 - Aqua Tail
 - Zen Headbutt
@@ -3182,6 +3459,7 @@ Level: 47
 Naive Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Crunch
 - Night Slash
 - Crabhammer
@@ -3194,6 +3472,7 @@ Level: 36
 Gentle Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Ancient Power
 - Psybeam
 - Rock Tomb
@@ -3206,6 +3485,7 @@ Level: 20
 Impish Nature
 =Met_Level=20
 .Version=12
+~=Generation=4
 - Astonish
 - Constrict
 - Acid
@@ -3218,6 +3498,7 @@ Level: 40
 Lonely Nature
 =Met_Level=20
 .Version=12
+~=Generation=4
 - Astonish
 - Constrict
 - Acid
@@ -3230,6 +3511,7 @@ Level: 40
 Lax Nature
 =Met_Level=20
 .Version=7
+~=Generation=4
 - Protect
 - Ancient Power
 - Water Gun
@@ -3244,6 +3526,7 @@ Language: Japanese
 Ball: Cherish Ball
 =OT_Name=さいきょう
 .Version=10
+~=Generation=4
 - Rain Dance
 - Recover
 - Hydro Pump
@@ -3256,6 +3539,7 @@ Level: 18
 Bashful Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Tackle
 - Water Gun
 - Ember
@@ -3268,6 +3552,7 @@ Level: 47
 Bashful Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Sucker Punch
 - Embargo
 - Snatch
@@ -3280,6 +3565,7 @@ Level: 44
 Mild Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Feint Attack
 - Shadow Ball
 - Sucker Punch
@@ -3292,6 +3578,7 @@ Level: 19
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Disable
 - Foresight
 - Astonish
@@ -3304,6 +3591,7 @@ Level: 39
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Pursuit
 - Curse
 - Will-O-Wisp
@@ -3316,6 +3604,7 @@ Level: 28
 Brave Nature
 Ball: Safari Ball
 .Version=12
+~=Generation=4
 - Razor Leaf
 - Stomp
 - Sweet Scent
@@ -3328,6 +3617,7 @@ Level: 46
 Bold Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Double-Edge
 - Heal Bell
 - Safeguard
@@ -3340,6 +3630,7 @@ Level: 40
 Mild Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Swords Dance
 - Bite
 - Double Team
@@ -3352,6 +3643,7 @@ Level: 33
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Headbutt
 - Protect
 - Ice Fang
@@ -3364,6 +3656,7 @@ Level: 43
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Ice Shard
 - Protect
 - Ice Fang
@@ -3376,6 +3669,7 @@ Level: 36
 Hardy Nature
 Ball: Master Ball
 .Version=11
+~=Generation=4
 - Ice Ball
 - Body Slam
 - Aurora Beam
@@ -3388,6 +3682,7 @@ Level: 45
 Brave Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Hail
 - Swagger
 - Rest
@@ -3400,6 +3695,7 @@ Level: 20
 Adamant Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Clamp
 - Water Gun
 - Whirlpool
@@ -3412,6 +3708,7 @@ Level: 40
 Careful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Rock Tomb
 - Yawn
 - Take Down
@@ -3424,6 +3721,7 @@ Level: 20
 Docile Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Water Gun
 - Agility
 - Take Down
@@ -3436,6 +3734,7 @@ Level: 45
 Calm Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Ember
 - Dragon Breath
 - Zen Headbutt
@@ -3448,6 +3747,7 @@ Level: 50
 Mild Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Crunch
 - Dragon Breath
 - Zen Headbutt
@@ -3460,6 +3760,7 @@ Level: 53
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Take Down
 
 Metagross
@@ -3470,6 +3771,7 @@ Level: 63
 Calm Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Take Down
 
 Regirock
@@ -3479,6 +3781,7 @@ Level: 30
 Jolly Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Stomp
 - Rock Throw
 - Curse
@@ -3491,6 +3794,7 @@ Level: 30
 Lonely Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Stomp
 - Icy Wind
 - Curse
@@ -3503,6 +3807,7 @@ Level: 30
 Rash Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Stomp
 - Metal Claw
 - Curse
@@ -3515,6 +3820,7 @@ Level: 35
 Rash Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Dragon Breath
 - Water Sport
 - Refresh
@@ -3527,6 +3833,7 @@ Level: 40
 Brave Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Protect
 - Refresh
 - Luster Purge
@@ -3539,6 +3846,7 @@ Level: 50
 Bashful Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Aqua Ring
 - Ice Beam
 - Ancient Power
@@ -3551,6 +3859,7 @@ Level: 50
 Relaxed Nature
 =Met_Level=50
 .Version=8
+~=Generation=4
 - Rest
 - Earthquake
 - Ancient Power
@@ -3563,6 +3872,7 @@ Level: 50
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Rest
 - Air Slash
 - Ancient Power
@@ -3575,6 +3885,7 @@ Level: 5
 Adamant Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Wish
 - Confusion
 - Rest
@@ -3587,6 +3898,7 @@ Level: 50
 Adamant Nature
 Ball: Cherish Ball
 .Version=10
+~=Generation=4
 - Psycho Boost
 - Zap Cannon
 - Iron Defense
@@ -3598,6 +3910,7 @@ Ability: Pressure
 Level: 50
 Bold Nature
 .Version=7
+~=Generation=4
 - Psycho Boost
 - Meteor Mash
 - Superpower
@@ -3609,6 +3922,7 @@ Ability: Pressure
 Level: 50
 Hardy Nature
 .Version=7
+~=Generation=4
 - Psycho Boost
 - Detect
 - Counter
@@ -3621,6 +3935,7 @@ Level: 50
 Gentle Nature
 Ball: Cherish Ball
 .Version=10
+~=Generation=4
 - Psycho Boost
 - Zap Cannon
 - Iron Defense
@@ -3634,6 +3949,7 @@ Level: 32
 Adamant Nature
 =Met_Level=5
 .Version=11
+~=Generation=4
 - Bite
 - Earthquake
 - Mega Drain
@@ -3647,6 +3963,7 @@ Level: 36
 Bashful Nature
 =Met_Level=5
 .Version=12
+~=Generation=4
 - Feint
 - Close Combat
 - Flame Wheel
@@ -3660,6 +3977,7 @@ Level: 36
 Careful Nature
 =Met_Level=5
 .Version=10
+~=Generation=4
 - Metal Claw
 - Peck
 - Bubble Beam
@@ -3672,6 +3990,7 @@ Level: 34
 Calm Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Close Combat
 - Aerial Ace
 - Double Team
@@ -3684,6 +4003,7 @@ Level: 12
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tackle
 - Growl
 - Defense Curl
@@ -3696,6 +4016,7 @@ Level: 23
 Naive Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Defense Curl
 - Rollout
 - Headbutt
@@ -3708,6 +4029,7 @@ Level: 27
 Brave Nature
 Ball: Sport Ball
 .Version=7
+~=Generation=4
 - Growl
 - Bide
 - Bug Bite
@@ -3719,6 +4041,7 @@ Level: 23
 Impish Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Fury Cutter
 - Leech Life
 - Sing
@@ -3731,6 +4054,7 @@ Level: 46
 Gentle Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Swagger
 - Thunder Fang
 - Crunch
@@ -3743,6 +4067,7 @@ Level: 46
 Naughty Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Toxic
 - Petal Dance
 - Aromatherapy
@@ -3755,6 +4080,7 @@ Level: 30
 Calm Nature
 =Met_Level=20
 .Version=12
+~=Generation=4
 - Assurance
 - Pursuit
 - Take Down
@@ -3767,6 +4093,7 @@ Level: 20
 Jolly Nature
 =Met_Level=20
 .Version=12
+~=Generation=4
 - Taunt
 - Metal Sound
 - Take Down
@@ -3779,6 +4106,7 @@ Level: 30
 Quirky Nature
 =Met_Level=20
 .Version=10
+~=Generation=4
 - Ancient Power
 - Swagger
 - Take Down
@@ -3791,6 +4119,7 @@ Level: 10
 Modest Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Protect
 - Tackle
 
@@ -3801,6 +4130,7 @@ Level: 20
 Mild Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Protect
 - Tackle
 - Bug Bite
@@ -3813,6 +4143,7 @@ Level: 20
 Rash Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Protect
 - Tackle
 - Bug Bite
@@ -3825,6 +4156,7 @@ Level: 21
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Sweet Scent
 - Gust
 - Bug Bite
@@ -3837,6 +4169,7 @@ Level: 29
 Impish Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Endure
 - Swift
 - Sweet Kiss
@@ -3849,6 +4182,7 @@ Level: 29
 Bashful Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Swift
 - Aqua Jet
 - Crunch
@@ -3861,6 +4195,7 @@ Level: 14
 Quiet Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tackle
 - Growth
 - Leech Seed
@@ -3873,6 +4208,7 @@ Level: 25
 Rash Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Magical Leaf
 - Growth
 - Petal Dance
@@ -3885,6 +4221,7 @@ Level: 12
 Quirky Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Mud Sport
 - Harden
 - Water Pulse
@@ -3898,6 +4235,7 @@ Relaxed Nature
 Language: English
 =OT_Name=Hayley
 .Version=10
+~=Generation=4
 - Natural Gift
 - Water Pulse
 - Mud Bomb
@@ -3910,6 +4248,7 @@ Level: 28
 Naughty Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Water Pulse
 - Mud Bomb
 - Hidden Power [Poison]
@@ -3922,6 +4261,7 @@ Level: 42
 Gentle Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Hidden Power [Electric]
 - Rain Dance
 - Body Slam
@@ -3935,6 +4275,7 @@ Level: 40
 Jolly Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Taunt
 - Agility
 - Baton Pass
@@ -3947,6 +4288,7 @@ Level: 15
 Lax Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Minimize
 - Astonish
 - Gust
@@ -3960,6 +4302,7 @@ Level: 31
 Hasty Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Gust
 - Focus Energy
 - Payback
@@ -3972,6 +4315,7 @@ Level: 12
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Pound
 - Defense Curl
 - Foresight
@@ -3984,6 +4328,7 @@ Level: 17
 Bashful Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Psywave
 - Spite
 - Astonish
@@ -3996,6 +4341,7 @@ Level: 40
 Mild Nature
 Ball: Master Ball
 .Version=11
+~=Generation=4
 - Charm
 - Assist
 - Captivate
@@ -4008,6 +4354,7 @@ Level: 41
 Hardy Nature
 Ball: Master Ball
 .Version=11
+~=Generation=4
 - Assist
 - Captivate
 - Slash
@@ -4020,6 +4367,7 @@ Level: 19
 Adamant Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Growl
 - Astonish
 - Confusion
@@ -4032,6 +4380,7 @@ Level: 14
 Jolly Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Focus Energy
 - Poison Gas
 - Screech
@@ -4044,6 +4393,7 @@ Level: 51
 Hardy Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Slash
 - Night Slash
 - Flamethrower
@@ -4056,6 +4406,7 @@ Level: 37
 Calm Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Extrasensory
 - Iron Defense
 - Safeguard
@@ -4068,6 +4419,7 @@ Level: 18
 Calm Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Flail
 - Low Kick
 - Rock Throw
@@ -4080,6 +4432,7 @@ Level: 22
 Quiet Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Charm
 - Copycat
 - Refresh
@@ -4092,6 +4445,7 @@ Level: 3
 Adamant Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Peck
 
 Spiritomb (F)
@@ -4101,6 +4455,7 @@ Level: 25
 Lax Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Feint Attack
 - Hypnosis
 - Dream Eater
@@ -4113,6 +4468,7 @@ Level: 17
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Sand Attack
 - Dragon Rage
 - Sandstorm
@@ -4125,6 +4481,7 @@ Level: 41
 Modest Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Sand Tomb
 - Slash
 - Dragon Claw
@@ -4137,6 +4494,7 @@ Level: 48
 Lax Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Dragon Claw
 - Dragon Rage
 - Crunch
@@ -4149,6 +4507,7 @@ Level: 30
 Adamant Nature
 Ball: Cherish Ball
 .Version=10
+~=Generation=4
 - Force Palm
 - Bone Rush
 - Sunny Day
@@ -4161,6 +4520,7 @@ Level: 22
 Hardy Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Sand Attack
 - Bite
 - Yawn
@@ -4173,6 +4533,7 @@ Level: 51
 Brave Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Sand Tomb
 - Crunch
 - Earthquake
@@ -4185,6 +4546,7 @@ Level: 46
 Calm Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Toxic Spikes
 - Bug Bite
 - Poison Fang
@@ -4197,6 +4559,7 @@ Level: 44
 Mild Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Sucker Punch
 - Nasty Plot
 - Poison Jab
@@ -4209,6 +4572,7 @@ Level: 37
 Lonely Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Pursuit
 - Nasty Plot
 - Revenge
@@ -4221,6 +4585,7 @@ Level: 28
 Brave Nature
 Ball: Safari Ball
 .Version=12
+~=Generation=4
 - Vine Whip
 - Sweet Scent
 - Ingrain
@@ -4233,6 +4598,7 @@ Level: 17
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Water Gun
 - Attract
 - Rain Dance
@@ -4245,6 +4611,7 @@ Level: 35
 Gentle Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Water Pulse
 - Captivate
 - Safeguard
@@ -4257,6 +4624,7 @@ Level: 34
 Rash Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Agility
 - Wing Attack
 - Water Pulse
@@ -4269,6 +4637,7 @@ Level: 32
 Calm Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Swagger
 - Mist
 - Ice Shard
@@ -4281,6 +4650,7 @@ Level: 40
 Gentle Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Wood Hammer
 - Mist
 - Ice Shard
@@ -4294,6 +4664,7 @@ Level: 37
 Careful Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Fury Swipes
 - Agility
 - Icy Wind
@@ -4306,6 +4677,7 @@ Level: 44
 Modest Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Lock-On
 - Magnet Bomb
 - Screech
@@ -4318,6 +4690,7 @@ Level: 33
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Rollout
 - Slam
 - Knock Off
@@ -4330,6 +4703,7 @@ Level: 44
 Adamant Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Rock Blast
 - Take Down
 - Horn Drill
@@ -4342,6 +4716,7 @@ Level: 33
 Brave Nature
 Ball: Safari Ball
 .Version=12
+~=Generation=4
 - Vine Whip
 - Ancient Power
 - Mega Drain
@@ -4353,6 +4728,7 @@ Ability: Motor Drive
 Level: 50
 Adamant Nature
 .Version=10
+~=Generation=4
 - Thunder Punch
 - Ice Punch
 - Cross Chop
@@ -4365,6 +4741,7 @@ Level: 17
 Careful Nature
 Ball: Safari Ball
 .Version=7
+~=Generation=4
 - Leer
 - Ember
 - Smokescreen
@@ -4377,6 +4754,7 @@ Level: 33
 Hasty Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Ancient Power
 - Pursuit
 - Quick Attack
@@ -4390,6 +4768,7 @@ Level: 64
 Quiet Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Solar Beam
 - Grass Knot
 - Sunny Day
@@ -4403,6 +4782,7 @@ Level: 64
 Jolly Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Blizzard
 - Ice Beam
 - Avalanche
@@ -4416,6 +4796,7 @@ Level: 13
 Docile Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Poison Sting
 - Sand Attack
 - Harden
@@ -4428,6 +4809,7 @@ Level: 34
 Brave Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Take Down
 - Ice Shard
 - Icy Wind
@@ -4440,6 +4822,7 @@ Level: 18
 Docile Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Sharpen
 - Psybeam
 - Agility
@@ -4452,6 +4835,7 @@ Level: 24
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Double Team
 - Teleport
 - Lucky Chant
@@ -4464,6 +4848,7 @@ Level: 19
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Tackle
 - Harden
 - Rock Throw
@@ -4476,6 +4861,7 @@ Level: 39
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Pursuit
 - Curse
 - Will-O-Wisp
@@ -4488,6 +4874,7 @@ Level: 33
 Docile Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Headbutt
 - Protect
 - Ice Fang
@@ -4500,6 +4887,7 @@ Level: 20
 Bashful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Thunder Shock
 - Confuse Ray
 - Uproar
@@ -4512,6 +4900,7 @@ Level: 50
 Adamant Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Confusion
 - Yawn
 - Future Sight
@@ -4524,6 +4913,7 @@ Level: 50
 Adamant Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Confusion
 - Lucky Chant
 - Future Sight
@@ -4536,6 +4926,7 @@ Level: 50
 Careful Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Swift
 - Uproar
 - Future Sight
@@ -4548,6 +4939,7 @@ Level: 1
 Careful Nature
 =Met_Level=1
 .Version=7
+~=Generation=4
 - Dragon Breath
 - Scary Face
 
@@ -4558,6 +4950,7 @@ Level: 47
 Careful Nature
 Ball: Master Ball
 .Version=11
+~=Generation=4
 - Water Pulse
 - Ancient Power
 - Dragon Claw
@@ -4571,6 +4964,7 @@ Level: 70
 Mild Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Flamethrower
 - Lava Plume
 - Fire Spin
@@ -4582,6 +4976,7 @@ Ability: Slow Start
 Adamant Nature
 Ball: Cherish Ball
 .Version=10
+~=Generation=4
 - Iron Head
 - Rock Slide
 - Icy Wind
@@ -4595,6 +4990,7 @@ Level: 22
 Bold Nature
 =Met_Level=1
 .Version=7
+~=Generation=4
 - Dragon Pulse
 - Will-O-Wisp
 - Rest
@@ -4607,6 +5003,7 @@ Level: 1
 Jolly Nature
 =Met_Level=1
 .Version=7
+~=Generation=4
 - Dragon Breath
 - Scary Face
 
@@ -4617,6 +5014,7 @@ Level: 50
 Modest Nature
 Ball: Master Ball
 .Version=10
+~=Generation=4
 - Mist
 - Aurora Beam
 - Future Sight
@@ -4628,6 +5026,7 @@ Ability: Bad Dreams
 Level: 50
 Adamant Nature
 .Version=10
+~=Generation=4
 - Dark Void
 - Dark Pulse
 - Shadow Ball
@@ -4639,6 +5038,7 @@ Ability: Multitype
 Adamant Nature
 Ball: Cherish Ball
 .Version=10
+~=Generation=4
 - Judgment
 - Roar of Time
 - Spacial Rend

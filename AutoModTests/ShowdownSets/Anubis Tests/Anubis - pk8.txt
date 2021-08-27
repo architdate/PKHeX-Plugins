@@ -5,6 +5,7 @@ Level: 5
 Modest Nature
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Tackle
 - Growl
 - Vine Whip
@@ -16,6 +17,7 @@ Level: 5
 Timid Nature
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Scratch
 - Growl
 - Ember
@@ -28,6 +30,7 @@ Shiny: Yes
 Jolly Nature
 =Met_Location=244
 .Version=45
+~=Generation=8
 - Fire Pledge
 - Dragon Pulse
 - Endure
@@ -41,6 +44,7 @@ Adamant Nature
 Language: Korean
 =Met_Location=40003
 .Version=44
+~=Generation=8
 - Flamethrower
 - Dragon Tail
 - Slash
@@ -56,6 +60,7 @@ Adamant Nature
 Ball: Master Ball
 .Met_Location=154
 .Version=44
+~=Generation=8
 - Flamethrower
 - Dragon Breath
 - Flare Blitz
@@ -69,6 +74,7 @@ Quiet Nature
 Language: Japanese
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Tackle
 - Tail Whip
 - Water Gun
@@ -81,6 +87,7 @@ Bashful Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=44
+~=Generation=8
 - Sing
 - Encore
 - Celebrate
@@ -95,6 +102,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40012
 .Version=44
+~=Generation=8
 - Celebrate
 - Play Nice
 - Thunder Shock
@@ -108,6 +116,7 @@ Adamant Nature
 =Met_Level=10
 =Met_Location=156
 .Version=45
+~=Generation=8
 - Growl
 - Quick Attack
 - Thunder Wave
@@ -121,6 +130,7 @@ Shiny: Square
 Jolly Nature
 =WasEgg=True
 .Version=44
+~=Generation=8
 - Brick Break
 - Play Rough
 - Volt Tackle
@@ -135,6 +145,7 @@ Bold Nature
 Ball: Cherish Ball
 =Met_Location=40044
 .Version=45
+~=Generation=8
 - Fake Out
 - Growl
 - Slash
@@ -150,6 +161,7 @@ Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Feint
 - Scratch
 - Pay Day
@@ -162,6 +174,7 @@ Level: 65
 Calm Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Assurance
 - Snarl
 - Feint
@@ -177,6 +190,7 @@ Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=45
+~=Generation=8
 - Tail Whip
 - Ember
 - Flame Charge
@@ -192,6 +206,7 @@ Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Leer
 - Fury Cutter
 - Cut
@@ -207,6 +222,7 @@ Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=45
+~=Generation=8
 - Hypnosis
 - Reflect
 - Leech Seed
@@ -222,6 +238,7 @@ Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Tail Whip
 - Fire Spin
 - Flame Wheel
@@ -237,6 +254,7 @@ Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Smog
 - Smokescreen
 - Clear Smog
@@ -251,6 +269,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40001
 .Version=45
+~=Generation=8
 - Present
 - Sweet Kiss
 - Charm
@@ -263,6 +282,7 @@ Level: 5
 Serious Nature
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Helping Hand
 - Tackle
 - Growl
@@ -277,6 +297,7 @@ Bold Nature
 =Met_Level=10
 =Met_Location=156
 .Version=44
+~=Generation=8
 - Retaliate
 - Body Slam
 - Copycat
@@ -289,6 +310,7 @@ Level: 1
 Careful Nature
 =Met_Location=40085
 .Version=45
+~=Generation=8
 - Pound
 
 Corsola (F) @ Smoke Ball
@@ -301,6 +323,7 @@ Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=45
+~=Generation=8
 - Water Gun
 - Aqua Ring
 - Endure
@@ -315,6 +338,7 @@ Sassy Nature
 Ball: Cherish Ball
 =Met_Location=40038
 .Version=44
+~=Generation=8
 - Recover
 - Trick Room
 - Ice Beam
@@ -341,6 +365,7 @@ Quirky Nature
 Ball: Cherish Ball
 =Met_Location=40006
 .Version=45
+~=Generation=8
 - Magical Leaf
 - Future Sight
 - Life Dew
@@ -356,6 +381,7 @@ Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Covet
 - Headbutt
 - Baby-Doll Eyes
@@ -371,6 +397,7 @@ Adamant Nature
 Ball: Master Ball
 .Met_Location=186
 .Version=45
+~=Generation=8
 - Avalanche
 - Liquidation
 - Aqua Ring
@@ -385,6 +412,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=186
 .Version=44
+~=Generation=8
 - Rest
 - Amnesia
 - Hydro Pump
@@ -399,6 +427,7 @@ Quiet Nature
 Ball: Sport Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Splash
 - Tackle
 - Flail
@@ -413,6 +442,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40039
 .Version=45
+~=Generation=8
 - Protect
 - Surf
 - Ice Beam
@@ -425,6 +455,7 @@ Level: 5
 Timid Nature
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Thunder Shock
 - Astonish
 - Double Team
@@ -438,6 +469,7 @@ Jolly Nature
 Ball: Sport Ball
 =Met_Location=44
 .Version=44
+~=Generation=8
 - Flail
 - Aqua Jet
 - Bite
@@ -453,6 +485,7 @@ Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Taunt
 - Bite
 - Incinerate
@@ -468,6 +501,7 @@ Ball: Cherish Ball
 Language: Korean
 =Met_Location=40039
 .Version=44
+~=Generation=8
 - Clear Smog
 - Spore
 - Protect
@@ -483,6 +517,7 @@ Language: English
 =OT_Name=Regina
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Endure
 - Mud Shot
 - Revenge
@@ -497,6 +532,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Sucker Punch
 - Metal Sound
 - Revenge
@@ -511,6 +547,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40001
 .Version=44
+~=Generation=8
 - Techno Blast
 - X-Scissor
 - Metal Claw
@@ -538,6 +575,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40001
 .Version=44
+~=Generation=8
 - Steam Eruption
 - Flare Blitz
 - Incinerate
@@ -552,6 +590,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Leaf Blade
 - Defog
 - Synthesis
@@ -566,6 +605,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=44
+~=Generation=8
 - Beat Up
 - Scary Face
 - Take Down
@@ -581,6 +621,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=178
 .Version=45
+~=Generation=8
 - Shadow Ball
 - Earth Power
 - Shore Up
@@ -595,6 +636,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40001
 .Version=44
+~=Generation=8
 - Spectral Thief
 - Drain Punch
 - Force Palm
@@ -608,6 +650,7 @@ Brave Nature
 Ball: Cherish Ball
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Double Iron Bash
 - Hyper Beam
 - Dynamic Punch
@@ -622,6 +665,7 @@ Shiny: Square
 Jolly Nature
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Iron Head
 - Pyro Ball
 - Sucker Punch
@@ -636,6 +680,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=30
 .Version=45
+~=Generation=8
 - Flame Charge
 - Rock Polish
 - Rapid Spin
@@ -650,6 +695,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=188
 .Version=44
+~=Generation=8
 - Withdraw
 - Astonish
 
@@ -662,6 +708,7 @@ Rash Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=44
+~=Generation=8
 - Overdrive
 - Sludge Wave
 - Boomburst
@@ -688,6 +735,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=45
+~=Generation=8
 - Torment
 - Sucker Punch
 - Swagger
@@ -702,6 +750,7 @@ Gigantamax: Yes
 Modest Nature
 =Met_Location=40012
 .Version=44
+~=Generation=8
 - Dazzling Gleam
 - Recover
 - Misty Terrain
@@ -716,6 +765,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=162
 .Version=44
+~=Generation=8
 - Freeze-Dry
 - Crunch
 - Bite
@@ -730,6 +780,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40006
 .Version=45
+~=Generation=8
 - Close Combat
 - Power Whip
 - Swagger
@@ -743,6 +794,7 @@ Sassy Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=45
+~=Generation=8
 - Close Combat
 - Power Whip
 - Swagger
@@ -756,6 +808,7 @@ Sassy Nature
 Ball: Cherish Ball
 =Met_Location=40006
 .Version=45
+~=Generation=8
 - Close Combat
 - Power Whip
 - Swagger
@@ -770,6 +823,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40006
 .Version=44
+~=Generation=8
 - Jungle Healing
 - Hammer Arm
 - Power Whip

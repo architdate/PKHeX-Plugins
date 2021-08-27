@@ -5,6 +5,7 @@ Ability: Chlorophyll
 Shiny: Yes
 Bold Nature
 .Version=31
+~=Generation=7
 - Giga Drain
 - Sludge Bomb
 - Synthesis
@@ -18,6 +19,7 @@ Adamant Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=30
+~=Generation=7
 - Dragon Dance
 - Flare Blitz
 - Fly
@@ -29,6 +31,7 @@ Ability: Blaze
 Shiny: Yes
 Adamant Nature
 .Version=32
+~=Generation=7
 - Flame Charge
 - Swords Dance
 - Outrage
@@ -43,6 +46,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=8
 .Version=31
+~=Generation=7
 - Tackle
 - String Shot
 
@@ -56,6 +60,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=8
 .Version=31
+~=Generation=7
 - Air Slash
 - Bug Buzz
 - Quiver Dance
@@ -67,6 +72,7 @@ EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Hustle
 Adamant Nature
 .Version=31
+~=Generation=7
 - Swords Dance
 - Sucker Punch
 - Crunch
@@ -82,6 +88,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=12
 .Version=31
+~=Generation=7
 - Sucker Punch
 - Double-Edge
 - Super Fang
@@ -94,6 +101,7 @@ Ability: Intimidate
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Gunk Shot
 - Sucker Punch
 - Earthquake
@@ -108,6 +116,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40001
 .Version=33
+~=Generation=7
 - Bestow
 - Hold Hands
 - Return
@@ -122,6 +131,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40001
 .Version=30
+~=Generation=7
 - Psychic
 - Hold Hands
 - Protect
@@ -135,6 +145,7 @@ Level: 59
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Thunderbolt
 - Hidden Power [Ice]
 - Psychic
@@ -147,6 +158,7 @@ Ability: Slush Rush
 Level: 51
 Adamant Nature
 .Version=31
+~=Generation=7
 - Earthquake
 - Icicle Spear
 - Iron Head
@@ -159,6 +171,7 @@ Ability: Sheer Force
 Shiny: Yes
 Timid Nature
 .Version=31
+~=Generation=7
 - Ice Beam
 - Flamethrower
 - Earth Power
@@ -171,6 +184,7 @@ Ability: Friend Guard
 Level: 3
 Bold Nature
 .Version=30
+~=Generation=7
 - Pound
 - Charm
 - Heal Pulse
@@ -180,6 +194,7 @@ EVs: 252 HP / 252 Def / 6 SpD
 Ability: Unaware
 Calm Nature
 .Version=31
+~=Generation=7
 - Moonblast
 - Calm Mind
 - Wish
@@ -194,6 +209,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40011
 .Version=30
+~=Generation=7
 - Powder Snow
 
 Ninetales (F) @ Heat Rock
@@ -203,6 +219,7 @@ Ability: Drought
 Shiny: Yes
 Timid Nature
 .Version=31
+~=Generation=7
 - Nasty Plot
 - Dark Pulse
 - Solar Beam
@@ -215,6 +232,7 @@ Ability: Competitive
 Level: 7
 Modest Nature
 .Version=30
+~=Generation=7
 - Sing
 - Hyper Voice
 - Perish Song
@@ -228,6 +246,7 @@ Level: 57
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Sleep Powder
 - Quiver Dance
 - Sludge Bomb
@@ -241,6 +260,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=34
 .Version=30
+~=Generation=7
 - Metal Claw
 - Growl
 - Astonish
@@ -253,6 +273,7 @@ Ability: Arena Trap
 Level: 50
 Jolly Nature
 .Version=30
+~=Generation=7
 - Memento
 - Screech
 - Reversal
@@ -265,6 +286,7 @@ Ability: Technician
 Shiny: Yes
 Timid Nature
 .Version=32
+~=Generation=7
 - Hyper Voice
 - Hidden Power [Ghost]
 - Water Pulse
@@ -278,6 +300,7 @@ Level: 51
 Shiny: Yes
 Modest Nature
 .Version=30
+~=Generation=7
 - Psyshock
 - Ice Beam
 - Scald
@@ -291,6 +314,7 @@ Adamant Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=30
+~=Generation=7
 - Flare Blitz
 - Extreme Speed
 - Will-O-Wisp
@@ -303,6 +327,7 @@ Ability: Intimidate
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Close Combat
 - Flare Blitz
 - Snarl
@@ -315,6 +340,7 @@ Ability: Synchronize
 Level: 33
 Adamant Nature
 .Version=30
+~=Generation=7
 - Reflect
 - Thunder Wave
 - Disable
@@ -326,6 +352,7 @@ EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Magic Guard
 Timid Nature
 .Version=32
+~=Generation=7
 - Psychic
 - Shadow Ball
 - Hidden Power [Fire]
@@ -339,6 +366,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=32
+~=Generation=7
 - Smack Down
 - Thunder Punch
 - Self-Destruct
@@ -351,6 +379,7 @@ Ability: Galvanize
 Level: 55
 Adamant Nature
 .Version=31
+~=Generation=7
 - Return
 - Earthquake
 - Explosion
@@ -363,6 +392,7 @@ Ability: Flash Fire
 Shiny: Yes
 Jolly Nature
 .Version=32
+~=Generation=7
 - Flare Blitz
 - High Horsepower
 - Wild Charge
@@ -376,6 +406,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=20
 .Version=30
+~=Generation=7
 - Tackle
 - Supersonic
 - Thunder Shock
@@ -387,6 +418,7 @@ EVs: 6 Def / 252 SpA / 252 Spe
 Ability: Magnet Pull
 Timid Nature
 .Version=30
+~=Generation=7
 - Thunderbolt
 - Flash Cannon
 - Hidden Power [Fire]
@@ -400,6 +432,7 @@ Level: 50
 Shiny: Yes
 Adamant Nature
 .Version=32
+~=Generation=7
 - Gunk Shot
 - Ice Punch
 - Fire Punch
@@ -413,6 +446,7 @@ Level: 51
 Shiny: Yes
 Jolly Nature
 .Version=30
+~=Generation=7
 - Shell Smash
 - Rock Blast
 - Explosion
@@ -426,6 +460,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=38
 .Version=32
+~=Generation=7
 - Hypnosis
 - Lick
 - Spite
@@ -438,6 +473,7 @@ Ability: Cursed Body
 Shiny: Yes
 Timid Nature
 .Version=31
+~=Generation=7
 - Taunt
 - Destiny Bond
 - Focus Blast
@@ -450,6 +486,7 @@ Ability: Harvest
 Level: 54
 Bold Nature
 .Version=31
+~=Generation=7
 - Hypnosis
 - Skill Swap
 - Extrasensory
@@ -461,6 +498,7 @@ Ability: Harvest
 Shiny: Yes
 Bold Nature
 .Version=30
+~=Generation=7
 - Sleep Powder
 - Bestow
 - Skill Swap
@@ -474,6 +512,7 @@ Modest Nature
 Ball: Cherish Ball
 =Met_Location=40026
 .Version=31
+~=Generation=7
 - Power Swap
 - Celebrate
 - Leaf Storm
@@ -484,6 +523,7 @@ EVs: 4 HP / 252 Atk / 252 Spe
 Ability: Lightning Rod
 Adamant Nature
 .Version=30
+~=Generation=7
 - False Swipe
 - Shadow Bone
 - Flame Charge
@@ -499,6 +539,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=82
 .Version=31
+~=Generation=7
 - Tail Whip
 - Stomping Tantrum
 - Thrash
@@ -511,6 +552,7 @@ Ability: Inner Focus
 Level: 21
 Adamant Nature
 .Version=30
+~=Generation=7
 - Rapid Spin
 - Pursuit
 - Helping Hand
@@ -523,6 +565,7 @@ Ability: Scrappy
 Level: 74
 Adamant Nature
 .Version=30
+~=Generation=7
 - Fake Out
 - Dizzy Punch
 - Earthquake
@@ -535,6 +578,7 @@ Ability: Natural Cure
 Level: 61
 Timid Nature
 .Version=31
+~=Generation=7
 - Toxic
 - Recover
 - Rapid Spin
@@ -548,6 +592,7 @@ Adamant Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=31
+~=Generation=7
 - Dragon Dance
 - Earthquake
 - Waterfall
@@ -559,6 +604,7 @@ Ability: Intimidate
 Shiny: Yes
 Jolly Nature
 .Version=30
+~=Generation=7
 - Dragon Dance
 - Crunch
 - Earthquake
@@ -573,6 +619,7 @@ Ball: Master Ball
 Language: Japanese
 =Met_Location=136
 .Version=31
+~=Generation=7
 - Transform
 
 Vaporeon (M) @ Choice Specs
@@ -583,6 +630,7 @@ Level: 60
 Shiny: Yes
 Modest Nature
 .Version=30
+~=Generation=7
 - Shadow Ball
 - Ice Beam
 - Scald
@@ -597,6 +645,7 @@ Shiny: Yes
 Timid Nature
 Language: Japanese
 .Version=31
+~=Generation=7
 - Helping Hand
 - Baton Pass
 - Trump Card
@@ -611,6 +660,7 @@ Shiny: Yes
 Jolly Nature
 =Met_Level=1
 .Version=30
+~=Generation=7
 - Bite
 - Flare Blitz
 - Lava Plume
@@ -622,6 +672,7 @@ Ability: Swift Swim
 Level: 60
 Adamant Nature
 .Version=30
+~=Generation=7
 - Swords Dance
 - Knock Off
 - Waterfall
@@ -636,6 +687,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Ancient Power
 - Freeze-Dry
 - Reflect
@@ -647,6 +699,7 @@ Ability: Multiscale
 Level: 58
 Adamant Nature
 .Version=31
+~=Generation=7
 - Dragon Claw
 - Earthquake
 - Dragon Dance
@@ -658,6 +711,7 @@ Ability: Sheer Force
 Shiny: Yes
 Jolly Nature
 .Version=30
+~=Generation=7
 - Swords Dance
 - Ice Punch
 - Crunch
@@ -669,6 +723,7 @@ Ability: Tinted Lens
 Level: 51
 Modest Nature
 .Version=31
+~=Generation=7
 - Shadow Ball
 - Psychic
 - Moonblast
@@ -680,6 +735,7 @@ Ability: Insomnia
 Shiny: Yes
 Adamant Nature
 .Version=31
+~=Generation=7
 - Toxic Spikes
 - Sticky Web
 - Sucker Punch
@@ -692,6 +748,7 @@ Ability: Infiltrator
 Level: 54
 Jolly Nature
 .Version=31
+~=Generation=7
 - Defog
 - Roost
 - U-turn
@@ -704,6 +761,7 @@ Ability: Super Luck
 Level: 6
 Bold Nature
 .Version=30
+~=Generation=7
 - Ancient Power
 - Stored Power
 - Mirror Move
@@ -716,6 +774,7 @@ Ability: Magic Bounce
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Psyshock
 - Grass Knot
 - Shadow Ball
@@ -729,6 +788,7 @@ Level: 50
 Shiny: Yes
 Adamant Nature
 .Version=32
+~=Generation=7
 - Play Rough
 - Belly Drum
 - Aqua Jet
@@ -742,6 +802,7 @@ Level: 53
 Shiny: Yes
 Jolly Nature
 .Version=31
+~=Generation=7
 - Swords Dance
 - Sleep Powder
 - Acrobatics
@@ -755,6 +816,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Rain Dance
 - Mist
 - Haze
@@ -767,6 +829,7 @@ Ability: Magic Bounce
 Level: 68
 Bold Nature
 .Version=30
+~=Generation=7
 - Psychic
 - Baby-Doll Eyes
 - Calm Mind
@@ -781,6 +844,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40010
 .Version=31
+~=Generation=7
 - Snarl
 - Toxic
 - Protect
@@ -793,6 +857,7 @@ Ability: Synchronize
 Shiny: Yes
 Calm Nature
 .Version=33
+~=Generation=7
 - Wish
 - Protect
 - Heal Bell
@@ -806,6 +871,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=156
 .Version=32
+~=Generation=7
 - Shadow Ball
 - Perish Song
 - Grudge
@@ -820,6 +886,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=32
+~=Generation=7
 - Take Down
 - Rapid Spin
 - Bide
@@ -832,6 +899,7 @@ Ability: Sturdy
 Shiny: Yes
 Adamant Nature
 .Version=32
+~=Generation=7
 - Stealth Rock
 - Heavy Slam
 - Earthquake
@@ -844,6 +912,7 @@ Ability: Technician
 Shiny: Yes
 Adamant Nature
 .Version=31
+~=Generation=7
 - Bullet Punch
 - Roost
 - Swords Dance
@@ -857,6 +926,7 @@ Level: 50
 Shiny: Yes
 Jolly Nature
 .Version=32
+~=Generation=7
 - Swords Dance
 - Close Combat
 - Crunch
@@ -870,6 +940,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=136
 .Version=30
+~=Generation=7
 - Air Cutter
 - Fury Attack
 - Feint
@@ -882,6 +953,7 @@ Ability: Flash Fire
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Nasty Plot
 - Sludge Bomb
 - Dark Pulse
@@ -894,6 +966,7 @@ Ability: Swift Swim
 Shiny: Yes
 Modest Nature
 .Version=31
+~=Generation=7
 - Surf
 - Hydro Pump
 - Draco Meteor
@@ -905,6 +978,7 @@ EVs: 244 HP / 76 Def / 190 SpD
 Ability: Download
 Sassy Nature
 .Version=30
+~=Generation=7
 - Trick Room
 - Ice Beam
 - Thunderbolt
@@ -917,6 +991,7 @@ Ability: Own Tempo
 Level: 9
 Adamant Nature
 .Version=31
+~=Generation=7
 - Sketch
 
 What The Egg (Blissey) (F) @ Shed Shell
@@ -926,6 +1001,7 @@ Ability: Natural Cure
 Level: 51
 Calm Nature
 .Version=32
+~=Generation=7
 - Soft-Boiled
 - Toxic
 - Confide
@@ -940,6 +1016,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=166
 .Version=33
+~=Generation=7
 - Fling
 - Heal Pulse
 - Egg Bomb
@@ -951,6 +1028,7 @@ Adamant Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=32
+~=Generation=7
 - Sacred Fire
 - Stone Edge
 - Iron Head
@@ -963,6 +1041,7 @@ Ability: Sand Stream
 Shiny: Yes
 Jolly Nature
 .Version=30
+~=Generation=7
 - Outrage
 - Dragon Dance
 - Pursuit
@@ -976,6 +1055,7 @@ Level: 51
 Shiny: Yes
 Adamant Nature
 .Version=31
+~=Generation=7
 - Swords Dance
 - Blaze Kick
 - Low Kick
@@ -988,6 +1068,7 @@ Ability: Torrent
 Shiny: Yes
 Adamant Nature
 .Version=32
+~=Generation=7
 - Waterfall
 - Ice Punch
 - Earthquake
@@ -999,6 +1080,7 @@ Ability: Moxie
 Shiny: Yes
 Jolly Nature
 .Version=30
+~=Generation=7
 - Crunch
 - Sucker Punch
 - Fire Fang
@@ -1011,6 +1093,7 @@ Ability: Shed Skin
 Level: 7
 Timid Nature
 .Version=32
+~=Generation=7
 - Tackle
 - String Shot
 - Poison Sting
@@ -1023,6 +1106,7 @@ Ability: Rivalry
 Level: 10
 Timid Nature
 .Version=32
+~=Generation=7
 - Tackle
 - String Shot
 - Poison Sting
@@ -1035,6 +1119,7 @@ Ability: Shed Skin
 Level: 7
 Bold Nature
 .Version=32
+~=Generation=7
 - Tackle
 - String Shot
 - Poison Sting
@@ -1047,6 +1132,7 @@ Ability: Compound Eyes
 Level: 10
 Bold Nature
 .Version=32
+~=Generation=7
 - Tackle
 - String Shot
 - Poison Sting
@@ -1061,6 +1147,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Feint Attack
 - Leaf Blade
 - Swagger
@@ -1073,6 +1160,7 @@ Ability: Scrappy
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Defog
 - U-turn
 - Hurricane
@@ -1086,6 +1174,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=6
 .Version=30
+~=Generation=7
 - Growl
 - Water Gun
 - Supersonic
@@ -1097,6 +1186,7 @@ Ability: Drizzle
 Level: 50
 Bold Nature
 .Version=32
+~=Generation=7
 - Scald
 - Roost
 - U-turn
@@ -1110,6 +1200,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=116
 .Version=31
+~=Generation=7
 - Scald
 - U-turn
 - Hurricane
@@ -1121,6 +1212,7 @@ Ability: Truant
 Level: 57
 Adamant Nature
 .Version=31
+~=Generation=7
 - Night Slash
 - Hammer Arm
 - Earthquake
@@ -1133,6 +1225,7 @@ Level: 20
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Final Gambit
 - Bug Bite
 - Night Slash
@@ -1145,6 +1238,7 @@ Level: 20
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Final Gambit
 - Bug Bite
 - Night Slash
@@ -1157,6 +1251,7 @@ Ability: Lightning Rod
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Hidden Power [Ice]
 - Flamethrower
 - Volt Switch
@@ -1169,6 +1264,7 @@ Ability: Speed Boost
 Level: 51
 Adamant Nature
 .Version=31
+~=Generation=7
 - Protect
 - Psychic Fangs
 - Waterfall
@@ -1181,6 +1277,7 @@ Ability: Leaf Guard
 Level: 2
 Quiet Nature
 .Version=30
+~=Generation=7
 - Spikes
 - Sleep Powder
 - Extrasensory
@@ -1192,6 +1289,7 @@ Level: 40
 Shiny: Yes
 Naughty Nature
 .Version=30
+~=Generation=7
 - Tickle
 - Sleep Talk
 - Snore
@@ -1204,6 +1302,7 @@ Ability: Solid Rock
 Shiny: Yes
 Quiet Nature
 .Version=30
+~=Generation=7
 - Fire Blast
 - Hidden Power [Grass]
 - Ancient Power
@@ -1217,6 +1316,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=124
 .Version=32
+~=Generation=7
 - Crunch
 - Earth Power
 - Feint
@@ -1229,6 +1329,7 @@ Ability: Levitate
 Level: 52
 Adamant Nature
 .Version=31
+~=Generation=7
 - Dragon Dance
 - Stone Edge
 - Dragon Claw
@@ -1242,6 +1343,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Dragon Pulse
 - Perish Song
 - Moonblast
@@ -1256,6 +1358,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40048
 .Version=31
+~=Generation=7
 - Cosmic Power
 - Hidden Power [Dragon]
 - Moonblast
@@ -1269,6 +1372,7 @@ Level: 50
 Shiny: Yes
 Jolly Nature
 .Version=32
+~=Generation=7
 - Aqua Jet
 - Knock Off
 - Crabhammer
@@ -1281,6 +1385,7 @@ Ability: Battle Armor
 Level: 53
 Adamant Nature
 .Version=31
+~=Generation=7
 - Swords Dance
 - Knock Off
 - Earthquake
@@ -1294,6 +1399,7 @@ Level: 50
 Shiny: Yes
 Bold Nature
 .Version=30
+~=Generation=7
 - Scald
 - Ice Beam
 - Recover
@@ -1307,6 +1413,7 @@ Level: 50
 Shiny: Yes
 Naive Nature
 .Version=31
+~=Generation=7
 - Freeze-Dry
 - Hidden Power [Fire]
 - Return
@@ -1321,6 +1428,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=10
 .Version=30
+~=Generation=7
 - Rage
 - Ember
 - Leer
@@ -1332,6 +1440,7 @@ EVs: 252 Atk / 252 Spe
 Ability: Moxie
 Jolly Nature
 .Version=31
+~=Generation=7
 - Fly
 - Earthquake
 - Dragon Claw
@@ -1344,6 +1453,7 @@ Ability: Light Metal
 Level: 9
 Adamant Nature
 .Version=30
+~=Generation=7
 - Take Down
 
 Summit (Metagross) @ Metagrossite
@@ -1353,6 +1463,7 @@ Ability: Clear Body
 Shiny: Yes
 Jolly Nature
 .Version=33
+~=Generation=7
 - Iron Head
 - Zen Headbutt
 - Ice Punch
@@ -1365,6 +1476,7 @@ Docile Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=32
+~=Generation=7
 - Mist Ball
 - Psychic
 - Draco Meteor
@@ -1377,6 +1489,7 @@ Serious Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=33
+~=Generation=7
 - Luster Purge
 - Psychic
 - Draco Meteor
@@ -1390,6 +1503,7 @@ Modest Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=30
+~=Generation=7
 - Scald
 - Protect
 - Thunder
@@ -1402,6 +1516,7 @@ Adamant Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=33
+~=Generation=7
 - Precipice Blades
 - Earth Power
 - Fire Punch
@@ -1414,6 +1529,7 @@ Ability: Iron Fist
 Level: 50
 Jolly Nature
 .Version=31
+~=Generation=7
 - Mach Punch
 - Swords Dance
 - Fire Punch
@@ -1426,6 +1542,7 @@ Ability: Torrent
 Shiny: Yes
 Calm Nature
 .Version=33
+~=Generation=7
 - Scald
 - Defog
 - Toxic
@@ -1439,6 +1556,7 @@ Level: 50
 Shiny: Yes
 Impish Nature
 .Version=32
+~=Generation=7
 - Double-Edge
 - Close Combat
 - Brave Bird
@@ -1452,6 +1570,7 @@ Level: 50
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Sticky Web
 - Fell Stinger
 - X-Scissor
@@ -1463,6 +1582,7 @@ EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Technician
 Timid Nature
 .Version=30
+~=Generation=7
 - Spikes
 - Leaf Storm
 - Sludge Bomb
@@ -1476,6 +1596,7 @@ Level: 50
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Air Slash
 - Quiver Dance
 - Bug Buzz
@@ -1489,6 +1610,7 @@ Level: 51
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Destiny Bond
 - Sludge Bomb
 - Air Slash
@@ -1501,6 +1623,7 @@ Level: 50
 Shiny: Yes
 Sassy Nature
 .Version=32
+~=Generation=7
 - Earthquake
 - Toxic
 - Scald
@@ -1513,6 +1636,7 @@ Ability: Unburden
 Level: 50
 Timid Nature
 .Version=30
+~=Generation=7
 - Shadow Ball
 - Minimize
 - Baton Pass
@@ -1527,6 +1651,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=8
 .Version=33
+~=Generation=7
 - Return
 - Splash
 - Jump Kick
@@ -1539,6 +1664,7 @@ Ability: Levitate
 Level: 54
 Timid Nature
 .Version=31
+~=Generation=7
 - Taunt
 - Nasty Plot
 - Dazzling Gleam
@@ -1552,6 +1678,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=8
 .Version=30
+~=Generation=7
 - Pound
 - Charm
 - Copycat
@@ -1562,6 +1689,7 @@ EVs: 24 HP / 232 SpA / 252 Spe
 Ability: Rough Skin
 Mild Nature
 .Version=33
+~=Generation=7
 - Stealth Rock
 - Earthquake
 - Draco Meteor
@@ -1575,6 +1703,7 @@ Careful Nature
 Ball: Cherish Ball
 =Met_Location=40051
 .Version=30
+~=Generation=7
 - Tackle
 - Metronome
 - Hold Back
@@ -1587,6 +1716,7 @@ Ability: Justified
 Level: 10
 Adamant Nature
 .Version=30
+~=Generation=7
 - Crunch
 - Vacuum Wave
 - Bullet Punch
@@ -1599,6 +1729,7 @@ Ability: Snow Warning
 Shiny: Yes
 Brave Nature
 .Version=30
+~=Generation=7
 - Swords Dance
 - Earthquake
 - Ice Shard
@@ -1611,6 +1742,7 @@ Ability: Pressure
 Level: 51
 Jolly Nature
 .Version=31
+~=Generation=7
 - Icicle Crash
 - Taunt
 - Protect
@@ -1625,6 +1757,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=20
 .Version=30
+~=Generation=7
 - Discharge
 - Tri Attack
 - Volt Switch
@@ -1637,6 +1770,7 @@ Ability: Magnet Pull
 Shiny: Yes
 Timid Nature
 .Version=33
+~=Generation=7
 - Thunderbolt
 - Hidden Power [Fire]
 - Flash Cannon
@@ -1649,6 +1783,7 @@ Ability: Regenerator
 Shiny: Yes
 Sassy Nature
 .Version=33
+~=Generation=7
 - Knock Off
 - Giga Drain
 - Earthquake
@@ -1662,6 +1797,7 @@ Level: 31
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Fire Blast
 - Leer
 - Hidden Power [Grass]
@@ -1673,6 +1809,7 @@ Ability: Serene Grace
 Level: 53
 Modest Nature
 .Version=31
+~=Generation=7
 - Aura Sphere
 - Fire Blast
 - Air Slash
@@ -1686,6 +1823,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Screech
 - U-turn
 - Air Slash
@@ -1698,6 +1836,7 @@ Ability: Leaf Guard
 Level: 5
 Jolly Nature
 .Version=31
+~=Generation=7
 - Baton Pass
 - Swords Dance
 - Synthesis
@@ -1710,6 +1849,7 @@ Ability: Ice Body
 Shiny: Yes
 Modest Nature
 .Version=30
+~=Generation=7
 - Baton Pass
 - Hidden Power [Fighting]
 - Shadow Ball
@@ -1722,6 +1862,7 @@ Ability: Poison Heal
 Shiny: Yes
 Jolly Nature
 .Version=30
+~=Generation=7
 - Earthquake
 - Swords Dance
 - Roost
@@ -1733,6 +1874,7 @@ EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Thick Fat
 Jolly Nature
 .Version=33
+~=Generation=7
 - Ice Shard
 - Earthquake
 - Icicle Crash
@@ -1746,6 +1888,7 @@ Level: 50
 Shiny: Yes
 Timid Nature
 .Version=32
+~=Generation=7
 - Shadow Ball
 - Ice Beam
 - Thunderbolt
@@ -1759,6 +1902,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Extrasensory
 - Charm
 - Future Sight
@@ -1773,6 +1917,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=33
+~=Generation=7
 - Extrasensory
 - Nasty Plot
 - Uproar
@@ -1786,6 +1931,7 @@ Modest Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=33
+~=Generation=7
 - Roar of Time
 - Aura Sphere
 - Draco Meteor
@@ -1798,6 +1944,7 @@ Timid Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=32
+~=Generation=7
 - Spacial Rend
 - Aura Sphere
 - Draco Meteor
@@ -1810,6 +1957,7 @@ Hardy Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=33
+~=Generation=7
 - Magma Storm
 - Heat Wave
 - Earth Power
@@ -1821,6 +1969,7 @@ Bold Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=32
+~=Generation=7
 - Crush Grip
 - Drain Punch
 - Zen Headbutt
@@ -1834,6 +1983,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=33
+~=Generation=7
 - Shadow Force
 - Aura Sphere
 - Earth Power
@@ -1848,6 +1998,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40010
 .Version=32
+~=Generation=7
 - Return
 - Growth
 - Seed Flare
@@ -1861,6 +2012,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40001
 .Version=32
+~=Generation=7
 - Judgment
 - Extreme Speed
 - Recover
@@ -1874,6 +2026,7 @@ Level: 50
 Shiny: Yes
 Timid Nature
 .Version=31
+~=Generation=7
 - Leaf Storm
 - Giga Drain
 - Substitute
@@ -1886,6 +2039,7 @@ Ability: Thick Fat
 Level: 8
 Adamant Nature
 .Version=30
+~=Generation=7
 - Heavy Slam
 - Sucker Punch
 - Thrash
@@ -1898,6 +2052,7 @@ Ability: Reckless
 Level: 50
 Adamant Nature
 .Version=31
+~=Generation=7
 - Flare Blitz
 - Sucker Punch
 - Superpower
@@ -1911,6 +2066,7 @@ Level: 51
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Encore
 - Copycat
 - Nasty Plot
@@ -1924,6 +2080,7 @@ Level: 54
 Shiny: Yes
 Bold Nature
 .Version=30
+~=Generation=7
 - Moonlight
 - Calm Mind
 - Dazzling Gleam
@@ -1936,6 +2093,7 @@ Ability: Super Luck
 Level: 60
 Adamant Nature
 .Version=31
+~=Generation=7
 - Tailwind
 - Night Slash
 - Aerial Ace
@@ -1949,6 +2107,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=34
 .Version=30
+~=Generation=7
 - Tackle
 - Harden
 - Sand Attack
@@ -1960,6 +2119,7 @@ Ability: Sand Stream
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Protect
 - Rock Slide
 - Stone Edge
@@ -1972,6 +2132,7 @@ Ability: Regenerator
 Level: 53
 Bold Nature
 .Version=31
+~=Generation=7
 - Wish
 - Protect
 - Heal Bell
@@ -1984,6 +2145,7 @@ Ability: Speed Boost
 Level: 50
 Jolly Nature
 .Version=31
+~=Generation=7
 - Swords Dance
 - Megahorn
 - Earthquake
@@ -1996,6 +2158,7 @@ Ability: Prankster
 Level: 55
 Timid Nature
 .Version=32
+~=Generation=7
 - Helping Hand
 - Endeavor
 - Encore
@@ -2008,6 +2171,7 @@ Ability: Chlorophyll
 Shiny: Yes
 Timid Nature
 .Version=31
+~=Generation=7
 - Quiver Dance
 - Sleep Powder
 - Hidden Power [Fire]
@@ -2021,6 +2185,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=124
 .Version=32
+~=Generation=7
 - Embargo
 - Swagger
 - Crunch
@@ -2036,6 +2201,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=78
 .Version=30
+~=Generation=7
 - Earthquake
 - Crunch
 - Taunt
@@ -2047,6 +2213,7 @@ Ability: Intimidate
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Crunch
 - Rock Slide
 - Superpower
@@ -2060,6 +2227,7 @@ Level: 57
 Shiny: Yes
 Jolly Nature
 .Version=30
+~=Generation=7
 - U-turn
 - Rock Slide
 - Superpower
@@ -2072,6 +2240,7 @@ Ability: Solid Rock
 Level: 51
 Adamant Nature
 .Version=31
+~=Generation=7
 - Knock Off
 - Aqua Jet
 - Liquidation
@@ -2083,6 +2252,7 @@ Ability: Illusion
 Shiny: Yes
 Jolly Nature
 .Version=30
+~=Generation=7
 - Knock Off
 - Low Kick
 - Sucker Punch
@@ -2095,6 +2265,7 @@ Ability: Magic Guard
 Shiny: Yes
 Bold Nature
 .Version=32
+~=Generation=7
 - Calm Mind
 - Acid Armor
 - Psychic
@@ -2108,6 +2279,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Rain Dance
 - Tailwind
 - Brave Bird
@@ -2120,6 +2292,7 @@ Ability: Overcoat
 Level: 51
 Adamant Nature
 .Version=31
+~=Generation=7
 - Pursuit
 - Knock Off
 - Iron Head
@@ -2133,6 +2306,7 @@ Level: 50
 Shiny: Yes
 Bold Nature
 .Version=31
+~=Generation=7
 - Sludge Bomb
 - Clear Smog
 - Hidden Power [Fire]
@@ -2146,6 +2320,7 @@ Level: 51
 Shiny: Yes
 Bold Nature
 .Version=30
+~=Generation=7
 - Taunt
 - Will-O-Wisp
 - Recover
@@ -2158,6 +2333,7 @@ Ability: Iron Barbs
 Shiny: Yes
 Sassy Nature
 .Version=31
+~=Generation=7
 - Leech Seed
 - Gyro Ball
 - Power Whip
@@ -2171,6 +2347,7 @@ Level: 54
 Shiny: Yes
 Jolly Nature
 .Version=31
+~=Generation=7
 - Shift Gear
 - Return
 - Wild Charge
@@ -2182,6 +2359,7 @@ Ability: Unnerve
 Shiny: Yes
 Adamant Nature
 .Version=32
+~=Generation=7
 - Taunt
 - Night Slash
 - False Swipe
@@ -2194,6 +2372,7 @@ Ability: Slush Rush
 Level: 51
 Adamant Nature
 .Version=31
+~=Generation=7
 - Swords Dance
 - Stone Edge
 - Superpower
@@ -2205,6 +2384,7 @@ EVs: 2 Def / 252 SpA / 4 SpD / 252 Spe
 Ability: Sticky Hold
 Modest Nature
 .Version=31
+~=Generation=7
 - Hidden Power [Ground]
 - Sludge Bomb
 - Focus Blast
@@ -2218,6 +2398,7 @@ Level: 54
 Shiny: Yes
 Jolly Nature
 .Version=30
+~=Generation=7
 - Knock Off
 - U-turn
 - Poison Jab
@@ -2231,6 +2412,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=124
 .Version=32
+~=Generation=7
 - Iron Defense
 - Stomping Tantrum
 - Mega Punch
@@ -2243,6 +2425,7 @@ Ability: Defiant
 Shiny: Yes
 Adamant Nature
 .Version=33
+~=Generation=7
 - Iron Head
 - Sucker Punch
 - Knock Off
@@ -2257,6 +2440,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=10
 .Version=30
+~=Generation=7
 - Aerial Ace
 - Hone Claws
 - Fury Attack
@@ -2269,6 +2453,7 @@ Ability: Defiant
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Brave Bird
 - Return
 - U-turn
@@ -2280,6 +2465,7 @@ Ability: Levitate
 Shiny: Yes
 Hasty Nature
 .Version=32
+~=Generation=7
 - Draco Meteor
 - Dark Pulse
 - Superpower
@@ -2292,6 +2478,7 @@ Ability: Flame Body
 Shiny: Yes
 Modest Nature
 .Version=32
+~=Generation=7
 - Quiver Dance
 - Bug Buzz
 - Psychic
@@ -2306,6 +2493,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Sacred Sword
 - Swords Dance
 - Quick Attack
@@ -2318,6 +2506,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=33
+~=Generation=7
 - Close Combat
 - Stone Edge
 - Earthquake
@@ -2331,6 +2520,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Swords Dance
 - Leaf Blade
 - Close Combat
@@ -2343,6 +2533,7 @@ Docile Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=32
+~=Generation=7
 - Thunderbolt
 - Focus Blast
 - Grass Knot
@@ -2357,6 +2548,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Slash
 - Extrasensory
 - Fusion Flare
@@ -2369,6 +2561,7 @@ Ability: Bulletproof
 Shiny: Yes
 Impish Nature
 .Version=32
+~=Generation=7
 - Spikes
 - Wood Hammer
 - Drain Punch
@@ -2382,6 +2575,7 @@ Level: 52
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Calm Mind
 - Grass Knot
 - Psychic
@@ -2392,6 +2586,7 @@ EVs: 6 Atk / 252 SpA / 252 Spe
 Ability: Protean
 Hasty Nature
 .Version=32
+~=Generation=7
 - Low Kick
 - Ice Beam
 - Grass Knot
@@ -2414,6 +2609,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=82
 .Version=30
+~=Generation=7
 - Roost
 - Aerial Ace
 - Swords Dance
@@ -2426,6 +2622,7 @@ Ability: Gale Wings
 Level: 51
 Jolly Nature
 .Version=30
+~=Generation=7
 - Swords Dance
 - Flame Charge
 - Flare Blitz
@@ -2440,6 +2637,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=20
 .Version=32
+~=Generation=7
 - Rage Powder
 - String Shot
 - Stun Spore
@@ -2453,6 +2651,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=20
 .Version=32
+~=Generation=7
 - Rage Powder
 - String Shot
 - Stun Spore
@@ -2466,6 +2665,7 @@ Level: 50
 Shiny: Yes
 Timid Nature
 .Version=33
+~=Generation=7
 - Sleep Powder
 - Energy Ball
 - Quiver Dance
@@ -2479,6 +2679,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=33
+~=Generation=7
 - Tackle
 - Vine Whip
 - Fairy Wind
@@ -2490,6 +2691,7 @@ Ability: Sap Sipper
 Shiny: Yes
 Careful Nature
 .Version=31
+~=Generation=7
 - Bulk Up
 - Milk Drink
 - Earthquake
@@ -2501,6 +2703,7 @@ Ability: Iron Fist
 Shiny: Yes
 Adamant Nature
 .Version=32
+~=Generation=7
 - Knock Off
 - Gunk Shot
 - Bullet Punch
@@ -2513,6 +2716,7 @@ Ability: Prankster
 Level: 55
 Calm Nature
 .Version=30
+~=Generation=7
 - Thunder Wave
 - Yawn
 - Psychic
@@ -2524,6 +2728,7 @@ Ability: No Guard
 Shiny: Yes
 Adamant Nature
 .Version=31
+~=Generation=7
 - Swords Dance
 - Sacred Sword
 - Shadow Sneak
@@ -2535,6 +2740,7 @@ EVs: 252 HP / 252 SpA / 4 SpD
 Ability: Stance Change
 Quiet Nature
 .Version=31
+~=Generation=7
 - Shadow Ball
 - Flash Cannon
 - King’s Shield
@@ -2548,6 +2754,7 @@ Level: 54
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Aromatherapy
 - Belly Drum
 - Return
@@ -2561,6 +2768,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=32
+~=Generation=7
 - Night Slash
 - Razor Shell
 - Cross Chop
@@ -2573,6 +2781,7 @@ Ability: Adaptability
 Level: 54
 Modest Nature
 .Version=31
+~=Generation=7
 - Scald
 - Focus Blast
 - Sludge Wave
@@ -2586,6 +2795,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=162
 .Version=32
+~=Generation=7
 - Swords Dance
 - Crabhammer
 - Water Pulse
@@ -2597,6 +2807,7 @@ Ability: Rock Head
 Shiny: Yes
 Jolly Nature
 .Version=30
+~=Generation=7
 - Dragon Dance
 - Fire Fang
 - Ice Fang
@@ -2609,6 +2820,7 @@ Ability: Sap Sipper
 Shiny: Yes
 Modest Nature
 .Version=31
+~=Generation=7
 - Muddy Water
 - Sludge Wave
 - Fire Blast
@@ -2622,6 +2834,7 @@ Level: 50
 Shiny: Yes
 Timid Nature
 .Version=30
+~=Generation=7
 - Super Fang
 - Air Slash
 - Shadow Ball
@@ -2634,6 +2847,7 @@ Bold Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=33
+~=Generation=7
 - Geomancy
 - Focus Blast
 - Grass Knot
@@ -2646,6 +2860,7 @@ Bold Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=32
+~=Generation=7
 - Oblivion Wing
 - Dark Pulse
 - Heat Wave
@@ -2658,6 +2873,7 @@ Jolly Nature
 =Met_Level=50
 =Met_Location=118
 .Version=31
+~=Generation=7
 - Extreme Speed
 - Thousand Arrows
 - Outrage
@@ -2671,6 +2887,7 @@ Careful Nature
 Language: Japanese
 =Met_Location=40085
 .Version=33
+~=Generation=7
 - Leaf Blade
 - Phantom Force
 - Shadow Sneak
@@ -2683,6 +2900,7 @@ Level: 52
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Swords Dance
 - Sucker Punch
 - Spirit Shackle
@@ -2696,6 +2914,7 @@ Adamant Nature
 Language: Japanese
 =Met_Location=40085
 .Version=33
+~=Generation=7
 - Fake Out
 - U-turn
 - Darkest Lariat
@@ -2708,6 +2927,7 @@ Ability: Intimidate
 Level: 52
 Careful Nature
 .Version=33
+~=Generation=7
 - Flare Blitz
 - U-turn
 - Roar
@@ -2722,6 +2942,7 @@ Modest Nature
 =Met_Level=5
 =Met_Location=24
 .Version=30
+~=Generation=7
 - Hyper Voice
 - Sparkling Aria
 - Aqua Jet
@@ -2734,6 +2955,7 @@ Ability: Torrent
 Shiny: Yes
 Bold Nature
 .Version=32
+~=Generation=7
 - Scald
 - Moonblast
 - Rest
@@ -2746,6 +2968,7 @@ Ability: Skill Link
 Level: 58
 Adamant Nature
 .Version=31
+~=Generation=7
 - Swords Dance
 - Rock Blast
 - Bullet Seed
@@ -2761,6 +2984,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=50
 .Version=31
+~=Generation=7
 - Beak Blast
 - Brick Break
 - Steel Wing
@@ -2773,6 +2997,7 @@ Ability: Adaptability
 Level: 51
 Adamant Nature
 .Version=31
+~=Generation=7
 - U-turn
 - Crunch
 - Earthquake
@@ -2788,6 +3013,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=12
 .Version=31
+~=Generation=7
 - Take Down
 - Odor Sleuth
 - Crunch
@@ -2800,6 +3026,7 @@ Ability: Levitate
 Level: 52
 Modest Nature
 .Version=31
+~=Generation=7
 - Energy Ball
 - Volt Switch
 - Thunderbolt
@@ -2813,6 +3040,7 @@ Quiet Nature
 =Met_Level=35
 =Met_Location=202
 .Version=32
+~=Generation=7
 - Spark
 - Acrobatics
 - Guillotine
@@ -2825,6 +3053,7 @@ Ability: Iron Fist
 Level: 51
 Adamant Nature
 .Version=31
+~=Generation=7
 - Earthquake
 - Power-Up Punch
 - Ice Hammer
@@ -2838,6 +3067,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=128
 .Version=30
+~=Generation=7
 - Double Slap
 - Teeter Dance
 - Roost
@@ -2850,6 +3080,7 @@ Ability: Shield Dust
 Level: 54
 Timid Nature
 .Version=31
+~=Generation=7
 - Baton Pass
 - Quiver Dance
 - Bug Buzz
@@ -2862,6 +3093,7 @@ Ability: Sand Rush
 Level: 51
 Jolly Nature
 .Version=30
+~=Generation=7
 - Rock Slide
 - Stone Edge
 - Accelerock
@@ -2875,6 +3107,7 @@ Adamant Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=30
+~=Generation=7
 - Stone Edge
 - Fire Fang
 - Sucker Punch
@@ -2888,6 +3121,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=56
 .Version=32
+~=Generation=7
 - Helping Hand
 - Feint Attack
 - Brine
@@ -2899,6 +3133,7 @@ Ability: Regenerator
 Level: 50
 Bold Nature
 .Version=31
+~=Generation=7
 - Haze
 - Toxic
 - Scald
@@ -2912,6 +3147,7 @@ Level: 50
 Shiny: Yes
 Adamant Nature
 .Version=30
+~=Generation=7
 - Rock Slide
 - Close Combat
 - Earthquake
@@ -2924,6 +3160,7 @@ Ability: Water Bubble
 Level: 50
 Adamant Nature
 .Version=30
+~=Generation=7
 - Crunch
 - Liquidation
 - Leech Life
@@ -2937,6 +3174,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=90
 .Version=30
+~=Generation=7
 - Leafage
 - Razor Leaf
 - Growth
@@ -2949,6 +3187,7 @@ Ability: Contrary
 Shiny: Yes
 Modest Nature
 .Version=30
+~=Generation=7
 - Defog
 - Synthesis
 - Hidden Power [Fire]
@@ -2961,6 +3200,7 @@ Adamant Nature
 =Met_Level=30
 =Met_Location=202
 .Version=32
+~=Generation=7
 - Growth
 - Ingrain
 - Leaf Blade
@@ -2974,6 +3214,7 @@ Level: 50
 Shiny: Yes
 Quiet Nature
 .Version=30
+~=Generation=7
 - Spore
 - Dream Eater
 - Dazzling Gleam
@@ -2985,6 +3226,7 @@ EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Corrosion
 Timid Nature
 .Version=31
+~=Generation=7
 - Hidden Power [Ice]
 - Flamethrower
 - Sludge Wave
@@ -2998,6 +3240,7 @@ Timid Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=30
+~=Generation=7
 - Fake Out
 - Toxic
 - Sludge Bomb
@@ -3010,6 +3253,7 @@ Ability: Fluffy
 Level: 60
 Jolly Nature
 .Version=31
+~=Generation=7
 - Swords Dance
 - Ice Punch
 - Return
@@ -3024,6 +3268,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40011
 .Version=31
+~=Generation=7
 - Magical Leaf
 - Double Slap
 - Sweet Scent
@@ -3035,6 +3280,7 @@ Ability: Queenly Majesty
 Level: 56
 Jolly Nature
 .Version=31
+~=Generation=7
 - U-turn
 - Play Rough
 - High Jump Kick
@@ -3048,6 +3294,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=58
 .Version=32
+~=Generation=7
 - Struggle Bug
 - Sand Attack
 
@@ -3058,6 +3305,7 @@ Ability: Emergency Exit
 Level: 51
 Adamant Nature
 .Version=31
+~=Generation=7
 - Aqua Jet
 - Leech Life
 - Liquidation
@@ -3069,6 +3317,7 @@ Ability: Water Compaction
 Shiny: Yes
 Bold Nature
 .Version=30
+~=Generation=7
 - Amnesia
 - Shore Up
 - Giga Drain
@@ -3082,6 +3331,7 @@ Adamant Nature
 =Met_Level=60
 =Met_Location=188
 .Version=32
+~=Generation=7
 - Metal Sound
 - Iron Head
 - Double Hit
@@ -3094,6 +3344,7 @@ Adamant Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=30
+~=Generation=7
 - Multi-Attack
 - Parting Shot
 - Punishment
@@ -3107,6 +3358,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=136
 .Version=32
+~=Generation=7
 - Swift
 - Ancient Power
 - Self-Destruct
@@ -3121,6 +3373,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40011
 .Version=30
+~=Generation=7
 - Flamethrower
 - Shell Trap
 - Dragon Tail
@@ -3134,6 +3387,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=174
 .Version=30
+~=Generation=7
 - Work Up
 - Sky Uppercut
 - Iron Defense
@@ -3145,6 +3399,7 @@ Ability: Soundproof
 Level: 83
 Hasty Nature
 .Version=32
+~=Generation=7
 - Poison Jab
 - Clanging Scales
 - Close Combat
@@ -3158,6 +3413,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=30
 .Version=32
+~=Generation=7
 - Nature’s Madness
 - Discharge
 - Agility
@@ -3171,6 +3427,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=32
+~=Generation=7
 - Nature’s Madness
 - Extrasensory
 - Flatter
@@ -3185,6 +3442,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=30
+~=Generation=7
 - Nature’s Madness
 - Zen Headbutt
 - Megahorn
@@ -3198,6 +3456,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=180
 .Version=30
+~=Generation=7
 - Moonblast
 - Muddy Water
 - Swagger
@@ -3212,6 +3471,7 @@ Adamant Nature
 =Met_Level=5
 =Met_Location=142
 .Version=30
+~=Generation=7
 - Splash
 - Teleport
 
@@ -3224,6 +3484,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=176
 .Version=30
+~=Generation=7
 - Sunsteel Strike
 - Crunch
 - Zen Headbutt
@@ -3236,6 +3497,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=178
 .Version=31
+~=Generation=7
 - Ice Beam
 - Focus Blast
 - Psyshock
@@ -3249,6 +3511,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=82
 .Version=30
+~=Generation=7
 - Stealth Rock
 - Power Gem
 - Sludge Wave
@@ -3261,6 +3524,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=30
+~=Generation=7
 - Ice Punch
 - Earthquake
 - Leech Life
@@ -3276,6 +3540,7 @@ Ball: Master Ball
 Language: Japanese
 =Met_Location=46
 .Version=31
+~=Generation=7
 - Triple Kick
 - Lunge
 - Bug Buzz
@@ -3289,6 +3554,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=90
 .Version=30
+~=Generation=7
 - Hypnosis
 - Discharge
 - Electric Terrain
@@ -3303,6 +3569,7 @@ Ball: Master Ball
 Language: Japanese
 =Met_Location=124
 .Version=31
+~=Generation=7
 - Autotomize
 - Seed Bomb
 - Skull Bash
@@ -3315,6 +3582,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=134
 .Version=30
+~=Generation=7
 - Leaf Blade
 - X-Scissor
 - Detect
@@ -3328,6 +3596,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=182
 .Version=30
+~=Generation=7
 - Dark Pulse
 - Draco Meteor
 - Sludge Bomb
@@ -3341,6 +3610,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=36
 .Version=30
+~=Generation=7
 - Stealth Rock
 - Iron Defense
 - Wring Out
@@ -3353,6 +3623,7 @@ Level: 50
 Calm Nature
 =Met_Location=40001
 .Version=30
+~=Generation=7
 - Fleur Cannon
 - Flash Cannon
 - Lucky Chant
@@ -3367,6 +3638,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40005
 .Version=31
+~=Generation=7
 - Spectral Thief
 - Close Combat
 - Force Palm
@@ -3380,6 +3652,7 @@ Modest Nature
 =Met_Level=40
 =Met_Location=206
 .Version=33
+~=Generation=7
 - Charm
 - Venom Drench
 - Nasty Plot
@@ -3393,6 +3666,7 @@ Modest Nature
 =Met_Level=40
 =Met_Location=206
 .Version=32
+~=Generation=7
 - Flamethrower
 - X-Scissor
 - Sludge Wave
@@ -3406,6 +3680,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=164
 .Version=33
+~=Generation=7
 - Iron Defense
 - Iron Head
 - Rock Blast
@@ -3420,6 +3695,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=164
 .Version=32
+~=Generation=7
 - Fire Blast
 - Shadow Ball
 - Trick
@@ -3433,6 +3709,7 @@ Adamant Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=33
+~=Generation=7
 - Plasma Fists
 - Thunder Punch
 - Close Combat

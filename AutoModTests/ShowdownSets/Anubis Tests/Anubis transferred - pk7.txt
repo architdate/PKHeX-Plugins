@@ -6,6 +6,7 @@ Adamant Nature
 Ball: Cherish Ball
 =Met_Location=40025
 .Version=26
+~=Generation=6
 - Scratch
 - Growl
 - Celebrate
@@ -18,6 +19,7 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Fury Attack
 - Knock Off
 - Drill Run
@@ -29,6 +31,7 @@ Ability: Keen Eye
 Level: 30
 Timid Nature
 .Version=15
+~=Generation=3
 - Heat Wave
 - Refresh
 - Mimic
@@ -39,6 +42,7 @@ EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Keen Eye
 Jolly Nature
 .Version=3
+~=Generation=3
 - Double-Edge
 - Quick Attack
 - Pluck
@@ -53,6 +57,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40010
 .Version=27
+~=Generation=6
 - Fly
 - Surf
 - Agility
@@ -76,6 +81,7 @@ Level: 75
 Shiny: Yes
 Timid Nature
 .Version=24
+~=Generation=6
 - Earth Power
 - Ice Beam
 - Thunderbolt
@@ -89,6 +95,7 @@ Level: 53
 Shiny: Yes
 Calm Nature
 .Version=3
+~=Generation=3
 - Thunder Wave
 - Soft-Boiled
 - Flamethrower
@@ -125,6 +132,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Sucker Punch
 - Stealth Rock
 - Block
@@ -138,6 +146,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Metronome
 - Body Slam
 - Counter
@@ -150,6 +159,7 @@ Timid Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=25
+~=Generation=6
 - Mean Look
 - Trick
 - Pain Split
@@ -163,6 +173,7 @@ Shiny: Yes
 Timid Nature
 =Met_Location=40001
 .Version=24
+~=Generation=6
 - Trick
 - Icy Wind
 - Pain Split
@@ -176,6 +187,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Safari Ball
 .Version=2
+~=Generation=3
 - Earthquake
 - Stealth Rock
 - Avalanche
@@ -199,6 +211,7 @@ Ability: Static
 Level: 43
 Adamant Nature
 .Version=15
+~=Generation=3
 - Cross Chop
 - Follow Me
 - Ice Punch
@@ -209,6 +222,7 @@ IVs: 17 HP / 17 Atk / 20 Def / 7 SpA / 26 SpD / 29 Spe
 Ability: Flame Body
 Modest Nature
 .Version=15
+~=Generation=3
 - Follow Me
 - Heat Wave
 - Cross Chop
@@ -223,6 +237,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40059
 .Version=21
+~=Generation=5
 - Incinerate
 - Rock Smash
 - Secret Power
@@ -249,6 +264,7 @@ Ball: Cherish Ball
 Language: Japanese
 =Met_Location=40010
 .Version=27
+~=Generation=6
 - Splash
 - Celebrate
 - Happy Hour
@@ -262,6 +278,7 @@ Level: 50
 Shiny: Yes
 Jolly Nature
 .Version=3
+~=Generation=3
 - Wish
 - Mud-Slap
 - Flail
@@ -273,6 +290,7 @@ Ability: Pressure
 Level: 50
 Timid Nature
 .Version=15
+~=Generation=3
 - Extrasensory
 - Heal Bell
 - Defog
@@ -286,6 +304,7 @@ Timid Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=26
+~=Generation=6
 - Freeze-Dry
 - Ice Beam
 - Hail
@@ -300,6 +319,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Ice Beam
 - Air Cutter
 - Ancient Power
@@ -323,6 +343,7 @@ Ability: Pressure
 Level: 70
 Naive Nature
 .Version=2
+~=Generation=3
 - Agility
 - Detect
 - Drill Peck
@@ -337,6 +358,7 @@ Timid Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=27
+~=Generation=6
 - Heat Wave
 - Tailwind
 - Signal Beam
@@ -348,6 +370,7 @@ Ability: Pressure
 Level: 50
 Timid Nature
 .Version=15
+~=Generation=3
 - Extrasensory
 - Baton Pass
 - Defog
@@ -371,6 +394,7 @@ Ability: Pressure
 Level: 50
 Timid Nature
 .Version=15
+~=Generation=3
 - Extrasensory
 - Morning Sun
 - Defog
@@ -384,6 +408,7 @@ Timid Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=27
+~=Generation=6
 - Sky Attack
 - Heat Wave
 - Snore
@@ -410,6 +435,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Flamethrower
 - Air Cutter
 - Ancient Power
@@ -422,6 +448,7 @@ Adamant Nature
 Ball: Cherish Ball
 =Met_Location=106
 .Version=27
+~=Generation=6
 - Agility
 - Slam
 - Barrier
@@ -448,6 +475,7 @@ Timid Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=27
+~=Generation=6
 - Psystrike
 - Psychic
 - Recover
@@ -471,6 +499,7 @@ Level: 37
 Shiny: Yes
 Timid Nature
 .Version=15
+~=Generation=3
 - Psybeam
 - Confuse Ray
 - Mean Look
@@ -485,6 +514,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=328
 .Version=26
+~=Generation=6
 - Hidden Power [Electric]
 
 Unown-E
@@ -495,6 +525,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Psychic]
 
 Unown-F
@@ -505,6 +536,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=328
 .Version=26
+~=Generation=6
 - Hidden Power [Poison]
 
 Unown-F
@@ -514,6 +546,7 @@ Level: 22
 Modest Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Ice]
 
 Unown-I
@@ -524,6 +557,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Psychic]
 
 Unown-K
@@ -535,6 +569,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=328
 .Version=26
+~=Generation=6
 - Hidden Power [Bug]
 
 Unown-N
@@ -545,6 +580,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Psychic]
 
 Unown-O
@@ -555,6 +591,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=328
 .Version=26
+~=Generation=6
 - Hidden Power [Ice]
 
 Unown-R
@@ -565,6 +602,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Psychic]
 
 Unown-U
@@ -575,6 +613,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=328
 .Version=26
+~=Generation=6
 - Hidden Power [Dragon]
 
 Unown-Y
@@ -585,6 +624,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=328
 .Version=26
+~=Generation=6
 - Hidden Power [Dragon]
 
 Unown-!
@@ -596,6 +636,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=328
 .Version=26
+~=Generation=6
 - Hidden Power [Fighting]
 
 Unown-!
@@ -606,6 +647,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hidden Power [Psychic]
 
 Unown-?
@@ -616,6 +658,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=328
 .Version=26
+~=Generation=6
 - Hidden Power [Psychic]
 
 QT (Shuckle) (F) @ Leftovers
@@ -625,6 +668,7 @@ Shiny: Yes
 Careful Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Body Slam
 - Defense Curl
 - Mud-Slap
@@ -638,6 +682,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Avalanche
 - Sweet Scent
 - Slash
@@ -651,6 +696,7 @@ Shiny: Yes
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Whirlpool
 - Air Cutter
 - Mud-Slap
@@ -662,6 +708,7 @@ Ability: Flash Fire
 Level: 20
 Timid Nature
 .Version=15
+~=Generation=3
 - Nightmare
 - Charm
 - Heat Wave
@@ -674,6 +721,7 @@ Ability: Sturdy
 Shiny: Yes
 Calm Nature
 .Version=3
+~=Generation=3
 - Mimic
 - Mud-Slap
 - Ancient Power
@@ -687,6 +735,7 @@ Shiny: Yes
 Careful Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Counter
 - Seismic Toss
 - Whirlpool
@@ -712,6 +761,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Mud-Slap
 - Swift
 - Endure
@@ -724,6 +774,7 @@ Level: 40
 Shiny: Yes
 Timid Nature
 .Version=15
+~=Generation=3
 - Rain Dance
 - Leer
 - Quick Attack
@@ -736,6 +787,7 @@ Level: 40
 Shiny: Yes
 Adamant Nature
 .Version=15
+~=Generation=3
 - Sunny Day
 - Leer
 - Bite
@@ -750,6 +802,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Crush Claw
 - Flamethrower
 - Extreme Speed
@@ -788,6 +841,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=334
 .Version=26
+~=Generation=6
 - Rest
 - Roar
 - Calm Mind
@@ -799,6 +853,7 @@ Ability: Pressure
 Level: 50
 Timid Nature
 .Version=15
+~=Generation=3
 - Psycho Boost
 - Feather Dance
 - Defog
@@ -812,6 +867,7 @@ Shiny: Yes
 Bold Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Mimic
 - Mud-Slap
 - Ominous Wind
@@ -849,6 +905,7 @@ Jolly Nature
 Ball: Cherish Ball
 =Met_Location=40010
 .Version=27
+~=Generation=6
 - Sacred Fire
 - Brave Bird
 - Recover
@@ -874,6 +931,7 @@ Level: 36
 Shiny: Yes
 Relaxed Nature
 .Version=1
+~=Generation=3
 - Mega Kick
 - Body Slam
 - Seismic Toss
@@ -887,6 +945,7 @@ Shiny: Yes
 Hasty Nature
 Ball: Safari Ball
 .Version=8
+~=Generation=4
 - Synthesis
 - Knock Off
 - Sucker Punch
@@ -900,6 +959,7 @@ Shiny: Yes
 Bold Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Defog
 - Knock Off
 - Tailwind
@@ -913,6 +973,7 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Sucker Punch
 - Swords Dance
 - Mimic
@@ -924,6 +985,7 @@ Ability: Cute Charm
 Level: 18
 Jolly Nature
 .Version=15
+~=Generation=3
 - Mimic
 - Sweet Kiss
 - Sucker Punch
@@ -935,6 +997,7 @@ Ability: Hyper Cutter
 Level: 22
 Adamant Nature
 .Version=15
+~=Generation=3
 - Stealth Rock
 - Sing
 - Thunder Punch
@@ -945,6 +1008,7 @@ EVs: 44 HP / 252 Atk / 4 Def / 4 SpD / 206 Spe
 Ability: Intimidate
 Adamant Nature
 .Version=27
+~=Generation=6
 - Protect
 - Play Rough
 - Sucker Punch
@@ -958,6 +1022,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=75
 .Version=21
+~=Generation=5
 - Tackle
 - Uproar
 - Copycat
@@ -971,6 +1036,7 @@ Shiny: Yes
 Calm Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Metronome
 - Seismic Toss
 - Mega Kick
@@ -982,6 +1048,7 @@ Ability: Arena Trap
 Shiny: Yes
 Impish Nature
 .Version=3
+~=Generation=3
 - Mimic
 - Captivate
 - Struggle Bug
@@ -995,6 +1062,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=75
 .Version=21
+~=Generation=5
 - Take Down
 - Natural Gift
 - Dragon Breath
@@ -1008,6 +1076,7 @@ Shiny: Yes
 Impish Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Roost
 - Heal Bell
 - Body Slam
@@ -1020,6 +1089,7 @@ Ability: Shed Skin
 Shiny: Yes
 Rash Nature
 .Version=7
+~=Generation=4
 - Body Slam
 - Switcheroo
 - Feint
@@ -1033,6 +1103,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=75
 .Version=21
+~=Generation=5
 - Harden
 - Confusion
 - Rock Throw
@@ -1046,6 +1117,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=75
 .Version=21
+~=Generation=5
 - Harden
 - Confusion
 - Rock Throw
@@ -1059,6 +1131,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=75
 .Version=21
+~=Generation=5
 - Feint Attack
 - Hex
 - Shadow Ball
@@ -1070,6 +1143,7 @@ Ability: Pressure
 Level: 37
 Careful Nature
 .Version=15
+~=Generation=3
 - Mega Kick
 - Helping Hand
 - Counter
@@ -1083,6 +1157,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Ice Punch
 - Mega Kick
 - Shadow Sneak
@@ -1093,6 +1168,7 @@ EVs: 6 HP / 252 Atk / 252 Spe
 Ability: Inner Focus
 Jolly Nature
 .Version=3
+~=Generation=3
 - Double-Edge
 - Body Slam
 - Spikes
@@ -1106,6 +1182,7 @@ Level: 51
 Shiny: Yes
 Jolly Nature
 .Version=3
+~=Generation=3
 - Earthquake
 - Double-Edge
 - Explosion
@@ -1118,6 +1195,7 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Body Slam
 - Mud-Slap
 - Mimic
@@ -1129,6 +1207,7 @@ Ability: Intimidate
 Level: 50
 Adamant Nature
 .Version=15
+~=Generation=3
 - Defog
 - Refresh
 - Dragon Dance
@@ -1142,6 +1221,7 @@ Level: 50
 Careful Nature
 =Met_Location=30011
 .Version=27
+~=Generation=6
 - Explosion
 - Hammer Arm
 - Stone Edge
@@ -1155,6 +1235,7 @@ Level: 50
 Sassy Nature
 =Met_Location=30011
 .Version=27
+~=Generation=6
 - Ice Beam
 - Thunderbolt
 - Hail
@@ -1168,6 +1249,7 @@ Shiny: Yes
 Modest Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Icy Wind
 - Seismic Toss
 - Counter
@@ -1181,6 +1263,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=1
+~=Generation=3
 - Body Slam
 - Mud-Slap
 - Twister
@@ -1195,6 +1278,7 @@ Timid Nature
 =Met_Level=30
 =Met_Location=320
 .Version=27
+~=Generation=6
 - Heal Pulse
 - Dragon Breath
 - Luster Purge
@@ -1208,6 +1292,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Mimic
 - Mud-Slap
 - Avalanche
@@ -1220,6 +1305,7 @@ Shiny: Yes
 Mild Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Dynamic Punch
 - Double-Edge
 - Counter
@@ -1234,6 +1320,7 @@ Jolly Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=27
+~=Generation=6
 - Dragon Ascent
 - Dragon Claw
 - Extreme Speed
@@ -1247,6 +1334,7 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Mimic
 - Avalanche
 - Whirlpool
@@ -1261,6 +1349,7 @@ Jolly Nature
 Ball: Cherish Ball
 =Met_Location=40070
 .Version=26
+~=Generation=6
 - Dragon Ascent
 - Earthquake
 - Extreme Speed

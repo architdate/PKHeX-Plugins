@@ -16,6 +16,7 @@ Quirky Nature
 =Met_Level=50
 =Met_Location=202
 .Version=32
+~=Generation=7
 - Bug Buzz
 - Dazzling Gleam
 - Aromatherapy
@@ -29,6 +30,7 @@ Adamant Nature
 =Met_Level=25
 =Met_Location=202
 .Version=33
+~=Generation=7
 - Spider Web
 - Bug Bite
 - Bubble Beam
@@ -42,6 +44,7 @@ Relaxed Nature
 =Met_Level=35
 =Met_Location=202
 .Version=33
+~=Generation=7
 - Nuzzle
 - Magnet Rise
 - Discharge

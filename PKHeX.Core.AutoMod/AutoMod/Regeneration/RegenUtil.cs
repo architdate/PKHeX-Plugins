@@ -135,7 +135,7 @@ namespace PKHeX.Core.AutoMod
             }
             if (tr is SimpleTrainerInfo s)
             {
-                var version = GameUtil.GameVersions.FirstOrDefault(z => ver.Contains(z));
+                var version = GameUtil.GameVersions.FirstOrDefault(z => ver.Contains(z) && z != GameVersion.BU);
                 return new SimpleTrainerInfo(version)
                 {
                     OT = MutateOT(s.OT, lang, version),

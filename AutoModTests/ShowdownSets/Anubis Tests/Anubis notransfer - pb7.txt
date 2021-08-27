@@ -4,6 +4,7 @@ Level: 42
 Bashful Nature
 =Met_Location=28
 .Version=43
+~=Generation=7
 - Double-Edge
 - Glitzy Glow
 - Sparkly Swirl

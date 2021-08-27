@@ -7,6 +7,7 @@ Rash Nature
 =Met_Level=5
 =Met_Location=196
 .Version=45
+~=Generation=8
 - Tackle
 - Growl
 - Vine Whip
@@ -20,6 +21,7 @@ Timid Nature
 =Met_Level=5
 =Met_Location=196
 .Version=44
+~=Generation=8
 - Take Down
 - Leech Seed
 - Sleep Powder
@@ -31,6 +33,7 @@ Ability: Blaze
 Level: 16
 Naughty Nature
 .Version=44
+~=Generation=8
 - Scratch
 - Dragon Breath
 - Ember
@@ -42,6 +45,7 @@ Ability: Blaze
 Level: 36
 Naughty Nature
 .Version=44
+~=Generation=8
 - Flamethrower
 - Dragon Breath
 - Slash
@@ -56,6 +60,7 @@ Lax Nature
 =Met_Level=5
 =Met_Location=196
 .Version=44
+~=Generation=8
 - Flash Cannon
 - Rapid Spin
 - Aqua Tail
@@ -69,6 +74,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=12
 .Version=44
+~=Generation=8
 - Tackle
 - String Shot
 
@@ -80,6 +86,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Harden
 
 Butterfree (M)
@@ -90,6 +97,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Bug Buzz
 - Tailwind
 - Rage Powder
@@ -102,6 +110,7 @@ Level: 5
 Hardy Nature
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Thunder Shock
 - Tail Whip
 - Growl
@@ -114,6 +123,7 @@ Level: 25
 Hardy Nature
 =Met_Location=40042
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Quick Attack
 - Iron Tail
@@ -126,6 +136,7 @@ Level: 25
 Hardy Nature
 =Met_Location=40042
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Quick Attack
 - Iron Tail
@@ -138,6 +149,7 @@ Level: 25
 Hardy Nature
 =Met_Location=40042
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Quick Attack
 - Iron Tail
@@ -150,6 +162,7 @@ Level: 25
 Hardy Nature
 =Met_Location=40042
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Quick Attack
 - Iron Tail
@@ -162,6 +175,7 @@ Level: 25
 Hardy Nature
 =Met_Location=40042
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Quick Attack
 - Iron Tail
@@ -174,6 +188,7 @@ Level: 25
 Hardy Nature
 =Met_Location=40042
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Quick Attack
 - Iron Tail
@@ -186,6 +201,7 @@ Level: 25
 Hardy Nature
 =Met_Location=40042
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Quick Attack
 - Iron Tail
@@ -198,6 +214,7 @@ Level: 25
 Hardy Nature
 =Met_Location=40042
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Quick Attack
 - Iron Tail
@@ -211,6 +228,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Thunder Punch
 - Thunder Wave
 - Double Team
@@ -224,6 +242,7 @@ Quiet Nature
 =Met_Level=30
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Thunder Shock
 - Tail Whip
 - Growl
@@ -237,6 +256,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=182
 .Version=44
+~=Generation=8
 - Gyro Ball
 - Swords Dance
 - Sandstorm
@@ -250,6 +270,7 @@ Brave Nature
 =Met_Level=5
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Scratch
 - Defense Curl
 - Mist
@@ -262,6 +283,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=184
 .Version=44
+~=Generation=8
 - Dig
 - Gyro Ball
 - Swords Dance
@@ -275,6 +297,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=212
 .Version=44
+~=Generation=8
 - Toxic
 - Flatter
 - Crunch
@@ -288,6 +311,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=210
 .Version=44
+~=Generation=8
 - Bite
 - Helping Hand
 - Toxic
@@ -301,6 +325,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=210
 .Version=44
+~=Generation=8
 - Growl
 - Poison Sting
 - Scratch
@@ -314,6 +339,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=208
 .Version=44
+~=Generation=8
 - Toxic
 - Flatter
 - Poison Jab
@@ -327,6 +353,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=210
 .Version=44
+~=Generation=8
 - Horn Attack
 - Helping Hand
 - Toxic
@@ -340,6 +367,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=208
 .Version=44
+~=Generation=8
 - Leer
 - Poison Sting
 - Peck
@@ -353,6 +381,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=44
+~=Generation=8
 - Follow Me
 - Cosmic Power
 - Moonblast
@@ -366,6 +395,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=44
+~=Generation=8
 - Pound
 - Copycat
 - Growl
@@ -379,6 +409,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=24
 .Version=44
+~=Generation=8
 - Spite
 - Incinerate
 - Confuse Ray
@@ -392,6 +423,7 @@ Modest Nature
 =Met_Level=5
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Powder Snow
 - Tail Whip
 - Disable
@@ -404,6 +436,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Ember
 - Tail Whip
 - Disable
@@ -417,6 +450,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Gyro Ball
 - Hyper Voice
 - Play Rough
@@ -430,6 +464,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Sing
 - Pound
 - Copycat
@@ -443,6 +478,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=224
 .Version=44
+~=Generation=8
 - Venoshock
 - Confuse Ray
 - Air Slash
@@ -456,6 +492,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=224
 .Version=44
+~=Generation=8
 - Haze
 - Venoshock
 - Confuse Ray
@@ -469,6 +506,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=128
 .Version=44
+~=Generation=8
 - Absorb
 - Growth
 - Acid
@@ -482,6 +520,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=44
+~=Generation=8
 - Moonblast
 - Grassy Terrain
 - Moonlight
@@ -495,6 +534,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=150
 .Version=44
+~=Generation=8
 - Absorb
 - Growth
 - Acid
@@ -508,6 +548,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=30
 .Version=44
+~=Generation=8
 - Scratch
 - Growl
 - Astonish
@@ -520,6 +561,7 @@ Jolly Nature
 =Met_Level=20
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Astonish
 - Mud-Slap
 - Bulldoze
@@ -533,6 +575,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Bulldoze
 - Sucker Punch
 - Slash
@@ -547,6 +590,7 @@ Language: English
 =OT_Name=Mattia
 =Met_Location=30001
 .Version=45
+~=Generation=8
 - Scratch
 - Pay Day
 - Bite
@@ -560,6 +604,7 @@ Lonely Nature
 =Met_Level=5
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Fake Out
 - Growl
 - Feint
@@ -572,6 +617,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Growl
 - Hone Claws
 - Scratch
@@ -586,6 +632,7 @@ Language: English
 =OT_Name=Mattia
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Power Gem
 - Pay Day
 - Bite
@@ -599,6 +646,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=170
 .Version=44
+~=Generation=8
 - Psych Up
 - Amnesia
 - Hydro Pump
@@ -612,6 +660,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=172
 .Version=44
+~=Generation=8
 - Psych Up
 - Amnesia
 - Hydro Pump
@@ -625,6 +674,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=150
 .Version=44
+~=Generation=8
 - Extreme Speed
 - Play Rough
 - Reversal
@@ -638,6 +688,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=172
 .Version=44
+~=Generation=8
 - Earth Power
 - Hydro Pump
 - Belly Drum
@@ -651,6 +702,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=166
 .Version=44
+~=Generation=8
 - Body Slam
 - Earth Power
 - Hydro Pump
@@ -664,6 +716,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Teleport
 - Confusion
 
@@ -675,6 +728,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=178
 .Version=44
+~=Generation=8
 - Psychic
 - Role Play
 - Future Sight
@@ -688,6 +742,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=28
 .Version=44
+~=Generation=8
 - Low Kick
 - Leer
 - Focus Energy
@@ -701,6 +756,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=150
 .Version=44
+~=Generation=8
 - Bulk Up
 - Seismic Toss
 - Dynamic Punch
@@ -714,6 +770,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=44
+~=Generation=8
 - Bulk Up
 - Seismic Toss
 - Dynamic Punch
@@ -727,6 +784,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=186
 .Version=44
+~=Generation=8
 - Poison Jab
 - Surf
 - Sludge Wave
@@ -740,6 +798,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=178
 .Version=44
+~=Generation=8
 - Poison Jab
 - Surf
 - Sludge Wave
@@ -753,6 +812,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=45
+~=Generation=8
 - Psycho Cut
 - Psybeam
 - Stomp
@@ -766,6 +826,7 @@ Brave Nature
 =Met_Level=10
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Curse
 - Growl
 - Water Gun
@@ -779,6 +840,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=16
 .Version=45
+~=Generation=8
 - Growl
 - Acid
 - Yawn
@@ -792,6 +854,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=16
 .Version=44
+~=Generation=8
 - Growl
 - Acid
 - Yawn
@@ -805,6 +868,7 @@ Brave Nature
 =Met_Level=10
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Headbutt
 - Psychic
 - Surf
@@ -818,6 +882,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=16
 .Version=44
+~=Generation=8
 - Shell Side Arm
 - Acid
 - Yawn
@@ -831,6 +896,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=170
 .Version=44
+~=Generation=8
 - Metal Sound
 - Tri Attack
 - Lock-On
@@ -844,6 +910,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Sand Attack
 - Leer
 - Fury Cutter
@@ -857,6 +924,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=128
 .Version=44
+~=Generation=8
 - Tackle
 - Water Gun
 - Withdraw
@@ -870,6 +938,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=136
 .Version=44
+~=Generation=8
 - Tackle
 - Water Gun
 - Withdraw
@@ -883,6 +952,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=136
 .Version=44
+~=Generation=8
 - Dark Pulse
 - Shadow Ball
 - Destiny Bond
@@ -896,6 +966,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Dark Pulse
 - Shadow Ball
 - Destiny Bond
@@ -909,6 +980,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Dark Pulse
 - Shadow Ball
 - Destiny Bond
@@ -922,6 +994,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Dig
 - Iron Tail
 - Stone Edge
@@ -935,6 +1008,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=130
 .Version=44
+~=Generation=8
 - Slam
 - Swords Dance
 - Crabhammer
@@ -948,6 +1022,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=90
 .Version=44
+~=Generation=8
 - Bubble Beam
 - Stomp
 - Flail
@@ -961,6 +1036,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=186
 .Version=44
+~=Generation=8
 - Extrasensory
 - Uproar
 - Worry Seed
@@ -974,6 +1050,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=186
 .Version=44
+~=Generation=8
 - Absorb
 - Hypnosis
 - Reflect
@@ -987,6 +1064,7 @@ Naughty Nature
 =Met_Level=30
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Absorb
 - Hypnosis
 - Reflect
@@ -1000,6 +1078,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=182
 .Version=44
+~=Generation=8
 - Endeavor
 - Bonemerang
 - Thrash
@@ -1013,6 +1092,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=184
 .Version=44
+~=Generation=8
 - Endeavor
 - Bonemerang
 - Thrash
@@ -1026,6 +1106,7 @@ Careful Nature
 =Met_Level=30
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Flame Wheel
 - Hex
 - Fling
@@ -1039,6 +1120,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Mega Kick
 - Close Combat
 - Reversal
@@ -1052,6 +1134,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Tackle
 - Drain Punch
 - Fake Out
@@ -1065,6 +1148,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=166
 .Version=44
+~=Generation=8
 - Screech
 - Slam
 - Power Whip
@@ -1078,6 +1162,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=52
 .Version=44
+~=Generation=8
 - Smokescreen
 - Clear Smog
 - Assurance
@@ -1091,6 +1176,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=8
 .Version=44
+~=Generation=8
 - Self-Destruct
 - Sludge Bomb
 - Toxic
@@ -1104,6 +1190,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Scary Face
 - Stomp
 - Rock Blast
@@ -1117,6 +1204,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Stomp
 - Rock Blast
 - Drill Run
@@ -1130,6 +1218,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Double-Edge
 - Soft-Boiled
 - Last Resort
@@ -1143,6 +1232,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Tickle
 - Power Whip
 - Ingrain
@@ -1156,6 +1246,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=182
 .Version=44
+~=Generation=8
 - Endure
 - Reversal
 - Outrage
@@ -1169,6 +1260,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=190
 .Version=44
+~=Generation=8
 - Dragon Pulse
 - Hydro Pump
 - Dragon Dance
@@ -1182,6 +1274,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=128
 .Version=44
+~=Generation=8
 - Peck
 - Tail Whip
 - Supersonic
@@ -1195,6 +1288,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Waterfall
 - Soak
 - Megahorn
@@ -1208,6 +1302,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=170
 .Version=44
+~=Generation=8
 - Surf
 - Recover
 - Cosmic Power
@@ -1221,6 +1316,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Tackle
 - Harden
 - Water Gun
@@ -1235,6 +1331,7 @@ Language: English
 =OT_Name=Edmund
 =Met_Location=30001
 .Version=45
+~=Generation=8
 - Light Screen
 - Reflect
 - Safeguard
@@ -1248,6 +1345,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Hypnosis
 - Mirror Coat
 - Sucker Punch
@@ -1261,6 +1359,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=180
 .Version=44
+~=Generation=8
 - Air Slash
 - X-Scissor
 - Laser Focus
@@ -1274,6 +1373,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=204
 .Version=44
+~=Generation=8
 - Lovely Kiss
 - Mean Look
 - Perish Song
@@ -1287,6 +1387,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=210
 .Version=44
+~=Generation=8
 - Low Kick
 - Thunderbolt
 - Light Screen
@@ -1300,6 +1401,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Flamethrower
 - Sunny Day
 - Fire Blast
@@ -1313,6 +1415,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Swords Dance
 - Submission
 - Guillotine
@@ -1326,6 +1429,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=180
 .Version=44
+~=Generation=8
 - Swagger
 - Thrash
 - Double-Edge
@@ -1339,6 +1443,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=18
 .Version=44
+~=Generation=8
 - Splash
 
 Gyarados (M)
@@ -1349,6 +1454,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Hydro Pump
 - Hurricane
 - Thrash
@@ -1363,6 +1469,7 @@ Ball: Master Ball
 .Met_Location=130
 =Met_Level=56
 .Version=44
+~=Generation=8
 - Ice Beam
 - Rain Dance
 - Hydro Pump
@@ -1376,6 +1483,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Transform
 
 Eevee (M)
@@ -1386,6 +1494,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Growl
 - Tail Whip
 - Sand Attack
@@ -1399,6 +1508,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Water Gun
 - Tail Whip
 - Sand Attack
@@ -1412,6 +1522,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Thunder Shock
 - Tail Whip
 - Sand Attack
@@ -1425,6 +1536,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=45
+~=Generation=8
 - Lava Plume
 - Scary Face
 - Flare Blitz
@@ -1438,6 +1550,7 @@ Naive Nature
 =Met_Level=25
 =Met_Location=196
 .Version=44
+~=Generation=8
 - Magnet Rise
 - Thunder Shock
 - Psybeam
@@ -1451,6 +1564,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=44
+~=Generation=8
 - Rock Blast
 - Surf
 - Shell Smash
@@ -1464,6 +1578,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=224
 .Version=44
+~=Generation=8
 - Protect
 - Rock Blast
 - Surf
@@ -1477,6 +1592,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=224
 .Version=45
+~=Generation=8
 - Leech Life
 - Liquidation
 - Metal Sound
@@ -1490,6 +1606,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=224
 .Version=45
+~=Generation=8
 - Protect
 - Leech Life
 - Liquidation
@@ -1503,6 +1620,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=210
 .Version=44
+~=Generation=8
 - Stone Edge
 - Agility
 - Hyper Beam
@@ -1516,6 +1634,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=44
+~=Generation=8
 - Hammer Arm
 - Belly Drum
 - Belch
@@ -1528,6 +1647,7 @@ Level: 70
 Naughty Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Ice Beam
 - Freeze-Dry
 - Hurricane
@@ -1541,6 +1661,7 @@ Careful Nature
 Ball: Master Ball
 .Met_Location=214
 .Version=45
+~=Generation=8
 - Freezing Glare
 - Hurricane
 - Psycho Cut
@@ -1553,6 +1674,7 @@ Level: 70
 Relaxed Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Thunder
 - Drill Peck
 - Brave Bird
@@ -1566,6 +1688,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Thunderous Kick
 - Drill Peck
 - Reversal
@@ -1578,6 +1701,7 @@ Level: 70
 Careful Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Heat Wave
 - Wing Attack
 - Leer
@@ -1591,6 +1715,7 @@ Hardy Nature
 Ball: Master Ball
 .Met_Location=188
 .Version=45
+~=Generation=8
 - Fiery Wrath
 - Hurricane
 - Sucker Punch
@@ -1604,6 +1729,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Rain Dance
 - Dragon Dance
 - Outrage
@@ -1617,6 +1743,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Dragon Rush
 - Safeguard
 - Rain Dance
@@ -1630,6 +1757,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Safeguard
 - Rain Dance
 - Dragon Dance
@@ -1642,6 +1770,7 @@ Level: 70
 Naughty Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Psychic
 - Disable
 - Recover
@@ -1654,6 +1783,7 @@ Level: 1
 Naughty Nature
 =Met_Location=40085
 .Version=44
+~=Generation=8
 - Pound
 
 Hoothoot (M)
@@ -1664,6 +1794,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=12
 .Version=44
+~=Generation=8
 - Peck
 - Growl
 - Tackle
@@ -1676,6 +1807,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=52
 .Version=44
+~=Generation=8
 - Reflect
 - Psycho Shift
 - Air Slash
@@ -1689,6 +1821,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=44
 .Version=44
+~=Generation=8
 - Thunder Wave
 - Bubble Beam
 - Confuse Ray
@@ -1702,6 +1835,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Aqua Ring
 - Flail
 - Take Down
@@ -1714,6 +1848,7 @@ Level: 5
 Hardy Nature
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Thunder Shock
 - Tail Whip
 
@@ -1725,6 +1860,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Follow Me
 - Baton Pass
 - Last Resort
@@ -1738,6 +1874,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=144
 .Version=44
+~=Generation=8
 - Follow Me
 - Baton Pass
 - Last Resort
@@ -1751,6 +1888,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=44
+~=Generation=8
 - Guard Swap
 - Psychic
 - Wish
@@ -1764,6 +1902,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=44
+~=Generation=8
 - Guard Swap
 - Psychic
 - Wish
@@ -1777,6 +1916,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=44
+~=Generation=8
 - Moonblast
 - Grassy Terrain
 - Moonlight
@@ -1790,6 +1930,7 @@ Hardy Nature
 Ball: Master Ball
 .Met_Location=166
 .Version=44
+~=Generation=8
 - Rain Dance
 - Hydro Pump
 - Double-Edge
@@ -1803,6 +1944,7 @@ Gentle Nature
 Ball: Master Ball
 .Met_Location=168
 .Version=44
+~=Generation=8
 - Rain Dance
 - Hydro Pump
 - Double-Edge
@@ -1816,6 +1958,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=52
 .Version=44
+~=Generation=8
 - Rock Throw
 - Block
 - Mimic
@@ -1829,6 +1972,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=166
 .Version=44
+~=Generation=8
 - Water Gun
 - Hypnosis
 - Pound
@@ -1842,6 +1986,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=130
 .Version=44
+~=Generation=8
 - Muddy Water
 - Amnesia
 - Toxic
@@ -1855,6 +2000,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=130
 .Version=44
+~=Generation=8
 - Muddy Water
 - Amnesia
 - Toxic
@@ -1868,6 +2014,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Growl
 - Confusion
 - Sand Attack
@@ -1881,6 +2028,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Snarl
 - Tail Whip
 - Sand Attack
@@ -1894,6 +2042,7 @@ Brave Nature
 =Met_Level=10
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Curse
 - Growl
 - Water Gun
@@ -1907,6 +2056,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=16
 .Version=44
+~=Generation=8
 - Eerie Spell
 - Acid
 - Yawn
@@ -1920,6 +2070,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Counter
 - Mirror Coat
 - Safeguard
@@ -1933,6 +2084,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=166
 .Version=44
+~=Generation=8
 - Dragon Rush
 - Coil
 - Double-Edge
@@ -1946,6 +2098,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=136
 .Version=44
+~=Generation=8
 - Iron Tail
 - Stone Edge
 - Double-Edge
@@ -1959,6 +2112,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Take Down
 - Toxic
 - Aqua Tail
@@ -1972,6 +2126,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=180
 .Version=44
+~=Generation=8
 - Iron Head
 - X-Scissor
 - Laser Focus
@@ -1985,6 +2140,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Rollout
 - Struggle Bug
 - Rock Throw
@@ -1998,6 +2154,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=180
 .Version=45
+~=Generation=8
 - Thrash
 - Swords Dance
 - Megahorn
@@ -2011,6 +2168,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=88
 .Version=44
+~=Generation=8
 - Metal Claw
 - Icy Wind
 - Fury Swipes
@@ -2024,6 +2182,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Amnesia
 - Take Down
 - Earthquake
@@ -2037,6 +2196,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Amnesia
 - Take Down
 - Earthquake
@@ -2050,6 +2210,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=45
+~=Generation=8
 - Power Gem
 - Night Shade
 - Grudge
@@ -2063,6 +2224,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=130
 .Version=44
+~=Generation=8
 - Water Gun
 - Helping Hand
 - Water Pulse
@@ -2076,6 +2238,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Lock-On
 - Bullet Seed
 - Ice Beam
@@ -2089,6 +2252,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=130
 .Version=44
+~=Generation=8
 - Present
 
 Mantine (M)
@@ -2099,6 +2263,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Headbutt
 - Air Slash
 - Aqua Ring
@@ -2112,6 +2277,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=174
 .Version=44
+~=Generation=8
 - Metal Sound
 - Spikes
 - Iron Defense
@@ -2125,6 +2291,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=190
 .Version=44
+~=Generation=8
 - Dragon Pulse
 - Hydro Pump
 - Dragon Dance
@@ -2138,6 +2305,7 @@ Naive Nature
 =Met_Level=25
 =Met_Location=196
 .Version=44
+~=Generation=8
 - Magnet Rise
 - Thunder Shock
 - Psybeam
@@ -2151,6 +2319,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Tackle
 - Helping Hand
 - Fake Out
@@ -2164,6 +2333,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Dig
 - Close Combat
 - Counter
@@ -2177,6 +2347,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=204
 .Version=44
+~=Generation=8
 - Sweet Kiss
 - Mean Look
 - Perish Song
@@ -2190,6 +2361,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=210
 .Version=44
+~=Generation=8
 - Low Kick
 - Thunderbolt
 - Light Screen
@@ -2203,6 +2375,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=204
 .Version=44
+~=Generation=8
 - Low Kick
 - Flamethrower
 - Sunny Day
@@ -2216,6 +2389,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=180
 .Version=44
+~=Generation=8
 - Body Slam
 - Play Rough
 - Charm
@@ -2229,6 +2403,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Double-Edge
 - Soft-Boiled
 - Last Resort
@@ -2241,6 +2416,7 @@ Level: 70
 Naive Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Howl
 - Extreme Speed
@@ -2253,6 +2429,7 @@ Level: 70
 Impish Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Flamethrower
 - Scary Face
 - Extreme Speed
@@ -2265,6 +2442,7 @@ Level: 70
 Quirky Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Liquidation
 - Extrasensory
 - Extreme Speed
@@ -2278,6 +2456,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=45
+~=Generation=8
 - Stone Edge
 - Thrash
 - Sandstorm
@@ -2291,6 +2470,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=45
+~=Generation=8
 - Stone Edge
 - Thrash
 - Sandstorm
@@ -2304,6 +2484,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=45
+~=Generation=8
 - Thrash
 - Sandstorm
 - Hyper Beam
@@ -2316,6 +2497,7 @@ Level: 70
 Adamant Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Dragon Pulse
 - Extrasensory
 - Whirlpool
@@ -2328,6 +2510,7 @@ Level: 70
 Docile Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Flare Blitz
 - Extrasensory
 - Sunny Day
@@ -2338,6 +2521,7 @@ Ability: Unburden
 Level: 16
 Sassy Nature
 .Version=44
+~=Generation=8
 - Pound
 - Mega Drain
 - Leafage
@@ -2350,6 +2534,7 @@ Level: 65
 Calm Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Grass Pledge
 - Breaking Swipe
 - Leaf Storm
@@ -2361,6 +2546,7 @@ Ability: Blaze
 Level: 16
 Sassy Nature
 .Version=44
+~=Generation=8
 - Double Kick
 - Flame Charge
 - Ember
@@ -2372,6 +2558,7 @@ Ability: Blaze
 Level: 36
 Sassy Nature
 .Version=44
+~=Generation=8
 - Double Kick
 - Flame Charge
 - Aerial Ace
@@ -2383,6 +2570,7 @@ Ability: Torrent
 Level: 16
 Quirky Nature
 .Version=44
+~=Generation=8
 - Mud Shot
 - Rock Throw
 - Water Gun
@@ -2395,6 +2583,7 @@ Level: 65
 Timid Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Water Pledge
 - Blizzard
 - Earth Power
@@ -2408,6 +2597,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=18
 .Version=44
+~=Generation=8
 - Tackle
 - Leer
 - Sand Attack
@@ -2421,6 +2611,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Scary Face
 - Counter
 - Taunt
@@ -2434,6 +2625,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=18
 .Version=45
+~=Generation=8
 - Astonish
 - Growl
 - Absorb
@@ -2446,6 +2638,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=124
 .Version=45
+~=Generation=8
 - Giga Drain
 - Rain Dance
 - Zen Headbutt
@@ -2459,6 +2652,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=124
 .Version=45
+~=Generation=8
 - Astonish
 - Growl
 - Absorb
@@ -2472,6 +2666,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=18
 .Version=44
+~=Generation=8
 - Tackle
 - Harden
 - Absorb
@@ -2485,6 +2680,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Tackle
 - Harden
 - Absorb
@@ -2498,6 +2694,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=124
 .Version=44
+~=Generation=8
 - Tackle
 - Harden
 - Absorb
@@ -2511,6 +2708,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Growl
 - Water Gun
 - Quick Attack
@@ -2523,6 +2721,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=90
 .Version=44
+~=Generation=8
 - Swallow
 - Spit Up
 - Fling
@@ -2536,6 +2735,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=126
 .Version=44
+~=Generation=8
 - Psychic
 - Heal Pulse
 - Dream Eater
@@ -2549,6 +2749,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Psychic
 - Heal Pulse
 - Dream Eater
@@ -2562,6 +2763,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Calm Mind
 - Psychic
 - Heal Pulse
@@ -2575,6 +2777,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Scratch
 - Harden
 - False Swipe
@@ -2588,6 +2791,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Fury Swipes
 - Mind Reader
 - Slash
@@ -2600,6 +2804,7 @@ Level: 20
 Jolly Nature
 Ball: Master Ball
 .Version=44
+~=Generation=8
 - Scratch
 - Harden
 - False Swipe
@@ -2613,6 +2818,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=172
 .Version=44
+~=Generation=8
 - Supersonic
 - Uproar
 - Screech
@@ -2626,6 +2832,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=172
 .Version=44
+~=Generation=8
 - Supersonic
 - Uproar
 - Crunch
@@ -2639,6 +2846,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=172
 .Version=44
+~=Generation=8
 - Bubble Beam
 - Charm
 - Slam
@@ -2652,6 +2860,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=45
+~=Generation=8
 - Power Gem
 - Zen Headbutt
 - Shadow Ball
@@ -2665,6 +2874,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Iron Head
 - Taunt
 - Fake Tears
@@ -2678,6 +2888,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Iron Defense
 - Heavy Slam
 - Double-Edge
@@ -2691,6 +2902,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=232
 .Version=44
+~=Generation=8
 - Take Down
 - Autotomize
 - Iron Tail
@@ -2704,6 +2916,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=232
 .Version=45
+~=Generation=8
 - Take Down
 - Autotomize
 - Iron Tail
@@ -2717,6 +2930,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Thunder Wave
 - Leer
 - Howl
@@ -2730,6 +2944,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Charge
 - Wild Charge
 - Thunder
@@ -2743,6 +2958,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Petal Blizzard
 - Aromatherapy
 - Ingrain
@@ -2756,6 +2972,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=180
 .Version=44
+~=Generation=8
 - Crunch
 - Agility
 - Liquidation
@@ -2769,6 +2986,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=188
 .Version=44
+~=Generation=8
 - Crunch
 - Agility
 - Liquidation
@@ -2782,6 +3000,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Bounce
 - Body Slam
 - Rest
@@ -2795,6 +3014,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Dive
 - Bounce
 - Body Slam
@@ -2808,6 +3028,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Clear Smog
 - Flame Wheel
 - Protect
@@ -2821,6 +3042,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Dragon Breath
 - Bulldoze
 - Dig
@@ -2834,6 +3056,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Earth Power
 - Earthquake
 - Uproar
@@ -2847,6 +3070,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=204
 .Version=44
+~=Generation=8
 - Cotton Guard
 - Take Down
 - Moonblast
@@ -2860,6 +3084,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=44
+~=Generation=8
 - Take Down
 - Moonblast
 - Perish Song
@@ -2873,6 +3098,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=45
+~=Generation=8
 - Stone Edge
 - Future Sight
 - Magic Room
@@ -2886,6 +3112,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Cosmic Power
 - Psychic
 - Stone Edge
@@ -2899,6 +3126,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Rest
 - Snore
 - Water Pulse
@@ -2912,6 +3140,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=134
 .Version=44
+~=Generation=8
 - Muddy Water
 - Earthquake
 - Future Sight
@@ -2925,6 +3154,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Taunt
 - Bubble Beam
 - Knock Off
@@ -2938,6 +3168,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=132
 .Version=44
+~=Generation=8
 - Swords Dance
 - Crunch
 - Crabhammer
@@ -2951,6 +3182,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=150
 .Version=44
+~=Generation=8
 - Guard Split
 - Power Split
 - Sandstorm
@@ -2964,6 +3196,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Guard Split
 - Power Split
 - Sandstorm
@@ -2977,6 +3210,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=210
 .Version=44
+~=Generation=8
 - Stockpile
 - Spit Up
 - Swallow
@@ -2990,6 +3224,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Crush Claw
 - Rock Blast
 - Protect
@@ -3003,6 +3238,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Crush Claw
 - Rock Blast
 - Protect
@@ -3016,6 +3252,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=18
 .Version=44
+~=Generation=8
 - Splash
 - Tackle
 - Flail
@@ -3029,6 +3266,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Night Shade
 - Payback
 - Will-O-Wisp
@@ -3042,6 +3280,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Will-O-Wisp
 - Mean Look
 - Hex
@@ -3055,6 +3294,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=218
 .Version=44
+~=Generation=8
 - Sucker Punch
 - Swords Dance
 - Future Sight
@@ -3068,6 +3308,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=130
 .Version=44
+~=Generation=8
 - Powder Snow
 - Astonish
 - Leer
@@ -3081,6 +3322,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Frost Breath
 - Bite
 - Ice Fang
@@ -3094,6 +3336,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=226
 .Version=44
+~=Generation=8
 - Surf
 - Blizzard
 - Hail
@@ -3107,6 +3350,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=226
 .Version=44
+~=Generation=8
 - Surf
 - Blizzard
 - Hail
@@ -3120,6 +3364,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=226
 .Version=44
+~=Generation=8
 - Body Slam
 - Surf
 - Blizzard
@@ -3133,6 +3378,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Flail
 - Hydro Pump
 - Double-Edge
@@ -3146,6 +3392,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=216
 .Version=44
+~=Generation=8
 - Fly
 - Flamethrower
 - Outrage
@@ -3159,6 +3406,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=214
 .Version=44
+~=Generation=8
 - Tackle
 
 Metang
@@ -3169,6 +3417,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=214
 .Version=44
+~=Generation=8
 - Psychic
 - Scary Face
 - Meteor Mash
@@ -3182,6 +3431,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=214
 .Version=44
+~=Generation=8
 - Psychic
 - Scary Face
 - Meteor Mash
@@ -3195,6 +3445,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=236
 .Version=44
+~=Generation=8
 - Superpower
 - Stone Edge
 - Hammer Arm
@@ -3208,6 +3459,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=238
 .Version=45
+~=Generation=8
 - Ice Beam
 - Zap Cannon
 - Amnesia
@@ -3221,6 +3473,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=240
 .Version=44
+~=Generation=8
 - Heavy Slam
 - Flash Cannon
 - Iron Defense
@@ -3233,6 +3486,7 @@ Level: 70
 Lonely Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Reflect Type
 - Dragon Breath
 - Zen Headbutt
@@ -3245,6 +3499,7 @@ Level: 70
 Bashful Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Dragon Dance
 - Dragon Pulse
 - Zen Headbutt
@@ -3257,6 +3512,7 @@ Level: 70
 Gentle Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Surf
 - Body Slam
 - Aqua Ring
@@ -3269,6 +3525,7 @@ Level: 70
 Naughty Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Earthquake
 - Scary Face
 - Lava Plume
@@ -3281,6 +3538,7 @@ Level: 70
 Bold Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Dragon Ascent
 - Brutal Swing
 - Extreme Speed
@@ -3294,6 +3552,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=170
 .Version=44
+~=Generation=8
 - Crunch
 - Discharge
 - Swagger
@@ -3307,6 +3566,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=128
 .Version=44
+~=Generation=8
 - Absorb
 - Growth
 - Stun Spore
@@ -3320,6 +3580,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Petal Blizzard
 - Aromatherapy
 - Ingrain
@@ -3333,6 +3594,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Sweet Scent
 - Gust
 - Struggle Bug
@@ -3346,6 +3608,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Toxic
 - Attack Order
 - Defend Order
@@ -3359,6 +3622,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=126
 .Version=44
+~=Generation=8
 - Morning Sun
 - Tackle
 - Magical Leaf
@@ -3372,6 +3636,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Harden
 - Recover
 - Water Pulse
@@ -3385,6 +3650,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=90
 .Version=44
+~=Generation=8
 - Ancient Power
 - Body Slam
 - Muddy Water
@@ -3398,6 +3664,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=126
 .Version=44
+~=Generation=8
 - Destiny Bond
 - Baton Pass
 - Tailwind
@@ -3411,6 +3678,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=134
 .Version=44
+~=Generation=8
 - Destiny Bond
 - Baton Pass
 - Tailwind
@@ -3424,6 +3692,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Entrainment
 - Flatter
 - Bounce
@@ -3437,6 +3706,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=170
 .Version=44
+~=Generation=8
 - Flatter
 - Bounce
 - Healing Wish
@@ -3450,6 +3720,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=28
 .Version=44
+~=Generation=8
 - Feint
 - Smokescreen
 - Acid Spray
@@ -3463,6 +3734,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Night Slash
 - Belch
 - Venom Drench
@@ -3476,6 +3748,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Heavy Slam
 - Iron Defense
 - Metal Sound
@@ -3489,6 +3762,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Iron Defense
 - Metal Sound
 - Future Sight
@@ -3502,6 +3776,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=144
 .Version=44
+~=Generation=8
 - Rock Slide
 - Low Kick
 - Counter
@@ -3515,6 +3790,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=174
 .Version=44
+~=Generation=8
 - Sweet Kiss
 - Disarming Voice
 - Covet
@@ -3528,6 +3804,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=45
+~=Generation=8
 - Shadow Ball
 - Dark Pulse
 - Hypnosis
@@ -3541,6 +3818,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=216
 .Version=45
+~=Generation=8
 - Dig
 - Sandstorm
 - Take Down
@@ -3554,6 +3832,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=216
 .Version=45
+~=Generation=8
 - Slash
 - Dragon Claw
 - Dig
@@ -3567,6 +3846,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=44
+~=Generation=8
 - Metronome
 - Flail
 - Belly Drum
@@ -3580,6 +3860,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Helping Hand
 - Copycat
 - Final Gambit
@@ -3593,6 +3874,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=138
 .Version=44
+~=Generation=8
 - Meteor Mash
 - Dragon Pulse
 - Extreme Speed
@@ -3606,6 +3888,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Dig
 - Crunch
 - Sandstorm
@@ -3619,6 +3902,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Sandstorm
 - Take Down
 - Roar
@@ -3632,6 +3916,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Venoshock
 - Knock Off
 - Scary Face
@@ -3645,6 +3930,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Scary Face
 - Pin Missile
 - Toxic
@@ -3658,6 +3944,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=45
+~=Generation=8
 - Flatter
 - Revenge
 - Venoshock
@@ -3671,6 +3958,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=144
 .Version=45
+~=Generation=8
 - Toxic
 - Nasty Plot
 - Sludge Bomb
@@ -3684,6 +3972,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Headbutt
 - Air Slash
 - Aqua Ring
@@ -3697,6 +3986,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Swagger
 - Ingrain
 - Wood Hammer
@@ -3710,6 +4000,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Ice Punch
 - Blizzard
 - Wood Hammer
@@ -3723,6 +4014,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=88
 .Version=44
+~=Generation=8
 - Metal Claw
 - Icy Wind
 - Fury Swipes
@@ -3736,6 +4028,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=190
 .Version=44
+~=Generation=8
 - Discharge
 - Metal Sound
 - Light Screen
@@ -3749,6 +4042,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=166
 .Version=44
+~=Generation=8
 - Screech
 - Slam
 - Power Whip
@@ -3762,6 +4056,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Stomp
 - Rock Blast
 - Drill Run
@@ -3775,6 +4070,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Tickle
 - Power Whip
 - Ingrain
@@ -3788,6 +4084,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=210
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Light Screen
 - Thunder
@@ -3801,6 +4098,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Flamethrower
 - Sunny Day
 - Fire Blast
@@ -3814,6 +4112,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Growl
 - Pound
 - Sweet Kiss
@@ -3827,6 +4126,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Razor Leaf
 - Tail Whip
 - Sand Attack
@@ -3840,6 +4140,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Freeze-Dry
 - Mirror Coat
 - Blizzard
@@ -3853,6 +4154,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Ancient Power
 - Take Down
 - Earthquake
@@ -3866,6 +4168,7 @@ Naive Nature
 =Met_Level=25
 =Met_Location=196
 .Version=44
+~=Generation=8
 - Magnet Rise
 - Thunder Shock
 - Psybeam
@@ -3879,6 +4182,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Psycho Cut
 - Heal Pulse
 - Quick Guard
@@ -3892,6 +4196,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=144
 .Version=44
+~=Generation=8
 - Curse
 - Shadow Ball
 - Future Sight
@@ -3905,6 +4210,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=150
 .Version=44
+~=Generation=8
 - Hex
 - Headbutt
 - Crunch
@@ -3918,6 +4224,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Substitute
 - Trick
 - Discharge
@@ -3930,6 +4237,7 @@ Level: 70
 Naive Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Psychic
 - Future Sight
 - Magic Room
@@ -3942,6 +4250,7 @@ Level: 70
 Hasty Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Psychic
 - Charm
 - Draining Kiss
@@ -3954,6 +4263,7 @@ Level: 70
 Timid Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Psychic
 - Dazzling Gleam
 - Nasty Plot
@@ -3966,6 +4276,7 @@ Level: 70
 Lax Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Slash
 - Ancient Power
 - Flash Cannon
@@ -3978,6 +4289,7 @@ Level: 70
 Timid Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Slash
 - Surf
 - Ancient Power
@@ -3990,6 +4302,7 @@ Level: 70
 Impish Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Metal Sound
 - Lava Plume
 - Crunch
@@ -4002,6 +4315,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=210
 .Version=45
+~=Generation=8
 - Giga Impact
 - Zen Headbutt
 - Hammer Arm
@@ -4014,6 +4328,7 @@ Level: 70
 Naughty Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Dragon Claw
 - Scary Face
 - Shadow Ball
@@ -4026,6 +4341,7 @@ Level: 70
 Brave Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Icy Wind
 - Moonblast
 - Psycho Cut
@@ -4039,6 +4355,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=180
 .Version=44
+~=Generation=8
 - Reversal
 - Roar
 - Last Resort
@@ -4052,6 +4369,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=18
 .Version=44
+~=Generation=8
 - Scratch
 - Growl
 - Sand Attack
@@ -4064,6 +4382,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=84
 .Version=44
+~=Generation=8
 - Torment
 - Assurance
 - Hone Claws
@@ -4077,6 +4396,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=8
 .Version=44
+~=Generation=8
 - Yawn
 - Psychic
 - Moonblast
@@ -4090,6 +4410,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Stored Power
 - Defense Curl
 - Hypnosis
@@ -4103,6 +4424,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Air Slash
 - Roost
 - Tailwind
@@ -4116,6 +4438,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=144
 .Version=44
+~=Generation=8
 - Air Slash
 - Roost
 - Tailwind
@@ -4129,6 +4452,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=150
 .Version=44
+~=Generation=8
 - Detect
 - Air Slash
 - Roost
@@ -4142,6 +4466,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=30
 .Version=44
+~=Generation=8
 - Tackle
 - Harden
 - Stealth Rock
@@ -4155,6 +4480,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Iron Defense
 - Headbutt
 - Rock Slide
@@ -4168,6 +4494,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=30
 .Version=44
+~=Generation=8
 - Gust
 - Attract
 - Confusion
@@ -4181,6 +4508,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=30
 .Version=44
+~=Generation=8
 - Mud-Slap
 - Rapid Spin
 - Scratch
@@ -4194,6 +4522,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=44
+~=Generation=8
 - Swords Dance
 - Drill Run
 - Earthquake
@@ -4207,6 +4536,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=204
 .Version=44
+~=Generation=8
 - Double-Edge
 - Entrainment
 - Misty Terrain
@@ -4220,6 +4550,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=30
 .Version=44
+~=Generation=8
 - Leer
 - Low Kick
 - Rock Throw
@@ -4233,6 +4564,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Rock Slide
 - Slam
 - Scary Face
@@ -4246,6 +4578,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=44
+~=Generation=8
 - Hammer Arm
 - Stone Edge
 - Superpower
@@ -4259,6 +4592,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=130
 .Version=44
+~=Generation=8
 - Echoed Voice
 - Growl
 - Acid
@@ -4272,6 +4606,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=150
 .Version=44
+~=Generation=8
 - Hyper Voice
 - Muddy Water
 - Rain Dance
@@ -4285,6 +4620,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Uproar
 - Aqua Ring
 - Hyper Voice
@@ -4299,6 +4635,7 @@ Language: English
 =OT_Name=Grimm
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Revenge
 - Bulk Up
 - Storm Throw
@@ -4313,6 +4650,7 @@ Language: English
 =OT_Name=Grimm
 =Met_Location=30001
 .Version=45
+~=Generation=8
 - Low Sweep
 - Bulk Up
 - Retaliate
@@ -4326,6 +4664,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Agility
 - Toxic
 - Venom Drench
@@ -4339,6 +4678,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=144
 .Version=44
+~=Generation=8
 - Sunny Day
 - Endeavor
 - Cotton Guard
@@ -4352,6 +4692,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=194
 .Version=44
+~=Generation=8
 - Synthesis
 - Sunny Day
 - Entrainment
@@ -4365,6 +4706,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=194
 .Version=44
+~=Generation=8
 - Absorb
 - Growth
 - Helping Hand
@@ -4378,6 +4720,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=44
 .Version=44
+~=Generation=8
 - Aqua Jet
 - Bite
 - Scary Face
@@ -4391,6 +4734,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=184
 .Version=44
+~=Generation=8
 - Sandstorm
 - Foul Play
 - Earthquake
@@ -4404,6 +4748,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Uproar
 - Icicle Crash
 - Blizzard
@@ -4417,6 +4762,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Sucker Punch
 - Pin Missile
 - Giga Drain
@@ -4430,6 +4776,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=138
 .Version=44
+~=Generation=8
 - X-Scissor
 - Rock Polish
 - Shell Smash
@@ -4443,6 +4790,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - X-Scissor
 - Rock Blast
 - Stealth Rock
@@ -4456,6 +4804,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Headbutt
 - Sand Attack
 - Facade
@@ -4469,6 +4818,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=44
+~=Generation=8
 - Light Screen
 - Reflect
 - Sky Attack
@@ -4483,6 +4833,7 @@ Language: English
 =OT_Name=Eve
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Hex
 - Mean Look
 - Grudge
@@ -4496,6 +4847,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Brutal Swing
 - Crafty Shield
 - Hex
@@ -4510,6 +4862,7 @@ Language: English
 =OT_Name=Eve
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Hex
 - Curse
 - Shadow Claw
@@ -4523,6 +4876,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=226
 .Version=44
+~=Generation=8
 - Aqua Tail
 - Rain Dance
 - Hydro Pump
@@ -4536,6 +4890,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=226
 .Version=44
+~=Generation=8
 - Aqua Tail
 - Rain Dance
 - Hydro Pump
@@ -4549,6 +4904,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=222
 .Version=44
+~=Generation=8
 - Tailwind
 - Dragon Claw
 - Thrash
@@ -4562,6 +4918,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=28
 .Version=44
+~=Generation=8
 - Poison Gas
 - Recycle
 - Acid Spray
@@ -4575,6 +4932,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Belch
 - Pain Split
 - Gunk Shot
@@ -4588,6 +4946,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Imprison
 - Night Daze
 - Nasty Plot
@@ -4601,6 +4960,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=178
 .Version=44
+~=Generation=8
 - Imprison
 - Night Daze
 - Nasty Plot
@@ -4614,6 +4974,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=128
 .Version=44
+~=Generation=8
 - Pound
 - Baby-Doll Eyes
 - Helping Hand
@@ -4627,6 +4988,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Pound
 - Baby-Doll Eyes
 - Helping Hand
@@ -4640,6 +5002,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Psychic
 - Flatter
 - Future Sight
@@ -4653,6 +5016,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Psychic
 - Flatter
 - Future Sight
@@ -4666,6 +5030,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Psych Up
 - Psychic
 - Flatter
@@ -4679,6 +5044,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=45
+~=Generation=8
 - Psychic
 - Skill Swap
 - Future Sight
@@ -4692,6 +5058,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=45
+~=Generation=8
 - Psychic
 - Skill Swap
 - Future Sight
@@ -4705,6 +5072,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=45
+~=Generation=8
 - Pain Split
 - Psychic
 - Skill Swap
@@ -4718,6 +5086,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=130
 .Version=44
+~=Generation=8
 - Astonish
 - Harden
 - Taunt
@@ -4731,6 +5100,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Uproar
 - Acid Armor
 - Mirror Coat
@@ -4744,6 +5114,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Uproar
 - Acid Armor
 - Mirror Coat
@@ -4757,6 +5128,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Volt Switch
 - Light Screen
 - Discharge
@@ -4770,6 +5142,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=84
 .Version=44
+~=Generation=8
 - Iron Head
 - X-Scissor
 - Swords Dance
@@ -4783,6 +5156,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Toxic
 - Rage Powder
 - Solar Beam
@@ -4796,6 +5170,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Toxic
 - Rage Powder
 - Solar Beam
@@ -4809,6 +5184,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Whirlpool
 - Hydro Pump
 - Destiny Bond
@@ -4822,6 +5198,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=128
 .Version=44
+~=Generation=8
 - Whirlpool
 - Hydro Pump
 - Destiny Bond
@@ -4835,6 +5212,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Fury Cutter
 - Electroweb
 - Bug Bite
@@ -4848,6 +5226,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=84
 .Version=44
+~=Generation=8
 - Agility
 - Sucker Punch
 - Slash
@@ -4861,6 +5240,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Iron Defense
 - Curse
 - Gyro Ball
@@ -4874,6 +5254,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Iron Defense
 - Curse
 - Gyro Ball
@@ -4887,6 +5268,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=28
 .Version=44
+~=Generation=8
 - Thunder Shock
 - Vise Grip
 - Bind
@@ -4900,6 +5282,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Screech
 - Gear Grind
 - Lock-On
@@ -4913,6 +5296,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Lock-On
 - Shift Gear
 - Zap Cannon
@@ -4926,6 +5310,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Recover
 - Calm Mind
 - Wonder Room
@@ -4939,6 +5324,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Zen Headbutt
 - Recover
 - Calm Mind
@@ -4952,6 +5338,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=44
+~=Generation=8
 - Imprison
 - Pain Split
 - Overheat
@@ -4965,6 +5352,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Inferno
 - Imprison
 - Pain Split
@@ -4978,6 +5366,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Astonish
 - Smog
 - Ember
@@ -4991,6 +5380,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Dragon Pulse
 - Crunch
 - Dragon Dance
@@ -5004,6 +5394,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=132
 .Version=44
+~=Generation=8
 - Swords Dance
 - Outrage
 - Guillotine
@@ -5017,6 +5408,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Thrash
 - Rest
 - Blizzard
@@ -5030,6 +5422,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Hail
 - Thrash
 - Rest
@@ -5043,6 +5436,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=204
 .Version=44
+~=Generation=8
 - Ice Beam
 - Acid Armor
 - Solar Beam
@@ -5056,6 +5450,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=84
 .Version=44
+~=Generation=8
 - Acid Armor
 - Giga Drain
 - Guard Swap
@@ -5069,6 +5464,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Sucker Punch
 - Metal Sound
 - Revenge
@@ -5082,6 +5478,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=174
 .Version=44
+~=Generation=8
 - Aura Sphere
 - Bounce
 - Calm Mind
@@ -5095,6 +5492,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=174
 .Version=44
+~=Generation=8
 - Hone Claws
 - Aura Sphere
 - Bounce
@@ -5108,6 +5506,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=172
 .Version=44
+~=Generation=8
 - Crunch
 - Iron Head
 - Outrage
@@ -5121,6 +5520,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Stomping Tantrum
 - Iron Defense
 - Mega Punch
@@ -5134,6 +5534,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Heavy Slam
 - Phantom Force
 - Hammer Arm
@@ -5147,6 +5548,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=52
 .Version=44
+~=Generation=8
 - Fury Cutter
 - Metal Claw
 - Torment
@@ -5160,6 +5562,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Night Slash
 - Iron Defense
 - Laser Focus
@@ -5173,6 +5576,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=166
 .Version=44
+~=Generation=8
 - Head Charge
 - Swords Dance
 - Megahorn
@@ -5186,6 +5590,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Tailwind
 - Scary Face
 - Aerial Ace
@@ -5199,6 +5604,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Slash
 - Whirlwind
 - Crush Claw
@@ -5212,6 +5618,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=45
+~=Generation=8
 - Tailwind
 - Knock Off
 - Iron Defense
@@ -5225,6 +5632,7 @@ Modest Nature
 Ball: Master Ball
 .Met_Location=148
 .Version=45
+~=Generation=8
 - Whirlwind
 - Air Slash
 - Dark Pulse
@@ -5238,6 +5646,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Swallow
 - Spit Up
 - Slash
@@ -5251,6 +5660,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Bug Bite
 - Bite
 - Agility
@@ -5264,6 +5674,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Hyper Voice
 - Dragon Rush
 - Nasty Plot
@@ -5277,6 +5688,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Body Slam
 - Hyper Voice
 - Dragon Rush
@@ -5290,6 +5702,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Bug Buzz
 - Take Down
 - Amnesia
@@ -5303,6 +5716,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=184
 .Version=44
+~=Generation=8
 - Leech Life
 - Bug Buzz
 - Heat Wave
@@ -5316,6 +5730,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=226
 .Version=45
+~=Generation=8
 - Sacred Sword
 - Swords Dance
 - Iron Head
@@ -5329,6 +5744,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=232
 .Version=45
+~=Generation=8
 - Sacred Sword
 - Swords Dance
 - Stone Edge
@@ -5342,6 +5758,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=210
 .Version=45
+~=Generation=8
 - Sacred Sword
 - Swords Dance
 - Leaf Blade
@@ -5354,6 +5771,7 @@ Level: 70
 Gentle Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Hurricane
 - Agility
 - Icy Wind
@@ -5366,6 +5784,7 @@ Level: 70
 Brave Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Thunder
 - Rain Dance
 - Weather Ball
@@ -5378,6 +5797,7 @@ Level: 70
 Timid Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Noble Roar
 - Extrasensory
 - Fusion Flare
@@ -5390,6 +5810,7 @@ Level: 70
 Sassy Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Noble Roar
 - Slash
 - Fusion Bolt
@@ -5402,6 +5823,7 @@ Level: 70
 Docile Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Sand Tomb
 - Rock Slide
 - Bulldoze
@@ -5414,6 +5836,7 @@ Level: 70
 Relaxed Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Ice Beam
 - Hyper Voice
 - Shadow Ball
@@ -5427,6 +5850,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=45
+~=Generation=8
 - Secret Sword
 - Sacred Sword
 - Swords Dance
@@ -5440,6 +5864,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Leer
 - Tackle
 - Laser Focus
@@ -5453,6 +5878,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Swords Dance
 - Earthquake
 - Super Fang
@@ -5466,6 +5892,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=174
 .Version=44
+~=Generation=8
 - Tailwind
 - Steel Wing
 - Roost
@@ -5479,6 +5906,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=180
 .Version=44
+~=Generation=8
 - Aerial Ace
 - Tailwind
 - Steel Wing
@@ -5492,6 +5920,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=180
 .Version=44
+~=Generation=8
 - Agility
 - Aerial Ace
 - Tailwind
@@ -5505,6 +5934,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=128
 .Version=44
+~=Generation=8
 - Leer
 - Arm Thrust
 - Taunt
@@ -5518,6 +5948,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=122
 .Version=44
+~=Generation=8
 - Body Slam
 - Parting Shot
 - Entrainment
@@ -5531,6 +5962,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Leer
 - Fake Out
 - Disarming Voice
@@ -5544,6 +5976,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=84
 .Version=44
+~=Generation=8
 - Sucker Punch
 - Role Play
 - Light Screen
@@ -5557,6 +5990,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=150
 .Version=44
+~=Generation=8
 - Iron Head
 - Power Trick
 - Swords Dance
@@ -5570,6 +6004,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Iron Head
 - Power Trick
 - Swords Dance
@@ -5583,6 +6018,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Tackle
 - Fury Cutter
 - Shadow Sneak
@@ -5596,6 +6032,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=45
+~=Generation=8
 - Echoed Voice
 - Draining Kiss
 - Aromatherapy
@@ -5609,6 +6046,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Draining Kiss
 - Fake Tears
 - Round
@@ -5622,6 +6060,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Switcheroo
 - Foul Play
 - Topsy-Turvy
@@ -5635,6 +6074,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Water Gun
 - Fury Cutter
 - Fury Swipes
@@ -5648,6 +6088,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Slash
 - Hone Claws
 - Razor Shell
@@ -5661,6 +6102,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=194
 .Version=45
+~=Generation=8
 - Dragon Pulse
 - Aqua Tail
 - Sludge Bomb
@@ -5674,6 +6116,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=194
 .Version=45
+~=Generation=8
 - Dragon Pulse
 - Aqua Tail
 - Sludge Bomb
@@ -5687,6 +6130,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=186
 .Version=44
+~=Generation=8
 - Aura Sphere
 - Bounce
 - Muddy Water
@@ -5700,6 +6144,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=194
 .Version=44
+~=Generation=8
 - Swords Dance
 - Aura Sphere
 - Bounce
@@ -5713,6 +6158,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Charge
 - Bulldoze
 - Volt Switch
@@ -5726,6 +6172,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Dragon Claw
 - Thrash
 - Earthquake
@@ -5739,6 +6186,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=44
+~=Generation=8
 - Earthquake
 - Horn Drill
 - Giga Impact
@@ -5752,6 +6200,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=204
 .Version=44
+~=Generation=8
 - Light Screen
 - Hail
 - Blizzard
@@ -5765,6 +6214,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=214
 .Version=44
+~=Generation=8
 - Ice Beam
 - Light Screen
 - Hail
@@ -5778,6 +6228,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Skill Swap
 - Psych Up
 - Moonblast
@@ -5791,6 +6242,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Encore
 - Feather Dance
 - Submission
@@ -5804,6 +6256,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=170
 .Version=44
+~=Generation=8
 - Play Rough
 - Super Fang
 - Entrainment
@@ -5817,6 +6270,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=224
 .Version=44
+~=Generation=8
 - Power Gem
 - Stealth Rock
 - Moonblast
@@ -5830,6 +6284,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=45
+~=Generation=8
 - Dragon Pulse
 - Curse
 - Body Slam
@@ -5843,6 +6298,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=45
+~=Generation=8
 - Dragon Pulse
 - Aqua Tail
 - Body Slam
@@ -5856,6 +6312,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Play Rough
 - Magic Room
 - Foul Play
@@ -5869,6 +6326,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=44
+~=Generation=8
 - Hex
 - Shadow Claw
 - Horn Leech
@@ -5882,6 +6340,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Astonish
 - Shadow Sneak
 - Confuse Ray
@@ -5895,6 +6354,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=150
 .Version=44
+~=Generation=8
 - Shadow Ball
 - Trick
 - Pain Split
@@ -5908,6 +6368,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Crunch
 - Take Down
 - Blizzard
@@ -5921,6 +6382,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Take Down
 - Blizzard
 - Double-Edge
@@ -5934,6 +6396,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Supersonic
 - Double Team
 - Wing Attack
@@ -5947,6 +6410,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Screech
 - Roost
 - Tailwind
@@ -5959,6 +6423,7 @@ Level: 70
 Hardy Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Ingrain
 - Dazzling Gleam
 - Moonblast
@@ -5971,6 +6436,7 @@ Level: 70
 Hasty Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Taunt
 - Oblivion Wing
 - Dragon Rush
@@ -5983,6 +6449,7 @@ Level: 70
 Lonely Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Thousand Arrows
 - Land’s Wrath
 - Dragon Pulse
@@ -5996,6 +6463,7 @@ Rash Nature
 =Met_Level=5
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Tackle
 - Pluck
 - Razor Leaf
@@ -6009,6 +6477,7 @@ Hasty Nature
 =Met_Level=5
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Double Kick
 - Darkest Lariat
 - Fire Fang
@@ -6022,6 +6491,7 @@ Bold Nature
 =Met_Level=5
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Icy Wind
 - Sparkling Aria
 - Bubble Beam
@@ -6035,6 +6505,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=12
 .Version=44
+~=Generation=8
 - Vise Grip
 - Mud-Slap
 
@@ -6046,6 +6517,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=132
 .Version=44
+~=Generation=8
 - X-Scissor
 - Crunch
 - Dig
@@ -6059,6 +6531,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=136
 .Version=44
+~=Generation=8
 - Bug Buzz
 - Guillotine
 - Fly
@@ -6072,6 +6545,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Switcheroo
 - Dazzling Gleam
 - Bug Buzz
@@ -6085,6 +6559,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=44
+~=Generation=8
 - Aromatherapy
 - Switcheroo
 - Dazzling Gleam
@@ -6098,6 +6573,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=178
 .Version=44
+~=Generation=8
 - Crunch
 - Scary Face
 - Stealth Rock
@@ -6111,6 +6587,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=174
 .Version=44
+~=Generation=8
 - Crunch
 - Scary Face
 - Stealth Rock
@@ -6124,6 +6601,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=130
 .Version=44
+~=Generation=8
 - Water Gun
 - Growl
 - Helping Hand
@@ -6137,6 +6615,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=94
 .Version=44
+~=Generation=8
 - Pin Missile
 - Toxic Spikes
 - Liquidation
@@ -6150,6 +6629,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Recover
 - Pin Missile
 - Toxic Spikes
@@ -6163,6 +6643,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=28
 .Version=44
+~=Generation=8
 - Mud-Slap
 - Rock Smash
 - Iron Defense
@@ -6176,6 +6657,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=136
 .Version=44
+~=Generation=8
 - Heavy Slam
 - Earthquake
 - Mega Kick
@@ -6189,6 +6671,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Bug Bite
 - Bite
 - Bubble Beam
@@ -6202,6 +6685,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Entrainment
 - Lunge
 - Liquidation
@@ -6215,6 +6699,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=164
 .Version=44
+~=Generation=8
 - Synthesis
 - Leaf Blade
 - Sunny Day
@@ -6228,6 +6713,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - X-Scissor
 - Synthesis
 - Leaf Blade
@@ -6241,6 +6727,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=150
 .Version=44
+~=Generation=8
 - Dazzling Gleam
 - Spore
 - Moonblast
@@ -6254,6 +6741,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=44
+~=Generation=8
 - Sleep Powder
 - Moonlight
 - Strength Sap
@@ -6267,6 +6755,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=144
 .Version=44
+~=Generation=8
 - Venom Drench
 - Flamethrower
 - Toxic
@@ -6280,6 +6769,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=128
 .Version=44
+~=Generation=8
 - Tackle
 - Leer
 - Baby-Doll Eyes
@@ -6293,6 +6783,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=132
 .Version=44
+~=Generation=8
 - Thrash
 - Pain Split
 - Double-Edge
@@ -6306,6 +6797,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=144
 .Version=44
+~=Generation=8
 - Flail
 - Teeter Dance
 - Aromatic Mist
@@ -6319,6 +6811,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=132
 .Version=44
+~=Generation=8
 - Teeter Dance
 - Aromatic Mist
 - Aromatherapy
@@ -6332,6 +6825,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=144
 .Version=44
+~=Generation=8
 - Aromatic Mist
 - Aromatherapy
 - Leaf Storm
@@ -6345,6 +6839,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=168
 .Version=44
+~=Generation=8
 - Play Rough
 - Sweet Scent
 - Petal Dance
@@ -6358,6 +6853,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=45
+~=Generation=8
 - Psych Up
 - Quash
 - Nasty Plot
@@ -6371,6 +6867,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=44
+~=Generation=8
 - Beat Up
 - Scary Face
 - Take Down
@@ -6384,6 +6881,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Struggle Bug
 - Sand Attack
 - Defense Curl
@@ -6396,6 +6894,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Razor Shell
 - Pin Missile
 - Swords Dance
@@ -6409,6 +6908,7 @@ Careful Nature
 Ball: Master Ball
 =Met_Location=178
 .Version=44
+~=Generation=8
 - Shadow Ball
 - Earth Power
 - Shore Up
@@ -6422,6 +6922,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=90
 .Version=44
+~=Generation=8
 - Purify
 - Curse
 - Gastro Acid
@@ -6435,6 +6936,7 @@ Lonely Nature
 =Met_Level=50
 =Met_Location=158
 .Version=44
+~=Generation=8
 - Multi-Attack
 - X-Scissor
 - Iron Head
@@ -6448,6 +6950,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Shell Trap
 - Shell Smash
 - Overheat
@@ -6461,6 +6964,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Fell Stinger
 - Spark
 - Pin Missile
@@ -6474,6 +6978,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=44
+~=Generation=8
 - Shadow Claw
 - Charm
 - Play Rough
@@ -6487,6 +6992,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=45
+~=Generation=8
 - Light Screen
 - Fly
 - Hyper Voice
@@ -6500,6 +7006,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Giga Drain
 - Whirlpool
 - Heavy Slam
@@ -6513,6 +7020,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Dragon Claw
 - Noble Roar
 - Dragon Dance
@@ -6526,6 +7034,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Noble Roar
 - Dragon Dance
 - Outrage
@@ -6539,6 +7048,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=146
 .Version=44
+~=Generation=8
 - Noble Roar
 - Dragon Dance
 - Outrage
@@ -6551,6 +7061,7 @@ Level: 70
 Serious Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Thunderbolt
 - Quick Attack
 - Brave Bird
@@ -6563,6 +7074,7 @@ Level: 70
 Lonely Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Psychic
 - Play Rough
 - Magic Room
@@ -6575,6 +7087,7 @@ Level: 70
 Serious Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Superpower
 - Megahorn
 - Wood Hammer
@@ -6587,6 +7100,7 @@ Level: 70
 Rash Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Whirlpool
 - Water Pulse
 - Brine
@@ -6600,6 +7114,7 @@ Hasty Nature
 =Met_Level=5
 =Met_Location=206
 .Version=44
+~=Generation=8
 - Splash
 - Teleport
 - Cosmic Power
@@ -6611,6 +7126,7 @@ Level: 70
 Hasty Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Zen Headbutt
 - Fire Spin
 - Iron Tail
@@ -6623,6 +7139,7 @@ Level: 70
 Hasty Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Shadow Ball
 - Moonblast
 - Magic Coat
@@ -6635,6 +7152,7 @@ Level: 70
 Careful Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Wonder Room
 - Sludge Wave
 - Brutal Swing
@@ -6647,6 +7165,7 @@ Level: 70
 Sassy Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Power-Up Punch
 - Taunt
 - Leech Life
@@ -6659,6 +7178,7 @@ Level: 70
 Jolly Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - High Jump Kick
 - Swift
 - Throat Chop
@@ -6671,6 +7191,7 @@ Level: 70
 Quiet Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Power Whip
 - Discharge
 - Eerie Impulse
@@ -6683,6 +7204,7 @@ Level: 70
 Lonely Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Leech Seed
 - Smack Down
 - Gyro Ball
@@ -6695,6 +7217,7 @@ Level: 70
 Sassy Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Vacuum Wave
 - Air Cutter
 - Leaf Blade
@@ -6707,6 +7230,7 @@ Level: 70
 Calm Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Dragon Rush
 - Stomping Tantrum
 - Brutal Swing
@@ -6719,6 +7243,7 @@ Level: 70
 Relaxed Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Psycho Cut
 - Charge Beam
 - Power Gem
@@ -6732,6 +7257,7 @@ Mild Nature
 Ball: Cherish Ball
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Fleur Cannon
 - Flash Cannon
 - Defense Curl
@@ -6744,6 +7270,7 @@ Level: 21
 Careful Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Dragon Pulse
 - Acid
 - Air Cutter
@@ -6756,6 +7283,7 @@ Level: 70
 Docile Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Rock Slide
 - Double-Edge
 - Brutal Swing
@@ -6768,6 +7296,7 @@ Level: 70
 Rash Nature
 =Met_Location=244
 .Version=44
+~=Generation=8
 - Shadow Claw
 - Taunt
 - Fire Blast
@@ -6781,6 +7310,7 @@ Hasty Nature
 Ball: Cherish Ball
 =Met_Location=40001
 .Version=44
+~=Generation=8
 - Plasma Fists
 - Close Combat
 - Blaze Kick
@@ -6794,6 +7324,7 @@ Brave Nature
 Ball: Cherish Ball
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Double Iron Bash
 - Hyper Beam
 - Dynamic Punch
@@ -6806,6 +7337,7 @@ Level: 5
 Adamant Nature
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Scratch
 - Growl
 
@@ -6817,6 +7349,7 @@ Docile Nature
 =Met_Level=5
 =Met_Location=6
 .Version=44
+~=Generation=8
 - Slam
 - Razor Leaf
 - Drum Beating
@@ -6829,6 +7362,7 @@ Level: 5
 Jolly Nature
 =Met_Location=30018
 .Version=44
+~=Generation=8
 - Tackle
 - Growl
 
@@ -6840,6 +7374,7 @@ Relaxed Nature
 =Met_Level=5
 =Met_Location=6
 .Version=44
+~=Generation=8
 - Headbutt
 - Double Kick
 - Pyro Ball
@@ -6853,6 +7388,7 @@ Bashful Nature
 =Met_Level=5
 =Met_Location=6
 .Version=44
+~=Generation=8
 - Pound
 - Snipe Shot
 - U-turn
@@ -6867,6 +7403,7 @@ Language: English
 =OT_Name=Haley
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Tackle
 - Tail Whip
 - Bite
@@ -6880,6 +7417,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Swallow
 - Spit Up
 - Body Slam
@@ -6893,6 +7431,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=12
 .Version=44
+~=Generation=8
 - Peck
 - Leer
 
@@ -6904,6 +7443,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=44
+~=Generation=8
 - Scary Face
 - Drill Peck
 - Swagger
@@ -6917,6 +7457,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=8
 .Version=44
+~=Generation=8
 - Taunt
 - Scary Face
 - Drill Peck
@@ -6930,6 +7471,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=12
 .Version=44
+~=Generation=8
 - Struggle Bug
 
 Dottler (F)
@@ -6940,6 +7482,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Reflect
 - Light Screen
 - Confusion
@@ -6953,6 +7496,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=8
 .Version=44
+~=Generation=8
 - Mirror Coat
 - Psychic
 - After You
@@ -6966,6 +7510,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=18
 .Version=44
+~=Generation=8
 - Quick Attack
 - Tail Whip
 - Beat Up
@@ -6978,6 +7523,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=134
 .Version=44
+~=Generation=8
 - Night Slash
 - Tail Slap
 - Foul Play
@@ -6991,6 +7537,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=28
 .Version=44
+~=Generation=8
 - Sing
 - Rapid Spin
 - Sweet Scent
@@ -7004,6 +7551,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Cotton Spore
 - Round
 - Razor Leaf
@@ -7017,6 +7565,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=12
 .Version=44
+~=Generation=8
 - Tackle
 - Growl
 - Defense Curl
@@ -7029,6 +7578,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=140
 .Version=44
+~=Generation=8
 - Reversal
 - Cotton Guard
 - Double-Edge
@@ -7042,6 +7592,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=18
 .Version=44
+~=Generation=8
 - Tackle
 - Water Gun
 
@@ -7053,6 +7604,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=44
+~=Generation=8
 - Rock Tomb
 - Headbutt
 - Water Gun
@@ -7066,6 +7618,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=18
 .Version=44
+~=Generation=8
 - Tackle
 - Tail Whip
 - Nuzzle
@@ -7078,6 +7631,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=138
 .Version=44
+~=Generation=8
 - Charge
 - Wild Charge
 - Play Rough
@@ -7091,6 +7645,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=28
 .Version=44
+~=Generation=8
 - Tackle
 - Smokescreen
 - Rapid Spin
@@ -7104,6 +7659,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Stealth Rock
 - Heat Crash
 - Rock Blast
@@ -7117,6 +7673,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=152
 .Version=44
+~=Generation=8
 - Stealth Rock
 - Heat Crash
 - Rock Blast
@@ -7130,6 +7687,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Withdraw
 - Astonish
 - Headbutt
@@ -7142,6 +7700,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Brutal Swing
 - Bulldoze
 - Headbutt
@@ -7155,6 +7714,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - Headbutt
 - Glare
 - Dig
@@ -7168,6 +7728,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=132
 .Version=44
+~=Generation=8
 - Drill Peck
 - Amnesia
 - Thrash
@@ -7181,6 +7742,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=18
 .Version=44
+~=Generation=8
 - Peck
 - Aqua Jet
 
@@ -7192,6 +7754,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Laser Focus
 - Crunch
 - Liquidation
@@ -7206,6 +7769,7 @@ Ball: Luxury Ball
 =WasEgg=False
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Nuzzle
 - Growl
 - Flail
@@ -7219,6 +7783,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=84
 .Version=44
+~=Generation=8
 - Nuzzle
 - Spark
 - Flail
@@ -7231,6 +7796,7 @@ Gigantamax: Yes
 Adamant Nature
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Thunder Punch
 - Poison Jab
 - Fire Punch
@@ -7244,6 +7810,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=24
 .Version=44
+~=Generation=8
 - Bite
 - Flame Wheel
 - Bug Bite
@@ -7257,6 +7824,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=28
 .Version=44
+~=Generation=8
 - Ember
 - Flame Wheel
 - Coil
@@ -7270,6 +7838,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Bulk Up
 - Submission
 - Taunt
@@ -7283,6 +7852,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=92
 .Version=44
+~=Generation=8
 - Octolock
 - Topsy-Turvy
 - Superpower
@@ -7296,6 +7866,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=44
+~=Generation=8
 - Mega Drain
 - Teatime
 - Sucker Punch
@@ -7309,6 +7880,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=52
 .Version=44
+~=Generation=8
 - Life Dew
 - Disarming Voice
 - Aromatherapy
@@ -7322,6 +7894,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=44
+~=Generation=8
 - Aromatherapy
 - Psybeam
 - Heal Pulse
@@ -7335,6 +7908,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Calm Mind
 - Psychic
 - Healing Wish
@@ -7349,6 +7923,7 @@ Language: English
 =OT_Name=Romeo
 =Met_Location=30001
 .Version=45
+~=Generation=8
 - Swagger
 - Sucker Punch
 - Torment
@@ -7362,6 +7937,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=44
+~=Generation=8
 - Swagger
 - Sucker Punch
 - Torment
@@ -7375,6 +7951,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=144
 .Version=44
+~=Generation=8
 - Nasty Plot
 - Play Rough
 - Foul Play
@@ -7388,6 +7965,7 @@ Sassy Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Scary Face
 - Counter
 - Taunt
@@ -7401,6 +7979,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=84
 .Version=44
+~=Generation=8
 - Taunt
 - Swagger
 - Fury Swipes
@@ -7414,6 +7993,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=45
+~=Generation=8
 - Power Gem
 - Night Shade
 - Grudge
@@ -7428,6 +8008,7 @@ Impish Nature
 Ball: Master Ball
 =Met_Location=40
 .Version=44
+~=Generation=8
 - Iron Defense
 - Final Gambit
 - Fury Cutter
@@ -7441,6 +8022,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=106
 .Version=44
+~=Generation=8
 - Hypnosis
 - Mirror Coat
 - Sucker Punch
@@ -7454,6 +8036,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Brutal Swing
 - Shadow Claw
 - Hex
@@ -7467,6 +8050,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=32
 .Version=44
+~=Generation=8
 - Decorate
 - Sweet Kiss
 - Sweet Scent
@@ -7480,6 +8064,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=86
 .Version=44
+~=Generation=8
 - No Retreat
 - First Impression
 - Reversal
@@ -7493,6 +8078,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=90
 .Version=44
+~=Generation=8
 - Bubble Beam
 - Recover
 - Curse
@@ -7506,6 +8092,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=88
 .Version=44
+~=Generation=8
 - Powder Snow
 - Struggle Bug
 - Blizzard
@@ -7519,6 +8106,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Body Slam
 - Wide Guard
 - Heavy Slam
@@ -7532,6 +8120,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=45
+~=Generation=8
 - Hail
 - Aurora Veil
 - Surf
@@ -7545,6 +8134,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=76
 .Version=44
+~=Generation=8
 - Psybeam
 - Helping Hand
 - After You
@@ -7558,6 +8148,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=94
 .Version=44
+~=Generation=8
 - Bite
 - Spark
 - Torment
@@ -7571,6 +8162,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=142
 .Version=44
+~=Generation=8
 - Iron Head
 - Play Rough
 - High Horsepower
@@ -7584,6 +8176,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Strength
 - Iron Head
 - Play Rough
@@ -7597,6 +8190,7 @@ Gentle Nature
 =Met_Level=10
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Tackle
 - Thunder Shock
 - Charge
@@ -7609,6 +8203,7 @@ Lonely Nature
 =Met_Level=10
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Powder Snow
 - Thunder Shock
 - Charge
@@ -7621,6 +8216,7 @@ Mild Nature
 =Met_Level=10
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Tackle
 - Water Gun
 - Protect
@@ -7633,6 +8229,7 @@ Gentle Nature
 =Met_Level=10
 =Met_Location=68
 .Version=44
+~=Generation=8
 - Powder Snow
 - Water Gun
 - Protect
@@ -7646,6 +8243,7 @@ Language: English
 =OT_Name=Kapoor
 =Met_Location=30001
 .Version=44
+~=Generation=8
 - Iron Defense
 - Laser Focus
 - Dragon Claw
@@ -7659,6 +8257,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Astonish
 - Infestation
 - Quick Attack
@@ -7672,6 +8271,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=154
 .Version=44
+~=Generation=8
 - Dragon Rush
 - Dragon Darts
 - Phantom Force
@@ -7685,6 +8285,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=66
 .Version=44
+~=Generation=8
 - Sacred Sword
 - Swords Dance
 - Iron Head
@@ -7698,6 +8299,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=66
 .Version=45
+~=Generation=8
 - Slash
 - Crunch
 - Iron Head
@@ -7711,6 +8313,7 @@ Mild Nature
 =Met_Level=60
 =Met_Location=66
 .Version=44
+~=Generation=8
 - Cross Poison
 - Dragon Pulse
 - Flamethrower
@@ -7725,6 +8328,7 @@ Quirky Nature
 =Met_Level=10
 =Met_Location=196
 .Version=44
+~=Generation=8
 - Iron Head
 - Aerial Ace
 - Close Combat
@@ -7738,6 +8342,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=242
 .Version=45
+~=Generation=8
 - Thunder Cage
 - Electroweb
 - Extreme Speed
@@ -7751,6 +8356,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=242
 .Version=44
+~=Generation=8
 - Dragon Energy
 - Dragon Claw
 - Hammer Arm
@@ -7764,6 +8370,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=220
 .Version=45
+~=Generation=8
 - Taunt
 - Double-Edge
 - Swords Dance
@@ -7777,6 +8384,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=220
 .Version=44
+~=Generation=8
 - Disable
 - Double-Edge
 - Nasty Plot
@@ -7790,6 +8398,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=220
 .Version=44
+~=Generation=8
 - Psychic
 - Agility
 - Giga Drain
@@ -7802,6 +8411,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=220
 .Version=45
+~=Generation=8
 - Glacial Lance
 - Psychic
 - Iron Defense
@@ -7815,6 +8425,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=220
 .Version=44
+~=Generation=8
 - Astral Barrage
 - Psychic
 - Agility

@@ -3,7 +3,7 @@ IVs: 11 Def / 23 SpA / 15 Spe
 Ability: Shed Skin
 Level: 5
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Harden
 
 Metapod (F)
@@ -11,7 +11,7 @@ IVs: 18 Atk / 21 SpA / 22 SpD
 Ability: Shed Skin
 Level: 6
 Mild Nature
-=Generation=2
+~=Generation=2
 - Harden
 
 Metapod (M)
@@ -19,7 +19,7 @@ IVs: 25 Atk / 8 SpA / 25 Spe
 Ability: Shed Skin
 Level: 4
 Naive Nature
-=Generation=2
+~=Generation=2
 - Harden
 
 Butterfree (F)
@@ -27,7 +27,7 @@ IVs: 7 Atk / 18 Def / 5 SpA
 Ability: Tinted Lens
 Level: 7
 Bashful Nature
-=Generation=2
+~=Generation=2
 - Confusion
 
 Kakuna (M)
@@ -35,7 +35,7 @@ IVs: 19 Atk / 18 SpA / 24 Spe
 Ability: Shed Skin
 Level: 5
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Harden
 
 Kakuna (M)
@@ -43,7 +43,7 @@ IVs: 3 SpD / 9 Spe
 Ability: Shed Skin
 Level: 4
 Naive Nature
-=Generation=2
+~=Generation=2
 - Harden
 
 Beedrill (M)
@@ -51,7 +51,7 @@ IVs: 14 HP / 21 Atk / 5 SpA
 Ability: Sniper
 Level: 7
 Bashful Nature
-=Generation=2
+~=Generation=2
 - Fury Attack
 
 Pidgeotto (F)
@@ -59,7 +59,7 @@ IVs: 11 SpA / 16 SpD / 27 Spe
 Ability: Big Pecks
 Level: 17
 Calm Nature
-=Generation=2
+~=Generation=2
 - Gust
 - Sand Attack
 - Quick Attack
@@ -69,7 +69,7 @@ IVs: 20 HP / 21 Def / 12 SpD
 Ability: Big Pecks
 Level: 7
 Hasty Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Sand Attack
 - Gust
@@ -79,7 +79,7 @@ IVs: 26 HP / 28 SpA / 21 SpD
 Ability: Big Pecks
 Level: 9
 Rash Nature
-=Generation=2
+~=Generation=2
 - Gust
 - Sand Attack
 
@@ -88,7 +88,7 @@ IVs: 2 HP / 15 Def / 7 Spe
 Ability: Hustle
 Level: 15
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Tail Whip
 - Quick Attack
@@ -99,7 +99,7 @@ IVs: 8 Atk / 28 Def / 25 SpD
 Ability: Hustle
 Level: 17
 Jolly Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Tail Whip
 - Quick Attack
@@ -110,7 +110,7 @@ IVs: 9 Def / 9 SpA / 7 Spe
 Ability: Hustle
 Level: 19
 Lax Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Tail Whip
 - Quick Attack
@@ -121,7 +121,7 @@ IVs: 26 HP / 12 Def / 1 SpA
 Ability: Hustle
 Level: 6
 Mild Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Tail Whip
 - Quick Attack
@@ -131,7 +131,7 @@ IVs: 3 Atk / 0 SpA / 12 Spe
 Ability: Hustle
 Level: 18
 Relaxed Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Tail Whip
 - Quick Attack
@@ -142,7 +142,7 @@ IVs: 3 Atk / 21 Def / 17 SpA
 Ability: Sniper
 Level: 7
 Bashful Nature
-=Generation=2
+~=Generation=2
 - Peck
 - Growl
 - Leer
@@ -153,7 +153,7 @@ IVs: 25 Atk / 15 SpD / 16 Spe
 Ability: Sniper
 Level: 15
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Peck
 - Growl
 - Leer
@@ -164,7 +164,7 @@ IVs: 18 Atk / 18 SpD / 24 Spe
 Ability: Sniper
 Level: 19
 Lax Nature
-=Generation=2
+~=Generation=2
 - Peck
 - Growl
 - Leer
@@ -175,7 +175,7 @@ IVs: 22 HP / 4 Def / 23 SpD
 Ability: Unnerve
 Level: 10
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Wrap
 - Leer
 - Poison Sting
@@ -186,7 +186,7 @@ IVs: 18 HP / 28 Atk / 28 SpA
 Ability: Sand Rush
 Level: 10
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Scratch
 - Defense Curl
 - Sand Attack
@@ -196,7 +196,7 @@ IVs: 24 Atk / 20 SpA / 2 Spe
 Ability: Infiltrator
 Level: 13
 Sassy Nature
-=Generation=2
+~=Generation=2
 - Screech
 - Leech Life
 - Supersonic
@@ -207,7 +207,7 @@ IVs: 25 Atk / 24 SpA / 10 Spe
 Ability: Stench
 Level: 14
 Serious Nature
-=Generation=2
+~=Generation=2
 - Absorb
 - Sweet Scent
 - Poison Powder
@@ -217,7 +217,7 @@ IVs: 27 Atk / 9 Def / 21 SpD
 Ability: Stench
 Level: 15
 Timid Nature
-=Generation=2
+~=Generation=2
 - Absorb
 - Sweet Scent
 - Poison Powder
@@ -227,7 +227,7 @@ IVs: 20 Def / 18 SpA / 30 SpD
 Ability: Effect Spore
 Level: 14
 Serious Nature
-=Generation=2
+~=Generation=2
 - Absorb
 - Sweet Scent
 - Poison Powder
@@ -239,7 +239,6 @@ Level: 5
 Hardy Nature
 Language: English
 =OT_Name=Trainer
-=Generation=2
 - Scratch
 - Stun Spore
 - Leech Life
@@ -249,7 +248,7 @@ IVs: 25 HP / 0 Def / 2 SpD
 Ability: Wonder Skin
 Level: 10
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Disable
 - Foresight
@@ -260,7 +259,7 @@ IVs: 5 Def / 12 SpD / 9 Spe
 Ability: Wonder Skin
 Level: 30
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Confusion
 - Poison Powder
 - Leech Life
@@ -271,7 +270,7 @@ IVs: 5 SpA / 28 SpD / 18 Spe
 Ability: Sand Force
 Level: 16
 Gentle Nature
-=Generation=2
+~=Generation=2
 - Tri Attack
 - Scratch
 - Growl
@@ -284,7 +283,6 @@ Level: 5
 Hardy Nature
 Language: English
 =OT_Name=Trainer
-=Generation=2
 - Scratch
 - Growl
 - Dig
@@ -294,7 +292,7 @@ IVs: 4 Atk / 11 SpA / 14 Spe
 Ability: Sand Force
 Level: 19
 Lax Nature
-=Generation=2
+~=Generation=2
 - Scratch
 - Growl
 - Magnitude
@@ -305,7 +303,7 @@ IVs: 15 Atk / 16 Def / 11 SpA
 Ability: Unnerve
 Level: 19
 Lax Nature
-=Generation=2
+~=Generation=2
 - Scratch
 - Growl
 - Bite
@@ -315,7 +313,7 @@ IVs: 27 HP / 24 SpA / 30 SpD
 Ability: Unnerve
 Level: 18
 Relaxed Nature
-=Generation=2
+~=Generation=2
 - Scratch
 - Growl
 - Bite
@@ -325,7 +323,7 @@ IVs: 14 HP / 23 SpA / 15 SpD
 Ability: Swift Swim
 Level: 15
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Scratch
 - Tail Whip
 
@@ -334,7 +332,7 @@ IVs: 19 HP / 22 Atk / 1 SpA
 Ability: Swift Swim
 Level: 10
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Scratch
 - Tail Whip
 - Disable
@@ -345,7 +343,7 @@ IVs: 23 SpA / 26 Spe
 Ability: Swift Swim
 Level: 23
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Hypnosis
 - Water Gun
@@ -355,7 +353,7 @@ IVs: 22 HP / 27 SpA / 0 SpD
 Ability: Swift Swim
 Level: 15
 Timid Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Hypnosis
 - Water Gun
@@ -365,7 +363,7 @@ IVs: 25 Atk / 5 Def / 14 SpD
 Ability: Swift Swim
 Level: 20
 Timid Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Hypnosis
 - Water Gun
@@ -376,7 +374,7 @@ IVs: 13 SpA / 3 SpD / 11 Spe
 Ability: Swift Swim
 Level: 10
 Timid Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Hypnosis
 - Water Gun
@@ -386,7 +384,7 @@ IVs: 10 Atk / 7 SpA / 30 SpD
 Ability: Swift Swim
 Level: 20
 Timid Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Hypnosis
 - Water Gun
@@ -397,7 +395,7 @@ IVs: 11 Atk / 0 Def / 13 SpA
 Ability: Magic Guard
 Level: 15
 Timid Nature
-=Generation=2
+~=Generation=2
 - Teleport
 - Kinesis
 - Confusion
@@ -408,7 +406,7 @@ IVs: 15 Atk / 24 Def / 24 Spe
 Ability: Magic Guard
 Level: 15
 Timid Nature
-=Generation=2
+~=Generation=2
 - Teleport
 - Kinesis
 - Confusion
@@ -418,7 +416,7 @@ IVs: 18 Atk / 5 Def / 20 Spe
 Ability: Steadfast
 Level: 15
 Timid Nature
-=Generation=2
+~=Generation=2
 - Low Kick
 - Leer
 - Focus Energy
@@ -429,7 +427,7 @@ IVs: 1 HP / 4 SpA / 19 Spe
 Ability: Steadfast
 Level: 15
 Timid Nature
-=Generation=2
+~=Generation=2
 - Low Kick
 - Leer
 - Focus Energy
@@ -442,7 +440,6 @@ Level: 5
 Timid Nature
 Language: English
 =OT_Name=Trainer
-=Generation=2
 - Karate Chop
 - Low Kick
 - Leer
@@ -452,7 +449,7 @@ IVs: 29 HP / 12 SpD / 25 Spe
 Ability: Gluttony
 Level: 12
 Careful Nature
-=Generation=2
+~=Generation=2
 - Vine Whip
 - Growth
 - Wrap
@@ -462,7 +459,7 @@ IVs: 24 Atk / 4 Def / 3 SpD
 Ability: Gluttony
 Level: 12
 Careful Nature
-=Generation=2
+~=Generation=2
 - Vine Whip
 - Growth
 - Wrap
@@ -472,7 +469,7 @@ IVs: 12 Def / 12 SpD / 29 Spe
 Ability: Rain Dish
 Level: 25
 Docile Nature
-=Generation=2
+~=Generation=2
 - Supersonic
 - Constrict
 - Acid
@@ -483,7 +480,7 @@ IVs: 25 HP / 21 Def / 20 SpD
 Ability: Rain Dish
 Level: 20
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Acid
 - Supersonic
 - Wrap
@@ -494,7 +491,7 @@ IVs: 10 Def / 15 SpA / 1 Spe
 Ability: Rain Dish
 Level: 20
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Poison Sting
 - Supersonic
 - Constrict
@@ -505,7 +502,7 @@ IVs: 15 Def / 26 SpA / 20 Spe
 Ability: Flame Body
 Level: 14
 Rash Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Growl
 - Tail Whip
@@ -516,7 +513,7 @@ IVs: 19 HP / 27 Atk / 17 SpD
 Ability: Regenerator
 Level: 15
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Confusion
 - Disable
 - Headbutt
@@ -526,7 +523,7 @@ IVs: 5 HP / 18 SpA / 1 SpD
 Ability: Regenerator
 Level: 20
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Growl
 - Water Gun
@@ -537,7 +534,7 @@ IVs: 0 Atk / 7 Def / 6 SpA
 Ability: Regenerator
 Level: 31
 Mild Nature
-=Generation=2
+~=Generation=2
 - Confusion
 - Disable
 - Headbutt
@@ -550,7 +547,7 @@ Level: 5
 Hardy Nature
 Language: English
 =OT_Name=FOREST
-=Generation=2
+~=Generation=2
 - Tackle
 - Thunder Shock
 - Supersonic
@@ -563,7 +560,7 @@ Level: 10
 Hardy Nature
 Language: English
 =OT_Name=EMY
-=Generation=2
+~=Generation=2
 - Peck
 - Growl
 - Pursuit
@@ -574,7 +571,7 @@ IVs: 12 Atk / 4 Def / 5 SpA
 Ability: Tangled Feet
 Level: 30
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Pursuit
 - Fury Attack
 - Tri Attack
@@ -585,7 +582,7 @@ IVs: 8 HP / 2 Def / 20 Spe
 Ability: Tangled Feet
 Level: 29
 Naive Nature
-=Generation=2
+~=Generation=2
 - Peck
 - Growl
 - Fury Attack
@@ -595,7 +592,6 @@ IVs: 8 HP / 19 SpA / 6 Spe
 Ability: Ice Body
 Level: 28
 Brave Nature
-=Generation=2
 - Headbutt
 - Growl
 - Aurora Beam
@@ -607,7 +603,6 @@ Level: 5
 Hardy Nature
 Language: English
 =OT_Name=Trainer
-=Generation=2
 - Headbutt
 - Growl
 - Aurora Beam
@@ -617,7 +612,7 @@ IVs: 10 HP / 4 SpD / 0 Spe
 Ability: Poison Touch
 Level: 37
 Adamant Nature
-=Generation=2
+~=Generation=2
 - Disable
 - Poison Gas
 - Minimize
@@ -630,7 +625,6 @@ Level: 5
 Hardy Nature
 Language: English
 =OT_Name=Trainer
-=Generation=2
 - Pound
 - Disable
 - Poison Gas
@@ -640,7 +634,7 @@ IVs: 25 HP / 3 SpA / 7 SpD
 Ability: Poison Touch
 Level: 15
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Poison Gas
 - Pound
 - Harden
@@ -650,7 +644,7 @@ IVs: 0 HP / 22 Atk / 19 Spe
 Ability: Levitate
 Level: 17
 Calm Nature
-=Generation=2
+~=Generation=2
 - Lick
 - Spite
 - Mean Look
@@ -661,7 +655,7 @@ IVs: 3 Atk / 30 Def / 1 SpA
 Ability: Levitate
 Level: 20
 Timid Nature
-=Generation=2
+~=Generation=2
 - Lick
 - Spite
 - Mean Look
@@ -672,7 +666,7 @@ IVs: 3 HP / 17 SpA / 12 Spe
 Ability: Cursed Body
 Level: 17
 Calm Nature
-=Generation=2
+~=Generation=2
 - Lick
 - Spite
 - Mean Look
@@ -683,7 +677,7 @@ IVs: 28 HP / 5 Def / 24 SpA
 Ability: Cursed Body
 Level: 20
 Timid Nature
-=Generation=2
+~=Generation=2
 - Lick
 - Spite
 - Mean Look
@@ -694,7 +688,7 @@ IVs: 17 SpA / 2 SpD / 26 Spe
 Ability: Cursed Body
 Level: 20
 Timid Nature
-=Generation=2
+~=Generation=2
 - Lick
 - Confuse Ray
 - Night Shade
@@ -704,7 +698,7 @@ IVs: 0 HP / 28 Atk / 11 Def
 Ability: Inner Focus
 Level: 16
 Gentle Nature
-=Generation=2
+~=Generation=2
 - Pound
 - Hypnosis
 - Disable
@@ -715,7 +709,7 @@ IVs: 9 Atk / 3 SpA / 24 SpD
 Ability: Sheer Force
 Level: 25
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Leer
 - Vise Grip
@@ -728,7 +722,6 @@ Level: 3
 Brave Nature
 Language: English
 =OT_Name=Trainer
-=Generation=2
 - Tackle
 - Screech
 - Sonic Boom
@@ -738,7 +731,7 @@ IVs: 1 HP / 22 SpD / 19 Spe
 Ability: Aftermath
 Level: 23
 Quiet Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Screech
 - Sonic Boom
@@ -749,7 +742,7 @@ IVs: 6 HP / 22 SpD
 Ability: Battle Armor
 Level: 12
 Adamant Nature
-=Generation=2
+~=Generation=2
 - Growl
 - Tail Whip
 - Bone Club
@@ -760,7 +753,7 @@ IVs: 19 HP / 18 Def / 11 SpA
 Ability: Battle Armor
 Level: 24
 Quirky Nature
-=Generation=2
+~=Generation=2
 - Bone Club
 - Tail Whip
 - Headbutt
@@ -770,7 +763,7 @@ IVs: 9 HP / 17 Atk / 8 Def
 Ability: Battle Armor
 Level: 14
 Rash Nature
-=Generation=2
+~=Generation=2
 - Growl
 - Tail Whip
 - Bone Club
@@ -781,7 +774,7 @@ IVs: 5 Def / 2 SpD
 Ability: Levitate
 Level: 16
 Gentle Nature
-=Generation=2
+~=Generation=2
 - Poison Gas
 - Tackle
 - Smog
@@ -794,7 +787,6 @@ Level: 15
 Bashful Nature
 Language: English
 =OT_Name=Trainer
-=Generation=2
 - Horn Attack
 - Stomp
 - Tail Whip
@@ -805,7 +797,7 @@ IVs: 2 Def / 7 SpA / 2 Spe
 Ability: Reckless
 Level: 35
 Bashful Nature
-=Generation=2
+~=Generation=2
 - Tail Whip
 - Stomp
 - Fury Attack
@@ -818,7 +810,7 @@ Level: 10
 Hardy Nature
 Language: English
 =OT_Name=EMY
-=Generation=2
+~=Generation=2
 - Horn Attack
 - Tail Whip
 - Stomp
@@ -829,7 +821,7 @@ IVs: 10 HP / 12 Def / 18 SpA
 Ability: Damp
 Level: 20
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Smokescreen
 - Leer
@@ -840,7 +832,7 @@ IVs: 18 HP / 19 Def / 14 SpA
 Ability: Damp
 Level: 20
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Smokescreen
 
@@ -849,7 +841,7 @@ IVs: 19 Atk / 14 SpD / 16 Spe
 Ability: Damp
 Level: 25
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Smokescreen
 - Leer
@@ -859,7 +851,7 @@ IVs: 13 Atk / 21 Def / 25 SpD
 Ability: Lightning Rod
 Level: 10
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Peck
 - Tail Whip
 - Supersonic
@@ -869,7 +861,7 @@ IVs: 8 HP / 20 SpA / 18 Spe
 Ability: Lightning Rod
 Level: 20
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Peck
 - Tail Whip
 - Supersonic
@@ -880,7 +872,7 @@ IVs: 7 Atk / 16 Def / 19 Spe
 Ability: Lightning Rod
 Level: 23
 Quiet Nature
-=Generation=2
+~=Generation=2
 - Peck
 - Tail Whip
 - Supersonic
@@ -892,7 +884,6 @@ Level: 10
 Hardy Nature
 Language: French
 =OT_Name=Trainer
-=Generation=2
 - Pound
 - Lovely Kiss
 
@@ -901,7 +892,7 @@ IVs: 18 HP / 18 Atk / 10 SpD
 Ability: Dry Skin
 Level: 20
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Pound
 - Lick
 - Lovely Kiss
@@ -914,7 +905,6 @@ Level: 20
 Hardy Nature
 Language: French
 =OT_Name=Trainer
-=Generation=2
 - Pound
 - Lovely Kiss
 - Lick
@@ -924,7 +914,7 @@ IVs: 20 Def / 14 SpA / 1 Spe
 Ability: Vital Spirit
 Level: 15
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Quick Attack
 - Leer
 - Thunder Punch
@@ -934,7 +924,7 @@ IVs: 1 HP / 30 Def / 9 SpA
 Ability: Moxie
 Level: 15
 Bashful Nature
-=Generation=2
+~=Generation=2
 - Thrash
 
 Gyarados (F)
@@ -942,7 +932,7 @@ IVs: 28 HP / 19 SpD / 29 Spe
 Ability: Moxie
 Level: 15
 Bashful Nature
-=Generation=2
+~=Generation=2
 - Tackle
 
 Dragonair (F)
@@ -950,7 +940,7 @@ IVs: 7 HP / 22 Atk / 29 SpD
 Ability: Marvel Scale
 Level: 15
 Bashful Nature
-=Generation=2
+~=Generation=2
 - Wrap
 - Leer
 - Thunder Wave
@@ -960,7 +950,7 @@ IVs: 8 HP / 23 SpA / 0 SpD
 Ability: Marvel Scale
 Level: 10
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Wrap
 - Leer
 - Thunder Wave
@@ -971,7 +961,7 @@ IVs: 4 Atk / 3 SpA / 17 SpD
 Ability: Frisk
 Level: 6
 Mild Nature
-=Generation=2
+~=Generation=2
 - Scratch
 - Defense Curl
 - Quick Attack
@@ -981,7 +971,7 @@ IVs: 12 HP / 6 Atk / 8 Spe
 Ability: Tinted Lens
 Level: 7
 Bashful Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Growl
 - Foresight
@@ -992,7 +982,7 @@ IVs: 28 HP / 20 Atk / 20 SpD
 Ability: Tinted Lens
 Level: 10
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Fly
 - Foresight
@@ -1003,7 +993,7 @@ IVs: 20 HP / 9 Atk / 30 SpD
 Ability: Iron Fist
 Level: 7
 Quirky Nature
-=Generation=2
+~=Generation=2
 - Tackle
 - Supersonic
 
@@ -1012,7 +1002,7 @@ IVs: 9 HP / 24 Atk / 1 Spe
 Ability: Sniper
 Level: 7
 Quirky Nature
-=Generation=2
+~=Generation=2
 - Poison Sting
 - String Shot
 - Scary Face
@@ -1023,7 +1013,7 @@ IVs: 16 Def / 6 SpA / 17 SpD
 Ability: Infiltrator
 Level: 14
 Rash Nature
-=Generation=2
+~=Generation=2
 - Screech
 - Leech Life
 - Supersonic
@@ -1034,7 +1024,7 @@ IVs: 19 Def / 26 SpA / 4 Spe
 Ability: Magic Bounce
 Level: 17
 Jolly Nature
-=Generation=2
+~=Generation=2
 - Peck
 - Leer
 - Night Shade
@@ -1044,7 +1034,7 @@ IVs: 2 HP / 1 Atk / 23 Def
 Ability: Healer
 Level: 14
 Serious Nature
-=Generation=2
+~=Generation=2
 - Absorb
 - Sweet Scent
 - Poison Powder
@@ -1054,7 +1044,7 @@ IVs: 22 HP / 24 SpD / 29 Spe
 Ability: Drizzle
 Level: 20
 Timid Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Hypnosis
 - Water Gun
@@ -1065,7 +1055,7 @@ IVs: 11 HP / 14 Atk / 24 Def
 Ability: Unaware
 Level: 15
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Water Gun
 - Tail Whip
 - Slam
@@ -1075,7 +1065,7 @@ IVs: 6 Def / 29 Spe
 Ability: Rattled
 Level: 15
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Scary Face
 - Tail Whip
 - Charm
@@ -1086,7 +1076,7 @@ IVs: 25 Atk / 15 SpD / 2 Spe
 Ability: Unnerve
 Level: 25
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Leer
 - Lick
 - Fury Swipes
@@ -1097,7 +1087,7 @@ IVs: 18 HP / 16 Atk / 21 SpD
 Ability: Damp
 Level: 20
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Bubble
 - Smokescreen
 - Leer
@@ -1108,7 +1098,7 @@ IVs: 3 Def / 21 SpD / 3 Spe
 Ability: Shed Skin
 Level: 20
 Hardy Nature
-=Generation=2
+~=Generation=2
 - Bite
 - Leer
 - Sandstorm

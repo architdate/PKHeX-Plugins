@@ -5,6 +5,7 @@ Level: 7
 Adamant Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Tackle
 - Tail Whip
 - Quick Attack
@@ -15,7 +16,8 @@ IVs: 6 HP / 20 Atk / 16 Def / 23 SpA / 10 SpD / 18 Spe
 Ability: Static
 Level: 10
 Hardy Nature
-=Version=10
+.Version=10
+~=Generation=4
 - Volt Tackle
 - Surf
 - Tail Whip
@@ -28,6 +30,7 @@ Level: 15
 Naive Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Fly
 - Thunder
 - Growl
@@ -40,6 +43,7 @@ Level: 8
 Brave Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Pound
 - Encore
 - Sing
@@ -52,6 +56,7 @@ Level: 10
 Brave Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Sing
 - Defense Curl
 - Pound
@@ -63,6 +68,7 @@ Level: 15
 Hardy Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Teleport
 
 Machoke (M)
@@ -71,7 +77,8 @@ Ability: Guts
 Level: 48
 Sassy Nature
 Ball: Master Ball
-=Version=12
+.Version=12
+~=Generation=4
 - Submission
 - Wake-Up Slap
 - Cross Chop
@@ -84,6 +91,7 @@ Level: 8
 Bashful Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Vine Whip
 - Growth
 
@@ -94,6 +102,7 @@ Level: 13
 Bashful Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Vine Whip
 - Growth
 - Wrap
@@ -106,6 +115,7 @@ Level: 8
 Calm Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Peck
 - Growl
 - Quick Attack
@@ -117,6 +127,7 @@ Level: 12
 Calm Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Vise Grip
 - Leer
 - Harden
@@ -129,6 +140,7 @@ Level: 9
 Brave Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Peck
 - Tail Whip
 - Water Sport
@@ -141,6 +153,7 @@ Level: 18
 Hardy Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Water Gun
 - Rapid Spin
 - Recover
@@ -153,6 +166,7 @@ Level: 5
 Bold Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Splash
 - Bounce
 
@@ -163,6 +177,7 @@ Ability: Overgrow
 Naughty Nature
 =Met_Level=5
 .Version=8
+~=Generation=4
 - Cut
 - Flash
 - Rock Smash
@@ -175,6 +190,7 @@ Level: 15
 Bold Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Foresight
 - Defense Curl
 - Quick Attack
@@ -187,6 +203,7 @@ Level: 6
 Adamant Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Tackle
 - Growl
 - Foresight
@@ -199,6 +216,7 @@ Level: 30
 Naughty Nature
 =Met_Level=30
 .Version=7
+~=Generation=4
 - Helping Hand
 - Volt Tackle
 - Swagger
@@ -211,6 +229,7 @@ Level: 6
 Bashful Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Absorb
 - Growth
 - Mega Drain
@@ -222,6 +241,7 @@ Level: 11
 Hardy Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Peck
 - Astonish
 - Pursuit
@@ -234,6 +254,7 @@ Level: 31
 Calm Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Ember
 - Recover
 - Ancient Power
@@ -246,6 +267,7 @@ Level: 12
 Docile Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Pound
 - Lick
 - Sweet Kiss
@@ -258,6 +280,7 @@ Level: 17
 Brave Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Tail Whip
 - Headbutt
 - Sand Attack
@@ -270,6 +293,7 @@ Level: 30
 Impish Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Attract
 - Assist
 - Charm
@@ -282,6 +306,7 @@ Level: 31
 Bashful Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Water Pulse
 - Mist
 - Rest
@@ -294,6 +319,7 @@ Level: 30
 Calm Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Feint
 - Psybeam
 - Shadow Sneak
@@ -306,6 +332,7 @@ Level: 5
 Adamant Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Take Down
 - Zen Headbutt
 - Iron Head
@@ -318,7 +345,8 @@ Ability: Unaware
 Level: 40
 Hardy Nature
 Ball: Master Ball
-=Version=10
+.Version=10
+~=Generation=4
 - Cut
 - Strength
 - Rock Smash
@@ -331,6 +359,7 @@ Level: 33
 Brave Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Roar
 - Swagger
 - Thunder Fang
@@ -343,6 +372,7 @@ Level: 30
 Brave Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Water Sport
 - Stun Spore
 - Mega Drain
@@ -355,6 +385,7 @@ Level: 30
 Bold Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Sweet Scent
 - Gust
 - Bug Bite
@@ -366,6 +397,7 @@ Level: 5
 Adamant Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Tackle
 - Confusion
 - Trick Room
@@ -377,6 +409,7 @@ Level: 5
 Adamant Nature
 =Met_Location=233
 .Version=8
+~=Generation=4
 - Metronome
 - Tackle
 - Defense Curl

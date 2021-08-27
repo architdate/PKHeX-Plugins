@@ -7,6 +7,7 @@ Shiny: Yes
 Bold Nature
 =Met_Level=5
 .Version=5
+~=Generation=3
 - Body Slam
 - Mimic
 - Mud-Slap
@@ -18,6 +19,7 @@ Ability: Keen Eye
 Level: 5
 Jolly Nature
 .Version=3
+~=Generation=3
 - Double-Edge
 - Quick Attack
 - Steel Wing
@@ -30,6 +32,7 @@ Level: 44
 Shiny: Yes
 Jolly Nature
 .Version=3
+~=Generation=3
 - Dynamic Punch
 - Seismic Toss
 - Body Slam
@@ -41,6 +44,7 @@ Level: 5
 Shiny: Yes
 Relaxed Nature
 .Version=3
+~=Generation=3
 - Ice Ball
 - Splash
 - Haze
@@ -61,6 +65,7 @@ Shiny: Yes
 Hardy Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Teleport
 
 Machop (F)
@@ -70,6 +75,7 @@ Level: 5
 Shiny: Yes
 Adamant Nature
 .Version=3
+~=Generation=3
 - Encore
 - Smelling Salts
 - Counter
@@ -83,6 +89,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Metronome
 - Body Slam
 - Counter
@@ -95,6 +102,7 @@ Level: 5
 Shiny: Yes
 Timid Nature
 .Version=3
+~=Generation=3
 - Perish Song
 - Psywave
 - Haze
@@ -107,6 +115,7 @@ Level: 5
 Shiny: Yes
 Jolly Nature
 .Version=3
+~=Generation=3
 - Barrier
 - Assist
 - Role Play
@@ -120,6 +129,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Safari Ball
 .Version=2
+~=Generation=3
 - Tail Whip
 - Stomp
 - Fury Attack
@@ -132,6 +142,7 @@ Level: 5
 Shiny: Yes
 Adamant Nature
 .Version=3
+~=Generation=3
 - Comet Punch
 - Double-Edge
 - Seismic Toss
@@ -144,6 +155,7 @@ Level: 5
 Shiny: Yes
 Timid Nature
 .Version=3
+~=Generation=3
 - Future Sight
 - Fake Out
 - Trick
@@ -155,6 +167,7 @@ Level: 40
 Hardy Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Transform
 
 Eeveeeeeee (Eevee) (F)
@@ -164,6 +177,7 @@ Level: 5
 Shiny: Yes
 Jolly Nature
 .Version=3
+~=Generation=3
 - Wish
 - Curse
 - Flail
@@ -176,7 +190,8 @@ Level: 10
 Shiny: Yes
 Modest Nature
 =Met_Level=10
-=Version=15
+.Version=15
+~=Generation=3
 - Tackle
 - Tail Whip
 - Bite
@@ -187,7 +202,8 @@ IVs: 30 HP / 3 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 Ability: Pressure
 Level: 50
 Timid Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Extrasensory
 - Heal Bell
 - Haze
@@ -198,7 +214,8 @@ IVs: 4 Atk / 30 Def
 Ability: Pressure
 Level: 50
 Timid Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Extrasensory
 - Baton Pass
 - Metal Sound
@@ -212,6 +229,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Soft-Boiled
 - Rollout
 - Counter
@@ -222,7 +240,8 @@ IVs: 30 Atk / 22 SpA / 30 SpD
 Ability: Insomnia
 Level: 14
 Adamant Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Dig
 - Refresh
 - Signal Beam
@@ -235,6 +254,7 @@ Level: 5
 Shiny: Yes
 Jolly Nature
 .Version=3
+~=Generation=3
 - Reversal
 - Encore
 - Wish
@@ -256,6 +276,7 @@ Ability: Cute Charm
 Level: 5
 Bold Nature
 .Version=3
+~=Generation=3
 - Charm
 - Encore
 - Wish
@@ -273,7 +294,8 @@ IVs: 0 Atk / 30 Def / 15 SpA
 Ability: Static
 Level: 17
 Modest Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Body Slam
 - Heal Bell
 - Thunder Shock
@@ -287,6 +309,7 @@ Shiny: Yes
 Impish Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Tackle
 - Defense Curl
 - Tail Whip
@@ -300,6 +323,7 @@ Shiny: Yes
 Serious Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Tackle
 - Dive
 - Surf
@@ -313,6 +337,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Flail
 - Low Kick
 - Rock Slide
@@ -326,6 +351,7 @@ Shiny: Yes
 Jolly Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Astonish
 - Baton Pass
 - Tickle
@@ -339,6 +365,7 @@ Shiny: Yes
 Careful Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Mega Drain
 - Ingrain
 - Endeavor
@@ -350,7 +377,8 @@ Ability: Speed Boost
 Level: 34
 Shiny: Yes
 Timid Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Detect
 - Supersonic
 - Sonic Boom
@@ -362,7 +390,8 @@ Ability: Levitate
 Level: 37
 Shiny: Yes
 Timid Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Psybeam
 - Confuse Ray
 - Mean Look
@@ -375,6 +404,7 @@ Level: 5
 Shiny: Yes
 Jolly Nature
 .Version=3
+~=Generation=3
 - Swords Dance
 - Double-Edge
 - Mimic
@@ -388,6 +418,7 @@ Shiny: Yes
 Careful Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Body Slam
 - Defense Curl
 - Mud-Slap
@@ -398,7 +429,8 @@ IVs: 1 HP / 0 Atk / 5 Def / 19 SpA / 8 SpD / 7 Spe
 Ability: Pickup
 Level: 13
 Adamant Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Return
 - Refresh
 - Fury Swipes
@@ -412,6 +444,7 @@ Shiny: Yes
 Careful Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Body Slam
 - Counter
 - Mega Kick
@@ -425,6 +458,7 @@ Shiny: Yes
 Bold Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Peck
 - Mud-Slap
 - Swift
@@ -437,6 +471,7 @@ Level: 5
 Shiny: Yes
 Bold Nature
 .Version=3
+~=Generation=3
 - Mud-Slap
 - Endure
 - Whirlwind
@@ -449,6 +484,7 @@ Level: 5
 Shiny: Yes
 Calm Nature
 .Version=3
+~=Generation=3
 - Tackle
 - Growl
 - Ancient Power
@@ -461,6 +497,7 @@ Level: 5
 Shiny: Yes
 Adamant Nature
 .Version=3
+~=Generation=3
 - Rapid Spin
 - High Jump Kick
 - Mach Punch
@@ -472,6 +509,7 @@ Level: 5
 Shiny: Yes
 Naive Nature
 .Version=3
+~=Generation=3
 - Cross Chop
 - Rolling Kick
 - Barrier
@@ -484,6 +522,7 @@ Level: 5
 Shiny: Yes
 Timid Nature
 .Version=3
+~=Generation=3
 - Cross Chop
 - Mega Punch
 - Barrier
@@ -497,6 +536,7 @@ Shiny: Yes
 Careful Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Counter
 - Seismic Toss
 - Mega Kick
@@ -508,7 +548,8 @@ Ability: Pressure
 Level: 40
 Shiny: Yes
 Timid Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Rain Dance
 - Leer
 - Quick Attack
@@ -520,7 +561,8 @@ Ability: Pressure
 Level: 40
 Shiny: Yes
 Adamant Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Sunny Day
 - Leer
 - Bite
@@ -534,6 +576,7 @@ Shiny: Yes
 Bold Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Mimic
 - Hydro Pump
 - Rain Dance
@@ -547,6 +590,7 @@ Shiny: Yes
 Impish Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Recover
 - Fire Blast
 - Sunny Day
@@ -561,6 +605,7 @@ Shiny: Yes
 Timid Nature
 =Met_Level=5
 .Version=1
+~=Generation=3
 - Pound
 - Leer
 
@@ -573,6 +618,7 @@ Shiny: Yes
 Timid Nature
 =Met_Level=5
 .Version=1
+~=Generation=3
 - Pound
 - Leer
 - Absorb
@@ -586,6 +632,7 @@ Shiny: Yes
 Adamant Nature
 =Met_Level=5
 .Version=3
+~=Generation=3
 - Scratch
 - Growl
 - Focus Energy
@@ -599,6 +646,7 @@ Shiny: Yes
 Adamant Nature
 =Met_Level=5
 .Version=2
+~=Generation=3
 - Scratch
 - Growl
 
@@ -611,6 +659,7 @@ Shiny: Yes
 Relaxed Nature
 =Met_Level=5
 .Version=1
+~=Generation=3
 - Defense Curl
 
 Ukati (Poochyena) (F)
@@ -618,7 +667,8 @@ IVs: 30 HP / 0 SpA / 24 SpD
 Ability: Run Away
 Level: 10
 Jolly Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Dig
 - Heal Bell
 - Poison Fang
@@ -632,6 +682,7 @@ Shiny: Yes
 Modest Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Astonish
 - Growl
 - Absorb
@@ -642,7 +693,8 @@ IVs: 30 SpA / 29 SpD
 Ability: Chlorophyll
 Level: 17
 Lonely Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Giga Drain
 - Refresh
 - Bullet Seed
@@ -656,6 +708,7 @@ Shiny: Yes
 Mild Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Water Gun
 - Fly
 - Wing Attack
@@ -669,6 +722,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Scratch
 - Yawn
 
@@ -680,6 +734,7 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Scratch
 - Harden
 - Leech Life
@@ -692,6 +747,7 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Scratch
 - Fury Swipes
 - Leech Life
@@ -705,6 +761,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=1
+~=Generation=3
 - False Swipe
 - Swords Dance
 - Leech Life
@@ -717,6 +774,7 @@ Level: 5
 Shiny: Yes
 Adamant Nature
 .Version=3
+~=Generation=3
 - Cross Chop
 - Helping Hand
 - Dynamic Punch
@@ -729,6 +787,7 @@ Level: 5
 Shiny: Yes
 Lonely Nature
 .Version=3
+~=Generation=3
 - Mimic
 - Charm
 - Body Slam
@@ -739,6 +798,7 @@ Ability: Keen Eye
 Level: 5
 Sassy Nature
 .Version=3
+~=Generation=3
 - Metronome
 - Foresight
 - Recover
@@ -751,6 +811,7 @@ Level: 5
 Shiny: Yes
 Jolly Nature
 .Version=3
+~=Generation=3
 - Fake Out
 - Baton Pass
 - Dynamic Punch
@@ -764,6 +825,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Growl
 - Thunder Wave
 - Quick Attack
@@ -777,6 +839,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Growl
 - Thunder Wave
 - Quick Attack
@@ -790,6 +853,7 @@ Shiny: Yes
 Relaxed Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Tackle
 - Confuse Ray
 - Double Team
@@ -803,6 +867,7 @@ Shiny: Yes
 Impish Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Tackle
 - Sweet Scent
 - Charm
@@ -813,7 +878,8 @@ IVs: 30 HP / 30 Def / 30 SpD / 2 Spe
 Ability: Oblivious
 Level: 14
 Quiet Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Take Down
 - Charm
 - Dig
@@ -827,6 +893,7 @@ Shiny: Yes
 Hardy Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Tackle
 - Uproar
 - Feint Attack
@@ -839,6 +906,7 @@ Level: 5
 Shiny: Yes
 Impish Nature
 .Version=3
+~=Generation=3
 - Mimic
 - Sandstorm
 - Hyper Beam
@@ -851,6 +919,7 @@ Level: 5
 Shiny: Yes
 Jolly Nature
 .Version=3
+~=Generation=3
 - Double-Edge
 - Body Slam
 - Pursuit
@@ -863,6 +932,7 @@ Level: 5
 Shiny: Yes
 Adamant Nature
 .Version=3
+~=Generation=3
 - Counter
 - Flail
 - Double Kick
@@ -876,6 +946,7 @@ Shiny: Yes
 Modest Nature
 =Met_Level=25
 .Version=3
+~=Generation=3
 - Powder Snow
 - Rain Dance
 - Sunny Day
@@ -889,6 +960,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Feint Attack
 - Fury Swipes
 - Psybeam
@@ -901,6 +973,7 @@ Level: 5
 Shiny: Yes
 Adamant Nature
 .Version=3
+~=Generation=3
 - Disable
 - Destiny Bond
 - Imprison
@@ -911,7 +984,8 @@ IVs: 18 Atk / 18 Def / 28 SpA / 14 SpD / 3 Spe
 Ability: Levitate
 Level: 19
 Careful Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Shadow Ball
 - Helping Hand
 - Astonish
@@ -924,6 +998,7 @@ Level: 5
 Shiny: Yes
 Adamant Nature
 .Version=3
+~=Generation=3
 - Disable
 - Memento
 - Pain Split
@@ -937,6 +1012,7 @@ Shiny: Yes
 Impish Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Foresight
 - Astonish
 - Confuse Ray
@@ -950,6 +1026,7 @@ Shiny: Yes
 Impish Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Seismic Toss
 - Astonish
 - Confuse Ray
@@ -975,6 +1052,7 @@ Ability: Inner Focus
 Level: 5
 Jolly Nature
 .Version=3
+~=Generation=3
 - Body Slam
 - Double-Edge
 - Spikes
@@ -986,6 +1064,7 @@ Ability: Inner Focus
 Level: 5
 Jolly Nature
 .Version=3
+~=Generation=3
 - Powder Snow
 - Leer
 - Spikes
@@ -995,7 +1074,8 @@ IVs: 0 Atk / 30 Def / 30 SpA / 30 Spe
 Ability: Thick Fat
 Level: 17
 Calm Nature
-=Version=15
+.Version=15
+~=Generation=3
 - Aurora Beam
 - Charm
 - Water Gun
@@ -1009,6 +1089,7 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Clamp
 - Water Gun
 - Whirlpool
@@ -1022,6 +1103,7 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Water Gun
 - Rock Tomb
 - Yawn
@@ -1034,6 +1116,7 @@ Level: 5
 Shiny: Yes
 Quiet Nature
 .Version=3
+~=Generation=3
 - Mud-Slap
 - Crunch
 - Double-Edge
@@ -1056,6 +1139,7 @@ Shiny: Yes
 Adamant Nature
 =Met_Level=5
 .Version=3
+~=Generation=3
 - Take Down
 
 Registeel
@@ -1065,6 +1149,7 @@ Level: 40
 Calm Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Metal Claw
 - Curse
 - Superpower
@@ -1078,6 +1163,7 @@ Shiny: Yes
 Naive Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Mist Ball
 - Psychic
 - Recover
@@ -1091,6 +1177,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Water Sport
 - Refresh
 - Mist Ball
@@ -1104,6 +1191,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Mist Ball
 - Psychic
 - Recover
@@ -1117,6 +1205,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Water Sport
 - Refresh
 - Mist Ball
@@ -1130,6 +1219,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Body Slam
 - Mud-Slap
 - Swift
@@ -1142,6 +1232,7 @@ Level: 50
 Timid Nature
 Ball: Master Ball
 .Version=1
+~=Generation=3
 - Luster Purge
 - Psychic
 - Recover
@@ -1155,6 +1246,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Protect
 - Refresh
 - Luster Purge
@@ -1168,6 +1260,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Luster Purge
 - Psychic
 - Recover
@@ -1181,6 +1274,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Mimic
 - Rest
 - Sheer Cold
@@ -1194,6 +1288,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Counter
 - Seismic Toss
 - Dynamic Punch
@@ -1207,6 +1302,7 @@ Shiny: Yes
 Mild Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Dynamic Punch
 - Double-Edge
 - Counter
@@ -1220,6 +1316,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Version=2
+~=Generation=3
 - Body Slam
 - Mud-Slap
 - Double-Edge
@@ -1233,6 +1330,7 @@ Shiny: Yes
 Mild Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Knock Off
 - Pursuit
 - Psychic
@@ -1245,7 +1343,8 @@ Level: 30
 Shiny: Yes
 Calm Nature
 Ball: Master Ball
-=Version=3
+.Version=3
+~=Generation=3
 - Seismic Toss
 - Mud-Slap
 - Counter

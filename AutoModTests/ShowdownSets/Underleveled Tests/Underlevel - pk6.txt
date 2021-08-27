@@ -7,6 +7,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=14
 .Version=25
+~=Generation=6
 - Harden
 
 Kakuna (F)
@@ -18,6 +19,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=14
 .Version=24
+~=Generation=6
 - Harden
 
 Golbat (M)
@@ -28,6 +30,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=316
 .Version=26
+~=Generation=6
 - Bite
 - Wing Attack
 - Confuse Ray
@@ -41,6 +44,7 @@ Bold Nature
 Ball: Master Ball
 =Met_Location=240
 .Version=26
+~=Generation=6
 - Acid
 - Poison Powder
 - Stun Spore
@@ -55,6 +59,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Leech Life
 - Stun Spore
 - Psybeam
@@ -68,6 +73,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=294
 .Version=26
+~=Generation=6
 - Acid
 - Toxic Spikes
 - Water Pulse
@@ -81,6 +87,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=300
 .Version=26
+~=Generation=6
 - Water Pulse
 - Rest
 - Aqua Ring
@@ -95,6 +102,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Minimize
 - Mud Bomb
 - Sludge Bomb
@@ -108,6 +116,7 @@ Modest Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Fury Attack
 - Scary Face
 - Rock Blast
@@ -121,6 +130,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=324
 .Version=26
+~=Generation=6
 - Water Pulse
 - Aqua Ring
 - Fury Attack
@@ -134,6 +144,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=324
 .Version=26
+~=Generation=6
 - Flail
 - Water Pulse
 - Aqua Ring
@@ -147,6 +158,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=316
 .Version=26
+~=Generation=6
 - Constrict
 - Leech Life
 - Night Shade
@@ -160,6 +172,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=254
 .Version=26
+~=Generation=6
 - Water Gun
 - Confuse Ray
 - Bubble Beam
@@ -173,6 +186,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=184
 .Version=26
+~=Generation=6
 - Defense Curl
 - Rollout
 - Bubble Beam
@@ -187,6 +201,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Rapid Spin
 - Bide
 - Natural Gift
@@ -200,6 +215,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Rapid Spin
 - Bide
 - Natural Gift
@@ -214,6 +230,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Harden
 - Recover
 - Flame Burst
@@ -228,6 +245,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Mud Bomb
 - Icy Wind
 - Ice Fang
@@ -241,6 +259,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Mud Bomb
 - Icy Wind
 - Ice Fang
@@ -254,6 +273,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Mud Bomb
 - Icy Wind
 - Ice Fang
@@ -267,6 +287,7 @@ Jolly Nature
 Ball: Master Ball
 =Met_Location=324
 .Version=26
+~=Generation=6
 - Rollout
 - Assurance
 - Knock Off
@@ -280,6 +301,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=238
 .Version=26
+~=Generation=6
 - Pursuit
 - Headbutt
 - Odor Sleuth
@@ -293,6 +315,7 @@ Docile Nature
 Ball: Master Ball
 =Met_Location=282
 .Version=26
+~=Generation=6
 - Harden
 
 Cascoon (M)
@@ -303,6 +326,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=282
 .Version=26
+~=Generation=6
 - Harden
 
 Lombre (M)
@@ -313,6 +337,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=26
+~=Generation=6
 - Tickle
 - Absorb
 - Bubble
@@ -326,6 +351,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=230
 .Version=27
+~=Generation=6
 - Foul Play
 - Growth
 - Nature Power
@@ -339,6 +365,7 @@ Naive Nature
 Ball: Master Ball
 =Met_Location=238
 .Version=26
+~=Generation=6
 - Knock Off
 - Supersonic
 - Mist
@@ -352,6 +379,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=248
 .Version=26
+~=Generation=6
 - Aqua Jet
 - Sweet Scent
 - Water Sport
@@ -365,6 +393,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=298
 .Version=26
+~=Generation=6
 - Echoed Voice
 - Astonish
 - Howl
@@ -378,6 +407,7 @@ Bashful Nature
 Ball: Master Ball
 =Met_Location=54
 .Version=24
+~=Generation=6
 - Fake Out
 - Whirlwind
 - Knock Off
@@ -391,6 +421,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=298
 .Version=26
+~=Generation=6
 - Psycho Cut
 - High Jump Kick
 - Psych Up
@@ -404,6 +435,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Amnesia
 - Lava Plume
 - Earth Power
@@ -417,6 +449,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Magic Coat
 - Zen Headbutt
 - Rest
@@ -431,6 +464,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Confuse Ray
 - Shadow Sneak
 - Pursuit
@@ -444,6 +478,7 @@ Brave Nature
 Ball: Master Ball
 =Met_Location=300
 .Version=26
+~=Generation=6
 - Sleep Talk
 - Brine
 - Aurora Beam
@@ -457,6 +492,7 @@ Calm Nature
 Ball: Master Ball
 =Met_Location=326
 .Version=26
+~=Generation=6
 - Fury Swipes
 - Charm
 - Assist
@@ -470,6 +506,7 @@ Rash Nature
 Ball: Master Ball
 =Met_Location=326
 .Version=27
+~=Generation=6
 - Fury Swipes
 - Charm
 - Assist
@@ -483,6 +520,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Iron Defense
 - Feint Attack
 - Safeguard
@@ -496,6 +534,7 @@ Quirky Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Take Down
 - Sand Tomb
 - Dual Chop
@@ -510,6 +549,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Bug Bite
 - Poison Fang
 - Venoshock
@@ -524,6 +564,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Feint Attack
 - Revenge
 - Swagger
@@ -537,6 +578,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Fury Attack
 - Chip Away
 - Rock Blast
@@ -551,6 +593,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Mud Bomb
 - Icy Wind
 - Ice Fang
@@ -564,6 +607,7 @@ Hasty Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Ancient Power
 - Icy Wind
 - Ice Fang
@@ -578,6 +622,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Confuse Ray
 - Shadow Sneak
 - Pursuit
@@ -592,6 +637,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Dig
 - Hone Claws
 - Slash
@@ -605,6 +651,7 @@ Quiet Nature
 Ball: Master Ball
 =Met_Location=330
 .Version=26
+~=Generation=6
 - Snatch
 - Work Up
 - Thrash
@@ -618,6 +665,7 @@ Timid Nature
 Ball: Master Ball
 =Met_Location=332
 .Version=26
+~=Generation=6
 - Bug Bite
 - Stealth Rock
 - Rock Slide
@@ -631,6 +679,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=328
 .Version=27
+~=Generation=6
 - Hex
 - Will-O-Wisp
 - Ominous Wind
@@ -644,6 +693,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Stockpile
 - Swallow
 - Body Slam
@@ -658,6 +708,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Feather Dance
 - Aqua Ring
 - Air Slash
@@ -671,6 +722,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Feint Attack
 - Take Down
 - Jump Kick
@@ -686,6 +738,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Feint Attack
 - Take Down
 - Jump Kick
@@ -699,6 +752,7 @@ Lonely Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Bug Bite
 - Gastro Acid
 - Slash
@@ -712,6 +766,7 @@ Mild Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Will-O-Wisp
 - Flame Burst
 - Imprison
@@ -725,6 +780,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Will-O-Wisp
 - Flame Burst
 - Imprison
@@ -739,6 +795,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Scary Face
 - Slash
 - False Swipe
@@ -752,6 +809,7 @@ Serious Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Scary Face
 - Slash
 - False Swipe
@@ -765,6 +823,7 @@ Naughty Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Fury Swipes
 - Brine
 - Endure
@@ -779,6 +838,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Fury Swipes
 - Brine
 - Endure
@@ -792,6 +852,7 @@ Lax Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Iron Defense
 - Mega Punch
 - Magnitude
@@ -806,6 +867,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Iron Defense
 - Mega Punch
 - Magnitude
@@ -819,6 +881,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=104
 .Version=25
+~=Generation=6
 - Work Up
 - Dragon Rush
 - Body Slam
@@ -833,6 +896,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=104
 .Version=25
+~=Generation=6
 - Flash Cannon
 - Dragon Rush
 - Fire Blast
@@ -846,6 +910,7 @@ Hardy Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Noble Roar
 - Take Down
 - Fire Fang
@@ -860,6 +925,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Synthesis
 - Take Down
 - Bulldoze
@@ -874,6 +940,7 @@ Ball: Master Ball
 Language: Korean
 =Met_Location=148
 .Version=24
+~=Generation=6
 - Mud-Slap
 - Clamp
 - Rock Polish
@@ -887,6 +954,7 @@ Adamant Nature
 Ball: Master Ball
 =Met_Location=42
 .Version=25
+~=Generation=6
 - Water Pulse
 - Double Team
 - Toxic
@@ -900,6 +968,7 @@ Gentle Nature
 Ball: Master Ball
 =Met_Location=42
 .Version=24
+~=Generation=6
 - Bubble Beam
 - Swords Dance
 - Crabhammer
@@ -913,6 +982,7 @@ Relaxed Nature
 Ball: Master Ball
 =Met_Location=148
 .Version=25
+~=Generation=6
 - Bide
 - Dragon Breath
 - Rain Dance

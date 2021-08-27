@@ -5,6 +5,7 @@ Level: 1
 Shiny: Yes
 Modest Nature
 .Version=8
+~=Generation=4
 - Tackle
 - Water Pulse
 
@@ -17,6 +18,7 @@ Bold Nature
 Ball: Poke Ball
 =Met_Level=15
 .Version=7
+~=Generation=4
 - Supersonic
 - Constrict
 - Acid
@@ -27,6 +29,7 @@ Ability: Skill Link
 Level: 1
 Naive Nature
 .Version=7
+~=Generation=4
 - Rapid Spin
 - Icicle Spear
 - Explosion
@@ -41,6 +44,7 @@ Docile Nature
 Ball: Master Ball
 Language: Japanese
 .Version=8
+~=Generation=4
 - Transform
 
 Aerodactyl (M)
@@ -50,6 +54,7 @@ Level: 1
 Shiny: Yes
 Jolly Nature
 .Version=8
+~=Generation=4
 - Pursuit
 - Whirlwind
 - Curse
@@ -62,6 +67,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Ancient Power
 - Agility
 - Ice Beam
@@ -75,6 +81,7 @@ Shiny: Yes
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Ancient Power
 - Charge
 - Agility
@@ -87,6 +94,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Psycho Cut
 - Amnesia
 - Power Swap
@@ -98,6 +106,7 @@ Level: 5
 Calm Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Pound
 
 Mew
@@ -106,7 +115,8 @@ Ability: Synchronize
 Level: 30
 Shiny: Yes
 Bold Nature
-=Version=3
+.Version=3
+~=Generation=3
 - Soft-Boiled
 - Seismic Toss
 - Counter
@@ -120,6 +130,7 @@ Shiny: Yes
 Calm Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Tackle
 - Growl
 
@@ -131,6 +142,7 @@ Shiny: Yes
 Timid Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Tackle
 - Leer
 
@@ -142,6 +154,7 @@ Shiny: Yes
 Jolly Nature
 =Met_Level=5
 .Version=7
+~=Generation=4
 - Scratch
 - Leer
 
@@ -152,6 +165,7 @@ Shiny: Yes
 Modest Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Tackle
 - Growl
 - Thunder Shock
@@ -164,6 +178,7 @@ Shiny: Yes
 Bold Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Whirlpool
 - Air Cutter
 - Mud-Slap
@@ -176,6 +191,7 @@ Level: 1
 Shiny: Yes
 Calm Nature
 .Version=8
+~=Generation=4
 - Bubble Beam
 - Mirror Coat
 - Mud Sport
@@ -188,6 +204,7 @@ Level: 1
 Shiny: Yes
 Bold Nature
 .Version=8
+~=Generation=4
 - Brave Bird
 - Curse
 - Whirlwind
@@ -201,6 +218,7 @@ Shiny: Yes
 Rash Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Zap Cannon
 - Aura Sphere
 - Extreme Speed
@@ -214,6 +232,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Roar
 - Quick Attack
 - Spark
@@ -227,6 +246,7 @@ Shiny: Yes
 Adamant Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Flare Blitz
 - Howl
 - Extreme Speed
@@ -240,6 +260,7 @@ Shiny: Yes
 Relaxed Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Sheer Cold
 - Air Slash
 - Extreme Speed
@@ -252,6 +273,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Rain Dance
 - Gust
 - Aurora Beam
@@ -264,6 +286,7 @@ Level: 20
 Sassy Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Sandstorm
 - Screech
 - Rock Slide
@@ -276,6 +299,7 @@ Level: 50
 Bold Nature
 Ball: Cherish Ball
 .Version=7
+~=Generation=4
 - Leaf Storm
 - Recover
 - Nasty Plot
@@ -287,6 +311,7 @@ Level: 14
 Shiny: Yes
 Hasty Nature
 .Version=8
+~=Generation=4
 - Nasty Plot
 - False Swipe
 - Sunny Day
@@ -298,6 +323,7 @@ Level: 1
 Shiny: Yes
 Calm Nature
 .Version=8
+~=Generation=4
 - Agility
 - Aqua Ring
 - Knock Off
@@ -310,6 +336,7 @@ Level: 40
 Bold Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Roost
 - Stockpile
 - Swallow
@@ -322,6 +349,7 @@ Shiny: Yes
 Modest Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Roost
 - Stockpile
 - Swallow
@@ -334,6 +362,7 @@ Level: 1
 Shiny: Yes
 Rash Nature
 .Version=7
+~=Generation=4
 - Body Slam
 - Switcheroo
 - Stockpile
@@ -346,6 +375,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Water Sport
 - Refresh
 - Mist Ball
@@ -357,7 +387,8 @@ Ability: Levitate
 Level: 50
 Shiny: Yes
 Timid Nature
-=Version=2
+.Version=2
+~=Generation=3
 - Defog
 - Mud-Slap
 - Swift
@@ -370,6 +401,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Protect
 - Refresh
 - Luster Purge
@@ -381,7 +413,8 @@ Ability: Levitate
 Level: 50
 Shiny: Yes
 Timid Nature
-=Version=1
+.Version=1
+~=Generation=3
 - Defog
 - Mud-Slap
 - Swift
@@ -394,6 +427,7 @@ Shiny: Yes
 Modest Nature
 Ball: Master Ball
 .Version=7
+~=Generation=4
 - Aqua Ring
 - Ice Beam
 - Ancient Power
@@ -407,6 +441,7 @@ Shiny: Yes
 Careful Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Rest
 - Earthquake
 - Ancient Power
@@ -420,6 +455,7 @@ Shiny: Yes
 Naive Nature
 Ball: Master Ball
 .Version=8
+~=Generation=4
 - Rest
 - Air Slash
 - Ancient Power
@@ -432,6 +468,7 @@ Level: 1
 Shiny: Yes
 Timid Nature
 .Version=7
+~=Generation=4
 - Vacuum Wave
 - Mud-Slap
 - Swift
@@ -444,6 +481,7 @@ Level: 1
 Shiny: Yes
 Careful Nature
 .Version=7
+~=Generation=4
 - String Shot
 - Mud-Slap
 - Air Cutter
@@ -456,6 +494,7 @@ Level: 1
 Shiny: Yes
 Timid Nature
 .Version=7
+~=Generation=4
 - Nasty Plot
 - Encore
 - Twister
@@ -469,6 +508,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Mirror Move
 - Sing
 - Fury Attack
@@ -482,6 +522,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Thunder Shock
 - Confuse Ray
 - Uproar
@@ -495,6 +536,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=11
+~=Generation=4
 - Confusion
 - Uproar
 - Future Sight
@@ -508,6 +550,7 @@ Shiny: Yes
 Modest Nature
 =Met_Level=1
 .Version=8
+~=Generation=4
 - Dragon Breath
 - Scary Face
 
@@ -518,6 +561,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Roar of Time
 - Heal Block
 - Earth Power
@@ -531,6 +575,7 @@ Shiny: Yes
 Modest Nature
 =Met_Level=1
 .Version=7
+~=Generation=4
 - Dragon Breath
 - Scary Face
 
@@ -541,6 +586,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Spacial Rend
 - Heal Block
 - Earth Power
@@ -554,6 +600,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=11
+~=Generation=4
 - Water Pulse
 - Heal Block
 - Dragon Claw
@@ -567,6 +614,7 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Ominous Wind
 - Ancient Power
 - Dragon Claw
@@ -580,6 +628,7 @@ Shiny: Yes
 Modest Nature
 =Met_Level=1
 .Version=8
+~=Generation=4
 - Dragon Breath
 - Scary Face
 
@@ -590,6 +639,7 @@ Shiny: Yes
 Modest Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Ominous Wind
 - Ancient Power
 - Dragon Claw
@@ -602,6 +652,7 @@ Level: 1
 Shiny: Yes
 Timid Nature
 .Version=8
+~=Generation=4
 - Tail Glow
 - Bubble
 - Water Sport
@@ -613,6 +664,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Hypnosis
 - Feint Attack
 - Nightmare
@@ -627,6 +679,7 @@ Shiny: Yes
 Timid Nature
 Ball: Master Ball
 .Version=12
+~=Generation=4
 - Dark Pulse
 - Thunderbolt
 - Psychic
@@ -637,6 +690,7 @@ Ability: Multitype
 Adamant Nature
 Ball: Cherish Ball
 .Version=10
+~=Generation=4
 - Judgment
 - Roar of Time
 - Spacial Rend

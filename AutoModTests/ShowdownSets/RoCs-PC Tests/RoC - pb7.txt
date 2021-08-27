@@ -5,6 +5,7 @@ Level: 7
 Calm Nature
 =Met_Location=39
 .Version=42
+~=Generation=7
 - Tackle
 - Growl
 - Vine Whip
@@ -28,6 +29,7 @@ Level: 32
 Calm Nature
 =Met_Location=39
 .Version=42
+~=Generation=7
 - Take Down
 - Sleep Powder
 - Razor Leaf
@@ -40,6 +42,7 @@ Level: 25
 Impish Nature
 =Met_Location=41
 .Version=42
+~=Generation=7
 - Smokescreen
 - Ember
 - Fury Swipes
@@ -52,6 +55,7 @@ Level: 57
 Bashful Nature
 =Met_Location=19
 .Version=42
+~=Generation=7
 - Dragon Rage
 - Fire Spin
 - Slash
@@ -64,6 +68,7 @@ Level: 16
 Hardy Nature
 =Met_Location=33
 .Version=42
+~=Generation=7
 - Tackle
 - Tail Whip
 - Bubble
@@ -76,6 +81,7 @@ Level: 42
 Relaxed Nature
 =Met_Location=44
 .Version=42
+~=Generation=7
 - Bubble Beam
 - Protect
 - Headbutt
@@ -110,6 +116,7 @@ Level: 4
 Jolly Nature
 =Met_Location=39
 .Version=42
+~=Generation=7
 - Harden
 
 Butterfree (F)
@@ -119,6 +126,7 @@ Level: 7
 Docile Nature
 =Met_Location=39
 .Version=42
+~=Generation=7
 - Gust
 - Confusion
 
@@ -129,6 +137,7 @@ Level: 7
 Adamant Nature
 =Met_Location=39
 .Version=42
+~=Generation=7
 - Poison Sting
 - String Shot
 
@@ -139,6 +148,7 @@ Level: 6
 Hardy Nature
 =Met_Location=39
 .Version=42
+~=Generation=7
 - Harden
 
 Beedrill (M)
@@ -148,6 +158,7 @@ Level: 7
 Impish Nature
 =Met_Location=39
 .Version=43
+~=Generation=7
 - Twineedle
 - Peck
 
@@ -158,6 +169,7 @@ Level: 7
 Gentle Nature
 =Met_Location=39
 .Version=42
+~=Generation=7
 - Tackle
 - Sand Attack
 - Gust
@@ -191,6 +203,7 @@ Level: 16
 Timid Nature
 =Met_Location=8
 .Version=42
+~=Generation=7
 - Gust
 - Quick Attack
 - Mirror Move
@@ -215,6 +228,7 @@ Level: 57
 Jolly Nature
 =Met_Location=3
 .Version=42
+~=Generation=7
 - Whirlwind
 - Agility
 - Air Slash
@@ -227,6 +241,7 @@ Level: 5
 Calm Nature
 =Met_Location=3
 .Version=42
+~=Generation=7
 - Tackle
 - Tail Whip
 
@@ -251,6 +266,7 @@ Language: English
 =OT_Name=Tatianna
 =Met_Location=30001
 .Version=43
+~=Generation=7
 - Tail Whip
 - Quick Attack
 - Focus Energy
@@ -287,6 +303,7 @@ Level: 18
 Relaxed Nature
 =Met_Location=13
 .Version=42
+~=Generation=7
 - Focus Energy
 - Bite
 - Super Fang
@@ -301,6 +318,7 @@ Language: English
 =OT_Name=Tatianna
 =Met_Location=30001
 .Version=42
+~=Generation=7
 - Super Fang
 - Quick Attack
 - Focus Energy
@@ -313,6 +331,7 @@ Level: 7
 Brave Nature
 =Met_Location=5
 .Version=42
+~=Generation=7
 - Peck
 - Growl
 
@@ -347,6 +366,7 @@ Level: 22
 Serious Nature
 =Met_Location=5
 .Version=43
+~=Generation=7
 - Crunch
 - Poison Sting
 - Leer
@@ -371,6 +391,7 @@ Level: 6
 Hasty Nature
 =Met_Location=39
 .Version=42
+~=Generation=7
 - Thunder Shock
 - Thunder Punch
 - Tail Whip
@@ -385,6 +406,7 @@ Language: English
 =OT_Name=Psytrice
 =Met_Location=30001
 .Version=42
+~=Generation=7
 - Thunder Shock
 - Growl
 - Tail Whip
@@ -397,6 +419,7 @@ Level: 5
 Gentle Nature
 =Met_Location=5
 .Version=42
+~=Generation=7
 - Scratch
 - Defense Curl
 - Poison Sting
@@ -410,6 +433,7 @@ Language: English
 =OT_Name=Nicholice
 =Met_Location=30001
 .Version=42
+~=Generation=7
 - Swift
 - Mirror Coat
 - Fury Swipes
@@ -422,6 +446,7 @@ Level: 22
 Gentle Nature
 =Met_Location=5
 .Version=42
+~=Generation=7
 - Swift
 - Fury Swipes
 - Poison Sting
@@ -446,6 +471,7 @@ Level: 21
 Naive Nature
 =Met_Location=11
 .Version=42
+~=Generation=7
 - Bite
 - Helping Hand
 - Toxic
@@ -458,6 +484,7 @@ Level: 23
 Brave Nature
 =Met_Location=11
 .Version=42
+~=Generation=7
 - Double Kick
 - Bite
 - Helping Hand
@@ -494,6 +521,7 @@ Level: 5
 Docile Nature
 =Met_Location=24
 .Version=42
+~=Generation=7
 - Leer
 - Peck
 - Focus Energy
@@ -505,6 +533,7 @@ Level: 47
 Lax Nature
 =Met_Location=25
 .Version=42
+~=Generation=7
 - Toxic
 - Fury Attack
 - Poison Jab
@@ -529,6 +558,7 @@ Level: 47
 Quiet Nature
 =Met_Location=25
 .Version=42
+~=Generation=7
 - Leer
 - Peck
 - Focus Energy
@@ -541,6 +571,7 @@ Level: 7
 Careful Nature
 =Met_Location=40
 .Version=42
+~=Generation=7
 - Growl
 - Pound
 - Defense Curl
@@ -565,6 +596,7 @@ Level: 11
 Modest Nature
 =Met_Location=40
 .Version=42
+~=Generation=7
 - Growl
 - Pound
 - Defense Curl
@@ -577,6 +609,7 @@ Level: 24
 Gentle Nature
 =Met_Location=9
 .Version=43
+~=Generation=7
 - Confuse Ray
 - Will-O-Wisp
 - Fire Spin
@@ -601,6 +634,7 @@ Level: 28
 Calm Nature
 =Met_Location=10
 .Version=43
+~=Generation=7
 - Tackle
 - Tail Whip
 - Ember
@@ -649,6 +683,7 @@ Level: 14
 Timid Nature
 =Met_Location=7
 .Version=42
+~=Generation=7
 - Pound
 - Defense Curl
 - Bide
@@ -685,6 +720,7 @@ Level: 3
 Naughty Nature
 =Met_Location=3
 .Version=42
+~=Generation=7
 - Absorb
 
 Gloom (F)
@@ -694,6 +730,7 @@ Level: 39
 Brave Nature
 =Met_Location=17
 .Version=42
+~=Generation=7
 - Sleep Powder
 - Razor Leaf
 - Mega Drain
@@ -706,6 +743,7 @@ Level: 43
 Careful Nature
 =Met_Location=23
 .Version=42
+~=Generation=7
 - Absorb
 - Growth
 - Acid
@@ -718,6 +756,7 @@ Level: 24
 Impish Nature
 =Met_Location=40
 .Version=42
+~=Generation=7
 - Slash
 - Sleep Powder
 - Leech Life
@@ -742,6 +781,7 @@ Level: 10
 Adamant Nature
 =Met_Location=26
 .Version=42
+~=Generation=7
 - Tackle
 - Disable
 - Supersonic
@@ -753,6 +793,7 @@ Level: 35
 Naive Nature
 =Met_Location=17
 .Version=42
+~=Generation=7
 - Stun Spore
 - Psybeam
 - Sleep Powder
@@ -765,6 +806,7 @@ Level: 13
 Gentle Nature
 =Met_Location=43
 .Version=42
+~=Generation=7
 - Scratch
 - Sand Attack
 - Growl
@@ -790,6 +832,7 @@ Language: English
 =OT_Name=Diggette
 =Met_Location=30001
 .Version=42
+~=Generation=7
 - Fury Swipes
 - Dig
 - Slash
@@ -814,6 +857,7 @@ Level: 19
 Naughty Nature
 =Met_Location=43
 .Version=42
+~=Generation=7
 - Growl
 - Agility
 - Fury Swipes
@@ -828,6 +872,7 @@ Language: English
 =OT_Name=Diggette
 =Met_Location=30001
 .Version=42
+~=Generation=7
 - Tri Attack
 - Dig
 - Slash
@@ -878,6 +923,7 @@ Language: English
 =OT_Name=Darko
 =Met_Location=30001
 .Version=43
+~=Generation=7
 - Screech
 - Slash
 - Nasty Plot
@@ -890,6 +936,7 @@ Level: 16
 Mild Nature
 =Met_Location=33
 .Version=42
+~=Generation=7
 - Fake Out
 - Taunt
 - Pay Day
@@ -926,6 +973,7 @@ Level: 11
 Adamant Nature
 =Met_Location=27
 .Version=42
+~=Generation=7
 - Scratch
 - Tail Whip
 - Water Gun
@@ -971,6 +1019,7 @@ Level: 28
 Calm Nature
 =Met_Location=5
 .Version=42
+~=Generation=7
 - Karate Chop
 - Scratch
 - Low Kick
@@ -1006,6 +1055,7 @@ Level: 28
 Hasty Nature
 =Met_Location=9
 .Version=42
+~=Generation=7
 - Bite
 - Roar
 - Ember
@@ -1018,6 +1068,7 @@ Level: 16
 Naive Nature
 =Met_Location=33
 .Version=43
+~=Generation=7
 - Bite
 - Roar
 - Ember
@@ -1042,6 +1093,7 @@ Level: 55
 Sassy Nature
 =Met_Location=46
 .Version=42
+~=Generation=7
 - Bubble Beam
 - Low Kick
 - Body Slam
@@ -1054,6 +1106,7 @@ Level: 53
 Docile Nature
 =Met_Location=46
 .Version=42
+~=Generation=7
 - Bubble Beam
 - Low Kick
 - Body Slam
@@ -1066,6 +1119,7 @@ Level: 57
 Brave Nature
 =Met_Location=46
 .Version=42
+~=Generation=7
 - Pound
 - Hypnosis
 - Water Gun
@@ -1090,6 +1144,7 @@ Level: 13
 Jolly Nature
 =Met_Location=8
 .Version=42
+~=Generation=7
 - Teleport
 
 Abra (M)
@@ -1120,6 +1175,7 @@ Level: 28
 Hasty Nature
 =Met_Location=9
 .Version=42
+~=Generation=7
 - Disable
 - Flash
 - Night Shade
@@ -1144,6 +1200,7 @@ Level: 42
 Docile Nature
 =Met_Location=45
 .Version=42
+~=Generation=7
 - Karate Chop
 - Brick Break
 - Submission
@@ -1168,6 +1225,7 @@ Level: 42
 Docile Nature
 =Met_Location=45
 .Version=42
+~=Generation=7
 - Karate Chop
 - Brick Break
 - Submission
@@ -1216,6 +1274,7 @@ Level: 43
 Bold Nature
 =Met_Location=23
 .Version=43
+~=Generation=7
 - Vine Whip
 - Growth
 - Wrap
@@ -1240,6 +1299,7 @@ Level: 33
 Sassy Nature
 =Met_Location=14
 .Version=42
+~=Generation=7
 - Bubble Beam
 - Wrap
 - Surf
@@ -1264,6 +1324,7 @@ Level: 10
 Hasty Nature
 =Met_Location=40
 .Version=42
+~=Generation=7
 - Defense Curl
 - Sand Attack
 - Bide
@@ -1290,6 +1351,7 @@ Language: English
 =OT_Name=Higeo
 =Met_Location=30001
 .Version=43
+~=Generation=7
 - Bide
 - Rock Throw
 - Stealth Rock
@@ -1298,8 +1360,7 @@ Language: English
 Geodude-Alola (F)
 IVs: 23 HP / 17 Atk / 13 Def / 17 SpA / 13 SpD
 Ability: Magnet Pull
-Level: 34
-Serious Nature
+Level: re
 =Met_Location=50
 .Version=34
 - Self-Destruct
@@ -1326,6 +1387,7 @@ Level: 18
 Serious Nature
 =Met_Location=41
 .Version=42
+~=Generation=7
 - Bide
 - Rock Throw
 - Stealth Rock
@@ -1362,6 +1424,7 @@ Level: 18
 Serious Nature
 =Met_Location=41
 .Version=42
+~=Generation=7
 - Bide
 - Rock Throw
 - Stealth Rock
@@ -1388,6 +1451,7 @@ Language: English
 =OT_Name=Higeo
 =Met_Location=30001
 .Version=42
+~=Generation=7
 - Self-Destruct
 - Rock Slide
 - Stealth Rock
@@ -1400,6 +1464,7 @@ Level: 37
 Modest Nature
 =Met_Location=19
 .Version=42
+~=Generation=7
 - Double Kick
 - Stomp
 - Fire Spin
@@ -1412,6 +1477,7 @@ Level: 39
 Naive Nature
 =Met_Location=19
 .Version=42
+~=Generation=7
 - Stomp
 - Fire Spin
 - Agility
@@ -1425,6 +1491,7 @@ Shiny: Yes
 Modest Nature
 =Met_Location=19
 .Version=42
+~=Generation=7
 - Stomp
 - Fire Spin
 - Agility
@@ -1437,6 +1504,7 @@ Level: 39
 Adamant Nature
 =Met_Location=44
 .Version=42
+~=Generation=7
 - Confusion
 - Disable
 - Rest
@@ -1449,6 +1517,7 @@ Level: 41
 Bold Nature
 =Met_Location=44
 .Version=42
+~=Generation=7
 - Confusion
 - Disable
 - Rest
@@ -1461,6 +1530,7 @@ Level: 37
 Naive Nature
 =Met_Location=42
 .Version=42
+~=Generation=7
 - Sonic Boom
 - Light Screen
 - Thunderbolt
@@ -1496,6 +1566,7 @@ Level: 37
 Naive Nature
 =Met_Location=42
 .Version=42
+~=Generation=7
 - Sonic Boom
 - Light Screen
 - Thunderbolt
@@ -1508,6 +1579,7 @@ Level: 37
 Hardy Nature
 =Met_Location=14
 .Version=42
+~=Generation=7
 - Agility
 - Slash
 - Air Slash
@@ -1531,6 +1603,7 @@ Level: 37
 Lonely Nature
 =Met_Location=19
 .Version=42
+~=Generation=7
 - Fury Attack
 - Agility
 - Drill Peck
@@ -1555,6 +1628,7 @@ Level: 31
 Naughty Nature
 =Met_Location=18
 .Version=42
+~=Generation=7
 - Rage
 - Fury Attack
 - Agility
@@ -1567,6 +1641,7 @@ Level: 41
 Naive Nature
 =Met_Location=44
 .Version=42
+~=Generation=7
 - Rest
 - Aurora Beam
 - Waterfall
@@ -1591,6 +1666,7 @@ Level: 43
 Naive Nature
 =Met_Location=44
 .Version=42
+~=Generation=7
 - Rest
 - Aurora Beam
 - Waterfall
@@ -1638,6 +1714,7 @@ Level: 41
 Naughty Nature
 =Met_Location=42
 .Version=42
+~=Generation=7
 - Disable
 - Sludge
 - Screech
@@ -1674,6 +1751,7 @@ Level: 39
 Naughty Nature
 =Met_Location=42
 .Version=42
+~=Generation=7
 - Disable
 - Sludge
 - Screech
@@ -1698,6 +1776,7 @@ Level: 45
 Adamant Nature
 =Met_Location=44
 .Version=42
+~=Generation=7
 - Protect
 - Ice Beam
 - Shell Smash
@@ -1734,6 +1813,7 @@ Level: 45
 Rash Nature
 =Met_Location=44
 .Version=42
+~=Generation=7
 - Tackle
 - Water Gun
 - Withdraw
@@ -1758,6 +1838,7 @@ Level: 29
 Quiet Nature
 =Met_Location=47
 .Version=42
+~=Generation=7
 - Night Shade
 - Will-O-Wisp
 - Sucker Punch
@@ -1818,6 +1899,7 @@ Level: 26
 Sassy Nature
 =Met_Location=13
 .Version=42
+~=Generation=7
 - Hypnosis
 - Psybeam
 - Confusion
@@ -1842,6 +1924,7 @@ Level: 37
 Careful Nature
 =Met_Location=14
 .Version=42
+~=Generation=7
 - Bubble Beam
 - Stomp
 - Protect
@@ -1866,6 +1949,7 @@ Level: 37
 Hasty Nature
 =Met_Location=42
 .Version=42
+~=Generation=7
 - Swift
 - Self-Destruct
 - Screech
@@ -1878,6 +1962,7 @@ Level: 42
 Adamant Nature
 =Met_Location=42
 .Version=42
+~=Generation=7
 - Thunderbolt
 - Swift
 - Self-Destruct
@@ -1890,6 +1975,7 @@ Level: 42
 Careful Nature
 =Met_Location=42
 .Version=42
+~=Generation=7
 - Thunderbolt
 - Swift
 - Self-Destruct
@@ -1902,6 +1988,7 @@ Level: 42
 Timid Nature
 =Met_Location=42
 .Version=42
+~=Generation=7
 - Thunderbolt
 - Swift
 - Self-Destruct
@@ -1937,6 +2024,7 @@ Language: English
 =OT_Name=Exemann
 =Met_Location=30001
 .Version=43
+~=Generation=7
 - Barrage
 - Hypnosis
 - Confusion
@@ -1949,6 +2037,7 @@ Level: 18
 Quiet Nature
 =Met_Location=41
 .Version=42
+~=Generation=7
 - Leer
 - Bone Club
 - Headbutt
@@ -1973,6 +2062,7 @@ Level: 28
 Quiet Nature
 =Met_Location=41
 .Version=42
+~=Generation=7
 - Bonemerang
 - Bone Club
 - Headbutt
@@ -1999,6 +2089,7 @@ Language: English
 =OT_Name=Genmar
 =Met_Location=30001
 .Version=42
+~=Generation=7
 - Rage
 - Will-O-Wisp
 - Bonemerang
@@ -2032,6 +2123,7 @@ Level: 47
 Rash Nature
 =Met_Location=45
 .Version=42
+~=Generation=7
 - Fire Punch
 - Focus Energy
 - Mega Punch
@@ -2065,6 +2157,7 @@ Level: 44
 Naughty Nature
 =Met_Location=51
 .Version=43
+~=Generation=7
 - Sludge
 - Self-Destruct
 - Toxic
@@ -2077,6 +2170,7 @@ Level: 18
 Calm Nature
 =Met_Location=41
 .Version=42
+~=Generation=7
 - Tail Whip
 - Sand Attack
 - Fury Attack
@@ -2101,6 +2195,7 @@ Level: 28
 Brave Nature
 =Met_Location=10
 .Version=43
+~=Generation=7
 - Double Slap
 - Soft-Boiled
 - Minimize
@@ -2125,6 +2220,7 @@ Level: 43
 Naive Nature
 =Met_Location=23
 .Version=42
+~=Generation=7
 - Growth
 - Stun Spore
 - Mega Drain
@@ -2149,6 +2245,7 @@ Level: 19
 Bold Nature
 =Met_Location=41
 .Version=43
+~=Generation=7
 - Leer
 - Fake Out
 - Tail Whip
@@ -2161,6 +2258,7 @@ Level: 24
 Hardy Nature
 =Met_Location=41
 .Version=42
+~=Generation=7
 - Fake Out
 - Tail Whip
 - Bite
@@ -2209,6 +2307,7 @@ Level: 35
 Lonely Nature
 =Met_Location=14
 .Version=42
+~=Generation=7
 - Leer
 - Bubble Beam
 - Focus Energy
@@ -2233,6 +2332,7 @@ Level: 14
 Timid Nature
 =Met_Location=8
 .Version=42
+~=Generation=7
 - Tail Whip
 - Supersonic
 - Quick Attack
@@ -2257,6 +2357,7 @@ Level: 17
 Sassy Nature
 =Met_Location=8
 .Version=42
+~=Generation=7
 - Tail Whip
 - Supersonic
 - Quick Attack
@@ -2269,6 +2370,7 @@ Level: 33
 Calm Nature
 =Met_Location=20
 .Version=42
+~=Generation=7
 - Minimize
 - Confuse Ray
 - Bubble Beam
@@ -2281,6 +2383,7 @@ Level: 43
 Naughty Nature
 =Met_Location=23
 .Version=42
+~=Generation=7
 - Tackle
 - Harden
 - Psywave
@@ -2305,6 +2408,7 @@ Level: 15
 Lax Nature
 =Met_Location=13
 .Version=42
+~=Generation=7
 - Barrier
 - Confusion
 - Meditate
@@ -2328,6 +2432,7 @@ Level: 39
 Calm Nature
 =Met_Location=17
 .Version=42
+~=Generation=7
 - Agility
 - Slash
 - Razor Wind
@@ -2340,6 +2445,7 @@ Level: 44
 Impish Nature
 =Met_Location=44
 .Version=42
+~=Generation=7
 - Ice Punch
 - Body Slam
 - Lovely Kiss
@@ -2395,6 +2501,7 @@ Level: 39
 Mild Nature
 =Met_Location=17
 .Version=43
+~=Generation=7
 - X-Scissor
 - Submission
 - Swords Dance
@@ -2407,6 +2514,7 @@ Level: 33
 Docile Nature
 =Met_Location=17
 .Version=42
+~=Generation=7
 - Rage
 - Horn Attack
 - Leer
@@ -2453,6 +2561,7 @@ Level: 45
 Lonely Nature
 =Met_Location=22
 .Version=42
+~=Generation=7
 - Confuse Ray
 - Body Slam
 - Ice Beam
@@ -2494,10 +2603,10 @@ Gentle Nature
 Eevee (M)
 IVs: 26 HP / 16 Atk / 19 Def / 26 SpA / 22 SpD / 6 Spe
 Ability: Run Away
-Level: 34
-Modest Nature
+Level: e
 =Met_Location=19
 .Version=42
+~=Generation=7
 - Swift
 - Take Down
 - Double-Edge
@@ -2506,10 +2615,10 @@ Modest Nature
 Vaporeon (M)
 IVs: 26 HP / 16 Atk / 19 Def / 26 SpA / 22 SpD / 6 Spe
 Ability: Water Absorb
-Level: 34
-Modest Nature
+Level: e
 =Met_Location=19
 .Version=42
+~=Generation=7
 - Swift
 - Take Down
 - Double-Edge
@@ -2530,10 +2639,10 @@ Gentle Nature
 Flareon (M)
 IVs: 26 HP / 16 Atk / 19 Def / 26 SpA / 22 SpD / 6 Spe
 Ability: Flash Fire
-Level: 34
-Modest Nature
+Level: e
 =Met_Location=19
 .Version=42
+~=Generation=7
 - Swift
 - Take Down
 - Double-Edge
@@ -2546,6 +2655,7 @@ Level: 28
 Bashful Nature
 =Met_Location=9
 .Version=43
+~=Generation=7
 - Agility
 - Barrier
 - Tri Attack
@@ -2558,6 +2668,7 @@ Level: 44
 Adamant Nature
 =Met_Location=36
 .Version=42
+~=Generation=7
 - Rock Throw
 - Protect
 - Rock Slide
@@ -2581,6 +2692,7 @@ Level: 45
 Adamant Nature
 =Met_Location=36
 .Version=42
+~=Generation=7
 - Rock Throw
 - Spike Cannon
 - Rock Slide
@@ -2617,6 +2729,7 @@ Level: 45
 Bold Nature
 =Met_Location=36
 .Version=42
+~=Generation=7
 - Aqua Jet
 - Slash
 - Sand Attack
@@ -2653,6 +2766,7 @@ Level: 44
 Quirky Nature
 =Met_Location=36
 .Version=42
+~=Generation=7
 - Rock Throw
 - Agility
 - Crunch
@@ -2661,10 +2775,10 @@ Quirky Nature
 Snorlax (M)
 IVs: 2 HP / 25 SpD
 Ability: Immunity
-Level: 34
-Careful Nature
+Level: re
 =Met_Location=14
 .Version=43
+~=Generation=7
 - Yawn
 - Lick
 - Headbutt
@@ -2673,10 +2787,10 @@ Careful Nature
 Snorlax (M)
 IVs: 5 Atk / 23 Def / 25 SpD
 Ability: Thick Fat
-Level: 34
-Quiet Nature
+Level: 
 =Met_Location=18
 .Version=43
+~=Generation=7
 - Yawn
 - Lick
 - Headbutt
@@ -2685,10 +2799,10 @@ Quiet Nature
 Snorlax (M)
 IVs: 8 HP / 26 Def / 24 Spe
 Ability: Immunity
-Level: 34
-Quiet Nature
+Level: 
 =Met_Location=18
 .Version=42
+~=Generation=7
 - Yawn
 - Lick
 - Headbutt
@@ -2701,6 +2815,7 @@ Level: 57
 Relaxed Nature
 =Met_Location=46
 .Version=42
+~=Generation=7
 - Rest
 - Screech
 - Amnesia
@@ -2713,6 +2828,7 @@ Level: 50
 Bold Nature
 =Met_Location=44
 .Version=42
+~=Generation=7
 - Mirror Coat
 - Ice Beam
 - Agility
@@ -2725,6 +2841,7 @@ Level: 50
 Bold Nature
 =Met_Location=42
 .Version=43
+~=Generation=7
 - Drill Peck
 - Thunderbolt
 - Agility
@@ -2737,6 +2854,7 @@ Level: 57
 Careful Nature
 =Met_Location=19
 .Version=42
+~=Generation=7
 - Flamethrower
 - Agility
 - Heat Wave
@@ -2749,6 +2867,7 @@ Level: 24
 Mild Nature
 =Met_Location=12
 .Version=42
+~=Generation=7
 - Leer
 - Thunder Wave
 - Dragon Rage
@@ -2761,6 +2880,7 @@ Level: 24
 Hardy Nature
 =Met_Location=12
 .Version=42
+~=Generation=7
 - Leer
 - Thunder Wave
 - Dragon Rage
@@ -2773,6 +2893,7 @@ Level: 57
 Bold Nature
 =Met_Location=22
 .Version=42
+~=Generation=7
 - Agility
 - Dragon Tail
 - Slam
@@ -2785,6 +2906,7 @@ Level: 70
 Quiet Nature
 =Met_Location=46
 .Version=43
+~=Generation=7
 - Psychic
 - Recover
 - Amnesia
@@ -2797,6 +2919,7 @@ Level: 1
 Hardy Nature
 =Met_Location=40077
 .Version=42
+~=Generation=7
 - Pound
 
 Meltan

@@ -5,6 +5,7 @@ Level: 4
 Bold Nature
 Ball: Master Ball
 .Version=5
+~=Generation=3
 - Harden
 
 Kakuna (M)
@@ -14,6 +15,7 @@ Level: 4
 Naive Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Harden
 
 MEOWOW (Meowth) (M)
@@ -24,6 +26,7 @@ Naive Nature
 Language: Spanish
 =OT_Name=ISA
 .Version=3
+~=Generation=3
 - Scratch
 - Growl
 
@@ -34,6 +37,7 @@ Level: 25
 Calm Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Tail Whip
 - Disable
 - Confusion
@@ -46,6 +50,7 @@ Level: 20
 Docile Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Bubble
 - Hypnosis
 - Water Gun
@@ -58,6 +63,7 @@ Level: 20
 Adamant Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Bubble
 - Hypnosis
 - Water Gun
@@ -70,6 +76,7 @@ Level: 20
 Quirky Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Bubble
 - Hypnosis
 - Water Gun
@@ -82,6 +89,7 @@ Level: 20
 Mild Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Poison Sting
 - Supersonic
 - Constrict
@@ -94,6 +102,7 @@ Level: 37
 Relaxed Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Ember
 - Stomp
 - Fire Spin
@@ -106,6 +115,7 @@ Level: 32
 Docile Nature
 Ball: Master Ball
 .Version=5
+~=Generation=3
 - Water Gun
 - Confusion
 - Disable
@@ -118,6 +128,7 @@ Level: 25
 Gentle Nature
 Ball: Master Ball
 .Version=5
+~=Generation=3
 - Growl
 - Water Gun
 - Confusion
@@ -130,6 +141,7 @@ Level: 35
 Mild Nature
 Ball: Master Ball
 .Version=5
+~=Generation=3
 - Water Gun
 - Confusion
 - Disable
@@ -142,6 +154,7 @@ Level: 26
 Calm Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Supersonic
 - Sonic Boom
 - Thunder Wave
@@ -154,6 +167,7 @@ Level: 29
 Timid Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Pursuit
 - Fury Attack
 - Tri Attack
@@ -166,6 +180,7 @@ Level: 32
 Timid Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Growl
 - Icy Wind
 - Aurora Beam
@@ -178,6 +193,7 @@ Level: 32
 Rash Nature
 Ball: Master Ball
 .Version=5
+~=Generation=3
 - Disable
 - Sludge
 - Minimize
@@ -190,6 +206,7 @@ Level: 20
 Quiet Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Lick
 - Spite
 - Curse
@@ -202,6 +219,7 @@ Level: 25
 Sassy Nature
 Ball: Master Ball
 .Version=5
+~=Generation=3
 - Leer
 - Vise Grip
 - Harden
@@ -214,6 +232,7 @@ Level: 26
 Hasty Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Tackle
 - Screech
 - Sonic Boom
@@ -227,6 +246,7 @@ Hasty Nature
 Language: French
 =OT_Name=ALBAN
 .Version=5
+~=Generation=3
 - Charge
 - Tackle
 - Screech
@@ -239,6 +259,7 @@ Level: 32
 Gentle Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Smog
 - Self-Destruct
 - Sludge
@@ -251,6 +272,7 @@ Level: 25
 Timid Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Bubble
 - Smokescreen
 - Leer
@@ -263,6 +285,7 @@ Level: 20
 Hasty Nature
 Ball: Safari Ball
 .Version=5
+~=Generation=3
 - Tail Whip
 - Water Sport
 - Supersonic
@@ -275,6 +298,7 @@ Level: 25
 Sassy Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Water Sport
 - Supersonic
 - Horn Attack
@@ -287,6 +311,7 @@ Level: 26
 Serious Nature
 Ball: Safari Ball
 .Version=3
+~=Generation=3
 - Water Sport
 - Supersonic
 - Horn Attack
@@ -300,6 +325,7 @@ Mild Nature
 Language: Spanish
 =OT_Name=CELESTO
 .Version=5
+~=Generation=3
 - Pound
 - Lick
 - Lovely Kiss
@@ -313,6 +339,7 @@ Mild Nature
 Language: English
 =OT_Name=DONTAE
 .Version=5
+~=Generation=3
 - Lovely Kiss
 - Powder Snow
 - Double Slap
@@ -326,6 +353,7 @@ Mild Nature
 Language: French
 =OT_Name=JOHAN
 .Version=4
+~=Generation=3
 - Pound
 - Lick
 - Lovely Kiss
@@ -338,6 +366,7 @@ Level: 15
 Lonely Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Thrash
 
 Dragonair (F)
@@ -347,6 +376,7 @@ Level: 25
 Mild Nature
 Ball: Safari Ball
 .Version=5
+~=Generation=3
 - Leer
 - Thunder Wave
 - Twister
@@ -359,6 +389,7 @@ Level: 20
 Docile Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Bubble
 - Hypnosis
 - Water Gun
@@ -371,6 +402,7 @@ Level: 25
 Serious Nature
 Ball: Master Ball
 .Version=4
+~=Generation=3
 - Smog
 - Ember
 - Rock Throw
@@ -383,6 +415,7 @@ Level: 5
 Modest Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Harden
 
 Cascoon (F)
@@ -392,6 +425,7 @@ Level: 5
 Bashful Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Harden
 
 SKITIT (Skitty) (F)
@@ -402,6 +436,7 @@ Timid Nature
 Language: Spanish
 =OT_Name=DALILA
 .Version=2
+~=Generation=3
 - Growl
 - Tackle
 - Tail Whip
@@ -413,6 +448,7 @@ Level: 25
 Adamant Nature
 Ball: Master Ball
 .Version=3
+~=Generation=3
 - Rollout
 - Whirlpool
 - Astonish
