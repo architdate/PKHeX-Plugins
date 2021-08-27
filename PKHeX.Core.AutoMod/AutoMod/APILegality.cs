@@ -262,7 +262,8 @@ namespace PKHeX.Core.AutoMod
 
             if (set is RegenTemplate rt && enc is IFixedBall { FixedBall: not Ball.None} fb && ForceSpecifiedBall)
             {
-                if (rt.Regen.Extra.Ball != fb.FixedBall)
+                var reqball = rt.Regen.Extra.Ball;
+                if (reqball != fb.FixedBall && reqball != Ball.None)
                     return false;
             }
 
