@@ -121,6 +121,8 @@ namespace PKHeX.Core.AutoMod
                 {
                     pk.RefreshChecksum();
                     var b = regen.Batch;
+                    BatchEditing.ScreenStrings(b.Filters);
+                    BatchEditing.ScreenStrings(b.Instructions);
                     if (!BatchEditing.TryModify(pk, b.Filters, b.Instructions))
                         continue;
                 }
