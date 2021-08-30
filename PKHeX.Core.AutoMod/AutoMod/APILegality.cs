@@ -914,7 +914,7 @@ namespace PKHeX.Core.AutoMod
                     if (enc is EncounterStatic3 && enc.Species == (int)Species.Eevee && (shiny != pk.IsShiny || xorPID)) // Starter Correlation
                         continue;
                     var la = new LegalityAnalysis(pk);
-                    if (la.Info.PIDIV.Type != PIDType.CXD || !la.Info.PIDIVMatches || !pk.IsValidGenderPID(enc))
+                    if ((la.Info.PIDIV.Type != PIDType.CXD && la.Info.PIDIV.Type != PIDType.CXD_ColoStarter) || !la.Info.PIDIVMatches || !pk.IsValidGenderPID(enc))
                         continue;
                 }
                 if (pk.Species == (int)Species.Unown && pk.Form != iterPKM.Form)
