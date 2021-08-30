@@ -30,6 +30,9 @@
         public uint TeamIndexes;
         public uint FameTime;
 
+        /// <summary>
+        /// Rigel2 offsets in the ram that correspond to the same data that is found in the saveblock
+        /// </summary>
         public static readonly Offsets8 Rigel2 = new()
         {
             MyStatus = 0x45068F18,

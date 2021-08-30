@@ -442,16 +442,13 @@ namespace PKHeX.Core.AutoMod
             switch (pk)
             {
                 case PK8 pk8 when !pk.IsUntraded:
-                    pk8.HT_Memory = 4;
-                    pk8.HT_TextVar = 1;
-                    pk8.HT_Intensity = 1;
-                    pk8.HT_Feeling = MemoryContext6.GetRandomFeeling6(pk8.HT_Memory, 10);
+                    pk8.SetTradeMemoryHT8();
                     break;
                 case PK7 pk7 when !pk.IsUntraded:
-                    pk7.SetTradeMemoryHT(true);
+                    pk7.SetTradeMemoryHT6(true);
                     break;
                 case PK6 pk6 when !pk.IsUntraded:
-                    pk6.SetTradeMemoryHT(true);
+                    pk6.SetTradeMemoryHT6(true);
                     break;
             }
         }

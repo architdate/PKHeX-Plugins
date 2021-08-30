@@ -12,6 +12,9 @@ namespace PKHeX.Core.Injection
             { typeof(RaidSpawnList8), "B_OpenRaids_Click" },
         };
 
+        /// <summary>
+        /// Dictionary that does a mapping from livehexversion to a dictionary of SCBlock Keys in the savefile (not ram) to the WinForms function to invoke
+        /// </summary>
         public static readonly Dictionary<LiveHeXVersion, Dictionary<uint, string>> SCBlockFormMapping = new()
         {
             {
