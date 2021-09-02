@@ -6,7 +6,7 @@ using LibUsbDotNet.Main;
 
 namespace PKHeX.Core.Injection
 {
-    public class UsbBotMini : ICommunicator, IPokeBlocks
+    public class UsbBotMini : ICommunicator, ICommunicatorNX, IPokeBlocks
     {
         private const int MaximumTransferSize = 468; // byte limitation of USB-Botbase over Android for ACNHMS, assumed same here.
 
@@ -39,13 +39,10 @@ namespace PKHeX.Core.Injection
                     if (ur.Vid == 1406 && ur.Pid == 12288 && Port == (int)port)
                         SwDevice = ur.Device;
                 }
-                //SwDevice = UsbDevice.OpenUsbDevice(MyUsbFinder);
 
                 // If the device is open and ready
                 if (SwDevice == null)
-                {
                     throw new Exception("Device Not Found.");
-                }
 
                 if (SwDevice.IsOpen)
                     SwDevice.Close();
@@ -98,6 +95,21 @@ namespace PKHeX.Core.Injection
             }
         }
 
+        public byte[] ReadBytes(uint offset, int length) => ReadBytesUSB(offset, length, RWMethod.Heap);
+        public void WriteBytes(byte[] data, uint offset) => WriteBytesUSB(data, offset, RWMethod.Heap);
+        public byte[] ReadBytesMain(ulong offset, int length) => ReadBytesUSB(offset, length, RWMethod.Main);
+        public void WriteBytesMain(byte[] data, uint offset) => WriteBytesUSB(data, offset, RWMethod.Main);
+        public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytesUSB(offset, length, RWMethod.Absolute);
+        public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteBytesUSB(data, offset, RWMethod.Absolute);
+        public ulong GetHeapBase()
+        {
+            var cmd = SwitchCommand.GetHeapBase();
+            SendInternal(cmd);
+            var buffer = new byte[(8 * 2) + 1];
+            var _ = ReadInternal(buffer);
+            return BitConverter.ToUInt64(buffer, 0);
+        }
+
         private int ReadInternal(byte[] buffer)
         {
             byte[] sizeOfReturn = new byte[4];
@@ -142,13 +154,20 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public byte[] ReadBytes(uint offset, int length)
+        public byte[] ReadBytesUSB(ulong offset, int length, RWMethod method)
         {
             if (length > MaximumTransferSize)
                 return ReadBytesLarge(offset, length);
             lock (_sync)
             {
-                var cmd = SwitchCommand.PeekRaw(offset, length);
+                var cmd = method switch
+                {
+                    RWMethod.Heap => SwitchCommand.Peek((uint)offset, length, false),
+                    RWMethod.Main => SwitchCommand.PeekMain(offset, length, false),
+                    RWMethod.Absolute => SwitchCommand.PeekAbsolute(offset, length, false),
+                    _ => SwitchCommand.Peek((uint)offset, length, false),
+                };
+
                 SendInternal(cmd);
 
                 // give it time to push data back
@@ -156,36 +175,43 @@ namespace PKHeX.Core.Injection
 
                 var buffer = new byte[length];
                 var _ = ReadInternal(buffer);
-                //return Decoder.ConvertHexByteStringToBytes(buffer);
                 return buffer;
             }
         }
 
-        public void WriteBytes(byte[] data, uint offset)
+        public void WriteBytesUSB(byte[] data, ulong offset, RWMethod method)
         {
             if (data.Length > MaximumTransferSize)
                 WriteBytesLarge(data, offset);
             lock (_sync)
             {
-                SendInternal(SwitchCommand.PokeRaw(offset, data));
+                var cmd = method switch
+                {
+                    RWMethod.Heap => SwitchCommand.Poke((uint)offset, data, false),
+                    RWMethod.Main => SwitchCommand.PokeMain(offset, data, false),
+                    RWMethod.Absolute => SwitchCommand.PokeAbsolute(offset, data, false),
+                    _ => SwitchCommand.Poke((uint)offset, data, false),
+                };
+
+                SendInternal(cmd);
 
                 // give it time to push data back
                 Thread.Sleep(1);
             }
         }
 
-        private void WriteBytesLarge(byte[] data, uint offset)
+        private void WriteBytesLarge(byte[] data, ulong offset)
         {
             int byteCount = data.Length;
             for (int i = 0; i < byteCount; i += MaximumTransferSize)
-                WriteBytes(SubArray(data, i, MaximumTransferSize), offset + (uint)i);
+                WriteBytes(SubArray(data, i, MaximumTransferSize), (uint)offset + (uint)i);
         }
 
-        private byte[] ReadBytesLarge(uint offset, int length)
+        private byte[] ReadBytesLarge(ulong offset, int length)
         {
             List<byte> read = new();
             for (int i = 0; i < length; i += MaximumTransferSize)
-                read.AddRange(ReadBytes(offset + (uint)i, Math.Min(MaximumTransferSize, length - i)));
+                read.AddRange(ReadBytes((uint)offset + (uint)i, Math.Min(MaximumTransferSize, length - i)));
             return read.ToArray();
         }
 
