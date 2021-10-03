@@ -60,10 +60,14 @@ namespace AutoModPlugins
             var msg = $"Update for ALM is available. Please download it from GitHub. The updated release is only compatible with PKHeX version: {latest_alm.Major}.{latest_alm.Minor}.{latest_alm.Build}.";
             if (curr_pkhex > current_alm)
                 PossibleVersionMismatch = true;
-            if (latest_alm > current_alm && !PossibleVersionMismatch)
-                WinFormsUtil.Alert(msg);
-            if (latest_alm > current_alm && PossibleVersionMismatch)
-                WinFormsUtil.Alert(msg + "\n\nThere is also a possible version mismatch between the current ALM version and current PKHeX version.");
+            if (latest_alm > current_alm)
+            {
+                msg = PossibleVersionMismatch ? msg + "\n\nThere is also a possible version mismatch between the current ALM version and current PKHeX version." : msg;
+                var redirect = "\n\nClick on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
+                var res = WinFormsUtil.ALMError(msg + redirect);
+                if (res == DialogResult.Yes) Process.Start("https://discord.gg/tDMvSRv");
+                else if (res == DialogResult.No) Process.Start("https://github.com/architdate/PKHeX-Plugins/releases/latest");
+            }
         }
 
         private void LoadMenuStrip(ToolStrip menuStrip)
