@@ -10,8 +10,8 @@
     {
         void Connect();
         void Disconnect();
-        void WriteBytes(byte[] data, uint offset);
-        byte[] ReadBytes(uint offset, int length);
+        void WriteBytes(byte[] data, ulong offset);
+        byte[] ReadBytes(ulong offset, int length);
         bool Connected { get; set; }
         int Port { get; set; }
         string IP { get; set; }
@@ -22,7 +22,7 @@
         byte[] ReadBytesMain(ulong offset, int length);
         byte[] ReadBytesAbsolute(ulong offset, int length);
         ulong GetHeapBase();
-        void WriteBytesMain(byte[] data, uint offset);
+        void WriteBytesMain(byte[] data, ulong offset);
         void WriteBytesAbsolute(byte[] data, ulong offset);
     }
 

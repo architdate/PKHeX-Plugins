@@ -93,7 +93,10 @@ namespace AutoModPlugins
                 return;
 
             var ofs = RamOffsets.GetTrainerBlockOffset(lv);
-            var data = Remote.Bot.com.ReadBytes(ofs, RamOffsets.GetTrainerBlockSize(lv));
+            var size = RamOffsets.GetTrainerBlockSize(lv);
+            if (size <= 0)
+                return;
+            var data = Remote.Bot.com.ReadBytes(ofs, size);
             data.CopyTo(dest, startofs);
         }
 
@@ -156,7 +159,7 @@ namespace AutoModPlugins
                 }
 
                 if (Remote.Bot.com is ICommunicatorNX)
-                    groupBox4.Enabled = true;
+                    groupBox4.Enabled = groupBox6.Enabled = true;
 
                 // Load current box
                 Remote.ReadBox(SAV.CurrentBox);
@@ -190,16 +193,20 @@ namespace AutoModPlugins
 
         private void B_ReadOffset_Click(object sender, EventArgs e)
         {
+            bool readPointer = (ModifierKeys & Keys.Control) == Keys.Control;
             var txt = TB_Offset.Text;
-            var offset = Util.GetHexValue(txt);
-            if (offset.ToString("X8") != txt.ToUpper().PadLeft(8, '0'))
+            var offset = readPointer && Remote.Bot.com is ICommunicatorNX nx ? (ulong)nx.GetPointerAddress(TB_Pointer.Text) : Util.GetHexValue64(txt);
+            if (offset.ToString("X16") != txt.ToUpper().PadLeft(16, '0') && !readPointer)
             {
                 WinFormsUtil.Alert("Specified offset is not a valid hex string.");
                 return;
             }
             try
             {
-                var result = Remote.ReadOffset(offset);
+                var method = RWMethod.Heap;
+                if (RB_Main.Checked) method = RWMethod.Main;
+                if (RB_Absolute.Checked) method = RWMethod.Absolute;
+                var result = Remote.ReadOffset(offset, method);
                 if (!result)
                     WinFormsUtil.Alert("No valid data is located at the specified offset.");
             }
@@ -214,9 +221,9 @@ namespace AutoModPlugins
         private void B_ReadRAM_Click(object sender, EventArgs e)
         {
             var txt = RamOffset.Text;
-            var offset = Util.GetHexValue(txt);
+            var offset = Util.GetHexValue64(txt);
             var valid = int.TryParse(RamSize.Text, out int size);
-            if (offset.ToString("X8") != txt.ToUpper().PadLeft(8, '0') || !valid)
+            if (offset.ToString("X16") != txt.ToUpper().PadLeft(16, '0') || !valid)
             {
                 WinFormsUtil.Alert("Make sure that the RAM offset is a hex string and the size is a valid integer");
                 return;
@@ -224,14 +231,27 @@ namespace AutoModPlugins
 
             try
             {
-                var result = Remote.ReadRAM(offset, size);
+                byte[] result;
+                if (Remote.Bot.com is not ICommunicatorNX cnx) result = Remote.ReadRAM(offset, size);
+                else
+                {
+                    if (RB_Main.Checked) result = cnx.ReadBytesMain(offset, size);
+                    else if (RB_Absolute.Checked) result = cnx.ReadBytesAbsolute(offset, size);
+                    else result = Remote.ReadRAM(offset, size);
+                }
                 using (var form = new SimpleHexEditor(result))
                 {
                     var res = form.ShowDialog();
                     if (res == DialogResult.OK)
                     {
                         var modifiedRAM = form.Bytes;
-                        Remote.WriteRAM(offset, modifiedRAM);
+                        if (Remote.Bot.com is not ICommunicatorNX nx) Remote.WriteRAM(offset, modifiedRAM);
+                        else
+                        {
+                            if (RB_Main.Checked) nx.WriteBytesMain(modifiedRAM, offset);
+                            else if (RB_Absolute.Checked) nx.WriteBytesAbsolute(modifiedRAM, offset);
+                            else Remote.WriteRAM(offset, modifiedRAM);
+                        }
                     }
                 }
                 Debug.WriteLine("RAM Modified");
@@ -322,6 +342,8 @@ namespace AutoModPlugins
             address -= heap;
 
             Clipboard.SetText(address.ToString("X"));
+            bool getDetails = (ModifierKeys & Keys.Control) == Keys.Control;
+            if (getDetails) Clipboard.SetText($"Absolute Address: {address + heap:X}\nHeap Address: {address:X}\nHeap Base: {heap:X}");
         }
 
         private void B_EditPointerData_Click(object sender, EventArgs e)

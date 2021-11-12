@@ -40,7 +40,7 @@ namespace PKHeX.Core.Injection
             _lastMemoryRead = args.Data;
         }
 
-        public byte[] ReadBytes(uint offset, int length)
+        public byte[] ReadBytes(ulong offset, int length)
         {
             lock (_sync)
             {
@@ -52,7 +52,7 @@ namespace PKHeX.Core.Injection
                 {
                     Thread.Sleep(10);
                 }
-                clientNTR.AddWaitingForData(clientNTR.Data(offset, (uint)length, clientNTR.PID), myArgs);
+                clientNTR.AddWaitingForData(clientNTR.Data((uint)offset, (uint)length, clientNTR.PID), myArgs);
 
                 for (int readcount = 0; readcount < timeout * 100; readcount++)
                 {
@@ -70,7 +70,7 @@ namespace PKHeX.Core.Injection
         private static void WriteLastLog(string str) => clientNTR.Lastlog = str;
         private static bool CompareLastLog(string str) => clientNTR.Lastlog.Contains(str);
 
-        public void WriteBytes(byte[] data, uint offset)
+        public void WriteBytes(byte[] data, ulong offset)
         {
             lock (_sync)
             {
@@ -79,7 +79,7 @@ namespace PKHeX.Core.Injection
                 {
                     Thread.Sleep(10);
                 }
-                clientNTR.Write(offset, data, clientNTR.PID);
+                clientNTR.Write((uint)offset, data, clientNTR.PID);
                 int waittimeout;
                 for (waittimeout = 0; waittimeout < timeout * 100; waittimeout++)
                 {

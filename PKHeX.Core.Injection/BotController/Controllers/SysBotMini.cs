@@ -69,10 +69,10 @@ namespace PKHeX.Core.Injection
             {
                 var cmd = method switch
                 {
-                    RWMethod.Heap => SwitchCommand.Peek((uint)offset, length),
+                    RWMethod.Heap => SwitchCommand.Peek(offset, length),
                     RWMethod.Main => SwitchCommand.PeekMain(offset, length),
                     RWMethod.Absolute => SwitchCommand.PeekAbsolute(offset, length),
-                    _ => SwitchCommand.Peek((uint)offset, length),
+                    _ => SwitchCommand.Peek(offset, length),
                 };
 
                 SendInternal(cmd);
@@ -91,10 +91,10 @@ namespace PKHeX.Core.Injection
             {
                 var cmd = method switch
                 {
-                    RWMethod.Heap => SwitchCommand.Poke((uint)offset, data),
+                    RWMethod.Heap => SwitchCommand.Poke(offset, data),
                     RWMethod.Main => SwitchCommand.PokeMain(offset, data),
                     RWMethod.Absolute => SwitchCommand.PokeAbsolute(offset, data),
-                    _ => SwitchCommand.Poke((uint)offset, data),
+                    _ => SwitchCommand.Poke(offset, data),
                 };
 
                 SendInternal(cmd);
@@ -144,10 +144,10 @@ namespace PKHeX.Core.Injection
             return Convert.ToUInt64(string.Concat(buffer.Select(z => (char)z)).Trim(), 16);
         }
 
-        public byte[] ReadBytes(uint offset, int length) => ReadLargeBytes(offset, length, RWMethod.Heap);
-        public void WriteBytes(byte[] data, uint offset) => WriteLargeBytes(data, offset, RWMethod.Heap);
+        public byte[] ReadBytes(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Heap);
+        public void WriteBytes(byte[] data, ulong offset) => WriteLargeBytes(data, offset, RWMethod.Heap);
         public byte[] ReadBytesMain(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Main);
-        public void WriteBytesMain(byte[] data, uint offset) => WriteBytes(data, offset, RWMethod.Main);
+        public void WriteBytesMain(byte[] data, ulong offset) => WriteBytes(data, offset, RWMethod.Main);
         public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Absolute);
         public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteBytes(data, offset, RWMethod.Absolute);
     }

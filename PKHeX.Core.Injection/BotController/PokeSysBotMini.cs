@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PKHeX.Core.Injection
 {
     public class PokeSysBotMini
     {
-        public readonly int BoxStart;
+        public long BoxStart;
         public readonly int SlotSize;
         public readonly int SlotCount;
         public readonly int GapSize;
@@ -22,42 +24,76 @@ namespace PKHeX.Core.Injection
             GapSize = RamOffsets.GetGapSize(lv);
         }
 
-        private uint GetBoxOffset(int box) => (uint)BoxStart + (uint)((SlotSize + GapSize) * SlotCount * box);
-        private uint GetSlotOffset(int box, int slot) => GetBoxOffset(box) + (uint)((SlotSize + GapSize) * slot);
+        private ulong GetBoxOffset(int box) => (ulong)BoxStart + (ulong)((SlotSize + GapSize) * SlotCount * box);
+        private ulong GetSlotOffset(int box, int slot) => GetBoxOffset(box) + (ulong)((SlotSize + GapSize) * slot);
 
         public byte[] ReadBox(int box, int len)
         {
-            var bytes = com.ReadBytes(GetBoxOffset(box), len);
-            if (GapSize == 0)
-                return bytes;
             var allpkm = new List<byte[]>();
-            var currofs = 0;
-            if (Version != LiveHeXVersion.LGPE_v102)
-                return bytes;
-            for (int i = 0; i < SlotCount; i++)
+            if (!RamOffsets.UseVtable(Version))
             {
-                var StoredLength = SlotSize - 0x1C;
-                var stored = bytes.Slice(currofs, StoredLength);
-                var party = bytes.Slice(currofs + StoredLength + 0x70, 0x1C);
-                allpkm.Add(ArrayUtil.ConcatAll(stored, party));
-                currofs += SlotSize + GapSize;
+                var bytes = com.ReadBytes(GetBoxOffset(box), len);
+                if (GapSize == 0)
+                    return bytes;
+                var currofs = 0;
+                if (Version != LiveHeXVersion.LGPE_v102)
+                {
+                    for (int i = 0; i < SlotCount; i++)
+                    {
+                        var stored = bytes.Slice(currofs, SlotSize);
+                        allpkm.Add(stored);
+                        currofs += SlotSize + GapSize;
+                    }
+                    return ArrayUtil.ConcatAll(allpkm.ToArray());
+                }
+                for (int i = 0; i < SlotCount; i++)
+                {
+                    var StoredLength = SlotSize - 0x1C;
+                    var stored = bytes.Slice(currofs, StoredLength);
+                    var party = bytes.Slice(currofs + StoredLength + 0x70, 0x1C);
+                    allpkm.Add(ArrayUtil.ConcatAll(stored, party));
+                    currofs += SlotSize + GapSize;
+                }
+                return ArrayUtil.ConcatAll(allpkm.ToArray());
             }
+            if (com is not ICommunicatorNX sb)
+                return ArrayUtil.ConcatAll(allpkm.ToArray());
+            (string ptr, int count) boxes = RamOffsets.BoxOffsets(Version);
+            var addr = InjectionUtil.GetPointerAddress(sb, boxes.ptr);
+            var b = com.ReadBytes((ulong)addr, boxes.count * 8);
+            var boxptr = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray()[box] + 0x20; // add 0x20 to remove vtable bytes
+            b = sb.ReadBytesAbsolute(boxptr, SlotCount * 8);
+            var pkmptrs = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray();
+            foreach (var p in pkmptrs)
+                allpkm.Add(sb.ReadBytesAbsolute(p + 0x20, SlotSize));
             return ArrayUtil.ConcatAll(allpkm.ToArray());
         }
 
         public byte[] ReadSlot(int box, int slot)
         {
-            var bytes = com.ReadBytes(GetSlotOffset(box, slot), SlotSize + GapSize);
-            if (GapSize == 0)
-                return bytes;
-            if (Version != LiveHeXVersion.LGPE_v102)
-                return bytes;
-            var StoredLength = SlotSize - 0x1C;
-            var stored = bytes.Slice(0, StoredLength);
-            var party = bytes.Slice(StoredLength + 0x70, 0x1C);
-            return ArrayUtil.ConcatAll(stored, party);
+            if (!RamOffsets.UseVtable(Version))
+            {
+                var bytes = com.ReadBytes(GetSlotOffset(box, slot), SlotSize + GapSize);
+                if (GapSize == 0)
+                    return bytes;
+                if (Version != LiveHeXVersion.LGPE_v102)
+                    return bytes;
+                var StoredLength = SlotSize - 0x1C;
+                var stored = bytes.Slice(0, StoredLength);
+                var party = bytes.Slice(StoredLength + 0x70, 0x1C);
+                return ArrayUtil.ConcatAll(stored, party);
+            }
+            if (com is not ICommunicatorNX sb)
+                return new byte[SlotSize];
+            (string ptr, int count) boxes = RamOffsets.BoxOffsets(Version);
+            var addr = InjectionUtil.GetPointerAddress(sb, boxes.ptr);
+            var b = com.ReadBytes((ulong)addr, boxes.count * 8);
+            var boxptr = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray()[box] + 0x20; // add 0x20 to remove vtable bytes
+            b = sb.ReadBytesAbsolute(boxptr, SlotCount * 8);
+            var pkmptr = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray()[slot] ;
+            return sb.ReadBytesAbsolute(pkmptr + 0x20, SlotSize);
         }
-        public byte[] ReadOffset(uint offset) => com.ReadBytes(offset, SlotSize);
+        public byte[] ReadOffset(ulong offset) => com.ReadBytes(offset, SlotSize);
 
         public void SendBox(byte[] boxData, int box)
         {
@@ -68,15 +104,27 @@ namespace PKHeX.Core.Injection
 
         public void SendSlot(byte[] data, int box, int slot)
         {
-            var slotofs = GetSlotOffset(box, slot);
-            if (Version == LiveHeXVersion.LGPE_v102)
+            if (!RamOffsets.UseVtable(Version))
             {
-                var StoredLength = SlotSize - 0x1C;
-                com.WriteBytes(data.Slice(0, StoredLength), slotofs);
-                com.WriteBytes(data.SliceEnd(StoredLength), (uint)(slotofs + StoredLength + 0x70));
+                var slotofs = GetSlotOffset(box, slot);
+                if (Version == LiveHeXVersion.LGPE_v102)
+                {
+                    var StoredLength = SlotSize - 0x1C;
+                    com.WriteBytes(data.Slice(0, StoredLength), slotofs);
+                    com.WriteBytes(data.SliceEnd(StoredLength), (slotofs + (ulong)StoredLength + 0x70));
+                    return;
+                }
+                com.WriteBytes(data, slotofs);
                 return;
             }
-            com.WriteBytes(data, slotofs);
+            if (com is not ICommunicatorNX sb) return;
+            (string ptr, int count) boxes = RamOffsets.BoxOffsets(Version);
+            var addr = InjectionUtil.GetPointerAddress(sb, boxes.ptr);
+            var b = com.ReadBytes((ulong)addr, boxes.count * 8);
+            var boxptr = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray()[box] + 0x20; // add 0x20 to remove vtable bytes
+            b = sb.ReadBytesAbsolute(boxptr, SlotCount * 8);
+            var pkmptr = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray()[slot];
+            sb.WriteBytesAbsolute(data, pkmptr + 0x20);
         }
     }
 }

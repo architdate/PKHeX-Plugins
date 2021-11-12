@@ -95,10 +95,10 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public byte[] ReadBytes(uint offset, int length) => ReadBytesUSB(offset, length, RWMethod.Heap);
-        public void WriteBytes(byte[] data, uint offset) => WriteBytesUSB(data, offset, RWMethod.Heap);
+        public byte[] ReadBytes(ulong offset, int length) => ReadBytesUSB(offset, length, RWMethod.Heap);
+        public void WriteBytes(byte[] data, ulong offset) => WriteBytesUSB(data, offset, RWMethod.Heap);
         public byte[] ReadBytesMain(ulong offset, int length) => ReadBytesUSB(offset, length, RWMethod.Main);
-        public void WriteBytesMain(byte[] data, uint offset) => WriteBytesUSB(data, offset, RWMethod.Main);
+        public void WriteBytesMain(byte[] data, ulong offset) => WriteBytesUSB(data, offset, RWMethod.Main);
         public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytesUSB(offset, length, RWMethod.Absolute);
         public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteBytesUSB(data, offset, RWMethod.Absolute);
         public ulong GetHeapBase()
@@ -162,10 +162,10 @@ namespace PKHeX.Core.Injection
             {
                 var cmd = method switch
                 {
-                    RWMethod.Heap => SwitchCommand.Peek((uint)offset, length, false),
+                    RWMethod.Heap => SwitchCommand.Peek(offset, length, false),
                     RWMethod.Main => SwitchCommand.PeekMain(offset, length, false),
                     RWMethod.Absolute => SwitchCommand.PeekAbsolute(offset, length, false),
-                    _ => SwitchCommand.Peek((uint)offset, length, false),
+                    _ => SwitchCommand.Peek(offset, length, false),
                 };
 
                 SendInternal(cmd);
@@ -187,10 +187,10 @@ namespace PKHeX.Core.Injection
             {
                 var cmd = method switch
                 {
-                    RWMethod.Heap => SwitchCommand.Poke((uint)offset, data, false),
+                    RWMethod.Heap => SwitchCommand.Poke(offset, data, false),
                     RWMethod.Main => SwitchCommand.PokeMain(offset, data, false),
                     RWMethod.Absolute => SwitchCommand.PokeAbsolute(offset, data, false),
-                    _ => SwitchCommand.Poke((uint)offset, data, false),
+                    _ => SwitchCommand.Poke(offset, data, false),
                 };
 
                 SendInternal(cmd);

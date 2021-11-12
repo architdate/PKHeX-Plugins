@@ -65,6 +65,11 @@
             this.CB_BlockName = new System.Windows.Forms.ComboBox();
             this.B_EditBlock = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.RB_Absolute = new System.Windows.Forms.RadioButton();
+            this.RB_Main = new System.Windows.Forms.RadioButton();
+            this.RB_Heap = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).BeginInit();
@@ -72,6 +77,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // B_ReadCurrent
@@ -201,9 +207,9 @@
             // 
             this.TB_Offset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_Offset.Location = new System.Drawing.Point(65, 141);
-            this.TB_Offset.MaxLength = 8;
+            this.TB_Offset.MaxLength = 16;
             this.TB_Offset.Name = "TB_Offset";
-            this.TB_Offset.Size = new System.Drawing.Size(63, 20);
+            this.TB_Offset.Size = new System.Drawing.Size(70, 20);
             this.TB_Offset.TabIndex = 16;
             this.TB_Offset.Text = "2E32206A";
             // 
@@ -345,9 +351,9 @@
             // 
             // L_ReadRamSize
             // 
-            this.L_ReadRamSize.Location = new System.Drawing.Point(129, 17);
+            this.L_ReadRamSize.Location = new System.Drawing.Point(128, 17);
             this.L_ReadRamSize.Name = "L_ReadRamSize";
-            this.L_ReadRamSize.Size = new System.Drawing.Size(30, 20);
+            this.L_ReadRamSize.Size = new System.Drawing.Size(36, 20);
             this.L_ReadRamSize.TabIndex = 19;
             this.L_ReadRamSize.Text = "Size:";
             this.L_ReadRamSize.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -356,9 +362,9 @@
             // 
             this.RamOffset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RamOffset.Location = new System.Drawing.Point(58, 18);
-            this.RamOffset.MaxLength = 8;
+            this.RamOffset.MaxLength = 16;
             this.RamOffset.Name = "RamOffset";
-            this.RamOffset.Size = new System.Drawing.Size(63, 20);
+            this.RamOffset.Size = new System.Drawing.Size(70, 20);
             this.RamOffset.TabIndex = 18;
             this.RamOffset.Text = "2E32206A";
             // 
@@ -449,7 +455,7 @@
             this.groupBox5.Controls.Add(this.B_EditBlock);
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Enabled = false;
-            this.groupBox5.Location = new System.Drawing.Point(12, 322);
+            this.groupBox5.Location = new System.Drawing.Point(12, 378);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(307, 48);
             this.groupBox5.TabIndex = 13;
@@ -485,11 +491,67 @@
             this.label2.Text = "Block:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.RB_Absolute);
+            this.groupBox6.Controls.Add(this.RB_Main);
+            this.groupBox6.Controls.Add(this.RB_Heap);
+            this.groupBox6.Controls.Add(this.label1);
+            this.groupBox6.Enabled = false;
+            this.groupBox6.Location = new System.Drawing.Point(12, 322);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(308, 50);
+            this.groupBox6.TabIndex = 14;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "RAM Config";
+            // 
+            // RB_Absolute
+            // 
+            this.RB_Absolute.AutoSize = true;
+            this.RB_Absolute.Location = new System.Drawing.Point(238, 20);
+            this.RB_Absolute.Name = "RB_Absolute";
+            this.RB_Absolute.Size = new System.Drawing.Size(66, 17);
+            this.RB_Absolute.TabIndex = 3;
+            this.RB_Absolute.Text = "Absolute";
+            this.RB_Absolute.UseVisualStyleBackColor = true;
+            // 
+            // RB_Main
+            // 
+            this.RB_Main.AutoSize = true;
+            this.RB_Main.Location = new System.Drawing.Point(189, 20);
+            this.RB_Main.Name = "RB_Main";
+            this.RB_Main.Size = new System.Drawing.Size(48, 17);
+            this.RB_Main.TabIndex = 2;
+            this.RB_Main.Text = "Main";
+            this.RB_Main.UseVisualStyleBackColor = true;
+            // 
+            // RB_Heap
+            // 
+            this.RB_Heap.AutoSize = true;
+            this.RB_Heap.Checked = true;
+            this.RB_Heap.Location = new System.Drawing.Point(137, 20);
+            this.RB_Heap.Name = "RB_Heap";
+            this.RB_Heap.Size = new System.Drawing.Size(51, 17);
+            this.RB_Heap.TabIndex = 1;
+            this.RB_Heap.TabStop = true;
+            this.RB_Heap.Text = "Heap";
+            this.RB_Heap.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "RAM offsets relative to:";
+            // 
             // LiveHeXUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 378);
+            this.ClientSize = new System.Drawing.Size(331, 435);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -519,6 +581,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -563,5 +627,10 @@
         private System.Windows.Forms.ComboBox CB_BlockName;
         private System.Windows.Forms.Button B_EditBlock;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.RadioButton RB_Absolute;
+        private System.Windows.Forms.RadioButton RB_Main;
+        private System.Windows.Forms.RadioButton RB_Heap;
+        private System.Windows.Forms.Label label1;
     }
 }

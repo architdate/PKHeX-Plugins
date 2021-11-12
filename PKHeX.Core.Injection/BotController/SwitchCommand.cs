@@ -86,7 +86,7 @@ namespace PKHeX.Core.Injection
         /// <param name="count">Amount of bytes</param>
         /// <param name="addrn">Encoding selector. Default "true" for sys-botbase.</param>
         /// <returns>Encoded command bytes</returns>
-        public static byte[] Peek(uint offset, int count, bool addrn = true) => Encode($"peek 0x{offset:X8} {count}", addrn);
+        public static byte[] Peek(ulong offset, int count, bool addrn = true) => Encode($"peek 0x{offset:X16} {count}", addrn);
 
         /// <summary>
         /// Sends the Bot <see cref="data"/> to be written to <see cref="offset"/>.
@@ -95,7 +95,7 @@ namespace PKHeX.Core.Injection
         /// <param name="data">Data to write</param>
         /// <param name="addrn">Encoding selector. Default "true" for sys-botbase.</param>
         /// <returns>Encoded command bytes</returns>
-        public static byte[] Poke(uint offset, byte[] data, bool addrn = true) => Encode($"poke 0x{offset:X8} 0x{string.Concat(data.Select(z => $"{z:X2}"))}", addrn);
+        public static byte[] Poke(ulong offset, byte[] data, bool addrn = true) => Encode($"poke 0x{offset:X16} 0x{string.Concat(data.Select(z => $"{z:X2}"))}", addrn);
 
         /// <summary>
         /// Requests the Bot to send <see cref="count"/> bytes from absolute <see cref="offset"/>.

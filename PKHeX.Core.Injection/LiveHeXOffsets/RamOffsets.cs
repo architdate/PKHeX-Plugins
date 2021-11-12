@@ -6,7 +6,7 @@
         {
             return sf switch
             {
-                SAV8SWSH => new[] { LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2 },
+                SAV8SWSH => new[] { LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2, LiveHeXVersion.BDSP },
                 SAV7b => new[] { LiveHeXVersion.LGPE_v102 },
                 SAV7USUM => new[] { LiveHeXVersion.UM_v12, LiveHeXVersion.US_v12 },
                 SAV7SM => new[] { LiveHeXVersion.SM_v12 },
@@ -34,6 +34,7 @@
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP => GetSwitchInterface(ict),
                 LiveHeXVersion.LGPE_v102 => GetSwitchInterface(ict),
                 LiveHeXVersion.SWSH_Orion => GetSwitchInterface(ict),
                 LiveHeXVersion.SWSH_Rigel1 => GetSwitchInterface(ict),
@@ -51,6 +52,7 @@
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP => 0x0,
                 LiveHeXVersion.LGPE_v102 => 0x533675B0,
                 LiveHeXVersion.SWSH_Orion => 0x4293D8B0,
                 LiveHeXVersion.SWSH_Rigel1 => 0x4506D890,
@@ -68,6 +70,7 @@
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP => 344,
                 LiveHeXVersion.LGPE_v102 => 260,
                 LiveHeXVersion.SWSH_Orion => 344,
                 LiveHeXVersion.SWSH_Rigel1 => 344,
@@ -85,6 +88,7 @@
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP => 40,
                 LiveHeXVersion.LGPE_v102 => 380,
                 LiveHeXVersion.SWSH_Orion => 0,
                 LiveHeXVersion.SWSH_Rigel1 => 0,
@@ -102,6 +106,7 @@
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP => 30,
                 LiveHeXVersion.LGPE_v102 => 25,
                 LiveHeXVersion.SWSH_Orion => 30,
                 LiveHeXVersion.SWSH_Rigel1 => 30,
@@ -119,6 +124,7 @@
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP => 0x0,
                 LiveHeXVersion.LGPE_v102 => 0x168,
                 LiveHeXVersion.SWSH_Orion => 0x110,
                 LiveHeXVersion.SWSH_Rigel1 => 0x110,
@@ -136,6 +142,7 @@
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP => 0x0,
                 LiveHeXVersion.LGPE_v102 => 0x53582030,
                 LiveHeXVersion.SWSH_Orion => 0x42935E48,
                 LiveHeXVersion.SWSH_Rigel1 => 0x45061108,
@@ -153,12 +160,31 @@
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP => false,
                 LiveHeXVersion.UM_v12 => true,
                 LiveHeXVersion.US_v12 => true,
                 LiveHeXVersion.SM_v12 => true,
                 LiveHeXVersion.ORAS => true,
                 LiveHeXVersion.XY => true,
                 _ => false,
+            };
+        }
+
+        public static bool UseVtable(LiveHeXVersion lv)
+        {
+            return lv switch
+            {
+                LiveHeXVersion.BDSP => true,
+                _ => false
+            };
+        }
+
+        public static (string, int) BoxOffsets(LiveHeXVersion lv)
+        {
+            return lv switch
+            {
+                LiveHeXVersion.BDSP => ("[[[main+4E27C50]+B8]+170]+20", 40),
+                _ => (string.Empty, 0)
             };
         }
 

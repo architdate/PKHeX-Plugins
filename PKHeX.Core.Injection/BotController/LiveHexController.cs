@@ -60,9 +60,17 @@ namespace PKHeX.Core.Injection
             Editor.PopulateFields(pkm);
         }
 
-        public bool ReadOffset(uint offset)
+        public bool ReadOffset(ulong offset, RWMethod method = RWMethod.Heap)
         {
-            var data = Bot.ReadOffset(offset);
+            byte[] data;
+            if (Bot.com is not ICommunicatorNX nx) data = Bot.ReadOffset(offset);
+            else data = method switch
+            {
+                RWMethod.Heap => Bot.ReadOffset(offset),
+                RWMethod.Main => nx.ReadBytesMain(offset, Bot.SlotSize),
+                RWMethod.Absolute => nx.ReadBytesAbsolute(offset, Bot.SlotSize),
+                _ => Bot.ReadOffset(offset)
+            };
             var pkm = SAV.SAV.GetDecryptedPKM(data);
 
             // Since data might not actually exist at the user-specified offset, double check that the pkm data is valid.
@@ -130,8 +138,8 @@ namespace PKHeX.Core.Injection
             WriteRAM((uint)offset, data);
         }
 
-        public byte[] ReadRAM(uint offset, int size) => Bot.com.ReadBytes(offset, size);
+        public byte[] ReadRAM(ulong offset, int size) => Bot.com.ReadBytes(offset, size);
 
-        public void WriteRAM(uint offset, byte[] data) => Bot.com.WriteBytes(data, offset);
+        public void WriteRAM(ulong offset, byte[] data) => Bot.com.WriteBytes(data, offset);
     }
 }
