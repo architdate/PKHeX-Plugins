@@ -7,6 +7,7 @@ namespace PKHeX.Core.Injection
 {
     public static class LPBDSP
     {
+        public static LiveHeXVersion[] SupportedVersions = new LiveHeXVersion[] { LiveHeXVersion.BDSP_v100, LiveHeXVersion.BDSP_v110 };
         public static byte[] ReadBox(this PokeSysBotMini psb, int box, List<byte[]> allpkm)
         {
             if (psb.com is not ICommunicatorNX sb)

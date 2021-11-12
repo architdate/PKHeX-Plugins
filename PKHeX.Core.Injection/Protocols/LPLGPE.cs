@@ -6,6 +6,7 @@ namespace PKHeX.Core.Injection
 {
     public static class LPLGPE
     {
+        public static LiveHeXVersion[] SupportedVersions = new LiveHeXVersion[] { LiveHeXVersion.LGPE_v102 };
         public static byte[] ReadBox(this PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
         {
             var bytes = psb.com.ReadBytes(psb.GetBoxOffset(box), len);

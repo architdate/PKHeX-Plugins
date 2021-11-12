@@ -30,15 +30,15 @@ namespace PKHeX.Core.Injection
         public byte[] ReadBox(int box, int len)
         {
             var allpkm = new List<byte[]>();
-            if (Version == LiveHeXVersion.LGPE_v102) return LPLGPE.ReadBox(this, box, len, allpkm);
-            if (Version == LiveHeXVersion.BDSP) return LPBDSP.ReadBox(this, box, allpkm);
+            if (LPLGPE.SupportedVersions.Contains(Version)) return LPLGPE.ReadBox(this, box, len, allpkm);
+            if (LPBDSP.SupportedVersions.Contains(Version)) return LPBDSP.ReadBox(this, box, allpkm);
             return LPBasic.ReadBox(this, box, len, allpkm);
         }
 
         public byte[] ReadSlot(int box, int slot)
         {
-            if (Version == LiveHeXVersion.LGPE_v102) return LPLGPE.ReadSlot(this, box, slot);
-            if (Version == LiveHeXVersion.BDSP) return LPBDSP.ReadSlot(this, box, slot);
+            if (LPLGPE.SupportedVersions.Contains(Version)) return LPLGPE.ReadSlot(this, box, slot);
+            if (LPBDSP.SupportedVersions.Contains(Version)) return LPBDSP.ReadSlot(this, box, slot);
             return LPBasic.ReadSlot(this, box, slot);
         }
 
@@ -47,12 +47,12 @@ namespace PKHeX.Core.Injection
             byte[][] pkmData = boxData.Split(SlotSize);
             for (int i = 0; i < SlotCount; i++)
                 SendSlot(pkmData[i], box, i);
-            if (Version == LiveHeXVersion.LGPE_v102)
+            if (LPLGPE.SupportedVersions.Contains(Version))
             {
                 LPLGPE.SendBox(this, boxData, box);
                 return;
             }
-            if (Version == LiveHeXVersion.BDSP)
+            if (LPBDSP.SupportedVersions.Contains(Version))
             {
                 LPBDSP.SendBox(this, boxData, box);
                 return;
@@ -62,12 +62,12 @@ namespace PKHeX.Core.Injection
 
         public void SendSlot(byte[] data, int box, int slot)
         {
-            if (Version == LiveHeXVersion.LGPE_v102)
+            if (LPLGPE.SupportedVersions.Contains(Version))
             {
                 LPLGPE.SendSlot(this, data, box, slot);
                 return;
             }
-            if (Version == LiveHeXVersion.BDSP)
+            if (LPBDSP.SupportedVersions.Contains(Version))
             {
                 LPBDSP.SendSlot(this, data, box, slot);
                 return;
