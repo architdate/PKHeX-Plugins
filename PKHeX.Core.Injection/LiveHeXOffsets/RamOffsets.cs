@@ -170,15 +170,6 @@
             };
         }
 
-        public static bool UseVtable(LiveHeXVersion lv)
-        {
-            return lv switch
-            {
-                LiveHeXVersion.BDSP => true,
-                _ => false
-            };
-        }
-
         public static (string, int) BoxOffsets(LiveHeXVersion lv)
         {
             return lv switch
