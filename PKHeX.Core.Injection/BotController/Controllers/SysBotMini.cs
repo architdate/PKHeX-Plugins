@@ -85,6 +85,22 @@ namespace PKHeX.Core.Injection
             }
         }
 
+        public byte[] ReadAbsoluteMulti(Dictionary<ulong, int> offsets)
+        {
+            lock (_sync)
+            {
+                var cmd = SwitchCommand.PeekAbsoluteMulti(offsets);
+                SendInternal(cmd);
+
+                // give it time to push data back
+                var length = offsets.Values.ToArray().Sum();
+                Thread.Sleep((length / 256) + 100);
+                var buffer = new byte[(length * 2) + 1];
+                var _ = ReadInternal(buffer);
+                return Decoder.ConvertHexByteStringToBytes(buffer);
+            }
+        }
+
         public void WriteBytes(byte[] data, ulong offset, RWMethod method)
         {
             lock (_sync)
@@ -150,5 +166,6 @@ namespace PKHeX.Core.Injection
         public void WriteBytesMain(byte[] data, ulong offset) => WriteBytes(data, offset, RWMethod.Main);
         public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Absolute);
         public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteBytes(data, offset, RWMethod.Absolute);
+        public byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets) => ReadAbsoluteMulti(offsets);
     }
 }

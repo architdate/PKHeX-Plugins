@@ -1,4 +1,6 @@
-﻿namespace PKHeX.Core.Injection
+﻿using System.Collections.Generic;
+
+namespace PKHeX.Core.Injection
 {
     public enum InjectorCommunicationType
     {
@@ -24,6 +26,7 @@
         ulong GetHeapBase();
         void WriteBytesMain(byte[] data, ulong offset);
         void WriteBytesAbsolute(byte[] data, ulong offset);
+        byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets);
     }
 
     public interface IPokeBlocks : ICommunicator

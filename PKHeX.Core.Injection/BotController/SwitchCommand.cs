@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PKHeX.Core.Injection
@@ -105,6 +106,14 @@ namespace PKHeX.Core.Injection
         /// <param name="addrn">Encoding selector. Default "true" for sys-botbase.</param>
         /// <returns>Encoded command bytes</returns>
         public static byte[] PeekAbsolute(ulong offset, int count, bool addrn = true) => Encode($"peekAbsolute 0x{offset:X16} {count}", addrn);
+
+        /// <summary>
+        /// Requests the Bot to send concatenated byte array of multiple pointer reads
+        /// </summary>
+        /// <param name="offsets">Dictionary of offsets and counts</param>
+        /// <param name="addrn">Encoding selector. Default "true" for sys-botbase.</param>
+        /// <returns>Encoded command bytes</returns>
+        public static byte[] PeekAbsoluteMulti(Dictionary<ulong, int> offsets, bool addrn = true) => Encode($"peekAbsoluteMulti {string.Join(" ", offsets.Select(z => $"{z.Key} {z.Value}"))}", addrn);
 
         /// <summary>
         /// Sends the Bot <see cref="data"/> to be written to absolute <see cref="offset"/>.

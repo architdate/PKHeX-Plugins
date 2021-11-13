@@ -10,6 +10,7 @@ namespace PKHeX.Core.Injection
         public static LiveHeXVersion[] SupportedVersions = new LiveHeXVersion[] { LiveHeXVersion.BDSP_v100, LiveHeXVersion.BDSP_v110 };
         public static byte[] ReadBox(this PokeSysBotMini psb, int box, List<byte[]> allpkm)
         {
+            var use_legacy = false;
             if (psb.com is not ICommunicatorNX sb)
                 return ArrayUtil.ConcatAll(allpkm.ToArray());
             (string ptr, int count) boxes = RamOffsets.BoxOffsets(psb.Version);
@@ -18,9 +19,19 @@ namespace PKHeX.Core.Injection
             var boxptr = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray()[box] + 0x20; // add 0x20 to remove vtable bytes
             b = sb.ReadBytesAbsolute(boxptr, psb.SlotCount * 8);
             var pkmptrs = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray();
-            foreach (var p in pkmptrs)
-                allpkm.Add(sb.ReadBytesAbsolute(p + 0x20, psb.SlotSize));
-            return ArrayUtil.ConcatAll(allpkm.ToArray());
+            if (use_legacy)
+            {
+                foreach (var p in pkmptrs)
+                    allpkm.Add(sb.ReadBytesAbsolute(p + 0x20, psb.SlotSize));
+                return ArrayUtil.ConcatAll(allpkm.ToArray());
+            }
+            else
+            {
+                Dictionary<ulong, int> offsets = new();
+                foreach (var p in pkmptrs)
+                    offsets.Add(p + 0x20, psb.SlotSize);
+                return sb.ReadBytesAbsoluteMulti(offsets);
+            }
         }
 
         public static byte[] ReadSlot(this PokeSysBotMini psb, int box, int slot)

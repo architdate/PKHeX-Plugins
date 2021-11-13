@@ -7,6 +7,8 @@ namespace PKHeX.Core.Injection
     {
         public static long GetPointerAddress(this ICommunicatorNX sb, string ptr)
         {
+            while (ptr.Contains("]]"))
+                ptr = ptr.Replace("]]", "]+0]");
             uint finadd = 0;
             if (!ptr.EndsWith("]"))
                 finadd = Util.GetHexValue(ptr.Split('+').Last());

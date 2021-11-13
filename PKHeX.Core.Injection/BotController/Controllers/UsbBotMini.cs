@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using LibUsbDotNet;
 using LibUsbDotNet.Main;
@@ -101,6 +102,7 @@ namespace PKHeX.Core.Injection
         public void WriteBytesMain(byte[] data, ulong offset) => WriteBytesUSB(data, offset, RWMethod.Main);
         public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytesUSB(offset, length, RWMethod.Absolute);
         public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteBytesUSB(data, offset, RWMethod.Absolute);
+        public byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets) => ReadAbsoluteMultiUSB(offsets);
         public ulong GetHeapBase()
         {
             var cmd = SwitchCommand.GetHeapBase();
@@ -173,6 +175,22 @@ namespace PKHeX.Core.Injection
                 // give it time to push data back
                 Thread.Sleep(1);
 
+                var buffer = new byte[length];
+                var _ = ReadInternal(buffer);
+                return buffer;
+            }
+        }
+
+        public byte[] ReadAbsoluteMultiUSB(Dictionary<ulong, int> offsets)
+        {
+            lock (_sync)
+            {
+                var cmd = SwitchCommand.PeekAbsoluteMulti(offsets, false);
+                SendInternal(cmd);
+
+                // give it time to push data back
+                var length = offsets.Values.ToArray().Sum();
+                Thread.Sleep(1);
                 var buffer = new byte[length];
                 var _ = ReadInternal(buffer);
                 return buffer;

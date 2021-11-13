@@ -303,6 +303,8 @@ namespace AutoModPlugins
         public ulong GetPointerAddress(ICommunicatorNX sb)
         {
             var ptr = TB_Pointer.Text;
+            while (ptr.Contains("]]"))
+                ptr = ptr.Replace("]]", "]+0]");
             uint finadd = 0;
             if (!ptr.EndsWith("]"))
                 finadd = Util.GetHexValue(ptr.Split('+').Last());
