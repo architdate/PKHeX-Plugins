@@ -239,11 +239,38 @@ namespace AutoModPlugins
                     else if (RB_Absolute.Checked) result = cnx.ReadBytesAbsolute(offset, size);
                     else result = Remote.ReadRAM(offset, size);
                 }
+                bool blockview = (ModifierKeys & Keys.Control) == Keys.Control;
+                PKM? pkm = null;
+                if (blockview)
+                {
+                    pkm = SAV.SAV.GetDecryptedPKM(result);
+                    if (!pkm.ChecksumValid || pkm == null)
+                        blockview = false;
+                }
                 using (var form = new SimpleHexEditor(result))
                 {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                    var loadgrid = blockview && ReflectUtil.GetPropertiesCanWritePublicDeclared(pkm.GetType()).Count() > 1;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                    if (loadgrid)
+                    {
+                        form.PG_BlockView.Visible = true;
+                        form.PG_BlockView.SelectedObject = pkm;
+                    }
                     var res = form.ShowDialog();
                     if (res == DialogResult.OK)
                     {
+                        if (loadgrid && pkm != null)
+                        {
+                            var pkmbytes = RamOffsets.WriteBoxData(Remote.Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData;
+                            if (pkmbytes.Count() == Remote.Bot.SlotSize)
+                                form.Bytes = pkmbytes;
+                            else
+                            {
+                                form.Bytes = result;
+                                WinFormsUtil.Error("Size mismatch. Please report this issue on the discord server.");
+                            }
+                        }
                         var modifiedRAM = form.Bytes;
                         if (Remote.Bot.com is not ICommunicatorNX nx) Remote.WriteRAM(offset, modifiedRAM);
                         else
@@ -367,11 +394,38 @@ namespace AutoModPlugins
             try
             {
                 var result = sb.ReadBytesAbsolute(address, size);
+                bool blockview = (ModifierKeys & Keys.Control) == Keys.Control;
+                PKM? pkm = null;
+                if (blockview)
+                {
+                    pkm = SAV.SAV.GetDecryptedPKM(result);
+                    if (!pkm.ChecksumValid || pkm == null)
+                        blockview = false;
+                }
                 using (var form = new SimpleHexEditor(result))
                 {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                    var loadgrid = blockview && ReflectUtil.GetPropertiesCanWritePublicDeclared(pkm.GetType()).Count() > 1;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                    if (loadgrid)
+                    {
+                        form.PG_BlockView.Visible = true;
+                        form.PG_BlockView.SelectedObject = pkm;
+                    }
                     var res = form.ShowDialog();
                     if (res == DialogResult.OK)
                     {
+                        if (loadgrid && pkm != null)
+                        {
+                            var pkmbytes = RamOffsets.WriteBoxData(Remote.Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData;
+                            if (pkmbytes.Count() == Remote.Bot.SlotSize)
+                                form.Bytes = pkmbytes;
+                            else
+                            {
+                                form.Bytes = result;
+                                WinFormsUtil.Error("Size mismatch. Please report this issue on the discord server.");
+                            }
+                        }
                         var modifiedRAM = form.Bytes;
                         sb.WriteBytesAbsolute(modifiedRAM, address);
                     }
