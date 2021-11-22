@@ -304,6 +304,26 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
+        /// Method to check if PIDIV has already set
+        /// </summary>
+        /// <param name="pk">pkm to check</param>
+        /// <param name="enc">enc to check</param>
+        /// <returns></returns>
+        public static bool IsPIDIVSet(PKM pk, IEncounterable enc)
+        {
+            // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
+            if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
+                return true;
+            if (enc is IOverworldCorrelation8 o && o.GetRequirement(pk) == OverworldCorrelation8Requirement.MustHave)
+                return true;
+            if (enc is IStaticCorrelation8b s && s.GetRequirement(pk) == StaticCorrelation8bRequirement.MustHave)
+                return true;
+            if (enc is EncounterEgg && GameVersion.BDSP.Contains(enc.Version))
+                return true;
+            return false;
+        }
+
+        /// <summary>
         /// Sanity checking locations before passing them into ApplySetDetails.
         /// Some encounters may have an empty met location leading to an encounter mismatch. Use this function for all encounter pre-processing!
         /// </summary>
@@ -549,7 +569,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Language = tr.Language;
                 pk.SetTrainerData(tr);
             }
-            pk.Egg_Location = Locations.TradedEggLocation(pk.Generation);
+            pk.Egg_Location = Locations.TradedEggLocation(pk.Generation, (GameVersion)pk.Version);
         }
 
         /// <summary>
@@ -579,9 +599,7 @@ namespace PKHeX.Core.AutoMod
         private static void SetIVsPID(this PKM pk, IBattleTemplate set, PIDType method, int hpType, IEncounterable enc)
         {
             // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
-            if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
-                return;
-            if (enc is IOverworldCorrelation8 o && o.GetRequirement(pk) == OverworldCorrelation8Requirement.MustHave)
+            if (IsPIDIVSet(pk, enc))
                 return;
 
             if (enc is MysteryGift mg)
@@ -695,6 +713,34 @@ namespace PKHeX.Core.AutoMod
                 if (!SimpleEdits.TryApplyHardcodedSeedWild8(pk8, enc, cloned, shiny))
                     FindWildPIDIV8(pk8, shiny, flawless);
             }
+            else if (enc is IStaticCorrelation8b esc)
+            {
+                var flawless = 0;
+                if (enc is EncounterStatic8b estatic8b)
+                    flawless = estatic8b.FlawlessIVCount;
+
+                if (esc.GetRequirement(pk) != StaticCorrelation8bRequirement.MustHave)
+                    return;
+
+                Shiny shiny;
+                if (set is RegenTemplate r)
+                    shiny = r.Regen.Extra.ShinyType;
+                else
+                    shiny = set.Shiny ? Shiny.Always : Shiny.Never;
+
+                Roaming8bRNG.ApplyDetails(pk, EncounterCriteria.Unrestricted, shiny, flawless);
+                pk.Met_Location = SimpleEdits.Roaming_MetLocation_BDSP[0];
+            }
+            else if (enc is EncounterEgg && GameVersion.BDSP.Contains(enc.Version))
+            {
+                pk.IVs = set.IVs;
+                Shiny shiny;
+                if (set is RegenTemplate r)
+                    shiny = r.Regen.Extra.ShinyType;
+                else
+                    shiny = set.Shiny ? Shiny.Always : Shiny.Never;
+                FindEggPIDIV8b(pk, shiny, set.Gender);
+            }
         }
 
         /// <summary>
@@ -735,7 +781,7 @@ namespace PKHeX.Core.AutoMod
             if (shiny)
             {
                 // Dynamax Adventure shinies are always XOR 1
-                pk.PID = (uint)(((pk.TID ^ pk.SID ^ (pk.PID & 0xFFFF) ^ 1) << 16) | (pk.PID & 0xFFFF));
+                pk.PID = SimpleEdits.GetShinyPID(pk.TID, pk.SID, pk.PID, 1);
             }
 
             pk.Species = iterPKM.Species; // possible evolution
@@ -826,6 +872,97 @@ namespace PKHeX.Core.AutoMod
             var weight = (int)rng.NextInt(0x81) + (int)rng.NextInt(0x80);
             pk.HeightScalar = height;
             pk.WeightScalar = weight;
+        }
+
+        /// <summary>
+        /// Egg PID IVs being set through XOROSHIRO1288b
+        /// </summary>
+        /// <param name="pk">pokemon to edit</param>
+        /// <param name="shiny">Shinytype requested</param>
+        /// <param name="flawless">number of flawless ivs</param>
+        /// <param name="fixedseed">Optional fixed RNG seed</param>
+        public static void FindEggPIDIV8b(PKM pk, Shiny shiny, int gender)
+        {
+            uint seed;
+            Xoroshiro128Plus8b rng;
+            var ivs = new[] { -1, -1, -1, -1, -1, -1 };
+            var IVs = pk.IVs;
+            var required_ivs = new[] { IVs[0], IVs[1], IVs[2], IVs[4], IVs[5], IVs[3] };
+            var pi = PersonalTable.BDSP.GetFormEntry(pk.Species, pk.Form);
+            var ratio = pi.Gender;
+
+            while (true)
+            {
+                seed = Util.Rand32();
+                rng = new Xoroshiro128Plus8b(seed);
+
+                var nido_family_f = new int[] { (int)Species.NidoranF, (int)Species.Nidorina, (int)Species.Nidoqueen };
+                var nido_family_m = new int[] { (int)Species.NidoranM, (int)Species.Nidorino, (int)Species.Nidoking };
+                if (nido_family_m.Contains(pk.Species) || nido_family_f.Contains(pk.Species))
+                {
+                    var nido_roll = rng.NextUInt(2);
+                    if (nido_roll == 1 && nido_family_m.Contains(pk.Species)) // Nidoran F
+                        continue;
+                    if (nido_roll == 0 && nido_family_f.Contains(pk.Species)) // Nidoran M
+                        continue;
+                }
+
+                if (pk.Species == (int)Species.Illumise || pk.Species == (int)Species.Volbeat)
+                {
+                    if (rng.NextUInt(2) != (int)Species.Illumise - pk.Species)
+                        continue;
+                }
+
+                if (pk.Species == (int)Species.Indeedee)
+                {
+                    if (rng.NextUInt(2) != pk.Form)
+                        continue;
+                }
+
+                if (ratio != PersonalInfo.RatioMagicMale && ratio != PersonalInfo.RatioMagicFemale && ratio != PersonalInfo.RatioMagicGenderless)
+                {
+                    var gender_roll = rng.NextUInt(252) + 1;
+                    var fin_gender = gender_roll < ratio ? 1 : 0;
+                    if (gender != -1 && gender != fin_gender)
+                        continue;
+                }
+
+                var nature = rng.NextUInt(25); // assume one parent always carry an everstone
+                var ability_val = rng.NextUInt(100); // assume the ability is changed using capsule/patch (assume parent is ability 0/1)
+
+                // assume other parent always has destiny knot
+                var inheritCount = 5;
+                var inherited = 0;
+                while (inherited < inheritCount)
+                {
+                    var stat = rng.NextUInt(6);
+                    if (ivs[stat] == -1)
+                    {
+                        rng.NextUInt(2); // decides which parents iv to inherit, assume that parent has the required IV
+                        ivs[stat] = required_ivs[stat];
+                        inherited += 1;
+                    }
+                }
+                var ivs2 = new int[] { (int)rng.NextUInt(32), (int)rng.NextUInt(32), (int)rng.NextUInt(32), (int)rng.NextUInt(32), (int)rng.NextUInt(32), (int)rng.NextUInt(32) };
+                for (int i = 0; i < 6; i++)
+                    if (ivs[i] == -1) ivs[i] = ivs2[i];
+                // if (!ivs.SequenceEqual(required_ivs))
+                //    continue;
+                pk.IV_HP = ivs[0];
+                pk.IV_ATK = ivs[1];
+                pk.IV_DEF = ivs[2];
+                pk.IV_SPA = ivs[3];
+                pk.IV_SPD = ivs[4];
+                pk.IV_SPE = ivs[5];
+
+                pk.EncryptionConstant = rng.NextUInt();
+
+                // PID dissociated completely (assume no masuda and no shiny charm)
+                if (shiny == Shiny.Never || shiny == Shiny.Random)
+                    pk.SetUnshiny();
+                else pk.PID = SimpleEdits.GetShinyPID(pk.TID, pk.SID, pk.PID, shiny == Shiny.AlwaysSquare ? 0 : 1);
+                break;
+            }
         }
 
         /// <summary>

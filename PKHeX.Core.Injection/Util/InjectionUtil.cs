@@ -5,13 +5,16 @@ namespace PKHeX.Core.Injection
 {
     public static class InjectionUtil
     {
-        public static long GetPointerAddress(this ICommunicatorNX sb, string ptr)
+        public static ulong GetPointerAddress(this ICommunicatorNX sb, string ptr, bool heaprealtive=true)
         {
             while (ptr.Contains("]]"))
                 ptr = ptr.Replace("]]", "]+0]");
-            uint finadd = 0;
+            uint? finadd = null;
             if (!ptr.EndsWith("]"))
+            {
                 finadd = Util.GetHexValue(ptr.Split('+').Last());
+                ptr = ptr.Substring(0, ptr.LastIndexOf('+'));
+            }
             var jumps = ptr.Replace("main", "").Replace("[", "").Replace("]", "").Split(new[] { "+" }, StringSplitOptions.RemoveEmptyEntries);
             if (jumps.Length == 0) 
                 return 0;
@@ -23,16 +26,15 @@ namespace PKHeX.Core.Injection
                 var val = Util.GetHexValue(j.Trim());
                 if (val == initaddress)
                     continue;
-                if (val == finadd)
-                {
-                    address += val;
-                    break;
-                }
                 address = BitConverter.ToUInt64(sb.ReadBytesAbsolute(address + val, 0x8), 0);
             }
-            ulong heap = sb.GetHeapBase();
-            address -= heap;
-            return (long)address;
+            if (finadd != null) address += (ulong)finadd;
+            if (heaprealtive)
+            {
+                ulong heap = sb.GetHeapBase();
+                address -= heap;
+            }
+            return address;
         }
     }
 }

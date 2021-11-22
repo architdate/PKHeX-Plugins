@@ -57,46 +57,64 @@ namespace AutoModPlugins
             CenterToParent();
         }
 
-        private void SetTrainerData(SaveFile sav, LiveHeXVersion lv)
+        private void SetTrainerData(SaveFile sav)
         {
             // Check and set trainerdata based on ISaveBlock interfaces
             byte[] dest;
             int startofs = 0;
+
+            //byte[] config;
+            //int configstart = 0;
+
+            Func<PokeSysBotMini, byte[]?> tdata;
+
             switch (sav)
             {
-                case ISaveBlock8Main s8:
+                case ISaveBlock8SWSH s8:
                     dest = s8.MyStatus.Data;
                     startofs = s8.MyStatus.Offset;
+                    tdata = LPBasic.GetTrainerData;
                     break;
 
                 case ISaveBlock7Main s7:
                     dest = s7.MyStatus.Data;
                     startofs = s7.MyStatus.Offset;
+                    tdata = LPBasic.GetTrainerData;
                     break;
 
                 case ISaveBlock6Main s6:
                     dest = s6.Status.Data;
                     startofs = s6.Status.Offset;
+                    tdata = LPBasic.GetTrainerData;
                     break;
 
                 case SAV7b slgpe:
                     dest = slgpe.Blocks.Status.Data;
                     startofs = slgpe.Blocks.Status.Offset;
+                    tdata = LPLGPE.GetTrainerData;
+                    break;
+
+                case SAV8BS sbdsp:
+                    dest = sbdsp.MyStatus.Data;
+                    startofs = sbdsp.MyStatus.Offset;
+                    tdata = LPBDSP.GetTrainerData;
+
+                    //configstart = sbdsp.Config.Offset;
+                    //config = sbdsp.Config.Data;
                     break;
 
                 default:
                     dest = Array.Empty<byte>();
+                    tdata = LPBasic.GetTrainerData;
                     break;
             }
 
             if (dest.Length == 0)
                 return;
 
-            var ofs = RamOffsets.GetTrainerBlockOffset(lv);
-            var size = RamOffsets.GetTrainerBlockSize(lv);
-            if (size <= 0)
+            var data = tdata(Remote.Bot);
+            if (data == null)
                 return;
-            var data = Remote.Bot.com.ReadBytes(ofs, size);
             data.CopyTo(dest, startofs);
         }
 
@@ -132,7 +150,7 @@ namespace AutoModPlugins
                         currver = version;
                         if (Remote.Bot.com is IPokeBlocks)
                         {
-                            var cblist = GetSortedBlockList().ToArray();
+                            var cblist = GetSortedBlockList(version).ToArray();
                             if (cblist.Length > 0)
                             {
                                 groupBox5.Enabled = true;
@@ -165,7 +183,7 @@ namespace AutoModPlugins
                 Remote.ReadBox(SAV.CurrentBox);
 
                 // Set Trainer Data
-                SetTrainerData(SAV.SAV, currver);
+                SetTrainerData(SAV.SAV);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             // Console might be disconnected...
@@ -195,7 +213,7 @@ namespace AutoModPlugins
         {
             bool readPointer = (ModifierKeys & Keys.Control) == Keys.Control;
             var txt = TB_Offset.Text;
-            var offset = readPointer && Remote.Bot.com is ICommunicatorNX nx ? (ulong)nx.GetPointerAddress(TB_Pointer.Text) : Util.GetHexValue64(txt);
+            var offset = readPointer && Remote.Bot.com is ICommunicatorNX nx ? nx.GetPointerAddress(TB_Pointer.Text) : Util.GetHexValue64(txt);
             if (offset.ToString("X16") != txt.ToUpper().PadLeft(16, '0') && !readPointer)
             {
                 WinFormsUtil.Alert("Specified offset is not a valid hex string.");
@@ -291,16 +309,24 @@ namespace AutoModPlugins
 #pragma warning restore CA1031 // Do not catch general exception types
         }
 
-        public IEnumerable<string> GetSortedBlockList()
+        public IEnumerable<string> GetSortedBlockList(LiveHeXVersion lv)
         {
-            var offsets = RamOffsets.GetOffsets(Remote.Bot.Version);
-            if (offsets == null)
-                return new List<string>();
-            var aType = offsets.GetType();
-            var props = aType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-            var ofType = props.Where(fi => typeof(uint).IsAssignableFrom(fi.FieldType));
-            var retval = ofType.ToDictionary(z => z.Name, field => (uint)field.GetValue(offsets));
-            return retval.Where(z => z.Value != 0).Select(z => z.Key).OrderBy(z => z);
+            if (LPBasic.SupportedVersions.Contains(lv))
+            {
+                var offsets = RamOffsets.GetOffsets(Remote.Bot.Version);
+                if (offsets == null)
+                    return new List<string>();
+                var aType = offsets.GetType();
+                var props = aType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+                var ofType = props.Where(fi => typeof(uint).IsAssignableFrom(fi.FieldType));
+                var retval = ofType.ToDictionary(z => z.Name, field => (uint)field.GetValue(offsets));
+                return retval.Where(z => z.Value != 0).Select(z => z.Key).OrderBy(z => z);
+            }
+            if (LPBDSP.SupportedVersions.Contains(lv))
+            {
+                return LPBDSP.FunctionMap.Keys.OrderBy(z => z);
+            }
+            return new List<string>();
         }
 
         public void NotifySlotOld(ISlotInfo previous) { }
@@ -330,32 +356,9 @@ namespace AutoModPlugins
         public ulong GetPointerAddress(ICommunicatorNX sb)
         {
             var ptr = TB_Pointer.Text;
-            while (ptr.Contains("]]"))
-                ptr = ptr.Replace("]]", "]+0]");
-            uint finadd = 0;
-            if (!ptr.EndsWith("]"))
-                finadd = Util.GetHexValue(ptr.Split('+').Last());
-            var jumps = ptr.Replace("main", "").Replace("[", "").Replace("]", "").Split(new[] { "+" }, StringSplitOptions.RemoveEmptyEntries);
-            if (jumps.Length == 0)
-            {
+            var address = InjectionUtil.GetPointerAddress(sb, ptr, false);
+            if (address == 0)
                 WinFormsUtil.Alert("Invalid Pointer");
-                return 0;
-            }
-
-            var initaddress = Util.GetHexValue(jumps[0].Trim());
-            ulong address = BitConverter.ToUInt64(sb.ReadBytesMain(initaddress, 0x8), 0);
-            foreach (var j in jumps)
-            {
-                var val = Util.GetHexValue(j.Trim());
-                if (val == initaddress)
-                    continue;
-                if (val == finadd)
-                {
-                    address += val;
-                    break;
-                }
-                address = BitConverter.ToUInt64(sb.ReadBytesAbsolute(address + val, 0x8), 0);
-            }
             return address;
         }
 
@@ -460,23 +463,41 @@ namespace AutoModPlugins
         private void B_EditBlock_Click(object sender, EventArgs e)
         {
             var txt = CB_BlockName.Text;
-            var valid = Remote.ReadBlockFromString(SAV.SAV, txt, out var data);
+            var version = Remote.Bot.Version;
+            bool valid = false;
+            byte[]? data = null;
+            if (LPBasic.SupportedVersions.Contains(version))
+                valid = LPBasic.ReadBlockFromString(Remote.Bot, SAV.SAV, txt, out data);
+            if (LPBDSP.SupportedVersions.Contains(version))
+                valid = LPBDSP.ReadBlockFromString(Remote.Bot, SAV.SAV, txt, out data);
             if (!valid || data == null)
             {
                 WinFormsUtil.Error("Invalid Entry");
                 return;
             }
-            var allblocks = SAV.SAV.GetType().GetProperty("Blocks").GetValue(SAV.SAV);
-            var blockprop = allblocks.GetType().GetProperty(txt);
-            object sb;
-            if (allblocks is SCBlockAccessor scba && blockprop == null)
+
+            object? sb = null;
+            if (LPBasic.SupportedVersions.Contains(version))
             {
-                var key = allblocks.GetType().GetField(txt, BindingFlags.NonPublic | BindingFlags.Static).GetValue(allblocks);
-                sb = scba.GetBlock((uint)key);
+                var allblocks = SAV.SAV.GetType().GetProperty("Blocks").GetValue(SAV.SAV);
+                var blockprop = allblocks.GetType().GetProperty(txt);
+                if (allblocks is SCBlockAccessor scba && blockprop == null)
+                {
+                    var key = allblocks.GetType().GetField(txt, BindingFlags.NonPublic | BindingFlags.Static).GetValue(allblocks);
+                    sb = scba.GetBlock((uint)key);
+                }
+                else
+                {
+                    sb = blockprop.GetValue(allblocks);
+                }
             }
-            else
+            if (LPBDSP.SupportedVersions.Contains(version))
+                sb = SAV.SAV.GetType().GetProperty(txt).GetValue(SAV.SAV);
+
+            if (sb == null)
             {
-                sb = blockprop.GetValue(allblocks);
+                WinFormsUtil.Error("Error fetching Block");
+                return;
             }
 
             // Verify if sb is a valid block type
@@ -501,7 +522,12 @@ namespace AutoModPlugins
 
                 var blockdata = GetBlockDataRaw(sb, data);
                 if (!blockdata.SequenceEqual(data))
-                    Remote.WriteBlockFromString(txt, blockdata);
+                {
+                    if (LPBasic.SupportedVersions.Contains(version))
+                        LPBasic.WriteBlockFromString(Remote.Bot, txt, blockdata);
+                    if (LPBDSP.SupportedVersions.Contains(version))
+                        LPBDSP.WriteBlockFromString(Remote.Bot, txt, blockdata, sb);
+                }
                 return;
             }
             using var form = new SimpleHexEditor(data);
@@ -519,7 +545,10 @@ namespace AutoModPlugins
                 if (loadgrid)
                     form.Bytes = blockdata;
                 var modifiedRAM = form.Bytes;
-                Remote.WriteBlockFromString(txt, modifiedRAM);
+                if (LPBasic.SupportedVersions.Contains(version))
+                    LPBasic.WriteBlockFromString(Remote.Bot, txt, modifiedRAM);
+                if (LPBDSP.SupportedVersions.Contains(version))
+                    LPBDSP.WriteBlockFromString(Remote.Bot, txt, modifiedRAM, sb);
             }
         }
 

@@ -28,6 +28,13 @@ namespace PKHeX.Core.AutoMod
             199, 894, 895, 896, 897, 898,
         };
 
+        internal static readonly int[] Roaming_MetLocation_BDSP =
+        {
+            197, 201, 354, 355, 356, 357, 358, 359, 361, 362, 364, 365, 367, 373, 375, 377,
+            378, 379, 383, 385, 392, 394, 395, 397, 400, 403, 404, 407, 411, 412, 414, 416,
+            420,
+        };
+
         internal static readonly HashSet<int> AlolanOriginForms = new()
         {
             019, // Rattata
@@ -137,10 +144,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">Encounter details</param>
         public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
         {
-            var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
-            if (enc is IOverworldCorrelation8 o && o.GetRequirement(pk) == OverworldCorrelation8Requirement.MustHave)
-                return;
-            if ((pk.Species == 658 && pk.Form == 1) || isRaid) // Ash-Greninja or raids
+            if ((pk.Species == 658 && pk.Form == 1) || APILegality.IsPIDIVSet(pk, enc)) // Ash-Greninja or raids
                 return;
             int gen = pk.Generation;
             if (gen is > 2 and < 6)
@@ -305,17 +309,14 @@ namespace PKHeX.Core.AutoMod
                 if (isHOMEGift) return;
             }
 
+            if (APILegality.IsPIDIVSet(pk, enc) && !(enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND))
+                return;
+
             if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND)
             {
                 if (APILegality.UseXOROSHIRO && !pk.IsShiny)
                     return;
             }
-
-            if (enc is IOverworldCorrelation8 o && o.GetRequirement(pk) == OverworldCorrelation8Requirement.MustHave)
-                return;
-
-            if (enc is EncounterStatic8U)
-                return; // height and weight already handled even for shiny cases
 
             var height = 0x12;
             var weight = 0x97;
@@ -401,13 +402,14 @@ namespace PKHeX.Core.AutoMod
         {
             if (level > 10)
                 level = 10;
-            if (pk is IDynamaxLevel pkm)
-            {
-                // Zacian, Zamazenta and Eternatus cannot dynamax
-                if (pk is PK8 { Species: (int)Species.Zacian or (int)Species.Zamazenta or (int)Species.Eternatus })
-                    return;
-                pkm.DynamaxLevel = level; // Set max dynamax level
-            }
+            if (pk is not IDynamaxLevel pkm)
+                return;
+            // Zacian, Zamazenta and Eternatus cannot dynamax
+            if (pk is PK8 { Species: (int)Zacian or (int)Zamazenta or (int)Eternatus })
+                return;
+            if (pk.BDSP)
+                return;
+            pkm.DynamaxLevel = level; // Set max dynamax level
         }
 
         public static void RestoreIVs(this PKM pk, int[] IVs)

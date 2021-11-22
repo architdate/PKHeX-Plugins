@@ -81,63 +81,6 @@ namespace PKHeX.Core.Injection
             return true;
         }
 
-        // Reflection method
-        public bool ReadBlockFromString(SaveFile sav, string block, out byte[]? read)
-        {
-            read = null;
-            var obj = RamOffsets.GetOffsets(Bot.Version);
-            if (obj == null)
-                return false;
-            try
-            {
-                var offset = obj.GetType().GetField(block).GetValue(obj);
-                if (offset is uint and 0)
-                    return false;
-                var allblocks = sav.GetType().GetProperty("Blocks").GetValue(sav);
-                var blockprop = allblocks.GetType().GetProperty(block);
-                object data;
-                if (allblocks is SCBlockAccessor scba && blockprop == null)
-                {
-                    var key = allblocks.GetType().GetField(block, BindingFlags.NonPublic | BindingFlags.Static).GetValue(allblocks);
-                    data = scba.GetBlock((uint)key);
-                }
-                else
-                {
-                    data = blockprop.GetValue(allblocks);
-                }
-
-                if (data is SaveBlock sb)
-                {
-                    read = ReadRAM((uint)offset, sb.Data.Length);
-                    read.CopyTo(sb.Data, sb.Offset);
-                }
-                else if (data is SCBlock scb)
-                {
-                    read = ReadRAM((uint)offset, scb.Data.Length);
-                    read.CopyTo(scb.Data, 0);
-                }
-                else
-                {
-                    return false;
-                }
-                return true;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.StackTrace);
-                return false;
-            }
-        }
-
-        public void WriteBlockFromString(string block, byte[] data)
-        {
-            var obj = RamOffsets.GetOffsets(Bot.Version);
-            if (obj == null)
-                return;
-            var offset = obj.GetType().GetField(block).GetValue(obj);
-            WriteRAM((uint)offset, data);
-        }
-
         public byte[] ReadRAM(ulong offset, int size) => Bot.com.ReadBytes(offset, size);
 
         public void WriteRAM(ulong offset, byte[] data) => Bot.com.WriteBytes(data, offset);

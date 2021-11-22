@@ -7,7 +7,7 @@ namespace PKHeX.Core.Injection
     public static class LPLGPE
     {
         public static LiveHeXVersion[] SupportedVersions = new LiveHeXVersion[] { LiveHeXVersion.LGPE_v102 };
-        public static byte[] ReadBox(this PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
+        public static byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
         {
             var bytes = psb.com.ReadBytes(psb.GetBoxOffset(box), len);
             if (psb.GapSize == 0)
@@ -24,7 +24,7 @@ namespace PKHeX.Core.Injection
             return ArrayUtil.ConcatAll(allpkm.ToArray());
         }
 
-        public static byte[] ReadSlot(this PokeSysBotMini psb, int box, int slot)
+        public static byte[] ReadSlot(PokeSysBotMini psb, int box, int slot)
         {
             var bytes = psb.com.ReadBytes(psb.GetSlotOffset(box, slot), psb.SlotSize + psb.GapSize);
             var StoredLength = psb.SlotSize - 0x1C;
@@ -33,7 +33,7 @@ namespace PKHeX.Core.Injection
             return ArrayUtil.ConcatAll(stored, party);
         }
 
-        public static void SendSlot(this PokeSysBotMini psb, byte[] data, int box, int slot)
+        public static void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot)
         {
             var slotofs = psb.GetSlotOffset(box, slot);
             var StoredLength = psb.SlotSize - 0x1C;
@@ -41,11 +41,22 @@ namespace PKHeX.Core.Injection
             psb.com.WriteBytes(data.SliceEnd(StoredLength), (slotofs + (ulong) StoredLength + 0x70));
         }
 
-        public static void SendBox(this PokeSysBotMini psb, byte[] boxData, int box)
+        public static void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
         {
             byte[][] pkmData = boxData.Split(psb.SlotSize);
             for (int i = 0; i < psb.SlotCount; i++)
                 SendSlot(psb, pkmData[i], box, i);
         }
+
+        public static Func<PokeSysBotMini, byte[]?> GetTrainerData = psb =>
+        {
+            var lv = psb.Version;
+            var ofs = RamOffsets.GetTrainerBlockOffset(lv);
+            var size = RamOffsets.GetTrainerBlockSize(lv);
+            if (size <= 0 || ofs == 0)
+                return null;
+            var data = psb.com.ReadBytes(ofs, size);
+            return data;
+        };
     }
 }
