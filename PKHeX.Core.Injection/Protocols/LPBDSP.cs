@@ -19,7 +19,8 @@ namespace PKHeX.Core.Injection
 #pragma warning disable CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
         public static Dictionary<string, (Func<PokeSysBotMini, byte[]?>, Action<PokeSysBotMini, byte[]>)> FunctionMap = new ()
         {
-            { "Items", (GetItemBlock, SetItemBlock) }
+            { "Items",      (GetItemBlock, SetItemBlock) },
+            { "MyStatus",   (GetMyStatusBlock, SetMyStatusBlock) },
         };
 #pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
 
@@ -145,6 +146,22 @@ namespace PKHeX.Core.Injection
             var items = Core.ArrayUtil.EnumerateSplit(data, 0x10).Select(z => z.Slice(0, 0xC)).ToArray();
             var payload = ArrayUtil.ConcatAll(items);
             psb.com.WriteBytes(payload, addr);
+        }
+
+        public static byte[]? GetMyStatusBlock(PokeSysBotMini psb) => GetTrainerData(psb);
+
+        public static void SetMyStatusBlock(PokeSysBotMini psb, byte[] data)
+        {
+            var lv = psb.Version;
+            var ptr = GetTrainerPointer(lv);
+            if (ptr == null || psb.com is not ICommunicatorNX sb)
+                return;
+            var size = RamOffsets.GetTrainerBlockSize(lv);
+            data = data.Slice(0, size);
+            var trainer_name = ptr + "]+14";
+            var trainer_name_addr = InjectionUtil.GetPointerAddress(sb, trainer_name);
+            psb.com.WriteBytes(data.Slice(0, 0x1A), trainer_name_addr);
+            psb.com.WriteBytes(data.SliceEnd(0x1A + 0x2), InjectionUtil.GetPointerAddress(sb, ptr) + 0x8);
         }
 
         public static bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out byte[]? read)
