@@ -309,7 +309,7 @@ namespace PKHeX.Core.AutoMod
                 if (isHOMEGift) return;
             }
 
-            if (APILegality.IsPIDIVSet(pk, enc) && !(enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND))
+            if (APILegality.IsPIDIVSet(pk, enc) && !(enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND) && !(enc is EncounterEgg && GameVersion.BDSP.Contains(enc.Version)))
                 return;
 
             if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND)
@@ -322,7 +322,7 @@ namespace PKHeX.Core.AutoMod
             var weight = 0x97;
             if (signed)
             {
-                if (GameVersion.SWSH.Contains(pk.Version))
+                if (GameVersion.SWSH.Contains(pk.Version) || GameVersion.BDSP.Contains(pk.Version))
                 {
                     var top = (int)(pk.PID >> 16);
                     var bottom = (int)(pk.PID & 0xFFFF);
