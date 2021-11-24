@@ -10,6 +10,7 @@ namespace PKHeX.Core.Injection
         {
             { typeof(MyItem), "B_OpenItemPouch_Click" },
             { typeof(RaidSpawnList8), "B_OpenRaids_Click" },
+            { typeof(UndergroundItemList8b), "B_OpenUGSEditor_Click" },
         };
 
         /// <summary>

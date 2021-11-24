@@ -16,11 +16,19 @@ namespace PKHeX.Core.Injection
         private const int ITEM_BLOCK_SIZE = 0xBB80;
         private const int ITEM_BLOCK_SIZE_RAM = (0xBB80 / 0x10) * 0xC;
 
+        private const int UG_ITEM_BLOCK_SIZE = 999 * 0xC;
+        private const int UG_ITEM_BLOCK_SIZE_RAM = 999 * 0x8;
+
+        private const int DAYCARE_BLOCK_SIZE = 0x2C0;
+        private const int DAYCARE_BLOCK_SIZE_RAM = 0x8 * 4;
+
 #pragma warning disable CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
         public static Dictionary<string, (Func<PokeSysBotMini, byte[]?>, Action<PokeSysBotMini, byte[]>)> FunctionMap = new ()
         {
-            { "Items",      (GetItemBlock, SetItemBlock) },
-            { "MyStatus",   (GetMyStatusBlock, SetMyStatusBlock) },
+            { "Items",          (GetItemBlock, SetItemBlock) },
+            { "MyStatus",       (GetMyStatusBlock, SetMyStatusBlock) },
+            { "Underground",    (GetUGItemBlock, SetUGItemBlock) },
+            { "Daycare",        (GetDaycareBlock, SetDaycareBlock) },
         };
 #pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
 
@@ -52,6 +60,26 @@ namespace PKHeX.Core.Injection
             {
                 LiveHeXVersion.BD_v111 => "[[[main+4C12B78]+B8]+118]+20",
                 LiveHeXVersion.SP_v111 => "[[[main+4E29C50]+B8]+118]+20",
+                _ => null
+            };
+        }
+
+        private static string? GetUndergroundPointers(LiveHeXVersion lv)
+        {
+            return lv switch
+            {
+                LiveHeXVersion.BD_v111 => "[[[main+4C12B78]+B8]+120]+20",
+                LiveHeXVersion.SP_v111 => "[[[main+4E29C50]+B8]+120]+20",
+                _ => null
+            };
+        }
+
+        private static string? GetDaycarePointers(LiveHeXVersion lv)
+        {
+            return lv switch
+            {
+                LiveHeXVersion.BD_v111 => "[[main+4C12B78]+B8]+520",
+                LiveHeXVersion.SP_v111 => "[[main+4E29C50]+B8]+520",
                 _ => null
             };
         }
@@ -148,6 +176,32 @@ namespace PKHeX.Core.Injection
             psb.com.WriteBytes(payload, addr);
         }
 
+        public static byte[]? GetUGItemBlock(PokeSysBotMini psb)
+        {
+            var ptr = GetUndergroundPointers(psb.Version);
+            if (ptr == null)
+                return null;
+            var nx = (ICommunicatorNX)psb.com;
+            var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            var item_blk = psb.com.ReadBytes(addr, UG_ITEM_BLOCK_SIZE_RAM);
+            var extra_data = new byte[] { 0x0, 0x0, 0x0, 0x0 };
+            var items = Core.ArrayUtil.EnumerateSplit(item_blk, 0x8).Select(z => z.Concat(extra_data).ToArray()).ToArray();
+            return ArrayUtil.ConcatAll(items);
+        }
+
+        public static void SetUGItemBlock(PokeSysBotMini psb, byte[] data)
+        {
+            var ptr = GetUndergroundPointers(psb.Version);
+            if (ptr == null)
+                return;
+            var nx = (ICommunicatorNX)psb.com;
+            var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            data = data.Slice(0, UG_ITEM_BLOCK_SIZE);
+            var items = Core.ArrayUtil.EnumerateSplit(data, 0xC).Select(z => z.Slice(0, 0x8)).ToArray();
+            var payload = ArrayUtil.ConcatAll(items);
+            psb.com.WriteBytes(payload, addr);
+        }
+
         public static byte[]? GetMyStatusBlock(PokeSysBotMini psb) => GetTrainerData(psb);
 
         public static void SetMyStatusBlock(PokeSysBotMini psb, byte[] data)
@@ -162,6 +216,46 @@ namespace PKHeX.Core.Injection
             var trainer_name_addr = InjectionUtil.GetPointerAddress(sb, trainer_name);
             psb.com.WriteBytes(data.Slice(0, 0x1A), trainer_name_addr);
             psb.com.WriteBytes(data.SliceEnd(0x1A + 0x2), InjectionUtil.GetPointerAddress(sb, ptr) + 0x8);
+        }
+
+        public static byte[]? GetDaycareBlock(PokeSysBotMini psb)
+        {
+            var ptr = GetDaycarePointers(psb.Version);
+            if (ptr == null)
+                return null;
+            var nx = (ICommunicatorNX)psb.com;
+            var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            var parent_one = psb.com.ReadBytes(InjectionUtil.GetPointerAddress(nx, ptr + "]+20]+20"), 0x158);
+            var parent_two = psb.com.ReadBytes(InjectionUtil.GetPointerAddress(nx, ptr + "]+28]+20"), 0x158);
+            var extra = psb.com.ReadBytes(addr + 0x8, 0x18);
+            var extra_arr = Core.ArrayUtil.EnumerateSplit(extra, 0x8).ToArray();
+            var block = new byte[DAYCARE_BLOCK_SIZE];
+            parent_one.CopyTo(block, 0);
+            parent_two.CopyTo(block, 0x158);
+            extra_arr[0].Slice(0, 4).CopyTo(block, 0x158 * 2);
+            extra_arr[1].CopyTo(block, (0x158 * 2) + 0x4);
+            extra_arr[2].Slice(0, 4).CopyTo(block, (0x158 * 2) + 0x4 + 0x8);
+            return block;
+        }
+
+        public static void SetDaycareBlock(PokeSysBotMini psb, byte[] data)
+        {
+            var ptr = GetDaycarePointers(psb.Version);
+            if (ptr == null)
+                return;
+            var nx = (ICommunicatorNX)psb.com;
+            var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            var parent_one_addr = InjectionUtil.GetPointerAddress(nx, ptr + "]+20]+20");
+            var parent_two_addr = InjectionUtil.GetPointerAddress(nx, ptr + "]+28]+20");
+            data = data.Slice(0, DAYCARE_BLOCK_SIZE);
+            psb.com.WriteBytes(data.Slice(0, 0x158), parent_one_addr);
+            psb.com.WriteBytes(data.Slice(0x158, 0x158), parent_two_addr);
+            var payload = new byte[DAYCARE_BLOCK_SIZE_RAM - 0x8];
+            data.Slice(0x158 * 2, 4).CopyTo(payload);
+            data.Slice((0x158 * 2) + 0x4, 0x8).CopyTo(payload, 0x8);
+            data.Slice((0x158 * 2) + 0x4 + 0x8, 0x4).CopyTo(payload, 0x8 * 2);
+            psb.com.WriteBytes(payload, addr + 0x8);
+            return;
         }
 
         public static bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out byte[]? read)
