@@ -25,21 +25,11 @@ before_build:
 
     nuget restore
 
-    msbuild C:\projects\pkhex\PKHeX.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /verbosity:minimal /p:DefineConstants=UNSAFEDLL /p:Configuration=Release
-
-    #Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "C:\projects\pkhex-plugins"
-
     Set-Location -Path "C:\projects\pkhex-plugins"
 
     dotnet restore
 
     nuget restore
-    
-    New-Variable -Name "nugetver" -Visibility Public -Value (Get-ChildItem "C:\Users\appveyor\.nuget\packages\pkhex.core" | Sort-Object -Property LastWriteTime -Descending)[0].Name
-
-    Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\net46\PKHeX.Core.dll" "C:\Users\appveyor\.nuget\packages\pkhex.core\$nugetver\lib\net46"
-
-    Copy-Item "C:\projects\pkhex\PKHeX.Core\bin\Release\netstandard2.0\PKHeX.Core.dll" "C:\Users\appveyor\.nuget\packages\pkhex.core\$nugetver\lib\netstandard2.0"
 build:
   project: C:\projects\pkhex-plugins\PKHeX-Plugins.sln
   verbosity: minimal
