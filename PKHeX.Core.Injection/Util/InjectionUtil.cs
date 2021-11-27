@@ -5,8 +5,11 @@ namespace PKHeX.Core.Injection
 {
     public static class InjectionUtil
     {
+        public const ulong INVALID_PTR = 0; 
         public static ulong GetPointerAddress(this ICommunicatorNX sb, string ptr, bool heaprealtive=true)
         {
+            if (string.IsNullOrWhiteSpace(ptr) || ptr.IndexOfAny(new char[] { '-', '/', '*' }) != -1)
+                return INVALID_PTR;
             while (ptr.Contains("]]"))
                 ptr = ptr.Replace("]]", "]+0]");
             uint? finadd = null;
@@ -17,7 +20,7 @@ namespace PKHeX.Core.Injection
             }
             var jumps = ptr.Replace("main", "").Replace("[", "").Replace("]", "").Split(new[] { "+" }, StringSplitOptions.RemoveEmptyEntries);
             if (jumps.Length == 0) 
-                return 0;
+                return INVALID_PTR;
 
             var initaddress = Util.GetHexValue(jumps[0].Trim());
             ulong address = BitConverter.ToUInt64(sb.ReadBytesMain(initaddress, 0x8), 0);

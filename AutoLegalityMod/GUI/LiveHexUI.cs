@@ -214,7 +214,7 @@ namespace AutoModPlugins
             bool readPointer = (ModifierKeys & Keys.Control) == Keys.Control;
             var txt = TB_Offset.Text;
             var offset = readPointer && Remote.Bot.com is ICommunicatorNX nx ? nx.GetPointerAddress(TB_Pointer.Text) : Util.GetHexValue64(txt);
-            if (offset.ToString("X16") != txt.ToUpper().PadLeft(16, '0') && !readPointer)
+            if (offset.ToString("X16") != txt.ToUpper().PadLeft(16, '0') && !readPointer || offset == InjectionUtil.INVALID_PTR)
             {
                 WinFormsUtil.Alert("Specified offset is not a valid hex string.");
                 return;
@@ -364,7 +364,7 @@ namespace AutoModPlugins
         {
             var ptr = TB_Pointer.Text;
             var address = InjectionUtil.GetPointerAddress(sb, ptr, false);
-            if (address == 0)
+            if (address == InjectionUtil.INVALID_PTR)
                 WinFormsUtil.Alert("Invalid Pointer");
             return address;
         }

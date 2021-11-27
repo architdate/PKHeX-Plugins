@@ -1174,7 +1174,7 @@ namespace PKHeX.Core.AutoMod
                 pk.ClearNickname();
 
             // Shiny Manaphy Egg
-            if (pk.Species == (int)Species.Manaphy && pk.IsShiny)
+            if (enc is MysteryGift { Species: (int)Species.Manaphy, Generation: 4 } && pk.IsShiny)
             {
                 pk.Egg_Location = Locations.LinkTrade4;
                 if (pk.Format != 4)
@@ -1182,10 +1182,10 @@ namespace PKHeX.Core.AutoMod
                 pk.Met_Location = pk.HGSS ? Locations.HatchLocationHGSS : Locations.HatchLocationDPPt;
             }
 
-            // Milotic Beauty Evolution for Format < 5
-            if (pk.Species == (int)Species.Milotic && pk.Format < 5 && pk is IContestStatsMutable c) // Evolves via beauty
+            // Milotic Beauty Evolution for Format < 5 & BDSP
+            if (pk.Species == (int)Species.Milotic && (pk.Format < 5 || pk.BDSP) && pk is IContestStatsMutable c) // Evolves via beauty
             {
-                if (!(enc is MysteryGift && enc.Species == (int)Species.Milotic))
+                if (enc is not MysteryGift { Species: (int)Species.Milotic })
                     c.CNT_Beauty = 170;
             }
 

@@ -37,6 +37,8 @@ namespace PKHeX.Core.Injection
             var sb = (ICommunicatorNX)psb.com;
             (string ptr, int count) boxes = RamOffsets.BoxOffsets(psb.Version);
             var addr = InjectionUtil.GetPointerAddress(sb, boxes.ptr);
+            if (addr == InjectionUtil.INVALID_PTR)
+                throw new Exception("Invalid Pointer string.");
             var b = psb.com.ReadBytes(addr, boxes.count * 8);
             var boxptr = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray()[box] + 0x20; // add 0x20 to remove vtable bytes
             b = sb.ReadBytesAbsolute(boxptr, psb.SlotCount * 8);
@@ -139,10 +141,17 @@ namespace PKHeX.Core.Injection
                 return null;
             var size = RamOffsets.GetTrainerBlockSize(lv);
             var retval = new byte[size];
+
             var trainer_name = ptr + "]+14";
             var trainer_name_addr = InjectionUtil.GetPointerAddress(sb, trainer_name);
+            if (trainer_name_addr == InjectionUtil.INVALID_PTR)
+                throw new Exception("Invalid Pointer string.");
             psb.com.ReadBytes(trainer_name_addr, 0x1A).CopyTo(retval);
-            psb.com.ReadBytes(InjectionUtil.GetPointerAddress(sb, ptr) + 0x8, size - 0x1A - 0x2).CopyTo(retval, 0x1A + 0x2);
+
+            var trainer_block_ram = InjectionUtil.GetPointerAddress(sb, ptr);
+            if (trainer_block_ram == InjectionUtil.INVALID_PTR)
+                throw new Exception("Invalid Pointer string.");
+            psb.com.ReadBytes(trainer_block_ram + 0x8, size - 0x1A - 0x2).CopyTo(retval, 0x1A + 0x2);
 
             // manually set ROM Code to avoid throwing exceptions (bad ram possibly)
             retval[0x2B] = BrilliantDiamond.Contains(lv) ? (byte)0 : (byte)1;
@@ -157,6 +166,8 @@ namespace PKHeX.Core.Injection
                 return null;
             var nx = (ICommunicatorNX)psb.com;
             var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            if (addr == InjectionUtil.INVALID_PTR)
+                throw new Exception("Invalid Pointer string.");
             var item_blk = psb.com.ReadBytes(addr, ITEM_BLOCK_SIZE_RAM);
             var extra_data = new byte[] { 0x0, 0x0, 0xFF, 0xFF };
             var items = Core.ArrayUtil.EnumerateSplit(item_blk, 0xC).Select(z => z.Concat(extra_data).ToArray()).ToArray();
@@ -170,6 +181,8 @@ namespace PKHeX.Core.Injection
                 return;
             var nx = (ICommunicatorNX)psb.com;
             var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            if (addr == InjectionUtil.INVALID_PTR)
+                throw new Exception("Invalid Pointer string.");
             data = data.Slice(0, ITEM_BLOCK_SIZE);
             var items = Core.ArrayUtil.EnumerateSplit(data, 0x10).Select(z => z.Slice(0, 0xC)).ToArray();
             var payload = ArrayUtil.ConcatAll(items);
@@ -183,6 +196,8 @@ namespace PKHeX.Core.Injection
                 return null;
             var nx = (ICommunicatorNX)psb.com;
             var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            if (addr == InjectionUtil.INVALID_PTR)
+                throw new Exception("Invalid Pointer string.");
             var item_blk = psb.com.ReadBytes(addr, UG_ITEM_BLOCK_SIZE_RAM);
             var extra_data = new byte[] { 0x0, 0x0, 0x0, 0x0 };
             var items = Core.ArrayUtil.EnumerateSplit(item_blk, 0x8).Select(z => z.Concat(extra_data).ToArray()).ToArray();
@@ -196,6 +211,8 @@ namespace PKHeX.Core.Injection
                 return;
             var nx = (ICommunicatorNX)psb.com;
             var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            if (addr == InjectionUtil.INVALID_PTR)
+                throw new Exception("Invalid Pointer string.");
             data = data.Slice(0, UG_ITEM_BLOCK_SIZE);
             var items = Core.ArrayUtil.EnumerateSplit(data, 0xC).Select(z => z.Slice(0, 0x8)).ToArray();
             var payload = ArrayUtil.ConcatAll(items);
@@ -214,6 +231,8 @@ namespace PKHeX.Core.Injection
             data = data.Slice(0, size);
             var trainer_name = ptr + "]+14";
             var trainer_name_addr = InjectionUtil.GetPointerAddress(sb, trainer_name);
+            if (trainer_name_addr == InjectionUtil.INVALID_PTR)
+                throw new Exception("Invalid Pointer string.");
             psb.com.WriteBytes(data.Slice(0, 0x1A), trainer_name_addr);
             psb.com.WriteBytes(data.SliceEnd(0x1A + 0x2), InjectionUtil.GetPointerAddress(sb, ptr) + 0x8);
         }
