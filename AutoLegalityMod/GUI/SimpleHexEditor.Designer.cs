@@ -34,10 +34,14 @@ namespace AutoModPlugins.GUI
             this.RTB_RAM = new System.Windows.Forms.RichTextBox();
             this.B_Update = new System.Windows.Forms.Button();
             this.PG_BlockView = new System.Windows.Forms.PropertyGrid();
+            this.CB_AutoRefresh = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // RTB_RAM
             // 
+            this.RTB_RAM.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.RTB_RAM.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RTB_RAM.Location = new System.Drawing.Point(9, 10);
             this.RTB_RAM.Name = "RTB_RAM";
@@ -48,9 +52,11 @@ namespace AutoModPlugins.GUI
             // 
             // B_Update
             // 
+            this.B_Update.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.B_Update.Location = new System.Drawing.Point(9, 308);
             this.B_Update.Name = "B_Update";
-            this.B_Update.Size = new System.Drawing.Size(363, 26);
+            this.B_Update.Size = new System.Drawing.Size(277, 26);
             this.B_Update.TabIndex = 1;
             this.B_Update.Text = "Update";
             this.B_Update.UseVisualStyleBackColor = true;
@@ -67,21 +73,38 @@ namespace AutoModPlugins.GUI
             this.PG_BlockView.TabIndex = 15;
             this.PG_BlockView.Visible = false;
             // 
+            // CB_AutoRefresh
+            // 
+            this.CB_AutoRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CB_AutoRefresh.AutoSize = true;
+            this.CB_AutoRefresh.Location = new System.Drawing.Point(292, 314);
+            this.CB_AutoRefresh.Name = "CB_AutoRefresh";
+            this.CB_AutoRefresh.Size = new System.Drawing.Size(88, 17);
+            this.CB_AutoRefresh.TabIndex = 16;
+            this.CB_AutoRefresh.Text = "Auto Refresh";
+            this.CB_AutoRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CB_AutoRefresh.UseVisualStyleBackColor = true;
+            this.CB_AutoRefresh.CheckedChanged += new System.EventHandler(this.CB_AutoRefresh_CheckedChanged);
+            // 
             // SimpleHexEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 343);
+            this.Controls.Add(this.CB_AutoRefresh);
             this.Controls.Add(this.PG_BlockView);
             this.Controls.Add(this.B_Update);
             this.Controls.Add(this.RTB_RAM);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SimpleHexEditor";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RAMEdit";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SimpleHexEditor_FormClosing);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
         #endregion
@@ -89,5 +112,6 @@ namespace AutoModPlugins.GUI
         private System.Windows.Forms.RichTextBox RTB_RAM;
         private Button B_Update;
         public PropertyGrid PG_BlockView;
+        private CheckBox CB_AutoRefresh;
     }
 }

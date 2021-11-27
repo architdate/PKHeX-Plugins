@@ -236,6 +236,13 @@ namespace AutoModPlugins
 #pragma warning restore CA1031 // Do not catch general exception types
         }
 
+        private RWMethod GetRWMethod()
+        {
+            if (RB_Main.Checked) return RWMethod.Main;
+            else if (RB_Absolute.Checked) return RWMethod.Absolute;
+            else return RWMethod.Heap;
+        }
+
         private void B_ReadRAM_Click(object sender, EventArgs e)
         {
             var txt = RamOffset.Text;
@@ -265,7 +272,7 @@ namespace AutoModPlugins
                     if (!pkm.ChecksumValid || pkm == null)
                         blockview = false;
                 }
-                using (var form = new SimpleHexEditor(result))
+                using (var form = new SimpleHexEditor(result, Remote.Bot, offset, GetRWMethod()))
                 {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
                     var loadgrid = blockview && ReflectUtil.GetPropertiesCanWritePublicDeclared(pkm.GetType()).Count() > 1;
@@ -405,7 +412,7 @@ namespace AutoModPlugins
                     if (!pkm.ChecksumValid || pkm == null)
                         blockview = false;
                 }
-                using (var form = new SimpleHexEditor(result))
+                using (var form = new SimpleHexEditor(result, Remote.Bot, address, RWMethod.Absolute))
                 {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
                     var loadgrid = blockview && ReflectUtil.GetPropertiesCanWritePublicDeclared(pkm.GetType()).Count() > 1;
