@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PKHeX.Core" Version="21.11.21" />
+    <PackageReference Include="PKHeX.Core" Version="21.11.27" />
   </ItemGroup>
 
 </Project>
