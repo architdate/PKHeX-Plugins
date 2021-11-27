@@ -39,5 +39,12 @@ namespace PKHeX.Core.Injection
             }
             return address;
         }
+
+        public static string ExtendPointer(this string pointer, params uint[] jumps)
+        {
+            foreach (var jump in jumps)
+                pointer = $"[{pointer}]+{jump:X}";
+            return pointer;
+        }
     }
 }

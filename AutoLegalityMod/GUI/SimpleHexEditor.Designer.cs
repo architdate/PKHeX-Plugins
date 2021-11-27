@@ -31,10 +31,11 @@ namespace AutoModPlugins.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.RTB_RAM = new System.Windows.Forms.RichTextBox();
+            this.RTB_RAM = new AutoModPlugins.GUI.HexRichTextBox();
             this.B_Update = new System.Windows.Forms.Button();
             this.PG_BlockView = new System.Windows.Forms.PropertyGrid();
             this.CB_AutoRefresh = new System.Windows.Forms.CheckBox();
+            this.CB_CopyMethod = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // RTB_RAM
@@ -56,7 +57,7 @@ namespace AutoModPlugins.GUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.B_Update.Location = new System.Drawing.Point(9, 308);
             this.B_Update.Name = "B_Update";
-            this.B_Update.Size = new System.Drawing.Size(277, 26);
+            this.B_Update.Size = new System.Drawing.Size(114, 26);
             this.B_Update.TabIndex = 1;
             this.B_Update.Text = "Update";
             this.B_Update.UseVisualStyleBackColor = true;
@@ -77,7 +78,7 @@ namespace AutoModPlugins.GUI
             // 
             this.CB_AutoRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CB_AutoRefresh.AutoSize = true;
-            this.CB_AutoRefresh.Location = new System.Drawing.Point(292, 314);
+            this.CB_AutoRefresh.Location = new System.Drawing.Point(284, 314);
             this.CB_AutoRefresh.Name = "CB_AutoRefresh";
             this.CB_AutoRefresh.Size = new System.Drawing.Size(88, 17);
             this.CB_AutoRefresh.TabIndex = 16;
@@ -86,11 +87,21 @@ namespace AutoModPlugins.GUI
             this.CB_AutoRefresh.UseVisualStyleBackColor = true;
             this.CB_AutoRefresh.CheckedChanged += new System.EventHandler(this.CB_AutoRefresh_CheckedChanged);
             // 
+            // CB_CopyMethod
+            // 
+            this.CB_CopyMethod.FormattingEnabled = true;
+            this.CB_CopyMethod.Location = new System.Drawing.Point(145, 312);
+            this.CB_CopyMethod.Name = "CB_CopyMethod";
+            this.CB_CopyMethod.Size = new System.Drawing.Size(116, 21);
+            this.CB_CopyMethod.TabIndex = 17;
+            this.CB_CopyMethod.SelectedIndexChanged += new System.EventHandler(this.ChangeCopyMethod);
+            // 
             // SimpleHexEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 343);
+            this.Controls.Add(this.CB_CopyMethod);
             this.Controls.Add(this.CB_AutoRefresh);
             this.Controls.Add(this.PG_BlockView);
             this.Controls.Add(this.B_Update);
@@ -109,9 +120,10 @@ namespace AutoModPlugins.GUI
         }
         #endregion
 
-        private System.Windows.Forms.RichTextBox RTB_RAM;
+        private HexRichTextBox RTB_RAM;
         private Button B_Update;
         public PropertyGrid PG_BlockView;
         private CheckBox CB_AutoRefresh;
+        private ComboBox CB_CopyMethod;
     }
 }

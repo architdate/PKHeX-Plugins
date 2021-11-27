@@ -28,6 +28,8 @@ namespace AutoModPlugins.GUI
             address = addr;
             method = rwm;
             psb = bot;
+            CB_CopyMethod.DataSource = Enum.GetValues(typeof(CopyMethod)).Cast<CopyMethod>();
+            CB_CopyMethod.SelectedItem = CopyMethod.Bytes;
             RTB_RAM.Text = string.Join(" ", originalBytes.Select(z => $"{z:X2}"));
             Bytes = originalBytes;
         }
@@ -65,6 +67,11 @@ namespace AutoModPlugins.GUI
             Close();
         }
 
+        private void ChangeCopyMethod(object sender, EventArgs e)
+        {
+            RTB_RAM.method = (CopyMethod)CB_CopyMethod.SelectedItem;
+        }
+
         private void CB_AutoRefresh_CheckedChanged(object sender, EventArgs e)
         {
             if (CB_AutoRefresh.Checked)
@@ -86,5 +93,48 @@ namespace AutoModPlugins.GUI
         {
             refresh.Stop();
         }
+    }
+
+    internal class HexRichTextBox : RichTextBox
+    {
+        public CopyMethod method = CopyMethod.Bytes;
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys e)
+        {
+            bool ctrlV = e == (Keys.Control | Keys.V);
+            bool shiftIns = e == (Keys.Shift | Keys.Insert);
+            bool ctrlC = e == (Keys.Control | Keys.C);
+            bool ctrlX = e == (Keys.Control | Keys.X);
+
+            if (method == CopyMethod.Integers && (ctrlV || shiftIns))
+            {
+                var text = Clipboard.GetText();
+                if (text != null)
+                {
+                    var split = new string[text.Length / 2 + (text.Length % 2 == 0 ? 0 : 1)];
+                    for (int i = 0; i < split.Length; i++)
+                        split[i] = text.Substring(i * 2, i * 2 + 2 > text.Length ? 1 : 2);
+                    Clipboard.SetText(string.Join(" ", split));
+                }
+            }
+            var handled = base.ProcessCmdKey(ref msg, e);
+            if (method == CopyMethod.Integers)
+            {
+                if (ctrlC || ctrlX)
+                {
+                    if (string.IsNullOrWhiteSpace(SelectedText))
+                        return false;
+                    Clipboard.SetText(string.Join(string.Empty, SelectedText.Split(' ').Reverse()));
+                    return true;
+                }
+            }
+            return handled;
+        }
+    }
+
+    internal enum CopyMethod
+    {
+        Bytes,
+        Integers,
     }
 }
