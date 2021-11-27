@@ -52,35 +52,9 @@ after_build:
 - cmd: >-
     mkdir bin
 
-    nuget install ILMerge -ExcludeVersion
+    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\AutoModPlugins.dll C:\projects\pkhex-plugins\bin
 
-    cd "C:\projects\pkhex-plugins\ILMerge\tools\net452"
-
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\AutoModPlugins.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\BouncyCastle.CryptoExt.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\QRCoder.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\zxing.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\zxing.presentation.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\QRPlugins.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\PKHeX.Core.AutoMod.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\PKHeX.Core.Enhancements.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\PKHeX.Core.Injection.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\PKHeX.Core.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\LibUsbDotNet.LibUsbDotNet.dll C:\projects\pkhex-plugins\ILMerge\tools\net452
-
-    ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:C:\projects\pkhex-plugins\bin\AutoModPlugins.dll AutoModPlugins.dll PKHeX.Core.AutoMod.dll LibUsbDotNet.LibUsbDotNet.dll PKHeX.Core.Enhancements.dll PKHeX.Core.Injection.dll
-
-    ilmerge /targetplatform:v4,"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6" /out:C:\projects\pkhex-plugins\bin\QRPlugins.dll QRPlugins.dll PKHeX.Core.AutoMod.dll BouncyCastle.CryptoExt.dll QRCoder.dll zxing.dll zxing.presentation.dll
+    xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\QRPlugins.dll C:\projects\pkhex-plugins\bin
 
 artifacts:
 - path: bin
