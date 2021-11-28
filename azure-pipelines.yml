@@ -51,8 +51,8 @@ steps:
   inputs:
     script: |
       mkdir bin
-      xcopy ..\..\..\AutoLegalityMod\bin\Release\net46\AutoModPlugins.dll $(Agent.BuildDirectory)\s\bin
-      xcopy ..\..\..\QRPlugins\bin\Release\net46\QRPlugins.dll $(Agent.BuildDirectory)\s\bin
+      xcopy $(Agent.BuildDirectory)\s\AutoLegalityMod\bin\Release\net46\AutoModPlugins.dll $(Agent.BuildDirectory)\s\bin
+      xcopy $(Agent.BuildDirectory)\s\QRPlugins\bin\Release\net46\QRPlugins.dll $(Agent.BuildDirectory)\s\bin
 
 - task: PublishBuildArtifacts@1
   inputs:

@@ -147,14 +147,15 @@
             };
         }
 
+        // relative to: PlayerWork.SaveData_TypeInfo
         public static (string, int) BoxOffsets(LiveHeXVersion lv)
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v111 => ("[[[main+4C12B78]+B8]+170]+20", 40),
+                LiveHeXVersion.BD_v111 => ("[[[[main+4C1DCF8]+B8]+10]+A0]+20", 40),
                 LiveHeXVersion.BD_v110 => ("[[[main+4E27C50]+B8]+170]+20", 40),
                 LiveHeXVersion.BD_v100 => ("[[[main+4C0ABD8]+520]+C0]+5E0", 40),
-                LiveHeXVersion.SP_v111 => ("[[[main+4E29C50]+B8]+170]+20", 40),
+                LiveHeXVersion.SP_v111 => ("[[[[main+4E34DD0]+B8]+10]+A0]+20", 40),
                 LiveHeXVersion.SP_v110 => ("[[[main+4E27C50]+B8]+170]+20", 40),      // untested
                 LiveHeXVersion.SP_v100 => ("[[[main+4C0ABD8]+520]+C0]+5E0", 40),     // untested
                 _ => (string.Empty, 0)

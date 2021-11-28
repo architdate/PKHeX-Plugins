@@ -49,42 +49,46 @@ namespace PKHeX.Core.Injection
             return pkmptrs;
         }
 
+        // relative to: PlayerWork.SaveData_TypeInfo
         private static string? GetTrainerPointer(LiveHeXVersion lv)
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v111 => "[[main+4C12B78]+B8]+1B0",
-                LiveHeXVersion.SP_v111 => "[[main+4E29C50]+B8]+1B0",
+                LiveHeXVersion.BD_v111 => "[[[main+4C1DCF8]+B8]+10]+E0",
+                LiveHeXVersion.SP_v111 => "[[[main+4E34DD0]+B8]+10]+E0",
                 _ => null
             };
         }
 
+        // relative to: PlayerWork.SaveData_TypeInfo
         private static string? GetItemPointers(LiveHeXVersion lv)
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v111 => "[[[main+4C12B78]+B8]+118]+20",
-                LiveHeXVersion.SP_v111 => "[[[main+4E29C50]+B8]+118]+20",
+                LiveHeXVersion.BD_v111 => "[[[[main+4C1DCF8]+B8]+10]+48]+20",
+                LiveHeXVersion.SP_v111 => "[[[[main+4E34DD0]+B8]+10]+48]+20",
                 _ => null
             };
         }
 
+        // relative to: PlayerWork.SaveData_TypeInfo
         private static string? GetUndergroundPointers(LiveHeXVersion lv)
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v111 => "[[[main+4C12B78]+B8]+120]+20",
-                LiveHeXVersion.SP_v111 => "[[[main+4E29C50]+B8]+120]+20",
+                LiveHeXVersion.BD_v111 => "[[[[main+4C1DCF8]+B8]+10]+50]+20",
+                LiveHeXVersion.SP_v111 => "[[[[main+4E34DD0]+B8]+10]+50]+20",
                 _ => null
             };
         }
 
+        // relative to: PlayerWork.SaveData_TypeInfo
         private static string? GetDaycarePointers(LiveHeXVersion lv)
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v111 => "[[main+4C12B78]+B8]+520",
-                LiveHeXVersion.SP_v111 => "[[main+4E29C50]+B8]+520",
+                LiveHeXVersion.BD_v111 => "[[[main+4C1DCF8]+B8]+10]+450",
+                LiveHeXVersion.SP_v111 => "[[[main+4E34DD0]+B8]+10]+450",
                 _ => null
             };
         }
