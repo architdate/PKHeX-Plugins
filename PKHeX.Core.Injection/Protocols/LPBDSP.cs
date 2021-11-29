@@ -33,6 +33,8 @@ namespace PKHeX.Core.Injection
             { "Underground",    (GetUGItemBlock, SetUGItemBlock) },
             { "Daycare",        (GetDaycareBlock, SetDaycareBlock) },
         };
+
+        public static IEnumerable<Type> types = Assembly.GetAssembly(typeof(ICustomBlock)).GetTypes().Where(t => typeof(ICustomBlock).IsAssignableFrom(t) && !t.IsInterface);
 #pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
 
         private static ulong[] GetPokemonPointers(this PokeSysBotMini psb, int box)
@@ -303,7 +305,20 @@ namespace PKHeX.Core.Injection
         {
             read = null;
             if (!FunctionMap.ContainsKey(block))
+            {
+                // Check for custom blocks
+                foreach (Type t in types)
+                {
+                    if (t.Name != block)
+                        continue;
+                    var m = t.GetMethod("Getter", BindingFlags.Public | BindingFlags.Static);
+                    if (m == null)
+                        return false;
+                    read = (byte[]?)m.Invoke(null, new object[] {psb});
+                    return true;
+                }
                 return false;
+            }
             try
             {
                 var data = sav.GetType().GetProperty(block).GetValue(sav);
@@ -332,7 +347,11 @@ namespace PKHeX.Core.Injection
         public static void WriteBlockFromString(PokeSysBotMini psb, string block, byte[] data, object sb)
         {
             if (!FunctionMap.ContainsKey(block))
+            {
+                // Custom Blocks
+                ((ICustomBlock)sb).Setter(psb, data);
                 return;
+            }
             var setter = FunctionMap[block].Item2;
             var offset = ((SaveBlock)sb).Offset;
             setter.Invoke(psb, data.SliceEnd(offset));

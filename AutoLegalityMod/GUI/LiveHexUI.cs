@@ -331,7 +331,9 @@ namespace AutoModPlugins
             }
             if (LPBDSP.SupportedVersions.Contains(lv))
             {
-                return LPBDSP.FunctionMap.Keys.OrderBy(z => z);
+                var save_blocks = LPBDSP.FunctionMap.Keys;
+                var custom_blocks = LPBDSP.types.Select(t => t.Name);
+                return save_blocks.Concat(custom_blocks).OrderBy(z => z);
             }
             return new List<string>();
         }
@@ -499,7 +501,12 @@ namespace AutoModPlugins
                 }
             }
             if (LPBDSP.SupportedVersions.Contains(version))
-                sb = SAV.SAV.GetType().GetProperty(txt).GetValue(SAV.SAV);
+            {
+                var prop = SAV.SAV.GetType().GetProperty(txt);
+                if (prop != null)
+                    sb = prop.GetValue(SAV.SAV);
+                else sb = Activator.CreateInstance(LPBDSP.types.First(t => t.Name == txt), data);
+            }
 
             if (sb == null)
             {
@@ -508,7 +515,7 @@ namespace AutoModPlugins
             }
 
             // Verify if sb is a valid block type
-            if (sb is not SCBlock && sb is not SaveBlock)
+            if (sb is not SCBlock && sb is not SaveBlock && sb is not ICustomBlock)
                 return;
 
             if (sb.IsSpecialBlock(Remote.Bot.Version, out var v))
