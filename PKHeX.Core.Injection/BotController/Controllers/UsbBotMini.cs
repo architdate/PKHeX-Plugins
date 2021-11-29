@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using LibUsbDotNet;
 using LibUsbDotNet.Main;
@@ -43,7 +42,12 @@ namespace PKHeX.Core.Injection
 
                 // If the device is open and ready
                 if (SwDevice == null)
-                    throw new Exception("Device Not Found.");
+                    throw new Exception("USB device not found.");
+
+                if (SwDevice is not IUsbDevice usb)
+                    throw new Exception("Device is using a WinUSB driver. Use libusbK and create a filter.");
+                else if (!usb.UsbRegistryInfo.IsAlive)
+                    usb.ResetDevice();
 
                 if (SwDevice.IsOpen)
                     SwDevice.Close();
@@ -158,8 +162,6 @@ namespace PKHeX.Core.Injection
 
         public byte[] ReadBytesUSB(ulong offset, int length, RWMethod method)
         {
-            if (length > MaximumTransferSize)
-                return ReadBytesLarge(offset, length);
             lock (_sync)
             {
                 var cmd = method switch
@@ -171,13 +173,7 @@ namespace PKHeX.Core.Injection
                 };
 
                 SendInternal(cmd);
-
-                // give it time to push data back
-                Thread.Sleep(1);
-
-                var buffer = new byte[length];
-                var _ = ReadInternal(buffer);
-                return buffer;
+                return ReadBulkUSB();
             }
         }
 
@@ -187,20 +183,50 @@ namespace PKHeX.Core.Injection
             {
                 var cmd = SwitchCommand.PeekAbsoluteMulti(offsets, false);
                 SendInternal(cmd);
-
-                // give it time to push data back
-                var length = offsets.Values.ToArray().Sum();
-                Thread.Sleep(1);
-                var buffer = new byte[length];
-                var _ = ReadInternal(buffer);
-                return buffer;
+                return ReadBulkUSB();
             }
+        }
+
+        private byte[] ReadBulkUSB()
+        {
+            // Give it time to push back.
+            Thread.Sleep(1);
+
+            if (reader == null)
+                throw new Exception("USB device not found or not connected.");
+
+            // Let usb-botbase tell us the response size.
+            byte[] sizeOfReturn = new byte[4];
+            reader.Read(sizeOfReturn, 5000, out _);
+
+            int size = BitConverter.ToInt32(sizeOfReturn, 0);
+            byte[] buffer = new byte[size];
+
+            // Loop until we have read everything.
+            int transfSize = 0;
+            while (transfSize < size)
+            {
+                Thread.Sleep(1);
+                var ec = reader.Read(buffer, transfSize, Math.Min(reader.ReadBufferSize, size - transfSize), 5000, out int lenVal);
+                if (ec != ErrorCode.None)
+                {
+                    Disconnect();
+                    throw new Exception(UsbDevice.LastErrorString);
+                }
+                transfSize += lenVal;
+            }
+            return buffer;
         }
 
         public void WriteBytesUSB(byte[] data, ulong offset, RWMethod method)
         {
             if (data.Length > MaximumTransferSize)
-                WriteBytesLarge(data, offset);
+                WriteBytesLarge(data, offset, method);
+            else WriteSmall(data, offset, method);
+        }
+
+        public void WriteSmall(byte[] data, ulong offset, RWMethod method)
+        {
             lock (_sync)
             {
                 var cmd = method switch
@@ -212,34 +238,30 @@ namespace PKHeX.Core.Injection
                 };
 
                 SendInternal(cmd);
-
-                // give it time to push data back
                 Thread.Sleep(1);
             }
         }
 
-        private void WriteBytesLarge(byte[] data, ulong offset)
+        private void WriteBytesLarge(byte[] data, ulong offset, RWMethod method)
         {
             int byteCount = data.Length;
             for (int i = 0; i < byteCount; i += MaximumTransferSize)
-                WriteBytes(SubArray(data, i, MaximumTransferSize), (uint)offset + (uint)i);
+            {
+                var slice = SliceSafe(data, i, MaximumTransferSize);
+                WriteBytesUSB(slice, offset + (ulong)i, method);
+            }
         }
 
-        private byte[] ReadBytesLarge(ulong offset, int length)
+        // Taken from SysBot.
+        private byte[] SliceSafe(byte[] src, int offset, int length)
         {
-            List<byte> read = new();
-            for (int i = 0; i < length; i += MaximumTransferSize)
-                read.AddRange(ReadBytes((uint)offset + (uint)i, Math.Min(MaximumTransferSize, length - i)));
-            return read.ToArray();
-        }
+            var delta = src.Length - offset;
+            if (delta < length)
+                length = delta;
 
-        private static T[] SubArray<T>(T[] data, int index, int length)
-        {
-            if (index + length > data.Length)
-                length = data.Length - index;
-            T[] result = new T[length];
-            Array.Copy(data, index, result, 0, length);
-            return result;
+            byte[] data = new byte[length];
+            Buffer.BlockCopy(src, offset, data, 0, data.Length);
+            return data;
         }
     }
 }
