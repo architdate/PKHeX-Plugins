@@ -211,7 +211,7 @@ namespace PKHeX.Core.AutoMod
                 return regen.Trainer.MutateLanguage(regen.Extra.Language, ver);
             if (UseTrainerData)
                 return TrainerSettings.GetSavedTrainerData(ver, gen).MutateLanguage(regen.Extra.Language, ver);
-            return TrainerSettings.DefaultFallback(gen, regen.Extra.Language);
+            return TrainerSettings.DefaultFallback(ver, regen.Extra.Language);
         }
 
         /// <summary>
