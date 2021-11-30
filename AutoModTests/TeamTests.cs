@@ -28,8 +28,10 @@ namespace AutoModTests
             foreach (var f in files)
             {
                 var ext = f[^7..].Split('.')[0];
-                if (ext.StartsWith("pb"))
+                if (ext.StartsWith("pb7"))
                     result.Add(f, -1);
+                if (ext.StartsWith("pb8"))
+                    result.Add(f, -2);
                 else if (ext.StartsWith("pk") && int.TryParse(ext.Split('k')[1], out var gen))
                     result.Add(f, gen);
                 else Console.WriteLine($"Invalid file: {f}. Name does not start with 'pkX '");
@@ -42,6 +44,7 @@ namespace AutoModTests
             var transfer = !entry.Key.Contains("notransfer");
             return entry.Value switch
             {
+                -2 => new[] { BD },
                 -1 => transfer ? new[] { SW, GP } : new[] { GE },
                 1 => transfer ? new[] { RD, C } : new[] { RD },
                 2 => new[] { C },
@@ -70,7 +73,8 @@ namespace AutoModTests
                 species = sav switch
                 {
                     SAV7b => species.Where(z => z is <= 151 or 808 or 809), // only include Kanto and M&M
-                    SAV8 => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
+                    SAV8BS => species.Where(z => z is <= 493), // only include the sinnoh national dex
+                    SAV8SWSH => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
                     _ => species,
                 };
 
