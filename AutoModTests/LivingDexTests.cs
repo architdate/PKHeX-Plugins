@@ -13,7 +13,7 @@ namespace AutoModTests
 {
     public static class LivingDexTests
     {
-        private static GameVersion[] GetGameVersionsToTest = new[] { SW, US, SN, OR, X, B2, B, Pt, E, C, RD };
+        private static GameVersion[] GetGameVersionsToTest = new[] { BD, SW, US, SN, OR, X, B2, B, Pt, E, C, RD };
 
         private static Dictionary<GameVersion, Tuple<bool, int, int>> TestLivingDex(bool includeforms, bool shiny, out bool passed)
         {

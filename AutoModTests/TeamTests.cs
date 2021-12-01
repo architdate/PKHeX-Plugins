@@ -18,7 +18,7 @@ namespace AutoModTests
     public static class TeamTests
     {
         private static string TestPath => TestUtil.GetTestFolder("ShowdownSets");
-        public static bool TargettedTesting { get; set; }
+        private const bool TargettedTesting = false;
 
         private static Dictionary<string, int> GetFileStructures()
         {
@@ -27,7 +27,7 @@ namespace AutoModTests
             var result = new Dictionary<string, int>();
             foreach (var f in files)
             {
-                var ext = f[^7..].Split('.')[0];
+                var ext = f.EndsWith(".log") ? f.Split('_')[0][^3..] : f[^7..].Split('.')[0];
                 if (ext.StartsWith("pb7"))
                     result.Add(f, -1);
                 if (ext.StartsWith("pb8"))
@@ -60,7 +60,7 @@ namespace AutoModTests
 
         private static Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>> VerifyFile(string file, GameVersion[] saves)
         {
-            var lines = File.ReadAllLines(file);
+            var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("====="));
             var results = new Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>();
             foreach (var s in saves)
             {
