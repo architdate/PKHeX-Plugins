@@ -583,6 +583,10 @@ namespace PKHeX.Core.AutoMod
             if (pk is not IHomeTrack home)
                 return;
 
+            // No HOME support for BDSP yet
+            if (pk.BDSP)
+                return;
+
             // Check setting
             if (SetRandomTracker && home.Tracker == 0)
                 home.Tracker = GetRandomULong();
