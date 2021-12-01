@@ -162,7 +162,9 @@ namespace PKHeX.Core.AutoMod
             if (set.Ability == -1 && abils[0] == abils[2])
                 return AbilityRequest.PossiblyHidden;
 
-            return AbilityRequest.NotHidden;
+            var default_ability = AbilityRequest.Any;  // Will allow any ability if ability is unspecified
+            // var default_ability = AbilityRequest.NotHidden;  // Will force ability to ability 0 if unspecified
+            return default_ability;
         }
 
         private static bool TradebackValid(this PK1 pk1)
