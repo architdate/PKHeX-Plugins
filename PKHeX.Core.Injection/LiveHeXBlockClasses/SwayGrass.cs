@@ -62,8 +62,9 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v111 => "[main+4C13C60]+B8",
-                LiveHeXVersion.SP_v111 => "[main+4E2AD38]+B8",
+                LiveHeXVersion.BDSP_v112 => "[main+4E2AD38]+B8",
+                LiveHeXVersion.BD_v111   => "[main+4C13C60]+B8",
+                LiveHeXVersion.SP_v111   => "[main+4E2AD38]+B8",
                 _ => null
             };
         }
