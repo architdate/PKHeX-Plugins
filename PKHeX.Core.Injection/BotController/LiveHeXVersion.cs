@@ -4,6 +4,7 @@ namespace PKHeX.Core.Injection
 {
     public enum LiveHeXVersion
     {
+        BDSP_v112,
         BD_v111,
         SP_v111,
         BD_v110,
