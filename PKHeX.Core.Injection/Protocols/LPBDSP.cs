@@ -186,7 +186,7 @@ namespace PKHeX.Core.Injection
             if (addr == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
             var item_blk = psb.com.ReadBytes(addr, ITEM_BLOCK_SIZE_RAM);
-            var extra_data = new byte[] { 0x0, 0x0, 0xFF, 0xFF };
+            var extra_data = new byte[] { 0x1, 0x0, 0x0, 0x0 };
             var items = Core.ArrayUtil.EnumerateSplit(item_blk, 0xC).Select(z => z.Concat(extra_data).ToArray()).ToArray();
             return ArrayUtil.ConcatAll(items);
         }
