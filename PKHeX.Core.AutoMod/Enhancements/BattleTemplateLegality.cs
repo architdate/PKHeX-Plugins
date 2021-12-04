@@ -13,26 +13,25 @@ namespace PKHeX.Core.AutoMod
         private static string INVALID_MOVES => "{0} cannot learn the following moves in the game: {1}.";
         private static string ALL_MOVES_INVALID => "All the requested moves for this Pokémon are invalid.";
 
-        public static SetLegality SetAnalysis(this RegenTemplate set, SaveFile sav, out string analysis)
+        public static string SetAnalysis(this RegenTemplate set, SaveFile sav)
         {
             var species_name = SpeciesName.GetSpeciesNameGeneration(set.Species, (int)LanguageID.English, sav.Generation);
-            analysis = set.Form == 0 ? string.Format(SPECIES_UNAVAILABLE, species_name)
+            var analysis = set.Form == 0 ? string.Format(SPECIES_UNAVAILABLE, species_name)
                                      : string.Format(SPECIES_UNAVAILABLE_FORM, species_name, set.FormName);
 
             // Species checks
             var gv = (GameVersion)sav.Game;
             if (!gv.ExistsInGame(set.Species, set.Form))
-                return SetLegality.SpeciesUnavilable; // Species does not exist in the game
+                return analysis; // Species does not exist in the game
 
             // Species exists -- check if it has atleast one move. If it has no moves and it didn't generate, that makes the mon still illegal in game (moves are set to legal ones)
             var moves = set.Moves.Where(z => z != 0);
             var count = moves.Count();
             if (count == 0)
-                return SetLegality.SpeciesUnavilable; // Species does not exist in the game
+                return analysis; // Species does not exist in the game
 
-            analysis = string.Format(INVALID_MOVE, species_name, (Move)set.Moves[0]);
             if (count == 1)
-                return SetLegality.InvalidMoves; // The only move specified cannot be learnt by the mon
+                return string.Format(INVALID_MOVE, species_name, (Move)set.Moves[0]); // The only move specified cannot be learnt by the mon
 
             List<IEnumerable<int>> move_combinations = new();
             for (int i = moves.Count() - 1; i >= 1; i--)
@@ -68,8 +67,7 @@ namespace PKHeX.Core.AutoMod
                     successful_combination = combination.ToArray();
             }
             var invalid_moves = string.Join(", ", original_moves.Where(z => !successful_combination.Contains(z) && z != 0).Select(z => $"{(Move)z}"));
-            analysis = successful_combination.Length > 0 ? string.Format(INVALID_MOVES, species_name, invalid_moves) : ALL_MOVES_INVALID;
-            return SetLegality.InvalidMoves;
+            return successful_combination.Length > 0 ? string.Format(INVALID_MOVES, species_name, invalid_moves) : ALL_MOVES_INVALID;
         }
 
         private static IEnumerable<IEnumerable<T>> GetKCombs<T>(IEnumerable<T> list, int length) where T : IComparable
@@ -79,13 +77,5 @@ namespace PKHeX.Core.AutoMod
                 .SelectMany(t => list.Where(o => o.CompareTo(t.Last()) > 0),
                     (t1, t2) => t1.Concat(new T[] { t2 }));
         }
-    }
-
-    public enum SetLegality
-    {
-        Valid,
-        SpeciesUnavilable,
-        InvalidMoves,
-        InvalidSet
     }
 }
