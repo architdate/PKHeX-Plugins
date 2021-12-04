@@ -7,8 +7,8 @@ namespace PKHeX.Core.AutoMod
     public static class BattleTemplateLegality
     {
         public const string ANALYSIS_INVALID = "Analysis for this set is unavailable.";
-        private static string SPECIES_UNAVAILABLE_FORM => "The species {0} with form {1} is unavailable in the game.";
-        private static string SPECIES_UNAVAILABLE => "The species {0} is unavailable in the game.";
+        private static string SPECIES_UNAVAILABLE_FORM => "{0} with form {1} is unavailable in the game.";
+        private static string SPECIES_UNAVAILABLE => "{0} is unavailable in the game.";
         private static string INVALID_MOVE => "{0} cannot learn {1} in the game.";
         private static string INVALID_MOVES => "{0} cannot learn the following moves in the game: {1}.";
         private static string ALL_MOVES_INVALID => "All the requested moves for this Pokémon are invalid.";
