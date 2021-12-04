@@ -26,7 +26,7 @@ namespace PKHeX.Core.AutoMod
 #pragma warning disable CA1819 // Properties should not return arrays
         public int[] EVs { get; }
         public int[] IVs { get; }
-        public int[] Moves { get; }
+        public int[] Moves { get; set; }
 #pragma warning restore CA1819 // Properties should not return arrays
 
         public RegenSet Regen { get; set; } = RegenSet.Default;

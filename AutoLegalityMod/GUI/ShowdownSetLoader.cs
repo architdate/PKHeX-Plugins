@@ -87,13 +87,19 @@ namespace AutoModPlugins
             var legal = sav.GetLegalFromSet(regen, out var msg);
             timer.Stop();
 
+            var analysis = BattleTemplateLegality.ANALYSIS_INVALID;
+            var set_legality = SetLegality.InvalidSet;
+            if (msg is LegalizationResult.Failed)
+                set_legality = regen.SetAnalysis(sav, out analysis);
+
             if (msg is LegalizationResult.Timeout or LegalizationResult.Failed)
             {
                 Legalizer.Dump(regen, msg == LegalizationResult.Failed);
                 var errorstr = msg == LegalizationResult.Failed ? "failed to generate" : "timed out";
-                var res = WinFormsUtil.ALMError(
-                    $"Set {errorstr}. Please create an issue on GitHub and upload the error_log.txt file in the issue." +
-                    "\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.");
+                var invalid_set_error = (set_legality == SetLegality.InvalidSet ? $"Set {errorstr}." : $"Set Invalid: {analysis}") + 
+                    "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue." +
+                    "\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.";
+                var res = WinFormsUtil.ALMError(invalid_set_error);
                 if (res == DialogResult.Yes)
                     Process.Start("https://discord.gg/tDMvSRv");
                 else if (res == DialogResult.No)

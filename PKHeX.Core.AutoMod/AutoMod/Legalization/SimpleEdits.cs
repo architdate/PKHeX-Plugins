@@ -581,6 +581,19 @@ namespace PKHeX.Core.AutoMod
             };
         }
 
+        public static bool ExistsInGame(this GameVersion destVer, int species, int form)
+        {
+            // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
+            // Don't process if Game is SWSH and requested PKM is not from the Galar Dex (Zukan8.DexLookup)
+            if (GameVersion.GG.Contains(destVer))
+                return species is <= 151 or 808 or 809;
+            if (GameVersion.SWSH.Contains(destVer))
+                return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(species, form)).IsPresentInGame || Zukan8Additions.Contains(species);
+            if (species > destVer.GetMaxSpeciesID())
+                return false;
+            return true;
+        }
+
         private static readonly ushort[] Arceus_PlateIDs = { 303, 306, 304, 305, 309, 308, 310, 313, 298, 299, 301, 300, 307, 302, 311, 312, 644 };
         public static int? GetArceusHeldItemFromForm(int form) => 1 <= form && form <= 17 ? Arceus_PlateIDs[form - 1] : null;
         public static int? GetSilvallyHeldItemFromForm(int form) => form == 0 ? null : form + 903;

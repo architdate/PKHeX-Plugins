@@ -182,9 +182,14 @@ namespace PKHeX.Core.AutoMod
         /// <param name="destVer">Version in which the pokemon needs to be imported</param>
         /// <param name="filters">Optional list of filters to remove games</param>
         /// <returns>List of filtered games to check encounters for</returns>
-        private static GameVersion[] FilteredGameList(PKM template, GameVersion destVer, IReadOnlyList<StringInstruction>? filters)
+        internal static GameVersion[] FilteredGameList(PKM template, GameVersion destVer, IReadOnlyList<StringInstruction>? filters)
         {
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
+
+            // No HOME yet
+            if (GameVersion.BDSP.Contains(destVer))
+                gamelist = new GameVersion[] { GameVersion.BD, GameVersion.SP };
+
             if (filters != null)
             {
                 foreach (var f in filters)
@@ -292,17 +297,7 @@ namespace PKHeX.Core.AutoMod
                 }
             }
 
-            // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
-            // Don't process if Game is SWSH and requested PKM is not from the Galar Dex (Zukan8.DexLookup)
-            if (GameVersion.GG.Contains(destVer))
-                return set.Species is <= 151 or 808 or 809;
-            if (GameVersion.SWSH.Contains(destVer))
-                return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(set.Species, set.Form)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(set.Species);
-            if (set.Species > destVer.GetMaxSpeciesID())
-                return false;
-
-            // Encounter should hopefully be possible
-            return true;
+            return destVer.ExistsInGame(set.Species, set.Form);
         }
 
         /// <summary>
