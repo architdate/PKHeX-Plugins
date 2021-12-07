@@ -9,9 +9,11 @@ namespace PKHeX.Core.AutoMod
         public const string ANALYSIS_INVALID = "Analysis for this set is unavailable.";
         private static string SPECIES_UNAVAILABLE_FORM => "{0} with form {1} is unavailable in the game.";
         private static string SPECIES_UNAVAILABLE => "{0} is unavailable in the game.";
-        private static string INVALID_MOVE => "{0} cannot learn {1} in the game.";
-        private static string INVALID_MOVES => "{0} cannot learn the following moves in the game: {1}.";
+        private static string INVALID_MOVES => "{0} cannot learn the following move(s) in the game: {1}.";
         private static string ALL_MOVES_INVALID => "All the requested moves for this Pokémon are invalid.";
+        private static string LEVEL_INVALID => "Requested level is lower than the minimum possible level for {0}. Minimum required level is {1}";
+        private static string ONLY_HIDDEN_ABILITY_AVAILABLE => "You can only obtain {0} with hidden ability in this game.";
+        private static string HIDDEN_ABILITY_UNAVAILABLE => "You cannot obtain {0} with hidden ability in this game.";
 
         public static string SetAnalysis(this RegenTemplate set, SaveFile sav)
         {
@@ -30,16 +32,53 @@ namespace PKHeX.Core.AutoMod
             if (count == 0)
                 return analysis; // Species does not exist in the game
 
-            if (count == 1)
-                return string.Format(INVALID_MOVE, species_name, (Move)set.Moves[0]); // The only move specified cannot be learnt by the mon
+            // Reusable data
+            var blank = sav.BlankPKM;
+            var batchedit = APILegality.AllowBatchCommands && set.Regen.HasBatchSettings;
+            var destVer = (GameVersion)sav.Game;
+            if (destVer <= 0)
+                destVer = sav.Version;
+            var gamelist = APILegality.FilteredGameList(blank, destVer, batchedit ? set.Regen.Batch.Filters : null);
 
+            // Move checks
             List<IEnumerable<int>> move_combinations = new();
-            for (int i = moves.Count() - 1; i >= 1; i--)
+            for (int i = moves.Count(); i >= 1; i--)
                 move_combinations.AddRange(GetKCombs(moves, i));
 
-            var blank = sav.BlankPKM;
             int[] original_moves = new int[4];
             set.Moves.CopyTo(original_moves, 0);
+            int[] successful_combination = GetValidMoves(set, sav, move_combinations, blank, gamelist);
+            if (!new HashSet<int>(original_moves.Where(z => z != 0)).SetEquals(successful_combination))
+            {
+                var invalid_moves = string.Join(", ", original_moves.Where(z => !successful_combination.Contains(z) && z != 0).Select(z => $"{(Move)z}"));
+                return successful_combination.Length > 0 ? string.Format(INVALID_MOVES, species_name, invalid_moves) : ALL_MOVES_INVALID;
+            }
+            set.Moves = original_moves;
+
+            // All moves possible, get encounters
+            var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: original_moves, gamelist);
+            if (set.Regen.EncounterFilters != null)
+                encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(set.Regen.EncounterFilters, enc));
+
+            // Level checks, check if level is impossible to achieve
+            if (encounters.All(z => !APILegality.IsRequestedLevelValid(set, z)))
+                return string.Format(LEVEL_INVALID, species_name, encounters.Min(z => z.LevelMin));
+            encounters = encounters.Where(enc => APILegality.IsRequestedLevelValid(set, enc));
+
+            // Ability checks
+            blank.ApplySetDetails(set);
+            blank.SetRecordFlags();
+            var abilityreq = APILegality.GetRequestedAbility(blank, set);
+            if (abilityreq == AbilityRequest.NotHidden && encounters.All(z => z is EncounterStatic { Ability: 4 }))
+                return string.Format(ONLY_HIDDEN_ABILITY_AVAILABLE, species_name);
+            if (abilityreq == AbilityRequest.Hidden && encounters.All(z => z.Generation is 3 or 4) && destVer.GetGeneration() < 8)
+                return string.Format(HIDDEN_ABILITY_UNAVAILABLE, species_name);
+
+            return ANALYSIS_INVALID;
+        }
+
+        private static int[] GetValidMoves(RegenTemplate set, SaveFile sav, List<IEnumerable<int>> move_combinations, PKM blank, GameVersion[] gamelist)
+        {
             int[] successful_combination = new int[0];
             foreach (var combination in move_combinations)
             {
@@ -49,25 +88,17 @@ namespace PKHeX.Core.AutoMod
                 set.Moves = new_moves.ToArray();
                 blank.ApplySetDetails(set);
                 blank.SetRecordFlags();
-                var batchedit = APILegality.AllowBatchCommands && set.Regen.HasBatchSettings;
-
-                var destVer = (GameVersion)sav.Game;
-                if (destVer <= 0)
-                    destVer = sav.Version;
-
-                var gamelist = APILegality.FilteredGameList(blank, destVer, batchedit ? set.Regen.Batch.Filters : null);
+                
                 if (sav.Generation <= 2)
                     blank.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
 
                 var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: set.Moves, gamelist);
-                var criteria = EncounterCriteria.GetCriteria(set, blank.PersonalInfo);
                 if (set.Regen.EncounterFilters != null)
                     encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(set.Regen.EncounterFilters, enc));
                 if (encounters.Any())
                     successful_combination = combination.ToArray();
             }
-            var invalid_moves = string.Join(", ", original_moves.Where(z => !successful_combination.Contains(z) && z != 0).Select(z => $"{(Move)z}"));
-            return successful_combination.Length > 0 ? string.Format(INVALID_MOVES, species_name, invalid_moves) : ALL_MOVES_INVALID;
+            return successful_combination;
         }
 
         private static IEnumerable<IEnumerable<T>> GetKCombs<T>(IEnumerable<T> list, int length) where T : IComparable

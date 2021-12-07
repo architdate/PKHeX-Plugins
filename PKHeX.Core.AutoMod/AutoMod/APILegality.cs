@@ -146,7 +146,7 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
-        private static AbilityRequest GetRequestedAbility(PKM template, IBattleTemplate set)
+        public static AbilityRequest GetRequestedAbility(PKM template, IBattleTemplate set)
         {
             if (template.AbilityNumber == 4)
                 return AbilityRequest.Hidden;
@@ -162,8 +162,7 @@ namespace PKHeX.Core.AutoMod
             if (set.Ability == -1 && abils[0] == abils[2])
                 return AbilityRequest.PossiblyHidden;
 
-            var default_ability = AbilityRequest.Any;  // Will allow any ability if ability is unspecified
-            // var default_ability = AbilityRequest.NotHidden;  // Will force ability to ability 0 if unspecified
+            var default_ability = set.Ability == -1 ? AbilityRequest.Any : AbilityRequest.NotHidden;  // Will allow any ability if ability is unspecified
             return default_ability;
         }
 
@@ -257,19 +256,8 @@ namespace PKHeX.Core.AutoMod
         private static bool IsEncounterValid(IBattleTemplate set, IEncounterable enc, AbilityRequest abilityreq, GameVersion destVer)
         {
             // Don't process if encounter min level is higher than requested level
-            if (enc.LevelMin > set.Level)
-            {
-                var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
-                if (enc is EncounterSlot6AO s)
-                {
-                    if (s.LevelMin - 4 > set.Level)
-                        return false;
-                }
-                else if (!isRaid)
-                {
-                    return false;
-                }
-            }
+            if (!IsRequestedLevelValid(set, enc))
+                return false;
 
             if (set is RegenTemplate rt && enc is IFixedBall { FixedBall: not Ball.None} fb && ForceSpecifiedBall)
             {
@@ -298,6 +286,24 @@ namespace PKHeX.Core.AutoMod
             }
 
             return destVer.ExistsInGame(set.Species, set.Form);
+        }
+
+        public static bool IsRequestedLevelValid(IBattleTemplate set, IEncounterable enc)
+        {
+            if (enc.LevelMin > set.Level)
+            {
+                var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
+                if (enc is EncounterSlot6AO s)
+                {
+                    if (s.LevelMin - 4 > set.Level)
+                        return false;
+                }
+                else if (!isRaid)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>
