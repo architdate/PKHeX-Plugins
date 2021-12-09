@@ -6,7 +6,7 @@ namespace PKHeX.Core.AutoMod
 {
     public static class BattleTemplateLegality
     {
-        public const string ANALYSIS_INVALID = "Analysis for this set is unavailable.";
+        public const string ANALYSIS_INVALID = "No possible encounter could be found. Specific analysis for this set is unavailable.";
         private static string SPECIES_UNAVAILABLE_FORM => "{0} with form {1} is unavailable in the game.";
         private static string SPECIES_UNAVAILABLE => "{0} is unavailable in the game.";
         private static string INVALID_MOVES => "{0} cannot learn the following move(s) in the game: {1}.";
@@ -54,6 +54,8 @@ namespace PKHeX.Core.AutoMod
             set.Moves = original_moves;
 
             // All moves possible, get encounters
+            blank.ApplySetDetails(set);
+            blank.SetRecordFlags();
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: original_moves, gamelist);
             if (set.Regen.EncounterFilters != null)
                 encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(set.Regen.EncounterFilters, enc));
@@ -64,8 +66,6 @@ namespace PKHeX.Core.AutoMod
             encounters = encounters.Where(enc => APILegality.IsRequestedLevelValid(set, enc));
 
             // Ability checks
-            blank.ApplySetDetails(set);
-            blank.SetRecordFlags();
             var abilityreq = APILegality.GetRequestedAbility(blank, set);
             if (abilityreq == AbilityRequest.NotHidden && encounters.All(z => z is EncounterStatic { Ability: 4 }))
                 return string.Format(ONLY_HIDDEN_ABILITY_AVAILABLE, species_name);
