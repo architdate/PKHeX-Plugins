@@ -388,6 +388,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetGigantamaxFactor(set, enc);
             pk.SetSuggestedRibbons(enc, SetAllLegalRibbons);
             pk.SetBelugaValues();
+            pk.SetSuggestedContestStats(enc);
             pk.FixEdgeCases(enc);
 
             // Aesthetics
@@ -1140,8 +1141,7 @@ namespace PKHeX.Core.AutoMod
         {
             return enc switch
             {
-                EncounterTrade { Ability: > 0 } et => et.Ability,
-                EncounterStatic { Ability: > 0 } es => es.Ability,
+                IFixedAbilityNumber { Ability: > 0 } fa => fa.Ability,
                 _ => pk.AbilityNumber,
             };
         }
@@ -1188,9 +1188,6 @@ namespace PKHeX.Core.AutoMod
                     return;
                 pk.Met_Location = pk.HGSS ? Locations.HatchLocationHGSS : Locations.HatchLocationDPPt;
             }
-
-            // Set Contest Stats
-            ContestStatInfo.SetSuggestedContestStats(pk, enc);
 
             // CXD only has a male trainer
             if (pk.Version == (int)GameVersion.CXD && pk.OT_Gender == (int)Gender.Female) // Colosseum and XD are sexist games.
