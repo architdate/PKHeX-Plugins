@@ -1189,12 +1189,8 @@ namespace PKHeX.Core.AutoMod
                 pk.Met_Location = pk.HGSS ? Locations.HatchLocationHGSS : Locations.HatchLocationDPPt;
             }
 
-            // Milotic Beauty Evolution for Format < 5 & BDSP
-            if (pk.Species == (int)Species.Milotic && (pk.Format < 5 || pk.BDSP) && pk is IContestStatsMutable c) // Evolves via beauty
-            {
-                if (enc is not MysteryGift { Species: (int)Species.Milotic })
-                    c.CNT_Beauty = 170;
-            }
+            // Set Contest Stats
+            ContestStatInfo.SetSuggestedContestStats(pk, enc);
 
             // CXD only has a male trainer
             if (pk.Version == (int)GameVersion.CXD && pk.OT_Gender == (int)Gender.Female) // Colosseum and XD are sexist games.

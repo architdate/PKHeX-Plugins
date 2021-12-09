@@ -29,8 +29,6 @@ namespace PKHeX.Core.AutoMod
             // Species exists -- check if it has atleast one move. If it has no moves and it didn't generate, that makes the mon still illegal in game (moves are set to legal ones)
             var moves = set.Moves.Where(z => z != 0);
             var count = moves.Count();
-            if (count == 0)
-                return analysis; // Species does not exist in the game
 
             // Reusable data
             var blank = sav.BlankPKM;
@@ -42,7 +40,7 @@ namespace PKHeX.Core.AutoMod
 
             // Move checks
             List<IEnumerable<int>> move_combinations = new();
-            for (int i = moves.Count(); i >= 1; i--)
+            for (int i = count; i >= 1; i--)
                 move_combinations.AddRange(GetKCombs(moves, i));
 
             int[] original_moves = new int[4];
