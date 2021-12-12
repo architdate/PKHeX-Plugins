@@ -15,8 +15,8 @@ namespace PKHeX.Core.Injection
         // 0x10 - AudioInstance[] _grassAudio
         // 0x18 - SwayGrass.GrassData work_data
         public uint ChainCount { get => BitConverter.ToUInt32(Data, 0x08); set => BitConverter.GetBytes(value).CopyTo(Data, 0x08); }
-        public uint ChainSpeciesId { get => BitConverter.ToUInt32(Data, 0x0C); set => BitConverter.GetBytes(value).CopyTo(Data, 0x0C); }
-        public uint ChainLevel { get => BitConverter.ToUInt32(Data, 0x10); set => BitConverter.GetBytes(value).CopyTo(Data, 0x10); }
+        public uint ChainEncounterSpecies { get => BitConverter.ToUInt32(Data, 0x0C); set => BitConverter.GetBytes(value).CopyTo(Data, 0x0C); }
+        public uint ChainEncounterLevel { get => BitConverter.ToUInt32(Data, 0x10); set => BitConverter.GetBytes(value).CopyTo(Data, 0x10); }
         public bool BattleEndChainStart { get => Data[0x14] != 0; set => Data[0x14] = (byte)(value ? 1 : 0); }
         // 0x30 - GameObject RootGrass
         public bool CallSwayBGM { get => Data[0x15] != 0; set => Data[0x15] = (byte)(value ? 1 : 0); }
