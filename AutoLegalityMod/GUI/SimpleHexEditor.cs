@@ -49,7 +49,11 @@ namespace AutoModPlugins.GUI
                     else result = psb.com.ReadBytes(address, length);
                 }
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-                RTB_RAM.Invoke((MethodInvoker)delegate { RTB_RAM.Text = string.Join(" ", result.Select(z => $"{z:X2}")); });
+                var r_text = string.Join(" ", result.Select(z => $"{z:X2}"));
+                RTB_RAM.Invoke((MethodInvoker)delegate { 
+                    if (RTB_RAM.Text != r_text) // Prevent text updates if there is no update since they hinder copying
+                        RTB_RAM.Text = r_text; 
+                });
                 refresh.Start();
             }
             catch // Execution stopped mid thread
@@ -84,7 +88,7 @@ namespace AutoModPlugins.GUI
             {
                 B_Update.Enabled = true;
                 RTB_RAM.ReadOnly = false;
-                RTB_RAM.Text = string.Join(" ", Bytes.Select(z => $"{z:X2}"));
+                // RTB_RAM.Text = string.Join(" ", Bytes.Select(z => $"{z:X2}")); // set back to the original value
                 refresh.Stop();
             }
         }
