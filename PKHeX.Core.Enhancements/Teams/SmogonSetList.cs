@@ -259,7 +259,6 @@ namespace PKHeX.Core.Enhancements
                 "Oricorio" when form == "Pa’u" => "pau",
                 "Darmanitan" when form == "Galarian Standard" => "galar",
                 "Meowstic" when form.Length == 0 => "m",
-                "Indeedee" when form.Length == 0 => "m",
                 "Gastrodon" => "",
                 "Vivillon" => "",
                 "Sawsbuck" => "",
