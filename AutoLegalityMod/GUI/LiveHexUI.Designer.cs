@@ -39,7 +39,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.TB_Offset = new AutoModPlugins.HexTextBox();
             this.L_ReadOffset = new System.Windows.Forms.Label();
             this.B_ReadOffset = new System.Windows.Forms.Button();
             this.L_Slot = new System.Windows.Forms.Label();
@@ -52,14 +51,12 @@
             this.B_ReadRAM = new System.Windows.Forms.Button();
             this.RamSize = new System.Windows.Forms.TextBox();
             this.L_ReadRamSize = new System.Windows.Forms.Label();
-            this.RamOffset = new AutoModPlugins.HexTextBox();
             this.L_ReadRamOffset = new System.Windows.Forms.Label();
             this.L_USBState = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.B_ReadPointer = new System.Windows.Forms.Button();
             this.B_CopyAddress = new System.Windows.Forms.Button();
             this.B_EditPointer = new System.Windows.Forms.Button();
-            this.TB_Pointer = new AutoModPlugins.HexTextBox();
             this.L_Pointer = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.CB_BlockName = new System.Windows.Forms.ComboBox();
@@ -70,6 +67,9 @@
             this.RB_Main = new System.Windows.Forms.RadioButton();
             this.RB_Heap = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.TB_Pointer = new AutoModPlugins.HexTextBox();
+            this.RamOffset = new AutoModPlugins.HexTextBox();
+            this.TB_Offset = new AutoModPlugins.HexTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Slot)).BeginInit();
@@ -202,16 +202,6 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PKM Editor";
-            // 
-            // TB_Offset
-            // 
-            this.TB_Offset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_Offset.Location = new System.Drawing.Point(65, 141);
-            this.TB_Offset.MaxLength = 16;
-            this.TB_Offset.Name = "TB_Offset";
-            this.TB_Offset.Size = new System.Drawing.Size(70, 20);
-            this.TB_Offset.TabIndex = 16;
-            this.TB_Offset.Text = "2E32206A";
             // 
             // L_ReadOffset
             // 
@@ -358,16 +348,6 @@
             this.L_ReadRamSize.Text = "Size:";
             this.L_ReadRamSize.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // RamOffset
-            // 
-            this.RamOffset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RamOffset.Location = new System.Drawing.Point(58, 18);
-            this.RamOffset.MaxLength = 16;
-            this.RamOffset.Name = "RamOffset";
-            this.RamOffset.Size = new System.Drawing.Size(70, 20);
-            this.RamOffset.TabIndex = 18;
-            this.RamOffset.Text = "2E32206A";
-            // 
             // L_ReadRamOffset
             // 
             this.L_ReadRamOffset.Location = new System.Drawing.Point(10, 17);
@@ -431,14 +411,6 @@
             this.B_EditPointer.Text = "Edit RAM";
             this.B_EditPointer.UseVisualStyleBackColor = true;
             this.B_EditPointer.Click += new System.EventHandler(this.B_EditPointerData_Click);
-            // 
-            // TB_Pointer
-            // 
-            this.TB_Pointer.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_Pointer.Location = new System.Drawing.Point(58, 18);
-            this.TB_Pointer.Name = "TB_Pointer";
-            this.TB_Pointer.Size = new System.Drawing.Size(239, 20);
-            this.TB_Pointer.TabIndex = 18;
             // 
             // L_Pointer
             // 
@@ -545,6 +517,36 @@
             this.label1.Size = new System.Drawing.Size(117, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "RAM offsets relative to:";
+            // 
+            // TB_Pointer
+            // 
+            this.TB_Pointer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TB_Pointer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
+            this.TB_Pointer.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_Pointer.Location = new System.Drawing.Point(58, 18);
+            this.TB_Pointer.Name = "TB_Pointer";
+            this.TB_Pointer.Size = new System.Drawing.Size(239, 20);
+            this.TB_Pointer.TabIndex = 18;
+            // 
+            // RamOffset
+            // 
+            this.RamOffset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RamOffset.Location = new System.Drawing.Point(58, 18);
+            this.RamOffset.MaxLength = 16;
+            this.RamOffset.Name = "RamOffset";
+            this.RamOffset.Size = new System.Drawing.Size(70, 20);
+            this.RamOffset.TabIndex = 18;
+            this.RamOffset.Text = "2E32206A";
+            // 
+            // TB_Offset
+            // 
+            this.TB_Offset.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_Offset.Location = new System.Drawing.Point(65, 141);
+            this.TB_Offset.MaxLength = 16;
+            this.TB_Offset.Name = "TB_Offset";
+            this.TB_Offset.Size = new System.Drawing.Size(70, 20);
+            this.TB_Offset.TabIndex = 16;
+            this.TB_Offset.Text = "2E32206A";
             // 
             // LiveHeXUI
             // 
