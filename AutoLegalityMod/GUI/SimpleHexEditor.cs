@@ -19,11 +19,11 @@ namespace AutoModPlugins.GUI
             InitializeComponent();
             this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
             PG_BlockView.Size = RTB_RAM.Size;
-            refresh.Interval = 1000;
+            refresh.Interval = (double)RT_Timer.Value;
             refresh.Elapsed += new ElapsedEventHandler(AutoRefresh);
             refresh.AutoReset = false;
             if (addr == 0 || bot == null)
-                CB_AutoRefresh.Enabled = false;
+                CB_AutoRefresh.Enabled = RT_Timer.Enabled = RT_Label.Enabled = false;
             Bytes = originalBytes;
             address = addr;
             method = rwm;
@@ -54,6 +54,8 @@ namespace AutoModPlugins.GUI
                     if (RTB_RAM.Text != r_text) // Prevent text updates if there is no update since they hinder copying
                         RTB_RAM.Text = r_text; 
                 });
+                if (RT_Timer.Enabled)
+                    RT_Timer.Invoke((MethodInvoker)delegate { refresh.Interval = (double)RT_Timer.Value; });
                 refresh.Start();
             }
             catch // Execution stopped mid thread

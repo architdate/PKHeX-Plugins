@@ -36,6 +36,9 @@ namespace AutoModPlugins.GUI
             this.CB_AutoRefresh = new System.Windows.Forms.CheckBox();
             this.CB_CopyMethod = new System.Windows.Forms.ComboBox();
             this.RTB_RAM = new AutoModPlugins.GUI.HexRichTextBox();
+            this.RT_Label = new System.Windows.Forms.Label();
+            this.RT_Timer = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.RT_Timer)).BeginInit();
             this.SuspendLayout();
             // 
             // B_Update
@@ -65,11 +68,11 @@ namespace AutoModPlugins.GUI
             // 
             this.CB_AutoRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CB_AutoRefresh.AutoSize = true;
-            this.CB_AutoRefresh.Location = new System.Drawing.Point(284, 314);
+            this.CB_AutoRefresh.Location = new System.Drawing.Point(319, 314);
             this.CB_AutoRefresh.Name = "CB_AutoRefresh";
-            this.CB_AutoRefresh.Size = new System.Drawing.Size(88, 17);
+            this.CB_AutoRefresh.Size = new System.Drawing.Size(63, 17);
             this.CB_AutoRefresh.TabIndex = 16;
-            this.CB_AutoRefresh.Text = "Auto Refresh";
+            this.CB_AutoRefresh.Text = "Refresh";
             this.CB_AutoRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CB_AutoRefresh.UseVisualStyleBackColor = true;
             this.CB_AutoRefresh.CheckedChanged += new System.EventHandler(this.CB_AutoRefresh_CheckedChanged);
@@ -79,9 +82,9 @@ namespace AutoModPlugins.GUI
             this.CB_CopyMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CB_CopyMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_CopyMethod.FormattingEnabled = true;
-            this.CB_CopyMethod.Location = new System.Drawing.Point(145, 312);
+            this.CB_CopyMethod.Location = new System.Drawing.Point(131, 312);
             this.CB_CopyMethod.Name = "CB_CopyMethod";
-            this.CB_CopyMethod.Size = new System.Drawing.Size(116, 21);
+            this.CB_CopyMethod.Size = new System.Drawing.Size(92, 21);
             this.CB_CopyMethod.TabIndex = 17;
             this.CB_CopyMethod.SelectedIndexChanged += new System.EventHandler(this.ChangeCopyMethod);
             // 
@@ -98,11 +101,41 @@ namespace AutoModPlugins.GUI
             this.RTB_RAM.TabIndex = 0;
             this.RTB_RAM.Text = "";
             // 
+            // RT_Label
+            // 
+            this.RT_Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RT_Label.AutoSize = true;
+            this.RT_Label.Location = new System.Drawing.Point(226, 316);
+            this.RT_Label.Name = "RT_Label";
+            this.RT_Label.Size = new System.Drawing.Size(33, 13);
+            this.RT_Label.TabIndex = 19;
+            this.RT_Label.Text = "Timer";
+            // 
+            // RT_Timer
+            // 
+            this.RT_Timer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RT_Timer.Location = new System.Drawing.Point(261, 312);
+            this.RT_Timer.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RT_Timer.Name = "RT_Timer";
+            this.RT_Timer.Size = new System.Drawing.Size(52, 20);
+            this.RT_Timer.TabIndex = 20;
+            this.RT_Timer.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            // 
             // SimpleHexEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 343);
+            this.Controls.Add(this.RT_Timer);
+            this.Controls.Add(this.RT_Label);
             this.Controls.Add(this.CB_CopyMethod);
             this.Controls.Add(this.CB_AutoRefresh);
             this.Controls.Add(this.PG_BlockView);
@@ -116,6 +149,7 @@ namespace AutoModPlugins.GUI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RAMEdit";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SimpleHexEditor_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.RT_Timer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +161,7 @@ namespace AutoModPlugins.GUI
         public PropertyGrid PG_BlockView;
         private CheckBox CB_AutoRefresh;
         private ComboBox CB_CopyMethod;
+        private Label RT_Label;
+        private NumericUpDown RT_Timer;
     }
 }
