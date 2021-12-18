@@ -36,6 +36,12 @@ namespace AutoModPlugins.GUI
 
         public void AutoRefresh(object source, ElapsedEventArgs e)
         {
+            if (!CB_AutoRefresh.Checked)
+            {
+                // prevent race condition between the uncheck event and auto refresh
+                refresh.Stop(); 
+                return;
+            }
             try
             {
                 var length = Bytes.Length;
