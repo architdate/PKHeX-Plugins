@@ -9,8 +9,8 @@ namespace PKHeX.Core.Injection
 {
     public static class LPBDSP
     {
-        public static LiveHeXVersion[] BrilliantDiamond = new LiveHeXVersion[] { LiveHeXVersion.BD_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.BDSP_v112 };
-        public static LiveHeXVersion[] ShiningPearl     = new LiveHeXVersion[] { LiveHeXVersion.SP_v100, LiveHeXVersion.SP_v110, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112 };
+        public static LiveHeXVersion[] BrilliantDiamond = new LiveHeXVersion[] { LiveHeXVersion.BD_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113 };
+        public static LiveHeXVersion[] ShiningPearl     = new LiveHeXVersion[] { LiveHeXVersion.SP_v100, LiveHeXVersion.SP_v110, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113 };
         public static LiveHeXVersion[] SupportedVersions = ArrayUtil.ConcatAll(BrilliantDiamond, ShiningPearl);
 
         private const int ITEM_BLOCK_SIZE = 0xBB80;
@@ -56,6 +56,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP_v113 => "[[[main+4E59E60]+B8]+10]+E0",
                 LiveHeXVersion.BDSP_v112 => "[[[main+4E34DD0]+B8]+10]+E0",
                 LiveHeXVersion.BD_v111   => "[[[main+4C1DCF8]+B8]+10]+E0",
                 LiveHeXVersion.SP_v111   => "[[[main+4E34DD0]+B8]+10]+E0",
@@ -68,6 +69,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP_v113 => "[[[[main+4E59E60]+B8]+10]+48]+20",
                 LiveHeXVersion.BDSP_v112 => "[[[[main+4E34DD0]+B8]+10]+48]+20",
                 LiveHeXVersion.BD_v111   => "[[[[main+4C1DCF8]+B8]+10]+48]+20",
                 LiveHeXVersion.SP_v111   => "[[[[main+4E34DD0]+B8]+10]+48]+20",
@@ -80,6 +82,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP_v113 => "[[[[main+4E59E60]+B8]+10]+50]+20",
                 LiveHeXVersion.BDSP_v112 => "[[[[main+4E34DD0]+B8]+10]+50]+20",
                 LiveHeXVersion.BD_v111   => "[[[[main+4C1DCF8]+B8]+10]+50]+20",
                 LiveHeXVersion.SP_v111   => "[[[[main+4E34DD0]+B8]+10]+50]+20",
@@ -92,6 +95,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
+                LiveHeXVersion.BDSP_v113 => "[[[main+4E59E60]+B8]+10]+450",
                 LiveHeXVersion.BDSP_v112 => "[[[main+4E34DD0]+B8]+10]+450",
                 LiveHeXVersion.BD_v111   => "[[[main+4C1DCF8]+B8]+10]+450",
                 LiveHeXVersion.SP_v111   => "[[[main+4E34DD0]+B8]+10]+450",
