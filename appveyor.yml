@@ -1,49 +1,42 @@
 version: 1.0.{build}
-image: Visual Studio 2019
+image: Visual Studio 2022
 configuration: Release
 test: off
+
 init:
 - cmd: set PATH=C:\Python35;C:\Python35\Scripts;%path%
+
 environment:
   latestcommit: false
   notifyall: true
+
 before_build:
 - ps: >-
     git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git C:\projects\pkhex
-
     Set-Location -Path "C:\projects\pkhex"
-
     $env:pkhex_commit = $(git rev-parse --short HEAD)
-
     $env:mod_commit = $env:APPVEYOR_REPO_COMMIT.Substring(0,7)
-
     Add-AppveyorMessage $env:pkhex_commit
-
     Add-AppveyorMessage $env:mod_commit
-
     if ($env:notifyall -eq "true") { Add-AppveyorMessage "notify" }
-
     nuget restore
-
     Set-Location -Path "C:\projects\pkhex-plugins"
-
     dotnet restore
-
     nuget restore
+    
 build:
   project: C:\projects\pkhex-plugins\PKHeX-Plugins.sln
   verbosity: minimal
+
 #before_package:
 #- cmd: >-
 #    mkdir base
-#
 #    xcopy C:\projects\pkhex\pkhex.winforms\bin\release C:\projects\pkhex-plugins\base /e /i /h
+
 after_build:
 - cmd: >-
     mkdir bin
-
     xcopy C:\projects\PKHeX-Plugins\AutoLegalityMod\bin\Release\net46\AutoModPlugins.dll C:\projects\pkhex-plugins\bin
-
     xcopy C:\projects\PKHeX-Plugins\QRPlugins\bin\Release\net46\QRPlugins.dll C:\projects\pkhex-plugins\bin
 
 artifacts:
@@ -51,6 +44,7 @@ artifacts:
   name: PKHeX-Plugins-$(mod_commit)
 #- path: base
 #  name: PKHeX-$(pkhex_commit)-Unmerged
+
 notifications:
 - provider: Webhook
   url: 
