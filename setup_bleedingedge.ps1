@@ -68,7 +68,7 @@ Remove-Item QRCoder.dll -ErrorAction Ignore
 
 # Extract pkhex
 Write-Host Extracting PKHeX ...
-Expand-Archive -Path PKHeX.zip -DestinationPath $pwd
+Expand-Archive -Path PKHeX.zip -DestinationPath $pwd -Force
 
 # Delete zip file
 Write-Host Deleting PKHeX.zip ...
@@ -78,7 +78,7 @@ Remove-Item PKHeX.zip
 dir PKHeX-Plugins*.zip | Unblock-File
 New-Item -ItemType Directory -Force -Path plugins | Out-Null
 Write-Host Extracting Plugins ...
-Expand-Archive -Path PKHeX-Plugins*.zip -DestinationPath $pwd
+Expand-Archive -Path PKHeX-Plugins*.zip -DestinationPath $pwd -Force
 Move-Item -Path PKHeX-Plugins\*.dll -Destination plugins -Force
 Write-Host Deleting Plugins ...
 Remove-Item PKHeX-Plugins -Recurse
