@@ -46,15 +46,15 @@ namespace AutoModTests
             {
                 -2 => new[] { BD },
                 -1 => transfer ? new[] { SW, GP } : new[] { GE },
-                1 => transfer ? new[] { RD, C } : new[] { RD },
-                2 => new[] { C },
-                3 => transfer ? new[] { SW, US, SN, OR, X, B2, B, Pt, E } : new[] { E },
-                4 => transfer ? new[] { SW, US, SN, OR, X, B2, B, Pt } : new[] { Pt },
-                5 => transfer ? new[] { SW, US, SN, OR, X, B2 } : new[] { B2 },
-                6 => transfer ? new[] { SW, US, SN, OR } : new[] { OR },
-                7 => transfer ? new[] { SW, US } : new[] { US },
-                8 => new[] { SW },
-                _ => new[] { SW },
+                1  => transfer ? new[] { RD, C } : new[] { RD },
+                2  => new[] { C },
+                3  => transfer ? new[] { SW, US, SN, OR, X, B2, B, Pt, E } : new[] { E },
+                4  => transfer ? new[] { SW, US, SN, OR, X, B2, B, Pt } : new[] { Pt },
+                5  => transfer ? new[] { SW, US, SN, OR, X, B2 } : new[] { B2 },
+                6  => transfer ? new[] { SW, US, SN, OR } : new[] { OR },
+                7  => transfer ? new[] { SW, US } : new[] { US },
+                8  => new[] { SW },
+                _  => new[] { SW },
             };
         }
 

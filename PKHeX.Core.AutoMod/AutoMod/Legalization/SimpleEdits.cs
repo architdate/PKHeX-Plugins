@@ -418,25 +418,21 @@ namespace PKHeX.Core.AutoMod
             pk.ClearHyperTraining();
         }
 
-        public static bool NeedsHyperTraining(this PKM pk)
+        public static void HyperTrain(this PKM pk, int[]? IVs = null)
         {
-            for (int i = 0; i < 6; i++)
-            {
-                var iv = pk.GetIV(i);
-                if (iv is 31 or <= 1) // ignore IV value = 0/1 for intentional IV values (1 for hidden power cases)
-                    continue;
-                return true; // flawed IV present
-            }
-            return false;
-        }
-
-        public static void HyperTrain(this PKM pk)
-        {
-            if (pk is not IHyperTrain || !NeedsHyperTraining(pk))
+            if (pk is not IHyperTrain t || pk.CurrentLevel != 100)
                 return;
 
-            pk.CurrentLevel = 100; // Set level for HT before doing HT
-            pk.SetSuggestedHyperTrainingData();
+            IVs ??= pk.IVs;
+            t.HT_HP  = pk.IV_HP  != 31;
+            t.HT_ATK = pk.IV_ATK != 31 && IVs[1] > 2;
+            t.HT_DEF = pk.IV_DEF != 31;
+            t.HT_SPA = pk.IV_SPA != 31 && IVs[4] > 2;
+            t.HT_SPD = pk.IV_SPD != 31;
+            t.HT_SPE = pk.IV_SPE != 31 && IVs[3] > 2;
+
+            if (pk is PB7 pb)
+                pb.ResetCP();
         }
 
         public static void SetSuggestedMemories(this PKM pk)
