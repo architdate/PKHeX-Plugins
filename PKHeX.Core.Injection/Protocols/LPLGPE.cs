@@ -43,7 +43,8 @@ namespace PKHeX.Core.Injection
 
         public static void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
         {
-            byte[][] pkmData = boxData.Split(psb.SlotSize);
+            ReadOnlySpan<byte> bytes = boxData;
+            byte[][] pkmData = bytes.Split(psb.SlotSize);
             for (int i = 0; i < psb.SlotCount; i++)
                 SendSlot(psb, pkmData[i], box, i);
         }

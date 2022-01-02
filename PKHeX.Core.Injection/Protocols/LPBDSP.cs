@@ -144,7 +144,8 @@ namespace PKHeX.Core.Injection
         {
             if (psb.com is not ICommunicatorNX sb)
                 return;
-            byte[][] pkmData = boxData.Split(psb.SlotSize);
+            ReadOnlySpan<byte> bytes = boxData;
+            byte[][] pkmData = bytes.Split(psb.SlotSize);
             var pkmptrs = psb.GetPokemonPointers(box);
             for (int i = 0; i < psb.SlotCount; i++)
                 sb.WriteBytesAbsolute(pkmData[i], pkmptrs[i] + 0x20);

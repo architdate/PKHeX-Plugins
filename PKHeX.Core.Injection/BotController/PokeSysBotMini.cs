@@ -44,7 +44,8 @@ namespace PKHeX.Core.Injection
 
         public void SendBox(byte[] boxData, int box)
         {
-            byte[][] pkmData = boxData.Split(SlotSize);
+            ReadOnlySpan<byte> bytes = boxData;
+            byte[][] pkmData = bytes.Split(SlotSize);
             for (int i = 0; i < SlotCount; i++)
                 SendSlot(pkmData[i], box, i);
             if (LPLGPE.SupportedVersions.Contains(Version))
