@@ -23,6 +23,8 @@ before_build:
 
     if ($env:notifyall -eq "true") { Add-AppveyorMessage "notify" }
 
+    dotnet restore
+
     nuget restore
 
     msbuild C:\projects\pkhex\PKHeX.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /verbosity:minimal /p:DefineConstants=UNSAFEDLL /p:Configuration=Release
