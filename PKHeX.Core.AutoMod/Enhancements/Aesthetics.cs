@@ -941,7 +941,7 @@ namespace PKHeX.Core.AutoMod
             {
                 var vals = BallColors[c];
                 var extra = allBalls.Except(vals).ToArray();
-                Util.Shuffle(extra);
+                Util.Shuffle(extra.AsSpan());
                 BallColors[c] = vals.Concat(extra).Concat(end).ToArray();
             }
         }
