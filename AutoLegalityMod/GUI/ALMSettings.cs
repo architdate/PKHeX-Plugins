@@ -21,7 +21,6 @@ namespace AutoModPlugins.GUI
 
             // Customization
             new ALMSettingMetadata("ForceSpecifiedBall", "Allows overriding Poké Ball with \"Ball\" in a Showdown set.", "Customization"),
-            new ALMSettingMetadata("PrioritizeEvent", "Tries to generate an event Pokémon compatible with the set first.", "Customization"),
             new ALMSettingMetadata("PrioritizeGame", "If enabled, tries to generate a Pokémon based on PrioritizeGameVersion first.", "Customization"),
             new ALMSettingMetadata("PriorityGameVersion", "Setting this to \"Any\" prioritizes the current save game, and setting a specific game prioritizes that instead.", "Customization"),
             new ALMSettingMetadata("SetAllLegalRibbons", "Adds all ribbons that are legal according to PKHeX legality.", "Customization"),
@@ -30,6 +29,7 @@ namespace AutoModPlugins.GUI
 
             // Legality
             new ALMSettingMetadata("Timeout", "Global timeout per Pokémon being generated (in seconds)", "Legality"),
+            new ALMSettingMetadata("PrioritizeEncounters", "Defines the order in which Pokémon encounters are prioritized", "Legality"),
             new ALMSettingMetadata("SetRandomTracker", "Randomizes a HOME tracker for every Pokémon.", "Legality"),
             new ALMSettingMetadata("UseXOROSHIRO", "Generates legal nonshiny Generation 8 raid Pokémon based on the game's RNG.", "Legality"),
             new ALMSettingMetadata("EnableEasterEggs", "Produces an Easter Egg Pokémon if the provided set is illegal.", "Legality"),

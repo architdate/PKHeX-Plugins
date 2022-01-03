@@ -29,8 +29,8 @@
     <Setting Name="SetRandomTracker" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="PrioritizeEvent" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="PrioritizeEncounters" Type="PKHeX.Core.EncounterOrder" Scope="User">
+      <Value Profile="(Default)">Egg</Value>
     </Setting>
     <Setting Name="ForceSpecifiedBall" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -39,7 +39,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="PrioritizeGame" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="USBBotBasePreferred" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

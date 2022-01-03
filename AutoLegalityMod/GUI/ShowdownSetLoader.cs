@@ -18,6 +18,7 @@ namespace AutoModPlugins
         // Initialized during plugin setup
         public static ISaveFileProvider SaveFileEditor { private get; set; } = null!;
         public static IPKMView PKMEditor { private get; set; } = null!;
+        private static EncounterOrder[] EncounterPriority = new[] { EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery };
 
         /// <summary>
         /// Imports <see cref="ShowdownSet"/> list(s) originating from a concatenated list.
@@ -172,9 +173,11 @@ namespace AutoModPlugins
             ModLogic.IncludeForms = settings.IncludeForms;
             ModLogic.SetShiny = settings.SetShiny;
 
-            EncounterMovesetGenerator.PriorityList = settings.PrioritizeEvent
-                ? new[] { EncounterOrder.Mystery, EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot }
-                : new[] { EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery };
+            settings.PrioritizeEncounters ??= EncounterPriority.ToList();
+            foreach (var ep in EncounterPriority)
+                if (!settings.PrioritizeEncounters.Contains(ep)) settings.PrioritizeEncounters.Add(ep);
+            settings.PrioritizeEncounters = settings.PrioritizeEncounters.Distinct().ToList();
+            EncounterMovesetGenerator.PriorityList = settings.PrioritizeEncounters;
         }
     }
 }

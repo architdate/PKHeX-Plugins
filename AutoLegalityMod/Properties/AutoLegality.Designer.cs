@@ -12,7 +12,7 @@ namespace AutoModPlugins.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
     internal sealed partial class AutoLegality : global::System.Configuration.ApplicationSettingsBase {
         
         private static AutoLegality defaultInstance = ((AutoLegality)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new AutoLegality())));
@@ -133,13 +133,13 @@ namespace AutoModPlugins.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool PrioritizeEvent {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public System.Collections.Generic.List<global::PKHeX.Core.EncounterOrder> PrioritizeEncounters {
             get {
-                return ((bool)(this["PrioritizeEvent"]));
+                return ((System.Collections.Generic.List<global::PKHeX.Core.EncounterOrder>)(this["PrioritizeEncounters"]));
             }
             set {
-                this["PrioritizeEvent"] = value;
+                this["PrioritizeEncounters"] = value;
             }
         }
         
@@ -169,7 +169,7 @@ namespace AutoModPlugins.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool PrioritizeGame {
             get {
                 return ((bool)(this["PrioritizeGame"]));
