@@ -1,0 +1,5757 @@
+Venusaur (M)
+IVs: 12 HP / 12 Atk / 3 Def / 29 SpA / 23 SpD / 9 Spe
+Ability: Overgrow
+Level: 63
+Mild Nature
+Ball: Master Ball
+=Met_Location=548
+.Version=48
+~=Generation=8
+- Petal Dance
+- Petal Blizzard
+- Double-Edge
+- Solar Beam
+
+Charizard (M)
+IVs: 7 HP / 7 Atk / 13 Def / 14 SpA / 28 SpD / 24 Spe
+Ability: Blaze
+Level: 60
+Rash Nature
+Ball: Master Ball
+=Met_Location=560
+.Version=48
+~=Generation=8
+- Ancient Power
+- Air Slash
+- Inferno
+- Flare Blitz
+
+Blastoise (M)
+IVs: 3 HP / 24 Atk / 28 Def / 29 SpA / 14 SpD / 5 Spe
+Ability: Torrent
+Level: 65
+Gentle Nature
+Ball: Master Ball
+=Met_Location=595
+.Version=48
+~=Generation=8
+- Flash Cannon
+- Iron Defense
+- Hydro Pump
+- Skull Bash
+
+Butterfree (M)
+IVs: 2 HP / 27 Atk / 2 Def / 8 SpA / 28 SpD / 20 Spe
+Ability: Compound Eyes
+Level: 63
+Hasty Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=48
+~=Generation=8
+- Tackle
+- String Shot
+- Bug Bite
+- Gust
+
+Beedrill (M)
+IVs: 24 HP / 16 Atk / 0 Def / 30 SpA / 6 SpD / 25 Spe
+Ability: Swarm
+Level: 62
+Naughty Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=49
+~=Generation=8
+- Poison Sting
+- String Shot
+- Bug Bite
+- Fury Attack
+
+Pidgeot (F)
+IVs: 8 HP / 5 Atk / 22 Def / 20 SpA / 15 SpD / 25 Spe
+Ability: Tangled Feet
+Level: 52
+Brave Nature
+=Met_Location=420
+.Version=48
+~=Generation=8
+- Roost
+- Tailwind
+- Aerial Ace
+- Air Slash
+
+Rattata (M)
+IVs: 5 HP / 20 Atk / 10 Def / 30 SpA / 11 SpD / 16 Spe
+Ability: Guts
+Level: 63
+Bold Nature
+Ball: Master Ball
+=Met_Location=545
+.Version=48
+~=Generation=8
+- Counter
+- Super Fang
+- Double-Edge
+- Endeavor
+
+Raticate (M)
+IVs: 11 HP / 29 Atk / 17 Def / 7 SpA / 28 SpD / 18 Spe
+Ability: Run Away
+Level: 60
+Gentle Nature
+Ball: Master Ball
+=Met_Location=613
+.Version=48
+~=Generation=8
+- Revenge
+- Super Fang
+- Double-Edge
+- Endeavor
+
+Spearow (F)
+IVs: 26 HP / 10 Atk / 0 Def / 24 SpA / 25 SpD / 1 Spe
+Ability: Keen Eye
+Level: 20
+Jolly Nature
+Ball: Master Ball
+=Met_Location=487
+.Version=48
+~=Generation=8
+- Assurance
+- Fury Attack
+- Aerial Ace
+- Wing Attack
+
+Fearow (F)
+IVs: 27 HP / 16 Atk / 5 Def / 19 SpA / 11 SpD / 0 Spe
+Ability: Keen Eye
+Level: 53
+Hardy Nature
+Ball: Master Ball
+=Met_Location=487
+.Version=48
+~=Generation=8
+- Focus Energy
+- Roost
+- Drill Peck
+- Drill Run
+
+Arbok (F)
+IVs: 24 HP / 30 Atk / 25 Def / 17 SpA / 3 SpD / 4 Spe
+Ability: Intimidate
+Level: 64
+Careful Nature
+Ball: Master Ball
+=Met_Location=567
+.Version=48
+~=Generation=8
+- Spite
+- Crunch
+- Coil
+- Gunk Shot
+
+Raichu (M)
+IVs: 13 HP / 15 Atk / 28 Def / 25 SpA / 13 SpD / 0 Spe
+Ability: Static
+Level: 18
+Careful Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Thunder Wave
+- Double Team
+- Electro Ball
+- Thunder Punch
+
+Sandshrew (M)
+IVs: 11 HP / 26 Atk / 29 Def / 3 SpA / 19 SpD / 10 Spe
+Ability: Sand Veil
+Level: 60
+Naive Nature
+Ball: Master Ball
+=Met_Location=603
+.Version=49
+~=Generation=8
+- Crush Claw
+- Swords Dance
+- Sandstorm
+- Earthquake
+
+Sandslash (F)
+IVs: 22 HP / 28 Atk / 21 Def / 30 SpA / 7 SpD / 14 Spe
+Ability: Sand Veil
+Level: 62
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=49
+~=Generation=8
+- Crush Claw
+- Swords Dance
+- Sandstorm
+- Earthquake
+
+Nidoran-F (F)
+IVs: 10 HP / 18 Atk / 15 Def / 26 SpA / 4 SpD / 17 Spe
+Ability: Poison Point
+Level: 59
+Hardy Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Poison Fang
+- Flatter
+- Crunch
+- Earth Power
+
+Nidoqueen (F)
+IVs: 6 HP / 9 Atk / 15 SpA / 14 SpD / 21 Spe
+Ability: Poison Point
+Level: 60
+Lax Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Counter
+- Superpower
+- Toxic
+- Flatter
+
+Nidoran-M (M)
+IVs: 23 HP / 22 Atk / 3 Def / 28 SpA / 9 SpD / 14 Spe
+Ability: Poison Point
+Level: 61
+Modest Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Sucker Punch
+- Flatter
+- Poison Jab
+- Earth Power
+
+Nidoking (M)
+IVs: 6 HP / 9 Atk / 21 Def / 28 SpA / 23 SpD / 27 Spe
+Ability: Rivalry
+Level: 61
+Naughty Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Counter
+- Megahorn
+- Toxic
+- Flatter
+
+Clefable (F)
+IVs: 5 HP / 11 Atk / 27 Def / 4 SpA / 24 SpD / 7 Spe
+Ability: Cute Charm
+Level: 30
+Naughty Nature
+Ball: Master Ball
+=Met_Location=215
+.Version=48
+~=Generation=8
+- Life Dew
+- Metronome
+- Moonlight
+- Gravity
+
+Ninetales (F)
+IVs: 16 HP / 4 Atk / 14 SpA / 27 SpD / 9 Spe
+Ability: Flash Fire
+Level: 61
+Gentle Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=49
+~=Generation=8
+- Flame Charge
+- Inferno
+- Grudge
+- Fire Blast
+
+Wigglytuff (F)
+IVs: 18 HP / 2 Atk / 6 Def / 30 SpA / 18 SpD / 3 Spe
+Ability: Cute Charm
+Level: 16
+Gentle Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Stockpile
+- Swallow
+- Spit Up
+- Round
+
+Zubat (F)
+IVs: 21 HP / 14 Atk / 7 Def / 5 SpA / 25 SpD / 27 Spe
+Ability: Inner Focus
+Level: 7
+Quirky Nature
+Ball: Master Ball
+=Met_Location=195
+.Version=48
+~=Generation=8
+- Absorb
+- Supersonic
+- Astonish
+
+Golbat (M)
+IVs: 8 HP / 7 Atk / 1 Def / 20 SpA / 22 SpD / 18 Spe
+Ability: Inner Focus
+Level: 31
+Hasty Nature
+Ball: Master Ball
+=Met_Location=215
+.Version=48
+~=Generation=8
+- Mean Look
+- Poison Fang
+- Quick Guard
+- Air Cutter
+
+Oddish (M)
+IVs: 16 HP / 28 Atk / 28 Def / 28 SpD / 24 Spe
+Ability: Chlorophyll
+Level: 58
+Bashful Nature
+Ball: Master Ball
+=Met_Location=573
+.Version=48
+~=Generation=8
+- Razor Leaf
+- Grassy Terrain
+- Moonlight
+- Petal Dance
+
+Vileplume (M)
+IVs: 13 HP / 1 Atk / 30 Def / 10 SpA / 5 SpD / 9 Spe
+Ability: Chlorophyll
+Level: 59
+Hasty Nature
+Ball: Master Ball
+=Met_Location=574
+.Version=48
+~=Generation=8
+- Strength Sap
+- Petal Blizzard
+- Moonlight
+- Petal Dance
+
+Parasect (F) @ Tiny Mushroom
+IVs: 8 HP / 11 Atk / 7 Def / 10 SpA / 2 SpD / 3 Spe
+Ability: Effect Spore
+Level: 60
+Jolly Nature
+Ball: Master Ball
+=Met_Location=605
+.Version=48
+~=Generation=8
+- Fell Stinger
+- Aromatherapy
+- Rage Powder
+- X-Scissor
+
+Venonat (M)
+IVs: 9 HP / 9 Atk / 29 Def / 20 SpD / 22 Spe
+Ability: Compound Eyes
+Level: 59
+Quiet Nature
+Ball: Master Ball
+=Met_Location=567
+.Version=48
+~=Generation=8
+- Bug Bite
+- Zen Headbutt
+- Poison Fang
+- Psychic
+
+Venomoth (M)
+IVs: 11 HP / 3 Atk / 6 Def / 28 SpA / 17 SpD / 4 Spe
+Ability: Tinted Lens
+Level: 61
+Careful Nature
+Ball: Master Ball
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Bug Bite
+- Poison Fang
+- Psychic
+- Bug Buzz
+
+Diglett (F)
+IVs: 28 HP / 16 Atk / 14 Def / 21 SpA / 30 SpD / 10 Spe
+Ability: Arena Trap
+Level: 23
+Bashful Nature
+Ball: Master Ball
+=Met_Location=416
+.Version=48
+~=Generation=8
+- Astonish
+- Mud-Slap
+- Bulldoze
+- Sucker Punch
+
+Dugtrio (F)
+IVs: 29 HP / 2 Atk / 25 Def / 14 SpA / 21 SpD / 20 Spe
+Ability: Arena Trap
+Level: 53
+Jolly Nature
+Ball: Master Ball
+=Met_Location=416
+.Version=48
+~=Generation=8
+- Sandstorm
+- Dig
+- Earth Power
+- Earthquake
+
+Persian (M)
+IVs: 22 HP / 8 Atk / 0 Def / 19 SpA / 8 SpD / 26 Spe
+Ability: Technician
+Level: 28
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Assurance
+- Power Gem
+- Pay Day
+- Bite
+
+Psyduck (M)
+IVs: 26 HP / 27 Atk / 17 Def / 26 SpA / 10 SpD / 9 Spe
+Ability: Damp
+Level: 21
+Lonely Nature
+Ball: Master Ball
+=Met_Location=324
+.Version=48
+~=Generation=8
+- Water Pulse
+- Disable
+- Zen Headbutt
+- Screech
+
+Golduck (M)
+IVs: 13 HP / 21 Atk / 9 Def / 23 SpA / 10 SpD / 29 Spe
+Ability: Cloud Nine
+Level: 51
+Naughty Nature
+Ball: Master Ball
+=Met_Location=487
+.Version=48
+~=Generation=8
+- Psych Up
+- Amnesia
+- Hydro Pump
+- Wonder Room
+
+Mankey (F)
+IVs: 26 HP / 11 Atk / 1 Def / 27 SpA / 5 SpD / 3 Spe
+Ability: Anger Point
+Level: 63
+Bold Nature
+Ball: Master Ball
+=Met_Location=547
+.Version=48
+~=Generation=8
+- Beat Up
+- Stomping Tantrum
+- Outrage
+- Final Gambit
+
+Primeape (F)
+IVs: 11 HP / 6 Atk / 25 Def / 4 SpA / 3 SpD / 3 Spe
+Ability: Anger Point
+Level: 59
+Adamant Nature
+Ball: Master Ball
+=Met_Location=605
+.Version=48
+~=Generation=8
+- Night Slash
+- Stomping Tantrum
+- Outrage
+- Final Gambit
+
+Arcanine (M)
+IVs: 21 HP / 7 Atk / 20 Def / 27 SpA / 3 SpD / 4 Spe
+Ability: Intimidate
+Level: 61
+Quiet Nature
+Ball: Master Ball
+=Met_Location=575
+.Version=48
+~=Generation=8
+- Extreme Speed
+- Play Rough
+- Reversal
+- Flare Blitz
+
+Poliwag (F)
+IVs: 7 HP / 29 Atk / 15 Def / 16 SpA / 10 SpD / 10 Spe
+Ability: Damp
+Level: 59
+Naive Nature
+Ball: Master Ball
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Endeavor
+- Hydro Pump
+- Belly Drum
+- Double-Edge
+
+Poliwrath (F) @ King’s Rock
+IVs: 11 HP / 11 Atk / 2 Def / 18 SpA / 10 SpD / 28 Spe
+Ability: Water Absorb
+Level: 62
+Quirky Nature
+Ball: Master Ball
+=Met_Location=568
+.Version=48
+~=Generation=8
+- Submission
+- Earth Power
+- Hydro Pump
+- Belly Drum
+
+Kazza (Abra) (M) @ Oran Berry
+IVs: 28 HP / 10 Atk / 9 Def / 11 SpA / 3 SpD
+Ability: Synchronize
+Level: 9
+Quiet Nature
+Language: English
+=OT_Name=Hilary
+=Met_Location=30001
+.Version=48
+~=Generation=8
+- Teleport
+
+Kazza (Abra) (M) @ Oran Berry
+IVs: 28 HP / 10 Atk / 9 Def / 11 SpA / 3 SpD
+Ability: Synchronize
+Level: 9
+Quiet Nature
+Language: English
+=OT_Name=Hilary
+=Met_Location=30001
+.Version=49
+~=Generation=8
+- Teleport
+
+Abra (F)
+IVs: 13 HP / 28 Atk / 4 Def / 14 SpA / 17 SpD / 15 Spe
+Ability: Inner Focus
+Level: 5
+Sassy Nature
+Ball: Master Ball
+=Met_Location=356
+.Version=48
+~=Generation=8
+- Teleport
+
+Alakazam (F)
+IVs: 27 HP / 7 Atk / 20 Def / 17 SpA / 9 SpD / 2 Spe
+Ability: Synchronize
+Level: 63
+Docile Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Power Trick
+- Role Play
+- Future Sight
+- Calm Mind
+
+Machop (M)
+IVs: 17 HP / 24 Atk / 9 Def / 4 SpA / 9 SpD / 7 Spe
+Ability: No Guard
+Level: 5
+Bashful Nature
+Ball: Master Ball
+=Met_Location=364
+.Version=48
+~=Generation=8
+- Low Kick
+- Leer
+- Focus Energy
+
+Machamp (M)
+IVs: 30 HP / 30 Atk / 8 Def / 24 SpA / 14 SpD
+Ability: No Guard
+Level: 27
+Bold Nature
+Ball: Master Ball
+=Met_Location=378
+.Version=48
+~=Generation=8
+- Low Sweep
+- Knock Off
+- Scary Face
+- Vital Throw
+
+Bellsprout (M)
+IVs: 4 HP / 19 Atk / 8 Def / 20 SpA / 22 SpD / 14 Spe
+Ability: Chlorophyll
+Level: 58
+Timid Nature
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Belch
+- Razor Leaf
+- Poison Jab
+- Slam
+
+Victreebel (M)
+IVs: 2 HP / 8 Atk / 29 Def / 0 SpA / 8 SpD / 5 Spe
+Ability: Chlorophyll
+Level: 58
+Mild Nature
+=Met_Location=576
+.Version=48
+~=Generation=8
+- Magical Leaf
+- Leaf Tornado
+- Poison Jab
+- Slam
+
+Tentacool (F)
+IVs: 17 HP / 3 Def / 29 SpA / 24 SpD
+Ability: Liquid Ooze
+Level: 29
+Modest Nature
+Ball: Master Ball
+=Met_Location=359
+.Version=48
+~=Generation=8
+- Water Pulse
+- Screech
+- Bubble Beam
+- Hex
+
+Tentacruel (F)
+IVs: 29 HP / 27 Atk / 2 Def / 18 SpA / 7 SpD / 13 Spe
+Ability: Liquid Ooze
+Level: 44
+Gentle Nature
+Ball: Master Ball
+=Met_Location=486
+.Version=48
+~=Generation=8
+- Bubble Beam
+- Hex
+- Acid Armor
+- Poison Jab
+
+Geodude (F)
+IVs: 29 HP / 15 Atk / 23 Def / 24 SpA / 24 SpD / 22 Spe
+Ability: Sturdy
+Level: 5
+Bashful Nature
+Ball: Master Ball
+=Met_Location=255
+.Version=48
+~=Generation=8
+- Tackle
+- Defense Curl
+- Sandstorm
+
+Golem (M)
+IVs: 15 HP / 15 Atk / 30 Def / 22 SpA / 23 SpD / 30 Spe
+Ability: Sturdy
+Level: 28
+Quiet Nature
+=Met_Location=215
+.Version=48
+~=Generation=8
+- Smack Down
+- Bulldoze
+- Self-Destruct
+- Stealth Rock
+
+Rapidash (M)
+IVs: 5 HP / 16 Atk / 30 Def / 25 SpA / 15 SpD / 10 Spe
+Ability: Flash Fire
+Level: 40
+Jolly Nature
+Ball: Master Ball
+=Met_Location=362
+.Version=48
+~=Generation=8
+- Smart Strike
+- Flame Charge
+- Agility
+- Flame Wheel
+
+Slowbro (M)
+IVs: 11 HP / 2 Atk / 28 SpA / 15 SpD / 8 Spe
+Ability: Oblivious
+Level: 37
+Careful Nature
+Ball: Master Ball
+=Met_Location=361
+.Version=49
+~=Generation=8
+- Headbutt
+- Psychic
+- Surf
+- Yawn
+
+Magneton
+IVs: 10 HP / 23 Atk / 5 Def / 26 SpA / 20 SpD / 5 Spe
+Ability: Magnet Pull
+Level: 62
+Rash Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=48
+~=Generation=8
+- Metal Sound
+- Light Screen
+- Tri Attack
+- Zap Cannon
+
+Farfetch’d (M)
+IVs: 24 HP / 24 Atk / 7 Def / 30 SpA / 24 SpD / 22 Spe
+Ability: Keen Eye
+Level: 61
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=595
+.Version=48
+~=Generation=8
+- Final Gambit
+- Air Slash
+- Leaf Blade
+- Agility
+
+Dodrio (M) @ Sharp Beak
+IVs: 2 HP / 29 Atk / 21 Def / 17 SpA / 7 SpD / 22 Spe
+Ability: Run Away
+Level: 61
+Serious Nature
+Ball: Master Ball
+=Met_Location=567
+.Version=48
+~=Generation=8
+- Assurance
+- Drill Peck
+- Tri Attack
+- Thrash
+
+Seel (M)
+IVs: 16 HP / 6 Atk / 22 Def / 24 SpA / 18 SpD / 24 Spe
+Ability: Hydration
+Level: 37
+Bold Nature
+Ball: Master Ball
+=Met_Location=489
+.Version=48
+~=Generation=8
+- Aurora Beam
+- Aqua Jet
+- Brine
+- Take Down
+
+Dewgong (F)
+IVs: 21 HP / 24 Atk / 26 Def / 11 SpA / 11 SpD / 28 Spe
+Ability: Thick Fat
+Level: 60
+Hasty Nature
+Ball: Master Ball
+=Met_Location=552
+.Version=48
+~=Generation=8
+- Belch
+- Dive
+- Aqua Tail
+- Ice Beam
+
+Muk (F)
+IVs: 3 HP / 26 Atk / 5 Def / 1 SpA / 23 SpD / 11 Spe
+Ability: Stench
+Level: 64
+Modest Nature
+Ball: Master Ball
+=Met_Location=572
+.Version=48
+~=Generation=8
+- Venom Drench
+- Acid Armor
+- Belch
+- Memento
+
+Cloyster (F) @ Pearl
+IVs: 13 HP / 16 Atk / 23 Def / 7 SpA / 14 SpD / 14 Spe
+Ability: Shell Armor
+Level: 59
+Adamant Nature
+Ball: Master Ball
+=Met_Location=550
+.Version=48
+~=Generation=8
+- Life Dew
+- Ice Beam
+- Icicle Spear
+- Hydro Pump
+
+Gastly (F)
+IVs: 5 HP / 14 Atk / 24 Def / 3 SpA / 25 SpD / 8 Spe
+Ability: Levitate
+Level: 59
+Naive Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Reflect Type
+- Shadow Ball
+- Destiny Bond
+- Dream Eater
+
+Gaspar (Haunter) (M) @ Everstone
+IVs: 18 HP / 24 Atk / 28 Def / 22 SpA / 30 SpD / 2 Spe
+Ability: Levitate
+Level: 33
+Hasty Nature
+Language: English
+=OT_Name=Mindy
+=Met_Location=30001
+.Version=48
+~=Generation=8
+- Shadow Ball
+- Payback
+- Sucker Punch
+- Confuse Ray
+
+Gaspar (Haunter) (M) @ Everstone
+IVs: 18 HP / 24 Atk / 28 Def / 22 SpA / 30 SpD / 2 Spe
+Ability: Levitate
+Level: 33
+Hasty Nature
+Language: English
+=OT_Name=Mindy
+=Met_Location=30001
+.Version=49
+~=Generation=8
+- Shadow Ball
+- Payback
+- Sucker Punch
+- Confuse Ray
+
+Gengar (F)
+IVs: 5 HP / 14 Atk / 24 Def / 3 SpA / 25 SpD / 8 Spe
+Ability: Cursed Body
+Level: 60
+Naive Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Shadow Punch
+- Shadow Ball
+- Destiny Bond
+- Dream Eater
+
+Onix (M)
+IVs: 7 HP / 24 Atk / 12 Def / 27 SpA / 4 SpD / 1 Spe
+Ability: Rock Head
+Level: 61
+Timid Nature
+Ball: Master Ball
+=Met_Location=609
+.Version=48
+~=Generation=8
+- Flail
+- Iron Tail
+- Stone Edge
+- Double-Edge
+
+Hypno (F)
+IVs: 25 HP / 4 Atk / 15 SpA / 20 SpD / 28 Spe
+Ability: Insomnia
+Level: 61
+Adamant Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Psycho Cut
+- Psychic
+- Future Sight
+- Psyshock
+
+Kingler (M)
+IVs: 5 HP / 30 Atk / 16 Def / 27 SpA / 5 SpD / 4 Spe
+Ability: Hyper Cutter
+Level: 61
+Careful Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Hammer Arm
+- Swords Dance
+- Crabhammer
+- Guillotine
+
+Electrode
+IVs: 20 HP / 20 Atk / 11 Def / 30 SpA / 30 SpD / 26 Spe
+Ability: Static
+Level: 61
+Hasty Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=48
+~=Generation=8
+- Discharge
+- Explosion
+- Gyro Ball
+- Mirror Coat
+
+Marowak (M)
+IVs: 13 HP / 10 Atk / 8 Def / 20 SpA / 12 SpD / 29 Spe
+Ability: Rock Head
+Level: 64
+Mild Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Ancient Power
+- Bonemerang
+- Thrash
+- Double-Edge
+
+Hitmonlee (M)
+IVs: 3 Def
+Ability: Reckless
+Level: 20
+Gentle Nature
+.Version=48
+~=Generation=8
+- Tackle
+- Brick Break
+- Fake Out
+- Focus Energy
+
+Hitmonchan (M)
+IVs: 21 HP / 2 Atk / 14 Def / 22 SpA / 20 SpD / 1 Spe
+Ability: Iron Fist
+Level: 63
+Docile Nature
+Ball: Master Ball
+=Met_Location=613
+.Version=48
+~=Generation=8
+- Drain Punch
+- Helping Hand
+- Fake Out
+- Focus Energy
+
+Lickitung (F)
+IVs: 15 HP / 22 Atk / 17 Def / 26 SpA / 4 SpD / 22 Spe
+Ability: Own Tempo
+Level: 61
+Quiet Nature
+Ball: Master Ball
+=Met_Location=577
+.Version=48
+~=Generation=8
+- Body Slam
+- Slam
+- Power Whip
+- Belly Drum
+
+Weezing (F)
+IVs: 19 HP / 6 Atk / 0 Def / 0 SpA / 28 SpD / 19 Spe
+Ability: Neutralizing Gas
+Level: 55
+Sassy Nature
+Ball: Master Ball
+=Met_Location=414
+.Version=48
+~=Generation=8
+- Sludge Bomb
+- Toxic
+- Belch
+- Explosion
+
+Rhyhorn (F)
+IVs: 0 HP / 3 Atk / 5 Def / 30 SpA / 3 SpD / 23 Spe
+Ability: Lightning Rod
+Level: 58
+Lonely Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=48
+~=Generation=8
+- Ice Fang
+- Earthquake
+- Stone Edge
+- Megahorn
+
+Rhydon (M)
+IVs: 14 HP / 8 Atk / 17 Def / 13 SpA / 19 SpD / 6 Spe
+Ability: Lightning Rod
+Level: 61
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=48
+~=Generation=8
+- Crush Claw
+- Earthquake
+- Stone Edge
+- Megahorn
+
+Chansey (F)
+IVs: 26 HP / 29 Atk / 6 Def / 27 SpA / 2 SpD / 5 Spe
+Ability: Serene Grace
+Level: 18
+Timid Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Tail Whip
+- Echoed Voice
+- Life Dew
+- Sing
+
+Tangela (F)
+IVs: 4 HP / 15 Atk / 8 Def / 0 SpA / 21 SpD / 22 Spe
+Ability: Chlorophyll
+Level: 59
+Hardy Nature
+Ball: Master Ball
+=Met_Location=597
+.Version=48
+~=Generation=8
+- Flail
+- Power Whip
+- Ingrain
+- Grassy Terrain
+
+Horsea (F)
+IVs: 26 Atk / 23 Def / 9 SpA / 18 SpD / 10 Spe
+Ability: Swift Swim
+Level: 17
+Mild Nature
+Ball: Master Ball
+=Met_Location=487
+.Version=48
+~=Generation=8
+- Leer
+- Smokescreen
+- Twister
+- Focus Energy
+
+Seadra (M)
+IVs: 3 HP / 13 Atk / 11 Def / 17 SpA / 4 SpD / 17 Spe
+Ability: Poison Point
+Level: 30
+Hasty Nature
+Ball: Master Ball
+=Met_Location=487
+.Version=48
+~=Generation=8
+- Focus Energy
+- Dragon Breath
+- Bubble Beam
+- Agility
+
+Goldeen (F)
+IVs: 6 HP / 16 Atk / 2 Def / 2 SpA / 18 SpD / 14 Spe
+Ability: Swift Swim
+Level: 16
+Jolly Nature
+Ball: Master Ball
+=Met_Location=324
+.Version=48
+~=Generation=8
+- Tail Whip
+- Supersonic
+- Water Pulse
+- Horn Attack
+
+Seaking (M)
+IVs: 2 HP / 1 Atk / 10 Def / 11 SpA / 26 SpD / 8 Spe
+Ability: Water Veil
+Level: 32
+Gentle Nature
+Ball: Master Ball
+=Met_Location=422
+.Version=48
+~=Generation=8
+- Horn Attack
+- Agility
+- Aqua Ring
+- Flail
+
+Starmie
+IVs: 3 HP / 22 Def / 4 SpD / 28 Spe
+Ability: Natural Cure
+Level: 60
+Brave Nature
+Ball: Master Ball
+=Met_Location=581
+.Version=48
+~=Generation=8
+- Surf
+- Recover
+- Cosmic Power
+- Hydro Pump
+
+Mr. Mime (M)
+IVs: 13 HP / 4 Def / 22 SpA / 22 SpD / 28 Spe
+Ability: Filter
+Level: 61
+Gentle Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Magic Room
+- Dazzling Gleam
+- Psychic
+- Teeter Dance
+
+Scyther (F)
+IVs: 19 HP / 11 Atk / 27 Def / 27 SpA / 18 SpD / 14 Spe
+Ability: Technician
+Level: 63
+Timid Nature
+Ball: Master Ball
+=Met_Location=568
+.Version=48
+~=Generation=8
+- Quick Guard
+- X-Scissor
+- Laser Focus
+- Swords Dance
+
+Jynx (F)
+IVs: 14 HP / 29 Atk / 30 Def / 14 SpA / 15 SpD / 23 Spe
+Ability: Forewarn
+Level: 63
+Serious Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Fake Out
+- Mean Look
+- Perish Song
+- Blizzard
+
+Electabuzz (M)
+IVs: 21 HP / 13 Atk / 1 Def / 18 SpA / 23 SpD / 30 Spe
+Ability: Static
+Level: 60
+Bold Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Dynamic Punch
+- Thunderbolt
+- Light Screen
+- Thunder
+
+Magmar (F)
+IVs: 30 HP / 29 Atk / 28 Def / 4 SpA / 7 SpD / 4 Spe
+Ability: Flame Body
+Level: 59
+Hardy Nature
+Ball: Master Ball
+=Met_Location=602
+.Version=49
+~=Generation=8
+- Mega Punch
+- Flamethrower
+- Sunny Day
+- Fire Blast
+
+Pinsir (M)
+IVs: 14 HP / 25 Atk / 25 Def / 0 SpA / 18 SpD / 4 Spe
+Ability: Hyper Cutter
+Level: 52
+Mild Nature
+Ball: Master Ball
+=Met_Location=420
+.Version=49
+~=Generation=8
+- Swords Dance
+- Submission
+- Guillotine
+- Superpower
+
+Tauros (M)
+IVs: 20 HP / 18 Atk / 20 Def / 11 SpA / 8 SpD / 7 Spe
+Ability: Anger Point
+Level: 63
+Careful Nature
+Ball: Master Ball
+=Met_Location=574
+.Version=48
+~=Generation=8
+- Swagger
+- Thrash
+- Double-Edge
+- Giga Impact
+
+Foppa (Magikarp) (F) @ Lum Berry
+IVs: 3 HP / 3 Atk / 11 SpA / 3 SpD / 2 Spe
+Ability: Swift Swim
+Level: 45
+Mild Nature
+Language: German
+=OT_Name=Meister
+=Met_Location=30001
+.Version=48
+~=Generation=8
+- Splash
+
+Foppa (Magikarp) (F) @ Lum Berry
+IVs: 3 HP / 3 Atk / 11 SpA / 3 SpD / 2 Spe
+Ability: Swift Swim
+Level: 45
+Mild Nature
+Language: German
+=OT_Name=Meister
+=Met_Location=30001
+.Version=49
+~=Generation=8
+- Splash
+
+Magikarp (M)
+IVs: 22 HP / 15 Atk / 10 Def / 19 SpA / 5 SpD / 22 Spe
+Ability: Swift Swim
+Level: 6
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=324
+.Version=48
+~=Generation=8
+- Splash
+
+Gyarados (F)
+IVs: 27 HP / 1 Atk / 10 Def / 2 SpA / 14 SpD / 9 Spe
+Ability: Intimidate
+Level: 32
+Lax Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Waterfall
+- Crunch
+- Rain Dance
+- Aqua Tail
+
+Lapras (F) @ Mystic Water
+IVs: 3 HP / 5 Atk / 8 Def / 29 SpA / 17 Spe
+Ability: Water Absorb
+Level: 50
+Brave Nature
+Ball: Master Ball
+=Met_Location=247
+.Version=48
+~=Generation=8
+- Brine
+- Body Slam
+- Ice Beam
+- Rain Dance
+
+Ditto @ Quick Powder
+IVs: 23 HP / 19 Atk / 0 Def / 27 SpA / 23 SpD / 5 Spe
+Ability: Limber
+Level: 61
+Timid Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Transform
+
+Eevee (M)
+IVs: 17 HP / 17 Atk / 29 Def / 1 SpA / 9 SpD / 28 Spe
+Ability: Run Away
+Level: 5
+Hasty Nature
+=Met_Level=5
+=Met_Location=104
+.Version=48
+~=Generation=8
+- Tackle
+- Growl
+- Tail Whip
+- Sand Attack
+
+Eevee (M)
+IVs: 18 HP / 26 Atk / 9 Def / 0 SpA / 14 SpD / 10 Spe
+Ability: Run Away
+Level: 18
+Jolly Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Tail Whip
+- Sand Attack
+- Quick Attack
+- Baby-Doll Eyes
+
+Eevee (M)
+IVs: 9 HP / 16 Atk / 8 Def / 1 SpA / 14 Spe
+Ability: Adaptability
+Level: 5
+Jolly Nature
+=Met_Level=5
+=Met_Location=104
+.Version=49
+~=Generation=8
+- Tackle
+- Growl
+- Tail Whip
+- Sand Attack
+
+Vaporeon (M)
+IVs: 18 HP / 26 Atk / 9 Def / 0 SpA / 14 SpD / 10 Spe
+Ability: Water Absorb
+Level: 18
+Jolly Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Water Gun
+- Sand Attack
+- Quick Attack
+- Baby-Doll Eyes
+
+Jolteon (M)
+IVs: 18 HP / 26 Atk / 9 Def / 0 SpA / 14 SpD / 10 Spe
+Ability: Volt Absorb
+Level: 18
+Jolly Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Thunder Shock
+- Sand Attack
+- Quick Attack
+- Baby-Doll Eyes
+
+Flareon (M)
+IVs: 18 HP / 26 Atk / 9 Def / 0 SpA / 14 SpD / 10 Spe
+Ability: Flash Fire
+Level: 18
+Jolly Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Ember
+- Sand Attack
+- Quick Attack
+- Baby-Doll Eyes
+
+Porygon
+IVs: 16 HP / 14 Atk / 29 Def / 30 SpA / 15 SpD / 27 Spe
+Ability: Download
+Level: 18
+Rash Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Conversion
+- Recycle
+- Magnet Rise
+- Thunder Shock
+
+Omastar (M)
+IVs: 12 HP / 20 Def
+Ability: Shell Armor
+Level: 40
+Mild Nature
+=Met_Level=1
+=Met_Location=49
+.Version=48
+~=Generation=8
+- Brine
+- Mud Shot
+- Ancient Power
+- Crunch
+
+Kabutops (M)
+IVs: 22 Atk / 14 SpA / 3 Spe
+Ability: Swift Swim
+Level: 40
+Calm Nature
+=Met_Level=1
+=Met_Location=49
+.Version=48
+~=Generation=8
+- Ancient Power
+- Brine
+- Slash
+- Mud Shot
+
+Aerodactyl (M)
+IVs: 12 Atk / 29 Def / 16 SpD
+Ability: Pressure
+Level: 1
+Modest Nature
+=Met_Level=1
+=Met_Location=49
+.Version=48
+~=Generation=8
+- Bite
+- Ancient Power
+
+Snorlax (M) @ Leftovers
+IVs: 14 HP / 20 Atk / 5 Def / 23 SpA / 24 SpD / 7 Spe
+Ability: Immunity
+Level: 64
+Timid Nature
+Ball: Master Ball
+=Met_Location=605
+.Version=48
+~=Generation=8
+- Charm
+- Flail
+- Belly Drum
+- Last Resort
+
+Articuno
+IVs: 13 HP / 8 Atk / 0 Def
+Ability: Snow Cloak
+Level: 70
+Hardy Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=49
+~=Generation=8
+- Hurricane
+- Mind Reader
+- Blizzard
+- Sheer Cold
+
+Zapdos
+IVs: 22 HP / 20 SpA / 25 Spe
+Ability: Static
+Level: 70
+Quirky Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=49
+~=Generation=8
+- Thunder
+- Detect
+- Magnetic Flux
+- Zap Cannon
+
+Moltres
+IVs: 8 HP / 1 Spe
+Ability: Flame Body
+Level: 70
+Naive Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=49
+~=Generation=8
+- Hurricane
+- Endure
+- Burn Up
+- Sky Attack
+
+Dratini (M)
+IVs: 29 HP / 2 Atk / 7 Def / 17 SpA / 7 SpD / 12 Spe
+Ability: Shed Skin
+Level: 60
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=571
+.Version=48
+~=Generation=8
+- Aqua Jet
+- Dragon Dance
+- Outrage
+- Hyper Beam
+
+Dragonite (F) @ Dragon Scale
+IVs: 5 HP / 7 Atk / 1 Def / 11 SpA / 15 SpD / 7 Spe
+Ability: Inner Focus
+Level: 55
+Serious Nature
+Ball: Master Ball
+=Met_Location=208
+.Version=48
+~=Generation=8
+- Slam
+- Hurricane
+- Aqua Tail
+- Dragon Rush
+
+Mewtwo
+IVs: 11 HP / 26 SpA / 21 SpD
+Ability: Unnerve
+Level: 70
+Lax Nature
+Ball: Master Ball
+=Met_Location=507
+.Version=49
+~=Generation=8
+- Psychic
+- Power Swap
+- Guard Swap
+- Mist
+
+Mewtwo
+IVs: 30 Atk / 27 SpD / 7 Spe
+Ability: Unnerve
+Level: 70
+Lonely Nature
+Ball: Master Ball
+=Met_Location=507
+.Version=48
+~=Generation=8
+- Psychic
+- Power Swap
+- Guard Swap
+- Mist
+
+Mew
+IVs: 5 Atk / 8 SpA / 29 Spe
+Ability: Synchronize
+Level: 1
+Bashful Nature
+=Met_Level=1
+=FatefulEncounter=True
+=Met_Location=438
+.Version=48
+~=Generation=8
+- Pound
+- Reflect Type
+
+Mew
+IVs: 22 Def / 11 SpA / 18 Spe
+Ability: Synchronize
+Level: 1
+Brave Nature
+=Met_Level=1
+=FatefulEncounter=True
+=Met_Location=438
+.Version=49
+~=Generation=8
+- Pound
+- Reflect Type
+
+Meganium (M)
+IVs: 3 HP / 14 Atk / 10 Def / 27 SpA / 30 SpD / 26 Spe
+Ability: Overgrow
+Level: 63
+Sassy Nature
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Heal Pulse
+- Petal Dance
+- Aromatherapy
+- Solar Beam
+
+Typhlosion (M)
+IVs: 24 HP / 10 Atk / 1 Def / 30 SpA / 12 SpD / 18 Spe
+Ability: Blaze
+Level: 63
+Gentle Nature
+=Met_Location=609
+.Version=48
+~=Generation=8
+- Fury Swipes
+- Rollout
+- Double-Edge
+- Burn Up
+
+Feraligatr (M)
+IVs: 21 HP / 10 Atk / 24 Def / 5 SpA / 14 SpD / 3 Spe
+Ability: Torrent
+Level: 59
+Quirky Nature
+=Met_Location=595
+.Version=48
+~=Generation=8
+- Flatter
+- Aqua Tail
+- Superpower
+- Hydro Pump
+
+Sentret (M)
+IVs: 23 HP / 2 Atk / 8 Def / 4 SpA / 8 SpD / 10 Spe
+Ability: Run Away
+Level: 62
+Bold Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=48
+~=Generation=8
+- Slash
+- Baton Pass
+- Reversal
+- Hyper Voice
+
+Furret (M)
+IVs: 16 HP / 23 Atk / 18 Def / 16 SpA / 6 SpD / 5 Spe
+Ability: Run Away
+Level: 58
+Naive Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=48
+~=Generation=8
+- Last Resort
+- Baton Pass
+- Reversal
+- Hyper Voice
+
+Hoothoot (M)
+IVs: 1 HP / 6 Atk / 13 Def / 17 SpA / 7 SpD / 10 Spe
+Ability: Insomnia
+Level: 61
+Sassy Nature
+Ball: Master Ball
+=Met_Location=550
+.Version=48
+~=Generation=8
+- Sky Attack
+- Moonblast
+- Hypnosis
+- Dream Eater
+
+Noctowl (M)
+IVs: 24 HP / 24 Atk / 21 Def / 28 SpA / 12 SpD / 27 Spe
+Ability: Keen Eye
+Level: 34
+Adamant Nature
+Ball: Master Ball
+=Met_Location=330
+.Version=48
+~=Generation=8
+- Air Slash
+- Extrasensory
+- Take Down
+- Uproar
+
+Ledian (M)
+IVs: 24 HP / 14 Atk / 19 Def / 7 SpA / 24 SpD / 16 Spe
+Ability: Early Bird
+Level: 57
+Modest Nature
+=Met_Location=577
+.Version=48
+~=Generation=8
+- Encore
+- Bug Buzz
+- Air Slash
+- Double-Edge
+
+Ariados (F)
+IVs: 11 HP / 26 Atk / 17 Def / 16 SpA / 8 SpD / 10 Spe
+Ability: Insomnia
+Level: 58
+Adamant Nature
+=Met_Location=605
+.Version=48
+~=Generation=8
+- Night Slash
+- Cross Poison
+- Sticky Web
+- Toxic Thread
+
+Crobat (M)
+IVs: 8 HP / 7 Atk / 1 Def / 20 SpA / 22 SpD / 18 Spe
+Ability: Inner Focus
+Level: 32
+Hasty Nature
+Ball: Master Ball
+=Met_Location=215
+.Version=48
+~=Generation=8
+- Cross Poison
+- Poison Fang
+- Quick Guard
+- Air Cutter
+
+Chinchou (F)
+IVs: 24 HP / 9 Atk / 5 Def / 18 SpA / 7 SpD / 4 Spe
+Ability: Illuminate
+Level: 58
+Sassy Nature
+Ball: Master Ball
+=Met_Location=550
+.Version=48
+~=Generation=8
+- Mist
+- Flail
+- Take Down
+- Hydro Pump
+
+Lanturn (M)
+IVs: 19 Atk / 11 Def / 30 SpA / 26 SpD / 10 Spe
+Ability: Volt Absorb
+Level: 63
+Quiet Nature
+Ball: Master Ball
+=Met_Location=581
+.Version=48
+~=Generation=8
+- Psybeam
+- Flail
+- Take Down
+- Hydro Pump
+
+Pichu (M)
+IVs: 8 HP / 8 Atk / 9 SpA / 3 SpD / 18 Spe
+Ability: Static
+Level: 16
+Careful Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Play Nice
+- Sweet Kiss
+- Nuzzle
+- Nasty Plot
+
+Cleffa (F)
+IVs: 30 HP / 22 Atk / 19 Def / 22 SpA / 24 SpD / 3 Spe
+Ability: Magic Guard
+Level: 12
+Mild Nature
+Ball: Master Ball
+=Met_Location=214
+.Version=48
+~=Generation=8
+- Copycat
+- Sing
+- Sweet Kiss
+- Disarming Voice
+
+Igglybuff (F)
+IVs: 30 HP / 20 Atk / 22 Def / 16 SpA / 14 SpD / 13 Spe
+Ability: Cute Charm
+Level: 18
+Hasty Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Defense Curl
+- Sweet Kiss
+- Disarming Voice
+- Disable
+
+Togetic (M)
+IVs: 11 HP / 30 Atk / 30 Def / 25 SpA / 18 SpD / 8 Spe
+Ability: Hustle
+Level: 59
+Bold Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Fairy Wind
+- Baton Pass
+- Last Resort
+- Wish
+
+Xatu (M)
+IVs: 26 HP / 7 Atk / 21 Def / 11 SpA / 12 SpD / 2 Spe
+Ability: Early Bird
+Level: 61
+Adamant Nature
+Ball: Master Ball
+=Met_Location=574
+.Version=48
+~=Generation=8
+- Air Slash
+- Psychic
+- Wish
+- Future Sight
+
+Mareep (M)
+IVs: 5 HP / 20 Atk / 12 Def / 11 SpA / 2 SpD / 3 Spe
+Ability: Static
+Level: 57
+Serious Nature
+=Met_Location=586
+.Version=48
+~=Generation=8
+- Electric Terrain
+- Charge Beam
+- Light Screen
+- Thunder
+
+Ampharos (M)
+IVs: 10 HP / 6 Atk / 6 Def / 5 SpA / 19 SpD / 13 Spe
+Ability: Static
+Level: 61
+Mild Nature
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Body Slam
+- Charge Beam
+- Thunder Punch
+- Thunder
+
+Bellossom (M)
+IVs: 13 HP / 1 Atk / 30 Def / 10 SpA / 5 SpD / 9 Spe
+Ability: Chlorophyll
+Level: 59
+Hasty Nature
+Ball: Master Ball
+=Met_Location=574
+.Version=48
+~=Generation=8
+- Petal Blizzard
+- Grassy Terrain
+- Moonlight
+- Petal Dance
+
+Azumarill (F)
+IVs: 20 HP / 24 Def / 19 SpA / 17 SpD / 29 Spe
+Ability: Huge Power
+Level: 26
+Modest Nature
+Ball: Safari Ball
+=Met_Location=220
+.Version=48
+~=Generation=8
+- Bounce
+- Aqua Tail
+- Play Rough
+- Aqua Ring
+
+Sudowoodo (M)
+IVs: 2 HP / 23 Atk / 25 Def / 29 SpA / 15 SpD / 6 Spe
+Ability: Rock Head
+Level: 23
+Quirky Nature
+Ball: Master Ball
+=Met_Location=392
+.Version=49
+~=Generation=8
+- Rock Throw
+- Block
+- Mimic
+- Rock Tomb
+
+Politoed (F)
+IVs: 11 HP / 11 Atk / 2 Def / 18 SpA / 10 SpD / 28 Spe
+Ability: Water Absorb
+Level: 62
+Quirky Nature
+Ball: Master Ball
+=Met_Location=568
+.Version=48
+~=Generation=8
+- Mind Reader
+- Earth Power
+- Hydro Pump
+- Belly Drum
+
+Hoppip (M)
+IVs: 25 HP / 14 Atk / 20 Def / 25 SpA / 4 SpD / 12 Spe
+Ability: Chlorophyll
+Level: 59
+Lonely Nature
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Seed Bomb
+- Giga Drain
+- Bounce
+- Memento
+
+Jumpluff (M)
+IVs: 19 HP / 21 Atk / 8 Def / 28 SpA / 17 SpD / 7 Spe
+Ability: Chlorophyll
+Level: 59
+Hasty Nature
+=Met_Location=544
+.Version=48
+~=Generation=8
+- Grassy Terrain
+- Worry Seed
+- Giga Drain
+- Bounce
+
+Aipom (F)
+IVs: 22 HP / 29 Atk / 13 Def / 4 SpD / 30 Spe
+Ability: Run Away
+Level: 11
+Lonely Nature
+=Met_Location=364
+.Version=48
+~=Generation=8
+- Tail Whip
+- Sand Attack
+- Astonish
+- Baton Pass
+
+Sunflora (F)
+IVs: 26 HP / 17 Atk / 25 Def / 25 SpA / 9 SpD / 22 Spe
+Ability: Solar Power
+Level: 57
+Lax Nature
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Curse
+- Double-Edge
+- Sunny Day
+- Seed Bomb
+
+Wooper (F)
+IVs: 9 HP / 4 Atk / 20 Def / 3 SpA / 30 SpD / 0 Spe
+Ability: Damp
+Level: 20
+Lax Nature
+Ball: Safari Ball
+=Met_Location=224
+.Version=48
+~=Generation=8
+- Mud Shot
+- Mist
+- Haze
+- Slam
+
+Quagsire (F)
+IVs: 14 HP / 11 Atk / 1 Def / 3 SpA / 28 SpD / 1 Spe
+Ability: Damp
+Level: 23
+Timid Nature
+Ball: Safari Ball
+=Met_Location=222
+.Version=48
+~=Generation=8
+- Mist
+- Haze
+- Slam
+- Yawn
+
+Espeon (M)
+IVs: 18 HP / 26 Atk / 9 Def / 0 SpA / 14 SpD / 10 Spe
+Ability: Synchronize
+Level: 19
+Jolly Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Confusion
+- Sand Attack
+- Quick Attack
+- Baby-Doll Eyes
+
+Umbreon (M)
+IVs: 18 HP / 26 Atk / 9 Def / 0 SpA / 14 SpD / 10 Spe
+Ability: Synchronize
+Level: 19
+Jolly Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Snarl
+- Sand Attack
+- Quick Attack
+- Baby-Doll Eyes
+
+Murkrow (M)
+IVs: 2 HP / 25 Atk / 4 Def / 24 SpA / 15 SpD / 10 Spe
+Ability: Super Luck
+Level: 57
+Naughty Nature
+=Met_Location=585
+.Version=48
+~=Generation=8
+- Flatter
+- Foul Play
+- Tailwind
+- Sucker Punch
+
+Slowking (M)
+IVs: 11 HP / 2 Atk / 28 SpA / 15 SpD / 8 Spe
+Ability: Oblivious
+Level: 11
+Careful Nature
+Ball: Master Ball
+=Met_Location=361
+.Version=49
+~=Generation=8
+- Curse
+- Growl
+- Water Gun
+- Yawn
+
+Misdreavus (F)
+IVs: 1 HP / 21 Atk / 14 Def / 9 SpA / 17 SpD / 11 Spe
+Ability: Levitate
+Level: 9
+Gentle Nature
+=Met_Location=200
+.Version=49
+~=Generation=8
+- Growl
+- Confusion
+- Spite
+- Astonish
+
+Unown
+IVs: 12 HP / 30 Atk / 5 Def / 14 Spe
+Ability: Levitate
+Level: 16
+Hasty Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Psychic]
+
+Unown-B
+IVs: 20 HP / 10 Atk / 1 Def / 27 SpA / 23 SpD / 19 Spe
+Ability: Levitate
+Level: 22
+Hasty Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Dragon]
+
+Unown-C
+IVs: 26 HP / 24 Atk / 4 Def / 20 SpA / 22 SpD / 27 Spe
+Ability: Levitate
+Level: 21
+Jolly Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Flying]
+
+Unown-D
+IVs: 12 HP / 6 Atk / 13 Def / 13 SpA / 15 SpD / 3 Spe
+Ability: Levitate
+Level: 23
+Calm Nature
+Ball: Master Ball
+=Met_Location=240
+.Version=48
+~=Generation=8
+- Hidden Power [Dragon]
+
+Unown-E
+IVs: 17 HP / 20 Atk / 23 Def / 10 SpA / 14 SpD / 16 Spe
+Ability: Levitate
+Level: 24
+Serious Nature
+Ball: Master Ball
+=Met_Location=239
+.Version=48
+~=Generation=8
+- Hidden Power [Flying]
+
+Unown-F
+IVs: 8 HP / 8 Atk / 15 Def / 2 SpA / 14 SpD
+Ability: Levitate
+Level: 17
+Bold Nature
+Ball: Master Ball
+=Met_Location=229
+.Version=48
+~=Generation=8
+- Hidden Power [Poison]
+
+Unown-G
+IVs: 17 HP / 18 Atk / 18 Def / 13 SpA / 8 SpD / 24 Spe
+Ability: Levitate
+Level: 21
+Lonely Nature
+Ball: Master Ball
+=Met_Location=230
+.Version=48
+~=Generation=8
+- Hidden Power [Rock]
+
+Unown-H
+IVs: 4 Atk / 13 Def / 9 SpA / 21 SpD / 7 Spe
+Ability: Levitate
+Level: 18
+Timid Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Dragon]
+
+Unown-I
+IVs: 16 HP / 20 Atk / 22 Def / 23 SpA / 10 SpD / 15 Spe
+Ability: Levitate
+Level: 23
+Naive Nature
+Ball: Master Ball
+=Met_Location=237
+.Version=48
+~=Generation=8
+- Hidden Power [Bug]
+
+Unown-J
+IVs: 29 HP / 13 Atk / 14 Def / 11 SpA / 25 SpD / 6 Spe
+Ability: Levitate
+Level: 20
+Adamant Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Psychic]
+
+Unown-K
+IVs: 22 HP / 16 Atk / 30 Def / 14 SpA / 25 SpD / 25 Spe
+Ability: Levitate
+Level: 17
+Quiet Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Water]
+
+Unown-L
+IVs: 0 HP / 16 Atk / 10 Def / 6 SpA / 25 SpD / 15 Spe
+Ability: Levitate
+Level: 22
+Impish Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Water]
+
+Unown-M
+IVs: 10 HP / 29 Atk / 1 Def / 23 SpA / 7 SpD / 15 Spe
+Ability: Levitate
+Level: 22
+Brave Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Dragon]
+
+Unown-N
+IVs: 26 HP / 28 Atk / 17 Def / 0 SpA / 28 SpD / 25 Spe
+Ability: Levitate
+Level: 22
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=238
+.Version=48
+~=Generation=8
+- Hidden Power [Poison]
+
+Unown-O
+IVs: 16 HP / 14 Atk / 22 Def / 1 SpA / 27 SpD / 11 Spe
+Ability: Levitate
+Level: 20
+Rash Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Ice]
+
+Unown-P
+IVs: 6 HP / 15 Atk / 0 Def / 9 SpA / 20 SpD / 20 Spe
+Ability: Levitate
+Level: 21
+Sassy Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Rock]
+
+Unown-Q
+IVs: 22 HP / 10 Atk / 21 Def / 12 SpA / 24 SpD / 29 Spe
+Ability: Levitate
+Level: 18
+Impish Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Poison]
+
+Unown-R
+IVs: 28 HP / 28 Atk / 6 Def / 29 SpA / 18 SpD / 19 Spe
+Ability: Levitate
+Level: 24
+Timid Nature
+Ball: Master Ball
+=Met_Location=231
+.Version=48
+~=Generation=8
+- Hidden Power [Bug]
+
+Unown-S
+IVs: 20 HP / 5 Atk / 19 Def / 1 SpA / 13 SpD / 17 Spe
+Ability: Levitate
+Level: 18
+Sassy Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Dragon]
+
+Unown-T
+IVs: 1 HP / 27 Atk / 28 Def / 10 SpA / 15 SpD / 26 Spe
+Ability: Levitate
+Level: 15
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Fire]
+
+Unown-U
+IVs: 14 HP / 21 Atk / 6 Def / 22 SpA / 21 SpD / 21 Spe
+Ability: Levitate
+Level: 18
+Jolly Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Grass]
+
+Unown-V
+IVs: 7 HP / 16 Atk / 13 Def / 0 SpA / 1 SpD / 26 Spe
+Ability: Levitate
+Level: 20
+Naive Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Fire]
+
+Unown-W
+IVs: 26 HP / 27 Atk / 11 Def / 10 SpA / 18 SpD / 22 Spe
+Ability: Levitate
+Level: 22
+Brave Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Flying]
+
+Unown-X
+IVs: 14 HP / 16 Atk / 1 Def / 27 SpA / 18 SpD / 30 Spe
+Ability: Levitate
+Level: 19
+Calm Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Rock]
+
+Unown-Y
+IVs: 2 HP / 19 Atk / 15 Def / 7 SpA / 25 SpD / 28 Spe
+Ability: Levitate
+Level: 14
+Naughty Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Psychic]
+
+Unown-Z
+IVs: 19 HP / 16 Atk / 4 Def / 15 SpA / 6 SpD / 5 Spe
+Ability: Levitate
+Level: 20
+Lax Nature
+Ball: Master Ball
+=Met_Location=233
+.Version=48
+~=Generation=8
+- Hidden Power [Bug]
+
+Unown-!
+IVs: 23 HP / 30 Atk / 27 Def / 13 SpD / 8 Spe
+Ability: Levitate
+Level: 19
+Serious Nature
+Ball: Master Ball
+=Met_Location=225
+.Version=48
+~=Generation=8
+- Hidden Power [Psychic]
+
+Unown-?
+IVs: 11 HP / 18 Atk / 9 Def / 14 SpA / 4 Spe
+Ability: Levitate
+Level: 20
+Sassy Nature
+Ball: Master Ball
+=Met_Location=225
+.Version=48
+~=Generation=8
+- Hidden Power [Fire]
+
+Wobbuffet (M)
+IVs: 22 HP / 6 Atk / 12 Def / 11 SpA / 23 SpD
+Ability: Shadow Tag
+Level: 60
+Bold Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Counter
+- Mirror Coat
+- Safeguard
+- Destiny Bond
+
+Girafarig (M)
+IVs: 16 HP / 5 Atk / 29 Def / 28 SpA / 5 SpD / 29 Spe
+Ability: Inner Focus
+Level: 58
+Docile Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Mean Look
+- Baton Pass
+- Nasty Plot
+- Psychic
+
+Forretress (M)
+IVs: 17 HP / 28 Atk / 29 Def / 2 SpA / 4 SpD / 14 Spe
+Ability: Sturdy
+Level: 60
+Rash Nature
+Ball: Master Ball
+=Met_Location=572
+.Version=48
+~=Generation=8
+- Swift
+- Zap Cannon
+- Gyro Ball
+- Double-Edge
+
+Dunsparce (F)
+IVs: 0 HP / 30 Atk / 14 SpA / 10 SpD / 10 Spe
+Ability: Serene Grace
+Level: 16
+Naive Nature
+Ball: Master Ball
+=Met_Location=365
+.Version=48
+~=Generation=8
+- Mud-Slap
+- Rollout
+- Glare
+- Screech
+
+Gligar (M)
+IVs: 14 HP / 22 Atk / 23 Def / 22 SpA / 17 SpD / 6 Spe
+Ability: Sand Veil
+Level: 59
+Bashful Nature
+=Met_Location=565
+.Version=48
+~=Generation=8
+- Feint
+- Earthquake
+- Swords Dance
+- Guillotine
+
+Steelix (M)
+IVs: 7 HP / 24 Atk / 12 Def / 27 SpA / 4 SpD / 1 Spe
+Ability: Rock Head
+Level: 61
+Timid Nature
+Ball: Master Ball
+=Met_Location=609
+.Version=48
+~=Generation=8
+- Flail
+- Iron Tail
+- Stone Edge
+- Double-Edge
+
+Granbull (F)
+IVs: 0 HP / 25 Def / 24 SpA / 18 SpD / 8 Spe
+Ability: Intimidate
+Level: 58
+Calm Nature
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Metronome
+- Play Rough
+- Payback
+- Crunch
+
+Qwilfish (F)
+IVs: 0 HP / 19 Def / 4 SpA / 22 SpD / 24 Spe
+Ability: Swift Swim
+Level: 59
+Impish Nature
+Ball: Master Ball
+=Met_Location=550
+.Version=48
+~=Generation=8
+- Acid Spray
+- Take Down
+- Toxic
+- Aqua Tail
+
+Scizor (F)
+IVs: 19 HP / 11 Atk / 27 Def / 27 SpA / 18 SpD / 14 Spe
+Ability: Technician
+Level: 63
+Timid Nature
+Ball: Master Ball
+=Met_Location=568
+.Version=48
+~=Generation=8
+- Quick Guard
+- X-Scissor
+- Laser Focus
+- Swords Dance
+
+Shuckle (M)
+IVs: 6 HP / 23 Atk / 14 Def / 18 SpA / 10 SpD / 21 Spe
+Ability: Gluttony
+Level: 59
+Naive Nature
+Ball: Master Ball
+=Met_Location=568
+.Version=48
+~=Generation=8
+- Sweet Scent
+- Gastro Acid
+- Sticky Web
+- Power Trick
+
+Heracross (M)
+IVs: 22 HP / 11 Atk / 15 Def / 24 SpA / 22 SpD / 30 Spe
+Ability: Guts
+Level: 12
+Impish Nature
+Ball: Master Ball
+=Met_Location=364
+.Version=48
+~=Generation=8
+- Tackle
+- Leer
+- Fury Attack
+- Endure
+
+Sneasel (F)
+IVs: 14 HP / 12 Atk / 23 Def / 1 SpD / 27 Spe
+Ability: Inner Focus
+Level: 35
+Bold Nature
+Ball: Master Ball
+=Met_Location=351
+.Version=48
+~=Generation=8
+- Quick Attack
+- Metal Claw
+- Icy Wind
+- Fury Swipes
+
+Ursaring (F)
+IVs: 8 HP / 12 Atk / 3 Def / 9 SpD / 27 Spe
+Ability: Guts
+Level: 64
+Bashful Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=49
+~=Generation=8
+- Counter
+- Snore
+- Thrash
+- Fling
+
+Slugma (F)
+IVs: 20 HP / 10 Atk / 26 Def / 9 SpA / 1 SpD / 7 Spe
+Ability: Magma Armor
+Level: 62
+Quirky Nature
+Ball: Master Ball
+=Met_Location=609
+.Version=48
+~=Generation=8
+- Acid Armor
+- Recover
+- Flamethrower
+- Earth Power
+
+Magcargo (M)
+IVs: 27 HP / 12 Atk / 8 Def / 26 SpA / 20 SpD / 0 Spe
+Ability: Magma Armor
+Level: 61
+Modest Nature
+Ball: Master Ball
+=Met_Location=557
+.Version=48
+~=Generation=8
+- Guard Swap
+- Recover
+- Flamethrower
+- Earth Power
+
+Piloswine (M)
+IVs: 11 HP / 12 Atk / 19 Def / 7 SpA / 10 SpD / 24 Spe
+Ability: Oblivious
+Level: 62
+Sassy Nature
+Ball: Master Ball
+=Met_Location=576
+.Version=48
+~=Generation=8
+- Double-Edge
+- Take Down
+- Earthquake
+- Blizzard
+
+Corsola (M)
+IVs: 12 HP / 25 Atk / 0 Def / 10 SpA / 18 SpD / 6 Spe
+Ability: Hustle
+Level: 63
+Impish Nature
+Ball: Master Ball
+=Met_Location=552
+.Version=48
+~=Generation=8
+- Liquidation
+- Earth Power
+- Recover
+- Mirror Coat
+
+Remoraid (M)
+IVs: 14 HP / 4 Atk / 8 Def / 9 SpA / 19 SpD / 10 Spe
+Ability: Sniper
+Level: 15
+Quiet Nature
+Ball: Master Ball
+=Met_Location=167
+.Version=48
+~=Generation=8
+- Helping Hand
+- Water Pulse
+- Focus Energy
+- Psybeam
+
+Octillery (F)
+IVs: 10 HP / 16 Atk / 12 Def / 0 SpA / 16 SpD / 2 Spe
+Ability: Suction Cups
+Level: 32
+Impish Nature
+Ball: Master Ball
+=Met_Location=167
+.Version=48
+~=Generation=8
+- Aurora Beam
+- Bubble Beam
+- Lock-On
+- Bullet Seed
+
+Delibird (F)
+IVs: 1 HP / 12 Atk / 12 Def / 22 SpA / 10 SpD / 17 Spe
+Ability: Vital Spirit
+Level: 58
+Quirky Nature
+Ball: Master Ball
+=Met_Location=581
+.Version=48
+~=Generation=8
+- Present
+- Drill Peck
+- Rapid Spin
+
+Mantine (M)
+IVs: 10 HP / 16 Atk / 23 Def / 5 SpD / 20 Spe
+Ability: Swift Swim
+Level: 40
+Lonely Nature
+Ball: Master Ball
+=Met_Location=486
+.Version=48
+~=Generation=8
+- Bubble Beam
+- Headbutt
+- Air Slash
+- Bounce
+
+Skarmory (M)
+IVs: 13 HP / 15 Atk / 8 Def / 1 SpA / 8 SpD / 15 Spe
+Ability: Keen Eye
+Level: 56
+Modest Nature
+Ball: Master Ball
+=Met_Location=414
+.Version=48
+~=Generation=8
+- Metal Sound
+- Spikes
+- Iron Defense
+- Brave Bird
+
+Houndoom (M)
+IVs: 8 HP / 28 Atk / 11 Def / 17 SpA / 4 SpD / 15 Spe
+Ability: Early Bird
+Level: 62
+Sassy Nature
+Ball: Master Ball
+=Met_Location=575
+.Version=48
+~=Generation=8
+- Fire Spin
+- Foul Play
+- Flamethrower
+- Crunch
+
+Kingdra (M)
+IVs: 3 HP / 13 Atk / 11 Def / 17 SpA / 4 SpD / 17 Spe
+Ability: Swift Swim
+Level: 30
+Hasty Nature
+Ball: Master Ball
+=Met_Location=487
+.Version=48
+~=Generation=8
+- Focus Energy
+- Dragon Breath
+- Bubble Beam
+- Agility
+
+Donphan (F)
+IVs: 19 HP / 1 Def / 11 SpA / 12 SpD / 1 Spe
+Ability: Sturdy
+Level: 59
+Lax Nature
+Ball: Master Ball
+=Met_Location=565
+.Version=48
+~=Generation=8
+- Fury Attack
+- Charm
+- Last Resort
+- Double-Edge
+
+Porygon2
+IVs: 16 HP / 14 Atk / 29 Def / 30 SpA / 15 SpD / 27 Spe
+Ability: Download
+Level: 18
+Rash Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Conversion
+- Recycle
+- Magnet Rise
+- Thunder Shock
+
+Stantler (M)
+IVs: 15 HP / 23 Atk / 10 Def / 10 SpA / 30 SpD
+Ability: Frisk
+Level: 6
+Naughty Nature
+Ball: Master Ball
+=Met_Location=364
+.Version=49
+~=Generation=8
+- Tackle
+- Leer
+
+Smeargle (M)
+IVs: 28 HP / 2 Atk / 17 Def / 26 SpA / 13 SpD / 24 Spe
+Ability: Own Tempo
+Level: 14
+Lonely Nature
+=Met_Location=379
+.Version=48
+~=Generation=8
+- False Swipe
+
+Tyrogue (M)
+IVs: 21 HP / 2 Atk / 14 Def / 22 SpA / 20 SpD / 1 Spe
+Ability: Steadfast
+Level: 62
+Docile Nature
+Ball: Master Ball
+=Met_Location=613
+.Version=48
+~=Generation=8
+- Mind Reader
+- Helping Hand
+- Fake Out
+- Focus Energy
+
+Hitmontop (M)
+IVs: 19 SpD
+Ability: Technician
+Level: 20
+Serious Nature
+.Version=48
+~=Generation=8
+- Tackle
+- Triple Kick
+- Fake Out
+- Focus Energy
+
+Smoochum (F)
+IVs: 14 HP / 29 Atk / 30 Def / 14 SpA / 15 SpD / 23 Spe
+Ability: Forewarn
+Level: 62
+Serious Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Fake Out
+- Mean Look
+- Perish Song
+- Blizzard
+
+Elekid (M)
+IVs: 21 HP / 13 Atk / 1 Def / 18 SpA / 23 SpD / 30 Spe
+Ability: Static
+Level: 59
+Bold Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Dynamic Punch
+- Thunderbolt
+- Light Screen
+- Thunder
+
+Magby (F)
+IVs: 30 HP / 29 Atk / 28 Def / 4 SpA / 7 SpD / 4 Spe
+Ability: Flame Body
+Level: 58
+Hardy Nature
+Ball: Master Ball
+=Met_Location=602
+.Version=49
+~=Generation=8
+- Mega Punch
+- Flamethrower
+- Sunny Day
+- Fire Blast
+
+Miltank (F) @ Moomoo Milk
+IVs: 16 HP / 4 Atk / 0 Def / 25 SpA / 26 SpD / 14 Spe
+Ability: Scrappy
+Level: 61
+Docile Nature
+Ball: Master Ball
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Belch
+- Play Rough
+- Charm
+- High Horsepower
+
+Blissey (F)
+IVs: 26 HP / 29 Atk / 6 Def / 27 SpA / 2 SpD / 5 Spe
+Ability: Serene Grace
+Level: 19
+Timid Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Tail Whip
+- Echoed Voice
+- Life Dew
+- Sing
+
+Raikou
+IVs: 20 Def / 21 SpA / 9 Spe
+Ability: Inner Focus
+Level: 70
+Hardy Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=48
+~=Generation=8
+- Extrasensory
+- Discharge
+- Reflect
+- Rain Dance
+
+Entei
+IVs: 13 HP / 28 Atk / 29 SpA
+Ability: Inner Focus
+Level: 70
+Calm Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=48
+~=Generation=8
+- Extrasensory
+- Lava Plume
+- Swagger
+- Sunny Day
+
+Suicune
+IVs: 30 HP / 4 Def / 23 Spe
+Ability: Inner Focus
+Level: 70
+Calm Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=48
+~=Generation=8
+- Extrasensory
+- Surf
+- Mirror Coat
+- Rain Dance
+
+Larvitar (F)
+IVs: 8 HP / 3 Atk / 1 Def / 3 SpA / 1 SpD / 26 Spe
+Ability: Guts
+Level: 6
+Adamant Nature
+Ball: Master Ball
+=Met_Location=364
+.Version=48
+~=Generation=8
+- Tackle
+- Leer
+- Rock Throw
+- Payback
+
+Tyranitar (F)
+IVs: 15 HP / 4 Atk / 26 Def / 4 SpA / 26 SpD
+Ability: Sand Stream
+Level: 59
+Adamant Nature
+Ball: Master Ball
+=Met_Location=559
+.Version=48
+~=Generation=8
+- Assurance
+- Thrash
+- Giga Impact
+- Hyper Beam
+
+Lugia
+IVs: 11 Atk / 27 Def / 9 Spe
+Ability: Multiscale
+Level: 70
+Rash Nature
+Ball: Master Ball
+=Met_Location=507
+.Version=49
+~=Generation=8
+- Extrasensory
+- Recover
+- Aeroblast
+- Rain Dance
+
+Ho-Oh
+IVs: 14 HP / 20 Def / 12 SpA
+Ability: Regenerator
+Level: 70
+Impish Nature
+Ball: Master Ball
+=Met_Location=507
+.Version=48
+~=Generation=8
+- Extrasensory
+- Recover
+- Sacred Fire
+- Sunny Day
+
+Sceptile (M)
+IVs: 3 HP / 17 Atk / 0 Def / 3 SpA / 15 SpD / 30 Spe
+Ability: Overgrow
+Level: 62
+Docile Nature
+Ball: Master Ball
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Magical Leaf
+- Dual Chop
+- Endeavor
+- Leaf Storm
+
+Blaziken (M)
+IVs: 18 HP / 8 Atk / 15 Def / 16 SpA / 10 SpD / 13 Spe
+Ability: Blaze
+Level: 64
+Bashful Nature
+Ball: Master Ball
+=Met_Location=557
+.Version=48
+~=Generation=8
+- Double Kick
+- Feather Dance
+- Reversal
+- Flare Blitz
+
+Swampert (M)
+IVs: 16 HP / 12 Atk / 28 Def / 14 SpA / 20 SpD / 12 Spe
+Ability: Torrent
+Level: 64
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=568
+.Version=48
+~=Generation=8
+- Mud-Slap
+- Mud Shot
+- Endeavor
+- Hydro Pump
+
+Poochyena (F)
+IVs: 8 HP / 22 Atk / 8 Def / 25 SpA / 9 SpD / 4 Spe
+Ability: Run Away
+Level: 63
+Timid Nature
+Ball: Master Ball
+=Met_Location=566
+.Version=48
+~=Generation=8
+- Covet
+- Take Down
+- Sucker Punch
+- Play Rough
+
+Mightyena (F)
+IVs: 7 HP / 21 Atk / 13 Def / 14 SpA / 11 SpD / 27 Spe
+Ability: Intimidate
+Level: 59
+Lax Nature
+Ball: Master Ball
+=Met_Location=551
+.Version=48
+~=Generation=8
+- Leer
+- Take Down
+- Sucker Punch
+- Play Rough
+
+Linoone (F)
+IVs: 10 HP / 25 Atk / 19 Def / 8 SpA / 16 SpD / 29 Spe
+Ability: Pickup
+Level: 20
+Timid Nature
+Ball: Master Ball
+=Met_Location=355
+.Version=48
+~=Generation=8
+- Slash
+- Baby-Doll Eyes
+- Sand Attack
+- Pin Missile
+
+Wurmple (M)
+IVs: 18 HP / 5 Atk / 15 Def / 19 SpA / 4 SpD / 11 Spe
+Ability: Shield Dust
+Level: 13
+Quirky Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Tackle
+- String Shot
+- Poison Sting
+
+Silcoon (M)
+IVs: 18 HP / 22 Atk / 22 Def / 0 SpA / 1 SpD / 3 Spe
+Ability: Shed Skin
+Level: 6
+Rash Nature
+Ball: Master Ball
+=Met_Location=253
+.Version=48
+~=Generation=8
+- Harden
+
+Beautifly (F)
+IVs: 27 HP / 8 Atk / 29 Def / 16 SpA / 26 SpD / 20 Spe
+Ability: Swarm
+Level: 12
+Bold Nature
+Ball: Master Ball
+=Met_Location=200
+.Version=48
+~=Generation=8
+- Harden
+- Poison Sting
+- Bug Bite
+- Absorb
+
+Cascoon (F)
+IVs: 25 HP / 14 Atk / 26 Def / 26 SpA / 20 SpD / 4 Spe
+Ability: Shed Skin
+Level: 10
+Lax Nature
+Ball: Master Ball
+=Met_Location=200
+.Version=49
+~=Generation=8
+- Harden
+
+Dustox (M)
+IVs: 17 HP / 21 Atk / 22 Def / 4 SpA / 19 SpD / 18 Spe
+Ability: Shield Dust
+Level: 12
+Lonely Nature
+Ball: Master Ball
+=Met_Location=200
+.Version=49
+~=Generation=8
+- Harden
+- Poison Sting
+- Bug Bite
+- Confusion
+
+Lotad (F)
+IVs: 18 HP / 17 Atk / 20 Def / 17 SpA / 30 SpD / 2 Spe
+Ability: Rain Dish
+Level: 61
+Hardy Nature
+Ball: Master Ball
+=Met_Location=549
+.Version=49
+~=Generation=8
+- Synthesis
+- Rain Dance
+- Zen Headbutt
+- Energy Ball
+
+Ludicolo (F) @ Mental Herb
+IVs: 27 Atk / 1 Def / 11 SpA / 16 SpD / 26 Spe
+Ability: Swift Swim
+Level: 61
+Sassy Nature
+Ball: Master Ball
+=Met_Location=549
+.Version=49
+~=Generation=8
+- Counter
+- Rain Dance
+- Zen Headbutt
+- Energy Ball
+
+Seedot (M)
+IVs: 6 HP / 3 Atk / 30 Def / 15 SpA / 1 SpD / 10 Spe
+Ability: Chlorophyll
+Level: 62
+Brave Nature
+Ball: Master Ball
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Amnesia
+- Synthesis
+- Sucker Punch
+- Explosion
+
+Shiftry (F)
+IVs: 25 Atk / 23 Def / 16 SpA / 13 SpD / 24 Spe
+Ability: Chlorophyll
+Level: 59
+Careful Nature
+Ball: Master Ball
+=Met_Location=544
+.Version=48
+~=Generation=8
+- Leaf Tornado
+- Extrasensory
+- Sucker Punch
+- Leaf Blade
+
+Swellow (F)
+IVs: 29 HP / 3 Atk / 3 Def / 9 SpA / 0 SpD / 13 Spe
+Ability: Guts
+Level: 18
+Docile Nature
+=Met_Location=385
+.Version=48
+~=Generation=8
+- Quick Attack
+- Wing Attack
+- Double Team
+- Aerial Ace
+
+Wingull (M)
+IVs: 19 HP / 6 Atk / 12 Def / 14 SpA / 24 SpD / 15 Spe
+Ability: Hydration
+Level: 22
+Sassy Nature
+Ball: Master Ball
+=Met_Location=359
+.Version=48
+~=Generation=8
+- Quick Attack
+- Supersonic
+- Wing Attack
+- Water Pulse
+
+Pelipper (M)
+IVs: 29 HP / 17 Atk / 19 Def / 0 SpA / 24 SpD / 24 Spe
+Ability: Keen Eye
+Level: 40
+Docile Nature
+Ball: Master Ball
+=Met_Location=486
+.Version=48
+~=Generation=8
+- Stockpile
+- Swallow
+- Spit Up
+- Fling
+
+Ralts (F)
+IVs: 13 HP / 9 Atk / 21 Def / 3 SpA / 13 SpD / 9 Spe
+Ability: Trace
+Level: 58
+Lonely Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Memento
+- Heal Pulse
+- Dream Eater
+- Future Sight
+
+Gardevoir (M)
+IVs: 29 HP / 20 Atk / 29 Def / 10 SpA / 16 SpD / 27 Spe
+Ability: Trace
+Level: 61
+Rash Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Knock Off
+- Dazzling Gleam
+- Dream Eater
+- Future Sight
+
+Masquerain (M) @ Honey
+IVs: 9 HP / 22 Atk / 2 Def / 29 SpA / 18 SpD / 13 Spe
+Ability: Intimidate
+Level: 22
+Timid Nature
+Ball: Master Ball
+=Met_Location=324
+.Version=48
+~=Generation=8
+- Air Cutter
+- Quick Attack
+- Sweet Scent
+- Bubble Beam
+
+Breloom (F)
+IVs: 24 Atk
+Ability: Poison Heal
+Level: 20
+Mild Nature
+.Version=48
+~=Generation=8
+- Mega Drain
+- Headbutt
+- Stun Spore
+- Mach Punch
+
+Slaking (M)
+IVs: 19 HP / 29 Atk / 20 Def / 4 SpA / 30 SpD / 25 Spe
+Ability: Truant
+Level: 38
+Careful Nature
+Ball: Master Ball
+=Met_Location=200
+.Version=48
+~=Generation=8
+- Slash
+- Yawn
+- Rest
+- Slack Off
+
+Shedinja
+IVs: 8 HP / 26 Atk / 9 Def / 21 SpA / 5 SpD / 16 Spe
+Ability: Wonder Guard
+Level: 62
+Mild Nature
+Ball: Master Ball
+=Met_Location=567
+.Version=48
+~=Generation=8
+- Bug Bite
+- Fury Swipes
+- Mind Reader
+- Dig
+
+Exploud (F)
+IVs: 25 HP / 4 Atk / 29 Def / 0 SpA / 16 SpD / 14 Spe
+Ability: Soundproof
+Level: 41
+Quirky Nature
+Ball: Master Ball
+=Met_Location=207
+.Version=48
+~=Generation=8
+- Crunch
+- Stomp
+- Roar
+- Supersonic
+
+Hariyama (F)
+IVs: 21 Atk
+Ability: Guts
+Level: 21
+Calm Nature
+.Version=48
+~=Generation=8
+- Tackle
+- Knock Off
+- Sand Attack
+- Vital Throw
+
+Azurill (F)
+IVs: 14 HP / 2 Atk / 22 Def / 21 SpA / 10 SpD / 7 Spe
+Ability: Thick Fat
+Level: 18
+Bashful Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Bubble Beam
+- Charm
+- Slam
+- Bounce
+
+Nosepass (F) @ Magnet
+IVs: 10 HP / 29 Atk / 12 SpA / 1 SpD / 21 Spe
+Ability: Magnet Pull
+Level: 14
+Calm Nature
+Ball: Master Ball
+=Met_Location=362
+.Version=48
+~=Generation=8
+- Harden
+- Block
+- Rock Throw
+- Thunder Wave
+
+Delcatty (M)
+IVs: 11 HP / 23 Atk / 26 Def / 25 SpA / 22 SpD / 15 Spe
+Ability: Normalize
+Level: 37
+Lonely Nature
+=Met_Location=407
+.Version=48
+~=Generation=8
+- Facade
+- Covet
+- Heal Bell
+- Double-Edge
+
+Sableye (M)
+IVs: 7 HP / 12 Atk / 26 Def / 10 SpA / 19 SpD / 29 Spe
+Ability: Stall
+Level: 63
+Timid Nature
+Ball: Master Ball
+=Met_Location=614
+.Version=49
+~=Generation=8
+- Metal Burst
+- Zen Headbutt
+- Shadow Ball
+- Foul Play
+
+Mawile (M)
+IVs: 26 HP / 11 Atk / 16 Def / 5 SpA / 17 SpD / 11 Spe
+Ability: Hyper Cutter
+Level: 60
+Adamant Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Guard Swap
+- Taunt
+- Fake Tears
+- Play Rough
+
+Aron (M) @ Hard Stone
+IVs: 13 HP / 22 Atk / 29 Def / 15 SpA / 28 SpD / 7 Spe
+Ability: Rock Head
+Level: 58
+Lonely Nature
+Ball: Master Ball
+=Met_Location=581
+.Version=48
+~=Generation=8
+- Body Slam
+- Iron Defense
+- Heavy Slam
+- Double-Edge
+
+Aggron (M) @ Hard Stone
+IVs: 9 HP / 9 Atk / 29 Def / 14 SpD / 24 Spe
+Ability: Rock Head
+Level: 63
+Lonely Nature
+Ball: Master Ball
+=Met_Location=556
+.Version=48
+~=Generation=8
+- Curse
+- Autotomize
+- Iron Tail
+- Iron Defense
+
+Meditite (F)
+IVs: 5 HP / 24 Atk / 22 Def / 28 SpA / 14 SpD / 25 Spe
+Ability: Pure Power
+Level: 27
+Hardy Nature
+Ball: Master Ball
+=Met_Location=378
+.Version=48
+~=Generation=8
+- Force Palm
+- Psybeam
+- Calm Mind
+- Mind Reader
+
+Medicham (F)
+IVs: 12 HP / 18 Atk / 15 Def / 10 SpA / 30 SpD / 8 Spe
+Ability: Pure Power
+Level: 37
+Hasty Nature
+Ball: Master Ball
+=Met_Location=204
+.Version=48
+~=Generation=8
+- High Jump Kick
+- Psych Up
+- Acupressure
+- Power Trick
+
+Manectric (M)
+IVs: 26 HP / 15 Atk / 30 Def / 18 SpA / 29 SpD / 12 Spe
+Ability: Lightning Rod
+Level: 26
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Quick Attack
+- Thunder Fang
+- Shock Wave
+- Bite
+
+Plusle (F)
+IVs: 14 HP / 22 Atk / 16 Def / 4 SpA / 3 Spe
+Ability: Plus
+Level: 18
+Bashful Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Spark
+- Encore
+- Skill Swap
+- Swift
+
+Minun (F)
+IVs: 6 HP / 20 Atk / 15 Def / 2 SpA / 8 SpD / 19 Spe
+Ability: Minus
+Level: 18
+Calm Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Spark
+- Encore
+- Switcheroo
+- Swift
+
+Volbeat (M)
+IVs: 11 HP / 11 Atk / 27 Def / 3 SpA / 12 SpD / 14 Spe
+Ability: Swarm
+Level: 56
+Naive Nature
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Baton Pass
+- Play Rough
+- Double-Edge
+- Infestation
+
+Illumise (F)
+IVs: 17 HP / 26 Atk / 3 Def / 27 SpA / 2 SpD / 15 Spe
+Ability: Oblivious
+Level: 61
+Quirky Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Baton Pass
+- Play Rough
+- Covet
+- Infestation
+
+Roselia (M) @ Poison Barb
+IVs: 19 HP / 25 Atk / 9 Def / 8 SpA / 12 SpD / 15 Spe
+Ability: Poison Point
+Level: 60
+Adamant Nature
+Ball: Master Ball
+=Met_Location=605
+.Version=48
+~=Generation=8
+- Spikes
+- Aromatherapy
+- Ingrain
+- Petal Dance
+
+Swalot (M)
+IVs: 12 Def
+Ability: Sticky Hold
+Level: 24
+Serious Nature
+.Version=48
+~=Generation=8
+- Body Slam
+- Yawn
+- Toxic
+- Sludge
+
+Carvanha (F)
+IVs: 13 HP / 4 Atk / 8 Def / 29 SpA / 14 SpD / 0 Spe
+Ability: Rough Skin
+Level: 62
+Hasty Nature
+Ball: Master Ball
+=Met_Location=571
+.Version=48
+~=Generation=8
+- Double-Edge
+- Agility
+- Liquidation
+- Take Down
+
+Sharpedo (M)
+IVs: 27 HP / 19 Atk / 0 Def / 19 SpA / 7 SpD / 8 Spe
+Ability: Rough Skin
+Level: 41
+Quiet Nature
+Ball: Master Ball
+=Met_Location=407
+.Version=48
+~=Generation=8
+- Screech
+- Swagger
+- Crunch
+- Agility
+
+Wailmer (M)
+IVs: 2 HP / 8 Atk / 0 Def / 11 SpA / 11 SpD / 15 Spe
+Ability: Water Veil
+Level: 39
+Rash Nature
+Ball: Master Ball
+=Met_Location=489
+.Version=48
+~=Generation=8
+- Dive
+- Bounce
+- Body Slam
+- Rest
+
+Wailord (F)
+IVs: 10 HP / 13 Atk / 8 Def / 10 SpA / 4 SpD / 7 Spe
+Ability: Oblivious
+Level: 39
+Naughty Nature
+Ball: Master Ball
+=Met_Location=489
+.Version=48
+~=Generation=8
+- Dive
+- Bounce
+- Body Slam
+- Rest
+
+Numel (M)
+IVs: 1 HP / 5 Atk / 21 Def / 22 SpA / 20 SpD / 27 Spe
+Ability: Simple
+Level: 59
+Lonely Nature
+Ball: Master Ball
+=Met_Location=556
+.Version=48
+~=Generation=8
+- Heat Wave
+- Earthquake
+- Flamethrower
+- Double-Edge
+
+Camerupt (F)
+IVs: 3 HP / 14 Atk / 6 Def / 13 SpA / 24 SpD / 4 Spe
+Ability: Solid Rock
+Level: 62
+Bashful Nature
+Ball: Master Ball
+=Met_Location=557
+.Version=48
+~=Generation=8
+- Swallow
+- Earthquake
+- Eruption
+- Fissure
+
+Torkoal (F)
+IVs: 12 HP / 19 Atk / 7 Def / 27 SpA / 21 SpD / 25 Spe
+Ability: Drought
+Level: 61
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=609
+.Version=48
+~=Generation=8
+- Superpower
+- Amnesia
+- Inferno
+- Shell Smash
+
+Grumpig (F)
+IVs: 3 HP / 21 Atk / 20 Def / 19 SpA / 12 SpD / 9 Spe
+Ability: Thick Fat
+Level: 29
+Adamant Nature
+=Met_Location=392
+.Version=48
+~=Generation=8
+- Psybeam
+- Zen Headbutt
+- Confuse Ray
+- Power Gem
+
+Spinda (M)
+IVs: 30 HP / 0 Atk / 13 Def / 30 SpA / 7 SpD / 12 Spe
+Ability: Tangled Feet
+Level: 51
+Adamant Nature
+=Met_Location=414
+.Version=48
+~=Generation=8
+- Psych Up
+- Double-Edge
+- Flail
+- Thrash
+
+Trapinch (F) @ Soft Sand
+IVs: 22 HP / 9 Atk / 17 Def / 27 SpA / 30 SpD / 29 Spe
+Ability: Hyper Cutter
+Level: 59
+Lonely Nature
+Ball: Master Ball
+=Met_Location=609
+.Version=48
+~=Generation=8
+- Flail
+- Earthquake
+- Superpower
+- Fissure
+
+Flygon (F)
+IVs: 30 HP / 6 Atk / 14 Def / 21 SpA / 20 SpD / 4 Spe
+Ability: Levitate
+Level: 59
+Quirky Nature
+Ball: Master Ball
+=Met_Location=567
+.Version=48
+~=Generation=8
+- Dragon Claw
+- Earthquake
+- Uproar
+- Dragon Rush
+
+Cacnea (M)
+IVs: 0 HP / 27 Atk / 2 Def / 17 SpD / 1 Spe
+Ability: Sand Veil
+Level: 60
+Lonely Nature
+=Met_Location=576
+.Version=48
+~=Generation=8
+- Belch
+- Cotton Spore
+- Sandstorm
+- Destiny Bond
+
+Cacturne (F)
+IVs: 0 HP / 17 Atk / 26 Def / 8 SpA / 6 SpD / 1 Spe
+Ability: Sand Veil
+Level: 58
+Docile Nature
+=Met_Location=559
+.Version=48
+~=Generation=8
+- Acid
+- Cotton Spore
+- Sandstorm
+- Destiny Bond
+
+Altaria (F)
+IVs: 3 HP / 20 Atk / 7 Def / 11 SpA / 16 SpD / 19 Spe
+Ability: Natural Cure
+Level: 62
+Careful Nature
+Ball: Master Ball
+=Met_Location=574
+.Version=48
+~=Generation=8
+- Play Rough
+- Take Down
+- Moonblast
+- Dragon Pulse
+
+Zangoose (F)
+IVs: 22 HP / 22 Atk / 3 Def / 9 SpA / 29 SpD / 29 Spe
+Ability: Immunity
+Level: 57
+Mild Nature
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Fury Swipes
+- Taunt
+- Swords Dance
+- Close Combat
+
+Seviper (F)
+IVs: 28 HP / 19 Atk / 27 Def / 5 SpA / 25 SpD / 26 Spe
+Ability: Shed Skin
+Level: 63
+Timid Nature
+Ball: Master Ball
+=Met_Location=614
+.Version=49
+~=Generation=8
+- Switcheroo
+- Belch
+- Coil
+- Sludge Bomb
+
+Lunatone @ Stardust
+IVs: 5 HP / 17 Atk / 2 Def / 24 SpA / 30 SpD / 29 Spe
+Ability: Levitate
+Level: 62
+Timid Nature
+Ball: Master Ball
+=Met_Location=579
+.Version=49
+~=Generation=8
+- Stone Edge
+- Future Sight
+- Magic Room
+- Explosion
+
+Solrock @ Sun Stone
+IVs: 14 HP / 27 Atk / 15 Def / 2 SpA / 1 SpD / 30 Spe
+Ability: Levitate
+Level: 60
+Modest Nature
+Ball: Master Ball
+=Met_Location=545
+.Version=48
+~=Generation=8
+- Stone Edge
+- Solar Beam
+- Wonder Room
+- Explosion
+
+Barboach (M)
+IVs: 23 HP / 5 Atk / 1 Def / 21 SpA / 12 SpD / 18 Spe
+Ability: Oblivious
+Level: 59
+Gentle Nature
+Ball: Master Ball
+=Met_Location=576
+.Version=48
+~=Generation=8
+- Earth Power
+- Earthquake
+- Future Sight
+- Fissure
+
+Whiscash (F)
+IVs: 20 HP / 14 Atk / 17 Def / 21 SpA / 19 SpD / 24 Spe
+Ability: Oblivious
+Level: 62
+Quirky Nature
+Ball: Master Ball
+=Met_Location=568
+.Version=48
+~=Generation=8
+- Mud Shot
+- Earthquake
+- Future Sight
+- Fissure
+
+Corphish (F)
+IVs: 0 HP / 11 Atk / 3 Def / 13 SpA / 30 SpD / 2 Spe
+Ability: Hyper Cutter
+Level: 60
+Calm Nature
+Ball: Master Ball
+=Met_Location=555
+.Version=48
+~=Generation=8
+- Switcheroo
+- Crabhammer
+- Endeavor
+- Guillotine
+
+Crawdaunt (F)
+IVs: 28 HP / 29 Atk / 4 Def / 0 SpA / 6 SpD / 13 Spe
+Ability: Hyper Cutter
+Level: 62
+Modest Nature
+Ball: Master Ball
+=Met_Location=547
+.Version=48
+~=Generation=8
+- Slash
+- Crunch
+- Crabhammer
+- Endeavor
+
+Claydol @ Light Clay
+IVs: 1 HP / 25 Atk / 18 Def / 14 SpA / 21 SpD / 23 Spe
+Ability: Levitate
+Level: 62
+Bold Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Hyper Beam
+- Power Split
+- Sandstorm
+- Explosion
+
+Cradily (M)
+IVs: 10 Atk / 29 Def / 30 SpD
+Ability: Suction Cups
+Level: 40
+Timid Nature
+=Met_Level=1
+=Met_Location=49
+.Version=48
+~=Generation=8
+- Ancient Power
+- Brine
+- Acid
+- Giga Drain
+
+Armaldo (M)
+IVs: 14 HP / 18 Atk / 30 Def
+Ability: Battle Armor
+Level: 40
+Quiet Nature
+=Met_Level=1
+=Met_Location=49
+.Version=48
+~=Generation=8
+- Bug Bite
+- Crush Claw
+- Brine
+- Ancient Power
+
+Milotic (F)
+IVs: 20 Def
+Ability: Marvel Scale
+Level: 2
+Brave Nature
+.Version=48
+~=Generation=8
+- Splash
+- Water Pulse
+
+Castform (M)
+IVs: 21 HP / 23 Atk / 8 Def / 13 SpA / 15 SpD / 15 Spe
+Ability: Forecast
+Level: 18
+Naive Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Water Gun
+- Ember
+- Powder Snow
+- Headbutt
+
+Kecleon (F)
+IVs: 24 HP / 6 Atk / 23 Def / 25 SpA / 10 SpD / 20 Spe
+Ability: Color Change
+Level: 60
+Bashful Nature
+=Met_Location=605
+.Version=48
+~=Generation=8
+- Trick
+- Substitute
+- Sucker Punch
+- Foul Play
+
+Banette (M)
+IVs: 3 HP / 3 Def / 20 SpA / 7 SpD / 28 Spe
+Ability: Frisk
+Level: 56
+Brave Nature
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Disable
+- Knock Off
+- Grudge
+- Trick
+
+Duskull (M) @ Spell Tag
+IVs: 21 HP / 6 Atk / 9 Def / 19 SpA / 30 SpD / 19 Spe
+Ability: Levitate
+Level: 61
+Sassy Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Imprison
+- Curse
+- Shadow Ball
+- Future Sight
+
+Dusclops (M)
+IVs: 1 Atk / 29 Def / 18 SpA / 8 SpD / 5 Spe
+Ability: Pressure
+Level: 61
+Hasty Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Imprison
+- Curse
+- Shadow Ball
+- Future Sight
+
+Tropius (F)
+IVs: 1 HP / 10 Def / 29 SpA / 11 SpD / 25 Spe
+Ability: Chlorophyll
+Level: 64
+Naive Nature
+Ball: Master Ball
+=Met_Location=613
+.Version=48
+~=Generation=8
+- Nature Power
+- Dragon Hammer
+- Synthesis
+- Solar Beam
+
+Chimecho (M)
+IVs: 4 HP / 3 Atk / 24 Def / 30 SpA / 14 SpD / 30 Spe
+Ability: Levitate
+Level: 38
+Modest Nature
+=Met_Location=211
+.Version=48
+~=Generation=8
+- Extrasensory
+- Heal Bell
+- Uproar
+- Safeguard
+
+Absol (F)
+IVs: 29 HP / 4 Atk / 27 Def / 7 SpA / 30 SpD / 27 Spe
+Ability: Pressure
+Level: 61
+Mild Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Baton Pass
+- Swords Dance
+- Future Sight
+- Perish Song
+
+Snorunt (F)
+IVs: 8 HP / 12 Atk / 13 Def / 14 SpA / 27 SpD / 25 Spe
+Ability: Inner Focus
+Level: 63
+Modest Nature
+Ball: Master Ball
+=Met_Location=581
+.Version=48
+~=Generation=8
+- Hex
+- Headbutt
+- Crunch
+- Blizzard
+
+Glalie (M)
+IVs: 4 HP / 22 Atk / 10 Def / 7 SpA / 5 SpD / 26 Spe
+Ability: Inner Focus
+Level: 63
+Bashful Nature
+Ball: Master Ball
+=Met_Location=581
+.Version=48
+~=Generation=8
+- Weather Ball
+- Hail
+- Headbutt
+- Crunch
+
+Spheal (F)
+IVs: 7 HP / 17 Atk / 6 Def / 15 SpA / 3 SpD / 17 Spe
+Ability: Thick Fat
+Level: 36
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=487
+.Version=49
+~=Generation=8
+- Brine
+- Aurora Beam
+- Encore
+- Body Slam
+
+Sealeo (F)
+IVs: 8 HP / 27 Atk / 30 Def / 1 SpA / 25 SpD / 4 Spe
+Ability: Ice Body
+Level: 55
+Jolly Nature
+Ball: Master Ball
+=Met_Location=487
+.Version=49
+~=Generation=8
+- Encore
+- Body Slam
+- Surf
+- Blizzard
+
+Walrein (F)
+IVs: 16 HP / 25 Atk / 5 Def / 24 SpA / 7 SpD
+Ability: Thick Fat
+Level: 59
+Docile Nature
+Ball: Master Ball
+=Met_Location=581
+.Version=48
+~=Generation=8
+- Aqua Ring
+- Body Slam
+- Surf
+- Blizzard
+
+Gorebyss (F)
+IVs: 11 HP / 18 Atk / 18 Def / 2 SpA / 26 SpD / 22 Spe
+Ability: Swift Swim
+Level: 30
+Mild Nature
+Ball: Master Ball
+=Met_Location=404
+.Version=48
+~=Generation=8
+- Water Gun
+- Whirlpool
+- Iron Defense
+
+Relicanth (F) @ Deep Sea Scale
+IVs: 13 HP / 16 Atk / 13 Def / 20 SpA / 0 SpD / 23 Spe
+Ability: Swift Swim
+Level: 43
+Careful Nature
+Ball: Master Ball
+=Met_Location=487
+.Version=48
+~=Generation=8
+- Take Down
+- Aqua Tail
+- Rest
+- Flail
+
+Luvdisc (F)
+IVs: 29 HP / 4 Atk / 1 Def / 2 SpA / 8 SpD / 16 Spe
+Ability: Swift Swim
+Level: 26
+Brave Nature
+=Met_Location=167
+.Version=48
+~=Generation=8
+- Water Pulse
+- Attract
+- Brine
+- Flail
+
+Bagon (F) @ Dragon Fang
+IVs: 4 HP / 11 Atk / 19 Def / 30 SpA / 13 SpD / 11 Spe
+Ability: Rock Head
+Level: 25
+Naughty Nature
+Ball: Master Ball
+=Met_Location=375
+.Version=49
+~=Generation=8
+- Dragon Breath
+- Headbutt
+- Scary Face
+- Crunch
+
+Salamence (F) @ Dragon Fang
+IVs: 12 HP / 1 Atk / 13 Def / 29 SpA / 9 SpD / 9 Spe
+Ability: Intimidate
+Level: 64
+Quirky Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=49
+~=Generation=8
+- Fire Fang
+- Fly
+- Flamethrower
+- Outrage
+
+Metagross
+IVs: 0 HP / 15 Atk / 6 Def / 8 SpA / 23 SpD / 30 Spe
+Ability: Clear Body
+Level: 61
+Lax Nature
+Ball: Master Ball
+=Met_Location=559
+.Version=48
+~=Generation=8
+- Tackle
+- Confusion
+- Metal Claw
+- Hammer Arm
+
+Regirock
+IVs: 4 HP / 11 SpD / 20 Spe
+Ability: Sturdy
+Level: 70
+Lax Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=48
+~=Generation=8
+- Stone Edge
+- Superpower
+- Lock-On
+- Zap Cannon
+
+Regirock
+IVs: 8 HP / 16 SpA / 13 SpD
+Ability: Sturdy
+Level: 70
+Mild Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=49
+~=Generation=8
+- Stone Edge
+- Superpower
+- Lock-On
+- Zap Cannon
+
+Regice
+IVs: 20 HP / 29 Def / 4 SpD
+Ability: Ice Body
+Level: 70
+Bold Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=49
+~=Generation=8
+- Blizzard
+- Superpower
+- Lock-On
+- Zap Cannon
+
+Regice
+IVs: 16 Atk / 17 SpA / 3 SpD
+Ability: Ice Body
+Level: 70
+Lonely Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=48
+~=Generation=8
+- Blizzard
+- Superpower
+- Lock-On
+- Zap Cannon
+
+Registeel
+IVs: 13 Atk / 14 SpA
+Ability: Light Metal
+Level: 70
+Bold Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=49
+~=Generation=8
+- Heavy Slam
+- Superpower
+- Lock-On
+- Zap Cannon
+
+Registeel
+IVs: 26 Atk / 6 Def / 13 SpD
+Ability: Light Metal
+Level: 70
+Quiet Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=48
+~=Generation=8
+- Heavy Slam
+- Superpower
+- Lock-On
+- Zap Cannon
+
+Latias (F)
+IVs: 12 Atk / 7 Def / 12 SpA
+Ability: Levitate
+Level: 70
+Adamant Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=48
+~=Generation=8
+- Reflect Type
+- Psychic
+- Guard Split
+- Healing Wish
+
+Latias (F)
+IVs: 13 SpA / 26 SpD / 0 Spe
+Ability: Levitate
+Level: 70
+Gentle Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=49
+~=Generation=8
+- Reflect Type
+- Psychic
+- Guard Split
+- Healing Wish
+
+Latios (M)
+IVs: 14 Atk / 0 SpD / 10 Spe
+Ability: Levitate
+Level: 70
+Modest Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=48
+~=Generation=8
+- Dragon Dance
+- Dragon Pulse
+- Zen Headbutt
+- Luster Purge
+
+Latios (M)
+IVs: 30 HP / 18 Def / 9 SpD
+Ability: Levitate
+Level: 70
+Timid Nature
+Ball: Master Ball
+=Met_Location=506
+.Version=49
+~=Generation=8
+- Dragon Dance
+- Dragon Pulse
+- Zen Headbutt
+- Luster Purge
+
+Kyogre
+IVs: 17 SpA / 23 SpD / 23 Spe
+Ability: Drizzle
+Level: 70
+Naive Nature
+Ball: Master Ball
+=Met_Location=507
+.Version=49
+~=Generation=8
+- Ice Beam
+- Sheer Cold
+- Aqua Ring
+- Origin Pulse
+
+Kyogre
+IVs: 19 HP / 4 SpA / 7 SpD
+Ability: Drizzle
+Level: 70
+Quiet Nature
+Ball: Master Ball
+=Met_Location=507
+.Version=48
+~=Generation=8
+- Ice Beam
+- Sheer Cold
+- Aqua Ring
+- Origin Pulse
+
+Groudon
+IVs: 12 HP / 12 Atk / 10 SpA
+Ability: Drought
+Level: 70
+Adamant Nature
+Ball: Master Ball
+=Met_Location=507
+.Version=48
+~=Generation=8
+- Hammer Arm
+- Fissure
+- Rest
+- Precipice Blades
+
+Groudon
+IVs: 29 HP / 8 Def / 7 Spe
+Ability: Drought
+Level: 70
+Hardy Nature
+Ball: Master Ball
+=Met_Location=507
+.Version=49
+~=Generation=8
+- Hammer Arm
+- Fissure
+- Rest
+- Precipice Blades
+
+Rayquaza
+IVs: 16 Atk / 11 SpA / 15 SpD
+Ability: Air Lock
+Level: 70
+Bashful Nature
+Ball: Master Ball
+=Met_Location=507
+.Version=48
+~=Generation=8
+- Dragon Pulse
+- Hyper Voice
+- Rest
+- Fly
+
+Rayquaza
+IVs: 9 HP / 1 SpD / 4 Spe
+Ability: Air Lock
+Level: 70
+Modest Nature
+Ball: Master Ball
+=Met_Location=507
+.Version=49
+~=Generation=8
+- Dragon Pulse
+- Hyper Voice
+- Rest
+- Fly
+
+Jirachi
+IVs: 28 HP / 21 Atk / 5 Def
+Ability: Serene Grace
+Level: 5
+Adamant Nature
+=Met_Level=5
+=FatefulEncounter=True
+=Met_Location=438
+.Version=49
+~=Generation=8
+- Confusion
+- Wish
+
+Jirachi
+IVs: 29 Def / 25 SpA / 22 Spe
+Ability: Serene Grace
+Level: 5
+Bold Nature
+=Met_Level=5
+=FatefulEncounter=True
+=Met_Location=438
+.Version=48
+~=Generation=8
+- Confusion
+- Wish
+
+Buizel (F)
+IVs: 3 HP / 29 Atk / 14 Def / 0 SpA / 17 SpD / 23 Spe
+Ability: Swift Swim
+Level: 9
+Brave Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Tackle
+- Growl
+- Tail Whip
+
+Turtwig (F)
+IVs: 14 HP / 28 Atk / 4 Def / 25 SpA / 18 SpD / 28 Spe
+Ability: Overgrow
+Level: 61
+Brave Nature
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Grassy Terrain
+- Crunch
+- Giga Drain
+- Leaf Storm
+
+Turtwig (M)
+IVs: 24 HP / 16 Atk / 19 Def / 10 SpA / 7 SpD / 19 Spe
+EVs: 1 Spe
+Ability: Overgrow
+Level: 5
+Naive Nature
+=Met_Level=5
+=Met_Location=323
+.Version=49
+~=Generation=8
+- Tackle
+- Withdraw
+
+Torterra (F)
+IVs: 14 HP / 28 Atk / 4 Def / 25 SpA / 18 SpD / 28 Spe
+Ability: Overgrow
+Level: 63
+Brave Nature
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Earthquake
+- Crunch
+- Giga Drain
+- Leaf Storm
+
+Franklin (Torterra) (M) @ Miracle Seed
+EVs: 252 Atk / 252 SpA / 6 Spe
+Ability: Overgrow
+Naive Nature
+=Met_Level=5
+=Met_Location=323
+.Version=49
+~=Generation=8
+- Leaf Storm
+- Giga Drain
+- Crunch
+- Flash
+
+Chimchar (M)
+IVs: 23 HP / 22 Atk / 28 Def / 23 SpA / 15 SpD / 13 Spe
+Ability: Blaze
+Level: 59
+Bashful Nature
+=Met_Location=560
+.Version=48
+~=Generation=8
+- Counter
+- Acrobatics
+- Slack Off
+- Flamethrower
+
+Chimchar (M)
+IVs: 17 HP / 25 Atk / 7 Def / 17 SpA / 7 SpD / 3 Spe
+EVs: 1 Spe
+Ability: Blaze
+Level: 5
+Lax Nature
+=Met_Level=5
+=Met_Location=323
+.Version=49
+~=Generation=8
+- Scratch
+- Leer
+
+Infernape (M)
+IVs: 23 HP / 22 Atk / 28 Def / 23 SpA / 15 SpD / 13 Spe
+Ability: Blaze
+Level: 61
+Bashful Nature
+=Met_Location=560
+.Version=48
+~=Generation=8
+- Close Combat
+- Acrobatics
+- Slack Off
+- Flamethrower
+
+Wukong (Infernape) (M) @ Charcoal
+EVs: 6 HP / 252 Atk / 252 Spe
+Ability: Blaze
+Mild Nature
+=Met_Level=5
+=Met_Location=323
+.Version=48
+~=Generation=8
+- Flamethrower
+- Brick Break
+- Earthquake
+- Stone Edge
+
+Piplup (M)
+IVs: 23 HP / 8 Atk / 19 Def / 29 SpA / 1 SpD / 8 Spe
+EVs: 1 Spe
+Ability: Torrent
+Level: 5
+Quiet Nature
+=Met_Level=5
+=Met_Location=323
+.Version=49
+~=Generation=8
+- Pound
+- Growl
+
+Prinplup (M)
+IVs: 20 HP / 8 Atk / 25 Def / 29 SpA / 22 SpD / 25 Spe
+Ability: Torrent
+Level: 62
+Relaxed Nature
+=Met_Location=595
+.Version=48
+~=Generation=8
+- Yawn
+- Metal Claw
+- Drill Peck
+- Hydro Pump
+
+Jeeves (Empoleon) (M) @ Mystic Water
+EVs: 6 HP / 252 SpA / 252 Spe
+Ability: Torrent
+Quiet Nature
+=Met_Level=5
+=Met_Location=323
+.Version=49
+~=Generation=8
+- Flash Cannon
+- Ice Beam
+- Brine
+- Grass Knot
+
+Empoleon (M)
+IVs: 20 HP / 8 Atk / 25 Def / 29 SpA / 22 SpD / 25 Spe
+Ability: Torrent
+Level: 63
+Relaxed Nature
+=Met_Location=595
+.Version=48
+~=Generation=8
+- Aqua Jet
+- Metal Claw
+- Drill Peck
+- Hydro Pump
+
+Starly (F)
+IVs: 12 HP / 11 Atk / 15 Def / 18 SpA / 9 SpD / 17 Spe
+Ability: Keen Eye
+Level: 3
+Careful Nature
+Ball: Master Ball
+=Met_Location=354
+.Version=48
+~=Generation=8
+- Tackle
+- Growl
+
+Starly (M)
+IVs: 19 HP / 21 Atk / 1 Def / 30 SpA / 13 SpD / 20 Spe
+Ability: Keen Eye
+Level: 13
+Shiny: Square
+Careful Nature
+=Met_Location=379
+.Version=48
+~=Generation=8
+- Growl
+- Quick Attack
+- Wing Attack
+- Double Team
+
+Staravia (F)
+IVs: 1 HP / 27 Atk / 9 Def / 0 SpA / 5 SpD / 12 Spe
+Ability: Intimidate
+Level: 14
+Modest Nature
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Growl
+- Quick Attack
+- Wing Attack
+- Double Team
+
+Avia (Staraptor) (F) @ Sharp Beak
+EVs: 252 HP / 252 Atk / 6 Def
+Ability: Intimidate
+Brave Nature
+Ball: Master Ball
+=Met_Location=355
+.Version=48
+~=Generation=8
+- Fly
+- Defog
+- Aerial Ace
+- U-turn
+
+Staraptor (F)
+IVs: 1 HP / 27 Atk / 9 Def / 0 SpA / 5 SpD / 12 Spe
+Ability: Intimidate
+Level: 32
+Modest Nature
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Aerial Ace
+- Take Down
+- Close Combat
+- Double Team
+
+Bidoof (F)
+IVs: 23 HP / 21 Atk / 17 SpA / 24 SpD / 1 Spe
+Ability: Simple
+Level: 3
+Bold Nature
+Ball: Master Ball
+=Met_Location=354
+.Version=48
+~=Generation=8
+- Tackle
+- Growl
+
+Bibarel (M)
+IVs: 7 HP / 5 Atk / 27 Def / 16 SpA / 10 SpD / 17 Spe
+Ability: Simple
+Level: 63
+Jolly Nature
+Ball: Master Ball
+=Met_Location=547
+.Version=48
+~=Generation=8
+- Aqua Tail
+- Amnesia
+- Superpower
+- Curse
+
+Bibarel (F)
+IVs: 0 HP / 23 Atk / 1 Def / 14 SpA / 24 SpD
+Ability: Simple
+Level: 16
+Shiny: Square
+Lonely Nature
+Ball: Master Ball
+=Met_Location=367
+.Version=48
+~=Generation=8
+- Growl
+- Defense Curl
+- Rollout
+- Headbutt
+
+Kricketot (M) @ Metronome
+IVs: 24 HP / 3 Atk / 3 Def / 17 SpA / 1 SpD / 9 Spe
+Ability: Shed Skin
+Level: 61
+Rash Nature
+=Met_Location=575
+.Version=48
+~=Generation=8
+- Growl
+- Pound
+- Struggle Bug
+- Bug Bite
+
+Kricketune (F)
+IVs: 14 HP / 1 Atk / 27 Def / 20 SpA / 28 SpD / 26 Spe
+Ability: Swarm
+Level: 16
+Sassy Nature
+=Met_Location=373
+.Version=48
+~=Generation=8
+- Struggle Bug
+- Bug Bite
+- Absorb
+- Sing
+
+Shinx (M)
+IVs: 0 HP / 6 Atk / 16 Def / 22 SpA / 7 SpD / 24 Spe
+Ability: Intimidate
+Level: 4
+Sassy Nature
+Ball: Master Ball
+=Met_Location=356
+.Version=48
+~=Generation=8
+- Tackle
+- Leer
+- Thunder Shock
+
+Luxray (M)
+IVs: 2 HP / 15 Atk / 5 Def / 10 SpA / 1 SpD / 11 Spe
+Ability: Rivalry
+Level: 60
+Bashful Nature
+Ball: Master Ball
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Howl
+- Thunder Wave
+- Crunch
+- Discharge
+
+Budew (M)
+IVs: 10 HP / 27 Atk / 29 Def / 23 SpA / 25 SpD / 23 Spe
+Ability: Poison Point
+Level: 22
+Lonely Nature
+Ball: Safari Ball
+=Met_Location=222
+.Version=48
+~=Generation=8
+- Absorb
+- Growth
+- Stun Spore
+- Worry Seed
+
+Roserade (M) @ Poison Barb
+IVs: 19 HP / 25 Atk / 9 Def / 8 SpA / 12 SpD / 15 Spe
+Ability: Poison Point
+Level: 60
+Adamant Nature
+Ball: Master Ball
+=Met_Location=605
+.Version=48
+~=Generation=8
+- Spikes
+- Aromatherapy
+- Ingrain
+- Petal Dance
+
+Rampardos (M)
+IVs: 11 HP / 30 SpD / 1 Spe
+Ability: Mold Breaker
+Level: 33
+Lonely Nature
+=Met_Level=1
+=Met_Location=49
+.Version=48
+~=Generation=8
+- Headbutt
+- Take Down
+- Focus Energy
+- Rock Polish
+
+Bastiodon (F)
+IVs: 6 HP / 8 Def / 25 Spe
+Ability: Sturdy
+Level: 33
+Bashful Nature
+=Met_Level=1
+=Met_Location=49
+.Version=48
+~=Generation=8
+- Ancient Power
+- Block
+- Take Down
+- Metal Sound
+
+Wormadam (F)
+IVs: 11 HP / 4 Atk / 24 Def / 5 SpA / 19 SpD / 26 Spe
+Ability: Anticipation
+Level: 20
+Brave Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Protect
+- Tackle
+- Bug Bite
+- Quiver Dance
+
+Mothim (M)
+IVs: 12 HP / 21 Atk / 28 Def / 11 SpA / 26 SpD / 20 Spe
+Ability: Swarm
+Level: 20
+Serious Nature
+Ball: Master Ball
+=Met_Location=359
+.Version=48
+~=Generation=8
+- Protect
+- Tackle
+- Bug Bite
+- Quiver Dance
+
+Vespiquen (F)
+IVs: 2 HP / 29 Atk / 1 Def / 5 SpA / 30 SpD / 4 Spe
+Ability: Pressure
+Level: 62
+Serious Nature
+Ball: Master Ball
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Slash
+- Gust
+- Struggle Bug
+- Bug Bite
+
+Pachirisu (M)
+IVs: 14 HP / 2 Atk / 28 SpA / 2 SpD / 29 Spe
+Ability: Run Away
+Level: 9
+Rash Nature
+Ball: Master Ball
+=Met_Location=359
+.Version=48
+~=Generation=8
+- Growl
+- Baby-Doll Eyes
+- Quick Attack
+- Charm
+
+Buizel (F)
+IVs: 3 HP / 29 Atk / 14 Def / 0 SpA / 17 SpD / 23 Spe
+Ability: Swift Swim
+Level: 9
+Brave Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Tackle
+- Growl
+- Tail Whip
+
+Ollie (Floatzel) (M) @ Mystic Water
+EVs: 252 Atk / 252 SpA / 6 Spe
+Ability: Swift Swim
+Rash Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Surf
+- Waterfall
+- Ice Beam
+- Crunch
+
+Floatzel (F)
+IVs: 14 HP / 18 Atk / 10 Def / 16 SpA / 2 SpD / 23 Spe
+Ability: Swift Swim
+Level: 22
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=385
+.Version=48
+~=Generation=8
+- Tail Whip
+- Water Gun
+- Bite
+- Swift
+
+Cherrim (M)
+IVs: 24 HP / 24 Atk / 9 SpA / 30 SpD / 4 Spe
+Ability: Flower Gift
+Level: 25
+Lonely Nature
+Ball: Master Ball
+=Met_Location=362
+.Version=48
+~=Generation=8
+- Sunny Day
+- Tackle
+- Leafage
+- Magical Leaf
+
+Shellos (F)
+IVs: 30 HP / 6 Atk / 17 Def / 1 SpA / 7 SpD / 23 Spe
+Ability: Storm Drain
+Level: 9
+Naughty Nature
+Ball: Master Ball
+=Met_Location=359
+.Version=48
+~=Generation=8
+- Water Gun
+- Mud-Slap
+- Harden
+
+Gastrodon-East (F)
+IVs: 22 HP / 1 Atk / 27 Def / 17 SpA / 18 SpD / 15 Spe
+Ability: Storm Drain
+Level: 42
+Jolly Nature
+Ball: Master Ball
+=Met_Location=407
+.Version=48
+~=Generation=8
+- Ancient Power
+- Body Slam
+- Muddy Water
+- Earth Power
+
+Ambipom (F)
+IVs: 22 HP / 29 Atk / 13 Def / 4 SpD / 30 Spe
+Ability: Technician
+Level: 29
+Lonely Nature
+Ball: Master Ball
+=Met_Location=364
+.Version=48
+~=Generation=8
+- Swift
+- Sand Attack
+- Astonish
+- Double Hit
+
+Drifloon (M)
+IVs: 27 HP / 2 Def / 28 SpA
+Ability: Unburden
+Level: 22
+Bashful Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Focus Energy
+- Payback
+- Hex
+- Shadow Ball
+
+Drifloon (F)
+IVs: 10 Atk / 21 SpA / 0 SpD
+Ability: Unburden
+Level: 22
+Modest Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=49
+~=Generation=8
+- Focus Energy
+- Payback
+- Hex
+- Shadow Ball
+
+Drifblim (M)
+IVs: 27 HP / 2 Def / 28 SpA
+Ability: Unburden
+Level: 28
+Bashful Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Phantom Force
+- Payback
+- Hex
+- Shadow Ball
+
+Lopunny (M)
+IVs: 5 HP / 4 Atk / 28 Def / 25 SpA / 17 SpD / 24 Spe
+Ability: Cute Charm
+Level: 62
+Careful Nature
+Ball: Master Ball
+=Met_Location=581
+.Version=48
+~=Generation=8
+- Switcheroo
+- Flatter
+- Bounce
+- Healing Wish
+
+Mismagius (F)
+IVs: 1 HP / 21 Atk / 14 Def / 9 SpA / 17 SpD / 11 Spe
+Ability: Levitate
+Level: 9
+Gentle Nature
+=Met_Location=200
+.Version=49
+~=Generation=8
+- Growl
+- Confusion
+- Spite
+- Astonish
+
+Honchkrow (M)
+IVs: 2 HP / 25 Atk / 4 Def / 24 SpA / 15 SpD / 10 Spe
+Ability: Super Luck
+Level: 57
+Naughty Nature
+=Met_Location=585
+.Version=48
+~=Generation=8
+- Flatter
+- Foul Play
+- Tailwind
+- Sucker Punch
+
+Glameow (F)
+IVs: 7 HP / 10 Atk / 2 Def / 3 SpA / 21 SpD / 27 Spe
+Ability: Limber
+Level: 27
+Jolly Nature
+=Met_Location=400
+.Version=49
+~=Generation=8
+- Aerial Ace
+- Fury Swipes
+- Charm
+- Taunt
+
+Purugly (F)
+IVs: 9 HP / 1 Atk / 20 Def / 5 SpA / 23 SpD / 4 Spe
+Ability: Thick Fat
+Level: 46
+Mild Nature
+=Met_Location=420
+.Version=49
+~=Generation=8
+- Taunt
+- Retaliate
+- Slash
+- Body Slam
+
+Chingling (M)
+IVs: 3 HP / 12 Atk / 11 SpA / 26 SpD / 24 Spe
+Ability: Levitate
+Level: 12
+Calm Nature
+=Met_Location=214
+.Version=48
+~=Generation=8
+- Growl
+- Astonish
+- Confusion
+- Yawn
+
+Stunky (M)
+IVs: 11 HP / 13 Atk / 26 Def / 15 SpA / 19 SpD / 28 Spe
+Ability: Aftermath
+Level: 15
+Sassy Nature
+Ball: Master Ball
+=Met_Location=362
+.Version=48
+~=Generation=8
+- Smokescreen
+- Acid Spray
+- Fury Swipes
+- Focus Energy
+
+Skuntank (M)
+IVs: 16 HP / 15 Atk / 6 Def / 26 SpA / 2 SpD / 23 Spe
+Ability: Stench
+Level: 58
+Serious Nature
+Ball: Master Ball
+=Met_Location=570
+.Version=48
+~=Generation=8
+- Crunch
+- Belch
+- Venom Drench
+- Explosion
+
+Bronzor
+IVs: 3 HP / 24 Atk / 5 Def / 18 SpA / 15 SpD / 22 Spe
+Ability: Levitate
+Level: 16
+Naughty Nature
+Ball: Master Ball
+=Met_Location=293
+.Version=48
+~=Generation=8
+- Confuse Ray
+- Payback
+- Imprison
+- Gyro Ball
+
+Bronzong
+IVs: 12 HP / 3 Atk / 26 Def / 0 SpA / 11 SpD / 29 Spe
+Ability: Levitate
+Level: 38
+Hasty Nature
+Ball: Master Ball
+=Met_Location=204
+.Version=48
+~=Generation=8
+- Safeguard
+- Extrasensory
+- Heavy Slam
+- Iron Defense
+
+Bonsly (M)
+IVs: 26 HP / 0 Atk / 18 Def / 13 SpA / 9 SpD / 25 Spe
+Ability: Rock Head
+Level: 18
+Docile Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Flail
+- Rock Throw
+- Block
+- Mimic
+
+Mime Jr. (F)
+IVs: 2 HP / 5 Atk / 7 Def / 25 SpA / 7 SpD / 28 Spe
+Ability: Soundproof
+Level: 20
+Modest Nature
+Ball: Master Ball
+=Met_Location=373
+.Version=48
+~=Generation=8
+- Encore
+- Confusion
+- Role Play
+- Protect
+
+Chatot (M)
+IVs: 23 HP / 8 Def / 2 SpA / 28 SpD / 14 Spe
+Ability: Tangled Feet
+Level: 38
+Adamant Nature
+=Met_Location=407
+.Version=48
+~=Generation=8
+- Taunt
+- Round
+- Mimic
+- Echoed Voice
+
+Charap (Chatot) (F) @ Leppa Berry
+IVs: 17 HP / 8 Atk / 29 Def / 17 SpA / 23 SpD / 25 Spe
+Ability: Tangled Feet
+Level: 12
+Lonely Nature
+=Met_Location=30001
+.Version=49
+~=Generation=8
+- Chatter
+- Sing
+- Peck
+- Growl
+
+Spiritomb (F)
+IVs: 22 HP / 1 Atk / 9 Def / 4 SpA / 21 SpD / 22 Spe
+Ability: Pressure
+Level: 25
+Timid Nature
+Ball: Master Ball
+=Met_Location=367
+.Version=48
+~=Generation=8
+- Spite
+- Payback
+- Nasty Plot
+- Hex
+
+Gible (F)
+IVs: 8 HP / 26 Atk / 26 Def / 7 SpA / 19 SpD / 8 Spe
+Ability: Sand Veil
+Level: 15
+Rash Nature
+Ball: Master Ball
+=Met_Location=293
+.Version=48
+~=Generation=8
+- Sand Tomb
+- Tackle
+- Sand Attack
+- Dragon Breath
+
+Gabite (F)
+IVs: 24 HP / 24 Atk / 15 Def / 7 SpA / 10 SpD / 7 Spe
+Ability: Sand Veil
+Level: 59
+Impish Nature
+Ball: Master Ball
+=Met_Location=568
+.Version=48
+~=Generation=8
+- Thrash
+- Dragon Claw
+- Dig
+- Sandstorm
+
+Endy (Garchomp) (M) @ Leftovers
+EVs: 252 Atk / 6 SpD / 252 Spe
+Ability: Sand Veil
+Adamant Nature
+Ball: Master Ball
+=Met_Location=293
+.Version=48
+~=Generation=8
+- False Swipe
+- Crunch
+- Earthquake
+- Dragon Rush
+
+Garchomp (F)
+IVs: 24 HP / 24 Atk / 15 Def / 7 SpA / 10 SpD / 7 Spe
+Ability: Sand Veil
+Level: 60
+Impish Nature
+Ball: Master Ball
+=Met_Location=568
+.Version=48
+~=Generation=8
+- Crunch
+- Dragon Claw
+- Dig
+- Sandstorm
+
+Munchlax (M) @ Leftovers
+IVs: 14 HP / 20 Atk / 5 Def / 23 SpA / 24 SpD / 7 Spe
+Ability: Pickup
+Level: 63
+Timid Nature
+Ball: Master Ball
+=Met_Location=605
+.Version=48
+~=Generation=8
+- Charm
+- Flail
+- Belly Drum
+- Last Resort
+
+Lucario (M)
+IVs: 23 HP / 4 Atk / 4 Def / 5 SpA / 27 SpD / 3 Spe
+Ability: Inner Focus
+Level: 2
+Calm Nature
+=Met_Level=1
+.Version=48
+~=Generation=8
+- Quick Attack
+- Endure
+- Aura Sphere
+
+Hippopotas (M)
+IVs: 29 HP / 6 Atk / 30 Def / 14 SpA / 11 SpD / 5 Spe
+Ability: Sand Stream
+Level: 62
+Timid Nature
+Ball: Master Ball
+=Met_Location=609
+.Version=48
+~=Generation=8
+- Revenge
+- Double-Edge
+- Fissure
+- Slack Off
+
+Hippowdon (M)
+IVs: 15 HP / 12 Atk / 15 Def / 23 SpA / 14 SpD / 21 Spe
+Ability: Sand Stream
+Level: 54
+Hasty Nature
+Ball: Master Ball
+=Met_Location=416
+.Version=48
+~=Generation=8
+- Roar
+- Rest
+- Earthquake
+- Double-Edge
+
+Drapion (M)
+IVs: 16 HP / 28 Atk / 22 Def / 6 SpA / 14 SpD / 1 Spe
+Ability: Battle Armor
+Level: 61
+Lax Nature
+Ball: Master Ball
+=Met_Location=556
+.Version=48
+~=Generation=8
+- Whirlwind
+- X-Scissor
+- Acupressure
+- Crunch
+
+Toxicroak (M)
+IVs: 2 HP / 7 Atk / 1 Def / 15 SpA / 28 SpD / 4 Spe
+Ability: Dry Skin
+Level: 63
+Naughty Nature
+Ball: Master Ball
+=Met_Location=568
+.Version=48
+~=Generation=8
+- Quick Guard
+- Nasty Plot
+- Sludge Bomb
+- Belch
+
+Carnivine (M)
+IVs: 1 HP / 20 Atk / 26 Def / 13 SpA / 16 SpD / 0 Spe
+Ability: Levitate
+Level: 28
+Adamant Nature
+Ball: Safari Ball
+=Met_Location=219
+.Version=48
+~=Generation=8
+- Bite
+- Vine Whip
+- Sweet Scent
+- Ingrain
+
+Finneon (M)
+IVs: 8 HP / 10 Atk / 13 Def / 29 SpA / 19 SpD / 1 Spe
+Ability: Swift Swim
+Level: 22
+Impish Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Water Gun
+- Attract
+- Rain Dance
+- Gust
+
+Lumineon (F)
+IVs: 0 HP / 17 Atk / 22 Def / 27 SpA / 20 SpD / 13 Spe
+Ability: Swift Swim
+Level: 39
+Adamant Nature
+Ball: Master Ball
+=Met_Location=197
+.Version=48
+~=Generation=8
+- Water Pulse
+- Flail
+- Safeguard
+- Aqua Ring
+
+Mantyke (M)
+IVs: 10 HP / 16 Atk / 23 Def / 5 SpD / 20 Spe
+Ability: Swift Swim
+Level: 39
+Lonely Nature
+Ball: Master Ball
+=Met_Location=486
+.Version=48
+~=Generation=8
+- Bubble Beam
+- Headbutt
+- Air Slash
+- Aqua Ring
+
+Snover (F)
+IVs: 23 HP / 20 Atk / 27 Def / 9 SpA / 28 SpD / 16 Spe
+Ability: Snow Warning
+Level: 32
+Modest Nature
+Ball: Master Ball
+=Met_Location=395
+.Version=48
+~=Generation=8
+- Ice Shard
+- Razor Leaf
+- Icy Wind
+- Swagger
+
+Abomasnow (F)
+IVs: 16 HP / 15 Atk / 3 SpA / 27 SpD / 12 Spe
+Ability: Snow Warning
+Level: 40
+Brave Nature
+Ball: Master Ball
+=Met_Location=207
+.Version=48
+~=Generation=8
+- Razor Leaf
+- Icy Wind
+- Swagger
+- Ingrain
+
+Weavile (F)
+IVs: 14 HP / 12 Atk / 23 Def / 1 SpD / 27 Spe
+Ability: Pressure
+Level: 36
+Bold Nature
+Ball: Master Ball
+=Met_Location=351
+.Version=48
+~=Generation=8
+- Quick Attack
+- Metal Claw
+- Icy Wind
+- Hone Claws
+
+Magnezone
+IVs: 10 HP / 23 Atk / 5 Def / 26 SpA / 20 SpD / 5 Spe
+Ability: Magnet Pull
+Level: 63
+Rash Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=48
+~=Generation=8
+- Metal Sound
+- Light Screen
+- Tri Attack
+- Zap Cannon
+
+Lickilicky (F)
+IVs: 15 HP / 22 Atk / 17 Def / 26 SpA / 4 SpD / 22 Spe
+Ability: Own Tempo
+Level: 62
+Quiet Nature
+Ball: Master Ball
+=Met_Location=577
+.Version=48
+~=Generation=8
+- Body Slam
+- Slam
+- Power Whip
+- Rollout
+
+Rhyperior (M)
+IVs: 14 HP / 8 Atk / 17 Def / 13 SpA / 19 SpD / 6 Spe
+Ability: Lightning Rod
+Level: 61
+Relaxed Nature
+Ball: Master Ball
+=Met_Location=569
+.Version=48
+~=Generation=8
+- Crush Claw
+- Earthquake
+- Stone Edge
+- Megahorn
+
+Tangrowth (F)
+IVs: 18 HP / 29 Atk / 18 Def / 22 SpA / 27 SpD / 19 Spe
+Ability: Leaf Guard
+Level: 62
+Bashful Nature
+Ball: Master Ball
+=Met_Location=597
+.Version=48
+~=Generation=8
+- Nature Power
+- Power Whip
+- Ingrain
+- Grassy Terrain
+
+Electivire (M)
+IVs: 21 HP / 13 Atk / 1 Def / 18 SpA / 23 SpD / 30 Spe
+Ability: Motor Drive
+Level: 60
+Bold Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Dynamic Punch
+- Thunderbolt
+- Light Screen
+- Thunder
+
+Magmortar (F)
+IVs: 30 HP / 29 Atk / 28 Def / 4 SpA / 7 SpD / 4 Spe
+Ability: Flame Body
+Level: 59
+Hardy Nature
+Ball: Master Ball
+=Met_Location=602
+.Version=49
+~=Generation=8
+- Mega Punch
+- Flamethrower
+- Sunny Day
+- Fire Blast
+
+Togekiss (M)
+IVs: 11 HP / 30 Atk / 30 Def / 25 SpA / 18 SpD / 8 Spe
+Ability: Hustle
+Level: 59
+Bold Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Fairy Wind
+- Air Slash
+- Last Resort
+- Wish
+
+Yanmega (M)
+IVs: 3 Def
+Ability: Tinted Lens
+Level: 33
+Lax Nature
+.Version=48
+~=Generation=8
+- Uproar
+- Aerial Ace
+- Ancient Power
+- Double Team
+
+Glaceon (M)
+IVs: 18 HP / 26 Atk / 9 Def / 0 SpA / 14 SpD / 10 Spe
+Ability: Snow Cloak
+Level: 19
+Jolly Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Icy Wind
+- Sand Attack
+- Quick Attack
+- Baby-Doll Eyes
+
+Gliscor (M)
+IVs: 14 HP / 22 Atk / 23 Def / 22 SpA / 17 SpD / 6 Spe
+Ability: Sand Veil
+Level: 60
+Bashful Nature
+=Met_Location=565
+.Version=48
+~=Generation=8
+- Feint
+- Earthquake
+- Swords Dance
+- Guillotine
+
+Mamoswine (M)
+IVs: 11 HP / 12 Atk / 19 Def / 7 SpA / 10 SpD / 24 Spe
+Ability: Oblivious
+Level: 63
+Sassy Nature
+Ball: Master Ball
+=Met_Location=576
+.Version=48
+~=Generation=8
+- Double-Edge
+- Ancient Power
+- Earthquake
+- Blizzard
+
+Porygon-Z
+IVs: 16 HP / 14 Atk / 29 Def / 30 SpA / 15 SpD / 27 Spe
+Ability: Download
+Level: 18
+Rash Nature
+Ball: Master Ball
+=Met_Location=297
+.Version=48
+~=Generation=8
+- Conversion
+- Recycle
+- Magnet Rise
+- Thunder Shock
+
+Gallade (M)
+IVs: 29 HP / 20 Atk / 29 Def / 10 SpA / 16 SpD / 27 Spe
+Ability: Steadfast
+Level: 60
+Rash Nature
+Ball: Master Ball
+=Met_Location=580
+.Version=48
+~=Generation=8
+- Knock Off
+- Slash
+- Dream Eater
+- Future Sight
+
+Probopass (F) @ Magnet
+IVs: 10 HP / 29 Atk / 12 SpA / 1 SpD / 21 Spe
+Ability: Magnet Pull
+Level: 15
+Calm Nature
+Ball: Master Ball
+=Met_Location=362
+.Version=48
+~=Generation=8
+- Tri Attack
+- Block
+- Rock Throw
+- Thunder Wave
+
+Dusknoir (M)
+IVs: 1 Atk / 29 Def / 18 SpA / 8 SpD / 5 Spe
+Ability: Pressure
+Level: 61
+Hasty Nature
+Ball: Master Ball
+=Met_Location=561
+.Version=48
+~=Generation=8
+- Imprison
+- Curse
+- Shadow Ball
+- Future Sight
+
+Froslass (F)
+IVs: 8 HP / 12 Atk / 13 Def / 14 SpA / 27 SpD / 25 Spe
+Ability: Snow Cloak
+Level: 63
+Modest Nature
+Ball: Master Ball
+=Met_Location=581
+.Version=48
+~=Generation=8
+- Hex
+- Headbutt
+- Crunch
+- Blizzard
+
+Rotom
+IVs: 10 HP / 16 Atk / 5 Def / 16 SpA / 7 SpD / 6 Spe
+Ability: Levitate
+Level: 15
+Calm Nature
+Ball: Master Ball
+=Met_Location=311
+.Version=49
+~=Generation=8
+- Double Team
+- Thunder Shock
+- Confuse Ray
+- Charge
+
+Rotom-Wash
+IVs: 29 HP / 26 Atk / 28 Def / 21 SpA / 25 SpD / 3 Spe
+Ability: Levitate
+Level: 15
+Lonely Nature
+Ball: Master Ball
+=Met_Location=311
+.Version=48
+~=Generation=8
+- Double Team
+- Thunder Shock
+- Confuse Ray
+- Charge
+
+Uxie
+IVs: 27 HP / 30 Atk / 27 Def
+Ability: Levitate
+Level: 50
+Naive Nature
+Ball: Master Ball
+=Met_Location=331
+.Version=49
+~=Generation=8
+- Imprison
+- Extrasensory
+- Amnesia
+- Psychic
+
+Mesprit
+IVs: 22 HP / 19 Def / 2 Spe
+Ability: Levitate
+Level: 50
+Quiet Nature
+Ball: Master Ball
+=Met_Location=359
+.Version=48
+~=Generation=8
+- Imprison
+- Extrasensory
+- Charm
+- Psychic
+
+Azelf
+IVs: 0 HP / 22 SpA / 4 SpD
+Ability: Levitate
+Level: 50
+Quiet Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=49
+~=Generation=8
+- Imprison
+- Extrasensory
+- Nasty Plot
+- Psychic
+
+Dialga
+IVs: 2 HP / 9 Def / 8 SpA
+Ability: Pressure
+Level: 47
+Hardy Nature
+Ball: Master Ball
+=Met_Location=216
+.Version=48
+~=Generation=8
+- Ancient Power
+- Slash
+- Flash Cannon
+- Roar of Time
+
+Palkia
+IVs: 10 HP
+Ability: Pressure
+Level: 47
+Brave Nature
+Ball: Master Ball
+=Met_Location=217
+.Version=49
+~=Generation=8
+- Ancient Power
+- Slash
+- Aqua Ring
+- Spacial Rend
+
+Heatran (F)
+IVs: 1 HP / 0 Def / 14 SpD
+Ability: Flash Fire
+Level: 70
+Naughty Nature
+Ball: Master Ball
+=Met_Location=262
+.Version=49
+~=Generation=8
+- Metal Sound
+- Earth Power
+- Heat Wave
+- Stone Edge
+
+Regigigas
+IVs: 10 HP / 12 Def / 22 SpA
+Ability: Slow Start
+Level: 70
+Careful Nature
+Ball: Master Ball
+=Met_Location=291
+.Version=49
+~=Generation=8
+- Wide Guard
+- Zen Headbutt
+- Heavy Slam
+- Hammer Arm
+
+Giratina
+IVs: 29 HP / 13 Atk / 0 SpA
+Ability: Pressure
+Level: 70
+Brave Nature
+Ball: Master Ball
+=Met_Location=266
+.Version=48
+~=Generation=8
+- Shadow Force
+- Pain Split
+- Aura Sphere
+- Dragon Claw
+
+Giratina-Origin @ Griseous Orb
+IVs: 8 Atk / 20 SpA / 0 Spe
+Ability: Levitate
+Level: 70
+Careful Nature
+Ball: Master Ball
+=Met_Location=266
+.Version=49
+~=Generation=8
+- Shadow Force
+- Pain Split
+- Aura Sphere
+- Dragon Claw
+
+Cresselia (F)
+IVs: 14 HP / 13 Def / 2 Spe
+Ability: Levitate
+Level: 50
+Gentle Nature
+Ball: Master Ball
+.Met_Location=359
+.Version=48
+~=Generation=8
+- Slash
+- Psycho Cut
+- Moonlight
+- Safeguard
