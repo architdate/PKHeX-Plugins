@@ -89,15 +89,15 @@ namespace PKHeX.Core.AutoMod
                 var combination = c.ToArray();
                 if (combination.Length <= successful_combination.Length)
                     continue;
-                var new_moves = combination.Concat(Enumerable.Repeat(0, 4 - combination.Length));
+                var new_moves = combination.Concat(Enumerable.Repeat(0, 4 - combination.Length)).ToArray();
                 blank.ApplySetDetails(set);
-                blank.SetMoves(new_moves.ToArray(), true);
+                blank.SetMoves(new_moves, true);
                 blank.SetRecordFlags();
 
                 if (sav.Generation <= 2)
                     blank.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
 
-                var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: set.Moves, gamelist);
+                var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: new_moves, gamelist);
                 if (set is RegenTemplate r && r.Regen.EncounterFilters is { } x)
                     encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(x, enc));
                 if (encounters.Any())
