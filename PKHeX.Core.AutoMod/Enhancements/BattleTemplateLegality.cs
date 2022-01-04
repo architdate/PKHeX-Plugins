@@ -7,11 +7,11 @@ namespace PKHeX.Core.AutoMod
     public static class BattleTemplateLegality
     {
         public const string ANALYSIS_INVALID = "No possible encounter could be found. Specific analysis for this set is unavailable.";
-        private static string SPECIES_UNAVAILABLE_FORM => "{0} with form {1} is unavailable in the game.";
+        private static string SPECIES_UNAVAILABLE_FORM => "{0} with form {1} is unavailable in this game.";
         private static string SPECIES_UNAVAILABLE => "{0} is unavailable in the game.";
-        private static string INVALID_MOVES => "{0} cannot learn the following move(s) in the game: {1}.";
+        private static string INVALID_MOVES => "{0} cannot learn the following move(s) in this game: {1}.";
         private static string ALL_MOVES_INVALID => "All the requested moves for this Pokémon are invalid.";
-        private static string LEVEL_INVALID => "Requested level is lower than the minimum possible level for {0}. Minimum required level is {1}";
+        private static string LEVEL_INVALID => "Requested level is lower than the minimum possible level for {0}. Minimum required level is {1}.";
         private static string ONLY_HIDDEN_ABILITY_AVAILABLE => "You can only obtain {0} with hidden ability in this game.";
         private static string HIDDEN_ABILITY_UNAVAILABLE => "You cannot obtain {0} with hidden ability in this game.";
 
