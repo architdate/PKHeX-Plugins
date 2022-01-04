@@ -115,7 +115,7 @@ namespace PKHeX.Core.AutoMod
             new Tuple<Species, int> ( Calyrex, 2 ),
         };
 
-        public static HashSet<int> Gen1TradeEvos = new () { (int)Species.Kadabra, (int)Species.Machoke, (int)Species.Graveler, (int)Species.Haunter };
+        public static HashSet<int> Gen1TradeEvos = new () { (int)Kadabra, (int)Machoke, (int)Graveler, (int)Haunter };
 
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
         {
@@ -511,7 +511,7 @@ namespace PKHeX.Core.AutoMod
                 gt.Region = o.Region;
                 if (pk is PK7 pk7 && pk.Generation <= 2)
                     pk7.FixVCRegion();
-                if (pk.Species is (int)Species.Vivillon or (int)Species.Spewpa or (int)Species.Scatterbug)
+                if (pk.Species is (int)Vivillon or (int)Spewpa or (int)Scatterbug)
                     pk.FixVivillonRegion();
                 return;
             }
@@ -591,7 +591,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         private static readonly ushort[] Arceus_PlateIDs = { 303, 306, 304, 305, 309, 308, 310, 313, 298, 299, 301, 300, 307, 302, 311, 312, 644 };
-        public static int? GetArceusHeldItemFromForm(int form) => 1 <= form && form <= 17 ? Arceus_PlateIDs[form - 1] : null;
+        public static int? GetArceusHeldItemFromForm(int form) => form is >= 1 and <= 17 ? Arceus_PlateIDs[form - 1] : null;
         public static int? GetSilvallyHeldItemFromForm(int form) => form == 0 ? null : form + 903;
         public static int? GetGenesectHeldItemFromForm(int form) => form == 0 ? null : form + 115;
     }

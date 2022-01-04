@@ -5,10 +5,10 @@ namespace PKHeX.Core.Injection
 {
     public static class InjectionUtil
     {
-        public const ulong INVALID_PTR = 0; 
+        public const ulong INVALID_PTR = 0;
         public static ulong GetPointerAddress(this ICommunicatorNX sb, string ptr, bool heaprealtive=true)
         {
-            if (string.IsNullOrWhiteSpace(ptr) || ptr.IndexOfAny(new char[] { '-', '/', '*' }) != -1)
+            if (string.IsNullOrWhiteSpace(ptr) || ptr.IndexOfAny(new[] { '-', '/', '*' }) != -1)
                 return INVALID_PTR;
             while (ptr.Contains("]]"))
                 ptr = ptr.Replace("]]", "]+0]");
@@ -16,10 +16,10 @@ namespace PKHeX.Core.Injection
             if (!ptr.EndsWith("]"))
             {
                 finadd = Util.GetHexValue(ptr.Split('+').Last());
-                ptr = ptr.Substring(0, ptr.LastIndexOf('+'));
+                ptr = ptr[..ptr.LastIndexOf('+')];
             }
             var jumps = ptr.Replace("main", "").Replace("[", "").Replace("]", "").Split(new[] { "+" }, StringSplitOptions.RemoveEmptyEntries);
-            if (jumps.Length == 0) 
+            if (jumps.Length == 0)
                 return INVALID_PTR;
 
             var initaddress = Util.GetHexValue(jumps[0].Trim());

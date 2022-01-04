@@ -15,7 +15,7 @@ namespace PKHeX.Core.AutoMod
         private static string ONLY_HIDDEN_ABILITY_AVAILABLE => "You can only obtain {0} with hidden ability in this game.";
         private static string HIDDEN_ABILITY_UNAVAILABLE => "You cannot obtain {0} with hidden ability in this game.";
 
-        public static string SetAnalysis(this RegenTemplate set, SaveFile sav)
+        public static string SetAnalysis(this IBattleTemplate set, ITrainerInfo sav, PKM blank)
         {
             var species_name = SpeciesName.GetSpeciesNameGeneration(set.Species, (int)LanguageID.English, sav.Generation);
             var analysis = set.Form == 0 ? string.Format(SPECIES_UNAVAILABLE, species_name)
@@ -26,17 +26,23 @@ namespace PKHeX.Core.AutoMod
             if (!gv.ExistsInGame(set.Species, set.Form))
                 return analysis; // Species does not exist in the game
 
-            // Species exists -- check if it has atleast one move. If it has no moves and it didn't generate, that makes the mon still illegal in game (moves are set to legal ones)
-            var moves = set.Moves.Where(z => z != 0);
-            var count = moves.Count();
+            // Species exists -- check if it has at least one move.
+            // If it has no moves and it didn't generate, that makes the mon still illegal in game (moves are set to legal ones)
+            var moves = set.Moves.Where(z => z != 0).ToArray();
+            var count = set.Moves.Count(z => z != 0);
 
             // Reusable data
-            var blank = sav.BlankPKM;
-            var batchedit = APILegality.AllowBatchCommands && set.Regen.HasBatchSettings;
+            var batchedit = false;
+            IReadOnlyList<StringInstruction>? filters = null;
+            if (set is RegenTemplate r)
+            {
+                filters = r.Regen.Batch.Filters;
+                batchedit = APILegality.AllowBatchCommands && r.Regen.HasBatchSettings;
+            }
             var destVer = (GameVersion)sav.Game;
-            if (destVer <= 0)
-                destVer = sav.Version;
-            var gamelist = APILegality.FilteredGameList(blank, destVer, batchedit ? set.Regen.Batch.Filters : null);
+            if (destVer <= 0 && sav is SaveFile s)
+                destVer = s.Version;
+            var gamelist = APILegality.FilteredGameList(blank, destVer, batchedit ? filters : null);
 
             // Move checks
             List<IEnumerable<int>> move_combinations = new();
@@ -51,19 +57,19 @@ namespace PKHeX.Core.AutoMod
                 var invalid_moves = string.Join(", ", original_moves.Where(z => !successful_combination.Contains(z) && z != 0).Select(z => $"{(Move)z}"));
                 return successful_combination.Length > 0 ? string.Format(INVALID_MOVES, species_name, invalid_moves) : ALL_MOVES_INVALID;
             }
-            set.Moves = original_moves;
 
             // All moves possible, get encounters
             blank.ApplySetDetails(set);
+            blank.SetMoves(original_moves, true);
             blank.SetRecordFlags();
-            var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: original_moves, gamelist);
-            if (set.Regen.EncounterFilters != null)
-                encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(set.Regen.EncounterFilters, enc));
+            var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: original_moves, gamelist).ToList();
+            if (set is RegenTemplate rt && rt.Regen.EncounterFilters is { } x)
+                encounters.RemoveAll(enc => !BatchEditing.IsFilterMatch(x, enc));
 
             // Level checks, check if level is impossible to achieve
             if (encounters.All(z => !APILegality.IsRequestedLevelValid(set, z)))
                 return string.Format(LEVEL_INVALID, species_name, encounters.Min(z => z.LevelMin));
-            encounters = encounters.Where(enc => APILegality.IsRequestedLevelValid(set, enc));
+            encounters.RemoveAll(enc => !APILegality.IsRequestedLevelValid(set, enc));
 
             // Ability checks
             var abilityreq = APILegality.GetRequestedAbility(blank, set);
@@ -75,24 +81,25 @@ namespace PKHeX.Core.AutoMod
             return ANALYSIS_INVALID;
         }
 
-        private static int[] GetValidMoves(RegenTemplate set, SaveFile sav, List<IEnumerable<int>> move_combinations, PKM blank, GameVersion[] gamelist)
+        private static int[] GetValidMoves(IBattleTemplate set, ITrainerInfo sav, List<IEnumerable<int>> move_combinations, PKM blank, GameVersion[] gamelist)
         {
-            int[] successful_combination = new int[0];
-            foreach (var combination in move_combinations)
+            int[] successful_combination = Array.Empty<int>();
+            foreach (var c in move_combinations)
             {
-                if (combination.Count() <= successful_combination.Length)
+                var combination = c.ToArray();
+                if (combination.Length <= successful_combination.Length)
                     continue;
-                var new_moves = combination.Concat(Enumerable.Repeat(0, 4 - combination.Count()));
-                set.Moves = new_moves.ToArray();
+                var new_moves = combination.Concat(Enumerable.Repeat(0, 4 - combination.Length)).ToArray();
                 blank.ApplySetDetails(set);
+                blank.SetMoves(new_moves, true);
                 blank.SetRecordFlags();
-                
+
                 if (sav.Generation <= 2)
                     blank.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
 
-                var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: set.Moves, gamelist);
-                if (set.Regen.EncounterFilters != null)
-                    encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(set.Regen.EncounterFilters, enc));
+                var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: new_moves, gamelist);
+                if (set is RegenTemplate r && r.Regen.EncounterFilters is { } x)
+                    encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(x, enc));
                 if (encounters.Any())
                     successful_combination = combination.ToArray();
             }
@@ -101,10 +108,13 @@ namespace PKHeX.Core.AutoMod
 
         private static IEnumerable<IEnumerable<T>> GetKCombs<T>(IEnumerable<T> list, int length) where T : IComparable
         {
-            if (length == 1) return list.Select(t => new T[] { t });
-            return GetKCombs(list, length - 1)
-                .SelectMany(t => list.Where(o => o.CompareTo(t.Last()) > 0),
-                    (t1, t2) => t1.Concat(new T[] { t2 }));
+            if (length == 1)
+                return list.Select(t => new[] { t });
+
+            var temp = list.ToArray();
+            return GetKCombs(temp, length - 1).SelectMany(
+                collectionSelector: t => temp.Where(o => o.CompareTo(t.Last()) > 0),
+                resultSelector: (t1, t2) => t1.Concat(new[] { t2 }));
         }
     }
 }

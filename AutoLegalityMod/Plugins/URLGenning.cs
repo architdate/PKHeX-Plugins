@@ -26,9 +26,7 @@ namespace AutoModPlugins
             {
                 info = new TeamPasteInfo(url);
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
-#pragma warning restore CA1031 // Do not catch general exception types
             {
                 WinFormsUtil.Error("An error occurred while trying to obtain the contents of the URL.", $"The exact error is as follows: {ex}");
                 return;

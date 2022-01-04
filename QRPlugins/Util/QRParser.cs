@@ -49,14 +49,12 @@ namespace AutoModPlugins
             {
                 return Image.FromStream(stream);
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 //invalid QR
                 return null;
             }
-#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private static byte[] ParseQR(Image q)

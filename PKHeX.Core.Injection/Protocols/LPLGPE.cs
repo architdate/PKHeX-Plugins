@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PKHeX.Core.Injection
 {
     public static class LPLGPE
     {
-        public static LiveHeXVersion[] SupportedVersions = new LiveHeXVersion[] { LiveHeXVersion.LGPE_v102 };
+        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.LGPE_v102 };
         public static byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
         {
             var bytes = psb.com.ReadBytes(psb.GetBoxOffset(box), len);
@@ -38,7 +37,7 @@ namespace PKHeX.Core.Injection
             var slotofs = psb.GetSlotOffset(box, slot);
             var StoredLength = psb.SlotSize - 0x1C;
             psb.com.WriteBytes(data.Slice(0, StoredLength), slotofs);
-            psb.com.WriteBytes(data.SliceEnd(StoredLength), (slotofs + (ulong) StoredLength + 0x70));
+            psb.com.WriteBytes(data.SliceEnd(StoredLength), slotofs + (ulong) StoredLength + 0x70);
         }
 
         public static void SendBox(PokeSysBotMini psb, byte[] boxData, int box)

@@ -20,7 +20,7 @@ namespace PKHeX.Core.Injection
         {
             {
                 LiveHeXVersion.SWSH_Rigel2,
-                new()
+                new Dictionary<uint, string>
                 {
                     { 0x4716c404, "B_OpenPokedex_Click" }, // KZukan
                     { 0x3F936BA9, "B_OpenPokedex_Click" }, // KZukanR1

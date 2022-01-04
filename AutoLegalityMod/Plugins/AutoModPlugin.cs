@@ -63,10 +63,12 @@ namespace AutoModPlugins
             if (latest_alm > current_alm)
             {
                 msg = PossibleVersionMismatch ? msg + "\n\nThere is also a possible version mismatch between the current ALM version and current PKHeX version." : msg;
-                var redirect = "\n\nClick on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
+                const string redirect = "\n\nClick on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
                 var res = WinFormsUtil.ALMError(msg + redirect);
-                if (res == DialogResult.Yes) Process.Start("https://discord.gg/tDMvSRv");
-                else if (res == DialogResult.No) Process.Start("https://github.com/architdate/PKHeX-Plugins/releases/latest");
+                if (res == DialogResult.Yes)
+                    Process.Start("https://discord.gg/tDMvSRv");
+                else if (res == DialogResult.No)
+                    Process.Start("https://github.com/architdate/PKHeX-Plugins/releases/latest");
             }
         }
 
@@ -91,14 +93,11 @@ namespace AutoModPlugins
             return modmenu;
         }
 
-        private static ToolStripMenuItem CreateBaseGroupItem()
+        private static ToolStripMenuItem CreateBaseGroupItem() => new(ParentMenuText)
         {
-            return new(ParentMenuText)
-            {
-                Image = Resources.menuautolegality,
-                Name = ParentMenuName,
-            };
-        }
+            Image = Resources.menuautolegality,
+            Name = ParentMenuName,
+        };
 
         protected abstract void AddPluginControl(ToolStripDropDownItem modmenu);
 

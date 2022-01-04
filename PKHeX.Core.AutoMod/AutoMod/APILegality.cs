@@ -187,7 +187,7 @@ namespace PKHeX.Core.AutoMod
 
             // No HOME yet
             if (GameVersion.BDSP.Contains(destVer))
-                gamelist = new GameVersion[] { GameVersion.BD, GameVersion.SP };
+                gamelist = new[] { GameVersion.BD, GameVersion.SP };
 
             if (filters != null)
             {
@@ -336,15 +336,12 @@ namespace PKHeX.Core.AutoMod
         {
             const int SharedNest = 162; // Shared Nest for online encounter
             const int MaxLair = 244; // Dynamax Adventures
-            switch (enc)
+            pk.Met_Location = enc switch
             {
-                case EncounterStatic8N or EncounterStatic8ND or EncounterStatic8NC { Location: 0 }:
-                    pk.Met_Location = SharedNest;
-                    break;
-                case EncounterStatic8U { Location: 0 }:
-                    pk.Met_Location = MaxLair;
-                    break;
-            }
+                EncounterStatic8N or EncounterStatic8ND or EncounterStatic8NC { Location: 0 } => SharedNest,
+                EncounterStatic8U { Location: 0 } => MaxLair,
+                _ => pk.Met_Location,
+            };
             return pk;
         }
 
@@ -883,12 +880,9 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">pokemon to edit</param>
         /// <param name="shiny">Shinytype requested</param>
-        /// <param name="flawless">number of flawless ivs</param>
-        /// <param name="fixedseed">Optional fixed RNG seed</param>
+        /// <param name="gender"></param>
         public static void FindEggPIDIV8b(PKM pk, Shiny shiny, int gender)
         {
-            uint seed;
-            Xoroshiro128Plus8b rng;
             var ivs = new[] { -1, -1, -1, -1, -1, -1 };
             var IVs = pk.IVs;
             var required_ivs = new[] { IVs[0], IVs[1], IVs[2], IVs[4], IVs[5], IVs[3] };
@@ -897,11 +891,11 @@ namespace PKHeX.Core.AutoMod
 
             while (true)
             {
-                seed = Util.Rand32();
-                rng = new Xoroshiro128Plus8b(seed);
+                var seed = Util.Rand32();
+                var rng = new Xoroshiro128Plus8b(seed);
 
-                var nido_family_f = new int[] { (int)Species.NidoranF, (int)Species.Nidorina, (int)Species.Nidoqueen };
-                var nido_family_m = new int[] { (int)Species.NidoranM, (int)Species.Nidorino, (int)Species.Nidoking };
+                var nido_family_f = new[] { (int)Species.NidoranF, (int)Species.Nidorina, (int)Species.Nidoqueen };
+                var nido_family_m = new[] { (int)Species.NidoranM, (int)Species.Nidorino, (int)Species.Nidoking };
                 if (nido_family_m.Contains(pk.Species) || nido_family_f.Contains(pk.Species))
                 {
                     var nido_roll = rng.NextUInt(2);
@@ -911,7 +905,7 @@ namespace PKHeX.Core.AutoMod
                         continue;
                 }
 
-                if (pk.Species == (int)Species.Illumise || pk.Species == (int)Species.Volbeat)
+                if (pk.Species is (int)Species.Illumise or (int)Species.Volbeat)
                 {
                     if (rng.NextUInt(2) != (int)Species.Illumise - pk.Species)
                         continue;
@@ -931,25 +925,39 @@ namespace PKHeX.Core.AutoMod
                         continue;
                 }
 
-                var nature = rng.NextUInt(25); // assume one parent always carry an everstone
-                var ability_val = rng.NextUInt(100); // assume the ability is changed using capsule/patch (assume parent is ability 0/1)
+                // nature
+                _ = rng.NextUInt(25); // assume one parent always carry an everstone
+
+                // ability
+                _ = rng.NextUInt(100); // assume the ability is changed using capsule/patch (assume parent is ability 0/1)
 
                 // assume other parent always has destiny knot
-                var inheritCount = 5;
+                const int inheritCount = 5;
                 var inherited = 0;
                 while (inherited < inheritCount)
                 {
                     var stat = rng.NextUInt(6);
-                    if (ivs[stat] == -1)
-                    {
-                        rng.NextUInt(2); // decides which parents iv to inherit, assume that parent has the required IV
-                        ivs[stat] = required_ivs[stat];
-                        inherited += 1;
-                    }
+                    if (ivs[stat] != -1)
+                        continue;
+
+                    rng.NextUInt(2); // decides which parents iv to inherit, assume that parent has the required IV
+                    ivs[stat] = required_ivs[stat];
+                    inherited++;
                 }
-                var ivs2 = new int[] { (int)rng.NextUInt(32), (int)rng.NextUInt(32), (int)rng.NextUInt(32), (int)rng.NextUInt(32), (int)rng.NextUInt(32), (int)rng.NextUInt(32) };
+                Span<uint> ivs2 = stackalloc[]
+                {
+                    rng.NextUInt(32),
+                    rng.NextUInt(32),
+                    rng.NextUInt(32),
+                    rng.NextUInt(32),
+                    rng.NextUInt(32),
+                    rng.NextUInt(32),
+                };
                 for (int i = 0; i < 6; i++)
-                    if (ivs[i] == -1) ivs[i] = ivs2[i];
+                {
+                    if (ivs[i] == -1)
+                        ivs[i] = (int)ivs2[i];
+                }
                 // if (!ivs.SequenceEqual(required_ivs))
                 //    continue;
                 pk.IV_HP = ivs[0];
@@ -962,7 +970,7 @@ namespace PKHeX.Core.AutoMod
                 pk.EncryptionConstant = rng.NextUInt();
 
                 // PID dissociated completely (assume no masuda and no shiny charm)
-                if (shiny == Shiny.Never || shiny == Shiny.Random)
+                if (shiny is Shiny.Never or Shiny.Random)
                     pk.SetUnshiny();
                 else pk.PID = SimpleEdits.GetShinyPID(pk.TID, pk.SID, pk.PID, shiny == Shiny.AlwaysSquare ? 0 : 1);
                 break;
