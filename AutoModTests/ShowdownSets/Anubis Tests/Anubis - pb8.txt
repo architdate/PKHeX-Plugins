@@ -529,7 +529,7 @@ Ball: Master Ball
 Geodude (M)
 IVs: 30 HP / 13 Atk / 5 Def / 20 SpA / 10 SpD / 27 Spe
 Ability: Rock Head
-Level: 19
+Level: 22
 Bold Nature
 =Met_Location=294
 .Version=49
@@ -568,7 +568,7 @@ Lax Nature
 Geodude (M)
 IVs: 19 HP / 16 Atk / 14 Def / 4 SpA / 2 SpD / 21 Spe
 Ability: Sturdy
-Level: 21
+Level: 24
 Mild Nature
 =Met_Location=296
 .Version=48
@@ -662,7 +662,7 @@ Graveler (F)
 IVs: 6 HP / 9 Atk / 6 Def / 18 SpA / 11 SpD / 14 Spe
 EVs: 5 Atk / 9 Def / 5 SpA / 16 Spe
 Ability: Sturdy
-Level: 24
+Level: 27
 Hardy Nature
 =Met_Location=214
 .Version=48
@@ -1504,19 +1504,7 @@ IVs: 3 HP / 3 Atk / 11 SpA / 3 SpD / 2 Spe
 Ability: Swift Swim
 Level: 45
 Mild Nature
-Language: English
-=OT_Name=Diamond.
-=Met_Location=30001
-.Version=48
-~=Generation=8
-- Splash
-
-Pador (Magikarp) (F) @ Lum Berry
-IVs: 3 HP / 3 Atk / 11 SpA / 3 SpD / 2 Spe
-Ability: Swift Swim
-Level: 45
-Mild Nature
-Language: English
+Language: German
 =OT_Name=The Master
 =Met_Location=30001
 .Version=48
@@ -2035,7 +2023,7 @@ Ball: Safari Ball
 Murkrow (M)
 IVs: 8 HP / 22 Atk / 25 Def / 21 SpA / 12 SpD / 4 Spe
 Ability: Insomnia
-Level: 40
+Level: 43
 Bashful Nature
 =Met_Location=564
 .Version=48
@@ -2074,7 +2062,7 @@ Quirky Nature
 Misdreavus (M)
 IVs: 4 HP / 7 Atk / 7 Def / 0 SpD / 16 Spe
 Ability: Levitate
-Level: 9
+Level: 12
 Shiny: Yes
 Lonely Nature
 =Met_Location=200
@@ -3239,7 +3227,7 @@ Ball: Master Ball
 Swellow (M)
 IVs: 8 HP / 8 Atk / 6 Def / 20 SpA / 7 SpD / 9 Spe
 Ability: Guts
-Level: 18
+Level: 21
 Relaxed Nature
 =Met_Location=385
 .Version=48
@@ -3674,7 +3662,6 @@ EVs: 8 Def
 Ability: Wonder Guard
 Level: 20
 Bashful Nature
-Ball: Master Ball
 =Met_Location=200
 .Version=48
 ~=Generation=8
@@ -3701,7 +3688,6 @@ IVs: 4 HP / 11 Atk / 15 Def / 14 SpA / 25 SpD / 14 Spe
 Ability: Wonder Guard
 Level: 63
 Naughty Nature
-Ball: Master Ball
 =Met_Location=570
 .Version=48
 ~=Generation=8
@@ -4102,7 +4088,7 @@ Quirky Nature
 Cacturne (F)
 IVs: 16 HP / 11 Atk / 14 Def / 0 SpA / 2 SpD / 20 Spe
 Ability: Sand Veil
-Level: 13
+Level: 16
 Gentle Nature
 =Met_Location=567
 .Version=49
@@ -4833,7 +4819,7 @@ Modest Nature
 Starly (F)
 IVs: 17 HP / 8 Atk / 5 Def / 1 SpA / 10 SpD / 11 Spe
 Ability: Keen Eye
-Level: 21
+Level: 24
 Bold Nature
 =Met_Location=221
 .Version=49
@@ -4846,7 +4832,7 @@ Bold Nature
 Starly (M)
 IVs: 4 HP / 14 Atk / 23 Def / 4 SpA / 6 SpD / 13 Spe
 Ability: Keen Eye
-Level: 13
+Level: 16
 Bold Nature
 =Met_Location=367
 .Version=48
@@ -4859,7 +4845,7 @@ Bold Nature
 Starly (F)
 IVs: 6 HP / 15 Atk / 23 Def / 8 SpA / 23 SpD / 23 Spe
 Ability: Keen Eye
-Level: 19
+Level: 22
 Calm Nature
 =Met_Location=223
 .Version=48
@@ -4872,7 +4858,7 @@ Calm Nature
 Starly (F)
 IVs: 22 HP / 6 Atk / 8 Def / 24 SpA / 8 SpD / 0 Spe
 Ability: Keen Eye
-Level: 13
+Level: 16
 Lax Nature
 =Met_Location=367
 .Version=48
@@ -4901,7 +4887,7 @@ Starly (M)
 IVs: 20 HP / 21 Atk / 1 Def / 11 SpA / 28 SpD / 10 Spe
 EVs: 1 HP / 4 Atk / 1 Def / 3 SpA / 3 Spe
 Ability: Keen Eye
-Level: 7
+Level: 10
 Modest Nature
 Ball: Master Ball
 =Met_Location=355
@@ -4915,7 +4901,7 @@ Ball: Master Ball
 Starly (F)
 IVs: 1 HP / 17 Atk / 30 Def / 8 SpA / 28 SpD / 0 Spe
 Ability: Keen Eye
-Level: 21
+Level: 24
 Naive Nature
 =Met_Location=222
 .Version=48
@@ -4942,7 +4928,7 @@ Staravia (M)
 IVs: 10 HP / 13 Atk / 26 Def / 5 SpA / 5 SpD / 6 Spe
 EVs: 1 SpD / 2 Spe
 Ability: Intimidate
-Level: 22
+Level: 25
 Naughty Nature
 Ball: Safari Ball
 =Met_Location=224
@@ -5133,7 +5119,7 @@ Naughty Nature
 Kricketune (M)
 IVs: 14 HP / 3 Atk / 9 Def / 22 SpA / 3 SpD / 3 Spe
 Ability: Swarm
-Level: 15
+Level: 18
 Adamant Nature
 =Met_Location=383
 .Version=48

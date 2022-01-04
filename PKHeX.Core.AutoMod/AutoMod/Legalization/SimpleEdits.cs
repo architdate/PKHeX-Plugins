@@ -303,6 +303,8 @@ namespace PKHeX.Core.AutoMod
                 return;
             if (pk is not IScaledSize size)
                 return;
+            if (enc is EncounterTrade8b) // fixed height and weight
+                return;
             if (enc is WC8 w8)
             {
                 var isHOMEGift = w8.Location == 30018 || w8.GetOT(2) == "HOME";

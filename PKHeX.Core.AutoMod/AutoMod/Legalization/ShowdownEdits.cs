@@ -148,8 +148,16 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             // don't bother checking encountertrade nicknames for length validity
-            if (enc is EncounterTrade { HasNickname: true })
-                return;
+            if (enc is EncounterTrade { HasNickname: true } et && et.Nicknames.Contains(set.Nickname))
+            {
+                // Nickname matches the requested nickname already
+                if (pk.Nickname == set.Nickname)
+                    return;
+                // This should be illegal except Meister Magikarp in BDSP, however trust the user and set corresponding OT
+                var index = et.Nicknames.ToList().IndexOf(set.Nickname);
+                pk.Nickname = set.Nickname;
+                pk.OT_Name = et.TrainerNames[index];
+            }
 
             var gen = enc.Generation;
             var maxlen = Legal.GetMaxLengthNickname(gen, finallang);
