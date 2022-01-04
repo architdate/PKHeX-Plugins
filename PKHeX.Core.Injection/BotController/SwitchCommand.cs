@@ -147,6 +147,6 @@ namespace PKHeX.Core.Injection
         /// </summary>
         /// <param name="addrn">Encoding selector. Default "true" for sys-botbase.</param>
         /// <returns>Encoded command bytes</returns>
-        public static byte[] GetHeapBase(bool addrn = true) => Encode($"getHeapBase", addrn);
+        public static byte[] GetHeapBase(bool addrn = true) => Encode("getHeapBase", addrn);
     }
 }

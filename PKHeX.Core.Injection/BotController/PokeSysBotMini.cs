@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace PKHeX.Core.Injection
 {
     public class PokeSysBotMini
     {
-        public long BoxStart;
+        public readonly long BoxStart;
         public readonly int SlotSize;
         public readonly int SlotCount;
         public readonly int GapSize;

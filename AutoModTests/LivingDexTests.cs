@@ -13,7 +13,7 @@ namespace AutoModTests
 {
     public static class LivingDexTests
     {
-        private static GameVersion[] GetGameVersionsToTest = new[] { BD, SW, US, SN, OR, X, B2, B, Pt, E, C, RD };
+        private static readonly GameVersion[] GetGameVersionsToTest = { BD, SW, US, SN, OR, X, B2, B, Pt, E, C, RD };
 
         private static Dictionary<GameVersion, Tuple<bool, int, int>> TestLivingDex(bool includeforms, bool shiny, out bool passed)
         {
@@ -68,7 +68,6 @@ namespace AutoModTests
             Legalizer.EnableEasterEggs = false;
             APILegality.SetAllLegalRibbons = false;
             APILegality.Timeout = 99999;
-            var result_cases = new List<Dictionary<GameVersion, Tuple<bool, int, int>>>();
             var result_f_f = TestLivingDex(false, false, out bool p1);
             var result_f_t = TestLivingDex(false, true, out bool p2);
             var result_t_f = TestLivingDex(true, false, out bool p3);
@@ -81,9 +80,9 @@ namespace AutoModTests
             ModLogic.SetShiny = set_shiny;
             Directory.CreateDirectory(Path.Combine(dir, "logs"));
 
-            var res =   Status(result_f_f, false, false) + Environment.NewLine + 
-                        Status(result_t_f, true, false) + Environment.NewLine + 
-                        Status(result_f_t, false, true) + Environment.NewLine + 
+            var res =   Status(result_f_f, false, false) + Environment.NewLine +
+                        Status(result_t_f, true, false) + Environment.NewLine +
+                        Status(result_f_t, false, true) + Environment.NewLine +
                         Status(result_t_t, true, true);
 
             File.WriteAllText(Path.Combine(dir, "logs", "output_livingdex.txt"), res);
@@ -99,9 +98,9 @@ namespace AutoModTests
         {
             var sb = new StringBuilder();
             sb.Append("IncludeForms: ").Append(includeforms).Append(", SetShiny: ").Append(shiny).AppendLine();
-            foreach (var (key, value) in results)
+            foreach (var (key, (item1, item2, item3)) in results)
             {
-                sb.Append(key).Append(" : Complete - ").Append(value.Item1).Append(" | Attempts - ").Append(value.Item2).Append(" | Generated - ").Append(value.Item3).AppendLine();
+                sb.Append(key).Append(" : Complete - ").Append(item1).Append(" | Attempts - ").Append(item2).Append(" | Generated - ").Append(item3).AppendLine();
             }
             return sb.ToString();
         }

@@ -41,8 +41,9 @@ namespace AutoModTests
 
         private static GameVersion[] GetGameVersionsToTest(KeyValuePair<string, int> entry)
         {
-            var transfer = !entry.Key.Contains("notransfer");
-            return entry.Value switch
+            var (key, value) = entry;
+            var transfer = !key.Contains("notransfer");
+            return value switch
             {
                 -2 => new[] { BD },
                 -1 => transfer ? new[] { SW, GP } : new[] { GE },
@@ -61,6 +62,8 @@ namespace AutoModTests
         private static Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>> VerifyFile(string file, GameVersion[] saves)
         {
             var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("====="));
+            var sets = ShowdownParsing.GetShowdownSets(lines).ToList();
+
             var results = new Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>();
             foreach (var s in saves)
             {
@@ -68,12 +71,11 @@ namespace AutoModTests
                 var illegalsets = new List<RegenTemplate>();
                 var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
                 PKMConverter.SetPrimaryTrainer(sav);
-                var sets = ShowdownParsing.GetShowdownSets(lines).ToList();
                 var species = Enumerable.Range(1, sav.MaxSpeciesID);
                 species = sav switch
                 {
                     SAV7b => species.Where(z => z is <= 151 or 808 or 809), // only include Kanto and M&M
-                    SAV8BS => species.Where(z => z is <= 493), // only include the sinnoh national dex
+                    SAV8BS => species.Where(z => z <= 493), // only include the sinnoh national dex
                     SAV8SWSH => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
                     _ => species,
                 };
@@ -101,9 +103,7 @@ namespace AutoModTests
                             Debug.WriteLine($"Invalid Set for {(Species)set.Species} in file {file} with set: {set.Text}");
                         }
                     }
-#pragma warning disable CA1031 // Do not catch general exception types
                     catch
-#pragma warning restore CA1031 // Do not catch general exception types
                     {
                         Debug.WriteLine($"Exception for {(Species)set.Species} in file {file} with set: {set.Text}");
                     }

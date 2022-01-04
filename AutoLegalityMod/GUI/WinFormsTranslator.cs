@@ -68,9 +68,7 @@ namespace AutoModPlugins
             if (File.Exists(externalLangPath))
             {
                 try { return File.ReadAllLines(externalLangPath); }
-#pragma warning disable CA1031 // Do not catch general exception types
                 catch { /* In use? Just return the internal resource. */ }
-#pragma warning restore CA1031 // Do not catch general exception types
             }
 
             if (Util.IsStringListCached(file, out var result))
@@ -185,9 +183,7 @@ namespace AutoModPlugins
                 {
                     var _ = (Form)Activator.CreateInstance(t, new object[argCount]);
                 }
-#pragma warning disable CA1031 // Do not catch general exception types
                 catch { }
-#pragma warning restore CA1031 // Do not catch general exception types
             }
         }
 

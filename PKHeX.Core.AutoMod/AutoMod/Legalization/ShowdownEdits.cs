@@ -33,6 +33,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Showdown Set to refer</param>
+        /// <param name="enc">Encounter to reference</param>
         /// <param name="preference">Ability index (1/2/4) preferred; &lt;= 0 for any</param>
         public static void SetNatureAbility(this PKM pk, IBattleTemplate set, IEncounterable enc, int preference = -1)
         {
@@ -153,7 +154,7 @@ namespace PKHeX.Core.AutoMod
             var gen = enc.Generation;
             var maxlen = Legal.GetMaxLengthNickname(gen, finallang);
             var newnick = RegenUtil.MutateNickname(set.Nickname, finallang, (GameVersion)pk.Version);
-            var nickname = newnick.Length > maxlen ? newnick.Substring(0, maxlen) : newnick;
+            var nickname = newnick.Length > maxlen ? newnick[..maxlen] : newnick;
             if (!WordFilter.IsFiltered(nickname, out _))
                 pk.SetNickname(nickname);
             else
@@ -226,6 +227,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Showdown Set to refer</param>
+        /// <param name="enc">Encounter to reference</param>
         public static void SetMovesEVs(this PKM pk, IBattleTemplate set, IEncounterable enc)
         {
             // If no moves are requested, just keep the encounter moves
@@ -247,9 +249,9 @@ namespace PKHeX.Core.AutoMod
                 pk.SetRelearnMoves(relearn);
             }
 
-            if (pk is IAwakened pb7)
+            if (pk is IAwakened)
             {
-                SimpleEdits.SetAwakenedValues(pk, set, enc is EncounterSlot7GO);
+                pk.SetAwakenedValues(set, enc is EncounterSlot7GO);
                 return;
             }
             // In Generation 1/2 Format sets, when EVs are not specified at all, it implies maximum EVs instead!

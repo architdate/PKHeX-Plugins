@@ -51,8 +51,8 @@ namespace PKHeX.Core.AutoMod
 
         public static IEnumerable<StringInstruction>? GetEncounterFilters(IEnumerable<string> lines)
         {
-            var valid = lines.Where(z => z.StartsWith(EncounterFilterPrefix.ToString()));
-            if (valid.Count() == 0)
+            var valid = lines.Where(z => z.StartsWith(EncounterFilterPrefix.ToString())).ToList();
+            if (valid.Count == 0)
                 return null;
             var cleaned = valid.Select(z => z.TrimStart(EncounterFilterPrefix));
             var filters = StringInstruction.GetFilters(cleaned).ToArray();
@@ -68,7 +68,7 @@ namespace PKHeX.Core.AutoMod
                 if (index < 0)
                     continue;
 
-                var key = line.Substring(0, index);
+                var key = line[..index];
                 var value = line.Substring(index + 1, line.Length - key.Length - 1).Trim();
                 yield return new KeyValuePair<string, string>(key, value);
             }
@@ -121,11 +121,12 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="tr">Trainerdata to clone</param>
         /// <param name="lang">language to mutate</param>
-        /// <returns></returns>
+        /// <param name="ver"></param>
         public static ITrainerInfo MutateLanguage(this ITrainerInfo tr, LanguageID? lang, GameVersion ver)
         {
             if (lang is LanguageID.UNUSED_6 or LanguageID.Hacked or null)
                 return tr;
+
             if (tr is PokeTrainerDetails p)
             {
                 var clone = PokeTrainerDetails.Clone(p);
@@ -135,7 +136,7 @@ namespace PKHeX.Core.AutoMod
             }
             if (tr is SimpleTrainerInfo s)
             {
-                var version = GameUtil.GameVersions.FirstOrDefault(z => ver.Contains(z) && z != GameVersion.BU);
+                var version = Array.Find(GameUtil.GameVersions, z => ver.Contains(z) && z != GameVersion.BU);
                 return new SimpleTrainerInfo(version)
                 {
                     OT = MutateOT(s.OT, lang, version),
@@ -156,18 +157,18 @@ namespace PKHeX.Core.AutoMod
         {
             if (game.GetGeneration() >= 8 || lang == null)
                 return OT;
-            var full = lang == LanguageID.Japanese || lang == LanguageID.Korean || lang == LanguageID.ChineseS || lang == LanguageID.ChineseT;
+            var full = lang is LanguageID.Japanese or LanguageID.Korean or LanguageID.ChineseS or LanguageID.ChineseT;
             if (full && GlyphLegality.ContainsHalfWidth(OT))
             {
                 var max = Legal.GetMaxLengthOT(game.GetGeneration(), (LanguageID)lang);
                 var modified = GlyphLegality.StringConvert(OT, StringConversionType.FullWidth);
-                return modified.Substring(0, Math.Min(modified.Length, max));
+                return modified[..Math.Min(modified.Length, max)];
             }
             if (!full && GlyphLegality.ContainsFullWidth(OT))
             {
                 var max = Legal.GetMaxLengthOT(game.GetGeneration(), (LanguageID)lang);
                 var modified = GlyphLegality.StringConvert(OT, StringConversionType.HalfWidth);
-                return modified.Substring(0, Math.Min(modified.Length, max));
+                return modified[..Math.Min(modified.Length, max)];
             }
             return OT;
         }
@@ -177,12 +178,13 @@ namespace PKHeX.Core.AutoMod
             // Length checks are handled later in SetSpeciesLevel
             if (game.GetGeneration() >= 8 || lang == null)
                 return nick;
-            var full = lang == LanguageID.Japanese || lang == LanguageID.Korean || lang == LanguageID.ChineseS || lang == LanguageID.ChineseT;
-            if (full && GlyphLegality.ContainsHalfWidth(nick))
-                return GlyphLegality.StringConvert(nick, StringConversionType.FullWidth);
-            if (!full && GlyphLegality.ContainsFullWidth(nick))
-                return GlyphLegality.StringConvert(nick, StringConversionType.HalfWidth);
-            return nick;
+            var full = lang is LanguageID.Japanese or LanguageID.Korean or LanguageID.ChineseS or LanguageID.ChineseT;
+            return full switch
+            {
+                true when GlyphLegality.ContainsHalfWidth(nick) => GlyphLegality.StringConvert(nick, StringConversionType.FullWidth),
+                false when GlyphLegality.ContainsFullWidth(nick) => GlyphLegality.StringConvert(nick, StringConversionType.HalfWidth),
+                _ => nick,
+            };
         }
 
         public static int GetRegenAbility(int species, int gen, AbilityRequest ar)

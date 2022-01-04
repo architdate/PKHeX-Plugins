@@ -29,12 +29,10 @@ namespace AutoModPlugins
                 Clipboard.SetText(str);
                 WinFormsUtil.Alert("Exported the active box to RegenTemplate format");
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 WinFormsUtil.Error("Unable to export text to clipboard.", e.Message);
             }
-#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

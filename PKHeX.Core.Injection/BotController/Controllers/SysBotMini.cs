@@ -147,7 +147,7 @@ namespace PKHeX.Core.Injection
             foreach (var ba in split)
             {
                 WriteBytes(ba, offset, method);
-                offset += (ulong)maxlength;
+                offset += maxlength;
             }
         }
 

@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace PKHeX.Core.Injection
 {
     public static class LPBDSP
     {
-        public static LiveHeXVersion[] BrilliantDiamond = new LiveHeXVersion[] { LiveHeXVersion.BD_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113 };
-        public static LiveHeXVersion[] ShiningPearl     = new LiveHeXVersion[] { LiveHeXVersion.SP_v100, LiveHeXVersion.SP_v110, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113 };
-        public static LiveHeXVersion[] SupportedVersions = ArrayUtil.ConcatAll(BrilliantDiamond, ShiningPearl);
+        public static readonly LiveHeXVersion[] BrilliantDiamond = { LiveHeXVersion.BD_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113 };
+        public static readonly LiveHeXVersion[] ShiningPearl     = { LiveHeXVersion.SP_v100, LiveHeXVersion.SP_v110, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113 };
+        public static readonly LiveHeXVersion[] SupportedVersions = ArrayUtil.ConcatAll(BrilliantDiamond, ShiningPearl);
 
         private const int ITEM_BLOCK_SIZE = 0xBB80;
         private const int ITEM_BLOCK_SIZE_RAM = (0xBB80 / 0x10) * 0xC;
@@ -25,8 +24,7 @@ namespace PKHeX.Core.Injection
         private const int MYSTATUS_BLOCK_SIZE = 0x50;
         private const int MYSTATUS_BLOCK_SIZE_RAM = 0x34;
 
-#pragma warning disable CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
-        public static Dictionary<string, (Func<PokeSysBotMini, byte[]?>, Action<PokeSysBotMini, byte[]>)> FunctionMap = new ()
+        public static readonly Dictionary<string, (Func<PokeSysBotMini, byte[]?>, Action<PokeSysBotMini, byte[]>)> FunctionMap = new ()
         {
             { "Items",          (GetItemBlock, SetItemBlock) },
             { "MyStatus",       (GetMyStatusBlock, SetMyStatusBlock) },
@@ -34,17 +32,16 @@ namespace PKHeX.Core.Injection
             { "Daycare",        (GetDaycareBlock, SetDaycareBlock) },
         };
 
-        public static IEnumerable<Type> types = Assembly.GetAssembly(typeof(ICustomBlock)).GetTypes().Where(t => typeof(ICustomBlock).IsAssignableFrom(t) && !t.IsInterface);
-#pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
+        public static readonly IEnumerable<Type> types = Assembly.GetAssembly(typeof(ICustomBlock)).GetTypes().Where(t => typeof(ICustomBlock).IsAssignableFrom(t) && !t.IsInterface);
 
         private static ulong[] GetPokemonPointers(this PokeSysBotMini psb, int box)
         {
             var sb = (ICommunicatorNX)psb.com;
-            (string ptr, int count) boxes = RamOffsets.BoxOffsets(psb.Version);
-            var addr = InjectionUtil.GetPointerAddress(sb, boxes.ptr);
+            var (ptr, count) = RamOffsets.BoxOffsets(psb.Version);
+            var addr = sb.GetPointerAddress(ptr);
             if (addr == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
-            var b = psb.com.ReadBytes(addr, boxes.count * 8);
+            var b = psb.com.ReadBytes(addr, count * 8);
             var boxptr = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray()[box] + 0x20; // add 0x20 to remove vtable bytes
             b = sb.ReadBytesAbsolute(boxptr, psb.SlotCount * 8);
             var pkmptrs = Core.ArrayUtil.EnumerateSplit(b, 8).Select(z => BitConverter.ToUInt64(z, 0)).ToArray();
@@ -105,23 +102,12 @@ namespace PKHeX.Core.Injection
 
         public static byte[] ReadBox(PokeSysBotMini psb, int box, List<byte[]> allpkm)
         {
-            var use_legacy = false;
             if (psb.com is not ICommunicatorNX sb)
                 return ArrayUtil.ConcatAll(allpkm.ToArray());
             var pkmptrs = psb.GetPokemonPointers(box);
-            if (use_legacy)
-            {
-                foreach (var p in pkmptrs)
-                    allpkm.Add(sb.ReadBytesAbsolute(p + 0x20, psb.SlotSize));
-                return ArrayUtil.ConcatAll(allpkm.ToArray());
-            }
-            else
-            {
-                Dictionary<ulong, int> offsets = new();
-                foreach (var p in pkmptrs)
-                    offsets.Add(p + 0x20, psb.SlotSize);
-                return sb.ReadBytesAbsoluteMulti(offsets);
-            }
+
+            var offsets = pkmptrs.ToDictionary(p => p + 0x20, _ => psb.SlotSize);
+            return sb.ReadBytesAbsoluteMulti(offsets);
         }
 
         public static byte[] ReadSlot(PokeSysBotMini psb, int box, int slot)
@@ -134,7 +120,7 @@ namespace PKHeX.Core.Injection
 
         public static void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot)
         {
-            if (psb.com is not ICommunicatorNX sb) 
+            if (psb.com is not ICommunicatorNX sb)
                 return;
             var pkmptr = psb.GetPokemonPointers(box)[slot];
             sb.WriteBytesAbsolute(data, pkmptr + 0x20);
@@ -150,19 +136,19 @@ namespace PKHeX.Core.Injection
                 sb.WriteBytesAbsolute(pkmData[i], pkmptrs[i] + 0x20);
         }
 
-        public static Func<PokeSysBotMini, byte[]?> GetTrainerData = psb =>
+        public static readonly Func<PokeSysBotMini, byte[]?> GetTrainerData = psb =>
         {
             var lv = psb.Version;
             var ptr = GetTrainerPointer(lv);
             if (ptr == null || psb.com is not ICommunicatorNX sb)
                 return null;
             var retval = new byte[MYSTATUS_BLOCK_SIZE];
-            var ram_block = InjectionUtil.GetPointerAddress(sb, ptr);
+            var ram_block = sb.GetPointerAddress(ptr);
             if (ram_block == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
 
             var trainer_name = ptr.ExtendPointer(0x14);
-            var trainer_name_addr = InjectionUtil.GetPointerAddress(sb, trainer_name);
+            var trainer_name_addr = sb.GetPointerAddress(trainer_name);
             if (trainer_name_addr == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
             psb.com.ReadBytes(trainer_name_addr, 0x1A).CopyTo(retval);
@@ -186,7 +172,7 @@ namespace PKHeX.Core.Injection
             if (ptr == null)
                 return null;
             var nx = (ICommunicatorNX)psb.com;
-            var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            var addr = nx.GetPointerAddress(ptr);
             if (addr == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
             var item_blk = psb.com.ReadBytes(addr, ITEM_BLOCK_SIZE_RAM);
@@ -201,7 +187,7 @@ namespace PKHeX.Core.Injection
             if (ptr == null)
                 return;
             var nx = (ICommunicatorNX)psb.com;
-            var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            var addr = nx.GetPointerAddress(ptr);
             if (addr == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
             data = data.Slice(0, ITEM_BLOCK_SIZE);
@@ -216,7 +202,7 @@ namespace PKHeX.Core.Injection
             if (ptr == null)
                 return null;
             var nx = (ICommunicatorNX)psb.com;
-            var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            var addr = nx.GetPointerAddress(ptr);
             if (addr == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
             var item_blk = psb.com.ReadBytes(addr, UG_ITEM_BLOCK_SIZE_RAM);
@@ -231,7 +217,7 @@ namespace PKHeX.Core.Injection
             if (ptr == null)
                 return;
             var nx = (ICommunicatorNX)psb.com;
-            var addr = InjectionUtil.GetPointerAddress(nx, ptr);
+            var addr = nx.GetPointerAddress(ptr);
             if (addr == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
             data = data.Slice(0, UG_ITEM_BLOCK_SIZE);
@@ -248,10 +234,9 @@ namespace PKHeX.Core.Injection
             var ptr = GetTrainerPointer(lv);
             if (ptr == null || psb.com is not ICommunicatorNX sb)
                 return;
-            var size = MYSTATUS_BLOCK_SIZE;
-            data = data.Slice(0, size);
+            data = data.Slice(0, MYSTATUS_BLOCK_SIZE);
             var trainer_name = ptr.ExtendPointer(0x14);
-            var trainer_name_addr = InjectionUtil.GetPointerAddress(sb, trainer_name);
+            var trainer_name_addr = sb.GetPointerAddress(trainer_name);
             if (trainer_name_addr == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
 
@@ -266,7 +251,7 @@ namespace PKHeX.Core.Injection
             data.SliceEnd(0x34).CopyTo(retval, 0x18);
 
             psb.com.WriteBytes(data.Slice(0, 0x1A), trainer_name_addr);
-            psb.com.WriteBytes(retval.SliceEnd(0x8), InjectionUtil.GetPointerAddress(sb, ptr) + 0x8);
+            psb.com.WriteBytes(retval.SliceEnd(0x8), sb.GetPointerAddress(ptr) + 0x8);
         }
 
         public static byte[]? GetDaycareBlock(PokeSysBotMini psb)
@@ -275,9 +260,9 @@ namespace PKHeX.Core.Injection
             if (ptr == null)
                 return null;
             var nx = (ICommunicatorNX)psb.com;
-            var addr = InjectionUtil.GetPointerAddress(nx, ptr);
-            var parent_one = psb.com.ReadBytes(InjectionUtil.GetPointerAddress(nx, ptr.ExtendPointer(0x20, 0x20)), 0x158);
-            var parent_two = psb.com.ReadBytes(InjectionUtil.GetPointerAddress(nx, ptr.ExtendPointer(0x28, 0x20)), 0x158);
+            var addr = nx.GetPointerAddress(ptr);
+            var parent_one = psb.com.ReadBytes(nx.GetPointerAddress(ptr.ExtendPointer(0x20, 0x20)), 0x158);
+            var parent_two = psb.com.ReadBytes(nx.GetPointerAddress(ptr.ExtendPointer(0x28, 0x20)), 0x158);
             var extra = psb.com.ReadBytes(addr + 0x8, 0x18);
             var extra_arr = Core.ArrayUtil.EnumerateSplit(extra, 0x8).ToArray();
             var block = new byte[DAYCARE_BLOCK_SIZE];
@@ -295,9 +280,9 @@ namespace PKHeX.Core.Injection
             if (ptr == null)
                 return;
             var nx = (ICommunicatorNX)psb.com;
-            var addr = InjectionUtil.GetPointerAddress(nx, ptr);
-            var parent_one_addr = InjectionUtil.GetPointerAddress(nx, ptr.ExtendPointer(0x20, 0x20));
-            var parent_two_addr = InjectionUtil.GetPointerAddress(nx, ptr.ExtendPointer(0x28, 0x20));
+            var addr = nx.GetPointerAddress(ptr);
+            var parent_one_addr = nx.GetPointerAddress(ptr.ExtendPointer(0x20, 0x20));
+            var parent_two_addr = nx.GetPointerAddress(ptr.ExtendPointer(0x28, 0x20));
             data = data.Slice(0, DAYCARE_BLOCK_SIZE);
             psb.com.WriteBytes(data.Slice(0, 0x158), parent_one_addr);
             psb.com.WriteBytes(data.Slice(0x158, 0x158), parent_two_addr);
@@ -306,7 +291,6 @@ namespace PKHeX.Core.Injection
             data.Slice((0x158 * 2) + 0x4, 0x8).CopyTo(payload, 0x8);
             data.Slice((0x158 * 2) + 0x4 + 0x8, 0x4).CopyTo(payload, 0x8 * 2);
             psb.com.WriteBytes(payload, addr + 0x8);
-            return;
         }
 
         public static bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out byte[]? read)

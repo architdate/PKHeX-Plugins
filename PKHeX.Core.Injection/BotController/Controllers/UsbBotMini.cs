@@ -46,7 +46,7 @@ namespace PKHeX.Core.Injection
 
                 if (SwDevice is not IUsbDevice usb)
                     throw new Exception("Device is using a WinUSB driver. Use libusbK and create a filter.");
-                else if (!usb.UsbRegistryInfo.IsAlive)
+                if (!usb.UsbRegistryInfo.IsAlive)
                     usb.ResetDevice();
 
                 if (SwDevice.IsOpen)

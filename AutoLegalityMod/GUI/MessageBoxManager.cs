@@ -67,12 +67,12 @@ namespace System.Windows.Forms
         [StructLayout(LayoutKind.Sequential)]
         private struct CWPRETSTRUCT
         {
-            public IntPtr lResult;
-            public IntPtr lParam;
-            public IntPtr wParam;
-            public uint message;
-            public IntPtr hwnd;
-        };
+            public readonly IntPtr lResult;
+            public readonly IntPtr lParam;
+            public readonly IntPtr wParam;
+            public readonly uint message;
+            public readonly IntPtr hwnd;
+        }
 
         private static readonly HookProc hookProc = MessageBoxHookProc;
         private static readonly EnumChildProc enumProc = MessageBoxEnumProc;

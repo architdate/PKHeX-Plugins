@@ -185,10 +185,8 @@ namespace AutoModPlugins
                 // Set Trainer Data
                 SetTrainerData(SAV.SAV);
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             // Console might be disconnected...
             catch (Exception ex)
-#pragma warning restore CA1031 // Do not catch general exception types
             {
                 WinFormsUtil.Error(ex.Message);
             }
@@ -214,7 +212,7 @@ namespace AutoModPlugins
             bool readPointer = (ModifierKeys & Keys.Control) == Keys.Control;
             var txt = TB_Offset.Text;
             var offset = readPointer && Remote.Bot.com is ICommunicatorNX nx ? nx.GetPointerAddress(TB_Pointer.Text) : Util.GetHexValue64(txt);
-            if (offset.ToString("X16") != txt.ToUpper().PadLeft(16, '0') && !readPointer || offset == InjectionUtil.INVALID_PTR)
+            if ((offset.ToString("X16") != txt.ToUpper().PadLeft(16, '0') && !readPointer) || offset == InjectionUtil.INVALID_PTR)
             {
                 WinFormsUtil.Alert("Specified offset is not a valid hex string.");
                 return;
@@ -228,19 +226,19 @@ namespace AutoModPlugins
                 if (!result)
                     WinFormsUtil.Alert("No valid data is located at the specified offset.");
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 WinFormsUtil.Error("Unable to load data from the specified offset.", ex.Message);
             }
-#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private RWMethod GetRWMethod()
         {
-            if (RB_Main.Checked) return RWMethod.Main;
-            else if (RB_Absolute.Checked) return RWMethod.Absolute;
-            else return RWMethod.Heap;
+            if (RB_Main.Checked)
+                return RWMethod.Main;
+            if (RB_Absolute.Checked)
+                return RWMethod.Absolute;
+            return RWMethod.Heap;
         }
 
         private void B_ReadRAM_Click(object sender, EventArgs e)
@@ -257,63 +255,66 @@ namespace AutoModPlugins
             try
             {
                 byte[] result;
-                if (Remote.Bot.com is not ICommunicatorNX cnx) result = Remote.ReadRAM(offset, size);
+                if (Remote.Bot.com is not ICommunicatorNX cnx)
+                    result = Remote.ReadRAM(offset, size);
+                else if (RB_Main.Checked)
+                    result = cnx.ReadBytesMain(offset, size);
+                else if (RB_Absolute.Checked)
+                    result = cnx.ReadBytesAbsolute(offset, size);
                 else
-                {
-                    if (RB_Main.Checked) result = cnx.ReadBytesMain(offset, size);
-                    else if (RB_Absolute.Checked) result = cnx.ReadBytesAbsolute(offset, size);
-                    else result = Remote.ReadRAM(offset, size);
-                }
+                    result = Remote.ReadRAM(offset, size);
+
                 bool blockview = (ModifierKeys & Keys.Control) == Keys.Control;
                 PKM? pkm = null;
                 if (blockview)
                 {
                     pkm = SAV.SAV.GetDecryptedPKM(result);
-                    if (!pkm.ChecksumValid || pkm == null)
+                    if (!pkm.ChecksumValid)
                         blockview = false;
                 }
-                using (var form = new SimpleHexEditor(result, Remote.Bot, offset, GetRWMethod()))
+
+                using var form = new SimpleHexEditor(result, Remote.Bot, offset, GetRWMethod());
+                var loadgrid = blockview && ReflectUtil.GetPropertiesCanWritePublicDeclared(pkm!.GetType()).Count() > 1;
+                if (loadgrid)
                 {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-                    var loadgrid = blockview && ReflectUtil.GetPropertiesCanWritePublicDeclared(pkm.GetType()).Count() > 1;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
-                    if (loadgrid)
+                    form.PG_BlockView.Visible = true;
+                    form.PG_BlockView.SelectedObject = pkm;
+                }
+                var res = form.ShowDialog();
+                if (res != DialogResult.OK)
+                    return;
+
+                if (loadgrid)
+                {
+                    PKM pk = pkm!;
+                    var pkmbytes = RamOffsets.WriteBoxData(Remote.Bot.Version) ? pk.EncryptedBoxData : pk.EncryptedPartyData;
+                    if (pkmbytes.Length == Remote.Bot.SlotSize)
                     {
-                        form.PG_BlockView.Visible = true;
-                        form.PG_BlockView.SelectedObject = pkm;
+                        form.Bytes = pkmbytes;
                     }
-                    var res = form.ShowDialog();
-                    if (res == DialogResult.OK)
+                    else
                     {
-                        if (loadgrid && pkm != null)
-                        {
-                            var pkmbytes = RamOffsets.WriteBoxData(Remote.Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData;
-                            if (pkmbytes.Count() == Remote.Bot.SlotSize)
-                                form.Bytes = pkmbytes;
-                            else
-                            {
-                                form.Bytes = result;
-                                WinFormsUtil.Error("Size mismatch. Please report this issue on the discord server.");
-                            }
-                        }
-                        var modifiedRAM = form.Bytes;
-                        if (Remote.Bot.com is not ICommunicatorNX nx) Remote.WriteRAM(offset, modifiedRAM);
-                        else
-                        {
-                            if (RB_Main.Checked) nx.WriteBytesMain(modifiedRAM, offset);
-                            else if (RB_Absolute.Checked) nx.WriteBytesAbsolute(modifiedRAM, offset);
-                            else Remote.WriteRAM(offset, modifiedRAM);
-                        }
+                        form.Bytes = result;
+                        WinFormsUtil.Error("Size mismatch. Please report this issue on the discord server.");
                     }
                 }
+
+                var modifiedRAM = form.Bytes;
+                if (Remote.Bot.com is not ICommunicatorNX nx)
+                    Remote.WriteRAM(offset, modifiedRAM);
+                else if (RB_Main.Checked)
+                    nx.WriteBytesMain(modifiedRAM, offset);
+                else if (RB_Absolute.Checked)
+                    nx.WriteBytesAbsolute(modifiedRAM, offset);
+                else
+                    Remote.WriteRAM(offset, modifiedRAM);
+
                 Debug.WriteLine("RAM Modified");
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 WinFormsUtil.Error("Unable to load data from the specified offset.", ex.Message);
             }
-#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         public IEnumerable<string> GetSortedBlockList(LiveHeXVersion lv)
@@ -344,12 +345,10 @@ namespace AutoModPlugins
         {
             if (!checkBox2.Checked || !Remote.Bot.Connected)
                 return;
-            if (slot is not SlotInfoBox b)
+            if (slot is not SlotInfoBox(var box, var slotpkm))
                 return;
             if (!type.IsContentChange())
                 return;
-            int box = b.Box;
-            int slotpkm = b.Slot;
             Remote.Bot.SendSlot(RamOffsets.WriteBoxData(Remote.Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData, box, slotpkm);
         }
 
@@ -365,7 +364,7 @@ namespace AutoModPlugins
         public ulong GetPointerAddress(ICommunicatorNX sb)
         {
             var ptr = TB_Pointer.Text;
-            var address = InjectionUtil.GetPointerAddress(sb, ptr, false);
+            var address = sb.GetPointerAddress(ptr, false);
             if (address == InjectionUtil.INVALID_PTR)
                 WinFormsUtil.Alert("Invalid Pointer");
             return address;
@@ -411,14 +410,12 @@ namespace AutoModPlugins
                 if (blockview)
                 {
                     pkm = SAV.SAV.GetDecryptedPKM(result);
-                    if (!pkm.ChecksumValid || pkm == null)
+                    if (!pkm.ChecksumValid)
                         blockview = false;
                 }
                 using (var form = new SimpleHexEditor(result, Remote.Bot, address, RWMethod.Absolute))
                 {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-                    var loadgrid = blockview && ReflectUtil.GetPropertiesCanWritePublicDeclared(pkm.GetType()).Count() > 1;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                    var loadgrid = blockview && ReflectUtil.GetPropertiesCanWritePublicDeclared(pkm!.GetType()).Count() > 1;
                     if (loadgrid)
                     {
                         form.PG_BlockView.Visible = true;
@@ -427,11 +424,14 @@ namespace AutoModPlugins
                     var res = form.ShowDialog();
                     if (res == DialogResult.OK)
                     {
-                        if (loadgrid && pkm != null)
+                        if (loadgrid)
                         {
-                            var pkmbytes = RamOffsets.WriteBoxData(Remote.Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData;
-                            if (pkmbytes.Count() == Remote.Bot.SlotSize)
+                            PKM pk = pkm!;
+                            var pkmbytes = RamOffsets.WriteBoxData(Remote.Bot.Version) ? pk.EncryptedBoxData : pk.EncryptedPartyData;
+                            if (pkmbytes.Length == Remote.Bot.SlotSize)
+                            {
                                 form.Bytes = pkmbytes;
+                            }
                             else
                             {
                                 form.Bytes = result;
@@ -444,7 +444,6 @@ namespace AutoModPlugins
                 }
                 Debug.WriteLine("RAM Modified");
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 WinFormsUtil.Error("Unable to load data from the specified offset.", ex.Message);
@@ -505,7 +504,8 @@ namespace AutoModPlugins
                 var prop = SAV.SAV.GetType().GetProperty(txt);
                 if (prop != null)
                     sb = prop.GetValue(SAV.SAV);
-                else sb = Activator.CreateInstance(LPBDSP.types.First(t => t.Name == txt), data);
+                else
+                    sb = Activator.CreateInstance(LPBDSP.types.First(t => t.Name == txt), data);
             }
 
             if (sb == null)

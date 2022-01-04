@@ -32,13 +32,11 @@ namespace AutoModPlugins
             {
                 info = new SmogonSetList(rough);
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 WinFormsUtil.Error($"An error occured while trying to obtain the contents of the URL. This is most likely an issue with your Internet Connection. The exact error is as follows: {ex}");
                 return;
             }
-#pragma warning restore CA1031 // Do not catch general exception types
 
             if (!info.Valid || info.Sets.Count == 0)
             {

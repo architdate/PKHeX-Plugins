@@ -1,8 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Reflection;
-
-namespace PKHeX.Core.Injection
+﻿namespace PKHeX.Core.Injection
 {
     public class LiveHeXController
     {
@@ -62,15 +58,7 @@ namespace PKHeX.Core.Injection
 
         public bool ReadOffset(ulong offset, RWMethod method = RWMethod.Heap)
         {
-            byte[] data;
-            if (Bot.com is not ICommunicatorNX nx) data = Bot.ReadOffset(offset);
-            else data = method switch
-            {
-                RWMethod.Heap => Bot.ReadOffset(offset),
-                RWMethod.Main => nx.ReadBytesMain(offset, Bot.SlotSize),
-                RWMethod.Absolute => nx.ReadBytesAbsolute(offset, Bot.SlotSize),
-                _ => Bot.ReadOffset(offset)
-            };
+            var data = ReadData(offset, method);
             var pkm = SAV.SAV.GetDecryptedPKM(data);
 
             // Since data might not actually exist at the user-specified offset, double check that the pkm data is valid.
@@ -79,6 +67,19 @@ namespace PKHeX.Core.Injection
 
             Editor.PopulateFields(pkm);
             return true;
+        }
+
+        private byte[] ReadData(ulong offset, RWMethod method)
+        {
+            if (Bot.com is not ICommunicatorNX nx)
+                return Bot.ReadOffset(offset);
+            return method switch
+            {
+                RWMethod.Heap => Bot.ReadOffset(offset),
+                RWMethod.Main => nx.ReadBytesMain(offset, Bot.SlotSize),
+                RWMethod.Absolute => nx.ReadBytesAbsolute(offset, Bot.SlotSize),
+                _ => Bot.ReadOffset(offset),
+            };
         }
 
         public byte[] ReadRAM(ulong offset, int size) => Bot.com.ReadBytes(offset, size);

@@ -11,49 +11,43 @@
         private const int MaxSpeciesID_7 = 807;
         private const int MaxSpeciesID_8 = 890;
 
-        public static Species GetMemeSpecies(int gen)
+        public static Species GetMemeSpecies(int gen) => gen switch
         {
-            return gen switch
-            {
-                1 => Species.Diglett,
-                2 => Species.Shuckle,
-                3 => Species.Ludicolo,
-                4 => Species.Bidoof,
-                5 => Species.Stunfisk,
-                6 => Species.Sliggoo,
-                7 => Species.Cosmog,
-                8 => Species.Meltan,
-                _ => Species.Diglett,
-            };
-        }
+            1 => Species.Diglett,
+            2 => Species.Shuckle,
+            3 => Species.Ludicolo,
+            4 => Species.Bidoof,
+            5 => Species.Stunfisk,
+            6 => Species.Sliggoo,
+            7 => Species.Cosmog,
+            8 => Species.Meltan,
+            _ => Species.Diglett,
+        };
 
-        public static int GetGeneration(int species)
+        public static int GetGeneration(int species) => species switch
         {
-            if (species <= MaxSpeciesID_1) return 1;
-            if (species <= MaxSpeciesID_2) return 2;
-            if (species <= MaxSpeciesID_3) return 3;
-            if (species <= MaxSpeciesID_4) return 4;
-            if (species <= MaxSpeciesID_5) return 5;
-            if (species <= MaxSpeciesID_6) return 6;
-            if (species <= MaxSpeciesID_7) return 7;
-            if (species <= MaxSpeciesID_8) return 8;
-            return 1;
-        }
+            <= MaxSpeciesID_1 => 1,
+            <= MaxSpeciesID_2 => 2,
+            <= MaxSpeciesID_3 => 3,
+            <= MaxSpeciesID_4 => 4,
+            <= MaxSpeciesID_5 => 5,
+            <= MaxSpeciesID_6 => 6,
+            <= MaxSpeciesID_7 => 7,
+            <= MaxSpeciesID_8 => 8,
+            _ => 1,
+        };
 
-        public static string GetMemeNickname(int gen)
+        public static string GetMemeNickname(int gen) => gen switch
         {
-            return gen switch
-            {
-                1 => "HOWDOIHAK",
-                2 => "DONT FCKLE",
-                3 => "CANTA",
-                4 => "U R A DOOF",
-                5 => "PANCAKE",
-                6 => "SHOOT DAT GOO",
-                7 => "GET IN BAG",
-                8 => "MATT'S NUT",
-                _ => "HOW DO I HAK",
-            };
-        }
+            1 => "HOWDOIHAK",
+            2 => "DONT FCKLE",
+            3 => "CANTA",
+            4 => "U R A DOOF",
+            5 => "PANCAKE",
+            6 => "SHOOT DAT GOO",
+            7 => "GET IN BAG",
+            8 => "MATT'S NUT",
+            _ => "HOW DO I HAK",
+        };
     }
 }

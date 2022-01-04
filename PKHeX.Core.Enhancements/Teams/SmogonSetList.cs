@@ -23,8 +23,7 @@ namespace PKHeX.Core.Enhancements
         public readonly List<string> SetText = new();
         public readonly List<ShowdownSet> Sets = new();
 
-        public static readonly string[] IllegalFormats = new[]
-        {
+        public static readonly string[] IllegalFormats = {
             "Almost Any Ability", // Generates illegal abilities
             "BH",                 // Balanced Hackmons
             "Mix and Mega",       // Assumes pokemon can mega evolve that cannot
@@ -203,7 +202,7 @@ namespace PKHeX.Core.Enhancements
                     if (moves.Contains(move))
                         continue;
                     if (move.Equals("Hidden Power", StringComparison.OrdinalIgnoreCase))
-                        move = $"{move} [{choice.Split(new[] { "\"type\":\"" }, StringSplitOptions.None)[1].Split(new[] { '\"' })[0]}]";
+                        move = $"{move} [{choice.Split(new[] { "\"type\":\"" }, StringSplitOptions.None)[1].Split('\"')[0]}]";
                     moves.Add(move);
                     break;
                 }
