@@ -88,13 +88,14 @@ namespace AutoModPlugins
             var legal = sav.GetLegalFromSet(regen, out var msg);
             timer.Stop();
 
-            string? analysis = null;
-            if (msg is LegalizationResult.Failed)
-                analysis = regen.SetAnalysis(sav);
-
             if (msg is LegalizationResult.Timeout or LegalizationResult.Failed)
             {
                 Legalizer.Dump(regen, msg == LegalizationResult.Failed);
+
+                string? analysis = null;
+                if (msg is LegalizationResult.Failed)
+                    analysis = regen.SetAnalysis(sav, sav.BlankPKM);
+
                 var errorstr = msg == LegalizationResult.Failed ? "failed to generate" : "timed out";
                 var invalid_set_error = (analysis == null ? $"Set {errorstr}." : $"Set Invalid: {analysis}") + 
                     "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue." +
