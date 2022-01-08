@@ -323,7 +323,7 @@ namespace PKHeX.Core.AutoMod
             // Don't process if shiny value doesnt match
             if (set.Shiny && enc.Shiny == Shiny.Never)
                 return false;
-            if (!set.Shiny && (enc.Shiny == Shiny.Always || enc.Shiny == Shiny.AlwaysStar || enc.Shiny == Shiny.AlwaysSquare))
+            if (!set.Shiny && enc.Shiny.IsShiny())
                 return false;
 
             // Further shiny filtering if set is regentemplate
