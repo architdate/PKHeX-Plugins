@@ -259,12 +259,13 @@ namespace PKHeX.Core.AutoMod
             if (!IsRequestedLevelValid(set, enc))
                 return false;
 
-            if (set is RegenTemplate rt && enc is IFixedBall { FixedBall: not Ball.None} fb && ForceSpecifiedBall)
-            {
-                var reqball = rt.Regen.Extra.Ball;
-                if (reqball != fb.FixedBall && reqball != Ball.None)
-                    return false;
-            }
+            // Don't process if the ball requested is invalid
+            if (!IsRequestedBallValid(set, enc))
+                return false;
+
+            // Don't process if encounter and set shinies dont match
+            if (!IsRequestedShinyValid(set, enc))
+                return false;
 
             // Don't process if encounter is HA but requested pkm is not HA
             if (abilityreq == AbilityRequest.NotHidden && enc is EncounterStatic { Ability: 4 })
@@ -302,6 +303,37 @@ namespace PKHeX.Core.AutoMod
                 {
                     return false;
                 }
+            }
+            return true;
+        }
+
+        public static bool IsRequestedBallValid(IBattleTemplate set, IEncounterable enc)
+        {
+            if (set is RegenTemplate rt && enc.FixedBall != Ball.None && ForceSpecifiedBall)
+            {
+                var reqball = rt.Regen.Extra.Ball;
+                if (reqball != enc.FixedBall && reqball != Ball.None)
+                    return false;
+            }
+            return true;
+        }
+
+        public static bool IsRequestedShinyValid(IBattleTemplate set, IEncounterable enc)
+        {
+            // Don't process if shiny value doesnt match
+            if (set.Shiny && enc.Shiny == Shiny.Never)
+                return false;
+            if (!set.Shiny && (enc.Shiny == Shiny.Always || enc.Shiny == Shiny.AlwaysStar || enc.Shiny == Shiny.AlwaysSquare))
+                return false;
+
+            // Further shiny filtering if set is regentemplate
+            if (set is RegenTemplate regent && regent.Regen.HasExtraSettings)
+            {
+                var shinytype = regent.Regen.Extra.ShinyType;
+                if (shinytype == Shiny.AlwaysStar && enc.Shiny == Shiny.AlwaysSquare)
+                    return false;
+                if (shinytype == Shiny.AlwaysSquare && enc.Shiny == Shiny.AlwaysStar)
+                    return false;
             }
             return true;
         }
@@ -1141,14 +1173,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon</param>
         /// <param name="enc">encounter</param>
         /// <returns>int indicating ability preference</returns>
-        private static int GetAbilityPreference(PKM pk, IEncounterable enc)
-        {
-            return enc switch
-            {
-                IFixedAbilityNumber { Ability: > 0 } fa => fa.Ability,
-                _ => pk.AbilityNumber,
-            };
-        }
+        private static int GetAbilityPreference(PKM pk, IEncounterable enc) => enc.Ability > 0 ? enc.Ability : pk.AbilityNumber;
 
         /// <summary>
         /// Method to get the correct met level for a pokemon. Move up the met level till all moves are legal

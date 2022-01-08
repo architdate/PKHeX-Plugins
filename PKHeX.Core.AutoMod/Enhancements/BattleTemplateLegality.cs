@@ -12,6 +12,8 @@ namespace PKHeX.Core.AutoMod
         private static string INVALID_MOVES => "{0} cannot learn the following move(s) in this game: {1}.";
         private static string ALL_MOVES_INVALID => "All the requested moves for this Pokémon are invalid.";
         private static string LEVEL_INVALID => "Requested level is lower than the minimum possible level for {0}. Minimum required level is {1}.";
+        private static string SHINY_INVALID => "Requested shiny value (ShinyType.{0}) is not possible for the given set.";
+        private static string BALL_INVALID => "{0} Ball is not possible for the given set.";
         private static string ONLY_HIDDEN_ABILITY_AVAILABLE => "You can only obtain {0} with hidden ability in this game.";
         private static string HIDDEN_ABILITY_UNAVAILABLE => "You cannot obtain {0} with hidden ability in this game.";
 
@@ -71,12 +73,29 @@ namespace PKHeX.Core.AutoMod
                 return string.Format(LEVEL_INVALID, species_name, encounters.Min(z => z.LevelMin));
             encounters.RemoveAll(enc => !APILegality.IsRequestedLevelValid(set, enc));
 
+            // Shiny checks, check if shiny is impossible to achieve
+            Shiny shinytype = set.Shiny ? Shiny.Always : Shiny.Never;
+            if (set is RegenTemplate ret && ret.Regen.HasExtraSettings)
+                shinytype = ret.Regen.Extra.ShinyType;
+            if (encounters.All(z => !APILegality.IsRequestedShinyValid(set, z)))
+                return string.Format(SHINY_INVALID, shinytype);
+            encounters.RemoveAll(enc => !APILegality.IsRequestedShinyValid(set, enc));
+
             // Ability checks
             var abilityreq = APILegality.GetRequestedAbility(blank, set);
             if (abilityreq == AbilityRequest.NotHidden && encounters.All(z => z is EncounterStatic { Ability: 4 }))
                 return string.Format(ONLY_HIDDEN_ABILITY_AVAILABLE, species_name);
             if (abilityreq == AbilityRequest.Hidden && encounters.All(z => z.Generation is 3 or 4) && destVer.GetGeneration() < 8)
                 return string.Format(HIDDEN_ABILITY_UNAVAILABLE, species_name);
+
+            // Ball checks
+            if (set is RegenTemplate regt && regt.Regen.HasExtraSettings)
+            {
+                var ball = regt.Regen.Extra.Ball;
+                if (encounters.All(z => !APILegality.IsRequestedBallValid(set, z)))
+                    return string.Format(BALL_INVALID, ball);
+                encounters.RemoveAll(enc => !APILegality.IsRequestedBallValid(set, enc));
+            }
 
             return ANALYSIS_INVALID;
         }
