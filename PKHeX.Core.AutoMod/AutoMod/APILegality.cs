@@ -268,7 +268,7 @@ namespace PKHeX.Core.AutoMod
                 return false;
 
             // Don't process if encounter is HA but requested pkm is not HA
-            if (abilityreq == AbilityRequest.NotHidden && enc is EncounterStatic { Ability: 4 })
+            if (abilityreq == AbilityRequest.NotHidden && enc is EncounterStatic { Ability: AbilityPermission.OnlyHidden })
                 return false;
 
             // Don't process if PKM is definitely Hidden Ability and the PKM is from Gen 3 or Gen 4 and Hidden Capsule doesn't exist
@@ -496,7 +496,8 @@ namespace PKHeX.Core.AutoMod
                         markings[i] = pk.IVs[i] == 31 ? 1 : 2;
                 }
 
-                pk.Markings = PKX.ReorderSpeedLast(markings);
+                PKX.ReorderSpeedLast(markings);
+                pk.SetMarkings(markings);
             }
         }
 
@@ -693,7 +694,7 @@ namespace PKHeX.Core.AutoMod
             {
                 var e = (EncounterStatic)enc;
                 var isShiny = set.Shiny;
-                if (pk.AbilityNumber == 4 && e.Ability is 0 or 1 or 2)
+                if (pk.AbilityNumber == 4 && e.Ability is AbilityPermission.Any12 or AbilityPermission.OnlyFirst or AbilityPermission.OnlySecond)
                     return;
                 if (!UseXOROSHIRO) // Don't bother setting this if XOROSHIRO is disabled
                 {
@@ -1173,7 +1174,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon</param>
         /// <param name="enc">encounter</param>
         /// <returns>int indicating ability preference</returns>
-        private static int GetAbilityPreference(PKM pk, IEncounterable enc) => enc.Ability > 0 ? enc.Ability : pk.AbilityNumber;
+        private static AbilityPermission GetAbilityPreference(PKM pk, IEncounterable enc) => enc.Ability > 0 ? enc.Ability : (AbilityPermission)pk.AbilityNumber;
 
         /// <summary>
         /// Method to get the correct met level for a pokemon. Move up the met level till all moves are legal

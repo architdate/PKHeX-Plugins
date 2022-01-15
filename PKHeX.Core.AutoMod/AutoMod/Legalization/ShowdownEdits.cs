@@ -35,7 +35,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Showdown Set to refer</param>
         /// <param name="enc">Encounter to reference</param>
         /// <param name="preference">Ability index (1/2/4) preferred; &lt;= 0 for any</param>
-        public static void SetNatureAbility(this PKM pk, IBattleTemplate set, IEncounterable enc, int preference = -1)
+        public static void SetNatureAbility(this PKM pk, IBattleTemplate set, IEncounterable enc, AbilityPermission preference = AbilityPermission.Any12H)
         {
             SetNature(pk, set, enc);
             SetAbility(pk, set, preference);
@@ -72,7 +72,7 @@ namespace PKHeX.Core.AutoMod
                 pk.StatNature = (int)Nature.Serious;
         }
 
-        private static void SetAbility(PKM pk, IBattleTemplate set, int preference)
+        private static void SetAbility(PKM pk, IBattleTemplate set, AbilityPermission preference)
         {
             if (pk.Ability != set.Ability && set.Ability != -1)
                 pk.SetAbility(set.Ability);
@@ -83,12 +83,12 @@ namespace PKHeX.Core.AutoMod
                 // Set unspecified abilities
                 if (set.Ability == -1)
                 {
-                    pk.RefreshAbility(preference >> 1);
-                    if (pk is PK5 pk5 && preference == 4) pk5.HiddenAbility = true;
+                    pk.RefreshAbility(preference.GetSingleValue());
+                    if (pk is PK5 pk5 && preference == AbilityPermission.OnlyHidden) pk5.HiddenAbility = true;
                 }
                 // Set preferred ability number if applicable
-                if (abilities[preference >> 1] == set.Ability)
-                    pk.AbilityNumber = preference;
+                if (abilities[preference.GetSingleValue()] == set.Ability)
+                    pk.AbilityNumber = (int)preference;
                 // 3/4/5 transferred to 6+ will have ability 1 if both abilitynum 1 and 2 are the same. Capsule cant convert 1 -> 2 if the abilities arnt unique
                 if (pk.Format >= 6 && pk.Generation is 3 or 4 or 5 && pk.AbilityNumber != 4 && abilities[0] == abilities[1])
                     pk.AbilityNumber = 1;

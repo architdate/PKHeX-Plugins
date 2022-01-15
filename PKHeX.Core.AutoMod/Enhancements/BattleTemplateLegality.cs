@@ -83,7 +83,7 @@ namespace PKHeX.Core.AutoMod
 
             // Ability checks
             var abilityreq = APILegality.GetRequestedAbility(blank, set);
-            if (abilityreq == AbilityRequest.NotHidden && encounters.All(z => z is EncounterStatic { Ability: 4 }))
+            if (abilityreq == AbilityRequest.NotHidden && encounters.All(z => z is EncounterStatic { Ability: AbilityPermission.OnlyHidden }))
                 return string.Format(ONLY_HIDDEN_ABILITY_AVAILABLE, species_name);
             if (abilityreq == AbilityRequest.Hidden && encounters.All(z => z.Generation is 3 or 4) && destVer.GetGeneration() < 8)
                 return string.Format(HIDDEN_ABILITY_UNAVAILABLE, species_name);
