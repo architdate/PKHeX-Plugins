@@ -17,6 +17,7 @@ namespace PKHeX.Core.Enhancements
         public readonly string ShowdownSpeciesName;
         public readonly string Page;
         public readonly bool LetsGo;
+        public readonly bool BDSP;
         public readonly List<string> SetFormat = new();
         public readonly List<string> SetName = new();
         public readonly List<string> SetConfig = new();
@@ -28,6 +29,8 @@ namespace PKHeX.Core.Enhancements
             "BH",                 // Balanced Hackmons
             "Mix and Mega",       // Assumes pokemon can mega evolve that cannot
             "STABmons",           // Generates illegal movesets
+            "National Dex",       // Adds Megas to Generation VIII
+            "National Dex AG"     // Adds Megas to Generation VIII
         };
 
         public string Summary => AlertText(ShowdownSpeciesName, SetText.Count, GetTitles());
@@ -50,6 +53,7 @@ namespace PKHeX.Core.Enhancements
             Page = NetUtil.GetPageText(URL);
 
             LetsGo = pk is PB7;
+            BDSP = pk is PB8;
             Valid = true;
             ShowdownSpeciesName = GetShowdownName(Species, psform);
 
@@ -77,7 +81,9 @@ namespace PKHeX.Core.Enhancements
 
                 if (IllegalFormats.Any(s => s.Equals(format, StringComparison.OrdinalIgnoreCase)))
                     continue;
-                if (LetsGo != format.StartsWith("LGPE"))
+                if (LetsGo != format.StartsWith("LGPE", StringComparison.OrdinalIgnoreCase))
+                    continue;
+                if (BDSP != format.StartsWith("BDSP", StringComparison.OrdinalIgnoreCase))
                     continue;
                 var level = format.StartsWith("LC") ? 5 : 100;
                 if (!split1[i - 1].Contains("\"name\":"))
@@ -114,7 +120,7 @@ namespace PKHeX.Core.Enhancements
                 nameof(PK5) => "https://www.smogon.com/dex/bw/pokemon",
                 nameof(PK6) => "https://www.smogon.com/dex/xy/pokemon",
                 nameof(PK7) or nameof(PB7) => "https://www.smogon.com/dex/sm/pokemon",
-                nameof(PK8) => "https://www.smogon.com/dex/ss/pokemon",
+                nameof(PK8) or nameof(PB8) => "https://www.smogon.com/dex/ss/pokemon",
                 _ => string.Empty,
             };
         }
