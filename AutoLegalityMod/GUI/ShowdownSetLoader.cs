@@ -177,6 +177,7 @@ namespace AutoModPlugins
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
             ModLogic.IncludeForms = settings.IncludeForms;
             ModLogic.SetShiny = settings.SetShiny;
+            ModLogic.SetAlpha = settings.SetAlpha;
 
             settings.PrioritizeEncounters ??= EncounterPriority.ToList();
             foreach (var ep in EncounterPriority)

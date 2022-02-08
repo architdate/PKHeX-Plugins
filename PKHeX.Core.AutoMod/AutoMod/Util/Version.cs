@@ -3,7 +3,7 @@
     public static class ALMVersion
 
     {
-        public const string CurrentVersion = "22.01.01";
+        public const string CurrentVersion = "22.02.08";
 
         /*
          * TODO: Add other versioning code, maybe compatability lists here?

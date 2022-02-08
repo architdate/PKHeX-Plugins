@@ -9,6 +9,16 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public static class LegalEdits
     {
+        private static readonly Dictionary<Ball, Ball> LABallMapping = new()
+        {
+            { Ball.Poke,  Ball.LAPoke },
+            { Ball.Great, Ball.LAGreat },
+            { Ball.Ultra, Ball.LAUltra },
+            { Ball.Heavy, Ball.LAHeavy },
+        };
+
+        private const bool replaceLA = false;
+
         /// <summary>
         /// Set a valid Pokeball based on a legality check's suggestions.
         /// </summary>
@@ -21,6 +31,8 @@ namespace PKHeX.Core.AutoMod
             if (ball != Ball.None)
             {
                 var orig = pk.Ball;
+                if (pk.LA && LABallMapping.TryGetValue(ball, out var modified) && replaceLA)
+                    ball = modified;
                 pk.Ball = (int)ball;
                 if (!force && !pk.ValidBall())
                     pk.Ball = orig;

@@ -21,6 +21,7 @@ namespace PKHeX.Core.AutoMod
         {
             Extra.Ball = (Ball)pk.Ball;
             Extra.ShinyType = pk.ShinyXor == 0 ? Shiny.AlwaysSquare : pk.IsShiny ? Shiny.AlwaysStar : Shiny.Never;
+            if (pk is IAlpha a && a.IsAlpha) Extra.Alpha = true;
         }
 
         public RegenSet(ICollection<string> lines, int format, Shiny shiny = Shiny.Never)

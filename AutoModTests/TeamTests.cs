@@ -32,6 +32,8 @@ namespace AutoModTests
                     result.Add(f, -1);
                 if (ext.StartsWith("pb8"))
                     result.Add(f, -2);
+                if (ext.StartsWith("pa8"))
+                    result.Add(f, -3);
                 else if (ext.StartsWith("pk") && int.TryParse(ext.Split('k')[1], out var gen))
                     result.Add(f, gen);
                 else Console.WriteLine($"Invalid file: {f}. Name does not start with 'pkX '");
@@ -45,6 +47,7 @@ namespace AutoModTests
             var transfer = !key.Contains("notransfer");
             return value switch
             {
+                -3 => new[] { PLA },
                 -2 => new[] { BD },
                 -1 => transfer ? new[] { SW, GP } : new[] { GE },
                 1  => transfer ? new[] { RD, C } : new[] { RD },

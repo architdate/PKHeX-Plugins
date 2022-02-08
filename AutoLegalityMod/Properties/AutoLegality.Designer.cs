@@ -274,5 +274,17 @@ namespace AutoModPlugins.Properties {
                 this["SetShiny"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetAlpha {
+            get {
+                return ((bool)(this["SetAlpha"]));
+            }
+            set {
+                this["SetAlpha"] = value;
+            }
+        }
     }
 }

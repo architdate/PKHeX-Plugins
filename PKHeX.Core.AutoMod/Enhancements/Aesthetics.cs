@@ -909,6 +909,13 @@ namespace PKHeX.Core.AutoMod
             { Glastrier,       White },
             { Spectrier,       Black },
             { Calyrex,         White },
+            { Wyrdeer,         White },
+            { Kleavor,         Brown },
+            { Ursaluna,        Brown },
+            { Basculegion,     Blue },
+            { Sneasler,        Black },
+            { Overqwil,        Blue },
+            { Enamorus,        Red },
         };
 
         public static Ball GetBallFromString(string ballstr)
@@ -916,6 +923,8 @@ namespace PKHeX.Core.AutoMod
             ballstr = ballstr.Split(' ')[0];
             if (ballstr == "Poké")
                 return Poke;
+            if (ballstr is "Feather" or "Wing" or "Jet" or "Leaden" or "Gigaton")
+                ballstr = "LA" + ballstr;
             var valid = Enum.TryParse(ballstr, out Ball ball);
             if (valid)
                 return ball;
@@ -932,8 +941,8 @@ namespace PKHeX.Core.AutoMod
 
         static Aesthetics()
         {
-            var exclude = new[] { Ball.None, Poke };
-            var end = new[] { Poke };
+            var exclude = new[] { Ball.None, LAPoke, Poke };
+            var end = new[] { LAPoke, Poke };
             var allBalls = BallList.Except(exclude).ToArray();
             var colors = (PersonalColor[])Enum.GetValues(typeof(PersonalColor));
             foreach (var c in colors)
@@ -974,16 +983,16 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         private static readonly Dictionary<PersonalColor, Ball[]> BallColors = new()
         {
-            [Red] = new[] { Cherish, Repeat, Fast, Heal, Great, Dream, Lure },
-            [Blue] = new[] { Dive, Net, Great, Beast, Lure },
-            [Yellow] = new[] { Level, Ultra, Repeat, Quick, Moon },
-            [Green] = new[] { Safari, Friend, Nest, Dusk },
-            [Black] = new[] { Luxury, Heavy, Ultra, Moon, Net, Beast },
+            [Red] = new[] { LAOrigin, Cherish, Repeat, Fast, Heal, Great, Dream, Lure },
+            [Blue] = new[] { Dive, LAFeather, Net, LAGreat, Great, Beast, Lure, LAJet },
+            [Yellow] = new[] { Level, LAUltra, Ultra, Repeat, Quick, Moon },
+            [Green] = new[] { Safari, Friend, Nest, Dusk, Strange },
+            [Black] = new[] { Luxury, LAGigaton, LALeaden, LAHeavy, Heavy, LAUltra, Ultra, Moon, Net, Beast },
 
             [Brown] = new[] { Level, Heavy },
             [Purple] = new[] { Master, Love, Dream, Heal },
-            [Gray] = new[] { Heavy, Premier, Luxury },
-            [White] = new[] { Premier, Timer, Luxury, Ultra },
+            [Gray] = new[] { Heavy, LAGigaton, LALeaden, LAHeavy, Premier, Luxury },
+            [White] = new[] { Premier, LAWing, LAJet, Timer, Luxury, Ultra },
             [Pink] = new[] { Love, Dream, Heal },
         };
 

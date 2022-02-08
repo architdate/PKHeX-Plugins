@@ -31,6 +31,7 @@ namespace PKHeX.Core.Injection
             var allpkm = new List<byte[]>();
             if (LPLGPE.SupportedVersions.Contains(Version)) return LPLGPE.ReadBox(this, box, len, allpkm);
             if (LPBDSP.SupportedVersions.Contains(Version)) return LPBDSP.ReadBox(this, box, allpkm);
+            if (LPPLA.SupportedVersions.Contains(Version)) return LPPLA.ReadBox(this, box, allpkm);
             return LPBasic.ReadBox(this, box, len, allpkm);
         }
 
@@ -38,6 +39,7 @@ namespace PKHeX.Core.Injection
         {
             if (LPLGPE.SupportedVersions.Contains(Version)) return LPLGPE.ReadSlot(this, box, slot);
             if (LPBDSP.SupportedVersions.Contains(Version)) return LPBDSP.ReadSlot(this, box, slot);
+            if (LPPLA.SupportedVersions.Contains(Version)) return LPPLA.ReadSlot(this, box, slot);
             return LPBasic.ReadSlot(this, box, slot);
         }
 
@@ -57,6 +59,11 @@ namespace PKHeX.Core.Injection
                 LPBDSP.SendBox(this, boxData, box);
                 return;
             }
+            if (LPPLA.SupportedVersions.Contains(Version))
+            {
+                LPPLA.SendBox(this, boxData, box);
+                return;
+            }
             LPBasic.SendBox(this, boxData, box);
         }
 
@@ -70,6 +77,11 @@ namespace PKHeX.Core.Injection
             if (LPBDSP.SupportedVersions.Contains(Version))
             {
                 LPBDSP.SendSlot(this, data, box, slot);
+                return;
+            }
+            if (LPPLA.SupportedVersions.Contains(Version))
+            {
+                LPPLA.SendSlot(this, data, box, slot);
                 return;
             }
             LPBasic.SendSlot(this, data, box, slot);

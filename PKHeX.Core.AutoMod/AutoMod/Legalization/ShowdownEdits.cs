@@ -110,10 +110,17 @@ namespace PKHeX.Core.AutoMod
             pk.ApplySetGender(set);
 
             var evolutionRequired = pk.Species != set.Species;
+            var formchange = Form != pk.Form;
             if (evolutionRequired)
                 pk.Species = set.Species;
-            if (Form != pk.Form)
+            if (formchange)
                 pk.SetForm(Form);
+
+            if ((evolutionRequired || formchange) && pk is IScaledSizeValue sv)
+            {
+                sv.HeightAbsolute = sv.CalcHeightAbsolute;
+                sv.WeightAbsolute = sv.CalcWeightAbsolute;
+            }
 
             // Don't allow invalid tox nature, set random nature first and then statnature later
             if (pk.Species == (int)Species.Toxtricity)
@@ -240,13 +247,19 @@ namespace PKHeX.Core.AutoMod
         {
             // If no moves are requested, just keep the encounter moves
             if (set.Moves[0] != 0)
-                pk.SetMoves(set.Moves, true);
+                pk.SetMoves(set.Moves, pk is not PA8);
+            if (pk is PA8 pa8)
+            {
+                pa8.SetMasteryFlags();
+                if (pa8.IsAlpha && pa8.AlphaMove is not 0)
+                    pa8.SetMasteryFlagMove(pa8.AlphaMove);
+            }
 
             var la = new LegalityAnalysis(pk);
             // Remove invalid encounter moves (eg. Kyurem Encounter -> Requested Kyurem black)
             if (set.Moves[0] == 0 && la.Info.Moves.Any(z => z.Judgement == Severity.Invalid))
             {
-                pk.SetMoves(la.GetSuggestedCurrentMoves(), true);
+                pk.SetMoves(la.GetSuggestedCurrentMoves(), pk is not PA8);
                 pk.FixMoves();
             }
             if (la.Parsed && !pk.FatefulEncounter)
@@ -305,6 +318,10 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokemon to modify</param>
         private static void FixInvalidFormItems(this PKM pk)
         {
+            // Ignore games where items don't exist in the first place. They would still allow forms
+            if (pk.LA)
+                return;
+
             switch ((Species)pk.Species)
             {
                 case Species.Arceus:

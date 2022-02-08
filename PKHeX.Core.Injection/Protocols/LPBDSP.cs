@@ -32,6 +32,12 @@ namespace PKHeX.Core.Injection
             { "Daycare",        (GetDaycareBlock, SetDaycareBlock) },
         };
 
+        public static readonly Dictionary<string, string> SpecialBlocks = new()
+        {
+            { "Items", "B_OpenItemPouch_Click" },
+            { "Underground", "B_OpenUGSEditor_Click" }
+        };
+
         public static readonly IEnumerable<Type> types = Assembly.GetAssembly(typeof(ICustomBlock)).GetTypes().Where(t => typeof(ICustomBlock).IsAssignableFrom(t) && !t.IsInterface);
 
         private static ulong[] GetPokemonPointers(this PokeSysBotMini psb, int box)
@@ -294,7 +300,7 @@ namespace PKHeX.Core.Injection
             psb.com.WriteBytes(payload, addr + 0x8);
         }
 
-        public static bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out byte[]? read)
+        public static bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out List<byte[]>? read)
         {
             read = null;
             if (!FunctionMap.ContainsKey(block))
@@ -307,7 +313,9 @@ namespace PKHeX.Core.Injection
                     var m = t.GetMethod("Getter", BindingFlags.Public | BindingFlags.Static);
                     if (m == null)
                         return false;
-                    read = (byte[]?)m.Invoke(null, new object[] {psb});
+                    var funcout = (byte[]?)m.Invoke(null, new object[] { psb });
+                    if (funcout != null)
+                        read = new List<byte[]> { funcout };
                     return true;
                 }
                 return false;
@@ -319,10 +327,11 @@ namespace PKHeX.Core.Injection
                 if (data is SaveBlock sb)
                 {
                     var getter = FunctionMap[block].Item1;
-                    read = getter.Invoke(psb);
-                    if (read == null)
+                    var funcout = getter.Invoke(psb);
+                    if (funcout == null)
                         return false;
-                    read.CopyTo(sb.Data, sb.Offset);
+                    funcout.CopyTo(sb.Data, sb.Offset);
+                    read = new List<byte[]> { funcout };
                 }
                 else
                 {

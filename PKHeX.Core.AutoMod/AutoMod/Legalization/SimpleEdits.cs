@@ -113,6 +113,9 @@ namespace PKHeX.Core.AutoMod
             new Tuple<Species, int> ( Calyrex, 0 ),
             new Tuple<Species, int> ( Calyrex, 1 ),
             new Tuple<Species, int> ( Calyrex, 2 ),
+            
+            new Tuple<Species, int> ( Enamorus, 0 ),
+            new Tuple<Species, int> ( Enamorus, 1 ),
         };
 
         public static HashSet<int> Gen1TradeEvos = new () { (int)Kadabra, (int)Machoke, (int)Graveler, (int)Haunter };
@@ -301,6 +304,12 @@ namespace PKHeX.Core.AutoMod
         {
             if (pk.Generation < 8 && pk.Format >= 8 && !pk.GG) // height and weight don't apply prior to GG
                 return;
+            if (pk is IScaledSizeValue obj) // Deal with this later -- restrictions on starters/statics/alphas, for now roll with whatever encounter DB provides
+            {
+                obj.HeightAbsolute = obj.CalcHeightAbsolute;
+                obj.WeightAbsolute = obj.CalcWeightAbsolute;
+                return;
+            }
             if (pk is not IScaledSize size)
                 return;
             if (enc is EncounterTrade8b) // fixed height and weight
@@ -360,7 +369,7 @@ namespace PKHeX.Core.AutoMod
             if (enc.Generation <= 2)
                 pk.OT_Friendship = GetBaseFriendship(7, pk.Species, pk.Form);  // VC transfers use SM personal info
             else if (neverOT)
-                pk.OT_Friendship = GetBaseFriendship(enc.Generation, enc.Species, enc.Form);
+                pk.OT_Friendship = GetBaseFriendship(enc, enc.Generation);
             else pk.CurrentFriendship = pk.HasMove(218) ? 0 : 255;
         }
 
@@ -411,6 +420,8 @@ namespace PKHeX.Core.AutoMod
                 return;
             if (pk.BDSP)
                 return;
+            if (pk.LA)
+                return;
             pkm.DynamaxLevel = level; // Set max dynamax level
         }
 
@@ -452,6 +463,13 @@ namespace PKHeX.Core.AutoMod
                     break;
             }
         }
+
+        private static int GetBaseFriendship(IEncounterTemplate enc, int generation) => enc switch
+        {
+            IFixedOTFriendship f => f.OT_Friendship,
+            { Version: GameVersion.BD or GameVersion.SP } => PersonalTable.SWSH.GetFormEntry(enc.Species, enc.Form).BaseFriendship,
+            _ => GetBaseFriendship(generation, enc.Species, enc.Form),
+        };
 
         private static int GetBaseFriendship(int gen, int species, int form)
         {
@@ -590,6 +608,24 @@ namespace PKHeX.Core.AutoMod
             if (species > destVer.GetMaxSpeciesID())
                 return false;
             return true;
+        }
+
+        public static void SetRecordFlags(this PKM pk, IEnumerable<int>? moves = null)
+        {
+            if (pk is ITechRecord8 tr && pk is not PA8)
+            {
+                if (moves != null)
+                    tr.SetRecordFlags(moves);
+                else tr.SetRecordFlags();
+            }
+            if (pk is IMoveShop8 shop)
+            {
+                if (moves != null)
+                    shop.SetMoveShopFlags(moves);
+                else shop.SetMoveShopFlags();
+            }
+            if (pk is IMoveShop8Mastery master)
+                master.SetMoveShopFlagsMastered();
         }
 
         private static readonly ushort[] Arceus_PlateIDs = { 303, 306, 304, 305, 309, 308, 310, 313, 298, 299, 301, 300, 307, 302, 311, 312, 644 };

@@ -12,7 +12,7 @@ namespace PKHeX.Core.AutoMod
         private static readonly string TrainerPath = Path.Combine(Directory.GetCurrentDirectory(), "trainers");
         private static readonly SimpleTrainerInfo DefaultFallback8 = new(GameVersion.SW);
         private static readonly SimpleTrainerInfo DefaultFallback7 = new(GameVersion.UM);
-        private static readonly GameVersion[] FringeVersions = { GameVersion.GG, GameVersion.BDSP };
+        private static readonly GameVersion[] FringeVersions = { GameVersion.GG, GameVersion.BDSP, GameVersion.PLA };
 
         public static ITrainerInfo DefaultFallback(int gen = 8, LanguageID? lang = null)
         {

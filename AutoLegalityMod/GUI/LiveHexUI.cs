@@ -103,6 +103,12 @@ namespace AutoModPlugins
                     //config = sbdsp.Config.Data;
                     break;
 
+                case SAV8LA sbla:
+                    dest = sbla.MyStatus.Data;
+                    startofs = sbla.MyStatus.Offset;
+                    tdata = LPPLA.GetTrainerData;
+                    break;
+
                 default:
                     dest = Array.Empty<byte>();
                     tdata = LPBasic.GetTrainerData;
@@ -321,20 +327,18 @@ namespace AutoModPlugins
         {
             if (LPBasic.SupportedVersions.Contains(lv))
             {
-                var offsets = RamOffsets.GetOffsets(Remote.Bot.Version);
-                if (offsets == null)
-                    return new List<string>();
-                var aType = offsets.GetType();
-                var props = aType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-                var ofType = props.Where(fi => typeof(uint).IsAssignableFrom(fi.FieldType));
-                var retval = ofType.ToDictionary(z => z.Name, field => (uint)field.GetValue(offsets));
-                return retval.Where(z => z.Value != 0).Select(z => z.Key).OrderBy(z => z);
+                return LPBasic.SCBlocks[lv].Select(z => z.Display).Distinct().OrderBy(z => z);
             }
             if (LPBDSP.SupportedVersions.Contains(lv))
             {
                 var save_blocks = LPBDSP.FunctionMap.Keys;
                 var custom_blocks = LPBDSP.types.Select(t => t.Name);
                 return save_blocks.Concat(custom_blocks).OrderBy(z => z);
+            }
+            if (LPPLA.SupportedVersions.Contains(lv))
+            {
+                var save_blocks = LPPLA.SCBlocks[lv].Select(z => z.Display).Distinct();
+                return save_blocks.OrderBy(z => z);
             }
             return new List<string>();
         }
@@ -472,53 +476,24 @@ namespace AutoModPlugins
         {
             var txt = CB_BlockName.Text;
             var version = Remote.Bot.Version;
-            bool valid = false;
-            byte[]? data = null;
-            if (LPBasic.SupportedVersions.Contains(version))
-                valid = LPBasic.ReadBlockFromString(Remote.Bot, SAV.SAV, txt, out data);
-            if (LPBDSP.SupportedVersions.Contains(version))
-                valid = LPBDSP.ReadBlockFromString(Remote.Bot, SAV.SAV, txt, out data);
+
+            var valid = ReadBlock(Remote.Bot, SAV.SAV, txt, out var data);
             if (!valid || data == null)
             {
                 WinFormsUtil.Error("Invalid Entry");
                 return;
             }
 
-            object? sb = null;
-            if (LPBasic.SupportedVersions.Contains(version))
-            {
-                var allblocks = SAV.SAV.GetType().GetProperty("Blocks").GetValue(SAV.SAV);
-                var blockprop = allblocks.GetType().GetProperty(txt);
-                if (allblocks is SCBlockAccessor scba && blockprop == null)
-                {
-                    var key = allblocks.GetType().GetField(txt, BindingFlags.NonPublic | BindingFlags.Static).GetValue(allblocks);
-                    sb = scba.GetBlock((uint)key);
-                }
-                else
-                {
-                    sb = blockprop.GetValue(allblocks);
-                }
-            }
-            if (LPBDSP.SupportedVersions.Contains(version))
-            {
-                var prop = SAV.SAV.GetType().GetProperty(txt);
-                if (prop != null)
-                    sb = prop.GetValue(SAV.SAV);
-                else
-                    sb = Activator.CreateInstance(LPBDSP.types.First(t => t.Name == txt), data);
-            }
+            valid = GetObjectInSave(version, SAV.SAV, txt, data[0], out var sb);
 
-            if (sb == null)
+            if (!valid && LPBDSP.SupportedVersions.Contains(version))
             {
                 WinFormsUtil.Error("Error fetching Block");
                 return;
             }
 
-            // Verify if sb is a valid block type
-            if (sb is not SCBlock && sb is not SaveBlock && sb is not ICustomBlock)
-                return;
-
-            if (sb.IsSpecialBlock(Remote.Bot.Version, out var v))
+            var write = false;
+            if (txt.IsSpecialBlock(Remote.Bot.Version, out var v))
             {
                 // ReSharper disable once SuspiciousTypeConversion.Global
                 var cc = (ContainerControl)SAV;
@@ -534,36 +509,46 @@ namespace AutoModPlugins
                 // Invoke function
                 cc.GetType().GetMethod(v, BindingFlags.NonPublic | BindingFlags.Instance)?.Invoke(cc, new[] { s, e });
 
-                var blockdata = GetBlockDataRaw(sb, data);
-                if (!blockdata.SequenceEqual(data))
+                if (sb is SCBlock scb && scb.Data.SequenceEqual(data[0]))
+                    return;
+                write = true;
+            }
+            else if (sb is SCBlock || sb is SaveBlock)
+            {
+                // Must be single block output
+                using var form = new SimpleHexEditor(data[0]);
+                if (sb is SaveBlock)
                 {
-                    if (LPBasic.SupportedVersions.Contains(version))
-                        LPBasic.WriteBlockFromString(Remote.Bot, txt, blockdata);
-                    if (LPBDSP.SupportedVersions.Contains(version))
-                        LPBDSP.WriteBlockFromString(Remote.Bot, txt, blockdata, sb);
+                    var props = ReflectUtil.GetPropertiesCanWritePublicDeclared(sb.GetType());
+                    if (props.Count() > 1 && ModifierKeys != Keys.Control)
+                    {
+                        form.PG_BlockView.Visible = true;
+                        form.PG_BlockView.SelectedObject = sb;
+                    }
                 }
+                else
+                {
+                    var o = SCBlockMetadata.GetEditableBlockObject((SCBlock)sb);
+                    if (o != null)
+                    {
+                        form.PG_BlockView.Visible = true;
+                        form.PG_BlockView.SelectedObject = o;
+                    }
+                }
+                var res = form.ShowDialog();
+                write = res == DialogResult.OK;
+            }
+            if (!write)
                 return;
-            }
-            using var form = new SimpleHexEditor(data);
-            var props = ReflectUtil.GetPropertiesCanWritePublicDeclared(sb.GetType());
-            var loadgrid = props.Count() > 1 && ModifierKeys != Keys.Control;
-            if (loadgrid)
-            {
-                form.PG_BlockView.Visible = true;
-                form.PG_BlockView.SelectedObject = sb;
-            }
-            var res = form.ShowDialog();
-            if (res == DialogResult.OK)
-            {
-                var blockdata = GetBlockDataRaw(sb, data);
-                if (loadgrid)
-                    form.Bytes = blockdata;
-                var modifiedRAM = form.Bytes;
-                if (LPBasic.SupportedVersions.Contains(version))
-                    LPBasic.WriteBlockFromString(Remote.Bot, txt, modifiedRAM);
-                if (LPBDSP.SupportedVersions.Contains(version))
-                    LPBDSP.WriteBlockFromString(Remote.Bot, txt, modifiedRAM, sb);
-            }
+
+            if (LPBasic.SupportedVersions.Contains(version))
+                LPBasic.WriteBlocksFromSAV(Remote.Bot, txt, SAV.SAV);
+            if (LPBDSP.SupportedVersions.Contains(version))
+#pragma warning disable CS8604 // Possible null reference argument.
+                LPBDSP.WriteBlockFromString(Remote.Bot, txt, GetBlockDataRaw(sb, data[0]), sb);
+#pragma warning restore CS8604 // Possible null reference argument.
+            if (LPPLA.SupportedVersions.Contains(version))
+                LPPLA.WriteBlocksFromSAV(Remote.Bot, txt, SAV.SAV);
         }
 
         private static byte[] GetBlockDataRaw(object sb, byte[] data) => sb switch
@@ -572,6 +557,54 @@ namespace AutoModPlugins
             SaveBlock sv => sv.Data,
             _ => data,
         };
+
+        private static bool ReadBlock(PokeSysBotMini bot, SaveFile sav, string display, out List<byte[]>? data)
+        {
+            var version = bot.Version;
+            bool valid = false;
+            data = null;
+            if (LPBasic.SupportedVersions.Contains(version))
+                valid = LPBasic.ReadBlockFromString(bot, sav, display, out data);
+            if (LPBDSP.SupportedVersions.Contains(version))
+                valid = LPBDSP.ReadBlockFromString(bot, sav, display, out data);
+            if (LPPLA.SupportedVersions.Contains(version))
+                valid = LPPLA.ReadBlockFromString(bot, sav, display, out data);
+            return valid;
+        }
+
+        private static bool GetObjectInSave(LiveHeXVersion version, SaveFile sav, string display, byte[]? customdata, out object? sb)
+        {
+            sb = null;
+            var valid = false;
+            if (LPBDSP.SupportedVersions.Contains(version))
+            {
+                var prop = sav.GetType().GetProperty(display);
+                if (prop != null)
+                    sb = prop.GetValue(sav);
+                else
+                    sb = Activator.CreateInstance(LPBDSP.types.First(t => t.Name == display), customdata);
+                valid = sb != null;
+            }
+            else
+            {
+                var subblocks = new BlockData[0];
+                if (LPBasic.SupportedVersions.Contains(version))
+                    subblocks = LPBasic.SCBlocks[version].Where(z => z.Display == display).ToArray();
+                if (LPPLA.SupportedVersions.Contains(version))
+                    subblocks = LPPLA.SCBlocks[version].Where(z => z.Display == display).ToArray();
+                if (subblocks.Count() == 1)
+                {
+                    // Check for SCBlocks or SaveBlocks based on name. (SCBlocks will invoke the hex editor, SaveBlocks will invoke a property grid
+                    var allblocks = sav.GetType().GetProperty("Blocks").GetValue(sav);
+                    var blockprop = allblocks.GetType().GetProperty(subblocks[0].Name);
+                    if (allblocks is SCBlockAccessor scba && blockprop == null)
+                        sb = scba.GetBlock(subblocks[0].SCBKey);
+                    else sb = blockprop.GetValue(allblocks);
+                    valid = true;
+                }
+            }
+            return valid;
+        }
     }
 
     internal class HexTextBox : TextBox

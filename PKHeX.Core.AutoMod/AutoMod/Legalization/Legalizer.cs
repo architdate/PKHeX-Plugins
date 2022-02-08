@@ -108,6 +108,8 @@ namespace PKHeX.Core.AutoMod
         public static PKM GetLegalFromSet(this ITrainerInfo tr, IBattleTemplate set, out LegalizationResult msg)
         {
             var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
+            if (template.Version == 0)
+                template.Version = tr.Game;
             template.ApplySetDetails(set);
             return tr.GetLegalFromSet(set, template, out msg);
         }
@@ -135,7 +137,7 @@ namespace PKHeX.Core.AutoMod
                 var species = (int)EasterEggs.GetMemeSpecies(gen);
                 template.Species = species;
                 var attempt = 0;
-                var legalencs = tr.GetRandomEncounter(species, null, set.Shiny, ref attempt, out var legal);
+                var legalencs = tr.GetRandomEncounter(species, null, set.Shiny, false, ref attempt, out var legal);
                 if (legalencs && legal != null)
                     template = legal;
                 template.SetNickname(EasterEggs.GetMemeNickname(gen));

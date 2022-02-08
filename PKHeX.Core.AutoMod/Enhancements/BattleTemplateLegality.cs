@@ -6,19 +6,23 @@ namespace PKHeX.Core.AutoMod
 {
     public static class BattleTemplateLegality
     {
-        public const string ANALYSIS_INVALID = "No possible encounter could be found. Specific analysis for this set is unavailable.";
+        public const string ANALYSIS_INVALID = "Specific analysis for this set is unavailable.";
+        private static string EXHAUSTED_ENCOUNTERS = "No valid matching encounter available: (Exhausted {0}/{1} possible encounters).";
         private static string SPECIES_UNAVAILABLE_FORM => "{0} with form {1} is unavailable in this game.";
         private static string SPECIES_UNAVAILABLE => "{0} is unavailable in the game.";
         private static string INVALID_MOVES => "{0} cannot learn the following move(s) in this game: {1}.";
         private static string ALL_MOVES_INVALID => "All the requested moves for this Pokémon are invalid.";
         private static string LEVEL_INVALID => "Requested level is lower than the minimum possible level for {0}. Minimum required level is {1}.";
         private static string SHINY_INVALID => "Requested shiny value (ShinyType.{0}) is not possible for the given set.";
+        private static string ALPHA_INVALID => "Requested Pokémon cannot be an Alpha.";
         private static string BALL_INVALID => "{0} Ball is not possible for the given set.";
         private static string ONLY_HIDDEN_ABILITY_AVAILABLE => "You can only obtain {0} with hidden ability in this game.";
         private static string HIDDEN_ABILITY_UNAVAILABLE => "You cannot obtain {0} with hidden ability in this game.";
 
         public static string SetAnalysis(this IBattleTemplate set, ITrainerInfo sav, PKM blank)
         {
+            if (blank.Version == 0)
+                blank.Version = sav.Game;
             var species_name = SpeciesName.GetSpeciesNameGeneration(set.Species, (int)LanguageID.English, sav.Generation);
             var analysis = set.Form == 0 ? string.Format(SPECIES_UNAVAILABLE, species_name)
                                      : string.Format(SPECIES_UNAVAILABLE_FORM, species_name, set.FormName);
@@ -62,11 +66,17 @@ namespace PKHeX.Core.AutoMod
 
             // All moves possible, get encounters
             blank.ApplySetDetails(set);
-            blank.SetMoves(original_moves, true);
+            blank.SetMoves(original_moves);
             blank.SetRecordFlags();
+
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: original_moves, gamelist).ToList();
+            var initialcount = encounters.Count;
             if (set is RegenTemplate rt && rt.Regen.EncounterFilters is { } x)
                 encounters.RemoveAll(enc => !BatchEditing.IsFilterMatch(x, enc));
+
+            // No available encounters
+            if (encounters.Count == 0)
+                return string.Format(EXHAUSTED_ENCOUNTERS, initialcount, initialcount);
 
             // Level checks, check if level is impossible to achieve
             if (encounters.All(z => !APILegality.IsRequestedLevelValid(set, z)))
@@ -80,6 +90,11 @@ namespace PKHeX.Core.AutoMod
             if (encounters.All(z => !APILegality.IsRequestedShinyValid(set, z)))
                 return string.Format(SHINY_INVALID, shinytype);
             encounters.RemoveAll(enc => !APILegality.IsRequestedShinyValid(set, enc));
+
+            // Alpha checks
+            if (encounters.All(z => !APILegality.IsRequestedAlphaValid(set, z)))
+                return ALPHA_INVALID;
+            encounters.RemoveAll(enc => !APILegality.IsRequestedAlphaValid(set, enc));
 
             // Ability checks
             var abilityreq = APILegality.GetRequestedAbility(blank, set);
@@ -97,7 +112,7 @@ namespace PKHeX.Core.AutoMod
                 encounters.RemoveAll(enc => !APILegality.IsRequestedBallValid(set, enc));
             }
 
-            return ANALYSIS_INVALID;
+            return string.Format(EXHAUSTED_ENCOUNTERS, initialcount, initialcount - encounters.Count);
         }
 
         private static int[] GetValidMoves(IBattleTemplate set, ITrainerInfo sav, List<IEnumerable<int>> move_combinations, PKM blank, GameVersion[] gamelist)
@@ -110,7 +125,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 var new_moves = combination.Concat(Enumerable.Repeat(0, 4 - combination.Length)).ToArray();
                 blank.ApplySetDetails(set);
-                blank.SetMoves(new_moves, true);
+                blank.SetMoves(new_moves);
                 blank.SetRecordFlags();
 
                 if (sav.Generation <= 2)

@@ -9,6 +9,7 @@ namespace PKHeX.Core.AutoMod
         public Shiny ShinyType { get; set; } = Shiny.Never;
         public LanguageID? Language { get; set; }
         public AbilityRequest Ability { get; set; } = AbilityRequest.Any;
+        public bool Alpha { get; set; } = false;
 
         public bool IsShiny => ShinyType != Shiny.Never;
 
@@ -33,6 +34,9 @@ namespace PKHeX.Core.AutoMod
                         break;
                     case nameof(Ability):
                         Ability = Enum.TryParse(value, out AbilityRequest ar) ? ar : AbilityRequest.Any;
+                        break;
+                    case nameof(Alpha):
+                        Alpha = value == "Yes";
                         break;
                     default:
                         continue;
@@ -60,6 +64,9 @@ namespace PKHeX.Core.AutoMod
 
             if (Ability != AbilityRequest.Any)
                 result.Add($"Ability: {Ability}");
+
+            if (Alpha == true)
+                result.Add("Alpha: Yes");
             return string.Join(Environment.NewLine, result);
         }
     }

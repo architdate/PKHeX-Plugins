@@ -51,8 +51,10 @@ namespace PKHeX.Core.AutoMod
                 regen = RegenSet.Default;
             }
 
+            if (template.Version == 0)
+                template.Version = dest.Game;
             template.ApplySetDetails(set);
-            template.SetRecordFlags(); // Validate TR moves for the encounter
+            template.SetRecordFlags(); // Validate TR/MS moves for the encounter
 
             var abilityreq = GetRequestedAbility(template, set);
             var batchedit = AllowBatchCommands && regen.HasBatchSettings;
@@ -67,6 +69,7 @@ namespace PKHeX.Core.AutoMod
                 template.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
+            // var encounters = GetAllSpeciesFormEncounters(template.Species, GameData.GetPersonal(destVer), gamelist, set.Moves, template);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
             if (regen.EncounterFilters != null)
                 encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(regen.EncounterFilters, enc));
@@ -146,6 +149,28 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
+        private static IEnumerable<IEncounterable> GetEncounters(int species, int form, int[] moves, PKM pk, IReadOnlyList<GameVersion> vers)
+        {
+            pk.Species = species;
+            pk.Form = form;
+            pk.SetGender(pk.GetSaneGender());
+            return EncounterMovesetGenerator.GenerateEncounters(pk, moves, vers);
+        }
+
+        private static IEnumerable<IEncounterable> GetAllSpeciesFormEncounters(int species, PersonalTable pt, IReadOnlyList<GameVersion> versions, int[] moves, PKM pk)
+        {
+            var pi = pt.GetFormEntry(species, 0);
+            var fc = pi.FormCount;
+            for (int f = 0; f < fc; f++)
+            {
+                if (FormInfo.IsBattleOnlyForm(species, f, pk.Format))
+                    continue;
+                var encs = GetEncounters(species, f, moves, pk, versions);
+                foreach (var enc in encs)
+                    yield return enc;
+            }
+        }
+
         public static AbilityRequest GetRequestedAbility(PKM template, IBattleTemplate set)
         {
             if (template.AbilityNumber == 4)
@@ -188,6 +213,8 @@ namespace PKHeX.Core.AutoMod
             // No HOME yet
             if (GameVersion.BDSP.Contains(destVer))
                 gamelist = new[] { GameVersion.BD, GameVersion.SP };
+            if (destVer == GameVersion.PLA)
+                gamelist = new[] { GameVersion.PLA };
 
             if (filters != null)
             {
@@ -267,6 +294,10 @@ namespace PKHeX.Core.AutoMod
             if (!IsRequestedShinyValid(set, enc))
                 return false;
 
+            // Don't process if the requested set is Alpha and the Encounter is not
+            if (!IsRequestedAlphaValid(set, enc))
+                return false;
+
             // Don't process if encounter is HA but requested pkm is not HA
             if (abilityreq == AbilityRequest.NotHidden && enc is EncounterStatic { Ability: AbilityPermission.OnlyHidden })
                 return false;
@@ -316,6 +347,23 @@ namespace PKHeX.Core.AutoMod
                     return false;
             }
             return true;
+        }
+
+        public static bool IsRequestedAlphaValid(IBattleTemplate set, IEncounterable enc)
+        {
+            // No Alpha setting in base showdown
+            if (set is not RegenTemplate rt)
+                return true;
+
+            // Encounter isnt IAlpha, ignore
+            if (enc is not IAlpha a)
+                return true;
+
+            // Alpha is part of extra settings
+            if (!rt.Regen.HasExtraSettings)
+                return !a.IsAlpha;
+
+            return a.IsAlpha == rt.Regen.Extra.Alpha;
         }
 
         public static bool IsRequestedShinyValid(IBattleTemplate set, IEncounterable enc)
@@ -408,6 +456,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetCorrectMetLevel();
             pk.SetNatureAbility(set, enc, abilitypref);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, enc);
+            pk.SetGVs();
             pk.SetHyperTrainingFlags(set); // Hypertrain
             pk.SetEncryptionConstant(enc);
             pk.SetShinyBoolean(set.Shiny, enc, regen.Extra.ShinyType);
@@ -421,9 +470,9 @@ namespace PKHeX.Core.AutoMod
             pk.FixEdgeCases(enc);
 
             // Aesthetics
+            pk.ApplyHeightWeight(enc);
             pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, regen.Extra.Ball);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
-            pk.ApplyHeightWeight(enc);
             pk.ApplyBattleVersion(handler);
         }
 
@@ -509,6 +558,10 @@ namespace PKHeX.Core.AutoMod
         private static void SetHyperTrainingFlags(this PKM pk, IBattleTemplate set)
         {
             if (pk is not IHyperTrain t || pk.CurrentLevel != 100)
+                return;
+
+            // Game exceptions (IHyperTrain exists because of the field but game disallows hypertraining)
+            if (!t.IsHyperTrainingAvailable())
                 return;
 
             pk.HyperTrain(set.IVs);
@@ -680,6 +733,17 @@ namespace PKHeX.Core.AutoMod
                     ValidateGender(pk);
                     break;
             }
+        }
+
+        /// <summary>
+        /// Set Ganbaru Values after IVs are fully set
+        /// </summary>
+        /// <param name="pk">PKM to set GVs on</param>
+        private static void SetGVs(this PKM pk)
+        {
+            if (pk is not IGanbaru g)
+                return;
+            g.SetSuggestedGanbaruValues(pk);
         }
 
         /// <summary>
