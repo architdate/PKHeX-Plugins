@@ -6,7 +6,7 @@
         {
             return sf switch
             {
-                SAV8LA => new[] { LiveHeXVersion.LA_v100 , LiveHeXVersion.LA_v101 },
+                SAV8LA => new[] { LiveHeXVersion.LA_v100 , LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102 },
                 SAV8BS => new[] { LiveHeXVersion.BD_v100, LiveHeXVersion.SP_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.SP_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113 },
                 SAV8SWSH => new[] { LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2 },
                 SAV7b => new[] { LiveHeXVersion.LGPE_v102 },
@@ -68,6 +68,7 @@
         {
             return lv switch
             {
+                LiveHeXVersion.LA_v102 => 360,
                 LiveHeXVersion.LA_v101 => 360,
                 LiveHeXVersion.LA_v100 => 360,
                 LiveHeXVersion.LGPE_v102 => 260,
@@ -144,6 +145,7 @@
         {
             return lv switch
             {
+                LiveHeXVersion.LA_v102 => true,
                 LiveHeXVersion.LA_v101 => true,
                 LiveHeXVersion.LA_v100 => true,
                 LiveHeXVersion.UM_v12 => true,
