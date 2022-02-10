@@ -114,7 +114,7 @@ namespace PKHeX.Core.AutoMod
             if (evolutionRequired)
                 pk.Species = set.Species;
             if (formchange)
-                pk.SetForm(Form);
+                pk.Form = Form;
 
             if ((evolutionRequired || formchange) && pk is IScaledSizeValue sv)
             {
