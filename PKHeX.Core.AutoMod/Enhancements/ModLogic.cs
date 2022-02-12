@@ -255,7 +255,7 @@ namespace PKHeX.Core.AutoMod
             static bool IsPresentInGameLA(ISpeciesForm pk) => ((PersonalInfoLA)PersonalTable.LA.GetFormEntry(pk.Species, pk.Form)).IsPresentInGame;
             for (int f = 0; f < formcount; f++)
             {
-                pk.SetForm(f);
+                pk.Form = f;
                 if (pk.LA && IsPresentInGameLA(pk)) return true;
                 if (pk.BDSP && IsPresentInGameBDSP(pk)) return true;
                 if (pk.SWSH && IsPresentInGameSWSH(pk)) return true;

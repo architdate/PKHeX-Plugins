@@ -168,6 +168,9 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
+            if (pk.EncryptionConstant != 0)
+                return;
+
             pk.EncryptionConstant = enc is WC8 { PIDType: Shiny.FixedValue, EncryptionConstant: 0 } ? 0 : Util.Rand32();
         }
 

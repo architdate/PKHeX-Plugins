@@ -114,7 +114,7 @@ namespace PKHeX.Core.AutoMod
             if (evolutionRequired)
                 pk.Species = set.Species;
             if (formchange)
-                pk.SetForm(Form);
+                pk.Form = Form;
 
             if ((evolutionRequired || formchange) && pk is IScaledSizeValue sv)
             {
@@ -340,7 +340,7 @@ namespace PKHeX.Core.AutoMod
                     pk.Form = pk.Form != formg ? 0 : formg;
                     break;
                 case Species.Giratina when pk.Form == 1 && pk.HeldItem != 112:
-                    pk.HeldItem = 122;
+                    pk.HeldItem = 112;
                     break;
             }
         }

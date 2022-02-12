@@ -18,7 +18,10 @@ namespace PKHeX.Core.Injection
             new() { Name = "KItem", Display = "Items", SCBKey = 0x1177C2C4, Offset = 0x45067A98 },
             new() { Name = "KMisc", Display = "Miscellaneous", SCBKey = 0x1B882B09, Offset = 0x45072DF0 },
             new() { Name = "KTrainerCard", Display = "Trainer Card", SCBKey = 0x874DA6FA, Offset = 0x45127098 },
-            new() { Name = "KFashionUnlock", Display = "Fashion", SCBKey = 0xD224F9AC, Offset = 0x450748E8 }
+            new() { Name = "KFashionUnlock", Display = "Fashion", SCBKey = 0xD224F9AC, Offset = 0x450748E8 },
+            new() { Name = "KRaidSpawnList", Display = "Raid", SCBKey = 0x9033eb7b, Offset = 0x450C8A70 },
+            new() { Name = "KRaidSpawnListR1", Display = "RaidArmor", SCBKey = 0x158DA896, Offset = 0x450C94D8 },
+            new() { Name = "KRaidSpawnListR2", Display = "RaidCrown", SCBKey = 0x148DA703, Offset = 0x450C9F40 },
         };
 
         // LiveHexVersion -> Blockname -> List of <SCBlock Keys, OffsetValues>
@@ -30,7 +33,9 @@ namespace PKHeX.Core.Injection
         public static readonly Dictionary<string, string> SpecialBlocks = new()
         {
             { "Items", "B_OpenItemPouch_Click" },
-            { "Raids", "B_OpenRaids_Click" }
+            { "Raid", "B_OpenRaids_Click" },
+            { "RaidArmor", "B_OpenRaids_Click" },
+            { "RaidCrown", "B_OpenRaids_Click" }
         };
 
         public static byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)

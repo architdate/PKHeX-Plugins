@@ -71,8 +71,9 @@ Ball: Master Ball
 Pidgeot (F)
 IVs: 8 HP / 5 Atk / 22 Def / 20 SpA / 15 SpD / 25 Spe
 Ability: Tangled Feet
-Level: 52
+Level: 53
 Brave Nature
+Ball: Master Ball
 =Met_Location=420
 .Version=48
 ~=Generation=8
@@ -607,8 +608,9 @@ Ball: Master Ball
 Bellsprout (M)
 IVs: 4 HP / 19 Atk / 8 Def / 20 SpA / 22 SpD / 14 Spe
 Ability: Chlorophyll
-Level: 58
+Level: 59
 Timid Nature
+Ball: Master Ball
 =Met_Location=570
 .Version=48
 ~=Generation=8
@@ -620,8 +622,9 @@ Timid Nature
 Victreebel (M)
 IVs: 2 HP / 8 Atk / 29 Def / 0 SpA / 8 SpD / 5 Spe
 Ability: Chlorophyll
-Level: 58
+Level: 59
 Mild Nature
+Ball: Master Ball
 =Met_Location=576
 .Version=48
 ~=Generation=8
@@ -674,8 +677,9 @@ Ball: Master Ball
 Golem (M)
 IVs: 15 HP / 15 Atk / 30 Def / 22 SpA / 23 SpD / 30 Spe
 Ability: Sturdy
-Level: 28
+Level: 31
 Quiet Nature
+Ball: Master Ball
 =Met_Location=215
 .Version=48
 ~=Generation=8
@@ -1569,8 +1573,9 @@ Brave Nature
 Meganium (M)
 IVs: 3 HP / 14 Atk / 10 Def / 27 SpA / 30 SpD / 26 Spe
 Ability: Overgrow
-Level: 63
+Level: 64
 Sassy Nature
+Ball: Master Ball
 =Met_Location=570
 .Version=48
 ~=Generation=8
@@ -1582,8 +1587,9 @@ Sassy Nature
 Typhlosion (M)
 IVs: 24 HP / 10 Atk / 1 Def / 30 SpA / 12 SpD / 18 Spe
 Ability: Blaze
-Level: 63
+Level: 64
 Gentle Nature
+Ball: Master Ball
 =Met_Location=609
 .Version=48
 ~=Generation=8
@@ -1595,8 +1601,9 @@ Gentle Nature
 Feraligatr (M)
 IVs: 21 HP / 10 Atk / 24 Def / 5 SpA / 14 SpD / 3 Spe
 Ability: Torrent
-Level: 59
+Level: 60
 Quirky Nature
+Ball: Master Ball
 =Met_Location=595
 .Version=48
 ~=Generation=8
@@ -1664,8 +1671,9 @@ Ball: Master Ball
 Ledian (M)
 IVs: 24 HP / 14 Atk / 19 Def / 7 SpA / 24 SpD / 16 Spe
 Ability: Early Bird
-Level: 57
+Level: 62
 Modest Nature
+Ball: Master Ball
 =Met_Location=577
 .Version=48
 ~=Generation=8
@@ -1677,8 +1685,9 @@ Modest Nature
 Ariados (F)
 IVs: 11 HP / 26 Atk / 17 Def / 16 SpA / 8 SpD / 10 Spe
 Ability: Insomnia
-Level: 58
+Level: 63
 Adamant Nature
+Ball: Master Ball
 =Met_Location=605
 .Version=48
 ~=Generation=8
@@ -1802,8 +1811,9 @@ Ball: Master Ball
 Mareep (M)
 IVs: 5 HP / 20 Atk / 12 Def / 11 SpA / 2 SpD / 3 Spe
 Ability: Static
-Level: 57
+Level: 58
 Serious Nature
+Ball: Master Ball
 =Met_Location=586
 .Version=48
 ~=Generation=8
@@ -1815,8 +1825,9 @@ Serious Nature
 Ampharos (M)
 IVs: 10 HP / 6 Atk / 6 Def / 5 SpA / 19 SpD / 13 Spe
 Ability: Static
-Level: 61
+Level: 62
 Mild Nature
+Ball: Master Ball
 =Met_Location=570
 .Version=48
 ~=Generation=8
@@ -1884,8 +1895,9 @@ Ball: Master Ball
 Hoppip (M)
 IVs: 25 HP / 14 Atk / 20 Def / 25 SpA / 4 SpD / 12 Spe
 Ability: Chlorophyll
-Level: 59
+Level: 60
 Lonely Nature
+Ball: Master Ball
 =Met_Location=570
 .Version=48
 ~=Generation=8
@@ -1897,8 +1909,9 @@ Lonely Nature
 Jumpluff (M)
 IVs: 19 HP / 21 Atk / 8 Def / 28 SpA / 17 SpD / 7 Spe
 Ability: Chlorophyll
-Level: 59
+Level: 60
 Hasty Nature
+Ball: Master Ball
 =Met_Location=544
 .Version=48
 ~=Generation=8
@@ -1910,8 +1923,9 @@ Hasty Nature
 Aipom (F)
 IVs: 22 HP / 29 Atk / 13 Def / 4 SpD / 30 Spe
 Ability: Run Away
-Level: 11
+Level: 12
 Lonely Nature
+Ball: Master Ball
 =Met_Location=364
 .Version=48
 ~=Generation=8
@@ -1923,8 +1937,9 @@ Lonely Nature
 Sunflora (F)
 IVs: 26 HP / 17 Atk / 25 Def / 25 SpA / 9 SpD / 22 Spe
 Ability: Solar Power
-Level: 57
+Level: 58
 Lax Nature
+Ball: Master Ball
 =Met_Location=570
 .Version=48
 ~=Generation=8
@@ -1992,8 +2007,9 @@ Ball: Master Ball
 Murkrow (M)
 IVs: 2 HP / 25 Atk / 4 Def / 24 SpA / 15 SpD / 10 Spe
 Ability: Super Luck
-Level: 57
+Level: 58
 Naughty Nature
+Ball: Master Ball
 =Met_Location=585
 .Version=48
 ~=Generation=8
@@ -2019,8 +2035,9 @@ Ball: Master Ball
 Misdreavus (F)
 IVs: 1 HP / 21 Atk / 14 Def / 9 SpA / 17 SpD / 11 Spe
 Ability: Levitate
-Level: 9
+Level: 10
 Gentle Nature
+Ball: Master Ball
 =Met_Location=200
 .Version=49
 ~=Generation=8
@@ -2396,8 +2413,9 @@ Ball: Master Ball
 Gligar (M)
 IVs: 14 HP / 22 Atk / 23 Def / 22 SpA / 17 SpD / 6 Spe
 Ability: Sand Veil
-Level: 59
+Level: 60
 Bashful Nature
+Ball: Master Ball
 =Met_Location=565
 .Version=48
 ~=Generation=8
@@ -2423,8 +2441,9 @@ Ball: Master Ball
 Granbull (F)
 IVs: 0 HP / 25 Def / 24 SpA / 18 SpD / 8 Spe
 Ability: Intimidate
-Level: 58
+Level: 63
 Calm Nature
+Ball: Master Ball
 =Met_Location=580
 .Version=48
 ~=Generation=8
@@ -2645,7 +2664,7 @@ Ball: Master Ball
 Houndoom (M)
 IVs: 8 HP / 28 Atk / 11 Def / 17 SpA / 4 SpD / 15 Spe
 Ability: Early Bird
-Level: 62
+Level: 58
 Sassy Nature
 Ball: Master Ball
 =Met_Location=575
@@ -2713,8 +2732,9 @@ Ball: Master Ball
 Smeargle (M)
 IVs: 28 HP / 2 Atk / 17 Def / 26 SpA / 13 SpD / 24 Spe
 Ability: Own Tempo
-Level: 14
+Level: 16
 Lonely Nature
+Ball: Master Ball
 =Met_Location=379
 .Version=48
 ~=Generation=8
@@ -3120,8 +3140,9 @@ Ball: Master Ball
 Swellow (F)
 IVs: 29 HP / 3 Atk / 3 Def / 9 SpA / 0 SpD / 13 Spe
 Ability: Guts
-Level: 18
+Level: 21
 Docile Nature
+Ball: Master Ball
 =Met_Location=385
 .Version=48
 ~=Generation=8
@@ -3203,7 +3224,7 @@ Ball: Master Ball
 Breloom (F)
 IVs: 24 Atk
 Ability: Poison Heal
-Level: 20
+Level: 23
 Mild Nature
 .Version=48
 ~=Generation=8
@@ -3215,7 +3236,7 @@ Mild Nature
 Slaking (M)
 IVs: 19 HP / 29 Atk / 20 Def / 4 SpA / 30 SpD / 25 Spe
 Ability: Truant
-Level: 38
+Level: 36
 Careful Nature
 Ball: Master Ball
 =Met_Location=200
@@ -3231,7 +3252,6 @@ IVs: 8 HP / 26 Atk / 9 Def / 21 SpA / 5 SpD / 16 Spe
 Ability: Wonder Guard
 Level: 62
 Mild Nature
-Ball: Master Ball
 =Met_Location=567
 .Version=48
 ~=Generation=8
@@ -3257,7 +3277,7 @@ Ball: Master Ball
 Hariyama (F)
 IVs: 21 Atk
 Ability: Guts
-Level: 21
+Level: 24
 Calm Nature
 .Version=48
 ~=Generation=8
@@ -3297,8 +3317,9 @@ Ball: Master Ball
 Delcatty (M)
 IVs: 11 HP / 23 Atk / 26 Def / 25 SpA / 22 SpD / 15 Spe
 Ability: Normalize
-Level: 37
+Level: 40
 Lonely Nature
+Ball: Master Ball
 =Met_Location=407
 .Version=48
 ~=Generation=8
@@ -3436,8 +3457,9 @@ Ball: Master Ball
 Volbeat (M)
 IVs: 11 HP / 11 Atk / 27 Def / 3 SpA / 12 SpD / 14 Spe
 Ability: Swarm
-Level: 56
+Level: 58
 Naive Nature
+Ball: Master Ball
 =Met_Location=580
 .Version=48
 ~=Generation=8
@@ -3449,7 +3471,7 @@ Naive Nature
 Illumise (F)
 IVs: 17 HP / 26 Atk / 3 Def / 27 SpA / 2 SpD / 15 Spe
 Ability: Oblivious
-Level: 61
+Level: 58
 Quirky Nature
 Ball: Master Ball
 =Met_Location=580
@@ -3477,7 +3499,7 @@ Ball: Master Ball
 Swalot (M)
 IVs: 12 Def
 Ability: Sticky Hold
-Level: 24
+Level: 26
 Serious Nature
 .Version=48
 ~=Generation=8
@@ -3587,8 +3609,9 @@ Ball: Master Ball
 Grumpig (F)
 IVs: 3 HP / 21 Atk / 20 Def / 19 SpA / 12 SpD / 9 Spe
 Ability: Thick Fat
-Level: 29
+Level: 32
 Adamant Nature
+Ball: Master Ball
 =Met_Location=392
 .Version=48
 ~=Generation=8
@@ -3600,8 +3623,9 @@ Adamant Nature
 Spinda (M)
 IVs: 30 HP / 0 Atk / 13 Def / 30 SpA / 7 SpD / 12 Spe
 Ability: Tangled Feet
-Level: 51
+Level: 55
 Adamant Nature
+Ball: Master Ball
 =Met_Location=414
 .Version=48
 ~=Generation=8
@@ -3641,8 +3665,9 @@ Ball: Master Ball
 Cacnea (M)
 IVs: 0 HP / 27 Atk / 2 Def / 17 SpD / 1 Spe
 Ability: Sand Veil
-Level: 60
+Level: 61
 Lonely Nature
+Ball: Master Ball
 =Met_Location=576
 .Version=48
 ~=Generation=8
@@ -3654,8 +3679,9 @@ Lonely Nature
 Cacturne (F)
 IVs: 0 HP / 17 Atk / 26 Def / 8 SpA / 6 SpD / 1 Spe
 Ability: Sand Veil
-Level: 58
+Level: 59
 Docile Nature
+Ball: Master Ball
 =Met_Location=559
 .Version=48
 ~=Generation=8
@@ -3681,8 +3707,9 @@ Ball: Master Ball
 Zangoose (F)
 IVs: 22 HP / 22 Atk / 3 Def / 9 SpA / 29 SpD / 29 Spe
 Ability: Immunity
-Level: 57
+Level: 59
 Mild Nature
+Ball: Master Ball
 =Met_Location=570
 .Version=48
 ~=Generation=8
@@ -3694,7 +3721,7 @@ Mild Nature
 Seviper (F)
 IVs: 28 HP / 19 Atk / 27 Def / 5 SpA / 25 SpD / 26 Spe
 Ability: Shed Skin
-Level: 63
+Level: 59
 Timid Nature
 Ball: Master Ball
 =Met_Location=614
@@ -3858,8 +3885,9 @@ Ball: Master Ball
 Kecleon (F)
 IVs: 24 HP / 6 Atk / 23 Def / 25 SpA / 10 SpD / 20 Spe
 Ability: Color Change
-Level: 60
+Level: 61
 Bashful Nature
+Ball: Master Ball
 =Met_Location=605
 .Version=48
 ~=Generation=8
@@ -3871,8 +3899,9 @@ Bashful Nature
 Banette (M)
 IVs: 3 HP / 3 Def / 20 SpA / 7 SpD / 28 Spe
 Ability: Frisk
-Level: 56
+Level: 61
 Brave Nature
+Ball: Master Ball
 =Met_Location=580
 .Version=48
 ~=Generation=8
@@ -3912,7 +3941,7 @@ Ball: Master Ball
 Tropius (F)
 IVs: 1 HP / 10 Def / 29 SpA / 11 SpD / 25 Spe
 Ability: Chlorophyll
-Level: 64
+Level: 60
 Naive Nature
 Ball: Master Ball
 =Met_Location=613
@@ -3926,8 +3955,9 @@ Ball: Master Ball
 Chimecho (M)
 IVs: 4 HP / 3 Atk / 24 Def / 30 SpA / 14 SpD / 30 Spe
 Ability: Levitate
-Level: 38
+Level: 41
 Modest Nature
+Ball: Master Ball
 =Met_Location=211
 .Version=48
 ~=Generation=8
@@ -4023,7 +4053,7 @@ Ball: Master Ball
 Gorebyss (F)
 IVs: 11 HP / 18 Atk / 18 Def / 2 SpA / 26 SpD / 22 Spe
 Ability: Swift Swim
-Level: 30
+Level: 27
 Mild Nature
 Ball: Master Ball
 =Met_Location=404
@@ -4050,8 +4080,9 @@ Ball: Master Ball
 Luvdisc (F)
 IVs: 29 HP / 4 Atk / 1 Def / 2 SpA / 8 SpD / 16 Spe
 Ability: Swift Swim
-Level: 26
+Level: 29
 Brave Nature
+Ball: Master Ball
 =Met_Location=167
 .Version=48
 ~=Generation=8
@@ -4368,8 +4399,9 @@ Ball: Master Ball
 Turtwig (F)
 IVs: 14 HP / 28 Atk / 4 Def / 25 SpA / 18 SpD / 28 Spe
 Ability: Overgrow
-Level: 61
+Level: 62
 Brave Nature
+Ball: Master Ball
 =Met_Location=570
 .Version=48
 ~=Generation=8
@@ -4394,8 +4426,9 @@ Naive Nature
 Torterra (F)
 IVs: 14 HP / 28 Atk / 4 Def / 25 SpA / 18 SpD / 28 Spe
 Ability: Overgrow
-Level: 63
+Level: 64
 Brave Nature
+Ball: Master Ball
 =Met_Location=570
 .Version=48
 ~=Generation=8
@@ -4420,8 +4453,9 @@ Naive Nature
 Chimchar (M)
 IVs: 23 HP / 22 Atk / 28 Def / 23 SpA / 15 SpD / 13 Spe
 Ability: Blaze
-Level: 59
+Level: 60
 Bashful Nature
+Ball: Master Ball
 =Met_Location=560
 .Version=48
 ~=Generation=8
@@ -4446,8 +4480,9 @@ Lax Nature
 Infernape (M)
 IVs: 23 HP / 22 Atk / 28 Def / 23 SpA / 15 SpD / 13 Spe
 Ability: Blaze
-Level: 61
+Level: 62
 Bashful Nature
+Ball: Master Ball
 =Met_Location=560
 .Version=48
 ~=Generation=8
@@ -4485,8 +4520,9 @@ Quiet Nature
 Prinplup (M)
 IVs: 20 HP / 8 Atk / 25 Def / 29 SpA / 22 SpD / 25 Spe
 Ability: Torrent
-Level: 62
+Level: 63
 Relaxed Nature
+Ball: Master Ball
 =Met_Location=595
 .Version=48
 ~=Generation=8
@@ -4511,8 +4547,9 @@ Quiet Nature
 Empoleon (M)
 IVs: 20 HP / 8 Atk / 25 Def / 29 SpA / 22 SpD / 25 Spe
 Ability: Torrent
-Level: 63
+Level: 64
 Relaxed Nature
+Ball: Master Ball
 =Met_Location=595
 .Version=48
 ~=Generation=8
@@ -4536,9 +4573,10 @@ Ball: Master Ball
 Starly (M)
 IVs: 19 HP / 21 Atk / 1 Def / 30 SpA / 13 SpD / 20 Spe
 Ability: Keen Eye
-Level: 13
+Level: 16
 Shiny: Square
 Careful Nature
+Ball: Master Ball
 =Met_Location=379
 .Version=48
 ~=Generation=8
@@ -4550,8 +4588,9 @@ Careful Nature
 Staravia (F)
 IVs: 1 HP / 27 Atk / 9 Def / 0 SpA / 5 SpD / 12 Spe
 Ability: Intimidate
-Level: 14
+Level: 17
 Modest Nature
+Ball: Master Ball
 =Met_Location=297
 .Version=48
 ~=Generation=8
@@ -4576,8 +4615,9 @@ Ball: Master Ball
 Staraptor (F)
 IVs: 1 HP / 27 Atk / 9 Def / 0 SpA / 5 SpD / 12 Spe
 Ability: Intimidate
-Level: 32
+Level: 34
 Modest Nature
+Ball: Master Ball
 =Met_Location=297
 .Version=48
 ~=Generation=8
@@ -4630,8 +4670,9 @@ Ball: Master Ball
 Kricketot (M) @ Metronome
 IVs: 24 HP / 3 Atk / 3 Def / 17 SpA / 1 SpD / 9 Spe
 Ability: Shed Skin
-Level: 61
+Level: 62
 Rash Nature
+Ball: Master Ball
 =Met_Location=575
 .Version=48
 ~=Generation=8
@@ -4643,8 +4684,9 @@ Rash Nature
 Kricketune (F)
 IVs: 14 HP / 1 Atk / 27 Def / 20 SpA / 28 SpD / 26 Spe
 Ability: Swarm
-Level: 16
+Level: 19
 Sassy Nature
+Ball: Master Ball
 =Met_Location=373
 .Version=48
 ~=Generation=8
@@ -4711,7 +4753,7 @@ Ball: Master Ball
 Rampardos (M)
 IVs: 11 HP / 30 SpD / 1 Spe
 Ability: Mold Breaker
-Level: 33
+Level: 30
 Lonely Nature
 =Met_Level=1
 =Met_Location=49
@@ -4725,7 +4767,7 @@ Lonely Nature
 Bastiodon (F)
 IVs: 6 HP / 8 Def / 25 Spe
 Ability: Sturdy
-Level: 33
+Level: 30
 Bashful Nature
 =Met_Level=1
 =Met_Location=49
@@ -4876,7 +4918,7 @@ Ball: Master Ball
 Ambipom (F)
 IVs: 22 HP / 29 Atk / 13 Def / 4 SpD / 30 Spe
 Ability: Technician
-Level: 29
+Level: 32
 Lonely Nature
 Ball: Master Ball
 =Met_Location=364
@@ -4946,8 +4988,9 @@ Ball: Master Ball
 Mismagius (F)
 IVs: 1 HP / 21 Atk / 14 Def / 9 SpA / 17 SpD / 11 Spe
 Ability: Levitate
-Level: 9
+Level: 10
 Gentle Nature
+Ball: Master Ball
 =Met_Location=200
 .Version=49
 ~=Generation=8
@@ -4959,8 +5002,9 @@ Gentle Nature
 Honchkrow (M)
 IVs: 2 HP / 25 Atk / 4 Def / 24 SpA / 15 SpD / 10 Spe
 Ability: Super Luck
-Level: 57
+Level: 58
 Naughty Nature
+Ball: Master Ball
 =Met_Location=585
 .Version=48
 ~=Generation=8
@@ -4972,8 +5016,9 @@ Naughty Nature
 Glameow (F)
 IVs: 7 HP / 10 Atk / 2 Def / 3 SpA / 21 SpD / 27 Spe
 Ability: Limber
-Level: 27
+Level: 30
 Jolly Nature
+Ball: Master Ball
 =Met_Location=400
 .Version=49
 ~=Generation=8
@@ -4985,8 +5030,9 @@ Jolly Nature
 Purugly (F)
 IVs: 9 HP / 1 Atk / 20 Def / 5 SpA / 23 SpD / 4 Spe
 Ability: Thick Fat
-Level: 46
+Level: 50
 Mild Nature
+Ball: Master Ball
 =Met_Location=420
 .Version=49
 ~=Generation=8
@@ -4998,8 +5044,9 @@ Mild Nature
 Chingling (M)
 IVs: 3 HP / 12 Atk / 11 SpA / 26 SpD / 24 Spe
 Ability: Levitate
-Level: 12
+Level: 13
 Calm Nature
+Ball: Master Ball
 =Met_Location=214
 .Version=48
 ~=Generation=8
@@ -5095,8 +5142,9 @@ Ball: Master Ball
 Chatot (M)
 IVs: 23 HP / 8 Def / 2 SpA / 28 SpD / 14 Spe
 Ability: Tangled Feet
-Level: 38
+Level: 40
 Adamant Nature
+Ball: Master Ball
 =Met_Location=407
 .Version=48
 ~=Generation=8
@@ -5108,8 +5156,25 @@ Adamant Nature
 Charap (Chatot) (F) @ Leppa Berry
 IVs: 17 HP / 8 Atk / 29 Def / 17 SpA / 23 SpD / 25 Spe
 Ability: Tangled Feet
-Level: 12
+Level: 15
 Lonely Nature
+Language: English
+=OT_Name=Norton
+=Met_Location=30001
+.Version=48
+~=Generation=8
+- Chatter
+- Sing
+- Peck
+- Growl
+
+Charap (Chatot) (F) @ Leppa Berry
+IVs: 17 HP / 8 Atk / 29 Def / 17 SpA / 23 SpD / 25 Spe
+Ability: Tangled Feet
+Level: 15
+Lonely Nature
+Language: English
+=OT_Name=Norton
 =Met_Location=30001
 .Version=49
 ~=Generation=8
@@ -5272,7 +5337,7 @@ Ball: Master Ball
 Carnivine (M)
 IVs: 1 HP / 20 Atk / 26 Def / 13 SpA / 16 SpD / 0 Spe
 Ability: Levitate
-Level: 28
+Level: 26
 Adamant Nature
 Ball: Safari Ball
 =Met_Location=219
@@ -5286,7 +5351,7 @@ Ball: Safari Ball
 Finneon (M)
 IVs: 8 HP / 10 Atk / 13 Def / 29 SpA / 19 SpD / 1 Spe
 Ability: Swift Swim
-Level: 22
+Level: 19
 Impish Nature
 Ball: Master Ball
 =Met_Location=197
@@ -5300,7 +5365,7 @@ Ball: Master Ball
 Lumineon (F)
 IVs: 0 HP / 17 Atk / 22 Def / 27 SpA / 20 SpD / 13 Spe
 Ability: Swift Swim
-Level: 39
+Level: 37
 Adamant Nature
 Ball: Master Ball
 =Met_Location=197
@@ -5494,8 +5559,9 @@ Ball: Master Ball
 Gliscor (M)
 IVs: 14 HP / 22 Atk / 23 Def / 22 SpA / 17 SpD / 6 Spe
 Ability: Sand Veil
-Level: 60
+Level: 61
 Bashful Nature
+Ball: Master Ball
 =Met_Location=565
 .Version=48
 ~=Generation=8
@@ -5602,7 +5668,7 @@ Ball: Master Ball
 - Confuse Ray
 - Charge
 
-Rotom-Wash
+Rotom
 IVs: 29 HP / 26 Atk / 28 Def / 21 SpA / 25 SpD / 3 Spe
 Ability: Levitate
 Level: 15
@@ -5615,6 +5681,20 @@ Ball: Master Ball
 - Thunder Shock
 - Confuse Ray
 - Charge
+
+Uxie
+IVs: 26 Atk / 29 Def / 5 Spe
+Ability: Levitate
+Level: 50
+Lonely Nature
+Ball: Master Ball
+=Met_Location=331
+.Version=48
+~=Generation=8
+- Imprison
+- Extrasensory
+- Amnesia
+- Psychic
 
 Uxie
 IVs: 27 HP / 30 Atk / 27 Def
@@ -5636,12 +5716,40 @@ Ability: Levitate
 Level: 50
 Quiet Nature
 Ball: Master Ball
-=Met_Location=359
+.Met_Location=359
 .Version=48
 ~=Generation=8
 - Imprison
 - Extrasensory
 - Charm
+- Psychic
+
+Mesprit
+IVs: 5 HP / 14 SpA / 26 Spe
+Ability: Levitate
+Level: 50
+Serious Nature
+Ball: Master Ball
+.Met_Location=392
+.Version=49
+~=Generation=8
+- Imprison
+- Extrasensory
+- Charm
+- Psychic
+
+Azelf
+IVs: 19 Atk / 23 Def
+Ability: Levitate
+Level: 50
+Jolly Nature
+Ball: Master Ball
+=Met_Location=328
+.Version=48
+~=Generation=8
+- Imprison
+- Extrasensory
+- Nasty Plot
 - Psychic
 
 Azelf
@@ -5700,6 +5808,34 @@ Ball: Master Ball
 - Heat Wave
 - Stone Edge
 
+Heatran (F)
+IVs: 10 HP / 2 Def / 27 Spe
+Ability: Flash Fire
+Level: 70
+Quirky Nature
+Ball: Master Ball
+=Met_Location=262
+.Version=48
+~=Generation=8
+- Metal Sound
+- Earth Power
+- Heat Wave
+- Stone Edge
+
+Regigigas
+IVs: 23 Def / 18 SpA / 27 Spe
+Ability: Slow Start
+Level: 70
+Bold Nature
+Ball: Master Ball
+=Met_Location=291
+.Version=48
+~=Generation=8
+- Wide Guard
+- Zen Headbutt
+- Heavy Slam
+- Hammer Arm
+
 Regigigas
 IVs: 10 HP / 12 Def / 22 SpA
 Ability: Slow Start
@@ -5728,9 +5864,9 @@ Ball: Master Ball
 - Aura Sphere
 - Dragon Claw
 
-Giratina-Origin @ Griseous Orb
+Giratina
 IVs: 8 Atk / 20 SpA / 0 Spe
-Ability: Levitate
+Ability: Pressure
 Level: 70
 Careful Nature
 Ball: Master Ball
@@ -5755,3 +5891,16 @@ Ball: Master Ball
 - Psycho Cut
 - Moonlight
 - Safeguard
+
+Egg (Manaphy)
+IVs: 8 HP / 19 Atk / 26 SpA
+Ability: Hydration
+Level: 1
+Rash Nature
+=FatefulEncounter=True
+.Version=49
+~=Generation=8
+- Tail Glow
+- Water Gun
+
+Generated 433 Showdown sets, skipped 131 sets.
