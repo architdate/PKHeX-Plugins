@@ -163,7 +163,8 @@ namespace PKHeX.Core.AutoMod
                 // This should be illegal except Meister Magikarp in BDSP, however trust the user and set corresponding OT
                 var index = et.Nicknames.ToList().IndexOf(set.Nickname);
                 pk.Nickname = set.Nickname;
-                pk.OT_Name = et.TrainerNames[index];
+                if (pk.Format >= 3)
+                    pk.OT_Name = et.TrainerNames[index];
             }
 
             var gen = enc.Generation;
