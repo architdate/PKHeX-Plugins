@@ -1499,14 +1499,20 @@ Ball: Safari Ball
 - Splash
 - Tackle
 
+Foppa (Magikarp) (F) @ Lum Berry
+IVs: 3 HP / 3 Atk / 11 SpA / 3 SpD / 2 Spe
+=Met_Location=30001
+.Language=5
+Level: 45
+.Version=48
+~=Generation=8
+- Splash
+
 Pador (Magikarp) (F) @ Lum Berry
 IVs: 3 HP / 3 Atk / 11 SpA / 3 SpD / 2 Spe
-Ability: Swift Swim
-Level: 45
-Mild Nature
-Language: German
-=OT_Name=The Master
 =Met_Location=30001
+.Language=1
+Level: 45
 .Version=48
 ~=Generation=8
 - Splash
