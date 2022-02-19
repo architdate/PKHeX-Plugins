@@ -112,7 +112,7 @@ namespace PKHeX.Core.AutoMod
                 encounters.RemoveAll(enc => !APILegality.IsRequestedBallValid(set, enc));
             }
 
-            return string.Format(EXHAUSTED_ENCOUNTERS, initialcount, initialcount - encounters.Count);
+            return string.Format(EXHAUSTED_ENCOUNTERS, initialcount - encounters.Count, initialcount);
         }
 
         private static int[] GetValidMoves(IBattleTemplate set, ITrainerInfo sav, List<IEnumerable<int>> move_combinations, PKM blank, GameVersion[] gamelist)
