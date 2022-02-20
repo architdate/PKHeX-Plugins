@@ -664,8 +664,8 @@ namespace PKHeX.Core.AutoMod
             if (pk is not IHomeTrack home)
                 return;
 
-            // No HOME support for BDSP yet
-            if (pk.BDSP)
+            // No HOME support for BDSP or LA yet
+            if (pk.BDSP || pk.LA)
                 return;
 
             // Check setting
