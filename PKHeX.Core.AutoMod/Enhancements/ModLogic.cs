@@ -193,7 +193,7 @@ namespace PKHeX.Core.AutoMod
             if (template is IAlpha && alpha)
                 ssettext += Environment.NewLine + "Alpha: Yes";
             var sset = new ShowdownSet(ssettext);
-            var set = new RegenTemplate(sset);
+            var set = new RegenTemplate(sset) { Nickname = string.Empty };
             template.ApplySetDetails(set);
             var success = tr.TryAPIConvert(set, template, out PKM pk);
             if (success == LegalizationResult.Regenerated)
