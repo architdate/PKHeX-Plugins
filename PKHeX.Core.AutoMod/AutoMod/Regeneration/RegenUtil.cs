@@ -21,10 +21,10 @@ namespace PKHeX.Core.AutoMod
                     case "OT":
                         sti.OT = value;
                         break;
-                    case "TID" when int.TryParse(value, out int tid) && tid > 0:
+                    case "TID" when int.TryParse(value, out int tid) && tid >= 0:
                         sti.TID = tid;
                         break;
-                    case "SID" when int.TryParse(value, out int sid) && sid > 0:
+                    case "SID" when int.TryParse(value, out int sid) && sid >= 0:
                         sti.SID = sid;
                         break;
                     case "OTGender":
