@@ -69,6 +69,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="speciesIDs">Species IDs to generate</param>
         /// <param name="includeforms">Include all forms in the resulting list of data</param>
         /// <param name="shiny"></param>
+        /// <param name="alpha"></param>
         /// <param name="attempts"></param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
         public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, IEnumerable<int> speciesIDs, bool includeforms, bool shiny, bool alpha, out int attempts)
@@ -117,6 +118,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="species">Species ID to generate</param>
         /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <param name="shiny"></param>
+        /// <param name="alpha"></param>
         /// <param name="attempt"></param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
@@ -129,6 +131,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="species">Species ID to generate</param>
         /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <param name="shiny"></param>
+        /// <param name="alpha"></param>
         /// <param name="attempt"></param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
@@ -151,6 +154,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="species">Species ID to generate</param>
         /// <param name="form">Form to generate; if left null, picks first encounter</param>
         /// <param name="shiny"></param>
+        /// <param name="alpha"></param>
         /// <param name="attempt"></param>
         /// <returns>Result legal pkm, null if data should be ignored.</returns>
         private static PKM? GetRandomEncounter(PKM blank, ITrainerInfo tr, int species, int? form, bool shiny, bool alpha, ref int attempt)
@@ -169,17 +173,18 @@ namespace PKHeX.Core.AutoMod
             if (form != null)
             {
                 blank.Form = (int)form;
-                var item = SetFormSpecificItem(tr.Game, blank.Species, (int)form);
+                var item = GetFormSpecificItem(tr.Game, blank.Species, (int)form);
                 if (item != null) blank.HeldItem = (int)item;
                 if (blank.Species == (int)Species.Keldeo && blank.Form == 1) blank.Move1 = (int)Move.SecretSword;
             }
             if (form == null)
             {
-                var valid = SetAvailableForm(blank, tr);
-                if (!valid)
+                var f = GetAvailableForm(blank);
+                if (f == -1)
                     return null;
+                blank.Form = f;
             }
-            if (blank.IgnoreForm(tr, blank.Form))
+            if (blank.GetIsFormInvalid(tr, blank.Form))
                 return null;
             attempt++;
             var ssettext = new ShowdownSet(blank).Text.Split('\r')[0];
@@ -239,31 +244,29 @@ namespace PKHeX.Core.AutoMod
             return null;
         }
 
-        private static bool SetAvailableForm(this PKM pk, ITrainerInfo tr)
+        private static int GetAvailableForm(this PKM pk)
         {
             var species = pk.Species;
-            pk.Version = tr.Game;
-            var pi = GameData.GetPersonal((GameVersion)tr.Game);
-            var formcount = pi.GetFormEntry(species, 0).FormCount;
+            var pi = pk.PersonalInfo;
+            var formcount = pi.FormCount;
             if (formcount == 0)
-                return false;
+                return -1;
 
             if (!(pk.SWSH || pk.BDSP || pk.LA))
-                return true;
-            static bool IsPresentInGameSWSH(ISpeciesForm pk) => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(pk.Species, pk.Form)).IsPresentInGame;
-            static bool IsPresentInGameBDSP(ISpeciesForm pk) => ((PersonalInfoBDSP)PersonalTable.BDSP.GetFormEntry(pk.Species, pk.Form)).IsPresentInGame;
-            static bool IsPresentInGameLA(ISpeciesForm pk) => ((PersonalInfoLA)PersonalTable.LA.GetFormEntry(pk.Species, pk.Form)).IsPresentInGame;
+                return pk.Form;
+            static bool IsPresentInGameSWSH(int species, int form) => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(species, form)).IsPresentInGame;
+            static bool IsPresentInGameBDSP(int species, int form) => ((PersonalInfoBDSP)PersonalTable.BDSP.GetFormEntry(species, form)).IsPresentInGame;
+            static bool IsPresentInGameLA  (int species, int form) => ((PersonalInfoLA)  PersonalTable.LA  .GetFormEntry(species, form)).IsPresentInGame;
             for (int f = 0; f < formcount; f++)
             {
-                pk.Form = f;
-                if (pk.LA && IsPresentInGameLA(pk)) return true;
-                if (pk.BDSP && IsPresentInGameBDSP(pk)) return true;
-                if (pk.SWSH && IsPresentInGameSWSH(pk)) return true;
+                if (pk.LA   && IsPresentInGameLA  (species, f)) return f;
+                if (pk.BDSP && IsPresentInGameBDSP(species, f)) return f;
+                if (pk.SWSH && IsPresentInGameSWSH(species, f)) return f;
             }
-            return false;
+            return -1;
         }
 
-        private static bool IgnoreForm(this PKM pk, ITrainerInfo tr, int form)
+        private static bool GetIsFormInvalid(this PKM pk, ITrainerInfo tr, int form)
         {
             var generation = tr.Generation;
             var species = pk.Species;
@@ -284,12 +287,12 @@ namespace PKHeX.Core.AutoMod
                 return true;
             if (form == 0)
                 return false;
-            if (generation >= 7 && pk.Generation < 7 && pk.Generation != -1 && (species == 25 || SimpleEdits.AlolanOriginForms.Contains(species)))
+            if ((species == 25 || SimpleEdits.AlolanOriginForms.Contains(species)) && generation >= 7 && pk.Generation is (< 7) and (not -1))
                 return true;
             return false;
         }
 
-        private static int? SetFormSpecificItem(int game, int species, int form)
+        private static int? GetFormSpecificItem(int game, int species, int form)
         {
             if (game == (int)GameVersion.PLA)
                 return null;
