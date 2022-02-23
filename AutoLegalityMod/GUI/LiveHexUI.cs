@@ -513,11 +513,11 @@ namespace AutoModPlugins
                     return;
                 write = true;
             }
-            else if (sb is SCBlock || sb is SaveBlock)
+            else if (sb is SCBlock || sb is SaveBlock || sb is ICustomBlock)
             {
                 // Must be single block output
                 using var form = new SimpleHexEditor(data[0]);
-                if (sb is SaveBlock)
+                if (sb is SaveBlock || sb is ICustomBlock)
                 {
                     var props = ReflectUtil.GetPropertiesCanWritePublicDeclared(sb.GetType());
                     if (props.Count() > 1 && ModifierKeys != Keys.Control)
