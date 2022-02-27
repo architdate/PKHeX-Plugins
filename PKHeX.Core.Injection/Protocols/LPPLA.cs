@@ -8,7 +8,7 @@ namespace PKHeX.Core.Injection
 {
     public static class LPPLA
     {
-        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102 };
+        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v110 };
 
         private const int MYSTATUS_BLOCK_SIZE = 0x80;
 
@@ -54,12 +54,27 @@ namespace PKHeX.Core.Injection
             new() { Name = "KZukan", Display = "Pokedex", SCBKey = 0x02168706, Pointer = "[[[[main+427C470]+248]+58]+18]+1C" },
         };
 
+        public static readonly BlockData[] Blocks_v110 =
+        {
+            new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xF25C070E, Pointer = "[[main+42BA6B0]+218]+68" },
+            new() { Name = "KMoney", Display = "Money Data", SCBKey = 0x3279D927, Pointer = "[[main+42BA6B0]+210]+6C", Type = SCTypeCode.UInt32 },
+
+            new() { Name = "KItemRegular", Display = "Items", SCBKey = 0x9FE2790A, Pointer = "[[main+42BA6B0]+230]+68" },
+            new() { Name = "KItemKey", Display = "Items", SCBKey = 0x59A4D0C3, Pointer = "[[main+42BA6B0]+230]+AF4" },
+            new() { Name = "KItemStored", Display = "Items", SCBKey = 0x8E434F0D, Pointer = "[[main+42BA6B0]+1E8]+68" },
+            new() { Name = "KItemRecipe", Display = "Items", SCBKey = 0xF5D9F4A5, Pointer = "[[main+42BA6B0]+230]+C84" },
+            new() { Name = "KSatchelUpgrades", Display = "Items", SCBKey = 0x75CE2CF6, Pointer = "[[[[[main+42BA6B0]+1D8]+1B8]+70]+270]+38", Type = SCTypeCode.UInt32 },
+
+            new() { Name = "KZukan", Display = "Pokedex", SCBKey = 0x02168706, Pointer = "[[[[main+42BA6B0]+248]+58]+18]+1C" },
+        };
+
         // LiveHexVersion -> Blockname -> List of <SCBlock Keys, OffsetValues>
         public static readonly Dictionary<LiveHeXVersion, BlockData[]> SCBlocks = new()
         {
             { LiveHeXVersion.LA_v100, Blocks_v100 },
             { LiveHeXVersion.LA_v101, Blocks_v101 },
             { LiveHeXVersion.LA_v102, Blocks_v102 },
+            { LiveHeXVersion.LA_v110, Blocks_v110 },
         };
 
         public static readonly Dictionary<string, string> SpecialBlocks = new()
@@ -76,6 +91,7 @@ namespace PKHeX.Core.Injection
                 LiveHeXVersion.LA_v100 => "[[main+4275470]+1F0]+68",
                 LiveHeXVersion.LA_v101 => "[[main+427B470]+1F0]+68",
                 LiveHeXVersion.LA_v102 => "[[main+427C470]+1F0]+68",
+                LiveHeXVersion.LA_v110 => "[[main+42BA6B0]+1F0]+68",
                 _ => string.Empty
             };
         }
