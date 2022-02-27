@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using AutoModPlugins.Properties;
 using PKHeX.Core;
@@ -52,24 +53,28 @@ namespace AutoModPlugins
 
         private void CheckVersionUpdates()
         {
-            var latest_alm = PKHeX.Core.AutoMod.NetUtil.GetLatestALMVersion();
-            var curr_valid = Version.TryParse(VERSION, out var current_alm);
-            var curr_pkhex = Assembly.GetEntryAssembly()?.GetName().Version;
-            if (!curr_valid || curr_pkhex == null || latest_alm == null)
-                return;
-            var msg = $"Update for ALM is available. Please download it from GitHub. The updated release is only compatible with PKHeX version: {latest_alm.Major}.{latest_alm.Minor}.{latest_alm.Build}.";
-            if (curr_pkhex > current_alm)
-                PossibleVersionMismatch = true;
-            if (latest_alm > current_alm)
-            {
-                msg = PossibleVersionMismatch ? msg + "\n\nThere is also a possible version mismatch between the current ALM version and current PKHeX version." : msg;
-                const string redirect = "\n\nClick on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
-                var res = WinFormsUtil.ALMError(msg + redirect);
-                if (res == DialogResult.Yes)
-                    Process.Start("https://discord.gg/tDMvSRv");
-                else if (res == DialogResult.No)
-                    Process.Start("https://github.com/architdate/PKHeX-Plugins/releases/latest");
-            }
+            Task.Run(async () => {
+                var latest_alm = PKHeX.Core.AutoMod.NetUtil.GetLatestALMVersion();
+                var curr_valid = Version.TryParse(VERSION, out var current_alm);
+                var curr_pkhex = Assembly.GetEntryAssembly()?.GetName().Version;
+                if (!curr_valid || curr_pkhex == null || latest_alm == null)
+                    return;
+                var msg = $"Update for ALM is available. Please download it from GitHub. The updated release is only compatible with PKHeX version: {latest_alm.Major}.{latest_alm.Minor}.{latest_alm.Build}.";
+                if (curr_pkhex > current_alm)
+                    PossibleVersionMismatch = true;
+                if (latest_alm > current_alm)
+                {
+                    msg = PossibleVersionMismatch ? msg + "\n\nThere is also a possible version mismatch between the current ALM version and current PKHeX version." : msg;
+                    const string redirect = "\n\nClick on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
+                    while (!((ContainerControl)SaveFileEditor).ParentForm.IsHandleCreated)
+                        await Task.Delay(2_000).ConfigureAwait(false);
+                    var res = WinFormsUtil.ALMError(msg + redirect);
+                    if (res == DialogResult.Yes)
+                        Process.Start("https://discord.gg/tDMvSRv");
+                    else if (res == DialogResult.No)
+                        Process.Start("https://github.com/architdate/PKHeX-Plugins/releases/latest");
+                }
+            });
         }
 
         private void LoadMenuStrip(ToolStrip menuStrip)
