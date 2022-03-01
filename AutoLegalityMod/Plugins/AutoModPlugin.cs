@@ -43,12 +43,12 @@ namespace AutoModPlugins
             // ReSharper disable once SuspiciousTypeConversion.Global
             ((ContainerControl)SaveFileEditor).ParentForm.TranslateInterface(WinFormsTranslator.CurrentLanguage);
 
-            // ALM Settings
-            ShowdownSetLoader.SetAPILegalitySettings();
+            // Match PKHeX Versioning and ALM Settings only on parent plugin
+            if (Priority != 0)
+                return;
 
-            // Match PKHeX Versioning
-            if (Priority == 0)
-                CheckVersionUpdates();
+            ShowdownSetLoader.SetAPILegalitySettings();
+            CheckVersionUpdates();
         }
 
         private void CheckVersionUpdates()
