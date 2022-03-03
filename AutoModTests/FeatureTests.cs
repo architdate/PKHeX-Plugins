@@ -39,7 +39,7 @@ namespace AutoModTests
             var regen = showdown.Regen;
             regen.HasTrainerSettings.Should().BeFalse();
             regen.HasExtraSettings.Should().BeTrue();
-            regen.Extra.Language.Should().BeEquivalentTo(LanguageID.Japanese);
+            regen.Extra.Language.Should().Be(LanguageID.Japanese);
 
             var tr = showdown.Regen.Trainer;
             Assert.NotNull(tr);
@@ -61,7 +61,7 @@ namespace AutoModTests
             var regen = showdown.Regen;
             regen.HasTrainerSettings.Should().BeFalse();
             regen.HasExtraSettings.Should().BeTrue();
-            regen.Extra.Language.Should().BeEquivalentTo(LanguageID.English);
+            regen.Extra.Language.Should().Be(LanguageID.English);
 
             var tr = showdown.Regen.Trainer;
             Assert.NotNull(tr);
@@ -90,7 +90,7 @@ namespace AutoModTests
             var regen = showdown.Regen;
             regen.HasTrainerSettings.Should().BeFalse();
             regen.HasExtraSettings.Should().BeTrue();
-            regen.Extra.Language.Should().BeEquivalentTo(LanguageID.Japanese);
+            regen.Extra.Language.Should().Be(LanguageID.Japanese);
 
             var tr = showdown.Regen.Trainer;
             Assert.NotNull(tr);

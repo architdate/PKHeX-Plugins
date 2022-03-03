@@ -10,6 +10,7 @@ using Org.BouncyCastle.Security;
 using PKHeX.Core;
 using PKHeX.Core.Enhancements;
 using ZXing;
+using ZXing.Common;
 
 namespace AutoModPlugins
 {
@@ -60,7 +61,7 @@ namespace AutoModPlugins
         private static byte[] ParseQR(Image q)
         {
             using var bitmap = new Bitmap(q);
-            var reader = new BarcodeReader { AutoRotate = true, TryInverted = true };
+            var reader = new BarcodeReader { AutoRotate = true, Options = new DecodingOptions { TryInverted = true } };
             var data = reader.Decode(bitmap).RawBytes;
             return Array.ConvertAll(data, a => a);
         }
