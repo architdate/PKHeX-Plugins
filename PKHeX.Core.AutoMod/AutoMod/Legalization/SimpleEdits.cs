@@ -54,68 +54,65 @@ namespace PKHeX.Core.AutoMod
             089, // Muk
         };
 
-        internal static readonly HashSet<Tuple<Species, int>> ShinyLockedSpeciesForm = new()
+        public static bool IsShinyLockedSpeciesForm(int species, int form)
+        {
+            var tuple = ((Species)species, form);
+            return ShinyLockedSpeciesForm.Contains(tuple);
+        }
+
+        private static readonly HashSet<(Species, int)> ShinyLockedSpeciesForm = new()
         {
             // Cap Pikachus
-            new Tuple<Species, int> ( Pikachu, 1 ),
-            new Tuple<Species, int> ( Pikachu, 2 ),
-            new Tuple<Species, int> ( Pikachu, 3 ),
-            new Tuple<Species, int> ( Pikachu, 4 ),
-            new Tuple<Species, int> ( Pikachu, 5 ),
-            new Tuple<Species, int> ( Pikachu, 6 ),
-            new Tuple<Species, int> ( Pikachu, 7 ),
-            new Tuple<Species, int> ( Pikachu, 9 ),
+            ( Pikachu, 1 ),
+            ( Pikachu, 2 ),
+            ( Pikachu, 3 ),
+            ( Pikachu, 4 ),
+            ( Pikachu, 5 ),
+            ( Pikachu, 6 ),
+            ( Pikachu, 7 ),
+            ( Pikachu, 9 ),
 
-            new Tuple<Species, int> ( Pichu, 1 ),
+            ( Pichu, 1 ),
 
-            // Galar Birds
-            new Tuple<Species, int> ( Articuno, 1 ),
-            new Tuple<Species, int> ( Zapdos, 1 ),
-            new Tuple<Species, int> ( Moltres, 1 ),
-
-            new Tuple<Species, int> ( Victini, 0 ),
-            new Tuple<Species, int> ( Keldeo, 0 ),
-            new Tuple<Species, int> ( Keldeo, 1 ),
-            new Tuple<Species, int> ( Meloetta, 0 ),
+            ( Victini, 0 ),
+            ( Keldeo, 0 ),
+            ( Keldeo, 1 ),
+            ( Meloetta, 0 ),
 
             // Vivillons
-            new Tuple<Species, int> ( Scatterbug, 18 ),
-            new Tuple<Species, int> ( Scatterbug, 19 ),
-            new Tuple<Species, int> ( Spewpa, 18 ),
-            new Tuple<Species, int> ( Spewpa, 19 ),
-            new Tuple<Species, int> ( Vivillon, 18 ),
-            new Tuple<Species, int> ( Vivillon, 19 ),
+            ( Scatterbug, 18 ),
+            ( Scatterbug, 19 ),
+            ( Spewpa, 18 ),
+            ( Spewpa, 19 ),
+            ( Vivillon, 18 ),
+            ( Vivillon, 19 ),
 
             // Hoopa
-            new Tuple<Species, int> ( Hoopa, 0 ),
-            new Tuple<Species, int> ( Hoopa, 1 ),
+            ( Hoopa, 0 ),
+            ( Hoopa, 1 ),
 
-            new Tuple<Species, int> ( Volcanion, 0 ),
-            new Tuple<Species, int> ( Cosmog, 0 ),
-            new Tuple<Species, int> ( Cosmoem, 0 ),
-            new Tuple<Species, int> ( Magearna, 0 ),
-            new Tuple<Species, int> ( Magearna, 1 ),
-            new Tuple<Species, int> ( Marshadow, 0 ),
+            ( Volcanion, 0 ),
+            ( Cosmog, 0 ),
+            ( Cosmoem, 0 ),
+            ( Magearna, 0 ),
+            ( Magearna, 1 ),
+            ( Marshadow, 0 ),
 
-            new Tuple<Species, int> ( Zacian, 0 ),
-            new Tuple<Species, int> ( Zacian, 1 ),
-            new Tuple<Species, int> ( Zamazenta, 0 ),
-            new Tuple<Species, int> ( Zamazenta, 1 ),
-            new Tuple<Species, int> ( Eternatus, 0 ),
+            ( Eternatus, 0 ),
 
-            new Tuple<Species, int> ( Kubfu, 0 ),
-            new Tuple<Species, int> ( Urshifu, 0 ),
-            new Tuple<Species, int> ( Urshifu, 1 ),
-            new Tuple<Species, int> ( Zarude, 0 ),
-            new Tuple<Species, int> ( Zarude, 1 ),
-            new Tuple<Species, int> ( Glastrier, 0 ),
-            new Tuple<Species, int> ( Spectrier, 0 ),
-            new Tuple<Species, int> ( Calyrex, 0 ),
-            new Tuple<Species, int> ( Calyrex, 1 ),
-            new Tuple<Species, int> ( Calyrex, 2 ),
+            ( Kubfu, 0 ),
+            ( Urshifu, 0 ),
+            ( Urshifu, 1 ),
+            ( Zarude, 0 ),
+            ( Zarude, 1 ),
+            ( Glastrier, 0 ),
+            ( Spectrier, 0 ),
+            ( Calyrex, 0 ),
+            ( Calyrex, 1 ),
+            ( Calyrex, 2 ),
 
-            new Tuple<Species, int> ( Enamorus, 0 ),
-            new Tuple<Species, int> ( Enamorus, 1 ),
+            ( Enamorus, 0 ),
+            ( Enamorus, 1 ),
         };
 
         public static HashSet<int> Gen1TradeEvos = new () { (int)Kadabra, (int)Machoke, (int)Graveler, (int)Haunter };

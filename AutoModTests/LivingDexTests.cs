@@ -15,16 +15,16 @@ namespace AutoModTests
     {
         private static readonly GameVersion[] GetGameVersionsToTest = { BD, SW, US, SN, OR, X, B2, B, Pt, E, C, RD };
 
-        private static Dictionary<GameVersion, Tuple<bool, int, int>> TestLivingDex(bool includeforms, bool shiny, out bool passed)
+        private static Dictionary<GameVersion, GenerateResult> TestLivingDex(bool includeforms, bool shiny, out bool passed)
         {
             passed = true;
-            var results = new Dictionary<GameVersion, Tuple<bool, int, int>>();
+            var results = new Dictionary<GameVersion, GenerateResult>();
             foreach (var s in GetGameVersionsToTest)
                 results[s] = SingleSaveTest(s, includeforms, shiny, ref passed);
             return results;
         }
 
-        private static Tuple<bool, int, int> SingleSaveTest(this GameVersion s, bool includeforms, bool shiny, ref bool passed)
+        private static GenerateResult SingleSaveTest(this GameVersion s, bool includeforms, bool shiny, ref bool passed)
         {
             ModLogic.IncludeForms = includeforms;
             ModLogic.SetShiny = shiny;
@@ -32,7 +32,7 @@ namespace AutoModTests
             PKMConverter.SetPrimaryTrainer(sav);
             var pkms = sav.GenerateLivingDex(out int attempts);
             var genned = pkms.Count();
-            var val = new Tuple<bool, int, int>(genned == attempts, attempts, genned);
+            var val = new GenerateResult(genned == attempts, attempts, genned);
             if (genned != attempts)
                 passed = false;
             return val;
@@ -93,16 +93,19 @@ namespace AutoModTests
         /// For Partial Debugging in Immediate Window
         /// </summary>
         /// <param name="results">partial results</param>
-        /// <returns></returns>
-        public static string Status(Dictionary<GameVersion, Tuple<bool, int, int>> results, bool includeforms, bool shiny)
+        /// <param name="includeforms">Check if including forms</param>
+        /// <param name="shiny">Check if forcing shiny</param>
+        private static string Status(Dictionary<GameVersion, GenerateResult> results, bool includeforms, bool shiny)
         {
             var sb = new StringBuilder();
             sb.Append("IncludeForms: ").Append(includeforms).Append(", SetShiny: ").Append(shiny).AppendLine();
-            foreach (var (key, (item1, item2, item3)) in results)
+            foreach (var (key, (success, attempts, generated)) in results)
             {
-                sb.Append(key).Append(" : Complete - ").Append(item1).Append(" | Attempts - ").Append(item2).Append(" | Generated - ").Append(item3).AppendLine();
+                sb.Append(key).Append(" : Complete - ").Append(success).Append(" | Attempts - ").Append(attempts).Append(" | Generated - ").Append(generated).AppendLine();
             }
             return sb.ToString();
         }
+
+        private readonly record struct GenerateResult(bool Success, int Attempts, int Generated);
     }
 }

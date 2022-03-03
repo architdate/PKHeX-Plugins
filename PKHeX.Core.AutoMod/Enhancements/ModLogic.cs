@@ -188,7 +188,7 @@ namespace PKHeX.Core.AutoMod
                 return null;
             attempt++;
             var ssettext = new ShowdownSet(blank).Text.Split('\r')[0];
-            if (shiny && !SimpleEdits.ShinyLockedSpeciesForm.Contains(new Tuple<Species, int>((Species)blank.Species, blank.Form)))
+            if (shiny && !SimpleEdits.IsShinyLockedSpeciesForm(blank.Species, blank.Form))
                 ssettext += Environment.NewLine + "Shiny: Yes";
             if (template is IAlpha && alpha)
                 ssettext += Environment.NewLine + "Alpha: Yes";
