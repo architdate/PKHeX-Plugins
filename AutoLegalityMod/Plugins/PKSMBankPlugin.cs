@@ -15,10 +15,10 @@ namespace AutoModPlugins
             var ctrl = new ToolStripMenuItem(Name) { Name = "Menu_PKSMBank" };
 
             var c1 = new ToolStripMenuItem("Merge PKM into PKSM Bank") { Image = Resources.uploadgpss };
-            c1.Click += (s, e) => Import();
+            c1.Click += (_, _) => Import();
             c1.Name = "Menu_CreatePKSMBank";
             var c2 = new ToolStripMenuItem("Split PKSM Bank into PKM") { Image = Resources.mgdbdownload };
-            c2.Click += (s, e) => Export();
+            c2.Click += (_, _) => Export();
             c2.Name = "Menu_ExportPKSMBank";
 
             ctrl.DropDownItems.Add(c1);

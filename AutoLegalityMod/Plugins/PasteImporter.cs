@@ -27,7 +27,8 @@ namespace AutoModPlugins
             modmenu.DropDownItems.Add(ctrl);
             var parent = modmenu.OwnerItem;
             var form = parent.GetCurrentParent().Parent.FindForm();
-            form.Icon = Resources.icon;
+            if (form is not null)
+                form.Icon = Resources.icon;
 
             ShowdownSetLoader.PKMEditor = PKMEditor;
             ShowdownSetLoader.SaveFileEditor = SaveFileEditor;

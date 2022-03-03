@@ -13,7 +13,7 @@ namespace AutoModPlugins
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
             var c1 = new ToolStripMenuItem(Name) { Image = Resources.wifi };
-            c1.Click += (s, e) =>
+            c1.Click += (_, _) =>
             {
                 var sav = SaveFileEditor.SAV;
                 if (!RamOffsets.IsLiveHeXSupported(sav))

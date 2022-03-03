@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 
+// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
+
 namespace PKHeX.Core.AutoMod
 {
     public static class BattleTemplateLegality
     {
-        public const string ANALYSIS_INVALID = "Specific analysis for this set is unavailable.";
-        private static string EXHAUSTED_ENCOUNTERS = "No valid matching encounter available: (Exhausted {0}/{1} possible encounters).";
-        private static string SPECIES_UNAVAILABLE_FORM => "{0} with form {1} is unavailable in this game.";
-        private static string SPECIES_UNAVAILABLE => "{0} is unavailable in the game.";
-        private static string INVALID_MOVES => "{0} cannot learn the following move(s) in this game: {1}.";
-        private static string ALL_MOVES_INVALID => "All the requested moves for this Pokémon are invalid.";
-        private static string LEVEL_INVALID => "Requested level is lower than the minimum possible level for {0}. Minimum required level is {1}.";
-        private static string SHINY_INVALID => "Requested shiny value (ShinyType.{0}) is not possible for the given set.";
-        private static string ALPHA_INVALID => "Requested Pokémon cannot be an Alpha.";
-        private static string BALL_INVALID => "{0} Ball is not possible for the given set.";
-        private static string ONLY_HIDDEN_ABILITY_AVAILABLE => "You can only obtain {0} with hidden ability in this game.";
-        private static string HIDDEN_ABILITY_UNAVAILABLE => "You cannot obtain {0} with hidden ability in this game.";
+        public static string ANALYSIS_INVALID { get; set; } = "Specific analysis for this set is unavailable.";
+        public static string EXHAUSTED_ENCOUNTERS { get; set; } = "No valid matching encounter available: (Exhausted {0}/{1} possible encounters).";
+        public static string SPECIES_UNAVAILABLE_FORM { get; set; } = "{0} with form {1} is unavailable in this game.";
+        public static string SPECIES_UNAVAILABLE { get; set; } = "{0} is unavailable in the game.";
+        public static string INVALID_MOVES { get; set; } = "{0} cannot learn the following move(s) in this game: {1}.";
+        public static string ALL_MOVES_INVALID { get; set; } = "All the requested moves for this Pokémon are invalid.";
+        public static string LEVEL_INVALID { get; set; } = "Requested level is lower than the minimum possible level for {0}. Minimum required level is {1}.";
+        public static string SHINY_INVALID { get; set; } = "Requested shiny value (ShinyType.{0}) is not possible for the given set.";
+        public static string ALPHA_INVALID { get; set; } = "Requested Pokémon cannot be an Alpha.";
+        public static string BALL_INVALID { get; set; } = "{0} Ball is not possible for the given set.";
+        public static string ONLY_HIDDEN_ABILITY_AVAILABLE { get; set; } = "You can only obtain {0} with hidden ability in this game.";
+        public static string HIDDEN_ABILITY_UNAVAILABLE { get; set; } = "You cannot obtain {0} with hidden ability in this game.";
 
         public static string SetAnalysis(this IBattleTemplate set, ITrainerInfo sav, PKM blank)
         {

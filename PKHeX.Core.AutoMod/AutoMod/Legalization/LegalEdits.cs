@@ -17,7 +17,7 @@ namespace PKHeX.Core.AutoMod
             { Ball.Heavy, Ball.LAHeavy },
         };
 
-        private const bool replaceLA = false;
+        public static bool ReplaceBallPrefixLA { get; set; }
 
         /// <summary>
         /// Set a valid Pokeball based on a legality check's suggestions.
@@ -31,7 +31,7 @@ namespace PKHeX.Core.AutoMod
             if (ball != Ball.None)
             {
                 var orig = pk.Ball;
-                if (pk.LA && LABallMapping.TryGetValue(ball, out var modified) && replaceLA)
+                if (pk.LA && ReplaceBallPrefixLA && LABallMapping.TryGetValue(ball, out var modified))
                     ball = modified;
                 pk.Ball = (int)ball;
                 if (!force && !pk.ValidBall())
@@ -64,6 +64,7 @@ namespace PKHeX.Core.AutoMod
         /// Sets all ribbon flags according to a legality report.
         /// </summary>
         /// <param name="pk">Pokémon to modify</param>
+        /// <param name="enc">Encounter matched to</param>
         /// <param name="allValid">Set all valid ribbons only</param>
         public static void SetSuggestedRibbons(this PKM pk, IEncounterable enc, bool allValid = true)
         {

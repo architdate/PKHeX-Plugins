@@ -44,7 +44,7 @@ namespace AutoModPlugins
             if (BoxSelect != null)
             {
                 BoxSelect.SelectedIndexChanged += ChangeBox;
-                Closing += (s, e) => BoxSelect.SelectedIndexChanged -= ChangeBox;
+                Closing += (_, _) => BoxSelect.SelectedIndexChanged -= ChangeBox;
             }
 
             var type = sav.GetType();
@@ -484,7 +484,7 @@ namespace AutoModPlugins
                 return;
             }
 
-            valid = GetObjectInSave(version, SAV.SAV, txt, data[0], out var sb);
+            valid = TryGetObjectInSave(version, SAV.SAV, txt, data[0], out var sb);
 
             if (!valid && LPBDSP.SupportedVersions.Contains(version))
             {
@@ -572,10 +572,9 @@ namespace AutoModPlugins
             return valid;
         }
 
-        private static bool GetObjectInSave(LiveHeXVersion version, SaveFile sav, string display, byte[]? customdata, out object? sb)
+        private static bool TryGetObjectInSave(LiveHeXVersion version, SaveFile sav, string display, byte[]? customdata, out object? sb)
         {
             sb = null;
-            var valid = false;
             if (LPBDSP.SupportedVersions.Contains(version))
             {
                 var prop = sav.GetType().GetProperty(display);
@@ -583,27 +582,31 @@ namespace AutoModPlugins
                     sb = prop.GetValue(sav);
                 else
                     sb = Activator.CreateInstance(LPBDSP.types.First(t => t.Name == display), customdata);
-                valid = sb != null;
             }
             else
             {
-                var subblocks = new BlockData[0];
+                var subblocks = Array.Empty<BlockData>();
                 if (LPBasic.SupportedVersions.Contains(version))
                     subblocks = LPBasic.SCBlocks[version].Where(z => z.Display == display).ToArray();
                 if (LPPLA.SupportedVersions.Contains(version))
                     subblocks = LPPLA.SCBlocks[version].Where(z => z.Display == display).ToArray();
-                if (subblocks.Count() == 1)
-                {
-                    // Check for SCBlocks or SaveBlocks based on name. (SCBlocks will invoke the hex editor, SaveBlocks will invoke a property grid
-                    var allblocks = sav.GetType().GetProperty("Blocks").GetValue(sav);
-                    var blockprop = allblocks.GetType().GetProperty(subblocks[0].Name);
-                    if (allblocks is SCBlockAccessor scba && blockprop == null)
-                        sb = scba.GetBlock(subblocks[0].SCBKey);
-                    else sb = blockprop.GetValue(allblocks);
-                    valid = true;
-                }
+                if (subblocks.Length != 1)
+                    return false;
+
+                // Check for SCBlocks or SaveBlocks based on name. (SCBlocks will invoke the hex editor, SaveBlocks will invoke a property grid
+                var props = sav.GetType().GetProperty("Blocks");
+                if (props is null)
+                    return false;
+
+                var allblocks = props.GetValue(sav);
+                var blockprop = allblocks.GetType().GetProperty(subblocks[0].Name);
+                if (allblocks is SCBlockAccessor scba && blockprop == null)
+                    sb = scba.GetBlock(subblocks[0].SCBKey);
+                else
+                    sb = blockprop?.GetValue(allblocks);
             }
-            return valid;
+
+            return sb != null;
         }
     }
 

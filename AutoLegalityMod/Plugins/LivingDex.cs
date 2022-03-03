@@ -21,13 +21,18 @@ namespace AutoModPlugins
 
         private void GenLivingDex(object sender, EventArgs e)
         {
-            if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Generate a Living Dex?")) return;
+            var prompt = WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Generate a Living Dex?");
+            if (prompt != DialogResult.Yes)
+                return;
+
             var sav = SaveFileEditor.SAV;
             var pkms = sav.GenerateLivingDex(out int attempts);
             var bd = sav.BoxData;
             pkms.CopyTo(bd);
             sav.BoxData = bd;
             SaveFileEditor.ReloadSlots();
+
+            System.Diagnostics.Debug.WriteLine($"Generated Living Dex after {attempts} attempts.");
         }
     }
 }

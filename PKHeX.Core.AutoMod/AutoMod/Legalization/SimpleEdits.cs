@@ -113,7 +113,7 @@ namespace PKHeX.Core.AutoMod
             new Tuple<Species, int> ( Calyrex, 0 ),
             new Tuple<Species, int> ( Calyrex, 1 ),
             new Tuple<Species, int> ( Calyrex, 2 ),
-            
+
             new Tuple<Species, int> ( Enamorus, 0 ),
             new Tuple<Species, int> ( Enamorus, 1 ),
         };
@@ -147,18 +147,18 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">Encounter details</param>
         public static void SetEncryptionConstant(this PKM pk, IEncounterable enc)
         {
+            if (pk.Format < 6)
+                return;
+
             if ((pk.Species == 658 && pk.Form == 1) || APILegality.IsPIDIVSet(pk, enc)) // Ash-Greninja or raids
                 return;
             int gen = pk.Generation;
-            if (gen is > 2 and < 6)
+            if (gen is 3 or 4 or 5)
             {
                 var ec = pk.PID;
                 pk.EncryptionConstant = ec;
-                if (pk.Format >= 6)
-                {
-                    var pidxor = ((pk.TID ^ pk.SID ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
-                    pk.PID = pidxor ? ec ^ 0x80000000 : ec;
-                }
+                var pidxor = ((pk.TID ^ pk.SID ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
+                pk.PID = pidxor ? ec ^ 0x80000000 : ec;
                 return;
             }
             int wIndex = WurmpleUtil.GetWurmpleEvoGroup(pk.Species);
@@ -238,23 +238,22 @@ namespace PKHeX.Core.AutoMod
                 }
 
                 pk.SetShiny();
-                if (pk.Format >= 6)
-                {
-                    do
-                    {
-                        pk.SetShiny();
-                    } while (GetPIDXOR());
+                if (pk.Format < 6)
+                    return;
 
-                    bool GetPIDXOR() =>
-                        ((pk.TID ^ pk.SID ^ (int)(pk.PID & 0xFFFF) ^ (int)(pk.PID >> 16)) & ~0x7) == 8;
-                }
+                do { pk.SetShiny(); }
+                while (IsBit3Set());
+
+                bool IsBit3Set() =>
+                    ((pk.TID ^ pk.SID ^ (int)(pk.PID & 0xFFFF) ^ (int)(pk.PID >> 16)) & ~0x7) == 8;
 
                 return;
             }
 
             pk.SetShinySID(); // no mg = no lock
 
-            if (pk.Generation != 5) return;
+            if (pk.Generation != 5)
+                return;
 
             while (true)
             {
@@ -311,6 +310,8 @@ namespace PKHeX.Core.AutoMod
             {
                 obj.HeightAbsolute = obj.CalcHeightAbsolute;
                 obj.WeightAbsolute = obj.CalcWeightAbsolute;
+                if (pk is PB7 pb1)
+                    pb1.ResetCP();
                 return;
             }
             if (pk is not IScaledSize size)
@@ -356,8 +357,6 @@ namespace PKHeX.Core.AutoMod
             }
             size.HeightScalar = height;
             size.WeightScalar = weight;
-            if (pk is PB7 pb1)
-                pb1.ResetCalculatedValues();
         }
 
         public static void ClearHyperTraining(this PKM pk)
@@ -405,11 +404,11 @@ namespace PKHeX.Core.AutoMod
 
         public static void SetGigantamaxFactor(this PKM pk, IBattleTemplate set, IEncounterable enc)
         {
-            if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
-            {
-                if (gmax.CanToggleGigantamax(pk.Species, pk.Form, enc.Species, enc.Form))
-                    gmax.CanGigantamax = set.CanGigantamax; // soup hax
-            }
+            if (pk is not IGigantamax gmax || gmax.CanGigantamax == set.CanGigantamax)
+                return;
+
+            if (gmax.CanToggleGigantamax(pk.Species, pk.Form, enc.Species, enc.Form))
+                gmax.CanGigantamax = set.CanGigantamax; // soup hax
         }
 
         public static void SetDynamaxLevel(this PKM pk, byte level = 10)
@@ -568,12 +567,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc">encounter used to generate pokemon file</param>
         public static void SetDateLocks(this PKM pk, IEncounterable enc)
         {
-            if (enc is WC8 { IsHOMEGift: true } w)
-            {
-                var locked = EncountersHOME.WC8Gifts.TryGetValue(w.CardID, out var time);
-                if (locked)
-                    pk.MetDate = time;
-            }
+            if (enc is WC8 { IsHOMEGift: true } wc8)
+                SetDateLocksWC8(pk, wc8);
+        }
+
+        private static void SetDateLocksWC8(PKM pk, WC8 w)
+        {
+            var locked = EncountersHOME.WC8Gifts.TryGetValue(w.CardID, out var time);
+            if (locked)
+                pk.MetDate = time;
         }
 
         public static bool TryApplyHardcodedSeedWild8(PK8 pk, IEncounterable enc, int[] ivs, Shiny requestedShiny)
@@ -608,19 +610,22 @@ namespace PKHeX.Core.AutoMod
                 return species is <= 151 or 808 or 809;
             if (GameVersion.SWSH.Contains(destVer))
                 return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(species, form)).IsPresentInGame || Zukan8Additions.Contains(species);
-            if (species > destVer.GetMaxSpeciesID())
-                return false;
-            return true;
+            if (GameVersion.PLA.Contains(destVer))
+                return ((PersonalInfoLA)PersonalTable.LA.GetFormEntry(species, form)).IsPresentInGame;
+            return (uint)species <= destVer.GetMaxSpeciesID();
         }
 
         public static void SetRecordFlags(this PKM pk, IEnumerable<int>? moves = null)
         {
-            if (pk is ITechRecord8 tr && pk is not PA8)
+            if (pk is ITechRecord8 tr and not PA8)
             {
                 if (moves != null)
                     tr.SetRecordFlags(moves);
-                else tr.SetRecordFlags();
+                else
+                    tr.SetRecordFlags();
+                return;
             }
+
             if (pk is IMoveShop8 shop)
             {
                 if (moves != null)

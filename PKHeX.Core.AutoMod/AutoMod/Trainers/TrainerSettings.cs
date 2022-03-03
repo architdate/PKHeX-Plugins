@@ -88,7 +88,7 @@ namespace PKHeX.Core.AutoMod
         public static ITrainerInfo GetSavedTrainerData(GameVersion version, int gen, ITrainerInfo? fallback = null, LanguageID? lang = null)
         {
             var byVer = Database.GetTrainer(version, lang);
-            if (byVer != null)
+            if (byVer is not null)
                 return byVer;
             return GetSavedTrainerData(gen, version, fallback, lang);
         }

@@ -132,16 +132,20 @@ namespace PKHeX.Core.AutoMod
                 return pk;
 
             if (EnableEasterEggs)
-            {
-                var gen = EasterEggs.GetGeneration(template.Species);
-                var species = (int)EasterEggs.GetMemeSpecies(gen);
-                template.Species = species;
-                var attempt = 0;
-                var legalencs = tr.GetRandomEncounter(species, null, set.Shiny, false, ref attempt, out var legal);
-                if (legalencs && legal != null)
-                    template = legal;
-                template.SetNickname(EasterEggs.GetMemeNickname(gen));
-            }
+                return tr.GetEasterEggFromSet(set, template);
+            return template;
+        }
+
+        private static PKM GetEasterEggFromSet(this ITrainerInfo tr, IBattleTemplate set, PKM template)
+        {
+            var gen = EasterEggs.GetGeneration(template.Species);
+            var species = (int)EasterEggs.GetMemeSpecies(gen, template);
+            template.Species = species;
+            var attempt = 0;
+            var legalencs = tr.GetRandomEncounter(species, null, set.Shiny, false, ref attempt, out var legal);
+            if (legalencs && legal != null)
+                template = legal;
+            template.SetNickname(EasterEggs.GetMemeNickname(gen, template));
             return template;
         }
 

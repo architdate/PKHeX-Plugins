@@ -36,7 +36,7 @@ namespace AutoModPlugins.GUI
 
         public void AutoRefresh(object source, ElapsedEventArgs e)
         {
-            if (!CB_AutoRefresh.Checked)
+            if (!CB_AutoRefresh.Checked || psb is null)
             {
                 // prevent race condition between the uncheck event and auto refresh
                 refresh.Stop();
@@ -46,7 +46,6 @@ namespace AutoModPlugins.GUI
             {
                 var length = Bytes.Length;
                 byte[] result;
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 if (psb.com is not ICommunicatorNX cnx)
                 {
                     result = psb.com.ReadBytes(address, length);
@@ -60,7 +59,6 @@ namespace AutoModPlugins.GUI
                         _ => psb.com.ReadBytes(address, length),
                     };
                 }
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 var r_text = string.Join(" ", result.Select(z => $"{z:X2}"));
                 RTB_RAM.Invoke((MethodInvoker)delegate {
                     if (RTB_RAM.Text != r_text) // Prevent text updates if there is no update since they hinder copying

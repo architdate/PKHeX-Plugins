@@ -62,23 +62,24 @@ namespace PKHeX.Core.AutoMod
             this.SanitizeBattleMoves();
 
             var shiny = Shiny ? Core.Shiny.Always : Core.Shiny.Never;
-            if (set.InvalidLines.Count != 0)
-            {
-                Regen = new RegenSet(set.InvalidLines, gen, shiny);
-                Shiny = Regen.Extra.IsShiny;
-                if (Ability == -1) Ability = RegenUtil.GetRegenAbility(set.Species, gen, Regen.Extra.Ability);
-                set.InvalidLines.Clear();
-            }
-            else
+            if (set.InvalidLines.Count == 0)
             {
                 Regen.Extra.ShinyType = shiny;
+                return;
             }
+
+            Regen = new RegenSet(set.InvalidLines, gen, shiny);
+            Shiny = Regen.Extra.IsShiny;
+            if (Ability == -1)
+                Ability = RegenUtil.GetRegenAbility(set.Species, gen, Regen.Extra.Ability);
+            set.InvalidLines.Clear();
         }
 
         public RegenTemplate(PKM pk, int gen = PKX.Generation) : this(new ShowdownSet(pk), gen)
         {
             this.FixGender(pk.PersonalInfo);
-            if (!pk.IsNicknamed) Nickname = string.Empty;
+            if (!pk.IsNicknamed)
+                Nickname = string.Empty;
             Regen = new RegenSet(pk);
             Shiny = Regen.Extra.IsShiny;
         }

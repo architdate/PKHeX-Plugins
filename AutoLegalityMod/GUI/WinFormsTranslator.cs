@@ -9,6 +9,7 @@ using PKHeX.Core;
 
 namespace AutoModPlugins
 {
+    // Code borrowed from PKHeX.WinForms with permission from kwsch, with adaptations
     public static class WinFormsTranslator
     {
         private static readonly Dictionary<string, TranslationContext> Context = new();
@@ -170,9 +171,9 @@ namespace AutoModPlugins
 
         public static void LoadAllForms(params string[] banlist)
         {
-            var q = from t in Assembly.GetExecutingAssembly().GetTypes()
-                    where t.BaseType == typeof(Form) && !banlist.Contains(t.Name)
-                    select t;
+            var q = Assembly.GetExecutingAssembly()
+                .GetTypes()
+                .Where(t => t.BaseType == typeof(Form) && !banlist.Contains(t.Name));
             foreach (var t in q)
             {
                 var constructors = t.GetConstructors();
@@ -183,7 +184,10 @@ namespace AutoModPlugins
                 {
                     var _ = (Form)Activator.CreateInstance(t, new object[argCount]);
                 }
-                catch { }
+                catch
+                {
+                    // Discard any exception, we're just creating temp forms.
+                }
             }
         }
 

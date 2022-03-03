@@ -287,8 +287,13 @@ namespace PKHeX.Core.AutoMod
                 return true;
             if (form == 0)
                 return false;
-            if ((species == 25 || SimpleEdits.AlolanOriginForms.Contains(species)) && generation >= 7 && pk.Generation is (< 7) and (not -1))
-                return true;
+
+            if (species == 25 || SimpleEdits.AlolanOriginForms.Contains(species))
+            {
+                if (generation >= 7 && pk.Generation is (< 7) and (not -1))
+                    return true;
+            }
+
             return false;
         }
 

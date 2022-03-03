@@ -97,7 +97,10 @@ namespace PKHeX.Core.Injection
                     {
                         read = new List<byte[]> { ram };
                     }
-                    else read.Add(ram);
+                    else
+                    {
+                        read.Add(ram);
+                    }
                 }
                 return true;
             }
@@ -124,4 +127,3 @@ namespace PKHeX.Core.Injection
         }
     }
 }
-

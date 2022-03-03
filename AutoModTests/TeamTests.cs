@@ -19,7 +19,7 @@ namespace AutoModTests
     public static class TeamTests
     {
         private static string TestPath => TestUtil.GetTestFolder("ShowdownSets");
-        private const bool TargettedTesting = false;
+        public static bool TargettedTesting { get; set; }
 
         private static Dictionary<string, int> GetFileStructures()
         {
@@ -66,6 +66,7 @@ namespace AutoModTests
         private static Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>> VerifyFile(string file, GameVersion[] saves)
         {
             var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("====="));
+            var sets = ShowdownParsing.GetShowdownSets(lines).Distinct(new ShowdownSetComparator()).ToList();
 
             var results = new Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>();
             foreach (var s in saves)
@@ -74,7 +75,6 @@ namespace AutoModTests
                 var illegalsets = new List<RegenTemplate>();
                 var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
                 PKMConverter.SetPrimaryTrainer(sav);
-                var sets = ShowdownParsing.GetShowdownSets(lines).Distinct(new ShowdownSetComparator()).ToList();
                 var species = Enumerable.Range(1, sav.MaxSpeciesID);
                 species = sav switch
                 {
@@ -196,9 +196,9 @@ namespace AutoModTests
         }
     }
 
-    class ShowdownSetComparator : IEqualityComparer<ShowdownSet>
+    internal class ShowdownSetComparator : IEqualityComparer<ShowdownSet>
     {
-        public bool Equals(ShowdownSet x, ShowdownSet y) => x.Text.Trim() == y.Text.Trim();
+        public bool Equals([DisallowNull] ShowdownSet x, [DisallowNull] ShowdownSet y) => x!.Text.Trim() == y!.Text.Trim();
         public int GetHashCode([DisallowNull] ShowdownSet obj) => obj.Text.GetHashCode();
     }
 }

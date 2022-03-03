@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using FluentAssertions;
+﻿using FluentAssertions;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 using Xunit;
@@ -9,17 +7,7 @@ namespace AutoModTests
 {
     public static class ShowdownSetGenningTests
     {
-        private static readonly string ShowdownSetsFolder = TestUtil.GetTestFolder("ShowdownSets");
         static ShowdownSetGenningTests() => TestUtil.InitializePKHeXEnvironment();
-
-        private static GameVersion GetGameFromFile(string path)
-        {
-            var filename = Path.GetFileNameWithoutExtension(path);
-            var split = filename.Split('_');
-            var version = split[1].Trim();
-            Enum.TryParse<GameVersion>(version, true, out var game).Should().BeTrue();
-            return game;
-        }
 
         [Theory]
         [InlineData(7, Meowstic)]

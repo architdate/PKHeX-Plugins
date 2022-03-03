@@ -202,20 +202,17 @@ namespace PKHeX.Core.AutoMod
             };
         }
 
-        public static PersonalTable GetInfo(int gen)
+        public static PersonalTable GetInfo(int gen) => gen switch
         {
-            return gen switch
-            {
-                1 => PersonalTable.RB,
-                2 => PersonalTable.C,
-                3 => PersonalTable.E,
-                4 => PersonalTable.Pt,
-                5 => PersonalTable.B2W2,
-                6 => PersonalTable.AO,
-                7 => PersonalTable.USUM,
-                8 => PersonalTable.SWSH,
-                _ => throw new ArgumentOutOfRangeException(),
-            };
-        }
+            1 => PersonalTable.RB,
+            2 => PersonalTable.C,
+            3 => PersonalTable.E,
+            4 => PersonalTable.Pt,
+            5 => PersonalTable.B2W2,
+            6 => PersonalTable.AO,
+            7 => PersonalTable.USUM,
+            8 => PersonalTable.SWSH,
+            _ => throw new ArgumentOutOfRangeException(),
+        };
     }
 }

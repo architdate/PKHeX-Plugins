@@ -30,12 +30,13 @@ namespace AutoModTests
 
                 // double check initial state
                 var la = new LegalityAnalysis(pk);
-                la.Valid.Should().Be(isValid, $"because the file '{fi.Directory.Name}\\{fi.Name}' should be {(isValid ? "Valid" : "Invalid")}");
+                var dir = fi.Directory!;
+                la.Valid.Should().Be(isValid, $"because the file '{dir.Name}\\{fi.Name}' should be {(isValid ? "Valid" : "Invalid")}");
 
                 // try legalizing, should end up as legal
                 var updated = pk.Legalize();
                 var la2 = new LegalityAnalysis(updated);
-                la2.Valid.Should().Be(true, $"because the file '{fi.Directory.Name}\\{fi.Name}' should be legal");
+                la2.Valid.Should().Be(true, $"because the file '{dir.Name}\\{fi.Name}' should be legal");
             }
         }
 

@@ -50,7 +50,7 @@ namespace AutoModTests
             RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
             APILegality.Timeout = 99999;
             var passed = true;
-            var res = s.SingleSaveTest(includeforms, shiny, ref passed);
+            _ = s.SingleSaveTest(includeforms, shiny, ref passed);
             passed.Should().BeTrue();
         }
 

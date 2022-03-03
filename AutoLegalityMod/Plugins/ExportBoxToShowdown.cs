@@ -14,7 +14,7 @@ namespace AutoModPlugins
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
             var ctrl = new ToolStripMenuItem(Name) { Image = Resources.exportboxtoshowdown };
-            ctrl.Click += (s, e) => Export(SaveFileEditor);
+            ctrl.Click += (_, _) => Export(SaveFileEditor);
             ctrl.Name = "Menu_ExportBoxtoShowdown";
             modmenu.DropDownItems.Add(ctrl);
         }

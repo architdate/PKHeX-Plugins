@@ -9,7 +9,7 @@ namespace PKHeX.Core.AutoMod
         public Shiny ShinyType { get; set; } = Shiny.Never;
         public LanguageID? Language { get; set; }
         public AbilityRequest Ability { get; set; } = AbilityRequest.Any;
-        public bool Alpha { get; set; } = false;
+        public bool Alpha { get; set; }
 
         public bool IsShiny => ShinyType != Shiny.Never;
 

@@ -149,28 +149,6 @@ namespace PKHeX.Core.AutoMod
             return template;
         }
 
-        private static IEnumerable<IEncounterable> GetEncounters(int species, int form, int[] moves, PKM pk, IReadOnlyList<GameVersion> vers)
-        {
-            pk.Species = species;
-            pk.Form = form;
-            pk.SetGender(pk.GetSaneGender());
-            return EncounterMovesetGenerator.GenerateEncounters(pk, moves, vers);
-        }
-
-        private static IEnumerable<IEncounterable> GetAllSpeciesFormEncounters(int species, PersonalTable pt, IReadOnlyList<GameVersion> versions, int[] moves, PKM pk)
-        {
-            var pi = pt.GetFormEntry(species, 0);
-            var fc = pi.FormCount;
-            for (int f = 0; f < fc; f++)
-            {
-                if (FormInfo.IsBattleOnlyForm(species, f, pk.Format))
-                    continue;
-                var encs = GetEncounters(species, f, moves, pk, versions);
-                foreach (var enc in encs)
-                    yield return enc;
-            }
-        }
-
         public static AbilityRequest GetRequestedAbility(PKM template, IBattleTemplate set)
         {
             if (template.AbilityNumber == 4)

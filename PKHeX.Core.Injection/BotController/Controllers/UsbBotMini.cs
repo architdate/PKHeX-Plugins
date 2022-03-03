@@ -6,7 +6,7 @@ using LibUsbDotNet.Main;
 
 namespace PKHeX.Core.Injection
 {
-    public class UsbBotMini : ICommunicator, ICommunicatorNX, IPokeBlocks
+    public class UsbBotMini : ICommunicatorNX, IPokeBlocks
     {
         private const int MaximumTransferSize = 468; // byte limitation of USB-Botbase over Android for ACNHMS, assumed same here.
 

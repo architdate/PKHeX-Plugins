@@ -77,6 +77,7 @@ namespace System.Windows.Forms
         private static readonly HookProc hookProc = MessageBoxHookProc;
         private static readonly EnumChildProc enumProc = MessageBoxEnumProc;
         [ThreadStatic]
+        // ReSharper disable once ThreadStaticFieldHasInitializer
         private static IntPtr hHook = IntPtr.Zero;
         [ThreadStatic]
         private static int nButton;
@@ -172,35 +173,35 @@ namespace System.Windows.Forms
         {
             StringBuilder className = new(10);
             GetClassName(hWnd, className, className.Capacity);
-            if (className.ToString() == "Button")
+            if (className.ToString() != "Button")
+                return true;
+
+            int ctlId = GetDlgCtrlID(hWnd);
+            switch (ctlId)
             {
-                int ctlId = GetDlgCtrlID(hWnd);
-                switch (ctlId)
-                {
-                    case MBOK:
-                        SetWindowText(hWnd, OK);
-                        break;
-                    case MBCancel:
-                        SetWindowText(hWnd, Cancel);
-                        break;
-                    case MBAbort:
-                        SetWindowText(hWnd, Abort);
-                        break;
-                    case MBRetry:
-                        SetWindowText(hWnd, Retry);
-                        break;
-                    case MBIgnore:
-                        SetWindowText(hWnd, Ignore);
-                        break;
-                    case MBYes:
-                        SetWindowText(hWnd, Yes);
-                        break;
-                    case MBNo:
-                        SetWindowText(hWnd, No);
-                        break;
-                }
-                nButton++;
+                case MBOK:
+                    SetWindowText(hWnd, OK);
+                    break;
+                case MBCancel:
+                    SetWindowText(hWnd, Cancel);
+                    break;
+                case MBAbort:
+                    SetWindowText(hWnd, Abort);
+                    break;
+                case MBRetry:
+                    SetWindowText(hWnd, Retry);
+                    break;
+                case MBIgnore:
+                    SetWindowText(hWnd, Ignore);
+                    break;
+                case MBYes:
+                    SetWindowText(hWnd, Yes);
+                    break;
+                case MBNo:
+                    SetWindowText(hWnd, No);
+                    break;
             }
+            nButton++;
 
             return true;
         }

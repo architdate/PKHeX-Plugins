@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 
 namespace PKHeX.Core.Injection
 {
@@ -152,7 +151,8 @@ namespace PKHeX.Core.Injection
             try
             {
                 var offsets = SCBlocks[psb.Version].Where(z => z.Display == block);
-                var allblocks = sav.GetType().GetProperty("Blocks").GetValue(sav);
+                var blocks = sav.GetType().GetProperty("Blocks");
+                var allblocks = blocks?.GetValue(sav);
                 if (allblocks is not SCBlockAccessor scba)
                     return false;
                 foreach (var sub in offsets)
@@ -168,7 +168,10 @@ namespace PKHeX.Core.Injection
                     {
                         read = new List<byte[]> { ram };
                     }
-                    else read.Add(ram);
+                    else
+                    {
+                        read.Add(ram);
+                    }
                 }
                 return true;
             }
@@ -183,7 +186,8 @@ namespace PKHeX.Core.Injection
         {
             if (psb.com is not ICommunicatorNX sb)
                 return;
-            var allblocks = sav.GetType().GetProperty("Blocks").GetValue(sav);
+            var blocks = sav.GetType().GetProperty("Blocks");
+            var allblocks = blocks?.GetValue(sav);
             if (allblocks is not SCBlockAccessor scba)
                 return;
             var offsets = SCBlocks[psb.Version].Where(z => z.Display == block);
@@ -203,11 +207,9 @@ namespace PKHeX.Core.Injection
             var lv = psb.Version;
             var ptr = SCBlocks[lv].First(z => z.Name == "MyStatus").Pointer;
             var ofs = sb.GetPointerAddress(ptr);
-            var size = MYSTATUS_BLOCK_SIZE;
-            if (size <= 0 || ofs == 0)
+            if (ofs == 0)
                 return null;
-            var data = psb.com.ReadBytes(ofs, size);
-            return data;
+            return psb.com.ReadBytes(ofs, MYSTATUS_BLOCK_SIZE);
         };
     }
 }
