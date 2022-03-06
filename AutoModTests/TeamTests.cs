@@ -65,9 +65,6 @@ namespace AutoModTests
 
         private static Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>> VerifyFile(string file, GameVersion[] saves)
         {
-            var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("====="));
-            var sets = ShowdownParsing.GetShowdownSets(lines).Distinct(new ShowdownSetComparator()).ToList();
-
             var results = new Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>();
             foreach (var s in saves)
             {
@@ -75,6 +72,10 @@ namespace AutoModTests
                 var illegalsets = new List<RegenTemplate>();
                 var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
                 PKMConverter.SetPrimaryTrainer(sav);
+
+                var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("====="));
+                var sets = ShowdownParsing.GetShowdownSets(lines).Distinct(new ShowdownSetComparator()).ToList();
+
                 var species = Enumerable.Range(1, sav.MaxSpeciesID);
                 species = sav switch
                 {
