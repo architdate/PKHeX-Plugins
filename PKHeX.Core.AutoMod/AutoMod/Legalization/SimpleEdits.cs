@@ -352,8 +352,8 @@ namespace PKHeX.Core.AutoMod
                 height = Util.Rand.Next(255);
                 weight = Util.Rand.Next(255);
             }
-            size.HeightScalar = height;
-            size.WeightScalar = weight;
+            size.HeightScalar = (byte)height;
+            size.WeightScalar = (byte)weight;
         }
 
         public static void ClearHyperTraining(this PKM pk)
@@ -385,12 +385,12 @@ namespace PKHeX.Core.AutoMod
             var EVs = set.EVs;
             if (isGO)
                 EVs = set.EVs.Select(z => z < 2 ? 2 : z).ToArray();
-            pb7.AV_HP = EVs[0];
-            pb7.AV_ATK = EVs[1];
-            pb7.AV_DEF = EVs[2];
-            pb7.AV_SPA = EVs[4];
-            pb7.AV_SPD = EVs[5];
-            pb7.AV_SPE = EVs[3];
+            pb7.AV_HP = (byte)EVs[0];
+            pb7.AV_ATK = (byte)EVs[1];
+            pb7.AV_DEF = (byte)EVs[2];
+            pb7.AV_SPA = (byte)EVs[4];
+            pb7.AV_SPD = (byte)EVs[5];
+            pb7.AV_SPE = (byte)EVs[3];
         }
 
         public static void SetHTLanguage(this PKM pk)

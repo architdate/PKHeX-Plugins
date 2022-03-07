@@ -578,7 +578,7 @@ namespace PKHeX.Core.AutoMod
             var relearn = pk.RelearnMoves;
 
             pk.ClearRelearnMoves();
-            bvPk.BattleVersion = trainer.Game;
+            bvPk.BattleVersion = (byte)trainer.Game;
 
             var la = new LegalityAnalysis(pk);
             if (!la.Valid)
@@ -946,8 +946,8 @@ namespace PKHeX.Core.AutoMod
 
             var height = (int)rng.NextInt(0x81) + (int)rng.NextInt(0x80);
             var weight = (int)rng.NextInt(0x81) + (int)rng.NextInt(0x80);
-            pk.HeightScalar = height;
-            pk.WeightScalar = weight;
+            pk.HeightScalar = (byte)height;
+            pk.WeightScalar = (byte)weight;
         }
 
         /// <summary>

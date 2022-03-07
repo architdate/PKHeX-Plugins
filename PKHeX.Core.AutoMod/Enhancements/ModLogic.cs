@@ -46,7 +46,7 @@ namespace PKHeX.Core.AutoMod
             species = sav switch
             {
                 SAV7b => species.Where(z => z is <= 151 or 808 or 809),
-                SAV8 => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
+                SAV8SWSH => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
                 SAV8BS => species.Where(z => ((PersonalInfoBDSP)PersonalTable.BDSP.GetFormEntry(z, 0)).IsPresentInGame),
                 _ => species,
             };
