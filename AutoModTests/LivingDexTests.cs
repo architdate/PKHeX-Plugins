@@ -13,6 +13,7 @@ namespace AutoModTests
 {
     public static class LivingDexTests
     {
+        static LivingDexTests() => TestUtil.InitializePKHeXEnvironment();
         private static readonly GameVersion[] GetGameVersionsToTest = { BD, SW, US, SN, OR, X, B2, B, Pt, E, C, RD };
 
         private static Dictionary<GameVersion, GenerateResult> TestLivingDex(bool includeforms, bool shiny, out bool passed)
@@ -46,8 +47,6 @@ namespace AutoModTests
         public static void VerifyManually(GameVersion s, bool includeforms, bool shiny)
 #pragma warning restore xUnit1013 // Only for internal debugging
         {
-            EncounterEvent.RefreshMGDB(Path.Combine(Directory.GetCurrentDirectory(), "mgdb"));
-            RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
             APILegality.Timeout = 99999;
             var passed = true;
             _ = s.SingleSaveTest(includeforms, shiny, ref passed);
@@ -57,8 +56,6 @@ namespace AutoModTests
         [Fact]
         public static void RunLivingDexTests()
         {
-            EncounterEvent.RefreshMGDB(Path.Combine(Directory.GetCurrentDirectory(), "mgdb"));
-            RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
             var dir = Directory.GetCurrentDirectory();
             bool legalizer_settings = Legalizer.EnableEasterEggs;
             bool ribbon_settings = APILegality.SetAllLegalRibbons;

@@ -9,14 +9,19 @@ namespace AutoModTests
         static TestUtil() => InitializePKHeXEnvironment();
         private static bool Initialized;
 
+        private static object _lock = new object();
+
         public static void InitializePKHeXEnvironment()
         {
-            if (Initialized)
-                return;
-            if (!EncounterEvent.Initialized)
-                EncounterEvent.RefreshMGDB();
-            RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
-            Initialized = true;
+            lock (_lock)
+            {
+                if (Initialized)
+                    return;
+                if (!EncounterEvent.Initialized)
+                    EncounterEvent.RefreshMGDB();
+                RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
+                Initialized = true;
+            }
         }
 
         public static string GetTestFolder(string name)

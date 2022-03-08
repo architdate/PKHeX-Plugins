@@ -18,6 +18,7 @@ namespace AutoModTests
     /// </summary>
     public static class TeamTests
     {
+        static TeamTests() => TestUtil.InitializePKHeXEnvironment();
         private static string TestPath => TestUtil.GetTestFolder("ShowdownSets");
         public static bool TargettedTesting { get; set; }
 
@@ -144,7 +145,6 @@ namespace AutoModTests
         [Fact]
         public static void RunTeamTests()
         {
-            EncounterEvent.RefreshMGDB(Path.Combine(Directory.GetCurrentDirectory(), "mgdb"));
             Directory.Exists(TestPath).Should().BeTrue();
             var dir = Directory.GetCurrentDirectory();
 
