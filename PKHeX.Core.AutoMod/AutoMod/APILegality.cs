@@ -56,6 +56,9 @@ namespace PKHeX.Core.AutoMod
             template.ApplySetDetails(set);
             template.SetRecordFlags(); // Validate TR/MS moves for the encounter
 
+            if (template.Species == (int)Species.Unown) // Force unown form on template
+                template.Form = set.Form;
+
             var abilityreq = GetRequestedAbility(template, set);
             var batchedit = AllowBatchCommands && regen.HasBatchSettings;
             var destType = template.GetType();
