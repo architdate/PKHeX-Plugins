@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using PKHeX.Core;
+using PKHeX.Core.AutoMod;
 
 namespace AutoModTests
 {
@@ -20,6 +21,9 @@ namespace AutoModTests
                 if (!EncounterEvent.Initialized)
                     EncounterEvent.RefreshMGDB();
                 RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
+                Legalizer.EnableEasterEggs = false;
+                APILegality.SetAllLegalRibbons = false;
+                APILegality.Timeout = 99999;
                 Initialized = true;
             }
         }
