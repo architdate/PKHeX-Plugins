@@ -31,11 +31,21 @@ if ((get-process "pkhex" -ea SilentlyContinue) -ne $Null) {Stop-Process -process
 
 # get latest stable plugins
 $pluginsrepo = "architdate/PKHeX-Plugins"
+$baserepo = "kwsch/PKHeX"
 $file = "PKHeX-Plugins.zip"
 $releases = "https://api.github.com/repos/$pluginsrepo/releases"
+$basereleases = "https://api.github.com/repos/$baserepo/releases"
 
 Write-Host "Determining latest plugin release ..."
 $tag = (Invoke-WebRequest $releases -UseBasicParsing | ConvertFrom-Json)[0].tag_name
+$basetag = (Invoke-WebRequest $basereleases -UseBasicParsing | ConvertFrom-Json)[0].tag_name
+if (!$tag.Equals($basetag)) {
+    Write-Host "Auto-Legality Mod for the latest stable PKHeX has not been released yet."
+    Write-Host "Please wait for a new PKHeX-Plugins release before using this setup file."
+    Write-Host "Alternatively, consider reading the wiki to manually setup ALM with an older PKHeX build."
+    Read-Host "Press Enter to exit"
+    exit
+}
 
 # get the correct page for the tag
 $TagPage = ((Invoke-WebRequest -Uri "https://projectpokemon.org/home/files/file/1-pkhex/" -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.title -match "See changelog for version $tag"}).href.replace("&amp;", "&")[0]
