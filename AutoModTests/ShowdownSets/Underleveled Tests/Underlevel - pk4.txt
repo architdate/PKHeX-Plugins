@@ -1096,7 +1096,6 @@ Ability: Levitate
 Level: 35
 Hasty Nature
 =OT_Name=Mindy
-.Version=10
 ~=Generation=4
 - Sucker Punch
 - Shadow Punch
