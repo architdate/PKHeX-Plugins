@@ -295,7 +295,7 @@ namespace PKHeX.Core.AutoMod
         public static void SetEncounterTradeIVs(this EncounterTrade t, PKM pk)
         {
             if (t.IVs.Count != 0)
-                pk.SetRandomIVs(t.IVs, 0);
+                pk.SetRandomIVs((int[])t.IVs, 0);
             else
                 pk.SetRandomIVs(flawless: 3);
         }

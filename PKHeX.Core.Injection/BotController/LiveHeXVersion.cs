@@ -6,6 +6,8 @@
         LA_v102,
         LA_v101,
         LA_v100,
+        BD_v130,
+        SP_v130,
         BDSP_v120,
         BDSP_v113,
         BDSP_v112,

@@ -7,7 +7,7 @@
             return sf switch
             {
                 SAV8LA => new[] { LiveHeXVersion.LA_v100 , LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v110 },
-                SAV8BS => new[] { LiveHeXVersion.BD_v100, LiveHeXVersion.SP_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.SP_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113, LiveHeXVersion.BDSP_v120 },
+                SAV8BS => new[] { LiveHeXVersion.BD_v100, LiveHeXVersion.SP_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.SP_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113, LiveHeXVersion.BDSP_v120, LiveHeXVersion.BD_v130, LiveHeXVersion.SP_v130 },
                 SAV8SWSH => new[] { LiveHeXVersion.SWSH_Orion, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Rigel2 },
                 SAV7b => new[] { LiveHeXVersion.LGPE_v102 },
                 SAV7USUM => new[] { LiveHeXVersion.UM_v12, LiveHeXVersion.US_v12 },
@@ -104,6 +104,8 @@
         {
             return lv switch
             {
+                LiveHeXVersion.BD_v130 => 0x50,
+                LiveHeXVersion.SP_v130 => 0x50,
                 LiveHeXVersion.BDSP_v120 => 0x50,
                 LiveHeXVersion.BDSP_v113 => 0x50,
                 LiveHeXVersion.BDSP_v112 => 0x50,
@@ -165,6 +167,8 @@
         {
             return lv switch
             {
+                LiveHeXVersion.BD_v130   => ("[[[[main+4C64DC0]+B8]+10]+A0]+20", 40),
+                LiveHeXVersion.SP_v130   => ("[[[[main+4E7BE98]+B8]+10]+A0]+20", 40),
                 LiveHeXVersion.BDSP_v120 => ("[[[[main+4E36C58]+B8]+10]+A0]+20", 40),
                 LiveHeXVersion.BDSP_v113 => ("[[[[main+4E59E60]+B8]+10]+A0]+20", 40),
                 LiveHeXVersion.BDSP_v112 => ("[[[[main+4E34DD0]+B8]+10]+A0]+20", 40),
