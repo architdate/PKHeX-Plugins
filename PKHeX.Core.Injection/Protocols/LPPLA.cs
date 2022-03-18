@@ -7,7 +7,7 @@ namespace PKHeX.Core.Injection
 {
     public static class LPPLA
     {
-        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v110 };
+        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v111 };
 
         private const int MYSTATUS_BLOCK_SIZE = 0x80;
 
@@ -73,7 +73,7 @@ namespace PKHeX.Core.Injection
             { LiveHeXVersion.LA_v100, Blocks_v100 },
             { LiveHeXVersion.LA_v101, Blocks_v101 },
             { LiveHeXVersion.LA_v102, Blocks_v102 },
-            { LiveHeXVersion.LA_v110, Blocks_v110 },
+            { LiveHeXVersion.LA_v111, Blocks_v110 },
         };
 
         public static readonly Dictionary<string, string> SpecialBlocks = new()
@@ -90,7 +90,7 @@ namespace PKHeX.Core.Injection
                 LiveHeXVersion.LA_v100 => "[[main+4275470]+1F0]+68",
                 LiveHeXVersion.LA_v101 => "[[main+427B470]+1F0]+68",
                 LiveHeXVersion.LA_v102 => "[[main+427C470]+1F0]+68",
-                LiveHeXVersion.LA_v110 => "[[main+42BA6B0]+1F0]+68",
+                LiveHeXVersion.LA_v111 => "[[main+42BA6B0]+1F0]+68",
                 _ => string.Empty
             };
         }
