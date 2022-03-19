@@ -48,9 +48,7 @@ if (!$tag.Equals($basetag)) {
 }
 
 # get the correct page for the tag
-$TagPage = ((Invoke-WebRequest -Uri "https://projectpokemon.org/home/files/file/1-pkhex/" -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.title -match "See changelog for version $tag"}).href.replace("&amp;", "&")[0]
 $BasePKHeX = ((Invoke-WebRequest -Uri "https://projectpokemon.org/home/files/file/1-pkhex/" -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.href -like "https://projectpokemon.org/home/files/file/1-pkhex/?do=download*"}).href.replace("&amp;", "&")
-if (!$TagPage.Contains("?changelog=0")) {$BasePKHeX = ((Invoke-WebRequest -Uri $TagPage -Headers $headers -UseBasicParsing -SessionVariable "Session").Links | Where-Object {$_.href -like "https://projectpokemon.org/home/files/file/1-pkhex/?do=download*version=*"}).href.replace("&amp;", "&")}
 
 # get cookies after making a webrequest to the official download site
 $url = $BasePKHeX
