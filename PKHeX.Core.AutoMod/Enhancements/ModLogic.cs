@@ -137,12 +137,12 @@ namespace PKHeX.Core.AutoMod
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
         public static bool GetRandomEncounter(this ITrainerInfo tr, int species, int? form, bool shiny, bool alpha, ref int attempt, out PKM? pk)
         {
-            var blank = PKMConverter.GetBlank(tr.Generation, tr.Game);
+            var blank = EntityBlank.GetBlank(tr.Generation, tr.Game);
             pk = GetRandomEncounter(blank, tr, species, form, shiny, alpha, ref attempt);
             if (pk == null)
                 return false;
 
-            pk = PKMConverter.ConvertToType(pk, blank.GetType(), out _);
+            pk = EntityConverter.ConvertToType(pk, blank.GetType(), out _);
             return pk != null;
         }
 
@@ -169,7 +169,7 @@ namespace PKHeX.Core.AutoMod
                     blank.Gender = (int)form;
             }
 
-            var template = PKMConverter.GetBlank(tr.Generation, (GameVersion)tr.Game);
+            var template = EntityBlank.GetBlank(tr.Generation, (GameVersion)tr.Game);
             if (form != null)
             {
                 blank.Form = (int)form;
@@ -220,7 +220,7 @@ namespace PKHeX.Core.AutoMod
                 firstenc.SetMoves(firstenc.GetMoveSet());
                 firstenc.RefreshAbility(firstenc.AbilityNumber >> 1);
             }
-            var second = PKMConverter.ConvertToType(firstenc, blank.GetType(), out _);
+            var second = EntityConverter.ConvertToType(firstenc, blank.GetType(), out _);
             if (second == null)
                 return null;
             second.HeldItem = blank.HeldItem;

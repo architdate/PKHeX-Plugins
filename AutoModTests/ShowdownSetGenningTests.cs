@@ -18,7 +18,7 @@ namespace AutoModTests
             var sav = SaveUtil.GetBlankSAV(gen, "ALM");
             TrainerSettings.Register(sav);
             var trainer = TrainerSettings.GetSavedTrainerData(gen);
-            PKMConverter.SetPrimaryTrainer(trainer);
+            RecentTrainerCache.SetRecentTrainer(trainer);
             var set = new ShowdownSet(txt);
             var pkm = sav.GetLegalFromSet(set, out _);
             var la = new LegalityAnalysis(pkm);

@@ -72,7 +72,7 @@ namespace AutoModTests
                 var legalsets = new List<RegenTemplate>();
                 var illegalsets = new List<RegenTemplate>();
                 var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
-                PKMConverter.SetPrimaryTrainer(sav);
+                RecentTrainerCache.SetRecentTrainer(sav);
 
                 var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("====="));
                 var sets = ShowdownParsing.GetShowdownSets(lines).Distinct(new ShowdownSetComparator()).ToList();

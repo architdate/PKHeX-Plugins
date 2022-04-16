@@ -46,7 +46,7 @@ namespace PKHeX.Core.AutoMod
                 if (!PKX.IsPKM(len))
                     return;
                 var data = File.ReadAllBytes(f);
-                var pk = PKMConverter.GetPKMfromBytes(data);
+                var pk = EntityFormat.GetFromBytes(data);
                 if (pk != null)
                     Database.Register(new PokeTrainerDetails(pk.Clone()));
             }

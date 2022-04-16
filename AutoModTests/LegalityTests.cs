@@ -49,7 +49,7 @@ namespace AutoModTests
             var format = PKX.GetPKMFormatFromExtension(file[^1], -1);
             if (format > 10)
                 format = 6;
-            var pkm = PKMConverter.GetPKMfromBytes(data, prefer: format);
+            var pkm = EntityFormat.GetFromBytes(data, prefer: format);
             pkm.Should().NotBeNull($"the PKM '{new FileInfo(file).Name}' should have been loaded");
             return pkm;
         }

@@ -16,7 +16,7 @@ namespace AutoModTests
         [InlineData(typeof(PK6), GameVersion.X, (int)Species.Venomoth)]
         public static void HasSmogonSets(Type t, GameVersion game, int species, int form = 0)
         {
-            var blank = PKMConverter.GetBlank(t);
+            var blank = EntityBlank.GetBlank(t);
             blank.Version = (int)game;
             blank.Species = species;
             blank.Form = form;

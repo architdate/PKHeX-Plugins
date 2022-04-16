@@ -105,10 +105,10 @@ namespace PKHeX.Core.AutoMod
                     raw = basepk1.ConvertToPK2();
 
                 // Bring to the target generation and filter
-                var pk = PKMConverter.ConvertToType(raw, destType, out _);
+                var pk = EntityConverter.ConvertToType(raw, destType, out _);
                 if (pk == null)
                     continue;
-                if (PKMConverter.IsIncompatibleGB(pk, template.Japanese, pk.Japanese))
+                if (EntityConverter.IsIncompatibleGB(pk, template.Japanese, pk.Japanese))
                     continue;
 
                 // Apply final details

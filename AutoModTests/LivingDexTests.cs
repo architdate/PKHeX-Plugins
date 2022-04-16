@@ -30,7 +30,7 @@ namespace AutoModTests
             ModLogic.IncludeForms = includeforms;
             ModLogic.SetShiny = shiny;
             var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
-            PKMConverter.SetPrimaryTrainer(sav);
+            RecentTrainerCache.SetRecentTrainer(sav);
             var pkms = sav.GenerateLivingDex(out int attempts);
             var genned = pkms.Count();
             var val = new GenerateResult(genned == attempts, attempts, genned);
