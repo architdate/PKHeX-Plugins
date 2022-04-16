@@ -336,7 +336,7 @@ namespace PKHeX.Core.Injection
             {
                 var data = sav.GetType().GetProperty(block).GetValue(sav);
 
-                if (data is SaveBlock sb)
+                if (data is IDataIndirect sb)
                 {
                     var getter = FunctionMap[block].Item1;
                     var funcout = getter.Invoke(psb);
@@ -367,7 +367,7 @@ namespace PKHeX.Core.Injection
                 return;
             }
             var setter = FunctionMap[block].Item2;
-            var offset = ((SaveBlock)sb).Offset;
+            var offset = ((IDataIndirect)sb).Offset;
             setter.Invoke(psb, data.SliceEnd(offset));
         }
     }

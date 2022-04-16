@@ -513,11 +513,11 @@ namespace AutoModPlugins
                     return;
                 write = true;
             }
-            else if (sb is SCBlock || sb is SaveBlock || sb is ICustomBlock)
+            else if (sb is SCBlock || sb is IDataIndirect || sb is ICustomBlock)
             {
                 // Must be single block output
                 using var form = new SimpleHexEditor(data[0]);
-                if (sb is SaveBlock || sb is ICustomBlock)
+                if (sb is IDataIndirect || sb is ICustomBlock)
                 {
                     var props = ReflectUtil.GetPropertiesCanWritePublicDeclared(sb.GetType());
                     if (props.Count() > 1 && ModifierKeys != Keys.Control)
@@ -554,7 +554,7 @@ namespace AutoModPlugins
         private static byte[] GetBlockDataRaw(object sb, byte[] data) => sb switch
         {
             SCBlock sc => sc.Data,
-            SaveBlock sv => sv.Data,
+            IDataIndirect sv => sv.Data,
             _ => data,
         };
 
