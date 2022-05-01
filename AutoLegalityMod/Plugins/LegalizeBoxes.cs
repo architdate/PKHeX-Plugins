@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using AutoModPlugins.Properties;
 using PKHeX.Core;
@@ -70,7 +71,11 @@ namespace AutoModPlugins
             la = new LegalityAnalysis(result);
             if (!la.Valid)
             {
-                WinFormsUtil.Error("Unable to make the Active Pokemon legal!");
+                var res = WinFormsUtil.ALMError("Unable to make the Active Pokemon legal!", "Please refer to the wiki by clicking on the GitHub button for further help!");
+                if (res == DialogResult.Yes)
+                    Process.Start("https://discord.gg/tDMvSRv");
+                else if (res == DialogResult.No)
+                    Process.Start("https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod");
                 return;
             }
 
