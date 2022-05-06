@@ -570,7 +570,7 @@ namespace PKHeX.Core.AutoMod
 
         private static void SetDateLocksWC8(PKM pk, WC8 w)
         {
-            var locked = EncountersHOME.WC8Gifts.TryGetValue(w.CardID, out var time);
+            var locked = EncounterServerDate.WC8Gifts.TryGetValue(w.CardID, out var time);
             if (locked)
                 pk.MetDate = time;
         }
