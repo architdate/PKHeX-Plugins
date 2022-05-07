@@ -43,7 +43,7 @@ namespace PKHeX.Core.AutoMod
             foreach (var f in files)
             {
                 var len = new FileInfo(f).Length;
-                if (!PKX.IsPKM(len))
+                if (!EntityDetection.IsSizePlausible(len))
                     return;
                 var data = File.ReadAllBytes(f);
                 var pk = EntityFormat.GetFromBytes(data);

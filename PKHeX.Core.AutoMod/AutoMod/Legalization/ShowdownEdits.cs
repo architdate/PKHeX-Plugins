@@ -218,7 +218,7 @@ namespace PKHeX.Core.AutoMod
             var current = pkm.Gender;
             if (current == 2) // shedinja, genderless
                 return true;
-            var gender = PKX.GetGenderFromPID(original, pkm.EncryptionConstant);
+            var gender = EntityGender.GetFromPID(original, pkm.EncryptionConstant);
             return gender == current;
         }
 
@@ -230,7 +230,7 @@ namespace PKHeX.Core.AutoMod
         private static bool IsValidGenderMismatch(PKM pkm) => pkm.Species switch
         {
             // Shedinja evolution gender glitch, should match original Gender
-            (int)Species.Shedinja when pkm.Format == 4 => pkm.Gender == PKX.GetGenderFromPIDAndRatio(pkm.EncryptionConstant, 0x7F), // 50M-50F
+            (int)Species.Shedinja when pkm.Format == 4 => pkm.Gender == EntityGender.GetFromPIDAndRatio(pkm.EncryptionConstant, 0x7F), // 50M-50F
 
             // Evolved from Azurill after transferring to keep gender
             (int)Species.Marill or (int)Species.Azumarill when pkm.Format >= 6 => pkm.Gender == 1 && (pkm.EncryptionConstant & 0xFF) > 0x3F,

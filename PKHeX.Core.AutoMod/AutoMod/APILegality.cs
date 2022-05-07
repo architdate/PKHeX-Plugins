@@ -469,7 +469,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk.Format == 4 && pk.Species == (int)Species.Shedinja) // Shedinja glitch
                 {
                     // should match original gender
-                    var gender = PKX.GetGenderFromPIDAndRatio(pk.PID, 0x7F); // 50-50
+                    var gender = EntityGender.GetFromPIDAndRatio(pk.PID, 0x7F); // 50-50
                     if (gender == pk.Gender)
                         genderValid = true;
                 }
@@ -485,7 +485,7 @@ namespace PKHeX.Core.AutoMod
                 // check for mixed->fixed gender incompatibility by checking the gender of the original species
                 if (Legal.FixedGenderFromBiGender.Contains(pk.Species) && pk.Gender != 2) // shedinja
                 {
-                    pk.Gender = PKX.GetGenderFromPID(new LegalInfo(pk, new List<CheckResult>()).EncounterMatch.Species, pk.EncryptionConstant);
+                    pk.Gender = EntityGender.GetFromPID(new LegalInfo(pk, new List<CheckResult>()).EncounterMatch.Species, pk.EncryptionConstant);
                     // genderValid = true; already true if we reach here
                 }
             }

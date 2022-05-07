@@ -43,10 +43,10 @@ namespace AutoModTests
         private static PKM GetPKM(string file, FileInfo fi)
         {
             fi.Should().NotBeNull($"the test file '{file}' should be a valid file");
-            PKX.IsPKM(fi.Length).Should().BeTrue($"the test file '{file}' should have a valid file length");
+            EntityDetection.IsSizePlausible(fi.Length).Should().BeTrue($"the test file '{file}' should have a valid file length");
 
             var data = File.ReadAllBytes(file);
-            var format = PKX.GetPKMFormatFromExtension(file[^1], -1);
+            var format = EntityFileExtension.GetFormatFromExtension(file[^1], -1);
             if (format > 10)
                 format = 6;
             var pkm = EntityFormat.GetFromBytes(data, prefer: format);
