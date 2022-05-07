@@ -107,7 +107,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Legalized PKM (hopefully legal)</returns>
         public static PKM GetLegalFromSet(this ITrainerInfo tr, IBattleTemplate set, out LegalizationResult msg)
         {
-            var template = EntityBlank.GetBlank(tr.Generation, (GameVersion)tr.Game);
+            var template = EntityBlank.GetBlank(tr);
             if (template.Version == 0)
                 template.Version = tr.Game;
             template.ApplySetDetails(set);

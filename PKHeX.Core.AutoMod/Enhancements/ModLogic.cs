@@ -137,7 +137,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
         public static bool GetRandomEncounter(this ITrainerInfo tr, int species, int? form, bool shiny, bool alpha, ref int attempt, out PKM? pk)
         {
-            var blank = EntityBlank.GetBlank(tr.Generation, tr.Game);
+            var blank = EntityBlank.GetBlank(tr);
             pk = GetRandomEncounter(blank, tr, species, form, shiny, alpha, ref attempt);
             if (pk == null)
                 return false;
