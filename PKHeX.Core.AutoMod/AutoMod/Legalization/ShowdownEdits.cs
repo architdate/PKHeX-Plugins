@@ -249,12 +249,6 @@ namespace PKHeX.Core.AutoMod
             // If no moves are requested, just keep the encounter moves
             if (set.Moves[0] != 0)
                 pk.SetMoves(set.Moves, pk is not PA8);
-            if (pk is PA8 pa8)
-            {
-                pa8.SetMasteryFlags();
-                if (pa8.IsAlpha && pa8.AlphaMove is not 0)
-                    pa8.SetMasteryFlagMove(pa8.AlphaMove);
-            }
 
             var la = new LegalityAnalysis(pk);
             // Remove invalid encounter moves (eg. Kyurem Encounter -> Requested Kyurem black)

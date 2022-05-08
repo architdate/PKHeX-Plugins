@@ -612,25 +612,52 @@ namespace PKHeX.Core.AutoMod
             return (uint)species <= destVer.GetMaxSpeciesID();
         }
 
-        public static void SetRecordFlags(this PKM pk, IEnumerable<int>? moves = null)
+        public static void SetRecordFlags(this PKM pk, int[] moves)
         {
             if (pk is ITechRecord8 tr and not PA8)
             {
-                if (moves != null)
+                if (moves.Length != 0)
                     tr.SetRecordFlags(moves);
                 else
                     tr.SetRecordFlags();
                 return;
             }
 
-            if (pk is IMoveShop8 shop)
+            if (pk is PA8 master)
+                SetMovesPA8(master, moves);
+        }
+
+        internal static readonly Learnset[] LevelUpLA = LearnsetReader.GetArray(BinLinkerAccessor.Get(Util.GetBinaryResource("lvlmove_la.pkl"), "la"));
+
+        internal static readonly Learnset[] MasteryLA = LearnsetReader.GetArray(BinLinkerAccessor.Get(Util.GetBinaryResource("mastery_la.pkl"), "la"));
+
+        public static void SetMovesPA8(PA8 pk, ReadOnlySpan<int> moves)
+        {
+            var index = PersonalTable.LA.GetFormIndex(pk.Species, pk.Form);
+            var mastery = MasteryLA[index];
+            var learn = LevelUpLA[index];
+            var shop_moves = pk.MoveShopPermitIndexes;
+            var shop_flags = pk.MoveShopPermitFlags;
+            foreach (var move in moves)
             {
-                if (moves != null)
-                    shop.SetMoveShopFlags(moves);
-                else shop.SetMoveShopFlags();
+                var index_move = shop_moves.IndexOf((ushort)move);
+                if (index_move == -1)
+                    continue;
+                if (!shop_flags[index_move])
+                    continue;
+                if (pk.GetMasteredRecordFlag(index_move))
+                    continue;
+                var learn_level = (uint)learn.GetMoveLevel(move);
+                if (learn_level > pk.CurrentLevel)
+                {
+                    pk.SetPurchasedRecordFlag(index_move, true);
+                    pk.SetMasteredRecordFlag(index_move, true);
+                    continue;
+                }
+                var mastery_level = mastery.GetMoveLevel(move);
+                if (mastery_level < pk.CurrentLevel)
+                    pk.SetMasteredRecordFlag(index_move, true);
             }
-            if (pk is IMoveShop8Mastery master)
-                master.SetMoveShopFlagsMastered();
         }
 
         private static readonly ushort[] Arceus_PlateIDs = { 303, 306, 304, 305, 309, 308, 310, 313, 298, 299, 301, 300, 307, 302, 311, 312, 644 };

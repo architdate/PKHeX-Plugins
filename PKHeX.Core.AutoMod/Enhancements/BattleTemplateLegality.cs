@@ -69,7 +69,7 @@ namespace PKHeX.Core.AutoMod
             // All moves possible, get encounters
             blank.ApplySetDetails(set);
             blank.SetMoves(original_moves);
-            blank.SetRecordFlags();
+            blank.SetRecordFlags(Array.Empty<int>());
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: original_moves, gamelist).ToList();
             var initialcount = encounters.Count;
@@ -128,7 +128,7 @@ namespace PKHeX.Core.AutoMod
                 var new_moves = combination.Concat(Enumerable.Repeat(0, 4 - combination.Length)).ToArray();
                 blank.ApplySetDetails(set);
                 blank.SetMoves(new_moves);
-                blank.SetRecordFlags();
+                blank.SetRecordFlags(Array.Empty<int>());
 
                 if (sav.Generation <= 2)
                     blank.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator

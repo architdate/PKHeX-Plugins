@@ -54,7 +54,7 @@ namespace PKHeX.Core.AutoMod
             if (template.Version == 0)
                 template.Version = dest.Game;
             template.ApplySetDetails(set);
-            template.SetRecordFlags(); // Validate TR/MS moves for the encounter
+            template.SetRecordFlags(Array.Empty<int>()); // Validate TR/MS moves for the encounter
 
             if (template.Species == (int)Species.Unown) // Force unown form on template
                 template.Form = set.Form;
