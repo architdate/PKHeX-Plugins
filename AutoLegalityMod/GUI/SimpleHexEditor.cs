@@ -106,6 +106,7 @@ namespace AutoModPlugins.GUI
 
         private void SimpleHexEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
+            CB_AutoRefresh.Checked = false;
             refresh.Stop();
             while (refresh.Enabled)
             {
