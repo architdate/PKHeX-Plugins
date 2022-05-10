@@ -162,10 +162,10 @@ namespace PKHeX.Core.Injection
 
         public byte[] ReadBytes(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Heap);
         public void WriteBytes(byte[] data, ulong offset) => WriteLargeBytes(data, offset, RWMethod.Heap);
-        public byte[] ReadBytesMain(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Main);
-        public void WriteBytesMain(byte[] data, ulong offset) => WriteBytes(data, offset, RWMethod.Main);
-        public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytes(offset, length, RWMethod.Absolute);
-        public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteBytes(data, offset, RWMethod.Absolute);
+        public byte[] ReadBytesMain(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Main);
+        public void WriteBytesMain(byte[] data, ulong offset) => WriteLargeBytes(data, offset, RWMethod.Main);
+        public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Absolute);
+        public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteLargeBytes(data, offset, RWMethod.Absolute);
         public byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets) => ReadAbsoluteMulti(offsets);
     }
 }
