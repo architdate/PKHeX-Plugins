@@ -107,6 +107,17 @@ namespace AutoModPlugins.GUI
         private void SimpleHexEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
             refresh.Stop();
+            while (refresh.Enabled)
+            {
+                try
+                {
+                    refresh.Stop();
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
+            }
         }
     }
 
