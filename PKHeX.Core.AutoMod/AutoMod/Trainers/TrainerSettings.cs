@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 
@@ -9,7 +10,7 @@ namespace PKHeX.Core.AutoMod
     public static class TrainerSettings
     {
         private static readonly TrainerDatabase Database = new();
-        private static readonly string TrainerPath = Path.Combine(Directory.GetCurrentDirectory(), "trainers");
+        private static readonly string TrainerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "trainers");
         private static readonly SimpleTrainerInfo DefaultFallback8 = new(GameVersion.SW);
         private static readonly SimpleTrainerInfo DefaultFallback7 = new(GameVersion.UM);
         private static readonly GameVersion[] FringeVersions = { GameVersion.GG, GameVersion.BDSP, GameVersion.PLA };
