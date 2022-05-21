@@ -635,26 +635,6 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Sets a tracker based on the setting provided
-        /// </summary>
-        /// <param name="pk">pk to set the tracker for</param>
-        private static void GetSuggestedTracker(this PKM pk)
-        {
-            if (pk is not IHomeTrack home)
-                return;
-
-            // No HOME support for BDSP or LA yet
-            if (pk.BDSP || pk.LA)
-                return;
-
-            // Check setting
-            if (home.Tracker == 0)
-                home.Tracker = GetRandomULong();
-            else
-                home.Tracker = 0;
-        }
-
-        /// <summary>
         /// Set IV Values for the pokemon
         /// </summary>
         /// <param name="pk"></param>
