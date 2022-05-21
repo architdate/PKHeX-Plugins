@@ -167,7 +167,6 @@ namespace AutoModPlugins
             APILegality.UseCompetitiveMarkings = settings.UseCompetitiveMarkings;
             APILegality.UseMarkings = settings.UseMarkings;
             APILegality.UseXOROSHIRO = settings.UseXOROSHIRO;
-            APILegality.SetRandomTracker = settings.SetRandomTracker;
             APILegality.PrioritizeGame = settings.PrioritizeGame;
             APILegality.PrioritizeGameVersion = settings.PriorityGameVersion;
             APILegality.SetBattleVersion = settings.SetBattleVersion;

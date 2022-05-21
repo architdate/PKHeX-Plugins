@@ -29,7 +29,6 @@ namespace AutoModPlugins.GUI
             // Legality
             new("Timeout", "Global timeout per Pokémon being generated (in seconds)", "Legality"),
             new("PrioritizeEncounters", "Defines the order in which Pokémon encounters are prioritized", "Legality"),
-            new("SetRandomTracker", "Randomizes a HOME tracker for every Pokémon.", "Legality"),
             new("UseXOROSHIRO", "Generates legal nonshiny Generation 8 raid Pokémon based on the game's RNG.", "Legality"),
             new("EnableEasterEggs", "Produces an Easter Egg Pokémon if the provided set is illegal.", "Legality"),
 

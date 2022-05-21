@@ -23,7 +23,6 @@ namespace PKHeX.Core.AutoMod
         public static bool UseMarkings { get; set; } = true;
         public static bool UseXOROSHIRO { get; set; } = true;
         public static bool PrioritizeGame { get; set; } = true;
-        public static bool SetRandomTracker { get; set; }
         public static GameVersion PrioritizeGameVersion { get; set; }
         public static bool SetBattleVersion { get; set; }
         public static bool AllowTrainerOverride { get; set; }
@@ -429,7 +428,6 @@ namespace PKHeX.Core.AutoMod
             pk.SetHandlerandMemory(handler);
             pk.SetFriendship(enc);
             pk.SetRecordFlags(set.Moves);
-            pk.GetSuggestedTracker();
             pk.SetDynamaxLevel();
 
             // Legality Fixing
@@ -650,7 +648,7 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             // Check setting
-            if (SetRandomTracker && home.Tracker == 0)
+            if (home.Tracker == 0)
                 home.Tracker = GetRandomULong();
             else
                 home.Tracker = 0;

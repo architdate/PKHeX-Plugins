@@ -26,9 +26,6 @@
     <Setting Name="LatestIP" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.1.65</Value>
     </Setting>
-    <Setting Name="SetRandomTracker" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="PrioritizeEncounters" Type="PKHeX.Core.EncounterOrder" Scope="User">
       <Value Profile="(Default)">Egg</Value>
     </Setting>
