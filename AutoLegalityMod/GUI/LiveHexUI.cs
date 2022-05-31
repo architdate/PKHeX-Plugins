@@ -327,6 +327,8 @@ namespace AutoModPlugins
         {
             if (LPBasic.SupportedVersions.Contains(lv))
             {
+                if (!LPBasic.SCBlocks.ContainsKey(lv))
+                    return new List<string>();
                 return LPBasic.SCBlocks[lv].Select(z => z.Display).Distinct().OrderBy(z => z);
             }
             if (LPBDSP.SupportedVersions.Contains(lv))

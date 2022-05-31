@@ -10,14 +10,14 @@ namespace AutoModTests
         static ShowdownSetGenningTests() => TestUtil.InitializePKHeXEnvironment();
 
         [Theory]
-        [InlineData(7, Meowstic)]
-        [InlineData(7, Darkrai)]
-        [InlineData(5, Genesect)]
-        public static void VerifyManually(int gen, string txt)
+        [InlineData(GameVersion.US, Meowstic)]
+        [InlineData(GameVersion.US, Darkrai)]
+        [InlineData(GameVersion.B2, Genesect)]
+        public static void VerifyManually(GameVersion game, string txt)
         {
-            var sav = SaveUtil.GetBlankSAV(gen, "ALM");
+            var sav = SaveUtil.GetBlankSAV(game, "ALM");
             TrainerSettings.Register(sav);
-            var trainer = TrainerSettings.GetSavedTrainerData(gen);
+            var trainer = TrainerSettings.GetSavedTrainerData(game.GetGeneration(), game);
             RecentTrainerCache.SetRecentTrainer(trainer);
             var set = new ShowdownSet(txt);
             var pkm = sav.GetLegalFromSet(set, out _);

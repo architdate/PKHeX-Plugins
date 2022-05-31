@@ -627,6 +627,12 @@ namespace PKHeX.Core.AutoMod
                 MoveShopRecordApplicator.SetMoveShopFlags(master, pk);
         }
 
+        public static void SetSuggestedContestStats(this PKM pk, IEncounterable enc)
+        {
+            var la = new LegalityAnalysis(pk);
+            pk.SetSuggestedContestStats(enc, la.Info.EvoChainsAllGens);
+        }
+
         private static readonly ushort[] Arceus_PlateIDs = { 303, 306, 304, 305, 309, 308, 310, 313, 298, 299, 301, 300, 307, 302, 311, 312, 644 };
         public static int? GetArceusHeldItemFromForm(int form) => form is >= 1 and <= 17 ? Arceus_PlateIDs[form - 1] : null;
         public static int? GetSilvallyHeldItemFromForm(int form) => form == 0 ? null : form + 903;
