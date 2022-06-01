@@ -630,7 +630,7 @@ namespace PKHeX.Core.AutoMod
                 GameVersion.D  or GameVersion.P  or GameVersion.Pt => GameVersion.DPPt,
                 GameVersion.R  or GameVersion.S  or GameVersion.E  => GameVersion.RSE,
                 GameVersion.GD or GameVersion.SI or GameVersion.C  => GameVersion.GSC,
-                GameVersion.RD or GameVersion.BU or GameVersion.YW => GameVersion.RBY,
+                GameVersion.RD or GameVersion.BU or GameVersion.YW or GameVersion.GN => GameVersion.Gen1,
                 _ => ver
             };
         }
