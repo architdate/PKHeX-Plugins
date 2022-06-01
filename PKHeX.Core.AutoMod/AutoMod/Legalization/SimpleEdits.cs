@@ -612,6 +612,29 @@ namespace PKHeX.Core.AutoMod
             return (uint)species <= destVer.GetMaxSpeciesID();
         }
 
+        public static GameVersion GetIsland(this GameVersion ver)
+        {
+            return ver switch
+            {
+                GameVersion.BD or GameVersion.SP => GameVersion.BDSP,
+                GameVersion.SW or GameVersion.SH => GameVersion.SWSH,
+                GameVersion.GP or GameVersion.GE => GameVersion.GG,
+                GameVersion.SN or GameVersion.MN => GameVersion.SM,
+                GameVersion.US or GameVersion.UM => GameVersion.USUM,
+                GameVersion.X  or GameVersion.Y  => GameVersion.XY,
+                GameVersion.OR or GameVersion.AS => GameVersion.ORAS,
+                GameVersion.B  or GameVersion.W  => GameVersion.BW,
+                GameVersion.B2 or GameVersion.W2 => GameVersion.B2W2,
+                GameVersion.HG or GameVersion.SS => GameVersion.HGSS,
+                GameVersion.FR or GameVersion.LG => GameVersion.FRLG,
+                GameVersion.D  or GameVersion.P  or GameVersion.Pt => GameVersion.DPPt,
+                GameVersion.R  or GameVersion.S  or GameVersion.E  => GameVersion.RSE,
+                GameVersion.GD or GameVersion.SI or GameVersion.C  => GameVersion.GSC,
+                GameVersion.RD or GameVersion.BU or GameVersion.YW => GameVersion.RBY,
+                _ => ver
+            };
+        }
+
         public static void SetRecordFlags(this PKM pk, int[] moves)
         {
             if (pk is ITechRecord8 tr and not PA8)

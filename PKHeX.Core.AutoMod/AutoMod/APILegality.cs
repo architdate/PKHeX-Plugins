@@ -205,7 +205,7 @@ namespace PKHeX.Core.AutoMod
                 }
             }
             if (PrioritizeGame)
-                gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, destVer) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
+                gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, SimpleEdits.GetIsland(destVer)) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
             if (template.AbilityNumber == 4 && destVer.GetGeneration() < 8)
                 gamelist = gamelist.Where(z => z.GetGeneration() is not 3 and not 4).ToArray();
             return gamelist;
