@@ -48,7 +48,8 @@ namespace PKHeX.Core.AutoMod
                 SAV7b => species.Where(z => z is <= 151 or 808 or 809),
                 SAV8SWSH => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
                 SAV8BS => species.Where(z => ((PersonalInfoBDSP)PersonalTable.BDSP.GetFormEntry(z, 0)).IsPresentInGame),
-                _ => species,
+                SAV8LA => species.Where(z => PersonalTable.LA.IsSpeciesInGame(z)),
+                _ => species.Where(z => sav.Personal.IsSpeciesInGame(z)),
             };
             return sav.GenerateLivingDex(species, includeforms: IncludeForms, shiny: SetShiny, alpha: SetAlpha, out attempts);
         }
@@ -80,11 +81,6 @@ namespace PKHeX.Core.AutoMod
             List<PKM> pklist = new();
             foreach (var id in speciesIDs)
             {
-                if (!includeforms)
-                {
-                    AddPKM(sav, tr, pklist, id, null, shiny, alpha, ref attempts);
-                    continue;
-                }
                 var num_forms = pt[id].FormCount;
                 for (int i = 0; i < num_forms; i++)
                 {
@@ -93,6 +89,8 @@ namespace PKHeX.Core.AutoMod
                     if (sav is SAV8LA && !((PersonalInfoLA)pt.GetFormEntry(id, i)).IsPresentInGame)
                         continue;
                     AddPKM(sav, tr, pklist, id, i, shiny, alpha, ref attempts);
+                    if (!includeforms)
+                        break;
                 }
             }
             return pklist;
