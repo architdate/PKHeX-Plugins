@@ -77,14 +77,7 @@ namespace AutoModTests
                 var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("====="));
                 var sets = ShowdownParsing.GetShowdownSets(lines).Distinct(new ShowdownSetComparator()).ToList();
 
-                var species = Enumerable.Range(1, sav.MaxSpeciesID);
-                species = sav switch
-                {
-                    SAV7b => species.Where(z => z is <= 151 or 808 or 809), // only include Kanto and M&M
-                    SAV8BS => species.Where(z => z <= 493), // only include the sinnoh national dex
-                    SAV8SWSH => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
-                    _ => species,
-                };
+                var species = Enumerable.Range(1, sav.MaxSpeciesID).Where(sav.Personal.IsSpeciesInGame);
 
                 var spec = species.ToList();
                 for (int i = 0; i < sets.Count; i++)

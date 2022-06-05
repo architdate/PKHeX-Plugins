@@ -13,21 +13,6 @@ namespace PKHeX.Core.AutoMod
             MarkingApplicator.MarkingMethod = FlagIVsAutoMod;
         }
 
-        public static readonly int[] Zukan8Additions =
-        {
-            // Original extra 35
-            001, 002, 003, 007, 008, 009, 150, 151, 251, 385,
-            638, 639, 640, 643, 644, 646, 647, 722, 723, 724,
-            725, 726, 727, 728, 729, 730, 789, 790, 791, 792,
-            800, 802, 807, 808, 809,
-
-            // DLC (Isle of Armour)
-            079, 080, 891, 892, 893,
-
-            // DLC (Crown Tundra)
-            199, 894, 895, 896, 897, 898,
-        };
-
         internal static readonly int[] Roaming_MetLocation_BDSP =
         {
             197, 201, 354, 355, 356, 357, 358, 359, 361, 362, 364, 365, 367, 373, 375, 377,
@@ -606,9 +591,9 @@ namespace PKHeX.Core.AutoMod
             if (GameVersion.GG.Contains(destVer))
                 return species is <= 151 or 808 or 809;
             if (GameVersion.SWSH.Contains(destVer))
-                return ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(species, form)).IsPresentInGame || Zukan8Additions.Contains(species);
+                return PersonalTable.SWSH.IsPresentInGame(species, form);
             if (GameVersion.PLA.Contains(destVer))
-                return ((PersonalInfoLA)PersonalTable.LA.GetFormEntry(species, form)).IsPresentInGame;
+                return PersonalTable.LA.IsPresentInGame(species, form);
             return (uint)species <= destVer.GetMaxSpeciesID();
         }
 

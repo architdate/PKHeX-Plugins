@@ -42,15 +42,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
         public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, out int attempts)
         {
-            var species = Enumerable.Range(1, sav.MaxSpeciesID);
-            species = sav switch
-            {
-                SAV7b => species.Where(z => z is <= 151 or 808 or 809),
-                SAV8SWSH => species.Where(z => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(z, 0)).IsPresentInGame || SimpleEdits.Zukan8Additions.Contains(z)),
-                SAV8BS => species.Where(z => ((PersonalInfoBDSP)PersonalTable.BDSP.GetFormEntry(z, 0)).IsPresentInGame),
-                SAV8LA => species.Where(z => PersonalTable.LA.IsSpeciesInGame(z)),
-                _ => species.Where(z => sav.Personal.IsSpeciesInGame(z)),
-            };
+            var species = Enumerable.Range(1, sav.MaxSpeciesID).Where(sav.Personal.IsSpeciesInGame);
             return sav.GenerateLivingDex(species, includeforms: IncludeForms, shiny: SetShiny, alpha: SetAlpha, out attempts);
         }
 
