@@ -178,6 +178,9 @@ namespace AutoModPlugins
             ModLogic.SetShiny = settings.SetShiny;
             ModLogic.SetAlpha = settings.SetAlpha;
 
+            if (APILegality.UseCompetitiveMarkings)
+                MarkingApplicator.MarkingMethod = APILegality.CompetitiveMarking;
+
             settings.PrioritizeEncounters ??= EncounterPriority.ToList();
             foreach (var ep in EncounterPriority)
                 if (!settings.PrioritizeEncounters.Contains(ep)) settings.PrioritizeEncounters.Add(ep);

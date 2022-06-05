@@ -512,25 +512,27 @@ namespace PKHeX.Core.AutoMod
         {
             if (!apply || pk.Format <= 3) // No markings if pk.Format is less than or equal to 3
                 return;
-            if (!competitive || pk.Format < 7) // Simple markings dont apply with competitive at all
-            {
-                // Blue for 31/1 IVs and Red for 30/0 IVs (PKHeX default behaviour)
-                pk.SetMarkings();
-            }
-            else
-            {
-                // Red for 30 denoting imperfect but close to perfect. Blue for 31. No marking for 0 IVs
-                var markings = new int[6];
-                for (int i = 0; i < pk.IVs.Length; i++)
-                {
-                    if (pk.IVs[i] is 31 or 30)
-                        markings[i] = pk.IVs[i] == 31 ? 1 : 2;
-                }
+            pk.SetMarkings();
+        }
 
-                PKX.ReorderSpeedLast(markings);
-                for (int i = 0; i < markings.Length; i++)
-                    pk.SetMarking(i, markings[i]);
-            }
+        /// <summary>
+        /// Custom Marking applicator method
+        /// </summary>
+        /// <param name="pk">PK input</param>
+        /// <returns></returns>
+        public static Func<int, int, int> CompetitiveMarking(PKM pk)
+        {
+            if (pk.Format < 7)
+                return GetSimpleMarking;
+            return GetComplexMarking;
+
+            static int GetSimpleMarking(int val, int _) => val == 31 ? 1 : 0;
+            static int GetComplexMarking(int val, int _) => val switch
+            {
+                31 => 1,
+                30 => 2,
+                _ => 0,
+            };
         }
 
         /// <summary>
