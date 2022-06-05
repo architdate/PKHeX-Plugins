@@ -525,7 +525,8 @@ namespace PKHeX.Core.AutoMod
                 }
 
                 PKX.ReorderSpeedLast(markings);
-                pk.SetMarkings(markings);
+                for (int i = 0; i < markings.Length; i++)
+                    pk.SetMarking(i, markings[i]);
             }
         }
 

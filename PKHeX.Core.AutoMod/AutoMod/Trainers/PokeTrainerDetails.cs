@@ -23,6 +23,7 @@ namespace PKHeX.Core.AutoMod
         public byte Region { get => pkm is IGeoTrack gt ? gt.Region : (byte)0; set { if (pkm is IGeoTrack gt) gt.Region = value; } }
         public byte ConsoleRegion { get => pkm is IGeoTrack gt ? gt.ConsoleRegion : (byte)0; set { if (pkm is IGeoTrack gt) gt.ConsoleRegion = value; } }
         public int Generation => pkm.Generation;
+        public EntityContext Context => pkm.Context;
 
         public static PokeTrainerDetails Clone(PokeTrainerDetails p) => new(p.pkm.Clone());
     }
