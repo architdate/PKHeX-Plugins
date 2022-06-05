@@ -348,6 +348,9 @@ namespace PKHeX.Core.AutoMod
 
         public static bool IsRequestedShinyValid(IBattleTemplate set, IEncounterable enc)
         {
+            if (enc is MysteryGift mg && mg.CardID >= 9000)
+                return true;
+
             // Don't process if shiny value doesnt match
             if (set.Shiny && enc.Shiny == Shiny.Never)
                 return false;

@@ -76,9 +76,7 @@ namespace PKHeX.Core.AutoMod
                 var num_forms = pt[id].FormCount;
                 for (int i = 0; i < num_forms; i++)
                 {
-                    if (sav is SAV8SWSH && !((PersonalInfoSWSH)pt.GetFormEntry(id, i)).IsPresentInGame)
-                        continue;
-                    if (sav is SAV8LA && !((PersonalInfoLA)pt.GetFormEntry(id, i)).IsPresentInGame)
+                    if (!sav.Personal.IsPresentInGame(id, i))
                         continue;
                     AddPKM(sav, tr, pklist, id, i, shiny, alpha, ref attempts);
                     if (!includeforms)
