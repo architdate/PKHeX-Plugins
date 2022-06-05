@@ -121,7 +121,7 @@ namespace AutoModPlugins.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Egg")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public System.Collections.Generic.List<global::PKHeX.Core.EncounterOrder> PrioritizeEncounters {
             get {
                 return ((System.Collections.Generic.List<global::PKHeX.Core.EncounterOrder>)(this["PrioritizeEncounters"]));
