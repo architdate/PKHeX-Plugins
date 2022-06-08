@@ -47,7 +47,7 @@ namespace PKHeX.Core.AutoMod
                 if (!EntityDetection.IsSizePlausible(len))
                     return;
                 var data = File.ReadAllBytes(f);
-                var pk = EntityFormat.GetFromBytes(data);
+                var pk = EntityFormat.GetFromBytes(data, PKX.Context);
                 if (pk != null)
                     Database.Register(new PokeTrainerDetails(pk.Clone()));
             }
