@@ -26,7 +26,8 @@ namespace PKHeX.Core.Enhancements
             BitConverter.GetBytes(boxcount).CopyTo(bank, 12); // Number of bank boxes.
             foreach (var f in files)
             {
-                var pk = EntityFormat.GetFromBytes(File.ReadAllBytes(f), PKX.Context);
+                var prefer = EntityFileExtension.GetContextFromExtension(f, EntityContext.Invalid);
+                var pk = EntityFormat.GetFromBytes(File.ReadAllBytes(f), prefer);
                 if (pk == null)
                     continue;
                 if (pk.Species == 0 && pk.Species >= pk.MaxSpeciesID)

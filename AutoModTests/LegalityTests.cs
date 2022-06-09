@@ -46,11 +46,8 @@ namespace AutoModTests
             EntityDetection.IsSizePlausible(fi.Length).Should().BeTrue($"the test file '{file}' should have a valid file length");
 
             var data = File.ReadAllBytes(file);
-            var format = EntityFileExtension.GetFormatFromExtension(file[^1], PKX.Context);
-            if (format > 10)
-                format = 6;
-            var ctx = EntityContext.IsDefined(typeof(EntityContext), format) ? (EntityContext)format : PKX.Context;
-            var pkm = EntityFormat.GetFromBytes(data, prefer: ctx);
+            var prefer = EntityFileExtension.GetContextFromExtension(file, EntityContext.Invalid);
+            var pkm = EntityFormat.GetFromBytes(data, prefer: prefer);
             pkm.Should().NotBeNull($"the PKM '{new FileInfo(file).Name}' should have been loaded");
             return pkm;
         }
