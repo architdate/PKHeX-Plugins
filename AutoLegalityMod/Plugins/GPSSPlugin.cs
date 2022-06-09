@@ -58,7 +58,7 @@ namespace AutoModPlugins
                     WinFormsUtil.Error("GPSS Download failed");
                     return;
                 }
-                var pkm = EntityFormat.GetFromBytes(pkbytes, EntityContext.Invalid);
+                var pkm = EntityFormat.GetFromBytes(pkbytes, EntityContext.None);
                 if (pkm == null || !LoadPKM(pkm))
                 {
                     WinFormsUtil.Error("Error parsing PKM bytes. Make sure the pokemon is valid and can exist in this generation.");
