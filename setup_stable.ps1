@@ -93,7 +93,7 @@ Remove-Item PKHeX.zip
 dir PKHeX-Plugins*.zip | Unblock-File
 New-Item -ItemType Directory -Force -Path plugins | Out-Null
 Write-Host Extracting Plugins ...
-Expand-Archive -Path PKHeX-Plugins*.zip -DestinationPath plugins
+Expand-Archive -Path PKHeX-Plugins*.zip -Force -DestinationPath plugins
 Write-Host Deleting Plugins ...
 Remove-Item PKHeX-Plugins*.zip
 
