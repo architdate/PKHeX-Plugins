@@ -190,12 +190,6 @@ namespace PKHeX.Core.AutoMod
         {
             var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
 
-            // No HOME yet
-            if (GameVersion.BDSP.Contains(destVer))
-                gamelist = new[] { GameVersion.BD, GameVersion.SP };
-            if (destVer == GameVersion.PLA)
-                gamelist = new[] { GameVersion.PLA };
-
             if (filters != null)
             {
                 foreach (var f in filters)
