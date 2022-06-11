@@ -660,16 +660,16 @@ namespace PKHeX.Core.AutoMod
                 for (int i = 0; i < mg.IVs.Length; i++)
                     ivs[i] = mg.IVs[i] > 31 ? set.IVs[i] : mg.IVs[i];
                 pk.IVs = ivs;
+                if (enc.Generation is not (3 or 4))
+                    return;
             }
-            else
+            else if (enc.Generation is not (3 or 4))
             {
                 pk.IVs = set.IVs;
+                return;
             }
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
             // Also need to figure out hidden power handling in that case.. for PIDType 0 that may isn't even be possible.
-
-            if (enc.Generation is not (3 or 4))
-                return;
 
             switch (enc)
             {
