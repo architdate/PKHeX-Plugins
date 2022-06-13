@@ -540,7 +540,7 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             // Game exceptions (IHyperTrain exists because of the field but game disallows hypertraining)
-            if (!t.IsHyperTrainingAvailable())
+            if (!t.IsHyperTrainingAvailable(EvolutionHistory.Empty))
                 return;
 
             pk.HyperTrain(set.IVs);
