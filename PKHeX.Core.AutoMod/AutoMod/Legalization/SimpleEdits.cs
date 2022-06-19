@@ -347,6 +347,21 @@ namespace PKHeX.Core.AutoMod
                 h.HyperTrainClear();
         }
 
+        public static string? GetBatchValue(this IBattleTemplate set, string key)
+        {
+            var batchexists = set is RegenTemplate rt && rt.Regen.HasBatchSettings;
+            if (!batchexists)
+                return null;
+            rt = (RegenTemplate)set;
+            foreach (var instruction in rt.Regen.Batch.Instructions)
+            {
+                if (instruction.PropertyName != key)
+                    continue;
+                return instruction.PropertyValue;
+            }
+            return null;
+        }
+
         public static void SetFriendship(this PKM pk, IEncounterable enc)
         {
             bool neverOT = !HistoryVerifier.GetCanOTHandle(enc, pk, enc.Generation);

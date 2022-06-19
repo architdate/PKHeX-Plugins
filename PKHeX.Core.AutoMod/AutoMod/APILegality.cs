@@ -440,7 +440,7 @@ namespace PKHeX.Core.AutoMod
 
             // Final tweaks
             pk.SetGigantamaxFactor(set, enc);
-            pk.SetSuggestedRibbons(enc, SetAllLegalRibbons);
+            pk.SetSuggestedRibbons(set, enc, SetAllLegalRibbons);
             pk.SetBelugaValues();
             pk.SetSuggestedContestStats(enc);
             pk.FixEdgeCases(enc);
@@ -645,9 +645,13 @@ namespace PKHeX.Core.AutoMod
         private static void SetIVsPID(this PKM pk, IBattleTemplate set, PIDType method, int hpType, IEncounterable enc)
         {
             // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
-            if (IsPIDIVSet(pk, enc))
+            var hascurry = set.GetBatchValue("RibbonMarkCurry");
+            var changeec = hascurry != null && hascurry.ToLower() == "true" && AllowBatchCommands;
+
+            if (IsPIDIVSet(pk, enc) && !changeec)
                 return;
 
+            if (changeec) pk.SetRandomEC(); // break correlation
             if (enc is MysteryGift mg)
             {
                 var ivs = pk.IVs;

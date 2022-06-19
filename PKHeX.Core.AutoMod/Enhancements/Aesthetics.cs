@@ -1007,9 +1007,12 @@ namespace PKHeX.Core.AutoMod
             return pkm.Ball;
         }
 
-        public static bool GetRandomValidMark(this PK8 pk, IEncounterable enc, out RibbonIndex mark)
+        public static bool GetRandomValidMark(this PK8 pk, IBattleTemplate set, IEncounterable enc, out RibbonIndex mark)
         {
             mark = 0; // throwaway value
+            var markinstruction = set is RegenTemplate rt && rt.Regen.HasBatchSettings && rt.Regen.Batch.Instructions.Any(z => z.PropertyName.StartsWith("RibbonMark"));
+            if (markinstruction)
+                return false;
             var invalid = new[] { RibbonIndex.MarkCloudy, RibbonIndex.MarkRainy, RibbonIndex.MarkStormy, RibbonIndex.MarkSnowy, RibbonIndex.MarkBlizzard, RibbonIndex.MarkDry, RibbonIndex.MarkSandstorm }; // exclude all weather marks
             var valid = Enumerable
                 .Range((int)RibbonIndex.MarkLunchtime, (int)RibbonIndex.MarkSlump - (int)RibbonIndex.MarkLunchtime + 1)

@@ -195,8 +195,13 @@ namespace PKHeX.Core.Injection
             if (addr == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
             var item_blk = psb.com.ReadBytes(addr, ITEM_BLOCK_SIZE_RAM);
-            var extra_data = new byte[] { 0x1, 0x0, 0x0, 0x0 };
-            var items = Core.ArrayUtil.EnumerateSplit(item_blk, 0xC).Select(z => z.Concat(extra_data).ToArray()).ToArray();
+            var items = Core.ArrayUtil.EnumerateSplit(item_blk, 0xC).Select(z => {
+                var retval = new byte[0x10];
+                z.Slice(0, 0x5).CopyTo(retval);
+                z.Slice(0x5, 0x1).CopyTo(retval, 0x8);
+                z.SliceEnd(0xA).CopyTo(retval, 0xC);
+                return retval;
+            }).ToArray();
             return ArrayUtil.ConcatAll(items);
         }
 
@@ -210,7 +215,13 @@ namespace PKHeX.Core.Injection
             if (addr == InjectionUtil.INVALID_PTR)
                 throw new Exception("Invalid Pointer string.");
             data = data.Slice(0, ITEM_BLOCK_SIZE);
-            var items = Core.ArrayUtil.EnumerateSplit(data, 0x10).Select(z => z.Slice(0, 0xC)).ToArray();
+            var items = Core.ArrayUtil.EnumerateSplit(data, 0x10).Select(z => {
+                var retval = new byte[0xC];
+                z.Slice(0, 0x5).CopyTo(retval);
+                z.Slice(0x8, 0x1).CopyTo(retval, 0x5);
+                z.Slice(0xC, 0x2).CopyTo(retval, 0xA);
+                return retval;
+            }).ToArray();
             var payload = ArrayUtil.ConcatAll(items);
             psb.com.WriteBytes(payload, addr);
         }
