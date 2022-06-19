@@ -22,6 +22,9 @@ namespace PKHeX.Core.Injection
             new() { Name = "KRaidSpawnList", Display = "Raid", SCBKey = 0x9033eb7b, Offset = 0x450C8A70 },
             new() { Name = "KRaidSpawnListR1", Display = "RaidArmor", SCBKey = 0x158DA896, Offset = 0x450C94D8 },
             new() { Name = "KRaidSpawnListR2", Display = "RaidCrown", SCBKey = 0x148DA703, Offset = 0x450C9F40 },
+            new() { Name = "KZukan", Display = "Pokedex Base", SCBKey = 0x4716C404, Offset = 0x45069120},
+            new() { Name = "KZukanR1", Display = "Pokedex Armor", SCBKey = 0x3F936BA9, Offset = 0x45069120},
+            new() { Name = "KZukanR2", Display = "Pokedex Crown", SCBKey = 0x3C9366F0, Offset = 0x45069120},
         };
 
         // LiveHexVersion -> Blockname -> List of <SCBlock Keys, OffsetValues>
@@ -35,7 +38,10 @@ namespace PKHeX.Core.Injection
             { "Items", "B_OpenItemPouch_Click" },
             { "Raid", "B_OpenRaids_Click" },
             { "RaidArmor", "B_OpenRaids_Click" },
-            { "RaidCrown", "B_OpenRaids_Click" }
+            { "RaidCrown", "B_OpenRaids_Click" },
+            { "Pokedex Base", "B_OpenPokedex_Click" },
+            { "Pokedex Armor", "B_OpenPokedex_Click" },
+            { "Pokedex Crown", "B_OpenPokedex_Click" },
         };
 
         public static byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
