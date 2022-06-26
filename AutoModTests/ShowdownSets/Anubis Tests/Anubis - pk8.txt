@@ -726,6 +726,20 @@ Serious Nature
 - Memento
 - Shell Smash
 
+Phantump (F)
+IVs: 4 HP / 16 Atk / 22 Def / 7 SpA / 14 SpD / 21 Spe
+Ability: Natural Cure
+Level: 35
+Shiny: Yes
+Calm Nature
+=Met_Location=76
+.RibbonMarkCurry=True
+~=Generation=8
+- Hex
+- Growth
+- Horn Leech
+- Curse
+
 Impidimp (M) @ Leppa Berry
 IVs: 6 HP / 25 Atk / 13 Def / 15 SpA / 14 SpD / 6 Spe
 Ability: Prankster
