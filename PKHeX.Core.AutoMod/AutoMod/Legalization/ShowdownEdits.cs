@@ -278,7 +278,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
-            pk.EVs = set.EVs;
+            pk.SetEVs(set.EVs);
         }
 
         /// <summary>
@@ -291,7 +291,7 @@ namespace PKHeX.Core.AutoMod
             if (t.IVs.Count != 0)
                 pk.SetRandomIVs((int[])t.IVs, 0);
             else
-                pk.SetRandomIVs(flawless: 3);
+                pk.SetRandomIVs(minFlawless: 3);
         }
 
         /// <summary>

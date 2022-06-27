@@ -180,7 +180,7 @@ namespace PKHeX.Core.Injection
             // BodyType, Fashion ID
             extra.Slice(0x16, 0x2).CopyTo(retval, 0x30);
             // StarterType, DSPlayer, FollowIndex, X, Y, Height, Rotation
-            extra.SliceEnd(0x18).CopyTo(retval, 0x34);
+            extra.AsSpan(0x18).ToArray().CopyTo(retval, 0x34);
 
             return retval;
         };
@@ -199,7 +199,7 @@ namespace PKHeX.Core.Injection
                 var retval = new byte[0x10];
                 z.Slice(0, 0x5).CopyTo(retval);
                 z.Slice(0x5, 0x1).CopyTo(retval, 0x8);
-                z.SliceEnd(0xA).CopyTo(retval, 0xC);
+                z.AsSpan(0xA).ToArray().CopyTo(retval, 0xC);
                 return retval;
             }).ToArray();
             return ArrayUtil.ConcatAll(items);
@@ -278,10 +278,10 @@ namespace PKHeX.Core.Injection
             // BodyType, Fashion ID
             data.Slice(0x30, 0x2).CopyTo(retval, 0x16);
             // StarterType, DSPlayer, FollowIndex, X, Y, Height, Rotation
-            data.SliceEnd(0x34).CopyTo(retval, 0x18);
+            data.AsSpan(0x34).ToArray().CopyTo(retval, 0x18);
 
             psb.com.WriteBytes(data.Slice(0, 0x1A), trainer_name_addr);
-            psb.com.WriteBytes(retval.SliceEnd(0x8), sb.GetPointerAddress(ptr) + 0x8);
+            psb.com.WriteBytes(retval.AsSpan(0x8).ToArray(), sb.GetPointerAddress(ptr) + 0x8);
         }
 
         public static byte[]? GetDaycareBlock(PokeSysBotMini psb)
@@ -379,7 +379,7 @@ namespace PKHeX.Core.Injection
             }
             var setter = FunctionMap[block].Item2;
             var offset = ((IDataIndirect)sb).Offset;
-            setter.Invoke(psb, data.SliceEnd(offset));
+            setter.Invoke(psb, data.AsSpan(offset).ToArray());
         }
     }
 }

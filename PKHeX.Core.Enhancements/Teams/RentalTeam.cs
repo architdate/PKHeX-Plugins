@@ -31,7 +31,7 @@ namespace PKHeX.Core.Enhancements
             Debug.WriteLine(string.Join(Environment.NewLine, ConvertedTeam.Select(z => z.Text)));
 
             GlobalLinkID = data.Slice(0x120, 8);
-            UnknownData = data.SliceEnd(0x128);
+            UnknownData = data.AsSpan(0x128).ToArray();
         }
 
         public IEnumerable<ShowdownSet> ConvertedTeam => Team.Select(z => z.ConvertToPKM(Dummy)).Select(z => new ShowdownSet(z));

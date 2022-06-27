@@ -15,7 +15,7 @@
     <PackageReference Include="Fody" Version="6.6.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="PKHeX.Core" Version="22.6.1" />
+    <PackageReference Include="PKHeX.Core" Version="22.6.26" />
     <ProjectReference Include="..\PKHeX.Core.AutoMod\PKHeX.Core.AutoMod.csproj" />
     <ProjectReference Include="..\PKHeX.Core.Enhancements\PKHeX.Core.Enhancements.csproj" />
     <ProjectReference Include="..\PKHeX.Core.Injection\PKHeX.Core.Injection.csproj" />

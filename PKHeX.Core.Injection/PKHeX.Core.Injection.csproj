@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="LibUsbDotNet" Version="2.2.29" />
-    <PackageReference Include="PKHeX.Core" Version="22.6.1" />
+    <PackageReference Include="PKHeX.Core" Version="22.6.26" />
   </ItemGroup>
 
 </Project>

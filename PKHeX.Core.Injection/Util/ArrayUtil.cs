@@ -26,6 +26,14 @@ namespace PKHeX.Core.Injection
             return result;
         }
 
+        public static T[][] Split<T>(this ReadOnlySpan<T> data, int size)
+        {
+            var result = new T[data.Length / size][];
+            for (int i = 0; i < data.Length; i += size)
+                result[i / size] = data.Slice(i, size).ToArray();
+            return result;
+        }
+
         internal static T[] ConcatAll<T>(T[] arr1, T[] arr2)
         {
             int len = arr1.Length + arr2.Length;

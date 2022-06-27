@@ -37,7 +37,7 @@ namespace PKHeX.Core.Injection
             var slotofs = psb.GetSlotOffset(box, slot);
             var StoredLength = psb.SlotSize - 0x1C;
             psb.com.WriteBytes(data.Slice(0, StoredLength), slotofs);
-            psb.com.WriteBytes(data.SliceEnd(StoredLength), slotofs + (ulong) StoredLength + 0x70);
+            psb.com.WriteBytes(data.AsSpan(StoredLength).ToArray(), slotofs + (ulong) StoredLength + 0x70);
         }
 
         public static void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
