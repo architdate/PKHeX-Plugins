@@ -408,20 +408,10 @@ namespace PKHeX.Core.AutoMod
                 gmax.CanGigantamax = set.CanGigantamax; // soup hax
         }
 
-        public static void SetDynamaxLevel(this PKM pk, byte level = 10)
+        public static void SetDynamaxLevel(this PKM pk)
         {
-            if (level > 10)
-                level = 10;
-            if (pk is not IDynamaxLevel pkm)
-                return;
-            // Zacian, Zamazenta and Eternatus cannot dynamax
-            if (pk is PK8 { Species: (int)Zacian or (int)Zamazenta or (int)Eternatus })
-                return;
-            if (pk.BDSP)
-                return;
-            if (pk.LA)
-                return;
-            pkm.DynamaxLevel = level; // Set max dynamax level
+            if (pk is IDynamaxLevel d)
+                d.DynamaxLevel = d.GetSuggestedDynamaxLevel(pk);
         }
 
         public static void RestoreIVs(this PKM pk, int[] IVs)
