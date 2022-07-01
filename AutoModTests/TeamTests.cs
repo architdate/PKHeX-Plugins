@@ -20,51 +20,9 @@ namespace AutoModTests
     {
         static TeamTests() => TestUtil.InitializePKHeXEnvironment();
         private static string TestPath => TestUtil.GetTestFolder("ShowdownSets");
-        public static bool TargettedTesting { get; set; }
+        private static string LogDirectory => Path.Combine(Directory.GetCurrentDirectory(), "logs");
 
-        private static Dictionary<string, int> GetFileStructures()
-        {
-            var depth = TargettedTesting ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories;
-            var files = Directory.GetFiles(TestPath, "*", depth);
-            var result = new Dictionary<string, int>();
-            foreach (var f in files)
-            {
-                var ext = f.EndsWith(".log") ? f.Split('_')[0][^3..] : f[^7..].Split('.')[0];
-                if (ext.StartsWith("pb7"))
-                    result.Add(f, -1);
-                if (ext.StartsWith("pb8"))
-                    result.Add(f, -2);
-                if (ext.StartsWith("pa8"))
-                    result.Add(f, -3);
-                else if (ext.StartsWith("pk") && int.TryParse(ext.Split('k')[1], out var gen))
-                    result.Add(f, gen);
-                else Console.WriteLine($"Invalid file: {f}. Name does not start with 'pkX '");
-            }
-            return result;
-        }
-
-        private static GameVersion[] GetGameVersionsToTest(KeyValuePair<string, int> entry)
-        {
-            var (key, value) = entry;
-            var transfer = !key.Contains("notransfer");
-            return value switch
-            {
-                -3 => new[] { PLA },
-                -2 => new[] { BD },
-                -1 => transfer ? new[] { SW, GP } : new[] { GE },
-                1  => transfer ? new[] { RD, C } : new[] { RD },
-                2  => new[] { C },
-                3  => transfer ? new[] { SW, US, SN, OR, X, B2, B, Pt, E } : new[] { E },
-                4  => transfer ? new[] { SW, US, SN, OR, X, B2, B, Pt } : new[] { Pt },
-                5  => transfer ? new[] { SW, US, SN, OR, X, B2 } : new[] { B2 },
-                6  => transfer ? new[] { SW, US, SN, OR } : new[] { OR },
-                7  => transfer ? new[] { SW, US } : new[] { US },
-                8  => new[] { SW },
-                _  => new[] { SW },
-            };
-        }
-
-        private static Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>> VerifyFile(string file, GameVersion[] saves)
+        private static Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>> RunVerification(string file, GameVersion[] saves)
         {
             var results = new Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>();
             foreach (var s in saves)
@@ -112,73 +70,116 @@ namespace AutoModTests
             return results;
         }
 
-        public static Dictionary<string, Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>> VerifyFiles()
-        {
-            var result = new Dictionary<string, Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>>();
-            var structure = GetFileStructures();
-            foreach (var entry in structure)
-            {
-                var gens = GetGameVersionsToTest(entry);
-                var file = entry.Key;
-                var res = VerifyFile(file, gens);
-                result.Add(file, res);
-            }
-            return result;
-        }
+        [Theory]
+        [InlineData(AnubisPA8, new[] { PLA })]
+        [InlineData(AnubisPB7, new[] { SW, GP })]
+        [InlineData(AnubisPB8, new[] { BD })]
+        [InlineData(AnubisPK2, new[] { C })]
+        [InlineData(AnubisPK3, new[] { SW, US, SN, OR, X, B2, B, Pt, E })]
+        [InlineData(AnubisPK4, new[] { SW, US, SN, OR, X, B2, B, Pt })]
+        [InlineData(AnubisPK5, new[] { SW, US, SN, OR, X, B2 })]
+        [InlineData(AnubisPK6, new[] { SW, US, SN, OR })]
+        [InlineData(AnubisPK7, new[] { SW, US })]
+        [InlineData(AnubisPK8, new[] { SW })]
+        [InlineData(AnubisNTPB7, new[] { GE })]
+        [InlineData(AnubisTPK7, new[] { SW, US })]
+        [InlineData(AnubisTPK8, new[] { SW })]
+        [InlineData(AnubisVCPK7, new[] { SW, US })]
 
-        [Fact]
-        public static void RunTeamTests()
-        {
-            Directory.Exists(TestPath).Should().BeTrue();
-            var dir = Directory.GetCurrentDirectory();
+        [InlineData(RoCPA8, new[] { PLA })]
+        [InlineData(RoCPB7, new[] { SW, GP })]
+        [InlineData(RoCPB8, new[] { BD })]
+        [InlineData(RoCPK1, new[] { RD, C })]
+        [InlineData(RoCPK2, new[] { C })]
+        [InlineData(RoCPK3, new[] { SW, US, SN, OR, X, B2, B, Pt, E })]
+        [InlineData(RoCPK4, new[] { SW, US, SN, OR, X, B2, B, Pt })]
+        [InlineData(RoCPK5, new[] { SW, US, SN, OR, X, B2 })]
+        [InlineData(RoCPK6, new[] { SW, US, SN, OR })]
+        [InlineData(RoCPK7, new[] { SW, US })]
+        [InlineData(RoCPK8, new[] { SW })]
+        [InlineData(RoCNTPK1, new[] { RD })]
+        [InlineData(RoCNTPK4, new[] { Pt })]
+        [InlineData(RoCNTPK6, new[] { OR })]
+        [InlineData(RoCNTPK7, new[] { US })]
+        [InlineData(RoCVCPK7, new[] { SW, US })]
 
-            var results = VerifyFiles();
-            Directory.CreateDirectory(Path.Combine(dir, "logs"));
+        [InlineData(UnderlevelPK1, new[] { RD, C })]
+        [InlineData(UnderlevelPK2, new[] { C })]
+        [InlineData(UnderlevelPK3, new[] { SW, US, SN, OR, X, B2, B, Pt, E })]
+        [InlineData(UnderlevelPK4, new[] { SW, US, SN, OR, X, B2, B, Pt })]
+        [InlineData(UnderlevelPK5, new[] { SW, US, SN, OR, X, B2 })]
+        [InlineData(UnderlevelPK6, new[] { SW, US, SN, OR })]
+        [InlineData(UnderlevelPK7, new[] { SW, US })]
+        [InlineData(UnderlevelNTPK4, new[] { Pt })]
+        [InlineData(UnderlevelVCPK7, new[] { SW, US })]
+        public static void VerifyFile(string path, GameVersion[] testversions)
+        {
+            Directory.CreateDirectory(LogDirectory);
+            var full = Path.Combine(TestPath, path);
+            var res = RunVerification(full, testversions);
+            var msg = "\n";
+            var error = string.Empty;
             var testfailed = false;
-
-            foreach (var (key, value) in results)
+            foreach (var (gv, sets) in res)
             {
-                var fileName = $"{Path.GetFileName(key).Replace('.', '_')}{DateTime.Now:_yyyy-MM-dd-HH-mm-ss}.log";
-                var path = Path.Combine(dir, "logs", fileName);
-                var msg = string.Empty;
-                foreach (var (gv, sets) in value)
-                {
-                    if (sets["illegal"].Length == 0)
-                        continue;
-                    msg += $"\n\n=============== GameVersion: {gv} ===============\n\n";
-                    testfailed = true;
-                    msg += string.Join("\n\n", sets["illegal"].Select(x => x.Text));
-                }
-                if (msg.Trim().Length > 0)
-                    File.WriteAllText(path, msg);
+                var illegalcount = sets["illegal"].Length;
+                if (illegalcount == 0)
+                    continue;
+                testfailed = true;
+                msg += $"GameVersion {gv} : Illegal: {illegalcount} | Legal: {sets["legal"].Length}\n";
+                error += $"\n\n=============== GameVersion: {gv} ===============\n\n";
+                error += string.Join("\n\n", sets["illegal"].Select(x => x.Text));
             }
-
-            var res = Status(results);
-            File.WriteAllText(Path.Combine(dir, "logs", "output.txt"), res);
-            testfailed.Should().BeFalse($"there were sets that could not be legally genned (Output: \n\n{res}\n\n)");
+            var fileName = $"{Path.GetFileName(path).Replace('.', '_')}{DateTime.Now:_yyyy-MM-dd-HH-mm-ss}.log";
+            if (error.Trim().Length > 0)
+                File.WriteAllText(Path.Combine(LogDirectory, fileName), error);
+            testfailed.Should().BeFalse(msg);
         }
 
-        /// <summary>
-        /// For Partial Debugging in Immediate Window
-        /// </summary>
-        /// <param name="results">partial results</param>
-        /// <returns></returns>
-        public static string Status(Dictionary<string, Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>> results)
-        {
-            var sb = new StringBuilder();
-            foreach (var (key, value) in results)
-            {
-                var legal = 0;
-                var illegal = 0;
-                foreach (var (_, sets) in value)
-                {
-                    legal += sets["legal"].Length;
-                    illegal += sets["illegal"].Length;
-                }
-                sb.Append(Path.GetFileName(key)).Append(" : Legal - ").Append(legal).Append(" | Illegal - ").Append(illegal).AppendLine();
-            }
-            return sb.ToString();
-        }
+        // Anubis test file paths
+        private const string AnubisPA8 = "Anubis Tests/Anubis - pa8.txt";
+        private const string AnubisPB7 = "Anubis Tests/Anubis - pb7.txt";
+        private const string AnubisPB8 = "Anubis Tests/Anubis - pb8.txt";
+        private const string AnubisPK2 = "Anubis Tests/Anubis - pk2.txt";
+        private const string AnubisPK3 = "Anubis Tests/Anubis - pk3.txt";
+        private const string AnubisPK4 = "Anubis Tests/Anubis - pk4.txt";
+        private const string AnubisPK5 = "Anubis Tests/Anubis - pk5.txt";
+        private const string AnubisPK6 = "Anubis Tests/Anubis - pk6.txt";
+        private const string AnubisPK7 = "Anubis Tests/Anubis - pk7.txt";
+        private const string AnubisPK8 = "Anubis Tests/Anubis - pk8.txt";
+        private const string AnubisNTPB7 = "Anubis Tests/Anubis notransfer - pb7.txt";
+        private const string AnubisTPK7 = "Anubis Tests/Anubis transferred - pk7.txt";
+        private const string AnubisTPK8 = "Anubis Tests/Anubis transferred - pk8.txt";
+        private const string AnubisVCPK7 = "Anubis Tests/Anubis VC - pk7.txt";
+
+        // RoC's PC test file paths
+        private const string RoCPA8 = "RoCs-PC Tests/RoC - pa8.txt";
+        private const string RoCPB7 = "RoCs-PC Tests/RoC - pb7.txt";
+        private const string RoCPB8 = "RoCs-PC Tests/RoC - pb8.txt";
+        private const string RoCPK1 = "RoCs-PC Tests/RoC - pk1.txt";
+        private const string RoCPK2 = "RoCs-PC Tests/RoC - pk2.txt";
+        private const string RoCPK3 = "RoCs-PC Tests/RoC - pk3.txt";
+        private const string RoCPK4 = "RoCs-PC Tests/RoC - pk4.txt";
+        private const string RoCPK5 = "RoCs-PC Tests/RoC - pk5.txt";
+        private const string RoCPK6 = "RoCs-PC Tests/RoC - pk6.txt";
+        private const string RoCPK7 = "RoCs-PC Tests/RoC - pk7.txt";
+        private const string RoCPK8 = "RoCs-PC Tests/RoC - pk8.txt";
+        private const string RoCNTPK1 = "RoCs-PC Tests/RoC notransfer - pk1.txt";
+        private const string RoCNTPK4 = "RoCs-PC Tests/RoC notransfer - pk4.txt";
+        private const string RoCNTPK6 = "RoCs-PC Tests/RoC notransfer - pk6.txt";
+        private const string RoCNTPK7 = "RoCs-PC Tests/RoC notransfer - pk7.txt";
+        private const string RoCVCPK7 = "RoCs-PC Tests/RoC VC - pk7.txt";
+
+        // Underleveled test file paths
+        private const string UnderlevelPK1 = "Underleveled Tests/Underlevel - pk1.txt";
+        private const string UnderlevelPK2 = "Underleveled Tests/Underlevel - pk2.txt";
+        private const string UnderlevelPK3 = "Underleveled Tests/Underlevel - pk3.txt";
+        private const string UnderlevelPK4 = "Underleveled Tests/Underlevel - pk4.txt";
+        private const string UnderlevelPK5 = "Underleveled Tests/Underlevel - pk5.txt";
+        private const string UnderlevelPK6 = "Underleveled Tests/Underlevel - pk6.txt";
+        private const string UnderlevelPK7 = "Underleveled Tests/Underlevel - pk7.txt";
+        private const string UnderlevelNTPK4 = "Underleveled Tests/Underlevel notransfer - pk4.txt";
+        private const string UnderlevelVCPK7 = "Underleveled Tests/Underlevel VC - pk7.txt";
     }
 
     internal class ShowdownSetComparator : IEqualityComparer<ShowdownSet>
