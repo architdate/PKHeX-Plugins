@@ -33,16 +33,20 @@ namespace AutoModTests
                 RecentTrainerCache.SetRecentTrainer(sav);
 
                 var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("====="));
-                var sets = ShowdownParsing.GetShowdownSets(lines).Distinct(new ShowdownSetComparator()).ToList();
 
-                var species = Enumerable.Range(1, sav.MaxSpeciesID).Where(sav.Personal.IsSpeciesInGame);
+                // Edge case checks for transfers
+                // Test PA8 files in BD without moves
+                lines = file.Contains("pa8") && (s == BD || s == SP) ? lines.Where(z => !z.StartsWith("- ")) : lines;
 
-                var spec = species.ToList();
+                // Filter sets based on if they are present in destination game
+                var filter = ShowdownParsing.GetShowdownSets(lines).Distinct(new ShowdownSetComparator()).Where(z => sav.Personal.IsPresentInGame(z.Species, z.Form));
+                if (file.Contains("pa8") && (s == BD || s == SP))
+                    filter = filter.Where(z => !(z.Species == (int)Species.Giratina && z.Form == 1)); // Giratina Origin from PLA has no item so will fail in BDSP
+                var sets = filter.ToList();
+
                 for (int i = 0; i < sets.Count; i++)
                 {
                     var set = sets[i];
-                    if (!spec.Contains(sets[i].Species))
-                        continue;
                     try
                     {
                         Debug.Write($"Checking Set {i:000} [Species: {(Species)set.Species}] from File {file} using Save {s}: ");
@@ -71,7 +75,7 @@ namespace AutoModTests
         }
 
         [Theory]
-        [InlineData(AnubisPA8, new[] { PLA })]
+        [InlineData(AnubisPA8, new[] { PLA, BD })]
         [InlineData(AnubisPB7, new[] { SW, GP })]
         [InlineData(AnubisPB8, new[] { BD })]
         [InlineData(AnubisPK2, new[] { C })]
@@ -86,7 +90,7 @@ namespace AutoModTests
         [InlineData(AnubisTPK8, new[] { SW })]
         [InlineData(AnubisVCPK7, new[] { SW, US })]
 
-        [InlineData(RoCPA8, new[] { PLA })]
+        [InlineData(RoCPA8, new[] { PLA, BD })]
         [InlineData(RoCPB7, new[] { SW, GP })]
         [InlineData(RoCPB8, new[] { BD })]
         [InlineData(RoCPK1, new[] { RD, C })]

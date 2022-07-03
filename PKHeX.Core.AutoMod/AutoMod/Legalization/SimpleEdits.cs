@@ -298,8 +298,13 @@ namespace PKHeX.Core.AutoMod
             }
             if (pk is not IScaledSize size)
                 return;
-            if (enc is EncounterTrade8b) // fixed height and weight
+
+            // fixed height and weight
+            if (enc is EncounterTrade8b)
                 return;
+            if (enc is EncounterStatic8a { HasFixedHeight: true } || enc is EncounterStatic8a { HasFixedWeight: true })
+                return;
+
             if (enc is WC8 w8)
             {
                 var isHOMEGift = w8.Location == 30018 || w8.GetOT(2) == "HOME";
@@ -491,8 +496,10 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="trainer">Trainer to handle the <see cref="pk"/></param>
-        public static void SetHandlerandMemory(this PKM pk, ITrainerInfo trainer)
+        public static void SetHandlerandMemory(this PKM pk, ITrainerInfo trainer, IEncounterable enc)
         {
+            if (IsUntradeableEncounter(enc))
+                return;
             pk.CurrentHandler = 1;
             pk.HT_Name = trainer.OT;
             pk.HT_Gender = trainer.Gender;
@@ -624,6 +631,12 @@ namespace PKHeX.Core.AutoMod
                 _ => ver
             };
         }
+
+        public static bool IsUntradeableEncounter(IEncounterTemplate enc) => enc switch
+        {
+            EncounterStatic7b { Location: 28 } => true, // LGP/E Starter
+            _ => false,
+        };
 
         public static void SetRecordFlags(this PKM pk, int[] moves)
         {

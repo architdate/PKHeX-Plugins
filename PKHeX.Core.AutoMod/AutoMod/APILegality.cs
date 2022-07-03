@@ -73,6 +73,7 @@ namespace PKHeX.Core.AutoMod
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             // var encounters = GetAllSpeciesFormEncounters(template.Species, GameData.GetPersonal(destVer), gamelist, set.Moves, template);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
+            // criteria.ForceMinLevelRange = true;
             if (regen.EncounterFilters != null)
                 encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(regen.EncounterFilters, enc));
 
@@ -91,7 +92,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 // Create the PKM from the template.
-                var tr = GetTrainer(regen, enc.Version, enc.Generation);
+                var tr = SimpleEdits.IsUntradeableEncounter(enc) ? dest : GetTrainer(regen, enc.Version, enc.Generation);
                 var raw = enc.ConvertToPKM(tr, criteria);
                 raw = raw.SanityCheckLocation(enc);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
@@ -422,7 +423,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetHeldItem(set);
 
             // Actions that do not affect set legality
-            pk.SetHandlerandMemory(handler);
+            pk.SetHandlerandMemory(handler, enc);
             pk.SetFriendship(enc);
             pk.SetRecordFlags(set.Moves);
             pk.SetDynamaxLevel();
