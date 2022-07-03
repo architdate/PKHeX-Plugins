@@ -73,7 +73,7 @@ namespace PKHeX.Core.AutoMod
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
             // var encounters = GetAllSpeciesFormEncounters(template.Species, GameData.GetPersonal(destVer), gamelist, set.Moves, template);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
-            // criteria.ForceMinLevelRange = true;
+            criteria.ForceMinLevelRange = true;
             if (regen.EncounterFilters != null)
                 encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(regen.EncounterFilters, enc));
 
