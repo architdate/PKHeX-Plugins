@@ -330,15 +330,16 @@ namespace PKHeX.Core.AutoMod
             if (set is not RegenTemplate rt)
                 return true;
 
-            // Encounter isnt IAlpha, ignore
+            // Check alpha request
+            var requested = false;
+            if (rt.Regen.HasExtraSettings)
+                requested = rt.Regen.Extra.Alpha;
+
+            // Requested alpha but encounter isn't an alpha
             if (enc is not IAlpha a)
-                return true;
+                return requested ? false : true;
 
-            // Alpha is part of extra settings
-            if (!rt.Regen.HasExtraSettings)
-                return !a.IsAlpha;
-
-            return a.IsAlpha == rt.Regen.Extra.Alpha;
+            return a.IsAlpha == requested;
         }
 
         public static bool IsRequestedShinyValid(IBattleTemplate set, IEncounterable enc)
