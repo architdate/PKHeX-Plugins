@@ -36,6 +36,7 @@ namespace AutoModPlugins
             this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
 
             TB_IP.Text = AutoLegality.Default.LatestIP;
+            TB_Port.Text = AutoLegality.Default.LatestPort;
             SetInjectionTypeView();
 
             // add an event to the editor
@@ -53,7 +54,6 @@ namespace AutoModPlugins
             x = (SaveDataEditor<PictureBox>)test.GetValue(sav);
             x.Slots.Publisher.Subscribers.Add(this);
 
-            TB_Port.Text = Remote.Bot.com.Port.ToString();
             CenterToParent();
         }
 
@@ -205,6 +205,7 @@ namespace AutoModPlugins
             x.Slots.Publisher.Subscribers.Remove(this);
 
             AutoLegality.Default.LatestIP = TB_IP.Text;
+            AutoLegality.Default.LatestPort = TB_Port.Text;
             AutoLegality.Default.Save();
         }
 

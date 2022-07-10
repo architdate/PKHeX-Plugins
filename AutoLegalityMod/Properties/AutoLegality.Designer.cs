@@ -118,7 +118,22 @@ namespace AutoModPlugins.Properties {
                 this["LatestIP"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6000")]
+        public string LatestPort
+        {
+            get
+            {
+                return ((string)(this["LatestPort"]));
+            }
+            set
+            {
+                this["LatestPort"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
