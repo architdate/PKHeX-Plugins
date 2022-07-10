@@ -16,6 +16,7 @@ namespace AutoModPlugins.GUI
 
             // Connection Settings
             new("LatestIP", "Stores the last IP used by LiveHeX.", "Connection"),
+            new("LatestPort", "Stores the last port used by LiveHeX.", "Connection"),
             new("USBBotBasePreferred", "Allows LiveHeX to use USB-Botbase instead of sys-botbase.", "Connection"),
 
             // Customization
