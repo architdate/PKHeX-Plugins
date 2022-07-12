@@ -387,15 +387,17 @@ namespace PKHeX.Core.AutoMod
         {
             if (pk is not IAwakened pb7)
                 return;
+            Span<byte> result = stackalloc byte[6];
+            AwakeningUtil.GetExpectedMinimumAVs(result, (PB7)pb7);
             var EVs = set.EVs;
             if (isGO)
                 EVs = set.EVs.Select(z => z < 2 ? 2 : z).ToArray();
-            pb7.AV_HP = (byte)EVs[0];
-            pb7.AV_ATK = (byte)EVs[1];
-            pb7.AV_DEF = (byte)EVs[2];
-            pb7.AV_SPA = (byte)EVs[4];
-            pb7.AV_SPD = (byte)EVs[5];
-            pb7.AV_SPE = (byte)EVs[3];
+            pb7.AV_HP  = Math.Max(result[0], (byte)EVs[0]);
+            pb7.AV_ATK = Math.Max(result[1], (byte)EVs[1]);
+            pb7.AV_DEF = Math.Max(result[2], (byte)EVs[2]);
+            pb7.AV_SPA = Math.Max(result[4], (byte)EVs[4]);
+            pb7.AV_SPD = Math.Max(result[5], (byte)EVs[5]);
+            pb7.AV_SPE = Math.Max(result[3], (byte)EVs[3]);
         }
 
         public static void SetHTLanguage(this PKM pk)
