@@ -301,7 +301,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">IBattleset to grab the item</param>
         public static void SetHeldItem(this PKM pk, IBattleTemplate set)
         {
-            pk.ApplyHeldItem(set.HeldItem, set.Format);
+            pk.ApplyHeldItem(set.HeldItem, set.Context);
             pk.FixInvalidFormItems(); // arceus, silvally, giratina, genesect fix
             if (!ItemRestrictions.IsHeldItemAllowed(pk) || pk is PB7)
                 pk.HeldItem = 0; // Remove the item if the item is illegal in its generation

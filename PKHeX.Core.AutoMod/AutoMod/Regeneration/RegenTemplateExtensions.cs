@@ -7,9 +7,10 @@ namespace PKHeX.Core.AutoMod
     {
         public static void SanitizeForm(this RegenTemplate set)
         {
-            if (!FormInfo.IsBattleOnlyForm(set.Species, set.Form, set.Format))
+            var gen = set.Context.Generation();
+            if (!FormInfo.IsBattleOnlyForm(set.Species, set.Form, gen))
                 return;
-            set.Form = FormInfo.GetOutOfBattleForm(set.Species, set.Form, set.Format);
+            set.Form = FormInfo.GetOutOfBattleForm(set.Species, set.Form, gen);
         }
 
         /// <summary>

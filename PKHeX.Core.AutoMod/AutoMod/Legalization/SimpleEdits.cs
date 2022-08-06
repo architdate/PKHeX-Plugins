@@ -415,12 +415,6 @@ namespace PKHeX.Core.AutoMod
                 gmax.CanGigantamax = set.CanGigantamax; // soup hax
         }
 
-        public static void SetDynamaxLevel(this PKM pk)
-        {
-            if (pk is IDynamaxLevel d)
-                d.DynamaxLevel = d.GetSuggestedDynamaxLevel(pk);
-        }
-
         public static void RestoreIVs(this PKM pk, int[] IVs)
         {
             pk.IVs = IVs;

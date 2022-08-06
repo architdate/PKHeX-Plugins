@@ -189,7 +189,7 @@ namespace PKHeX.Core.AutoMod
 
         public static int GetRegenAbility(int species, int gen, AbilityRequest ar)
         {
-            var abils = GetInfo(gen)[species].Abilities;
+            var abils = GameData.GetPersonal(GetGameVersionFromGen(gen))[species].Abilities;
             return ar switch
             {
                 AbilityRequest.Any => -1,
@@ -202,16 +202,16 @@ namespace PKHeX.Core.AutoMod
             };
         }
 
-        public static PersonalTable GetInfo(int gen) => gen switch
+        public static GameVersion GetGameVersionFromGen(int gen) => gen switch
         {
-            1 => PersonalTable.RB,
-            2 => PersonalTable.C,
-            3 => PersonalTable.E,
-            4 => PersonalTable.Pt,
-            5 => PersonalTable.B2W2,
-            6 => PersonalTable.AO,
-            7 => PersonalTable.USUM,
-            8 => PersonalTable.SWSH,
+            1 => GameVersion.RB,
+            2 => GameVersion.C,
+            3 => GameVersion.E,
+            4 => GameVersion.Pt,
+            5 => GameVersion.B2W2,
+            6 => GameVersion.ORAS,
+            7 => GameVersion.USUM,
+            8 => GameVersion.SWSH,
             _ => throw new ArgumentOutOfRangeException(),
         };
     }

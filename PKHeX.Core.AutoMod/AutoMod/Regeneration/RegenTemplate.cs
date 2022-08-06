@@ -9,7 +9,7 @@ namespace PKHeX.Core.AutoMod
     public sealed class RegenTemplate : IBattleTemplate
     {
         public int Species { get; set; }
-        public int Format { get; set; }
+        public EntityContext Context { get; set; }
         public string Nickname { get; set; }
         public int Gender { get; set; }
         public int HeldItem { get; set; }
@@ -22,6 +22,7 @@ namespace PKHeX.Core.AutoMod
         public int Form { get; set; }
         public int HiddenPowerType { get; set; }
         public bool CanGigantamax { get; set; }
+        public byte DynamaxLevel { get; set; }
 
         public int[] EVs { get; }
         public int[] IVs { get; }
@@ -35,7 +36,7 @@ namespace PKHeX.Core.AutoMod
         private RegenTemplate(IBattleTemplate set, int gen = PKX.Generation, string text = "")
         {
             Species = set.Species;
-            Format = set.Format;
+            Context = set.Context;
             Nickname = set.Nickname;
             Gender = set.Gender;
             HeldItem = set.HeldItem;
@@ -51,6 +52,7 @@ namespace PKHeX.Core.AutoMod
             HiddenPowerType = set.HiddenPowerType;
             Moves = set.Moves;
             CanGigantamax = set.CanGigantamax;
+            DynamaxLevel = set.DynamaxLevel;
 
             ParentLines = text;
             SanitizeMoves(set, Moves);

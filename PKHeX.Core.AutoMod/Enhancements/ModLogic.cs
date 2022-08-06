@@ -242,9 +242,9 @@ namespace PKHeX.Core.AutoMod
 
             if (!(pk.SWSH || pk.BDSP || pk.LA))
                 return pk.Form;
-            static bool IsPresentInGameSWSH(int species, int form) => ((PersonalInfoSWSH)PersonalTable.SWSH.GetFormEntry(species, form)).IsPresentInGame;
-            static bool IsPresentInGameBDSP(int species, int form) => ((PersonalInfoBDSP)PersonalTable.BDSP.GetFormEntry(species, form)).IsPresentInGame;
-            static bool IsPresentInGameLA  (int species, int form) => ((PersonalInfoLA)  PersonalTable.LA  .GetFormEntry(species, form)).IsPresentInGame;
+            static bool IsPresentInGameSWSH(int species, int form) => PersonalTable.SWSH.IsPresentInGame(species, form);
+            static bool IsPresentInGameBDSP(int species, int form) => PersonalTable.BDSP.IsPresentInGame(species, form);
+            static bool IsPresentInGameLA(int species, int form) =>   PersonalTable.LA.  IsPresentInGame(species, form);
             for (int f = 0; f < formcount; f++)
             {
                 if (pk.LA   && IsPresentInGameLA  (species, f)) return f;
