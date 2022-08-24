@@ -74,48 +74,7 @@ namespace PKHeX.Core.AutoMod
                 if (pk is PK8 pk8 && pk8.Species != (int)Species.Shedinja && pk8.GetRandomValidMark(set, enc, out var mark))
                     pk8.SetRibbonIndex(mark);
             }
-            string report = new LegalityAnalysis(pk).Report();
-            if (report.Contains(string.Format(LegalityCheckStrings.LRibbonFMissing_0, "")))
-            {
-                var val = string.Format(LegalityCheckStrings.LRibbonFMissing_0, "");
-                var ribbonList = GetRequiredRibbons(report, val);
-                var missingRibbons = GetRibbonsRequired(pk, ribbonList);
-                SetRibbonValues(pk, missingRibbons, 0, true);
-            }
-            if (report.Contains(string.Format(LegalityCheckStrings.LRibbonFInvalid_0, "")))
-            {
-                var val = string.Format(LegalityCheckStrings.LRibbonFInvalid_0, "");
-                string[] ribbonList = GetRequiredRibbons(report, val);
-                var invalidRibbons = GetRibbonsRequired(pk, ribbonList);
-                SetRibbonValues(pk, invalidRibbons, 0, false);
-            }
-        }
-
-        /// <summary>
-        /// Method to get ribbons from ribbon string array
-        /// </summary>
-        /// <param name="pk">pokemon</param>
-        /// <param name="ribbonList">string array of ribbons</param>
-        /// <returns>IEnumberable of all ribbons</returns>
-        private static IEnumerable<string> GetRibbonsRequired(PKM pk, string[] ribbonList)
-        {
-            foreach (var RibbonName in GetRibbonNames(pk))
-            {
-                string v = RibbonStrings.GetName(RibbonName).Replace("Ribbon", "");
-                if (ribbonList.Contains(v))
-                    yield return RibbonName;
-            }
-        }
-
-        /// <summary>
-        /// Get required ribbons from the report
-        /// </summary>
-        /// <param name="Report">legality report</param>
-        /// <param name="val">value passed</param>
-        /// <returns></returns>
-        private static string[] GetRequiredRibbons(string Report, string val)
-        {
-            return Report.Split(new[] { val }, StringSplitOptions.None)[1].Split(new[] { "\r\n" }, StringSplitOptions.None)[0].Split(new[] { ", " }, StringSplitOptions.None);
+            else RibbonApplicator.RemoveAllValidRibbons(pk);
         }
 
         /// <summary>

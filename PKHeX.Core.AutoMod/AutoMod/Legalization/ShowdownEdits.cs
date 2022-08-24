@@ -288,8 +288,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokemon to modify</param>
         public static void SetEncounterTradeIVs(this EncounterTrade t, PKM pk)
         {
-            if (t.IVs.Count != 0)
-                pk.SetRandomIVs((int[])t.IVs, 0);
+            if (t.IVs.IsSpecified)
+                pk.SetRandomIVsTemplate(t.IVs, 0);
             else
                 pk.SetRandomIVs(minFlawless: 3);
         }
