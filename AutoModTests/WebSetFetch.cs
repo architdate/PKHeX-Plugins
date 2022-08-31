@@ -10,11 +10,11 @@ namespace AutoModTests
     public static class WebSetFetch
     {
         [Theory]
-        [InlineData(typeof(PK7), GameVersion.MN, (int)Species.Venusaur)]
-        [InlineData(typeof(PK1), GameVersion.RD, (int)Species.Charizard)]
-        [InlineData(typeof(PK3), GameVersion.E, (int)Species.Blastoise)]
-        [InlineData(typeof(PK6), GameVersion.X, (int)Species.Venomoth)]
-        public static void HasSmogonSets(Type t, GameVersion game, int species, int form = 0)
+        [InlineData(typeof(PK7), GameVersion.MN, (ushort)Species.Venusaur)]
+        [InlineData(typeof(PK1), GameVersion.RD, (ushort)Species.Charizard)]
+        [InlineData(typeof(PK3), GameVersion.E, (ushort)Species.Blastoise)]
+        [InlineData(typeof(PK6), GameVersion.X, (ushort)Species.Venomoth)]
+        public static void HasSmogonSets(Type t, GameVersion game, ushort species, byte form = 0)
         {
             var blank = EntityBlank.GetBlank(t);
             blank.Version = (int)game;
@@ -30,8 +30,8 @@ namespace AutoModTests
         }
 
         [Theory]
-        [InlineData("https://pokepast.es/73c130c81caab03e", "STING LIKE A BEE", (int)Species.Beedrill, (int)Species.Magearna)] // Beedrill, Magearna
-        public static void HasPokePasteSets(string url, string name, params int[] speciesPresent)
+        [InlineData("https://pokepast.es/73c130c81caab03e", "STING LIKE A BEE", (ushort)Species.Beedrill, (ushort)Species.Magearna)] // Beedrill, Magearna
+        public static void HasPokePasteSets(string url, string name, params ushort[] speciesPresent)
         {
             var tpi = new TeamPasteInfo(url);
             tpi.Source.Should().Be(TeamPasteInfo.PasteSource.PokePaste);
@@ -39,15 +39,15 @@ namespace AutoModTests
         }
 
         [Theory]
-        [InlineData("https://pastebin.com/0x7jJvB4", "Untitled", (int)Species.Miltank, (int)Species.Braviary)] // Miltank...Braviary
-        public static void HasPastebinSets(string url, string name, params int[] speciesPresent)
+        [InlineData("https://pastebin.com/0x7jJvB4", "Untitled", (ushort)Species.Miltank, (ushort)Species.Braviary)] // Miltank...Braviary
+        public static void HasPastebinSets(string url, string name, params ushort[] speciesPresent)
         {
             var tpi = new TeamPasteInfo(url);
             tpi.Source.Should().Be(TeamPasteInfo.PasteSource.Pastebin);
             tpi.VerifyContents(name, speciesPresent);
         }
 
-        private static void VerifyContents(this TeamPasteInfo tpi, string name, int[] speciesPresent)
+        private static void VerifyContents(this TeamPasteInfo tpi, string name, ushort[] speciesPresent)
         {
             tpi.Valid.Should().BeTrue("Data should exist for this paste");
             tpi.Title.Should().Be(name, "Data should have a title present");

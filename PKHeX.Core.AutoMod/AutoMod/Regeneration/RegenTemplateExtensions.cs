@@ -25,7 +25,7 @@ namespace PKHeX.Core.AutoMod
                 case (int)Species.Zamazenta:
                     {
                         // Behemoth Blade and Behemoth Bash -> Iron Head
-                        if (!set.Moves.Contains(781) && !set.Moves.Contains(782))
+                        if (!set.Moves.Contains((ushort)781) && !set.Moves.Contains((ushort)782))
                             return;
 
                         for (int i = 0; i < set.Moves.Length; i++)

@@ -139,7 +139,7 @@ namespace PKHeX.Core.AutoMod
         private static PKM GetEasterEggFromSet(this ITrainerInfo tr, IBattleTemplate set, PKM template)
         {
             var gen = EasterEggs.GetGeneration(template.Species);
-            var species = (int)EasterEggs.GetMemeSpecies(gen, template);
+            var species = (ushort)EasterEggs.GetMemeSpecies(gen, template);
             template.Species = species;
             var attempt = 0;
             var legalencs = tr.GetRandomEncounter(species, null, set.Shiny, false, ref attempt, out var legal);

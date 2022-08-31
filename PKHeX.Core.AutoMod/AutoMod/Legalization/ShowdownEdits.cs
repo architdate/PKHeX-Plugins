@@ -105,7 +105,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="Form">Form to apply</param>
         /// <param name="enc">Encounter detail</param>
         /// <param name="lang">Language to apply</param>
-        public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, int Form, IEncounterable enc, LanguageID? lang = null)
+        public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, byte Form, IEncounterable enc, LanguageID? lang = null)
         {
             pk.ApplySetGender(set);
 
@@ -200,7 +200,7 @@ namespace PKHeX.Core.AutoMod
                 return IsValidGenderMismatch(pkm);
 
             // check for mixed->fixed gender incompatibility by checking the gender of the original species
-            int original = enc.Species;
+            ushort original = enc.Species;
             if (Legal.FixedGenderFromBiGender.Contains(original))
                 return IsValidFixedGenderFromBiGender(pkm, original);
 
@@ -213,7 +213,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pkm">pkm to modify</param>
         /// <param name="original">original species (encounter)</param>
         /// <returns>boolean indicating validaity</returns>
-        private static bool IsValidFixedGenderFromBiGender(PKM pkm, int original)
+        private static bool IsValidFixedGenderFromBiGender(PKM pkm, ushort original)
         {
             var current = pkm.Gender;
             if (current == 2) // shedinja, genderless
@@ -320,19 +320,19 @@ namespace PKHeX.Core.AutoMod
             switch ((Species)pk.Species)
             {
                 case Species.Arceus:
-                    int forma = FormVerifier.GetArceusFormFromHeldItem(pk.HeldItem, pk.Format);
+                    byte forma = FormVerifier.GetArceusFormFromHeldItem(pk.HeldItem, pk.Format);
                     pk.HeldItem = pk.Form != forma ? 0 : pk.HeldItem;
-                    pk.Form = pk.Form != forma ? 0 : forma;
+                    pk.Form = pk.Form != forma ? (byte)0 : forma;
                     break;
                 case Species.Silvally:
-                    int forms = FormVerifier.GetSilvallyFormFromHeldItem(pk.HeldItem);
+                    byte forms = (byte)FormVerifier.GetSilvallyFormFromHeldItem(pk.HeldItem);
                     pk.HeldItem = pk.Form != forms ? 0 : pk.HeldItem;
-                    pk.Form = pk.Form != forms ? 0 : forms;
+                    pk.Form = pk.Form != forms ? (byte)0 : forms;
                     break;
                 case Species.Genesect:
-                    int formg = FormVerifier.GetGenesectFormFromHeldItem(pk.HeldItem);
+                    byte formg = (byte)FormVerifier.GetGenesectFormFromHeldItem(pk.HeldItem);
                     pk.HeldItem = pk.Form != formg ? 0 : pk.HeldItem;
-                    pk.Form = pk.Form != formg ? 0 : formg;
+                    pk.Form = pk.Form != formg ? (byte)0 : formg;
                     break;
                 case Species.Giratina when pk.Form == 1 && pk.HeldItem != 112:
                     pk.HeldItem = 112;

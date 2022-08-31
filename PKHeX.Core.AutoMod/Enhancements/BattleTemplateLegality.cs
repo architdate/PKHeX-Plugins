@@ -53,14 +53,14 @@ namespace PKHeX.Core.AutoMod
             var gamelist = APILegality.FilteredGameList(blank, destVer, batchedit ? filters : null);
 
             // Move checks
-            List<IEnumerable<int>> move_combinations = new();
+            List<IEnumerable<ushort>> move_combinations = new();
             for (int i = count; i >= 1; i--)
                 move_combinations.AddRange(GetKCombs(moves, i));
 
-            int[] original_moves = new int[4];
+            ushort[] original_moves = new ushort[4];
             set.Moves.CopyTo(original_moves, 0);
-            int[] successful_combination = GetValidMoves(set, sav, move_combinations, blank, gamelist);
-            if (!new HashSet<int>(original_moves.Where(z => z != 0)).SetEquals(successful_combination))
+            ushort[] successful_combination = GetValidMoves(set, sav, move_combinations, blank, gamelist);
+            if (!new HashSet<ushort>(original_moves.Where(z => z != 0)).SetEquals(successful_combination))
             {
                 var invalid_moves = string.Join(", ", original_moves.Where(z => !successful_combination.Contains(z) && z != 0).Select(z => $"{(Move)z}"));
                 return successful_combination.Length > 0 ? string.Format(INVALID_MOVES, species_name, invalid_moves) : ALL_MOVES_INVALID;
@@ -69,7 +69,7 @@ namespace PKHeX.Core.AutoMod
             // All moves possible, get encounters
             blank.ApplySetDetails(set);
             blank.SetMoves(original_moves);
-            blank.SetRecordFlags(Array.Empty<int>());
+            blank.SetRecordFlags(Array.Empty<ushort>());
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: original_moves, gamelist).ToList();
             var initialcount = encounters.Count;
@@ -117,18 +117,18 @@ namespace PKHeX.Core.AutoMod
             return string.Format(EXHAUSTED_ENCOUNTERS, initialcount - encounters.Count, initialcount);
         }
 
-        private static int[] GetValidMoves(IBattleTemplate set, ITrainerInfo sav, List<IEnumerable<int>> move_combinations, PKM blank, GameVersion[] gamelist)
+        private static ushort[] GetValidMoves(IBattleTemplate set, ITrainerInfo sav, List<IEnumerable<ushort>> move_combinations, PKM blank, GameVersion[] gamelist)
         {
-            int[] successful_combination = Array.Empty<int>();
+            ushort[] successful_combination = Array.Empty<ushort>();
             foreach (var c in move_combinations)
             {
                 var combination = c.ToArray();
                 if (combination.Length <= successful_combination.Length)
                     continue;
-                var new_moves = combination.Concat(Enumerable.Repeat(0, 4 - combination.Length)).ToArray();
+                var new_moves = combination.Concat(Enumerable.Repeat<ushort>(0, 4 - combination.Length)).ToArray();
                 blank.ApplySetDetails(set);
                 blank.SetMoves(new_moves);
-                blank.SetRecordFlags(Array.Empty<int>());
+                blank.SetRecordFlags(Array.Empty<ushort>());
 
                 if (sav.Generation <= 2)
                     blank.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator

@@ -53,7 +53,7 @@ namespace PKHeX.Core.AutoMod
             if (template.Version == 0)
                 template.Version = dest.Game;
             template.ApplySetDetails(set);
-            template.SetRecordFlags(Array.Empty<int>()); // Validate TR/MS moves for the encounter
+            template.SetRecordFlags(Array.Empty<ushort>()); // Validate TR/MS moves for the encounter
 
             if (template.Species == (int)Species.Unown) // Force unown form on template
                 template.Form = set.Form;
@@ -414,7 +414,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="regen">Regeneration information</param>
         private static void ApplySetDetails(PKM pk, IBattleTemplate set, ITrainerInfo handler, IEncounterable enc, RegenSet regen)
         {
-            int Form = set.Form;
+            byte Form = set.Form;
             var language = regen.Extra.Language;
             var pidiv = MethodFinder.Analyze(pk);
             var abilitypref = GetAbilityPreference(pk, enc);

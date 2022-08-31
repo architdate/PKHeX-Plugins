@@ -239,7 +239,7 @@ namespace PKHeX.Core.AutoMod
 
             while (true)
             {
-                pk.PID = EntityPID.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Format, pk.PID);
+                pk.PID = EntityPID.GetRandomPID(Util.Rand, pk.Species, pk.Gender, pk.Version, pk.Nature, pk.Form, pk.PID);
                 if (shiny == Shiny.AlwaysSquare && pk.ShinyXor != 0)
                     continue;
                 if (shiny == Shiny.AlwaysStar && pk.ShinyXor == 0)
@@ -461,7 +461,7 @@ namespace PKHeX.Core.AutoMod
             _ => GetBaseFriendship(generation, enc.Species, enc.Form),
         };
 
-        private static int GetBaseFriendship(int gen, int species, int form)
+        private static int GetBaseFriendship(int gen, ushort species, byte form)
         {
             return gen switch
             {
@@ -540,7 +540,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="random">True for Random assortment of legal moves, false if current moves only.</param>
         public static void SetSuggestedMoves(this PKM pk, bool random = false)
         {
-            int[] m = pk.GetMoveSet(random);
+            ushort[] m = pk.GetMoveSet(random);
             if (m.All(z => z == 0))
                 return;
 
@@ -592,7 +592,7 @@ namespace PKHeX.Core.AutoMod
             };
         }
 
-        public static bool ExistsInGame(this GameVersion destVer, int species, int form)
+        public static bool ExistsInGame(this GameVersion destVer, ushort species, byte form)
         {
             // Don't process if Game is LGPE and requested PKM is not Kanto / Meltan / Melmetal
             // Don't process if Game is SWSH and requested PKM is not from the Galar Dex (Zukan8.DexLookup)
@@ -634,7 +634,7 @@ namespace PKHeX.Core.AutoMod
             _ => false,
         };
 
-        public static void SetRecordFlags(this PKM pk, int[] moves)
+        public static void SetRecordFlags(this PKM pk, ushort[] moves)
         {
             if (pk is ITechRecord8 tr and not PA8)
             {

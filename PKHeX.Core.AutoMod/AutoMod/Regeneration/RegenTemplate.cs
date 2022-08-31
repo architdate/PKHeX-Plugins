@@ -8,7 +8,7 @@ namespace PKHeX.Core.AutoMod
 {
     public sealed class RegenTemplate : IBattleTemplate
     {
-        public int Species { get; set; }
+        public ushort Species { get; set; }
         public EntityContext Context { get; set; }
         public string Nickname { get; set; }
         public int Gender { get; set; }
@@ -19,14 +19,14 @@ namespace PKHeX.Core.AutoMod
         public int Friendship { get; set; }
         public int Nature { get; set; }
         public string FormName { get; set; }
-        public int Form { get; set; }
+        public byte Form { get; set; }
         public int HiddenPowerType { get; set; }
         public bool CanGigantamax { get; set; }
         public byte DynamaxLevel { get; set; }
 
         public int[] EVs { get; }
         public int[] IVs { get; }
-        public int[] Moves { get; set; }
+        public ushort[] Moves { get; set; }
 
         public RegenSet Regen { get; set; } = RegenSet.Default;
         public string Text => GetSummary();
@@ -98,7 +98,7 @@ namespace PKHeX.Core.AutoMod
             return copy;
         }
 
-        private static void SanitizeMoves(IBattleTemplate set, int[] moves)
+        private static void SanitizeMoves(IBattleTemplate set, ushort[] moves)
         {
             // Specified moveset, no need to sanitize
             if (moves[0] != 0)
@@ -106,7 +106,7 @@ namespace PKHeX.Core.AutoMod
 
             // Sanitize keldeo moves to avoid form mismatches
             if (set.Species == (int)Core.Species.Keldeo)
-                moves[0] = set.Form == 0 ? (int)Move.AquaJet : (int)Move.SecretSword;
+                moves[0] = set.Form == 0 ? (ushort)Move.AquaJet : (ushort)Move.SecretSword;
         }
 
         private string GetSummary()
