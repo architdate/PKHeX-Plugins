@@ -119,6 +119,8 @@ namespace PKHeX.Core.AutoMod
             // Add Showdown content except moves
             var split = text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             var group = split.Where(z => !IsIgnored(z, Regen)).GroupBy(z => z.StartsWith("- ")).ToArray();
+            if (group.Length == 0)
+                return sb.ToString();
             sb.AppendLine(string.Join(Environment.NewLine, group[0])); // Not Moves
 
             // Add non-Showdown content

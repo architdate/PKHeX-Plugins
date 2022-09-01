@@ -665,6 +665,11 @@ namespace PKHeX.Core.AutoMod
             else if (enc.Generation is not (3 or 4))
             {
                 pk.IVs = set.IVs;
+                if (pk is IAwakened)
+                {
+                    pk.SetAwakenedValues(set, enc is EncounterSlot7GO);
+                    return;
+                }
                 return;
             }
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
