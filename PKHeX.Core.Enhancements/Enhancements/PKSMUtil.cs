@@ -77,7 +77,7 @@ namespace PKHeX.Core.Enhancements
                     continue;
                 var strings = GameInfo.Strings;
                 previews.Add(new PKMPreview(pk, strings));
-                File.WriteAllBytes(Path.Combine(dir, Util.CleanFileName(pk.FileName)), pk.DecryptedBoxData);
+                File.WriteAllBytes(Path.Combine(dir, Util.CleanFileName(pk.FileName)), pk.DecryptedPartyData);
                 ctr++;
             }
             return ctr;
