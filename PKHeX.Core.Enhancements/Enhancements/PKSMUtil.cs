@@ -49,7 +49,7 @@ namespace PKHeX.Core.Enhancements
                 temp.CopyTo(bank, ofs);
                 ctr++;
             }
-            File.WriteAllBytes(Path.Combine(dir, "alm.bnk"), bank);
+            File.WriteAllBytes(Path.Combine(dir, "pksm_1.bnk"), bank);
             return ctr - empty;
         }
 
