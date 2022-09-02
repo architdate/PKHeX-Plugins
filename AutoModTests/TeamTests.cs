@@ -47,6 +47,8 @@ namespace AutoModTests
                 for (int i = 0; i < sets.Count; i++)
                 {
                     var set = sets[i];
+                    if (set.Species <= 0)
+                        continue;
                     try
                     {
                         Debug.Write($"Checking Set {i:000} [Species: {(Species)set.Species}] from File {file} using Save {s}: ");

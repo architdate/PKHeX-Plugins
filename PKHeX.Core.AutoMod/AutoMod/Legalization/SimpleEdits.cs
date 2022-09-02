@@ -400,10 +400,13 @@ namespace PKHeX.Core.AutoMod
             pb7.AV_SPE = Math.Max(result[5], (byte)EVs[3]);
         }
 
-        public static void SetHTLanguage(this PKM pk)
+        public static void SetHTLanguage(this PKM pk, byte prefer)
         {
+            var pref_lang = (LanguageID)prefer;
+            if (pref_lang == LanguageID.Hacked || pref_lang == LanguageID.UNUSED_6)
+                prefer = 2; // prefer english
             if (pk is IHandlerLanguage pkm)
-                pkm.HT_Language = 1;
+                pkm.HT_Language = prefer;
         }
 
         public static void SetGigantamaxFactor(this PKM pk, IBattleTemplate set, IEncounterable enc)
@@ -499,7 +502,7 @@ namespace PKHeX.Core.AutoMod
             pk.CurrentHandler = 1;
             pk.HT_Name = trainer.OT;
             pk.HT_Gender = trainer.Gender;
-            pk.SetHTLanguage();
+            pk.SetHTLanguage((byte)trainer.Language);
             pk.SetSuggestedMemories();
         }
 
