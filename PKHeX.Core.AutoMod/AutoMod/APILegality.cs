@@ -157,15 +157,16 @@ namespace PKHeX.Core.AutoMod
             if (template.AbilityNumber == 4)
                 return AbilityRequest.Hidden;
 
-            var abils = template.PersonalInfo.Abilities;
-            if (abils.Count <= 2)
+            var pi = template.PersonalInfo;
+            var abils_count = pi.AbilityCount;
+            if (abils_count <= 2 || pi is not IPersonalAbility12H h)
                 return AbilityRequest.NotHidden;
 
-            if (abils[2] == template.Ability)
+            if (h.AbilityH == template.Ability)
                 return AbilityRequest.PossiblyHidden;
 
             // if no set ability is specified, it is assumed as the first ability which can be the same as the HA
-            if (set.Ability == -1 && abils[0] == abils[2])
+            if (set.Ability == -1 && h.Ability1 == h.AbilityH)
                 return AbilityRequest.PossiblyHidden;
 
             var default_ability = set.Ability == -1 ? AbilityRequest.Any : AbilityRequest.NotHidden;  // Will allow any ability if ability is unspecified
@@ -678,7 +679,7 @@ namespace PKHeX.Core.AutoMod
             switch (enc)
             {
                 case EncounterSlot3PokeSpot es3ps:
-                    var abil = pk.PersonalInfo.Abilities.Count > 0 ? (pk.PersonalInfo.Abilities[0] == pk.Ability ? 0 : 1) : 1;
+                    var abil = pk.PersonalInfo.AbilityCount > 0 && pk.PersonalInfo is IPersonalAbility12 a ? (a.Ability1 == pk.Ability ? 0 : 1) : 1;
                     do PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, abil, es3ps.SlotNumber);
                     while (pk.PID % 25 != pk.Nature);
                     return;

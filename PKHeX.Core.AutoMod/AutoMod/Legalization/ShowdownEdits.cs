@@ -80,20 +80,22 @@ namespace PKHeX.Core.AutoMod
             if (preference <= 0)
                 return;
 
-            var abilities = pk.PersonalInfo.Abilities;
+            var pi = pk.PersonalInfo;
+            var abil_ct = pi.AbilityCount;
+            var pref = preference.GetSingleValue();
             // Set unspecified abilities
             if (set.Ability == -1)
             {
-                pk.RefreshAbility(preference.GetSingleValue());
+                pk.RefreshAbility(pref);
                 if (pk is PK5 pk5 && preference == AbilityPermission.OnlyHidden) pk5.HiddenAbility = true;
             }
             // Set preferred ability number if applicable
-            if (abilities[preference.GetSingleValue()] == set.Ability)
+            if (pref == 2 && pi is IPersonalAbility12H h && h.AbilityH == set.Ability)
                 pk.AbilityNumber = (int)preference;
             // 3/4/5 transferred to 6+ will have ability 1 if both abilitynum 1 and 2 are the same. Capsule cant convert 1 -> 2 if the abilities arnt unique
-            if (pk.Format >= 6 && pk.Generation is 3 or 4 or 5 && pk.AbilityNumber != 4 && abilities[0] == abilities[1])
+            if (pk.Format >= 6 && pk.Generation is 3 or 4 or 5 && pk.AbilityNumber != 4 && pi is IPersonalAbility12 a && a.Ability1 == a.Ability2)
                 pk.AbilityNumber = 1;
-            if (pk is G3PKM && abilities[0] == abilities[1])
+            if (pk is G3PKM && pi is IPersonalAbility12 b && b.Ability1 == b.Ability2)
                 pk.AbilityNumber = 1;
         }
 

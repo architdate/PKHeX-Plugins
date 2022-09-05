@@ -189,15 +189,18 @@ namespace PKHeX.Core.AutoMod
 
         public static int GetRegenAbility(int species, int gen, AbilityRequest ar)
         {
-            var abils = GameData.GetPersonal(GetGameVersionFromGen(gen))[species].Abilities;
+            var pi = GameData.GetPersonal(GetGameVersionFromGen(gen))[species];
+            var abils_ct = pi.AbilityCount;
+            if (pi is not IPersonalAbility12 a)
+                return -1;
             return ar switch
             {
                 AbilityRequest.Any => -1,
-                AbilityRequest.First => abils[0],
-                AbilityRequest.Second => abils[1],
-                AbilityRequest.NotHidden => abils[0],
-                AbilityRequest.PossiblyHidden => abils[0],
-                AbilityRequest.Hidden => abils.Count > 2 ? abils[2] : -1,
+                AbilityRequest.First => a.Ability1,
+                AbilityRequest.Second => a.Ability2,
+                AbilityRequest.NotHidden => a.Ability1,
+                AbilityRequest.PossiblyHidden => a.Ability1,
+                AbilityRequest.Hidden => abils_ct > 2 && pi is IPersonalAbility12H h ? h.AbilityH : -1,
                 _ => throw new ArgumentOutOfRangeException(),
             };
         }
