@@ -110,6 +110,8 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 if (EntityConverter.IsIncompatibleGB(pk, template.Japanese, pk.Japanese))
                     continue;
+                if (pk is IDynamaxLevel d)
+                    d.DynamaxLevel = d.GetSuggestedDynamaxLevel(pk, requested: set.DynamaxLevel);
 
                 // Apply final details
                 ApplySetDetails(pk, set, dest, enc, regen);
