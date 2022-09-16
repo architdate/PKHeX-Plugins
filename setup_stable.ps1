@@ -7,6 +7,18 @@ Write-Host "Please report any issues with this setup file via GitHub issues at h
 Write-Host ""
 Write-Host ""
 
+# check network path locations
+$networkPaths = @("OneDrive", "Dropbox", "Mega")
+for ($i=0; $i -lt $networkPaths.Length; $i++) {
+    $path = $networkPaths[$i]
+    $currDir = Get-Location
+    if ($currDir.Path.Contains($path)) {
+        Write-Host "WARNING: $path is detected on your system. Please move the setup file to a different location before running the program."
+        Read-Host "Press Enter to exit"
+        exit
+    }
+}
+
 # set headers
 $headers = @{
 "method"="GET"
