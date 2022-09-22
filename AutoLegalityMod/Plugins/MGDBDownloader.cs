@@ -33,11 +33,13 @@ namespace AutoModPlugins
             if (Directory.Exists(MGDatabasePath))
                 return;
 
-            var prompt = WinFormsUtil.Prompt(MessageBoxButtons.YesNo,
+            var prompt = WinFormsUtil.Prompt(MessageBoxButtons.YesNoCancel,
                 "Download entire database?",
                 "Download the entire database, which includes past generation events?",
                 "Selecting No will download only the public release of the database.");
 
+            if (prompt == DialogResult.Cancel)
+              return;
             var entire = prompt == DialogResult.Yes;
             EventsGallery.DownloadMGDBFromGitHub(MGDatabasePath, entire);
             WinFormsUtil.Alert("Download Finished");
