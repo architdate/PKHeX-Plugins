@@ -106,7 +106,13 @@ namespace AutoModPlugins
                 case SAV8LA sbla:
                     dest = sbla.MyStatus.Data;
                     startofs = sbla.MyStatus.Offset;
-                    tdata = LPPLA.GetTrainerData;
+                    tdata = LPPointer.GetTrainerDataLA;
+                    break;
+
+                case SAV9SV s9sv:
+                    dest = s9sv.MyStatus.Data;
+                    startofs = s9sv.MyStatus.Offset;
+                    tdata = LPPointer.GetTrainerDataSV;
                     break;
 
                 default:
@@ -338,9 +344,9 @@ namespace AutoModPlugins
                 var custom_blocks = LPBDSP.types.Select(t => t.Name);
                 return save_blocks.Concat(custom_blocks).OrderBy(z => z);
             }
-            if (LPPLA.SupportedVersions.Contains(lv))
+            if (LPPointer.SupportedVersions.Contains(lv))
             {
-                var save_blocks = LPPLA.SCBlocks[lv].Select(z => z.Display).Distinct();
+                var save_blocks = LPPointer.SCBlocks[lv].Select(z => z.Display).Distinct();
                 return save_blocks.OrderBy(z => z);
             }
             return new List<string>();
@@ -370,7 +376,7 @@ namespace AutoModPlugins
 
         public ulong GetPointerAddress(ICommunicatorNX sb)
         {
-            var ptr = TB_Pointer.Text;
+            var ptr = TB_Pointer.Text.Trim();
             var address = sb.GetPointerAddress(ptr, false);
             if (address == InjectionUtil.INVALID_PTR)
                 WinFormsUtil.Alert("Invalid Pointer");
@@ -550,8 +556,8 @@ namespace AutoModPlugins
 #pragma warning disable CS8604 // Possible null reference argument.
                 LPBDSP.WriteBlockFromString(Remote.Bot, txt, GetBlockDataRaw(sb, data[0]), sb);
 #pragma warning restore CS8604 // Possible null reference argument.
-            if (LPPLA.SupportedVersions.Contains(version))
-                LPPLA.WriteBlocksFromSAV(Remote.Bot, txt, SAV.SAV);
+            if (LPPointer.SupportedVersions.Contains(version))
+                LPPointer.WriteBlocksFromSAV(Remote.Bot, txt, SAV.SAV);
         }
 
         private static byte[] GetBlockDataRaw(object sb, byte[] data) => sb switch
@@ -570,8 +576,8 @@ namespace AutoModPlugins
                 valid = LPBasic.ReadBlockFromString(bot, sav, display, out data);
             if (LPBDSP.SupportedVersions.Contains(version))
                 valid = LPBDSP.ReadBlockFromString(bot, sav, display, out data);
-            if (LPPLA.SupportedVersions.Contains(version))
-                valid = LPPLA.ReadBlockFromString(bot, sav, display, out data);
+            if (LPPointer.SupportedVersions.Contains(version))
+                valid = LPPointer.ReadBlockFromString(bot, sav, display, out data);
             return valid;
         }
 
@@ -591,8 +597,8 @@ namespace AutoModPlugins
                 var subblocks = Array.Empty<BlockData>();
                 if (LPBasic.SupportedVersions.Contains(version))
                     subblocks = LPBasic.SCBlocks[version].Where(z => z.Display == display).ToArray();
-                if (LPPLA.SupportedVersions.Contains(version))
-                    subblocks = LPPLA.SCBlocks[version].Where(z => z.Display == display).ToArray();
+                if (LPPointer.SupportedVersions.Contains(version))
+                    subblocks = LPPointer.SCBlocks[version].Where(z => z.Display == display).ToArray();
                 if (subblocks.Length != 1)
                     return false;
 

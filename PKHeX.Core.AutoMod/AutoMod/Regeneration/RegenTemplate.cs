@@ -23,6 +23,7 @@ namespace PKHeX.Core.AutoMod
         public int HiddenPowerType { get; set; }
         public bool CanGigantamax { get; set; }
         public byte DynamaxLevel { get; set; }
+        public MoveType TeraType { get; set; }
 
         public int[] EVs { get; }
         public int[] IVs { get; }
@@ -53,6 +54,7 @@ namespace PKHeX.Core.AutoMod
             Moves = set.Moves;
             CanGigantamax = set.CanGigantamax;
             DynamaxLevel = set.DynamaxLevel;
+            TeraType = set.TeraType;
 
             ParentLines = text;
             SanitizeMoves(set, Moves);

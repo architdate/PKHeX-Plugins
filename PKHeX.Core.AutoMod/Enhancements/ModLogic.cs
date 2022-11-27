@@ -88,7 +88,7 @@ namespace PKHeX.Core.AutoMod
 
         private static void AddPKM(SaveFile sav, ITrainerInfo tr, List<PKM> pklist, ushort species, byte? form, bool shiny, bool alpha, ref int attempt)
         {
-            if (tr.GetRandomEncounter(species, form, shiny, alpha, ref attempt, out var pk) && pk != null)
+            if (tr.GetRandomEncounter(species, form, shiny, alpha, ref attempt, out var pk) && pk != null && pk.Species > 0)
             {
                 pk.Heal();
                 pklist.Add(pk);
@@ -178,7 +178,7 @@ namespace PKHeX.Core.AutoMod
             var ssettext = new ShowdownSet(blank).Text.Split('\r')[0];
             if (shiny && !SimpleEdits.IsShinyLockedSpeciesForm(blank.Species, blank.Form))
                 ssettext += Environment.NewLine + "Shiny: Yes";
-            if (template is IAlpha && alpha)
+            if (template is IAlphaReadOnly && alpha)
                 ssettext += Environment.NewLine + "Alpha: Yes";
             var sset = new ShowdownSet(ssettext);
             var set = new RegenTemplate(sset) { Nickname = string.Empty };

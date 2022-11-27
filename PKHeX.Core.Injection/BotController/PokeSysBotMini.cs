@@ -31,7 +31,7 @@ namespace PKHeX.Core.Injection
             var allpkm = new List<byte[]>();
             if (LPLGPE.SupportedVersions.Contains(Version)) return LPLGPE.ReadBox(this, box, len, allpkm);
             if (LPBDSP.SupportedVersions.Contains(Version)) return LPBDSP.ReadBox(this, box, allpkm);
-            if (LPPLA.SupportedVersions.Contains(Version)) return LPPLA.ReadBox(this, box, allpkm);
+            if (LPPointer.SupportedVersions.Contains(Version)) return LPPointer.ReadBox(this, box, allpkm);
             return LPBasic.ReadBox(this, box, len, allpkm);
         }
 
@@ -39,7 +39,7 @@ namespace PKHeX.Core.Injection
         {
             if (LPLGPE.SupportedVersions.Contains(Version)) return LPLGPE.ReadSlot(this, box, slot);
             if (LPBDSP.SupportedVersions.Contains(Version)) return LPBDSP.ReadSlot(this, box, slot);
-            if (LPPLA.SupportedVersions.Contains(Version)) return LPPLA.ReadSlot(this, box, slot);
+            if (LPPointer.SupportedVersions.Contains(Version)) return LPPointer.ReadSlot(this, box, slot);
             return LPBasic.ReadSlot(this, box, slot);
         }
 
@@ -59,9 +59,9 @@ namespace PKHeX.Core.Injection
                 LPBDSP.SendBox(this, boxData, box);
                 return;
             }
-            if (LPPLA.SupportedVersions.Contains(Version))
+            if (LPPointer.SupportedVersions.Contains(Version))
             {
-                LPPLA.SendBox(this, boxData, box);
+                LPPointer.SendBox(this, boxData, box);
                 return;
             }
             LPBasic.SendBox(this, boxData, box);
@@ -79,9 +79,9 @@ namespace PKHeX.Core.Injection
                 LPBDSP.SendSlot(this, data, box, slot);
                 return;
             }
-            if (LPPLA.SupportedVersions.Contains(Version))
+            if (LPPointer.SupportedVersions.Contains(Version))
             {
-                LPPLA.SendSlot(this, data, box, slot);
+                LPPointer.SendSlot(this, data, box, slot);
                 return;
             }
             LPBasic.SendSlot(this, data, box, slot);

@@ -5,13 +5,21 @@ using System.Linq;
 
 namespace PKHeX.Core.Injection
 {
-    public static class LPPLA
+    public static class LPPointer
     {
-        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v111 };
+        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SV_v101, LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v111 };
 
-        private const int MYSTATUS_BLOCK_SIZE = 0x80;
+        private const int LA_MYSTATUS_BLOCK_SIZE = 0x80;
+        private const int SV_MYSTATUS_BLOCK_SIZE = 0x68;
 
-        public static readonly BlockData[] Blocks_v100 =
+        public static readonly BlockData[] Blocks_SV_v101 =
+        {
+            new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+42FD560]+128]+40" },
+            new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+42FD560]+190]+40" },
+            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+42FD560]+160]+40" },
+        };
+
+        public static readonly BlockData[] Blocks_LA_v100 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xF25C070E, Pointer = "[[main+4275470]+218]+68" },
             new() { Name = "KMoney", Display = "Money Data", SCBKey = 0x3279D927, Pointer = "[[main+4275470]+210]+6C", Type = SCTypeCode.UInt32 },
@@ -25,7 +33,7 @@ namespace PKHeX.Core.Injection
             new() { Name = "KZukan", Display = "Pokedex", SCBKey = 0x02168706, Pointer = "[[[[main+4275470]+248]+58]+18]+1C" },
         };
 
-        public static readonly BlockData[] Blocks_v101 =
+        public static readonly BlockData[] Blocks_LA_v101 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xF25C070E, Pointer = "[[main+427B470]+218]+68" },
             new() { Name = "KMoney", Display = "Money Data", SCBKey = 0x3279D927, Pointer = "[[main+427B470]+210]+6C", Type = SCTypeCode.UInt32 },
@@ -39,7 +47,7 @@ namespace PKHeX.Core.Injection
             new() { Name = "KZukan", Display = "Pokedex", SCBKey = 0x02168706, Pointer = "[[[[main+427B470]+248]+58]+18]+1C" },
         };
 
-        public static readonly BlockData[] Blocks_v102 =
+        public static readonly BlockData[] Blocks_LA_v102 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xF25C070E, Pointer = "[[main+427C470]+218]+68" },
             new() { Name = "KMoney", Display = "Money Data", SCBKey = 0x3279D927, Pointer = "[[main+427C470]+210]+6C", Type = SCTypeCode.UInt32 },
@@ -53,7 +61,7 @@ namespace PKHeX.Core.Injection
             new() { Name = "KZukan", Display = "Pokedex", SCBKey = 0x02168706, Pointer = "[[[[main+427C470]+248]+58]+18]+1C" },
         };
 
-        public static readonly BlockData[] Blocks_v110 =
+        public static readonly BlockData[] Blocks_LA_v110 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xF25C070E, Pointer = "[[main+42BA6B0]+218]+68" },
             new() { Name = "KMoney", Display = "Money Data", SCBKey = 0x3279D927, Pointer = "[[main+42BA6B0]+210]+6C", Type = SCTypeCode.UInt32 },
@@ -70,16 +78,18 @@ namespace PKHeX.Core.Injection
         // LiveHexVersion -> Blockname -> List of <SCBlock Keys, OffsetValues>
         public static readonly Dictionary<LiveHeXVersion, BlockData[]> SCBlocks = new()
         {
-            { LiveHeXVersion.LA_v100, Blocks_v100 },
-            { LiveHeXVersion.LA_v101, Blocks_v101 },
-            { LiveHeXVersion.LA_v102, Blocks_v102 },
-            { LiveHeXVersion.LA_v111, Blocks_v110 },
+            { LiveHeXVersion.SV_v101, Blocks_SV_v101 },
+            { LiveHeXVersion.LA_v100, Blocks_LA_v100 },
+            { LiveHeXVersion.LA_v101, Blocks_LA_v101 },
+            { LiveHeXVersion.LA_v102, Blocks_LA_v102 },
+            { LiveHeXVersion.LA_v111, Blocks_LA_v110 },
         };
 
         public static readonly Dictionary<string, string> SpecialBlocks = new()
         {
             { "Items", "B_OpenItemPouch_Click" },
             { "Pokedex", "B_OpenPokedex_Click" },
+            { "Raid", "B_OpenRaids_Click" },
             //{ "Trainer Data", "B_OpenTrainerInfo_Click" },
         };
 
@@ -87,6 +97,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
+                LiveHeXVersion.SV_v101 => "[[[main+42FD560]+108]+9B0]",
                 LiveHeXVersion.LA_v100 => "[[main+4275470]+1F0]+68",
                 LiveHeXVersion.LA_v101 => "[[main+427B470]+1F0]+68",
                 LiveHeXVersion.LA_v102 => "[[main+427C470]+1F0]+68",
@@ -200,7 +211,7 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public static Func<PokeSysBotMini, byte[]?> GetTrainerData = psb =>
+        public static Func<PokeSysBotMini, byte[]?> GetTrainerDataLA = psb =>
         {
             if (psb.com is not ICommunicatorNX sb)
                 return null;
@@ -209,7 +220,19 @@ namespace PKHeX.Core.Injection
             var ofs = sb.GetPointerAddress(ptr);
             if (ofs == 0)
                 return null;
-            return psb.com.ReadBytes(ofs, MYSTATUS_BLOCK_SIZE);
+            return psb.com.ReadBytes(ofs, LA_MYSTATUS_BLOCK_SIZE);
+        };
+
+        public static Func<PokeSysBotMini, byte[]?> GetTrainerDataSV = psb =>
+        {
+            if (psb.com is not ICommunicatorNX sb)
+                return null;
+            var lv = psb.Version;
+            var ptr = SCBlocks[lv].First(z => z.Name == "MyStatus").Pointer;
+            var ofs = sb.GetPointerAddress(ptr);
+            if (ofs == 0)
+                return null;
+            return psb.com.ReadBytes(ofs, SV_MYSTATUS_BLOCK_SIZE);
         };
     }
 }

@@ -10,6 +10,7 @@
         private const int MaxSpeciesID_6 = 721;
         private const int MaxSpeciesID_7 = 807;
         private const int MaxSpeciesID_8 = 890;
+        private const int MaxSpeciesID_9 = 1010;
 
         public static Species GetMemeSpecies(int gen, PKM format) => gen switch
         {
@@ -22,6 +23,7 @@
             7 => Species.Cosmog,
             8 when format is PA8 => Species.Porygon,
             8 => Species.Meltan,
+            9 => Species.Wiglett,
             _ => Species.Diglett,
         };
 
@@ -35,6 +37,7 @@
             <= MaxSpeciesID_6 => 6,
             <= MaxSpeciesID_7 => 7,
             <= MaxSpeciesID_8 => 8,
+            <= MaxSpeciesID_9 => 9,
             _ => 1,
         };
 
@@ -49,6 +52,7 @@
             7 => "GET IN BAG",
             8 when format is PA8 => "BAD DATA BOI",
             8 => "MATT'S NUT",
+            9 => "WIGGLE",
             _ => "HOW DO I HAK",
         };
     }

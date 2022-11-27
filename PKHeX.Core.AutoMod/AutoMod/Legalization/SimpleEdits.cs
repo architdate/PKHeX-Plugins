@@ -150,6 +150,12 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
+            if (enc is not ITeraRaid9 && ((pk.Species == (int)Maushold && pk.Form == 0) || (pk.Species == (int)Dudunsparce && pk.Form == 1)))
+            {
+                pk.EncryptionConstant = pk.EncryptionConstant / 100 * 100;
+                return;
+            }
+
             if (pk.EncryptionConstant != 0)
                 return;
 
@@ -300,6 +306,8 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             // fixed height and weight
+            if (enc is EncounterStatic9 { Size: not 0 })
+                return;
             if (enc is EncounterTrade8b)
                 return;
             if (enc is EncounterStatic8a { HasFixedHeight: true } || enc is EncounterStatic8a { HasFixedWeight: true })
@@ -324,7 +332,7 @@ namespace PKHeX.Core.AutoMod
             var weight = 0x97;
             if (signed)
             {
-                if (GameVersion.SWSH.Contains(pk.Version) || GameVersion.BDSP.Contains(pk.Version))
+                if (GameVersion.SWSH.Contains(pk.Version) || GameVersion.BDSP.Contains(pk.Version) || GameVersion.SV.Contains(pk.Version))
                 {
                     var top = (int)(pk.PID >> 16);
                     var bottom = (int)(pk.PID & 0xFFFF);
@@ -418,6 +426,14 @@ namespace PKHeX.Core.AutoMod
                 gmax.CanGigantamax = set.CanGigantamax; // soup hax
         }
 
+        public static void SetGimmicks(this PKM pk, IBattleTemplate set)
+        {
+            if (pk is IDynamaxLevel d)
+                d.DynamaxLevel = d.GetSuggestedDynamaxLevel(pk, requested: set.DynamaxLevel);
+            if (pk is ITeraType t && set.TeraType != MoveType.Any)
+                t.SetTeraType(set.TeraType);
+        }
+
         public static void RestoreIVs(this PKM pk, int[] IVs)
         {
             pk.IVs = IVs;
@@ -499,6 +515,9 @@ namespace PKHeX.Core.AutoMod
         {
             if (IsUntradeableEncounter(enc))
                 return;
+            var expect = trainer.IsFromTrainer(pk) ? 0 : 1;
+            if (pk.CurrentHandler == expect && expect == 0)
+                return;
             pk.CurrentHandler = 1;
             pk.HT_Name = trainer.OT;
             pk.HT_Gender = trainer.Gender;
@@ -543,7 +562,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="random">True for Random assortment of legal moves, false if current moves only.</param>
         public static void SetSuggestedMoves(this PKM pk, bool random = false)
         {
-            ushort[] m = pk.GetMoveSet(random);
+            var m = pk.GetMoveSet(random);
             if (m.All(z => z == 0))
                 return;
 
@@ -605,6 +624,8 @@ namespace PKHeX.Core.AutoMod
                 return PersonalTable.SWSH.IsPresentInGame(species, form);
             if (GameVersion.PLA.Contains(destVer))
                 return PersonalTable.LA.IsPresentInGame(species, form);
+            if (GameVersion.SV.Contains(destVer))
+                return PersonalTable.SV.IsPresentInGame(species, form);
             return (uint)species <= destVer.GetMaxSpeciesID();
         }
 
@@ -639,7 +660,7 @@ namespace PKHeX.Core.AutoMod
 
         public static void SetRecordFlags(this PKM pk, ushort[] moves)
         {
-            if (pk is ITechRecord8 tr and not PA8)
+            if (pk is ITechRecord tr and not PA8)
             {
                 if (moves.Length != 0)
                     tr.SetRecordFlags(moves);

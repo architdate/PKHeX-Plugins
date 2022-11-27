@@ -215,6 +215,7 @@ namespace PKHeX.Core.AutoMod
             6 => GameVersion.ORAS,
             7 => GameVersion.USUM,
             8 => GameVersion.SWSH,
+            9 => GameVersion.SV,
             _ => throw new ArgumentOutOfRangeException(),
         };
     }

@@ -110,8 +110,6 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 if (EntityConverter.IsIncompatibleGB(pk, template.Japanese, pk.Japanese))
                     continue;
-                if (pk is IDynamaxLevel d)
-                    d.DynamaxLevel = d.GetSuggestedDynamaxLevel(pk, requested: set.DynamaxLevel);
 
                 // Apply final details
                 ApplySetDetails(pk, set, dest, enc, regen);
@@ -300,6 +298,8 @@ namespace PKHeX.Core.AutoMod
 
         public static bool IsRequestedLevelValid(IBattleTemplate set, IEncounterable enc)
         {
+            if (enc.LevelMin > enc.LevelMax)
+                return false;
             if (enc.LevelMin > set.Level)
             {
                 var isRaid = enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U;
@@ -339,7 +339,7 @@ namespace PKHeX.Core.AutoMod
                 requested = rt.Regen.Extra.Alpha;
 
             // Requested alpha but encounter isn't an alpha
-            if (enc is not IAlpha a)
+            if (enc is not IAlphaReadOnly a)
                 return requested ? false : true;
 
             return a.IsAlpha == requested;
@@ -377,6 +377,8 @@ namespace PKHeX.Core.AutoMod
         public static bool IsPIDIVSet(PKM pk, IEncounterable enc)
         {
             // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
+            if (enc is EncounterTera9)
+                return true;
             if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
                 return true;
             if (enc is IOverworldCorrelation8 o && o.GetRequirement(pk) == OverworldCorrelation8Requirement.MustHave)
@@ -443,6 +445,7 @@ namespace PKHeX.Core.AutoMod
             pk.FixGender(set);
 
             // Final tweaks
+            pk.SetGimmicks(set);
             pk.SetGigantamaxFactor(set, enc);
             pk.SetSuggestedRibbons(set, enc, SetAllLegalRibbons);
             pk.SetBelugaValues();
@@ -665,6 +668,9 @@ namespace PKHeX.Core.AutoMod
                 if (enc.Generation is not (3 or 4))
                     return;
             }
+            else if (enc is EncounterStatic specified && specified.IVs.IsSpecified)
+                return;
+
             else if (enc.Generation is not (3 or 4))
             {
                 pk.IVs = set.IVs;
@@ -726,6 +732,13 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Set to pass in requested IVs</param>
         private static void PreSetPIDIV(this PKM pk, IEncounterable enc, IBattleTemplate set)
         {
+            if (enc is EncounterTera9 tera)
+            {
+                var pk9 = (PK9)pk;
+                FindTeraPIDIV(pk9, tera, set);
+                if (set.TeraType != MoveType.Any && set.TeraType != pk9.TeraType)
+                    pk9.SetTeraType(set.TeraType);
+            }
             if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
             {
                 var e = (EncounterStatic)enc;
@@ -813,6 +826,30 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
+        private static void FindTeraPIDIV(PK9 pk, EncounterTera9 enc, IBattleTemplate set)
+        {
+            if (IsMatchCriteria9(pk, set))
+                return;
+
+            var count = 0;
+            var compromise = false;
+            do
+            {
+                ulong seed = GetRandomULong();
+                const byte rollCount = 1;
+                const byte undefinedSize = 0;
+                var pi = PersonalTable.SV.GetFormEntry(pk.Species, pk.Form);
+                var param = new GenerateParam9((byte)pi.Gender, enc.FlawlessIVCount, rollCount,
+                    undefinedSize, undefinedSize, undefinedSize,
+                    enc.Ability, enc.Shiny);
+                enc.TryApply32(pk, seed, param, EncounterCriteria.Unrestricted);
+                if (IsMatchCriteria9(pk, set, compromise))
+                    break;
+                if (count == 5_000)
+                    compromise = true;
+            } while (++count < 15_000);
+        }
+
         /// <summary>
         /// Method to find the PID and IV associated with a nest. Shinies are just allowed
         /// since there is no way GameFreak actually brute-forces top half of the PID to flag illegals.
@@ -844,7 +881,7 @@ namespace PKHeX.Core.AutoMod
             {
                 ulong seed = GetRandomULong();
                 enc.ApplyDetailsTo(pk, seed);
-                if (IsMatchCriteria<T>(pk, iterPKM))
+                if (IsMatchCriteria8<T>(pk, iterPKM))
                     break;
             } while (++count < 10_000);
 
@@ -1053,13 +1090,27 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokemon to edit</param>
         /// <param name="template">Clone of the PKM taken prior</param>
         /// <returns>True if the IVs are matching the criteria</returns>
-        private static bool IsMatchCriteria<T>(PK8 pk, PKM template) where T : EncounterStatic8Nest<T>
+        private static bool IsMatchCriteria8<T>(PK8 pk, PKM template) where T : EncounterStatic8Nest<T>
         {
             if (template.Nature != pk.Nature) // match nature
                 return false;
             if (template.Gender != pk.Gender) // match gender
                 return false;
             if (template.Form != pk.Form && !FormInfo.IsFormChangeable(pk.Species, pk.Form, template.Form, pk.Format)) // match form -- Toxtricity etc
+                return false;
+            return true;
+        }
+
+        private static bool IsMatchCriteria9(PK9 pk, IBattleTemplate template, bool compromise = false)
+        {
+            // compromise on nature since they can be minted
+            if (template.Nature != pk.Nature && !compromise) // match nature
+                return false;
+            if ((uint)template.Gender < 2 && template.Gender != pk.Gender) // match gender
+                return false;
+            if (template.Form != pk.Form && !FormInfo.IsFormChangeable(pk.Species, pk.Form, template.Form, pk.Format)) // match form -- Toxtricity etc
+                return false;
+            if (template.Shiny != pk.IsShiny)
                 return false;
             return true;
         }

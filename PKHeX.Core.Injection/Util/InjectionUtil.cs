@@ -12,7 +12,7 @@ namespace PKHeX.Core.Injection
                 return INVALID_PTR;
             while (ptr.Contains("]]"))
                 ptr = ptr.Replace("]]", "]+0]");
-            uint? finadd = null;
+            uint finadd = 0;
             if (!ptr.EndsWith("]"))
             {
                 finadd = Util.GetHexValue(ptr.Split('+').Last());
@@ -31,7 +31,7 @@ namespace PKHeX.Core.Injection
                     continue;
                 address = BitConverter.ToUInt64(sb.ReadBytesAbsolute(address + val, 0x8), 0);
             }
-            if (finadd != null) address += (ulong)finadd;
+            address += finadd;
             if (heaprealtive)
             {
                 ulong heap = sb.GetHeapBase();

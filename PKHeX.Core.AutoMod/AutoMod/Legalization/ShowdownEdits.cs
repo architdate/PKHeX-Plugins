@@ -66,7 +66,8 @@ namespace PKHeX.Core.AutoMod
             var la2 = new LegalityAnalysis(pk);
             var enc1 = la.EncounterMatch;
             var enc2 = la2.EncounterMatch;
-            if (((!ReferenceEquals(enc1, enc2) && enc1 is not EncounterEgg) || la2.Results.Any(z => z.Identifier == CheckIdentifier.Nature && !z.Valid)) && enc is not EncounterEgg)
+            if (((!ReferenceEquals(enc1, enc2) && enc1 is not EncounterEgg) || 
+                la2.Results.Any(z => (z.Identifier == CheckIdentifier.Nature || z.Identifier == CheckIdentifier.Encounter) && !z.Valid)) && enc is not EncounterEgg)
                 pk.Nature = orig;
             if (pk.Format >= 8 && pk.StatNature != pk.Nature && pk.StatNature is 0 or 6 or 18 or >= 24) // Only Serious Mint for Neutral Natures
                 pk.StatNature = (int)Nature.Serious;

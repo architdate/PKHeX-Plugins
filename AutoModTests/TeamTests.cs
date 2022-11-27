@@ -87,6 +87,7 @@ namespace AutoModTests
         [InlineData(AnubisPK6, new[] { SW, US, SN, OR })]
         [InlineData(AnubisPK7, new[] { SW, US })]
         [InlineData(AnubisPK8, new[] { SW })]
+        [InlineData(AnubisPK9, new[] { SL })]
         [InlineData(AnubisNTPB7, new[] { GE })]
         [InlineData(AnubisTPK7, new[] { SW, US })]
         [InlineData(AnubisTPK8, new[] { SW })]
@@ -103,6 +104,7 @@ namespace AutoModTests
         [InlineData(RoCPK6, new[] { SW, US, SN, OR })]
         [InlineData(RoCPK7, new[] { SW, US })]
         [InlineData(RoCPK8, new[] { SW })]
+        [InlineData(RoCPK9, new[] { SL })]
         [InlineData(RoCNTPK1, new[] { RD })]
         [InlineData(RoCNTPK4, new[] { Pt })]
         [InlineData(RoCNTPK6, new[] { OR })]
@@ -153,6 +155,7 @@ namespace AutoModTests
         private const string AnubisPK6 = "Anubis Tests/Anubis - pk6.txt";
         private const string AnubisPK7 = "Anubis Tests/Anubis - pk7.txt";
         private const string AnubisPK8 = "Anubis Tests/Anubis - pk8.txt";
+        private const string AnubisPK9 = "Anubis Tests/Anubis - pk9.txt";
         private const string AnubisNTPB7 = "Anubis Tests/Anubis notransfer - pb7.txt";
         private const string AnubisTPK7 = "Anubis Tests/Anubis transferred - pk7.txt";
         private const string AnubisTPK8 = "Anubis Tests/Anubis transferred - pk8.txt";
@@ -170,6 +173,7 @@ namespace AutoModTests
         private const string RoCPK6 = "RoCs-PC Tests/RoC - pk6.txt";
         private const string RoCPK7 = "RoCs-PC Tests/RoC - pk7.txt";
         private const string RoCPK8 = "RoCs-PC Tests/RoC - pk8.txt";
+        private const string RoCPK9 = "RoCs-PC Tests/RoC - pk9.txt";
         private const string RoCNTPK1 = "RoCs-PC Tests/RoC notransfer - pk1.txt";
         private const string RoCNTPK4 = "RoCs-PC Tests/RoC notransfer - pk4.txt";
         private const string RoCNTPK6 = "RoCs-PC Tests/RoC notransfer - pk6.txt";

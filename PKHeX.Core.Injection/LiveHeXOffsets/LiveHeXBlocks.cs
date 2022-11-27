@@ -20,8 +20,8 @@ namespace PKHeX.Core.Injection
                 return LPBasic.SpecialBlocks.TryGetValue(block, out value);
             if (LPBDSP.SupportedVersions.Contains(lv))
                 return LPBDSP.SpecialBlocks.TryGetValue(block, out value);
-            if (LPPLA.SupportedVersions.Contains(lv))
-                return LPPLA.SpecialBlocks.TryGetValue(block, out value);
+            if (LPPointer.SupportedVersions.Contains(lv))
+                return LPPointer.SpecialBlocks.TryGetValue(block, out value);
             return false;
         }
     }
