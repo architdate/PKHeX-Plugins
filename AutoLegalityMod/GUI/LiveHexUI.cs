@@ -141,8 +141,6 @@ namespace AutoModPlugins
             try
             {
                 // Enable controls
-                B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
-                groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
                 var ConnectionEstablished = false;
                 var validversions = RamOffsets.GetValidVersions(SAV.SAV).Reverse().ToArray();
                 var currver = validversions[0];
@@ -201,7 +199,10 @@ namespace AutoModPlugins
             catch (Exception ex)
             {
                 WinFormsUtil.Error(ex.Message);
+                return;
             }
+            B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
+            groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
         }
 
         private void LiveHeXUI_FormClosing(object sender, FormClosingEventArgs e)
