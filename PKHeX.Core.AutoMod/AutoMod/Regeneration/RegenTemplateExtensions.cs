@@ -8,6 +8,13 @@ namespace PKHeX.Core.AutoMod
         public static void SanitizeForm(this RegenTemplate set)
         {
             var gen = set.Context.Generation();
+            if (gen is 9)
+            {
+                // Scatterbug and Spewpa must be Fancy
+                if (set.Species == (int)Species.Scatterbug || set.Species == (int)Species.Spewpa)
+                    set.Form = 18;
+                return;
+            }
             if (!FormInfo.IsBattleOnlyForm(set.Species, set.Form, gen))
                 return;
             set.Form = FormInfo.GetOutOfBattleForm(set.Species, set.Form, gen);
