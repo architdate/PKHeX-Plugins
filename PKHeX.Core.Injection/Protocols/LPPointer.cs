@@ -7,16 +7,23 @@ namespace PKHeX.Core.Injection
 {
     public static class LPPointer
     {
-        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SV_v101, LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v111 };
+        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SV_v101, LiveHeXVersion.SV_v110, LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v111 };
 
         private const int LA_MYSTATUS_BLOCK_SIZE = 0x80;
         private const int SV_MYSTATUS_BLOCK_SIZE = 0x68;
 
         public static readonly BlockData[] Blocks_SV_v101 =
         {
-            new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+42FD560]+128]+40" },
-            new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+42FD560]+190]+40" },
-            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+42FD560]+160]+40" },
+            new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+42DA8E8]+148]+40" },
+            new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+42DA8E8]+1B0]+40" },
+            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+42DA8E8]+180]+40" },
+        };
+
+        public static readonly BlockData[] Blocks_SV_v110 =
+        {
+            new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+4384B18]+148]+40" },
+            new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+4384B18]+1B0]+40" },
+            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+4384B18]+180]+40" },
         };
 
         public static readonly BlockData[] Blocks_LA_v100 =
@@ -78,6 +85,7 @@ namespace PKHeX.Core.Injection
         // LiveHexVersion -> Blockname -> List of <SCBlock Keys, OffsetValues>
         public static readonly Dictionary<LiveHeXVersion, BlockData[]> SCBlocks = new()
         {
+            { LiveHeXVersion.SV_v110, Blocks_SV_v110 },
             { LiveHeXVersion.SV_v101, Blocks_SV_v101 },
             { LiveHeXVersion.LA_v100, Blocks_LA_v100 },
             { LiveHeXVersion.LA_v101, Blocks_LA_v101 },
@@ -97,7 +105,8 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
-                LiveHeXVersion.SV_v101 => "[[[main+42FD560]+108]+9B0]",
+                LiveHeXVersion.SV_v110 => "[[[main+4384B18]+128]+9B0]",
+                LiveHeXVersion.SV_v101 => "[[[main+42DA8E8]+128]+9B0]",
                 LiveHeXVersion.LA_v100 => "[[main+4275470]+1F0]+68",
                 LiveHeXVersion.LA_v101 => "[[main+427B470]+1F0]+68",
                 LiveHeXVersion.LA_v102 => "[[main+427C470]+1F0]+68",
