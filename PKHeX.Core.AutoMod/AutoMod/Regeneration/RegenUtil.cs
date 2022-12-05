@@ -155,7 +155,7 @@ namespace PKHeX.Core.AutoMod
 
         private static string MutateOT(string OT, LanguageID? lang, GameVersion game)
         {
-            if (game.GetGeneration() >= 8 || lang == null)
+            if (lang == null)
                 return OT;
             var full = lang is LanguageID.Japanese or LanguageID.Korean or LanguageID.ChineseS or LanguageID.ChineseT;
             if (full && GlyphLegality.ContainsHalfWidth(OT))
