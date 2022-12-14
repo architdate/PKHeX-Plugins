@@ -121,6 +121,7 @@ namespace PKHeX.Core.Enhancements
                 nameof(PK6) => "https://www.smogon.com/dex/xy/pokemon",
                 nameof(PK7) or nameof(PB7) => "https://www.smogon.com/dex/sm/pokemon",
                 nameof(PK8) or nameof(PB8) => "https://www.smogon.com/dex/ss/pokemon",
+                nameof(PK9) => "https://www.smogon.com/dex/sv/pokemon",
                 _ => string.Empty,
             };
         }
@@ -140,6 +141,10 @@ namespace PKHeX.Core.Enhancements
             TryGetToken(set, "\"evconfigs\":[{", "}],\"ivconfigs\":", out var evstr);
             TryGetToken(set, "\"ivconfigs\":[{", "}],\"natures\":", out var ivstr);
             TryGetToken(set, "\"natures\":[\"", "\"", out var nature);
+            TryGetToken(set, "\"teratypes\":[\"", "\"", out var teratype);
+
+            if (teratype != null && teratype.StartsWith(']'))
+                teratype = null;
 
             var evs = ParseEVIVs(evstr, false);
             var ivs = ParseEVIVs(ivstr, true);
@@ -158,6 +163,8 @@ namespace PKHeX.Core.Enhancements
                 result.Add("Shiny: Yes");
             if (!string.IsNullOrWhiteSpace(ability))
                 result.Add($"Ability: {ability}");
+            if (!string.IsNullOrWhiteSpace(teratype))
+                result.Add($"Tera Type: {teratype}");
             if (evstr.Length >= 3)
                 result.Add($"EVs: {string.Join(" / ", statNames.Select((z, i) => $"{evs[i]} {z}"))}");
             if (ivstr.Length >= 3)
