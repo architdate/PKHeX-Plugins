@@ -893,7 +893,7 @@ namespace PKHeX.Core.AutoMod
 
             pk.Species = iterPKM.Species; // possible evolution
             // can be ability capsuled
-            if (FormInfo.IsFormChangeable(pk.Species, pk.Form, iterPKM.Form, pk.Format))
+            if (FormInfo.IsFormChangeable(pk.Species, pk.Form, iterPKM.Form, enc.Context, pk.Context))
                 pk.Form = iterPKM.Form; // set alt form if it can be freely changed!
             pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
             pk.StatNature = iterPKM.StatNature;
@@ -1096,7 +1096,7 @@ namespace PKHeX.Core.AutoMod
                 return false;
             if (template.Gender != pk.Gender) // match gender
                 return false;
-            if (template.Form != pk.Form && !FormInfo.IsFormChangeable(pk.Species, pk.Form, template.Form, pk.Format)) // match form -- Toxtricity etc
+            if (template.Form != pk.Form && !FormInfo.IsFormChangeable(pk.Species, pk.Form, template.Form, EntityContext.Gen8, pk.Context)) // match form -- Toxtricity etc
                 return false;
             return true;
         }
@@ -1108,7 +1108,7 @@ namespace PKHeX.Core.AutoMod
                 return false;
             if ((uint)template.Gender < 2 && template.Gender != pk.Gender) // match gender
                 return false;
-            if (template.Form != pk.Form && !FormInfo.IsFormChangeable(pk.Species, pk.Form, template.Form, pk.Format)) // match form -- Toxtricity etc
+            if (template.Form != pk.Form && !FormInfo.IsFormChangeable(pk.Species, pk.Form, template.Form, EntityContext.Gen9, pk.Context)) // match form -- Toxtricity etc
                 return false;
             if (template.Shiny != pk.IsShiny)
                 return false;
