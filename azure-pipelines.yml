@@ -40,6 +40,7 @@ steps:
     noCache: true
 
 - task: VSBuild@1
+  continueOnError: true
   inputs:
     solution: '$(Build.SourcesDirectory)/PKHeX/PKHeX.sln'
     platform: '$(buildPlatform)'
