@@ -33,18 +33,13 @@ steps:
 - powershell: |
     git clone -q --depth=5 --branch=net7 https://github.com/kwsch/PKHeX.git $(Build.SourcesDirectory)/PKHeX
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: '$(Build.SourcesDirectory)/PKHeX/PKHeX.sln'
-    noCache: true
-
 - task: VSBuild@1
   continueOnError: true
   inputs:
     solution: '$(Build.SourcesDirectory)/PKHeX/PKHeX.sln'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    restoreNugetPackages: true
     createLogFile: true
 
 - powershell: |
