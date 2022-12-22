@@ -28,7 +28,7 @@ steps:
     restoreSolution: '$(solution)'
 
 - powershell: |
-    git clone -q --depth=5 --branch=master https://github.com/kwsch/PKHeX.git $(Build.SourcesDirectory)/PKHeX
+    git clone -q --depth=5 --branch=net7 https://github.com/kwsch/PKHeX.git $(Build.SourcesDirectory)/PKHeX
 
 - task: NuGetCommand@2
   inputs:
