@@ -22,6 +22,9 @@ steps:
     version: '7.0.x'
     
 - task: NuGetToolInstaller@1
+  inputs:
+    versionSpec: '>=6.4.0'
+    checkLatest: true
 
 - task: NuGetCommand@2
   inputs:
