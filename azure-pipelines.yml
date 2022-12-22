@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-2022'
 
 variables:
-  solution: '**/*.sln'
+  solution: '$(Build.SourcesDirectory)/PKHeX-Plugins.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
