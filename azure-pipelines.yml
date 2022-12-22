@@ -49,9 +49,9 @@ steps:
 - powershell: |
     $nugetver = (Get-ChildItem "$(UserProfile)/.nuget/packages/pkhex.core" | Sort-Object -Property LastWriteTime -Descending)[0].Name
     New-Item -ItemType Directory -Force -Path "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\net7.0"
-    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Release\net7.0\PKHeX.Core.dll" "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\net7.0"
-    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Release\net7.0\PKHeX.Core.dll" "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\net46"
-    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Release\net7.0\PKHeX.Core.dll" "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\netstandard2.0"
+    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Any CPU\Release\net7.0\PKHeX.Core.dll" "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\net7.0"
+    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Any CPU\Release\net7.0\PKHeX.Core.dll" "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\net46"
+    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Any CPU\Release\net7.0\PKHeX.Core.dll" "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\netstandard2.0"
 
 - task: VSBuild@1
   inputs:
