@@ -33,9 +33,11 @@ steps:
 - powershell: |
     git clone -q --depth=5 --branch=net7 https://github.com/kwsch/PKHeX.git $(Build.SourcesDirectory)/PKHeX
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
   inputs:
-    restoreSolution: '$(Build.SourcesDirectory)/PKHeX/PKHeX.sln'
+    command: restore
+    projects: '$(Build.SourcesDirectory)/PKHeX/**/*.csproj'
 
 - task: VSBuild@1
   inputs:
