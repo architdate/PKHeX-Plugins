@@ -21,11 +21,11 @@ namespace PKHeX.Core.AutoMod
                     case "OT":
                         sti.OT = value;
                         break;
-                    case "TID" when int.TryParse(value, out int tid) && tid >= 0:
-                        sti.TID = tid;
+                    case "TID" when ushort.TryParse(value, out ushort tid) && tid >= 0:
+                        sti.TID16 = tid;
                         break;
-                    case "SID" when int.TryParse(value, out int sid) && sid >= 0:
-                        sti.SID = sid;
+                    case "SID" when ushort.TryParse(value, out ushort sid) && sid >= 0:
+                        sti.SID16 = sid;
                         break;
                     case "OTGender":
                         sti.Gender = value is "Female" or "F" ? 1 : 0;
@@ -40,9 +40,9 @@ namespace PKHeX.Core.AutoMod
             if (!any || format < 7)
                 return any;
             const int mil = 1_000_000;
-            uint repack = ((uint)sti.SID * mil) + (uint)sti.TID;
-            sti.TID = (int)(repack & 0xFFFF);
-            sti.SID = (int)(repack >> 16);
+            uint repack = ((uint)sti.SID16 * mil) + sti.TID16;
+            sti.TID16 = (ushort)(repack & 0xFFFF);
+            sti.SID16 = (ushort)(repack >> 16);
             return true;
         }
 
@@ -78,14 +78,14 @@ namespace PKHeX.Core.AutoMod
 
         public static string GetSummary(ITrainerInfo trainer)
         {
-            var tid = trainer.TID;
-            var sid = trainer.SID;
+            var tid = trainer.TID16;
+            var sid = trainer.SID16;
             if (trainer.Generation >= 7)
             {
                 const int mil = 1_000_000;
                 uint repack = ((uint)sid << 16) + (uint)tid;
-                tid = (int)(repack % mil);
-                sid = (int)(repack / mil);
+                tid = (ushort)(repack % mil);
+                sid = (ushort)(repack / mil);
             }
 
             var result = new[]
@@ -140,8 +140,8 @@ namespace PKHeX.Core.AutoMod
                 return new SimpleTrainerInfo(version)
                 {
                     OT = MutateOT(s.OT, lang, version),
-                    TID = s.TID,
-                    SID = s.SID,
+                    TID16 = s.TID16,
+                    SID16 = s.SID16,
                     Gender = s.Gender,
                     Language = (int)lang,
                     ConsoleRegion = s.ConsoleRegion != 0 ? s.ConsoleRegion : (byte)1,

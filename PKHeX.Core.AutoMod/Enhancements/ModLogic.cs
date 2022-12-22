@@ -93,7 +93,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Heal();
                 pklist.Add(pk);
             }
-            else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID = tr.TID }, species, 0, shiny, false, ref attempt, out var pkm) && pkm is PK1 pk1)
+            else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID16 = tr.TID16 }, species, 0, shiny, false, ref attempt, out var pkm) && pkm is PK1 pk1)
             {
                 pklist.Add(pk1.ConvertToPK2());
             }

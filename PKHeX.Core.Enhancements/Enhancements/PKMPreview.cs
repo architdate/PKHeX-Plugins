@@ -34,8 +34,8 @@ namespace PKHeX.Core.Enhancements
                     p.EggLoc, p.Ball, p.OT, p.Version, p.OTLang, p.Legal, country, region, DSRegion,
                     p.PID, p.EC, p.HP_IV.ToString(), p.ATK_IV.ToString(), p.DEF_IV.ToString(), p.SPA_IV.ToString(),
                     p.SPD_IV.ToString(), p.SPE_IV.ToString(), p.EXP.ToString(), p.Level.ToString(),
-                    p.Markings.ToString(), p.NotOT, p.MetLevel.ToString(), p.IsShiny.ToString(), p.TID.ToString(),
-                    p.SID.ToString(), p.Friendship.ToString(), p.Met_Year.ToString(), p.Met_Month.ToString(),
+                    p.Markings.ToString(), p.NotOT, p.MetLevel.ToString(), p.IsShiny.ToString(), p.TID16.ToString(),
+                    p.SID16.ToString(), p.Friendship.ToString(), p.Met_Year.ToString(), p.Met_Month.ToString(),
                     p.Met_Day.ToString()));
             }
 

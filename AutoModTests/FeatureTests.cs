@@ -70,7 +70,7 @@ namespace AutoModTests
             tr.Language.Should().Be((int)LanguageID.English);
 
             // Register a fake trainer
-            var sti = new SimpleTrainerInfo { OT = "Test", TID = 123, SID = 432 };
+            var sti = new SimpleTrainerInfo { OT = "Test", TID16 = 123, SID16 = 432 };
             TrainerSettings.Register(sti);
 
             // When we generate, our Extra instruction should force it to be generated as Japanese.
@@ -99,7 +99,7 @@ namespace AutoModTests
             tr.Language.Should().Be((int)LanguageID.English);
 
             // Register a fake trainer
-            var sti = new SimpleTrainerInfo { OT = "Test", TID = 123, SID = 432 };
+            var sti = new SimpleTrainerInfo { OT = "Test", TID16 = 123, SID16 = 432 };
             TrainerSettings.Register(sti);
 
             // When we generate, our Extra instruction should force it to be generated as Japanese.

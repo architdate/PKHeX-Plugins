@@ -888,7 +888,7 @@ namespace PKHeX.Core.AutoMod
             if (shiny)
             {
                 // Dynamax Adventure shinies are always XOR 1
-                pk.PID = SimpleEdits.GetShinyPID(pk.TID, pk.SID, pk.PID, 1);
+                pk.PID = SimpleEdits.GetShinyPID(pk.TID16, pk.SID16, pk.PID, 1);
             }
 
             pk.Species = iterPKM.Species; // possible evolution
@@ -949,7 +949,7 @@ namespace PKHeX.Core.AutoMod
             // Always shiny: if not xor0-15, force xor0
             var editnecessary = (shiny == Shiny.AlwaysSquare && pk.ShinyXor != 0) || (shiny == Shiny.Always && pk.ShinyXor > 15);
             if (editnecessary)
-                pk.PID = SimpleEdits.GetShinyPID(pk.TID, pk.SID, pk.PID, 0);
+                pk.PID = SimpleEdits.GetShinyPID(pk.TID16, pk.SID16, pk.PID, 0);
 
             // RNG is fixed now and you have the requested shiny!
             const int UNSET = -1;
@@ -1078,7 +1078,7 @@ namespace PKHeX.Core.AutoMod
                 // PID dissociated completely (assume no masuda and no shiny charm)
                 if (shiny is Shiny.Never or Shiny.Random)
                     pk.SetUnshiny();
-                else pk.PID = SimpleEdits.GetShinyPID(pk.TID, pk.SID, pk.PID, shiny == Shiny.AlwaysSquare ? 0 : 1);
+                else pk.PID = SimpleEdits.GetShinyPID(pk.TID16, pk.SID16, pk.PID, shiny == Shiny.AlwaysSquare ? 0 : 1);
                 break;
             }
         }
@@ -1179,7 +1179,7 @@ namespace PKHeX.Core.AutoMod
                 {
                     pk.EncryptionConstant = pk.PID;
                     var ec = pk.PID;
-                    bool xorPID = ((pk.TID ^ pk.SID ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
+                    bool xorPID = ((pk.TID16 ^ pk.SID16 ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
                     if (enc is EncounterStatic3 && enc.Species == (int)Species.Eevee && (shiny != pk.IsShiny || xorPID)) // Starter Correlation
                         continue;
                     var la = new LegalityAnalysis(pk);
@@ -1207,8 +1207,8 @@ namespace PKHeX.Core.AutoMod
                 return false;
             if (seed % 24 != original.Nature)
                 return true;
-            pk.TID = Util.Rand.Next(65535);
-            pk.SID = Util.Rand.Next(65535);
+            pk.TID16 = (ushort)Util.Rand.Next(65535);
+            pk.SID16 = (ushort)Util.Rand.Next(65535);
             return false;
         }
 

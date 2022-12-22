@@ -139,7 +139,7 @@ namespace PKHeX.Core.AutoMod
             {
                 var ec = pk.PID;
                 pk.EncryptionConstant = ec;
-                var pidxor = ((pk.TID ^ pk.SID ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
+                var pidxor = ((pk.TID16 ^ pk.SID16 ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
                 pk.PID = pidxor ? ec ^ 0x80000000 : ec;
                 return;
             }
@@ -192,8 +192,8 @@ namespace PKHeX.Core.AutoMod
                 if (isHOMEGift)
                 {
                     // Set XOR as 0 so SID comes out as 8 or less, Set TID based on that (kinda like a setshinytid)
-                    pk.TID = (int)(0 ^ (pk.PID & 0xFFFF) ^ (pk.PID >> 16));
-                    pk.SID = Util.Rand.Next(8);
+                    pk.TID16 = (ushort)(0 ^ (pk.PID & 0xFFFF) ^ (pk.PID >> 16));
+                    pk.SID16 = (ushort)Util.Rand.Next(8);
                     return;
                 }
             }
@@ -233,7 +233,7 @@ namespace PKHeX.Core.AutoMod
                 while (IsBit3Set());
 
                 bool IsBit3Set() =>
-                    ((pk.TID ^ pk.SID ^ (int)(pk.PID & 0xFFFF) ^ (int)(pk.PID >> 16)) & ~0x7) == 8;
+                    ((pk.TID16 ^ pk.SID16 ^ (int)(pk.PID & 0xFFFF) ^ (int)(pk.PID >> 16)) & ~0x7) == 8;
 
                 return;
             }
@@ -250,11 +250,11 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 if (shiny == Shiny.AlwaysStar && pk.ShinyXor == 0)
                     continue;
-                var validg5sid = pk.SID & 1;
+                var validg5sid = pk.SID16 & 1;
                 pk.SetShinySID();
                 pk.EncryptionConstant = pk.PID;
-                var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID & 1) ^ (pk.SID & 1);
-                if ((validg5sid == (pk.SID & 1)) && result == 0)
+                var result = (pk.PID & 1) ^ (pk.PID >> 31) ^ (pk.TID16 & 1) ^ (pk.SID16 & 1);
+                if ((validg5sid == (pk.SID16 & 1)) && result == 0)
                     break;
             }
         }
@@ -501,8 +501,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="trainer">Trainer data</param>
         public static void SetTrainerData(this PKM pk, ITrainerInfo trainer)
         {
-            pk.TID = trainer.TID;
-            pk.SID = pk.Generation >= 3 ? trainer.SID : 0;
+            pk.TID16 = trainer.TID16;
+            pk.SID16 = pk.Generation >= 3 ? trainer.SID16 : (ushort)0;
             pk.OT_Name = trainer.OT;
         }
 
