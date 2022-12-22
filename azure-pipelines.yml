@@ -36,7 +36,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
-    restoreSolution: 'PKHeX.sln'
+    restoreSolution: '$(Build.SourcesDirectory)/PKHeX/PKHeX.sln'
     noCache: true
 
 - task: MSBuild@1
