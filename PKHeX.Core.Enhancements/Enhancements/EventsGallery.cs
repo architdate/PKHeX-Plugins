@@ -54,8 +54,10 @@ namespace PKHeX.Core.Enhancements
         private static void DownloadAndExtractZip(string url, string dest)
         {
             const string temp = "temp.zip";
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
             using (WebClient client = new())
                 client.DownloadFile(new Uri(url), temp);
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
 
             ZipFile.ExtractToDirectory(temp, dest);
             File.Delete(temp);

@@ -19,7 +19,7 @@ namespace AutoModPlugins
             ctrl.Click += SmogonGenning;
         }
 
-        private void SmogonGenning(object sender, EventArgs e)
+        private void SmogonGenning(object? sender, EventArgs e)
         {
             var rough = PKMEditor.PreparePKM();
             GenSmogonSets(rough);

@@ -37,9 +37,9 @@ namespace AutoModPlugins
         public void Initialize(params object[] args)
         {
             Debug.WriteLine($"{LoggingPrefix} Loading {Name}");
-            SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
-            PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);
-            var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);
+            SaveFileEditor = (ISaveFileProvider)(Array.Find(args, z => z is ISaveFileProvider) ?? throw new ArgumentOutOfRangeException("Null ISaveFileProvider"));
+            PKMEditor = (IPKMView)(Array.Find(args, z => z is IPKMView) ?? throw new ArgumentOutOfRangeException("Null IPKMView"));
+            var menu = (ToolStrip)(Array.Find(args, z => z is ToolStrip) ?? throw new ArgumentOutOfRangeException("Null ToolStrip"));
             LoadMenuStrip(menu);
 
             // Match PKHeX Versioning and ALM Settings only on parent plugin

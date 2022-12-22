@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using static PKHeX.Core.Fashion6Female;
 
 namespace PKHeX.Core.Enhancements
 {
@@ -16,8 +19,16 @@ namespace PKHeX.Core.Enhancements
         /// <returns>Page response</returns>
         public static string GetPageText(string address)
         {
-            var request = WebRequest.Create(address);
-            return GetStringResponse(request);
+            var stream = GetStreamFromURL(address);
+            return GetStringResponse(stream);
+        }
+        private static Stream GetStreamFromURL(string url)
+        {
+            using var client = new HttpClient();
+            const string agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36";
+            client.DefaultRequestHeaders.Add("User-Agent", agent);
+            var response = client.GetAsync(url).Result;
+            return response.Content.ReadAsStreamAsync().Result;
         }
 
         /// <summary>
@@ -27,27 +38,24 @@ namespace PKHeX.Core.Enhancements
         /// <returns>Page response</returns>
         public static string DownloadString(string address)
         {
-            var request = (HttpWebRequest)WebRequest.Create(address);
-            request.Method = "GET";
-            request.UserAgent = "PKHeX-Auto-Legality-Mod";
-            request.Accept = "application/json";
-            return GetStringResponse(request);
+            using var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("User-Agent", "PKHeX-Auto-Legality-Mod");
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            var response = client.GetAsync(address).Result;
+            var stream = response.Content.ReadAsStreamAsync().Result;
+            return GetStringResponse(stream);
         }
 
-        private static string GetStringResponse(WebRequest request)
+        private static string GetStringResponse(Stream? dataStream)
         {
-            using var response = request.GetResponse();
-            using var dataStream = response.GetResponseStream();
             if (dataStream == null)
                 return string.Empty;
             using var reader = new StreamReader(dataStream);
             return reader.ReadToEnd();
         }
 
-        private static byte[]? GetByteResponse(WebRequest request)
+        private static byte[]? GetByteResponse(Stream? dataStream)
         {
-            using var response = request.GetResponse();
-            using var dataStream = response.GetResponseStream();
             if (dataStream == null)
                 return null;
             MemoryStream ms = new();
@@ -63,7 +71,9 @@ namespace PKHeX.Core.Enhancements
         /// <returns></returns>
         public static string GPSSPost(byte[] data, string Url = "flagbrew.org")
         {
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
             WebRequest request = WebRequest.Create($"https://{Url}/gpss/share");
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
             request.Method = "POST";
             const string boundary = "-----------";
             request.ContentType = "multipart/form-data; boundary=" + boundary;
@@ -109,7 +119,11 @@ namespace PKHeX.Core.Enhancements
             {
                 var exstr = "Exception: \n";
                 if (e.Status == WebExceptionStatus.ProtocolError)
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     exstr += $"Status Code : {((HttpWebResponse)e.Response).StatusCode}\nStatus Description : {((HttpWebResponse)e.Response).StatusDescription}";
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
                 else
                     exstr += e.Message;
                 return exstr;
@@ -125,10 +139,8 @@ namespace PKHeX.Core.Enhancements
         public static byte[]? GPSSDownload(long code, string Url = "flagbrew.org")
         {
             // code is returned as a long
-            var request = (HttpWebRequest)WebRequest.Create($"https://{Url}/gpss/download/{code}");
-            request.Method = "GET";
-            request.UserAgent = "PKHeX-Auto-Legality-Mod";
-            return GetByteResponse(request);
+            var stream = GetStreamFromURL($"https://{Url}/gpss/download/{code}");
+            return GetByteResponse(stream);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace AutoModPlugins
             var type = sav.GetType();
             var fields = type.GetTypeInfo().DeclaredFields;
             var test = fields.First(z => z.Name == "EditEnv");
-            x = (SaveDataEditor<PictureBox>)test.GetValue(sav);
+            x = (SaveDataEditor<PictureBox>)(test.GetValue(sav) ?? new ArgumentOutOfRangeException("Error with LiveHeXUI init"));
             x.Slots.Publisher.Subscribers.Add(this);
 
             CenterToParent();
@@ -130,7 +130,7 @@ namespace AutoModPlugins
             data.CopyTo(dest, startofs);
         }
 
-        private void ChangeBox(object sender, EventArgs e)
+        private void ChangeBox(object? sender, EventArgs e)
         {
             if (checkBox1.Checked && Remote.Bot.Connected)
                 Remote.ChangeBox(ViewIndex);
@@ -503,7 +503,7 @@ namespace AutoModPlugins
             }
 
             var write = false;
-            if (txt.IsSpecialBlock(Remote.Bot.Version, out var v))
+            if (txt.IsSpecialBlock(Remote.Bot.Version, out var v) && v != null)
             {
                 // ReSharper disable once SuspiciousTypeConversion.Global
                 var cc = (ContainerControl)SAV;
@@ -608,7 +608,7 @@ namespace AutoModPlugins
                 if (props is null)
                     return false;
 
-                var allblocks = props.GetValue(sav);
+                var allblocks = props.GetValue(sav) ?? throw new ArgumentOutOfRangeException("Blocks not present");
                 var blockprop = allblocks.GetType().GetProperty(subblocks[0].Name);
                 if (allblocks is SCBlockAccessor scba && blockprop == null)
                     sb = scba.GetBlock(subblocks[0].SCBKey);

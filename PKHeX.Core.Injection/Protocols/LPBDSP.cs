@@ -38,7 +38,9 @@ namespace PKHeX.Core.Injection
             { "Underground", "B_OpenUGSEditor_Click" }
         };
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         public static readonly IEnumerable<Type> types = Assembly.GetAssembly(typeof(ICustomBlock)).GetTypes().Where(t => typeof(ICustomBlock).IsAssignableFrom(t) && !t.IsInterface);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         private static ulong[] GetPokemonPointers(this PokeSysBotMini psb, int box)
         {
@@ -345,7 +347,7 @@ namespace PKHeX.Core.Injection
             }
             try
             {
-                var data = sav.GetType().GetProperty(block).GetValue(sav);
+                var data = (sav.GetType().GetProperty(block) ?? throw new ArgumentOutOfRangeException("Invalid Block")).GetValue(sav);
 
                 if (data is IDataIndirect sb)
                 {

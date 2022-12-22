@@ -25,8 +25,8 @@ namespace AutoModPlugins
             ctrl.Click += ImportPaste;
             ctrl.Name = "Menu_PasteImporter";
             modmenu.DropDownItems.Add(ctrl);
-            var parent = modmenu.OwnerItem;
-            var form = parent.GetCurrentParent().Parent.FindForm();
+            ToolStripItem parent = modmenu.OwnerItem;
+            var form = (parent.GetCurrentParent().Parent ?? throw new ArgumentOutOfRangeException("Parent not found")).FindForm();
             if (form is not null)
                 form.Icon = Resources.icon;
 
@@ -34,7 +34,7 @@ namespace AutoModPlugins
             ShowdownSetLoader.SaveFileEditor = SaveFileEditor;
         }
 
-        private static void ImportPaste(object sender, EventArgs e)
+        private static void ImportPaste(object? sender, EventArgs e)
         {
             // Check for showdown data in clipboard
             var text = GetTextShowdownData();
@@ -60,6 +60,12 @@ namespace AutoModPlugins
             if (!WinFormsUtil.OpenSAVPKMDialog(new[] { "txt" }, out var path))
             {
                 WinFormsUtil.Alert("No data provided.");
+                return null;
+            }
+
+            if (path == null)
+            {
+                WinFormsUtil.Alert("Path invalid.");
                 return null;
             }
 

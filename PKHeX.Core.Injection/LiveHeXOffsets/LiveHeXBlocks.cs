@@ -13,7 +13,7 @@ namespace PKHeX.Core.Injection
         /// <param name="lv">LiveHeX version being edited</param>
         /// <param name="value">string value of the form to open</param>
         /// <returns>Boolean indicating if a special form needs to be opened</returns>
-        public static bool IsSpecialBlock(this string block, LiveHeXVersion lv, out string value)
+        public static bool IsSpecialBlock(this string block, LiveHeXVersion lv, out string? value)
         {
             value = string.Empty;
             if (LPBasic.SupportedVersions.Contains(lv))

@@ -26,7 +26,7 @@ namespace AutoModPlugins
             modmenu.DropDownItems.Add(ctrl);
         }
 
-        private void GPSSUpload(object sender, EventArgs e)
+        private void GPSSUpload(object? sender, EventArgs e)
         {
             var pk = PKMEditor.PreparePKM();
             byte[] rawdata = pk.Data;
@@ -35,7 +35,7 @@ namespace AutoModPlugins
             WinFormsUtil.Alert(postval);
         }
 
-        private void GPSSDownload(object sender, EventArgs e)
+        private void GPSSDownload(object? sender, EventArgs e)
         {
             if (Clipboard.ContainsText())
             {

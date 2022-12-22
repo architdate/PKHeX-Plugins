@@ -2,9 +2,6 @@
 
 using System.Text;
 using System.Runtime.InteropServices;
-using System.Security.Permissions;
-
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = true)]
 
 namespace System.Windows.Forms
 {
@@ -145,7 +142,7 @@ namespace System.Windows.Forms
             if (nCode < 0)
                 return CallNextHookEx(hHook, nCode, wParam, lParam);
 
-            CWPRETSTRUCT msg = (CWPRETSTRUCT)Marshal.PtrToStructure(lParam, typeof(CWPRETSTRUCT));
+            CWPRETSTRUCT msg = (CWPRETSTRUCT)(Marshal.PtrToStructure(lParam, typeof(CWPRETSTRUCT)) ?? throw new ArgumentOutOfRangeException(nameof(CWPRETSTRUCT)));
             IntPtr hook = hHook;
 
             if (msg.message != WM_INITDIALOG)

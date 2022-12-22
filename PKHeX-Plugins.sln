@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29613.14
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoModPlugins", "AutoLegalityMod\AutoModPlugins.csproj", "{8ED04749-56CC-488C-9D85-B1BE83EF8F0C}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKHeX.Core.AutoMod", "PKHeX.Core.AutoMod\PKHeX.Core.AutoMod.csproj", "{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{C280F954-8B81-4014-881C-D3FBF0CC2E44}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QRPlugins", "QRPlugins\QRPlugins.csproj", "{38889E43-2C14-4AC4-AF3F-BE40660459FC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKHeX.Core.Injection", "PKHeX.Core.Injection\PKHeX.Core.Injection.csproj", "{DB4DA5C0-DFB3-490E-90E1-CDD9330267F2}"
 EndProject
@@ -35,10 +33,6 @@ Global
 		{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF5EC3E5-9D9D-4B54-BBF3-9B943DED8B8A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38889E43-2C14-4AC4-AF3F-BE40660459FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38889E43-2C14-4AC4-AF3F-BE40660459FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38889E43-2C14-4AC4-AF3F-BE40660459FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38889E43-2C14-4AC4-AF3F-BE40660459FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB4DA5C0-DFB3-490E-90E1-CDD9330267F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB4DA5C0-DFB3-490E-90E1-CDD9330267F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB4DA5C0-DFB3-490E-90E1-CDD9330267F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,7 +47,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8ED04749-56CC-488C-9D85-B1BE83EF8F0C} = {C280F954-8B81-4014-881C-D3FBF0CC2E44}
-		{38889E43-2C14-4AC4-AF3F-BE40660459FC} = {C280F954-8B81-4014-881C-D3FBF0CC2E44}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95162B5A-0896-469B-8682-1266DDCD8749}

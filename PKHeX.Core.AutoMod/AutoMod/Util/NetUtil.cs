@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 
 namespace PKHeX.Core.AutoMod
@@ -26,13 +27,11 @@ namespace PKHeX.Core.AutoMod
 
         private static Stream GetStreamFromURL(string url)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-
-            // The GitHub API will fail if no user agent is provided
-            httpWebRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36";
-
-            var httpWebResponse = httpWebRequest.GetResponse();
-            return httpWebResponse.GetResponseStream();
+            using var client = new HttpClient();
+            const string agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36";
+            client.DefaultRequestHeaders.Add("User-Agent", agent);
+            var response = client.GetAsync(url).Result;
+            return response.Content.ReadAsStreamAsync().Result;
         }
 
         private static readonly Regex LatestGitTagRegex = new("\\\"tag_name\"\\s*\\:\\s*\\\"([0-9]+\\.[0-9]+\\.[0-9]+)"); // Match `"tag_name": "18.12.02"`. Group 1 is `18.12.02`

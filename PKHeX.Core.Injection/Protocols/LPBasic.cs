@@ -89,7 +89,8 @@ namespace PKHeX.Core.Injection
             try
             {
                 var offsets = SCBlocks[psb.Version].Where(z => z.Display == block);
-                var allblocks = sav.GetType().GetProperty("Blocks").GetValue(sav);
+                var props = sav.GetType().GetProperty("Blocks") ?? throw new ArgumentOutOfRangeException("Blocks don't exist");
+                var allblocks = props.GetValue(sav);
                 if (allblocks is not SCBlockAccessor scba)
                     return false;
                 foreach (var sub in offsets)
@@ -119,7 +120,8 @@ namespace PKHeX.Core.Injection
 
         public static void WriteBlocksFromSAV(PokeSysBotMini psb, string block, SaveFile sav)
         {
-            var allblocks = sav.GetType().GetProperty("Blocks").GetValue(sav);
+            var props = sav.GetType().GetProperty("Blocks") ?? throw new ArgumentOutOfRangeException("Blocks don't exist");
+            var allblocks = props.GetValue(sav);
             if (allblocks is not SCBlockAccessor scba)
                 return;
             var offsets = SCBlocks[psb.Version].Where(z => z.Display == block);

@@ -18,7 +18,7 @@ namespace AutoModPlugins
             modmenu.DropDownItems.Add(ctrl);
         }
 
-        private static void URLGen(object sender, EventArgs e)
+        private static void URLGen(object? sender, EventArgs e)
         {
             var url = Clipboard.GetText().Trim();
             TeamPasteInfo info;

@@ -19,7 +19,7 @@ namespace AutoModPlugins
             modmenu.DropDownItems.Add(ctrl);
         }
 
-        private void GenLivingDex(object sender, EventArgs e)
+        private void GenLivingDex(object? sender, EventArgs e)
         {
             var prompt = WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Generate a Living Dex?");
             if (prompt != DialogResult.Yes)

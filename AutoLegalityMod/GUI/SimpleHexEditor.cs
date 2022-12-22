@@ -34,7 +34,7 @@ namespace AutoModPlugins.GUI
             Bytes = originalBytes;
         }
 
-        public void AutoRefresh(object source, ElapsedEventArgs e)
+        public void AutoRefresh(object? source, ElapsedEventArgs? e)
         {
             if (!CB_AutoRefresh.Checked || psb is null)
             {

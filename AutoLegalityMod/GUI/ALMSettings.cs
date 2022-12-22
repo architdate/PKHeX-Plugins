@@ -51,8 +51,9 @@ namespace AutoModPlugins.GUI
             EditSettingsProperties(obj);
             PG_Settings.SelectedObject = obj;
             this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
-
-            this.CenterToForm(FindForm());
+            var parent = FindForm();
+            if (parent != null)
+                this.CenterToForm(parent);
         }
 
         private void SettingsEditor_KeyDown(object sender, KeyEventArgs e)
@@ -73,7 +74,10 @@ namespace AutoModPlugins.GUI
         {
             var lang = WinFormsTranslator.CurrentLanguage;
             var translation = WinFormsTranslator.GetContext(lang);
-            var ctd = new PropertyOverridingTypeDescriptor(TypeDescriptor.GetProvider(_settings).GetTypeDescriptor(_settings));
+            var type_descriptor = TypeDescriptor.GetProvider(_settings).GetTypeDescriptor(_settings);
+            if (type_descriptor == null)
+                return;
+            var ctd = new PropertyOverridingTypeDescriptor(type_descriptor);
             foreach (var pd in TypeDescriptor.GetProperties(_settings).OfType<PropertyDescriptor>())
             {
                 var s = Array.Find(settings, z => z.SettingName == pd.Name);
@@ -87,7 +91,8 @@ namespace AutoModPlugins.GUI
                 var category = "Uncategorized Settings";
                 if (s.Category != null)
                     category = translation.GetTranslatedText($"{s.SettingName}_category", s.Category);
-
+                if (desc == null || category == null)
+                    throw new ArgumentOutOfRangeException("Category / Description translations are null");
                 PropertyDescriptor pd2 = TypeDescriptor.CreateProperty(_settings.GetType(), pd, new DescriptionAttribute(desc), new CategoryAttribute(category));
                 ctd.OverrideProperty(pd2);
             }
@@ -108,7 +113,7 @@ namespace AutoModPlugins.GUI
             overridePds[pd.Name] = pd;
         }
 
-        public override object GetPropertyOwner(PropertyDescriptor pd)
+        public override object GetPropertyOwner(PropertyDescriptor? pd)
         {
             var o = base.GetPropertyOwner(pd);
             return o ?? this;
@@ -129,7 +134,7 @@ namespace AutoModPlugins.GUI
             return GetPropertiesImpl(base.GetProperties());
         }
 
-        public override PropertyDescriptorCollection GetProperties(Attribute[] attributes)
+        public override PropertyDescriptorCollection GetProperties(Attribute[]? attributes)
         {
             return GetPropertiesImpl(base.GetProperties(attributes));
         }
@@ -144,7 +149,7 @@ namespace AutoModPlugins.GUI
             this.ctd = ctd;
         }
 
-        public override ICustomTypeDescriptor GetTypeDescriptor(Type objectType, object instance)
+        public override ICustomTypeDescriptor GetTypeDescriptor(Type? objectType, object? instance)
         {
             return ctd;
         }

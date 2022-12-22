@@ -370,10 +370,10 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        private void GetGame(object sender, InfoReadyEventArgs e)
+        private void GetGame(object? sender, InfoReadyEventArgs e)
         {
             var pnamestr = new[] { "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc", "momiji", "momiji" };
-            string pname;
+            string? pname;
             string log = e.Info;
             if ((pname = Array.Find(pnamestr, log.Contains)) == null)
                 return;
@@ -392,19 +392,21 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        private void HandleDataReady(object sender, DataReadyEventArgs e)
+        private void HandleDataReady(object? sender, DataReadyEventArgs e)
         {
             // We move data processing to a separate thread. This way even if processing takes a long time, the netcode doesn't hang.
-            if (_waitingForData.TryGetValue(e.Seq, out DataReadyWaiting args))
+            if (_waitingForData.TryGetValue(e.Seq, out DataReadyWaiting? args) && args != null)
             {
                 Array.Copy(e.Data, args.Data, Math.Min(e.Data.Length, args.Data.Length));
+#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
                 Thread t = new(new ParameterizedThreadStart(args.Handler));
+#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
                 t.Start(args);
                 _waitingForData.Remove(e.Seq);
             }
         }
 
-        private void ConnectCheck(object sender, EventArgs e)
+        private void ConnectCheck(object? sender, EventArgs e)
         {
             ListProcess();
             IsConnected = true;

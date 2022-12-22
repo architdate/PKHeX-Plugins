@@ -35,7 +35,9 @@ namespace PKHeX.Core.Injection
                 // Find and open the usb device.
                 foreach (UsbRegistry ur in UsbDevice.AllDevices)
                 {
-                    ur.DeviceProperties.TryGetValue("Address", out object port);
+                    ur.DeviceProperties.TryGetValue("Address", out object? port);
+                    if (port == null)
+                        continue;
                     if (ur.Vid == 1406 && ur.Pid == 12288 && Port == (int)port)
                         SwDevice = ur.Device;
                 }

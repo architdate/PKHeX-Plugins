@@ -182,7 +182,7 @@ namespace AutoModPlugins
                 var argCount = constructors[0].GetParameters().Length;
                 try
                 {
-                    var _ = (Form)Activator.CreateInstance(t, new object[argCount]);
+                    var _ = (Form)(Activator.CreateInstance(t, new object[argCount]) ?? throw new ArgumentOutOfRangeException("Null Activator instance"));
                 }
                 catch
                 {

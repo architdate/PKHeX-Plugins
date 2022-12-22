@@ -18,7 +18,7 @@ namespace AutoModPlugins
             modmenu.DropDownItems.Add(ctrl);
         }
 
-        private static void SettingsForm(object sender, EventArgs e)
+        private static void SettingsForm(object? sender, EventArgs e)
         {
             var settings = AutoLegality.Default;
             using var form = new ALMSettings(settings);

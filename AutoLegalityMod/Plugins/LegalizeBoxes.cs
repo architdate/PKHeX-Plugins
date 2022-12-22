@@ -20,7 +20,7 @@ namespace AutoModPlugins
             modmenu.DropDownItems.Add(ctrl);
         }
 
-        private void Legalize(object sender, EventArgs e)
+        private void Legalize(object? sender, EventArgs e)
         {
             var box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
             if (!box)

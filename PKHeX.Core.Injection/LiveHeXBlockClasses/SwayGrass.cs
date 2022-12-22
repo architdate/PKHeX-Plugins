@@ -29,7 +29,9 @@ namespace PKHeX.Core.Injection
                 for (int i = 0; i < result.Length; i++)
                 {
                     var slice = Data.Slice(0x20 + (i * Grass.SIZE), Grass.SIZE);
-                    result[i] = slice.ToClass<Grass>();
+                    var c = slice.ToClass<Grass>();
+                    if (c != null)
+                        result[i] = c;
                 }
                 return result;
             }
