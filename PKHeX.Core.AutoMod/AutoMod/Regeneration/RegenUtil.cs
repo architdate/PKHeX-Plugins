@@ -159,7 +159,7 @@ namespace PKHeX.Core.AutoMod
                 return OT;
             var max = Legal.GetMaxLengthOT(game.GetGeneration(), (LanguageID)lang);
             OT = OT[..Math.Min(OT.Length, max)];
-            if (game.GetGeneration() >= 8) // switch keyboard only has latin characters, --don't mutate
+            if (GameVersion.GG.Contains(game) || game.GetGeneration() >= 8) // switch keyboard only has latin characters, --don't mutate
                 return OT;
             var full = lang is LanguageID.Japanese or LanguageID.Korean or LanguageID.ChineseS or LanguageID.ChineseT;
             if (full && GlyphLegality.ContainsHalfWidth(OT))
