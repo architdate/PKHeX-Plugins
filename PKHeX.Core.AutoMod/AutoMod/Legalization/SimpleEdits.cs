@@ -391,15 +391,13 @@ namespace PKHeX.Core.AutoMod
                 pb7.ResetCalculatedValues();
         }
 
-        public static void SetAwakenedValues(this PKM pk, IBattleTemplate set, bool isGO)
+        public static void SetAwakenedValues(this PKM pk, IBattleTemplate set)
         {
             if (pk is not IAwakened pb7)
                 return;
             Span<byte> result = stackalloc byte[6];
             AwakeningUtil.SetExpectedMinimumAVs(result, (PB7)pb7);
             var EVs = set.EVs;
-            if (isGO)
-                EVs = set.EVs.Select(z => z < 2 ? 2 : z).ToArray();
             pb7.AV_HP  = Math.Max(result[0], (byte)EVs[0]);
             pb7.AV_ATK = Math.Max(result[1], (byte)EVs[1]);
             pb7.AV_DEF = Math.Max(result[2], (byte)EVs[2]);

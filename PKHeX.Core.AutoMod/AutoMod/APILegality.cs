@@ -676,7 +676,7 @@ namespace PKHeX.Core.AutoMod
                 pk.IVs = set.IVs;
                 if (pk is IAwakened)
                 {
-                    pk.SetAwakenedValues(set, enc is EncounterSlot7GO);
+                    pk.SetAwakenedValues(set);
                     return;
                 }
                 return;
