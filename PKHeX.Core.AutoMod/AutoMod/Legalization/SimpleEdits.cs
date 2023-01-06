@@ -396,7 +396,7 @@ namespace PKHeX.Core.AutoMod
             if (pk is not IAwakened pb7)
                 return;
             Span<byte> result = stackalloc byte[6];
-            AwakeningUtil.GetExpectedMinimumAVs(result, (PB7)pb7);
+            AwakeningUtil.SetExpectedMinimumAVs(result, (PB7)pb7);
             var EVs = set.EVs;
             if (isGO)
                 EVs = set.EVs.Select(z => z < 2 ? 2 : z).ToArray();

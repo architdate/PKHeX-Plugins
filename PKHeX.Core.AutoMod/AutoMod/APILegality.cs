@@ -543,11 +543,11 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">showdown set to base hypertraining on</param>
         private static void SetHyperTrainingFlags(this PKM pk, IBattleTemplate set)
         {
-            if (pk is not IHyperTrain t || pk.CurrentLevel != 100)
+            if (pk is not IHyperTrain t)
                 return;
 
             // Game exceptions (IHyperTrain exists because of the field but game disallows hypertraining)
-            if (!t.IsHyperTrainingAvailable(EvolutionHistory.Empty))
+            if (!pk.Context.IsHyperTrainingAvailable(pk.CurrentLevel))
                 return;
 
             pk.HyperTrain(set.IVs);
