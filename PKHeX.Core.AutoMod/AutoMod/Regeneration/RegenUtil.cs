@@ -102,7 +102,7 @@ namespace PKHeX.Core.AutoMod
         {
             var result = new List<string>();
             foreach (var s in set.Filters)
-                result.Add($"{(s.Evaluator ? "=" : "!")}{s.PropertyName}={s.PropertyValue}");
+                result.Add($"{StringInstruction.Prefixes[(int)s.Comparer]}{s.PropertyName}={s.PropertyValue}");
             foreach (var s in set.Instructions)
                 result.Add($".{s.PropertyName}={s.PropertyValue}");
             return string.Join(Environment.NewLine, result);
@@ -112,7 +112,7 @@ namespace PKHeX.Core.AutoMod
         {
             var result = new List<string>();
             foreach (var s in filters)
-                result.Add($"{prefix}{(s.Evaluator ? "=" : "!")}{s.PropertyName}={s.PropertyValue}");
+                result.Add($"{prefix}{StringInstruction.Prefixes[(int)s.Comparer]}{s.PropertyName}={s.PropertyValue}");
             return string.Join(Environment.NewLine, result);
         }
 

@@ -137,9 +137,9 @@ namespace AutoModPlugins.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public System.Collections.Generic.List<global::PKHeX.Core.EncounterOrder> PrioritizeEncounters {
+        public System.Collections.Generic.List<global::PKHeX.Core.EncounterTypeGroup> PrioritizeEncounters {
             get {
-                return ((System.Collections.Generic.List<global::PKHeX.Core.EncounterOrder>)(this["PrioritizeEncounters"]));
+                return ((System.Collections.Generic.List<global::PKHeX.Core.EncounterTypeGroup>)(this["PrioritizeEncounters"]));
             }
             set {
                 this["PrioritizeEncounters"] = value;

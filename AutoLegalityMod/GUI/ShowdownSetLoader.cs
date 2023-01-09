@@ -19,9 +19,9 @@ namespace AutoModPlugins
         public static ISaveFileProvider SaveFileEditor { private get; set; } = null!;
         public static IPKMView PKMEditor { private get; set; } = null!;
 
-        private static readonly EncounterOrder[] EncounterPriority =
+        private static readonly EncounterTypeGroup[] EncounterPriority =
         {
-            EncounterOrder.Egg, EncounterOrder.Static, EncounterOrder.Trade, EncounterOrder.Slot, EncounterOrder.Mystery,
+            EncounterTypeGroup.Egg, EncounterTypeGroup.Static, EncounterTypeGroup.Trade, EncounterTypeGroup.Slot, EncounterTypeGroup.Mystery,
         };
 
         /// <summary>

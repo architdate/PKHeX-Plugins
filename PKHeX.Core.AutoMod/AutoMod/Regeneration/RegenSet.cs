@@ -28,12 +28,13 @@ namespace PKHeX.Core.AutoMod
 
         public RegenSet(ICollection<string> lines, int format, Shiny shiny = Shiny.Never)
         {
+            var modified = lines.Select(z => z.Replace(">=", "≥").Replace("<=", "≤"));
             Extra = new RegenSetting {ShinyType = shiny};
-            HasExtraSettings = Extra.SetRegenSettings(lines);
-            HasTrainerSettings = RegenUtil.GetTrainerInfo(lines, format, out var tr);
+            HasExtraSettings = Extra.SetRegenSettings(modified);
+            HasTrainerSettings = RegenUtil.GetTrainerInfo(modified, format, out var tr);
             Trainer = tr;
-            Batch = new StringInstructionSet(lines.ToArray().AsSpan());
-            EncounterFilters = RegenUtil.GetEncounterFilters(lines);
+            Batch = new StringInstructionSet(modified.ToArray().AsSpan());
+            EncounterFilters = RegenUtil.GetEncounterFilters(modified);
         }
 
         public string GetSummary()

@@ -197,7 +197,17 @@ namespace PKHeX.Core.AutoMod
                 foreach (var f in filters)
                 {
                     if (f.PropertyName == nameof(PKM.Version) && int.TryParse(f.PropertyValue, out int gv))
-                        gamelist = f.Evaluator ? new[] { (GameVersion)gv } : gamelist.Where(z => z != (GameVersion)gv).ToArray();
+                        //gamelist = f.Comparer == InstructionComparer.IsEqual ? new[] { (GameVersion)gv } : gamelist.Where(z => z != (GameVersion)gv).ToArray();
+                        gamelist = f.Comparer switch
+                        {
+                            InstructionComparer.IsEqual => new[] { (GameVersion)gv },
+                            InstructionComparer.IsNotEqual => gamelist.Where(z => z != (GameVersion)gv).ToArray(),
+                            InstructionComparer.IsGreaterThan => gamelist.Where(z => (int)z > gv).ToArray(),
+                            InstructionComparer.IsGreaterThanOrEqual => gamelist.Where(z => (int)z >= gv).ToArray(),
+                            InstructionComparer.IsLessThan => gamelist.Where(z => (int)z < gv).ToArray(),
+                            InstructionComparer.IsLessThanOrEqual => gamelist.Where(z => (int)z <= gv).ToArray(),
+                            _ => gamelist,
+                        };
                 }
             }
             if (PrioritizeGame)
