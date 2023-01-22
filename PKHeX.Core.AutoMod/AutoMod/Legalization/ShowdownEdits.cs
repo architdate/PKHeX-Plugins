@@ -111,6 +111,7 @@ namespace PKHeX.Core.AutoMod
         public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, byte Form, IEncounterable enc, LanguageID? lang = null)
         {
             pk.ApplySetGender(set);
+            pk.SetRecordFlags(set.Moves); // Set record flags before evolution (TODO: what if middle evolution has exclusive record moves??)
 
             var evolutionRequired = pk.Species != set.Species;
             var formchange = Form != pk.Form;
