@@ -16,7 +16,7 @@ Regular builds will usually succeed unless there are changes that are incompatib
 - These DLLs should be placed into a `plugins` directory where the PKHeX executable is. You may also combine these DLL files using ILMerge.
    - The compiled DLLs for AutoLegality will be in the `AutoLegalityMod/bin/Release/net46` directory:
      * AutoModPlugins.dll
-     * LibUsbDotNet.LibUsbDotNet.dll
+     * LibUsbDotNet.dll
      * NtrSharp.dll
      * PKHeX.Core.AutoMod.dll
      * PKHeX.Core.Enhancements.dll
