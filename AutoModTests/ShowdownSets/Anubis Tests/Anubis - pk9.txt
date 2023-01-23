@@ -206,6 +206,13 @@ Ball: Master Ball
 - Assurance
 - Fury Swipes
 
+Perrserker (F)
+IVs: 12 HP / 17 Def / 12 SpD
+Ability: Tough Claws
+Tera Type: Steel
+Gentle Nature
+- Flash Cannon
+
 Psyduck (F)
 IVs: 16 HP / 25 Atk / 6 Def / 12 SpA / 18 SpD / 15 Spe
 Ability: Damp
@@ -4248,7 +4255,7 @@ Adamant Nature
 .Met_Location=107
 .Version=50
 ~=Generation=9
-- Scary Face
+- Encore
 - Taunt
 - Knock Off
 - Fake Tears
@@ -5442,6 +5449,17 @@ Ball: Master Ball
 - Rock Tomb
 - Roar
 - Rock Slide
+
+Lycanroc-Dusk (M)
+IVs: 2 HP / 6 SpA / 16 SpD
+Ability: Tough Claws
+Tera Type: Psychic
+Naughty Nature
+Ball: Master Ball
+=Met_Location=101
+.Version=50
+~=Generation=9
+- Mud-Slap
 
 Toxapex (M)
 IVs: 17 HP / 17 Atk / 4 Def / 5 SpA
