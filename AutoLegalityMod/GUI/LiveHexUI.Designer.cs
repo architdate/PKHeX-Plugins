@@ -61,12 +61,12 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.CB_BlockName = new System.Windows.Forms.ComboBox();
             this.B_EditBlock = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.L_Block = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.RB_Absolute = new System.Windows.Forms.RadioButton();
             this.RB_Main = new System.Windows.Forms.RadioButton();
             this.RB_Heap = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.L_OffsRelative = new System.Windows.Forms.Label();
             this.TB_Pointer = new AutoModPlugins.HexTextBox();
             this.RamOffset = new AutoModPlugins.HexTextBox();
             this.TB_Offset = new AutoModPlugins.HexTextBox();
@@ -425,7 +425,7 @@
             // 
             this.groupBox5.Controls.Add(this.CB_BlockName);
             this.groupBox5.Controls.Add(this.B_EditBlock);
-            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.L_Block);
             this.groupBox5.Enabled = false;
             this.groupBox5.Location = new System.Drawing.Point(12, 378);
             this.groupBox5.Name = "groupBox5";
@@ -454,21 +454,21 @@
             this.B_EditBlock.UseVisualStyleBackColor = true;
             this.B_EditBlock.Click += new System.EventHandler(this.B_EditBlock_Click);
             // 
-            // label2
+            // L_Block
             // 
-            this.label2.Location = new System.Drawing.Point(10, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 20);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Block:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_Block.Location = new System.Drawing.Point(10, 18);
+            this.L_Block.Name = "L_Block";
+            this.L_Block.Size = new System.Drawing.Size(42, 20);
+            this.L_Block.TabIndex = 17;
+            this.L_Block.Text = "Block:";
+            this.L_Block.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.RB_Absolute);
             this.groupBox6.Controls.Add(this.RB_Main);
             this.groupBox6.Controls.Add(this.RB_Heap);
-            this.groupBox6.Controls.Add(this.label1);
+            this.groupBox6.Controls.Add(this.L_OffsRelative);
             this.groupBox6.Enabled = false;
             this.groupBox6.Location = new System.Drawing.Point(12, 322);
             this.groupBox6.Name = "groupBox6";
@@ -509,14 +509,14 @@
             this.RB_Heap.Text = "Heap";
             this.RB_Heap.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // L_OffsRelative
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "RAM offsets relative to:";
+            this.L_OffsRelative.AutoSize = true;
+            this.L_OffsRelative.Location = new System.Drawing.Point(13, 21);
+            this.L_OffsRelative.Name = "L_OffsRelative";
+            this.L_OffsRelative.Size = new System.Drawing.Size(117, 13);
+            this.L_OffsRelative.TabIndex = 0;
+            this.L_OffsRelative.Text = "RAM offsets relative to:";
             // 
             // TB_Pointer
             // 
@@ -628,11 +628,11 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox CB_BlockName;
         private System.Windows.Forms.Button B_EditBlock;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label L_Block;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.RadioButton RB_Absolute;
         private System.Windows.Forms.RadioButton RB_Main;
         private System.Windows.Forms.RadioButton RB_Heap;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label L_OffsRelative;
     }
 }
