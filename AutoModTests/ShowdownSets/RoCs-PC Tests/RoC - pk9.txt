@@ -1612,7 +1612,7 @@ Ability: Truant
 Tera Type: Ghost
 Level: 55
 Adamant Nature
-=Met_Location=48
+.Met_Location=48
 .Version=50
 ~=Generation=9
 - Shadow Claw

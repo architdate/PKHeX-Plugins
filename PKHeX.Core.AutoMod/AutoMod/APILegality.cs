@@ -663,7 +663,7 @@ namespace PKHeX.Core.AutoMod
         {
             // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
             var hascurry = set.GetBatchValue("RibbonMarkCurry");
-            var changeec = hascurry != null && hascurry.ToLower() == "true" && AllowBatchCommands;
+            var changeec = hascurry != null && string.Equals(hascurry, "true", StringComparison.OrdinalIgnoreCase) && AllowBatchCommands;
 
             if (IsPIDIVSet(pk, enc) && !changeec)
                 return;
@@ -849,7 +849,7 @@ namespace PKHeX.Core.AutoMod
                 const byte rollCount = 1;
                 const byte undefinedSize = 0;
                 var pi = PersonalTable.SV.GetFormEntry(pk.Species, pk.Form);
-                var param = new GenerateParam9((byte)pi.Gender, enc.FlawlessIVCount, rollCount,
+                var param = new GenerateParam9(pk.Species, pi.Gender, enc.FlawlessIVCount, rollCount,
                     undefinedSize, undefinedSize, undefinedSize,
                     enc.Ability, enc.Shiny);
                 enc.TryApply32(pk, seed, param, EncounterCriteria.Unrestricted);

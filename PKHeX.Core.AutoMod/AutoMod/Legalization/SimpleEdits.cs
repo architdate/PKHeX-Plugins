@@ -379,9 +379,9 @@ namespace PKHeX.Core.AutoMod
         {
             bool neverOT = !HistoryVerifier.GetCanOTHandle(enc, pk, enc.Generation);
             if (enc.Generation <= 2)
-                pk.OT_Friendship = GetBaseFriendship(7, pk.Species, pk.Form);  // VC transfers use SM personal info
+                pk.OT_Friendship = GetBaseFriendship(EntityContext.Gen7, pk.Species, pk.Form);  // VC transfers use SM personal info
             else if (neverOT)
-                pk.OT_Friendship = GetBaseFriendship(enc, enc.Generation);
+                pk.OT_Friendship = GetBaseFriendship(enc);
             else pk.CurrentFriendship = pk.HasMove(218) ? 0 : 255;
         }
 
@@ -471,23 +471,26 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static int GetBaseFriendship(IEncounterTemplate enc, int generation) => enc switch
+        private static int GetBaseFriendship(IEncounterTemplate enc) => enc switch
         {
             IFixedOTFriendship f => f.OT_Friendship,
             { Version: GameVersion.BD or GameVersion.SP } => PersonalTable.SWSH.GetFormEntry(enc.Species, enc.Form).BaseFriendship,
-            _ => GetBaseFriendship(generation, enc.Species, enc.Form),
+            _ => GetBaseFriendship(enc.Context, enc.Species, enc.Form),
         };
 
-        private static int GetBaseFriendship(int gen, ushort species, byte form)
+        private static int GetBaseFriendship(EntityContext context, ushort species, byte form)
         {
-            return gen switch
+            return context switch
             {
-                1 => PersonalTable.USUM[species].BaseFriendship,
-                2 => PersonalTable.USUM[species].BaseFriendship,
+                EntityContext.Gen1 => PersonalTable.USUM[species].BaseFriendship,
+                EntityContext.Gen2 => PersonalTable.USUM[species].BaseFriendship,
 
-                6 => PersonalTable.AO[species].BaseFriendship,
-                7 => PersonalTable.USUM[species].BaseFriendship,
-                8 => PersonalTable.SWSH.GetFormEntry(species, form).BaseFriendship,
+                EntityContext.Gen6 => PersonalTable.AO[species].BaseFriendship,
+                EntityContext.Gen7 => PersonalTable.USUM[species].BaseFriendship,
+                EntityContext.Gen8 => PersonalTable.SWSH.GetFormEntry(species, form).BaseFriendship,
+                EntityContext.Gen8a => PersonalTable.LA.GetFormEntry(species, form).BaseFriendship,
+                EntityContext.Gen8b => PersonalTable.BDSP.GetFormEntry(species, form).BaseFriendship,
+                EntityContext.Gen9 => PersonalTable.SV.GetFormEntry(species, form).BaseFriendship,
                 _ => throw new IndexOutOfRangeException(),
             };
         }
