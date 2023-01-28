@@ -12,6 +12,8 @@ namespace PKHeX.Core.AutoMod
 
             var split = Split(lines);
             bool any = false;
+            int TID7 = -1;
+            int SID7 = -1;
             foreach (var s in split)
             {
                 var key = s.Key;
@@ -21,11 +23,11 @@ namespace PKHeX.Core.AutoMod
                     case "OT":
                         sti.OT = value;
                         break;
-                    case "TID" when ushort.TryParse(value, out ushort tid) && tid >= 0:
-                        sti.TID16 = tid;
+                    case "TID" when int.TryParse(value, out int tid) && tid >= 0:
+                        TID7 = tid;
                         break;
-                    case "SID" when ushort.TryParse(value, out ushort sid) && sid >= 0:
-                        sti.SID16 = sid;
+                    case "SID" when int.TryParse(value, out int sid) && sid >= 0:
+                        SID7 = sid;
                         break;
                     case "OTGender":
                         sti.Gender = value is "Female" or "F" ? 1 : 0;
@@ -37,12 +39,14 @@ namespace PKHeX.Core.AutoMod
                 any = true;
             }
             tr = sti;
-            if (!any || format < 7)
+            if (!any || (TID7 < 0 && SID7 < 0))
                 return any;
+            TID7 = Math.Max(TID7, 0);
+            SID7 = Math.Max(SID7, 0);
             const int mil = 1_000_000;
-            uint repack = ((uint)sti.SID16 * mil) + sti.TID16;
-            sti.TID16 = (ushort)(repack & 0xFFFF);
-            sti.SID16 = (ushort)(repack >> 16);
+            uint repack = ((uint)SID7 * mil) + (uint)TID7;
+            tr.TID16 = format < 7 ? (ushort)TID7 : (ushort)(repack & 0xFFFF);
+            tr.SID16 = format < 7 ? (ushort)SID7 : (ushort)(repack >> 16);
             return true;
         }
 
@@ -78,14 +82,14 @@ namespace PKHeX.Core.AutoMod
 
         public static string GetSummary(ITrainerInfo trainer)
         {
-            var tid = trainer.TID16;
-            var sid = trainer.SID16;
+            int tid = trainer.TID16;
+            int sid = trainer.SID16;
             if (trainer.Generation >= 7)
             {
                 const int mil = 1_000_000;
                 uint repack = ((uint)sid << 16) + (uint)tid;
-                tid = (ushort)(repack % mil);
-                sid = (ushort)(repack / mil);
+                tid = (int)(repack % mil);
+                sid = (int)(repack / mil);
             }
 
             var result = new[]
