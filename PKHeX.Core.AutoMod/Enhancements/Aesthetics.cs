@@ -1103,13 +1103,14 @@ namespace PKHeX.Core.AutoMod
 
         public static int ApplyFirstLegalBall(PKM pkm, IEnumerable<Ball> balls)
         {
+            var orig_ball = pkm.Ball;
             foreach (var b in balls)
             {
                 pkm.Ball = (int)b;
                 if (new LegalityAnalysis(pkm).Valid)
-                    break;
+                    return pkm.Ball;
             }
-            return pkm.Ball;
+            return orig_ball;
         }
 
         public static bool GetRandomValidMark(this PK8 pk, IBattleTemplate set, IEncounterable enc, out RibbonIndex mark)

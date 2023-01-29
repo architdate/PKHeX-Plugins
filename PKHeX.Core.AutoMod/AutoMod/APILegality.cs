@@ -94,6 +94,11 @@ namespace PKHeX.Core.AutoMod
                 // Create the PKM from the template.
                 var tr = SimpleEdits.IsUntradeableEncounter(enc) ? dest : GetTrainer(regen, enc.Version, enc.Generation);
                 var raw = enc.ConvertToPKM(tr, criteria);
+                if (raw.OT_Name.Length == 0)
+                {
+                    raw.Language = tr.Language;
+                    tr.ApplyTo(raw);
+                }
                 raw = raw.SanityCheckLocation(enc);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);
@@ -557,7 +562,7 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             // Game exceptions (IHyperTrain exists because of the field but game disallows hypertraining)
-            if (!pk.Context.IsHyperTrainingAvailable(pk.CurrentLevel))
+            if (!t.IsHyperTrainingAvailable(new LegalityAnalysis(pk).Info.EvoChainsAllGens))
                 return;
 
             pk.HyperTrain(set.IVs);

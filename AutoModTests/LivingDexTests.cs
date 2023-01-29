@@ -14,7 +14,7 @@ namespace AutoModTests
     public static class LivingDexTests
     {
         static LivingDexTests() => TestUtil.InitializePKHeXEnvironment();
-        private static readonly GameVersion[] GetGameVersionsToTest = { BD, SW, US, SN, OR, X, B2, B, Pt, E, C, RD };
+        private static readonly GameVersion[] GetGameVersionsToTest = { SL, BD, SW, US, SN, OR, X, B2, B, Pt, E, C, RD };
 
         private static Dictionary<GameVersion, GenerateResult> TestLivingDex(bool includeforms, bool shiny, out bool passed)
         {

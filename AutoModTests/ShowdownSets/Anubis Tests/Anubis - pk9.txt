@@ -3745,7 +3745,7 @@ Ability: Sand Veil
 Tera Type: Ground
 Level: 57
 Naive Nature
-=Met_Location=50
+.Met_Location=50
 .Version=50
 ~=Generation=9
 - Bite
