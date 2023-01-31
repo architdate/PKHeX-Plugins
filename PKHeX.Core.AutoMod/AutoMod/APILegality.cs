@@ -454,7 +454,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetNatureAbility(set, enc, abilitypref);
             pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, enc);
             pk.SetGVs();
-            pk.SetHyperTrainingFlags(set); // Hypertrain
+            pk.SetHyperTrainingFlags(set, enc); // Hypertrain
             pk.SetEncryptionConstant(enc);
             pk.SetShinyBoolean(set.Shiny, enc, regen.Extra.ShinyType);
             pk.FixGender(set);
@@ -556,13 +556,13 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">passed pkm object</param>
         /// <param name="set">showdown set to base hypertraining on</param>
-        private static void SetHyperTrainingFlags(this PKM pk, IBattleTemplate set)
+        private static void SetHyperTrainingFlags(this PKM pk, IBattleTemplate set, IEncounterable enc)
         {
             if (pk is not IHyperTrain t)
                 return;
 
             // Game exceptions (IHyperTrain exists because of the field but game disallows hypertraining)
-            if (!t.IsHyperTrainingAvailable(new LegalityAnalysis(pk).Info.EvoChainsAllGens))
+            if (!t.IsHyperTrainingAvailable(EvolutionChain.GetEvolutionChainsAllGens(pk, enc)))
                 return;
 
             pk.HyperTrain(set.IVs);
