@@ -15,6 +15,7 @@ namespace PKHeX.Core.AutoMod
 
         NotEnoughSpace,
         InvalidLines,
+        VersionMismatch,
     }
 
     public static class AutoModErrorCodeExtensions

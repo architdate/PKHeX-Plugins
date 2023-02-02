@@ -1,3 +1,4 @@
+using AutoModPlugins.GUI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -35,16 +36,20 @@ namespace AutoModPlugins
             return MessageBox.Show(msg, nameof(Error), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static DialogResult ALMError(params string[] lines)
+        public static DialogResult ALMErrorDiscord(params string[] lines)
         {
             SystemSounds.Hand.Play();
-            string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
-            MessageBoxManager.Register();
-            MessageBoxManager.Yes = "Discord";
-            MessageBoxManager.No = "GitHub";
-            var val = MessageBox.Show(msg, "Auto Legality Error", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
-            MessageBoxManager.Unregister();
-            return val;
+            var error = new ALMError(lines, new[] { "Discord", "GitHub", "Cancel" });
+            var res = error.ShowDialog();
+            return res;
+        }
+
+        public static DialogResult ALMErrorBasic(params string[] lines)
+        {
+            SystemSounds.Hand.Play();
+            var error = new ALMError(lines, new[] { "Wiki", "Cancel" });
+            var res = error.ShowDialog();
+            return res;
         }
 
         /// <summary>

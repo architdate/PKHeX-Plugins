@@ -32,7 +32,10 @@ namespace PKHeX.Core.AutoMod
         public static PKM Legalize(this ITrainerInfo tr, PKM pk)
         {
             var set = new RegenTemplate(pk, tr.Generation);
-            return tr.GetLegalFromTemplateTimeout(pk, set, out _);
+            var pkm = tr.GetLegalFromTemplateTimeout(pk, set, out LegalizationResult res);
+            if (res == LegalizationResult.VersionMismatch)
+                throw new MissingMethodException("PKHeX and Plugins have a version mismatch");
+            return pkm;
         }
 
         /// <summary>
@@ -67,6 +70,8 @@ namespace PKHeX.Core.AutoMod
 
                 Debug.WriteLine($"Generating Set: {GameInfo.Strings.Species[set.Species]}");
                 var pk = tr.GetLegalFromSet(regen, out var msg);
+                if (msg == LegalizationResult.VersionMismatch)
+                    return AutoModErrorCode.VersionMismatch;
                 pk.ResetPartyStats();
                 pk.SetBoxForm();
                 if (msg == LegalizationResult.Failed)

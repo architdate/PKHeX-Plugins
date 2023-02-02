@@ -92,6 +92,15 @@ namespace AutoModPlugins
             var legal = sav.GetLegalFromSet(regen, out var msg);
             timer.Stop();
 
+            if (msg is LegalizationResult.VersionMismatch)
+            {
+                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version. \nRefer to the Wiki for how to fix this error.";
+                var res = WinFormsUtil.ALMErrorBasic(errorstr, $"The current ALM Version is {ALMVersion.CurrentALMVersion}\nThe current PKHeX Version is {ALMVersion.CurrentPKHeXVersion}");
+                if (res == DialogResult.Retry)
+                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins", UseShellExecute = true });
+                return AutoModErrorCode.VersionMismatch;
+            }
+
             if (msg is LegalizationResult.Timeout or LegalizationResult.Failed)
             {
                 Legalizer.Dump(regen, msg == LegalizationResult.Failed);
@@ -104,11 +113,11 @@ namespace AutoModPlugins
                 var invalid_set_error = (analysis == null ? $"Set {errorstr}." : $"Set Invalid: {analysis}") +
                     "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue." +
                     "\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.";
-                var res = WinFormsUtil.ALMError(invalid_set_error);
-                if (res == DialogResult.Yes)
-                    Process.Start("https://discord.gg/tDMvSRv");
-                else if (res == DialogResult.No)
-                    Process.Start("https://github.com/architdate/PKHeX-Plugins/issues");
+                var res = WinFormsUtil.ALMErrorDiscord(invalid_set_error);
+                if (res == DialogResult.No)
+                    Process.Start(new ProcessStartInfo { FileName = "https://discord.gg/tDMvSRv", UseShellExecute = true });
+                else if (res == DialogResult.Retry)
+                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/issues", UseShellExecute = true });
             }
 
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
@@ -135,13 +144,22 @@ namespace AutoModPlugins
             var result = sav.ImportToExisting(sets, BoxData, out var invalid, out var timeout, start, replace);
             if (timeout.Count > 0 || invalid.Count > 0)
             {
-                var res = WinFormsUtil.ALMError(
+                var res = WinFormsUtil.ALMErrorDiscord(
                     $"{timeout.Count} set(s) timed out and {invalid.Count} set(s) are invalid. Please create an issue on GitHub and upload the error_log.txt file in the issue." +
                     "\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.");
-                if (res == DialogResult.Yes)
-                    Process.Start("https://discord.gg/tDMvSRv");
-                else if (res == DialogResult.No)
-                    Process.Start("https://github.com/architdate/PKHeX-Plugins/issues");
+                if (res == DialogResult.No)
+                    Process.Start(new ProcessStartInfo { FileName = "https://discord.gg/tDMvSRv", UseShellExecute = true });
+                else if (res == DialogResult.Retry)
+                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/issues", UseShellExecute = true });
+            }
+
+            if (result is AutoModErrorCode.VersionMismatch)
+            {
+                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version. \nRefer to the Wiki for how to fix this error.";
+                var res = WinFormsUtil.ALMErrorBasic(errorstr, $"The current ALM Version is {ALMVersion.CurrentALMVersion}\nThe current PKHeX Version is {ALMVersion.CurrentPKHeXVersion}");
+                if (res == DialogResult.Retry)
+                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins", UseShellExecute = true });
+                return AutoModErrorCode.VersionMismatch;
             }
 
             if (result != AutoModErrorCode.None)

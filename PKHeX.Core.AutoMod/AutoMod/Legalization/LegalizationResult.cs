@@ -19,5 +19,10 @@
         /// Timed out while generating
         /// </summary>
         Timeout,
+
+        /// <summary>
+        /// Version mismatch with base PKHeX
+        /// </summary>
+        VersionMismatch,
     }
 }

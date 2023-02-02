@@ -22,18 +22,28 @@ namespace AutoModPlugins
 
         private void Legalize(object? sender, EventArgs e)
         {
-            var box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
-            if (!box)
+            try
             {
-                LegalizeActive();
-                return;
-            }
+                var box = (Control.ModifierKeys & Keys.Control) == Keys.Control;
+                if (!box)
+                {
+                    LegalizeActive();
+                    return;
+                }
 
-            var all = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
-            if (!all)
-                LegalizeCurrent();
-            else
-                LegalizeAllBoxes();
+                var all = (Control.ModifierKeys & Keys.Shift) == Keys.Shift;
+                if (!all)
+                    LegalizeCurrent();
+                else
+                    LegalizeAllBoxes();
+            }
+            catch (MissingMethodException)
+            {
+                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version. \nRefer to the Wiki for how to fix this error.";
+                var res = WinFormsUtil.ALMErrorBasic(errorstr, $"The current ALM Version is {ALMVersion.CurrentALMVersion}\nThe current PKHeX Version is {ALMVersion.CurrentPKHeXVersion}");
+                if (res == DialogResult.Retry)
+                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins", UseShellExecute = true });
+            }
         }
 
         private void LegalizeCurrent()
@@ -71,11 +81,10 @@ namespace AutoModPlugins
             la = new LegalityAnalysis(result);
             if (!la.Valid)
             {
-                var res = WinFormsUtil.ALMError("Unable to make the Active Pokemon legal!", "Please refer to the wiki by clicking on the GitHub button for further help!");
-                if (res == DialogResult.Yes)
-                    Process.Start("https://discord.gg/tDMvSRv");
-                else if (res == DialogResult.No)
-                    Process.Start("https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod");
+                var res = WinFormsUtil.ALMErrorBasic("Unable to make the Active Pokemon legal!", "No legal Pokemon could be found for the provided traits." +
+                                                "\nClick on the Wiki to learn how to use Showdown Set imports instead.");
+                if (res == DialogResult.Retry)
+                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod", UseShellExecute = true });
                 return;
             }
 

@@ -15,8 +15,6 @@ namespace AutoModPlugins
     /// </summary>
     public abstract class AutoModPlugin : IPlugin
     {
-        private const string VERSION = ALMVersion.CurrentVersion;
-
         private const string ParentMenuName = "Menu_AutoLegality";
         private const string ParentMenuText = "Auto-Legality Mod";
         private const string ParentMenuParent = "Menu_Tools";
@@ -75,14 +73,14 @@ namespace AutoModPlugins
         private void CheckVersionUpdates()
         {
             var latest_alm = PKHeX.Core.AutoMod.NetUtil.GetLatestALMVersion();
-            var curr_valid = Version.TryParse(VERSION, out var current_alm);
-            var curr_pkhex = Assembly.GetEntryAssembly()?.GetName().Version;
-            if (!curr_valid || curr_pkhex == null || latest_alm == null)
+            var curr_alm = ALMVersion.CurrentALMVersion;
+            var curr_pkhex = ALMVersion.CurrentPKHeXVersion;
+            if (curr_alm == null || curr_pkhex == null || latest_alm == null)
                 return;
 
-            if (curr_pkhex > current_alm)
+            if (curr_pkhex > curr_alm)
                 PossibleVersionMismatch = true;
-            if (latest_alm <= current_alm)
+            if (latest_alm <= curr_alm)
                 return;
 
             // ReSharper disable once SuspiciousTypeConversion.Global
@@ -91,11 +89,11 @@ namespace AutoModPlugins
                 msg += "\n\nThere is also a possible version mismatch between the current ALM version and current PKHeX version.";
             const string redirect = "Click on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
 
-            var res = WinFormsUtil.ALMError(msg, redirect);
-            if (res == DialogResult.Yes)
-                Process.Start("https://discord.gg/tDMvSRv");
-            else if (res == DialogResult.No)
-                Process.Start("https://github.com/architdate/PKHeX-Plugins/releases/latest");
+            var res = WinFormsUtil.ALMErrorDiscord(msg, redirect);
+            if (res == DialogResult.No)
+                Process.Start(new ProcessStartInfo { FileName = "https://discord.gg/tDMvSRv", UseShellExecute = true });
+            else if (res == DialogResult.Retry)
+                Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/releases/latest", UseShellExecute = true });
         }
 
         private void LoadMenuStrip(ToolStrip menuStrip)

@@ -1414,8 +1414,15 @@ namespace PKHeX.Core.AutoMod
         {
             AsyncLegalizationResult GetLegal()
             {
-                var res = dest.GetLegalFromTemplate(template, set, out var s);
-                return new AsyncLegalizationResult(res, s);
+                try
+                {
+                    var res = dest.GetLegalFromTemplate(template, set, out var s);
+                    return new AsyncLegalizationResult(res, s);
+                }
+                catch (MissingMethodException)
+                {
+                    return new AsyncLegalizationResult(template, LegalizationResult.VersionMismatch);
+                }
             }
 
             var task = Task.Run(GetLegal);
