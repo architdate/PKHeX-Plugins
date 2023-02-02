@@ -2,20 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
-    <OutputType>Library</OutputType>
-    <LangVersion>11</LangVersion>
-    <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugType>portable</DebugType>
+    <EmbedAllSources>true</EmbedAllSources>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Costura.Fody" Version="5.7.0">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Fody" Version="6.6.0">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="PKHeX.Core" Version="23.1.30" />
+    <PackageReference Include="Costura.Fody" Version="5.8.0-alpha0098" PrivateAssets="all" />
+    <PackageReference Include="Fody" Version="6.6.4" PrivateAssets="all" />
+    <PackageReference Include="PKHeX.Core" Version="23.1.30" ExcludeAssets="runtime" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
     <PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
     <ProjectReference Include="..\PKHeX.Core.AutoMod\PKHeX.Core.AutoMod.csproj" />
@@ -24,31 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Resources\img\autolegalitymod.png" />
-    <None Include="Resources\img\blmicon.ico" />
-    <None Include="Resources\img\exportboxtoshowdown.png" />
-    <None Include="Resources\img\exportqrcode.png" />
-    <None Include="Resources\img\exporttrainerdata.png" />
-    <None Include="Resources\img\flagbrew.png" />
-    <None Include="Resources\img\icon.ico" />
-    <None Include="Resources\img\legalizeboxes.png" />
-    <None Include="Resources\img\livingdex.png" />
-    <None Include="Resources\img\menuautolegality.png" />
-    <None Include="Resources\img\mgdbdownload.png" />
-    <None Include="Resources\img\pglqrcode.png" />
-    <None Include="Resources\img\settings.png" />
-    <None Include="Resources\img\smogongenner.png" />
-    <None Include="Resources\img\uploadgpss.png" />
-    <None Include="Resources\img\urlimport.png" />
-    <None Include="Resources\img\wifi.png" />
-    <None Include="Resources\text\almlang_de.txt" />
-    <None Include="Resources\text\almlang_en.txt" />
-    <None Include="Resources\text\almlang_es.txt" />
-    <None Include="Resources\text\almlang_fr.txt" />
-    <None Include="Resources\text\almlang_it.txt" />
-    <None Include="Resources\text\almlang_ja.txt" />
-    <None Include="Resources\text\almlang_ko.txt" />
-    <None Include="Resources\text\almlang_zh.txt" />
+    <None Include="Resources\**" />
   </ItemGroup>
 
   <ItemGroup>

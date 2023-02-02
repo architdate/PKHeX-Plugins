@@ -21,13 +21,19 @@ namespace AutoModPlugins
             ctrl.Click += PGLShowdownSet;
         }
 
-        private static void PGLShowdownSet(object sender, EventArgs e)
+        private static void PGLShowdownSet(object? sender, EventArgs e)
         {
             if (!Clipboard.ContainsImage())
                 return;
+
             var img = Clipboard.GetImage();
+            if (img is null)
+                return;
 
             var rentalTeam = QRParser.DecryptQRCode(img);
+            if (rentalTeam is null)
+                return;
+
             var sets = rentalTeam.ConvertedTeam.ToList();
             ShowdownSetLoader.Import(sets);
         }

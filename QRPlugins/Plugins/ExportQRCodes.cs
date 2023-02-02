@@ -16,7 +16,7 @@ namespace AutoModPlugins
             modmenu.DropDownItems.Add(ctrl);
         }
 
-        private void ExportQRs(object sender, EventArgs e)
+        private void ExportQRs(object? sender, EventArgs e)
         {
             var sav = SaveFileEditor.SAV;
             if (!sav.HasBox)

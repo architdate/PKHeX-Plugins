@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using System.Text;
 using FluentAssertions;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
@@ -194,7 +192,13 @@ namespace AutoModTests
 
     internal class ShowdownSetComparator : IEqualityComparer<ShowdownSet>
     {
-        public bool Equals([DisallowNull] ShowdownSet x, [DisallowNull] ShowdownSet y) => x!.Text.Trim() == y!.Text.Trim();
-        public int GetHashCode([DisallowNull] ShowdownSet obj) => obj.Text.GetHashCode();
+        public bool Equals(ShowdownSet? x, ShowdownSet? y)
+        {
+            if (x == null || y == null)
+                return false;
+            return x.Text.Trim() == y.Text.Trim();
+        }
+
+        public int GetHashCode(ShowdownSet obj) => obj.Text.GetHashCode();
     }
 }

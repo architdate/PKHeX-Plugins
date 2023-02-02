@@ -49,7 +49,7 @@ namespace AutoModTests
             var prefer = EntityFileExtension.GetContextFromExtension(file, EntityContext.None);
             var pkm = EntityFormat.GetFromBytes(data, prefer: prefer);
             pkm.Should().NotBeNull($"the PKM '{new FileInfo(file).Name}' should have been loaded");
-            return pkm;
+            return pkm!;
         }
     }
 }

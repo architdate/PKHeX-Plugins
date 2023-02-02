@@ -19,6 +19,9 @@ namespace AutoModPlugins
             for (var i = 0; i < qrcodes.Count; i++)
             {
                 var q = qrcodes[i];
+                if (q.Image is null)
+                    continue;
+
                 Console.WriteLine(i);
                 var filename = $"{q.Source.FileNameWithoutExtension}.png";
                 q.Image.Save(Path.Combine(dir, filename));
@@ -28,7 +31,7 @@ namespace AutoModPlugins
         private class QRCodeResult
         {
             public readonly PKM Source;
-            public readonly Image Image;
+            public readonly Image? Image;
 
             public QRCodeResult(PKM pk)
             {

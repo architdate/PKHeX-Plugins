@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Security;
 using PKHeX.Core;
 using PKHeX.Core.Enhancements;
-using ZXing;
 using ZXing.Common;
+using ZXing.Windows.Compatibility;
 
 namespace AutoModPlugins
 {
@@ -19,31 +19,24 @@ namespace AutoModPlugins
         /// <summary>
         /// Gets QR image from HTTP requests.
         /// </summary>
-        public static Image GetQRData(string SaveID, string TeamID, string Cookie)
+        public static async Task<Image?> GetQRData(string SaveID, string TeamID, string Cookie)
         {
             byte[] data = Encoding.ASCII.GetBytes($"savedataId={SaveID}&battleTeamCd={TeamID}");
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://3ds.pokemon-gl.com/frontendApi/battleTeam/getQr");
-            request.Method = "POST";
-            request.Accept = "*/*";
-            request.Headers["Accept-Encoding"] = "gzip, deflate, br";
-            request.Headers["Accept-Language"] = "en-US,en;q=0.8";
-            request.KeepAlive = true;
-            request.ContentLength = 73;
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Headers["Cookie"] = Cookie;
-            request.Host = "3ds.pokemon-gl.com";
-            request.Headers["Origin"] = "https://3ds.pokemon-gl.com/";
-            request.Referer = $"https://3ds.pokemon-gl.com/rentalteam/{TeamID}";
-            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36";
+            using var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.ParseAdd("*/*");
+            httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
+            httpClient.DefaultRequestHeaders.Add("Accept-Language", "en-US,en;q=0.8");
+            httpClient.DefaultRequestHeaders.Add("Cookie", Cookie);
+            httpClient.DefaultRequestHeaders.Host = "3ds.pokemon-gl.com";
+            httpClient.DefaultRequestHeaders.Add("Origin", "https://3ds.pokemon-gl.com/");
+            httpClient.DefaultRequestHeaders.Referrer = new Uri($"https://3ds.pokemon-gl.com/rentalteam/{TeamID}");
+            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
 
-            using (Stream reqStream = request.GetRequestStream())
-                reqStream.Write(data, 0, data.Length);
-
-            using var response = request.GetResponse();
-            using var stream = response.GetResponseStream();
-            if (stream == null)
-                return null;
+            const string pglURL = "https://3ds.pokemon-gl.com/frontendApi/battleTeam/getQr";
+            var response = await httpClient.PostAsync(pglURL, new ByteArrayContent(data));
+            response.EnsureSuccessStatusCode();
+            await using var stream = await response.Content.ReadAsStreamAsync();
 
             //add failing validation.
             try
@@ -89,19 +82,14 @@ namespace AutoModPlugins
                 .ToArray();
         }
 
-        private static byte[] QR_t(byte[] qr)
+        private static byte[] QR_t(ReadOnlySpan<byte> qr)
         {
             byte[] aes_ctr_key = ToByteArray("0F8E2F405EAE51504EDBA7B4E297005B");
 
-            byte[] metadata_flags = new byte[0x8];
-            byte[] ctr_aes = new byte[0x10];
-            byte[] data = new byte[0x1CE];
-            byte[] sha1 = new byte[0x8];
-
-            Array.Copy(qr, 0, metadata_flags, 0, 0x8);
-            Array.Copy(qr, 0x8, ctr_aes, 0, 0x10);
-            Array.Copy(qr, 0x18, data, 0, 0x1CE);
-            Array.Copy(qr, 0x1E6, sha1, 0, 0x8);
+          //var metadata_flags = qr[..0x08].ToArray();
+            var ctr_aes = qr.Slice(0x08, 0x10).ToArray();
+            var data = qr.Slice(0x18, 0x1CE).ToArray();
+          //var sha1 = qr.Slice(0x1E6, 8).ToArray();
 
             var cipher = CipherUtilities.GetCipher("AES/CTR/NoPadding");
             cipher.Init(false, new ParametersWithIV(new KeyParameter(aes_ctr_key), ctr_aes));
@@ -109,7 +97,7 @@ namespace AutoModPlugins
             return cipher.ProcessBytes(data);
         }
 
-        public static RentalTeam DecryptQRCode(Image QR)
+        public static RentalTeam? DecryptQRCode(Image QR)
         {
             //Read the bytes of the QR code
             byte[] data = ParseQR(QR);

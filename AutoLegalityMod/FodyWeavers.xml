@@ -1,11 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
   <Costura>
-    <IncludeAssemblies>
-      PKHeX.Core.AutoMod
-      PKHeX.Core.Enhancements
-      PKHeX.Core.Injection
-      LibUsbDotNet.LibUsbDotNet
-    </IncludeAssemblies>
   </Costura>
 </Weavers>
