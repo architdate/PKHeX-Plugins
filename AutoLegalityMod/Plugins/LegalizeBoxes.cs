@@ -81,8 +81,8 @@ namespace AutoModPlugins
             la = new LegalityAnalysis(result);
             if (!la.Valid)
             {
-                var res = WinFormsUtil.ALMErrorBasic("Unable to make the Active Pokemon legal!", "No legal Pokemon could be found for the provided traits." +
-                                                "\nClick on the Wiki to learn how to use Showdown Set imports instead.");
+                var res = WinFormsUtil.ALMErrorBasic("Unable to make the Active Pokemon legal!", "No legal Pokémon matches the provided traits." +
+                                                "\n\nVisit the Wiki to learn how to import Showdown Sets.");
                 if (res == DialogResult.Retry)
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod", UseShellExecute = true });
                 return;
