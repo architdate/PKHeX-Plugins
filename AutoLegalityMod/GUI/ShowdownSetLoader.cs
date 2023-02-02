@@ -111,13 +111,11 @@ namespace AutoModPlugins
 
                 var errorstr = msg == LegalizationResult.Failed ? "failed to generate" : "timed out";
                 var invalid_set_error = (analysis == null ? $"Set {errorstr}." : $"Set Invalid: {analysis}") +
-                    "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue." +
-                    "\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.";
-                var res = WinFormsUtil.ALMErrorDiscord(invalid_set_error);
-                if (res == DialogResult.No)
-                    Process.Start(new ProcessStartInfo { FileName = "https://discord.gg/tDMvSRv", UseShellExecute = true });
-                else if (res == DialogResult.Retry)
-                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/issues", UseShellExecute = true });
+                    "\n\nRefer to the wiki for more help on generating sets correctly." +
+                    "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue.";
+                var res = WinFormsUtil.ALMErrorBasic(invalid_set_error);
+                if (res == DialogResult.Retry)
+                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod", UseShellExecute = true });
             }
 
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
@@ -144,13 +142,12 @@ namespace AutoModPlugins
             var result = sav.ImportToExisting(sets, BoxData, out var invalid, out var timeout, start, replace);
             if (timeout.Count > 0 || invalid.Count > 0)
             {
-                var res = WinFormsUtil.ALMErrorDiscord(
-                    $"{timeout.Count} set(s) timed out and {invalid.Count} set(s) are invalid. Please create an issue on GitHub and upload the error_log.txt file in the issue." +
-                    "\n\nAlternatively, join the support Discord and post the same file in the #autolegality-livehex-help channel.");
-                if (res == DialogResult.No)
-                    Process.Start(new ProcessStartInfo { FileName = "https://discord.gg/tDMvSRv", UseShellExecute = true });
-                else if (res == DialogResult.Retry)
-                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/issues", UseShellExecute = true });
+                var res = WinFormsUtil.ALMErrorBasic(
+                    $"{timeout.Count} set(s) timed out and {invalid.Count} set(s) are invalid." +
+                    "\n\nRefer to the wiki for more help on generating sets correctly." +
+                    "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue.");
+                if (res == DialogResult.Retry)
+                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod", UseShellExecute = true });
             }
 
             if (result is AutoModErrorCode.VersionMismatch)
