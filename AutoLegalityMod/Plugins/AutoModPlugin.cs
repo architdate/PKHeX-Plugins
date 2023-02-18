@@ -73,8 +73,8 @@ namespace AutoModPlugins
         private void CheckVersionUpdates()
         {
             var latest_alm = PKHeX.Core.AutoMod.NetUtil.GetLatestALMVersion();
-            var curr_alm = ALMVersion.CurrentALMVersion;
-            var curr_pkhex = ALMVersion.CurrentPKHeXVersion;
+            var curr_alm = ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod");
+            var curr_pkhex = ALMVersion.GetCurrentVersion("PKHeX.Core");
             if (curr_alm == null || curr_pkhex == null || latest_alm == null)
                 return;
 
