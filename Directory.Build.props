@@ -1,8 +1,10 @@
 <Project>
   <PropertyGroup>
-	<TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
+    <Version>23.01.30</Version>
     <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
     <NeutralLanguage>en</NeutralLanguage>
+    <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyMMddHHmmss"))</SourceRevisionId>
   </PropertyGroup>
 </Project>

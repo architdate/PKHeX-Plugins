@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AutoModPlugins.GUI
@@ -24,7 +19,7 @@ namespace AutoModPlugins.GUI
             buttons = buttons.Reverse().ToArray();
             var btn_loc = label1.Location.Y + label1.Size.Height + 10;
             var height_diff = btn_loc - BTN1.Location.Y;
-            for (int i = 0; i < buttons.Count(); i++)
+            for (int i = 0; i < buttons.Length; i++)
             {
                 btn_ctrls[i].Visible = true;
                 btn_ctrls[i].Enabled = true;
