@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
@@ -10,7 +9,7 @@ namespace AutoModTests
         static TestUtil() => InitializePKHeXEnvironment();
         private static bool Initialized;
 
-        private static object _lock = new object();
+        private static readonly object _lock = new();
 
         public static void InitializePKHeXEnvironment()
         {

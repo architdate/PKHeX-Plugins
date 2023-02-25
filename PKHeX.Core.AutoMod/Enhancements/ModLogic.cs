@@ -74,29 +74,39 @@ namespace PKHeX.Core.AutoMod
             foreach (var id in speciesIDs)
             {
                 var num_forms = pt[id].FormCount;
+                var count = pklist.Count;
                 for (byte i = 0; i < num_forms; i++)
                 {
-                    if (!sav.Personal.IsPresentInGame(id, i))
+                    if (!sav.Personal.IsPresentInGame(id, i) || FormInfo.IsLordForm(id, i, sav.Context) || FormInfo.IsBattleOnlyForm(id, i, sav.Generation)
+                        || FormInfo.IsFusedForm(id, i, sav.Generation) || (FormInfo.IsTotemForm(id, i) && sav.Context is not EntityContext.Gen7))
                         continue;
-                    AddPKM(sav, tr, pklist, id, i, shiny, alpha, ref attempts);
-                    if (!includeforms)
+
+                    var pk = AddPKM(sav, tr, id, i, shiny, alpha);
+                    if (pk is not null)
+                    {
+                        attempts++;
+                        pklist.Add(pk);
+                    }
+
+                    if (!includeforms && pk is not null)
                         break;
                 }
             }
             return pklist;
         }
 
-        private static void AddPKM(SaveFile sav, ITrainerInfo tr, List<PKM> pklist, ushort species, byte? form, bool shiny, bool alpha, ref int attempt)
+        private static PKM? AddPKM(SaveFile sav, ITrainerInfo tr, ushort species, byte? form, bool shiny, bool alpha)
         {
-            if (tr.GetRandomEncounter(species, form, shiny, alpha, ref attempt, out var pk) && pk != null && pk.Species > 0)
+            if (tr.GetRandomEncounter(species, form, shiny, alpha, out var pk) && pk is not null && pk.Species > 0)
             {
                 pk.Heal();
-                pklist.Add(pk);
+                return pk;
             }
-            else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID16 = tr.TID16 }, species, 0, shiny, false, ref attempt, out var pkm) && pkm is PK1 pk1)
-            {
-                pklist.Add(pk1.ConvertToPK2());
-            }
+            
+            if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID16 = tr.TID16 }, species, 0, shiny, false, out var pkm) && pkm is PK1 pk1)
+                return pk1;
+
+            return null;
         }
 
         /// <summary>
@@ -110,7 +120,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="attempt"></param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this SaveFile sav, ushort species, byte? form, bool shiny, bool alpha, ref int attempt, out PKM? pk) => ((ITrainerInfo)sav).GetRandomEncounter(species, form, shiny, alpha, ref attempt, out pk);
+        public static bool GetRandomEncounter(this SaveFile sav, ushort species, byte? form, bool shiny, bool alpha, out PKM? pk) => ((ITrainerInfo)sav).GetRandomEncounter(species, form, shiny, alpha, out pk);
 
         /// <summary>
         /// Gets a legal <see cref="PKM"/> from a random in-game encounter's data.
@@ -123,15 +133,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="attempt"></param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this ITrainerInfo tr, ushort species, byte? form, bool shiny, bool alpha, ref int attempt, out PKM? pk)
+        public static bool GetRandomEncounter(this ITrainerInfo tr, ushort species, byte? form, bool shiny, bool alpha, out PKM? pk)
         {
             var blank = EntityBlank.GetBlank(tr);
-            pk = GetRandomEncounter(blank, tr, species, form, shiny, alpha, ref attempt);
-            if (pk == null)
+            pk = GetRandomEncounter(blank, tr, species, form, shiny, alpha);
+            if (pk is null)
                 return false;
 
             pk = EntityConverter.ConvertToType(pk, blank.GetType(), out _);
-            return pk != null;
+            return pk is not null;
         }
 
         /// <summary>
@@ -145,59 +155,60 @@ namespace PKHeX.Core.AutoMod
         /// <param name="alpha"></param>
         /// <param name="attempt"></param>
         /// <returns>Result legal pkm, null if data should be ignored.</returns>
-        private static PKM? GetRandomEncounter(PKM blank, ITrainerInfo tr, ushort species, byte? form, bool shiny, bool alpha, ref int attempt)
+        private static PKM? GetRandomEncounter(PKM blank, ITrainerInfo tr, ushort species, byte? form, bool shiny, bool alpha)
         {
             blank.Species = species;
             blank.Gender = blank.GetSaneGender();
-            if (species is ((int)Species.Meowstic) or ((int)Species.Indeedee))
+            if (species is ((ushort)Species.Meowstic) or ((ushort)Species.Indeedee))
             {
-                if (form == null)
+                if (form is null)
                     blank.Form = (byte)blank.Gender;
                 else
                     blank.Gender = (int)form;
             }
 
             var template = EntityBlank.GetBlank(tr.Generation, (GameVersion)tr.Game);
-            if (form != null)
-            {
-                blank.Form = (byte)form;
-                var item = GetFormSpecificItem(tr.Game, blank.Species, (int)form);
-                if (item != null) blank.HeldItem = (int)item;
-                if (blank.Species == (int)Species.Keldeo && blank.Form == 1) blank.Move1 = (int)Move.SecretSword;
-            }
-            if (form == null)
+            if (form is null)
             {
                 var f = GetAvailableForm(blank);
                 if (f == -1)
                     return null;
+
                 blank.Form = (byte)f;
             }
+            else blank.Form = (byte)form;
+
+            var item = GetFormSpecificItem(tr.Game, blank.Species, blank.Form);
+            if (item is not null)
+                blank.HeldItem = (int)item;
+
+            if (blank.Species == (ushort)Species.Keldeo && blank.Form == 1)
+                blank.Move1 = (ushort)Move.SecretSword;
+
             if (blank.GetIsFormInvalid(tr, blank.Form))
                 return null;
-            attempt++;
-            var ssettext = new ShowdownSet(blank).Text.Split('\r')[0];
+
+            var setText = new ShowdownSet(blank).Text.Split('\r')[0];
             if (shiny && !SimpleEdits.IsShinyLockedSpeciesForm(blank.Species, blank.Form))
-                ssettext += Environment.NewLine + "Shiny: Yes";
+                setText += Environment.NewLine + "Shiny: Yes";
+
             if (template is IAlphaReadOnly && alpha)
-                ssettext += Environment.NewLine + "Alpha: Yes";
-            var sset = new ShowdownSet(ssettext);
+                setText += Environment.NewLine + "Alpha: Yes";
+
+            var sset = new ShowdownSet(setText);
             var set = new RegenTemplate(sset) { Nickname = string.Empty };
             template.ApplySetDetails(set);
+
             var success = tr.TryAPIConvert(set, template, out PKM pk);
-            if (success == LegalizationResult.Regenerated)
-            {
-                if (form == null) return pk;
-                if (pk.Form == (int)form) return pk;
-            }
+            if (success == LegalizationResult.Regenerated && pk.Form == blank.Form)
+                return pk;
 
             // just get a legal pkm and return. Only validate form and not shininess or alpha.
             var legalencs = EncounterMovesetGenerator.GeneratePKMs(blank, tr, blank.Moves).Where(z => new LegalityAnalysis(z).Valid);
-            var firstenc = GetFirstEncounter(legalencs, form);
-            if (firstenc == null)
-            {
-                attempt--;
+            var firstenc = GetFirstEncounter(legalencs, blank.Form);
+            if (firstenc is null)
                 return null;
-            }
+
             var originspecies = firstenc.Species;
             if (originspecies != blank.Species)
             {
@@ -205,29 +216,38 @@ namespace PKHeX.Core.AutoMod
                 firstenc.CurrentLevel = 100;
                 if (!firstenc.IsNicknamed)
                     firstenc.Nickname = SpeciesName.GetSpeciesNameGeneration(firstenc.Species, firstenc.Language, firstenc.Format);
-                firstenc.SetMoves(firstenc.GetMoveSet());
+
+                firstenc.SetSuggestedFormArgument(originspecies);
                 firstenc.RefreshAbility(firstenc.AbilityNumber >> 1);
             }
+
             var second = EntityConverter.ConvertToType(firstenc, blank.GetType(), out _);
-            if (second == null)
+            if (second is null)
                 return null;
+
             second.HeldItem = blank.HeldItem;
+            second.SetSuggestedMoves();
+            second.SetHandlerandMemory(tr, null);
+
             if (second is IScaledSizeValue sv)
             {
                 sv.HeightAbsolute = sv.CalcHeightAbsolute;
                 sv.WeightAbsolute = sv.CalcWeightAbsolute;
             }
-            if (form == null || second.Form == (byte)form)
+
+            if (second.Form == blank.Form)
                 return second;
+
             // force form and check legality as a last ditch effort.
-            second.Form = (byte)form;
-            second.SetSuggestedFormArgument(originspecies);
+            second.Form = blank.Form;
             if (second is IScaledSizeValue sc)
             {
                 sc.HeightAbsolute = sc.CalcHeightAbsolute;
                 sc.WeightAbsolute = sc.CalcWeightAbsolute;
             }
-            if (new LegalityAnalysis(second).Valid)
+
+            var la = new LegalityAnalysis(second);
+            if (la.Valid)
                 return second;
             return null;
         }
@@ -262,8 +282,6 @@ namespace PKHeX.Core.AutoMod
             {
                 case Species.Unown when generation == 2 && form >= 26:
                     return true;
-                case Species.Scatterbug or Species.Spewpa when form > Vivillon3DS.MaxWildFormID:
-                    return true;
                 case Species.Floette when form == 5:
                     return true;
                 case Species.Shaymin or Species.Furfrou or Species.Hoopa when form != 0 && generation <= 6:
@@ -285,26 +303,26 @@ namespace PKHeX.Core.AutoMod
             return false;
         }
 
-        private static int? GetFormSpecificItem(int game, int species, int form)
+        private static int? GetFormSpecificItem(int game, ushort species, byte form)
         {
             if (game == (int)GameVersion.PLA)
                 return null;
             var generation = ((GameVersion)game).GetGeneration();
             return species switch
             {
-                (int)Species.Arceus => generation != 4 || form < 9 ? SimpleEdits.GetArceusHeldItemFromForm(form) : SimpleEdits.GetArceusHeldItemFromForm(form - 1),
-                (int)Species.Silvally => SimpleEdits.GetSilvallyHeldItemFromForm(form),
-                (int)Species.Genesect => SimpleEdits.GetGenesectHeldItemFromForm(form),
-                (int)Species.Giratina => form == 1 ? 112 : null, // Griseous Orb
-                (int)Species.Zacian => form == 1 ? 1103 : null, // Rusted Sword
-                (int)Species.Zamazenta => form == 1 ? 1104 : null, // Rusted Shield
+                (ushort)Species.Arceus => generation != 4 || form < 9 ? SimpleEdits.GetArceusHeldItemFromForm(form) : SimpleEdits.GetArceusHeldItemFromForm(form - 1),
+                (ushort)Species.Silvally => SimpleEdits.GetSilvallyHeldItemFromForm(form),
+                (ushort)Species.Genesect => SimpleEdits.GetGenesectHeldItemFromForm(form),
+                (ushort)Species.Giratina => form == 1 ? 112 : null, // Griseous Orb
+                (ushort)Species.Zacian => form == 1 ? 1103 : null, // Rusted Sword
+                (ushort)Species.Zamazenta => form == 1 ? 1104 : null, // Rusted Shield
                 _ => null
             };
         }
 
-        private static PKM? GetFirstEncounter(IEnumerable<PKM> legalencs, int? form)
+        private static PKM? GetFirstEncounter(IEnumerable<PKM> legalencs, byte? form)
         {
-            if (form == null)
+            if (form is null)
                 return legalencs.FirstOrDefault();
 
             PKM? result = null;

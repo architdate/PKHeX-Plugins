@@ -907,7 +907,7 @@ Ball: Master Ball
 - X-Scissor
 - Swords Dance
 
-Tauros-Paldea (M)
+Tauros-Paldea-Combat (M)
 IVs: 29 HP / 21 Atk / 15 Def / 1 SpA / 21 SpD / 28 Spe
 Ability: Intimidate
 Tera Type: Fighting
@@ -922,7 +922,7 @@ Ball: Master Ball
 - Headbutt
 - Scary Face
 
-Tauros-Paldea (M)
+Tauros-Paldea-Combat (M)
 IVs: 17 HP / 18 Atk / 7 Def / 9 SpA / 18 SpD / 9 Spe
 Ability: Intimidate
 Tera Type: Fighting
@@ -937,7 +937,7 @@ Ball: Master Ball
 - Assurance
 - Headbutt
 
-Tauros-Paldea (M)
+Tauros-Paldea-Blaze (M)
 IVs: 26 SpD
 Ability: Cud Chew
 Tera Type: Fire
@@ -951,7 +951,7 @@ Docile Nature
 - Zen Headbutt
 - Raging Bull
 
-Tauros-Paldea (M)
+Tauros-Paldea-Combat (M)
 IVs: 30 HP / 2 Atk / 26 Def / 16 SpA / 14 SpD / 3 Spe
 Ability: Intimidate
 Tera Type: Fighting

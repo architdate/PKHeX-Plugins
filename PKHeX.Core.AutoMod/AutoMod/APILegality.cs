@@ -52,10 +52,11 @@ namespace PKHeX.Core.AutoMod
 
             if (template.Version == 0)
                 template.Version = dest.Game;
+
             template.ApplySetDetails(set);
             template.SetRecordFlags(Array.Empty<ushort>()); // Validate TR/MS moves for the encounter
 
-            if (template.Species == (int)Species.Unown) // Force unown form on template
+            if (template.Species == (ushort)Species.Unown) // Force unown form on template
                 template.Form = set.Form;
 
             var abilityreq = GetRequestedAbility(template, set);
@@ -71,10 +72,9 @@ namespace PKHeX.Core.AutoMod
                 template.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
-            // var encounters = GetAllSpeciesFormEncounters(template.Species, GameData.GetPersonal(destVer), gamelist, set.Moves, template);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
             criteria.ForceMinLevelRange = true;
-            if (regen.EncounterFilters != null)
+            if (regen.EncounterFilters is not null)
                 encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(regen.EncounterFilters, enc));
 
             foreach (var enc in encounters)
@@ -99,6 +99,7 @@ namespace PKHeX.Core.AutoMod
                     raw.Language = tr.Language;
                     tr.ApplyTo(raw);
                 }
+
                 raw = raw.SanityCheckLocation(enc);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);
@@ -111,8 +112,9 @@ namespace PKHeX.Core.AutoMod
 
                 // Bring to the target generation and filter
                 var pk = EntityConverter.ConvertToType(raw, destType, out _);
-                if (pk == null)
+                if (pk is null)
                     continue;
+
                 if (EntityConverter.IsIncompatibleGB(pk, template.Japanese, pk.Japanese))
                     continue;
 
@@ -298,7 +300,7 @@ namespace PKHeX.Core.AutoMod
             if (abilityreq == AbilityRequest.Hidden && gen is 3 or 4 && destVer.GetGeneration() < 8)
                 return false;
 
-            if (set.Species == (int)Species.Pikachu)
+            if (set.Species == (ushort)Species.Pikachu)
             {
                 switch (enc.Generation)
                 {
@@ -355,7 +357,7 @@ namespace PKHeX.Core.AutoMod
 
             // Requested alpha but encounter isn't an alpha
             if (enc is not IAlphaReadOnly a)
-                return requested ? false : true;
+                return !requested;
 
             return a.IsAlpha == requested;
         }
@@ -483,14 +485,14 @@ namespace PKHeX.Core.AutoMod
             bool genderValid = pk.IsGenderValid();
             if (!genderValid)
             {
-                if (pk.Format == 4 && pk.Species == (int)Species.Shedinja) // Shedinja glitch
+                if (pk.Format == 4 && pk.Species == (ushort)Species.Shedinja) // Shedinja glitch
                 {
                     // should match original gender
                     var gender = EntityGender.GetFromPIDAndRatio(pk.PID, 0x7F); // 50-50
                     if (gender == pk.Gender)
                         genderValid = true;
                 }
-                else if (pk.Format > 5 && pk.Species is (int)Species.Marill or (int)Species.Azumarill)
+                else if (pk.Format > 5 && pk.Species is (ushort)Species.Marill or (ushort)Species.Azumarill)
                 {
                     var gv = pk.PID & 0xFF;
                     if (gv > 63 && pk.Gender == 1) // evolved from azurill after transferring to keep gender

@@ -65,11 +65,8 @@ namespace PKHeX.Core.AutoMod
             ( Meloetta, 0 ),
 
             // Vivillons
-            ( Scatterbug, 18 ),
             ( Scatterbug, 19 ),
-            ( Spewpa, 18 ),
             ( Spewpa, 19 ),
-            ( Vivillon, 18 ),
             ( Vivillon, 19 ),
 
             // Hoopa
@@ -513,13 +510,15 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM to modify</param>
         /// <param name="trainer">Trainer to handle the <see cref="pk"/></param>
-        public static void SetHandlerandMemory(this PKM pk, ITrainerInfo trainer, IEncounterable enc)
+        public static void SetHandlerandMemory(this PKM pk, ITrainerInfo trainer, IEncounterable? enc)
         {
-            if (IsUntradeableEncounter(enc))
+            if (enc is not null && IsUntradeableEncounter(enc))
                 return;
+
             var expect = trainer.IsFromTrainer(pk) ? 0 : 1;
             if (pk.CurrentHandler == expect && expect == 0)
                 return;
+
             pk.CurrentHandler = 1;
             pk.HT_Name = trainer.OT;
             pk.HT_Gender = trainer.Gender;

@@ -32,10 +32,9 @@ namespace AutoModTests
             var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
             RecentTrainerCache.SetRecentTrainer(sav);
             var pkms = sav.GenerateLivingDex(out int attempts);
-            var genned = pkms.Count();
+            var genned = pkms.ToList().Count;
             var val = new GenerateResult(genned == attempts, attempts, genned);
-            if (genned != attempts)
-                passed = false;
+            passed = genned == attempts;
             return val;
         }
 
