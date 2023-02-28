@@ -2,6 +2,7 @@
 {
     public enum LiveHeXVersion
     {
+        SV_v120,
         SV_v110,
         SV_v101,
         LA_v111,

@@ -855,7 +855,7 @@ namespace PKHeX.Core.AutoMod
                 const byte undefinedSize = 0;
                 var pi = PersonalTable.SV.GetFormEntry(pk.Species, pk.Form);
                 var param = new GenerateParam9(pk.Species, pi.Gender, enc.FlawlessIVCount, rollCount,
-                    undefinedSize, undefinedSize, undefinedSize,
+                    undefinedSize, undefinedSize, undefinedSize, undefinedSize,
                     enc.Ability, enc.Shiny);
                 enc.TryApply32(pk, seed, param, EncounterCriteria.Unrestricted);
                 if (IsMatchCriteria9(pk, set, compromise))
