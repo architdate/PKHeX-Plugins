@@ -150,7 +150,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
-            if (enc is not ITeraRaid9 && ((pk.Species == (int)Maushold && pk.Form == 0) || (pk.Species == (int)Dudunsparce && pk.Form == 1)))
+            if (enc is not ITeraRaid9 && ((pk.Species == (ushort)Maushold && pk.Form == 0) || (pk.Species == (ushort)Dudunsparce && pk.Form == 1)))
             {
                 pk.EncryptionConstant = pk.EncryptionConstant / 100 * 100;
                 return;
@@ -316,7 +316,15 @@ namespace PKHeX.Core.AutoMod
             if (enc is WC8 w8)
             {
                 var isHOMEGift = w8.Location == 30018 || w8.GetOT(2) == "HOME";
-                if (isHOMEGift) return;
+                if (isHOMEGift)
+                    return;
+            }
+
+            if (enc is WC9 wc9)
+            {
+                size.WeightScalar = (byte)wc9.WeightValue;
+                size.HeightScalar= (byte)wc9.HeightValue;
+                return;
             }
 
             if (APILegality.IsPIDIVSet(pk, enc) && !(enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND) && !(enc is EncounterEgg && GameVersion.BDSP.Contains(enc.Version)))
