@@ -392,7 +392,7 @@ namespace PKHeX.Core.AutoMod
         public static bool IsPIDIVSet(PKM pk, IEncounterable enc)
         {
             // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
-            if (enc is EncounterTera9 or EncounterDist9 or EncounterMight9)
+            if (enc is ITeraRaid9)
                 return true;
             if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
                 return true;
