@@ -37,6 +37,7 @@ namespace AutoModPlugins.GUI
             new("IncludeForms", "Generate all forms of the Pokémon. Note that some generations may not have enough box space for all forms.", "Living Dex"),
             new("SetShiny", "Try to generate the shiny version of the Pokémon if possible.", "Living Dex"),
             new("SetAlpha", "Try to generate the alpha version of the Pokémon if possible.", "Living Dex"),
+            new("NativeOnly", "Only generate Pokémon natively available in the game version pair.", "Living Dex"),
 
             // Miscellaneous
             new("GPSSBaseURL", "Base URL for Flagbrew's Global PKSM Sharing Service (GPSS) features.", "Miscellaneous"),

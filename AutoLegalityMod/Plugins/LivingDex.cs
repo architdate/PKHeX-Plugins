@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using AutoModPlugins.Properties;
 using PKHeX.Core;
@@ -26,13 +27,13 @@ namespace AutoModPlugins
                 return;
 
             var sav = SaveFileEditor.SAV;
-            var pkms = sav.GenerateLivingDex(out int attempts);
+            var pkms = sav.GenerateLivingDex().ToArray();
             var bd = sav.BoxData;
             pkms.CopyTo(bd);
             sav.BoxData = bd;
             SaveFileEditor.ReloadSlots();
 
-            System.Diagnostics.Debug.WriteLine($"Generated Living Dex after {attempts} attempts.");
+            System.Diagnostics.Debug.WriteLine($"Generated Living Dex with {pkms.Length} entries.");
         }
     }
 }
