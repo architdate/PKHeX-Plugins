@@ -7,14 +7,15 @@ namespace AutoModPlugins.GUI
 {
     public partial class ALMError : Form
     {
-        public ALMError(string[] error_txt, string[] buttons)
+        public ALMError(string error_txt, string[] buttons)
         {
             if (buttons.Length > 4)
-                throw new ArgumentOutOfRangeException("Only expect 4 buttons at maximum");
+                throw new Exception($"Expected 4 buttons at maximum but found {buttons.Length}.");
             if (buttons.Length == 0)
-                throw new ArgumentOutOfRangeException("Need atleast 1 button");
+                throw new Exception("Need at least 1 button.");
+
             InitializeComponent();
-            label1.Text = string.Join(Environment.NewLine + Environment.NewLine, error_txt);
+            label1.Text = error_txt;
             var btn_ctrls = new[] { BTN1, BTN2, BTN3, BTN4 };
             buttons = buttons.Reverse().ToArray();
             var btn_loc = label1.Location.Y + label1.Size.Height + 10;
@@ -24,8 +25,6 @@ namespace AutoModPlugins.GUI
                 btn_ctrls[i].Visible = true;
                 btn_ctrls[i].Enabled = true;
                 btn_ctrls[i].Text = buttons[i];
-                //height_diff = btn_loc - btn_ctrls[i].Location.Y;
-                //btn_ctrls[i].Location = new Point(btn_ctrls[i].Location.X, btn_loc);
             }
             Size = new Size(Size.Width, Size.Height + height_diff);
         }

@@ -94,8 +94,11 @@ namespace AutoModPlugins
 
             if (msg is LegalizationResult.VersionMismatch)
             {
-                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version.\n\nRefer to the Wiki to fix this error.";
-                var res = WinFormsUtil.ALMErrorBasic(errorstr, $"The current ALM Version is {ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod")}\nThe current PKHeX Version is {ALMVersion.GetCurrentVersion("PKHeX.Core")}");
+                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version.\n\n" +
+                    $"Refer to the Wiki to fix this error.\n\nThe current ALM Version is {ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod")}\n" +
+                    $"The current PKHeX Version is {ALMVersion.GetCurrentVersion("PKHeX.Core")}";
+
+                var res = WinFormsUtil.ALMErrorBasic(errorstr);
                 if (res == DialogResult.Retry)
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins", UseShellExecute = true });
                 return AutoModErrorCode.VersionMismatch;
@@ -146,14 +149,18 @@ namespace AutoModPlugins
                     $"{timeout.Count} set(s) timed out and {invalid.Count} set(s) are invalid." +
                     "\n\nRefer to the wiki for more help on generating sets correctly." +
                     "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue.");
+
                 if (res == DialogResult.Retry)
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod", UseShellExecute = true });
             }
 
             if (result is AutoModErrorCode.VersionMismatch)
             {
-                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version. \nRefer to the Wiki for how to fix this error.";
-                var res = WinFormsUtil.ALMErrorBasic(errorstr, $"The current ALM Version is {ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod")}\nThe current PKHeX Version is {ALMVersion.GetCurrentVersion("PKHeX.Core")}");
+                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version.\nRefer to the Wiki for how to fix this error.\n\n" +
+                    $"The current ALM Version is {ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod")}\n" +
+                    $"The current PKHeX Version is {ALMVersion.GetCurrentVersion("PKHeX.Core")}";
+
+                var res = WinFormsUtil.ALMErrorBasic(errorstr);
                 if (res == DialogResult.Retry)
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins", UseShellExecute = true });
                 return AutoModErrorCode.VersionMismatch;
