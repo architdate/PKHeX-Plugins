@@ -46,7 +46,7 @@ namespace PKHeX.Core.AutoMod
             if (pk.Nature == set.Nature || set.Nature == -1)
                 return;
             var val = Math.Min((int)Nature.Quirky, Math.Max((int)Nature.Hardy, set.Nature));
-            if (pk.Species == (int)Species.Toxtricity)
+            if (pk.Species == (ushort)Species.Toxtricity)
             {
                 if (pk.Form == EvolutionMethod.GetAmpLowKeyResult(val))
                     pk.Nature = val; // StatNature already set
