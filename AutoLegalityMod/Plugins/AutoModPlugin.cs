@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Reflection;
+using System.Media;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AutoModPlugins.GUI;
 using AutoModPlugins.Properties;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
@@ -20,7 +22,7 @@ namespace AutoModPlugins
         private const string ParentMenuParent = "Menu_Tools";
         private const string LoggingPrefix = "[Auto-Legality Mod]";
 
-        public bool PossibleVersionMismatch;
+        private readonly CancellationTokenSource Source = new();
 
         /// <summary>
         /// Main Plugin Variables
@@ -35,26 +37,40 @@ namespace AutoModPlugins
         public void Initialize(params object[] args)
         {
             Debug.WriteLine($"{LoggingPrefix} Loading {Name}");
-            SaveFileEditor = (ISaveFileProvider)(Array.Find(args, z => z is ISaveFileProvider) ?? throw new ArgumentOutOfRangeException("Null ISaveFileProvider"));
-            PKMEditor = (IPKMView)(Array.Find(args, z => z is IPKMView) ?? throw new ArgumentOutOfRangeException("Null IPKMView"));
-            var menu = (ToolStrip)(Array.Find(args, z => z is ToolStrip) ?? throw new ArgumentOutOfRangeException("Null ToolStrip"));
+            SaveFileEditor = (ISaveFileProvider)(Array.Find(args, z => z is ISaveFileProvider) ?? throw new Exception("Null ISaveFileProvider"));
+            PKMEditor = (IPKMView)(Array.Find(args, z => z is IPKMView) ?? throw new Exception("Null IPKMView"));
+            var menu = (ToolStrip)(Array.Find(args, z => z is ToolStrip) ?? throw new Exception("Null ToolStrip"));
             LoadMenuStrip(menu);
 
             // Match PKHeX Versioning and ALM Settings only on parent plugin
             if (Priority != 0)
                 return;
 
-            Task.Run(SetUpEnvironment);
+            Task.Run(async () =>
+            {
+                var (hasError, error) = await SetUpEnvironment(Source.Token).ConfigureAwait(false);
+                if (hasError && error is not null)
+                {
+                    SystemSounds.Hand.Play();
+                    var res = error.ShowDialog(menu);
+
+                    if (res == DialogResult.No)
+                        Process.Start(new ProcessStartInfo { FileName = "https://discord.gg/tDMvSRv", UseShellExecute = true });
+                    else if (res == DialogResult.Retry)
+                        Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/releases/latest", UseShellExecute = true });
+                }
+
+            }, Source.Token);
         }
 
-        private async Task SetUpEnvironment()
+        private async Task<(bool, ALMError?)> SetUpEnvironment(CancellationToken token)
         {
             ShowdownSetLoader.SetAPILegalitySettings();
-            await TranslateInterface().ConfigureAwait(false);
-            CheckVersionUpdates();
+            await TranslateInterface(token).ConfigureAwait(false);
+            return await CheckVersionUpdates(token).ConfigureAwait(false);
         }
 
-        private async Task TranslateInterface()
+        private async Task TranslateInterface(CancellationToken token)
         {
             // ReSharper disable once SuspiciousTypeConversion.Global
             var form = ((ContainerControl)SaveFileEditor).ParentForm;
@@ -63,37 +79,27 @@ namespace AutoModPlugins
 
             // wait for all plugins to be loaded
             while (!form.IsHandleCreated)
-                await Task.Delay(1_000).ConfigureAwait(false);
+                await Task.Delay(0_100, token).ConfigureAwait(false);
 
-            await Task.Delay(3_000).ConfigureAwait(false);
-            form.Invoke(() => form.TranslateInterface(WinFormsTranslator.CurrentLanguage));
+            if (form.InvokeRequired)
+                form.Invoke(() => form.TranslateInterface(WinFormsTranslator.CurrentLanguage));
+            else form.TranslateInterface(WinFormsTranslator.CurrentLanguage);
             Debug.WriteLine($"{LoggingPrefix} Translated form.");
         }
 
-        private void CheckVersionUpdates()
+        private static async Task<(bool, ALMError?)> CheckVersionUpdates(CancellationToken token)
         {
-            var latest_alm = PKHeX.Core.AutoMod.NetUtil.GetLatestALMVersion();
+            var latest_alm = await ALMVersion.GetLatestALMVersion(token).ConfigureAwait(false);
             var curr_alm = ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod");
             var curr_pkhex = ALMVersion.GetCurrentVersion("PKHeX.Core");
-            if (curr_alm == null || curr_pkhex == null || latest_alm == null)
-                return;
+            if (curr_alm is null || curr_pkhex is null || latest_alm is null)
+                return (false, null);
 
-            if (curr_pkhex > curr_alm)
-                PossibleVersionMismatch = true;
             if (latest_alm <= curr_alm)
-                return;
+                return (false, null);
 
-            // ReSharper disable once SuspiciousTypeConversion.Global
-            var msg = $"Update for ALM is available. Please download it from GitHub. The updated release is only compatible with PKHeX version: {latest_alm.Major}.{latest_alm.Minor}.{latest_alm.Build}.";
-            if (PossibleVersionMismatch)
-                msg += "\n\nThere is also a possible version mismatch between the current ALM version and current PKHeX version.";
-            const string redirect = "Click on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
-
-            var res = WinFormsUtil.ALMErrorDiscord(msg, redirect);
-            if (res == DialogResult.No)
-                Process.Start(new ProcessStartInfo { FileName = "https://discord.gg/tDMvSRv", UseShellExecute = true });
-            else if (res == DialogResult.Retry)
-                Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/releases/latest", UseShellExecute = true });
+            bool mismatch = curr_pkhex > curr_alm;
+            return (true, WinFormsUtil.ALMErrorDiscord(latest_alm, mismatch));
         }
 
         private void LoadMenuStrip(ToolStrip menuStrip)

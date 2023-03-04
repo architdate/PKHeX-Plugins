@@ -1421,6 +1421,11 @@ namespace PKHeX.Core.AutoMod
             {
                 try
                 {
+                    var almVer = ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod");
+                    var coreVer = ALMVersion.GetCurrentVersion("PKHeX.Core");
+                    if (coreVer > almVer)
+                        return new(template, LegalizationResult.VersionMismatch);
+
                     var res = dest.GetLegalFromTemplate(template, set, out var s, nativeOnly);
                     return new AsyncLegalizationResult(res, s);
                 }

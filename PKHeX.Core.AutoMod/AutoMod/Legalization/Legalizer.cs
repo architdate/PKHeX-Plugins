@@ -203,7 +203,7 @@ namespace PKHeX.Core.AutoMod
 
             var trainer = TrainerSettings.GetSavedTrainerData(pkm, tr);
             pkm.SetAllTrainerData(trainer);
-            return LegalizationResult.Regenerated;
+            return satisfied;
         }
 
         /// <summary>
