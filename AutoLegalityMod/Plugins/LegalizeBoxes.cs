@@ -39,8 +39,11 @@ namespace AutoModPlugins
             }
             catch (MissingMethodException)
             {
-                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version. \nRefer to the Wiki for how to fix this error.";
-                var res = WinFormsUtil.ALMErrorBasic(errorstr, $"The current ALM Version is {ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod")}\nThe current PKHeX Version is {ALMVersion.GetCurrentVersion("PKHeX.Core")}");
+                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version. \nRefer to the Wiki for how to fix this error.\n\n" +
+                              $"The current ALM Version is {ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod")}\n" +
+                              $"The current PKHeX Version is {ALMVersion.GetCurrentVersion("PKHeX.Core")}";
+
+                var res = WinFormsUtil.ALMErrorBasic(errorstr);
                 if (res == DialogResult.Retry)
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins", UseShellExecute = true });
             }
@@ -81,8 +84,11 @@ namespace AutoModPlugins
             la = new LegalityAnalysis(result);
             if (!la.Valid)
             {
-                var res = WinFormsUtil.ALMErrorBasic("Unable to make the Active Pokemon legal!", "No legal Pokémon matches the provided traits." +
-                                                "\n\nVisit the Wiki to learn how to import Showdown Sets.");
+                var res = WinFormsUtil.ALMErrorBasic(
+                    "Unable to make the Active Pokemon legal!\n\n" +
+                    "No legal Pokémon matches the provided traits.\n\n" +
+                    "Visit the Wiki to learn how to import Showdown Sets.");
+
                 if (res == DialogResult.Retry)
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod", UseShellExecute = true });
                 return;

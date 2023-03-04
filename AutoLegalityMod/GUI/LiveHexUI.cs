@@ -51,7 +51,7 @@ namespace AutoModPlugins
             var type = sav.GetType();
             var fields = type.GetTypeInfo().DeclaredFields;
             var test = fields.First(z => z.Name == "EditEnv");
-            x = (SaveDataEditor<PictureBox>)(test.GetValue(sav) ?? new ArgumentOutOfRangeException("Error with LiveHeXUI init"));
+            x = (SaveDataEditor<PictureBox>)(test.GetValue(sav) ?? new Exception("Error with LiveHeXUI init."));
             x.Slots.Publisher.Subscribers.Add(this);
 
             CenterToParent();
@@ -331,7 +331,7 @@ namespace AutoModPlugins
             }
         }
 
-        public IEnumerable<string> GetSortedBlockList(LiveHeXVersion lv)
+        private static IEnumerable<string> GetSortedBlockList(LiveHeXVersion lv)
         {
             if (LPBasic.SupportedVersions.Contains(lv))
             {
@@ -608,7 +608,7 @@ namespace AutoModPlugins
                 if (props is null)
                     return false;
 
-                var allblocks = props.GetValue(sav) ?? throw new ArgumentOutOfRangeException("Blocks not present");
+                var allblocks = props.GetValue(sav) ?? throw new Exception("Blocks not present.");
                 var blockprop = allblocks.GetType().GetProperty(subblocks[0].Name);
                 if (allblocks is SCBlockAccessor scba && blockprop == null)
                     sb = scba.GetBlock(subblocks[0].SCBKey);

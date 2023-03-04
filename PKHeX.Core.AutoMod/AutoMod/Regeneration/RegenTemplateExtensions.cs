@@ -5,13 +5,12 @@ namespace PKHeX.Core.AutoMod
 {
     public static class RegenTemplateExtensions
     {
-        public static void SanitizeForm(this RegenTemplate set)
+        public static void SanitizeForm(this RegenTemplate set, int gen)
         {
-            var gen = set.Context.Generation();
             if (gen is 9)
             {
                 // Scatterbug and Spewpa must be Fancy
-                if (set.Species == (int)Species.Scatterbug || set.Species == (int)Species.Spewpa)
+                if (set.Species == (ushort)Species.Scatterbug || set.Species == (ushort)Species.Spewpa)
                     set.Form = 18;
                 return;
             }
@@ -28,8 +27,8 @@ namespace PKHeX.Core.AutoMod
         {
             switch (set.Species)
             {
-                case (int)Species.Zacian:
-                case (int)Species.Zamazenta:
+                case (ushort)Species.Zacian:
+                case (ushort)Species.Zamazenta:
                     {
                         // Behemoth Blade and Behemoth Bash -> Iron Head
                         if (!set.Moves.Contains((ushort)781) && !set.Moves.Contains((ushort)782))

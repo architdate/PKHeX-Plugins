@@ -660,7 +660,7 @@ Ball: Master Ball
 - X-Scissor
 - Swords Dance
 
-Tauros-Paldea (M)
+Tauros-Paldea-Combat (M)
 IVs: 22 HP / 22 Atk / 2 Def / 29 SpA / 25 SpD / 12 Spe
 Ability: Anger Point
 Tera Type: Fighting
@@ -674,7 +674,7 @@ Modest Nature
 - Assurance
 - Headbutt
 
-Tauros-Paldea-Fire (M)
+Tauros-Paldea-Blaze (M)
 IVs: 30 HP / 13 Atk / 15 Def / 10 SpA / 24 SpD
 Ability: Anger Point
 Tera Type: Fighting
@@ -689,7 +689,7 @@ Ball: Master Ball
 - Headbutt
 - Scary Face
 
-Tauros-Paldea-Water (M)
+Tauros-Paldea-Aqua (M)
 IVs: 6 HP / 0 Atk / 9 Def / 24 SpA / 5 SpD / 25 Spe
 Ability: Intimidate
 Tera Type: Fighting

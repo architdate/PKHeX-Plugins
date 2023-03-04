@@ -65,11 +65,8 @@ namespace PKHeX.Core.AutoMod
             ( Meloetta, 0 ),
 
             // Vivillons
-            ( Scatterbug, 18 ),
             ( Scatterbug, 19 ),
-            ( Spewpa, 18 ),
             ( Spewpa, 19 ),
-            ( Vivillon, 18 ),
             ( Vivillon, 19 ),
 
             // Hoopa
@@ -98,6 +95,29 @@ namespace PKHeX.Core.AutoMod
 
             ( Enamorus, 0 ),
             ( Enamorus, 1 ),
+
+            ( Gimmighoul, 0 ),
+            ( Gimmighoul, 1 ),
+            ( Gholdengo, 0 ),
+            ( WoChien, 0 ),
+            ( ChienPao, 0 ),
+            ( TingLu, 0 ),
+            ( ChiYu, 0 ),
+
+            ( Koraidon, 0 ),
+            ( Koraidon, 1 ),
+            ( Koraidon, 2 ),
+            ( Koraidon, 3 ),
+            ( Koraidon, 4 ),
+
+            ( Miraidon, 0 ),
+            ( Miraidon, 1 ),
+            ( Miraidon, 2 ),
+            ( Miraidon, 3 ),
+            ( Miraidon, 4 ),
+
+            ( WalkingWake, 0 ),
+            ( IronLeaves, 0 ),
         };
 
         public static HashSet<int> Gen1TradeEvos = new () { (int)Kadabra, (int)Machoke, (int)Graveler, (int)Haunter };
@@ -150,7 +170,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
-            if (enc is not ITeraRaid9 && ((pk.Species == (int)Maushold && pk.Form == 0) || (pk.Species == (int)Dudunsparce && pk.Form == 1)))
+            if (enc is not ITeraRaid9 && ((pk.Species == (ushort)Maushold && pk.Form == 0) || (pk.Species == (ushort)Dudunsparce && pk.Form == 1)))
             {
                 pk.EncryptionConstant = pk.EncryptionConstant / 100 * 100;
                 return;
@@ -316,7 +336,15 @@ namespace PKHeX.Core.AutoMod
             if (enc is WC8 w8)
             {
                 var isHOMEGift = w8.Location == 30018 || w8.GetOT(2) == "HOME";
-                if (isHOMEGift) return;
+                if (isHOMEGift)
+                    return;
+            }
+
+            if (enc is WC9 wc9)
+            {
+                size.WeightScalar = (byte)wc9.WeightValue;
+                size.HeightScalar= (byte)wc9.HeightValue;
+                return;
             }
 
             if (APILegality.IsPIDIVSet(pk, enc) && !(enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND) && !(enc is EncounterEgg && GameVersion.BDSP.Contains(enc.Version)))
@@ -517,9 +545,11 @@ namespace PKHeX.Core.AutoMod
         {
             if (IsUntradeableEncounter(enc))
                 return;
+
             var expect = trainer.IsFromTrainer(pk) ? 0 : 1;
             if (pk.CurrentHandler == expect && expect == 0)
                 return;
+
             pk.CurrentHandler = 1;
             pk.HT_Name = trainer.OT;
             pk.HT_Gender = trainer.Gender;

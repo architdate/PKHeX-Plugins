@@ -145,13 +145,46 @@ namespace PKHeX.Core.AutoMod
         {
             var gen = EasterEggs.GetGeneration(template.Species);
             var species = (ushort)EasterEggs.GetMemeSpecies(gen, template);
+
             template.Species = species;
-            var attempt = 0;
-            var legalencs = tr.GetRandomEncounter(species, null, set.Shiny, false, ref attempt, out var legal);
+            var form = template.GetAvailableForm();
+            if (form == -1)
+                return template;
+
+            template.Form = (byte)form;
+            var legalencs = tr.GetRandomEncounter(template.Species, template.Form, set.Shiny, false, false, out var legal);
             if (legalencs && legal != null)
                 template = legal;
             template.SetNickname(EasterEggs.GetMemeNickname(gen, template));
             return template;
+        }
+
+        private static int GetAvailableForm(this PKM pk)
+        {
+            var species = pk.Species;
+            var pi = pk.PersonalInfo;
+            var formcount = pi.FormCount;
+            if (formcount == 0)
+                return -1;
+
+            if (!(pk.SWSH || pk.BDSP || pk.LA))
+                return pk.Form;
+
+            static bool IsPresentInGameSWSH(ushort species, byte form) => PersonalTable.SWSH.IsPresentInGame(species, form);
+            static bool IsPresentInGameBDSP(ushort species, byte form) => PersonalTable.BDSP.IsPresentInGame(species, form);
+            static bool IsPresentInGameLA(ushort species, byte form) => PersonalTable.LA.IsPresentInGame(species, form);
+            for (byte f = 0; f < formcount; f++)
+            {
+                if (pk.LA && IsPresentInGameLA(species, f))
+                    return f;
+
+                if (pk.BDSP && IsPresentInGameBDSP(species, f))
+                    return f;
+
+                if (pk.SWSH && IsPresentInGameSWSH(species, f))
+                    return f;
+            }
+            return -1;
         }
 
         /// <summary>
@@ -162,15 +195,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="template">pkm file to legalize</param>
         /// <param name="pkm">legalized pkm file</param>
         /// <returns>bool if the pokemon was legalized</returns>
-        public static LegalizationResult TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, out PKM pkm)
+        public static LegalizationResult TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, out PKM pkm, bool nativeOnly = false)
         {
-            pkm = tr.GetLegalFromTemplateTimeout(template, set, out LegalizationResult satisfied);
+            pkm = tr.GetLegalFromTemplateTimeout(template, set, out LegalizationResult satisfied, nativeOnly);
             if (satisfied != LegalizationResult.Regenerated)
                 return satisfied;
 
             var trainer = TrainerSettings.GetSavedTrainerData(pkm, tr);
             pkm.SetAllTrainerData(trainer);
-            return LegalizationResult.Regenerated;
+            return satisfied;
         }
 
         /// <summary>

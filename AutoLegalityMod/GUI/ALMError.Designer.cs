@@ -122,7 +122,6 @@
             this.Text = "ALMError";
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.BringToFront();
         }
 
         #endregion
