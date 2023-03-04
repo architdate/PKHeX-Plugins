@@ -27,26 +27,36 @@ namespace AutoModTests
             {
                 var legalsets = new List<RegenTemplate>();
                 var illegalsets = new List<RegenTemplate>();
-                var sav = SaveUtil.GetBlankSAV(s, "ALMUT");
+                var setsTransfer = new List<ShowdownSet>();
+
+                var sav = SaveUtil.GetBlankSAV(s.GetContext(), "ALMUT");
                 RecentTrainerCache.SetRecentTrainer(sav);
 
                 var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("====="));
+                var sets = ShowdownParsing.GetShowdownSets(lines).ToList();
 
-                // Edge case checks for transfers
-                // Test PA8 files in BD without moves
-                lines = file.Contains("pa8") && (s == BD || s == SP) ? lines.Where(z => !z.StartsWith("- ")) : lines;
+                bool paTransfer = file.Contains("pa8") && (s is BD || s is SP);
+                if (paTransfer)
+                {
+                    // Edge case checks for transfers
+                    // Test PA8 files in BD without moves
+                    var noMoves = lines.Where(z => !z.StartsWith("- "));
+
+                    // Giratina Origin from PLA has no item so will fail in BDSP
+                    setsTransfer = ShowdownParsing.GetShowdownSets(noMoves).Where(z => !(z.Species == (ushort)Species.Giratina && z.Form == 1)).ToList();
+                }
 
                 // Filter sets based on if they are present in destination game
-                var filter = ShowdownParsing.GetShowdownSets(lines).Distinct(new ShowdownSetComparator()).Where(z => sav.Personal.IsPresentInGame(z.Species, z.Form));
-                if (file.Contains("pa8") && (s == BD || s == SP))
-                    filter = filter.Where(z => !(z.Species == (int)Species.Giratina && z.Form == 1)); // Giratina Origin from PLA has no item so will fail in BDSP
-                var sets = filter.ToList();
+                var filter = !paTransfer ? sets.Distinct(new ShowdownSetComparator()).Where(z => sav.Personal.IsPresentInGame(z.Species, z.Form))
+                                         : setsTransfer.Distinct(new ShowdownSetComparator()).Where(z => sav.Personal.IsPresentInGame(z.Species, z.Form));
 
+                sets = filter.ToList();
                 for (int i = 0; i < sets.Count; i++)
                 {
                     var set = sets[i];
                     if (set.Species <= 0)
                         continue;
+
                     try
                     {
                         Debug.Write($"Checking Set {i:000} [Species: {(Species)set.Species}] from File {file} using Save {s}: ");

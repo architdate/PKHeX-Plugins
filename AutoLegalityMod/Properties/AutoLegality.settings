@@ -65,5 +65,8 @@
     <Setting Name="SetAlpha" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+	<Setting Name="NativeOnly" Type="System.Boolean" Scope="User">
+	  <Value Profile="(Default)">True</Value>
+	</Setting>
   </Settings>
 </SettingsFile>

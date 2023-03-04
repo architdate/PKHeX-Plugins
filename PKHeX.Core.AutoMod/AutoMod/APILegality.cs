@@ -37,7 +37,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is legal or not</param>
-        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out LegalizationResult satisfied)
+        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out LegalizationResult satisfied, bool nativeOnly = false)
         {
             RegenSet regen;
             if (set is RegenTemplate t)
@@ -55,23 +55,23 @@ namespace PKHeX.Core.AutoMod
             template.ApplySetDetails(set);
             template.SetRecordFlags(Array.Empty<ushort>()); // Validate TR/MS moves for the encounter
 
-            if (template.Species == (int)Species.Unown) // Force unown form on template
+            if (template.Species == (ushort)Species.Unown) // Force unown form on template
                 template.Form = set.Form;
 
             var abilityreq = GetRequestedAbility(template, set);
             var batchedit = AllowBatchCommands && regen.HasBatchSettings;
+            var native = ModLogic.NativeOnly && nativeOnly;
             var destType = template.GetType();
             var destVer = (GameVersion)dest.Game;
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
             var timer = Stopwatch.StartNew();
-            var gamelist = FilteredGameList(template, destVer, batchedit ? regen.Batch.Filters : null);
+            var gamelist = FilteredGameList(template, destVer, batchedit ? regen.Batch.Filters : null, native);
             if (dest.Generation <= 2)
                 template.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
-            // var encounters = GetAllSpeciesFormEncounters(template.Species, GameData.GetPersonal(destVer), gamelist, set.Moves, template);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
             criteria.ForceMinLevelRange = true;
             if (regen.EncounterFilters != null)
@@ -193,16 +193,17 @@ namespace PKHeX.Core.AutoMod
         /// <param name="destVer">Version in which the pokemon needs to be imported</param>
         /// <param name="filters">Optional list of filters to remove games</param>
         /// <returns>List of filtered games to check encounters for</returns>
-        internal static GameVersion[] FilteredGameList(PKM template, GameVersion destVer, IReadOnlyList<StringInstruction>? filters)
+        internal static GameVersion[] FilteredGameList(PKM template, GameVersion destVer, IReadOnlyList<StringInstruction>? filters, bool nativeOnly = false)
         {
-            var gamelist = GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray();
+            var gamelist = !nativeOnly
+                           ? GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray()
+                           : GetPairedVersions(destVer);
 
             if (filters != null)
             {
                 foreach (var f in filters)
                 {
                     if (f.PropertyName == nameof(PKM.Version) && int.TryParse(f.PropertyValue, out int gv))
-                        //gamelist = f.Comparer == InstructionComparer.IsEqual ? new[] { (GameVersion)gv } : gamelist.Where(z => z != (GameVersion)gv).ToArray();
                         gamelist = f.Comparer switch
                         {
                             InstructionComparer.IsEqual => new[] { (GameVersion)gv },
@@ -215,8 +216,10 @@ namespace PKHeX.Core.AutoMod
                         };
                 }
             }
-            if (PrioritizeGame)
+
+            if (PrioritizeGame && !nativeOnly)
                 gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, SimpleEdits.GetIsland(destVer)) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
+
             if (template.AbilityNumber == 4 && destVer.GetGeneration() < 8)
                 gamelist = gamelist.Where(z => z.GetGeneration() is not 3 and not 4).ToArray();
             return gamelist;
@@ -298,7 +301,7 @@ namespace PKHeX.Core.AutoMod
             if (abilityreq == AbilityRequest.Hidden && gen is 3 or 4 && destVer.GetGeneration() < 8)
                 return false;
 
-            if (set.Species == (int)Species.Pikachu)
+            if (set.Species == (ushort)Species.Pikachu)
             {
                 switch (enc.Generation)
                 {
@@ -355,7 +358,7 @@ namespace PKHeX.Core.AutoMod
 
             // Requested alpha but encounter isn't an alpha
             if (enc is not IAlphaReadOnly a)
-                return requested ? false : true;
+                return !requested;
 
             return a.IsAlpha == requested;
         }
@@ -483,14 +486,14 @@ namespace PKHeX.Core.AutoMod
             bool genderValid = pk.IsGenderValid();
             if (!genderValid)
             {
-                if (pk.Format == 4 && pk.Species == (int)Species.Shedinja) // Shedinja glitch
+                if (pk.Format == 4 && pk.Species == (ushort)Species.Shedinja) // Shedinja glitch
                 {
                     // should match original gender
                     var gender = EntityGender.GetFromPIDAndRatio(pk.PID, 0x7F); // 50-50
                     if (gender == pk.Gender)
                         genderValid = true;
                 }
-                else if (pk.Format > 5 && pk.Species is (int)Species.Marill or (int)Species.Azumarill)
+                else if (pk.Format > 5 && pk.Species is (ushort)Species.Marill or (ushort)Species.Azumarill)
                 {
                     var gv = pk.PID & 0xFF;
                     if (gv > 63 && pk.Gender == 1) // evolved from azurill after transferring to keep gender
@@ -1412,13 +1415,13 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Wrapper function for GetLegalFromTemplate but with a Timeout
         /// </summary>
-        public static PKM GetLegalFromTemplateTimeout(this ITrainerInfo dest, PKM template, IBattleTemplate set, out LegalizationResult satisfied)
+        public static PKM GetLegalFromTemplateTimeout(this ITrainerInfo dest, PKM template, IBattleTemplate set, out LegalizationResult satisfied, bool nativeOnly = false)
         {
             AsyncLegalizationResult GetLegal()
             {
                 try
                 {
-                    var res = dest.GetLegalFromTemplate(template, set, out var s);
+                    var res = dest.GetLegalFromTemplate(template, set, out var s, nativeOnly);
                     return new AsyncLegalizationResult(res, s);
                 }
                 catch (MissingMethodException)
@@ -1464,6 +1467,35 @@ namespace PKHeX.Core.AutoMod
                 return null;
 
             return await task.ConfigureAwait(false); // will re-fire exception if present
+        }
+
+        private static GameVersion[] GetPairedVersions(GameVersion version)
+        {
+            var group = version switch
+            {
+                GameVersion.RD or GameVersion.C => version,
+                _ => GameUtil.GetMetLocationVersionGroup(version),
+            };
+
+            return group switch
+            {
+                GameVersion.RBY => new[] { GameVersion.RD, GameVersion.GN, GameVersion.BU, GameVersion.YW },
+                GameVersion.RSE => new[] { GameVersion.R, GameVersion.S, GameVersion.E },
+                GameVersion.FRLG => new[] { GameVersion.SL, GameVersion.VL },
+                GameVersion.DPPt => new[] { GameVersion.D, GameVersion.P, GameVersion.Pt },
+                GameVersion.HGSS => new[] { GameVersion.HG, GameVersion.SS },
+                GameVersion.BW => new[] { GameVersion.B, GameVersion.W },
+                GameVersion.B2W2 => new[] { GameVersion.B2, GameVersion.W2 },
+                GameVersion.XY => new[] { GameVersion.X, GameVersion.Y },
+                GameVersion.ORAS => new[] { GameVersion.OR, GameVersion.AS },
+                GameVersion.SM => new[] { GameVersion.SN, GameVersion.MN },
+                GameVersion.USUM => new[] { GameVersion.US, GameVersion.UM },
+                GameVersion.GG => new[] { GameVersion.GP, GameVersion.GE },
+                GameVersion.SWSH => new[] { GameVersion.SW, GameVersion.SH },
+                GameVersion.BDSP => new[] { GameVersion.BD, GameVersion.SP },
+                GameVersion.SV => new[] { GameVersion.SL, GameVersion.VL },
+                _ => new[] { version },
+            };
         }
     }
 }

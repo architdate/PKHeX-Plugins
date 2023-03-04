@@ -62,7 +62,7 @@ namespace PKHeX.Core.AutoMod
 
         public RegenTemplate(ShowdownSet set, int gen = PKX.Generation) : this(set, gen, set.Text)
         {
-            this.SanitizeForm();
+            this.SanitizeForm(gen);
             this.SanitizeBattleMoves();
 
             var shiny = Shiny ? Core.Shiny.Always : Core.Shiny.Never;
@@ -107,7 +107,7 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             // Sanitize keldeo moves to avoid form mismatches
-            if (set.Species == (int)Core.Species.Keldeo)
+            if (set.Species == (ushort)Core.Species.Keldeo)
                 moves[0] = set.Form == 0 ? (ushort)Move.AquaJet : (ushort)Move.SecretSword;
         }
 

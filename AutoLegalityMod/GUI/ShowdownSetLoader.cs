@@ -192,6 +192,7 @@ namespace AutoModPlugins
             ModLogic.IncludeForms = settings.IncludeForms;
             ModLogic.SetShiny = settings.SetShiny;
             ModLogic.SetAlpha = settings.SetAlpha;
+            ModLogic.NativeOnly = settings.NativeOnly;
 
             if (APILegality.UseCompetitiveMarkings)
                 MarkingApplicator.MarkingMethod = APILegality.CompetitiveMarking;
