@@ -1,9 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Reflection;
-using System.Windows.Forms;
-
-namespace AutoModPlugins.GUI
+﻿namespace AutoModPlugins.GUI
 {
     partial class ALMSettings
     {

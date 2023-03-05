@@ -51,23 +51,29 @@ namespace AutoModPlugins
                 var (hasError, error) = await SetUpEnvironment(Source.Token).ConfigureAwait(false);
                 if (hasError && error is not null)
                 {
-                    SystemSounds.Hand.Play();
-                    var res = error.ShowDialog(menu);
-
-                    if (res == DialogResult.No)
-                        Process.Start(new ProcessStartInfo { FileName = "https://discord.gg/tDMvSRv", UseShellExecute = true });
-                    else if (res == DialogResult.Retry)
-                        Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/releases/latest", UseShellExecute = true });
+                    if (error.InvokeRequired)
+                        error.Invoke(() => ShowAlmErrorDialog(error, menu));
+                    else ShowAlmErrorDialog(error, menu);
                 }
-
             }, Source.Token);
+        }
+
+        private static void ShowAlmErrorDialog(ALMError error, ToolStrip menu)
+        {
+            SystemSounds.Hand.Play();
+            var res = error.ShowDialog(menu);
+
+            if (res == DialogResult.No)
+                Process.Start(new ProcessStartInfo { FileName = "https://discord.gg/tDMvSRv", UseShellExecute = true });
+            else if (res == DialogResult.Retry)
+                Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/releases/latest", UseShellExecute = true });
         }
 
         private async Task<(bool, ALMError?)> SetUpEnvironment(CancellationToken token)
         {
             ShowdownSetLoader.SetAPILegalitySettings();
             await TranslateInterface(token).ConfigureAwait(false);
-            return await CheckVersionUpdates(token).ConfigureAwait(false);
+            return CheckVersionUpdates();
         }
 
         private async Task TranslateInterface(CancellationToken token)
@@ -87,19 +93,18 @@ namespace AutoModPlugins
             Debug.WriteLine($"{LoggingPrefix} Translated form.");
         }
 
-        private static async Task<(bool, ALMError?)> CheckVersionUpdates(CancellationToken token)
+        private static (bool, ALMError?) CheckVersionUpdates()
         {
-            var latest_alm = await ALMVersion.GetLatestALMVersion(token).ConfigureAwait(false);
-            var curr_alm = ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod");
-            var curr_pkhex = ALMVersion.GetCurrentVersion("PKHeX.Core");
-            if (curr_alm is null || curr_pkhex is null || latest_alm is null)
-                return (false, null);
+            bool mismatch = ALMVersion.GetIsMismatch();
+            if (mismatch)
+            {
+                AutoLegality.Default.AllowMismatch = false;
+                AutoLegality.Default.LatestAllowedVersion = "0.0.0.0";
+            }
 
-            if (latest_alm <= curr_alm)
-                return (false, null);
-
-            bool mismatch = curr_pkhex > curr_alm;
-            return (true, WinFormsUtil.ALMErrorDiscord(latest_alm, mismatch));
+            var versions = ALMVersion.Versions;
+            bool update = !APILegality.AllowMismatch && (versions.AlmVersionLatest > versions.AlmVersionCurrent);
+            return (mismatch, WinFormsUtil.ALMErrorDiscord(versions.AlmVersionLatest, update, mismatch));
         }
 
         private void LoadMenuStrip(ToolStrip menuStrip)
