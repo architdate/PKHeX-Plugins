@@ -1423,7 +1423,7 @@ namespace PKHeX.Core.AutoMod
             {
                 try
                 {
-                    if (ALMVersion.GetIsMismatch())
+                    if (!AllowMismatch && ALMVersion.GetIsMismatch())
                         return new(template, LegalizationResult.VersionMismatch);
 
                     var res = dest.GetLegalFromTemplate(template, set, out var s, nativeOnly);

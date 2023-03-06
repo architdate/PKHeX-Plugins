@@ -73,6 +73,7 @@ GPSSBaseURL_description=URL base per le funzionalità Flagbrew's Global PKSM Sha
 PromptForSmogonImport_description=Utilizzato per "Genera Set Smogon". Se "True", ALM richiederà l'approvazione per ogni Set prima di tentare di generarne uno.
 UseMarkings_description=Imposta Segnalini sui Pokémon basandosi sugli IV.
 UseCompetitiveMarkings_description=Se abilitato, Imposta segnalini Blu per IV a 31 e rossi per IV a 30. Altrimenti, imposta segnalini Blu per IV a 31 e rossi per IV a 0.
+AllowMismatch_description=If enabled, ignores version mismatch warnings until the next PKHeX.Core release.
 
 AllowTrainerOverride_category=Dati Allenatore
 UseTrainerData_category=Dati Allenatore
@@ -95,3 +96,4 @@ GPSSBaseURL_category=Varie
 PromptForSmogonImport_category=Varie
 UseMarkings_category=Varie
 UseCompetitiveMarkings_category=Varie
+AllowMismatch_category=Varie
