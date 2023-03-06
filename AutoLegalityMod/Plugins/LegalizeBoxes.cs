@@ -40,8 +40,8 @@ namespace AutoModPlugins
             catch (MissingMethodException)
             {
                 var errorstr = "The PKHeX-Plugins version does not match the PKHeX version. \nRefer to the Wiki for how to fix this error.\n\n" +
-                              $"The current ALM Version is {ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod")}\n" +
-                              $"The current PKHeX Version is {ALMVersion.GetCurrentVersion("PKHeX.Core")}";
+                              $"The current ALM Version is {ALMVersion.Versions.AlmVersionCurrent}\n" +
+                              $"The current PKHeX Version is {ALMVersion.Versions.CoreVersionCurrent}";
 
                 var res = WinFormsUtil.ALMErrorBasic(errorstr);
                 if (res == DialogResult.Retry)

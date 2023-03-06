@@ -36,12 +36,16 @@ namespace AutoModPlugins
             return MessageBox.Show(msg, nameof(Error), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static ALMError ALMErrorDiscord(Version version, bool mismatch)
+        public static ALMError ALMErrorDiscord(Version? version, bool update, bool mismatch)
         {
             // ReSharper disable once SuspiciousTypeConversion.Global
-            var msg = $"Update for ALM is available. Please download it from GitHub. The updated release is only compatible with PKHeX version: {version.Major}.{version.Minor}.{version.Build}.";
+            var msg = string.Empty;
+            if (update)
+                msg += $"Update for ALM is available. Please download it from GitHub. The updated release is only compatible with PKHeX version: {version}.";
+
             if (mismatch)
-                msg += "\n\nThere is also a possible version mismatch between the current ALM version and current PKHeX version.";
+                msg += $"{(update ? "\n\n" : "")}Possible version mismatch between the current ALM version and current PKHeX version.";
+
             msg += "Click on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
             return new ALMError(msg, new[] { "Discord", "GitHub", "Cancel" });
         }

@@ -44,6 +44,7 @@ namespace AutoModPlugins.GUI
             new("PromptForSmogonImport", "Used for \"Generate Smogon Sets\". If set to true, ALM will ask for approval for each set before attempting to generate it.", "Miscellaneous"),
             new("UseMarkings", "Sets markings on the Pokémon based on IVs.", "Miscellaneous"),
             new("UseCompetitiveMarkings", "Sets IVs of 31 to blue and 30 to red if enabled. Otherwise, sets IVs of 31 to blue and 0 to red.", "Miscellaneous"),
+            new("AllowMismatch", "If enabled, ignores version mismatch warnings until the next PKHeX.Core release.", "Miscellaneous"),
         };
 
         public ALMSettings(object obj)
@@ -93,7 +94,7 @@ namespace AutoModPlugins.GUI
                 if (s.Category != null)
                     category = translation.GetTranslatedText($"{s.SettingName}_category", s.Category);
                 if (desc == null || category == null)
-                    throw new ArgumentOutOfRangeException("Category / Description translations are null");
+                    throw new Exception("Category / Description translations are null");
                 PropertyDescriptor pd2 = TypeDescriptor.CreateProperty(_settings.GetType(), pd, new DescriptionAttribute(desc), new CategoryAttribute(category));
                 ctd.OverrideProperty(pd2);
             }
