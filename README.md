@@ -15,7 +15,7 @@ Regular builds will usually succeed unless there are changes that are incompatib
 - Clone the PKHeX-Plugins repository using: `$ git clone https://github.com/architdate/PKHeX-Plugins.git`.
 - Right-click on the solution and click `Rebuild All`.
 - These DLLs should be placed into a `plugins` directory where the PKHeX executable is.
-   - The compiled DLL `AutoModPlugins.dll` for AutoLegality will be in the `AutoLegalityMod/bin/Release/net7.0-windows` directory.
+   - The compiled DLL `AutoModPlugins.dll` for AutoLegality will be in the `AutoLegalityMod\bin\Release\net7.0-windows` directory.
 
 **Bleeding Edge Builds**  
 Use this build method only if the regular builds fail. The AppVeyor CI will always use the bleeding edge build method. More details regarding this can be seen in the [appveyor.yml](https://github.com/architdate/PKHeX-Plugins/blob/master/appveyor.yml) file.
@@ -25,8 +25,8 @@ Use this build method only if the regular builds fail. The AppVeyor CI will alwa
 - Open the PKHeX solution, change your environment to `Release`, right-click on the `PKHeX.Core` project, and click `Rebuild` to build the project.
 - Open the PKHeX-Plugins solution and right-click to `Restore NuGet Packages`.
 - Next, replace the most recent NuGet packages with the newly-built `PKHeX.Core.dll` files.
-   - Copy the `PKHeX.Core.dll` file located in `PKHeX.Core/bin/Release/net7.0-windows` to the following folder:
-       * `C:/Users/%USERNAME%/.nuget/packages/pkhex.core/YY.MM.DD/\lib\net7.0`
+   - Copy the `PKHeX.Core.dll` file located in `PKHeX.Core\bin\Release\net7.0-windows` to the following folder with the most recent date:
+       * `C:\Users\%USERNAME%\.nuget\packages\pkhex.core\YY.MM.DD\lib\net7.0`
 - Right click the PKHeX-Plugins solution and `Rebuild All`. This should build the mod with the latest `PKHeX.Core` version so that it can be used with the latest commit of PKHeX.
 - The compiled DLLs will be in the same location as with the regular builds. 
 
