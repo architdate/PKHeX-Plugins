@@ -198,7 +198,15 @@ namespace AutoModPlugins
             // Console might be disconnected...
             catch (Exception ex)
             {
-                WinFormsUtil.Error(ex.Message);
+                var errorstr = $"{ex.Message}\n\n" +
+                                "Click the \"Wiki\" button to troubleshoot.";
+
+                var error = WinFormsUtil.ALMErrorBasic(errorstr);
+                error.ShowDialog();
+
+                var res = error.DialogResult;
+                if (res == DialogResult.Retry)
+                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/FAQ-and-Troubleshooting#troubleshooting", UseShellExecute = true });
                 return;
             }
             B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
