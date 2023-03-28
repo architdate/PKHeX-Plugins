@@ -258,15 +258,19 @@ namespace PKHeX.Core.AutoMod
             // Remove invalid encounter moves (eg. Kyurem Encounter -> Requested Kyurem black)
             if (set.Moves[0] == 0 && la.Info.Moves.Any(z => z.Judgement == Severity.Invalid))
             {
-                pk.SetMoves(la.GetSuggestedCurrentMoves(), pk is not PA8);
+                Span<ushort> moves = stackalloc ushort[4];
+                la.GetSuggestedCurrentMoves(moves);
+                pk.SetMoves(moves, pk is not PA8);
                 pk.FixMoves();
             }
+
             if (la.Parsed && !pk.FatefulEncounter)
             {
                 // For dexnav. Certain encounters come with "random" relearn moves, and our requested moves might require one of them.
-                var relearn = la.GetSuggestedRelearnMoves(enc);
+                Span<ushort> moves = stackalloc ushort[4];
+                la.GetSuggestedRelearnMoves(moves, enc);
                 pk.ClearRelearnMoves();
-                pk.SetRelearnMoves(relearn);
+                pk.SetRelearnMoves(moves);
             }
 
             if (pk is IAwakened)

@@ -54,6 +54,7 @@ namespace PKHeX.Core.AutoMod
 
             if (template.Version == 0)
                 template.Version = dest.Game;
+
             template.ApplySetDetails(set);
             template.SetRecordFlags(Array.Empty<ushort>()); // Validate TR/MS moves for the encounter
 

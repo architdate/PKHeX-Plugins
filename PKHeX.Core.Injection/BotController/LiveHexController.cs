@@ -1,4 +1,6 @@
-﻿namespace PKHeX.Core.Injection
+﻿using System;
+
+namespace PKHeX.Core.Injection
 {
     public class LiveHeXController
     {
@@ -29,8 +31,8 @@
         public void ReadBox(int box)
         {
             var sav = SAV.SAV;
-            var len = SAV.SAV.BoxSlotCount * (RamOffsets.GetSlotSize(Bot.Version) + RamOffsets.GetGapSize(Bot.Version));
-            var data = Bot.ReadBox(box, len);
+            var len = sav.BoxSlotCount * (RamOffsets.GetSlotSize(Bot.Version) + RamOffsets.GetGapSize(Bot.Version));
+            var data = Bot.ReadBox(box, len).AsSpan();
             sav.SetBoxBinary(data, box);
             SAV.ReloadSlots();
         }
