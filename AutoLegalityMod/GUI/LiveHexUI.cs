@@ -129,11 +129,17 @@ namespace AutoModPlugins
                 return;
             data.CopyTo(dest, startofs);
         }
+        
+        private static bool ChangeBoxAlreadyCalled = false;
 
         private void ChangeBox(object? sender, EventArgs e)
         {
+            if (ChangeBoxAlreadyCalled)
+                return;
+            ChangeBoxAlreadyCalled = true;
             if (checkBox1.Checked && Remote.Bot.Connected)
                 Remote.ChangeBox(ViewIndex);
+            ChangeBoxAlreadyCalled = false;
         }
 
         private void B_Connect_Click(object sender, EventArgs e)
