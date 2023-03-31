@@ -25,7 +25,7 @@ Use this build method only if the regular builds fail. The AppVeyor CI will alwa
 - Open the PKHeX solution, change your environment to `Release`, right-click on the `PKHeX.Core` project, and click `Rebuild` to build the project.
 - Open the PKHeX-Plugins solution and right-click to `Restore NuGet Packages`.
 - Next, replace the most recent NuGet packages with the newly-built `PKHeX.Core.dll` files.
-   - Copy the `PKHeX.Core.dll` file located in `PKHeX.Core\bin\Release\net7.0-windows` to the following folder with the most recent date:
+   - Copy the `PKHeX.Core.dll` file located in `PKHeX.Core\bin\Release\net7.0` to the following folder with the most recent date:
        * `C:\Users\%USERNAME%\.nuget\packages\pkhex.core\YY.MM.DD\lib\net7.0`
 - Right click the PKHeX-Plugins solution and `Rebuild All`. This should build the mod with the latest `PKHeX.Core` version so that it can be used with the latest commit of PKHeX.
 - The compiled DLLs will be in the same location as with the regular builds. 
