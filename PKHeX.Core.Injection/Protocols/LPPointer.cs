@@ -12,28 +12,28 @@ namespace PKHeX.Core.Injection
         private const int LA_MYSTATUS_BLOCK_SIZE = 0x80;
         private const int SV_MYSTATUS_BLOCK_SIZE = 0x68;
 
-        public static BlockData[] Blocks_SV_v120 =
+        public static readonly BlockData[] Blocks_SV_v120 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+44A98C8]+100]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+44A98C8]+1B0]+40" },
             new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+44A98C8]+180]+40" },
         };
 
-        public static BlockData[] Blocks_SV_v101 =
+        public static readonly BlockData[] Blocks_SV_v101 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+42DA8E8]+148]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+42DA8E8]+1B0]+40" },
             new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+42DA8E8]+180]+40" },
         };
 
-        public static BlockData[] Blocks_SV_v110 =
+        public static readonly BlockData[] Blocks_SV_v110 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+4384B18]+148]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+4384B18]+1B0]+40" },
             new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+4384B18]+180]+40" },
         };
 
-        public static BlockData[] Blocks_LA_v100 =
+        public static readonly BlockData[] Blocks_LA_v100 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xF25C070E, Pointer = "[[main+4275470]+218]+68" },
             new() { Name = "KMoney", Display = "Money Data", SCBKey = 0x3279D927, Pointer = "[[main+4275470]+210]+6C", Type = SCTypeCode.UInt32 },
@@ -47,7 +47,7 @@ namespace PKHeX.Core.Injection
             new() { Name = "KZukan", Display = "Pokedex", SCBKey = 0x02168706, Pointer = "[[[[main+4275470]+248]+58]+18]+1C" },
         };
 
-        public static BlockData[] Blocks_LA_v101 =
+        public static readonly BlockData[] Blocks_LA_v101 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xF25C070E, Pointer = "[[main+427B470]+218]+68" },
             new() { Name = "KMoney", Display = "Money Data", SCBKey = 0x3279D927, Pointer = "[[main+427B470]+210]+6C", Type = SCTypeCode.UInt32 },
@@ -61,7 +61,7 @@ namespace PKHeX.Core.Injection
             new() { Name = "KZukan", Display = "Pokedex", SCBKey = 0x02168706, Pointer = "[[[[main+427B470]+248]+58]+18]+1C" },
         };
 
-        public static BlockData[] Blocks_LA_v102 =
+        public static readonly BlockData[] Blocks_LA_v102 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xF25C070E, Pointer = "[[main+427C470]+218]+68" },
             new() { Name = "KMoney", Display = "Money Data", SCBKey = 0x3279D927, Pointer = "[[main+427C470]+210]+6C", Type = SCTypeCode.UInt32 },
@@ -75,7 +75,7 @@ namespace PKHeX.Core.Injection
             new() { Name = "KZukan", Display = "Pokedex", SCBKey = 0x02168706, Pointer = "[[[[main+427C470]+248]+58]+18]+1C" },
         };
 
-        public static BlockData[] Blocks_LA_v110 =
+        public static readonly BlockData[] Blocks_LA_v110 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xF25C070E, Pointer = "[[main+42BA6B0]+218]+68" },
             new() { Name = "KMoney", Display = "Money Data", SCBKey = 0x3279D927, Pointer = "[[main+42BA6B0]+210]+6C", Type = SCTypeCode.UInt32 },

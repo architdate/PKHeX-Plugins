@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using AutoModPlugins.GUI;
 using AutoModPlugins.Properties;
@@ -27,7 +26,6 @@ namespace AutoModPlugins
         private readonly InjectorCommunicationType CurrentInjectionType;
 
         private readonly ComboBox? BoxSelect; // this is just us holding a reference; disposal is done by its parent
-        private static readonly string BlockKeysPath = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath)!, "blockkeys");
 
         public LiveHeXUI(ISaveFileProvider sav, IPKMView editor)
         {
@@ -365,22 +363,9 @@ namespace AutoModPlugins
             {
                 var save_blocks = LPPointer.SCBlocks[lv].Select(z => z.Display).Distinct();
                 var blks = save_blocks.OrderBy(z => z);
-                var sbptr = LPPointer.GetSaveBlockPointer(lv);
-                var keys = LoadBlockKeys(lv);
-                if (sbptr == string.Empty || keys == null)
-                    return blks;
-                return blks.Concat(keys.Select(z => $"[key] {z}"));
+                return blks;
             }
             return new List<string>();
-        }
-
-        public static uint[]? LoadBlockKeys(LiveHeXVersion lv)
-        {
-            var path = Path.Combine(BlockKeysPath, lv.ToString() + ".txt");
-            if (!Path.Exists(path))
-                return null;
-            var lines = File.ReadAllLines(path);
-            return lines.Select(z => uint.TryParse(z.Trim(), out uint val) ? val : 0).Where(z => z != 0).ToArray();
         }
 
         public void NotifySlotOld(ISlotInfo previous) { }
@@ -435,20 +420,33 @@ namespace AutoModPlugins
             if (Remote.Bot.com is not ICommunicatorNX sb)
                 return;
 
-            ulong address = GetPointerAddress(sb);
-            if (address == 0)
-                WinFormsUtil.Alert("No pointer address.");
-
-            var valid = int.TryParse(RamSize.Text, out int size);
-            if (!valid)
+            ulong address;
+            int size;
+            var blk_key = uint.TryParse(TB_Pointer.Text.Replace("[key] ", ""), out var keyval);
+            if (!blk_key)
             {
-                WinFormsUtil.Alert("Make sure that the size is a valid integer");
-                return;
+                address = GetPointerAddress(sb);
+                if (address == 0)
+                    WinFormsUtil.Alert("No pointer address.");
+
+                var valid = int.TryParse(RamSize.Text, out size);
+                if (!valid)
+                {
+                    WinFormsUtil.Alert("Make sure that the size is a valid integer");
+                    return;
+                }
+            }
+            else
+            {
+                (address, size) = ReadKey(Remote.Bot, keyval);
             }
 
             try
             {
-                var result = sb.ReadBytesAbsolute(address, size);
+                var header = blk_key ? 5 : 0;
+                var result = sb.ReadBytesAbsolute(address, size + header);
+                if (blk_key)
+                    result = DecryptBlock(keyval, result)[header..];
                 bool blockview = (ModifierKeys & Keys.Control) == Keys.Control;
                 PKM? pkm = null;
                 if (blockview)
@@ -457,7 +455,7 @@ namespace AutoModPlugins
                     if (!pkm.ChecksumValid)
                         blockview = false;
                 }
-                using (var form = new SimpleHexEditor(result, Remote.Bot, address, RWMethod.Absolute))
+                using (var form = new SimpleHexEditor(result, Remote.Bot, address, RWMethod.Absolute, blk_key, keyval, header))
                 {
                     var loadgrid = blockview && ReflectUtil.GetPropertiesCanWritePublicDeclared(pkm!.GetType()).Count() > 1;
                     if (loadgrid)
@@ -578,7 +576,7 @@ namespace AutoModPlugins
                 var res = form.ShowDialog();
                 write = res == DialogResult.OK;
             }
-            if (!write || txt.StartsWith("[key] "))
+            if (!write)
                 return;
 
             if (LPBasic.SupportedVersions.Contains(version))
@@ -603,29 +601,6 @@ namespace AutoModPlugins
             var version = bot.Version;
             bool valid = false;
             data = null;
-            var keyblock = display.StartsWith("[key] ");
-            if (keyblock)
-            {
-                string? sbptr = null;
-                if (LPPointer.SupportedVersions.Contains(version))
-                    sbptr = LPPointer.GetSaveBlockPointer(version);
-                if (sbptr == null || uint.TryParse(display.Replace("[key] ", ""), out var keyval) == false)
-                    return false;
-                if (bot.com is not ICommunicatorNX nx)
-                    return false;
-
-                var ofs = InjectionUtil.SearchSaveKey(nx, sbptr, keyval);
-                var dt = nx.ReadBytesAbsolute(ofs + 8, 8);
-                ofs = BitConverter.ToUInt64(dt);
-
-                var header = nx.ReadBytesAbsolute(ofs, 5);
-                header = DecryptBlock(keyval, header);
-
-                var size = BitConverter.ToUInt32(header.AsSpan()[1..]);
-                var obj = nx.ReadBytesAbsolute(ofs, (int)size + 5);
-                data = new() { DecryptBlock(keyval, obj)[5..] };
-                return true;
-            }
             if (LPBasic.SupportedVersions.Contains(version))
                 valid = LPBasic.ReadBlockFromString(bot, sav, display, out data);
             if (LPBDSP.SupportedVersions.Contains(version))
@@ -633,6 +608,26 @@ namespace AutoModPlugins
             if (LPPointer.SupportedVersions.Contains(version))
                 valid = LPPointer.ReadBlockFromString(bot, sav, display, out data);
             return valid;
+        }
+
+        private static (ulong, int) ReadKey(PokeSysBotMini bot, uint keyval)
+        {
+            var version = bot.Version;
+            string? sbptr = null;
+            if (LPPointer.SupportedVersions.Contains(version))
+                sbptr = LPPointer.GetSaveBlockPointer(version);
+            if (sbptr == null || bot.com is not ICommunicatorNX nx)
+                return (0, 0);
+
+            var ofs = InjectionUtil.SearchSaveKey(nx, sbptr, keyval);
+            var dt = nx.ReadBytesAbsolute(ofs + 8, 8);
+            ofs = BitConverter.ToUInt64(dt);
+
+            var header = nx.ReadBytesAbsolute(ofs, 5);
+            header = DecryptBlock(keyval, header);
+
+            var size = BitConverter.ToUInt32(header.AsSpan()[1..]);
+            return (ofs, (int)size);
         }
 
         private static byte[] DecryptBlock(uint key, byte[] block)
@@ -657,14 +652,6 @@ namespace AutoModPlugins
             else
             {
                 var subblocks = Array.Empty<BlockData>();
-                var keyblock = display.StartsWith("[key] ");
-                if (keyblock)
-                {
-                    var valid = uint.TryParse(display.Replace("[key] ", ""), out var keyval);
-                    if (!valid || customdata == null)
-                        return false;
-                    sb = Activator.CreateInstance(typeof(SCBlock), BindingFlags.NonPublic | BindingFlags.Instance, null, new object[] { keyval, SCTypeCode.None, customdata }, null);
-                }
                 if (LPBasic.SupportedVersions.Contains(version))
                     subblocks = LPBasic.SCBlocks[version].Where(z => z.Display == display).ToArray();
                 if (LPPointer.SupportedVersions.Contains(version))
