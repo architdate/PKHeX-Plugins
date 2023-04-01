@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using AutoModPlugins.GUI;
 using AutoModPlugins.Properties;
@@ -25,6 +27,7 @@ namespace AutoModPlugins
         private readonly InjectorCommunicationType CurrentInjectionType;
 
         private readonly ComboBox? BoxSelect; // this is just us holding a reference; disposal is done by its parent
+        private static readonly string BlockKeysPath = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath)!, "blockkeys");
 
         public LiveHeXUI(ISaveFileProvider sav, IPKMView editor)
         {
@@ -348,20 +351,36 @@ namespace AutoModPlugins
             {
                 if (!LPBasic.SCBlocks.ContainsKey(lv))
                     return new List<string>();
-                return LPBasic.SCBlocks[lv].Select(z => z.Display).Distinct().OrderBy(z => z);
+                var blks = LPBasic.SCBlocks[lv].Select(z => z.Display).Distinct().OrderBy(z => z);
+                return blks;
             }
             if (LPBDSP.SupportedVersions.Contains(lv))
             {
                 var save_blocks = LPBDSP.FunctionMap.Keys;
                 var custom_blocks = LPBDSP.types.Select(t => t.Name);
-                return save_blocks.Concat(custom_blocks).OrderBy(z => z);
+                var blks = save_blocks.Concat(custom_blocks).OrderBy(z => z);
+                return blks;
             }
             if (LPPointer.SupportedVersions.Contains(lv))
             {
                 var save_blocks = LPPointer.SCBlocks[lv].Select(z => z.Display).Distinct();
-                return save_blocks.OrderBy(z => z);
+                var blks = save_blocks.OrderBy(z => z);
+                var sbptr = LPPointer.GetSaveBlockPointer(lv);
+                var keys = LoadBlockKeys(lv);
+                if (sbptr == string.Empty || keys == null)
+                    return blks;
+                return blks.Concat(keys.Select(z => $"[key] {z}"));
             }
             return new List<string>();
+        }
+
+        public static uint[]? LoadBlockKeys(LiveHeXVersion lv)
+        {
+            var path = Path.Combine(BlockKeysPath, lv.ToString() + ".txt");
+            if (!Path.Exists(path))
+                return null;
+            var lines = File.ReadAllLines(path);
+            return lines.Select(z => uint.TryParse(z.Trim(), out uint val) ? val : 0).Where(z => z != 0).ToArray();
         }
 
         public void NotifySlotOld(ISlotInfo previous) { }
@@ -559,7 +578,7 @@ namespace AutoModPlugins
                 var res = form.ShowDialog();
                 write = res == DialogResult.OK;
             }
-            if (!write)
+            if (!write || txt.StartsWith("[key] "))
                 return;
 
             if (LPBasic.SupportedVersions.Contains(version))
@@ -584,6 +603,29 @@ namespace AutoModPlugins
             var version = bot.Version;
             bool valid = false;
             data = null;
+            var keyblock = display.StartsWith("[key] ");
+            if (keyblock)
+            {
+                string? sbptr = null;
+                if (LPPointer.SupportedVersions.Contains(version))
+                    sbptr = LPPointer.GetSaveBlockPointer(version);
+                if (sbptr == null || uint.TryParse(display.Replace("[key] ", ""), out var keyval) == false)
+                    return false;
+                if (bot.com is not ICommunicatorNX nx)
+                    return false;
+
+                var ofs = InjectionUtil.SearchSaveKey(nx, sbptr, keyval);
+                var dt = nx.ReadBytesAbsolute(ofs + 8, 8);
+                ofs = BitConverter.ToUInt64(dt);
+
+                var header = nx.ReadBytesAbsolute(ofs, 5);
+                header = DecryptBlock(keyval, header);
+
+                var size = BitConverter.ToUInt32(header.AsSpan()[1..]);
+                var obj = nx.ReadBytesAbsolute(ofs, (int)size + 5);
+                data = new() { DecryptBlock(keyval, obj)[5..] };
+                return true;
+            }
             if (LPBasic.SupportedVersions.Contains(version))
                 valid = LPBasic.ReadBlockFromString(bot, sav, display, out data);
             if (LPBDSP.SupportedVersions.Contains(version))
@@ -591,6 +633,14 @@ namespace AutoModPlugins
             if (LPPointer.SupportedVersions.Contains(version))
                 valid = LPPointer.ReadBlockFromString(bot, sav, display, out data);
             return valid;
+        }
+
+        private static byte[] DecryptBlock(uint key, byte[] block)
+        {
+            var rng = new SCXorShift32(key);
+            for (int i = 0; i < block.Length; i++)
+                block[i] = (byte)(block[i] ^ rng.Next());
+            return block;
         }
 
         private static bool TryGetObjectInSave(LiveHeXVersion version, SaveFile sav, string display, byte[]? customdata, out object? sb)
@@ -607,6 +657,14 @@ namespace AutoModPlugins
             else
             {
                 var subblocks = Array.Empty<BlockData>();
+                var keyblock = display.StartsWith("[key] ");
+                if (keyblock)
+                {
+                    var valid = uint.TryParse(display.Replace("[key] ", ""), out var keyval);
+                    if (!valid || customdata == null)
+                        return false;
+                    sb = Activator.CreateInstance(typeof(SCBlock), BindingFlags.NonPublic | BindingFlags.Instance, null, new object[] { keyval, SCTypeCode.None, customdata }, null);
+                }
                 if (LPBasic.SupportedVersions.Contains(version))
                     subblocks = LPBasic.SCBlocks[version].Where(z => z.Display == display).ToArray();
                 if (LPPointer.SupportedVersions.Contains(version))

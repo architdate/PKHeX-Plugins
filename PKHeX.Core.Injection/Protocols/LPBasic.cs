@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 
 namespace PKHeX.Core.Injection
 {
     public static class LPBasic
     {
         public static LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SWSH_Rigel2, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Orion,
-                                                                                  LiveHeXVersion.LGPE_v102, LiveHeXVersion.ORAS, LiveHeXVersion.XY, LiveHeXVersion.US_v12,
-                                                                                  LiveHeXVersion.UM_v12, LiveHeXVersion.SM_v12 };
+                                                             LiveHeXVersion.LGPE_v102, LiveHeXVersion.ORAS, LiveHeXVersion.XY, LiveHeXVersion.US_v12,
+                                                             LiveHeXVersion.UM_v12, LiveHeXVersion.SM_v12 };
 
         public static readonly BlockData[] Blocks_Rigel2 =
         {

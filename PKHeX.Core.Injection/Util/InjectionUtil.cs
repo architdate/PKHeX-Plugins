@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace PKHeX.Core.Injection
 {
@@ -45,6 +47,28 @@ namespace PKHeX.Core.Injection
             foreach (var jump in jumps)
                 pointer = $"[{pointer}]+{jump:X}";
             return pointer;
+        }
+
+        public static ulong SearchSaveKey(this ICommunicatorNX sb, string saveblocks, uint key)
+        {
+            var ptr = sb.GetPointerAddress(saveblocks, heaprealtive:false);
+            var dt = sb.ReadBytesAbsolute(ptr + 8, 16);
+            var start = BitConverter.ToUInt64(dt.AsSpan()[..8]);
+            var end = BitConverter.ToUInt64(dt.AsSpan()[8..]);
+
+            while (start < end)
+            {
+                var block_ct = (end - start) / 32;
+                var mid = start + (block_ct >> 1) * 32;
+                var found = BitConverter.ToUInt32(sb.ReadBytesAbsolute(mid, 4));
+                if (found == key)
+                    return mid;
+                if (found >= key)
+                    end = mid;
+                else
+                    start = mid + 32;
+            }
+            return start;
         }
     }
 }
