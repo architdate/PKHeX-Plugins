@@ -44,6 +44,7 @@ namespace AutoModPlugins
             BoxSelect = ((Control)sav).Controls.Find("CB_BoxSelect", true).FirstOrDefault() as ComboBox;
             if (BoxSelect != null)
             {
+                _boxChanged = false; // reset box changed status
                 BoxSelect.SelectedIndexChanged += ChangeBox;
                 Closing += (_, _) => BoxSelect.SelectedIndexChanged -= ChangeBox;
             }
@@ -130,10 +131,20 @@ namespace AutoModPlugins
             data.CopyTo(dest, startofs);
         }
 
+        private static bool _boxChanged;
         private void ChangeBox(object? sender, EventArgs e)
         {
+            if (_boxChanged)
+                return;
             if (checkBox1.Checked && Remote.Bot.Connected)
+            {
+                _boxChanged = true;
+                var prev = ViewIndex;
                 Remote.ChangeBox(ViewIndex);
+                if (BoxSelect != null) // restore selected index after a ViewIndex reset
+                    BoxSelect.SelectedIndex = prev;
+            }
+            _boxChanged = false;
         }
 
         private void B_Connect_Click(object sender, EventArgs e)
