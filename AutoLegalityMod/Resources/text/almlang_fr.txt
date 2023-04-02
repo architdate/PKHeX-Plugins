@@ -73,6 +73,7 @@ GPSSBaseURL_description=URL de base des fonctionnalités du Global PKSM Sharing 
 PromptForSmogonImport_description=Utilisé pour "Générer des sets de smogon". S'il est mis sur true, ALM demandera d'approuver de chaque set avant de tenter de le générer.
 UseMarkings_description=Définit des marques sur les Pokémon en fonction des IV.
 UseCompetitiveMarkings_description=Définit les IV de 31 en bleu et 30 en rouge si activé. Sinon, définit les IV de 31 en bleu et 0 en rouge.
+AllowMismatch_description=If enabled, ignores version mismatch warnings until the next PKHeX.Core release.
 
 AllowTrainerOverride_category=Données du Dresseur
 UseTrainerData_category=Données du Dresseur
@@ -95,3 +96,4 @@ GPSSBaseURL_category=Divers
 PromptForSmogonImport_category=Divers
 UseMarkings_category=Divers
 UseCompetitiveMarkings_category=Divers
+AllowMismatch_category=Divers

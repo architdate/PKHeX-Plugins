@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace AutoModPlugins.Properties {
     
     
@@ -94,7 +96,38 @@ namespace AutoModPlugins.Properties {
                 this["UseMarkings"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AllowMismatch
+        {
+            get
+            {
+                return ((bool)(this["AllowMismatch"]));
+            }
+            set
+            {
+                this["AllowMismatch"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.0.0.0")]
+        [Browsable(false)]
+        public string LatestAllowedVersion
+        {
+            get
+            {
+                return ((string)(this["LatestAllowedVersion"]));
+            }
+            set
+            {
+                this["LatestAllowedVersion"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]

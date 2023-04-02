@@ -27,10 +27,10 @@ namespace AutoModPlugins
                 return;
 
             var sav = SaveFileEditor.SAV;
-            var pkms = sav.GenerateLivingDex().ToArray();
-            var bd = sav.BoxData;
+            Span<PKM> pkms = sav.GenerateLivingDex().ToArray();
+            Span<PKM> bd = sav.BoxData.ToArray();
             pkms.CopyTo(bd);
-            sav.BoxData = bd;
+            sav.BoxData = bd.ToArray();
             SaveFileEditor.ReloadSlots();
 
             System.Diagnostics.Debug.WriteLine($"Generated Living Dex with {pkms.Length} entries.");

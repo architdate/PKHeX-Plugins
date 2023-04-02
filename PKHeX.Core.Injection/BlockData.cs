@@ -10,7 +10,7 @@ namespace PKHeX.Core.Injection
         public string Display { get; set; } = string.Empty;
         public uint SCBKey { get; set; }
         public string Pointer { get; set; } = string.Empty;
-        public uint Offset { get; set; }
+        public ulong Offset { get; set; }
         public SCTypeCode Type { get; set; } = SCTypeCode.None;
     }
 }

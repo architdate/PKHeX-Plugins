@@ -594,14 +594,16 @@ namespace PKHeX.Core.AutoMod
         /// <param name="random">True for Random assortment of legal moves, false if current moves only.</param>
         public static void SetSuggestedMoves(this PKM pk, bool random = false)
         {
-            var m = pk.GetMoveSet(random);
-            if (m.All(z => z == 0))
+            Span<ushort> m = stackalloc ushort[4];
+            pk.GetMoveSet(m, random);
+            var moves = m.ToArray();
+            if (moves.All(z => z == 0))
                 return;
 
-            if (pk.Moves.SequenceEqual(m))
+            if (pk.Moves.SequenceEqual(moves))
                 return;
 
-            pk.SetMoves(m);
+            pk.SetMoves(moves);
         }
 
         /// <summary>

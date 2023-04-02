@@ -21,6 +21,8 @@ namespace PKHeX.Core.AutoMod
         public static bool SetAllLegalRibbons { get; set; } = true;
         public static bool UseCompetitiveMarkings { get; set; }
         public static bool UseMarkings { get; set; } = true;
+        public static bool AllowMismatch { get; set; } = false;
+        public static string LatestAllowedVersion { get; set; } = "0.0.0.0";
         public static bool UseXOROSHIRO { get; set; } = true;
         public static bool PrioritizeGame { get; set; } = true;
         public static GameVersion PrioritizeGameVersion { get; set; }
@@ -52,6 +54,7 @@ namespace PKHeX.Core.AutoMod
 
             if (template.Version == 0)
                 template.Version = dest.Game;
+
             template.ApplySetDetails(set);
             template.SetRecordFlags(Array.Empty<ushort>()); // Validate TR/MS moves for the encounter
 
@@ -1421,9 +1424,7 @@ namespace PKHeX.Core.AutoMod
             {
                 try
                 {
-                    var almVer = ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod");
-                    var coreVer = ALMVersion.GetCurrentVersion("PKHeX.Core");
-                    if (coreVer > almVer)
+                    if (!AllowMismatch && ALMVersion.GetIsMismatch())
                         return new(template, LegalizationResult.VersionMismatch);
 
                     var res = dest.GetLegalFromTemplate(template, set, out var s, nativeOnly);

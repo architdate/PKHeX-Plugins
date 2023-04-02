@@ -124,6 +124,15 @@ namespace PKHeX.Core.Injection
             };
         }
 
+        public static string GetSaveBlockPointer(LiveHeXVersion lv)
+        {
+            return lv switch
+            {
+                LiveHeXVersion.SV_v120 => "[[[[[main+449EEE8]+D8]]]+30]",
+                _ => string.Empty
+            };
+        }
+
         public static byte[] ReadBox(PokeSysBotMini psb, int box, List<byte[]> allpkm)
         {
             if (psb.com is not ICommunicatorNX sb)

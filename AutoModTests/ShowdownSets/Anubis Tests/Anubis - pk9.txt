@@ -9327,3 +9327,16 @@ Pikachu
 Pikachu
 ~=Generation=9
 .RibbonMarkMightiest=True
+
+Vivillon-High-Plains (F)
+IVs: 12 HP / 9 Atk / 13 Def / 12 SpA / 0 SpD / 28 Spe
+Ability: Shield Dust
+Tera Type: Bug
+Level: 47
+Shiny: Yes
+Naive Nature
+~=Generation=9
+- Draining Kiss
+- Safeguard
+- Bug Buzz
+- Quiver Dance

@@ -95,8 +95,9 @@ namespace AutoModPlugins
             if (msg is LegalizationResult.VersionMismatch)
             {
                 var errorstr = "The PKHeX-Plugins version does not match the PKHeX version.\n\n" +
-                    $"Refer to the Wiki to fix this error.\n\nThe current ALM Version is {ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod")}\n" +
-                    $"The current PKHeX Version is {ALMVersion.GetCurrentVersion("PKHeX.Core")}";
+                    $"Refer to the Wiki to fix this error.\n\n" +
+                    $"The current ALM Version is {ALMVersion.Versions.AlmVersionCurrent}\n" +
+                    $"The current PKHeX Version is {ALMVersion.Versions.CoreVersionCurrent}";
 
                 var res = WinFormsUtil.ALMErrorBasic(errorstr);
                 if (res == DialogResult.Retry)
@@ -157,8 +158,8 @@ namespace AutoModPlugins
             if (result is AutoModErrorCode.VersionMismatch)
             {
                 var errorstr = "The PKHeX-Plugins version does not match the PKHeX version.\nRefer to the Wiki for how to fix this error.\n\n" +
-                    $"The current ALM Version is {ALMVersion.GetCurrentVersion("PKHeX.Core.AutoMod")}\n" +
-                    $"The current PKHeX Version is {ALMVersion.GetCurrentVersion("PKHeX.Core")}";
+                    $"The current ALM Version is {ALMVersion.Versions.AlmVersionCurrent}\n" +
+                    $"The current PKHeX Version is {ALMVersion.Versions.CoreVersionCurrent}";
 
                 var res = WinFormsUtil.ALMErrorBasic(errorstr);
                 if (res == DialogResult.Retry)
@@ -188,6 +189,7 @@ namespace AutoModPlugins
             APILegality.ForceSpecifiedBall = settings.ForceSpecifiedBall;
             APILegality.UseCompetitiveMarkings = settings.UseCompetitiveMarkings;
             APILegality.UseMarkings = settings.UseMarkings;
+            APILegality.AllowMismatch = settings.AllowMismatch;
             APILegality.UseXOROSHIRO = settings.UseXOROSHIRO;
             APILegality.PrioritizeGame = settings.PrioritizeGame;
             APILegality.PrioritizeGameVersion = settings.PriorityGameVersion;
@@ -203,6 +205,13 @@ namespace AutoModPlugins
 
             if (APILegality.UseCompetitiveMarkings)
                 MarkingApplicator.MarkingMethod = APILegality.CompetitiveMarking;
+
+            if (APILegality.AllowMismatch && settings.LatestAllowedVersion == "0.0.0.0")
+            {
+                settings.LatestAllowedVersion = ALMVersion.Versions.CoreVersionLatest?.ToString() ?? "0.0.0.0";
+                APILegality.LatestAllowedVersion = settings.LatestAllowedVersion;
+            }
+            else APILegality.LatestAllowedVersion = settings.LatestAllowedVersion;
 
             settings.PrioritizeEncounters ??= EncounterPriority.ToList();
             foreach (var ep in EncounterPriority)
