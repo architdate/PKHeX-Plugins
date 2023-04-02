@@ -68,13 +68,14 @@ Timeout_description=生成每个宝可梦的全局超时时间（单位：秒）
 UseXOROSHIRO_description=根据游戏RNG生成合法、非异色、8代、来自宝可梦巢穴的宝可梦。
 EnableEasterEggs_description=如果提供的宝可梦非法，则生成一个复活节彩蛋宝可梦。
 IncludeForms_description=生成所有形态的宝可梦。请注意，某些世代可能没有足够的槽位容纳所有宝可梦数据。
+NativeOnly_description=仅生成本地游戏版本可用的宝可梦。
 SetAlpha_description=如果条件允许，尝试Living Dex生成阿尔宙斯宝可梦的头目形态。
 SetShiny_description=如果条件允许，尝试Living Dex生成闪亮的宝可梦。
 GPSSBaseURL_description=Flagbrew的全球PKSM分享服务(GPSS)功能的基础URL地址。
 PromptForSmogonImport_description=用于"生成Smogon Sets"。如果设置为true，ALM会尝试在每次生成时询问确认。
 UseMarkings_description=根据宝可梦的个体值设置标记。
 UseCompetitiveMarkings_description=该项启用时，个体值为全31时显示蓝色、30显示红色。否则全31时显示蓝色、0显示红色.
-AllowMismatch_description=If enabled, ignores version mismatch warnings until the next PKHeX.Core release.
+AllowMismatch_description=如果启用，则忽略版本不匹配警告，直到下一个PKHeX.Core版本.
 
 AllowTrainerOverride_category=训练家数据
 UseTrainerData_category=训练家数据
