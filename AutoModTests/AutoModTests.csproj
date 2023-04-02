@@ -20,10 +20,4 @@
     <ProjectReference Include="..\PKHeX.Core.Enhancements\PKHeX.Core.Enhancements.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="PKHeX.Core">
-      <HintPath>..\PKHeX.Core.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
