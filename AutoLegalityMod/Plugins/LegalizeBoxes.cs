@@ -39,11 +39,14 @@ namespace AutoModPlugins
             }
             catch (MissingMethodException)
             {
-                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version. \nRefer to the Wiki for how to fix this error.\n\n" +
+                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version.\nRefer to the Wiki for how to fix this error.\n\n" +
                               $"The current ALM Version is {ALMVersion.Versions.AlmVersionCurrent}\n" +
                               $"The current PKHeX Version is {ALMVersion.Versions.CoreVersionCurrent}";
 
-                var res = WinFormsUtil.ALMErrorBasic(errorstr);
+                var error = WinFormsUtil.ALMErrorBasic(errorstr);
+                error.ShowDialog();
+
+                var res = error.DialogResult;
                 if (res == DialogResult.Retry)
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins", UseShellExecute = true });
             }
@@ -84,11 +87,14 @@ namespace AutoModPlugins
             la = new LegalityAnalysis(result);
             if (!la.Valid)
             {
-                var res = WinFormsUtil.ALMErrorBasic(
-                    "Unable to make the Active Pokemon legal!\n\n" +
-                    "No legal Pokémon matches the provided traits.\n\n" +
-                    "Visit the Wiki to learn how to import Showdown Sets.");
+                var errorstr = "Unable to make the Active Pokemon legal!\n\n" +
+                               "No legal Pokémon matches the provided traits.\n\n" +
+                               "Visit the Wiki to learn how to import Showdown Sets.";
 
+                var error = WinFormsUtil.ALMErrorBasic(errorstr);
+                error.ShowDialog();
+
+                var res = error.DialogResult;
                 if (res == DialogResult.Retry)
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod", UseShellExecute = true });
                 return;

@@ -50,12 +50,10 @@ namespace AutoModPlugins
             return new ALMError(msg, new[] { "Discord", "GitHub", "Cancel" });
         }
 
-        public static DialogResult ALMErrorBasic(string msg)
+        public static ALMError ALMErrorBasic(string msg)
         {
             SystemSounds.Hand.Play();
-            var error = new ALMError(msg, new[] { "Wiki", "Cancel" });
-            var res = error.ShowDialog();
-            return res;
+            return new ALMError(msg, new[] { "Wiki", "Cancel" });
         }
 
         /// <summary>
