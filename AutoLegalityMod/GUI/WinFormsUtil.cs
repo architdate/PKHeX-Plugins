@@ -46,7 +46,7 @@ namespace AutoModPlugins
             if (mismatch)
                 msg += $"{(update ? "\n\n" : "")}Possible version mismatch between the current ALM version and current PKHeX version.";
 
-            msg += "Click on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
+            msg += $"{(update || mismatch ? "\n\n" : "")}Click on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
             return new ALMError(msg, new[] { "Discord", "GitHub", "Cancel" });
         }
 
