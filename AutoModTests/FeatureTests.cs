@@ -123,35 +123,26 @@ namespace AutoModTests
             var currentCore = new Version("21.01.30");
             var latestCore = new Version("23.01.30");
             var currentAlm = new Version("21.01.30");
-            var latestAlm = new Version("23.01.30");
 
             // Should not nag when any of the versions are null.
-            ALMVersion.GetIsMismatch(null, currentAlm, latestCore, latestAlm).Should().BeFalse();
+            ALMVersion.GetIsMismatch(null, currentAlm, latestCore).Should().BeFalse();
 
             // Should nag because Core version is higher than latest version allowed.
-            ALMVersion.GetIsMismatch(currentCore, currentAlm, latestCore, latestAlm).Should().BeTrue();
-
-            // Should not nag when mismatch is allowed.
-            bool almUpdate = !APILegality.AllowMismatch && (latestAlm > currentAlm);
-            almUpdate.Should().BeFalse();
+            ALMVersion.GetIsMismatch(currentCore, currentAlm, latestCore).Should().BeTrue();
 
             // Should not nag as the latest allowed version is equal to Core.
             APILegality.LatestAllowedVersion = "23.01.30";
-            ALMVersion.GetIsMismatch(currentCore, currentAlm, latestCore, latestAlm).Should().BeFalse();
+            ALMVersion.GetIsMismatch(currentCore, currentAlm, latestCore).Should().BeFalse();
 
             // Should not nag with matching Core and ALM versions when mismatch is disallowed.
             APILegality.AllowMismatch = false;
-            ALMVersion.GetIsMismatch(currentCore, currentAlm, latestCore, latestAlm).Should().BeFalse();
+            ALMVersion.GetIsMismatch(currentCore, currentAlm, latestCore).Should().BeFalse();
 
             // Should nag because mismatch is disallowed and versions do not match.
-            ALMVersion.GetIsMismatch(latestCore, currentAlm, latestCore, latestAlm).Should().BeTrue();
-
-            // Should nag when mismatch is disallowed.
-            almUpdate = !APILegality.AllowMismatch && (latestAlm > currentAlm);
-            almUpdate.Should().BeTrue();
+            ALMVersion.GetIsMismatch(latestCore, currentAlm, latestCore).Should().BeTrue();
 
             // Should not nag with matching versions.
-            ALMVersion.GetIsMismatch(latestCore, latestCore, latestCore, latestCore).Should().BeFalse();
+            ALMVersion.GetIsMismatch(latestCore, latestCore, latestCore).Should().BeFalse();
 
             APILegality.AllowMismatch = set_mismatch;
             APILegality.LatestAllowedVersion = set_allowed;

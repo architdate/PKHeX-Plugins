@@ -62,18 +62,15 @@ namespace AutoModPlugins
         {
             SystemSounds.Hand.Play();
             var res = error.ShowDialog(menu);
-
-            if (res == DialogResult.No)
-                Process.Start(new ProcessStartInfo { FileName = "https://discord.gg/tDMvSRv", UseShellExecute = true });
-            else if (res == DialogResult.Retry)
-                Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/releases/latest", UseShellExecute = true });
+            if (res == DialogResult.Retry)
+                Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins#manual-installation-or-installing-older-releases", UseShellExecute = true });
         }
 
         private async Task<(bool, ALMError?)> SetUpEnvironment(CancellationToken token)
         {
             ShowdownSetLoader.SetAPILegalitySettings();
             await TranslateInterface(token).ConfigureAwait(false);
-            return CheckVersionUpdates();
+            return CheckForMismatch();
         }
 
         private async Task TranslateInterface(CancellationToken token)
@@ -93,18 +90,16 @@ namespace AutoModPlugins
             Debug.WriteLine($"{LoggingPrefix} Translated form.");
         }
 
-        private static (bool, ALMError?) CheckVersionUpdates()
+        private static (bool, ALMError?) CheckForMismatch()
         {
             bool mismatch = ALMVersion.GetIsMismatch();
             if (mismatch)
             {
                 AutoLegality.Default.AllowMismatch = false;
                 AutoLegality.Default.LatestAllowedVersion = "0.0.0.0";
+                return (mismatch, WinFormsUtil.ALMErrorMismatch(ALMVersion.Versions));
             }
-
-            var versions = ALMVersion.Versions;
-            bool update = !APILegality.AllowMismatch && (versions.AlmVersionLatest > versions.AlmVersionCurrent);
-            return (mismatch, WinFormsUtil.ALMErrorDiscord(versions.AlmVersionLatest, update, mismatch));
+            return (false, null);
         }
 
         private void LoadMenuStrip(ToolStrip menuStrip)
