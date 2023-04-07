@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PKHeX.Core.Injection
 {
-    public class PokeSysBotMini
+    public class PokeSysBotMini : PointerCache
     {
         public readonly long BoxStart;
         public readonly int SlotSize;
@@ -14,7 +14,7 @@ namespace PKHeX.Core.Injection
         public readonly ICommunicator com;
         public bool Connected => com.Connected;
 
-        public PokeSysBotMini(LiveHeXVersion lv, InjectorCommunicationType ict)
+        public PokeSysBotMini(LiveHeXVersion lv, InjectorCommunicationType ict) : base(lv)
         {
             Version = lv;
             com = RamOffsets.GetCommunicator(lv, ict);
@@ -46,7 +46,7 @@ namespace PKHeX.Core.Injection
 
         public void SendBox(byte[] boxData, int box)
         {
-            System.ReadOnlySpan<byte> bytes = boxData;
+            ReadOnlySpan<byte> bytes = boxData;
             byte[][] pkmData = bytes.Split(SlotSize);
             for (int i = 0; i < SlotCount; i++)
                 SendSlot(pkmData[i], box, i);

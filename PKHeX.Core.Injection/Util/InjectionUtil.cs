@@ -6,7 +6,7 @@ namespace PKHeX.Core.Injection
     public static class InjectionUtil
     {
         public const ulong INVALID_PTR = 0;
-        public static ulong GetPointerAddress(this ICommunicatorNX sb, string ptr, bool heaprealtive=true)
+        public static ulong GetPointerAddress(this ICommunicatorNX sb, string ptr, bool heapRelative = true)
         {
             if (string.IsNullOrWhiteSpace(ptr) || ptr.IndexOfAny(new[] { '-', '/', '*' }) != -1)
                 return INVALID_PTR;
@@ -32,7 +32,7 @@ namespace PKHeX.Core.Injection
                 address = BitConverter.ToUInt64(sb.ReadBytesAbsolute(address + val, 0x8), 0);
             }
             address += finadd;
-            if (heaprealtive)
+            if (heapRelative)
             {
                 ulong heap = sb.GetHeapBase();
                 address -= heap;
@@ -47,10 +47,13 @@ namespace PKHeX.Core.Injection
             return pointer;
         }
 
-        public static ulong SearchSaveKey(this ICommunicatorNX sb, string saveblocks, uint key)
+        public static ulong SearchSaveKey(this PokeSysBotMini psb, string saveblocks, uint key)
         {
-            var ptr = sb.GetPointerAddress(saveblocks, heaprealtive:false);
-            var dt = sb.ReadBytesAbsolute(ptr + 8, 16);
+            if (psb.com is not ICommunicatorNX nx)
+                return 0;
+
+            var ptr = psb.GetCachedPointer(nx, saveblocks, false);
+            var dt = nx.ReadBytesAbsolute(ptr + 8, 16);
             var start = BitConverter.ToUInt64(dt.AsSpan()[..8]);
             var end = BitConverter.ToUInt64(dt.AsSpan()[8..]);
 
@@ -58,7 +61,7 @@ namespace PKHeX.Core.Injection
             {
                 var block_ct = (end - start) / 32;
                 var mid = start + (block_ct >> 1) * 32;
-                var found = BitConverter.ToUInt32(sb.ReadBytesAbsolute(mid, 4));
+                var found = BitConverter.ToUInt32(nx.ReadBytesAbsolute(mid, 4));
                 if (found == key)
                     return mid;
                 if (found >= key)

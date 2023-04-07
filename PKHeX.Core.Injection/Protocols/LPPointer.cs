@@ -138,7 +138,7 @@ namespace PKHeX.Core.Injection
             if (psb.com is not ICommunicatorNX sb)
                 return ArrayUtil.ConcatAll(allpkm.ToArray());
             var lv = psb.Version;
-            var b1s1 = sb.GetPointerAddress(GetB1S1Pointer(lv));
+            var b1s1 = psb.GetCachedPointer(sb, GetB1S1Pointer(lv));
             var boxsize = RamOffsets.GetSlotCount(lv) * RamOffsets.GetSlotSize(lv);
             var boxstart = b1s1 + (ulong)(box * boxsize);
             return psb.com.ReadBytes(boxstart, boxsize);
@@ -150,7 +150,7 @@ namespace PKHeX.Core.Injection
                 return new byte[psb.SlotSize];
             var lv = psb.Version;
             var slotsize = RamOffsets.GetSlotSize(lv);
-            var b1s1 = sb.GetPointerAddress(GetB1S1Pointer(lv));
+            var b1s1 = psb.GetCachedPointer(sb, GetB1S1Pointer(lv));
             var boxsize = RamOffsets.GetSlotCount(lv) * slotsize;
             var boxstart = b1s1 + (ulong)(box * boxsize);
             var slotstart = boxstart + (ulong)(slot * slotsize);
@@ -163,7 +163,7 @@ namespace PKHeX.Core.Injection
                 return;
             var lv = psb.Version;
             var slotsize = RamOffsets.GetSlotSize(lv);
-            var b1s1 = sb.GetPointerAddress(GetB1S1Pointer(lv));
+            var b1s1 = psb.GetCachedPointer(sb, GetB1S1Pointer(lv));
             var boxsize = RamOffsets.GetSlotCount(lv) * slotsize;
             var boxstart = b1s1 + (ulong)(box * boxsize);
             var slotstart = boxstart + (ulong)(slot * slotsize);
@@ -175,7 +175,7 @@ namespace PKHeX.Core.Injection
             if (psb.com is not ICommunicatorNX sb)
                 return;
             var lv = psb.Version;
-            var b1s1 = sb.GetPointerAddress(GetB1S1Pointer(lv));
+            var b1s1 = psb.GetCachedPointer(sb, GetB1S1Pointer(lv));
             var boxsize = RamOffsets.GetSlotCount(lv) * RamOffsets.GetSlotSize(lv);
             var boxstart = b1s1 + (ulong)(box * boxsize);
             psb.com.WriteBytes(boxData, boxstart);
@@ -200,7 +200,7 @@ namespace PKHeX.Core.Injection
                     var scb = scba.GetBlock(scbkey);
                     if (scb.Type == SCTypeCode.None && sub.Type != SCTypeCode.None)
                         ReflectUtil.SetValue(scb, "Type", sub.Type);
-                    var ram = psb.com.ReadBytes(sb.GetPointerAddress(offset), scb.Data.Length);
+                    var ram = psb.com.ReadBytes(psb.GetCachedPointer(sb, offset), scb.Data.Length);
                     ram.CopyTo(scb.Data, 0);
                     if (read == null)
                     {
@@ -234,7 +234,7 @@ namespace PKHeX.Core.Injection
                 var scbkey = sub.SCBKey;
                 var offset = sub.Pointer;
                 var scb = scba.GetBlock(scbkey);
-                psb.com.WriteBytes(scb.Data, sb.GetPointerAddress(offset));
+                psb.com.WriteBytes(scb.Data, psb.GetCachedPointer(sb, offset));
             }
         }
 
@@ -244,7 +244,7 @@ namespace PKHeX.Core.Injection
                 return null;
             var lv = psb.Version;
             var ptr = SCBlocks[lv].First(z => z.Name == "MyStatus").Pointer;
-            var ofs = sb.GetPointerAddress(ptr);
+            var ofs = psb.GetCachedPointer(sb, ptr);
             if (ofs == 0)
                 return null;
             return psb.com.ReadBytes(ofs, LA_MYSTATUS_BLOCK_SIZE);
@@ -256,7 +256,7 @@ namespace PKHeX.Core.Injection
                 return null;
             var lv = psb.Version;
             var ptr = SCBlocks[lv].First(z => z.Name == "MyStatus").Pointer;
-            var ofs = sb.GetPointerAddress(ptr);
+            var ofs = psb.GetCachedPointer(sb, ptr);
             if (ofs == 0)
                 return null;
             return psb.com.ReadBytes(ofs, SV_MYSTATUS_BLOCK_SIZE);
