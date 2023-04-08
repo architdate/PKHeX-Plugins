@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Version>23.2.6</Version>
+    <Version>23.4.6</Version>
     <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
     <NeutralLanguage>en</NeutralLanguage>

@@ -43,7 +43,7 @@ namespace AutoModPlugins
             var msg = "Version mismatch between ALM and PKHeX.\n\n" +
                      $"Current ALM version: {versions.AlmVersionCurrent}\n" +
                      $"Current PKHeX version: {versions.CoreVersionCurrent}\n\n" +
-                     "Click the \"Wiki\" button to learn how to fix this error.";
+                      "Click the \"Wiki\" button to learn how to fix this error.";
 
             return new ALMError(msg, new[] { "Wiki", "Cancel" });
         }
