@@ -182,7 +182,7 @@ namespace AutoModPlugins
                 var argCount = constructors[0].GetParameters().Length;
                 try
                 {
-                    var _ = (Form)(Activator.CreateInstance(t, new object[argCount]) ?? throw new ArgumentOutOfRangeException("Null Activator instance"));
+                    var _ = (Form)(Activator.CreateInstance(t, new object[argCount]) ?? throw new Exception("Null Activator instance"));
                 }
                 catch
                 {
@@ -245,7 +245,7 @@ namespace AutoModPlugins
 
         public IEnumerable<string> Write(char separator = Separator)
         {
-            return Translation.Select(z => $"{z.Key}{separator}{z.Value}").OrderBy(z => z.Contains(".")).ThenBy(z => z);
+            return Translation.Select(z => $"{z.Key}{separator}{z.Value}").OrderBy(z => z.Contains('.')).ThenBy(z => z);
         }
 
         public void UpdateFrom(TranslationContext other)

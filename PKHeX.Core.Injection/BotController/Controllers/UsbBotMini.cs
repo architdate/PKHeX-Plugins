@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using LibUsbDotNet;
 using LibUsbDotNet.Main;
@@ -33,7 +34,7 @@ namespace PKHeX.Core.Injection
             lock (_sync)
             {
                 // Find and open the usb device.
-                foreach (UsbRegistry ur in UsbDevice.AllDevices)
+                foreach (UsbRegistry ur in UsbDevice.AllDevices.Cast<UsbRegistry>())
                 {
                     ur.DeviceProperties.TryGetValue("Address", out object? port);
                     if (port == null)
@@ -255,7 +256,7 @@ namespace PKHeX.Core.Injection
         }
 
         // Taken from SysBot.
-        private byte[] SliceSafe(byte[] src, int offset, int length)
+        private static byte[] SliceSafe(byte[] src, int offset, int length)
         {
             var delta = src.Length - offset;
             if (delta < length)

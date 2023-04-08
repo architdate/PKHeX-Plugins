@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -236,7 +235,14 @@ namespace AutoModPlugins
             AutoLegality.Default.Save();
         }
 
-        private void B_ReadCurrent_Click(object sender, EventArgs e) => Remote.ReadBox(SAV.CurrentBox);
+        private void B_ReadCurrent_Click(object sender, EventArgs e)
+        {
+            var prev = ViewIndex;
+            Remote.ReadBox(SAV.CurrentBox);
+            if (BoxSelect != null) // restore selected index after a ViewIndex reset
+                BoxSelect.SelectedIndex = prev;
+        }
+
         private void B_WriteCurrent_Click(object sender, EventArgs e) => Remote.WriteBox(SAV.CurrentBox);
         private void B_ReadSlot_Click(object sender, EventArgs e) => Remote.ReadActiveSlot((int)NUD_Box.Value - 1, (int)NUD_Slot.Value - 1);
         private void B_WriteSlot_Click(object sender, EventArgs e) => Remote.WriteActiveSlot((int)NUD_Box.Value - 1, (int)NUD_Slot.Value - 1);
@@ -245,7 +251,7 @@ namespace AutoModPlugins
         {
             bool readPointer = (ModifierKeys & Keys.Control) == Keys.Control;
             var txt = TB_Offset.Text;
-            var offset = readPointer && Remote.Bot.com is ICommunicatorNX nx ? nx.GetPointerAddress(TB_Pointer.Text) : Util.GetHexValue64(txt);
+            var offset = readPointer && Remote.Bot.com is ICommunicatorNX nx ? Remote.Bot.GetCachedPointer(nx, TB_Pointer.Text) : Util.GetHexValue64(txt);
             if ((offset.ToString("X16") != txt.ToUpper().PadLeft(16, '0') && !readPointer) || offset == InjectionUtil.INVALID_PTR)
             {
                 WinFormsUtil.Alert("Specified offset is not a valid hex string.");
@@ -400,8 +406,8 @@ namespace AutoModPlugins
 
         public ulong GetPointerAddress(ICommunicatorNX sb)
         {
-            var ptr = TB_Pointer.Text.Trim();
-            var address = sb.GetPointerAddress(ptr, false);
+            var ptr = TB_Pointer.Text.Contains("[key]") ? TB_Pointer.Text.Replace("[key]", "").Trim() : TB_Pointer.Text.Trim();
+            var address = Remote.Bot.GetCachedPointer(sb, ptr, false);
             if (address == InjectionUtil.INVALID_PTR)
                 WinFormsUtil.Alert("Invalid Pointer");
             return address;
@@ -435,7 +441,10 @@ namespace AutoModPlugins
             {
                 address = GetPointerAddress(sb);
                 if (address == 0)
+                {
                     WinFormsUtil.Alert("No pointer address.");
+                    return;
+                }
 
                 var valid = int.TryParse(RamSize.Text, out size);
                 if (!valid)
@@ -454,7 +463,8 @@ namespace AutoModPlugins
                 var header = blk_key ? 5 : 0;
                 var result = sb.ReadBytesAbsolute(address, size + header);
                 if (blk_key)
-                    result = DecryptBlock(keyval, result)[header..];
+                    result = SCBlock.ReadFromOffset(result, ref header).Data;
+
                 bool blockview = (ModifierKeys & Keys.Control) == Keys.Control;
                 PKM? pkm = null;
                 if (blockview)
@@ -627,7 +637,7 @@ namespace AutoModPlugins
             if (sbptr == null || bot.com is not ICommunicatorNX nx)
                 return (0, 0);
 
-            var ofs = InjectionUtil.SearchSaveKey(nx, sbptr, keyval);
+            var ofs = bot.SearchSaveKey(sbptr, keyval);
             var dt = nx.ReadBytesAbsolute(ofs + 8, 8);
             ofs = BitConverter.ToUInt64(dt);
 

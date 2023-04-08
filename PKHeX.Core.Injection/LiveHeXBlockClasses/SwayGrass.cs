@@ -80,12 +80,24 @@ namespace PKHeX.Core.Injection
             var ptr = GetSwayGrassPointers(psb.Version);
             if (ptr == null)
                 return null;
+
             var nx = (ICommunicatorNX)psb.com;
-            var sway_grass = psb.com.ReadBytes(nx.GetPointerAddress(ptr.ExtendPointer(0x0)), 0x40);
-            var grass_one = psb.com.ReadBytes(nx.GetPointerAddress(ptr.ExtendPointer(0x8, 0x20, 0x10)), 0x28);
-            var grass_two = psb.com.ReadBytes(nx.GetPointerAddress(ptr.ExtendPointer(0x8, 0x28, 0x10)), 0x28);
-            var grass_three = psb.com.ReadBytes(nx.GetPointerAddress(ptr.ExtendPointer(0x8, 0x30, 0x10)), 0x28);
-            var grass_four = psb.com.ReadBytes(nx.GetPointerAddress(ptr.ExtendPointer(0x8, 0x38, 0x10)), 0x28);
+
+            var ptrSway = psb.GetCachedPointer(nx, ptr.ExtendPointer(0x0), false);
+            var sway_grass = psb.com.ReadBytes(ptrSway, 0x40);
+
+            var ptrOne = psb.GetCachedPointer(nx, ptr.ExtendPointer(0x8, 0x20, 0x10), false);
+            var grass_one = psb.com.ReadBytes(ptrOne, 0x28);
+
+            var ptrTwo = psb.GetCachedPointer(nx, ptr.ExtendPointer(0x8, 0x28, 0x10), false);
+            var grass_two = psb.com.ReadBytes(ptrTwo, 0x28);
+
+            var ptrThree = psb.GetCachedPointer(nx, ptr.ExtendPointer(0x8, 0x30, 0x10), false);
+            var grass_three = psb.com.ReadBytes(ptrThree, 0x28);
+
+            var ptrFour = psb.GetCachedPointer(nx, ptr.ExtendPointer(0x8, 0x38, 0x10), false);
+            var grass_four = psb.com.ReadBytes(ptrFour, 0x28);
+
             var block = new byte[SWAYGRASS_BLOCK_SIZE];
             sway_grass.Slice(0x0, 0x8).CopyTo(block, 0x0);
             sway_grass.Slice(0x20, 0xD).CopyTo(block, 0x8);
@@ -102,12 +114,14 @@ namespace PKHeX.Core.Injection
             var ptr = GetSwayGrassPointers(psb.Version);
             if (ptr == null)
                 return;
+
             var nx = (ICommunicatorNX)psb.com;
-            var sway_grass_addr = nx.GetPointerAddress(ptr.ExtendPointer(0x0));
-            var grass_one_addr = nx.GetPointerAddress(ptr.ExtendPointer(0x8, 0x20, 0x10));
-            var grass_two_addr = nx.GetPointerAddress(ptr.ExtendPointer(0x8, 0x28, 0x10));
-            var grass_three_addr = nx.GetPointerAddress(ptr.ExtendPointer(0x8, 0x30, 0x10));
-            var grass_four_addr = nx.GetPointerAddress(ptr.ExtendPointer(0x8, 0x38, 0x10));
+            var sway_grass_addr = psb.GetCachedPointer(nx, ptr.ExtendPointer(0x0));
+            var grass_one_addr = psb.GetCachedPointer(nx, ptr.ExtendPointer(0x8, 0x20, 0x10));
+            var grass_two_addr = psb.GetCachedPointer(nx, ptr.ExtendPointer(0x8, 0x28, 0x10));
+            var grass_three_addr = psb.GetCachedPointer(nx, ptr.ExtendPointer(0x8, 0x30, 0x10));
+            var grass_four_addr = psb.GetCachedPointer(nx, ptr.ExtendPointer(0x8, 0x38, 0x10));
+
             psb.com.WriteBytes(data.Slice(0x0, 0x8), sway_grass_addr);
             psb.com.WriteBytes(data.Slice(0x8, 0xD), sway_grass_addr + 0x20);
             psb.com.WriteBytes(data.Slice(0x15, 0x2), sway_grass_addr + 0x38);

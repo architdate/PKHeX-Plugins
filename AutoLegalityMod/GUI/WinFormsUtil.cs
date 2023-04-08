@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Media;
 using System.Windows.Forms;
+using static PKHeX.Core.AutoMod.ALMVersion;
 
 namespace AutoModPlugins
 {
@@ -36,18 +37,15 @@ namespace AutoModPlugins
             return MessageBox.Show(msg, nameof(Error), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static ALMError ALMErrorDiscord(Version? version, bool update, bool mismatch)
+        public static ALMError ALMErrorMismatch(AssemblyVersions versions)
         {
             // ReSharper disable once SuspiciousTypeConversion.Global
-            var msg = string.Empty;
-            if (update)
-                msg += $"Update for ALM is available. Please download it from GitHub. The updated release is only compatible with PKHeX version: {version}.";
+            var msg = "Version mismatch between ALM and PKHeX.\n\n" +
+                     $"Current ALM version: {versions.AlmVersionCurrent}\n" +
+                     $"Current PKHeX version: {versions.CoreVersionCurrent}\n\n" +
+                      "Click the \"Wiki\" button to learn how to fix this error.";
 
-            if (mismatch)
-                msg += $"{(update ? "\n\n" : "")}Possible version mismatch between the current ALM version and current PKHeX version.";
-
-            msg += "Click on the GitHub button to get the latest update for ALM.\nClick on the Discord button if you still require further assistance.";
-            return new ALMError(msg, new[] { "Discord", "GitHub", "Cancel" });
+            return new ALMError(msg, new[] { "Wiki", "Cancel" });
         }
 
         public static ALMError ALMErrorBasic(string msg)
