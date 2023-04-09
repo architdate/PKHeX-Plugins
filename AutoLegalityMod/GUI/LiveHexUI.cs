@@ -442,14 +442,6 @@ namespace AutoModPlugins
             uint keyval = 0;
 
             var blk_key = TB_Pointer.Text.Contains("[key]");
-            if (blk_key)
-            {
-                var key = TB_Pointer.Text.Replace("[key]", "").Trim();
-                if (key.Any(char.IsLetter))
-                    uint.TryParse(TB_Pointer.Text.Replace("[key]", "").Trim(), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out keyval);
-                else uint.TryParse(TB_Pointer.Text.Replace("[key]", "").Trim(), NumberStyles.Integer, CultureInfo.InvariantCulture, out keyval);
-            }
-
             if (!blk_key)
             {
                 address = GetPointerAddress(sb);
@@ -468,6 +460,13 @@ namespace AutoModPlugins
             }
             else
             {
+                var key = TB_Pointer.Text.Replace("[key]", "").Trim();
+                if (!uint.TryParse(key, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out keyval))
+                {
+                    WinFormsUtil.Alert("Key must be in a hexadecimal format.");
+                    return;
+                }
+
                 if (keyval == 0)
                 {
                     WinFormsUtil.Alert("Make sure that the provided key is valid.");
