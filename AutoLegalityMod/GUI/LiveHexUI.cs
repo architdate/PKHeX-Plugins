@@ -460,10 +460,15 @@ namespace AutoModPlugins
 
             try
             {
-                var header = blk_key ? 5 : 0;
-                var result = sb.ReadBytesAbsolute(address, size + header);
+                var header = 0;
+                byte[] result = sb.ReadBytesAbsolute(address, size);
                 if (blk_key)
-                    result = SCBlock.ReadFromOffset(result, ref header).Data;
+                {
+                    var temp = new byte[size + 4];
+                    result.CopyTo(temp, 4);
+                    System.Buffers.Binary.BinaryPrimitives.WriteUInt32LittleEndian(temp, keyval);
+                    result = SCBlock.ReadFromOffset(temp, ref header).Data;
+                }
 
                 bool blockview = (ModifierKeys & Keys.Control) == Keys.Control;
                 PKM? pkm = null;
@@ -641,19 +646,19 @@ namespace AutoModPlugins
             var dt = nx.ReadBytesAbsolute(ofs + 8, 8);
             ofs = BitConverter.ToUInt64(dt);
 
-            var header = nx.ReadBytesAbsolute(ofs, 5);
-            header = DecryptBlock(keyval, header);
+            Span<byte> temp = stackalloc byte[10];
+            System.Buffers.Binary.BinaryPrimitives.WriteUInt32LittleEndian(temp, keyval);
+            var headerAfterKey = nx.ReadBytesAbsolute(ofs, 6);
+            headerAfterKey.CopyTo(temp[4..]);
 
-            var size = BitConverter.ToUInt32(header.AsSpan()[1..]);
-            return (ofs, (int)size);
-        }
+            var type = headerAfterKey[0] ^ new SCXorShift32(keyval).Next();
+            if (type is 1 or 2 or 3)
+            {
+                throw new Exception($"Block type is {(SCTypeCode)type}.");
+            }
+            int size = SCBlock.GetTotalLength(temp);
 
-        private static byte[] DecryptBlock(uint key, byte[] block)
-        {
-            var rng = new SCXorShift32(key);
-            for (int i = 0; i < block.Length; i++)
-                block[i] = (byte)(block[i] ^ rng.Next());
-            return block;
+            return (ofs, size - 4);
         }
 
         private static bool TryGetObjectInSave(LiveHeXVersion version, SaveFile sav, string display, byte[]? customdata, out object? sb)
