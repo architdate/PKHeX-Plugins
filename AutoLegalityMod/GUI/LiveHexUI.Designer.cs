@@ -36,6 +36,7 @@
             this.TB_Port = new System.Windows.Forms.TextBox();
             this.L_Port = new System.Windows.Forms.Label();
             this.B_Connect = new System.Windows.Forms.Button();
+            this.B_Disconnect = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -157,6 +158,18 @@
             this.B_Connect.Text = "Connect";
             this.B_Connect.UseVisualStyleBackColor = true;
             this.B_Connect.Click += new System.EventHandler(this.B_Connect_Click);
+            // 
+            // B_Disconnect
+            // 
+            this.B_Disconnect.Location = new System.Drawing.Point(98, 37);
+            this.B_Disconnect.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.B_Disconnect.Name = "B_Disconnect";
+            this.B_Disconnect.Size = new System.Drawing.Size(63, 23);
+            this.B_Disconnect.TabIndex = 15;
+            this.B_Disconnect.Text = "Disconnect";
+            this.B_Disconnect.UseVisualStyleBackColor = true;
+            this.B_Disconnect.Visible = false;
+            this.B_Disconnect.Click += new System.EventHandler(this.B_Disconnect_Click);
             // 
             // groupBox1
             // 
@@ -560,6 +573,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.B_Connect);
+            this.Controls.Add(this.B_Disconnect);
             this.Controls.Add(this.L_Port);
             this.Controls.Add(this.TB_Port);
             this.Controls.Add(this.L_IP);
@@ -600,6 +614,7 @@
         private System.Windows.Forms.TextBox TB_Port;
         private System.Windows.Forms.Label L_Port;
         private System.Windows.Forms.Button B_Connect;
+        private System.Windows.Forms.Button B_Disconnect;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button B_ReadSlot;

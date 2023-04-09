@@ -222,8 +222,30 @@ namespace AutoModPlugins
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/FAQ-and-Troubleshooting#troubleshooting", UseShellExecute = true });
                 return;
             }
-            B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
-            groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
+            B_Connect.Enabled = B_Connect.Visible = TB_IP.Enabled = TB_Port.Enabled = false;
+            B_Disconnect.Enabled = B_Disconnect.Visible = groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
+        }
+
+        private void B_Disconnect_Click(object sender, EventArgs e)
+        {
+            if (!Remote.Bot.com.Connected)
+                return;
+
+            try
+            {
+                B_Connect.Enabled = B_Connect.Visible = TB_IP.Enabled = TB_Port.Enabled = true;
+                B_Disconnect.Enabled = B_Disconnect.Visible = groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = false;
+
+                if (Remote.Bot.com is ICommunicatorNX)
+                    groupBox4.Enabled = groupBox6.Enabled = groupBox5.Enabled = false;
+
+                Remote.Bot.com.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                var error = WinFormsUtil.ALMErrorBasic(ex.Message);
+                error.ShowDialog();
+            }
         }
 
         private void LiveHeXUI_FormClosing(object sender, FormClosingEventArgs e)
