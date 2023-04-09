@@ -238,7 +238,7 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public static Func<PokeSysBotMini, byte[]?> GetTrainerDataLA = psb =>
+        public static readonly Func<PokeSysBotMini, byte[]?> GetTrainerDataLA = psb =>
         {
             if (psb.com is not ICommunicatorNX sb)
                 return null;
@@ -250,7 +250,7 @@ namespace PKHeX.Core.Injection
             return psb.com.ReadBytes(ofs, LA_MYSTATUS_BLOCK_SIZE);
         };
 
-        public static Func<PokeSysBotMini, byte[]?> GetTrainerDataSV = psb =>
+        public static readonly Func<PokeSysBotMini, byte[]?> GetTrainerDataSV = psb =>
         {
             if (psb.com is not ICommunicatorNX sb)
                 return null;

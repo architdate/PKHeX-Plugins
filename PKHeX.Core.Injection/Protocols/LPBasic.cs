@@ -7,7 +7,7 @@ namespace PKHeX.Core.Injection
 {
     public static class LPBasic
     {
-        public static LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SWSH_Rigel2, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Orion,
+        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SWSH_Rigel2, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Orion,
                                                              LiveHeXVersion.LGPE_v102, LiveHeXVersion.ORAS, LiveHeXVersion.XY, LiveHeXVersion.US_v12,
                                                              LiveHeXVersion.UM_v12, LiveHeXVersion.SM_v12 };
 
@@ -70,7 +70,7 @@ namespace PKHeX.Core.Injection
                 SendSlot(psb, pkmData[i], box, i);
         }
 
-        public static Func<PokeSysBotMini, byte[]?> GetTrainerData = psb =>
+        public static readonly Func<PokeSysBotMini, byte[]?> GetTrainerData = psb =>
         {
             var lv = psb.Version;
             var ofs = RamOffsets.GetTrainerBlockOffset(lv);
@@ -88,7 +88,7 @@ namespace PKHeX.Core.Injection
             try
             {
                 var offsets = SCBlocks[psb.Version].Where(z => z.Display == block);
-                var props = sav.GetType().GetProperty("Blocks") ?? throw new ArgumentOutOfRangeException("Blocks don't exist");
+                var props = sav.GetType().GetProperty("Blocks") ?? throw new Exception("Blocks don't exist");
                 var allblocks = props.GetValue(sav);
                 if (allblocks is not SCBlockAccessor scba)
                     return false;
@@ -119,7 +119,7 @@ namespace PKHeX.Core.Injection
 
         public static void WriteBlocksFromSAV(PokeSysBotMini psb, string block, SaveFile sav)
         {
-            var props = sav.GetType().GetProperty("Blocks") ?? throw new ArgumentOutOfRangeException("Blocks don't exist");
+            var props = sav.GetType().GetProperty("Blocks") ?? throw new Exception("Blocks don't exist");
             var allblocks = props.GetValue(sav);
             if (allblocks is not SCBlockAccessor scba)
                 return;
