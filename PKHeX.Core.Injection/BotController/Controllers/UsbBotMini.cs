@@ -22,7 +22,7 @@ namespace PKHeX.Core.Injection
 
         private readonly object _sync = new();
 
-        bool ICommunicator.Connected { get => Connected; set => Connected = value; }
+        bool ICommunicator.Connected { get => Connected; set => Connected = SwDevice is not null; }
         int ICommunicator.Port { get => Port; set => Port = value; }
         string ICommunicator.IP { get => IP; set => IP = value; }
 
@@ -99,6 +99,7 @@ namespace PKHeX.Core.Injection
 
                 reader?.Dispose();
                 writer?.Dispose();
+                SwDevice = null;
                 Connected = false;
             }
         }

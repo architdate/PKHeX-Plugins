@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -220,8 +222,30 @@ namespace AutoModPlugins
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/FAQ-and-Troubleshooting#troubleshooting", UseShellExecute = true });
                 return;
             }
-            B_Connect.Enabled = TB_IP.Enabled = TB_Port.Enabled = false;
-            groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
+            B_Connect.Enabled = B_Connect.Visible = TB_IP.Enabled = TB_Port.Enabled = false;
+            B_Disconnect.Enabled = B_Disconnect.Visible = groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
+        }
+
+        private void B_Disconnect_Click(object sender, EventArgs e)
+        {
+            if (!Remote.Bot.com.Connected)
+                return;
+
+            try
+            {
+                B_Connect.Enabled = B_Connect.Visible = TB_IP.Enabled = TB_Port.Enabled = true;
+                B_Disconnect.Enabled = B_Disconnect.Visible = groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = false;
+
+                if (Remote.Bot.com is ICommunicatorNX)
+                    groupBox4.Enabled = groupBox6.Enabled = groupBox5.Enabled = false;
+
+                Remote.Bot.com.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                var error = WinFormsUtil.ALMErrorBasic(ex.Message);
+                error.ShowDialog();
+            }
         }
 
         private void LiveHeXUI_FormClosing(object sender, FormClosingEventArgs e)
@@ -436,7 +460,10 @@ namespace AutoModPlugins
 
             ulong address;
             int size;
-            var blk_key = uint.TryParse(TB_Pointer.Text.Replace("[key] ", ""), out var keyval);
+            int type;
+            uint keyval = 0;
+
+            var blk_key = TB_Pointer.Text.Contains("[key]");
             if (!blk_key)
             {
                 address = GetPointerAddress(sb);
@@ -449,21 +476,57 @@ namespace AutoModPlugins
                 var valid = int.TryParse(RamSize.Text, out size);
                 if (!valid)
                 {
-                    WinFormsUtil.Alert("Make sure that the size is a valid integer");
+                    WinFormsUtil.Alert("Make sure that the size is a valid integer.");
                     return;
                 }
             }
             else
             {
-                (address, size) = ReadKey(Remote.Bot, keyval);
+                var key = TB_Pointer.Text.Replace("[key]", "").Trim();
+                if (!uint.TryParse(key, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out keyval))
+                {
+                    WinFormsUtil.Alert("Key must be in a hexadecimal format.");
+                    return;
+                }
+
+                if (keyval == 0)
+                {
+                    WinFormsUtil.Alert("Make sure that the provided key is valid.");
+                    return;
+                }
+
+                var block = GetSCBlock(SAV.SAV, keyval);
+                if (block is null)
+                {
+                    WinFormsUtil.Alert($"No SCBlock found for key: {keyval}.");
+                    return;
+                }
+
+                (address, size, type) = ReadKey(Remote.Bot, keyval);
+                if (type == (int)SCTypeCode.Bool1 || type == (int)SCTypeCode.Bool2 || type == (int)SCTypeCode.Bool3)
+                {
+                    WinFormsUtil.Alert($"SCBlock is set to {block.Type}.");
+                    return;
+                }
             }
 
             try
             {
-                var header = blk_key ? 5 : 0;
-                var result = sb.ReadBytesAbsolute(address, size + header);
+                var header = 0;
+                byte[] result = sb.ReadBytesAbsolute(address, size);
                 if (blk_key)
-                    result = SCBlock.ReadFromOffset(result, ref header).Data;
+                {
+                    bool typeView = (ModifierKeys & Keys.Alt) == Keys.Alt;
+                    var temp = new byte[size + 4];
+                    result.CopyTo(temp, 4);
+                    BinaryPrimitives.WriteUInt32LittleEndian(temp, keyval);
+
+                    var block = SCBlock.ReadFromOffset(temp, ref header);
+                    result = block.Data;
+
+                    if (typeView)
+                        WinFormsUtil.Alert($"Block type is {block.Type}.");
+                }
 
                 bool blockview = (ModifierKeys & Keys.Control) == Keys.Control;
                 PKM? pkm = null;
@@ -473,6 +536,7 @@ namespace AutoModPlugins
                     if (!pkm.ChecksumValid)
                         blockview = false;
                 }
+
                 using (var form = new SimpleHexEditor(result, Remote.Bot, address, RWMethod.Absolute, blk_key, keyval, header))
                 {
                     var loadgrid = blockview && ReflectUtil.GetPropertiesCanWritePublicDeclared(pkm!.GetType()).Count() > 1;
@@ -481,6 +545,7 @@ namespace AutoModPlugins
                         form.PG_BlockView.Visible = true;
                         form.PG_BlockView.SelectedObject = pkm;
                     }
+
                     var res = form.ShowDialog();
                     if (res == DialogResult.OK)
                     {
@@ -628,32 +693,46 @@ namespace AutoModPlugins
             return valid;
         }
 
-        private static (ulong, int) ReadKey(PokeSysBotMini bot, uint keyval)
+        private static (ulong, int, int) ReadKey(PokeSysBotMini bot, uint keyval)
         {
             var version = bot.Version;
             string? sbptr = null;
             if (LPPointer.SupportedVersions.Contains(version))
                 sbptr = LPPointer.GetSaveBlockPointer(version);
-            if (sbptr == null || bot.com is not ICommunicatorNX nx)
-                return (0, 0);
+
+            if (sbptr is null || bot.com is not ICommunicatorNX nx)
+                return (0, 0, 0);
 
             var ofs = bot.SearchSaveKey(sbptr, keyval);
             var dt = nx.ReadBytesAbsolute(ofs + 8, 8);
             ofs = BitConverter.ToUInt64(dt);
 
-            var header = nx.ReadBytesAbsolute(ofs, 5);
-            header = DecryptBlock(keyval, header);
+            Span<byte> temp = stackalloc byte[10];
+            BinaryPrimitives.WriteUInt32LittleEndian(temp, keyval);
+            var headerAfterKey = nx.ReadBytesAbsolute(ofs, 6);
+            headerAfterKey.CopyTo(temp[4..]);
 
-            var size = BitConverter.ToUInt32(header.AsSpan()[1..]);
-            return (ofs, (int)size);
+            var type = headerAfterKey[0] ^ new SCXorShift32(keyval).Next();
+            if (type is 1 or 2 or 3)
+                return (ofs, 0, (int)type);
+
+            int size = SCBlock.GetTotalLength(temp);
+            return (ofs, size - 4, (int)type);
         }
 
-        private static byte[] DecryptBlock(uint key, byte[] block)
+        private static SCBlock? GetSCBlock(SaveFile sav, uint key)
         {
-            var rng = new SCXorShift32(key);
-            for (int i = 0; i < block.Length; i++)
-                block[i] = (byte)(block[i] ^ rng.Next());
-            return block;
+            var props = sav.GetType().GetProperty("Blocks");
+            if (props is null)
+                return null;
+
+            var allblocks = props.GetValue(sav);
+            if (allblocks is not SCBlockAccessor scba)
+                return null;
+
+            if (scba.HasBlock(key))
+                return scba.GetBlock(key);
+            return null;
         }
 
         private static bool TryGetObjectInSave(LiveHeXVersion version, SaveFile sav, string display, byte[]? customdata, out object? sb)

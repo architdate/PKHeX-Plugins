@@ -48,7 +48,7 @@ namespace PKHeX.Core.Injection
                 SendSlot(psb, pkmData[i], box, i);
         }
 
-        public static Func<PokeSysBotMini, byte[]?> GetTrainerData = psb =>
+        public static readonly Func<PokeSysBotMini, byte[]?> GetTrainerData = psb =>
         {
             var lv = psb.Version;
             var ofs = RamOffsets.GetTrainerBlockOffset(lv);
