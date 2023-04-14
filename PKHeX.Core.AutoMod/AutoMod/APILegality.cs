@@ -1209,8 +1209,13 @@ namespace PKHeX.Core.AutoMod
                     if ((la.Info.PIDIV.Type != PIDType.CXD && la.Info.PIDIV.Type != PIDType.CXD_ColoStarter) || !la.Info.PIDIVMatches || !pk.IsValidGenderPID(enc))
                         continue;
                 }
-                if (pk.Species == (int)Species.Unown && pk.Form != iterPKM.Form)
-                    continue;
+                if (pk.Species == (int)Species.Unown)
+                {
+                    if (pk.Form != iterPKM.Form)
+                        continue;
+                    if (enc.Generation == 3 && pk.Form != EntityPID.GetUnownForm3(pk.PID))
+                        continue;
+                }
                 if (Method == PIDType.Channel && shiny != pk.IsShiny)
                     continue;
                 break;

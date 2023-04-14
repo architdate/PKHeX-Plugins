@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 
 namespace PKHeX.Core.AutoMod
@@ -8,6 +9,8 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public static class ShowdownEdits
     {
+        private static readonly CompareInfo CompareInfo = CultureInfo.CurrentCulture.CompareInfo;
+
         /// <summary>
         /// Quick Gender Toggle
         /// </summary>
@@ -159,16 +162,21 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             // don't bother checking encountertrade nicknames for length validity
-            if (enc is EncounterTrade { HasNickname: true } et && et.Nicknames.Contains(set.Nickname))
+            if (enc is EncounterTrade { HasNickname: true } et)
             {
                 // Nickname matches the requested nickname already
                 if (pk.Nickname == set.Nickname)
                     return;
                 // This should be illegal except Meister Magikarp in BDSP, however trust the user and set corresponding OT
-                var index = et.Nicknames.ToList().IndexOf(set.Nickname);
-                pk.Nickname = set.Nickname;
-                if (pk.Format >= 3)
-                    pk.OT_Name = et.TrainerNames[index];
+                const CompareOptions options = CompareOptions.IgnoreCase | CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreSymbols | CompareOptions.IgnoreWidth;
+                var index = et.Nicknames.ToList().FindIndex(z => CompareInfo.Compare(set.Nickname, z, options) == 0);
+                if (index >= 0) 
+                {
+                    pk.Nickname = et.Nicknames[index];
+                    if (pk.Format >= 3)
+                        pk.OT_Name = et.TrainerNames[index];
+                    return;
+                }
             }
 
             var gen = enc.Generation;
