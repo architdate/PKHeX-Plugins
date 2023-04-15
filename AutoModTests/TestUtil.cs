@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 
@@ -10,7 +9,7 @@ namespace AutoModTests
         static TestUtil() => InitializePKHeXEnvironment();
         private static bool Initialized;
 
-        private static object _lock = new object();
+        private static readonly object _lock = new();
 
         public static void InitializePKHeXEnvironment()
         {
@@ -33,9 +32,7 @@ namespace AutoModTests
             var folder = Directory.GetCurrentDirectory();
             while (!folder.EndsWith(nameof(AutoModTests)))
             {
-                var dir = Directory.GetParent(folder);
-                if (dir == null)
-                    throw new DirectoryNotFoundException($"Unable to find a directory named {nameof(AutoModTests)}.");
+                var dir = Directory.GetParent(folder) ?? throw new DirectoryNotFoundException($"Unable to find a directory named {nameof(AutoModTests)}.");
                 folder = dir.FullName;
             }
             return Path.Combine(folder, name);

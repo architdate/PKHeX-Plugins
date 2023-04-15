@@ -120,7 +120,7 @@ namespace PKHeX.Core.AutoMod
             ( IronLeaves, 0 ),
         };
 
-        public static HashSet<int> Gen1TradeEvos = new () { (int)Kadabra, (int)Machoke, (int)Graveler, (int)Haunter };
+        public static readonly HashSet<int> Gen1TradeEvos = new () { (int)Kadabra, (int)Machoke, (int)Graveler, (int)Haunter };
 
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
         {

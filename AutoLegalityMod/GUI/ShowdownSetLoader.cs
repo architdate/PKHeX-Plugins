@@ -114,7 +114,7 @@ namespace AutoModPlugins
 
                 string? analysis = null;
                 if (msg is LegalizationResult.Failed)
-                    analysis = regen.SetAnalysis(sav, sav.BlankPKM);
+                    analysis = regen.SetAnalysis(sav, legal);
 
                 var errorstr = msg == LegalizationResult.Failed ? "failed to generate" : "timed out";
                 var invalid_set_error = (analysis == null ? $"Set {errorstr}." : $"Set Invalid: {analysis}") +

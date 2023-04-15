@@ -21,16 +21,16 @@ namespace PKHeX.Core.AutoMod
         public static string ONLY_HIDDEN_ABILITY_AVAILABLE { get; set; } = "You can only obtain {0} with hidden ability in this game.";
         public static string HIDDEN_ABILITY_UNAVAILABLE { get; set; } = "You cannot obtain {0} with hidden ability in this game.";
 
-        public static string SetAnalysis(this IBattleTemplate set, ITrainerInfo sav, PKM blank)
+        public static string SetAnalysis(this IBattleTemplate set, ITrainerInfo sav, PKM failed)
         {
-            if (blank.Version == 0)
-                blank.Version = sav.Game;
+            if (failed.Version == 0)
+                failed.Version = sav.Game;
             var species_name = SpeciesName.GetSpeciesNameGeneration(set.Species, (int)LanguageID.English, sav.Generation);
             var analysis = set.Form == 0 ? string.Format(SPECIES_UNAVAILABLE, species_name)
                                      : string.Format(SPECIES_UNAVAILABLE_FORM, species_name, set.FormName);
 
             // Species checks
-            var gv = (GameVersion)sav.Game;
+            var gv = (GameVersion)failed.Version;
             if (!gv.ExistsInGame(set.Species, set.Form))
                 return analysis; // Species does not exist in the game
 
@@ -50,7 +50,7 @@ namespace PKHeX.Core.AutoMod
             var destVer = (GameVersion)sav.Game;
             if (destVer <= 0 && sav is SaveFile s)
                 destVer = s.Version;
-            var gamelist = APILegality.FilteredGameList(blank, destVer, batchedit ? filters : null);
+            var gamelist = APILegality.FilteredGameList(failed, destVer, batchedit ? filters : null);
 
             // Move checks
             List<IEnumerable<ushort>> move_combinations = new();
@@ -59,7 +59,7 @@ namespace PKHeX.Core.AutoMod
 
             ushort[] original_moves = new ushort[4];
             set.Moves.CopyTo(original_moves, 0);
-            ushort[] successful_combination = GetValidMoves(set, sav, move_combinations, blank, gamelist);
+            ushort[] successful_combination = GetValidMoves(set, sav, move_combinations, failed, gamelist);
             if (!new HashSet<ushort>(original_moves.Where(z => z != 0)).SetEquals(successful_combination))
             {
                 var invalid_moves = string.Join(", ", original_moves.Where(z => !successful_combination.Contains(z) && z != 0).Select(z => $"{(Move)z}"));
@@ -67,11 +67,11 @@ namespace PKHeX.Core.AutoMod
             }
 
             // All moves possible, get encounters
-            blank.ApplySetDetails(set);
-            blank.SetMoves(original_moves);
-            blank.SetRecordFlags(Array.Empty<ushort>());
+            failed.ApplySetDetails(set);
+            failed.SetMoves(original_moves);
+            failed.SetRecordFlags(Array.Empty<ushort>());
 
-            var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: blank, moves: original_moves, gamelist).ToList();
+            var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: failed, moves: original_moves, gamelist).ToList();
             var initialcount = encounters.Count;
             if (set is RegenTemplate rt && rt.Regen.EncounterFilters is { } x)
                 encounters.RemoveAll(enc => !BatchEditing.IsFilterMatch(x, enc));
@@ -99,7 +99,7 @@ namespace PKHeX.Core.AutoMod
             encounters.RemoveAll(enc => !APILegality.IsRequestedAlphaValid(set, enc));
 
             // Ability checks
-            var abilityreq = APILegality.GetRequestedAbility(blank, set);
+            var abilityreq = APILegality.GetRequestedAbility(failed, set);
             if (abilityreq == AbilityRequest.NotHidden && encounters.All(z => z is EncounterStatic { Ability: AbilityPermission.OnlyHidden }))
                 return string.Format(ONLY_HIDDEN_ABILITY_AVAILABLE, species_name);
             if (abilityreq == AbilityRequest.Hidden && encounters.All(z => z.Generation is 3 or 4) && destVer.GetGeneration() < 8)

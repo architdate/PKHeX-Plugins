@@ -80,6 +80,7 @@ namespace PKHeX.Core.AutoMod
             if (regen.EncounterFilters != null)
                 encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(regen.EncounterFilters, enc));
 
+            PKM? last = null;
             foreach (var enc in encounters)
             {
                 // Return out if set times out
@@ -154,10 +155,11 @@ namespace PKHeX.Core.AutoMod
                     satisfied = LegalizationResult.Regenerated;
                     return pk;
                 }
+                last = pk;
                 Debug.WriteLine($"{la.Report()}\n");
             }
             satisfied = LegalizationResult.Failed;
-            return template;
+            return last ?? template;
         }
 
         public static AbilityRequest GetRequestedAbility(PKM template, IBattleTemplate set)

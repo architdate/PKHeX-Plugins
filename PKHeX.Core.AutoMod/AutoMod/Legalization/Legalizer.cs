@@ -138,7 +138,7 @@ namespace PKHeX.Core.AutoMod
 
             if (EnableEasterEggs)
                 return tr.GetEasterEggFromSet(set, template);
-            return template;
+            return pk;
         }
 
         private static PKM GetEasterEggFromSet(this ITrainerInfo tr, IBattleTemplate set, PKM template)
