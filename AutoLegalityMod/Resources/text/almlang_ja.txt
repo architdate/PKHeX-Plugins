@@ -8,6 +8,7 @@ LiveHeXUI.L_USBState=USBボットベースモード
 LiveHeXUI.L_IP=IP:
 LiveHeXUI.L_Port=ポート:
 LiveHeXUI.B_Connect=接続する
+LiveHeXUI.B_Disconnect=切断する
 LiveHeXUI.groupBox1=ボックス
 LiveHeXUI.checkBox2=スロットに注入する
 LiveHeXUI.groupBox2=PKMエディター

@@ -8,6 +8,7 @@ LiveHeXUI.L_USBState=USB-Botbase Mode
 LiveHeXUI.L_IP=IP:
 LiveHeXUI.L_Port=Port:
 LiveHeXUI.B_Connect=Verbinden
+LiveHeXUI.B_Disconnect=Trennen
 LiveHeXUI.groupBox1=Boxen
 LiveHeXUI.checkBox2=Injecte in Slot
 LiveHeXUI.groupBox2=PKM Editor
