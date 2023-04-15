@@ -8,6 +8,7 @@ LiveHeXUI.L_USBState=USB-Botbase模式
 LiveHeXUI.L_IP=IP:
 LiveHeXUI.L_Port=端口:
 LiveHeXUI.B_Connect=连接
+LiveHeXUI.B_Disconnect=断开
 LiveHeXUI.groupBox1=盒子
 LiveHeXUI.checkBox2=注入当前格子
 LiveHeXUI.groupBox2=宝可梦
