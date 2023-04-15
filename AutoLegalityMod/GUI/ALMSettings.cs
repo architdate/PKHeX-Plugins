@@ -18,6 +18,7 @@ namespace AutoModPlugins.GUI
             new("LatestIP", "Stores the last IP used by LiveHeX.", "Connection"),
             new("LatestPort", "Stores the last port used by LiveHeX.", "Connection"),
             new("USBBotBasePreferred", "Allows LiveHeX to use USB-Botbase instead of sys-botbase.", "Connection"),
+            new("UseCachedPointers", "Stores pointer addresses to cache for faster lookups.", "Connection"),
 
             // Customization
             new("ForceSpecifiedBall", "Allows overriding Poké Ball with \"Ball\" in a Showdown set.", "Customization"),
