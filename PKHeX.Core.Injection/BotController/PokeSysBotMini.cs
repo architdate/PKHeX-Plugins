@@ -14,7 +14,7 @@ namespace PKHeX.Core.Injection
         public readonly ICommunicator com;
         public bool Connected => com.Connected;
 
-        public PokeSysBotMini(LiveHeXVersion lv, InjectorCommunicationType ict) : base(lv)
+        public PokeSysBotMini(LiveHeXVersion lv, InjectorCommunicationType ict, bool useCache) : base(lv, useCache)
         {
             Version = lv;
             com = RamOffsets.GetCommunicator(lv, ict);

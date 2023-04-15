@@ -96,7 +96,7 @@ namespace AutoModPlugins.Properties {
                 this["UseMarkings"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -332,6 +332,18 @@ namespace AutoModPlugins.Properties {
             }
             set {
                 this["NativeOnly"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseCachedPointers {
+            get {
+                return ((bool)(this["UseCachedPointers"]));
+            }
+            set {
+                this["UseCachedPointers"] = value;
             }
         }
     }

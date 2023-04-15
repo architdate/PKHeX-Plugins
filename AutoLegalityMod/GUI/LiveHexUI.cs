@@ -32,7 +32,7 @@ namespace AutoModPlugins
         {
             SAV = sav;
             CurrentInjectionType = AutoLegality.Default.USBBotBasePreferred ? InjectorCommunicationType.USB : InjectorCommunicationType.SocketNetwork;
-            Remote = new LiveHeXController(sav, editor, CurrentInjectionType);
+            Remote = new LiveHeXController(sav, editor, CurrentInjectionType, AutoLegality.Default.UseCachedPointers);
 
             InitializeComponent();
             this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
@@ -159,7 +159,7 @@ namespace AutoModPlugins
                 var currver = validversions[0];
                 foreach (var version in validversions)
                 {
-                    Remote.Bot = new PokeSysBotMini(version, CurrentInjectionType)
+                    Remote.Bot = new PokeSysBotMini(version, CurrentInjectionType, AutoLegality.Default.UseCachedPointers)
                     {
                         com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) },
                     };
@@ -187,7 +187,7 @@ namespace AutoModPlugins
 
                 if (!ConnectionEstablished)
                 {
-                    Remote.Bot = new PokeSysBotMini(currver, CurrentInjectionType)
+                    Remote.Bot = new PokeSysBotMini(currver, CurrentInjectionType, AutoLegality.Default.UseCachedPointers)
                     {
                         com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) },
                     };

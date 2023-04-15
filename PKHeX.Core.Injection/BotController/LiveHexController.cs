@@ -8,12 +8,12 @@ namespace PKHeX.Core.Injection
         public readonly IPKMView Editor;
         public PokeSysBotMini Bot;
 
-        public LiveHeXController(ISaveFileProvider boxes, IPKMView editor, InjectorCommunicationType ict)
+        public LiveHeXController(ISaveFileProvider boxes, IPKMView editor, InjectorCommunicationType ict, bool useCache = false)
         {
             SAV = boxes;
             Editor = editor;
             var ValidVers = RamOffsets.GetValidVersions(boxes.SAV);
-            Bot = new PokeSysBotMini(ValidVers[0], ict);
+            Bot = new PokeSysBotMini(ValidVers[0], ict, useCache);
         }
 
         public void ChangeBox(int box)
