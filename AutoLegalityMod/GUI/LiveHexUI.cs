@@ -7,7 +7,6 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using AutoModPlugins.GUI;
-using AutoModPlugins.Properties;
 using PKHeX.Core;
 using PKHeX.Core.Injection;
 
