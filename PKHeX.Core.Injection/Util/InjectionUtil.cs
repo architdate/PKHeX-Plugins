@@ -56,20 +56,27 @@ namespace PKHeX.Core.Injection
             var dt = nx.ReadBytesAbsolute(ptr + 8, 16);
             var start = BitConverter.ToUInt64(dt.AsSpan()[..8]);
             var end = BitConverter.ToUInt64(dt.AsSpan()[8..]);
+            var size = (ulong)GetBlockSizeSV(psb.Version);
 
             while (start < end)
             {
-                var block_ct = (end - start) / 32;
-                var mid = start + (block_ct >> 1) * 32;
+                var block_ct = (end - start) / size;
+                var mid = start + (block_ct >> 1) * size;
                 var found = BitConverter.ToUInt32(nx.ReadBytesAbsolute(mid, 4));
                 if (found == key)
                     return mid;
                 if (found >= key)
                     end = mid;
                 else
-                    start = mid + 32;
+                    start = mid + size;
             }
             return start;
         }
+
+        private static int GetBlockSizeSV(LiveHeXVersion version) => version switch
+        {
+            LiveHeXVersion.SV_v130 => 48,   // Thanks, santacrab!
+            _ => 32,
+        };
     }
 }
