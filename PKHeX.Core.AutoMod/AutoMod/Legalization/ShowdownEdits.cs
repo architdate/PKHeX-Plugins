@@ -1,7 +1,6 @@
 using System;
 using System.Globalization;
 using System.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PKHeX.Core.AutoMod
 {
