@@ -23,22 +23,24 @@ namespace AutoModPlugins
 
         private readonly LiveHeXController Remote;
         private readonly SaveDataEditor<PictureBox> x;
+        private readonly PluginSettings _settings;
 
         private readonly InjectorCommunicationType CurrentInjectionType;
 
         private readonly ComboBox? BoxSelect; // this is just us holding a reference; disposal is done by its parent
 
-        public LiveHeXUI(ISaveFileProvider sav, IPKMView editor)
+        public LiveHeXUI(ISaveFileProvider sav, IPKMView editor, PluginSettings settings)
         {
             SAV = sav;
-            CurrentInjectionType = AutoLegality.Default.USBBotBasePreferred ? InjectorCommunicationType.USB : InjectorCommunicationType.SocketNetwork;
-            Remote = new LiveHeXController(sav, editor, CurrentInjectionType, AutoLegality.Default.UseCachedPointers);
+            _settings = settings;
+            CurrentInjectionType = _settings.USBBotBasePreferred ? InjectorCommunicationType.USB : InjectorCommunicationType.SocketNetwork;
+            Remote = new LiveHeXController(sav, editor, CurrentInjectionType, _settings.UseCachedPointers);
 
             InitializeComponent();
             this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
 
-            TB_IP.Text = AutoLegality.Default.LatestIP;
-            TB_Port.Text = AutoLegality.Default.LatestPort;
+            TB_IP.Text = _settings.LatestIP;
+            TB_Port.Text = _settings.LatestPort;
             SetInjectionTypeView();
 
             // add an event to the editor
@@ -159,7 +161,7 @@ namespace AutoModPlugins
                 var currver = validversions[0];
                 foreach (var version in validversions)
                 {
-                    Remote.Bot = new PokeSysBotMini(version, CurrentInjectionType, AutoLegality.Default.UseCachedPointers)
+                    Remote.Bot = new PokeSysBotMini(version, CurrentInjectionType, _settings.UseCachedPointers)
                     {
                         com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) },
                     };
@@ -187,7 +189,7 @@ namespace AutoModPlugins
 
                 if (!ConnectionEstablished)
                 {
-                    Remote.Bot = new PokeSysBotMini(currver, CurrentInjectionType, AutoLegality.Default.UseCachedPointers)
+                    Remote.Bot = new PokeSysBotMini(currver, CurrentInjectionType, _settings.UseCachedPointers)
                     {
                         com = { IP = TB_IP.Text, Port = int.Parse(TB_Port.Text) },
                     };
@@ -254,9 +256,9 @@ namespace AutoModPlugins
                 Remote.Bot.com.Disconnect();
             x.Slots.Publisher.Subscribers.Remove(this);
 
-            AutoLegality.Default.LatestIP = TB_IP.Text;
-            AutoLegality.Default.LatestPort = TB_Port.Text;
-            AutoLegality.Default.Save();
+            _settings.LatestIP = TB_IP.Text;
+            _settings.LatestPort = TB_Port.Text;
+            _settings.Save();
         }
 
         private void B_ReadCurrent_Click(object sender, EventArgs e)

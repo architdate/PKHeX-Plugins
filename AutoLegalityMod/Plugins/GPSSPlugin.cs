@@ -9,7 +9,7 @@ namespace AutoModPlugins
     {
         public override string Name => "GPSS Tools";
         public override int Priority => 2;
-        public static string Url => AutoLegality.Default.GPSSBaseURL;
+        public static string Url => _settings.GPSSBaseURL;
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {

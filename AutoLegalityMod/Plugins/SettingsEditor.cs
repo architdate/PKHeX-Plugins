@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text.Json;
 using System.Windows.Forms;
 using AutoModPlugins.GUI;
 using AutoModPlugins.Properties;
@@ -20,8 +22,7 @@ namespace AutoModPlugins
 
         private static void SettingsForm(object? sender, EventArgs e)
         {
-            var settings = AutoLegality.Default;
-            using var form = new ALMSettings(settings);
+            using var form = new ALMSettings(_settings);
             form.ShowDialog();
         }
     }

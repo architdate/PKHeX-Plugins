@@ -27,11 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\AutoLegality.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>AutoLegality.settings</DependentUpon>
-    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -42,13 +37,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Properties\AutoLegality.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>AutoLegality.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 
 </Project>

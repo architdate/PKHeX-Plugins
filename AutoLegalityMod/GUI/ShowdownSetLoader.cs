@@ -192,9 +192,8 @@ namespace AutoModPlugins
             return AutoModErrorCode.None;
         }
 
-        public static void SetAPILegalitySettings()
+        public static void SetAPILegalitySettings(PluginSettings settings)
         {
-            var settings = AutoLegality.Default;
             APILegality.UseTrainerData = settings.UseTrainerData;
             APILegality.SetAllLegalRibbons = settings.SetAllLegalRibbons;
             APILegality.SetMatchingBalls = settings.SetMatchingBalls;

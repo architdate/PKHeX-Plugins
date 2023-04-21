@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Windows.Forms;
 using AutoModPlugins.Properties;
 
@@ -9,47 +11,10 @@ namespace AutoModPlugins.GUI
 {
     public partial class ALMSettings : Form
     {
-        private readonly ALMSettingMetadata[] settings = {
-            // Trainer Data
-            new("AllowTrainerOverride", "Allows overriding trainer data with \"OT\", \"TID\", \"SID\", and \"OTGender\" as part of a Showdown set.", "Trainer Data"),
-            new("UseTrainerData", "Enables use of custom trainer data based on the \"trainers\" folder.", "Trainer Data"),
-
-            // Connection Settings
-            new("LatestIP", "Stores the last IP used by LiveHeX.", "Connection"),
-            new("LatestPort", "Stores the last port used by LiveHeX.", "Connection"),
-            new("USBBotBasePreferred", "Allows LiveHeX to use USB-Botbase instead of sys-botbase.", "Connection"),
-            new("UseCachedPointers", "Stores pointer addresses to cache for faster lookups.", "Connection"),
-
-            // Customization
-            new("ForceSpecifiedBall", "Allows overriding Poké Ball with \"Ball\" in a Showdown set.", "Customization"),
-            new("PrioritizeGame", "If enabled, tries to generate a Pokémon based on PrioritizeGameVersion first.", "Customization"),
-            new("PriorityGameVersion", "Setting this to \"Any\" prioritizes the current save game, and setting a specific game prioritizes that instead.", "Customization"),
-            new("SetAllLegalRibbons", "Adds all ribbons that are legal according to PKHeX legality.", "Customization"),
-            new("SetBattleVersion", "Sets all past-generation Pokémon as Battle Ready for games that support it.", "Customization"),
-            new("SetMatchingBalls", "Attempts to choose a matching Poké Ball based on Pokémon color.", "Customization"),
-
-            // Legality
-            new("Timeout", "Global timeout per Pokémon being generated (in seconds)", "Legality"),
-            new("PrioritizeEncounters", "Defines the order in which Pokémon encounters are prioritized", "Legality"),
-            new("UseXOROSHIRO", "Generates legal nonshiny Generation 8 raid Pokémon based on the game's RNG.", "Legality"),
-            new("EnableEasterEggs", "Produces an Easter Egg Pokémon if the provided set is illegal.", "Legality"),
-
-            // Living Dex
-            new("IncludeForms", "Generate all forms of the Pokémon. Note that some generations may not have enough box space for all forms.", "Living Dex"),
-            new("SetShiny", "Try to generate the shiny version of the Pokémon if possible.", "Living Dex"),
-            new("SetAlpha", "Try to generate the alpha version of the Pokémon if possible.", "Living Dex"),
-            new("NativeOnly", "Only generate Pokémon natively available in the game version pair.", "Living Dex"),
-
-            // Miscellaneous
-            new("GPSSBaseURL", "Base URL for Flagbrew's Global PKSM Sharing Service (GPSS) features.", "Miscellaneous"),
-            new("PromptForSmogonImport", "Used for \"Generate Smogon Sets\". If set to true, ALM will ask for approval for each set before attempting to generate it.", "Miscellaneous"),
-            new("UseMarkings", "Sets markings on the Pokémon based on IVs.", "Miscellaneous"),
-            new("UseCompetitiveMarkings", "Sets IVs of 31 to blue and 30 to red if enabled. Otherwise, sets IVs of 31 to blue and 0 to red.", "Miscellaneous"),
-            new("AllowMismatch", "If enabled, ignores version mismatch warnings until the next PKHeX.Core release.", "Miscellaneous"),
-        };
-
-        public ALMSettings(object obj)
+        private PluginSettings pluginSettings;
+        public ALMSettings(PluginSettings obj)
         {
+            pluginSettings = obj;
             InitializeComponent();
             EditSettingsProperties(obj);
             PG_Settings.SelectedObject = obj;
@@ -68,9 +33,9 @@ namespace AutoModPlugins.GUI
         private void ALMSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
             // ALM Settings
-            ShowdownSetLoader.SetAPILegalitySettings();
+            ShowdownSetLoader.SetAPILegalitySettings(pluginSettings);
 
-            AutoLegality.Default.Save();
+            pluginSettings.Save();
         }
 
         private void EditSettingsProperties(object _settings)
@@ -83,17 +48,13 @@ namespace AutoModPlugins.GUI
             var ctd = new PropertyOverridingTypeDescriptor(type_descriptor);
             foreach (var pd in TypeDescriptor.GetProperties(_settings).OfType<PropertyDescriptor>())
             {
-                var s = Array.Find(settings, z => z.SettingName == pd.Name);
-                if (s == null)
-                    continue;
-
                 var desc = "Property Description needs to be defined. Please raise this issue on GitHub or at the discord: https://discord.gg/tDMvSRv";
-                if (s.Description != null)
-                    desc = translation.GetTranslatedText($"{s.SettingName}_description", s.Description);
+                if (pd.Description != null)
+                    desc = translation.GetTranslatedText($"{pd.Name}_description", pd.Description);
 
                 var category = "Uncategorized Settings";
-                if (s.Category != null)
-                    category = translation.GetTranslatedText($"{s.SettingName}_category", s.Category);
+                if (pd.Category != null)
+                    category = translation.GetTranslatedText($"{pd.Name}_category", pd.Category);
                 if (desc == null || category == null)
                     throw new Exception("Category / Description translations are null");
                 PropertyDescriptor pd2 = TypeDescriptor.CreateProperty(_settings.GetType(), pd, new DescriptionAttribute(desc), new CategoryAttribute(category));

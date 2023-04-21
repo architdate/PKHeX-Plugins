@@ -25,7 +25,7 @@ namespace AutoModPlugins
                 var editor = WinFormsUtil.FirstFormOfType<LiveHeXUI>();
                 if (editor == null)
                 {
-                    editor = new LiveHeXUI(SaveFileEditor, PKMEditor);
+                    editor = new LiveHeXUI(SaveFileEditor, PKMEditor, _settings);
                     editor.Show();
                 }
                 else

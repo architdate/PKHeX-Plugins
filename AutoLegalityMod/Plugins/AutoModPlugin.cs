@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Media;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,6 +35,8 @@ namespace AutoModPlugins
         // Initialized during plugin startup
         public ISaveFileProvider SaveFileEditor { get; private set; } = null!;
         protected IPKMView PKMEditor { get; private set; } = null!;
+        internal static readonly string almconfig = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath)!, "almconfig.json");
+        internal static PluginSettings _settings = new() { configPath = almconfig };
 
         public void Initialize(params object[] args)
         {
@@ -41,6 +45,13 @@ namespace AutoModPlugins
             PKMEditor = (IPKMView)(Array.Find(args, z => z is IPKMView) ?? throw new Exception("Null IPKMView"));
             var menu = (ToolStrip)(Array.Find(args, z => z is ToolStrip) ?? throw new Exception("Null ToolStrip"));
             LoadMenuStrip(menu);
+
+            // Load settings
+            if (File.Exists(_settings.configPath))
+            {
+                var text = File.ReadAllText(_settings.configPath);
+                _settings = JsonSerializer.Deserialize<PluginSettings>(text)!;
+            }
 
             // Match PKHeX Versioning and ALM Settings only on parent plugin
             if (Priority != 0)
@@ -68,7 +79,7 @@ namespace AutoModPlugins
 
         private async Task<(bool, ALMError?)> SetUpEnvironment(CancellationToken token)
         {
-            ShowdownSetLoader.SetAPILegalitySettings();
+            ShowdownSetLoader.SetAPILegalitySettings(_settings);
             await TranslateInterface(token).ConfigureAwait(false);
             return CheckForMismatch();
         }
@@ -95,8 +106,8 @@ namespace AutoModPlugins
             bool mismatch = ALMVersion.GetIsMismatch();
             if (mismatch)
             {
-                AutoLegality.Default.AllowMismatch = false;
-                AutoLegality.Default.LatestAllowedVersion = "0.0.0.0";
+                _settings.AllowMismatch = false;
+                _settings.LatestAllowedVersion = "0.0.0.0";
                 return (mismatch, WinFormsUtil.ALMErrorMismatch(ALMVersion.Versions));
             }
             return (false, null);
