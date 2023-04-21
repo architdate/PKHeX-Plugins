@@ -7,10 +7,17 @@ namespace PKHeX.Core.Injection
 {
     public static class LPPointer
     {
-        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SV_v101, LiveHeXVersion.SV_v110, LiveHeXVersion.SV_v120, LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v111 };
+        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SV_v101, LiveHeXVersion.SV_v110, LiveHeXVersion.SV_v120, LiveHeXVersion.SV_v130, LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v111 };
 
         private const int LA_MYSTATUS_BLOCK_SIZE = 0x80;
         private const int SV_MYSTATUS_BLOCK_SIZE = 0x68;
+
+        public static readonly BlockData[] Blocks_SV_v130 =
+        {
+            new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+44BFBA8]+100]+40" },
+            new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+44BFBA8]+1B0]+40" },
+            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+44BFBA8]+180]+40" },
+        };
 
         public static readonly BlockData[] Blocks_SV_v120 =
         {
@@ -92,6 +99,7 @@ namespace PKHeX.Core.Injection
         // LiveHexVersion -> Blockname -> List of <SCBlock Keys, OffsetValues>
         public static readonly Dictionary<LiveHeXVersion, BlockData[]> SCBlocks = new()
         {
+            { LiveHeXVersion.SV_v130, Blocks_SV_v130 },
             { LiveHeXVersion.SV_v120, Blocks_SV_v120 },
             { LiveHeXVersion.SV_v110, Blocks_SV_v110 },
             { LiveHeXVersion.SV_v101, Blocks_SV_v101 },
@@ -113,6 +121,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
+                LiveHeXVersion.SV_v130 => "[[[main+44BFBA8]+130]+9B0]",
                 LiveHeXVersion.SV_v120 => "[[[main+44A98C8]+130]+9B0]",
                 LiveHeXVersion.SV_v110 => "[[[main+4384B18]+128]+9B0]",
                 LiveHeXVersion.SV_v101 => "[[[main+42DA8E8]+128]+9B0]",
@@ -128,6 +137,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
+                LiveHeXVersion.SV_v130 => "[[[[[main+44B5158]+D8]]]+30]",
                 LiveHeXVersion.SV_v120 => "[[[[[main+449EEE8]+D8]]]+30]",
                 _ => string.Empty
             };
