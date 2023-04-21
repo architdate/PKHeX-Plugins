@@ -508,7 +508,7 @@ namespace PKHeX.Core.AutoMod
             else
             {
                 // check for mixed->fixed gender incompatibility by checking the gender of the original species
-                if (Legal.FixedGenderFromBiGender.Contains(pk.Species) && pk.Gender != 2) // shedinja
+                if (SpeciesCategory.IsFixedGenderFromDual(pk.Species) && pk.Gender != 2) // shedinja
                 {
                     pk.Gender = EntityGender.GetFromPID(new LegalInfo(pk, new List<CheckResult>()).EncounterMatch.Species, pk.EncryptionConstant);
                     // genderValid = true; already true if we reach here

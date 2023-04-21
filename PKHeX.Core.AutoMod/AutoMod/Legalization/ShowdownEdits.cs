@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -212,9 +213,8 @@ namespace PKHeX.Core.AutoMod
                 return IsValidGenderMismatch(pkm);
 
             // check for mixed->fixed gender incompatibility by checking the gender of the original species
-            ushort original = enc.Species;
-            if (Legal.FixedGenderFromBiGender.Contains(original))
-                return IsValidFixedGenderFromBiGender(pkm, original);
+            if (SpeciesCategory.IsFixedGenderFromDual(pkm.Species))
+                return IsValidFixedGenderFromBiGender(pkm, enc.Species);
 
             return true;
         }
