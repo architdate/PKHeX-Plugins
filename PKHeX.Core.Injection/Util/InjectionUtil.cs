@@ -70,7 +70,7 @@ namespace PKHeX.Core.Injection
                 else
                     start = mid + size;
             }
-            return start;
+            return 0;
         }
 
         private static int GetBlockSizeSV(LiveHeXVersion version) => version switch

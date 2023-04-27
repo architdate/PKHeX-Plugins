@@ -496,14 +496,15 @@ namespace AutoModPlugins
                     return;
                 }
 
-                var block = GetSCBlock(SAV.SAV, keyval);
-                if (block is null)
+                try
                 {
-                    WinFormsUtil.Alert($"No SCBlock found for key: {keyval}.");
+                    (address, size) = ReadKey(Remote.Bot, keyval);
+                }
+                catch (Exception ex)
+                {
+                    WinFormsUtil.Alert(ex.Message);
                     return;
                 }
-
-                (address, size) = ReadKey(Remote.Bot, keyval);
             }
 
             try
@@ -694,14 +695,17 @@ namespace AutoModPlugins
         private static (ulong Offset, int Length) ReadKey(PokeSysBotMini bot, uint keyval)
         {
             var version = bot.Version;
-            string? sbptr = null;
-            if (LPPointer.SupportedVersions.Contains(version))
-                sbptr = LPPointer.GetSaveBlockPointer(version);
+            string sbptr = LPPointer.GetSaveBlockPointer(version);
 
-            if (sbptr is null || bot.com is not ICommunicatorNX nx)
-                return (0, 0);
+            if (sbptr.Length == 0)
+                throw new Exception($"Pointer is not documented for searching block keys in {version}.");
+            if (bot.com is not ICommunicatorNX nx)
+                throw new Exception("Remote connection type is unable to read data from absolute offsets.");
 
             var ofs = bot.SearchSaveKey(sbptr, keyval);
+            if (ofs == 0)
+                throw new Exception($"Unable to find block key 0x{keyval:X8}");
+
             var dt = nx.ReadBytesAbsolute(ofs + 8, 8);
             ofs = BitConverter.ToUInt64(dt);
 
