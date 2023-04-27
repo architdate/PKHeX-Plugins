@@ -714,21 +714,6 @@ namespace AutoModPlugins
             return (ofs, size);
         }
 
-        private static SCBlock? GetSCBlock(SaveFile sav, uint key)
-        {
-            var props = sav.GetType().GetProperty("Blocks");
-            if (props is null)
-                return null;
-
-            var allblocks = props.GetValue(sav);
-            if (allblocks is not SCBlockAccessor scba)
-                return null;
-
-            if (scba.HasBlock(key))
-                return scba.GetBlock(key);
-            return null;
-        }
-
         private static bool TryGetObjectInSave(LiveHeXVersion version, SaveFile sav, string display, byte[]? customdata, out object? sb)
         {
             sb = null;
