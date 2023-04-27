@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using LibUsbDotNet;
 using LibUsbDotNet.Main;
@@ -13,6 +14,7 @@ namespace PKHeX.Core.Injection
 
         public string IP = string.Empty;
         public int Port;
+        public InjectorCommunicationType Protocol = InjectorCommunicationType.USB;
 
         private UsbDevice? SwDevice;
         private UsbEndpointReader? reader;
@@ -22,6 +24,7 @@ namespace PKHeX.Core.Injection
 
         private readonly object _sync = new();
 
+        InjectorCommunicationType ICommunicatorNX.Protocol { get => Protocol; set => Protocol = value; }
         bool ICommunicator.Connected { get => Connected; set => Connected = SwDevice is not null; }
         int ICommunicator.Port { get => Port; set => Port = value; }
         string ICommunicator.IP { get => IP; set => IP = value; }
@@ -36,11 +39,16 @@ namespace PKHeX.Core.Injection
                 // Find and open the usb device.
                 foreach (UsbRegistry ur in UsbDevice.AllDevices.Cast<UsbRegistry>())
                 {
-                    ur.DeviceProperties.TryGetValue("Address", out object? port);
-                    if (port == null)
+                    if (ur.Vid != 0x057E)
                         continue;
-                    if (ur.Vid == 1406 && ur.Pid == 12288 && Port == (int)port)
-                        SwDevice = ur.Device;
+                    if (ur.Pid != 0x3000)
+                        continue;
+
+                    ur.DeviceProperties.TryGetValue("Address", out object? addr);
+                    if (Port.ToString() != addr?.ToString())
+                        continue;
+
+                    SwDevice = ur.Device;
                 }
 
                 // If the device is open and ready
@@ -111,6 +119,7 @@ namespace PKHeX.Core.Injection
         public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadBytesUSB(offset, length, RWMethod.Absolute);
         public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteBytesUSB(data, offset, RWMethod.Absolute);
         public byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets) => ReadAbsoluteMultiUSB(offsets);
+
         public ulong GetHeapBase()
         {
             var cmd = SwitchCommand.GetHeapBase();
@@ -118,6 +127,27 @@ namespace PKHeX.Core.Injection
             var buffer = new byte[(8 * 2) + 1];
             var _ = ReadInternal(buffer);
             return BitConverter.ToUInt64(buffer, 0);
+        }
+
+        public string GetTitleID()
+        {
+            SendInternal(SwitchCommand.GetTitleID(false));
+            byte[] baseBytes = ReadBulkUSB();
+            return BitConverter.ToUInt64(baseBytes, 0).ToString("X16").Trim();
+        }
+
+        public string GetBotbaseVersion()
+        {
+            SendInternal(SwitchCommand.GetBotbaseVersion(false));
+            byte[] baseBytes = ReadBulkUSB();
+            return Encoding.UTF8.GetString(baseBytes).Trim('\0');
+        }
+
+        public string GetGameInfo(string info)
+        {
+            SendInternal(SwitchCommand.GetGameInfo(info, false));
+            byte[] baseBytes = ReadBulkUSB();
+            return Encoding.UTF8.GetString(baseBytes).Trim('\0');
         }
 
         private int ReadInternal(byte[] buffer)

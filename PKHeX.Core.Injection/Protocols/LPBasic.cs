@@ -5,11 +5,13 @@ using System.Linq;
 
 namespace PKHeX.Core.Injection
 {
-    public static class LPBasic
+    public class LPBasic : InjectionBase
     {
-        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SWSH_Rigel2, LiveHeXVersion.SWSH_Rigel1, LiveHeXVersion.SWSH_Orion,
-                                                             LiveHeXVersion.LGPE_v102, LiveHeXVersion.ORAS, LiveHeXVersion.XY, LiveHeXVersion.US_v12,
-                                                             LiveHeXVersion.UM_v12, LiveHeXVersion.SM_v12 };
+        private static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SWSH_v132, LiveHeXVersion.SWSH_v121, LiveHeXVersion.SWSH_v111,
+                                                                       LiveHeXVersion.LGPE_v102, LiveHeXVersion.ORAS_v140, LiveHeXVersion.XY_v150,
+                                                                       LiveHeXVersion.US_v120, LiveHeXVersion.UM_v120, LiveHeXVersion.SM_v120 };
+
+        public static LiveHeXVersion[] GetVersions() => SupportedVersions;
 
         public static readonly BlockData[] Blocks_Rigel2 =
         {
@@ -29,10 +31,10 @@ namespace PKHeX.Core.Injection
         // LiveHexVersion -> Blockname -> List of <SCBlock Keys, OffsetValues>
         public static readonly Dictionary<LiveHeXVersion, BlockData[]> SCBlocks = new()
         {
-            { LiveHeXVersion.SWSH_Rigel2, Blocks_Rigel2 },
+            { LiveHeXVersion.SWSH_v132, Blocks_Rigel2 },
         };
 
-        public static readonly Dictionary<string, string> SpecialBlocks = new()
+        public override Dictionary<string, string> SpecialBlocks { get; } = new()
         {
             { "Items", "B_OpenItemPouch_Click" },
             { "Raid", "B_OpenRaids_Click" },
@@ -43,7 +45,9 @@ namespace PKHeX.Core.Injection
             { "Pokedex Crown", "B_OpenPokedex_Click" },
         };
 
-        public static byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
+        public LPBasic(LiveHeXVersion lv, bool useCache) : base(lv, useCache) { }
+
+        public override byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
         {
             var bytes = psb.com.ReadBytes(psb.GetBoxOffset(box), len);
             if (psb.GapSize == 0)
@@ -58,11 +62,10 @@ namespace PKHeX.Core.Injection
             return ArrayUtil.ConcatAll(allpkm.ToArray());
         }
 
-        public static byte[] ReadSlot(PokeSysBotMini psb, int box, int slot) => psb.com.ReadBytes(psb.GetSlotOffset(box, slot), psb.SlotSize + psb.GapSize);
+        public override byte[] ReadSlot(PokeSysBotMini psb, int box, int slot) => psb.com.ReadBytes(psb.GetSlotOffset(box, slot), psb.SlotSize + psb.GapSize);
+        public override void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot) => psb.com.WriteBytes(data, psb.GetSlotOffset(box, slot));
 
-        public static void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot) => psb.com.WriteBytes(data, psb.GetSlotOffset(box, slot));
-
-        public static void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
+        public override void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
         {
             ReadOnlySpan<byte> bytes = boxData;
             byte[][] pkmData = bytes.Split(psb.SlotSize);
@@ -82,7 +85,7 @@ namespace PKHeX.Core.Injection
         };
 
         // Reflection method
-        public static bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out List<byte[]>? read)
+        public override bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out List<byte[]>? read)
         {
             read = null;
             try
@@ -117,7 +120,7 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public static void WriteBlocksFromSAV(PokeSysBotMini psb, string block, SaveFile sav)
+        public override void WriteBlocksFromSAV(PokeSysBotMini psb, string block, SaveFile sav)
         {
             var props = sav.GetType().GetProperty("Blocks") ?? throw new Exception("Blocks don't exist");
             var allblocks = props.GetValue(sav);

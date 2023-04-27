@@ -3,10 +3,14 @@ using System.Collections.Generic;
 
 namespace PKHeX.Core.Injection
 {
-    public static class LPLGPE
+    public class LPLGPE : InjectionBase
     {
-        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.LGPE_v102 };
-        public static byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
+        private static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.LGPE_v102 };
+        public static LiveHeXVersion[] GetVersions() => SupportedVersions;
+
+        public LPLGPE(LiveHeXVersion lv, bool useCache) : base(lv, useCache) { }
+
+        public override byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
         {
             var bytes = psb.com.ReadBytes(psb.GetBoxOffset(box), len);
             if (psb.GapSize == 0)
@@ -23,7 +27,7 @@ namespace PKHeX.Core.Injection
             return ArrayUtil.ConcatAll(allpkm.ToArray());
         }
 
-        public static byte[] ReadSlot(PokeSysBotMini psb, int box, int slot)
+        public override byte[] ReadSlot(PokeSysBotMini psb, int box, int slot)
         {
             var bytes = psb.com.ReadBytes(psb.GetSlotOffset(box, slot), psb.SlotSize + psb.GapSize);
             var StoredLength = psb.SlotSize - 0x1C;
@@ -32,7 +36,7 @@ namespace PKHeX.Core.Injection
             return ArrayUtil.ConcatAll(stored, party);
         }
 
-        public static void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot)
+        public override void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot)
         {
             var slotofs = psb.GetSlotOffset(box, slot);
             var StoredLength = psb.SlotSize - 0x1C;
@@ -40,7 +44,7 @@ namespace PKHeX.Core.Injection
             psb.com.WriteBytes(data.AsSpan(StoredLength).ToArray(), slotofs + (ulong) StoredLength + 0x70);
         }
 
-        public static void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
+        public override void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
         {
             ReadOnlySpan<byte> bytes = boxData;
             byte[][] pkmData = bytes.Split(psb.SlotSize);

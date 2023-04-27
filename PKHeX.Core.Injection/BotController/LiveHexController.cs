@@ -13,7 +13,8 @@ namespace PKHeX.Core.Injection
             SAV = boxes;
             Editor = editor;
             var ValidVers = RamOffsets.GetValidVersions(boxes.SAV);
-            Bot = new PokeSysBotMini(ValidVers[0], ict, useCache);
+            var com = RamOffsets.GetCommunicator(SAV.SAV, ict);
+            Bot = new PokeSysBotMini(ValidVers[0], com, useCache);
         }
 
         public void ChangeBox(int box)

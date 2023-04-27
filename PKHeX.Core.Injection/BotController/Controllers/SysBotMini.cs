@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 
 namespace PKHeX.Core.Injection
@@ -17,6 +18,7 @@ namespace PKHeX.Core.Injection
     {
         public string IP = "192.168.1.65";
         public int Port = 6000;
+        public InjectorCommunicationType Protocol = InjectorCommunicationType.SocketNetwork;
 
         public Socket Connection = new(SocketType.Stream, ProtocolType.Tcp);
 
@@ -24,6 +26,7 @@ namespace PKHeX.Core.Injection
 
         private readonly object _sync = new();
 
+        InjectorCommunicationType ICommunicatorNX.Protocol { get => Protocol; set => Protocol = value; }
         bool ICommunicator.Connected { get => Connected; set => Connected = value; }
         int ICommunicator.Port { get => Port; set => Port = value; }
         string ICommunicator.IP { get => IP; set => IP = value; }
@@ -155,9 +158,40 @@ namespace PKHeX.Core.Injection
         {
             var cmd = SwitchCommand.GetHeapBase();
             SendInternal(cmd);
-            var buffer = new byte[(8 * 2) + 1];
+
+            var buffer = new byte[17];
             var _ = ReadInternal(buffer);
             return Convert.ToUInt64(string.Concat(buffer.Select(z => (char)z)).Trim(), 16);
+        }
+
+        public string GetTitleID()
+        {
+            var cmd = SwitchCommand.GetTitleID();
+            SendInternal(cmd);
+
+            var buffer = new byte[17];
+            var _ = ReadInternal(buffer);
+            return Encoding.ASCII.GetString(buffer).Trim();
+        }
+
+        public string GetBotbaseVersion()
+        {
+            var cmd = SwitchCommand.GetBotbaseVersion();
+            SendInternal(cmd);
+
+            var buffer = new byte[10];
+            var _ = ReadInternal(buffer);
+            return Encoding.ASCII.GetString(buffer).Trim('\0');
+        }
+
+        public string GetGameInfo(string info)
+        {
+            var cmd = SwitchCommand.GetGameInfo(info);
+            SendInternal(cmd);
+
+            var buffer = new byte[17];
+            var _ = ReadInternal(buffer);
+            return Encoding.ASCII.GetString(buffer).Trim(new char[] { '\0', '\n' });
         }
 
         public byte[] ReadBytes(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Heap);

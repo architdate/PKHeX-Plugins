@@ -148,5 +148,33 @@ namespace PKHeX.Core.Injection
         /// <param name="addrn">Encoding selector. Default "true" for sys-botbase.</param>
         /// <returns>Encoded command bytes</returns>
         public static byte[] GetHeapBase(bool addrn = true) => Encode("getHeapBase", addrn);
+
+        /* 
+         *
+         * Info Commands
+         *
+         */
+
+        /// <summary>
+        /// Requests the title id of attached process.
+        /// </summary>
+        /// <param name="crlf">Line terminator (unused by USB protocol)</param>
+        /// <returns>Encoded command bytes</returns>
+        public static byte[] GetTitleID(bool crlf = true) => Encode("getTitleID", crlf);
+
+        /// <summary>
+        /// Requests the sys-botbase or usb-botbase version.
+        /// </summary>
+        /// <param name="crlf">Line terminator (unused by USB protocol)</param>
+        /// <returns>Encoded command bytes</returns>
+        public static byte[] GetBotbaseVersion(bool crlf = true) => Encode("getVersion", crlf);
+
+        /// <summary>
+        /// Receives requested information about the currently running game application.
+        /// </summary>
+        /// <param name="info">Valid parameters and their return types: icon (byte[]), version (string), rating (int), author (string), name (string)</param>
+        /// <param name="crlf">Line terminator (unused by USB's protocol)</param>
+        /// <returns>Encoded command bytes</returns>
+        public static byte[] GetGameInfo(string info, bool crlf = true) => Encode($"game {info}", crlf);
     }
 }
