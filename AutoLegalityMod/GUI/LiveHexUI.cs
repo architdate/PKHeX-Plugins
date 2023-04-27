@@ -503,12 +503,7 @@ namespace AutoModPlugins
                     return;
                 }
 
-                (address, size, type) = ReadKey(Remote.Bot, keyval);
-                if (type == (int)SCTypeCode.Bool1 || type == (int)SCTypeCode.Bool2 || type == (int)SCTypeCode.Bool3)
-                {
-                    WinFormsUtil.Alert($"SCBlock is set to {block.Type}.");
-                    return;
-                }
+                (address, size) = ReadKey(Remote.Bot, keyval);
             }
 
             try
@@ -518,15 +513,17 @@ namespace AutoModPlugins
                 if (blk_key)
                 {
                     bool typeView = (ModifierKeys & Keys.Alt) == Keys.Alt;
-                    var temp = new byte[size + 4];
-                    result.CopyTo(temp, 4);
-                    BinaryPrimitives.WriteUInt32LittleEndian(temp, keyval);
+                    var block = SCBlock.ReadFromOffset(result, keyval, ref header);
 
-                    var block = SCBlock.ReadFromOffset(temp, ref header);
-                    result = block.Data;
-
+                    if (block.Type.IsBoolean())
+                    {
+                        WinFormsUtil.Alert($"SCBlock is set to {block.Type}.");
+                        return;
+                    }
                     if (typeView)
                         WinFormsUtil.Alert($"Block type is {block.Type}.");
+
+                    result = block.Data;
                 }
 
                 bool blockview = (ModifierKeys & Keys.Control) == Keys.Control;
@@ -694,7 +691,7 @@ namespace AutoModPlugins
             return valid;
         }
 
-        private static (ulong, int, int) ReadKey(PokeSysBotMini bot, uint keyval)
+        private static (ulong Offset, int Length) ReadKey(PokeSysBotMini bot, uint keyval)
         {
             var version = bot.Version;
             string? sbptr = null;
@@ -702,23 +699,15 @@ namespace AutoModPlugins
                 sbptr = LPPointer.GetSaveBlockPointer(version);
 
             if (sbptr is null || bot.com is not ICommunicatorNX nx)
-                return (0, 0, 0);
+                return (0, 0);
 
             var ofs = bot.SearchSaveKey(sbptr, keyval);
             var dt = nx.ReadBytesAbsolute(ofs + 8, 8);
             ofs = BitConverter.ToUInt64(dt);
 
-            Span<byte> temp = stackalloc byte[10];
-            BinaryPrimitives.WriteUInt32LittleEndian(temp, keyval);
             var headerAfterKey = nx.ReadBytesAbsolute(ofs, 6);
-            headerAfterKey.CopyTo(temp[4..]);
-
-            var type = headerAfterKey[0] ^ new SCXorShift32(keyval).Next();
-            if (type is 1 or 2 or 3)
-                return (ofs, 0, (int)type);
-
-            int size = SCBlock.GetTotalLength(temp);
-            return (ofs, size - 4, (int)type);
+            int size = SCBlock.GetTotalLength(headerAfterKey, keyval);
+            return (ofs, size);
         }
 
         private static SCBlock? GetSCBlock(SaveFile sav, uint key)
