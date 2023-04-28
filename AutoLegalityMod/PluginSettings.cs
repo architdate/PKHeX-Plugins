@@ -17,7 +17,7 @@ namespace AutoModPlugins
         private const string Miscellaneous = nameof(Miscellaneous);
 
         [Browsable(false)]
-        public string? configPath { get; init; }
+        public string? ConfigPath { get; init; }
 
         // Trainer
 
@@ -114,7 +114,7 @@ namespace AutoModPlugins
         {
             JsonSerializerOptions options = new() { WriteIndented = true };
             string output = JsonSerializer.Serialize(this, options);
-            using StreamWriter sw = new(configPath ?? Path.Combine(Path.GetDirectoryName(Environment.ProcessPath)!, "almconfig.json"));
+            using StreamWriter sw = new(ConfigPath ?? Path.Combine(Path.GetDirectoryName(Environment.ProcessPath)!, "almconfig.json"));
             sw.WriteLine(output);
         }
     }

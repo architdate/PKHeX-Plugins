@@ -36,7 +36,7 @@ namespace AutoModPlugins
         public ISaveFileProvider SaveFileEditor { get; private set; } = null!;
         protected IPKMView PKMEditor { get; private set; } = null!;
         internal static readonly string almconfig = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath)!, "almconfig.json");
-        internal static PluginSettings _settings = new() { configPath = almconfig };
+        internal static PluginSettings _settings = new() { ConfigPath = almconfig };
 
         public void Initialize(params object[] args)
         {
@@ -47,9 +47,9 @@ namespace AutoModPlugins
             LoadMenuStrip(menu);
 
             // Load settings
-            if (File.Exists(_settings.configPath))
+            if (File.Exists(_settings.ConfigPath))
             {
-                var text = File.ReadAllText(_settings.configPath);
+                var text = File.ReadAllText(_settings.ConfigPath);
                 _settings = JsonSerializer.Deserialize<PluginSettings>(text)!;
             }
 

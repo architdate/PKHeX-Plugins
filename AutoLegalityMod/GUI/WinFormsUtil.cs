@@ -48,10 +48,10 @@ namespace AutoModPlugins
             return new ALMError(msg, new[] { "Wiki", "Cancel" });
         }
 
-        public static ALMError ALMErrorBasic(string msg)
+        public static ALMError ALMErrorBasic(string msg, bool updateButton = false)
         {
             SystemSounds.Hand.Play();
-            return new ALMError(msg, new[] { "Wiki", "Cancel" });
+            return new ALMError(msg, new[] { updateButton ? "Update" : "Wiki", "Cancel" });
         }
 
         /// <summary>

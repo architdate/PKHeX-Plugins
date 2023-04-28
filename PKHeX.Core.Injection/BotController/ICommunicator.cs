@@ -21,9 +21,13 @@ namespace PKHeX.Core.Injection
 
     public interface ICommunicatorNX : ICommunicator
     {
+        InjectorCommunicationType Protocol { get; set; }
         byte[] ReadBytesMain(ulong offset, int length);
         byte[] ReadBytesAbsolute(ulong offset, int length);
         ulong GetHeapBase();
+        string GetBotbaseVersion();
+        string GetTitleID();
+        string GetGameInfo(string info);
         void WriteBytesMain(byte[] data, ulong offset);
         void WriteBytesAbsolute(byte[] data, ulong offset);
         byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets);

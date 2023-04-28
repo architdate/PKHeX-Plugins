@@ -5,9 +5,10 @@ using System.Linq;
 
 namespace PKHeX.Core.Injection
 {
-    public static class LPPointer
+    public class LPPointer : InjectionBase
     {
-        public static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SV_v101, LiveHeXVersion.SV_v110, LiveHeXVersion.SV_v120, LiveHeXVersion.SV_v130, LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v111 };
+        private static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.SV_v101, LiveHeXVersion.SV_v110, LiveHeXVersion.SV_v120, LiveHeXVersion.SV_v130, LiveHeXVersion.LA_v100, LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v111 };
+        public static LiveHeXVersion[] GetVersions() => SupportedVersions;
 
         private const int LA_MYSTATUS_BLOCK_SIZE = 0x80;
         private const int SV_MYSTATUS_BLOCK_SIZE = 0x68;
@@ -109,13 +110,15 @@ namespace PKHeX.Core.Injection
             { LiveHeXVersion.LA_v111, Blocks_LA_v110 },
         };
 
-        public static readonly Dictionary<string, string> SpecialBlocks = new()
+        public override Dictionary<string, string> SpecialBlocks { get; } = new()
         {
             { "Items", "B_OpenItemPouch_Click" },
             { "Pokedex", "B_OpenPokedex_Click" },
             { "Raid", "B_OpenRaids_Click" },
             //{ "Trainer Data", "B_OpenTrainerInfo_Click" },
         };
+
+        public LPPointer(LiveHeXVersion lv, bool useCache) : base(lv, useCache) { }
 
         private static string GetB1S1Pointer(LiveHeXVersion lv)
         {
@@ -143,7 +146,7 @@ namespace PKHeX.Core.Injection
             };
         }
 
-        public static byte[] ReadBox(PokeSysBotMini psb, int box, List<byte[]> allpkm)
+        public override byte[] ReadBox(PokeSysBotMini psb, int box, int _, List<byte[]> allpkm)
         {
             if (psb.com is not ICommunicatorNX sb)
                 return ArrayUtil.ConcatAll(allpkm.ToArray());
@@ -154,7 +157,7 @@ namespace PKHeX.Core.Injection
             return psb.com.ReadBytes(boxstart, boxsize);
         }
 
-        public static byte[] ReadSlot(PokeSysBotMini psb, int box, int slot)
+        public override byte[] ReadSlot(PokeSysBotMini psb, int box, int slot)
         {
             if (psb.com is not ICommunicatorNX sb)
                 return new byte[psb.SlotSize];
@@ -167,7 +170,7 @@ namespace PKHeX.Core.Injection
             return psb.com.ReadBytes(slotstart, slotsize);
         }
 
-        public static void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot)
+        public override void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot)
         {
             if (psb.com is not ICommunicatorNX sb)
                 return;
@@ -180,7 +183,7 @@ namespace PKHeX.Core.Injection
             psb.com.WriteBytes(data, slotstart);
         }
 
-        public static void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
+        public override void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
         {
             if (psb.com is not ICommunicatorNX sb)
                 return;
@@ -191,7 +194,7 @@ namespace PKHeX.Core.Injection
             psb.com.WriteBytes(boxData, boxstart);
         }
 
-        public static bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out List<byte[]>? read)
+        public override bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out List<byte[]>? read)
         {
             read = null;
             if (psb.com is not ICommunicatorNX sb)
@@ -230,7 +233,7 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public static void WriteBlocksFromSAV(PokeSysBotMini psb, string block, SaveFile sav)
+        public override void WriteBlocksFromSAV(PokeSysBotMini psb, string block, SaveFile sav)
         {
             if (psb.com is not ICommunicatorNX sb)
                 return;

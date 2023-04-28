@@ -6,11 +6,12 @@ using System.Reflection;
 
 namespace PKHeX.Core.Injection
 {
-    public static class LPBDSP
+    public class LPBDSP : InjectionBase
     {
-        public static readonly LiveHeXVersion[] BrilliantDiamond = { LiveHeXVersion.BD_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113, LiveHeXVersion.BDSP_v120, LiveHeXVersion.BD_v130 };
-        public static readonly LiveHeXVersion[] ShiningPearl     = { LiveHeXVersion.SP_v100, LiveHeXVersion.SP_v110, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113, LiveHeXVersion.BDSP_v120, LiveHeXVersion.SP_v130 };
-        public static readonly LiveHeXVersion[] SupportedVersions = ArrayUtil.ConcatAll(BrilliantDiamond, ShiningPearl);
+        private static readonly LiveHeXVersion[] BrilliantDiamond = { LiveHeXVersion.BD_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113, LiveHeXVersion.BDSP_v120, LiveHeXVersion.BD_v130 };
+        private static readonly LiveHeXVersion[] ShiningPearl     = { LiveHeXVersion.SP_v100, LiveHeXVersion.SP_v110, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113, LiveHeXVersion.BDSP_v120, LiveHeXVersion.SP_v130 };
+        private static readonly LiveHeXVersion[] SupportedVersions = ArrayUtil.ConcatAll(BrilliantDiamond, ShiningPearl);
+        public static LiveHeXVersion[] GetVersions() => SupportedVersions;
 
         private const int ITEM_BLOCK_SIZE = 0xBB80;
         private const int ITEM_BLOCK_SIZE_RAM = (0xBB80 / 0x10) * 0xC;
@@ -32,7 +33,7 @@ namespace PKHeX.Core.Injection
             { "Daycare",        (GetDaycareBlock, SetDaycareBlock) },
         };
 
-        public static readonly Dictionary<string, string> SpecialBlocks = new()
+        public override Dictionary<string, string> SpecialBlocks { get; } = new()
         {
             { "Items", "B_OpenItemPouch_Click" },
             { "Underground", "B_OpenUGSEditor_Click" }
@@ -42,7 +43,9 @@ namespace PKHeX.Core.Injection
         public static readonly IEnumerable<Type> types = Assembly.GetAssembly(typeof(ICustomBlock)).GetTypes().Where(t => typeof(ICustomBlock).IsAssignableFrom(t) && !t.IsInterface);
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 
-        private static ulong[] GetPokemonPointers(this PokeSysBotMini psb, int box)
+        public LPBDSP(LiveHeXVersion lv, bool useCache) : base(lv, useCache) { }
+
+        private static ulong[] GetPokemonPointers(PokeSysBotMini psb, int box)
         {
             var sb = (ICommunicatorNX)psb.com;
             var (ptr, count) = RamOffsets.BoxOffsets(psb.Version);
@@ -122,40 +125,40 @@ namespace PKHeX.Core.Injection
             };
         }
 
-        public static byte[] ReadBox(PokeSysBotMini psb, int box, List<byte[]> allpkm)
+        public override byte[] ReadBox(PokeSysBotMini psb, int box, int _, List<byte[]> allpkm)
         {
             if (psb.com is not ICommunicatorNX sb)
                 return ArrayUtil.ConcatAll(allpkm.ToArray());
-            var pkmptrs = psb.GetPokemonPointers(box);
+            var pkmptrs = GetPokemonPointers(psb, box);
 
             var offsets = pkmptrs.ToDictionary(p => p + 0x20, _ => psb.SlotSize);
             return sb.ReadBytesAbsoluteMulti(offsets);
         }
 
-        public static byte[] ReadSlot(PokeSysBotMini psb, int box, int slot)
+        public override byte[] ReadSlot(PokeSysBotMini psb, int box, int slot)
         {
             if (psb.com is not ICommunicatorNX sb)
                 return new byte[psb.SlotSize];
-            var pkmptr = psb.GetPokemonPointers(box)[slot];
+            var pkmptr = GetPokemonPointers(psb, box)[slot];
             return sb.ReadBytesAbsolute(pkmptr + 0x20, psb.SlotSize);
         }
 
-        public static void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot)
+        public override void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot)
         {
             if (psb.com is not ICommunicatorNX sb)
                 return;
-            var pkmptr = psb.GetPokemonPointers(box)[slot];
+            var pkmptr = GetPokemonPointers(psb, box)[slot];
             sb.WriteBytesAbsolute(data, pkmptr + 0x20);
         }
 
-        public static void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
+        public override void SendBox(PokeSysBotMini psb, byte[] boxData, int box)
         {
             if (psb.com is not ICommunicatorNX sb)
                 return;
 
             ReadOnlySpan<byte> bytes = boxData;
             byte[][] pkmData = bytes.Split(psb.SlotSize);
-            var pkmptrs = psb.GetPokemonPointers(box);
+            var pkmptrs = GetPokemonPointers(psb, box);
             for (int i = 0; i < psb.SlotCount; i++)
                 sb.WriteBytesAbsolute(pkmData[i], pkmptrs[i] + 0x20);
         }
@@ -192,7 +195,7 @@ namespace PKHeX.Core.Injection
             return retval;
         };
 
-        public static byte[]? GetItemBlock(PokeSysBotMini psb)
+        private static byte[]? GetItemBlock(PokeSysBotMini psb)
         {
             var ptr = GetItemPointers(psb.Version);
             if (ptr is null)
@@ -214,7 +217,7 @@ namespace PKHeX.Core.Injection
             return ArrayUtil.ConcatAll(items);
         }
 
-        public static void SetItemBlock(PokeSysBotMini psb, byte[] data)
+        private static void SetItemBlock(PokeSysBotMini psb, byte[] data)
         {
             var ptr = GetItemPointers(psb.Version);
             if (ptr is null)
@@ -237,7 +240,7 @@ namespace PKHeX.Core.Injection
             psb.com.WriteBytes(payload, addr);
         }
 
-        public static byte[]? GetUGItemBlock(PokeSysBotMini psb)
+        private static byte[]? GetUGItemBlock(PokeSysBotMini psb)
         {
             var ptr = GetUndergroundPointers(psb.Version);
             if (ptr is null)
@@ -254,7 +257,7 @@ namespace PKHeX.Core.Injection
             return ArrayUtil.ConcatAll(items);
         }
 
-        public static void SetUGItemBlock(PokeSysBotMini psb, byte[] data)
+        private static void SetUGItemBlock(PokeSysBotMini psb, byte[] data)
         {
             var ptr = GetUndergroundPointers(psb.Version);
             if (ptr is null)
@@ -271,9 +274,9 @@ namespace PKHeX.Core.Injection
             psb.com.WriteBytes(payload, addr);
         }
 
-        public static byte[]? GetMyStatusBlock(PokeSysBotMini psb) => GetTrainerData(psb);
+        private static byte[]? GetMyStatusBlock(PokeSysBotMini psb) => GetTrainerData(psb);
 
-        public static void SetMyStatusBlock(PokeSysBotMini psb, byte[] data)
+        private static void SetMyStatusBlock(PokeSysBotMini psb, byte[] data)
         {
             var lv = psb.Version;
             var ptr = GetTrainerPointer(lv);
@@ -300,7 +303,7 @@ namespace PKHeX.Core.Injection
             psb.com.WriteBytes(retval.AsSpan(0x8).ToArray(), psb.GetCachedPointer(sb, ptr) + 0x8);
         }
 
-        public static byte[]? GetDaycareBlock(PokeSysBotMini psb)
+        private static byte[]? GetDaycareBlock(PokeSysBotMini psb)
         {
             var ptr = GetDaycarePointers(psb.Version);
             if (ptr is null)
@@ -324,7 +327,7 @@ namespace PKHeX.Core.Injection
             return block;
         }
 
-        public static void SetDaycareBlock(PokeSysBotMini psb, byte[] data)
+        private static void SetDaycareBlock(PokeSysBotMini psb, byte[] data)
         {
             var ptr = GetDaycarePointers(psb.Version);
             if (ptr is null)
@@ -346,7 +349,7 @@ namespace PKHeX.Core.Injection
             psb.com.WriteBytes(payload, addr + 0x8);
         }
 
-        public static bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out List<byte[]>? read)
+        public override bool ReadBlockFromString(PokeSysBotMini psb, SaveFile sav, string block, out List<byte[]>? read)
         {
             read = null;
             if (!FunctionMap.ContainsKey(block))
@@ -395,7 +398,7 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public static void WriteBlockFromString(PokeSysBotMini psb, string block, byte[] data, object sb)
+        public override void WriteBlockFromString(PokeSysBotMini psb, string block, byte[] data, object sb)
         {
             if (!FunctionMap.ContainsKey(block))
             {
