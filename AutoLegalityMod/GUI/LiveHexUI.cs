@@ -44,7 +44,7 @@ namespace AutoModPlugins
             // add an event to the editor
             // ReSharper disable once SuspiciousTypeConversion.Global
             BoxSelect = ((Control)sav).Controls.Find("CB_BoxSelect", true).FirstOrDefault() as ComboBox;
-            if (BoxSelect != null)
+            if (BoxSelect is not null)
             {
                 _boxChanged = false; // reset box changed status
                 BoxSelect.SelectedIndexChanged += ChangeBox;
@@ -60,17 +60,31 @@ namespace AutoModPlugins
             CenterToParent();
         }
 
+        public ISlotInfo GetSlotData(PictureBox view) => throw new InvalidOperationException();
+        public int GetViewIndex(ISlotInfo slot) => -1;
+        public void NotifySlotOld(ISlotInfo previous) { }
+
+        public void NotifySlotChanged(ISlotInfo slot, SlotTouchType type, PKM pkm)
+        {
+            if (!checkBox2.Checked || !Remote.Bot.Connected)
+                return;
+
+            if (slot is not SlotInfoBox(var box, var slotpkm))
+                return;
+
+            if (!type.IsContentChange())
+                return;
+
+            Remote.Bot.SendSlot(RamOffsets.WriteBoxData(Remote.Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData, box, slotpkm);
+        }
+
         private void SetTrainerData(SaveFile sav)
         {
             // Check and set trainerdata based on ISaveBlock interfaces
             byte[] dest;
             int startofs = 0;
 
-            //byte[] config;
-            //int configstart = 0;
-
             Func<PokeSysBotMini, byte[]?> tdata;
-
             switch (sav)
             {
                 case ISaveBlock8SWSH s8:
@@ -101,9 +115,6 @@ namespace AutoModPlugins
                     dest = sbdsp.MyStatus.Data;
                     startofs = sbdsp.MyStatus.Offset;
                     tdata = LPBDSP.GetTrainerData;
-
-                    //configstart = sbdsp.Config.Offset;
-                    //config = sbdsp.Config.Data;
                     break;
 
                 case SAV8LA sbla:
@@ -128,8 +139,9 @@ namespace AutoModPlugins
                 return;
 
             var data = tdata(Remote.Bot);
-            if (data == null)
+            if (data is null)
                 return;
+
             data.CopyTo(dest, startofs);
         }
 
@@ -138,12 +150,13 @@ namespace AutoModPlugins
         {
             if (_boxChanged)
                 return;
+
             if (checkBox1.Checked && Remote.Bot.Connected)
             {
                 _boxChanged = true;
                 var prev = ViewIndex;
                 Remote.ChangeBox(ViewIndex);
-                if (BoxSelect != null) // restore selected index after a ViewIndex reset
+                if (BoxSelect is not null) // restore selected index after a ViewIndex reset
                     BoxSelect.SelectedIndex = prev;
             }
             _boxChanged = false;
@@ -219,6 +232,7 @@ namespace AutoModPlugins
                     Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/FAQ-and-Troubleshooting#troubleshooting", UseShellExecute = true });
                 return;
             }
+
             B_Connect.Enabled = B_Connect.Visible = TB_IP.Enabled = TB_Port.Enabled = false;
             B_Disconnect.Enabled = B_Disconnect.Visible = groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
         }
@@ -312,8 +326,8 @@ namespace AutoModPlugins
         {
             if (Remote.Bot.Connected)
                 Remote.Bot.com.Disconnect();
-            x.Slots.Publisher.Subscribers.Remove(this);
 
+            x.Slots.Publisher.Subscribers.Remove(this);
             _settings.LatestIP = TB_IP.Text;
             _settings.LatestPort = TB_Port.Text;
             _settings.Save();
@@ -323,7 +337,7 @@ namespace AutoModPlugins
         {
             var prev = ViewIndex;
             Remote.ReadBox(SAV.CurrentBox);
-            if (BoxSelect != null) // restore selected index after a ViewIndex reset
+            if (BoxSelect is not null) // restore selected index after a ViewIndex reset
                 BoxSelect.SelectedIndex = prev;
         }
 
@@ -372,7 +386,7 @@ namespace AutoModPlugins
             var valid = int.TryParse(RamSize.Text, out int size);
             if (offset.ToString("X16") != txt.ToUpper().PadLeft(16, '0') || !valid)
             {
-                WinFormsUtil.Alert("Make sure that the RAM offset is a hex string and the size is a valid integer");
+                WinFormsUtil.Alert("Make sure that the RAM offset is a hex string and the size is a valid integer.");
                 return;
             }
 
@@ -404,6 +418,7 @@ namespace AutoModPlugins
                     form.PG_BlockView.Visible = true;
                     form.PG_BlockView.SelectedObject = pkm;
                 }
+
                 var res = form.ShowDialog();
                 if (res != DialogResult.OK)
                     return;
@@ -413,13 +428,11 @@ namespace AutoModPlugins
                     PKM pk = pkm!;
                     var pkmbytes = RamOffsets.WriteBoxData(Remote.Bot.Version) ? pk.EncryptedBoxData : pk.EncryptedPartyData;
                     if (pkmbytes.Length == Remote.Bot.SlotSize)
-                    {
                         form.Bytes = pkmbytes;
-                    }
                     else
                     {
                         form.Bytes = result;
-                        WinFormsUtil.Error("Size mismatch. Please report this issue on the discord server.");
+                        WinFormsUtil.Error("Size mismatch. Please report this issue on the Discord server.");
                     }
                 }
 
@@ -447,6 +460,7 @@ namespace AutoModPlugins
             {
                 if (!LPBasic.SCBlocks.ContainsKey(lv))
                     return new List<string>();
+
                 var blks = LPBasic.SCBlocks[lv].Select(z => z.Display).Distinct().OrderBy(z => z);
                 return blks;
             }
@@ -458,30 +472,16 @@ namespace AutoModPlugins
                 var blks = save_blocks.Concat(custom_blocks).OrderBy(z => z);
                 return blks;
             }
+
             if (Remote.Bot.Injector is LPPointer)
             {
                 var save_blocks = LPPointer.SCBlocks[lv].Select(z => z.Display).Distinct();
                 var blks = save_blocks.OrderBy(z => z);
                 return blks;
             }
+
             return new List<string>();
         }
-
-        public void NotifySlotOld(ISlotInfo previous) { }
-
-        public void NotifySlotChanged(ISlotInfo slot, SlotTouchType type, PKM pkm)
-        {
-            if (!checkBox2.Checked || !Remote.Bot.Connected)
-                return;
-            if (slot is not SlotInfoBox(var box, var slotpkm))
-                return;
-            if (!type.IsContentChange())
-                return;
-            Remote.Bot.SendSlot(RamOffsets.WriteBoxData(Remote.Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData, box, slotpkm);
-        }
-
-        public ISlotInfo GetSlotData(PictureBox view) => throw new InvalidOperationException();
-        public int GetViewIndex(ISlotInfo slot) => -1;
 
         private void SetInjectionTypeView()
         {
@@ -513,7 +513,8 @@ namespace AutoModPlugins
 
             Clipboard.SetText(address.ToString("X"));
             bool getDetails = (ModifierKeys & Keys.Control) == Keys.Control;
-            if (getDetails) Clipboard.SetText($"Absolute Address: {address + heap:X}\nHeap Address: {address:X}\nHeap Base: {heap:X}");
+            if (getDetails)
+                Clipboard.SetText($"Absolute Address: {address + heap:X}\nHeap Address: {address:X}\nHeap Base: {heap:X}");
         }
 
         private void B_EditPointerData_Click(object sender, EventArgs e)
@@ -615,9 +616,7 @@ namespace AutoModPlugins
                             PKM pk = pkm!;
                             var pkmbytes = RamOffsets.WriteBoxData(Remote.Bot.Version) ? pk.EncryptedBoxData : pk.EncryptedPartyData;
                             if (pkmbytes.Length == Remote.Bot.SlotSize)
-                            {
                                 form.Bytes = pkmbytes;
-                            }
                             else
                             {
                                 form.Bytes = result;
@@ -663,7 +662,7 @@ namespace AutoModPlugins
             var version = Remote.Bot.Version;
 
             var valid = ReadBlock(Remote.Bot, SAV.SAV, txt, out var data);
-            if (!valid || data == null)
+            if (!valid || data is null)
             {
                 WinFormsUtil.Error("Invalid Entry");
                 return;
@@ -677,7 +676,7 @@ namespace AutoModPlugins
             }
 
             var write = false;
-            if (txt.IsSpecialBlock(Remote.Bot, out var v) && v != null)
+            if (txt.IsSpecialBlock(Remote.Bot, out var v) && v is not null)
             {
                 // ReSharper disable once SuspiciousTypeConversion.Global
                 var cc = (ContainerControl)SAV;
@@ -695,6 +694,7 @@ namespace AutoModPlugins
 
                 if (sb is SCBlock scb && scb.Data.SequenceEqual(data[0]))
                     return;
+
                 write = true;
             }
             else if (sb is SCBlock || sb is IDataIndirect || sb is ICustomBlock)
@@ -713,7 +713,7 @@ namespace AutoModPlugins
                 else
                 {
                     var o = SCBlockMetadata.GetEditableBlockObject((SCBlock)sb);
-                    if (o != null)
+                    if (o is not null)
                     {
                         form.PG_BlockView.Visible = true;
                         form.PG_BlockView.SelectedObject = o;
@@ -722,6 +722,7 @@ namespace AutoModPlugins
                 var res = form.ShowDialog();
                 write = res == DialogResult.OK;
             }
+
             if (!write)
                 return;
 
@@ -750,6 +751,7 @@ namespace AutoModPlugins
 
             if (sbptr.Length == 0)
                 throw new Exception($"Pointer is not documented for searching block keys in {version}.");
+
             if (bot.com is not ICommunicatorNX nx)
                 throw new Exception("Remote connection type is unable to read data from absolute offsets.");
 
@@ -771,18 +773,20 @@ namespace AutoModPlugins
             if (Remote.Bot.Injector is LPBDSP)
             {
                 var prop = sav.GetType().GetProperty(display);
-                if (prop != null)
+                if (prop is not null)
                     sb = prop.GetValue(sav);
                 else
                     sb = Activator.CreateInstance(LPBDSP.types.First(t => t.Name == display), customdata);
             }
             else
             {
-                var subblocks = Array.Empty<BlockData>();
-                if (Remote.Bot.Injector is LPBasic)
-                    subblocks = LPBasic.SCBlocks[version].Where(z => z.Display == display).ToArray();
-                if (Remote.Bot.Injector is LPPointer)
-                    subblocks = LPPointer.SCBlocks[version].Where(z => z.Display == display).ToArray();
+                var subblocks = Remote.Bot.Injector switch
+                {
+                    LPBasic => LPBasic.SCBlocks[version].Where(z => z.Display == display).ToArray(),
+                    LPPointer => LPPointer.SCBlocks[version].Where(z => z.Display == display).ToArray(),
+                    _ => Array.Empty<BlockData>(),
+                };
+
                 if (subblocks.Length != 1)
                     return false;
 
