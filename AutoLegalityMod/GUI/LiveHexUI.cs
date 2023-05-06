@@ -46,7 +46,6 @@ namespace AutoModPlugins
             BoxSelect = ((Control)sav).Controls.Find("CB_BoxSelect", true).FirstOrDefault() as ComboBox;
             if (BoxSelect is not null)
             {
-                _boxChanged = false; // reset box changed status
                 BoxSelect.SelectedIndexChanged += ChangeBox;
                 Closing += (_, _) => BoxSelect.SelectedIndexChanged -= ChangeBox;
             }
@@ -145,21 +144,10 @@ namespace AutoModPlugins
             data.CopyTo(dest, startofs);
         }
 
-        private static bool _boxChanged;
         private void ChangeBox(object? sender, EventArgs e)
         {
-            if (_boxChanged)
-                return;
-
-            if (checkBox1.Checked && Remote.Bot.Connected)
-            {
-                _boxChanged = true;
-                var prev = ViewIndex;
+            if (CB_ReadBox.Checked && Remote.Bot.Connected)
                 Remote.ChangeBox(ViewIndex);
-                if (BoxSelect is not null) // restore selected index after a ViewIndex reset
-                    BoxSelect.SelectedIndex = prev;
-            }
-            _boxChanged = false;
         }
 
         private void B_Connect_Click(object sender, EventArgs e)
@@ -333,14 +321,7 @@ namespace AutoModPlugins
             _settings.Save();
         }
 
-        private void B_ReadCurrent_Click(object sender, EventArgs e)
-        {
-            var prev = ViewIndex;
-            Remote.ReadBox(SAV.CurrentBox);
-            if (BoxSelect is not null) // restore selected index after a ViewIndex reset
-                BoxSelect.SelectedIndex = prev;
-        }
-
+        private void B_ReadCurrent_Click(object sender, EventArgs e) => Remote.ReadBox(SAV.CurrentBox);
         private void B_WriteCurrent_Click(object sender, EventArgs e) => Remote.WriteBox(SAV.CurrentBox);
         private void B_ReadSlot_Click(object sender, EventArgs e) => Remote.ReadActiveSlot((int)NUD_Box.Value - 1, (int)NUD_Slot.Value - 1);
         private void B_WriteSlot_Click(object sender, EventArgs e) => Remote.WriteActiveSlot((int)NUD_Box.Value - 1, (int)NUD_Slot.Value - 1);

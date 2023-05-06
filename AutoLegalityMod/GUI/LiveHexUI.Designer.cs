@@ -30,7 +30,7 @@
         {
             this.B_ReadCurrent = new System.Windows.Forms.Button();
             this.B_WriteCurrent = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.CB_ReadBox = new System.Windows.Forms.CheckBox();
             this.TB_IP = new System.Windows.Forms.TextBox();
             this.L_IP = new System.Windows.Forms.Label();
             this.TB_Port = new System.Windows.Forms.TextBox();
@@ -101,17 +101,17 @@
             this.B_WriteCurrent.UseVisualStyleBackColor = true;
             this.B_WriteCurrent.Click += new System.EventHandler(this.B_WriteCurrent_Click);
             // 
-            // checkBox1
+            // CB_ReadBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(13, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(130, 17);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Read On Change Box";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.CB_ReadBox.AutoSize = true;
+            this.CB_ReadBox.Checked = true;
+            this.CB_ReadBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CB_ReadBox.Location = new System.Drawing.Point(13, 19);
+            this.CB_ReadBox.Name = "CB_ReadBox";
+            this.CB_ReadBox.Size = new System.Drawing.Size(130, 17);
+            this.CB_ReadBox.TabIndex = 2;
+            this.CB_ReadBox.Text = "Read On Change Box";
+            this.CB_ReadBox.UseVisualStyleBackColor = true;
             // 
             // TB_IP
             // 
@@ -174,7 +174,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.CB_ReadBox);
             this.groupBox1.Controls.Add(this.B_ReadCurrent);
             this.groupBox1.Controls.Add(this.B_WriteCurrent);
             this.groupBox1.Enabled = false;
@@ -608,7 +608,7 @@
 
         private System.Windows.Forms.Button B_ReadCurrent;
         private System.Windows.Forms.Button B_WriteCurrent;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox CB_ReadBox;
         private System.Windows.Forms.TextBox TB_IP;
         private System.Windows.Forms.Label L_IP;
         private System.Windows.Forms.TextBox TB_Port;
