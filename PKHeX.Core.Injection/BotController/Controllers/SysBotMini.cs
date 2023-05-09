@@ -179,9 +179,8 @@ namespace PKHeX.Core.Injection
             var cmd = SwitchCommand.GetBotbaseVersion();
             SendInternal(cmd);
 
-            var buffer = new byte[10];
-            var _ = ReadInternal(buffer);
-            return Encoding.ASCII.GetString(buffer).Trim('\0');
+            var data = FlexRead();
+            return Encoding.ASCII.GetString(data).Trim('\0');
         }
 
         public string GetGameInfo(string info)
@@ -189,9 +188,8 @@ namespace PKHeX.Core.Injection
             var cmd = SwitchCommand.GetGameInfo(info);
             SendInternal(cmd);
 
-            var buffer = new byte[17];
-            var _ = ReadInternal(buffer);
-            return Encoding.ASCII.GetString(buffer).Trim(new char[] { '\0', '\n' });
+            var data = FlexRead();
+            return Encoding.UTF8.GetString(data).Trim(new char[] { '\0', '\n' });
         }
 
         public byte[] ReadBytes(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Heap);
@@ -201,5 +199,28 @@ namespace PKHeX.Core.Injection
         public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Absolute);
         public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteLargeBytes(data, offset, RWMethod.Absolute);
         public byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets) => ReadAbsoluteMulti(offsets);
+
+        private byte[] FlexRead()
+        {
+            lock (_sync)
+            {
+                List<byte> flexBuffer = new();
+                int available = Connection.Available;
+                Connection.ReceiveTimeout = 1_000;
+
+                do
+                {
+                    byte[] buffer = new byte[available];
+                    Connection.Receive(buffer, available, SocketFlags.None);
+                    flexBuffer.AddRange(buffer);
+
+                    Thread.Sleep(0x1C0 / 256 + 64);
+                    available = Connection.Available;
+                } while (flexBuffer.Count == 0 || flexBuffer.Last() != (byte)'\n');
+
+                Connection.ReceiveTimeout = 0;
+                return flexBuffer.ToArray();
+            }
+        }
     }
 }
