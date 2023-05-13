@@ -35,80 +35,113 @@ namespace AutoModTests
         {
             // Creates extra requirements for generating without specifying Trainer Details
             const string set = "Ditto\nLanguage: Japanese";
-            var showdown = new RegenTemplate(new ShowdownSet(set));
-            showdown.Species.Should().Be((int)Species.Ditto);
-            var regen = showdown.Regen;
-            regen.HasTrainerSettings.Should().BeFalse();
-            regen.HasExtraSettings.Should().BeTrue();
-            regen.Extra.Language.Should().Be(LanguageID.Japanese);
+            var mismatch = APILegality.AllowMismatch;
+            APILegality.AllowMismatch = true;
 
-            var tr = showdown.Regen.Trainer;
-            Assert.NotNull(tr);
+            try
+            {
+                var showdown = new RegenTemplate(new ShowdownSet(set));
+                showdown.Species.Should().Be((int)Species.Ditto);
 
-            // Default language of fallback trainers should be English.
-            tr.Language.Should().Be((int)LanguageID.English);
+                var regen = showdown.Regen;
+                regen.HasTrainerSettings.Should().BeFalse();
+                regen.HasExtraSettings.Should().BeTrue();
+                regen.Extra.Language.Should().Be(LanguageID.Japanese);
 
-            // When we generate, our Extra instruction should force it to be generated as Japanese.
-            var pk = tr.GetLegalFromSet(showdown, out _);
-            pk.Language.Should().Be((int)LanguageID.Japanese);
+                var tr = showdown.Regen.Trainer;
+                Assert.NotNull(tr);
+
+                // Default language of fallback trainers should be English.
+                tr.Language.Should().Be((int)LanguageID.English);
+
+                // When we generate, our Extra instruction should force it to be generated as Japanese.
+                var pk = tr.GetLegalFromSet(showdown, out _);
+                pk.Language.Should().Be((int)LanguageID.Japanese);
+            }
+            finally
+            {
+                APILegality.AllowMismatch = mismatch;
+            }
         }
 
         [Fact]
         public static void FallbackNotUsed()
         {
             const string set = "Ditto\nLanguage: English";
-            var showdown = new RegenTemplate(new ShowdownSet(set));
-            showdown.Species.Should().Be((int)Species.Ditto);
-            var regen = showdown.Regen;
-            regen.HasTrainerSettings.Should().BeFalse();
-            regen.HasExtraSettings.Should().BeTrue();
-            regen.Extra.Language.Should().Be(LanguageID.English);
+            var mismatch = APILegality.AllowMismatch;
+            APILegality.AllowMismatch = true;
 
-            var tr = showdown.Regen.Trainer;
-            Assert.NotNull(tr);
+            try
+            {
+                var showdown = new RegenTemplate(new ShowdownSet(set));
+                showdown.Species.Should().Be((int)Species.Ditto);
 
-            // Default language of fallback trainers should be English.
-            tr.Language.Should().Be((int)LanguageID.English);
+                var regen = showdown.Regen;
+                regen.HasTrainerSettings.Should().BeFalse();
+                regen.HasExtraSettings.Should().BeTrue();
+                regen.Extra.Language.Should().Be(LanguageID.English);
 
-            // Register a fake trainer
-            var sti = new SimpleTrainerInfo { OT = "Test", TID16 = 123, SID16 = 432 };
-            TrainerSettings.Register(sti);
+                var tr = showdown.Regen.Trainer;
+                Assert.NotNull(tr);
 
-            // When we generate, our Extra instruction should force it to be generated as Japanese.
-            var pk = tr.GetLegalFromSet(showdown, out _);
-            pk.Language.Should().Be((int)LanguageID.English);
-            pk.OT_Name.Should().Be(sti.OT);
+                // Default language of fallback trainers should be English.
+                tr.Language.Should().Be((int)LanguageID.English);
 
-            TrainerSettings.Clear();
+                // Register a fake trainer
+                var sti = new SimpleTrainerInfo { OT = "Test", TID16 = 123, SID16 = 432 };
+                TrainerSettings.Register(sti);
+
+                // When we generate, our Extra instruction should force it to be generated as Japanese.
+                var pk = tr.GetLegalFromSet(showdown, out _);
+                pk.Language.Should().Be((int)LanguageID.English);
+                pk.OT_Name.Should().Be(sti.OT);
+
+                TrainerSettings.Clear();
+            }
+            finally
+            {
+                APILegality.AllowMismatch = mismatch;
+            }
         }
 
         [Fact]
         public static void FallbackNotUsed2()
         {
             const string set = "Ditto\nLanguage: Japanese";
-            var showdown = new RegenTemplate(new ShowdownSet(set));
-            showdown.Species.Should().Be((int)Species.Ditto);
-            var regen = showdown.Regen;
-            regen.HasTrainerSettings.Should().BeFalse();
-            regen.HasExtraSettings.Should().BeTrue();
-            regen.Extra.Language.Should().Be(LanguageID.Japanese);
+            var mismatch = APILegality.AllowMismatch;
+            APILegality.AllowMismatch = true;
 
-            var tr = showdown.Regen.Trainer;
-            Assert.NotNull(tr);
+            try
+            {
+                var showdown = new RegenTemplate(new ShowdownSet(set));
+                showdown.Species.Should().Be((ushort)Species.Ditto);
 
-            // Default language of fallback trainers should be English.
-            tr.Language.Should().Be((int)LanguageID.English);
+                var regen = showdown.Regen;
+                regen.HasTrainerSettings.Should().BeFalse();
+                regen.HasExtraSettings.Should().BeTrue();
+                regen.Extra.Language.Should().Be(LanguageID.Japanese);
 
-            // Register a fake trainer
-            var sti = new SimpleTrainerInfo { OT = "Test", TID16 = 123, SID16 = 432 };
-            TrainerSettings.Register(sti);
+                var tr = showdown.Regen.Trainer;
+                Assert.NotNull(tr);
 
-            // When we generate, our Extra instruction should force it to be generated as Japanese.
-            var pk = tr.GetLegalFromSet(showdown, out _);
-            pk.Language.Should().Be((int)LanguageID.Japanese);
-            pk.OT_Name.Should().Be(sti.OT);
+                // Default language of fallback trainers should be English.
+                tr.Language.Should().Be((int)LanguageID.English);
 
-            TrainerSettings.Clear();
+                // Register a fake trainer
+                var sti = new SimpleTrainerInfo { OT = "Test", TID16 = 123, SID16 = 432 };
+                TrainerSettings.Register(sti);
+
+                // When we generate, our Extra instruction should force it to be generated as Japanese.
+                var pk = tr.GetLegalFromSet(showdown, out _);
+                pk.Language.Should().Be((int)LanguageID.Japanese);
+                pk.OT_Name.Should().Be(sti.OT);
+
+                TrainerSettings.Clear();
+            }
+            finally
+            {
+                APILegality.AllowMismatch = mismatch;
+            }
         }
 
         [Fact]

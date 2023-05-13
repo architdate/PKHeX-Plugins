@@ -22,21 +22,31 @@ namespace AutoModTests
             var path = Path.Combine(folder, name);
             Directory.Exists(path).Should().BeTrue($"the specified test directory at '{path}' should exist");
 
+            var mismatch = APILegality.AllowMismatch;
+            APILegality.AllowMismatch = true;
+
             var files = Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories);
-            foreach (var file in files)
+            try
             {
-                var fi = new FileInfo(file);
-                var pk = GetPKM(file, fi);
+                foreach (var file in files)
+                {
+                    var fi = new FileInfo(file);
+                    var pk = GetPKM(file, fi);
 
-                // double check initial state
-                var la = new LegalityAnalysis(pk);
-                var dir = fi.Directory!;
-                la.Valid.Should().Be(isValid, $"because the file '{dir.Name}\\{fi.Name}' should be {(isValid ? "Valid" : "Invalid")}");
+                    // double check initial state
+                    var la = new LegalityAnalysis(pk);
+                    var dir = fi.Directory!;
+                    la.Valid.Should().Be(isValid, $"because the file '{dir.Name}\\{fi.Name}' should be {(isValid ? "Valid" : "Invalid")}");
 
-                // try legalizing, should end up as legal
-                var updated = pk.Legalize();
-                var la2 = new LegalityAnalysis(updated);
-                la2.Valid.Should().Be(true, $"because the file '{dir.Name}\\{fi.Name}' should be legal");
+                    // try legalizing, should end up as legal
+                    var updated = pk.Legalize();
+                    var la2 = new LegalityAnalysis(updated);
+                    la2.Valid.Should().Be(true, $"because the file '{dir.Name}\\{fi.Name}' should be legal");
+                }
+            }
+            finally
+            {
+                APILegality.AllowMismatch = mismatch;
             }
         }
 

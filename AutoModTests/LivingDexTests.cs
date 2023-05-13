@@ -35,6 +35,8 @@ namespace AutoModTests
             RecentTrainerCache.SetRecentTrainer(sav);
 
             var expected = sav.GetExpectedDexCount(includeforms, native);
+            expected.Should().NotBe(0);
+
             var pkms = sav.GenerateLivingDex().ToArray();
             var genned = pkms.Length;
             var val = new GenerateResult(genned == expected, expected, genned);
@@ -63,6 +65,7 @@ namespace AutoModTests
             bool legalizer_settings = Legalizer.EnableEasterEggs;
             bool ribbon_settings = APILegality.SetAllLegalRibbons;
             int set_timeout = APILegality.Timeout;
+            bool mismatch = APILegality.AllowMismatch;
             bool inc_forms = ModLogic.IncludeForms;
             bool set_shiny = ModLogic.SetShiny;
             bool set_alpha = ModLogic.SetAlpha;
@@ -71,6 +74,7 @@ namespace AutoModTests
             Legalizer.EnableEasterEggs = false;
             APILegality.SetAllLegalRibbons = false;
             APILegality.Timeout = 99999;
+            APILegality.AllowMismatch = true;
 
             // SetShiny and SetAlpha should not exclude entries from the living dex.
             // new[] { includeForms, shiny, alpha, nativeOnly }
@@ -109,6 +113,7 @@ namespace AutoModTests
             Legalizer.EnableEasterEggs = legalizer_settings;
             APILegality.SetAllLegalRibbons = ribbon_settings;
             APILegality.Timeout = set_timeout;
+            APILegality.AllowMismatch = mismatch;
             ModLogic.IncludeForms = inc_forms;
             ModLogic.SetShiny = set_shiny;
             ModLogic.SetAlpha = set_alpha;

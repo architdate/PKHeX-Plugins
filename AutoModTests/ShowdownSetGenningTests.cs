@@ -15,12 +15,19 @@ namespace AutoModTests
         [InlineData(GameVersion.B2, Genesect)]
         public static void VerifyManually(GameVersion game, string txt)
         {
+            var mismatch = APILegality.AllowMismatch;
+            APILegality.AllowMismatch = true;
+
             var sav = SaveUtil.GetBlankSAV(game, "ALM");
             TrainerSettings.Register(sav);
+
             var trainer = TrainerSettings.GetSavedTrainerData(game.GetGeneration(), game);
             RecentTrainerCache.SetRecentTrainer(trainer);
+
             var set = new ShowdownSet(txt);
             var pkm = sav.GetLegalFromSet(set, out _);
+            APILegality.AllowMismatch = mismatch;
+
             var la = new LegalityAnalysis(pkm);
             la.Valid.Should().BeTrue();
         }
