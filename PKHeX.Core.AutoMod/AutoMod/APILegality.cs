@@ -478,7 +478,7 @@ namespace PKHeX.Core.AutoMod
             // Aesthetics
             pk.ApplyHeightWeight(enc);
             pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, regen.Extra.Ball, enc);
-            pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
+            pk.ApplyMarkings(UseMarkings);
             pk.ApplyBattleVersion(handler);
         }
 
@@ -532,7 +532,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk"></param>
         /// <param name="apply">boolean to apply or not to apply markings</param>
         /// <param name="competitive">boolean to apply competitive IVs instead of the default behaviour</param>
-        private static void ApplyMarkings(this PKM pk, bool apply = true, bool competitive = false)
+        private static void ApplyMarkings(this PKM pk, bool apply = true)
         {
             if (!apply || pk.Format <= 3) // No markings if pk.Format is less than or equal to 3
                 return;

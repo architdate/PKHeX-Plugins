@@ -26,7 +26,7 @@ namespace AutoModPlugins
             ctrl.Name = "Menu_PasteImporter";
             modmenu.DropDownItems.Add(ctrl);
             ToolStripItem parent = modmenu.OwnerItem;
-            var form = (parent.GetCurrentParent().Parent ?? throw new ArgumentOutOfRangeException("Parent not found")).FindForm();
+            var form = (parent.GetCurrentParent().Parent ?? throw new Exception("Parent not found")).FindForm();
             if (form is not null)
                 form.Icon = Resources.icon;
 

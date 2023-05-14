@@ -82,28 +82,5 @@ namespace PKHeX.Core.AutoMod
             }
             else RibbonApplicator.RemoveAllValidRibbons(pk);
         }
-
-        /// <summary>
-        /// Set ribbon values to the pkm file using reflectutil
-        /// </summary>
-        /// <param name="pk">pokemon</param>
-        /// <param name="ribNames">string of ribbon names</param>
-        /// <param name="vRib">ribbon value</param>
-        /// <param name="bRib">ribbon boolean</param>
-        private static void SetRibbonValues(this PKM pk, IEnumerable<string> ribNames, int vRib, bool bRib)
-        {
-            foreach (string rName in ribNames)
-            {
-                bool intRib = rName is nameof(PK6.RibbonCountMemoryBattle) or nameof(PK6.RibbonCountMemoryContest);
-                ReflectUtil.SetValue(pk, rName, intRib ? vRib : bRib);
-            }
-        }
-
-        /// <summary>
-        /// Get ribbon names of a pkm
-        /// </summary>
-        /// <param name="pk">pokemon</param>
-        /// <returns></returns>
-        private static IEnumerable<string> GetRibbonNames(PKM pk) => ReflectUtil.GetPropertiesStartWithPrefix(pk.GetType(), "Ribbon").Distinct();
     }
 }

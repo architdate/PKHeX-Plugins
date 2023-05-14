@@ -85,7 +85,6 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             var pi = pk.PersonalInfo;
-            var abil_ct = pi.AbilityCount;
             var pref = preference.GetSingleValue();
             // Set unspecified abilities
             if (set.Ability == -1)

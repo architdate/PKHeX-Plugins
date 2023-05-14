@@ -201,7 +201,7 @@ namespace PKHeX.Core.AutoMod
                 AbilityRequest.NotHidden => a.Ability1,
                 AbilityRequest.PossiblyHidden => a.Ability1,
                 AbilityRequest.Hidden => abils_ct > 2 && pi is IPersonalAbility12H h ? h.AbilityH : -1,
-                _ => throw new ArgumentOutOfRangeException(),
+                _ => throw new Exception($"Invalid AbilityRequest: {ar}"),
             };
         }
 
@@ -216,7 +216,7 @@ namespace PKHeX.Core.AutoMod
             7 => GameVersion.USUM,
             8 => GameVersion.SWSH,
             9 => GameVersion.SV,
-            _ => throw new ArgumentOutOfRangeException(),
+            _ => throw new Exception($"Invalid generation: {gen}"),
         };
     }
 }

@@ -81,21 +81,24 @@ namespace PKHeX.Core.Enhancements
 
                 if (IllegalFormats.Any(s => s.Equals(format, StringComparison.OrdinalIgnoreCase)))
                     continue;
+
                 if (LetsGo != format.StartsWith("LGPE", StringComparison.OrdinalIgnoreCase))
                     continue;
+
                 if (BDSP != format.StartsWith("BDSP", StringComparison.OrdinalIgnoreCase))
                     continue;
+
                 var level = format.StartsWith("LC") ? 5 : 100;
                 if (!split1[i - 1].Contains("\"name\":"))
                     continue;
+
                 var name = split1[i - 1][(split1[i - 1].LastIndexOf("\"name\":\"", StringComparison.Ordinal) + "\"name\":\"".Length)..].Split('\"')[0];
                 var setSpecies = split1[i - 1][(split1[i - 1].LastIndexOf("\"pokemon\":\"", StringComparison.Ordinal) + "\"pokemon\":\"".Length)..].Split('\"')[0];
                 SetFormat.Add(format);
                 SetName.Add(name);
+
                 if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
-                {
-                    int.TryParse(split1[i - 1].Split(new[] { "\"level\":" }, StringSplitOptions.None)[1].Split(',')[0], out level);
-                }
+                    _ = int.TryParse(split1[i - 1].Split(new[] { "\"level\":" }, StringSplitOptions.None)[1].Split(',')[0], out level);
 
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
                 var tmp = split2[0];
@@ -382,7 +385,7 @@ namespace PKHeX.Core.Enhancements
         private static string AlertText(string showdownSpec, int count, Dictionary<string, List<string>> titles)
         {
             var sb = new StringBuilder();
-            sb.Append(showdownSpec).Append(":");
+            sb.Append(showdownSpec).Append(':');
             sb.Append(Environment.NewLine);
             sb.Append(Environment.NewLine);
             foreach (var entry in titles)
