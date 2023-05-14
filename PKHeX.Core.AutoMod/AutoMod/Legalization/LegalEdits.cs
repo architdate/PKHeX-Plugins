@@ -26,11 +26,17 @@ namespace PKHeX.Core.AutoMod
         /// <param name="matching">Set matching ball</param>
         /// <param name="force"></param>
         /// <param name="ball"></param>
-        public static void SetSuggestedBall(this PKM pk, bool matching = true, bool force = false, Ball ball = Ball.None)
+        public static void SetSuggestedBall(this PKM pk, bool matching = true, bool force = false, Ball ball = Ball.None, IEncounterable? enc = null)
         {
+            var orig = pk.Ball;
+            if (ball == Ball.None)
+                force = false; // accept anything if no ball is specified
+
+            if (enc is MysteryGift)
+                return;
+
             if (ball != Ball.None)
             {
-                var orig = pk.Ball;
                 if (pk.LA && ReplaceBallPrefixLA && LABallMapping.TryGetValue(ball, out var modified))
                     ball = modified;
                 pk.Ball = (int)ball;
@@ -51,7 +57,7 @@ namespace PKHeX.Core.AutoMod
             if (pk.Generation == 5 && pk.Met_Location == 75)
                 pk.Ball = (int)Ball.Dream;
             else
-                pk.Ball = 4;
+                pk.Ball = orig;
         }
 
         public static bool ValidBall(this PKM pk)

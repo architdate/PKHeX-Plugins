@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Reflection;
 using System.Diagnostics;
-using System.Text.RegularExpressions;
 
 namespace PKHeX.Core.AutoMod
 {

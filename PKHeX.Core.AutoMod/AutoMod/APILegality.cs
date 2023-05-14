@@ -477,7 +477,7 @@ namespace PKHeX.Core.AutoMod
 
             // Aesthetics
             pk.ApplyHeightWeight(enc);
-            pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, regen.Extra.Ball);
+            pk.SetSuggestedBall(SetMatchingBalls, ForceSpecifiedBall, regen.Extra.Ball, enc);
             pk.ApplyMarkings(UseMarkings, UseCompetitiveMarkings);
             pk.ApplyBattleVersion(handler);
         }
