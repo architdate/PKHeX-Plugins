@@ -192,6 +192,16 @@ namespace PKHeX.Core.Injection
             return Encoding.UTF8.GetString(data).Trim(new char[] { '\0', '\n' });
         }
 
+        public bool IsProgramRunning(ulong pid)
+        {
+            var cmd = SwitchCommand.IsProgramRunning(pid);
+            SendInternal(cmd);
+
+            var buffer = new byte[17];
+            var _ = ReadInternal(buffer);
+            return ulong.TryParse(Encoding.ASCII.GetString(buffer).Trim(), out var value) && value == 1;
+        }
+
         public byte[] ReadBytes(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Heap);
         public void WriteBytes(byte[] data, ulong offset) => WriteLargeBytes(data, offset, RWMethod.Heap);
         public byte[] ReadBytesMain(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Main);

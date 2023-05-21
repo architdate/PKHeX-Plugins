@@ -150,6 +150,13 @@ namespace PKHeX.Core.Injection
             return Encoding.UTF8.GetString(baseBytes).Trim('\0');
         }
 
+        public bool IsProgramRunning(ulong pid)
+        {
+            SendInternal(SwitchCommand.IsProgramRunning(pid, false));
+            byte[] baseBytes = ReadBulkUSB();
+            return baseBytes.Length == 1 && BitConverter.ToBoolean(baseBytes, 0);
+        }
+
         private int ReadInternal(byte[] buffer)
         {
             byte[] sizeOfReturn = new byte[4];

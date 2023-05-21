@@ -8,6 +8,9 @@ namespace PKHeX.Core.Injection
     {
         public const decimal BotbaseVersion = 2.3m;
 
+        private const ulong Ovlloader_ID = 0x420000000007e51a;
+        private const ulong Dmnt_ID = 0x010000000000000d;
+
         private const string LetsGoPikachu_ID = "010003F003A34000";
         private const string LetsGoEevee_ID = "0100187003A36000";
 
@@ -99,6 +102,23 @@ namespace PKHeX.Core.Injection
                     return version;
             }
             return LiveHeXVersion.Unknown;
+        }
+
+        public static bool CheckRAMShift(PokeSysBotMini psb, out string msg)
+        {
+            msg = "";
+            if (psb.com is not ICommunicatorNX nx)
+                return false;
+
+            if (nx.IsProgramRunning(Ovlloader_ID))
+                msg += "Tesla overlay";
+
+            if (nx.IsProgramRunning(Dmnt_ID))
+                msg += msg != "" ? " and dmnt (cheats?)" : "Dmnt (cheats?)";
+
+            bool detected = msg != "";
+            msg += detected ? " detected.\n\nPlease remove or close the interfering applications and reboot your Switch." : "";
+            return detected;
         }
     }
 }

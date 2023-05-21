@@ -28,6 +28,7 @@ namespace PKHeX.Core.Injection
         string GetBotbaseVersion();
         string GetTitleID();
         string GetGameInfo(string info);
+        bool IsProgramRunning(ulong pid);
         void WriteBytesMain(byte[] data, ulong offset);
         void WriteBytesAbsolute(byte[] data, ulong offset);
         byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets);
