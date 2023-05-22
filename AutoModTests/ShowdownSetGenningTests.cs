@@ -15,8 +15,8 @@ namespace AutoModTests
         [InlineData(GameVersion.B2, Genesect)]
         public static void VerifyManually(GameVersion game, string txt)
         {
-            var mismatch = APILegality.AllowMismatch;
-            APILegality.AllowMismatch = true;
+            var dev = APILegality.EnableDevMode;
+            APILegality.EnableDevMode = true;
 
             var sav = SaveUtil.GetBlankSAV(game, "ALM");
             TrainerSettings.Register(sav);
@@ -26,7 +26,7 @@ namespace AutoModTests
 
             var set = new ShowdownSet(txt);
             var pkm = sav.GetLegalFromSet(set, out _);
-            APILegality.AllowMismatch = mismatch;
+            APILegality.EnableDevMode = dev;
 
             var la = new LegalityAnalysis(pkm);
             la.Valid.Should().BeTrue();

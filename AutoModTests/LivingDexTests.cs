@@ -62,7 +62,7 @@ namespace AutoModTests
             bool legalizer_settings = Legalizer.EnableEasterEggs;
             bool ribbon_settings = APILegality.SetAllLegalRibbons;
             int set_timeout = APILegality.Timeout;
-            bool mismatch = APILegality.AllowMismatch;
+            bool dev = APILegality.EnableDevMode;
             bool inc_forms = ModLogic.IncludeForms;
             bool set_shiny = ModLogic.SetShiny;
             bool set_alpha = ModLogic.SetAlpha;
@@ -71,7 +71,7 @@ namespace AutoModTests
             Legalizer.EnableEasterEggs = false;
             APILegality.SetAllLegalRibbons = false;
             APILegality.Timeout = 99999;
-            APILegality.AllowMismatch = true;
+            APILegality.EnableDevMode = true;
 
             // SetShiny and SetAlpha should not exclude entries from the living dex.
             // new[] { includeForms, shiny, alpha, nativeOnly }
@@ -110,7 +110,7 @@ namespace AutoModTests
             Legalizer.EnableEasterEggs = legalizer_settings;
             APILegality.SetAllLegalRibbons = ribbon_settings;
             APILegality.Timeout = set_timeout;
-            APILegality.AllowMismatch = mismatch;
+            APILegality.EnableDevMode = dev;
             ModLogic.IncludeForms = inc_forms;
             ModLogic.SetShiny = set_shiny;
             ModLogic.SetAlpha = set_alpha;

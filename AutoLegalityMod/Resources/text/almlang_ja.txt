@@ -77,7 +77,7 @@ GPSSBaseURL_description=FlagbrewのGlobal PKSM Sharing Service (GPSS)の機能�
 PromptForSmogonImport_description=「Smogonセットの生成」に使用されます。「True」に設定されている場合、ALMはセットを生成する前に各セットの承認を求めます。
 UseMarkings_description=IVに基づいてポケモンにマーキングを設定します。
 UseCompetitiveMarkings_description=有効になっている場合、31のIVを青に設定し、30を赤に設定します。それ以外の場合は、31のIVを青に、0を赤に設定します。
-AllowMismatch_description=If enabled, ignores version mismatch warnings until the next PKHeX.Core release.
+EnableDevMode_description=If enabled, ignores version mismatch warnings until the next PKHeX.Core release. Also bypasses Switch connection checks.
 
 AllowTrainerOverride_category=トレーナーデータ
 UseTrainerData_category=トレーナーデータ
@@ -103,4 +103,4 @@ GPSSBaseURL_category=その他
 PromptForSmogonImport_category=その他
 UseMarkings_category=その他
 UseCompetitiveMarkings_category=その他
-AllowMismatch_category=その他
+EnableDevMode_category=デベロップメント

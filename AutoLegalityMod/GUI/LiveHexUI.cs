@@ -160,17 +160,30 @@ namespace AutoModPlugins
                 communicator.Connect();
 
                 var (validation, msg, lv) = (LiveHeXValidation.None, "", LiveHeXVersion.Unknown);
-                string sbbVer = string.Empty, botbaseUrl = string.Empty;
                 string gameVer = "0";
 
                 var versions = RamOffsets.GetValidVersions(SAV.SAV).Reverse().ToArray();
                 if (communicator is not ICommunicatorNX nx)
                     (validation, msg, lv) = Connect_NTR(communicator, versions);
                 else
-                    (validation, msg, lv) = Connect_Switch(nx, versions, ref sbbVer, ref gameVer);
+                    (validation, msg, lv) = Connect_Switch(nx, versions, ref gameVer);
 
-                if (!ConnectionValidated(Remote.Bot, communicator, gameVer, lv, validation, msg))
+                var currVer = lv is LiveHeXVersion.Unknown ? RamOffsets.GetValidVersions(SAV.SAV).Reverse().ToArray()[0] : lv;
+                bool validated = ConnectionValidated(Remote.Bot, gameVer, currVer, validation, msg);
+                if (!validated && !_settings.EnableDevMode)
                     return;
+
+                Text += $" Detected: {currVer}";
+                if (Remote.Bot.com is IPokeBlocks)
+                {
+                    var cblist = GetSortedBlockList(currVer).ToArray();
+                    if (cblist.Length > 0)
+                    {
+                        groupBox5.Enabled = true;
+                        CB_BlockName.Items.AddRange(cblist);
+                        CB_BlockName.SelectedIndex = 0;
+                    }
+                }
 
                 if (Remote.Bot.com is ICommunicatorNX)
                     groupBox4.Enabled = groupBox6.Enabled = true;
@@ -207,7 +220,8 @@ namespace AutoModPlugins
                 Remote.Bot = new PokeSysBotMini(version, com, _settings.UseCachedPointers);
                 var data = Remote.Bot.ReadSlot(1, 1);
                 var pkm = SAV.SAV.GetDecryptedPKM(data);
-                if (pkm.Species <= pkm.MaxSpeciesID && pkm.Species > 0 && pkm.Language != (int)LanguageID.Hacked && pkm.Language != (int)LanguageID.UNUSED_6)
+                bool valid = pkm.Species <= pkm.MaxSpeciesID && pkm.Species > 0 && pkm.Language != (int)LanguageID.Hacked && pkm.Language != (int)LanguageID.UNUSED_6;
+                if (valid)
                     return (LiveHeXValidation.None, "", version);
             }
 
@@ -217,11 +231,11 @@ namespace AutoModPlugins
             return (LiveHeXValidation.GameVersion, msg, LiveHeXVersion.Unknown);
         }
 
-        private (LiveHeXValidation, string, LiveHeXVersion) Connect_Switch(ICommunicatorNX nx, LiveHeXVersion[] versions, ref string botbaseVer, ref string gameVer)
+        private (LiveHeXValidation, string, LiveHeXVersion) Connect_Switch(ICommunicatorNX nx, LiveHeXVersion[] versions, ref string gameVer)
         {
-            botbaseVer = nx.GetBotbaseVersion();
+            var botbaseVer = nx.GetBotbaseVersion();
             var version = decimal.TryParse(botbaseVer, CultureInfo.InvariantCulture, out var v) ? v : 0;
-            if (version < InjectionBase.BotbaseVersion)
+            if (version < InjectionBase.BotbaseVersion && !_settings.EnableDevMode)
             {
                 var msg = $"Incompatible {(nx.Protocol is InjectorCommunicationType.SocketNetwork ? "sys-botbase" : "usb-botbase")} version.\n" +
                           $"Expected version {InjectionBase.BotbaseVersion} or greater, and current version is {version}.\n\n" +
@@ -236,16 +250,19 @@ namespace AutoModPlugins
 
             var saveName = GameInfo.GetVersionName((GameVersion)SAV.SAV.Game);
             var compatible = InjectionBase.SaveCompatibleWithTitle(SAV.SAV, titleID);
-            if (!compatible)
+            var lv = InjectionBase.GetVersionFromTitle(titleID, gameVer);
+            if (!compatible && !_settings.EnableDevMode)
             {
                 var msg = $"Detected game: {gameName} ({gameVer})\n" +
                           $"Save file loaded: Pokémon {saveName}\n\n" +
                           $"Have you selected the correct blank save in PKHeX?";
+
+                if (lv is not LiveHeXVersion.Unknown)
+                    gameVer = lv.ToString();
                 return (LiveHeXValidation.BlankSAV, msg, LiveHeXVersion.Unknown);
             }
 
-            var lv = InjectionBase.GetVersionFromTitle(titleID, gameVer);
-            if (lv is LiveHeXVersion.Unknown)
+            if (lv is LiveHeXVersion.Unknown && !_settings.EnableDevMode)
             {
                 var msg = $"Unsupported version for {gameName}\n\n" +
                           $"Latest supported version is {versions.First()}.\n" +
@@ -257,7 +274,8 @@ namespace AutoModPlugins
             Remote.Bot = new PokeSysBotMini(lv, nx, _settings.UseCachedPointers);
             var data = Remote.Bot.ReadSlot(1, 1);
             var pkm = SAV.SAV.GetDecryptedPKM(data);
-            if ((pkm.Species > pkm.MaxSpeciesID || pkm.Language == (int)LanguageID.Hacked) && InjectionBase.CheckRAMShift(Remote.Bot, out string err))
+            bool valid = pkm.Species <= pkm.MaxSpeciesID && pkm.Species > 0 && pkm.Language != (int)LanguageID.Hacked && pkm.Language != (int)LanguageID.UNUSED_6;
+            if (!_settings.EnableDevMode && !valid && InjectionBase.CheckRAMShift(Remote.Bot, out string err))
                 return (LiveHeXValidation.RAMShift, err, lv);
             return (LiveHeXValidation.None, "", lv);
         }
@@ -762,13 +780,13 @@ namespace AutoModPlugins
             return sb != null;
         }
 
-        private bool ConnectionValidated(PokeSysBotMini psb, ICommunicator communicator, string gameVer, LiveHeXVersion version, LiveHeXValidation validation, string msg)
+        private bool ConnectionValidated(PokeSysBotMini psb, string gameVer, LiveHeXVersion version, LiveHeXValidation validation, string msg)
         {
             if (psb.com is not ICommunicatorNX nx)
             {
                 if (msg != "")
                 {
-                    var error = WinFormsUtil.ALMErrorBasic(msg, true);
+                    var error = WinFormsUtil.ALMErrorBasic(msg);
                     error.ShowDialog();
 
                     var res = error.DialogResult;
@@ -789,7 +807,6 @@ namespace AutoModPlugins
                 _ => "https://github.com/architdate/PKHeX-Plugins/wiki/FAQ-and-Troubleshooting#troubleshooting",
             };
 
-            var currVer = version is LiveHeXVersion.Unknown ? RamOffsets.GetValidVersions(SAV.SAV).Reverse().ToArray()[0] : version;
             switch (validation)
             {
                 case LiveHeXValidation.Botbase:
@@ -800,23 +817,14 @@ namespace AutoModPlugins
                         var res = error.DialogResult;
                         if (res == DialogResult.Retry)
                             Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
-                    }; break;
+                        return false;
+                    };
                 case LiveHeXValidation.BlankSAV or LiveHeXValidation.GameVersion:
                     {
-                        Remote.Bot = new PokeSysBotMini(currVer, communicator, _settings.UseCachedPointers);
-                        Text += $" Unknown Version (Forced: {currVer} | Detected: {gameVer})";
+                        Remote.Bot = new PokeSysBotMini(version, nx, _settings.UseCachedPointers);
+                        Text += $" SAV/Version (Detected: {gameVer} | Forced: {version})";
 
-                        var error = WinFormsUtil.ALMErrorBasic(msg, false);
-                        error.ShowDialog();
-
-                        var res = error.DialogResult;
-                        if (res == DialogResult.Retry)
-                            Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
-                    }; break;
-                case LiveHeXValidation.RAMShift:
-                    {
-                        Text += $" Detected Version: {currVer} | Possible RAM Shift";
-                        var error = WinFormsUtil.ALMErrorBasic(msg, false);
+                        var error = WinFormsUtil.ALMErrorBasic(msg);
                         error.ShowDialog();
 
                         var res = error.DialogResult;
@@ -824,19 +832,18 @@ namespace AutoModPlugins
                             Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
                         return false;
                     };
-                default: Text += $" Detected Version: {currVer}"; break;
-            };
+                case LiveHeXValidation.RAMShift:
+                    {
+                        Text += $" Possible RAM Shift | Detected: {version}";
+                        var error = WinFormsUtil.ALMErrorBasic(msg);
+                        error.ShowDialog();
 
-            if (Remote.Bot.com is IPokeBlocks)
-            {
-                var cblist = GetSortedBlockList(currVer).ToArray();
-                if (cblist.Length > 0)
-                {
-                    groupBox5.Enabled = true;
-                    CB_BlockName.Items.AddRange(cblist);
-                    CB_BlockName.SelectedIndex = 0;
-                }
-            }
+                        var res = error.DialogResult;
+                        if (res == DialogResult.Retry)
+                            Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
+                        return false;
+                    };
+            };
 
             return true;
         }

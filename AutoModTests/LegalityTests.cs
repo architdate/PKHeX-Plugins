@@ -22,8 +22,8 @@ namespace AutoModTests
             var path = Path.Combine(folder, name);
             Directory.Exists(path).Should().BeTrue($"the specified test directory at '{path}' should exist");
 
-            var mismatch = APILegality.AllowMismatch;
-            APILegality.AllowMismatch = true;
+            var dev = APILegality.EnableDevMode;
+            APILegality.EnableDevMode = true;
 
             var files = Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories);
             try
@@ -46,7 +46,7 @@ namespace AutoModTests
             }
             finally
             {
-                APILegality.AllowMismatch = mismatch;
+                APILegality.EnableDevMode = dev;
             }
         }
 

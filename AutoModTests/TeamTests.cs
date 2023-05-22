@@ -132,11 +132,11 @@ namespace AutoModTests
         {
             Directory.CreateDirectory(LogDirectory);
             var full = Path.Combine(TestPath, path);
-            var mismatch = APILegality.AllowMismatch;
-            APILegality.AllowMismatch = true;
+            var dev = APILegality.EnableDevMode;
+            APILegality.EnableDevMode = true;
 
             var res = RunVerification(full, testversions);
-            APILegality.AllowMismatch = mismatch;
+            APILegality.EnableDevMode = dev;
 
             var msg = "\n";
             var error = string.Empty;

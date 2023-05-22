@@ -106,7 +106,7 @@ namespace AutoModPlugins
             bool mismatch = ALMVersion.GetIsMismatch();
             if (mismatch)
             {
-                _settings.AllowMismatch = false;
+                _settings.EnableDevMode = false;
                 _settings.LatestAllowedVersion = "0.0.0.0";
                 return (mismatch, WinFormsUtil.ALMErrorMismatch(ALMVersion.Versions));
             }

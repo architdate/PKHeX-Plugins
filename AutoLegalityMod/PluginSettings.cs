@@ -15,6 +15,7 @@ namespace AutoModPlugins
         private const string Legality = nameof(Legality);
         private const string LivingDex = nameof(LivingDex);
         private const string Miscellaneous = nameof(Miscellaneous);
+        private const string Development = nameof(Development);
 
         [Browsable(false)]
         public string? ConfigPath { get; init; }
@@ -104,8 +105,10 @@ namespace AutoModPlugins
         [Category(Miscellaneous), Description("Sets IVs of 31 to blue and 30 to red if enabled. Otherwise, sets IVs of 31 to blue and 0 to red.")]
         public bool UseCompetitiveMarkings { get; set; } = true;
 
-        [Category(Miscellaneous), Description("If enabled, ignores version mismatch warnings until the next PKHeX.Core release.")]
-        public bool AllowMismatch { get; set; } = false;
+        // Development
+
+        [Category(Development), Description("If enabled, ignores version mismatch warnings until the next PKHeX.Core release. Also bypasses Switch connection checks.")]
+        public bool EnableDevMode { get; set; } = false;
 
         [Browsable(false)]
         public string LatestAllowedVersion { get; set; } = "0.0.0.0";

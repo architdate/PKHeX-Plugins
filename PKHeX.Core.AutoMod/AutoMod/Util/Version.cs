@@ -19,7 +19,7 @@ namespace PKHeX.Core.AutoMod
         }
 
         /// <summary>
-        /// Checks for plugin mismatch. If "AllowMismatch" is enabled it will allow a user to skip update warnings until the next release. Will otherwise check plugin mismatch for current versions.
+        /// Checks for plugin mismatch. If "EnableDevMode" is enabled it will allow a user to skip update warnings until the next release. Will otherwise check plugin mismatch for current versions.
         /// </summary>
         /// <returns>True if a plugin mismatch is found. False if any of the versions are null or no mismatch found.</returns>
         public static bool GetIsMismatch()
@@ -31,9 +31,9 @@ namespace PKHeX.Core.AutoMod
                 return false;
 
             var latestAllowed = new Version(APILegality.LatestAllowedVersion);
-            if (APILegality.AllowMismatch && (latestCore > latestAllowed))
+            if (APILegality.EnableDevMode && (latestCore > latestAllowed))
                 return true;
-            return !APILegality.AllowMismatch && (currentCore > currentALM);
+            return !APILegality.EnableDevMode && (currentCore > currentALM);
         }
 
         /// <summary>

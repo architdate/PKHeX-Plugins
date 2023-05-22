@@ -77,7 +77,7 @@ GPSSBaseURL_description=Basis-URL für Funktionen von Flagbrew's Global PKSM Sha
 PromptForSmogonImport_description=Für "Generiere Smogon-Sets": wenn aktiviert, wird ALM vor der Erstellung jedes Sets um Bestätigung bitten.
 UseMarkings_description=Setze Markierungen auf Pokémon basierend auf ihren IVs.
 UseCompetitiveMarkings_description=Wenn aktiviert, setze IVs von 31 auf blau und 30 auf rot. Wenn nicht, setze IVs von 31 auf blau und 0 auf rot.
-AllowMismatch_description=If enabled, ignores version mismatch warnings until the next PKHeX.Core release.
+EnableDevMode_description=If enabled, ignores version mismatch warnings until the next PKHeX.Core release. Also bypasses Switch connection checks.
 
 AllowTrainerOverride_category=Trainer Daten
 UseTrainerData_category=Trainer Daten
@@ -103,4 +103,4 @@ GPSSBaseURL_category=Sonstiges
 PromptForSmogonImport_category=Sonstiges
 UseMarkings_category=Sonstiges
 UseCompetitiveMarkings_category=Sonstiges
-AllowMismatch_category=Sonstiges
+EnableDevMode_category=Entwicklung

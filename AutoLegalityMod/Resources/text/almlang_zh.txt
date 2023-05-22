@@ -77,7 +77,7 @@ GPSSBaseURL_description=Flagbrew的全球PKSM分享服务(GPSS)功能的基础UR
 PromptForSmogonImport_description=用于"生成Smogon Sets"。如果设置为true，ALM会尝试在每次生成时询问确认。
 UseMarkings_description=根据宝可梦的个体值设置标记。
 UseCompetitiveMarkings_description=该项启用时，个体值为全31时显示蓝色、30显示红色。否则全31时显示蓝色、0显示红色.
-AllowMismatch_description=如果启用，则忽略版本不匹配警告，直到下一个PKHeX.Core版本.
+EnableDevMode_description=如果启用，则忽略版本不匹配警告，直到下一个PKHeX.Core版本. 也绕过 Switch 连接检查。
 
 AllowTrainerOverride_category=训练家数据
 UseTrainerData_category=训练家数据
@@ -103,4 +103,4 @@ GPSSBaseURL_category=其他
 PromptForSmogonImport_category=其他
 UseMarkings_category=其他
 UseCompetitiveMarkings_category=其他
-AllowMismatch_category=其他
+EnableDevMode_category=显影

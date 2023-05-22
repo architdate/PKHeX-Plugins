@@ -21,7 +21,7 @@ namespace PKHeX.Core.AutoMod
         public static bool SetAllLegalRibbons { get; set; } = true;
         public static bool UseCompetitiveMarkings { get; set; }
         public static bool UseMarkings { get; set; } = true;
-        public static bool AllowMismatch { get; set; } = false;
+        public static bool EnableDevMode { get; set; } = false;
         public static string LatestAllowedVersion { get; set; } = "0.0.0.0";
         public static bool UseXOROSHIRO { get; set; } = true;
         public static bool PrioritizeGame { get; set; } = true;
@@ -1431,7 +1431,7 @@ namespace PKHeX.Core.AutoMod
             {
                 try
                 {
-                    if (!AllowMismatch && ALMVersion.GetIsMismatch())
+                    if (!EnableDevMode && ALMVersion.GetIsMismatch())
                         return new(template, LegalizationResult.VersionMismatch);
 
                     var res = dest.GetLegalFromTemplate(template, set, out var s, nativeOnly);

@@ -35,8 +35,8 @@ namespace AutoModTests
         {
             // Creates extra requirements for generating without specifying Trainer Details
             const string set = "Ditto\nLanguage: Japanese";
-            var mismatch = APILegality.AllowMismatch;
-            APILegality.AllowMismatch = true;
+            var dev = APILegality.EnableDevMode;
+            APILegality.EnableDevMode = true;
 
             try
             {
@@ -60,7 +60,7 @@ namespace AutoModTests
             }
             finally
             {
-                APILegality.AllowMismatch = mismatch;
+                APILegality.EnableDevMode = dev;
             }
         }
 
@@ -68,8 +68,8 @@ namespace AutoModTests
         public static void FallbackNotUsed()
         {
             const string set = "Ditto\nLanguage: English";
-            var mismatch = APILegality.AllowMismatch;
-            APILegality.AllowMismatch = true;
+            var dev = APILegality.EnableDevMode;
+            APILegality.EnableDevMode = true;
 
             try
             {
@@ -100,7 +100,7 @@ namespace AutoModTests
             }
             finally
             {
-                APILegality.AllowMismatch = mismatch;
+                APILegality.EnableDevMode = dev;
             }
         }
 
@@ -108,8 +108,8 @@ namespace AutoModTests
         public static void FallbackNotUsed2()
         {
             const string set = "Ditto\nLanguage: Japanese";
-            var mismatch = APILegality.AllowMismatch;
-            APILegality.AllowMismatch = true;
+            var dev = APILegality.EnableDevMode;
+            APILegality.EnableDevMode = true;
 
             try
             {
@@ -140,17 +140,17 @@ namespace AutoModTests
             }
             finally
             {
-                APILegality.AllowMismatch = mismatch;
+                APILegality.EnableDevMode = dev;
             }
         }
 
         [Fact]
         public static void UpdateNag()
         {
-            var set_mismatch = APILegality.AllowMismatch;
+            var set_dev = APILegality.EnableDevMode;
             var set_allowed = APILegality.LatestAllowedVersion;
 
-            APILegality.AllowMismatch = true;
+            APILegality.EnableDevMode = true;
             APILegality.LatestAllowedVersion = "21.01.30";
 
             var currentCore = new Version("21.01.30");
@@ -168,7 +168,7 @@ namespace AutoModTests
             ALMVersion.GetIsMismatch(currentCore, currentAlm, latestCore).Should().BeFalse();
 
             // Should not nag with matching Core and ALM versions when mismatch is disallowed.
-            APILegality.AllowMismatch = false;
+            APILegality.EnableDevMode = false;
             ALMVersion.GetIsMismatch(currentCore, currentAlm, latestCore).Should().BeFalse();
 
             // Should nag because mismatch is disallowed and versions do not match.
@@ -177,7 +177,7 @@ namespace AutoModTests
             // Should not nag with matching versions.
             ALMVersion.GetIsMismatch(latestCore, latestCore, latestCore).Should().BeFalse();
 
-            APILegality.AllowMismatch = set_mismatch;
+            APILegality.EnableDevMode = set_dev;
             APILegality.LatestAllowedVersion = set_allowed;
         }
     }
