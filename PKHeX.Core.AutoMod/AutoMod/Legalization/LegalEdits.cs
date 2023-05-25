@@ -29,6 +29,7 @@ namespace PKHeX.Core.AutoMod
         public static void SetSuggestedBall(this PKM pk, bool matching = true, bool force = false, Ball ball = Ball.None, IEncounterable? enc = null)
         {
             var orig = pk.Ball;
+            var legal = new LegalityAnalysis(pk).Valid;
             if (ball == Ball.None)
                 force = false; // accept anything if no ball is specified
 
@@ -50,10 +51,13 @@ namespace PKHeX.Core.AutoMod
                 else
                     Aesthetics.ApplyShinyBall(pk);
             }
+
             var la = new LegalityAnalysis(pk);
-            var report = la.Report();
-            if (!report.Contains(LegalityCheckStrings.LBallEncMismatch) || force)
+            if (force)
                 return;
+            else if (legal && !la.Valid)
+                pk.Ball = orig;
+
             if (pk.Generation == 5 && pk.Met_Location == 75)
                 pk.Ball = (int)Ball.Dream;
             else

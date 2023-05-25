@@ -115,6 +115,7 @@ namespace PKHeX.Core.AutoMod
             var template = EntityBlank.GetBlank(tr);
             if (template.Version == 0)
                 template.Version = tr.Game;
+            EncounterMovesetGenerator.OptimizeCriteria(template, tr);
             template.ApplySetDetails(set);
             return tr.GetLegalFromSet(set, template, out msg);
         }
