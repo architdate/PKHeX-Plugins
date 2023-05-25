@@ -55,6 +55,9 @@ Main.Menu_ALMSettingsEditor=Paramètres du Plugin
 
 AllowTrainerOverride_description=Permet de remplacer les données du dresseur avec "OT", "TID", "SID" et "OTGender" dans le cadre d'un set Showdown.
 UseTrainerData_description=Permet l'utilisation de données de dresseur personnalisées basées sur le dossier "trainers".
+DefaultOT_description=Nom OT par défaut à utiliser lors de la génération des Pokémon.
+DefaultTID16_description=TID par défaut à utiliser lors de la génération des Pokémon. (TID16)
+DefaultSID16_description=SID par défaut à utiliser lors de la génération des Pokémon. (SID16)
 LatestIP_description=Stocke la dernière IP utilisée par LiveHeX.
 LatestPort_description=Stores the last port used by LiveHeX.
 USBBotBasePreferred_description=Permet à LiveHeX d'utiliser USB-Botbase au lieu de sys-botbase.
@@ -81,6 +84,9 @@ EnableDevMode_description=If enabled, ignores version mismatch warnings until th
 
 AllowTrainerOverride_category=Données du Dresseur
 UseTrainerData_category=Données du Dresseur
+DefaultOT_category=Données du Dresseur
+DefaultTID16_category=Données du Dresseur
+DefaultSID16_category=Données du Dresseur
 LatestIP_category=Connexion
 LatestPort_category=Connexion
 USBBotBasePreferred_category=Connexion

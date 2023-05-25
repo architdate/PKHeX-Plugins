@@ -55,6 +55,9 @@ Main.Menu_ALMSettingsEditor=插件设置
 
 AllowTrainerOverride_description=允许使用“OT”，“TID”，“SID”和“ OT性别”覆盖训练家数据，作为Showdown集的一部分。
 UseTrainerData_description=启用使用基于“trainers”文件夹的自定义训练家数据。
+DefaultOT_description=生成宝可梦时使用的默认OT名称。
+DefaultTID16_description=生成宝可梦时使用的默认TID（TID16）。
+DefaultSID16_description=生成宝可梦时使用的默认SID（SID16）。
 LatestIP_description=保存LiveHeX使用的最后一个IP地址。
 LatestPort_description=保存LiveHeX使用的最后一个端口。
 USBBotBasePreferred_description=允许LiveHeX使用USB-Botbase代替sys-botbase。
@@ -81,6 +84,9 @@ EnableDevMode_description=如果启用，则忽略版本不匹配警告，直到
 
 AllowTrainerOverride_category=训练家数据
 UseTrainerData_category=训练家数据
+DefaultOT_category=训练家数据
+DefaultTID16_category=训练家数据
+DefaultSID16_category=训练家数据
 LatestIP_category=连接
 LatestPort_category=连接
 USBBotBasePreferred_category=连接

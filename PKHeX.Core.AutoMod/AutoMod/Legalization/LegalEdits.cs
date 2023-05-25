@@ -29,12 +29,13 @@ namespace PKHeX.Core.AutoMod
         public static void SetSuggestedBall(this PKM pk, bool matching = true, bool force = false, Ball ball = Ball.None, IEncounterable? enc = null)
         {
             var orig = pk.Ball;
-            var legal = new LegalityAnalysis(pk).Valid;
             if (ball == Ball.None)
                 force = false; // accept anything if no ball is specified
 
             if (enc is MysteryGift)
                 return;
+
+            var legal = new LegalityAnalysis(pk).Valid;
 
             if (ball != Ball.None)
             {

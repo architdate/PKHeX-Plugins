@@ -55,6 +55,9 @@ Main.Menu_ALMSettingsEditor=Plugin Einstellungen
 
 AllowTrainerOverride_description=Erlaube Überschreiben der Trainerdaten mit "OT", "TID", "SID" und "OTGender" in einem Showdown-Set.
 UseTrainerData_description=Aktiviere die Verwendung benutzerspezifischer Trainerdaten basierend auf dem "trainers"-Ordner.
+DefaultOT_description=Standard-OT-Name, der beim Generieren von Pokémon verwendet wird.
+DefaultTID16_description=Standard-TID, der beim Generieren von Pokémon verwendet wird. (TID16)
+DefaultSID16_description=Standard-SID, der beim Generieren von Pokémon verwendet wird. (SID16)
 LatestIP_description=Speichere zuletzt benutze IP für LiveHeX.
 LatestPort_description=Stores the last port used by LiveHeX.
 USBBotBasePreferred_description=Erlaube LiveHeX, USB-Botbase statt sys-botbase zu benutzen.
@@ -81,6 +84,9 @@ EnableDevMode_description=If enabled, ignores version mismatch warnings until th
 
 AllowTrainerOverride_category=Trainer Daten
 UseTrainerData_category=Trainer Daten
+DefaultOT_category=Trainer Daten
+DefaultTID16_category=Trainer Daten
+DefaultSID16_category=Trainer Daten
 LatestIP_category=Verbindung
 LatestPort_category=Verbindung
 USBBotBasePreferred_category=Verbindung

@@ -28,6 +28,15 @@ namespace AutoModPlugins
         [Category(Trainer), Description("Enables use of custom trainer data based on the \"trainers\" folder.")]
         public bool UseTrainerData { get; set; } = true;
 
+        [Category(Trainer), Description("Default OT Name to use while generating Pokémon.")]
+        public string DefaultOT { get; set; } = "ALM";
+
+        [Category(Trainer), Description("Default TID to use while generating Pokémon. (TID16)")]
+        public ushort DefaultTID16 { get; set; } = 54321;
+
+        [Category(Trainer), Description("Default SID to use while generating Pokémon. (SID16)")]
+        public ushort DefaultSID16 { get; set; } = 12345;
+
         // Connection
 
         [Category(Connection), Description("Stores the last IP used by LiveHeX.")]

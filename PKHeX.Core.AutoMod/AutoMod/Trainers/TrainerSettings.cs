@@ -15,6 +15,10 @@ namespace PKHeX.Core.AutoMod
         private static readonly SimpleTrainerInfo DefaultFallback7 = new(GameVersion.UM);
         private static readonly GameVersion[] FringeVersions = { GameVersion.GG, GameVersion.BDSP, GameVersion.PLA };
 
+        public static string DefaultOT { get; set; } = "ALM";
+        public static ushort DefaultTID16 { get; set; } = 54321; // reverse of PKHeX defaults
+        public static ushort DefaultSID16 { get; set; } = 12345; // reverse of PKHeX defaults
+
         public static ITrainerInfo DefaultFallback(int gen = 8, LanguageID? lang = null)
         {
             var fallback = gen > 7 ? DefaultFallback8 : DefaultFallback7;
@@ -27,7 +31,11 @@ namespace PKHeX.Core.AutoMod
         {
             if (!ver.IsValidSavedVersion())
                 ver = GameUtil.GameVersions.First(z => ver.Contains(z));
-            return lang == null ? new SimpleTrainerInfo(ver) : new SimpleTrainerInfo(ver) { Language = (int)lang };
+            var fallback = lang == null ? new SimpleTrainerInfo(ver) : new SimpleTrainerInfo(ver) { Language = (int)lang };
+            fallback.OT = DefaultOT;
+            fallback.TID16 = DefaultTID16;
+            fallback.SID16 = DefaultSID16;
+            return fallback;
         }
 
         static TrainerSettings() => LoadTrainerDatabaseFromPath(TrainerPath);

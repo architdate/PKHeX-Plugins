@@ -194,6 +194,9 @@ namespace AutoModPlugins
         public static void SetAPILegalitySettings(PluginSettings settings)
         {
             APILegality.UseTrainerData = settings.UseTrainerData;
+            TrainerSettings.DefaultOT = settings.DefaultOT;
+            TrainerSettings.DefaultTID16 = settings.DefaultTID16;
+            TrainerSettings.DefaultSID16 = settings.DefaultSID16;
             APILegality.SetAllLegalRibbons = settings.SetAllLegalRibbons;
             APILegality.SetMatchingBalls = settings.SetMatchingBalls;
             APILegality.ForceSpecifiedBall = settings.ForceSpecifiedBall;
