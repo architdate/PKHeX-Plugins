@@ -205,6 +205,7 @@ namespace PKHeX.Core.Injection
             read = null;
             if (psb.com is not ICommunicatorNX sb)
                 return false;
+
             try
             {
                 var offsets = SCBlocks[psb.Version].Where(z => z.Display == block);
@@ -212,6 +213,7 @@ namespace PKHeX.Core.Injection
                 var allblocks = blocks?.GetValue(sav);
                 if (allblocks is not SCBlockAccessor scba)
                     return false;
+
                 foreach (var sub in offsets)
                 {
                     var scbkey = sub.SCBKey;
@@ -219,16 +221,16 @@ namespace PKHeX.Core.Injection
                     var scb = scba.GetBlock(scbkey);
                     if (scb.Type == SCTypeCode.None && sub.Type != SCTypeCode.None)
                         ReflectUtil.SetValue(scb, "Type", sub.Type);
+
                     var ram = psb.com.ReadBytes(psb.GetCachedPointer(sb, offset), scb.Data.Length);
                     ram.CopyTo(scb.Data, 0);
-                    if (read == null)
+                    if (read is null)
                     {
                         read = new List<byte[]> { ram };
+                        continue;
                     }
-                    else
-                    {
-                        read.Add(ram);
-                    }
+
+                    read.Add(ram);
                 }
                 return true;
             }

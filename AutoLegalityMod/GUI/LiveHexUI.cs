@@ -762,7 +762,7 @@ namespace AutoModPlugins
                     _ => Array.Empty<BlockData>(),
                 };
 
-                if (subblocks.Length != 1)
+                if (subblocks.Length == 0)
                     return false;
 
                 // Check for SCBlocks or SaveBlocks based on name. (SCBlocks will invoke the hex editor, SaveBlocks will invoke a property grid
@@ -772,13 +772,13 @@ namespace AutoModPlugins
 
                 var allblocks = props.GetValue(sav) ?? throw new Exception("Blocks not present.");
                 var blockprop = allblocks.GetType().GetProperty(subblocks[0].Name);
-                if (allblocks is SCBlockAccessor scba && blockprop == null)
+                if (allblocks is SCBlockAccessor scba && blockprop is null)
                     sb = scba.GetBlock(subblocks[0].SCBKey);
                 else
                     sb = blockprop?.GetValue(allblocks);
             }
 
-            return sb != null;
+            return sb is not null;
         }
 
         private bool ConnectionValidated(PokeSysBotMini psb, string gameVer, LiveHeXVersion version, LiveHeXValidation validation, string msg)
