@@ -1218,7 +1218,8 @@ namespace PKHeX.Core.AutoMod
                     if (enc.Generation == 3 && pk.Form != EntityPID.GetUnownForm3(pk.PID))
                         continue;
                 }
-                if (Method == PIDType.Channel && shiny != pk.IsShiny)
+                var pidxor = ((pk.TID16 ^ pk.SID16 ^ (int)(pk.PID & 0xFFFF) ^ (int)(pk.PID >> 16)) & ~0x7) == 8;
+                if (Method == PIDType.Channel && (shiny != pk.IsShiny || pidxor))
                     continue;
                 break;
             } while (++count < 1_000_000);

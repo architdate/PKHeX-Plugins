@@ -56,12 +56,13 @@ namespace PKHeX.Core.AutoMod
             var la = new LegalityAnalysis(pk);
             if (force)
                 return;
-            else if (legal && !la.Valid)
-                pk.Ball = orig;
 
             if (pk.Generation == 5 && pk.Met_Location == 75)
                 pk.Ball = (int)Ball.Dream;
             else
+                pk.Ball = orig;
+
+            if (legal && !la.Valid)
                 pk.Ball = orig;
         }
 

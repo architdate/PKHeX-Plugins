@@ -289,6 +289,7 @@ namespace AutoModPlugins
             {
                 B_Connect.Enabled = B_Connect.Visible = TB_IP.Enabled = TB_Port.Enabled = true;
                 B_Disconnect.Enabled = B_Disconnect.Visible = groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = false;
+                CB_BlockName.Items.Clear();
                 Text = "LiveHeXUI";
 
                 if (Remote.Bot.com is ICommunicatorNX)
