@@ -271,7 +271,8 @@ namespace AutoModPlugins
                 return (LiveHeXValidation.GameVersion, msg, lv);
             }
 
-            Remote.Bot = new PokeSysBotMini(lv, nx, _settings.UseCachedPointers);
+            var connect_ver = lv is LiveHeXVersion.Unknown ? RamOffsets.GetValidVersions(SAV.SAV).Reverse().ToArray()[0] : lv;
+            Remote.Bot = new PokeSysBotMini(connect_ver, nx, _settings.UseCachedPointers);
             var data = Remote.Bot.ReadSlot(1, 1);
             var pkm = SAV.SAV.GetDecryptedPKM(data);
             bool valid = pkm.Species <= pkm.MaxSpeciesID && pkm.Species > 0 && pkm.Language != (int)LanguageID.Hacked && pkm.Language != (int)LanguageID.UNUSED_6;
