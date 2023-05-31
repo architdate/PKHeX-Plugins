@@ -174,6 +174,9 @@ namespace AutoModPlugins
                     return;
 
                 Text += $" Detected: {currVer}";
+                if (_settings.EnableDevMode && lv is LiveHeXVersion.Unknown)
+                    Text += " [Forced DevMode]";
+
                 if (Remote.Bot.com is IPokeBlocks)
                 {
                     var cblist = GetSortedBlockList(currVer).ToArray();
