@@ -42,7 +42,8 @@ namespace AutoModPlugins
             this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
 
             TB_IP.Text = _settings.LatestIP;
-            TB_Port.Text = _settings.LatestPort;
+            var default_port = RamOffsets.IsSwitchTitle(sav.SAV) ? 6000 : 8000; // default port for loaded save
+            TB_Port.Text = int.Parse(_settings.LatestPort) is 6000 or 8000 ? default_port.ToString() : _settings.LatestPort;
             SetInjectionTypeView();
 
             // add an event to the editor

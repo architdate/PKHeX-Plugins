@@ -33,7 +33,7 @@
             _ => false,
         };
 
-        private static bool IsSwitchTitle(SaveFile sav) => sav switch
+        public static bool IsSwitchTitle(SaveFile sav) => sav switch
         {
             SAV7USUM => false,
             SAV7SM => false,
