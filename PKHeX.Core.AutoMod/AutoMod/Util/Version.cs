@@ -31,7 +31,7 @@ namespace PKHeX.Core.AutoMod
                 return false;
 
             var latestAllowed = new Version(APILegality.LatestAllowedVersion);
-            if (APILegality.EnableDevMode && (latestCore > latestAllowed))
+            if (APILegality.EnableDevMode && (latestCore > latestAllowed) && (latestCore > currentCore))
                 return true;
             return !APILegality.EnableDevMode && (currentCore > currentALM);
         }

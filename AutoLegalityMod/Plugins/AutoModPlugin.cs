@@ -104,13 +104,15 @@ namespace AutoModPlugins
         private static (bool, ALMError?) CheckForMismatch()
         {
             bool mismatch = ALMVersion.GetIsMismatch();
-            if (mismatch)
-            {
-                _settings.EnableDevMode = false;
+            bool reset = ALMVersion.Versions.CoreVersionCurrent > new Version(_settings.LatestAllowedVersion);
+            if (reset)
                 _settings.LatestAllowedVersion = "0.0.0.0";
-                return (mismatch, WinFormsUtil.ALMErrorMismatch(ALMVersion.Versions));
-            }
-            return (false, null);
+
+            _settings.EnableDevMode = _settings.EnableDevMode && !mismatch;
+            if (mismatch || reset)
+                _settings.Save();
+
+            return (mismatch, mismatch ? WinFormsUtil.ALMErrorMismatch(ALMVersion.Versions) : null);
         }
 
         private void LoadMenuStrip(ToolStrip menuStrip)

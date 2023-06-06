@@ -35,7 +35,7 @@ namespace AutoModPlugins.GUI
             pluginSettings.Save();
         }
 
-        private void EditSettingsProperties(object _settings)
+        private static void EditSettingsProperties(object _settings)
         {
             var lang = WinFormsTranslator.CurrentLanguage;
             var translation = WinFormsTranslator.GetContext(lang);
