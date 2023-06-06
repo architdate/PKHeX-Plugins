@@ -230,9 +230,10 @@ namespace AutoModPlugins
             foreach (var version in versions)
             {
                 Remote.Bot = new PokeSysBotMini(version, com, _settings.UseCachedPointers);
-                var data = Remote.Bot.ReadSlot(1, 1);
+                var data = Remote.Bot.ReadSlot(0, 0);
                 var pkm = SAV.SAV.GetDecryptedPKM(data);
-                bool valid = pkm.Species <= pkm.MaxSpeciesID && pkm.Species > 0 && pkm.Language != (int)LanguageID.Hacked && pkm.Language != (int)LanguageID.UNUSED_6;
+                bool valid = pkm.Species <= pkm.MaxSpeciesID && pkm.ChecksumValid &&
+                        ((pkm.Species == 0 && pkm.EncryptionConstant == 0) || (pkm.Species > 0 && pkm.Language != (int)LanguageID.Hacked && pkm.Language != (int)LanguageID.UNUSED_6));
                 if (valid)
                     return (LiveHeXValidation.None, "", version);
             }
@@ -288,7 +289,7 @@ namespace AutoModPlugins
             if (lv is LiveHeXVersion.Unknown && _settings.EnableDevMode)
                 return (LiveHeXValidation.None, "", lv);
 
-            var data = Remote.Bot.ReadSlot(1, 1);
+            var data = Remote.Bot.ReadSlot(0, 0);
             PKM? pkm = null;
             try
             {
@@ -296,7 +297,8 @@ namespace AutoModPlugins
             }
             catch {}
 
-            bool valid = pkm is not null && pkm.Species <= pkm.MaxSpeciesID && pkm.Species > 0 && pkm.Language != (int)LanguageID.Hacked && pkm.Language != (int)LanguageID.UNUSED_6;
+            bool valid = pkm is not null && pkm.Species <= pkm.MaxSpeciesID && pkm.ChecksumValid && 
+                        ((pkm.Species == 0 && pkm.EncryptionConstant == 0) || (pkm.Species > 0 && pkm.Language != (int)LanguageID.Hacked && pkm.Language != (int)LanguageID.UNUSED_6));
             if (!_settings.EnableDevMode && !valid && InjectionBase.CheckRAMShift(Remote.Bot, out string err))
                 return (LiveHeXValidation.RAMShift, err, lv);
             return (LiveHeXValidation.None, "", lv);

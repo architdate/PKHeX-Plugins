@@ -74,7 +74,7 @@ namespace PKHeX.Core.AutoMod
             if (dest.Generation <= 2)
                 template.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
 
-            var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: template, moves: set.Moves, gamelist);
+            var encounters = GetAllEncounters(pk: template, moves: set.Moves, gamelist);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
             criteria.ForceMinLevelRange = true;
             if (regen.EncounterFilters != null)
@@ -160,6 +160,34 @@ namespace PKHeX.Core.AutoMod
             }
             satisfied = LegalizationResult.Failed;
             return last ?? template;
+        }
+
+        private static IEnumerable<IEncounterable> GetAllEncounters(PKM pk, ushort[] moves, IReadOnlyList<GameVersion> vers)
+        {
+            var orig_encs = EncounterMovesetGenerator.GenerateEncounters(pk, moves, vers);
+            foreach (var enc in orig_encs)
+                yield return enc;
+            var pi = pk.PersonalInfo;
+            var orig_form = pk.Form;
+            var fc = pi.FormCount;
+            if (fc == 0) // not present in game
+            {
+                // try again using past-gen table
+                pi = PersonalTable.USUM.GetFormEntry(pk.Species, 0);
+                fc = pi.FormCount;
+            }
+            for (byte f = 0; f < fc; f++)
+            {
+                if (f == orig_form)
+                    continue;
+                if (FormInfo.IsBattleOnlyForm(pk.Species, f, pk.Format))
+                    continue;
+                pk.Form = f;
+                pk.SetGender(pk.GetSaneGender());
+                var encs = EncounterMovesetGenerator.GenerateEncounters(pk, moves, vers);
+                foreach (var enc in encs)
+                    yield return enc;
+            }
         }
 
         public static AbilityRequest GetRequestedAbility(PKM template, IBattleTemplate set)
