@@ -54,7 +54,7 @@ namespace PKHeX.Core.AutoMod
             }
 
             var la = new LegalityAnalysis(pk);
-            if (force)
+            if (force || la.Valid)
                 return;
 
             if (pk.Generation == 5 && pk.Met_Location == 75)
