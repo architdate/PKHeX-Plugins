@@ -138,7 +138,7 @@ namespace PKHeX.Core.AutoMod
                     var b = regen.Batch;
                     BatchEditing.ScreenStrings(b.Filters);
                     BatchEditing.ScreenStrings(b.Instructions);
-                    if (!BatchEditing.TryModify(pk, b.Filters, b.Instructions))
+                    if (!BatchEditing.TryModify(pk, b.Filters, b.Instructions) && b.Filters.Count > 0)
                         continue;
                 }
 
