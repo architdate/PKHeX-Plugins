@@ -30,7 +30,7 @@ namespace PKHeX.Core.AutoMod
                                      : string.Format(SPECIES_UNAVAILABLE_FORM, species_name, set.FormName);
 
             // Species checks
-            var gv = (GameVersion)failed.Version;
+            var gv = (GameVersion)sav.Game;
             if (!gv.ExistsInGame(set.Species, set.Form))
                 return analysis; // Species does not exist in the game
 
