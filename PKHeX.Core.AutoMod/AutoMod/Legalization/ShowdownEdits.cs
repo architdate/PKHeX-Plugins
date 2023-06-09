@@ -270,7 +270,7 @@ namespace PKHeX.Core.AutoMod
                 pk.FixMoves();
             }
 
-            if (la.Parsed && !pk.FatefulEncounter)
+            if (la.Parsed && !pk.FatefulEncounter && !MoveResult.AllValid(la.Info.Relearn))
             {
                 // For dexnav. Certain encounters come with "random" relearn moves, and our requested moves might require one of them.
                 Span<ushort> moves = stackalloc ushort[4];
