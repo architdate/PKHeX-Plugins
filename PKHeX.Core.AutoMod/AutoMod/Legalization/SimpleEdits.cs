@@ -621,7 +621,7 @@ namespace PKHeX.Core.AutoMod
         {
             var locked = EncounterServerDate.WC8Gifts.TryGetValue(w.CardID, out var time);
             if (locked)
-                pk.MetDate = time;
+                pk.MetDate = time.Start;
         }
 
         public static bool TryApplyHardcodedSeedWild8(PK8 pk, IEncounterable enc, int[] ivs, Shiny requestedShiny)
