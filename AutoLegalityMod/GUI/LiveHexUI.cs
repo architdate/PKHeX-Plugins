@@ -668,9 +668,10 @@ namespace AutoModPlugins
             }
 
             var objects = new List<object>();
-            foreach (var obj in data)
+            for (var i = 0; i < data.Count; i++)
             {
-                valid = TryGetObjectInSave(version, SAV.SAV, txt, obj, out var blk);
+                var obj = data[i];
+                valid = TryGetObjectInSave(version, SAV.SAV, txt, i, obj, out var blk);
                 if (!valid || blk == null)
                 {
                     WinFormsUtil.Error("Error fetching Block");
@@ -777,7 +778,7 @@ namespace AutoModPlugins
             return (ofs, size);
         }
 
-        private bool TryGetObjectInSave(LiveHeXVersion version, SaveFile sav, string display, byte[]? customdata, out object? sb)
+        private bool TryGetObjectInSave(LiveHeXVersion version, SaveFile sav, string display, int index, byte[]? customdata, out object? sb)
         {
             sb = null;
             if (Remote.Bot.Injector is LPBDSP)
@@ -806,9 +807,9 @@ namespace AutoModPlugins
                     return false;
 
                 var allblocks = props.GetValue(sav) ?? throw new Exception("Blocks not present.");
-                var blockprop = allblocks.GetType().GetProperty(subblocks[0].Name);
+                var blockprop = allblocks.GetType().GetProperty(subblocks[index].Name);
                 if (allblocks is SCBlockAccessor scba && blockprop is null)
-                    sb = scba.GetBlock(subblocks[0].SCBKey);
+                    sb = scba.GetBlock(subblocks[index].SCBKey);
                 else
                     sb = blockprop?.GetValue(allblocks);
             }
