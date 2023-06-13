@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using static PKHeX.Core.Fashion6Female;
 
 namespace PKHeX.Core.Enhancements
 {
@@ -139,8 +137,11 @@ namespace PKHeX.Core.Enhancements
         public static byte[]? GPSSDownload(long code, string Url = "flagbrew.org")
         {
             // code is returned as a long
-            var stream = GetStreamFromURL($"https://{Url}/gpss/download/{code}");
-            return GetByteResponse(stream);
+            var json = DownloadString($"https://{Url}/api/v2/gpss/download/pokemon/{code}");
+            if (!json.Contains("\"pokemon\":\""))
+                return null;
+            var b64 = json.Split("\"pokemon\":\"")[1].Split("\"")[0];
+            return System.Convert.FromBase64String(b64);
         }
     }
 }
