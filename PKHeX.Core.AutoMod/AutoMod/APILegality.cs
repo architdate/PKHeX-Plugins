@@ -659,6 +659,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon passed to the method</param>
         public static void SetBoxForm(this PKM pk)
         {
+            if (pk.Format > 6)
+                return;
             switch (pk.Species)
             {
                 case (int)Species.Shaymin when pk.Form != 0:
