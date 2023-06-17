@@ -30,7 +30,7 @@ namespace AutoModPlugins
         {
             var pk = PKMEditor.PreparePKM();
             byte[] rawdata = pk.Data;
-            var postval = PKHeX.Core.Enhancements.NetUtil.GPSSPost(rawdata, Url);
+            var postval = PKHeX.Core.Enhancements.NetUtil.GPSSPost(rawdata, SaveFileEditor.SAV.Generation, Url);
             Clipboard.SetText(postval);
             WinFormsUtil.Alert(postval);
         }

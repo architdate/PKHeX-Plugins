@@ -66,11 +66,12 @@ namespace PKHeX.Core.Enhancements
         /// </summary>
         /// <param name="data">pkm data in bytes.</param>
         /// <param name="Url">location to fetch from</param>
+        /// <param name="generation">The generation for the game the pokemon is being uploaded from.</param>
         /// <returns></returns>
-        public static string GPSSPost(byte[] data, string Url = "flagbrew.org")
+        public static string GPSSPost(byte[] data, int generation, string Url = "flagbrew.org")
         {
 #pragma warning disable SYSLIB0014 // Type or member is obsolete
-            WebRequest request = WebRequest.Create($"https://{Url}/gpss/share");
+            WebRequest request = WebRequest.Create($"https://{Url}/api/v2/gpss/upload/pokemon");
 #pragma warning restore SYSLIB0014 // Type or member is obsolete
             request.Method = "POST";
             const string boundary = "-----------";
@@ -88,6 +89,12 @@ namespace PKHeX.Core.Enhancements
             sb.Append("\r\n");
             sb.Append("Content-Type: ");
             sb.Append("application/octet-stream");
+            sb.Append("\r\n");
+            sb.Append("source: ");
+            sb.Append("PKHeX Plugins");
+            sb.Append("\r\n");
+            sb.Append("generation: ");
+            sb.Append(generation);
             sb.Append("\r\n");
             sb.Append("\r\n");
 
