@@ -81,7 +81,7 @@ namespace PKHeX.Core.Enhancements
             uploadData.Headers.Add("source", "PKHeX AutoMod Plugins");
             uploadData.Headers.Add("generation", generation.ToString());
 
-            var response = await client.PostAsync($"http://{Url}/api/v2/gpss/upload/pokemon", uploadData);
+            var response = await client.PostAsync($"https://{Url}/api/v2/gpss/upload/pokemon", uploadData);
             return response;
         }
 
