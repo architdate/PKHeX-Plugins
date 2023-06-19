@@ -27,7 +27,7 @@ namespace AutoModPlugins
                 if (string.IsNullOrWhiteSpace(str))
                     return;
                 Clipboard.SetText(str);
-                WinFormsUtil.Alert("Exported the active box to RegenTemplate format");
+                WinFormsUtil.Alert("Exported the active box in RegenTemplate format to clipboard.");
             }
             catch (Exception e)
             {
