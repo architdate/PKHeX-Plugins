@@ -155,6 +155,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
+                LiveHeXVersion.SV_v132 => "[[[[[main+44B71A8]+D8]]]+30]",
                 LiveHeXVersion.SV_v130 or LiveHeXVersion.SV_v131 => "[[[[[main+44B5158]+D8]]]+30]",
                 LiveHeXVersion.SV_v120 => "[[[[[main+449EEE8]+D8]]]+30]",
                 _ => string.Empty
