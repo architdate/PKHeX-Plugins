@@ -91,7 +91,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Heal();
                 return pk;
             }
-            else if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID16 = tr.TID16 }, species, form, shiny, false, nativeOnly, out var pkm) && pkm is PK1 pk1)
+            if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID16 = tr.TID16 }, species, form, shiny, false, nativeOnly, out var pkm) && pkm is PK1 pk1)
                 return pk1.ConvertToPK2();
             return null;
         }
@@ -220,7 +220,7 @@ namespace PKHeX.Core.AutoMod
 
             if (species == 25 || SimpleEdits.AlolanOriginForms.Contains(species))
             {
-                if (generation >= 7 && pk.Generation is (< 7) and (not -1))
+                if (generation >= 7 && pk.Generation is < 7 and not -1)
                     return true;
             }
 

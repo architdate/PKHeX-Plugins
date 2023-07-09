@@ -47,7 +47,7 @@ namespace PKHeX.Core.Enhancements
             string[] stringSeparators = { "\n\r" };
 
             var result = source.Split(stringSeparators, StringSplitOptions.None);
-            return new ShowdownSet(result[0]).Species >= 0;
+            return new ShowdownSet(result[0]).Species > 0;
         }
     }
 }

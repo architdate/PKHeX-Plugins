@@ -297,7 +297,7 @@ namespace AutoModPlugins
             }
             catch {}
 
-            bool valid = pkm is not null && pkm.Species <= pkm.MaxSpeciesID && pkm.ChecksumValid && 
+            bool valid = pkm is not null && pkm.Species <= pkm.MaxSpeciesID && pkm.ChecksumValid &&
                         ((pkm.Species == 0 && pkm.EncryptionConstant == 0) || (pkm.Species > 0 && pkm.Language != (int)LanguageID.Hacked && pkm.Language != (int)LanguageID.UNUSED_6));
             if (!_settings.EnableDevMode && !valid && InjectionBase.CheckRAMShift(Remote.Bot, out string err))
                 return (LiveHeXValidation.RAMShift, err, lv);

@@ -65,7 +65,7 @@ namespace PKHeX.Core.AutoMod
             if (Ability != AbilityRequest.Any)
                 result.Add($"Ability: {Ability}");
 
-            if (Alpha == true)
+            if (Alpha)
                 result.Add("Alpha: Yes");
             return string.Join(Environment.NewLine, result);
         }

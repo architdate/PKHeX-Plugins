@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Text.Json;
 using System.Windows.Forms;
 using AutoModPlugins.GUI;
 using AutoModPlugins.Properties;

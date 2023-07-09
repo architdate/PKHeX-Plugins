@@ -77,7 +77,7 @@ namespace AutoModPlugins
         public int Timeout { get; set; } = 15;
 
         [Category(Legality), Description("Defines the order in which Pokémon encounters are prioritized")]
-        public List<EncounterTypeGroup> PrioritizeEncounters { get; set; } = new List<EncounterTypeGroup>() { EncounterTypeGroup.Egg, EncounterTypeGroup.Static, 
+        public List<EncounterTypeGroup> PrioritizeEncounters { get; set; } = new() { EncounterTypeGroup.Egg, EncounterTypeGroup.Static,
                                                                                     EncounterTypeGroup.Trade, EncounterTypeGroup.Slot, EncounterTypeGroup.Mystery};
 
         [Category(Legality), Description("Generates legal nonshiny Generation 8 raid Pokémon based on the game's RNG.")]

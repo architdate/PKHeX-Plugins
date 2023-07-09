@@ -69,7 +69,7 @@ namespace PKHeX.Core.AutoMod
             var la2 = new LegalityAnalysis(pk);
             var enc1 = la.EncounterMatch;
             var enc2 = la2.EncounterMatch;
-            if (((!ReferenceEquals(enc1, enc2) && enc1 is not EncounterEgg) || 
+            if (((!ReferenceEquals(enc1, enc2) && enc1 is not EncounterEgg) ||
                 la2.Results.Any(z => (z.Identifier == CheckIdentifier.Nature || z.Identifier == CheckIdentifier.Encounter) && !z.Valid)) && enc is not EncounterEgg)
                 pk.Nature = orig;
             if (pk.Format >= 8 && pk.StatNature != pk.Nature && pk.StatNature is 0 or 6 or 18 or >= 24) // Only Serious Mint for Neutral Natures
@@ -169,7 +169,7 @@ namespace PKHeX.Core.AutoMod
                 // This should be illegal except Meister Magikarp in BDSP, however trust the user and set corresponding OT
                 const CompareOptions options = CompareOptions.IgnoreCase | CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreSymbols | CompareOptions.IgnoreWidth;
                 var index = et.Nicknames.ToList().FindIndex(z => CompareInfo.Compare(set.Nickname, z, options) == 0);
-                if (index >= 0) 
+                if (index >= 0)
                 {
                     pk.Nickname = et.Nicknames[index];
                     if (pk.Format >= 3)
@@ -339,12 +339,12 @@ namespace PKHeX.Core.AutoMod
                     pk.Form = pk.Form != forma ? (byte)0 : forma;
                     break;
                 case Species.Silvally:
-                    byte forms = (byte)FormVerifier.GetSilvallyFormFromHeldItem(pk.HeldItem);
+                    byte forms = FormVerifier.GetSilvallyFormFromHeldItem(pk.HeldItem);
                     pk.HeldItem = pk.Form != forms ? 0 : pk.HeldItem;
                     pk.Form = pk.Form != forms ? (byte)0 : forms;
                     break;
                 case Species.Genesect:
-                    byte formg = (byte)FormVerifier.GetGenesectFormFromHeldItem(pk.HeldItem);
+                    byte formg = FormVerifier.GetGenesectFormFromHeldItem(pk.HeldItem);
                     pk.HeldItem = pk.Form != formg ? 0 : pk.HeldItem;
                     pk.Form = pk.Form != formg ? (byte)0 : formg;
                     break;

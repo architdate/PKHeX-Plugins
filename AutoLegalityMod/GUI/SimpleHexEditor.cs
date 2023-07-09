@@ -141,7 +141,6 @@ namespace AutoModPlugins.GUI
                 }
                 catch (Exception)
                 {
-                    continue;
                 }
             }
         }
