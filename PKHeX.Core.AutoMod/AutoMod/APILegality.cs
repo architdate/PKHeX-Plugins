@@ -787,10 +787,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Set to pass in requested IVs</param>
         private static void PreSetPIDIV(this PKM pk, IEncounterable enc, IBattleTemplate set)
         {
-            if (enc is EncounterTera9 tera)
+            if (enc is ITeraRaid9)
             {
                 var pk9 = (PK9)pk;
-                FindTeraPIDIV(pk9, tera, set);
+                switch (enc)
+                {
+                    case EncounterTera9 tera: FindTeraPIDIV(pk9, tera, set); break;
+                    case EncounterDist9 dist: FindTeraPIDIV(pk9, dist, set); break;
+                    case EncounterMight9 might: FindTeraPIDIV(pk9, might, set); break;
+                }
                 if (set.TeraType != MoveType.Any && set.TeraType != pk9.TeraType)
                     pk9.SetTeraType(set.TeraType);
             }
@@ -881,7 +886,8 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static void FindTeraPIDIV(PK9 pk, EncounterTera9 enc, IBattleTemplate set)
+        private static void FindTeraPIDIV<T>(PK9 pk, T enc, IBattleTemplate set)
+            where T : EncounterStatic, ITeraRaid9
         {
             if (IsMatchCriteria9(pk, set))
                 return;
@@ -894,9 +900,16 @@ namespace PKHeX.Core.AutoMod
                 const byte rollCount = 1;
                 const byte undefinedSize = 0;
                 var pi = PersonalTable.SV.GetFormEntry(pk.Species, pk.Form);
-                var param = new GenerateParam9(pk.Species, pi.Gender, enc.FlawlessIVCount, rollCount,
-                    undefinedSize, undefinedSize, undefinedSize, undefinedSize,
-                    enc.Ability, enc.Shiny);
+                var param = enc switch
+                {
+                    EncounterDist9 dist => new GenerateParam9(pk.Species, pi.Gender, dist.FlawlessIVCount, rollCount,
+                        undefinedSize, undefinedSize, dist.ScaleType, dist.Scale, dist.Ability, dist.Shiny, dist.Nature, dist.IVs),
+                    EncounterMight9 might => new GenerateParam9(pk.Species, might.GetGender(), might.FlawlessIVCount, rollCount,
+                        undefinedSize, undefinedSize, might.ScaleType, might.Scale, might.Ability, might.Shiny, might.Nature, might.IVs),
+                    _ => new GenerateParam9(pk.Species, pi.Gender, enc.FlawlessIVCount, rollCount,
+                        undefinedSize, undefinedSize, undefinedSize, undefinedSize,
+                        enc.Ability, enc.Shiny),
+                };
                 enc.TryApply32(pk, seed, param, EncounterCriteria.Unrestricted);
                 if (IsMatchCriteria9(pk, set, compromise))
                     break;
@@ -904,6 +917,14 @@ namespace PKHeX.Core.AutoMod
                     compromise = true;
             } while (++count < 15_000);
         }
+
+        private static byte GetGender(this EncounterMight9 enc) => enc.Gender switch
+        {
+            0 => PersonalInfo.RatioMagicMale,
+            1 => PersonalInfo.RatioMagicFemale,
+            2 => PersonalInfo.RatioMagicGenderless,
+            _ => PersonalTable.SV.GetFormEntry(enc.Species, enc.Form).Gender,
+        };
 
         /// <summary>
         /// Method to find the PID and IV associated with a nest. Shinies are just allowed

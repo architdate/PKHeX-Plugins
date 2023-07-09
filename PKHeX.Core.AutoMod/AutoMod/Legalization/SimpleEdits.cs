@@ -96,9 +96,7 @@ namespace PKHeX.Core.AutoMod
             ( Enamorus, 0 ),
             ( Enamorus, 1 ),
 
-            ( Gimmighoul, 0 ),
             ( Gimmighoul, 1 ),
-            ( Gholdengo, 0 ),
             ( WoChien, 0 ),
             ( ChienPao, 0 ),
             ( TingLu, 0 ),
