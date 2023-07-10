@@ -899,7 +899,7 @@ namespace PKHeX.Core.AutoMod
                 ulong seed = GetRandomULong();
                 const byte rollCount = 1;
                 const byte undefinedSize = 0;
-                var pi = PersonalTable.SV.GetFormEntry(pk.Species, pk.Form);
+                var pi = PersonalTable.SV.GetFormEntry(enc.Species, enc.Form);
                 var param = enc switch
                 {
                     EncounterDist9 dist => new GenerateParam9(pk.Species, pi.Gender, dist.FlawlessIVCount, rollCount,
