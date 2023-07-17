@@ -12140,7 +12140,7 @@ Tera Type: Psychic
 Level: 77
 Shiny: Yes
 Hasty Nature
-=Met_Location=90
+.Met_Location=90
 .Version=47
 ~=Generation=8
 - Dazzling Gleam
@@ -12900,7 +12900,7 @@ Ability: Sap Sipper
 Tera Type: Steel
 Shiny: Yes
 Sassy Nature
-=Met_Location=147
+.Met_Location=147
 .Version=47
 ~=Generation=8
 - Shelter
@@ -13842,7 +13842,7 @@ Ability: Guts
 Tera Type: Ground
 Shiny: Yes
 Brave Nature
-=Met_Location=106
+.Met_Location=106
 .Version=47
 ~=Generation=8
 - Headlong Rush
@@ -16764,7 +16764,7 @@ Tera Type: Dragon
 Level: 39
 Shiny: Yes
 Bashful Nature
-=Met_Location=147
+.Met_Location=147
 .Version=47
 ~=Generation=8
 - Flail
@@ -16960,7 +16960,7 @@ Ability: Flash Fire
 Tera Type: Fire
 Level: 41
 Rash Nature
-=Met_Location=61
+.Met_Location=61
 .Version=47
 ~=Generation=8
 - Retaliate
@@ -16974,7 +16974,7 @@ Ability: Intimidate
 Tera Type: Fire
 Level: 41
 Hardy Nature
-=Met_Location=61
+.Met_Location=61
 .Version=47
 ~=Generation=8
 - Flare Blitz
@@ -17016,7 +17016,7 @@ Ability: Static
 Tera Type: Electric
 Level: 62
 Calm Nature
-=Met_Location=131
+.Met_Location=131
 .Version=47
 ~=Generation=8
 - Seed Bomb
@@ -17030,7 +17030,7 @@ Ability: Static
 Tera Type: Electric
 Level: 75
 Lax Nature
-=Met_Location=131
+.Met_Location=131
 .Version=47
 ~=Generation=8
 - Seed Bomb
@@ -17113,7 +17113,7 @@ Ability: Competitive
 Tera Type: Psychic
 Level: 70
 Quirky Nature
-=Met_Location=214
+.Met_Location=214
 .Version=44
 ~=Generation=8
 - Hurricane
@@ -17155,7 +17155,7 @@ Ability: Defiant
 Tera Type: Fighting
 Level: 70
 Careful Nature
-=Met_Location=128
+.Met_Location=128
 .Version=44
 ~=Generation=8
 - Counter
@@ -17323,7 +17323,7 @@ Ability: Keen Eye
 Tera Type: Fighting
 Level: 61
 Brave Nature
-=Met_Location=73
+.Met_Location=73
 .Version=47
 ~=Generation=8
 - Slash
@@ -17659,7 +17659,7 @@ Ability: Torrent
 Tera Type: Water
 Level: 64
 Jolly Nature
-=Met_Location=99
+.Met_Location=99
 .Version=47
 ~=Generation=8
 - Aqua Tail
@@ -17701,7 +17701,7 @@ Ability: Illusion
 Tera Type: Ghost
 Level: 26
 Docile Nature
-=Met_Location=112
+.Met_Location=112
 .Version=47
 ~=Generation=8
 - Shadow Sneak
@@ -18259,7 +18259,7 @@ Ability: Pressure
 Tera Type: Steel
 Level: 65
 Modest Nature
-Ball: Origin Ball
+Ball: LAOrigin Ball
 =Met_Location=109
 .Version=47
 ~=Generation=8
