@@ -842,3 +842,32 @@ Language: Japanese
 - Hammer Arm
 - Power Whip
 - Energy Ball
+
+Pikachu (F)
+EVs: 43 HP / 117 Atk / 91 Def / 76 SpA / 77 SpD / 106 Spe
+Ability: Static
+Gigantamax: Yes
+Timid Nature
+=Met_Level=10
+=Met_Location=156
+.Version=45
+~=Generation=8
+- Discharge
+- Thunder
+- Thunderbolt
+- Volt Tackle
+
+Weezing-Galar (F)
+IVs: 0 Atk
+Ability: Levitate
+Level: 35
+Shiny: Square
+Dynamax Level: 0
+Bold Nature
+Ball: Master Ball
+.Version=3
+~=Generation=3
+- Incinerate
+- Rollout
+- Shock Wave
+- Mimic
