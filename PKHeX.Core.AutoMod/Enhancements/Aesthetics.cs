@@ -1028,7 +1028,7 @@ namespace PKHeX.Core.AutoMod
             ballstr = ballstr.Split(' ')[0];
             if (ballstr == "Poké")
                 return Poke;
-            if (ballstr is "Feather" or "Wing" or "Jet" or "Leaden" or "Gigaton")
+            if (ballstr is "Feather" or "Wing" or "Jet" or "Leaden" or "Gigaton" or "Origin")
                 ballstr = "LA" + ballstr;
             var valid = Enum.TryParse(ballstr, out Ball ball);
             if (valid)

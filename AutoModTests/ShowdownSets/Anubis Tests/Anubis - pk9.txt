@@ -18259,7 +18259,7 @@ Ability: Pressure
 Tera Type: Steel
 Level: 65
 Modest Nature
-Ball: LAOrigin Ball
+Ball: Origin Ball
 =Met_Location=109
 .Version=47
 ~=Generation=8
