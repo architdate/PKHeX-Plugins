@@ -34582,4 +34582,28 @@ Alpha: Yes
 ~=Context=Gen8a
 - Hidden Power [Ice]
 
-Generated 3035 Showdown sets, skipped 20 sets.
+Pikachu (M)
+Ability: Lightning Rod
+Quiet Nature
+.Met_Location=30024
+.Version=51
+.RibbonMarkMightiest=True
+~=Generation=9
+- Spark
+- Thunderbolt
+- Iron Tail
+- Thunder
+
+Eevee (M)
+IVs: 0 Atk / 30 SpA / 30 Spe
+Ability: Anticipation
+Level: 1
+Shiny: Yes
+Bold Nature
+.Version=27
+.HeightScalar=0
+.WeightScalar=0
+.Scale=0
+.RibbonMarkMini=True
+~=Generation=6
+- Tackle
