@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="PKHeX.Core" Version="23.7.9" />
+    <PackageReference Include="PKHeX.Core" Version="23.7.10" />
   </ItemGroup>
 
 </Project>

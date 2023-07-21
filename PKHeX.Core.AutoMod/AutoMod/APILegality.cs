@@ -74,7 +74,7 @@ namespace PKHeX.Core.AutoMod
             if (dest.Generation <= 2)
                 template.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
 
-            var encounters = GetAllEncounters(pk: template, moves: set.Moves, gamelist);
+            var encounters = GetAllEncounters(pk: template, moves: new ReadOnlyMemory<ushort>(set.Moves), gamelist);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
             criteria.ForceMinLevelRange = true;
             if (regen.EncounterFilters != null)
@@ -162,11 +162,22 @@ namespace PKHeX.Core.AutoMod
             return last ?? template;
         }
 
-        private static IEnumerable<IEncounterable> GetAllEncounters(PKM pk, ushort[] moves, IReadOnlyList<GameVersion> vers)
+        private static IEnumerable<IEncounterable> GetAllEncounters(PKM pk, ReadOnlyMemory<ushort> moves, IReadOnlyList<GameVersion> vers)
         {
+            var empty = new ReadOnlyMemory<ushort>(new ushort[] { });
+            var old_encs = new HashSet<IEncounterable>();
             var orig_encs = EncounterMovesetGenerator.GenerateEncounters(pk, moves, vers);
+            var all_encs = EncounterMovesetGenerator.GenerateEncounters(pk, empty, vers);
             foreach (var enc in orig_encs)
+            {
+                old_encs.Add(enc);
                 yield return enc;
+            }
+            foreach (var enc in all_encs)
+            {
+                if (!old_encs.Contains(enc))
+                    yield return enc;
+            }
             var pi = pk.PersonalInfo;
             var orig_form = pk.Form;
             var fc = pi.FormCount;
@@ -184,7 +195,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 pk.Form = f;
                 pk.SetGender(pk.GetSaneGender());
-                var encs = EncounterMovesetGenerator.GenerateEncounters(pk, moves, vers);
+                var encs = EncounterMovesetGenerator.GenerateEncounters(pk, empty, vers);
                 foreach (var enc in encs)
                     yield return enc;
             }
@@ -787,10 +798,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">Set to pass in requested IVs</param>
         private static void PreSetPIDIV(this PKM pk, IEncounterable enc, IBattleTemplate set)
         {
-            if (enc is EncounterTera9 tera)
+            if (enc is ITeraRaid9)
             {
                 var pk9 = (PK9)pk;
-                FindTeraPIDIV(pk9, tera, set);
+                switch (enc)
+                {
+                    case EncounterTera9 e: FindTeraPIDIV(pk9, e, set); break;
+                    case EncounterDist9 e: FindTeraPIDIV(pk9, e, set); break;
+                    case EncounterMight9 e: FindTeraPIDIV(pk9, e, set); break;
+                }
                 if (set.TeraType != MoveType.Any && set.TeraType != pk9.TeraType)
                     pk9.SetTeraType(set.TeraType);
             }
@@ -881,7 +897,7 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static void FindTeraPIDIV(PK9 pk, EncounterTera9 enc, IBattleTemplate set)
+        private static void FindTeraPIDIV<T>(PK9 pk, T enc, IBattleTemplate set) where T : ITeraRaid9, IEncounterTemplate
         {
             if (IsMatchCriteria9(pk, set))
                 return;
@@ -894,9 +910,16 @@ namespace PKHeX.Core.AutoMod
                 const byte rollCount = 1;
                 const byte undefinedSize = 0;
                 var pi = PersonalTable.SV.GetFormEntry(pk.Species, pk.Form);
-                var param = new GenerateParam9(pk.Species, pi.Gender, enc.FlawlessIVCount, rollCount,
-                    undefinedSize, undefinedSize, undefinedSize, undefinedSize,
-                    enc.Ability, enc.Shiny);
+                var param = enc switch
+                {
+                    EncounterDist9 e => new GenerateParam9(pk.Species, pi.Gender, e.FlawlessIVCount, rollCount,
+                        undefinedSize, undefinedSize, e.ScaleType, e.Scale, e.Ability, e.Shiny, e.Nature, e.IVs),
+                    EncounterMight9 e => new GenerateParam9(pk.Species, pi.Gender, e.FlawlessIVCount, rollCount,
+                        undefinedSize, undefinedSize, e.ScaleType, e.Scale, e.Ability, e.Shiny, e.Nature, e.IVs),
+                    EncounterTera9 e => new GenerateParam9(pk.Species, pi.Gender, e.FlawlessIVCount, rollCount,
+                        undefinedSize, undefinedSize, undefinedSize, undefinedSize, e.Ability, e.Shiny),
+                    _ => throw new NotImplementedException("Unknown ITeraRaid9 type detected"),
+                };
                 enc.TryApply32(pk, seed, param, EncounterCriteria.Unrestricted);
                 if (IsMatchCriteria9(pk, set, compromise))
                     break;
