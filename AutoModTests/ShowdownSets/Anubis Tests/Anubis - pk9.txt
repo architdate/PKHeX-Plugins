@@ -12871,7 +12871,7 @@ Tera Type: Dragon
 Level: 39
 Shiny: Yes
 Bashful Nature
-=Met_Location=147
+.Met_Location=147
 .Version=47
 ~=Generation=8
 - Flail
@@ -18259,7 +18259,7 @@ Ability: Pressure
 Tera Type: Steel
 Level: 65
 Modest Nature
-Ball: LAOrigin Ball
+Ball: Origin Ball
 =Met_Location=109
 .Version=47
 ~=Generation=8
@@ -18351,3 +18351,32 @@ Language: English
 - Electro Ball
 - Feint
 - Spark
+
+Gimmighoul
+IVs: 0 Atk / 0 Spe
+Ability: Rattled
+Tera Type: Psychic
+Level: 45
+Quiet Nature
+=Met_Location=30024
+.Version=50
+~=Generation=9
+- Take Down
+- Astonish
+- Hex
+- Power Gem
+
+Gimmighoul
+IVs: 28 HP / 8 Atk
+Ability: Rattled
+Tera Type: Water
+Level: 75
+Shiny: Yes
+Hasty Nature
+=Met_Location=30024
+.Version=51
+~=Generation=9
+- Take Down
+- Shadow Ball
+- Hex
+- Power Gem
