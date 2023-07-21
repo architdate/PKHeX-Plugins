@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PKHeX.Core.Enhancements
 {
@@ -66,66 +67,22 @@ namespace PKHeX.Core.Enhancements
         /// </summary>
         /// <param name="data">pkm data in bytes.</param>
         /// <param name="Url">location to fetch from</param>
+        /// <param name="generation">The generation for the game the pokemon is being uploaded from.</param>
         /// <returns></returns>
-        public static string GPSSPost(byte[] data, string Url = "flagbrew.org")
+        public async static Task<HttpResponseMessage> GPSSPost(byte[] data, int generation, string Url = "flagbrew.org")
         {
-#pragma warning disable SYSLIB0014 // Type or member is obsolete
-            WebRequest request = WebRequest.Create($"https://{Url}/gpss/share");
-#pragma warning restore SYSLIB0014 // Type or member is obsolete
-            request.Method = "POST";
-            const string boundary = "-----------";
-            request.ContentType = "multipart/form-data; boundary=" + boundary;
-            // Build up the post message header  
-            StringBuilder sb = new();
-            sb.Append("--");
-            sb.Append(boundary);
-            sb.Append("\r\n");
-            sb.Append("Content-Disposition: form-data; name=\"");
-            sb.Append("pkmn");
-            sb.Append("\"; filename=\"");
-            sb.Append("file");
-            sb.Append("\"");
-            sb.Append("\r\n");
-            sb.Append("Content-Type: ");
-            sb.Append("application/octet-stream");
-            sb.Append("\r\n");
-            sb.Append("\r\n");
+            using var client = new HttpClient();
 
-            string postHeader = sb.ToString();
-            byte[] postHeaderBytes = Encoding.UTF8.GetBytes(postHeader);
-            byte[] boundaryBytes = Encoding.ASCII.GetBytes($"\r\n--{boundary}\r\n");
-            long length = postHeaderBytes.Length + data.Length + boundaryBytes.Length;
-            request.ContentLength = length;
-            using (Stream datastream = request.GetRequestStream())
+            var uploadData = new MultipartFormDataContent
             {
-                datastream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
-                datastream.Write(data, 0, data.Length);
-                datastream.Write(boundaryBytes, 0, boundaryBytes.Length);
-            }
-            // Get the response.
-            try
-            {
-                using var response = request.GetResponse();
-                using var responseStream = response.GetResponseStream();
-                if (responseStream == null)
-                    return string.Empty;
-                using StreamReader reader = new(responseStream);
-                string responseFromServer = reader.ReadToEnd();
-                return $"Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://{Url}/gpss/" + responseFromServer;
-            }
-            catch (WebException e)
-            {
-                var exstr = "Exception: \n";
-                if (e.Status == WebExceptionStatus.ProtocolError)
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-                    exstr += $"Status Code : {((HttpWebResponse)e.Response).StatusCode}\nStatus Description : {((HttpWebResponse)e.Response).StatusDescription}";
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-                else
-                    exstr += e.Message;
-                return exstr;
-            }
+                { new ByteArrayContent(data), "pkmn", "pkmn" }
+            };
+
+            uploadData.Headers.Add("source", "PKHeX AutoMod Plugins");
+            uploadData.Headers.Add("generation", generation.ToString());
+
+            var response = await client.PostAsync($"https://{Url}/api/v2/gpss/upload/pokemon", uploadData);
+            return response;
         }
 
         /// <summary>
