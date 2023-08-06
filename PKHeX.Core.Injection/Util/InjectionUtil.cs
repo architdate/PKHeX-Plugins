@@ -75,7 +75,7 @@ namespace PKHeX.Core.Injection
 
         private static int GetBlockSizeSV(LiveHeXVersion version) => version switch
         {
-            LiveHeXVersion.SV_v130 => 48,   // Thanks, santacrab!
+            >= LiveHeXVersion.SV_v130 => 48,   // Thanks, santacrab!
             _ => 32,
         };
     }
