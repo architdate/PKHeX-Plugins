@@ -5456,7 +5456,7 @@ Ability: Tough Claws
 Tera Type: Psychic
 Naughty Nature
 Ball: Master Ball
-=Met_Location=101
+.Met_Location=101
 .Version=50
 ~=Generation=9
 - Mud-Slap
@@ -12670,7 +12670,7 @@ Tera Type: Steel
 Shiny: Yes
 Bold Nature
 Ball: Master Ball
-=Met_Location=103
+.Met_Location=103
 .Version=51
 ~=Generation=9
 - Calm Mind
@@ -16303,7 +16303,7 @@ Tera Type: Fire
 Level: 75
 Shiny: Yes
 Brave Nature
-=Met_Location=30024
+.Met_Location=30024
 .Version=50
 ~=Generation=9
 - Take Down
@@ -18260,7 +18260,7 @@ Tera Type: Steel
 Level: 65
 Modest Nature
 Ball: Origin Ball
-=Met_Location=109
+.Met_Location=109
 .Version=47
 ~=Generation=8
 - Dragon Claw
@@ -18330,7 +18330,7 @@ Ability: Good as Gold
 Tera Type: Ghost
 Level: 1
 Lonely Nature
-=Met_Location=30012
+.Met_Location=30012
 .Version=34
 ~=Generation=8
 - Tackle
@@ -18358,7 +18358,7 @@ Ability: Rattled
 Tera Type: Psychic
 Level: 45
 Quiet Nature
-=Met_Location=30024
+.Met_Location=30024
 .Version=50
 ~=Generation=9
 - Take Down
