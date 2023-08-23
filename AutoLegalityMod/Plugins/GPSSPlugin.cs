@@ -38,7 +38,11 @@ namespace AutoModPlugins
 
                 var content = await response.Content.ReadAsStringAsync();
                 var decoded = JsonSerializer.Deserialize<JsonNode>(content);
-                var error = (string)decoded["error"];
+                if (decoded == null)
+                    return;
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                var error = decoded["error"] == null ? null : (string)decoded["error"];
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
                 var msg = "";
                 var copyToClipboard = false;
                 // TODO set proper status codes on FlagBrew side - Allen;

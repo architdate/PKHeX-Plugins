@@ -336,10 +336,6 @@ namespace PKHeX.Core.AutoMod
             if (!IsRequestedAlphaValid(set, enc))
                 return false;
 
-            // Don't process if encounter is HA but requested pkm is not HA
-            if (abilityreq == AbilityRequest.NotHidden && enc is EncounterStatic { Ability: AbilityPermission.OnlyHidden })
-                return false;
-
             // Don't process if PKM is definitely Hidden Ability and the PKM is from Gen 3 or Gen 4 and Hidden Capsule doesn't exist
             var gen = enc.Generation;
             if (abilityreq == AbilityRequest.Hidden && gen is 3 or 4 && destVer.GetGeneration() < 8)
@@ -349,7 +345,7 @@ namespace PKHeX.Core.AutoMod
             {
                 switch (enc.Generation)
                 {
-                    case 6 when set.Form != (enc is EncounterStatic ? enc.Form : 0):
+                    case 6 when set.Form != (enc is EncounterStatic6 ? enc.Form : 0):
                     case >= 7 when set.Form != (enc is EncounterInvalid or EncounterEgg ? 0 : enc.Form):
                         return false;
                 }
@@ -464,8 +460,8 @@ namespace PKHeX.Core.AutoMod
             const int MaxLair = 244; // Dynamax Adventures
             pk.Met_Location = enc switch
             {
-                EncounterStatic8N or EncounterStatic8ND or EncounterStatic8NC { Location: 0 } => SharedNest,
-                EncounterStatic8U { Location: 0 } => MaxLair,
+                EncounterStatic8N or EncounterStatic8ND or EncounterStatic8NC => SharedNest,
+                EncounterStatic8U => MaxLair,
                 _ => pk.Met_Location,
             };
             return pk;
@@ -734,7 +730,7 @@ namespace PKHeX.Core.AutoMod
                 if (enc.Generation is not (3 or 4))
                     return;
             }
-            else if (enc is EncounterStatic specified && specified.IVs.IsSpecified)
+            else if (pk.IVTotal != 0)
                 return;
 
             else if (enc.Generation is not (3 or 4))
@@ -752,7 +748,7 @@ namespace PKHeX.Core.AutoMod
 
             switch (enc)
             {
-                case EncounterSlot3PokeSpot es3ps:
+                case EncounterSlot3XD es3ps:
                     var abil = pk.PersonalInfo.AbilityCount > 0 && pk.PersonalInfo is IPersonalAbility12 a ? (a.Ability1 == pk.Ability ? 0 : 1) : 1;
                     do PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, abil, es3ps.SlotNumber);
                     while (pk.PID % 25 != pk.Nature);
@@ -769,8 +765,10 @@ namespace PKHeX.Core.AutoMod
                     pk.SetPIDNature(pk.Nature);
                     return;
                 // EncounterTrade4 doesn't have fixed PIDs, so don't early return
-                case EncounterTrade t:
-                    t.SetEncounterTradeIVs(pk);
+                case EncounterTrade3:
+                case EncounterTrade4PID:
+                case EncounterTrade4RanchGift:
+                    enc.SetEncounterTradeIVs(pk);
                     return; // Fixed PID, no need to mutate
                 default:
                     FindPIDIV(pk, method, hpType, set.Shiny, enc);
@@ -809,27 +807,6 @@ namespace PKHeX.Core.AutoMod
                 }
                 if (set.TeraType != MoveType.Any && set.TeraType != pk9.TeraType)
                     pk9.SetTeraType(set.TeraType);
-            }
-            if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
-            {
-                var e = (EncounterStatic)enc;
-                var isShiny = set.Shiny;
-                if (pk.AbilityNumber == 4 && e.Ability is AbilityPermission.Any12 or AbilityPermission.OnlyFirst or AbilityPermission.OnlySecond)
-                    return;
-                if (!UseXOROSHIRO) // Don't bother setting this if XOROSHIRO is disabled
-                {
-                    pk.IVs = set.IVs;
-                    return;
-                }
-
-                var pk8 = (PK8)pk;
-                switch (e)
-                {
-                    case EncounterStatic8NC c: FindNestPIDIV(pk8, c, isShiny); break;
-                    case EncounterStatic8ND c: FindNestPIDIV(pk8, c, isShiny); break;
-                    case EncounterStatic8N c: FindNestPIDIV(pk8, c, isShiny); break;
-                    case EncounterStatic8U c: FindNestPIDIV(pk8, c, isShiny); break;
-                }
             }
             else if (enc is IOverworldCorrelation8 eo)
             {
@@ -909,11 +886,11 @@ namespace PKHeX.Core.AutoMod
                 ulong seed = GetRandomULong();
                 const byte rollCount = 1;
                 const byte undefinedSize = 0;
-                var pi = PersonalTable.SV.GetFormEntry(pk.Species, pk.Form);
+                var pi = PersonalTable.SV.GetFormEntry(enc.Species, enc.Form);
                 var param = enc switch
                 {
                     EncounterDist9 e => new GenerateParam9(pk.Species, pi.Gender, e.FlawlessIVCount, rollCount,
-                        undefinedSize, undefinedSize, e.ScaleType, e.Scale, e.Ability, e.Shiny, e.Nature, e.IVs),
+                        undefinedSize, undefinedSize, e.ScaleType, e.Scale, e.Ability, e.Shiny, IVs: e.IVs),
                     EncounterMight9 e => new GenerateParam9(pk.Species, pi.Gender, e.FlawlessIVCount, rollCount,
                         undefinedSize, undefinedSize, e.ScaleType, e.Scale, e.Ability, e.Shiny, e.Nature, e.IVs),
                     EncounterTera9 e => new GenerateParam9(pk.Species, pi.Gender, e.FlawlessIVCount, rollCount,
@@ -926,55 +903,6 @@ namespace PKHeX.Core.AutoMod
                 if (count == 5_000)
                     compromise = true;
             } while (++count < 15_000);
-        }
-
-        /// <summary>
-        /// Method to find the PID and IV associated with a nest. Shinies are just allowed
-        /// since there is no way GameFreak actually brute-forces top half of the PID to flag illegals.
-        /// </summary>
-        /// <param name="pk">Passed PKM</param>
-        /// <param name="enc">Nest encounter object</param>
-        /// <param name="shiny">Shiny boolean</param>
-        private static void FindNestPIDIV<T>(PK8 pk, T enc, bool shiny) where T : EncounterStatic8Nest<T>
-        {
-            // Preserve Nature, Form (all abilities should be possible in gen 8, so no need to early return on a mismatch for enc HA bool vs set HA bool)
-            // Nest encounter RNG generation
-            var iterPKM = pk.Clone();
-            if (!UseXOROSHIRO)
-                return;
-
-            if (shiny && enc is not EncounterStatic8U)
-                return;
-
-            if (pk.Species == (int)Species.Toxtricity && pk.Form != EvolutionMethod.GetAmpLowKeyResult(pk.Nature))
-            {
-                enc.ApplyDetailsTo(pk, GetRandomULong());
-                pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
-                pk.StatNature = iterPKM.StatNature;
-                return;
-            }
-
-            var count = 0;
-            do
-            {
-                ulong seed = GetRandomULong();
-                enc.ApplyDetailsTo(pk, seed);
-                if (IsMatchCriteria8<T>(pk, iterPKM))
-                    break;
-            } while (++count < 10_000);
-
-            if (shiny)
-            {
-                // Dynamax Adventure shinies are always XOR 1
-                pk.PID = SimpleEdits.GetShinyPID(pk.TID16, pk.SID16, pk.PID, 1);
-            }
-
-            pk.Species = iterPKM.Species; // possible evolution
-            // can be ability capsuled
-            if (FormInfo.IsFormChangeable(pk.Species, pk.Form, iterPKM.Form, enc.Context, pk.Context))
-                pk.Form = iterPKM.Form; // set alt form if it can be freely changed!
-            pk.RefreshAbility(iterPKM.AbilityNumber >> 1);
-            pk.StatNature = iterPKM.StatNature;
         }
 
         /// <summary>
@@ -1315,22 +1243,27 @@ namespace PKHeX.Core.AutoMod
                 3 => info.EncounterMatch switch
                 {
                     WC3 g => g.Method,
-                    EncounterStatic => pk.Version switch
+
+                    EncounterStatic3 when pk.Version == (int)GameVersion.CXD => PIDType.CXD,
+                    EncounterStatic3Colo when pk.Version == (int)GameVersion.CXD => PIDType.CXD,
+                    EncounterStatic3XD when pk.Version == (int)GameVersion.CXD => PIDType.CXD,
+                    EncounterStatic3 => pk.Version switch
                     {
-                        (int)GameVersion.CXD => PIDType.CXD,
                         (int)GameVersion.E => PIDType.Method_1,
                         (int)GameVersion.FR or (int)GameVersion.LG => PIDType.Method_1, // roamer glitch
                         _ => PIDType.Method_1,
                     },
-                    EncounterSlot when pk.Version == (int)GameVersion.CXD => PIDType.PokeSpot,
-                    EncounterSlot => pk.Species == (int)Species.Unown ? PIDType.Method_1_Unown : PIDType.Method_1,
+
+                    EncounterSlot3 when pk.Version == (int)GameVersion.CXD => PIDType.PokeSpot,
+                    EncounterSlot3XD when pk.Version == (int)GameVersion.CXD => PIDType.PokeSpot,
+                    EncounterSlot3 => pk.Species == (int)Species.Unown ? PIDType.Method_1_Unown : PIDType.Method_1,
                     _ => PIDType.None,
                 },
 
                 4 => info.EncounterMatch switch
                 {
                     EncounterStatic4Pokewalker => PIDType.Pokewalker,
-                    EncounterStatic s => (s.Shiny == Shiny.Always ? PIDType.ChainShiny : PIDType.Method_1),
+                    EncounterStatic4 s => (s.Shiny == Shiny.Always ? PIDType.ChainShiny : PIDType.Method_1),
                     PGT => PIDType.Method_1,
                     _ => PIDType.None,
                 },

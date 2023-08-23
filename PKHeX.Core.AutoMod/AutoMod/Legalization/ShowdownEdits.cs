@@ -160,20 +160,22 @@ namespace PKHeX.Core.AutoMod
             if (set.Nickname.Length == 0 && finallang == currentlang && !evolutionRequired)
                 return;
 
+            if (enc is IFixedTrainer { IsFixedTrainer: true } ft)
+            {
+                // Set this before hand incase it is true. Will early return if it is also IFixedNickname
+                // Wait for PKHeX to expose this instead of using reflection
+            }
             // don't bother checking encountertrade nicknames for length validity
-            if (enc is EncounterTrade { HasNickname: true } et)
+            if (enc is IFixedNickname { IsFixedNickname: true } et)
             {
                 // Nickname matches the requested nickname already
                 if (pk.Nickname == set.Nickname)
                     return;
                 // This should be illegal except Meister Magikarp in BDSP, however trust the user and set corresponding OT
-                const CompareOptions options = CompareOptions.IgnoreCase | CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreSymbols | CompareOptions.IgnoreWidth;
-                var index = et.Nicknames.ToList().FindIndex(z => CompareInfo.Compare(set.Nickname, z, options) == 0);
-                if (index >= 0)
+                var nick = et.GetNickname(pk.Language);
+                if (nick != null)
                 {
-                    pk.Nickname = et.Nicknames[index];
-                    if (pk.Format >= 3)
-                        pk.OT_Name = et.TrainerNames[index];
+                    pk.Nickname = nick;
                     return;
                 }
             }
@@ -303,10 +305,12 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="t">EncounterTrade</param>
         /// <param name="pk">Pokemon to modify</param>
-        public static void SetEncounterTradeIVs(this EncounterTrade t, PKM pk)
+        public static void SetEncounterTradeIVs(this IEncounterable t, PKM pk)
         {
-            if (t.IVs.IsSpecified)
-                pk.SetRandomIVsTemplate(t.IVs, 0);
+            if (t is EncounterTrade3 { IVs.IsSpecified: true } et3)
+                pk.SetRandomIVsTemplate(et3.IVs, 0);
+            else if (t is EncounterTrade4PID { IVs.IsSpecified: true } et4p)
+                pk.SetRandomIVsTemplate(et4p.IVs, 0);
             else
                 pk.SetRandomIVs(minFlawless: 3);
         }
