@@ -369,5 +369,29 @@ namespace PKHeX.Core.AutoMod
                     break;
             }
         }
+
+        /// <summary>
+        /// Randomizes the IVs within game constraints.
+        /// </summary>
+        /// <param name="template">IV template to generate from</param>
+        /// <param name="minFlawless">Count of flawless IVs to set. If none provided, a count will be detected.</param>
+        /// <returns>Randomized IVs if desired.</returns>
+        private static void SetRandomIVsTemplate(this PKM pk, IndividualValueSet template, int minFlawless = 0)
+        {
+            Span<int> ivs = stackalloc int[6];
+            var rnd = Util.Rand;
+            do
+            {
+                for (int i = 0; i < 6; i++)
+                    ivs[i] = template[i] < 0 ? rnd.Next(31 + 1) : template[i];
+            } while (ivs.Count(31) < minFlawless);
+
+            pk.IV_HP = ivs[0];
+            pk.IV_ATK = ivs[1];
+            pk.IV_DEF = ivs[2];
+            pk.IV_SPE = ivs[3];
+            pk.IV_SPA = ivs[4];
+            pk.IV_SPD = ivs[5];
+        }
     }
 }

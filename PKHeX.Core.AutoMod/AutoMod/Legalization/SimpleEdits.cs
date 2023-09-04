@@ -161,8 +161,8 @@ namespace PKHeX.Core.AutoMod
                 pk.PID = pidxor ? ec ^ 0x80000000 : ec;
                 return;
             }
-            int wIndex = WurmpleUtil.GetWurmpleEvoGroup(pk.Species);
-            if (wIndex != -1)
+            var wIndex = WurmpleUtil.GetWurmpleEvoGroup(pk.Species);
+            if (wIndex != WurmpleEvolution.None)
             {
                 pk.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
                 return;
