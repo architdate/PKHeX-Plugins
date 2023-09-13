@@ -96,7 +96,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 // Create the PKM from the template.
-                var tr = SimpleEdits.IsUntradeableEncounter(enc) ? dest : GetTrainer(regen, enc.Version, enc.Generation);
+                var tr = SimpleEdits.IsUntradeableEncounter(enc) ? dest : GetTrainer(regen, enc, set);
                 var raw = enc.ConvertToPKM(tr, criteria);
                 if (raw.OT_Name.Length == 0)
                 {
@@ -138,8 +138,10 @@ namespace PKHeX.Core.AutoMod
                     var b = regen.Batch;
                     BatchEditing.ScreenStrings(b.Filters);
                     BatchEditing.ScreenStrings(b.Instructions);
-                    if (!BatchEditing.TryModify(pk, b.Filters, b.Instructions) && b.Filters.Count > 0)
+                    var modified = BatchEditing.TryModify(pk, b.Filters, b.Instructions) && b.Filters.Count > 0;
+                    if (!modified)
                         continue;
+                    pk.ApplyPostBatchFixes();
                 }
 
                 if (pk is PK1 pk1 && pk1.TradebackValid())
@@ -164,20 +166,9 @@ namespace PKHeX.Core.AutoMod
 
         private static IEnumerable<IEncounterable> GetAllEncounters(PKM pk, ReadOnlyMemory<ushort> moves, IReadOnlyList<GameVersion> vers)
         {
-            var empty = new ReadOnlyMemory<ushort>(new ushort[] { });
-            var old_encs = new HashSet<IEncounterable>();
             var orig_encs = EncounterMovesetGenerator.GenerateEncounters(pk, moves, vers);
-            var all_encs = EncounterMovesetGenerator.GenerateEncounters(pk, empty, vers);
             foreach (var enc in orig_encs)
-            {
-                old_encs.Add(enc);
                 yield return enc;
-            }
-            foreach (var enc in all_encs)
-            {
-                if (!old_encs.Contains(enc))
-                    yield return enc;
-            }
             var pi = pk.PersonalInfo;
             var orig_form = pk.Form;
             var fc = pi.FormCount;
@@ -195,7 +186,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 pk.Form = f;
                 pk.SetGender(pk.GetSaneGender());
-                var encs = EncounterMovesetGenerator.GenerateEncounters(pk, empty, vers);
+                var encs = EncounterMovesetGenerator.GenerateEncounters(pk, moves, vers);
                 foreach (var enc in encs)
                     yield return enc;
             }
@@ -276,8 +267,17 @@ namespace PKHeX.Core.AutoMod
         /// <param name="ver">Gameversion for the saved trainerdata</param>
         /// <param name="gen">Generation of the saved trainerdata</param>
         /// <returns>ITrainerInfo of the trainerdetails</returns>
-        private static ITrainerInfo GetTrainer(RegenSet regen, GameVersion ver, int gen)
+        private static ITrainerInfo GetTrainer(RegenSet regen, IEncounterable enc, IBattleTemplate set)
         {
+            var ver = enc.Version;
+            var gen = enc.Generation;
+
+            // Edge case override for Meister Magikarp
+            var nicknames = new string[] { "", "ポッちゃん", "", "Bloupi", "Mossy", "Pador", "", "", "", "", "" };
+            var idx = Array.IndexOf(nicknames, set.Nickname);
+            if (idx > 0)
+                regen.Extra.Language = (LanguageID)idx;
+
             if (AllowTrainerOverride && regen.HasTrainerSettings && regen.Trainer != null)
                 return regen.Trainer.MutateLanguage(regen.Extra.Language, ver);
             if (UseTrainerData)
@@ -356,6 +356,8 @@ namespace PKHeX.Core.AutoMod
 
         public static bool IsRequestedLevelValid(IBattleTemplate set, IEncounterable enc)
         {
+            if (enc.Generation <= 2)
+                return true;
             if (enc.LevelMin > enc.LevelMax)
                 return false;
             if (enc.LevelMin > set.Level)
@@ -483,6 +485,7 @@ namespace PKHeX.Core.AutoMod
             var abilitypref = GetAbilityPreference(pk, enc);
 
             pk.SetSpeciesLevel(set, Form, enc, language);
+            pk.SetSpecialOverrides(enc, handler);
             pk.SetDateLocks(enc);
             pk.SetHeldItem(set);
 
@@ -718,7 +721,7 @@ namespace PKHeX.Core.AutoMod
             if (IsPIDIVSet(pk, enc) && !changeec)
                 return;
 
-            if (changeec)
+            if (pk.Context == EntityContext.Gen8 && changeec)
                 pk.SetRandomEC(); // break correlation
 
             if (enc is MysteryGift mg)
@@ -730,10 +733,21 @@ namespace PKHeX.Core.AutoMod
                 if (enc.Generation is not (3 or 4))
                     return;
             }
-            else if (pk.IVTotal != 0)
-                return;
 
-            else if (enc.Generation is not (3 or 4))
+            else if (enc.GetType().GetProperty("IndividualValueSet") != null)
+            {
+#pragma warning disable CS8605 // Unboxing a possibly null value.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                IndividualValueSet ivset = (IndividualValueSet)enc.GetType()
+                    .GetProperty("IndividualValueSet")
+                    .GetValue(enc, null);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8605 // Unboxing a possibly null value.
+                if (ivset.IsSpecified)
+                    return;
+            }
+
+            if (enc.Generation is not (3 or 4) && enc is not MysteryGift)
             {
                 pk.IVs = set.IVs;
                 if (pk is IAwakened)
@@ -807,6 +821,11 @@ namespace PKHeX.Core.AutoMod
                 }
                 if (set.TeraType != MoveType.Any && set.TeraType != pk9.TeraType)
                     pk9.SetTeraType(set.TeraType);
+            }
+            if (enc is EncounterStatic8U && set.Shiny)
+            {
+                // Dynamax Adventure shinies are always XOR 1 (thanks santacrab!)
+                pk.PID = SimpleEdits.GetShinyPID(pk.TID16, pk.SID16, pk.PID, 1);
             }
             else if (enc is IOverworldCorrelation8 eo)
             {
@@ -1186,7 +1205,7 @@ namespace PKHeX.Core.AutoMod
                     pk.EncryptionConstant = pk.PID;
                     var ec = pk.PID;
                     bool xorPID = ((pk.TID16 ^ pk.SID16 ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
-                    if (enc is EncounterStatic3 && enc.Species == (int)Species.Eevee && (shiny != pk.IsShiny || xorPID)) // Starter Correlation
+                    if (enc is EncounterStatic3XD && enc.Species == (int)Species.Eevee && (shiny != pk.IsShiny || xorPID)) // Starter Correlation
                         continue;
                     var la = new LegalityAnalysis(pk);
                     if ((la.Info.PIDIV.Type != PIDType.CXD && la.Info.PIDIV.Type != PIDType.CXD_ColoStarter) || !la.Info.PIDIVMatches || !pk.IsValidGenderPID(enc))

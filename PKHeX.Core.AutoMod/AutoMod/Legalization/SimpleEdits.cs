@@ -485,6 +485,15 @@ namespace PKHeX.Core.AutoMod
         {
             switch (pk)
             {
+                case PK9 pk9 when !pk.IsUntraded:
+                    pk9.ClearMemoriesHT();
+                    break;
+                case PA8 pa8 when !pk.IsUntraded:
+                    pa8.ClearMemoriesHT();
+                    break;
+                case PB8 pb8 when !pk.IsUntraded:
+                    pb8.ClearMemoriesHT();
+                    break;
                 case PK8 pk8 when !pk.IsUntraded:
                     pk8.SetTradeMemoryHT8();
                     break;
@@ -682,6 +691,15 @@ namespace PKHeX.Core.AutoMod
                 GameVersion.RD or GameVersion.BU or GameVersion.YW or GameVersion.GN => GameVersion.Gen1,
                 _ => ver
             };
+        }
+
+        public static void ApplyPostBatchFixes(this PKM pk)
+        {
+            if (pk is IScaledSizeValue sv)
+            {
+                sv.ResetHeight();
+                sv.ResetWeight();
+            }
         }
 
         public static bool IsUntradeableEncounter(IEncounterTemplate enc) => enc switch

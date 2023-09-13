@@ -40,6 +40,10 @@ namespace PKHeX.Core.AutoMod
         /// <param name="preference">Ability index (1/2/4) preferred; &lt;= 0 for any</param>
         public static void SetNatureAbility(this PKM pk, IBattleTemplate set, IEncounterable enc, AbilityPermission preference = AbilityPermission.Any12H)
         {
+            // TODO: drilldown on the root cause of this, ignore for now
+            if (enc is EncounterStatic4Pokewalker || enc.Generation is 2)
+                return;
+
             SetNature(pk, set, enc);
             SetAbility(pk, set, preference);
         }
@@ -188,6 +192,17 @@ namespace PKHeX.Core.AutoMod
                 pk.SetNickname(nickname);
             else
                 pk.ClearNickname();
+        }
+
+        public static void SetSpecialOverrides(this PKM pk, IEncounterable enc, ITrainerInfo handler)
+        {
+            // Set Meister Magikarp BDSP nickname in german or japanese based on language
+            if (enc is EncounterTrade8b { IsFixedNickname: true } t && t.Species == (int)Species.Magikarp)
+            {
+                var required = pk.Language == (int)LanguageID.German ? LanguageID.Japanese : LanguageID.German;
+                var nickname = t.GetNickname((int)required);
+                pk.Nickname = nickname;
+            }
         }
 
         /// <summary>
