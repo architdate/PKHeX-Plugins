@@ -746,7 +746,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="enc"></param>
         private static void SetPINGA(this PKM pk, IBattleTemplate set, PIDType method, int hpType, IEncounterable enc)
         {
-            var ivprop = enc.GetType().GetProperties().FirstOrDefault(z => z.GetType() == typeof(IndividualValueSet), null);
+            var ivprop = enc.GetType().GetProperty("IVs");
             if (enc is not EncounterStatic4Pokewalker && enc.Generation > 2)
                 ShowdownEdits.SetNature(pk, set, enc);
 
@@ -770,12 +770,12 @@ namespace PKHeX.Core.AutoMod
                     return;
             }
 
-            if (ivprop != null && ivprop.GetType().GetProperty("IVs") != null)
+            if (ivprop != null)
             {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
                 var ivset = ivprop.GetType()
                     .GetProperty("IVs")
-                    .GetValue(enc, null);
+                    .GetValue(enc);
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
                 if (ivset != null && ((IndividualValueSet)ivset).IsSpecified)
                     return;
