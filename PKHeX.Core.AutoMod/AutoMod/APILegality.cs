@@ -96,6 +96,9 @@ namespace PKHeX.Core.AutoMod
                 if (!IsEncounterValid(set, enc, abilityreq, destVer))
                     continue;
 
+                if (enc is IFixedNature { IsFixedNature: true } fixedNature)
+                    criteria = criteria with { Nature = Nature.Random };
+
                 // Create the PKM from the template.
                 var tr = SimpleEdits.IsUntradeableEncounter(enc) ? dest : GetTrainer(regen, enc, set);
                 var raw = enc.ConvertToPKM(tr, criteria);
@@ -108,7 +111,7 @@ namespace PKHeX.Core.AutoMod
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
                     raw.HandleEggEncounters(enc, tr);
 
-                raw.PreSetPIDIV(enc, set);
+                raw.PreSetPIDIV(enc, set, criteria);
 
                 // Transfer any VC1 via VC2, as there may be GSC exclusive moves requested.
                 if (dest.Generation >= 7 && raw is PK1 basepk1)
@@ -836,21 +839,21 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokemon to be edited</param>
         /// <param name="enc">Raid encounter encounterable</param>
         /// <param name="set">Set to pass in requested IVs</param>
-        private static void PreSetPIDIV(this PKM pk, IEncounterable enc, IBattleTemplate set)
+        private static void PreSetPIDIV(this PKM pk, IEncounterable enc, IBattleTemplate set, EncounterCriteria criteria)
         {
             if (enc is ITeraRaid9)
             {
                 var pk9 = (PK9)pk;
                 switch (enc)
                 {
-                    case EncounterTera9 e: FindTeraPIDIV(pk9, e, set); break;
-                    case EncounterDist9 e: FindTeraPIDIV(pk9, e, set); break;
-                    case EncounterMight9 e: FindTeraPIDIV(pk9, e, set); break;
+                    case EncounterTera9 e: FindTeraPIDIV(pk9, e, set, criteria); break;
+                    case EncounterDist9 e: FindTeraPIDIV(pk9, e, set, criteria); break;
+                    case EncounterMight9 e: FindTeraPIDIV(pk9, e, set, criteria); break;
                 }
                 if (set.TeraType != MoveType.Any && set.TeraType != pk9.TeraType)
                     pk9.SetTeraType(set.TeraType);
             }
-            if (enc is EncounterStatic8U && set.Shiny)
+            else if (enc is EncounterStatic8U && set.Shiny)
             {
                 // Dynamax Adventure shinies are always XOR 1 (thanks santacrab!)
                 pk.PID = SimpleEdits.GetShinyPID(pk.TID16, pk.SID16, pk.PID, 1);
@@ -921,16 +924,16 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static void FindTeraPIDIV<T>(PK9 pk, T enc, IBattleTemplate set) where T : ITeraRaid9, IEncounterTemplate
+        private static void FindTeraPIDIV<T>(PK9 pk, T enc, IBattleTemplate set, EncounterCriteria criteria) where T : ITeraRaid9, IEncounterTemplate
         {
-            if (IsMatchCriteria9(pk, set))
+            if (IsMatchCriteria9(pk, set, criteria))
                 return;
 
             var count = 0;
             var compromise = false;
             do
             {
-                ulong seed = GetRandomULong();
+                ulong seed = Util.Rand.Rand64();
                 const byte rollCount = 1;
                 const byte undefinedSize = 0;
                 var pi = PersonalTable.SV.GetFormEntry(enc.Species, enc.Form);
@@ -944,8 +947,8 @@ namespace PKHeX.Core.AutoMod
                         undefinedSize, undefinedSize, undefinedSize, undefinedSize, e.Ability, e.Shiny),
                     _ => throw new NotImplementedException("Unknown ITeraRaid9 type detected"),
                 };
-                enc.TryApply32(pk, seed, param, EncounterCriteria.Unrestricted);
-                if (IsMatchCriteria9(pk, set, compromise))
+                enc.TryApply32(pk, seed, param, criteria);
+                if (IsMatchCriteria9(pk, set, criteria, compromise))
                     break;
                 if (count == 5_000)
                     compromise = true;
@@ -1136,28 +1139,10 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        /// <summary>
-        /// Exit Criteria for IVs to be valid
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="pk">Pokemon to edit</param>
-        /// <param name="template">Clone of the PKM taken prior</param>
-        /// <returns>True if the IVs are matching the criteria</returns>
-        private static bool IsMatchCriteria8<T>(PK8 pk, PKM template) where T : EncounterStatic8Nest<T>
-        {
-            if (template.Nature != pk.Nature) // match nature
-                return false;
-            if (template.Gender != pk.Gender) // match gender
-                return false;
-            if (template.Form != pk.Form && !FormInfo.IsFormChangeable(pk.Species, pk.Form, template.Form, EntityContext.Gen8, pk.Context)) // match form -- Toxtricity etc
-                return false;
-            return true;
-        }
-
-        private static bool IsMatchCriteria9(PK9 pk, IBattleTemplate template, bool compromise = false)
+        private static bool IsMatchCriteria9(PK9 pk, IBattleTemplate template, EncounterCriteria criteria, bool compromise = false)
         {
             // compromise on nature since they can be minted
-            if (template.Nature != pk.Nature && !compromise) // match nature
+            if (criteria.Nature != Nature.Random && criteria.Nature != (Nature)pk.Nature && !compromise) // match nature
                 return false;
             if ((uint)template.Gender < 2 && template.Gender != pk.Gender) // match gender
                 return false;
@@ -1168,14 +1153,6 @@ namespace PKHeX.Core.AutoMod
             return true;
         }
 
-        /// <summary>
-        /// Function to generate a random ulong
-        /// </summary>
-        /// <returns>A random ulong</returns>
-        public static ulong GetRandomULong()
-        {
-            return ((ulong)Util.Rand.Next(1 << 30) << 34) | ((ulong)Util.Rand.Next(1 << 30) << 4) | (uint)Util.Rand.Next(1 << 4);
-        }
 
         /// <summary>
         /// Method to set PID, IV while validating nature.
