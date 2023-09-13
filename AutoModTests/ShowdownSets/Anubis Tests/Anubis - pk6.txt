@@ -4,8 +4,8 @@ Ability: Arena Trap
 Level: 1
 Shiny: Yes
 Jolly Nature
+~=Version=XY
 .Version=25
-~=Generation=6
 - Reversal
 - Memento
 - Pursuit
@@ -18,9 +18,9 @@ Level: 30
 Modest Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Incinerate
 - Rock Smash
 - Secret Power
@@ -33,9 +33,9 @@ Level: 1
 Shiny: Yes
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40010
+~=Location=40010
+~=Version=XY
 .Version=25
-~=Generation=6
 - Splash
 - Celebrate
 - Happy Hour
@@ -48,9 +48,9 @@ Shiny: Yes
 Bashful Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Swift
 - Quick Attack
 - Baby-Doll Eyes
@@ -61,8 +61,8 @@ EVs: 252 Atk / 4 Def / 252 Spe
 Ability: Unnerve
 Shiny: Yes
 Jolly Nature
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Pursuit
 - Stone Edge
 - Hone Claws
@@ -75,9 +75,9 @@ Ability: Static
 Level: 70
 Calm Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Thunderbolt
 - Hidden Power [Ice]
 - Tailwind
@@ -88,8 +88,8 @@ EVs: 252 HP / 4 Def / 252 SpD
 Ability: Sand Stream
 Shiny: Yes
 Sassy Nature
+~=Version=XY
 .Version=25
-~=Generation=6
 - Foul Play
 - Superpower
 - Stealth Rock
@@ -100,9 +100,9 @@ IVs: 0 Atk
 Ability: Natural Cure
 Bold Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Confusion
 - Recover
 - Heal Bell
@@ -114,8 +114,8 @@ Ability: Super Luck
 Level: 1
 Shiny: Yes
 Jolly Nature
+~=Version=XY
 .Version=25
-~=Generation=6
 - Play Rough
 - Sucker Punch
 - Baton Pass
@@ -128,9 +128,9 @@ Level: 50
 Hasty Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Draco Meteor
 - Meteor Mash
 - Power-Up Punch
@@ -141,9 +141,9 @@ Ability: Blaze
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Hone Claws
 - Dig
 - Retaliate
@@ -155,8 +155,8 @@ EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Flame Body
 Shiny: Yes
 Timid Nature
+~=Version=XY
 .Version=24
-~=Generation=6
 - Quiver Dance
 - Giga Drain
 - Bug Buzz
@@ -169,9 +169,9 @@ Level: 50
 Shiny: Yes
 Hasty Nature
 Ball: Master Ball
-=Met_Location=348
+~=Location=348
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Extrasensory
 - Agility
 - Air Slash
@@ -184,9 +184,9 @@ Level: 50
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-=Met_Location=340
+~=Location=340
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Dragon Breath
 - Slash
 - Extrasensory
@@ -199,9 +199,9 @@ Level: 50
 Shiny: Yes
 Impish Nature
 Ball: Master Ball
-=Met_Location=348
+~=Location=348
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Extrasensory
 - Swords Dance
 - Earth Power
@@ -215,9 +215,9 @@ Ability: Intimidate
 Level: 50
 Adamant Nature
 Ball: Master Ball
-=Met_Location=348
+~=Location=348
+~=Version=ORAS
 .Version=26
-~=Generation=6
 - Rock Slide
 - U-turn
 - Earthquake
@@ -229,9 +229,9 @@ Ability: Suction Cups
 Level: 10
 Jolly Nature
 Ball: Cherish Ball
-=Met_Location=40019
+~=Location=40019
+~=Version=XY
 .Version=25
-~=Generation=6
 - Happy Hour
 - Foul Play
 - Hypnosis
@@ -243,9 +243,9 @@ Ability: Pickup
 Level: 50
 Bold Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=XY
 .Version=25
-~=Generation=6
 - Incinerate
 - Flash
 - Rock Smash
@@ -257,9 +257,9 @@ Ability: Fairy Aura
 Shiny: Yes
 Modest Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Geomancy
 - Moonblast
 - Aromatherapy
@@ -271,9 +271,9 @@ Ability: Dark Aura
 Shiny: Yes
 Modest Nature
 Ball: Cherish Ball
-=Met_Location=40011
+~=Location=40011
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Oblivion Wing
 - Sucker Punch
 - Dark Pulse
@@ -285,9 +285,9 @@ Ability: Clear Body
 Level: 50
 Hasty Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Diamond Storm
 - Moonblast
 - Dazzling Gleam
@@ -299,9 +299,9 @@ Ability: Magician
 Level: 50
 Jolly Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Hyperspace Hole
 - Psychic
 - Astonish

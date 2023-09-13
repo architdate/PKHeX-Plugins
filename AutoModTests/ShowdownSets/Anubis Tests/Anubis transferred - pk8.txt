@@ -7,9 +7,9 @@ Shiny: Square
 Hasty Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40010
+~=Location=40010
+~=Version=XY
 .Version=24
-~=Generation=6
 - Hold Hands
 
 Solaire (Charizard) (M)
@@ -20,9 +20,9 @@ Gigantamax: Yes
 Shiny: Square
 Timid Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Hidden Power [Ice]
 - Flamethrower
 - Roost
@@ -45,8 +45,8 @@ Ability: Compound Eyes
 Level: 6
 Modest Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Silver Wind
 - Ominous Wind
 - Air Cutter
@@ -58,9 +58,9 @@ Shiny: Yes
 Hasty Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Extreme Speed
 - Thunderbolt
 - Grass Knot
@@ -70,9 +70,9 @@ Pikachu-Original (M)
 EVs: 6 Atk / 252 SpA / 252 Spe
 Ability: Static
 Hardy Nature
-=Met_Location=40001
+~=Location=40001
+~=Version=SM
 .Version=31
-~=Generation=7
 - Knock Off
 - Volt Switch
 - Surf
@@ -85,8 +85,8 @@ Level: 31
 Shiny: Yes
 Jolly Nature
 Ball: Cherish Ball
+~=Version=DP
 .Version=10
-~=Generation=4
 - Mud-Slap
 - Rock Smash
 - Focus Punch
@@ -98,8 +98,8 @@ Ability: Surge Surfer
 Shiny: Yes
 Serious Nature
 Language: Japanese
+~=Version=RS
 .Version=2
-~=Generation=3
 - Follow Me
 
 Raichu-Alola (F) @ Life Orb
@@ -110,8 +110,8 @@ Timid Nature
 Language: English
 =OT_Name=Psytrice
 =Met_Location=30001
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Nasty Plot
 - Thunderbolt
 - Toxic
@@ -123,7 +123,8 @@ EVs: 252 Atk / 6 Def / 252 Spe
 Ability: Slush Rush
 Shiny: Yes
 Jolly Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Ice Shard
 - Triple Axel
@@ -137,8 +138,8 @@ Level: 63
 Shiny: Yes
 Bashful Nature
 Ball: Master Ball
+~=Version=FRLG
 .Version=5
-~=Generation=3
 - Mimic
 - Hone Claws
 - Poison Tail
@@ -150,9 +151,9 @@ EVs: 252 HP / 6 SpA / 252 SpD
 Ability: Magic Guard
 Shiny: Square
 Calm Nature
-=Met_Location=40
+~=Location=40
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Moonblast
 - Protect
 - Teleport
@@ -163,9 +164,9 @@ Ability: Snow Cloak
 Level: 10
 Lax Nature
 Ball: Cherish Ball
-=Met_Location=40016
+~=Location=40016
+~=Version=SM
 .Version=31
-~=Generation=7
 - Celebrate
 - Tail Whip
 - Baby-Doll Eyes
@@ -189,8 +190,8 @@ Ability: Cute Charm
 Shiny: Yes
 Serious Nature
 Language: Japanese
+~=Version=RS
 .Version=2
-~=Generation=3
 - Tickle
 - Perish Song
 - Heal Bell
@@ -200,8 +201,8 @@ Golduck (F)
 Ability: Damp
 Shiny: Yes
 Calm Nature
+~=Version=RS
 .Version=2
-~=Generation=3
 - Mud Sport
 - Flip Turn
 - Hone Claws
@@ -211,7 +212,8 @@ Arcanine (M) @ Heavy-Duty Boots
 EVs: 252 HP / 252 Def / 6 SpD
 Ability: Intimidate
 Impish Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Flare Blitz
 - Teleport
@@ -224,8 +226,8 @@ Ability: Own Tempo
 Level: 15
 Modest Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Incinerate
 - Captivate
 - Endure
@@ -247,7 +249,8 @@ Cloyster (M) @ Heavy-Duty Boots
 EVs: 252 HP / 252 Def / 6 Spe
 Ability: Skill Link
 Impish Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Icicle Spear
 - Spikes
@@ -272,8 +275,8 @@ Ability: Cursed Body
 Shiny: Square
 Hasty Nature
 Ball: Master Ball
+~=Version=FRLG
 .Version=4
-~=Generation=3
 - Shadow Ball
 - Sludge Bomb
 - Counter
@@ -284,8 +287,8 @@ EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Cursed Body
 Shiny: Yes
 Hasty Nature
+~=Version=FRLG
 .Version=5
-~=Generation=3
 - Shadow Ball
 - Sludge Bomb
 - Counter
@@ -299,8 +302,7 @@ Gigantamax: Yes
 Shiny: Yes
 Brave Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Crabhammer
 - Hone Claws
 - Knock Off
@@ -313,9 +315,9 @@ Ability: Chlorophyll
 Shiny: Yes
 Modest Nature
 Ball: Master Ball
-=Met_Location=184
+~=Location=184
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Sleep Powder
 - Giga Drain
 - Psychic
@@ -328,8 +330,8 @@ Ability: Frisk
 Shiny: Square
 Quiet Nature
 Ball: Master Ball
+~=Version=FRLG
 .Version=5
-~=Generation=3
 - Synthesis
 - Psych Up
 - Mimic
@@ -342,8 +344,8 @@ Level: 47
 Shiny: Square
 Brave Nature
 Ball: Master Ball
+~=Version=FRLG
 .Version=5
-~=Generation=3
 - Power-Up Punch
 - Seismic Toss
 - Mimic
@@ -355,8 +357,8 @@ Ability: Lightning Rod
 Level: 47
 Shiny: Yes
 Brave Nature
+~=Version=FRLG
 .Version=5
-~=Generation=3
 - Power-Up Punch
 - Seismic Toss
 - Mimic
@@ -369,8 +371,8 @@ Ability: Stench
 Level: 99
 Shiny: Yes
 Bold Nature
+~=Version=FRLG
 .Version=5
-~=Generation=3
 - Sludge Bomb
 - Will-O-Wisp
 - Mimic
@@ -389,7 +391,8 @@ Ability: Neutralizing Gas
 Level: 35
 Shiny: Square
 Hardy Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Sludge
 - Smog
@@ -400,8 +403,7 @@ EVs: 248 HP / 248 Atk / 14 Spe
 Ability: Lightning Rod
 Adamant Nature
 =FatefulEncounter=True
-.Version=15
-~=Generation=3
+~=Version=CXD
 - Earthquake
 - Stone Edge
 - Megahorn
@@ -414,8 +416,8 @@ Ability: Natural Cure
 Shiny: Square
 Calm Nature
 Ball: Safari Ball
+~=Version=FRLG
 .Version=5
-~=Generation=3
 - Heal Bell
 - Toxic
 - Soft-Boiled
@@ -427,8 +429,8 @@ Ability: Natural Cure
 Shiny: Yes
 Bold Nature
 =FatefulEncounter=True
+~=Version=FRLG
 .Version=5
-~=Generation=3
 - Wish
 - Seismic Toss
 - Toxic
@@ -440,7 +442,8 @@ Ability: Technician
 Level: 55
 Shiny: Square
 Mild Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Seismic Toss
 - Teleport
@@ -453,9 +456,9 @@ Ability: Technician
 Shiny: Square
 Adamant Nature
 Ball: Master Ball
-=Met_Location=166
+~=Location=166
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Roost
 - Vacuum Wave
 - Aerial Ace
@@ -466,7 +469,8 @@ EVs: 252 Atk / 6 Def / 252 Spe
 Ability: Technician
 Shiny: Square
 Adamant Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Roost
 - Fury Cutter
@@ -479,9 +483,9 @@ Ability: Intimidate
 Shiny: Square
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=SM
 .Version=31
-~=Generation=7
 - Dragon Dance
 - Earthquake
 - Waterfall
@@ -495,8 +499,8 @@ Gigantamax: Yes
 Shiny: Square
 Modest Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Sheer Cold
 - Freeze-Dry
 - Sparkling Aria
@@ -508,8 +512,8 @@ Ability: Immunity
 Shiny: Yes
 Docile Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Belch
 - Giga Impact
 - Toxic
@@ -521,9 +525,9 @@ EVs: 248 HP / 204 SpD / 58 Spe
 Ability: Pressure
 Calm Nature
 Ball: Master Ball
-=Met_Location=222
+~=Location=222
+~=Version=USUM
 .Version=32
-~=Generation=7
 - Freeze-Dry
 - Roost
 - Toxic
@@ -534,9 +538,9 @@ EVs: 186 HP / 252 Def / 72 Spe
 Ability: Static
 Bold Nature
 Ball: Master Ball
-=Met_Location=222
+~=Location=222
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Defog
 - Discharge
 - Heat Wave
@@ -548,8 +552,7 @@ EVs: 6 Def / 252 SpA / 252 Spe
 Ability: Static
 Timid Nature
 =FatefulEncounter=True
-.Version=15
-~=Generation=3
+~=Version=CXD
 - Thunderbolt
 - Hurricane
 - Heat Wave
@@ -560,7 +563,8 @@ IVs: 27 HP / 23 Atk / 27 Def / 23 SpA / 27 SpD / 4 Spe
 Ability: Pressure
 Shiny: Square
 Modest Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Thunder Shock
 - Light Screen
@@ -572,9 +576,9 @@ EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Flame Body
 Timid Nature
 Ball: Master Ball
-=Met_Location=146
+~=Location=146
+~=Version=XY
 .Version=24
-~=Generation=6
 - Defog
 - Flamethrower
 - Scorching Sands
@@ -588,8 +592,8 @@ Level: 51
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Flamethrower
 - Air Cutter
 - Ancient Power
@@ -602,9 +606,9 @@ Ability: Pressure
 Level: 65
 Docile Nature
 Ball: Master Ball
-=Met_Location=222
+~=Location=222
+~=Version=USUM
 .Version=32
-~=Generation=7
 - Psychic
 - Recover
 - Swift
@@ -627,7 +631,8 @@ IVs: 25 HP / 27 Atk / 27 SpA / 14 Spe
 Ability: Synchronize
 Level: 35
 Brave Nature
-=Met_Location=30012
+~=Location=30012
+~=Version=GO
 .Version=34
 - Mimic
 - Psywave
@@ -640,9 +645,9 @@ Level: 75
 Impish Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40003
+~=Location=40003
+~=Version=SM
 .Version=30
-~=Generation=7
 - Psychic
 - Leech Life
 - Metronome
@@ -654,8 +659,8 @@ EVs: 252 Atk / 6 Def / 252 Spe
 Ability: Synchronize
 Jolly Nature
 Ball: Cherish Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Swords Dance
 - Psychic Fangs
 - Close Combat
@@ -665,9 +670,9 @@ Mew
 IVs: 16 Atk / 10 SpA / 13 SpD
 Ability: Synchronize
 Lonely Nature
-=Met_Location=40077
+~=Location=40077
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Crunch
 - Life Dew
 - Transform
@@ -691,9 +696,9 @@ Ability: Synchronize
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40109
+~=Location=40109
+~=Version=BW
 .Version=21
-~=Generation=5
 - Sing
 - Baton Pass
 - Substitute
@@ -705,8 +710,7 @@ EVs: 252 HP / 252 Def / 6 SpD
 Ability: Synchronize
 Shiny: Yes
 Careful Nature
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Sucker Punch
 - Curse
 - Baton Pass
@@ -729,9 +733,9 @@ EVs: 252 Atk / 6 SpD / 252 Spe
 Ability: Guts
 Jolly Nature
 Ball: Master Ball
-=Met_Location=324
+~=Location=324
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Swords Dance
 - Megahorn
 - Close Combat
@@ -743,8 +747,8 @@ Ability: Damp
 Timid Nature
 Language: Japanese
 =FatefulEncounter=True
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Clear Smog
 - Swagger
 - Octazooka
@@ -755,9 +759,9 @@ IVs: 0 Atk
 EVs: 252 HP / 252 Def / 6 SpD
 Ability: Natural Cure
 Bold Nature
-=Met_Location=46
+~=Location=46
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Soft-Boiled
 - Toxic
 - Seismic Toss
@@ -769,8 +773,7 @@ EVs: 6 HP / 252 Atk / 252 Spe
 Ability: Inner Focus
 Shiny: Yes
 Jolly Nature
-.Version=15
-~=Generation=3
+~=Version=CXD
 - Sacred Fire
 - Stone Edge
 - Bulldoze
@@ -782,9 +785,9 @@ Ability: Sand Stream
 Shiny: Square
 Brave Nature
 Ball: Cherish Ball
-=Met_Location=40050
+~=Location=40050
+~=Version=BW
 .Version=20
-~=Generation=5
 - Crunch
 - Rock Slide
 - Brick Break
@@ -795,8 +798,7 @@ IVs: 13 Atk
 EVs: 252 HP / 6 SpA / 252 Spe
 Ability: Pressure
 Timid Nature
-.Version=15
-~=Generation=3
+~=Version=CXD
 - Psycho Boost
 - Shadow Ball
 - Recover
@@ -820,9 +822,9 @@ EVs: 4 HP / 252 Atk / 2 Def / 252 Spe
 Ability: Regenerator
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=SM
 .Version=31
-~=Generation=7
 - Sacred Fire
 - Defog
 - Toxic
@@ -835,9 +837,9 @@ Level: 60
 Shiny: Yes
 Brave Nature
 Ball: Master Ball
-=Met_Location=222
+~=Location=222
+~=Version=USUM
 .Version=32
-~=Generation=7
 - Burn Up
 - Sacred Fire
 - Extrasensory
@@ -848,9 +850,9 @@ EVs: 252 HP / 128 Def / 48 SpD / 82 Spe
 Ability: Natural Cure
 Calm Nature
 Ball: Cherish Ball
-=Met_Location=30004
+~=Location=30004
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Giga Drain
 - Recover
 - Stealth Rock
@@ -862,9 +864,9 @@ Ability: Chlorophyll
 Shiny: Square
 Lonely Nature
 Ball: Master Ball
-=Met_Location=222
+~=Location=222
+~=Version=USUM
 .Version=32
-~=Generation=7
 - Solar Blade
 - Knock Off
 - Focus Blast
@@ -876,8 +878,8 @@ Ability: Competitive
 Shiny: Yes
 Calm Nature
 Ball: Cherish Ball
+~=Version=DP
 .Version=10
-~=Generation=4
 - Muddy Water
 - Coil
 - Hypnosis
@@ -889,8 +891,8 @@ Ability: Intimidate
 Shiny: Yes
 Serious Nature
 Language: Japanese
+~=Version=RS
 .Version=2
-~=Generation=3
 - Wish
 - Roost
 - Defog
@@ -902,9 +904,9 @@ Ability: Clear Body
 Shiny: Square
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40048
+~=Location=40048
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Agility
 - Meteor Mash
 - Zen Headbutt
@@ -917,9 +919,9 @@ Ability: Serene Grace
 Gentle Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40069
+~=Location=40069
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Thunder
 - Psychic
 - Steel Beam
@@ -933,9 +935,9 @@ Shiny: Square
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40018
+~=Location=40018
+~=Version=XY
 .Version=24
-~=Generation=6
 - Doom Desire
 - Psychic
 - Healing Wish
@@ -946,8 +948,8 @@ EVs: 2 HP / 252 Atk / 4 SpD / 252 Spe
 Ability: Serene Grace
 Shiny: Yes
 Jolly Nature
+~=Version=RS
 .Version=2
-~=Generation=3
 - Fire Punch
 - Zen Headbutt
 - Iron Head
@@ -969,8 +971,7 @@ Togekiss (M)
 EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Serene Grace
 Timid Nature
-.Version=15
-~=Generation=3
+~=Version=CXD
 - Incinerate
 - Soft-Boiled
 - Rollout
@@ -981,8 +982,8 @@ IVs: 3 Atk
 EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Serene Grace
 Timid Nature
+~=Version=E
 .Version=3
-~=Generation=3
 - Incinerate
 - Soft-Boiled
 - Rollout
@@ -995,8 +996,8 @@ Level: 6
 Shiny: Yes
 Jolly Nature
 Ball: Master Ball
+~=Version=DP
 .Version=11
-~=Generation=4
 - Growl
 - Confusion
 - Double Team
@@ -1008,9 +1009,9 @@ Ability: Levitate
 Level: 29
 Docile Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=USUM
 .Version=32
-~=Generation=7
 - Defog
 - Signal Beam
 - Disarming Voice
@@ -1022,8 +1023,7 @@ Ability: Levitate
 Level: 20
 Shiny: Yes
 Timid Nature
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Mud-Slap
 - Sucker Punch
 - Swift
@@ -1036,9 +1036,9 @@ Ability: Pressure
 Shiny: Square
 Modest Nature
 Ball: Master Ball
-=Met_Location=348
+~=Location=348
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Toxic
 - Dragon Pulse
 - Hex
@@ -1051,8 +1051,8 @@ Level: 1
 Shiny: Yes
 Adamant Nature
 =Met_Level=1
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Dragon Breath
 - Scary Face
 - Defog
@@ -1063,9 +1063,9 @@ Ability: Victory Star
 Level: 15
 Jolly Nature
 Ball: Cherish Ball
-=Met_Location=40018
+~=Location=40018
+~=Version=SM
 .Version=30
-~=Generation=7
 - V-create
 - Reversal
 - Stored Power
@@ -1078,9 +1078,9 @@ Ability: Regenerator
 Shiny: Square
 Careful Nature
 Ball: Master Ball
-=Met_Location=222
+~=Location=222
+~=Version=USUM
 .Version=32
-~=Generation=7
 - Wish
 - Knock Off
 - Toxic
@@ -1093,9 +1093,9 @@ Ability: Turboblaze
 Shiny: Yes
 Modest Nature
 Ball: Master Ball
-=Met_Location=340
+~=Location=340
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Blue Flare
 - Draco Meteor
 - Roost
@@ -1107,9 +1107,9 @@ Ability: Teravolt
 Shiny: Yes
 Adamant Nature
 Ball: Master Ball
-=Met_Location=222
+~=Location=222
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Thunder
 - Outrage
 - Bolt Strike
@@ -1122,9 +1122,9 @@ Ability: Intimidate
 Shiny: Yes
 Jolly Nature
 Ball: Master Ball
-=Met_Location=348
+~=Location=348
+~=Version=ORAS
 .Version=27
-~=Generation=6
 - Knock Off
 - U-turn
 - Defog
@@ -1149,9 +1149,9 @@ Ability: Triage
 Level: 10
 Jolly Nature
 Ball: Cherish Ball
-=Met_Location=40010
+~=Location=40010
+~=Version=SM
 .Version=31
-~=Generation=7
 - Celebrate
 - Leech Seed
 - Draining Kiss
@@ -1164,9 +1164,9 @@ Ability: Disguise
 Shiny: Square
 Jolly Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Play Rough
 - Shadow Sneak
 - Drain Punch
@@ -1179,9 +1179,9 @@ Ability: Full Metal Body
 Shiny: Square
 Jolly Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Sunsteel Strike
 - Flare Blitz
 - Earthquake
@@ -1194,9 +1194,9 @@ Ability: Shadow Shield
 Shiny: Square
 Bold Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=USUM
 .Version=32
-~=Generation=7
 - Defog
 - Toxic
 - Hex
@@ -1209,9 +1209,9 @@ Ability: Technician
 Level: 66
 Rash Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=SM
 .Version=31
-~=Generation=7
 - Force Palm
 - Endeavor
 - Sucker Punch
@@ -1223,9 +1223,9 @@ Ability: Volt Absorb
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40006
+~=Location=40006
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Plasma Fists
 - Fire Punch
 - Close Combat
@@ -1236,7 +1236,8 @@ IVs: 23 HP / 1 Atk / 23 Def / 1 SpA / 23 SpD / 0 Spe
 Ability: Iron Fist
 Shiny: Square
 Adamant Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 .HyperTrainFlags=23
 - Superpower

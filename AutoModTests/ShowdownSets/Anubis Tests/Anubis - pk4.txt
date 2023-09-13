@@ -4,8 +4,8 @@ Ability: Torrent
 Level: 1
 Shiny: Yes
 Modest Nature
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Tackle
 - Water Pulse
 
@@ -17,8 +17,8 @@ Shiny: Yes
 Bold Nature
 Ball: Poke Ball
 =Met_Level=15
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Supersonic
 - Constrict
 - Acid
@@ -28,8 +28,8 @@ Shellder (M)
 Ability: Skill Link
 Level: 1
 Naive Nature
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Rapid Spin
 - Icicle Spear
 - Explosion
@@ -43,8 +43,8 @@ Shiny: Yes
 Docile Nature
 Ball: Master Ball
 Language: Japanese
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Transform
 
 Aerodactyl (M)
@@ -53,8 +53,8 @@ Ability: Rock Head
 Level: 1
 Shiny: Yes
 Jolly Nature
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Pursuit
 - Whirlwind
 - Curse
@@ -66,8 +66,8 @@ Level: 50
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Ancient Power
 - Agility
 - Ice Beam
@@ -80,8 +80,8 @@ Level: 50
 Shiny: Yes
 Bold Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Ancient Power
 - Charge
 - Agility
@@ -93,8 +93,8 @@ Level: 70
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Psycho Cut
 - Amnesia
 - Power Swap
@@ -105,8 +105,8 @@ Ability: Synchronize
 Level: 5
 Calm Nature
 Ball: Cherish Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Pound
 
 Mew
@@ -115,8 +115,8 @@ Ability: Synchronize
 Level: 30
 Shiny: Yes
 Bold Nature
+~=Version=E
 .Version=3
-~=Generation=3
 - Soft-Boiled
 - Seismic Toss
 - Counter
@@ -129,8 +129,8 @@ Level: 5
 Shiny: Yes
 Calm Nature
 =Met_Level=5
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Tackle
 - Growl
 
@@ -141,8 +141,8 @@ Level: 5
 Shiny: Yes
 Timid Nature
 =Met_Level=5
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Tackle
 - Leer
 
@@ -153,8 +153,8 @@ Level: 5
 Shiny: Yes
 Jolly Nature
 =Met_Level=5
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Scratch
 - Leer
 
@@ -164,8 +164,8 @@ Level: 13
 Shiny: Yes
 Modest Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Tackle
 - Growl
 - Thunder Shock
@@ -177,8 +177,8 @@ Level: 25
 Shiny: Yes
 Bold Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Whirlpool
 - Air Cutter
 - Mud-Slap
@@ -190,8 +190,8 @@ Ability: Water Absorb
 Level: 1
 Shiny: Yes
 Calm Nature
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Bubble Beam
 - Mirror Coat
 - Mud Sport
@@ -203,8 +203,8 @@ Ability: Sturdy
 Level: 1
 Shiny: Yes
 Bold Nature
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Brave Bird
 - Curse
 - Whirlwind
@@ -217,8 +217,8 @@ Level: 30
 Shiny: Yes
 Rash Nature
 Ball: Cherish Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Zap Cannon
 - Aura Sphere
 - Extreme Speed
@@ -231,8 +231,8 @@ Level: 40
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Roar
 - Quick Attack
 - Spark
@@ -245,8 +245,8 @@ Level: 30
 Shiny: Yes
 Adamant Nature
 Ball: Cherish Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Flare Blitz
 - Howl
 - Extreme Speed
@@ -259,8 +259,8 @@ Level: 30
 Shiny: Yes
 Relaxed Nature
 Ball: Cherish Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Sheer Cold
 - Air Slash
 - Extreme Speed
@@ -272,8 +272,8 @@ Level: 40
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Rain Dance
 - Gust
 - Aurora Beam
@@ -285,8 +285,8 @@ Ability: Guts
 Level: 20
 Sassy Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Sandstorm
 - Screech
 - Rock Slide
@@ -298,8 +298,8 @@ Ability: Natural Cure
 Level: 50
 Bold Nature
 Ball: Cherish Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Leaf Storm
 - Recover
 - Nasty Plot
@@ -310,8 +310,8 @@ Ability: Chlorophyll
 Level: 14
 Shiny: Yes
 Hasty Nature
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Nasty Plot
 - False Swipe
 - Sunny Day
@@ -322,8 +322,8 @@ Ability: Keen Eye
 Level: 1
 Shiny: Yes
 Calm Nature
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Agility
 - Aqua Ring
 - Knock Off
@@ -335,8 +335,7 @@ Ability: Keen Eye
 Level: 40
 Bold Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Roost
 - Stockpile
 - Swallow
@@ -348,8 +347,7 @@ Level: 39
 Shiny: Yes
 Modest Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Roost
 - Stockpile
 - Swallow
@@ -361,8 +359,8 @@ Ability: Shed Skin
 Level: 1
 Shiny: Yes
 Rash Nature
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Body Slam
 - Switcheroo
 - Stockpile
@@ -374,8 +372,8 @@ Level: 40
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Water Sport
 - Refresh
 - Mist Ball
@@ -387,8 +385,8 @@ Ability: Levitate
 Level: 50
 Shiny: Yes
 Timid Nature
+~=Version=RS
 .Version=2
-~=Generation=3
 - Defog
 - Mud-Slap
 - Swift
@@ -400,8 +398,8 @@ Level: 40
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Protect
 - Refresh
 - Luster Purge
@@ -414,7 +412,6 @@ Level: 50
 Shiny: Yes
 Timid Nature
 .Version=1
-~=Generation=3
 - Defog
 - Mud-Slap
 - Swift
@@ -426,8 +423,8 @@ Level: 50
 Shiny: Yes
 Modest Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Aqua Ring
 - Ice Beam
 - Ancient Power
@@ -440,8 +437,8 @@ Level: 50
 Shiny: Yes
 Careful Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Rest
 - Earthquake
 - Ancient Power
@@ -454,8 +451,8 @@ Level: 50
 Shiny: Yes
 Naive Nature
 Ball: Master Ball
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Rest
 - Air Slash
 - Ancient Power
@@ -467,8 +464,8 @@ Ability: Blaze
 Level: 1
 Shiny: Yes
 Timid Nature
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Vacuum Wave
 - Mud-Slap
 - Swift
@@ -480,8 +477,8 @@ Ability: Honey Gather
 Level: 1
 Shiny: Yes
 Careful Nature
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - String Shot
 - Mud-Slap
 - Air Cutter
@@ -493,8 +490,8 @@ Ability: Keen Eye
 Level: 1
 Shiny: Yes
 Timid Nature
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Nasty Plot
 - Encore
 - Twister
@@ -507,8 +504,7 @@ Level: 23
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Mirror Move
 - Sing
 - Fury Attack
@@ -521,8 +517,7 @@ Level: 20
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Thunder Shock
 - Confuse Ray
 - Uproar
@@ -535,8 +530,8 @@ Level: 50
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
+~=Version=DP
 .Version=11
-~=Generation=4
 - Confusion
 - Uproar
 - Future Sight
@@ -549,8 +544,8 @@ Level: 1
 Shiny: Yes
 Modest Nature
 =Met_Level=1
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Dragon Breath
 - Scary Face
 
@@ -560,8 +555,7 @@ Level: 70
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Roar of Time
 - Heal Block
 - Earth Power
@@ -574,8 +568,8 @@ Level: 1
 Shiny: Yes
 Modest Nature
 =Met_Level=1
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Dragon Breath
 - Scary Face
 
@@ -585,8 +579,7 @@ Level: 70
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Spacial Rend
 - Heal Block
 - Earth Power
@@ -599,8 +592,8 @@ Level: 50
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
+~=Version=DP
 .Version=11
-~=Generation=4
 - Water Pulse
 - Heal Block
 - Dragon Claw
@@ -613,8 +606,7 @@ Level: 47
 Shiny: Yes
 Jolly Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Ominous Wind
 - Ancient Power
 - Dragon Claw
@@ -627,8 +619,8 @@ Level: 1
 Shiny: Yes
 Modest Nature
 =Met_Level=1
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Dragon Breath
 - Scary Face
 
@@ -638,8 +630,7 @@ Level: 47
 Shiny: Yes
 Modest Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Ominous Wind
 - Ancient Power
 - Dragon Claw
@@ -651,8 +642,8 @@ Ability: Hydration
 Level: 1
 Shiny: Yes
 Timid Nature
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Tail Glow
 - Bubble
 - Water Sport
@@ -663,8 +654,7 @@ Level: 50
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Hypnosis
 - Feint Attack
 - Nightmare
@@ -678,8 +668,7 @@ Level: 61
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Dark Pulse
 - Thunderbolt
 - Psychic
@@ -689,8 +678,8 @@ Arceus @ Rowap Berry
 Ability: Multitype
 Adamant Nature
 Ball: Cherish Ball
+~=Version=DP
 .Version=10
-~=Generation=4
 - Judgment
 - Roar of Time
 - Spacial Rend

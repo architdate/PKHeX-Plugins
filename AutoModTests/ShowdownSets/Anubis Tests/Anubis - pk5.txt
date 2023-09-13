@@ -5,8 +5,8 @@ Level: 1
 Shiny: Yes
 Modest Nature
 Language: Korean
+~=Version=BW
 .Version=21
-~=Generation=5
 - Block
 - False Swipe
 - Weather Ball
@@ -18,8 +18,8 @@ Ability: Blaze
 Level: 1
 Careful Nature
 Language: Japanese
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Block
 - False Swipe
 - Acrobatics
@@ -31,8 +31,8 @@ Ability: Blaze
 Level: 1
 Shiny: Yes
 Jolly Nature
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scratch
 - Growl
 - Flare Blitz
@@ -43,8 +43,8 @@ Ability: Torrent
 Level: 1
 Careful Nature
 Language: Korean
+~=Version=BW
 .Version=20
-~=Generation=5
 - Block
 - False Swipe
 - Follow Me
@@ -57,9 +57,9 @@ Level: 61
 Naughty Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=44
+~=Location=44
+~=Version=BW
 .Version=21
-~=Generation=5
 - Mirror Move
 - Whirlwind
 - Wing Attack
@@ -71,9 +71,9 @@ Level: 50
 Brave Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40016
+~=Location=40016
+~=Version=BW
 .Version=21
-~=Generation=5
 - Thunderbolt
 - Quick Attack
 - Iron Tail
@@ -85,9 +85,9 @@ Ability: Lightning Rod
 Level: 50
 Timid Nature
 Ball: Cherish Ball
-=Met_Location=40038
+~=Location=40038
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fly
 - Thunderbolt
 - Grass Knot
@@ -100,9 +100,9 @@ Level: 30
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Sing
 - Teeter Dance
 - Encore
@@ -114,9 +114,9 @@ Ability: Lightning Rod
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Volt Tackle
 - Quick Attack
 - Feint
@@ -130,9 +130,9 @@ Shiny: Yes
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Extreme Speed
 - Thunderbolt
 - Grass Knot
@@ -145,9 +145,9 @@ Shiny: Yes
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Thunder
 - Volt Tackle
 - Grass Knot
@@ -159,9 +159,9 @@ Level: 50
 Hasty Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Extreme Speed
 - Iron Tail
 - Grass Knot
@@ -174,9 +174,9 @@ Level: 50
 Bold Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Heat Wave
 - Solar Beam
 - Psyshock
@@ -188,9 +188,9 @@ Level: 30
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Low Sweep
 - Foresight
 - Seismic Toss
@@ -203,9 +203,9 @@ Level: 30
 Bold Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Confusion
 - Disable
 - Headbutt
@@ -218,9 +218,9 @@ Level: 30
 Modest Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Confusion
 - Disable
 - Headbutt
@@ -231,9 +231,9 @@ IVs: 30 Atk / 30 SpA / 30 Spe
 Ability: Skill Link
 Level: 30
 Naughty Nature
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Icicle Spear
 - Rock Blast
 - Hidden Power [Fire]
@@ -246,9 +246,9 @@ Level: 30
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Confuse Ray
 - Sucker Punch
 - Shadow Punch
@@ -262,8 +262,8 @@ Shiny: Yes
 Modest Nature
 =FatefulEncounter=True
 Language: Japanese
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bubble
 
 Scyther (F) @ Metal Coat
@@ -272,9 +272,9 @@ Level: 30
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Agility
 - Wing Attack
 - Fury Cutter
@@ -286,9 +286,9 @@ Level: 30
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Low Kick
 - Swift
 - Shock Wave
@@ -301,9 +301,9 @@ Level: 30
 Modest Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Smokescreen
 - Feint Attack
 - Fire Spin
@@ -315,8 +315,8 @@ Ability: Hyper Cutter
 Level: 1
 Shiny: Yes
 Jolly Nature
+~=Version=BW
 .Version=21
-~=Generation=5
 - Vise Grip
 - Focus Energy
 
@@ -328,9 +328,9 @@ Shiny: Yes
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40020
+~=Location=40020
+~=Version=BW
 .Version=21
-~=Generation=5
 - Flail
 - Hydro Pump
 - Bounce
@@ -342,8 +342,8 @@ Ability: Swift Swim
 Level: 1
 Shiny: Yes
 Jolly Nature
+~=Version=BW
 .Version=21
-~=Generation=5
 - Splash
 
 Magikarp (F) @ Rare Candy
@@ -353,9 +353,9 @@ Shiny: Yes
 Naive Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40020
+~=Location=40020
+~=Version=BW
 .Version=21
-~=Generation=5
 - Flail
 - Hydro Pump
 - Bounce
@@ -368,9 +368,9 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 Language: Japanese
-=Met_Location=61
+~=Location=61
+~=Version=BW
 .Version=21
-~=Generation=5
 - Transform
 
 Eevee (F) @ Silk Scarf
@@ -380,9 +380,9 @@ Level: 50
 Hardy Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40109
+~=Location=40109
+~=Version=BW
 .Version=21
-~=Generation=5
 - Sing
 - Return
 - Echoed Voice
@@ -395,9 +395,9 @@ Level: 15
 Modest Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bubble Beam
 - Supersonic
 - Withdraw
@@ -409,9 +409,9 @@ Level: 15
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Confuse Ray
 - Dig
 - Scratch
@@ -423,9 +423,9 @@ Level: 15
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Steel Wing
 - Ice Fang
 - Fire Fang
@@ -437,8 +437,8 @@ Ability: Pressure
 Level: 1
 Shiny: Yes
 Jolly Nature
+~=Version=BW
 .Version=21
-~=Generation=5
 - Wing Attack
 - Supersonic
 - Bite
@@ -451,9 +451,9 @@ Level: 50
 Brave Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=44
+~=Location=44
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fire Blast
 - Safeguard
 - Outrage
@@ -466,9 +466,9 @@ Level: 70
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Psystrike
 - Shadow Ball
 - Aura Sphere
@@ -480,9 +480,9 @@ Ability: Unnerve
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40007
+~=Location=40007
+~=Version=BW
 .Version=21
-~=Generation=5
 - Psystrike
 - Ice Beam
 - Heal Pulse
@@ -494,10 +494,10 @@ Ability: Synchronize
 Level: 30
 Shiny: Yes
 Adamant Nature
-Language: Japanese
 =Met_Location=30001
+Language: Japanese
+~=Version=E
 .Version=3
-~=Generation=3
 - Soft-Boiled
 - Rollout
 - Counter
@@ -509,8 +509,8 @@ Ability: Serene Grace
 Level: 1
 Shiny: Yes
 Timid Nature
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Growl
 - Charm
 - Extrasensory
@@ -522,8 +522,8 @@ Ability: Serene Grace
 Level: 2
 Shiny: Yes
 Timid Nature
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Ominous Wind
 - Silver Wind
 - Extrasensory
@@ -535,9 +535,9 @@ Ability: Huge Power
 Level: 15
 Shiny: Yes
 Adamant Nature
-=Met_Location=30001
+~=EggEncounter=True
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Defense Curl
 - Tail Whip
 - Water Gun
@@ -550,9 +550,9 @@ Level: 50
 Calm Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=47
+~=Location=47
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scald
 - Ice Beam
 - Perish Song
@@ -565,9 +565,9 @@ Level: 27
 Jolly Nature
 Ball: Master Ball
 Language: Korean
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=20
-~=Generation=5
 - Sleep Powder
 - Bullet Seed
 - Leech Seed
@@ -581,9 +581,9 @@ Shiny: Yes
 Quiet Nature
 Ball: Master Ball
 Language: Japanese
-=Met_Location=61
+~=Location=61
+~=Version=BW
 .Version=21
-~=Generation=5
 - Take Down
 - Fury Attack
 - Earthquake
@@ -596,9 +596,9 @@ Level: 50
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=47
+~=Location=47
+~=Version=BW
 .Version=21
-~=Generation=5
 - Draco Meteor
 - Muddy Water
 - Dragon Pulse
@@ -610,9 +610,9 @@ Level: 50
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40039
+~=Location=40039
+~=Version=BW
 .Version=21
-~=Generation=5
 - False Swipe
 - Spore
 - Odor Sleuth
@@ -625,8 +625,7 @@ Level: 40
 Shiny: Yes
 Adamant Nature
 =Met_Location=30001
-.Version=15
-~=Generation=3
+~=Version=CXD
 - Sunny Day
 - Leer
 - Bite
@@ -638,9 +637,9 @@ Level: 5
 Shiny: Yes
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40050
+~=Location=40050
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bite
 - Leer
 - Sandstorm
@@ -652,9 +651,9 @@ Ability: Multiscale
 Level: 10
 Bold Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Whirlwind
 - Weather Ball
 - Gust
@@ -665,9 +664,9 @@ Ability: Regenerator
 Level: 10
 Adamant Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Whirlwind
 - Weather Ball
 - Gust
@@ -680,9 +679,9 @@ Shiny: Yes
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Flare Blitz
 - High Jump Kick
 - Thunder Punch
@@ -696,9 +695,9 @@ Shiny: Yes
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Earthquake
 - Ice Beam
 - Hydro Pump
@@ -709,9 +708,9 @@ IVs: 0 Atk
 Ability: Swift Swim
 Level: 30
 Calm Nature
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scald
 - Giga Drain
 - Ice Beam
@@ -725,9 +724,9 @@ Shiny: Yes
 Modest Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fake Out
 - Hydro Pump
 - Ice Beam
@@ -740,8 +739,8 @@ Level: 38
 Shiny: Yes
 Hasty Nature
 =Met_Location=30001
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Synthesis
 - Knock Off
 - Sucker Punch
@@ -755,9 +754,9 @@ Shiny: Yes
 Modest Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Hypnosis
 - Thunderbolt
 - Focus Blast
@@ -770,9 +769,9 @@ Level: 50
 Bold Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Foul Play
 - Octazooka
 - Tickle
@@ -785,8 +784,8 @@ Shiny: Yes
 Jolly Nature
 =FatefulEncounter=True
 Language: Japanese
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bite
 
 Swablu (M)
@@ -796,8 +795,8 @@ Shiny: Yes
 Jolly Nature
 =FatefulEncounter=True
 Language: Japanese
+~=Version=BW
 .Version=21
-~=Generation=5
 - Peck
 - Growl
 
@@ -808,9 +807,9 @@ Level: 35
 Jolly Nature
 Ball: Master Ball
 Language: Japanese
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Take Down
 - Natural Gift
 - Dragon Breath
@@ -823,9 +822,9 @@ Level: 15
 Calm Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Recover
 - Rock Slide
 - Constrict
@@ -837,9 +836,9 @@ Level: 15
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Harden
 - Mud Sport
 - Water Gun
@@ -852,9 +851,9 @@ Level: 58
 Lax Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=44
+~=Location=44
+~=Version=BW
 .Version=21
-~=Generation=5
 - Recover
 - Surf
 - Ice Beam
@@ -868,9 +867,9 @@ Shiny: Yes
 Bold Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Recover
 - Hydro Pump
 - Ice Beam
@@ -884,9 +883,9 @@ Shiny: Yes
 Calm Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Ice Beam
 - Brine
 - Hail
@@ -899,8 +898,8 @@ Shiny: Yes
 Jolly Nature
 =FatefulEncounter=True
 Language: Japanese
+~=Version=BW
 .Version=21
-~=Generation=5
 - Rage
 
 Salamence (F)
@@ -911,9 +910,9 @@ Shiny: Yes
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dragon Dance
 - Dragon Claw
 - Outrage
@@ -926,9 +925,9 @@ Level: 58
 Serious Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=44
+~=Location=44
+~=Version=BW
 .Version=21
-~=Generation=5
 - Meteor Mash
 - Earthquake
 - Hyper Beam
@@ -939,9 +938,9 @@ Ability: Clear Body
 Level: 45
 Shiny: Yes
 Adamant Nature
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Earthquake
 - Zen Headbutt
 - Protect
@@ -955,9 +954,9 @@ Shiny: Yes
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Hammer Arm
 - Meteor Mash
 - Earthquake
@@ -970,9 +969,9 @@ Level: 65
 Shiny: Yes
 Impish Nature
 Ball: Master Ball
-=Met_Location=150
+~=Location=150
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Iron Defense
 - Charge Beam
 - Lock-On
@@ -985,9 +984,9 @@ Level: 65
 Shiny: Yes
 Modest Nature
 Ball: Master Ball
-=Met_Location=151
+~=Location=151
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Amnesia
 - Charge Beam
 - Lock-On
@@ -1000,9 +999,9 @@ Level: 65
 Shiny: Yes
 Impish Nature
 Ball: Master Ball
-=Met_Location=152
+~=Location=152
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Amnesia
 - Charge Beam
 - Lock-On
@@ -1015,9 +1014,9 @@ Level: 68
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Psycho Shift
 - Charm
 - Psychic
@@ -1030,9 +1029,9 @@ Level: 68
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Psycho Shift
 - Dragon Dance
 - Psychic
@@ -1045,9 +1044,9 @@ Level: 80
 Bold Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40019
+~=Location=40019
+~=Version=BW
 .Version=21
-~=Generation=5
 - Ice Beam
 - Ancient Power
 - Water Spout
@@ -1060,9 +1059,9 @@ Level: 80
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40019
+~=Location=40019
+~=Version=BW
 .Version=21
-~=Generation=5
 - Solar Beam
 - Earthquake
 - Ancient Power
@@ -1075,8 +1074,8 @@ Level: 45
 Shiny: Yes
 Adamant Nature
 =Met_Location=30001
+~=Version=RS
 .Version=2
-~=Generation=3
 - Counter
 - Seismic Toss
 - Dynamic Punch
@@ -1090,9 +1089,9 @@ Shiny: Yes
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40019
+~=Location=40019
+~=Version=BW
 .Version=21
-~=Generation=5
 - Solar Beam
 - Earthquake
 - Ancient Power
@@ -1105,9 +1104,9 @@ Level: 50
 Adamant Nature
 Ball: Master Ball
 Language: Korean
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=20
-~=Generation=5
 - Rest
 - Air Slash
 - Ancient Power
@@ -1119,9 +1118,9 @@ Ability: Air Lock
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Extreme Speed
 - Hyper Beam
 - Dragon Pulse
@@ -1134,8 +1133,8 @@ Level: 70
 Shiny: Yes
 Adamant Nature
 =Met_Location=30001
+~=Version=RS
 .Version=2
-~=Generation=3
 - Body Slam
 - Mimic
 - Double-Edge
@@ -1148,9 +1147,9 @@ Level: 50
 Careful Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40069
+~=Location=40069
+~=Version=BW
 .Version=21
-~=Generation=5
 - Healing Wish
 - Psychic
 - Swift
@@ -1160,9 +1159,9 @@ Deoxys @ Life Orb
 IVs: 30 Def / 30 SpA
 Ability: Pressure
 Hasty Nature
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Nasty Plot
 - Dark Pulse
 - Recover
@@ -1173,9 +1172,9 @@ Ability: Overgrow
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Wood Hammer
 - Earthquake
 - Outrage
@@ -1186,8 +1185,8 @@ Ability: Blaze
 Level: 1
 Shiny: Yes
 Naive Nature
+~=Version=BW
 .Version=21
-~=Generation=5
 - Thunder Punch
 - Heat Wave
 - Encore
@@ -1198,9 +1197,9 @@ Ability: Blaze
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fire Blast
 - Close Combat
 - U-turn
@@ -1214,9 +1213,9 @@ Shiny: Yes
 Calm Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Stealth Rock
 - Signal Beam
 - Pluck
@@ -1228,9 +1227,9 @@ Ability: Torrent
 Calm Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Hydro Pump
 - Ice Beam
 - Aqua Jet
@@ -1242,9 +1241,9 @@ Level: 15
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Pursuit
 - Take Down
 - Crunch
@@ -1256,9 +1255,9 @@ Level: 15
 Impish Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Metal Sound
 - Take Down
 - Body Slam
@@ -1271,9 +1270,9 @@ Level: 61
 Quiet Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=44
+~=Location=44
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dark Pulse
 - Psychic
 - Silver Wind
@@ -1285,9 +1284,9 @@ Level: 50
 Naughty Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bullet Punch
 - Close Combat
 - Stone Edge
@@ -1298,8 +1297,8 @@ Ability: Dry Skin
 Level: 1
 Shiny: Yes
 Hasty Nature
+~=Version=BW
 .Version=21
-~=Generation=5
 - Astonish
 - Vacuum Wave
 - Work Up
@@ -1311,9 +1310,9 @@ Level: 10
 Naughty Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40016
+~=Location=40016
+~=Version=BW
 .Version=21
-~=Generation=5
 - Uproar
 - Astonish
 - Trick
@@ -1326,8 +1325,7 @@ Level: 20
 Shiny: Yes
 Timid Nature
 =Met_Location=30001
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Mud-Slap
 - Sucker Punch
 - Swift
@@ -1340,9 +1338,9 @@ Level: 65
 Shiny: Yes
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=7
+~=Location=7
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Future Sight
 - Amnesia
 - Extrasensory
@@ -1355,9 +1353,9 @@ Level: 65
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-=Met_Location=56
+~=Location=56
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Future Sight
 - Charm
 - Extrasensory
@@ -1370,9 +1368,9 @@ Level: 65
 Shiny: Yes
 Hasty Nature
 Ball: Master Ball
-=Met_Location=128
+~=Location=128
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Future Sight
 - Nasty Plot
 - Extrasensory
@@ -1384,9 +1382,9 @@ Ability: Pressure
 Shiny: Yes
 Modest Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dragon Pulse
 - Draco Meteor
 - Aura Sphere
@@ -1398,9 +1396,9 @@ Ability: Pressure
 Shiny: Yes
 Modest Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Aura Sphere
 - Spacial Rend
 - Hydro Pump
@@ -1413,9 +1411,9 @@ Level: 68
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-=Met_Location=132
+~=Location=132
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Scary Face
 - Lava Plume
 - Fire Spin
@@ -1427,9 +1425,9 @@ Ability: Telepathy
 Level: 5
 Modest Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Dragon Breath
 - Scary Face
 
@@ -1438,9 +1436,9 @@ Ability: Pressure
 Shiny: Yes
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dragon Pulse
 - Dragon Claw
 - Aura Sphere
@@ -1452,9 +1450,9 @@ Ability: Pressure
 Shiny: Yes
 Quiet Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dragon Pulse
 - Dragon Claw
 - Aura Sphere
@@ -1467,9 +1465,9 @@ Level: 68
 Shiny: Yes
 Bold Nature
 Ball: Master Ball
-=Met_Location=68
+~=Location=68
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Future Sight
 - Slash
 - Moonlight
@@ -1481,9 +1479,9 @@ Ability: Bad Dreams
 Level: 50
 Timid Nature
 Ball: Cherish Ball
-=Met_Location=40069
+~=Location=40069
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dark Void
 - Ominous Wind
 - Feint Attack
@@ -1496,9 +1494,9 @@ Level: 50
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Seed Flare
 - Leech Seed
 - Synthesis
@@ -1509,9 +1507,9 @@ Ability: Victory Star
 Level: 50
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40069
+~=Location=40069
+~=Version=BW
 .Version=21
-~=Generation=5
 - V-create
 - Fusion Flare
 - Fusion Bolt
@@ -1523,9 +1521,9 @@ Ability: Victory Star
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - V-create
 - Blue Flare
 - Bolt Strike
@@ -1536,9 +1534,9 @@ Ability: Victory Star
 Level: 50
 Jolly Nature
 Ball: Cherish Ball
-=Met_Location=40069
+~=Location=40069
+~=Version=BW
 .Version=21
-~=Generation=5
 - V-create
 - Fusion Flare
 - Fusion Bolt
@@ -1549,9 +1547,9 @@ Ability: Victory Star
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - V-create
 - Blue Flare
 - Bolt Strike
@@ -1563,9 +1561,9 @@ Ability: Victory Star
 Level: 15
 Timid Nature
 Ball: Master Ball
-=Met_Location=62
+~=Location=62
+~=Version=BW
 .Version=20
-~=Generation=5
 - Confusion
 - Incinerate
 - Quick Attack
@@ -1577,9 +1575,9 @@ Ability: Victory Star
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - V-create
 - Blue Flare
 - Bolt Strike
@@ -1592,9 +1590,9 @@ Level: 5
 Hardy Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growth
 - Synthesis
 - Energy Ball
@@ -1606,9 +1604,9 @@ Ability: Overgrow
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leaf Storm
 - Substitute
 - Giga Drain
@@ -1621,9 +1619,9 @@ Level: 5
 Shiny: Yes
 Adamant Nature
 =Met_Level=5
-=Met_Location=117
+~=Location=117
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Tackle
 - Tail Whip
 
@@ -1632,9 +1630,9 @@ Ability: Blaze
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Flare Blitz
 - Hammer Arm
 - Wild Charge
@@ -1648,9 +1646,9 @@ Shiny: Yes
 Adamant Nature
 =Met_Level=5
 Language: Japanese
-=Met_Location=4
+~=Location=4
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Tail Whip
 
@@ -1659,9 +1657,9 @@ Ability: Torrent
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Hydro Pump
 - Ice Beam
 - Megahorn
@@ -1673,9 +1671,9 @@ Level: 30
 Serious Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40016
+~=Location=40016
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bullet Seed
 - Solar Beam
 - Rock Tomb
@@ -1688,8 +1686,8 @@ Level: 1
 Shiny: Yes
 Brave Nature
 =FatefulEncounter=True
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bullet Seed
 - Bite
 - Solar Beam
@@ -1703,9 +1701,9 @@ Shiny: Yes
 Timid Nature
 =Met_Level=10
 Language: Japanese
-=Met_Location=32
+~=Location=32
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scratch
 - Leer
 - Lick
@@ -1718,8 +1716,8 @@ Level: 1
 Shiny: Yes
 Hardy Nature
 =FatefulEncounter=True
+~=Version=BW
 .Version=21
-~=Generation=5
 - Gust
 - Quick Attack
 - Air Cutter
@@ -1734,9 +1732,9 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 Language: Japanese
-=Met_Location=16
+~=Location=16
+~=Version=BW
 .Version=21
-~=Generation=5
 - Gust
 - Air Cutter
 - Leer
@@ -1749,9 +1747,9 @@ Level: 30
 Calm Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40017
+~=Location=40017
+~=Version=BW
 .Version=21
-~=Generation=5
 - Heal Pulse
 - Helping Hand
 - Refresh
@@ -1763,8 +1761,8 @@ Ability: Prankster
 Level: 1
 Shiny: Yes
 Timid Nature
+~=Version=BW
 .Version=21
-~=Generation=5
 - Encore
 - Worry Seed
 - Memento
@@ -1777,9 +1775,9 @@ Level: 50
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Swagger
 - Giga Drain
 - Beat Up
@@ -1792,9 +1790,9 @@ Level: 42
 Shiny: Yes
 Gentle Nature
 =Met_Level=42
-=Met_Location=141
+~=Location=141
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Stealth Rock
 - Rock Slide
 - Slash
@@ -1806,9 +1804,9 @@ Level: 1
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leer
 - Low Kick
 - Headbutt
@@ -1819,9 +1817,9 @@ Ability: Moxie
 Level: 50
 Brave Nature
 Ball: Cherish Ball
-=Met_Location=40037
+~=Location=40037
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fire Punch
 - Payback
 - Drain Punch
@@ -1833,9 +1831,9 @@ Level: 15
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bite
 - Protect
 - Aqua Jet
@@ -1847,9 +1845,9 @@ Level: 15
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Head Smash
 - Wing Attack
 - Double Team
@@ -1861,9 +1859,9 @@ Ability: Illusion
 Level: 50
 Quirky Nature
 Ball: Cherish Ball
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Agility
 - Embargo
 - Punishment
@@ -1875,9 +1873,9 @@ Ability: Shadow Tag
 Level: 32
 Modest Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Psyshock
 - Flatter
 - Future Sight
@@ -1890,9 +1888,9 @@ Level: 30
 Shiny: Yes
 Jolly Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=21
-~=Generation=5
 - Feint Attack
 - Take Down
 - Jump Kick
@@ -1903,9 +1901,9 @@ Ability: Swarm
 Level: 50
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - X-Scissor
 - Flail
 - Megahorn
@@ -1918,9 +1916,9 @@ Level: 30
 Shiny: Yes
 Calm Nature
 Ball: Master Ball
-=Met_Location=23
+~=Location=23
+~=Version=BW
 .Version=21
-~=Generation=5
 - Ingrain
 - Feint Attack
 - Sweet Scent
@@ -1933,9 +1931,9 @@ Level: 50
 Modest Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Heat Wave
 - Shadow Ball
 - Energy Ball
@@ -1947,9 +1945,9 @@ Level: 10
 Jolly Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dragon Rage
 - Return
 - Endure
@@ -1961,9 +1959,9 @@ Level: 30
 Naive Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40016
+~=Location=40016
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dragon Rage
 - Scratch
 - Outrage
@@ -1976,8 +1974,8 @@ Level: 1
 Shiny: Yes
 Naive Nature
 =FatefulEncounter=True
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scratch
 - Dragon Rage
 
@@ -1988,9 +1986,9 @@ Level: 59
 Naive Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=44
+~=Location=44
+~=Version=BW
 .Version=21
-~=Generation=5
 - Earthquake
 - Dual Chop
 - X-Scissor
@@ -2002,9 +2000,9 @@ Level: 15
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Powder Snow
 - Growl
 - Bide
@@ -2016,9 +2014,9 @@ Ability: Hydration
 Level: 50
 Timid Nature
 Ball: Cherish Ball
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Encore
 - Giga Drain
 - Body Slam
@@ -2031,9 +2029,9 @@ Level: 47
 Shiny: Yes
 Bold Nature
 Ball: Master Ball
-=Met_Location=57
+~=Location=57
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Endure
 - Bounce
 - Muddy Water
@@ -2046,8 +2044,8 @@ Shiny: Yes
 Careful Nature
 =FatefulEncounter=True
 Language: Japanese
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leer
 - Scratch
 
@@ -2059,8 +2057,8 @@ Shiny: Yes
 Timid Nature
 =FatefulEncounter=True
 Language: Japanese
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Dragon Rage
 
@@ -2072,9 +2070,9 @@ Shiny: Yes
 Modest Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40005
+~=Location=40005
+~=Version=BW
 .Version=21
-~=Generation=5
 - Hyper Voice
 - Dragon Breath
 - Flamethrower
@@ -2087,9 +2085,9 @@ Level: 77
 Calm Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=44
+~=Location=44
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bug Buzz
 - Overheat
 - Hyper Beam
@@ -2102,9 +2100,9 @@ Shiny: Yes
 Timid Nature
 Ball: Cherish Ball
 Language: Korean
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fiery Dance
 - Quiver Dance
 - Bug Buzz
@@ -2117,9 +2115,9 @@ Level: 35
 Shiny: Yes
 Timid Nature
 Ball: Master Ball
-=Met_Location=35
+~=Location=35
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - String Shot
 - Leech Life
 - Gust
@@ -2132,9 +2130,9 @@ Shiny: Yes
 Jolly Nature
 Ball: Master Ball
 Language: Japanese
-=Met_Location=74
+~=Location=74
+~=Version=BW
 .Version=21
-~=Generation=5
 - Helping Hand
 - Retaliate
 - Iron Head
@@ -2147,9 +2145,9 @@ Level: 45
 Shiny: Yes
 Adamant Nature
 Ball: Master Ball
-=Met_Location=127
+~=Location=127
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Helping Hand
 - Retaliate
 - Rock Slide
@@ -2162,9 +2160,9 @@ Level: 42
 Shiny: Yes
 Jolly Nature
 Ball: Master Ball
-=Met_Location=73
+~=Location=73
+~=Version=BW
 .Version=21
-~=Generation=5
 - Helping Hand
 - Retaliate
 - Rock Slide
@@ -2177,9 +2175,9 @@ Level: 42
 Shiny: Yes
 Jolly Nature
 Ball: Master Ball
-=Met_Location=55
+~=Location=55
+~=Version=BW
 .Version=21
-~=Generation=5
 - Helping Hand
 - Retaliate
 - Giga Drain
@@ -2190,9 +2188,9 @@ Ability: Defiant
 Level: 5
 Naive Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Uproar
 - Astonish
 - Gust
@@ -2205,9 +2203,9 @@ Shiny: Yes
 Hasty Nature
 Ball: Master Ball
 Language: Japanese
-=Met_Location=25
+~=Location=25
+~=Version=BW
 .Version=21
-~=Generation=5
 - Revenge
 - Air Cutter
 - Extrasensory
@@ -2220,9 +2218,9 @@ Level: 70
 Hasty Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Thunder
 - Hammer Arm
 - Focus Blast
@@ -2234,9 +2232,9 @@ Ability: Turboblaze
 Level: 70
 Bashful Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Extrasensory
 - Fusion Flare
 - Dragon Pulse
@@ -2247,9 +2245,9 @@ IVs: 0 Atk
 Ability: Turboblaze
 Modest Nature
 Ball: Cherish Ball
-=Met_Location=40069
+~=Location=40069
+~=Version=BW
 .Version=20
-~=Generation=5
 - Blue Flare
 - Fusion Flare
 - Mist
@@ -2263,9 +2261,9 @@ Level: 50
 Modest Nature
 Ball: Master Ball
 Language: Japanese
-=Met_Location=45
+~=Location=45
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dragon Breath
 - Slash
 - Extrasensory
@@ -2277,9 +2275,9 @@ Ability: Teravolt
 Level: 70
 Adamant Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Zen Headbutt
 - Fusion Bolt
 - Dragon Claw
@@ -2289,9 +2287,9 @@ Zekrom @ Dragon Gem
 Ability: Teravolt
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40069
+~=Location=40069
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bolt Strike
 - Fusion Bolt
 - Haze
@@ -2303,9 +2301,9 @@ Ability: Sand Force
 Level: 70
 Hardy Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=BW
 .Version=21
-~=Generation=5
 - Rock Slide
 - Earthquake
 - Sandstorm
@@ -2317,9 +2315,9 @@ Ability: Sheer Force
 Level: 10
 Timid Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Block
 - Mud Shot
 - Rock Tomb
@@ -2333,9 +2331,9 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 Language: Japanese
-=Met_Location=70
+~=Location=70
+~=Version=BW
 .Version=21
-~=Generation=5
 - Rock Slide
 - Earthquake
 - Sandstorm
@@ -2347,9 +2345,9 @@ Ability: Pressure
 Level: 70
 Bashful Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Scary Face
 - Glaciate
 - Dragon Pulse
@@ -2362,9 +2360,9 @@ Level: 75
 Shiny: Yes
 Jolly Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=BW
 .Version=21
-~=Generation=5
 - Glaciate
 - Dragon Pulse
 - Imprison
@@ -2376,9 +2374,9 @@ Ability: Justified
 Level: 15
 Timid Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Aqua Jet
 - Leer
 - Double Kick
@@ -2390,9 +2388,9 @@ Ability: Justified
 Level: 50
 Timid Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Sacred Sword
 - Swords Dance
 - Hydro Pump
@@ -2405,9 +2403,9 @@ Level: 15
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40006
+~=Location=40006
+~=Version=BW
 .Version=21
-~=Generation=5
 - Aqua Jet
 - Leer
 - Double Kick
@@ -2418,9 +2416,9 @@ Ability: Serene Grace
 Level: 50
 Hasty Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Round
 - Teeter Dance
 - Psychic
@@ -2433,9 +2431,9 @@ Level: 15
 Modest Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40006
+~=Location=40006
+~=Version=BW
 .Version=21
-~=Generation=5
 - Round
 - Quick Attack
 - Confusion
@@ -2445,9 +2443,9 @@ Ability: Serene Grace
 Level: 50
 Timid Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Round
 - Teeter Dance
 - Psychic
@@ -2460,9 +2458,9 @@ Level: 50
 Timid Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40015
+~=Location=40015
+~=Version=BW
 .Version=21
-~=Generation=5
 - Techno Blast
 - Magnet Bomb
 - Solar Beam
@@ -2474,9 +2472,9 @@ Shiny: Yes
 Hasty Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40007
+~=Location=40007
+~=Version=BW
 .Version=21
-~=Generation=5
 - Extreme Speed
 - Techno Blast
 - Blaze Kick

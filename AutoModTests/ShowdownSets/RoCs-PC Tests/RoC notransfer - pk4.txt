@@ -3,9 +3,9 @@ IVs: 26 HP / 26 Atk / 20 Def / 15 SpA / 18 SpD / 17 Spe
 Ability: Guts
 Level: 7
 Adamant Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Tackle
 - Tail Whip
 - Quick Attack
@@ -16,8 +16,8 @@ IVs: 6 HP / 20 Atk / 16 Def / 23 SpA / 10 SpD / 18 Spe
 Ability: Static
 Level: 10
 Hardy Nature
+~=Version=DP
 .Version=10
-~=Generation=4
 - Volt Tackle
 - Surf
 - Tail Whip
@@ -28,9 +28,9 @@ IVs: 11 HP / 17 Atk / 9 Def / 23 SpA / 29 SpD / 17 Spe
 Ability: Static
 Level: 15
 Naive Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Fly
 - Thunder
 - Growl
@@ -41,9 +41,9 @@ IVs: 15 HP / 12 Atk / 14 Def / 3 SpA / 21 SpD / 8 Spe
 Ability: Cute Charm
 Level: 8
 Brave Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Pound
 - Encore
 - Sing
@@ -54,9 +54,9 @@ IVs: 15 HP / 2 Atk / 30 Def / 2 SpA / 26 SpD / 5 Spe
 Ability: Cute Charm
 Level: 10
 Brave Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Sing
 - Defense Curl
 - Pound
@@ -66,9 +66,9 @@ IVs: 10 HP / 28 Atk / 1 Def / 10 SpA / 1 SpD / 7 Spe
 Ability: Synchronize
 Level: 15
 Hardy Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Teleport
 
 Machoke (M)
@@ -77,8 +77,7 @@ Ability: Guts
 Level: 48
 Sassy Nature
 Ball: Master Ball
-.Version=12
-~=Generation=4
+~=Version=Pt
 - Submission
 - Wake-Up Slap
 - Cross Chop
@@ -89,9 +88,9 @@ IVs: 9 HP / 14 Atk / 5 Def / 22 SpA / 22 SpD / 5 Spe
 Ability: Chlorophyll
 Level: 8
 Bashful Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Vine Whip
 - Growth
 
@@ -100,9 +99,9 @@ IVs: 0 HP / 14 Atk / 17 Def / 26 SpA / 28 SpD / 5 Spe
 Ability: Chlorophyll
 Level: 13
 Bashful Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Vine Whip
 - Growth
 - Wrap
@@ -113,9 +112,9 @@ IVs: 13 HP / 8 Atk / 2 Def / 6 SpA / 23 SpD / 8 Spe
 Ability: Run Away
 Level: 8
 Calm Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Peck
 - Growl
 - Quick Attack
@@ -125,9 +124,9 @@ IVs: 16 HP / 8 Atk / 30 Def / 16 SpA / 16 SpD / 0 Spe
 Ability: Hyper Cutter
 Level: 12
 Calm Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Vise Grip
 - Leer
 - Harden
@@ -138,9 +137,9 @@ IVs: 27 HP / 9 Atk / 25 Def / 18 SpA / 26 SpD / 15 Spe
 Ability: Swift Swim
 Level: 9
 Brave Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Peck
 - Tail Whip
 - Water Sport
@@ -151,9 +150,9 @@ IVs: 0 HP / 30 Atk / 11 Def / 10 SpA / 5 SpD / 5 Spe
 Ability: Illuminate
 Level: 18
 Hardy Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Water Gun
 - Rapid Spin
 - Recover
@@ -164,9 +163,9 @@ IVs: 30 HP / 29 Atk / 15 Def / 29 SpA / 2 SpD / 27 Spe
 Ability: Swift Swim
 Level: 5
 Bold Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Splash
 - Bounce
 
@@ -176,8 +175,8 @@ EVs: 252 HP / 252 Atk / 6 Spe
 Ability: Overgrow
 Naughty Nature
 =Met_Level=5
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Cut
 - Flash
 - Rock Smash
@@ -188,9 +187,9 @@ IVs: 9 HP / 14 Atk / 27 Def / 9 SpA / 23 SpD / 20 Spe
 Ability: Keen Eye
 Level: 15
 Bold Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Foresight
 - Defense Curl
 - Quick Attack
@@ -201,9 +200,9 @@ IVs: 16 HP / 24 Atk / 26 Def / 23 SpA / 19 SpD / 23 Spe
 Ability: Keen Eye
 Level: 6
 Adamant Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Tackle
 - Growl
 - Foresight
@@ -215,8 +214,8 @@ Ability: Static
 Level: 30
 Naughty Nature
 =Met_Level=30
+~=Version=HGSS
 .Version=7
-~=Generation=4
 - Helping Hand
 - Volt Tackle
 - Swagger
@@ -227,9 +226,9 @@ IVs: 26 HP / 23 Atk / 6 Def / 8 SpA / 17 SpD / 20 Spe
 Ability: Chlorophyll
 Level: 6
 Bashful Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Absorb
 - Growth
 - Mega Drain
@@ -239,9 +238,9 @@ IVs: 10 HP / 20 Atk / 15 Def / 2 SpA / 28 SpD / 7 Spe
 Ability: Insomnia
 Level: 11
 Hardy Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Peck
 - Astonish
 - Pursuit
@@ -252,9 +251,9 @@ IVs: 29 HP / 0 Atk / 4 Def / 14 SpA / 29 SpD / 30 Spe
 Ability: Magma Armor
 Level: 31
 Calm Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Ember
 - Recover
 - Ancient Power
@@ -265,9 +264,9 @@ IVs: 14 HP / 20 Def / 4 SpA / 19 SpD / 21 Spe
 Ability: Oblivious
 Level: 12
 Docile Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Pound
 - Lick
 - Sweet Kiss
@@ -278,9 +277,9 @@ IVs: 21 HP / 5 Atk / 2 Def / 3 SpA / 2 SpD / 15 Spe
 Ability: Pickup
 Level: 17
 Brave Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Tail Whip
 - Headbutt
 - Sand Attack
@@ -291,9 +290,9 @@ IVs: 26 HP / 29 Atk / 24 Def / 13 SpA / 25 SpD / 23 Spe
 Ability: Cute Charm
 Level: 30
 Impish Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Attract
 - Assist
 - Charm
@@ -304,9 +303,9 @@ IVs: 22 HP / 22 Atk / 2 Def / 5 SpA / 5 SpD / 3 Spe
 Ability: Water Veil
 Level: 31
 Bashful Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Water Pulse
 - Mist
 - Rest
@@ -317,9 +316,9 @@ IVs: 21 HP / 23 Atk / 17 Def / 7 SpA / 15 SpD / 16 Spe
 Ability: Color Change
 Level: 30
 Calm Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Feint
 - Psybeam
 - Shadow Sneak
@@ -330,9 +329,9 @@ IVs: 23 HP / 10 Atk / 17 SpA / 13 SpD / 27 Spe
 Ability: Clear Body
 Level: 5
 Adamant Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Take Down
 - Zen Headbutt
 - Iron Head
@@ -345,8 +344,8 @@ Ability: Unaware
 Level: 40
 Hardy Nature
 Ball: Master Ball
+~=Version=DP
 .Version=10
-~=Generation=4
 - Cut
 - Strength
 - Rock Smash
@@ -357,9 +356,9 @@ IVs: 13 HP / 2 Atk / 6 Def / 18 SpA / 4 SpD / 14 Spe
 Ability: Rivalry
 Level: 33
 Brave Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Roar
 - Swagger
 - Thunder Fang
@@ -370,9 +369,9 @@ IVs: 15 HP / 29 Atk / 4 SpA / 20 SpD / 23 Spe
 Ability: Natural Cure
 Level: 30
 Brave Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Water Sport
 - Stun Spore
 - Mega Drain
@@ -383,9 +382,9 @@ IVs: 4 HP / 30 Atk / 30 Def / 24 SpA / 18 SpD / 19 Spe
 Ability: Honey Gather
 Level: 30
 Bold Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Sweet Scent
 - Gust
 - Bug Bite
@@ -395,9 +394,9 @@ IVs: 18 HP / 19 Atk / 25 Def / 9 SpA / 6 SpD / 29 Spe
 Ability: Heatproof
 Level: 5
 Adamant Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Tackle
 - Confusion
 - Trick Room
@@ -407,10 +406,36 @@ IVs: 25 HP / 22 Atk / 12 Def / 7 SpA / 1 SpD / 10 Spe
 Ability: Pickup
 Level: 5
 Adamant Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Metronome
 - Tackle
 - Defense Curl
 - Self-Destruct
+
+Gengar (F)
+IVs: 13 HP / 27 Atk / 23 Def / 15 SpA / 24 SpD / 2 Spe
+Ability: Levitate
+Level: 21
+Brave Nature
+Ball: Master Ball
+~=Version=FRLG
+.Version=4
+- Spite
+- Curse
+- Night Shade
+- Confuse Ray
+
+Gengar (F)
+IVs: 30 HP / 10 Atk / 26 Def / 13 SpA / 2 SpD / 25 Spe
+Ability: Levitate
+Level: 25
+Lax Nature
+Ball: Master Ball
+~=Version=DP
+.Version=11
+- Night Shade
+- Shadow Punch
+- Sucker Punch
+- Curse

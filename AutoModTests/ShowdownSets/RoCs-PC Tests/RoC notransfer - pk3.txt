@@ -1,0 +1,12 @@
+Gengar (F)
+IVs: 13 HP / 27 Atk / 23 Def / 15 SpA / 24 SpD / 2 Spe
+Ability: Levitate
+Level: 21
+Brave Nature
+Ball: Master Ball
+~=Version=FRLG
+.Version=4
+- Spite
+- Curse
+- Night Shade
+- Confuse Ray

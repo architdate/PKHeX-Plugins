@@ -4,9 +4,9 @@ Ability: Static
 Tera Type: Dark
 Level: 35
 Quirky Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Thunderbolt
 - Nuzzle
 - Iron Tail
@@ -19,9 +19,9 @@ Tera Type: Electric
 Level: 56
 Rash Nature
 Ball: Master Ball
-=Met_Location=109
+~=Location=109
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tail Whip
 - Double Team
 - Light Screen
@@ -33,9 +33,9 @@ Ability: Competitive
 Tera Type: Water
 Level: 14
 Lonely Nature
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Water Pulse
 - Sing
 - Disarming Voice
@@ -48,9 +48,9 @@ Tera Type: Fairy
 Level: 50
 Timid Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Double-Edge
 - Body Slam
 - Charm
@@ -63,9 +63,9 @@ Tera Type: Poison
 Level: 21
 Naughty Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Supersonic
 - Confusion
 - Poison Powder
@@ -78,9 +78,9 @@ Tera Type: Poison
 Level: 31
 Impish Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psybeam
 - Stun Spore
 - Bug Buzz
@@ -93,9 +93,9 @@ Tera Type: Ground
 Level: 24
 Gentle Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mud-Slap
 - Bulldoze
 - Sucker Punch
@@ -108,9 +108,9 @@ Tera Type: Ground
 Level: 26
 Docile Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mud-Slap
 - Bulldoze
 - Sucker Punch
@@ -123,9 +123,9 @@ Tera Type: Normal
 Level: 23
 Gentle Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Scratch
 - Pay Day
 - Bite
@@ -138,9 +138,9 @@ Tera Type: Steel
 Level: 5
 Calm Nature
 =Met_Level=5
-=Met_Location=130
+~=Location=130
+~=Version=SV
 .Version=50
-~=Generation=9
 - Growl
 - Fake Out
 - Hone Claws
@@ -152,9 +152,9 @@ Tera Type: Normal
 Level: 30
 Timid Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pay Day
 - Bite
 - Taunt
@@ -167,9 +167,9 @@ Tera Type: Water
 Level: 7
 Mild Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Scratch
 - Tail Whip
 - Water Gun
@@ -182,9 +182,9 @@ Tera Type: Water
 Level: 37
 Careful Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aqua Tail
 - Soak
 - Psych Up
@@ -197,9 +197,9 @@ Tera Type: Fighting
 Level: 16
 Rash Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Covet
 - Fury Swipes
 - Low Kick
@@ -212,9 +212,9 @@ Tera Type: Fighting
 Level: 31
 Brave Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Swagger
 - Cross Chop
 - Assurance
@@ -226,9 +226,9 @@ Ability: Intimidate
 Tera Type: Fire
 Level: 11
 Quiet Nature
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Leer
 - Ember
 - Howl
@@ -241,9 +241,9 @@ Tera Type: Fire
 Level: 23
 Naughty Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bite
 - Flame Wheel
 - Extreme Speed
@@ -256,9 +256,9 @@ Tera Type: Water
 Level: 23
 Impish Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Confusion
 - Disable
 - Water Pulse
@@ -271,9 +271,9 @@ Tera Type: Water
 Level: 50
 Impish Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slack Off
 - Psychic
 - Psych Up
@@ -286,9 +286,9 @@ Tera Type: Electric
 Level: 22
 Brave Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Thunder Wave
 - Electro Ball
 - Gyro Ball
@@ -300,9 +300,9 @@ Ability: Sturdy
 Tera Type: Steel
 Level: 34
 Quiet Nature
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Spark
 - Screech
 - Magnet Rise
@@ -315,9 +315,9 @@ Tera Type: Poison
 Level: 19
 Brave Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mud-Slap
 - Disable
 - Sludge
@@ -330,9 +330,9 @@ Tera Type: Poison
 Level: 38
 Hasty Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sludge Bomb
 - Mud Shot
 - Sludge Wave
@@ -344,9 +344,9 @@ Ability: Skill Link
 Tera Type: Ghost
 Level: 12
 Calm Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Water Gun
 - Ice Shard
 - Supersonic
@@ -359,9 +359,9 @@ Tera Type: Ice
 Level: 46
 Hasty Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Supersonic
 - Leer
 - Tackle
@@ -374,9 +374,9 @@ Tera Type: Poison
 Level: 23
 Serious Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mean Look
 - Payback
 - Spite
@@ -388,9 +388,9 @@ Ability: Levitate
 Tera Type: Poison
 Level: 30
 Mild Nature
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Spite
 - Curse
 - Hex
@@ -403,9 +403,9 @@ Tera Type: Poison
 Level: 50
 Lax Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Night Shade
 - Sucker Punch
 - Dark Pulse
@@ -418,9 +418,9 @@ Tera Type: Psychic
 Level: 7
 Serious Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pound
 - Hypnosis
 - Disable
@@ -432,9 +432,9 @@ Tera Type: Psychic
 Level: 39
 Naughty Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psybeam
 - Psych Up
 - Zen Headbutt
@@ -447,9 +447,9 @@ Tera Type: Electric
 Level: 26
 Careful Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Charge Beam
 - Swift
 - Electro Ball
@@ -461,9 +461,9 @@ Ability: Mold Breaker
 Tera Type: Fairy
 Level: 20
 Adamant Nature
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Metal Claw
 - Covet
 - Rock Smash
@@ -476,9 +476,9 @@ Tera Type: Fairy
 Level: 24
 Adamant Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rock Smash
 - Draining Kiss
 - Sweet Kiss
@@ -490,9 +490,9 @@ Ability: Own Tempo
 Tera Type: Fire
 Level: 75
 Docile Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Gigaton Hammer
 - Play Rough
 - Brutal Swing
@@ -504,9 +504,9 @@ Ability: Flash Fire
 Tera Type: Fire
 Level: 13
 Careful Nature
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Ember
 - Astonish
 - Clear Smog
@@ -518,9 +518,9 @@ Ability: Weak Armor
 Tera Type: Normal
 Level: 75
 Naughty Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Armor Cannon
 - Psychic
 - Night Shade
@@ -532,9 +532,9 @@ Ability: Flash Fire
 Tera Type: Fire
 Level: 13
 Gentle Nature
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=51
-~=Generation=9
 - Ember
 - Shadow Claw
 - Clear Smog
@@ -546,9 +546,9 @@ Ability: Mycelium Might
 Tera Type: Grass
 Level: 19
 Brave Nature
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Stun Spore
 - Supersonic
 - Tackle
@@ -561,9 +561,9 @@ Tera Type: Grass
 Level: 54
 Rash Nature
 Ball: Master Ball
-=Met_Location=109
+~=Location=109
+~=Version=SV
 .Version=50
-~=Generation=9
 - Spore
 - Growth
 - Giga Drain
@@ -577,9 +577,9 @@ Tera Type: Dark
 Level: 56
 Serious Nature
 Ball: Master Ball
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slash
 - Kowtow Cleave
 - Iron Defense
@@ -592,9 +592,9 @@ Tera Type: Ground
 Level: 47
 Calm Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Poison Jab
 - Sludge Wave
 - Megahorn
@@ -607,9 +607,9 @@ Tera Type: Electric
 Level: 30
 Quiet Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Charge Beam
 - Swift
 - Electro Ball
@@ -622,9 +622,9 @@ Ability: Inner Focus
 Tera Type: Poison
 Level: 52
 Naughty Nature
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rage Fist
 - Poison Jab
 - Brick Break
@@ -637,9 +637,9 @@ Tera Type: Normal
 Level: 41
 Modest Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Heal Pulse
 - Helping Hand
 - Light Screen
@@ -652,9 +652,9 @@ Tera Type: Bug
 Level: 52
 Adamant Nature
 Ball: Master Ball
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Agility
 - Air Slash
 - X-Scissor
@@ -666,9 +666,9 @@ Ability: Anger Point
 Tera Type: Fighting
 Level: 22
 Modest Nature
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Work Up
 - Double Kick
 - Assurance
@@ -681,9 +681,9 @@ Tera Type: Fighting
 Level: 25
 Lonely Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Double Kick
 - Flame Charge
 - Headbutt
@@ -696,9 +696,9 @@ Tera Type: Fighting
 Level: 25
 Sassy Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=51
-~=Generation=9
 - Double Kick
 - Aqua Jet
 - Headbutt
@@ -711,9 +711,9 @@ Tera Type: Water
 Level: 4
 Mild Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Splash
 
 Gyarados (M)
@@ -722,9 +722,9 @@ Ability: Intimidate
 Tera Type: Water
 Level: 51
 Lax Nature
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Dragon Dance
 - Hydro Pump
 - Hurricane
@@ -737,9 +737,9 @@ Tera Type: Normal
 Level: 28
 Quirky Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Transform
 
 Eevee (M)
@@ -749,9 +749,9 @@ Tera Type: Normal
 Level: 28
 Quiet Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Quick Attack
 - Baby-Doll Eyes
 - Swift
@@ -764,9 +764,9 @@ Tera Type: Water
 Level: 46
 Impish Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aurora Beam
 - Aqua Ring
 - Muddy Water
@@ -778,9 +778,9 @@ Ability: Volt Absorb
 Tera Type: Electric
 Level: 50
 Modest Nature
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Thunderbolt
 - Yawn
 - Fake Tears
@@ -793,9 +793,9 @@ Tera Type: Fire
 Level: 40
 Quiet Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bite
 - Fire Fang
 - Fire Spin
@@ -808,9 +808,9 @@ Tera Type: Dragon
 Level: 52
 Timid Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Dragon Rush
 - Safeguard
 - Rain Dance
@@ -823,9 +823,9 @@ Tera Type: Dragon
 Level: 53
 Rash Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aqua Tail
 - Dragon Rush
 - Safeguard
@@ -838,9 +838,9 @@ Tera Type: Dragon
 Level: 55
 Quiet Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aqua Tail
 - Dragon Rush
 - Hurricane
@@ -853,9 +853,9 @@ Tera Type: Electric
 Level: 7
 Gentle Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tail Whip
 - Thunder Shock
 - Play Nice
@@ -866,9 +866,9 @@ Ability: Competitive
 Tera Type: Normal
 Level: 6
 Impish Nature
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pound
 - Sing
 - Copycat
@@ -881,9 +881,9 @@ Tera Type: Electric
 Level: 9
 Modest Nature
 Ball: Master Ball
-=Met_Location=12
+~=Location=12
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Growl
 - Thunder Wave
@@ -896,9 +896,9 @@ Tera Type: Electric
 Level: 39
 Lax Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Electro Ball
 - Confuse Ray
 - Power Gem
@@ -911,9 +911,9 @@ Tera Type: Electric
 Level: 42
 Impish Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Electro Ball
 - Confuse Ray
 - Power Gem
@@ -926,9 +926,9 @@ Tera Type: Water
 Level: 21
 Mild Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slam
 - Bounce
 - Aqua Tail
@@ -940,9 +940,9 @@ Ability: Thick Fat
 Tera Type: Fairy
 Level: 55
 Quiet Nature
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Play Rough
 - Aqua Jet
 - Liquidation
@@ -955,9 +955,9 @@ Tera Type: Rock
 Level: 30
 Naive Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mimic
 - Rock Tomb
 - Tearful Look
@@ -971,9 +971,9 @@ Tera Type: Grass
 Level: 7
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=SV
 .Version=50
-~=Generation=9
 - Splash
 - Tackle
 - Tail Whip
@@ -986,9 +986,9 @@ Tera Type: Flying
 Level: 20
 Calm Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Stun Spore
 - Sleep Powder
 - Bullet Seed
@@ -1001,9 +1001,9 @@ Tera Type: Grass
 Level: 46
 Calm Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Acrobatics
 - Cotton Spore
 - U-turn
@@ -1015,9 +1015,9 @@ Ability: Solar Power
 Tera Type: Grass
 Level: 5
 Modest Nature
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Growth
 
@@ -1028,9 +1028,9 @@ Tera Type: Grass
 Level: 46
 Quiet Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Solar Beam
 - Double-Edge
 - Sunny Day
@@ -1045,8 +1045,8 @@ Relaxed Nature
 Language: English
 =OT_Name=Sue
 =Met_Location=30001
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mud Shot
 - Mist
 - Haze
@@ -1059,9 +1059,9 @@ Tera Type: Ground
 Level: 6
 Quirky Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tail Whip
 - Mud Shot
 - Tackle
@@ -1075,8 +1075,8 @@ Relaxed Nature
 Language: English
 =OT_Name=Sue
 =Met_Location=30001
+~=Version=SV
 .Version=51
-~=Generation=9
 - Mud Shot
 - Mist
 - Haze
@@ -1088,9 +1088,9 @@ Ability: Synchronize
 Tera Type: Psychic
 Level: 50
 Brave Nature
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psychic
 - Calm Mind
 - Shadow Ball
@@ -1103,9 +1103,9 @@ Tera Type: Dark
 Level: 40
 Timid Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=SV
 .Version=50
-~=Generation=9
 - Assurance
 - Moonlight
 - Guard Swap
@@ -1118,9 +1118,9 @@ Tera Type: Flying
 Level: 15
 Calm Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Gust
 - Haze
@@ -1132,9 +1132,9 @@ Ability: Own Tempo
 Tera Type: Fire
 Level: 75
 Calm Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psychic
 - Surf
 - Yawn
@@ -1147,9 +1147,9 @@ Tera Type: Ghost
 Level: 54
 Bold Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=51
-~=Generation=9
 - Payback
 - Shadow Ball
 - Perish Song
@@ -1162,9 +1162,9 @@ Tera Type: Psychic
 Level: 26
 Naughty Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Assurance
 - Stomp
 - Psybeam
@@ -1176,9 +1176,9 @@ Ability: Sturdy
 Tera Type: Bug
 Level: 20
 Naughty Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bug Bite
 - Take Down
 - Rollout
@@ -1191,9 +1191,9 @@ Tera Type: Bug
 Level: 54
 Lax Nature
 Ball: Master Ball
-=Met_Location=109
+~=Location=109
+~=Version=SV
 .Version=50
-~=Generation=9
 - Explosion
 - Iron Defense
 - Gyro Ball
@@ -1206,9 +1206,9 @@ Tera Type: Normal
 Level: 21
 Sassy Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rollout
 - Glare
 - Screech
@@ -1221,9 +1221,9 @@ Tera Type: Poison
 Level: 16
 Sassy Nature
 Ball: Master Ball
-=Met_Location=56
+~=Location=56
+~=Version=SV
 .Version=50
-~=Generation=9
 - Harden
 - Water Gun
 - Fell Stinger
@@ -1235,9 +1235,9 @@ Ability: Light Metal
 Tera Type: Flying
 Level: 75
 Calm Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Iron Head
 - X-Scissor
 - Bullet Punch
@@ -1249,9 +1249,9 @@ Ability: Guts
 Tera Type: Fighting
 Level: 55
 Impish Nature
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Throat Chop
 - Thrash
 - Swords Dance
@@ -1263,9 +1263,9 @@ Ability: Keen Eye
 Tera Type: Dark
 Level: 36
 Serious Nature
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Metal Claw
 - Icy Wind
 - Fury Swipes
@@ -1278,9 +1278,9 @@ Tera Type: Normal
 Level: 51
 Jolly Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Charm
 - Rest
 - Snore
@@ -1292,9 +1292,9 @@ Ability: Guts
 Tera Type: Normal
 Level: 35
 Quirky Nature
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slash
 - Play Nice
 - Play Rough
@@ -1307,9 +1307,9 @@ Tera Type: Ice
 Level: 38
 Rash Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Present
 - Drill Peck
 
@@ -1319,9 +1319,9 @@ Ability: Early Bird
 Tera Type: Normal
 Level: 20
 Relaxed Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bite
 - Ember
 - Beat Up
@@ -1334,9 +1334,9 @@ Tera Type: Fire
 Level: 51
 Adamant Nature
 Ball: Master Ball
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Torment
 - Comeuppance
 - Foul Play
@@ -1349,9 +1349,9 @@ Tera Type: Ground
 Level: 16
 Modest Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Defense Curl
 - Flail
 - Rollout
@@ -1364,9 +1364,9 @@ Tera Type: Ground
 Level: 26
 Sassy Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rollout
 - Assurance
 - Knock Off
@@ -1378,9 +1378,9 @@ Ability: Frisk
 Tera Type: Dark
 Level: 35
 Impish Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Stomp
 - Psyshock
 - Bite
@@ -1393,9 +1393,9 @@ Tera Type: Normal
 Level: 45
 Sassy Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Helping Hand
 - Light Screen
 - Double-Edge
@@ -1408,9 +1408,9 @@ Tera Type: Rock
 Level: 24
 Hardy Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rock Slide
 - Stomping Tantrum
 - Screech
@@ -1423,9 +1423,9 @@ Tera Type: Rock
 Level: 43
 Gentle Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=SV
 .Version=50
-~=Generation=9
 - Crunch
 - Earthquake
 - Stone Edge
@@ -1437,9 +1437,9 @@ Ability: Sand Stream
 Tera Type: Rock
 Level: 55
 Lonely Nature
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Crunch
 - Earthquake
 - Stone Edge
@@ -1452,9 +1452,9 @@ Tera Type: Flying
 Level: 4
 Jolly Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Growl
 - Water Gun
 
@@ -1465,9 +1465,9 @@ Tera Type: Flying
 Level: 43
 Careful Nature
 Ball: Master Ball
-=Met_Location=62
+~=Location=62
+~=Version=SV
 .Version=50
-~=Generation=9
 - Spit Up
 - Swallow
 - Fling
@@ -1479,9 +1479,9 @@ Ability: Synchronize
 Tera Type: Psychic
 Level: 6
 Naughty Nature
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Growl
 - Disarming Voice
 - Double Team
@@ -1494,9 +1494,9 @@ Tera Type: Fairy
 Level: 29
 Mild Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Teleport
 - Psybeam
 - Life Dew
@@ -1509,9 +1509,9 @@ Tera Type: Fairy
 Level: 40
 Gentle Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psybeam
 - Life Dew
 - Wish
@@ -1524,9 +1524,9 @@ Tera Type: Bug
 Level: 20
 Brave Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Quick Attack
 - Sweet Scent
 - Soak
@@ -1539,9 +1539,9 @@ Tera Type: Flying
 Level: 23
 Naive Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Soak
 - Gust
 - Scary Face
@@ -1554,9 +1554,9 @@ Tera Type: Grass
 Level: 29
 Naive Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Headbutt
 - Poison Powder
 - Giga Drain
@@ -1569,9 +1569,9 @@ Tera Type: Grass
 Level: 32
 Mild Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Headbutt
 - Feint
 - Counter
@@ -1583,9 +1583,9 @@ Ability: Truant
 Tera Type: Electric
 Level: 20
 Docile Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Headbutt
 - Encore
 - Yawn
@@ -1598,9 +1598,9 @@ Tera Type: Normal
 Level: 30
 Jolly Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Fury Swipes
 - Endure
 - Slash
@@ -1613,8 +1613,8 @@ Tera Type: Ghost
 Level: 55
 Adamant Nature
 .Met_Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Shadow Claw
 - Sucker Punch
 - Giga Impact
@@ -1627,9 +1627,9 @@ Tera Type: Fighting
 Level: 18
 Modest Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Arm Thrust
 - Fake Out
 - Force Palm
@@ -1641,9 +1641,9 @@ Ability: Thick Fat
 Tera Type: Fighting
 Level: 27
 Quirky Nature
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Whirlwind
 - Knock Off
 - Bulk Up
@@ -1656,9 +1656,9 @@ Tera Type: Normal
 Level: 7
 Docile Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Water Gun
 - Splash
 - Helping Hand
@@ -1671,9 +1671,9 @@ Tera Type: Dark
 Level: 16
 Bold Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Shadow Sneak
 - Fake Out
@@ -1686,9 +1686,9 @@ Tera Type: Psychic
 Level: 42
 Docile Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=SV
 .Version=50
-~=Generation=9
 - Acupressure
 - Power Trick
 - Reversal
@@ -1701,9 +1701,9 @@ Tera Type: Fighting
 Level: 43
 Impish Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=SV
 .Version=50
-~=Generation=9
 - High Jump Kick
 - Psych Up
 - Acupressure
@@ -1716,9 +1716,9 @@ Tera Type: Poison
 Level: 12
 Lonely Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=51
-~=Generation=9
 - Yawn
 - Poison Gas
 - Sludge
@@ -1731,9 +1731,9 @@ Tera Type: Poison
 Level: 52
 Careful Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=51
-~=Generation=9
 - Swallow
 - Sludge Bomb
 - Gastro Acid
@@ -1746,9 +1746,9 @@ Tera Type: Fire
 Level: 18
 Docile Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Ember
 - Focus Energy
 - Bulldoze
@@ -1761,9 +1761,9 @@ Tera Type: Ground
 Level: 50
 Lonely Nature
 Ball: Master Ball
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Curse
 - Take Down
 - Yawn
@@ -1775,9 +1775,9 @@ Ability: Drought
 Tera Type: Fire
 Level: 35
 Bashful Nature
-=Met_Location=69
+~=Location=69
+~=Version=SV
 .Version=50
-~=Generation=9
 - Flame Wheel
 - Protect
 - Lava Plume
@@ -1790,9 +1790,9 @@ Tera Type: Psychic
 Level: 10
 Impish Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Splash
 - Confusion
 - Growl
@@ -1804,9 +1804,9 @@ Tera Type: Psychic
 Level: 39
 Hasty Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Zen Headbutt
 - Power Gem
 - Rest
@@ -1819,9 +1819,9 @@ Tera Type: Grass
 Level: 22
 Bashful Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sand Attack
 - Bullet Seed
 - Power Trip
@@ -1833,9 +1833,9 @@ Ability: Sand Veil
 Tera Type: Grass
 Level: 35
 Bashful Nature
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Ingrain
 - Payback
 - Spikes
@@ -1848,9 +1848,9 @@ Tera Type: Normal
 Level: 40
 Lax Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sing
 - Cotton Guard
 - Take Down
@@ -1863,9 +1863,9 @@ Tera Type: Flying
 Level: 41
 Rash Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Safeguard
 - Sing
 - Cotton Guard
@@ -1878,9 +1878,9 @@ Tera Type: Normal
 Level: 22
 Quirky Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Metal Claw
 - Hone Claws
 - Slash
@@ -1893,9 +1893,9 @@ Tera Type: Poison
 Level: 20
 Lax Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Poison Tail
 - Feint
 - Screech
@@ -1907,9 +1907,9 @@ Ability: Oblivious
 Tera Type: Ground
 Level: 12
 Serious Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Water Pulse
 - Mud Shot
 - Take Down
@@ -1922,9 +1922,9 @@ Tera Type: Water
 Level: 30
 Impish Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mud-Slap
 - Thrash
 - Aqua Tail
@@ -1937,9 +1937,9 @@ Tera Type: Ghost
 Level: 16
 Naive Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Screech
 - Night Shade
 - Spite
@@ -1952,9 +1952,9 @@ Tera Type: Ghost
 Level: 42
 Gentle Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Curse
 - Shadow Ball
 - Role Play
@@ -1967,9 +1967,9 @@ Tera Type: Grass
 Level: 30
 Brave Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Stomp
 - Magical Leaf
 - Whirlwind
@@ -1982,9 +1982,9 @@ Tera Type: Ice
 Level: 36
 Naughty Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Protect
 - Icy Wind
 - Frost Breath
@@ -1997,9 +1997,9 @@ Tera Type: Ice
 Level: 43
 Adamant Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Icy Wind
 - Frost Breath
 - Bite
@@ -2012,9 +2012,9 @@ Tera Type: Water
 Level: 23
 Impish Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Wish
 - Water Pulse
 - Attract
@@ -2027,9 +2027,9 @@ Tera Type: Dragon
 Level: 23
 Lax Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=51
-~=Generation=9
 - Bite
 - Dragon Breath
 - Headbutt
@@ -2042,9 +2042,9 @@ Tera Type: Dragon
 Level: 42
 Rash Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=SV
 .Version=51
-~=Generation=9
 - Scary Face
 - Crunch
 - Dragon Claw
@@ -2057,9 +2057,9 @@ Tera Type: Dragon
 Level: 50
 Jolly Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=SV
 .Version=51
-~=Generation=9
 - Fly
 - Crunch
 - Dragon Claw
@@ -2072,9 +2072,9 @@ Tera Type: Flying
 Level: 9
 Brave Nature
 Ball: Master Ball
-=Met_Location=12
+~=Location=12
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Growl
 - Quick Attack
@@ -2087,9 +2087,9 @@ Tera Type: Normal
 Level: 26
 Bold Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Wing Attack
 - Double Team
 - Endeavor
@@ -2102,9 +2102,9 @@ Tera Type: Normal
 Level: 50
 Timid Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aerial Ace
 - Take Down
 - Agility
@@ -2117,9 +2117,9 @@ Tera Type: Bug
 Level: 8
 Docile Nature
 Ball: Master Ball
-=Met_Location=12
+~=Location=12
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Growl
 - Struggle Bug
@@ -2131,9 +2131,9 @@ Tera Type: Bug
 Level: 49
 Hardy Nature
 Ball: Master Ball
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Taunt
 - Night Slash
 - Sticky Web
@@ -2146,9 +2146,9 @@ Tera Type: Electric
 Level: 7
 Naive Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Leer
 - Thunder Shock
@@ -2160,9 +2160,9 @@ Tera Type: Electric
 Level: 20
 Serious Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Thunder Shock
 - Charge
 - Bite
@@ -2175,9 +2175,9 @@ Tera Type: Electric
 Level: 51
 Quirky Nature
 Ball: Master Ball
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Roar
 - Volt Switch
 - Scary Face
@@ -2189,9 +2189,9 @@ Ability: Honey Gather
 Tera Type: Ground
 Level: 12
 Timid Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sweet Scent
 - Struggle Bug
 - Gust
@@ -2203,9 +2203,9 @@ Ability: Pressure
 Tera Type: Bug
 Level: 25
 Gentle Nature
-=Met_Location=12
+~=Location=12
+~=Version=SV
 .Version=50
-~=Generation=9
 - Fell Stinger
 - Fury Swipes
 - Swagger
@@ -2217,9 +2217,9 @@ Ability: Run Away
 Tera Type: Rock
 Level: 35
 Hardy Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Spark
 - Quick Attack
 - Sweet Kiss
@@ -2231,9 +2231,9 @@ Ability: Swift Swim
 Tera Type: Ice
 Level: 21
 Careful Nature
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Icy Wind
 - Water Pulse
 - Swift
@@ -2246,9 +2246,9 @@ Tera Type: Water
 Level: 50
 Timid Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Double Hit
 - Whirlpool
 - Liquidation
@@ -2260,8 +2260,8 @@ Ability: Storm Drain
 Tera Type: Water
 Level: 1
 Quiet Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Water Gun
 - Mud-Slap
 
@@ -2272,9 +2272,9 @@ Tera Type: Water
 Level: 21
 Adamant Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Harden
 - Recover
 - Water Pulse
@@ -2286,8 +2286,8 @@ Ability: Storm Drain
 Tera Type: Water
 Level: 30
 Lax Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Water Pulse
 - Mud-Slap
 - Ancient Power
@@ -2299,9 +2299,9 @@ Ability: Sticky Hold
 Tera Type: Ground
 Level: 50
 Sassy Nature
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Ancient Power
 - Body Slam
 - Muddy Water
@@ -2314,9 +2314,9 @@ Tera Type: Flying
 Level: 14
 Jolly Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Gust
 - Focus Energy
@@ -2329,9 +2329,9 @@ Tera Type: Ghost
 Level: 43
 Naughty Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Stockpile
 - Self-Destruct
 - Destiny Bond
@@ -2344,9 +2344,9 @@ Tera Type: Ghost
 Level: 51
 Calm Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=51
-~=Generation=9
 - Magical Leaf
 - Power Gem
 - Phantom Force
@@ -2359,9 +2359,9 @@ Tera Type: Flying
 Level: 40
 Brave Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Night Slash
 - Quash
 - Swagger
@@ -2374,9 +2374,9 @@ Tera Type: Poison
 Level: 26
 Impish Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Focus Energy
 - Bite
 - Venoshock
@@ -2389,9 +2389,9 @@ Tera Type: Dark
 Level: 50
 Lonely Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Memento
 - Night Slash
 - Belch
@@ -2404,9 +2404,9 @@ Tera Type: Steel
 Level: 21
 Docile Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Payback
 - Imprison
 - Gyro Ball
@@ -2418,9 +2418,9 @@ Ability: Heatproof
 Tera Type: Psychic
 Level: 40
 Relaxed Nature
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Safeguard
 - Extrasensory
 - Heavy Slam
@@ -2433,9 +2433,9 @@ Tera Type: Rock
 Level: 8
 Quiet Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Fake Tears
 - Copycat
 - Flail
@@ -2447,9 +2447,9 @@ Ability: Serene Grace
 Tera Type: Normal
 Level: 6
 Serious Nature
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pound
 - Copycat
 - Defense Curl
@@ -2460,9 +2460,9 @@ Ability: Pressure
 Tera Type: Dark
 Level: 49
 Adamant Nature
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Memento
 - Sucker Punch
 - Curse
@@ -2475,9 +2475,9 @@ Tera Type: Dragon
 Level: 16
 Lonely Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Sand Tomb
 - Sand Attack
@@ -2489,9 +2489,9 @@ Ability: Sand Veil
 Tera Type: Dragon
 Level: 30
 Hardy Nature
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Dragon Breath
 - Sand Tomb
 - Bulldoze
@@ -2503,9 +2503,9 @@ Ability: Sand Veil
 Tera Type: Water
 Level: 65
 Relaxed Nature
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Liquidation
 - Earthquake
 - Outrage
@@ -2517,9 +2517,9 @@ Ability: Inner Focus
 Tera Type: Fighting
 Level: 16
 Hasty Nature
-=Met_Location=14
+~=Location=14
+~=Version=SV
 .Version=50
-~=Generation=9
 - Feint
 - Metal Claw
 - Counter
@@ -2532,8 +2532,8 @@ Tera Type: Ice
 Level: 75
 Careful Nature
 .Met_Location=69
+~=Version=SV
 .Version=50
-~=Generation=9
 - Ice Punch
 - Close Combat
 - Meteor Mash
@@ -2546,9 +2546,9 @@ Tera Type: Ground
 Level: 26
 Quiet Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sand Tomb
 - Dig
 - Crunch
@@ -2560,9 +2560,9 @@ Ability: Sand Stream
 Tera Type: Ghost
 Level: 75
 Naughty Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Earthquake
 - Yawn
 - Rock Slide
@@ -2575,9 +2575,9 @@ Tera Type: Fighting
 Level: 53
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Toxic
 - Nasty Plot
 - Sludge Bomb
@@ -2590,9 +2590,9 @@ Tera Type: Fighting
 Level: 54
 Lonely Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Toxic
 - Nasty Plot
 - Sludge Bomb
@@ -2605,9 +2605,9 @@ Tera Type: Water
 Level: 43
 Timid Nature
 Ball: Master Ball
-=Met_Location=62
+~=Location=62
+~=Version=SV
 .Version=50
-~=Generation=9
 - Safeguard
 - Aqua Ring
 - Whirlpool
@@ -2620,9 +2620,9 @@ Tera Type: Water
 Level: 46
 Naive Nature
 Ball: Master Ball
-=Met_Location=62
+~=Location=62
+~=Version=SV
 .Version=50
-~=Generation=9
 - Attract
 - Safeguard
 - Aqua Ring
@@ -2635,9 +2635,9 @@ Tera Type: Ice
 Level: 36
 Impish Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Razor Leaf
 - Icy Wind
 - Swagger
@@ -2650,9 +2650,9 @@ Tera Type: Ice
 Level: 40
 Careful Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Razor Leaf
 - Icy Wind
 - Swagger
@@ -2664,9 +2664,9 @@ Ability: Pressure
 Tera Type: Dark
 Level: 40
 Bashful Nature
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Metal Claw
 - Icy Wind
 - Fury Swipes
@@ -2679,9 +2679,9 @@ Tera Type: Steel
 Level: 38
 Serious Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Spark
 - Screech
 - Magnet Rise
@@ -2694,9 +2694,9 @@ Tera Type: Grass
 Level: 55
 Sassy Nature
 Ball: Master Ball
-=Met_Location=109
+~=Location=109
+~=Version=SV
 .Version=50
-~=Generation=9
 - Giga Drain
 - Swords Dance
 - Leaf Blade
@@ -2709,9 +2709,9 @@ Tera Type: Ice
 Level: 53
 Hasty Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Snowscape
 - Freeze-Dry
 - Mirror Coat
@@ -2724,9 +2724,9 @@ Tera Type: Psychic
 Level: 28
 Mild Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slash
 - Psybeam
 - Life Dew
@@ -2739,9 +2739,9 @@ Tera Type: Ghost
 Level: 40
 Naive Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Icy Wind
 - Frost Breath
 - Confuse Ray
@@ -2754,9 +2754,9 @@ Tera Type: Electric
 Level: 20
 Modest Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Thunder Shock
 - Confuse Ray
 - Charge
@@ -2769,9 +2769,9 @@ Tera Type: Electric
 Level: 26
 Serious Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Confuse Ray
 - Overheat
 - Electro Ball
@@ -2784,9 +2784,9 @@ Tera Type: Ghost
 Level: 29
 Lax Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Confuse Ray
 - Hydro Pump
 - Electro Ball
@@ -2799,9 +2799,9 @@ Tera Type: Electric
 Level: 29
 Modest Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Confuse Ray
 - Blizzard
 - Electro Ball
@@ -2814,9 +2814,9 @@ Tera Type: Electric
 Level: 27
 Modest Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Confuse Ray
 - Air Slash
 - Electro Ball
@@ -2828,9 +2828,9 @@ Ability: Levitate
 Tera Type: Steel
 Level: 45
 Gentle Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Discharge
 - Leaf Storm
 - Uproar
@@ -2842,9 +2842,9 @@ Ability: Own Tempo
 Tera Type: Steel
 Level: 12
 Naive Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Growth
 - Sleep Powder
 - Absorb
@@ -2856,9 +2856,9 @@ Ability: Chlorophyll
 Tera Type: Grass
 Level: 35
 Lax Nature
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mega Drain
 - After You
 - Absorb
@@ -2871,9 +2871,9 @@ Tera Type: Water
 Level: 35
 Hardy Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Scary Face
 - Headbutt
 - Soak
@@ -2886,9 +2886,9 @@ Tera Type: Water
 Level: 40
 Quiet Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Soak
 - Crunch
 - Take Down
@@ -2900,9 +2900,9 @@ Ability: Moxie
 Tera Type: Ground
 Level: 20
 Sassy Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bulldoze
 - Bite
 - Sand Attack
@@ -2915,9 +2915,9 @@ Tera Type: Dark
 Level: 29
 Gentle Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Scary Face
 - Crunch
 - Torment
@@ -2930,9 +2930,9 @@ Tera Type: Dark
 Level: 40
 Calm Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Crunch
 - Foul Play
 - Dig
@@ -2945,9 +2945,9 @@ Tera Type: Dark
 Level: 28
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Scary Face
 - Taunt
 - Knock Off
@@ -2960,9 +2960,9 @@ Tera Type: Dark
 Level: 54
 Gentle Nature
 Ball: Master Ball
-=Met_Location=109
+~=Location=109
+~=Version=SV
 .Version=50
-~=Generation=9
 - Agility
 - Imprison
 - Night Daze
@@ -2975,9 +2975,9 @@ Tera Type: Psychic
 Level: 25
 Sassy Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psybeam
 - Charm
 - Psyshock
@@ -2990,9 +2990,9 @@ Tera Type: Psychic
 Level: 41
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psyshock
 - Hypnosis
 - Fake Tears
@@ -3005,9 +3005,9 @@ Tera Type: Psychic
 Level: 41
 Naive Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psyshock
 - Hypnosis
 - Fake Tears
@@ -3019,9 +3019,9 @@ Ability: Sap Sipper
 Tera Type: Normal
 Level: 7
 Careful Nature
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Growl
 - Sand Attack
@@ -3033,9 +3033,9 @@ Tera Type: Grass
 Level: 23
 Adamant Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Double Kick
 - Leech Seed
 - Bullet Seed
@@ -3048,9 +3048,9 @@ Tera Type: Grass
 Level: 28
 Quiet Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bullet Seed
 - Take Down
 - Zen Headbutt
@@ -3063,9 +3063,9 @@ Tera Type: Grass
 Level: 40
 Jolly Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Zen Headbutt
 - Energy Ball
 - Charm
@@ -3077,9 +3077,9 @@ Ability: Sap Sipper
 Tera Type: Grass
 Level: 34
 Hardy Nature
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Zen Headbutt
 - Energy Ball
 - Horn Leech
@@ -3092,9 +3092,9 @@ Tera Type: Grass
 Level: 34
 Timid Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Double Kick
 - Zen Headbutt
 - Horn Leech
@@ -3107,9 +3107,9 @@ Tera Type: Grass
 Level: 34
 Lonely Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bullet Seed
 - Take Down
 - Zen Headbutt
@@ -3122,9 +3122,9 @@ Tera Type: Normal
 Level: 39
 Naive Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Take Down
 - Zen Headbutt
 - Energy Ball
@@ -3137,9 +3137,9 @@ Tera Type: Grass
 Level: 26
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mega Drain
 - Synthesis
 - Clear Smog
@@ -3152,9 +3152,9 @@ Tera Type: Grass
 Level: 51
 Bashful Nature
 Ball: Master Ball
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Ingrain
 - Toxic
 - Rage Powder
@@ -3167,9 +3167,9 @@ Tera Type: Water
 Level: 46
 Impish Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Soak
 - Wish
 - Brine
@@ -3181,9 +3181,9 @@ Ability: Levitate
 Tera Type: Electric
 Level: 12
 Sassy Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Thunder Wave
 - Spark
@@ -3196,9 +3196,9 @@ Tera Type: Electric
 Level: 48
 Calm Nature
 Ball: Master Ball
-=Met_Location=62
+~=Location=62
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bind
 - Acid
 - Discharge
@@ -3210,9 +3210,9 @@ Ability: Levitate
 Tera Type: Dragon
 Level: 65
 Impish Nature
-=Met_Location=62
+~=Location=62
+~=Version=SV
 .Version=50
-~=Generation=9
 - Dragon Claw
 - Discharge
 - Eerie Impulse
@@ -3225,9 +3225,9 @@ Tera Type: Dragon
 Level: 36
 Quiet Nature
 Ball: Master Ball
-=Met_Location=69
+~=Location=69
+~=Version=SV
 .Version=50
-~=Generation=9
 - Dragon Dance
 - Breaking Swipe
 - Focus Energy
@@ -3240,9 +3240,9 @@ Tera Type: Dragon
 Level: 38
 Careful Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Crunch
 - Dragon Pulse
 - Breaking Swipe
@@ -3255,9 +3255,9 @@ Tera Type: Dragon
 Level: 48
 Rash Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Crunch
 - Dragon Pulse
 - Breaking Swipe
@@ -3270,9 +3270,9 @@ Tera Type: Ice
 Level: 36
 Mild Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Charm
 - Snowscape
 - Thrash
@@ -3285,9 +3285,9 @@ Tera Type: Ice
 Level: 40
 Lax Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Swagger
 - Snowscape
 - Thrash
@@ -3300,9 +3300,9 @@ Tera Type: Ice
 Level: 39
 Impish Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aurora Beam
 - Slash
 - Night Slash
@@ -3315,9 +3315,9 @@ Tera Type: Steel
 Level: 32
 Hasty Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Torment
 - Scary Face
 - Assurance
@@ -3330,9 +3330,9 @@ Tera Type: Dark
 Level: 52
 Hasty Nature
 Ball: Master Ball
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slash
 - Night Slash
 - Iron Defense
@@ -3345,9 +3345,9 @@ Tera Type: Normal
 Level: 27
 Lax Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Hone Claws
 - Wing Attack
 - Tailwind
@@ -3360,9 +3360,9 @@ Tera Type: Flying
 Level: 54
 Calm Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aerial Ace
 - Slash
 - Whirlwind
@@ -3375,9 +3375,9 @@ Tera Type: Dragon
 Level: 41
 Quiet Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slam
 - Crunch
 - Scary Face
@@ -3390,9 +3390,9 @@ Tera Type: Dark
 Level: 56
 Lonely Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Dragon Pulse
 - Body Slam
 - Hyper Voice
@@ -3405,9 +3405,9 @@ Tera Type: Dragon
 Level: 64
 Lax Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Dragon Pulse
 - Body Slam
 - Hyper Voice
@@ -3420,9 +3420,9 @@ Tera Type: Bug
 Level: 25
 Sassy Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Flame Charge
 - Struggle Bug
 - Flame Wheel
@@ -3435,9 +3435,9 @@ Tera Type: Fire
 Level: 59
 Timid Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Leech Life
 - Bug Buzz
 - Heat Wave
@@ -3450,9 +3450,9 @@ Tera Type: Normal
 Level: 9
 Quiet Nature
 Ball: Master Ball
-=Met_Location=12
+~=Location=12
+~=Version=SV
 .Version=50
-~=Generation=9
 - Growl
 - Peck
 - Quick Attack
@@ -3464,9 +3464,9 @@ Tera Type: Fire
 Level: 19
 Impish Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SV
 .Version=50
-~=Generation=9
 - Peck
 - Quick Attack
 - Feint
@@ -3479,9 +3479,9 @@ Tera Type: Flying
 Level: 54
 Quirky Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Acrobatics
 - Agility
 - Aerial Ace
@@ -3494,9 +3494,9 @@ Tera Type: Bug
 Level: 6
 Quiet Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - String Shot
 - Stun Spore
@@ -3508,9 +3508,9 @@ Tera Type: Bug
 Level: 9
 Serious Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - String Shot
 - Stun Spore
@@ -3523,9 +3523,9 @@ Tera Type: Bug
 Level: 44
 Careful Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Supersonic
 - Draining Kiss
 - Safeguard
@@ -3538,9 +3538,9 @@ Tera Type: Fire
 Level: 18
 Hasty Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Ember
 - Work Up
 - Headbutt
@@ -3553,9 +3553,9 @@ Tera Type: Normal
 Level: 36
 Docile Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Take Down
 - Fire Fang
 - Endeavor
@@ -3568,9 +3568,9 @@ Tera Type: Fairy
 Level: 47
 Naughty Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Synthesis
 - Misty Terrain
 - Moonblast
@@ -3582,8 +3582,8 @@ Ability: Flower Veil
 Tera Type: Fairy
 Level: 1
 Hasty Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Vine Whip
 - Tackle
 
@@ -3594,9 +3594,9 @@ Tera Type: Fairy
 Level: 16
 Quirky Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Fairy Wind
 - Safeguard
@@ -3608,8 +3608,8 @@ Ability: Flower Veil
 Tera Type: Fairy
 Level: 1
 Hasty Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Vine Whip
 - Tackle
 
@@ -3619,8 +3619,8 @@ Ability: Flower Veil
 Tera Type: Fairy
 Level: 1
 Jolly Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Vine Whip
 - Tackle
 
@@ -3631,9 +3631,9 @@ Tera Type: Fairy
 Level: 45
 Quirky Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Grassy Terrain
 - Petal Blizzard
 - Synthesis
@@ -3646,9 +3646,9 @@ Tera Type: Fairy
 Level: 44
 Hasty Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Grassy Terrain
 - Petal Blizzard
 - Synthesis
@@ -3661,9 +3661,9 @@ Tera Type: Fairy
 Level: 47
 Lax Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Petal Blizzard
 - Synthesis
 - Misty Terrain
@@ -3676,9 +3676,9 @@ Tera Type: Fairy
 Level: 45
 Gentle Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Grassy Terrain
 - Petal Blizzard
 - Synthesis
@@ -3691,9 +3691,9 @@ Tera Type: Fairy
 Level: 53
 Gentle Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Synthesis
 - Misty Terrain
 - Moonblast
@@ -3706,9 +3706,9 @@ Tera Type: Fairy
 Level: 47
 Docile Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Disarming Voice
 - Grassy Terrain
 - Misty Terrain
@@ -3721,9 +3721,9 @@ Tera Type: Fairy
 Level: 47
 Bashful Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Petal Blizzard
 - Synthesis
 - Misty Terrain
@@ -3736,9 +3736,9 @@ Tera Type: Fairy
 Level: 47
 Adamant Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Petal Blizzard
 - Synthesis
 - Misty Terrain
@@ -3751,9 +3751,9 @@ Tera Type: Fairy
 Level: 45
 Naive Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Grassy Terrain
 - Petal Blizzard
 - Synthesis
@@ -3765,8 +3765,8 @@ Ability: Flower Veil
 Tera Type: Fairy
 Level: 19
 Hardy Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Vine Whip
 - Tackle
 - Fairy Wind
@@ -3779,9 +3779,9 @@ Tera Type: Grass
 Level: 18
 Calm Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tail Whip
 - Leech Seed
 - Razor Leaf
@@ -3794,9 +3794,9 @@ Tera Type: Grass
 Level: 43
 Careful Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bulldoze
 - Seed Bomb
 - Bulk Up
@@ -3809,9 +3809,9 @@ Tera Type: Water
 Level: 47
 Rash Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Water Pulse
 - Toxic
 - Dragon Pulse
@@ -3824,9 +3824,9 @@ Tera Type: Poison
 Level: 50
 Mild Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Water Pulse
 - Toxic
 - Dragon Pulse
@@ -3839,9 +3839,9 @@ Tera Type: Water
 Level: 23
 Modest Nature
 Ball: Master Ball
-=Met_Location=56
+~=Location=56
+~=Version=SV
 .Version=51
-~=Generation=9
 - Vise Grip
 - Flail
 - Aqua Jet
@@ -3854,9 +3854,9 @@ Tera Type: Water
 Level: 47
 Timid Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=51
-~=Generation=9
 - Hone Claws
 - Water Pulse
 - Swords Dance
@@ -3868,9 +3868,9 @@ Ability: Cute Charm
 Tera Type: Fairy
 Level: 50
 Hardy Nature
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Moonblast
 - Calm Mind
 - Yawn
@@ -3883,9 +3883,9 @@ Tera Type: Flying
 Level: 54
 Careful Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Swords Dance
 - Flying Press
 - High Jump Kick
@@ -3898,9 +3898,9 @@ Tera Type: Fairy
 Level: 29
 Serious Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Charge
 - Thunder Shock
 - Charm
@@ -3913,9 +3913,9 @@ Tera Type: Dragon
 Level: 50
 Hasty Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Dragon Pulse
 - Curse
 - Body Slam
@@ -3927,9 +3927,9 @@ Ability: Sap Sipper
 Tera Type: Dragon
 Level: 50
 Hasty Nature
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rain Dance
 - Dragon Pulse
 - Curse
@@ -3941,9 +3941,9 @@ Ability: Sap Sipper
 Tera Type: Poison
 Level: 75
 Relaxed Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Water Pulse
 - Dragon Pulse
 - Sludge Bomb
@@ -3956,9 +3956,9 @@ Tera Type: Steel
 Level: 41
 Serious Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Recycle
 - Imprison
 - Flash Cannon
@@ -3971,9 +3971,9 @@ Tera Type: Ice
 Level: 50
 Impish Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Crunch
 - Take Down
 - Blizzard
@@ -3985,9 +3985,9 @@ Ability: Own Tempo
 Tera Type: Ice
 Level: 53
 Hardy Nature
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Take Down
 - Blizzard
 - Double-Edge
@@ -4000,9 +4000,9 @@ Tera Type: Flying
 Level: 27
 Adamant Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Double Team
 - Wing Attack
 - Bite
@@ -4015,9 +4015,9 @@ Tera Type: Flying
 Level: 50
 Timid Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Super Fang
 - Air Slash
 - Screech
@@ -4030,8 +4030,8 @@ Tera Type: Normal
 Level: 2
 Calm Nature
 .Met_Location=64
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 
 Gumshoos (F)
@@ -4041,9 +4041,9 @@ Tera Type: Normal
 Level: 23
 Brave Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Payback
 - Work Up
 - Bite
@@ -4056,9 +4056,9 @@ Tera Type: Fighting
 Level: 14
 Gentle Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Vise Grip
 - Rock Smash
 - Leer
@@ -4071,9 +4071,9 @@ Tera Type: Fighting
 Level: 38
 Rash Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slam
 - Avalanche
 - Reversal
@@ -4086,9 +4086,9 @@ Tera Type: Fire
 Level: 21
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Helping Hand
 - Air Cutter
 - Baton Pass
@@ -4100,8 +4100,8 @@ Ability: Dancer
 Tera Type: Flying
 Level: 1
 Naive Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pound
 
 Oricorio-Pa’u (F)
@@ -4110,8 +4110,8 @@ Ability: Dancer
 Tera Type: Fire
 Level: 1
 Relaxed Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pound
 
 Oricorio-Sensu (F)
@@ -4120,8 +4120,8 @@ Ability: Dancer
 Tera Type: Flying
 Level: 1
 Naughty Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pound
 
 Rockruff (F)
@@ -4131,9 +4131,9 @@ Tera Type: Rock
 Level: 16
 Quirky Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sand Attack
 - Double Team
 - Rock Throw
@@ -4145,8 +4145,8 @@ Ability: Own Tempo
 Tera Type: Rock
 Level: 1
 Mild Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Leer
 
@@ -4157,9 +4157,9 @@ Tera Type: Rock
 Level: 39
 Naughty Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bite
 - Rock Tomb
 - Roar
@@ -4172,9 +4172,9 @@ Tera Type: Rock
 Level: 40
 Hasty Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bite
 - Rock Tomb
 - Roar
@@ -4186,8 +4186,8 @@ Ability: Tough Claws
 Tera Type: Rock
 Level: 25
 Lonely Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Leer
 - Crush Claw
@@ -4199,9 +4199,9 @@ Tera Type: Poison
 Level: 23
 Modest Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Wide Guard
 - Bite
 - Venoshock
@@ -4214,9 +4214,9 @@ Tera Type: Water
 Level: 38
 Brave Nature
 Ball: Master Ball
-=Met_Location=60
+~=Location=60
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pin Missile
 - Liquidation
 - Venoshock
@@ -4229,9 +4229,9 @@ Tera Type: Ground
 Level: 16
 Bold Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Iron Defense
 - Double Kick
 - Bulldoze
@@ -4244,9 +4244,9 @@ Tera Type: Ground
 Level: 41
 Brave Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Counter
 - High Horsepower
 - Heavy Slam
@@ -4259,9 +4259,9 @@ Tera Type: Grass
 Level: 44
 Bold Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slash
 - X-Scissor
 - Synthesis
@@ -4274,9 +4274,9 @@ Tera Type: Grass
 Level: 44
 Timid Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slash
 - X-Scissor
 - Synthesis
@@ -4289,9 +4289,9 @@ Tera Type: Poison
 Level: 13
 Modest Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Scratch
 - Poison Gas
 - Smog
@@ -4304,9 +4304,9 @@ Tera Type: Fire
 Level: 40
 Rash Nature
 Ball: Master Ball
-=Met_Location=69
+~=Location=69
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sweet Scent
 - Nasty Plot
 - Incinerate
@@ -4319,9 +4319,9 @@ Tera Type: Grass
 Level: 6
 Hasty Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Splash
 - Play Nice
 
@@ -4332,9 +4332,9 @@ Tera Type: Grass
 Level: 22
 Impish Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rapid Spin
 - Play Nice
 - Sweet Scent
@@ -4347,8 +4347,8 @@ Tera Type: Psychic
 Level: 65
 Quirky Nature
 .Met_Location=109
+~=Version=SV
 .Version=50
-~=Generation=9
 - Zen Headbutt
 - Trop Kick
 - Stomp
@@ -4361,9 +4361,9 @@ Tera Type: Psychic
 Level: 28
 Quirky Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Calm Mind
 - Stored Power
 - Psych Up
@@ -4376,9 +4376,9 @@ Tera Type: Fighting
 Level: 29
 Timid Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=51
-~=Generation=9
 - Focus Energy
 - Beat Up
 - Scary Face
@@ -4391,9 +4391,9 @@ Tera Type: Ghost
 Level: 21
 Quirky Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Sand Tomb
 - Mega Drain
@@ -4406,9 +4406,9 @@ Tera Type: Ghost
 Level: 42
 Quiet Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Bulldoze
 - Giga Drain
@@ -4421,9 +4421,9 @@ Tera Type: Normal
 Level: 25
 Naive Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Swallow
 - Rapid Spin
 - Yawn
@@ -4436,9 +4436,9 @@ Tera Type: Fairy
 Level: 32
 Hardy Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Double Team
 - Baby-Doll Eyes
 - Mimic
@@ -4450,9 +4450,9 @@ Ability: Wonder Skin
 Tera Type: Fairy
 Level: 35
 Modest Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psychic Fangs
 - Bite
 - Aqua Jet
@@ -4465,9 +4465,9 @@ Tera Type: Normal
 Level: 6
 Brave Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Tail Whip
 - Bite
@@ -4479,9 +4479,9 @@ Tera Type: Normal
 Level: 26
 Calm Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Stockpile
 - Spit Up
 - Swallow
@@ -4494,9 +4494,9 @@ Tera Type: Flying
 Level: 7
 Careful Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Leer
 - Peck
 - Power Trip
@@ -4508,9 +4508,9 @@ Tera Type: Flying
 Level: 22
 Rash Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Power Trip
 - Fury Attack
 - Pluck
@@ -4522,9 +4522,9 @@ Ability: Pressure
 Tera Type: Fighting
 Level: 55
 Bold Nature
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Body Press
 - Drill Peck
 - Roost
@@ -4537,9 +4537,9 @@ Tera Type: Water
 Level: 7
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Water Gun
 - Bite
@@ -4551,9 +4551,9 @@ Tera Type: Rock
 Level: 54
 Sassy Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Headbutt
 - Counter
 - Jaw Lock
@@ -4566,9 +4566,9 @@ Tera Type: Rock
 Level: 25
 Quirky Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Smack Down
 - Rock Polish
 - Ancient Power
@@ -4581,9 +4581,9 @@ Tera Type: Fire
 Level: 25
 Gentle Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rapid Spin
 - Smack Down
 - Rock Polish
@@ -4596,9 +4596,9 @@ Tera Type: Rock
 Level: 34
 Impish Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rapid Spin
 - Smack Down
 - Incinerate
@@ -4611,9 +4611,9 @@ Tera Type: Dragon
 Level: 26
 Quirky Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Withdraw
 
@@ -4624,9 +4624,9 @@ Tera Type: Grass
 Level: 27
 Quiet Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Withdraw
 - Wing Attack
@@ -4637,9 +4637,9 @@ Ability: Thick Fat
 Tera Type: Fighting
 Level: 75
 Hasty Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Apple Acid
 - Dragon Pulse
 - Giga Drain
@@ -4652,9 +4652,9 @@ Tera Type: Ground
 Level: 22
 Lonely Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Minimize
 - Brutal Swing
 - Bulldoze
@@ -4666,9 +4666,9 @@ Ability: Shed Skin
 Tera Type: Ground
 Level: 40
 Relaxed Nature
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Headbutt
 - Glare
 - Dig
@@ -4681,9 +4681,9 @@ Tera Type: Water
 Level: 44
 Mild Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Dive
 - Focus Energy
 - Crunch
@@ -4696,9 +4696,9 @@ Tera Type: Water
 Level: 43
 Timid Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Agility
 - Dive
 - Focus Energy
@@ -4711,9 +4711,9 @@ Tera Type: Poison
 Level: 18
 Modest Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SV
 .Version=50
-~=Generation=9
 - Flail
 - Belch
 - Nuzzle
@@ -4726,9 +4726,9 @@ Tera Type: Electric
 Level: 41
 Naive Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=SV
 .Version=50
-~=Generation=9
 - Swagger
 - Toxic
 - Discharge
@@ -4741,9 +4741,9 @@ Tera Type: Poison
 Level: 41
 Bashful Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=SV
 .Version=50
-~=Generation=9
 - Swagger
 - Toxic
 - Discharge
@@ -4756,9 +4756,9 @@ Tera Type: Ghost
 Level: 43
 Bold Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sucker Punch
 - Sweet Scent
 - Giga Drain
@@ -4771,9 +4771,9 @@ Tera Type: Ghost
 Level: 44
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sucker Punch
 - Sweet Scent
 - Giga Drain
@@ -4786,9 +4786,9 @@ Tera Type: Ghost
 Level: 42
 Careful Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sucker Punch
 - Teatime
 - Giga Drain
@@ -4801,9 +4801,9 @@ Tera Type: Ghost
 Level: 42
 Naughty Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sucker Punch
 - Teatime
 - Giga Drain
@@ -4816,9 +4816,9 @@ Tera Type: Psychic
 Level: 18
 Quirky Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SV
 .Version=50
-~=Generation=9
 - Play Nice
 - Life Dew
 - Disarming Voice
@@ -4831,9 +4831,9 @@ Tera Type: Psychic
 Level: 32
 Bold Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psybeam
 - Heal Pulse
 - Brutal Swing
@@ -4846,9 +4846,9 @@ Tera Type: Psychic
 Level: 42
 Hasty Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psybeam
 - Psycho Cut
 - Dazzling Gleam
@@ -4861,9 +4861,9 @@ Tera Type: Dark
 Level: 26
 Rash Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Fake Tears
 - Assurance
 - Swagger
@@ -4875,9 +4875,9 @@ Ability: Pickpocket
 Tera Type: Ghost
 Level: 35
 Careful Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bite
 - Dark Pulse
 - Play Rough
@@ -4890,9 +4890,9 @@ Tera Type: Dark
 Level: 42
 Sassy Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Assurance
 - Spirit Break
 - Sucker Punch
@@ -4904,8 +4904,8 @@ Ability: Battle Armor
 Tera Type: Steel
 Level: 28
 Calm Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Growl
 - Fake Out
 - Iron Head
@@ -4916,9 +4916,9 @@ Ability: Battle Armor
 Tera Type: Steel
 Level: 30
 Lonely Nature
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Smart Strike
 - Reversal
 - Rock Smash
@@ -4930,9 +4930,9 @@ Ability: Lightning Rod
 Tera Type: Electric
 Level: 55
 Lonely Nature
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Zing Zap
 - Poison Jab
 - Surf
@@ -4945,9 +4945,9 @@ Tera Type: Bug
 Level: 37
 Careful Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Struggle Bug
 - Powder Snow
 
@@ -4958,9 +4958,9 @@ Tera Type: Ice
 Level: 52
 Sassy Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Blizzard
 - Tailwind
 - Wide Guard
@@ -4973,9 +4973,9 @@ Tera Type: Rock
 Level: 22
 Bashful Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Block
 - Rock Polish
 - Rock Tomb
@@ -4988,9 +4988,9 @@ Tera Type: Ice
 Level: 47
 Quiet Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=51
-~=Generation=9
 - Headbutt
 - Amnesia
 - Freeze-Dry
@@ -5003,9 +5003,9 @@ Tera Type: Normal
 Level: 50
 Lonely Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psychic
 - Calm Mind
 - Power Split
@@ -5018,9 +5018,9 @@ Tera Type: Normal
 Level: 50
 Lax Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psychic
 - Calm Mind
 - Guard Split
@@ -5033,9 +5033,9 @@ Tera Type: Steel
 Level: 22
 Bold Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rollout
 - Rock Smash
 - Bulldoze
@@ -5048,9 +5048,9 @@ Tera Type: Steel
 Level: 40
 Quirky Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Stomp
 - Iron Defense
 - Dig
@@ -5063,9 +5063,9 @@ Tera Type: Dragon
 Level: 51
 Jolly Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=51
-~=Generation=9
 - Bite
 - Quick Attack
 - Astonish
@@ -5078,9 +5078,9 @@ Tera Type: Dragon
 Level: 52
 Jolly Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=51
-~=Generation=9
 - Double Hit
 - U-turn
 - Dragon Dance
@@ -5093,9 +5093,9 @@ Tera Type: Ghost
 Level: 60
 Quirky Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=51
-~=Generation=9
 - Dragon Darts
 - U-turn
 - Dragon Dance
@@ -5108,9 +5108,9 @@ Tera Type: Grass
 Level: 5
 Hardy Nature
 =Met_Level=5
-=Met_Location=80
+~=Location=80
+~=Version=SV
 .Version=51
-~=Generation=9
 - Scratch
 - Tail Whip
 - Leafage
@@ -5121,8 +5121,8 @@ Ability: Overgrow
 Tera Type: Grass
 Level: 16
 Lax Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Quick Attack
 - Hone Claws
 - Magical Leaf
@@ -5134,8 +5134,8 @@ Ability: Overgrow
 Tera Type: Grass
 Level: 36
 Bashful Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slash
 - U-turn
 - Flower Trick
@@ -5148,9 +5148,9 @@ Tera Type: Fire
 Level: 5
 Docile Nature
 =Met_Level=5
-=Met_Location=80
+~=Location=80
+~=Version=SV
 .Version=51
-~=Generation=9
 - Tackle
 - Leer
 - Ember
@@ -5161,8 +5161,8 @@ Ability: Blaze
 Tera Type: Fire
 Level: 16
 Timid Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Bite
 - Incinerate
@@ -5174,8 +5174,8 @@ Ability: Blaze
 Tera Type: Fire
 Level: 36
 Brave Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Snarl
 - Torch Song
@@ -5188,9 +5188,9 @@ Tera Type: Water
 Level: 5
 Naive Nature
 =Met_Level=5
-=Met_Location=80
+~=Location=80
+~=Version=SV
 .Version=51
-~=Generation=9
 - Pound
 - Growl
 - Water Gun
@@ -5201,8 +5201,8 @@ Ability: Torrent
 Tera Type: Water
 Level: 16
 Timid Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pound
 - Wing Attack
 - Water Gun
@@ -5214,8 +5214,8 @@ Ability: Torrent
 Tera Type: Water
 Level: 36
 Naive Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Air Slash
 - Wing Attack
 - Aqua Step
@@ -5228,9 +5228,9 @@ Tera Type: Normal
 Level: 6
 Modest Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Tail Whip
 - Disarming Voice
@@ -5242,9 +5242,9 @@ Tera Type: Normal
 Level: 26
 Docile Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Covet
 - Dig
 - Headbutt
@@ -5257,9 +5257,9 @@ Tera Type: Normal
 Level: 20
 Timid Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mud Shot
 - Covet
 - Dig
@@ -5272,9 +5272,9 @@ Tera Type: Normal
 Level: 58
 Bashful Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Coil
 - Double-Edge
 - Endeavor
@@ -5289,8 +5289,8 @@ Level: 60
 Adamant Nature
 Ball: Master Ball
 .Met_Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Hyper Drill
 - Coil
 - Double-Edge
@@ -5303,9 +5303,9 @@ Tera Type: Bug
 Level: 27
 Mild Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bug Bite
 - Block
 - Counter
@@ -5318,9 +5318,9 @@ Tera Type: Bug
 Level: 25
 Bold Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Feint
 - Bug Bite
 - Block
@@ -5333,9 +5333,9 @@ Tera Type: Bug
 Level: 17
 Quiet Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Assurance
 - Double Kick
@@ -5348,9 +5348,9 @@ Tera Type: Dark
 Level: 41
 Quiet Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Feint
 - Agility
 - Throat Chop
@@ -5363,9 +5363,9 @@ Tera Type: Bug
 Level: 26
 Quiet Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rollout
 - Mud Shot
 - Bug Bite
@@ -5378,9 +5378,9 @@ Tera Type: Bug
 Level: 27
 Bold Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rollout
 - Mud Shot
 - Bug Bite
@@ -5393,9 +5393,9 @@ Tera Type: Ghost
 Level: 42
 Timid Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Crunch
 - Play Rough
 - Helping Hand
@@ -5408,9 +5408,9 @@ Tera Type: Ghost
 Level: 42
 Lonely Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rest
 - Crunch
 - Play Rough
@@ -5423,9 +5423,9 @@ Tera Type: Psychic
 Level: 38
 Rash Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psybeam
 - Pluck
 - Agility
@@ -5438,9 +5438,9 @@ Tera Type: Psychic
 Level: 40
 Sassy Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Psybeam
 - Pluck
 - Agility
@@ -5453,9 +5453,9 @@ Tera Type: Normal
 Level: 55
 Mild Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Crunch
 - Baton Pass
 - Nasty Plot
@@ -5467,9 +5467,9 @@ Ability: Rattled
 Tera Type: Dark
 Level: 12
 Naive Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Wrap
 - Aqua Jet
 - Sand Attack
@@ -5481,9 +5481,9 @@ Ability: Gooey
 Tera Type: Water
 Level: 45
 Rash Nature
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Headbutt
 - Triple Dive
 - Dig
@@ -5496,9 +5496,9 @@ Tera Type: Water
 Level: 53
 Bold Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Body Slam
 - Aqua Tail
 - Rain Dance
@@ -5510,9 +5510,9 @@ Ability: Mold Breaker
 Tera Type: Water
 Level: 52
 Lonely Nature
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Night Slash
 - Psycho Cut
 - Liquidation
@@ -5525,9 +5525,9 @@ Tera Type: Water
 Level: 19
 Hasty Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Focus Energy
 - Aqua Jet
@@ -5540,9 +5540,9 @@ Tera Type: Water
 Level: 38
 Adamant Nature
 Ball: Master Ball
-=Met_Location=56
+~=Location=56
+~=Version=SV
 .Version=50
-~=Generation=9
 - Acrobatics
 - Dive
 - Flip Turn
@@ -5554,9 +5554,9 @@ Ability: Early Bird
 Tera Type: Normal
 Level: 7
 Serious Nature
-=Met_Location=12
+~=Location=12
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Sweet Scent
 - Absorb
@@ -5569,9 +5569,9 @@ Tera Type: Grass
 Level: 25
 Quiet Nature
 Ball: Master Ball
-=Met_Location=12
+~=Location=12
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sweet Scent
 - Mega Drain
 - Growth
@@ -5583,9 +5583,9 @@ Ability: Seed Sower
 Tera Type: Grass
 Level: 35
 Bold Nature
-=Met_Location=12
+~=Location=12
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Energy Ball
 - Mega Drain
@@ -5597,9 +5597,9 @@ Ability: Insomnia
 Tera Type: Water
 Level: 20
 Rash Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bite
 - Razor Leaf
 - Bullet Seed
@@ -5612,9 +5612,9 @@ Tera Type: Grass
 Level: 40
 Bashful Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Headbutt
 - Zen Headbutt
 - Worry Seed
@@ -5627,9 +5627,9 @@ Tera Type: Electric
 Level: 18
 Lonely Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mud-Slap
 - Thunder Shock
 - Water Gun
@@ -5641,9 +5641,9 @@ Ability: Electromorphosis
 Tera Type: Electric
 Level: 30
 Gentle Nature
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Charge
 - Spark
 - Mud Shot
@@ -5656,9 +5656,9 @@ Tera Type: Poison
 Level: 27
 Sassy Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Sludge
 - Gyro Ball
 - Headbutt
@@ -5671,9 +5671,9 @@ Tera Type: Poison
 Level: 40
 Bold Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Screech
 - Iron Head
 - Swagger
@@ -5686,9 +5686,9 @@ Tera Type: Steel
 Level: 22
 Lonely Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mud-Slap
 - Smack Down
 - Bulldoze
@@ -5701,9 +5701,9 @@ Tera Type: Normal
 Level: 27
 Impish Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Double Hit
 - Bullet Seed
 - Encore
@@ -5718,8 +5718,8 @@ Level: 25
 Impish Nature
 Ball: Master Ball
 .Met_Location=10
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pound
 - Baby-Doll Eyes
 - Echoed Voice
@@ -5731,8 +5731,8 @@ Ability: Friend Guard
 Tera Type: Normal
 Level: 26
 Serious Nature
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pound
 - Baby-Doll Eyes
 - After You
@@ -5745,9 +5745,9 @@ Tera Type: Ice
 Level: 40
 Gentle Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Avalanche
 - Bounce
 - Body Slam
@@ -5760,9 +5760,9 @@ Tera Type: Ice
 Level: 53
 Impish Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Amnesia
 - Ice Spinner
 - Double-Edge
@@ -5774,9 +5774,9 @@ Ability: Thermal Exchange
 Tera Type: Dragon
 Level: 36
 Hardy Nature
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bite
 - Ice Fang
 - Dragon Claw
@@ -5789,9 +5789,9 @@ Tera Type: Dragon
 Level: 40
 Quiet Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Focus Energy
 - Bite
 - Ice Fang
@@ -5804,9 +5804,9 @@ Tera Type: Ice
 Level: 54
 Brave Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Crunch
 - Ice Beam
 - Glaive Rush
@@ -5818,9 +5818,9 @@ Ability: Commander
 Tera Type: Dragon
 Level: 51
 Bold Nature
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Memento
 - Muddy Water
 - Nasty Plot
@@ -5833,9 +5833,9 @@ Tera Type: Dragon
 Level: 50
 Mild Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Memento
 - Muddy Water
 - Nasty Plot
@@ -5848,9 +5848,9 @@ Tera Type: Dragon
 Level: 45
 Gentle Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Taunt
 - Memento
 - Muddy Water
@@ -5862,9 +5862,9 @@ Ability: Shed Skin
 Tera Type: Normal
 Level: 20
 Adamant Nature
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rapid Spin
 - Taunt
 - Breaking Swipe
@@ -5876,9 +5876,9 @@ Ability: Static
 Tera Type: Electric
 Level: 6
 Timid Nature
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Scratch
 - Growl
 - Thunder Shock
@@ -5891,9 +5891,9 @@ Tera Type: Electric
 Level: 18
 Bold Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Quick Attack
 - Charge
 - Nuzzle
@@ -5905,9 +5905,9 @@ Ability: Natural Cure
 Tera Type: Fighting
 Level: 39
 Lax Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Arm Thrust
 - Spark
 - Revival Blessing
@@ -5919,9 +5919,9 @@ Ability: Volt Absorb
 Tera Type: Flying
 Level: 19
 Jolly Nature
-=Met_Location=36
+~=Location=36
+~=Version=SV
 .Version=50
-~=Generation=9
 - Quick Attack
 - Pluck
 - Spark
@@ -5934,9 +5934,9 @@ Tera Type: Flying
 Level: 47
 Docile Nature
 Ball: Master Ball
-=Met_Location=44
+~=Location=44
+~=Version=SV
 .Version=50
-~=Generation=9
 - Roost
 - Dual Wingbeat
 - Agility
@@ -5949,9 +5949,9 @@ Tera Type: Flying
 Level: 41
 Serious Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Pluck
 - Torment
 - Rock Tomb
@@ -5964,9 +5964,9 @@ Tera Type: Normal
 Level: 24
 Jolly Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aerial Ace
 - Fury Attack
 - Taunt
@@ -5979,9 +5979,9 @@ Tera Type: Flying
 Level: 17
 Timid Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Quick Attack
 - Torment
 - Aerial Ace
@@ -5994,9 +5994,9 @@ Tera Type: Normal
 Level: 25
 Rash Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aerial Ace
 - Fury Attack
 - Taunt
@@ -6009,9 +6009,9 @@ Tera Type: Flying
 Level: 24
 Impish Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aerial Ace
 - Fury Attack
 - Taunt
@@ -6023,9 +6023,9 @@ Ability: Tangled Feet
 Tera Type: Flying
 Level: 5
 Adamant Nature
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Peck
 - Copycat
 - Double Kick
@@ -6036,9 +6036,9 @@ Ability: Shell Armor
 Tera Type: Rock
 Level: 13
 Gentle Nature
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rock Throw
 - Harden
 - Rock Smash
@@ -6050,9 +6050,9 @@ Ability: Sturdy
 Tera Type: Rock
 Level: 13
 Gentle Nature
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rock Throw
 - Mud Shot
 - Smack Down
@@ -6065,9 +6065,9 @@ Tera Type: Rock
 Level: 39
 Brave Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Iron Defense
 - Recover
 - Rock Slide
@@ -6080,9 +6080,9 @@ Tera Type: Rock
 Level: 55
 Hasty Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Stealth Rock
 - Heavy Slam
 - Earthquake
@@ -6095,9 +6095,9 @@ Tera Type: Rock
 Level: 41
 Brave Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=SV
 .Version=50
-~=Generation=9
 - Self-Destruct
 - Rock Slide
 - Power Gem
@@ -6110,9 +6110,9 @@ Tera Type: Rock
 Level: 60
 Bold Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rock Slide
 - Power Gem
 - Acid Armor
@@ -6125,9 +6125,9 @@ Tera Type: Normal
 Level: 8
 Calm Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Leer
 - Acid Spray
 - Bite
@@ -6139,9 +6139,9 @@ Ability: Poison Touch
 Tera Type: Poison
 Level: 24
 Bashful Nature
-=Met_Location=30
+~=Location=30
+~=Version=SV
 .Version=50
-~=Generation=9
 - Switcheroo
 - Poison Fang
 - Flatter
@@ -6154,9 +6154,9 @@ Tera Type: Fairy
 Level: 7
 Bold Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Tackle
 - Growl
 - Lick
@@ -6169,9 +6169,9 @@ Tera Type: Fairy
 Level: 39
 Bashful Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SV
 .Version=50
-~=Generation=9
 - Work Up
 - Baton Pass
 - Roar
@@ -6183,9 +6183,9 @@ Ability: Run Away
 Tera Type: Fairy
 Level: 12
 Calm Nature
-=Met_Location=30024
+~=Location=30024
+~=Version=SV
 .Version=50
-~=Generation=9
 - Snarl
 - Hone Claws
 - Bite
@@ -6198,9 +6198,9 @@ Tera Type: Dark
 Level: 34
 Brave Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=SV
 .Version=50
-~=Generation=9
 - Roar
 - Headbutt
 - Payback
@@ -6212,9 +6212,9 @@ Ability: Wind Rider
 Tera Type: Grass
 Level: 21
 Jolly Nature
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rapid Spin
 - Bullet Seed
 - Infestation
@@ -6227,9 +6227,9 @@ Tera Type: Ghost
 Level: 28
 Hardy Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=SV
 .Version=50
-~=Generation=9
 - Bullet Seed
 - Infestation
 - Hex
@@ -6242,9 +6242,9 @@ Tera Type: Ghost
 Level: 10
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6255,9 +6255,9 @@ Tera Type: Ghost
 Level: 21
 Bold Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6268,9 +6268,9 @@ Tera Type: Fighting
 Level: 45
 Naughty Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rapid Spin
 - Brick Break
 - Knock Off
@@ -6283,9 +6283,9 @@ Tera Type: Grass
 Level: 58
 Brave Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Payback
 - Thrash
 - Giga Drain
@@ -6298,9 +6298,9 @@ Tera Type: Electric
 Level: 57
 Serious Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Screech
 - Heavy Slam
 - Metal Sound
@@ -6313,9 +6313,9 @@ Tera Type: Psychic
 Level: 60
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Rest
 - Play Rough
 - Hyper Voice
@@ -6328,9 +6328,9 @@ Tera Type: Ghost
 Level: 59
 Quirky Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Dazzling Gleam
 - Shadow Ball
 - Mystical Fire
@@ -6343,9 +6343,9 @@ Tera Type: Bug
 Level: 53
 Lax Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Low Sweep
 - Morning Sun
 - Lunge
@@ -6358,9 +6358,9 @@ Tera Type: Dark
 Level: 59
 Bashful Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Zen Headbutt
 - Flamethrower
 - Night Slash
@@ -6373,9 +6373,9 @@ Tera Type: Steel
 Level: 58
 Mild Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=51
-~=Generation=9
 - Stomping Tantrum
 - Knock Off
 - Earthquake
@@ -6388,9 +6388,9 @@ Tera Type: Fire
 Level: 56
 Hardy Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=51
-~=Generation=9
 - Screech
 - Discharge
 - Sludge Wave
@@ -6403,9 +6403,9 @@ Tera Type: Electric
 Level: 55
 Lonely Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=51
-~=Generation=9
 - Slam
 - Force Palm
 - Seismic Toss
@@ -6418,9 +6418,9 @@ Tera Type: Dark
 Level: 59
 Adamant Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=51
-~=Generation=9
 - Snarl
 - Crunch
 - Hyper Voice
@@ -6433,9 +6433,9 @@ Tera Type: Electric
 Level: 58
 Calm Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=51
-~=Generation=9
 - Charge
 - Rock Slide
 - Sandstorm
@@ -6448,9 +6448,9 @@ Tera Type: Water
 Level: 59
 Brave Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=51
-~=Generation=9
 - Helping Hand
 - Freeze-Dry
 - Flip Turn
@@ -6463,9 +6463,9 @@ Tera Type: Fighting
 Level: 59
 Brave Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=51
-~=Generation=9
 - Psycho Cut
 - Night Slash
 - Leaf Blade
@@ -6478,9 +6478,9 @@ Tera Type: Ground
 Level: 60
 Quiet Nature
 Ball: Master Ball
-=Met_Location=109
+~=Location=109
+~=Version=SV
 .Version=50
-~=Generation=9
 - Stomping Tantrum
 - Ruination
 - Throat Chop
@@ -6493,9 +6493,9 @@ Tera Type: Dark
 Level: 60
 Lonely Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Icicle Crash
 - Ruination
 - Sucker Punch
@@ -6508,9 +6508,9 @@ Tera Type: Dark
 Level: 60
 Impish Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Giga Drain
 - Ruination
 - Foul Play
@@ -6523,9 +6523,9 @@ Tera Type: Dark
 Level: 60
 Timid Nature
 Ball: Master Ball
-=Met_Location=48
+~=Location=48
+~=Version=SV
 .Version=50
-~=Generation=9
 - Lava Plume
 - Ruination
 - Bounce
@@ -6538,9 +6538,9 @@ Tera Type: Fighting
 Level: 72
 Adamant Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Giga Impact
 - Bulk Up
 - Collision Course
@@ -6553,9 +6553,9 @@ Tera Type: Electric
 Level: 72
 Modest Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=51
-~=Generation=9
 - Hyper Beam
 - Charge
 - Electro Drift
@@ -6568,9 +6568,9 @@ Tera Type: Ghost
 Level: 15
 Mild Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6581,9 +6581,9 @@ Tera Type: Ghost
 Level: 50
 Serious Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6594,9 +6594,9 @@ Tera Type: Ghost
 Level: 35
 Naive Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6607,9 +6607,9 @@ Tera Type: Ghost
 Level: 50
 Bashful Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6620,9 +6620,9 @@ Tera Type: Ghost
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=12
+~=Location=12
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6633,9 +6633,9 @@ Tera Type: Ghost
 Level: 50
 Docile Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6646,9 +6646,9 @@ Tera Type: Ghost
 Level: 50
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6659,9 +6659,9 @@ Tera Type: Ghost
 Level: 50
 Bashful Nature
 Ball: Master Ball
-=Met_Location=46
+~=Location=46
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6672,9 +6672,9 @@ Tera Type: Ghost
 Level: 15
 Careful Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6685,9 +6685,9 @@ Tera Type: Ghost
 Level: 50
 Bold Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6698,9 +6698,9 @@ Tera Type: Ghost
 Level: 15
 Timid Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6711,9 +6711,9 @@ Tera Type: Ghost
 Level: 50
 Naive Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6724,9 +6724,9 @@ Tera Type: Ghost
 Level: 35
 Calm Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6737,9 +6737,9 @@ Tera Type: Ghost
 Level: 35
 Calm Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=SV
 .Version=50
-~=Generation=9
 - Astonish
 - Tackle
 
@@ -6749,9 +6749,9 @@ Ability: Water Veil
 Tera Type: Water
 Jolly Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=SV
 .Version=50
-~=Generation=9
 - Aqua Tail
 - Crunch
 - Ice Fang
@@ -6763,9 +6763,9 @@ Ability: Unaware
 Tera Type: Fire
 Modest Nature
 =Met_Level=5
-=Met_Location=80
+~=Location=80
+~=Version=SV
 .Version=50
-~=Generation=9
 - Flamethrower
 - Hyper Voice
 - Shadow Ball
@@ -6777,9 +6777,9 @@ Ability: Moxie
 Tera Type: Water
 Adamant Nature
 =Met_Level=5
-=Met_Location=80
+~=Location=80
+~=Version=SV
 .Version=51
-~=Generation=9
 - Aqua Step
 - Air Slash
 - Close Combat
@@ -6791,9 +6791,9 @@ Ability: Protean
 Tera Type: Grass
 Modest Nature
 =Met_Level=5
-=Met_Location=80
+~=Location=80
+~=Version=SV
 .Version=51
-~=Generation=9
 - Energy Ball
 - Bite
 - U-turn
@@ -6805,9 +6805,9 @@ Ability: Protosynthesis
 Tera Type: Dark
 Adamant Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Zen Headbutt
 - Flamethrower
 - Jaw Lock
@@ -6819,9 +6819,9 @@ Ability: Iron Fist
 Tera Type: Electric
 Adamant Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Slam
 - Dig
 - Bite
@@ -6833,9 +6833,9 @@ Ability: Orichalcum Pulse
 Tera Type: Fighting
 Adamant Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=50
-~=Generation=9
 - Outrage
 - Dragon Claw
 - Collision Course
@@ -6847,9 +6847,9 @@ Ability: Hadron Engine
 Tera Type: Electric
 Modest Nature
 Ball: Master Ball
-=Met_Location=124
+~=Location=124
+~=Version=SV
 .Version=51
-~=Generation=9
 - Outrage
 - Thunder
 - Electro Drift
@@ -6864,8 +6864,8 @@ Lonely Nature
 Language: English
 =OT_Name=Blossom
 =Met_Location=30001
+~=Version=SV
 .Version=50
-~=Generation=9
 - Payback
 - Spite
 - Curse
@@ -6880,8 +6880,8 @@ Relaxed Nature
 Language: English
 =OT_Name=Sue
 =Met_Location=30001
+~=Version=SV
 .Version=50
-~=Generation=9
 - Mud Shot
 - Mist
 - Haze
@@ -6896,8 +6896,8 @@ Bashful Nature
 Language: English
 =OT_Name=Glen
 =Met_Location=30001
+~=Version=SV
 .Version=50
-~=Generation=9
 - Struggle Bug
 - Powder Snow
 
@@ -6910,8 +6910,8 @@ Lonely Nature
 Language: English
 =OT_Name=Blossom
 =Met_Location=30001
+~=Version=SV
 .Version=51
-~=Generation=9
 - Payback
 - Spite
 - Curse
@@ -6926,8 +6926,8 @@ Relaxed Nature
 Language: English
 =OT_Name=Sue
 =Met_Location=30001
+~=Version=SV
 .Version=51
-~=Generation=9
 - Mud Shot
 - Mist
 - Haze
@@ -6942,7 +6942,7 @@ Bashful Nature
 Language: English
 =OT_Name=Glen
 =Met_Location=30001
+~=Version=SV
 .Version=51
-~=Generation=9
 - Struggle Bug
 - Powder Snow

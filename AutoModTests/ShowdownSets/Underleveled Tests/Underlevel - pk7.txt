@@ -4,9 +4,9 @@ Ability: Shed Skin
 Level: 3
 Modest Nature
 Ball: Master Ball
-=Met_Location=8
+~=Location=8
+~=Version=SM
 .Version=31
-~=Generation=7
 - Harden
 
 Butterfree (M)
@@ -15,9 +15,9 @@ Ability: Compound Eyes
 Level: 9
 Naive Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=SM
 .Version=31
-~=Generation=7
 - Gust
 - Confusion
 
@@ -27,9 +27,9 @@ Ability: Tangled Feet
 Level: 29
 Quiet Nature
 Ball: Master Ball
-=Met_Location=106
+~=Location=106
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Steel Wing
 - Feather Dance
 - Twister
@@ -41,9 +41,9 @@ Ability: Gluttony
 Level: 17
 Sassy Nature
 Ball: Master Ball
-=Met_Location=58
+~=Location=58
+~=Version=USUM
 .Version=32
-~=Generation=7
 - Focus Energy
 - Bite
 - Pursuit
@@ -55,9 +55,9 @@ Ability: Inner Focus
 Level: 20
 Adamant Nature
 Ball: Master Ball
-=Met_Location=100
+~=Location=100
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Bite
 - Wing Attack
 - Confuse Ray
@@ -69,9 +69,9 @@ Ability: Damp
 Level: 24
 Gentle Nature
 Ball: Master Ball
-=Met_Location=134
+~=Location=134
+~=Version=SM
 .Version=30
-~=Generation=7
 - Bubble
 - Double Slap
 - Rain Dance
@@ -83,8 +83,8 @@ Ability: Damp
 Level: 22
 Naughty Nature
 =Met_Location=30001
+~=Version=SM
 .Version=30
-~=Generation=7
 - Bubble
 - Double Slap
 - Rain Dance
@@ -96,9 +96,9 @@ Ability: Own Tempo
 Level: 15
 Gentle Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SM
 .Version=30
-~=Generation=7
 - Tackle
 - Growl
 - Water Gun
@@ -111,9 +111,9 @@ Ability: Own Tempo
 Level: 16
 Hardy Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SM
 .Version=31
-~=Generation=7
 - Tackle
 - Growl
 - Water Gun
@@ -125,9 +125,9 @@ Ability: Water Veil
 Level: 11
 Docile Nature
 Ball: Master Ball
-=Met_Location=134
+~=Location=134
+~=Version=SM
 .Version=31
-~=Generation=7
 - Tail Whip
 - Water Sport
 - Supersonic
@@ -139,9 +139,9 @@ Ability: Water Veil
 Level: 10
 Hardy Nature
 Ball: Master Ball
-=Met_Location=134
+~=Location=134
+~=Version=SM
 .Version=30
-~=Generation=7
 - Tail Whip
 - Water Sport
 - Supersonic
@@ -153,9 +153,9 @@ Ability: Forewarn
 Level: 9
 Timid Nature
 Ball: Master Ball
-=Met_Location=42
+~=Location=42
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Pound
 - Lick
 - Lovely Kiss
@@ -167,9 +167,9 @@ Ability: Vital Spirit
 Level: 26
 Bashful Nature
 Ball: Master Ball
-=Met_Location=138
+~=Location=138
+~=Version=SM
 .Version=31
-~=Generation=7
 - Shock Wave
 - Thunder Wave
 - Electro Ball
@@ -181,9 +181,9 @@ Ability: Flame Body
 Level: 16
 Hardy Nature
 Ball: Master Ball
-=Met_Location=82
+~=Location=82
+~=Version=SM
 .Version=31
-~=Generation=7
 - Ember
 - Smokescreen
 - Feint Attack
@@ -195,9 +195,9 @@ Ability: Intimidate
 Level: 10
 Calm Nature
 Ball: Master Ball
-=Met_Location=170
+~=Location=170
+~=Version=SM
 .Version=30
-~=Generation=7
 - Bite
 - Thrash
 
@@ -207,9 +207,9 @@ Ability: Intimidate
 Level: 17
 Gentle Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=SM
 .Version=31
-~=Generation=7
 - Bite
 - Thrash
 
@@ -219,9 +219,9 @@ Ability: Intimidate
 Level: 10
 Hasty Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SM
 .Version=30
-~=Generation=7
 - Bite
 - Thrash
 
@@ -231,9 +231,9 @@ Ability: Shed Skin
 Level: 10
 Modest Nature
 Ball: Master Ball
-=Met_Location=170
+~=Location=170
+~=Version=SM
 .Version=31
-~=Generation=7
 - Wrap
 - Leer
 - Thunder Wave
@@ -245,9 +245,9 @@ Ability: Inner Focus
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=170
+~=Location=170
+~=Version=SM
 .Version=31
-~=Generation=7
 - Wrap
 - Leer
 - Thunder Wave
@@ -259,9 +259,9 @@ Ability: Keen Eye
 Level: 19
 Lonely Nature
 Ball: Master Ball
-=Met_Location=90
+~=Location=90
+~=Version=USUM
 .Version=32
-~=Generation=7
 - Confusion
 - Echoed Voice
 - Zen Headbutt
@@ -273,9 +273,9 @@ Ability: Early Bird
 Level: 21
 Adamant Nature
 Ball: Master Ball
-=Met_Location=94
+~=Location=94
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Teleport
 - Lucky Chant
 - Stored Power
@@ -286,9 +286,9 @@ IVs: 27 HP / 7 Atk / 20 Def / 13 SpA / 24 SpD / 0 Spe
 Ability: Static
 Level: 11
 Docile Nature
-=Met_Location=30016
+~=Location=30016
+~=Version=USUM
 .Version=32
-~=Generation=7
 - Growl
 - Thunder Wave
 - Thunder Shock
@@ -300,9 +300,9 @@ Ability: Suction Cups
 Level: 10
 Quirky Nature
 Ball: Master Ball
-=Met_Location=58
+~=Location=58
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Water Gun
 - Constrict
 - Psybeam
@@ -314,9 +314,9 @@ Ability: Rough Skin
 Level: 19
 Quiet Nature
 Ball: Master Ball
-=Met_Location=162
+~=Location=162
+~=Version=SM
 .Version=31
-~=Generation=7
 - Focus Energy
 - Aqua Jet
 - Assurance
@@ -328,9 +328,9 @@ Ability: Rough Skin
 Level: 10
 Quirky Nature
 Ball: Master Ball
-=Met_Location=162
+~=Location=162
+~=Version=SM
 .Version=31
-~=Generation=7
 - Leer
 - Bite
 - Rage
@@ -342,9 +342,9 @@ Ability: Water Veil
 Level: 10
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=162
+~=Location=162
+~=Version=SM
 .Version=31
-~=Generation=7
 - Splash
 - Growl
 - Water Gun
@@ -356,9 +356,9 @@ Ability: Anticipation
 Level: 12
 Gentle Nature
 Ball: Master Ball
-=Met_Location=68
+~=Location=68
+~=Version=SM
 .Version=31
-~=Generation=7
 - Mud-Slap
 - Mud Sport
 - Water Sport
@@ -370,9 +370,9 @@ Ability: Oblivious
 Level: 10
 Sassy Nature
 Ball: Master Ball
-=Met_Location=156
+~=Location=156
+~=Version=SM
 .Version=30
-~=Generation=7
 - Mud-Slap
 - Mud Sport
 - Water Sport
@@ -384,9 +384,9 @@ Ability: Shell Armor
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=174
+~=Location=174
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Bubble
 - Harden
 - Vise Grip
@@ -398,9 +398,9 @@ Ability: Rock Head
 Level: 15
 Quirky Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=SM
 .Version=31
-~=Generation=7
 - Ember
 - Leer
 - Bite
@@ -412,9 +412,9 @@ Ability: Intimidate
 Level: 9
 Lax Nature
 Ball: Master Ball
-=Met_Location=10
+~=Location=10
+~=Version=SM
 .Version=31
-~=Generation=7
 - Rage
 - Ember
 - Leer
@@ -426,9 +426,9 @@ Ability: Weak Armor
 Level: 27
 Naive Nature
 Ball: Master Ball
-=Met_Location=192
+~=Location=192
+~=Version=SM
 .Version=31
-~=Generation=7
 - Sludge
 - Stockpile
 - Swallow
@@ -440,9 +440,9 @@ Ability: Defiant
 Level: 33
 Naive Nature
 Ball: Master Ball
-=Met_Location=120
+~=Location=120
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Scary Face
 - Metal Claw
 - Slash
@@ -454,9 +454,9 @@ Ability: Flame Body
 Level: 16
 Calm Nature
 Ball: Master Ball
-=Met_Location=82
+~=Location=82
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Quick Attack
 - Peck
 - Agility
@@ -468,9 +468,9 @@ Ability: Stakeout
 Level: 17
 Mild Nature
 Ball: Master Ball
-=Met_Location=58
+~=Location=58
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Pursuit
 - Sand Attack
 - Odor Sleuth
@@ -482,9 +482,9 @@ Ability: Own Tempo
 Level: 29
 Careful Nature
 Ball: Master Ball
-=Met_Location=122
+~=Location=122
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Stomp
 - Bide
 - High Horsepower
@@ -496,9 +496,9 @@ Ability: Corrosion
 Level: 16
 Rash Nature
 Ball: Master Ball
-=Met_Location=82
+~=Location=82
+~=Version=USUM
 .Version=33
-~=Generation=7
 - Ember
 - Sweet Scent
 - Dragon Rage
@@ -510,10 +510,72 @@ Ability: Bulletproof
 Level: 41
 Calm Nature
 Ball: Master Ball
-=Met_Location=174
+~=Location=174
+~=Version=SM
 .Version=31
-~=Generation=7
 - Headbutt
 - Work Up
 - Screech
 - Iron Defense
+
+Gengar (M)
+IVs: 15 HP / 8 Atk / 30 Def / 2 SpA / 30 SpD / 27 Spe
+Ability: Cursed Body
+Level: 17
+Brave Nature
+Ball: Master Ball
+~=Version=Pt
+- Spite
+- Mean Look
+- Curse
+- Night Shade
+
+Gengar (F)
+IVs: 30 HP / 11 Atk / 4 SpA / 27 SpD / 18 Spe
+Ability: Cursed Body
+Level: 16
+Gentle Nature
+Ball: Master Ball
+~=Version=DP
+.Version=10
+- Spite
+- Mean Look
+- Curse
+- Night Shade
+
+Gaspar (Gengar) (M)
+IVs: 20 HP / 25 Atk / 15 Def / 15 SpA / 15 SpD / 25 Spe
+Ability: Cursed Body
+Level: 35
+Hasty Nature
+~=Version=DPPt
+=OT_Name=Mindy
+- Sucker Punch
+- Shadow Punch
+- Payback
+- Shadow Ball
+
+Gengar (M)
+IVs: 15 HP / 24 Def / 30 SpA / 3 SpD / 23 Spe
+Ability: Cursed Body
+Level: 19
+Mild Nature
+Ball: Master Ball
+~=Version=HGSS
+.Version=7
+- Mean Look
+- Curse
+- Night Shade
+- Confuse Ray
+
+Gengar (M)
+IVs: 7 HP / 6 Atk / 8 Def / 20 SpA / 21 SpD / 20 Spe
+Ability: Cursed Body
+Level: 17
+Sassy Nature
+Ball: Master Ball
+~=Version=Pt
+- Spite
+- Mean Look
+- Curse
+- Night Shade

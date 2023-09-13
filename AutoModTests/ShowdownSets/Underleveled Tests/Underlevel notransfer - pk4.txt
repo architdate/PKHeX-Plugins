@@ -3,9 +3,9 @@ IVs: 17 HP / 21 Atk / 30 Def / 29 SpA / 30 SpD / 24 Spe
 Ability: Chlorophyll
 Level: 14
 Mild Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Absorb
 - Sweet Scent
 - Acid
@@ -16,9 +16,9 @@ IVs: 15 HP / 13 Atk / 15 Def / 11 SpA / 14 SpD / 30 Spe
 Ability: Water Absorb
 Level: 15
 Timid Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -29,9 +29,9 @@ IVs: 14 HP / 7 Atk / 11 SpA / 0 SpD / 19 Spe
 Ability: Water Absorb
 Level: 15
 Serious Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -42,9 +42,9 @@ IVs: 10 HP / 30 Atk / 13 Def / 11 SpA / 0 SpD / 6 Spe
 Ability: Chlorophyll
 Level: 13
 Lax Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Vine Whip
 - Growth
 - Wrap
@@ -55,9 +55,9 @@ IVs: 15 HP / 21 Atk / 16 Def / 19 SpA / 22 SpD / 30 Spe
 Ability: Damp
 Level: 15
 Rash Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Bubble
 - Hypnosis
 - Water Gun
@@ -68,9 +68,9 @@ IVs: 8 HP / 7 Atk / 7 Def / 27 SpA / 23 SpD / 7 Spe
 Ability: Sniper
 Level: 19
 Adamant Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Psybeam
 - Aurora Beam
 - Bubble Beam
@@ -81,10 +81,72 @@ IVs: 17 HP / 0 Atk / 6 Def / 8 SpA / 12 SpD / 19 Spe
 Ability: Keen Eye
 Level: 15
 Brave Nature
-=Met_Location=233
+~=Location=233
+~=Version=HGSS
 .Version=8
-~=Generation=4
 - Water Sport
 - Wing Attack
 - Supersonic
 - Water Gun
+
+Gengar (M)
+IVs: 15 HP / 8 Atk / 30 Def / 2 SpA / 30 SpD / 27 Spe
+Ability: Levitate
+Level: 17
+Brave Nature
+Ball: Master Ball
+~=Version=Pt
+- Spite
+- Mean Look
+- Curse
+- Night Shade
+
+Gengar (F)
+IVs: 30 HP / 11 Atk / 4 SpA / 27 SpD / 18 Spe
+Ability: Levitate
+Level: 16
+Gentle Nature
+Ball: Master Ball
+~=Version=DP
+.Version=10
+- Spite
+- Mean Look
+- Curse
+- Night Shade
+
+Gaspar (Gengar) (M)
+IVs: 20 HP / 25 Atk / 15 Def / 15 SpA / 15 SpD / 25 Spe
+Ability: Levitate
+Level: 35
+Hasty Nature
+~=Version=DPPt
+=OT_Name=Mindy
+- Sucker Punch
+- Shadow Punch
+- Payback
+- Shadow Ball
+
+Gengar (M)
+IVs: 15 HP / 24 Def / 30 SpA / 3 SpD / 23 Spe
+Ability: Levitate
+Level: 19
+Mild Nature
+Ball: Master Ball
+~=Version=HGSS
+.Version=7
+- Mean Look
+- Curse
+- Night Shade
+- Confuse Ray
+
+Gengar (M)
+IVs: 7 HP / 6 Atk / 8 Def / 20 SpA / 21 SpD / 20 Spe
+Ability: Levitate
+Level: 17
+Sassy Nature
+Ball: Master Ball
+~=Version=Pt
+- Spite
+- Mean Look
+- Curse
+- Night Shade

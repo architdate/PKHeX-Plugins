@@ -1,13 +1,3 @@
-Pikachu-Rock-Star (F)
-IVs: 11 HP / 13 Def / 17 SpD
-Ability: Lightning Rod
-Level: 20
-Lonely Nature
-- Quick Attack
-- Electro Ball
-- Thunder Wave
-- Meteor Mash
-
 Gengar (F)
 IVs: 13 HP / 27 Atk / 23 Def / 15 SpA / 24 SpD / 2 Spe
 Ability: Levitate
@@ -47,17 +37,3 @@ Ball: Master Ball
 - Shadow Punch
 - Confuse Ray
 - Sludge Wave
-
-Gengar (M) @ Gengarite
-IVs: 23 HP / 21 Atk / 29 Def / 10 SpA / 28 SpD / 22 Spe
-Ability: Levitate
-Level: 38
-Mild Nature
-Ball: Master Ball
-~=Location=82
-~=Version=XY
-.Version=24
-- Sucker Punch
-- Shadow Punch
-- Payback
-- Shadow Ball

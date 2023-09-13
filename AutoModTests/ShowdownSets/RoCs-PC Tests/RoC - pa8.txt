@@ -4,8 +4,7 @@ Ability: Static
 Level: 9
 Careful Nature
 .Met_Location=19
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Shock
 - Quick Attack
 - Thunder Wave
@@ -17,8 +16,7 @@ Level: 52
 Rash Nature
 Alpha: Yes
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Thunder
 - Iron Tail
@@ -30,8 +28,7 @@ Ability: Magic Guard
 Level: 45
 Mild Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Psychic
@@ -44,8 +41,7 @@ Level: 62
 Gentle Nature
 Alpha: Yes
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hyper Beam
 - Double-Edge
 - Moonblast
@@ -57,8 +53,7 @@ Ability: Flash Fire
 Level: 30
 Timid Nature
 .Met_Location=54
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Flame Wheel
 - Hex
@@ -70,8 +65,7 @@ Ability: Snow Cloak
 Level: 40
 Mild Nature
 .Met_Location=88
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Ice Fang
 - Dazzling Gleam
@@ -84,8 +78,7 @@ Level: 61
 Relaxed Nature
 Alpha: Yes
 .Met_Location=56
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Fire Blast
 - Flamethrower
@@ -97,8 +90,7 @@ Ability: Inner Focus
 Level: 14
 Sassy Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Hypnosis
 - Bite
@@ -109,8 +101,7 @@ Ability: Inner Focus
 Level: 28
 Gentle Nature
 .Met_Location=42
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Bite
 - Air Cutter
@@ -122,8 +113,7 @@ Ability: Effect Spore
 Level: 11
 Lonely Nature
 .Met_Location=19
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Stun Spore
 - Poison Powder
@@ -134,8 +124,7 @@ Ability: Effect Spore
 Level: 25
 Jolly Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Venoshock
@@ -147,8 +136,7 @@ Ability: Cloud Nine
 Level: 15
 Mild Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Confusion
 - Water Pulse
@@ -159,8 +147,7 @@ Ability: Damp
 Level: 36
 Quiet Nature
 .Met_Location=71
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Hypnosis
 - Zen Headbutt
@@ -172,8 +159,7 @@ EVs: 76 HP / 34 Atk / 1 Def / 7 SpA / 21 SpD / 21 Spe
 Ability: Flash Fire
 Naive Nature
 .Met_Location=61
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Raging Fury
 - Rock Slide
 - Crunch
@@ -185,8 +171,7 @@ Ability: Inner Focus
 Level: 12
 Quiet Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Teleport
 
 Kadabra (M)
@@ -195,8 +180,7 @@ Ability: Synchronize
 Level: 51
 Hasty Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psycho Cut
 - Zen Headbutt
 - Recover
@@ -209,8 +193,7 @@ Level: 60
 Timid Nature
 Alpha: Yes
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psychic
 - Zen Headbutt
 - Recover
@@ -222,8 +205,7 @@ Ability: Guts
 Level: 25
 Bold Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bullet Punch
 - Double Hit
 - Mach Punch
@@ -235,8 +217,7 @@ Ability: Guts
 Level: 55
 Lonely Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mach Punch
 - Bulk Up
 - Double-Edge
@@ -249,8 +230,7 @@ Level: 70
 Sassy Nature
 Alpha: Yes
 .Met_Location=99
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Flamethrower
 - Close Combat
 - Double-Edge
@@ -262,8 +242,7 @@ Ability: Clear Body
 Level: 29
 Sassy Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Water Pulse
 - Hex
@@ -275,8 +254,7 @@ Ability: Liquid Ooze
 Level: 34
 Naive Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Hex
 - Poison Jab
@@ -288,8 +266,7 @@ Ability: Sturdy
 Level: 10
 Brave Nature
 .Met_Location=15
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 - Tackle
 - Mud-Slap
@@ -300,8 +277,7 @@ Ability: Rock Head
 Level: 27
 Quirky Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud-Slap
 - Iron Defense
 - Rock Slide
@@ -314,8 +290,7 @@ Level: 60
 Quiet Nature
 Alpha: Yes
 .Met_Location=76
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Stone Edge
 - Self-Destruct
@@ -327,8 +302,7 @@ Ability: Flash Fire
 Level: 4
 Careful Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 
 Rapidash (F)
@@ -338,8 +312,7 @@ Level: 40
 Sassy Nature
 Alpha: Yes
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Wild Charge
 - Double-Edge
 - Fire Blast
@@ -351,8 +324,7 @@ Ability: Magnet Pull
 Level: 56
 Quiet Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Flash Cannon
 - Thunderbolt
@@ -364,8 +336,7 @@ Ability: Magnet Pull
 Level: 32
 Bashful Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Spark
 - Flash Cannon
@@ -377,8 +348,7 @@ Ability: Levitate
 Level: 22
 Mild Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Astonish
 - Poison Gas
 - Hex
@@ -390,8 +360,7 @@ Ability: Levitate
 Level: 46
 Adamant Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -403,8 +372,7 @@ Ability: Cursed Body
 Level: 58
 Modest Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -416,8 +384,7 @@ Ability: Rock Head
 Level: 21
 Lonely Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 - Tackle
 - Bulldoze
@@ -429,8 +396,7 @@ Ability: Soundproof
 Level: 41
 Brave Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Energy Ball
 - Thunderbolt
@@ -442,8 +408,7 @@ EVs: 4 HP / 8 SpD
 Ability: Static
 Mild Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Self-Destruct
 - Chloroblast
 - Thunderbolt
@@ -455,8 +420,7 @@ Ability: Own Tempo
 Level: 47
 Brave Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -468,8 +432,7 @@ Ability: Rock Head
 Level: 24
 Brave Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Bulldoze
 - Rock Smash
@@ -481,8 +444,7 @@ Ability: Lightning Rod
 Level: 43
 Hasty Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stealth Rock
 - Rock Slide
 - High Horsepower
@@ -495,8 +457,7 @@ Level: 51
 Bashful Nature
 Alpha: Yes
 .Met_Location=53
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Double-Edge
 - Soft-Boiled
@@ -508,8 +469,7 @@ Ability: Leaf Guard
 Level: 20
 Careful Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Acid Spray
@@ -521,8 +481,7 @@ Ability: Filter
 Level: 31
 Gentle Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Iron Defense
 - Zen Headbutt
@@ -534,8 +493,7 @@ Ability: Technician
 Level: 13
 Modest Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Silver Wind
 - Aerial Ace
@@ -546,8 +504,7 @@ Ability: Static
 Level: 47
 Docile Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Thunder Punch
 - Thunderbolt
@@ -559,8 +516,7 @@ Ability: Flame Body
 Level: 33
 Jolly Nature
 .Met_Location=56
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Flame Wheel
 - Poison Gas
@@ -572,8 +528,7 @@ Ability: Swift Swim
 Level: 17
 Docile Nature
 .Met_Location=23
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Gyarados (F)
@@ -582,8 +537,7 @@ Ability: Intimidate
 Level: 32
 Quiet Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Focus Energy
 - Crunch
@@ -595,8 +549,7 @@ Ability: Run Away
 Level: 6
 Quiet Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Quick Attack
 
@@ -606,8 +559,7 @@ Ability: Water Absorb
 Level: 52
 Careful Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -619,8 +571,7 @@ Ability: Volt Absorb
 Level: 61
 Docile Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -632,8 +583,7 @@ Ability: Flash Fire
 Level: 51
 Impish Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -645,8 +595,7 @@ Ability: Download
 Level: 53
 Bold Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tri Attack
 - Thunderbolt
 - Recover
@@ -659,8 +608,7 @@ Level: 45
 Quiet Nature
 Alpha: Yes
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Wild Charge
 - High Horsepower
 - Crunch
@@ -672,8 +620,7 @@ Ability: Blaze
 Level: 17
 Brave Nature
 .Met_Location=6
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Ember
 - Rollout
@@ -684,8 +631,7 @@ EVs: 77 HP / 124 Atk / 63 Def / 88 SpA / 56 SpD / 102 Spe
 Ability: Blaze
 Relaxed Nature
 .Met_Location=6
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Flamethrower
 - Thunder Punch
 - Shadow Ball
@@ -697,8 +643,7 @@ Ability: Inner Focus
 Level: 52
 Impish Nature
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Cutter
 - Cross Poison
 - Air Slash
@@ -710,8 +655,7 @@ Ability: Static
 Level: 6
 Naughty Nature
 .Met_Location=26
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Shock
 - Quick Attack
 
@@ -722,8 +666,7 @@ Level: 60
 Jolly Nature
 Alpha: Yes
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Calm Mind
 - Double-Edge
 - Moonblast
@@ -735,8 +678,7 @@ Ability: Serene Grace
 Level: 34
 Bold Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Baby-Doll Eyes
@@ -748,8 +690,7 @@ Ability: Hustle
 Level: 23
 Hasty Nature
 .Met_Location=39
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Fairy Wind
 - Draining Kiss
@@ -761,8 +702,7 @@ Ability: Rock Head
 Level: 39
 Jolly Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Iron Defense
 - Mimic
@@ -774,8 +714,7 @@ Ability: Run Away
 Level: 30
 Naughty Nature
 .Met_Location=149
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Swift
 - Mud Bomb
@@ -787,8 +726,7 @@ Ability: Speed Boost
 Level: 24
 Bashful Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Gust
 - Silver Wind
@@ -800,8 +738,7 @@ EVs: 2 HP / 4 SpD
 Ability: Synchronize
 Timid Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Psychic
 - Calm Mind
@@ -814,8 +751,7 @@ Level: 79
 Rash Nature
 Alpha: Yes
 .Met_Location=147
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Tail
 - Double-Edge
 - Calm Mind
@@ -827,8 +763,7 @@ Ability: Insomnia
 Level: 23
 Mild Nature
 .Met_Location=42
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Snarl
 - Roost
@@ -840,8 +775,7 @@ Ability: Levitate
 Level: 41
 Mild Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Hex
 - Extrasensory
@@ -853,8 +787,7 @@ Ability: Sand Veil
 Level: 40
 Calm Nature
 .Met_Location=80
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Mud Bomb
 - Slash
@@ -866,8 +799,7 @@ Ability: Sturdy
 Level: 60
 Serious Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -879,8 +811,7 @@ Ability: Swift Swim
 Level: 54
 Bashful Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Dark Pulse
 - Poison Jab
 - Aqua Tail
@@ -893,8 +824,7 @@ Ability: Swarm
 Level: 25
 Adamant Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Silver Wind
 - Aerial Ace
@@ -906,8 +836,7 @@ Ability: Swarm
 Level: 38
 Jolly Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Slash
 - Swords Dance
@@ -919,8 +848,7 @@ Ability: Inner Focus
 Level: 48
 Quirky Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -932,8 +860,7 @@ Ability: Inner Focus
 Level: 52
 Mild Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -945,8 +872,7 @@ Ability: Pickup
 Level: 27
 Mild Nature
 .Met_Location=130
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Bulldoze
 - Slash
@@ -958,8 +884,7 @@ Ability: Guts
 Level: 40
 Naive Nature
 .Met_Location=130
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Slash
 - Play Rough
@@ -971,8 +896,7 @@ Ability: Snow Cloak
 Level: 30
 Quiet Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bulldoze
 - Icicle Crash
@@ -984,8 +908,7 @@ Ability: Oblivious
 Level: 44
 Naughty Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icicle Crash
 - High Horsepower
 - Ancient Power
@@ -997,8 +920,7 @@ Ability: Hustle
 Level: 22
 Jolly Nature
 .Met_Location=129
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -1010,8 +932,7 @@ Ability: Suction Cups
 Level: 43
 Timid Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Ice Beam
 - Hydro Pump
@@ -1023,8 +944,7 @@ Ability: Swift Swim
 Level: 34
 Lonely Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Water Pulse
 - Air Slash
@@ -1036,8 +956,7 @@ Ability: Download
 Level: 53
 Bold Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tri Attack
 - Thunderbolt
 - Recover
@@ -1049,8 +968,7 @@ Ability: Intimidate
 Level: 30
 Bold Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Calm Mind
 - Psyshield Bash
@@ -1062,8 +980,7 @@ Ability: Static
 Level: 55
 Jolly Nature
 .Met_Location=84
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Thunder Punch
 - Thunderbolt
@@ -1075,8 +992,7 @@ Ability: Flame Body
 Level: 29
 Hardy Nature
 .Met_Location=56
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Flame Wheel
 - Poison Gas
@@ -1088,8 +1004,7 @@ Ability: Natural Cure
 Level: 61
 Lax Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Soft-Boiled
@@ -1101,8 +1016,7 @@ Ability: Shield Dust
 Level: 4
 Bashful Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 
 Silcoon (M)
@@ -1111,8 +1025,7 @@ Ability: Shed Skin
 Level: 6
 Sassy Nature
 .Met_Location=26
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Sting
 - Tackle
@@ -1123,8 +1036,7 @@ Ability: Swarm
 Level: 29
 Jolly Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Stun Spore
 - Silver Wind
@@ -1136,8 +1048,7 @@ Ability: Shed Skin
 Level: 8
 Adamant Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Sting
 - Tackle
@@ -1148,8 +1059,7 @@ Ability: Shield Dust
 Level: 14
 Jolly Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 - Tackle
 - Iron Defense
@@ -1161,8 +1071,7 @@ Ability: Synchronize
 Level: 16
 Calm Nature
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Teleport
 - Draining Kiss
@@ -1173,8 +1082,7 @@ Ability: Trace
 Level: 27
 Careful Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Teleport
 - Draining Kiss
 - Hypnosis
@@ -1187,8 +1095,7 @@ Level: 70
 Impish Nature
 Alpha: Yes
 .Met_Location=101
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psychic
 - Moonblast
 - Recover
@@ -1200,8 +1107,7 @@ Ability: Magnet Pull
 Level: 39
 Sassy Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Iron Defense
 - Rock Slide
@@ -1213,8 +1119,7 @@ Ability: Poison Point
 Level: 28
 Bashful Nature
 .Met_Location=42
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Poison Powder
 - Stun Spore
@@ -1226,8 +1131,7 @@ Ability: Oblivious
 Level: 27
 Impish Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Mud Bomb
 - Rest
@@ -1239,8 +1143,7 @@ Ability: Oblivious
 Level: 53
 Brave Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Zen Headbutt
 - Aqua Tail
@@ -1252,8 +1155,7 @@ Ability: Levitate
 Level: 33
 Naughty Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Shadow Sneak
 - Hex
 - Leech Life
@@ -1265,8 +1167,7 @@ Ability: Pressure
 Level: 38
 Modest Nature
 .Met_Location=51
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Leech Life
 - Dark Pulse
@@ -1278,8 +1179,7 @@ Ability: Levitate
 Level: 43
 Quiet Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Extrasensory
 - Recover
@@ -1291,8 +1191,7 @@ Ability: Ice Body
 Level: 38
 Quiet Nature
 .Met_Location=88
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Ice Fang
 - Crunch
@@ -1304,8 +1203,7 @@ Ability: Ice Body
 Level: 59
 Careful Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Fang
 - Crunch
 - Icicle Crash
@@ -1317,8 +1215,7 @@ Ability: Thick Fat
 Level: 30
 Quiet Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Powder Snow
 - Water Pulse
 - Rest
@@ -1330,8 +1227,7 @@ Ability: Ice Body
 Level: 42
 Sassy Nature
 .Met_Location=52
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Rest
 - Liquidation
@@ -1343,8 +1239,7 @@ Ability: Thick Fat
 Level: 44
 Serious Nature
 .Met_Location=60
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Liquidation
 - Ice Beam
@@ -1356,8 +1251,7 @@ Ability: Overgrow
 Level: 14
 Impish Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Leafage
 - Bite
@@ -1368,8 +1262,7 @@ Ability: Overgrow
 Level: 19
 Quiet Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Leafage
 - Bite
@@ -1382,8 +1275,7 @@ Level: 65
 Modest Nature
 Alpha: Yes
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Head
 - Headlong Rush
 - Wood Hammer
@@ -1395,8 +1287,7 @@ Ability: Blaze
 Level: 11
 Rash Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Ember
 - Swift
@@ -1407,8 +1298,7 @@ EVs: 4 HP / 1 Atk / 3 SpA / 4 SpD / 2 Spe
 Ability: Blaze
 Calm Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Flamethrower
 - Swift
@@ -1421,8 +1311,7 @@ Level: 65
 Quirky Nature
 Alpha: Yes
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Swift
 - Close Combat
 - Flare Blitz
@@ -1434,8 +1323,7 @@ Ability: Torrent
 Level: 13
 Brave Nature
 .Met_Location=58
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Bubble
 - Aerial Ace
@@ -1447,8 +1335,7 @@ Level: 47
 Adamant Nature
 Alpha: Yes
 .Met_Location=58
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Double-Edge
 - Liquidation
@@ -1461,8 +1348,7 @@ Level: 69
 Quirky Nature
 Alpha: Yes
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Giga Impact
 - Wave Crash
 - Hydro Pump
@@ -1475,8 +1361,7 @@ Ability: Keen Eye
 Level: 5
 Bold Nature
 .Met_Location=13
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Quick Attack
 
@@ -1486,8 +1371,7 @@ Ability: Intimidate
 Level: 16
 Brave Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Quick Attack
 - Aerial Ace
@@ -1499,8 +1383,7 @@ Ability: Intimidate
 Level: 34
 Modest Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Air Slash
 - Roost
@@ -1512,8 +1395,7 @@ Ability: Simple
 Level: 3
 Serious Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 
 Bibarel (M)
@@ -1523,8 +1405,7 @@ Level: 16
 Bashful Nature
 Alpha: Yes
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icy Wind
 - Water Pulse
 - Rollout
@@ -1536,8 +1417,7 @@ Ability: Shed Skin
 Level: 8
 Impish Nature
 .Met_Location=15
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Tackle
 
@@ -1548,8 +1428,7 @@ Level: 12
 Timid Nature
 Alpha: Yes
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - False Swipe
 - Absorb
 - Tackle
@@ -1561,8 +1440,7 @@ Ability: Intimidate
 Level: 2
 Lax Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 
 Luxio (M)
@@ -1571,8 +1449,7 @@ Ability: Intimidate
 Level: 27
 Quiet Nature
 .Met_Location=70
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Shock
 - Bite
 - Thunder Fang
@@ -1584,8 +1461,7 @@ Ability: Rivalry
 Level: 55
 Bashful Nature
 .Met_Location=84
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Crunch
 - Wild Charge
@@ -1597,8 +1473,7 @@ Ability: Natural Cure
 Level: 20
 Lonely Nature
 .Met_Location=34
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 - Absorb
 - Poison Powder
@@ -1611,8 +1486,7 @@ Level: 50
 Rash Nature
 Alpha: Yes
 .Met_Location=42
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Giga Impact
 - Energy Ball
 - Poison Jab
@@ -1625,8 +1499,7 @@ Ability: Mold Breaker
 Level: 52
 Lonely Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Head
 - Crunch
 - Double-Edge
@@ -1639,8 +1512,7 @@ Ability: Sturdy
 Level: 53
 Relaxed Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Earth Power
 - Stealth Rock
@@ -1652,8 +1524,7 @@ Ability: Shed Skin
 Level: 10
 Naughty Nature
 .Met_Location=32
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Struggle Bug
 
 Burmy-Sandy (M)
@@ -1662,8 +1533,7 @@ Ability: Shed Skin
 Level: 16
 Modest Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Struggle Bug
 
 Burmy-Trash (M)
@@ -1672,8 +1542,7 @@ Ability: Shed Skin
 Level: 18
 Mild Nature
 .Met_Location=54
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Struggle Bug
 
 Wormadam (F)
@@ -1682,8 +1551,7 @@ Ability: Anticipation
 Level: 20
 Hardy Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Struggle Bug
 - Gust
 - Confusion
@@ -1695,8 +1563,7 @@ Ability: Anticipation
 Level: 42
 Naive Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Silver Wind
 - Earth Power
@@ -1708,8 +1575,7 @@ Ability: Anticipation
 Level: 50
 Quiet Nature
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Silver Wind
 - Iron Head
 - Psychic
@@ -1721,8 +1587,7 @@ Ability: Swarm
 Level: 31
 Lonely Nature
 .Met_Location=149
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Confusion
 - Silver Wind
@@ -1734,8 +1599,7 @@ Ability: Honey Gather
 Level: 19
 Careful Nature
 .Met_Location=149
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Struggle Bug
 
@@ -1746,8 +1610,7 @@ Level: 60
 Impish Nature
 Alpha: Yes
 .Met_Location=22
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Sludge Bomb
 - Air Slash
 - Power Gem
@@ -1759,8 +1622,7 @@ Ability: Pickup
 Level: 33
 Adamant Nature
 .Met_Location=46
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Spark
 - Baby-Doll Eyes
@@ -1772,8 +1634,7 @@ Ability: Swift Swim
 Level: 25
 Bashful Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aqua Jet
 - Swift
 - Water Pulse
@@ -1785,8 +1646,7 @@ Ability: Swift Swim
 Level: 32
 Relaxed Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Swift
 - Water Pulse
 - Double Hit
@@ -1798,8 +1658,7 @@ Ability: Chlorophyll
 Level: 21
 Gentle Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Stun Spore
 - Draining Kiss
@@ -1811,8 +1670,7 @@ Ability: Flower Gift
 Level: 25
 Adamant Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Stun Spore
 - Draining Kiss
@@ -1824,8 +1682,7 @@ Ability: Sticky Hold
 Level: 16
 Bold Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud-Slap
 - Tackle
 - Water Pulse
@@ -1837,8 +1694,7 @@ Ability: Sticky Hold
 Level: 27
 Lax Nature
 .Met_Location=55
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Water Pulse
 - Ancient Power
@@ -1850,8 +1706,7 @@ Ability: Storm Drain
 Level: 35
 Bashful Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Ancient Power
 - Mud Bomb
@@ -1863,8 +1718,7 @@ Ability: Technician
 Level: 52
 Quiet Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -1876,8 +1730,7 @@ Ability: Unburden
 Level: 2
 Modest Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 
 Drifblim (M)
@@ -1886,8 +1739,7 @@ Ability: Aftermath
 Level: 30
 Rash Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Calm Mind
 - Hex
 - Mystical Fire
@@ -1899,8 +1751,7 @@ Ability: Run Away
 Level: 14
 Lax Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Baby-Doll Eyes
 - Swift
@@ -1911,8 +1762,7 @@ Ability: Cute Charm
 Level: 43
 Lonely Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Double Hit
 - Play Rough
 - Double-Edge
@@ -1925,8 +1775,7 @@ Level: 61
 Impish Nature
 Alpha: Yes
 .Met_Location=77
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hyper Beam
 - Shadow Ball
 - Power Gem
@@ -1939,8 +1788,7 @@ Level: 55
 Lonely Nature
 Alpha: Yes
 .Met_Location=42
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Dark Pulse
 - Brave Bird
 - Nasty Plot
@@ -1952,8 +1800,7 @@ Ability: Limber
 Level: 29
 Impish Nature
 .Met_Location=49
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Nasty Plot
 - Slash
@@ -1966,8 +1813,7 @@ Level: 45
 Adamant Nature
 Alpha: Yes
 .Met_Location=54
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Shadow Claw
 - Double-Edge
 - Play Rough
@@ -1979,8 +1825,7 @@ Ability: Levitate
 Level: 49
 Relaxed Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Extrasensory
 - Recover
@@ -1992,8 +1837,7 @@ Ability: Aftermath
 Level: 23
 Bashful Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Acid Spray
 - Poison Gas
@@ -2005,8 +1849,7 @@ Ability: Stench
 Level: 36
 Jolly Nature
 .Met_Location=38
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Night Slash
 - Poison Jab
@@ -2018,8 +1861,7 @@ Ability: Heatproof
 Level: 30
 Gentle Nature
 .Met_Location=72
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Iron Defense
 - Hex
@@ -2031,8 +1873,7 @@ Ability: Levitate
 Level: 40
 Quirky Nature
 .Met_Location=72
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Hex
 - Hypnosis
@@ -2044,8 +1885,7 @@ Ability: Rock Head
 Level: 28
 Timid Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Stealth Rock
 - Rock Slide
@@ -2057,8 +1897,7 @@ Ability: Soundproof
 Level: 3
 Relaxed Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 
 Happiny (F)
@@ -2067,8 +1906,7 @@ Ability: Serene Grace
 Level: 59
 Calm Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Soft-Boiled
@@ -2080,8 +1918,7 @@ Ability: Keen Eye
 Level: 32
 Relaxed Nature
 .Met_Location=51
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Cutter
 - Roost
 - Air Slash
@@ -2093,8 +1930,7 @@ Ability: Pressure
 Level: 60
 Jolly Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Extrasensory
 - Dark Pulse
@@ -2106,8 +1942,7 @@ Ability: Sand Veil
 Level: 20
 Brave Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Twister
 - Bulldoze
@@ -2119,8 +1954,7 @@ Ability: Sand Veil
 Level: 46
 Hasty Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Dragon Claw
 - Earth Power
@@ -2133,8 +1967,7 @@ Level: 85
 Bold Nature
 Alpha: Yes
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Outrage
 - Double-Edge
@@ -2146,8 +1979,7 @@ Ability: Pickup
 Level: 47
 Jolly Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Zen Headbutt
 - High Horsepower
@@ -2159,8 +1991,7 @@ Ability: Steadfast
 Level: 47
 Modest Nature
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aura Sphere
 - Crunch
 - Bulk Up
@@ -2172,8 +2003,7 @@ Ability: Inner Focus
 Level: 49
 Timid Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Crunch
 - Bulk Up
 - Dragon Pulse
@@ -2185,8 +2015,7 @@ Ability: Sand Stream
 Level: 22
 Mild Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rest
 - Bite
@@ -2198,8 +2027,7 @@ Ability: Sand Stream
 Level: 34
 Impish Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Mud Bomb
 - Crunch
@@ -2211,8 +2039,7 @@ Ability: Battle Armor
 Level: 29
 Mild Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Venoshock
 - Cross Poison
@@ -2224,8 +2051,7 @@ Ability: Battle Armor
 Level: 56
 Lax Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Cross Poison
 - Swords Dance
 - X-Scissor
@@ -2237,8 +2063,7 @@ Ability: Dry Skin
 Level: 23
 Rash Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - Mud Bomb
 - Venoshock
@@ -2250,8 +2075,7 @@ Ability: Dry Skin
 Level: 71
 Lonely Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Poison Jab
 - Earth Power
@@ -2263,8 +2087,7 @@ Ability: Levitate
 Level: 19
 Adamant Nature
 .Met_Location=34
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Acid Spray
 - Bite
@@ -2276,8 +2099,7 @@ Ability: Storm Drain
 Level: 29
 Impish Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Water Pulse
 - Silver Wind
@@ -2289,8 +2111,7 @@ Ability: Swift Swim
 Level: 41
 Lonely Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Silver Wind
 - Air Slash
@@ -2302,8 +2123,7 @@ Ability: Swift Swim
 Level: 31
 Jolly Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Water Pulse
 - Air Slash
@@ -2315,8 +2135,7 @@ Ability: Snow Warning
 Level: 37
 Hardy Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Icicle Crash
 - Energy Ball
@@ -2328,8 +2147,7 @@ Ability: Snow Warning
 Level: 49
 Lonely Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icicle Crash
 - Energy Ball
 - Blizzard
@@ -2342,8 +2160,7 @@ Ability: Pressure
 Level: 54
 Naughty Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -2355,8 +2172,7 @@ Ability: Magnet Pull
 Level: 46
 Naughty Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Flash Cannon
 - Tri Attack
 - Thunderbolt
@@ -2368,8 +2184,7 @@ Ability: Oblivious
 Level: 59
 Jolly Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -2382,8 +2197,7 @@ Level: 74
 Impish Nature
 Alpha: Yes
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - Giga Impact
 - Double-Edge
@@ -2396,8 +2210,7 @@ Level: 45
 Sassy Nature
 Alpha: Yes
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Ancient Power
 - Sleep Powder
@@ -2410,8 +2223,7 @@ Level: 69
 Bashful Nature
 Alpha: Yes
 .Met_Location=84
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Thunder
 - Thunderbolt
@@ -2423,8 +2235,7 @@ Ability: Flame Body
 Level: 58
 Impish Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Gas
 - Fire Punch
 - Flamethrower
@@ -2436,8 +2247,7 @@ Ability: Serene Grace
 Level: 45
 Rash Nature
 .Met_Location=23
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Air Slash
 - Extrasensory
@@ -2449,8 +2259,7 @@ Ability: Speed Boost
 Level: 38
 Docile Nature
 .Met_Location=70
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Silver Wind
 - Hypnosis
 - Air Slash
@@ -2462,8 +2271,7 @@ Ability: Leaf Guard
 Level: 51
 Timid Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -2475,8 +2283,7 @@ Ability: Snow Cloak
 Level: 54
 Relaxed Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -2489,8 +2296,7 @@ Level: 77
 Gentle Nature
 Alpha: Yes
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stone Edge
 - Earth Power
 - X-Scissor
@@ -2503,8 +2309,7 @@ Level: 68
 Careful Nature
 Alpha: Yes
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icy Wind
 - Double-Edge
 - Blizzard
@@ -2516,8 +2321,7 @@ Ability: Adaptability
 Level: 65
 Naive Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tri Attack
 - Thunderbolt
 - Recover
@@ -2530,8 +2334,7 @@ Level: 70
 Brave Nature
 Alpha: Yes
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Focus Energy
 - Close Combat
 - Leaf Blade
@@ -2544,8 +2347,7 @@ Level: 73
 Docile Nature
 Alpha: Yes
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Giga Impact
 - Earth Power
 - Flash Cannon
@@ -2558,8 +2360,7 @@ Level: 65
 Lonely Nature
 Alpha: Yes
 .Met_Location=51
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Giga Impact
 - Psychic
 - Shadow Ball
@@ -2571,8 +2372,7 @@ Ability: Snow Cloak
 Level: 62
 Rash Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Crunch
 - Shadow Ball
 - Icicle Crash
@@ -2584,8 +2384,7 @@ Ability: Levitate
 Level: 42
 Hardy Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Thunder Wave
 - Shadow Ball
@@ -2597,8 +2396,7 @@ Ability: Levitate
 Level: 70
 Quirky Nature
 .Met_Location=111
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Swift
 - Extrasensory
 - Mystical Power
@@ -2610,8 +2408,7 @@ Ability: Levitate
 Level: 70
 Rash Nature
 .Met_Location=104
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Swift
 - Extrasensory
 - Mystical Power
@@ -2623,8 +2420,7 @@ Ability: Levitate
 Level: 70
 Serious Nature
 .Met_Location=105
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Swift
 - Double Hit
 - Extrasensory
@@ -2636,8 +2432,7 @@ Ability: Pressure
 Level: 65
 Brave Nature
 .Met_Location=109
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Iron Tail
 - Flash Cannon
@@ -2649,8 +2444,7 @@ Ability: Pressure
 Level: 65
 Lax Nature
 .Met_Location=109
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Aqua Tail
 - Hydro Pump
@@ -2662,8 +2456,7 @@ Ability: Flash Fire
 Level: 70
 Jolly Nature
 .Met_Location=68
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Head
 - Crunch
 - Earth Power
@@ -2675,8 +2468,7 @@ Ability: Slow Start
 Level: 70
 Naive Nature
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Iron Head
 - Crush Grip
@@ -2688,8 +2480,7 @@ Ability: Levitate
 Level: 70
 Hasty Nature
 .Met_Location=67
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Dragon Claw
 - Dragon Pulse
 - Earth Power
@@ -2701,8 +2492,7 @@ Ability: Levitate
 Level: 70
 Calm Nature
 .Met_Location=82
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psycho Cut
 - Psychic
 - Moonblast
@@ -2715,8 +2505,7 @@ Level: 36
 Quirky Nature
 =FatefulEncounter=True
 .Met_Location=64
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Water Pulse
 - Acid Armor
@@ -2730,8 +2519,7 @@ Level: 50
 Quirky Nature
 =FatefulEncounter=True
 .Met_Location=64
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Zen Headbutt
 - Moonblast
@@ -2744,8 +2532,7 @@ Level: 70
 Quirky Nature
 =FatefulEncounter=True
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Dark Pulse
 - Psychic
@@ -2759,8 +2546,7 @@ Level: 70
 Rash Nature
 =FatefulEncounter=True
 .Met_Location=26
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Slash
 - Energy Ball
 - Earth Power
@@ -2773,8 +2559,7 @@ Level: 75
 Relaxed Nature
 =FatefulEncounter=True
 .Met_Location=109
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Recover
 - Extrasensory
 - Judgment
@@ -2786,8 +2571,7 @@ EVs: 106 HP / 50 Atk / 1 Def / 26 SpA / 25 SpD / 49 Spe
 Ability: Torrent
 Quiet Nature
 .Met_Location=6
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ceaseless Edge
 - Aqua Tail
 - Swords Dance
@@ -2799,8 +2583,7 @@ Ability: Chlorophyll
 Level: 35
 Sassy Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -2813,8 +2596,7 @@ Ability: Chlorophyll
 Level: 36
 Careful Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -2826,8 +2608,7 @@ Ability: Rattled
 Level: 50
 Quiet Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Crunch
 - Wave Crash
@@ -2839,8 +2620,7 @@ Ability: Illusion
 Level: 27
 Jolly Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Snarl
 - Swift
 - Bitter Malice
@@ -2853,8 +2633,7 @@ Level: 58
 Bold Nature
 Alpha: Yes
 .Met_Location=111
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Snarl
 - Shadow Claw
 - Bitter Malice
@@ -2866,8 +2645,7 @@ Ability: Keen Eye
 Level: 52
 Hasty Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Slash
 - Roost
 - Double-Edge
@@ -2879,8 +2657,7 @@ Ability: Sheer Force
 Level: 49
 Naive Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Esper Wing
 - Roost
 - Double-Edge
@@ -2892,8 +2669,7 @@ Ability: Prankster
 Level: 70
 Docile Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Extrasensory
 - Crunch
 - Hurricane
@@ -2906,8 +2682,7 @@ Ability: Prankster
 Level: 70
 Docile Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Extrasensory
 - Crunch
 - Thunder
@@ -2919,8 +2694,7 @@ Ability: Sand Force
 Level: 70
 Timid Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Extrasensory
 - Crunch
 - Earth Power
@@ -2932,8 +2706,7 @@ Ability: Cute Charm
 Level: 52
 Mild Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mimic
 - Play Rough
 - Calm Mind
@@ -2945,8 +2718,7 @@ Ability: Sap Sipper
 Level: 31
 Quirky Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -2959,8 +2731,7 @@ Level: 50
 Brave Nature
 Alpha: Yes
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Hydro Pump
 - Shelter
@@ -2973,8 +2744,7 @@ Level: 58
 Naive Nature
 Alpha: Yes
 .Met_Location=104
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Tail
 - Dragon Pulse
 - Shelter
@@ -2986,8 +2756,7 @@ Ability: Ice Body
 Level: 36
 Adamant Nature
 .Met_Location=89
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bite
 - Iron Defense
@@ -2999,8 +2768,7 @@ Ability: Ice Body
 Level: 46
 Careful Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Crunch
 - Earth Power
 - Mountain Gale
@@ -3012,8 +2780,7 @@ Ability: Overgrow
 Level: 5
 Naive Nature
 .Met_Location=6
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 
 Dartrix (M)
@@ -3022,8 +2789,7 @@ Ability: Overgrow
 Level: 55
 Lonely Nature
 .Met_Location=77
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Magical Leaf
 - Air Slash
 - Leaf Blade
@@ -3035,8 +2801,7 @@ Ability: Overgrow
 Level: 60
 Bold Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leaf Blade
 - Triple Arrows
 - Brave Bird
@@ -3048,8 +2813,7 @@ EVs: 20 HP / 1 Atk / 3 Spe
 Ability: Frisk
 Modest Nature
 .Met_Location=16
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psyshield Bash
 - Extrasensory
 - Double-Edge
@@ -3061,8 +2825,7 @@ EVs: 4 HP / 8 SpD
 Ability: Swarm
 Lax Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stone Axe
 - X-Scissor
 - Aerial Ace
@@ -3074,8 +2837,7 @@ Ability: Bulletproof
 Level: 62
 Quirky Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -3087,8 +2849,7 @@ EVs: 9 HP / 6 Atk
 Ability: Adaptability
 Jolly Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Wave Crash
 - Crunch
 - Zen Headbutt
@@ -3100,8 +2861,7 @@ Ability: Pressure
 Level: 50
 Calm Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -3114,8 +2874,7 @@ Level: 58
 Relaxed Nature
 Alpha: Yes
 .Met_Location=105
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Ball
 - Poison Jab
 - Aqua Tail
@@ -3127,8 +2886,7 @@ Ability: Healer
 Level: 70
 Timid Nature
 .Met_Location=38
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Extrasensory
 - Crunch
 - Moonblast
@@ -3141,8 +2899,7 @@ Level: 15
 Shiny: Square
 Hardy Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Ember
 - Double Hit
@@ -3154,8 +2911,7 @@ EVs: 78 HP / 123 Atk / 64 Def / 90 SpA / 55 SpD / 100 Spe
 Ability: Swift Swim
 Relaxed Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aqua Tail
 - Swift
 - Crunch
@@ -3167,8 +2923,7 @@ EVs: 77 HP / 124 Atk / 63 Def / 88 SpA / 56 SpD / 102 Spe
 Ability: Blaze
 Relaxed Nature
 .Met_Location=6
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Flamethrower
 - Thunder Punch
 - Shadow Ball
@@ -3180,8 +2935,7 @@ EVs: 106 HP / 50 Atk / 1 Def / 26 SpA / 25 SpD / 49 Spe
 Ability: Overgrow
 Naive Nature
 .Met_Location=6
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Triple Arrows
 - Leaf Blade
 - Roost
@@ -3193,8 +2947,7 @@ EVs: 106 HP / 50 Atk / 1 Def / 26 SpA / 25 SpD / 49 Spe
 Ability: Torrent
 Quiet Nature
 .Met_Location=6
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ceaseless Edge
 - Aqua Tail
 - Swords Dance
@@ -3206,8 +2959,7 @@ EVs: 76 HP / 34 Atk / 1 Def / 7 SpA / 21 SpD / 21 Spe
 Ability: Flash Fire
 Naive Nature
 .Met_Location=61
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Raging Fury
 - Rock Slide
 - Crunch
@@ -3219,8 +2971,7 @@ EVs: 5 HP / 6 Atk / 1 Def / 2 SpA / 3 Spe
 Ability: Sheer Force
 Quiet Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Esper Wing
 - Roost
 - Brave Bird
@@ -3232,8 +2983,7 @@ Ability: Levitate
 Level: 25
 Lax Nature
 .Met_Location=40
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Ice]
 
 Unown-B
@@ -3242,8 +2992,7 @@ Ability: Levitate
 Level: 25
 Bashful Nature
 .Met_Location=56
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Ground]
 
 Unown-C
@@ -3252,8 +3001,7 @@ Ability: Levitate
 Level: 25
 Calm Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Ghost]
 
 Unown-D
@@ -3262,8 +3010,7 @@ Ability: Levitate
 Level: 25
 Naughty Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Dragon]
 
 Unown-E
@@ -3272,8 +3019,7 @@ Ability: Levitate
 Level: 25
 Lonely Nature
 .Met_Location=22
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Dark]
 
 Unown-F
@@ -3282,8 +3028,7 @@ Ability: Levitate
 Level: 25
 Docile Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Dragon]
 
 Unown-G
@@ -3292,8 +3037,7 @@ Ability: Levitate
 Level: 25
 Timid Nature
 .Met_Location=17
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Steel]
 
 Unown-H
@@ -3302,8 +3046,7 @@ Ability: Levitate
 Level: 25
 Serious Nature
 .Met_Location=6
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Psychic]
 
 Unown-I
@@ -3312,8 +3055,7 @@ Ability: Levitate
 Level: 25
 Quirky Nature
 .Met_Location=23
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Bug]
 
 Unown-J
@@ -3322,8 +3064,7 @@ Ability: Levitate
 Level: 25
 Calm Nature
 .Met_Location=72
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Dragon]
 
 Unown-K
@@ -3332,8 +3073,7 @@ Ability: Levitate
 Level: 25
 Quirky Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Ghost]
 
 Unown-L
@@ -3342,8 +3082,7 @@ Ability: Levitate
 Level: 25
 Impish Nature
 .Met_Location=86
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Flying]
 
 Unown-M
@@ -3352,8 +3091,7 @@ Ability: Levitate
 Level: 25
 Serious Nature
 .Met_Location=37
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Grass]
 
 Unown-N
@@ -3362,8 +3100,7 @@ Ability: Levitate
 Level: 25
 Calm Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Fighting]
 
 Unown-O
@@ -3372,8 +3109,7 @@ Ability: Levitate
 Level: 25
 Mild Nature
 .Met_Location=102
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Water]
 
 Unown-P
@@ -3382,8 +3118,7 @@ Ability: Levitate
 Level: 25
 Bold Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Fighting]
 
 Unown-Q
@@ -3392,8 +3127,7 @@ Ability: Levitate
 Level: 25
 Adamant Nature
 .Met_Location=58
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Ice]
 
 Unown-R
@@ -3402,8 +3136,7 @@ Ability: Levitate
 Level: 25
 Bashful Nature
 .Met_Location=59
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Ghost]
 
 Unown-S
@@ -3412,8 +3145,7 @@ Ability: Levitate
 Level: 25
 Mild Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Psychic]
 
 Unown-T
@@ -3422,8 +3154,7 @@ Ability: Levitate
 Level: 25
 Bashful Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Steel]
 
 Unown-U
@@ -3432,8 +3163,7 @@ Ability: Levitate
 Level: 25
 Hardy Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Dragon]
 
 Unown-V
@@ -3442,8 +3172,7 @@ Ability: Levitate
 Level: 25
 Adamant Nature
 .Met_Location=38
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Bug]
 
 Unown-W
@@ -3452,8 +3181,7 @@ Ability: Levitate
 Level: 25
 Lonely Nature
 .Met_Location=6
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Psychic]
 
 Unown-X
@@ -3462,8 +3190,7 @@ Ability: Levitate
 Level: 25
 Rash Nature
 .Met_Location=21
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Steel]
 
 Unown-Y
@@ -3472,8 +3199,7 @@ Ability: Levitate
 Level: 25
 Quiet Nature
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Bug]
 
 Unown-Z
@@ -3482,8 +3208,7 @@ Ability: Levitate
 Level: 25
 Careful Nature
 .Met_Location=51
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Grass]
 
 Unown-!
@@ -3492,8 +3217,7 @@ Ability: Levitate
 Level: 25
 Bashful Nature
 .Met_Location=99
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Water]
 
 Unown-?
@@ -3502,8 +3226,7 @@ Ability: Levitate
 Level: 25
 Jolly Nature
 .Met_Location=6
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hidden Power [Psychic]
 
 Pikachu (M)
@@ -3512,8 +3235,7 @@ Ability: Static
 Level: 57
 Naive Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Thunderbolt
 - Iron Tail
@@ -3525,8 +3247,7 @@ Ability: Static
 Level: 43
 Modest Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Swift
 - Spark
 - Thunderbolt
@@ -3539,8 +3260,7 @@ Level: 52
 Bashful Nature
 Alpha: Yes
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunderbolt
 - Thunder
 - Iron Tail
@@ -3552,8 +3272,7 @@ Ability: Magic Guard
 Level: 46
 Careful Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Psychic
@@ -3565,8 +3284,7 @@ Ability: Magic Guard
 Level: 46
 Careful Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Psychic
@@ -3578,8 +3296,7 @@ Ability: Magic Guard
 Level: 46
 Hasty Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Psychic
@@ -3591,8 +3308,7 @@ Ability: Magic Guard
 Level: 46
 Quirky Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Psychic
@@ -3604,8 +3320,7 @@ Ability: Cute Charm
 Level: 46
 Hasty Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Psychic
@@ -3617,8 +3332,7 @@ Ability: Cute Charm
 Level: 46
 Hasty Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Psychic
@@ -3631,8 +3345,7 @@ Level: 62
 Timid Nature
 Alpha: Yes
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Magical Leaf
 - Double-Edge
 - Moonblast
@@ -3645,8 +3358,7 @@ Level: 62
 Hasty Nature
 Alpha: Yes
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Punch
 - Double-Edge
 - Moonblast
@@ -3658,8 +3370,7 @@ Ability: Inner Focus
 Level: 14
 Impish Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Hypnosis
 - Bite
@@ -3670,8 +3381,7 @@ Ability: Inner Focus
 Level: 15
 Rash Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Hypnosis
 - Bite
@@ -3682,8 +3392,7 @@ Ability: Inner Focus
 Level: 16
 Modest Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Hypnosis
 - Bite
@@ -3694,8 +3403,7 @@ Ability: Inner Focus
 Level: 15
 Naive Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Hypnosis
 - Bite
@@ -3706,8 +3414,7 @@ Ability: Inner Focus
 Level: 16
 Gentle Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Hypnosis
 - Bite
@@ -3718,8 +3425,7 @@ Ability: Inner Focus
 Level: 15
 Impish Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Hypnosis
 - Bite
@@ -3730,8 +3436,7 @@ Ability: Inner Focus
 Level: 14
 Quiet Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Hypnosis
 - Bite
@@ -3742,8 +3447,7 @@ Ability: Inner Focus
 Level: 23
 Gentle Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Hypnosis
 - Bite
@@ -3755,8 +3459,7 @@ Ability: Inner Focus
 Level: 37
 Modest Nature
 .Met_Location=71
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Air Cutter
 - Cross Poison
@@ -3768,8 +3471,7 @@ Ability: Inner Focus
 Level: 24
 Modest Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Hypnosis
 - Bite
@@ -3781,8 +3483,7 @@ Ability: Effect Spore
 Level: 22
 Quirky Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Venoshock
@@ -3794,8 +3495,7 @@ Ability: Effect Spore
 Level: 21
 Mild Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Venoshock
@@ -3807,8 +3507,7 @@ Ability: Effect Spore
 Level: 50
 Timid Nature
 .Met_Location=19
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Spore
 - X-Scissor
@@ -3820,8 +3519,7 @@ Ability: Dry Skin
 Level: 50
 Impish Nature
 .Met_Location=19
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Spore
 - X-Scissor
@@ -3833,8 +3531,7 @@ Ability: Effect Spore
 Level: 22
 Naive Nature
 .Met_Location=71
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Venoshock
@@ -3846,8 +3543,7 @@ Ability: Dry Skin
 Level: 50
 Hardy Nature
 .Met_Location=19
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Spore
 - X-Scissor
@@ -3859,8 +3555,7 @@ Ability: Effect Spore
 Level: 22
 Hasty Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Venoshock
@@ -3873,8 +3568,7 @@ Level: 35
 Quiet Nature
 Alpha: Yes
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - False Swipe
 - Slash
 - Spore
@@ -3886,8 +3580,7 @@ Ability: Effect Spore
 Level: 35
 Lonely Nature
 .Met_Location=70
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Venoshock
 - Slash
@@ -3899,8 +3592,7 @@ Ability: Effect Spore
 Level: 37
 Rash Nature
 .Met_Location=70
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Slash
 - Spore
@@ -3912,8 +3604,7 @@ Ability: Effect Spore
 Level: 37
 Bashful Nature
 .Met_Location=70
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Slash
 - Spore
@@ -3925,8 +3616,7 @@ Ability: Cloud Nine
 Level: 18
 Naughty Nature
 .Met_Location=34
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Confusion
 - Water Pulse
@@ -3938,8 +3628,7 @@ Ability: Cloud Nine
 Level: 16
 Naive Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Confusion
 - Water Pulse
@@ -3950,8 +3639,7 @@ Ability: Cloud Nine
 Level: 14
 Quirky Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Confusion
 - Water Pulse
@@ -3962,8 +3650,7 @@ Ability: Cloud Nine
 Level: 14
 Relaxed Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Confusion
 - Water Pulse
@@ -3974,8 +3661,7 @@ Ability: Damp
 Level: 16
 Lonely Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Confusion
 - Water Pulse
@@ -3986,8 +3672,7 @@ Ability: Cloud Nine
 Level: 35
 Rash Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Hypnosis
 - Zen Headbutt
@@ -3999,8 +3684,7 @@ Ability: Intimidate
 Level: 42
 Timid Nature
 .Met_Location=61
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Fire Fang
 - Rock Slide
 - Crunch
@@ -4012,8 +3696,7 @@ Ability: Inner Focus
 Level: 12
 Lax Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Teleport
 
 Abra (F)
@@ -4022,8 +3705,7 @@ Ability: Synchronize
 Level: 11
 Mild Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Teleport
 
 Abra (F)
@@ -4032,8 +3714,7 @@ Ability: Inner Focus
 Level: 9
 Careful Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Teleport
 
 Abra (M)
@@ -4042,8 +3723,7 @@ Ability: Inner Focus
 Level: 10
 Brave Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Teleport
 
 Kadabra (F)
@@ -4052,8 +3732,7 @@ Ability: Inner Focus
 Level: 52
 Adamant Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psycho Cut
 - Zen Headbutt
 - Recover
@@ -4065,8 +3744,7 @@ Ability: Inner Focus
 Level: 49
 Relaxed Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psycho Cut
 - Zen Headbutt
 - Recover
@@ -4079,8 +3757,7 @@ Ability: Inner Focus
 Level: 51
 Careful Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psycho Cut
 - Zen Headbutt
 - Recover
@@ -4092,8 +3769,7 @@ EVs: 2 HP / 1 Atk / 1 SpA / 2 Spe
 Ability: Inner Focus
 Relaxed Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psycho Cut
 - Zen Headbutt
 - Recover
@@ -4105,8 +3781,7 @@ Ability: Guts
 Level: 26
 Serious Nature
 .Met_Location=128
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bullet Punch
 - Double Hit
 - Mach Punch
@@ -4118,8 +3793,7 @@ Ability: Guts
 Level: 24
 Adamant Nature
 .Met_Location=128
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - Bullet Punch
 - Double Hit
@@ -4131,8 +3805,7 @@ Ability: Guts
 Level: 24
 Rash Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - Bullet Punch
 - Double Hit
@@ -4144,8 +3817,7 @@ Ability: Guts
 Level: 24
 Naughty Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - Bullet Punch
 - Double Hit
@@ -4157,8 +3829,7 @@ Ability: Guts
 Level: 14
 Modest Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rock Smash
 - Bullet Punch
@@ -4169,8 +3840,7 @@ Ability: Guts
 Level: 16
 Brave Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rock Smash
 - Bullet Punch
@@ -4181,8 +3851,7 @@ Ability: Guts
 Level: 27
 Adamant Nature
 .Met_Location=128
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bullet Punch
 - Double Hit
 - Mach Punch
@@ -4194,8 +3863,7 @@ Ability: No Guard
 Level: 16
 Modest Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rock Smash
 - Bullet Punch
@@ -4206,8 +3874,7 @@ Ability: Guts
 Level: 26
 Hardy Nature
 .Met_Location=128
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bullet Punch
 - Double Hit
 - Mach Punch
@@ -4219,8 +3886,7 @@ Ability: No Guard
 Level: 15
 Impish Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rock Smash
 - Bullet Punch
@@ -4231,8 +3897,7 @@ Ability: No Guard
 Level: 24
 Mild Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - Bullet Punch
 - Double Hit
@@ -4244,8 +3909,7 @@ Ability: No Guard
 Level: 26
 Calm Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bullet Punch
 - Double Hit
 - Mach Punch
@@ -4257,8 +3921,7 @@ Ability: Guts
 Level: 16
 Lax Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rock Smash
 - Bullet Punch
@@ -4269,8 +3932,7 @@ Ability: No Guard
 Level: 24
 Bashful Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - Bullet Punch
 - Double Hit
@@ -4282,8 +3944,7 @@ Ability: Guts
 Level: 14
 Timid Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rock Smash
 - Bullet Punch
@@ -4294,8 +3955,7 @@ Ability: Guts
 Level: 13
 Lax Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rock Smash
 - Bullet Punch
@@ -4306,8 +3966,7 @@ Ability: Guts
 Level: 14
 Relaxed Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rock Smash
 - Bullet Punch
@@ -4318,8 +3977,7 @@ Ability: No Guard
 Level: 24
 Relaxed Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - Bullet Punch
 - Double Hit
@@ -4331,8 +3989,7 @@ Ability: Guts
 Level: 27
 Bashful Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bullet Punch
 - Double Hit
 - Mach Punch
@@ -4344,8 +4001,7 @@ Ability: Guts
 Level: 43
 Rash Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mach Punch
 - Bulk Up
 - Double-Edge
@@ -4357,8 +4013,7 @@ Ability: Guts
 Level: 50
 Timid Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mach Punch
 - Bulk Up
 - Double-Edge
@@ -4370,8 +4025,7 @@ Ability: No Guard
 Level: 48
 Serious Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mach Punch
 - Bulk Up
 - Double-Edge
@@ -4383,8 +4037,7 @@ Ability: No Guard
 Level: 47
 Hasty Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mach Punch
 - Bulk Up
 - Double-Edge
@@ -4396,8 +4049,7 @@ Ability: Guts
 Level: 43
 Calm Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mach Punch
 - Bulk Up
 - Double-Edge
@@ -4409,8 +4061,7 @@ Ability: No Guard
 Level: 48
 Serious Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mach Punch
 - Bulk Up
 - Double-Edge
@@ -4422,8 +4073,7 @@ Ability: No Guard
 Level: 47
 Bold Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mach Punch
 - Bulk Up
 - Double-Edge
@@ -4435,8 +4085,7 @@ Ability: Guts
 Level: 41
 Jolly Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Double Hit
 - Mach Punch
 - Bulk Up
@@ -4448,8 +4097,7 @@ Ability: No Guard
 Level: 47
 Brave Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mach Punch
 - Bulk Up
 - Double-Edge
@@ -4462,8 +4110,7 @@ Level: 70
 Sassy Nature
 Alpha: Yes
 .Met_Location=99
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Flamethrower
 - Close Combat
 - Double-Edge
@@ -4475,8 +4122,7 @@ Ability: Liquid Ooze
 Level: 28
 Impish Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Water Pulse
 - Hex
@@ -4488,8 +4134,7 @@ Ability: Liquid Ooze
 Level: 29
 Sassy Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Water Pulse
 - Hex
@@ -4502,8 +4147,7 @@ Level: 44
 Sassy Nature
 Alpha: Yes
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icy Wind
 - Hydro Pump
 - Acid Armor
@@ -4515,8 +4159,7 @@ Ability: Clear Body
 Level: 27
 Gentle Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Water Pulse
 - Hex
@@ -4528,8 +4171,7 @@ Ability: Clear Body
 Level: 44
 Bashful Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Poison Jab
 - Acid Armor
@@ -4541,8 +4183,7 @@ Ability: Liquid Ooze
 Level: 41
 Impish Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Hex
 - Poison Jab
@@ -4554,8 +4195,7 @@ Ability: Sturdy
 Level: 12
 Careful Nature
 .Met_Location=19
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 - Tackle
 - Mud-Slap
@@ -4566,8 +4206,7 @@ Ability: Rock Head
 Level: 10
 Bashful Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 - Tackle
 - Mud-Slap
@@ -4578,8 +4217,7 @@ Ability: Sturdy
 Level: 10
 Adamant Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 - Tackle
 - Mud-Slap
@@ -4590,8 +4228,7 @@ Ability: Rock Head
 Level: 11
 Bold Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 - Tackle
 - Mud-Slap
@@ -4602,8 +4239,7 @@ Ability: Sturdy
 Level: 11
 Adamant Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 - Tackle
 - Mud-Slap
@@ -4614,8 +4250,7 @@ Ability: Sturdy
 Level: 34
 Careful Nature
 .Met_Location=56
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Rock Slide
 - Bulldoze
@@ -4627,8 +4262,7 @@ Ability: Sturdy
 Level: 43
 Rash Nature
 .Met_Location=76
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Bulldoze
 - Stealth Rock
@@ -4640,8 +4274,7 @@ Ability: Rock Head
 Level: 53
 Naive Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Stealth Rock
 - Double-Edge
@@ -4653,8 +4286,7 @@ Ability: Sturdy
 Level: 59
 Quiet Nature
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Stealth Rock
 - Double-Edge
@@ -4667,8 +4299,7 @@ Level: 60
 Impish Nature
 Alpha: Yes
 .Met_Location=76
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Stone Edge
 - Self-Destruct
@@ -4681,8 +4312,7 @@ Level: 60
 Quirky Nature
 Alpha: Yes
 .Met_Location=76
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Head
 - Stone Edge
 - Self-Destruct
@@ -4695,8 +4325,7 @@ Level: 60
 Naughty Nature
 Alpha: Yes
 .Met_Location=76
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stealth Rock
 - Stone Edge
 - Self-Destruct
@@ -4708,8 +4337,7 @@ Ability: Flash Fire
 Level: 4
 Jolly Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 
 Ponyta (M)
@@ -4718,8 +4346,7 @@ Ability: Run Away
 Level: 3
 Careful Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 
 Rapidash (M)
@@ -4729,8 +4356,7 @@ Level: 40
 Bashful Nature
 Alpha: Yes
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Giga Impact
 - Double-Edge
 - Fire Blast
@@ -4742,8 +4368,7 @@ EVs: 2 HP / 6 Atk / 3 SpA / 4 Spe
 Ability: Magnet Pull
 Serious Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tri Attack
 - Thunder Wave
 - Thunderbolt
@@ -4755,8 +4380,7 @@ Ability: Sturdy
 Level: 33
 Gentle Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Spark
 - Flash Cannon
@@ -4768,8 +4392,7 @@ Ability: Sturdy
 Level: 57
 Lonely Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Flash Cannon
 - Tri Attack
 - Thunderbolt
@@ -4781,8 +4404,7 @@ Ability: Levitate
 Level: 21
 Calm Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Astonish
 - Poison Gas
 - Hex
@@ -4794,8 +4416,7 @@ Ability: Levitate
 Level: 19
 Naive Nature
 .Met_Location=34
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Astonish
 - Poison Gas
 - Hex
@@ -4807,8 +4428,7 @@ Ability: Levitate
 Level: 23
 Relaxed Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Astonish
 - Poison Gas
 - Hex
@@ -4820,8 +4440,7 @@ Ability: Levitate
 Level: 22
 Mild Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Astonish
 - Poison Gas
 - Hex
@@ -4833,8 +4452,7 @@ Ability: Levitate
 Level: 23
 Docile Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Astonish
 - Poison Gas
 - Hex
@@ -4846,8 +4464,7 @@ Ability: Levitate
 Level: 24
 Impish Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Astonish
 - Poison Gas
 - Hex
@@ -4859,8 +4476,7 @@ Ability: Levitate
 Level: 58
 Hasty Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -4872,8 +4488,7 @@ Ability: Levitate
 Level: 36
 Lonely Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Venoshock
 - Hypnosis
@@ -4885,8 +4500,7 @@ Ability: Levitate
 Level: 59
 Relaxed Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -4898,8 +4512,7 @@ Ability: Levitate
 Level: 35
 Hardy Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Venoshock
 - Hypnosis
@@ -4911,8 +4524,7 @@ Ability: Levitate
 Level: 33
 Rash Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Gas
 - Hex
 - Venoshock
@@ -4924,8 +4536,7 @@ Ability: Levitate
 Level: 60
 Relaxed Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -4937,8 +4548,7 @@ Ability: Levitate
 Level: 58
 Relaxed Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -4950,8 +4560,7 @@ Ability: Levitate
 Level: 45
 Calm Nature
 .Met_Location=76
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -4963,8 +4572,7 @@ Ability: Levitate
 Level: 59
 Gentle Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -4976,8 +4584,7 @@ Ability: Levitate
 Level: 59
 Adamant Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -4989,8 +4596,7 @@ Ability: Levitate
 Level: 57
 Calm Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -5002,8 +4608,7 @@ Ability: Cursed Body
 Level: 33
 Rash Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Gas
 - Hex
 - Venoshock
@@ -5015,8 +4620,7 @@ Ability: Cursed Body
 Level: 59
 Gentle Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -5028,8 +4632,7 @@ Ability: Cursed Body
 Level: 59
 Naughty Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -5041,8 +4644,7 @@ Ability: Cursed Body
 Level: 57
 Bashful Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -5054,8 +4656,7 @@ Ability: Cursed Body
 Level: 59
 Rash Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Hypnosis
 - Dark Pulse
@@ -5067,8 +4668,7 @@ Ability: Rock Head
 Level: 22
 Quirky Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 - Tackle
 - Bulldoze
@@ -5080,8 +4680,7 @@ Ability: Rock Head
 Level: 54
 Timid Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5093,8 +4692,7 @@ Ability: Rock Head
 Level: 52
 Bold Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5106,8 +4704,7 @@ Ability: Sturdy
 Level: 54
 Sassy Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5119,8 +4716,7 @@ Ability: Sturdy
 Level: 54
 Bashful Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5132,8 +4728,7 @@ Ability: Rock Head
 Level: 55
 Serious Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5145,8 +4740,7 @@ Ability: Sturdy
 Level: 53
 Timid Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5158,8 +4752,7 @@ Ability: Sturdy
 Level: 53
 Impish Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5171,8 +4764,7 @@ Ability: Sturdy
 Level: 23
 Quirky Nature
 .Met_Location=38
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 - Tackle
 - Bulldoze
@@ -5184,8 +4776,7 @@ Ability: Rock Head
 Level: 46
 Hardy Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5197,8 +4788,7 @@ Ability: Sturdy
 Level: 54
 Quirky Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5210,8 +4800,7 @@ Ability: Rock Head
 Level: 53
 Careful Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5223,8 +4812,7 @@ Ability: Sturdy
 Level: 27
 Relaxed Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Bulldoze
 - Rock Slide
@@ -5236,8 +4824,7 @@ Ability: Rock Head
 Level: 53
 Rash Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -5249,8 +4836,7 @@ Ability: Static
 Level: 42
 Calm Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Energy Ball
 - Thunderbolt
@@ -5262,8 +4848,7 @@ Ability: Static
 Level: 41
 Jolly Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Energy Ball
 - Thunderbolt
@@ -5275,8 +4860,7 @@ Ability: Static
 Level: 39
 Mild Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Energy Ball
 - Thunderbolt
@@ -5288,8 +4872,7 @@ Ability: Static
 Level: 40
 Quiet Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Energy Ball
 - Thunderbolt
@@ -5301,8 +4884,7 @@ Ability: Soundproof
 Level: 41
 Careful Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Energy Ball
 - Thunderbolt
@@ -5314,8 +4896,7 @@ Ability: Own Tempo
 Level: 54
 Impish Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5327,8 +4908,7 @@ Ability: Oblivious
 Level: 54
 Jolly Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5340,8 +4920,7 @@ Ability: Oblivious
 Level: 55
 Lonely Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5353,8 +4932,7 @@ Ability: Oblivious
 Level: 53
 Quirky Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5366,8 +4944,7 @@ Ability: Own Tempo
 Level: 49
 Jolly Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5379,8 +4956,7 @@ Ability: Oblivious
 Level: 55
 Quiet Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5392,8 +4968,7 @@ Ability: Oblivious
 Level: 55
 Naive Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5405,8 +4980,7 @@ Ability: Own Tempo
 Level: 54
 Rash Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5418,8 +4992,7 @@ Ability: Own Tempo
 Level: 48
 Hasty Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5431,8 +5004,7 @@ Ability: Own Tempo
 Level: 53
 Hardy Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5444,8 +5016,7 @@ Ability: Oblivious
 Level: 54
 Calm Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5457,8 +5028,7 @@ Ability: Own Tempo
 Level: 62
 Bashful Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5470,8 +5040,7 @@ Ability: Own Tempo
 Level: 47
 Jolly Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5483,8 +5052,7 @@ Ability: Own Tempo
 Level: 54
 Modest Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5496,8 +5064,7 @@ Ability: Own Tempo
 Level: 55
 Impish Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5509,8 +5076,7 @@ Ability: Oblivious
 Level: 55
 Serious Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5522,8 +5088,7 @@ Ability: Own Tempo
 Level: 49
 Hardy Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5535,8 +5100,7 @@ Ability: Own Tempo
 Level: 47
 Calm Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5548,8 +5112,7 @@ Ability: Oblivious
 Level: 54
 Lax Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5561,8 +5124,7 @@ Ability: Own Tempo
 Level: 55
 Modest Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5574,8 +5136,7 @@ Ability: Oblivious
 Level: 55
 Bashful Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5587,8 +5148,7 @@ Ability: Oblivious
 Level: 53
 Bold Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -5600,8 +5160,7 @@ Ability: Lightning Rod
 Level: 23
 Gentle Nature
 .Met_Location=148
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Bulldoze
 - Rock Smash
@@ -5613,8 +5172,7 @@ Ability: Lightning Rod
 Level: 24
 Bashful Nature
 .Met_Location=39
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Bulldoze
 - Rock Smash
@@ -5626,8 +5184,7 @@ Ability: Lightning Rod
 Level: 26
 Rash Nature
 .Met_Location=148
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Rock Smash
 - Stealth Rock
@@ -5639,8 +5196,7 @@ Ability: Lightning Rod
 Level: 26
 Brave Nature
 .Met_Location=39
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Rock Smash
 - Stealth Rock
@@ -5652,8 +5208,7 @@ Ability: Lightning Rod
 Level: 25
 Serious Nature
 .Met_Location=148
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Rock Smash
 - Stealth Rock
@@ -5665,8 +5220,7 @@ Ability: Lightning Rod
 Level: 53
 Timid Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - High Horsepower
 - Double-Edge
@@ -5678,8 +5232,7 @@ Ability: Lightning Rod
 Level: 54
 Careful Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - High Horsepower
 - Double-Edge
@@ -5691,8 +5244,7 @@ Ability: Natural Cure
 Level: 62
 Impish Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Soft-Boiled
@@ -5705,8 +5257,7 @@ Level: 51
 Bashful Nature
 Alpha: Yes
 .Met_Location=53
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Shadow Ball
 - Double-Edge
 - Soft-Boiled
@@ -5718,8 +5269,7 @@ Ability: Natural Cure
 Level: 61
 Gentle Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Soft-Boiled
@@ -5731,8 +5281,7 @@ Ability: Chlorophyll
 Level: 27
 Naive Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Acid Spray
 - Double Hit
@@ -5744,8 +5293,7 @@ Ability: Chlorophyll
 Level: 26
 Adamant Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Acid Spray
 - Double Hit
@@ -5757,8 +5305,7 @@ Ability: Chlorophyll
 Level: 22
 Hasty Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Acid Spray
@@ -5770,8 +5317,7 @@ Ability: Chlorophyll
 Level: 27
 Careful Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Acid Spray
 - Double Hit
@@ -5783,8 +5329,7 @@ Ability: Chlorophyll
 Level: 27
 Rash Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Acid Spray
 - Double Hit
@@ -5796,8 +5341,7 @@ Ability: Chlorophyll
 Level: 26
 Jolly Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Acid Spray
 - Double Hit
@@ -5809,8 +5353,7 @@ Ability: Leaf Guard
 Level: 25
 Lonely Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Acid Spray
 - Double Hit
@@ -5822,8 +5365,7 @@ Ability: Chlorophyll
 Level: 28
 Lonely Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Acid Spray
 - Double Hit
@@ -5835,8 +5377,7 @@ Ability: Soundproof
 Level: 15
 Lonely Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Hypnosis
 - Iron Defense
@@ -5847,8 +5388,7 @@ Ability: Soundproof
 Level: 17
 Lonely Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Hypnosis
 - Iron Defense
@@ -5859,8 +5399,7 @@ Ability: Filter
 Level: 33
 Brave Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Iron Defense
 - Zen Headbutt
@@ -5872,8 +5411,7 @@ Ability: Swarm
 Level: 16
 Quiet Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Silver Wind
 - Aerial Ace
@@ -5885,8 +5423,7 @@ Ability: Swarm
 Level: 13
 Lax Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Silver Wind
 - Aerial Ace
@@ -5897,8 +5434,7 @@ Ability: Swarm
 Level: 15
 Docile Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Silver Wind
 - Aerial Ace
@@ -5911,8 +5447,7 @@ Level: 42
 Rash Nature
 Alpha: Yes
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - False Swipe
 - X-Scissor
 - Swords Dance
@@ -5924,8 +5459,7 @@ Ability: Swarm
 Level: 13
 Adamant Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Silver Wind
 - Aerial Ace
@@ -5936,8 +5470,7 @@ Ability: Swarm
 Level: 13
 Serious Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Silver Wind
 - Aerial Ace
@@ -5949,8 +5482,7 @@ Level: 65
 Relaxed Nature
 Alpha: Yes
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Thunder
 - Thunderbolt
@@ -5962,8 +5494,7 @@ Ability: Static
 Level: 55
 Quiet Nature
 .Met_Location=84
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Thunder Punch
 - Thunderbolt
@@ -5975,8 +5506,7 @@ Ability: Static
 Level: 53
 Naughty Nature
 .Met_Location=84
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Thunder Punch
 - Thunderbolt
@@ -5988,8 +5518,7 @@ Ability: Static
 Level: 50
 Hardy Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Thunder Punch
 - Thunderbolt
@@ -6001,8 +5530,7 @@ Ability: Static
 Level: 55
 Gentle Nature
 .Met_Location=84
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Thunder Punch
 - Thunderbolt
@@ -6014,8 +5542,7 @@ Ability: Static
 Level: 56
 Mild Nature
 .Met_Location=84
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Thunder Punch
 - Thunderbolt
@@ -6027,8 +5554,7 @@ Ability: Flame Body
 Level: 51
 Lax Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Gas
 - Fire Punch
 - Flamethrower
@@ -6040,8 +5566,7 @@ Ability: Flame Body
 Level: 32
 Quiet Nature
 .Met_Location=56
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Flame Wheel
 - Poison Gas
@@ -6053,8 +5578,7 @@ Ability: Flame Body
 Level: 51
 Relaxed Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Gas
 - Fire Punch
 - Flamethrower
@@ -6066,8 +5590,7 @@ Ability: Flame Body
 Level: 52
 Naughty Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Gas
 - Fire Punch
 - Flamethrower
@@ -6079,8 +5602,7 @@ Ability: Flame Body
 Level: 32
 Lonely Nature
 .Met_Location=56
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Flame Wheel
 - Poison Gas
@@ -6092,8 +5614,7 @@ Ability: Swift Swim
 Level: 17
 Relaxed Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (F)
@@ -6102,8 +5623,7 @@ Ability: Swift Swim
 Level: 19
 Bashful Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (F)
@@ -6112,8 +5632,7 @@ Ability: Swift Swim
 Level: 19
 Careful Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (F)
@@ -6123,8 +5642,7 @@ Level: 55
 Naughty Nature
 Alpha: Yes
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (M)
@@ -6133,8 +5651,7 @@ Ability: Swift Swim
 Level: 17
 Impish Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (M)
@@ -6143,8 +5660,7 @@ Ability: Swift Swim
 Level: 17
 Careful Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (M)
@@ -6153,8 +5669,7 @@ Ability: Swift Swim
 Level: 17
 Hasty Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (F)
@@ -6163,8 +5678,7 @@ Ability: Swift Swim
 Level: 18
 Gentle Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (M)
@@ -6173,8 +5687,7 @@ Ability: Swift Swim
 Level: 18
 Quiet Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (M)
@@ -6183,8 +5696,7 @@ Ability: Swift Swim
 Level: 17
 Docile Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (F)
@@ -6193,8 +5705,7 @@ Ability: Swift Swim
 Level: 17
 Bashful Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (F)
@@ -6203,8 +5714,7 @@ Ability: Swift Swim
 Level: 18
 Jolly Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (M)
@@ -6213,8 +5723,7 @@ Ability: Swift Swim
 Level: 19
 Careful Nature
 .Met_Location=23
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (M)
@@ -6223,8 +5732,7 @@ Ability: Swift Swim
 Level: 19
 Jolly Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Magikarp (M)
@@ -6233,8 +5741,7 @@ Ability: Swift Swim
 Level: 17
 Gentle Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Splash
 
 Gyarados (F)
@@ -6243,8 +5750,7 @@ Ability: Intimidate
 Level: 24
 Jolly Nature
 .Met_Location=17
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Twister
 - Bite
 - Focus Energy
@@ -6256,8 +5762,7 @@ Ability: Intimidate
 Level: 25
 Bold Nature
 .Met_Location=17
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Twister
 - Bite
 - Focus Energy
@@ -6269,8 +5774,7 @@ Ability: Intimidate
 Level: 33
 Jolly Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Focus Energy
 - Crunch
@@ -6282,8 +5786,7 @@ Ability: Run Away
 Level: 53
 Quirky Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6295,8 +5798,7 @@ Ability: Run Away
 Level: 60
 Docile Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6308,8 +5810,7 @@ Ability: Adaptability
 Level: 54
 Relaxed Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6321,8 +5822,7 @@ Ability: Run Away
 Level: 51
 Timid Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6334,8 +5834,7 @@ Ability: Run Away
 Level: 61
 Docile Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6347,8 +5846,7 @@ Ability: Run Away
 Level: 51
 Naughty Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6360,8 +5858,7 @@ Ability: Adaptability
 Level: 52
 Bashful Nature
 .Met_Location=19
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6373,8 +5870,7 @@ Ability: Adaptability
 Level: 52
 Careful Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6386,8 +5882,7 @@ Ability: Run Away
 Level: 55
 Bashful Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6399,8 +5894,7 @@ Ability: Run Away
 Level: 54
 Lonely Nature
 .Met_Location=147
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6412,8 +5906,7 @@ Ability: Run Away
 Level: 53
 Calm Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6425,8 +5918,7 @@ Ability: Adaptability
 Level: 55
 Naive Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6438,8 +5930,7 @@ Ability: Adaptability
 Level: 54
 Timid Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6451,8 +5942,7 @@ Ability: Adaptability
 Level: 51
 Impish Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -6464,8 +5954,7 @@ EVs: 8 HP / 4 Atk / 4 SpA / 8 Spe
 Ability: Water Absorb
 Naive Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Aqua Tail
 - Calm Mind
@@ -6477,8 +5966,7 @@ EVs: 8 HP / 4 Atk / 4 SpA / 8 Spe
 Ability: Volt Absorb
 Docile Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Thunderbolt
 - Calm Mind
@@ -6490,8 +5978,7 @@ EVs: 8 HP / 4 Atk / 4 SpA / 8 Spe
 Ability: Flash Fire
 Lonely Nature
 .Met_Location=147
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Flamethrower
 - Calm Mind
@@ -6503,8 +5990,7 @@ Ability: Download
 Level: 53
 Lax Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tri Attack
 - Thunderbolt
 - Recover
@@ -6516,8 +6002,7 @@ Ability: Trace
 Level: 54
 Careful Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tri Attack
 - Thunderbolt
 - Recover
@@ -6530,8 +6015,7 @@ Level: 45
 Jolly Nature
 Alpha: Yes
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - High Horsepower
 - Crunch
@@ -6543,8 +6027,7 @@ Ability: Thick Fat
 Level: 63
 Adamant Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Crunch
 - High Horsepower
 - Double-Edge
@@ -6556,8 +6039,7 @@ Ability: Immunity
 Level: 50
 Docile Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Crunch
 - High Horsepower
@@ -6570,8 +6052,7 @@ Level: 60
 Naughty Nature
 Alpha: Yes
 .Met_Location=86
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Leech Life
 - Air Slash
@@ -6583,8 +6064,7 @@ Ability: Inner Focus
 Level: 50
 Calm Nature
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Cutter
 - Cross Poison
 - Air Slash
@@ -6596,8 +6076,7 @@ Ability: Static
 Level: 10
 Modest Nature
 .Met_Location=19
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Shock
 - Quick Attack
 - Thunder Wave
@@ -6608,8 +6087,7 @@ Ability: Magic Guard
 Level: 44
 Relaxed Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Psychic
@@ -6621,8 +6099,7 @@ Ability: Hustle
 Level: 32
 Hardy Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Calm Mind
 - Baby-Doll Eyes
@@ -6634,8 +6111,7 @@ Ability: Serene Grace
 Level: 34
 Careful Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Calm Mind
 - Baby-Doll Eyes
 - Air Slash
@@ -6647,8 +6123,7 @@ Ability: Sturdy
 Level: 40
 Timid Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Iron Defense
 - Mimic
@@ -6660,8 +6135,7 @@ Ability: Sturdy
 Level: 27
 Lax Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Stealth Rock
 - Rock Slide
@@ -6673,8 +6147,7 @@ Ability: Run Away
 Level: 49
 Rash Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -6686,8 +6159,7 @@ Ability: Pickup
 Level: 45
 Relaxed Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -6699,8 +6171,7 @@ Ability: Pickup
 Level: 29
 Modest Nature
 .Met_Location=149
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Swift
 - Mud Bomb
@@ -6712,8 +6183,7 @@ Ability: Run Away
 Level: 25
 Adamant Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Swift
 - Mud Bomb
@@ -6725,8 +6195,7 @@ Ability: Pickup
 Level: 45
 Bashful Nature
 .Met_Location=88
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -6738,8 +6207,7 @@ Ability: Pickup
 Level: 62
 Calm Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -6751,8 +6219,7 @@ Ability: Pickup
 Level: 47
 Gentle Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -6764,8 +6231,7 @@ Ability: Run Away
 Level: 25
 Naughty Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Swift
 - Mud Bomb
@@ -6777,8 +6243,7 @@ Ability: Compound Eyes
 Level: 38
 Timid Nature
 .Met_Location=70
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Silver Wind
 - Hypnosis
 - Air Slash
@@ -6790,8 +6255,7 @@ Ability: Speed Boost
 Level: 22
 Naughty Nature
 .Met_Location=46
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Gust
 - Silver Wind
@@ -6803,8 +6267,7 @@ Ability: Speed Boost
 Level: 22
 Sassy Nature
 .Met_Location=46
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Gust
 - Silver Wind
@@ -6816,8 +6279,7 @@ Ability: Compound Eyes
 Level: 23
 Adamant Nature
 .Met_Location=46
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Gust
 - Silver Wind
@@ -6829,8 +6291,7 @@ Ability: Compound Eyes
 Level: 24
 Quirky Nature
 .Met_Location=46
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Gust
 - Silver Wind
@@ -6842,8 +6303,7 @@ Ability: Speed Boost
 Level: 22
 Lonely Nature
 .Met_Location=46
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Gust
 - Silver Wind
@@ -6855,8 +6315,7 @@ Ability: Synchronize
 Level: 76
 Quirky Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Mimic
 - Calm Mind
@@ -6868,8 +6327,7 @@ Ability: Synchronize
 Level: 58
 Careful Nature
 .Met_Location=147
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mimic
 - Dark Pulse
 - Calm Mind
@@ -6881,8 +6339,7 @@ Ability: Super Luck
 Level: 29
 Relaxed Nature
 .Met_Location=54
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Snarl
 - Roost
 - Aerial Ace
@@ -6894,8 +6351,7 @@ Ability: Insomnia
 Level: 31
 Naive Nature
 .Met_Location=54
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Roost
 - Aerial Ace
 - Night Slash
@@ -6907,8 +6363,7 @@ Ability: Insomnia
 Level: 24
 Sassy Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Snarl
 - Roost
@@ -6920,8 +6375,7 @@ Ability: Super Luck
 Level: 24
 Mild Nature
 .Met_Location=42
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Snarl
 - Roost
@@ -6933,8 +6387,7 @@ Ability: Super Luck
 Level: 31
 Hardy Nature
 .Met_Location=128
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Roost
 - Aerial Ace
 - Night Slash
@@ -6946,8 +6399,7 @@ Ability: Levitate
 Level: 45
 Sassy Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Extrasensory
 - Power Gem
@@ -6959,8 +6411,7 @@ Ability: Levitate
 Level: 47
 Naive Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Extrasensory
 - Power Gem
@@ -6972,8 +6423,7 @@ Ability: Levitate
 Level: 45
 Docile Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Extrasensory
 - Power Gem
@@ -6985,8 +6435,7 @@ Ability: Levitate
 Level: 45
 Quirky Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Extrasensory
 - Power Gem
@@ -6998,8 +6447,7 @@ Ability: Sand Veil
 Level: 40
 Brave Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Mud Bomb
 - Slash
@@ -7011,8 +6459,7 @@ Ability: Sand Veil
 Level: 56
 Gentle Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Slash
 - Poison Jab
@@ -7024,8 +6471,7 @@ Ability: Sand Veil
 Level: 53
 Brave Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Slash
 - Poison Jab
@@ -7038,8 +6484,7 @@ Level: 70
 Modest Nature
 Alpha: Yes
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stone Edge
 - X-Scissor
 - Poison Jab
@@ -7051,8 +6496,7 @@ Ability: Hyper Cutter
 Level: 41
 Sassy Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Mud Bomb
 - Slash
@@ -7064,8 +6508,7 @@ Ability: Hyper Cutter
 Level: 40
 Relaxed Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Mud Bomb
 - Slash
@@ -7077,8 +6520,7 @@ Ability: Sand Veil
 Level: 40
 Docile Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Mud Bomb
 - Slash
@@ -7090,8 +6532,7 @@ Ability: Rock Head
 Level: 59
 Sassy Nature
 .Met_Location=19
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Slide
 - Stealth Rock
 - High Horsepower
@@ -7104,8 +6545,7 @@ Level: 60
 Hasty Nature
 Alpha: Yes
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Tail
 - High Horsepower
 - Stealth Rock
@@ -7117,8 +6557,7 @@ Ability: Swift Swim
 Level: 33
 Naughty Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Barb Barrage
 - Water Pulse
 - Dark Pulse
@@ -7130,8 +6569,7 @@ Ability: Swift Swim
 Level: 32
 Hasty Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Barb Barrage
 - Water Pulse
 - Dark Pulse
@@ -7143,8 +6581,7 @@ Ability: Swift Swim
 Level: 31
 Jolly Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Barb Barrage
 - Water Pulse
 - Dark Pulse
@@ -7156,8 +6593,7 @@ Ability: Poison Point
 Level: 42
 Adamant Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Dark Pulse
 - Poison Jab
@@ -7169,8 +6605,7 @@ Ability: Poison Point
 Level: 33
 Relaxed Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Barb Barrage
 - Water Pulse
 - Dark Pulse
@@ -7182,8 +6617,7 @@ Ability: Swift Swim
 Level: 42
 Docile Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Dark Pulse
 - Poison Jab
@@ -7195,8 +6629,7 @@ Ability: Swift Swim
 Level: 34
 Brave Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Barb Barrage
 - Water Pulse
 - Dark Pulse
@@ -7208,8 +6641,7 @@ Ability: Swift Swim
 Level: 33
 Mild Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Barb Barrage
 - Water Pulse
 - Dark Pulse
@@ -7221,8 +6653,7 @@ Ability: Poison Point
 Level: 33
 Rash Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Barb Barrage
 - Water Pulse
 - Dark Pulse
@@ -7234,8 +6665,7 @@ Ability: Swift Swim
 Level: 43
 Modest Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Dark Pulse
 - Poison Jab
@@ -7247,8 +6677,7 @@ Ability: Poison Point
 Level: 41
 Mild Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Dark Pulse
 - Poison Jab
@@ -7260,8 +6689,7 @@ Ability: Poison Point
 Level: 32
 Naughty Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Barb Barrage
 - Water Pulse
 - Dark Pulse
@@ -7274,8 +6702,7 @@ Level: 55
 Adamant Nature
 Alpha: Yes
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Swift
 - Double-Edge
 - Aqua Tail
@@ -7287,8 +6714,7 @@ Ability: Poison Point
 Level: 43
 Jolly Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Dark Pulse
 - Poison Jab
@@ -7301,8 +6727,7 @@ Ability: Swarm
 Rash Nature
 Alpha: Yes
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Double Hit
 - X-Scissor
 - Swords Dance
@@ -7314,8 +6739,7 @@ Ability: Guts
 Level: 40
 Brave Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Slash
 - Swords Dance
@@ -7327,8 +6751,7 @@ Ability: Swarm
 Level: 38
 Mild Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Slash
 - Swords Dance
@@ -7340,8 +6763,7 @@ Ability: Inner Focus
 Level: 54
 Naughty Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7353,8 +6775,7 @@ Ability: Keen Eye
 Level: 52
 Naughty Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7366,8 +6787,7 @@ Ability: Keen Eye
 Level: 52
 Bold Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7379,8 +6799,7 @@ Ability: Inner Focus
 Level: 55
 Hasty Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7392,8 +6811,7 @@ Ability: Inner Focus
 Level: 55
 Quirky Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7405,8 +6823,7 @@ Ability: Keen Eye
 Level: 52
 Lonely Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7419,8 +6836,7 @@ Level: 61
 Relaxed Nature
 Alpha: Yes
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Jab
 - Close Combat
 - Swords Dance
@@ -7432,8 +6848,7 @@ Ability: Inner Focus
 Level: 50
 Timid Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7445,8 +6860,7 @@ Ability: Inner Focus
 Level: 49
 Hasty Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7458,8 +6872,7 @@ Ability: Keen Eye
 Level: 49
 Docile Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7471,8 +6884,7 @@ Ability: Inner Focus
 Level: 52
 Calm Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7484,8 +6896,7 @@ Ability: Keen Eye
 Level: 51
 Bold Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7497,8 +6908,7 @@ Ability: Inner Focus
 Level: 49
 Jolly Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7510,8 +6920,7 @@ Ability: Inner Focus
 Level: 50
 Calm Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -7523,8 +6932,7 @@ Ability: Pickup
 Level: 26
 Mild Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Bulldoze
 - Slash
@@ -7536,8 +6944,7 @@ Ability: Pickup
 Level: 27
 Jolly Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Bulldoze
 - Slash
@@ -7549,8 +6956,7 @@ Ability: Quick Feet
 Level: 29
 Mild Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Bulldoze
 - Slash
@@ -7562,8 +6968,7 @@ Ability: Quick Feet
 Level: 29
 Relaxed Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Bulldoze
 - Slash
@@ -7575,8 +6980,7 @@ Ability: Quick Feet
 Level: 27
 Modest Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Bulldoze
 - Slash
@@ -7588,8 +6992,7 @@ Ability: Pickup
 Level: 26
 Rash Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Bulldoze
 - Slash
@@ -7601,8 +7004,7 @@ Ability: Quick Feet
 Level: 40
 Hasty Nature
 .Met_Location=130
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Slash
 - Play Rough
@@ -7615,8 +7017,7 @@ Level: 55
 Bold Nature
 Alpha: Yes
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Play Rough
 - Double-Edge
 - High Horsepower
@@ -7628,8 +7029,7 @@ Ability: Quick Feet
 Level: 65
 Naughty Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7641,8 +7041,7 @@ Ability: Quick Feet
 Level: 62
 Quirky Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7654,8 +7053,7 @@ Ability: Guts
 Level: 64
 Hasty Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7667,8 +7065,7 @@ Ability: Quick Feet
 Level: 62
 Naive Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7680,8 +7077,7 @@ Ability: Quick Feet
 Level: 65
 Docile Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7693,8 +7089,7 @@ Ability: Quick Feet
 Level: 65
 Bashful Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7706,8 +7101,7 @@ Ability: Guts
 Level: 63
 Careful Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7719,8 +7113,7 @@ Ability: Guts
 Level: 65
 Timid Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7732,8 +7125,7 @@ Ability: Guts
 Level: 63
 Quirky Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7745,8 +7137,7 @@ Ability: Quick Feet
 Level: 62
 Bashful Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7758,8 +7149,7 @@ Ability: Quick Feet
 Level: 57
 Hardy Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7771,8 +7161,7 @@ Ability: Guts
 Level: 63
 Serious Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7784,8 +7173,7 @@ Ability: Guts
 Level: 63
 Serious Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7797,8 +7185,7 @@ Ability: Quick Feet
 Level: 65
 Quirky Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Play Rough
 - High Horsepower
@@ -7810,8 +7197,7 @@ Ability: Snow Cloak
 Level: 30
 Quiet Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bulldoze
 - Icicle Crash
@@ -7824,8 +7210,7 @@ Ability: Snow Cloak
 Level: 30
 Sassy Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bulldoze
 - Icicle Crash
@@ -7837,8 +7222,7 @@ Ability: Snow Cloak
 Level: 30
 Timid Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bulldoze
 - Icicle Crash
@@ -7850,8 +7234,7 @@ Ability: Oblivious
 Level: 32
 Adamant Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bulldoze
 - Icicle Crash
@@ -7863,8 +7246,7 @@ Ability: Snow Cloak
 Level: 30
 Quiet Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bulldoze
 - Icicle Crash
@@ -7876,8 +7258,7 @@ Ability: Oblivious
 Level: 32
 Modest Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bulldoze
 - Icicle Crash
@@ -7889,8 +7270,7 @@ Ability: Snow Cloak
 Level: 30
 Naughty Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bulldoze
 - Icicle Crash
@@ -7902,8 +7282,7 @@ Ability: Oblivious
 Level: 31
 Hasty Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bulldoze
 - Icicle Crash
@@ -7915,8 +7294,7 @@ Ability: Snow Cloak
 Level: 43
 Relaxed Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icicle Crash
 - High Horsepower
 - Ancient Power
@@ -7928,8 +7306,7 @@ Ability: Oblivious
 Level: 62
 Rash Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - High Horsepower
 - Ancient Power
 - Blizzard
@@ -7941,8 +7318,7 @@ Ability: Oblivious
 Level: 44
 Hardy Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icicle Crash
 - High Horsepower
 - Ancient Power
@@ -7954,8 +7330,7 @@ Ability: Snow Cloak
 Level: 50
 Lonely Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icicle Crash
 - High Horsepower
 - Ancient Power
@@ -7967,8 +7342,7 @@ Ability: Oblivious
 Level: 51
 Docile Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icicle Crash
 - High Horsepower
 - Ancient Power
@@ -7980,8 +7354,7 @@ Ability: Hustle
 Level: 23
 Docile Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -7993,8 +7366,7 @@ Ability: Hustle
 Level: 23
 Modest Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -8006,8 +7378,7 @@ Ability: Hustle
 Level: 24
 Jolly Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -8019,8 +7390,7 @@ Ability: Sniper
 Level: 24
 Quirky Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -8032,8 +7402,7 @@ Ability: Hustle
 Level: 24
 Quirky Nature
 .Met_Location=129
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -8045,8 +7414,7 @@ Ability: Hustle
 Level: 21
 Naive Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -8058,8 +7426,7 @@ Ability: Sniper
 Level: 24
 Brave Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -8071,8 +7438,7 @@ Ability: Sniper
 Level: 22
 Quiet Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -8084,8 +7450,7 @@ Ability: Hustle
 Level: 24
 Relaxed Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -8097,8 +7462,7 @@ Ability: Hustle
 Level: 23
 Naughty Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Acid Spray
 - Charge Beam
@@ -8110,8 +7474,7 @@ Ability: Sniper
 Level: 53
 Bashful Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Ice Beam
 - Hydro Pump
@@ -8123,8 +7486,7 @@ Ability: Sniper
 Level: 41
 Gentle Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Charge Beam
 - Water Pulse
 - Ice Beam
@@ -8136,8 +7498,7 @@ Ability: Suction Cups
 Level: 41
 Brave Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Charge Beam
 - Water Pulse
 - Ice Beam
@@ -8150,8 +7511,7 @@ Level: 50
 Quirky Nature
 Alpha: Yes
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Power Shift
 - Double-Edge
 - Hydro Pump
@@ -8163,8 +7523,7 @@ Ability: Water Absorb
 Level: 33
 Docile Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Water Pulse
 - Air Slash
@@ -8176,8 +7535,7 @@ Ability: Swift Swim
 Level: 31
 Naive Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Water Pulse
 - Air Slash
@@ -8189,8 +7547,7 @@ Ability: Intimidate
 Level: 14
 Gentle Nature
 .Met_Location=16
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Confusion
 - Hypnosis
@@ -8201,8 +7558,7 @@ Ability: Frisk
 Level: 12
 Modest Nature
 .Met_Location=16
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Confusion
 - Hypnosis
@@ -8213,8 +7569,7 @@ Ability: Frisk
 Level: 14
 Impish Nature
 .Met_Location=16
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Confusion
 - Hypnosis
@@ -8225,8 +7580,7 @@ Ability: Frisk
 Level: 12
 Sassy Nature
 .Met_Location=16
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Confusion
 - Hypnosis
@@ -8237,8 +7591,7 @@ Ability: Frisk
 Level: 11
 Hasty Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Confusion
 - Hypnosis
@@ -8249,8 +7602,7 @@ Ability: Static
 Level: 29
 Quirky Nature
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Spark
 - Thunder Wave
@@ -8263,8 +7615,7 @@ Level: 62
 Naughty Nature
 Alpha: Yes
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stealth Rock
 - Double-Edge
 - Soft-Boiled
@@ -8277,8 +7628,7 @@ Level: 62
 Quirky Nature
 Alpha: Yes
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Power Shift
 - Double-Edge
 - Soft-Boiled
@@ -8290,8 +7640,7 @@ Ability: Shield Dust
 Level: 2
 Bold Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 
 Wurmple (F)
@@ -8300,8 +7649,7 @@ Ability: Shield Dust
 Level: 2
 Bashful Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 
 Wurmple (F)
@@ -8310,8 +7658,7 @@ Ability: Shield Dust
 Level: 4
 Quiet Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 
 Wurmple (F)
@@ -8320,8 +7667,7 @@ Ability: Shield Dust
 Level: 3
 Bashful Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 
 Wurmple (M)
@@ -8330,8 +7676,7 @@ Ability: Shield Dust
 Level: 6
 Quiet Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 - Tackle
 
@@ -8341,8 +7686,7 @@ Ability: Shield Dust
 Level: 4
 Gentle Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 
 Wurmple (M)
@@ -8351,8 +7695,7 @@ Ability: Shield Dust
 Level: 5
 Quiet Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 
 Wurmple (F)
@@ -8361,8 +7704,7 @@ Ability: Shield Dust
 Level: 3
 Lax Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 
 Wurmple (F)
@@ -8371,8 +7713,7 @@ Ability: Shield Dust
 Level: 6
 Impish Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 - Tackle
 
@@ -8382,8 +7723,7 @@ Ability: Shield Dust
 Level: 6
 Bashful Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 - Tackle
 
@@ -8393,8 +7733,7 @@ Ability: Shed Skin
 Level: 9
 Rash Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Sting
 - Tackle
@@ -8406,8 +7745,7 @@ Level: 20
 Impish Nature
 Alpha: Yes
 .Met_Location=26
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Poison Sting
 - Iron Defense
@@ -8418,8 +7756,7 @@ Ability: Shed Skin
 Level: 8
 Lax Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Sting
 - Tackle
@@ -8430,8 +7767,7 @@ Ability: Shed Skin
 Level: 8
 Hasty Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Sting
 - Tackle
@@ -8442,8 +7778,7 @@ Ability: Swarm
 Level: 21
 Careful Nature
 .Met_Location=26
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Iron Defense
 - Stun Spore
@@ -8455,8 +7790,7 @@ Ability: Swarm
 Level: 18
 Hasty Nature
 .Met_Location=26
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Iron Defense
 - Stun Spore
@@ -8468,8 +7802,7 @@ Ability: Swarm
 Level: 32
 Naughty Nature
 .Met_Location=150
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Stun Spore
 - Silver Wind
@@ -8481,8 +7814,7 @@ Ability: Swarm
 Level: 30
 Lonely Nature
 .Met_Location=150
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Stun Spore
 - Silver Wind
@@ -8494,8 +7826,7 @@ Ability: Shed Skin
 Level: 3
 Quiet Nature
 .Met_Location=26
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Sting
 
@@ -8505,8 +7836,7 @@ Ability: Shed Skin
 Level: 8
 Hasty Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Sting
 - Tackle
@@ -8517,8 +7847,7 @@ Ability: Shed Skin
 Level: 5
 Rash Nature
 .Met_Location=26
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Sting
 
@@ -8528,8 +7857,7 @@ Ability: Shield Dust
 Level: 30
 Naive Nature
 .Met_Location=54
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Powder
 - Silver Wind
@@ -8541,8 +7869,7 @@ Ability: Shield Dust
 Level: 30
 Lonely Nature
 .Met_Location=54
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Powder
 - Silver Wind
@@ -8554,8 +7881,7 @@ Ability: Shield Dust
 Level: 30
 Relaxed Nature
 .Met_Location=54
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Poison Powder
 - Silver Wind
@@ -8567,8 +7893,7 @@ Ability: Synchronize
 Level: 19
 Modest Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Teleport
 - Draining Kiss
@@ -8580,8 +7905,7 @@ Ability: Trace
 Level: 16
 Brave Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Teleport
 - Draining Kiss
@@ -8592,8 +7916,7 @@ Ability: Trace
 Level: 18
 Mild Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Teleport
 - Draining Kiss
@@ -8605,8 +7928,7 @@ Ability: Synchronize
 Level: 17
 Impish Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Teleport
 - Draining Kiss
@@ -8617,8 +7939,7 @@ Ability: Synchronize
 Level: 16
 Quiet Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Teleport
 - Draining Kiss
@@ -8629,8 +7950,7 @@ Ability: Synchronize
 Level: 19
 Quirky Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Teleport
 - Draining Kiss
@@ -8642,8 +7962,7 @@ Ability: Trace
 Level: 16
 Serious Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Teleport
 - Draining Kiss
@@ -8654,8 +7973,7 @@ Ability: Trace
 Level: 18
 Naive Nature
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Teleport
 - Draining Kiss
@@ -8667,8 +7985,7 @@ Ability: Trace
 Level: 26
 Hasty Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Teleport
 - Draining Kiss
 - Hypnosis
@@ -8680,8 +7997,7 @@ Ability: Synchronize
 Level: 26
 Impish Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Teleport
 - Draining Kiss
 - Hypnosis
@@ -8693,8 +8009,7 @@ Ability: Synchronize
 Level: 27
 Bashful Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Teleport
 - Draining Kiss
 - Hypnosis
@@ -8707,8 +8022,7 @@ Level: 70
 Hardy Nature
 Alpha: Yes
 .Met_Location=101
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hyper Beam
 - Moonblast
 - Recover
@@ -8720,8 +8034,7 @@ Ability: Magnet Pull
 Level: 40
 Sassy Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Iron Defense
 - Rock Slide
@@ -8733,8 +8046,7 @@ Ability: Magnet Pull
 Level: 41
 Quirky Nature
 .Met_Location=81
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Spark
 - Iron Defense
 - Rock Slide
@@ -8746,8 +8058,7 @@ Ability: Sturdy
 Level: 53
 Hardy Nature
 .Met_Location=79
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Defense
 - Rock Slide
 - Power Gem
@@ -8759,8 +8070,7 @@ Ability: Natural Cure
 Level: 43
 Quiet Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Venoshock
 - Poison Jab
@@ -8772,8 +8082,7 @@ Ability: Natural Cure
 Level: 46
 Adamant Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Venoshock
 - Poison Jab
@@ -8785,8 +8094,7 @@ Ability: Poison Point
 Level: 44
 Sassy Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Venoshock
 - Poison Jab
@@ -8798,8 +8106,7 @@ Ability: Natural Cure
 Level: 46
 Hardy Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Venoshock
 - Poison Jab
@@ -8811,8 +8118,7 @@ Ability: Poison Point
 Level: 44
 Relaxed Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Venoshock
 - Poison Jab
@@ -8824,8 +8130,7 @@ Ability: Natural Cure
 Level: 35
 Rash Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Stun Spore
 - Venoshock
@@ -8837,8 +8142,7 @@ Ability: Poison Point
 Level: 33
 Sassy Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Poison Powder
 - Stun Spore
@@ -8850,8 +8154,7 @@ Ability: Poison Point
 Level: 36
 Naughty Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Stun Spore
 - Venoshock
@@ -8863,8 +8166,7 @@ Ability: Natural Cure
 Level: 34
 Docile Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Stun Spore
 - Venoshock
@@ -8876,8 +8178,7 @@ Ability: Oblivious
 Level: 27
 Docile Nature
 .Met_Location=86
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Mud Bomb
 - Rest
@@ -8889,8 +8190,7 @@ Ability: Oblivious
 Level: 29
 Hasty Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Mud Bomb
 - Rest
@@ -8902,8 +8202,7 @@ Ability: Oblivious
 Level: 29
 Quirky Nature
 .Met_Location=86
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Mud Bomb
 - Rest
@@ -8915,8 +8214,7 @@ Ability: Anticipation
 Level: 28
 Careful Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Mud Bomb
 - Rest
@@ -8928,8 +8226,7 @@ Ability: Oblivious
 Level: 21
 Relaxed Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud-Slap
 - Water Pulse
 - Mud Bomb
@@ -8941,8 +8238,7 @@ Ability: Oblivious
 Level: 29
 Hardy Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Mud Bomb
 - Rest
@@ -8954,8 +8250,7 @@ Ability: Anticipation
 Level: 26
 Hardy Nature
 .Met_Location=86
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Mud Bomb
 - Rest
@@ -8967,8 +8262,7 @@ Ability: Anticipation
 Level: 54
 Lax Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Zen Headbutt
 - Aqua Tail
@@ -8980,8 +8274,7 @@ Ability: Anticipation
 Level: 56
 Serious Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Zen Headbutt
 - Aqua Tail
@@ -8993,8 +8286,7 @@ Ability: Oblivious
 Level: 55
 Sassy Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Zen Headbutt
 - Aqua Tail
@@ -9006,8 +8298,7 @@ Ability: Anticipation
 Level: 35
 Relaxed Nature
 .Met_Location=86
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Rest
 - Zen Headbutt
@@ -9019,8 +8310,7 @@ Ability: Oblivious
 Level: 55
 Quirky Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Zen Headbutt
 - Aqua Tail
@@ -9032,8 +8322,7 @@ Ability: Oblivious
 Level: 56
 Serious Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Zen Headbutt
 - Aqua Tail
@@ -9045,8 +8334,7 @@ Ability: Oblivious
 Level: 36
 Careful Nature
 .Met_Location=86
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Rest
 - Zen Headbutt
@@ -9059,8 +8347,7 @@ Level: 64
 Hasty Nature
 Alpha: Yes
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icy Wind
 - Earth Power
 - Aqua Tail
@@ -9072,8 +8359,7 @@ Ability: Oblivious
 Level: 53
 Bashful Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Zen Headbutt
 - Aqua Tail
@@ -9085,8 +8371,7 @@ Ability: Anticipation
 Level: 55
 Quirky Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Zen Headbutt
 - Aqua Tail
@@ -9098,8 +8383,7 @@ Ability: Anticipation
 Level: 55
 Calm Nature
 .Met_Location=41
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Zen Headbutt
 - Aqua Tail
@@ -9111,8 +8395,7 @@ Ability: Levitate
 Level: 35
 Brave Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Leech Life
 - Dark Pulse
@@ -9124,8 +8407,7 @@ Ability: Levitate
 Level: 36
 Jolly Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Leech Life
 - Dark Pulse
@@ -9137,8 +8419,7 @@ Ability: Levitate
 Level: 33
 Lonely Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Shadow Sneak
 - Hex
 - Leech Life
@@ -9150,8 +8431,7 @@ Ability: Pressure
 Level: 59
 Mild Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9163,8 +8443,7 @@ Ability: Pressure
 Level: 51
 Jolly Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9176,8 +8455,7 @@ Ability: Pressure
 Level: 55
 Hasty Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9189,8 +8467,7 @@ Ability: Pressure
 Level: 54
 Bold Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9202,8 +8479,7 @@ Ability: Pressure
 Level: 60
 Hasty Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9215,8 +8491,7 @@ Ability: Pressure
 Level: 61
 Timid Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9228,8 +8503,7 @@ Ability: Pressure
 Level: 54
 Modest Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9241,8 +8515,7 @@ Ability: Pressure
 Level: 52
 Mild Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9254,8 +8527,7 @@ Ability: Pressure
 Level: 52
 Jolly Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9267,8 +8539,7 @@ Ability: Pressure
 Level: 55
 Relaxed Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9280,8 +8551,7 @@ Ability: Pressure
 Level: 52
 Lonely Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9293,8 +8563,7 @@ Ability: Pressure
 Level: 59
 Lax Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9306,8 +8575,7 @@ Ability: Pressure
 Level: 54
 Relaxed Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9319,8 +8587,7 @@ Ability: Pressure
 Level: 55
 Quirky Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Leech Life
 - Dark Pulse
 - Shadow Ball
@@ -9333,8 +8600,7 @@ Level: 65
 Sassy Nature
 Alpha: Yes
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Double-Edge
 - Recover
@@ -9346,8 +8612,7 @@ Ability: Levitate
 Level: 50
 Timid Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Extrasensory
 - Recover
@@ -9359,8 +8624,7 @@ Ability: Levitate
 Level: 50
 Impish Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Extrasensory
 - Recover
@@ -9372,8 +8636,7 @@ Ability: Levitate
 Level: 56
 Rash Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Extrasensory
 - Recover
@@ -9385,8 +8648,7 @@ Ability: Levitate
 Level: 50
 Impish Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Extrasensory
 - Recover
@@ -9398,8 +8660,7 @@ Ability: Ice Body
 Level: 38
 Rash Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Ice Fang
 - Crunch
@@ -9411,8 +8672,7 @@ Ability: Ice Body
 Level: 40
 Calm Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Ice Fang
 - Crunch
@@ -9424,8 +8684,7 @@ Ability: Ice Body
 Level: 38
 Lonely Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Ice Fang
 - Crunch
@@ -9437,8 +8696,7 @@ Ability: Ice Body
 Level: 41
 Modest Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Ice Fang
 - Crunch
@@ -9450,8 +8708,7 @@ Ability: Ice Body
 Level: 41
 Calm Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Ice Fang
 - Crunch
@@ -9463,8 +8720,7 @@ Ability: Ice Body
 Level: 41
 Gentle Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Ice Fang
 - Crunch
@@ -9476,8 +8732,7 @@ Ability: Ice Body
 Level: 40
 Adamant Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Ice Fang
 - Crunch
@@ -9489,8 +8744,7 @@ Ability: Inner Focus
 Level: 40
 Impish Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Ice Fang
 - Crunch
@@ -9502,8 +8756,7 @@ Ability: Ice Body
 Level: 41
 Careful Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Ice Fang
 - Crunch
@@ -9515,8 +8768,7 @@ Ability: Inner Focus
 Level: 54
 Quiet Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Fang
 - Crunch
 - Icicle Crash
@@ -9529,8 +8781,7 @@ Level: 64
 Docile Nature
 Alpha: Yes
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Head
 - Blizzard
 - Icicle Crash
@@ -9543,8 +8794,7 @@ Level: 62
 Modest Nature
 Alpha: Yes
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Blizzard
 - Icicle Crash
@@ -9557,8 +8807,7 @@ Level: 62
 Timid Nature
 Alpha: Yes
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Beam
 - Blizzard
 - Icicle Crash
@@ -9570,8 +8819,7 @@ Ability: Inner Focus
 Level: 55
 Serious Nature
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Fang
 - Crunch
 - Icicle Crash
@@ -9583,8 +8831,7 @@ Ability: Inner Focus
 Level: 56
 Modest Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Fang
 - Crunch
 - Icicle Crash
@@ -9596,8 +8843,7 @@ Ability: Ice Body
 Level: 27
 Naive Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Powder Snow
 - Water Pulse
 - Rest
@@ -9609,8 +8855,7 @@ Ability: Thick Fat
 Level: 30
 Hasty Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Powder Snow
 - Water Pulse
 - Rest
@@ -9622,8 +8867,7 @@ Ability: Thick Fat
 Level: 41
 Lax Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Rest
 - Liquidation
@@ -9635,8 +8879,7 @@ Ability: Thick Fat
 Level: 43
 Jolly Nature
 .Met_Location=60
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Liquidation
 - Ice Beam
@@ -9648,8 +8891,7 @@ Ability: Thick Fat
 Level: 43
 Adamant Nature
 .Met_Location=60
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Liquidation
 - Ice Beam
@@ -9661,8 +8903,7 @@ Ability: Ice Body
 Level: 42
 Bashful Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Rest
 - Liquidation
@@ -9674,8 +8915,7 @@ Ability: Ice Body
 Level: 42
 Bold Nature
 .Met_Location=60
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Rest
 - Liquidation
@@ -9687,8 +8927,7 @@ Ability: Thick Fat
 Level: 56
 Hardy Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Liquidation
 - Ice Beam
@@ -9700,8 +8939,7 @@ Ability: Thick Fat
 Level: 41
 Naive Nature
 .Met_Location=60
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Rest
 - Liquidation
@@ -9713,8 +8951,7 @@ Ability: Ice Body
 Level: 58
 Bashful Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Liquidation
 - Ice Beam
@@ -9726,8 +8963,7 @@ Ability: Thick Fat
 Level: 42
 Bashful Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Rest
 - Liquidation
@@ -9739,8 +8975,7 @@ Ability: Ice Body
 Level: 46
 Adamant Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Liquidation
 - Ice Beam
@@ -9752,8 +8987,7 @@ Ability: Ice Body
 Level: 62
 Quiet Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Liquidation
 - Ice Beam
@@ -9766,8 +9000,7 @@ Level: 50
 Serious Nature
 Alpha: Yes
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Blizzard
 - Ice Beam
@@ -9779,8 +9012,7 @@ Ability: Overgrow
 Level: 15
 Rash Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Leafage
 - Bite
@@ -9791,8 +9023,7 @@ Ability: Overgrow
 Level: 15
 Mild Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Leafage
 - Bite
@@ -9803,8 +9034,7 @@ Ability: Overgrow
 Level: 14
 Relaxed Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Leafage
 - Bite
@@ -9815,8 +9045,7 @@ Ability: Overgrow
 Level: 15
 Hasty Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Leafage
 - Bite
@@ -9828,8 +9057,7 @@ Ability: Overgrow
 Level: 38
 Impish Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Leafage
 - Bite
@@ -9841,8 +9069,7 @@ EVs: 2 HP / 1 Atk / 1 SpA / 2 Spe
 Ability: Overgrow
 Mild Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Wood Hammer
 - Leafage
 - Bite
@@ -9854,8 +9081,7 @@ Ability: Blaze
 Level: 12
 Calm Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Ember
 - Swift
@@ -9866,8 +9092,7 @@ Ability: Blaze
 Level: 11
 Timid Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Ember
 - Swift
@@ -9878,8 +9103,7 @@ Ability: Blaze
 Level: 10
 Adamant Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Ember
 
@@ -9889,8 +9113,7 @@ Ability: Blaze
 Level: 13
 Bashful Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Ember
 - Swift
@@ -9902,8 +9125,7 @@ Level: 65
 Quirky Nature
 Alpha: Yes
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Focus Energy
 - Close Combat
 - Flare Blitz
@@ -9915,8 +9137,7 @@ Ability: Torrent
 Level: 15
 Timid Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Bubble
 - Aerial Ace
@@ -9927,8 +9148,7 @@ Ability: Torrent
 Level: 15
 Gentle Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Bubble
 - Aerial Ace
@@ -9939,8 +9159,7 @@ Ability: Torrent
 Level: 34
 Naughty Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Water Pulse
 - Roost
@@ -9953,8 +9172,7 @@ Level: 69
 Jolly Nature
 Alpha: Yes
 .Met_Location=60
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Steel Beam
 - Wave Crash
 - Hydro Pump
@@ -9966,8 +9184,7 @@ Ability: Keen Eye
 Level: 7
 Adamant Nature
 .Met_Location=15
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Quick Attack
 
@@ -9977,8 +9194,7 @@ Ability: Keen Eye
 Level: 9
 Rash Nature
 .Met_Location=15
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Quick Attack
 - Aerial Ace
@@ -9990,8 +9206,7 @@ Level: 45
 Jolly Nature
 Alpha: Yes
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Brave Bird
 - Double-Edge
@@ -10003,8 +9218,7 @@ Ability: Intimidate
 Level: 31
 Jolly Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Air Slash
 - Roost
@@ -10016,8 +9230,7 @@ EVs: 78 HP / 124 Atk / 63 Def / 88 SpA / 55 SpD / 102 Spe
 Ability: Intimidate
 Naive Nature
 .Met_Location=13
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Slash
 - Quick Attack
 - Roost
@@ -10029,8 +9242,7 @@ EVs: 78 HP / 123 Atk / 63 Def / 89 SpA / 55 SpD / 102 Spe
 Ability: Unaware
 Jolly Nature
 .Met_Location=13
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Crunch
 - Aqua Tail
 - Rollout
@@ -10042,8 +9254,7 @@ EVs: 78 HP / 124 Atk / 63 Def / 88 SpA / 55 SpD / 102 Spe
 Ability: Unaware
 Docile Nature
 .Met_Location=13
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Crunch
 - Aqua Tail
 - Rollout
@@ -10055,8 +9266,7 @@ Ability: Simple
 Level: 42
 Adamant Nature
 .Met_Location=58
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Crunch
 - Aqua Tail
 - Swords Dance
@@ -10068,8 +9278,7 @@ Ability: Shed Skin
 Level: 6
 Quiet Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Tackle
 
@@ -10079,8 +9288,7 @@ Ability: Shed Skin
 Level: 6
 Brave Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Tackle
 
@@ -10090,8 +9298,7 @@ Ability: Shed Skin
 Level: 6
 Bashful Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Tackle
 
@@ -10101,8 +9308,7 @@ Ability: Shed Skin
 Level: 7
 Jolly Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Tackle
 
@@ -10112,8 +9318,7 @@ Ability: Shed Skin
 Level: 9
 Relaxed Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Tackle
 
@@ -10123,8 +9328,7 @@ Ability: Shed Skin
 Level: 9
 Jolly Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Tackle
 
@@ -10134,8 +9338,7 @@ Ability: Shed Skin
 Level: 9
 Quirky Nature
 .Met_Location=15
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Tackle
 
@@ -10145,8 +9348,7 @@ Ability: Shed Skin
 Level: 6
 Quiet Nature
 .Met_Location=15
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Tackle
 
@@ -10157,8 +9359,7 @@ Level: 30
 Naughty Nature
 Alpha: Yes
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - X-Scissor
 - Night Slash
@@ -10170,8 +9371,7 @@ Ability: Swarm
 Level: 11
 Naive Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Tackle
 - Aerial Ace
@@ -10182,8 +9382,7 @@ Ability: Rivalry
 Level: 6
 Timid Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Thunder Shock
 
@@ -10193,8 +9392,7 @@ Ability: Rivalry
 Level: 4
 Docile Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 
 Shinx (M)
@@ -10203,8 +9401,7 @@ Ability: Rivalry
 Level: 2
 Calm Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 
 Shinx (M)
@@ -10213,8 +9410,7 @@ Ability: Rivalry
 Level: 3
 Brave Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 
 Luxio (M)
@@ -10223,8 +9419,7 @@ Ability: Intimidate
 Level: 52
 Adamant Nature
 .Met_Location=147
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Crunch
 - Wild Charge
@@ -10236,8 +9431,7 @@ EVs: 78 HP / 123 Atk / 63 Def / 89 SpA / 55 SpD / 102 Spe
 Ability: Rivalry
 Hasty Nature
 .Met_Location=13
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Wild Charge
 - Thunder Wave
 - Fire Fang
@@ -10249,8 +9443,7 @@ Ability: Intimidate
 Level: 62
 Impish Nature
 .Met_Location=147
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Crunch
 - Wild Charge
@@ -10262,8 +9455,7 @@ Ability: Natural Cure
 Level: 36
 Rash Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Stun Spore
 - Venoshock
@@ -10276,8 +9468,7 @@ Level: 38
 Serious Nature
 Alpha: Yes
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Poison Jab
 - Venoshock
@@ -10289,8 +9480,7 @@ Ability: Poison Point
 Level: 34
 Serious Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Stun Spore
 - Venoshock
@@ -10302,8 +9492,7 @@ Ability: Poison Point
 Level: 35
 Lax Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Powder
 - Stun Spore
 - Venoshock
@@ -10315,8 +9504,7 @@ Ability: Natural Cure
 Level: 18
 Gentle Nature
 .Met_Location=34
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 - Absorb
 - Poison Powder
@@ -10328,8 +9516,7 @@ Ability: Natural Cure
 Level: 18
 Timid Nature
 .Met_Location=34
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 - Absorb
 - Poison Powder
@@ -10341,8 +9528,7 @@ Ability: Natural Cure
 Level: 23
 Docile Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Sting
 - Absorb
 - Poison Powder
@@ -10355,8 +9541,7 @@ Level: 50
 Relaxed Nature
 Alpha: Yes
 .Met_Location=42
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Dazzling Gleam
 - Energy Ball
 - Poison Jab
@@ -10368,8 +9553,7 @@ Ability: Mold Breaker
 Level: 52
 Modest Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Head
 - Crunch
 - Double-Edge
@@ -10381,8 +9565,7 @@ Ability: Mold Breaker
 Level: 53
 Quiet Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Head
 - Crunch
 - Double-Edge
@@ -10394,8 +9577,7 @@ Ability: Mold Breaker
 Level: 53
 Quiet Nature
 .Met_Location=76
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Head
 - Crunch
 - Double-Edge
@@ -10407,8 +9589,7 @@ Ability: Sturdy
 Level: 52
 Modest Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Head
 - Earth Power
 - Stealth Rock
@@ -10420,8 +9601,7 @@ Ability: Shed Skin
 Level: 10
 Serious Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Struggle Bug
 
 Burmy-Sandy (F)
@@ -10430,8 +9610,7 @@ Ability: Shed Skin
 Level: 19
 Hardy Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Struggle Bug
 
 Burmy-Sandy (F)
@@ -10440,8 +9619,7 @@ Ability: Shed Skin
 Level: 19
 Bold Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Struggle Bug
 
 Burmy-Trash (F)
@@ -10450,8 +9628,7 @@ Ability: Shed Skin
 Level: 16
 Naive Nature
 .Met_Location=52
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Struggle Bug
 
 Burmy-Trash (F)
@@ -10460,8 +9637,7 @@ Ability: Shed Skin
 Level: 17
 Mild Nature
 .Met_Location=149
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Struggle Bug
 
 Mothim (M)
@@ -10470,8 +9646,7 @@ Ability: Swarm
 Level: 30
 Naive Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Confusion
 - Silver Wind
@@ -10483,8 +9658,7 @@ Ability: Swarm
 Level: 28
 Hasty Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Confusion
 - Silver Wind
@@ -10496,8 +9670,7 @@ Ability: Swarm
 Level: 32
 Adamant Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Confusion
 - Silver Wind
@@ -10509,8 +9682,7 @@ Ability: Swarm
 Level: 29
 Careful Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Confusion
 - Silver Wind
@@ -10522,8 +9694,7 @@ Ability: Honey Gather
 Level: 17
 Bashful Nature
 .Met_Location=149
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Struggle Bug
 
@@ -10533,8 +9704,7 @@ Ability: Honey Gather
 Level: 15
 Hardy Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Struggle Bug
 
@@ -10544,8 +9714,7 @@ Ability: Honey Gather
 Level: 17
 Timid Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Struggle Bug
 
@@ -10555,8 +9724,7 @@ Ability: Honey Gather
 Level: 16
 Careful Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Struggle Bug
 
@@ -10566,8 +9734,7 @@ Ability: Honey Gather
 Level: 18
 Quiet Nature
 .Met_Location=149
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Struggle Bug
 
@@ -10577,8 +9744,7 @@ Ability: Honey Gather
 Level: 6
 Impish Nature
 .Met_Location=22
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Struggle Bug
 
@@ -10588,8 +9754,7 @@ Ability: Pickup
 Level: 35
 Impish Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Spark
 - Baby-Doll Eyes
@@ -10601,8 +9766,7 @@ Ability: Run Away
 Level: 35
 Serious Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Spark
 - Baby-Doll Eyes
@@ -10614,8 +9778,7 @@ Ability: Pickup
 Level: 34
 Docile Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Spark
 - Baby-Doll Eyes
@@ -10627,8 +9790,7 @@ EVs: 4 Atk / 3 SpA
 Ability: Pickup
 Modest Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Spark
 - Baby-Doll Eyes
@@ -10640,8 +9802,7 @@ Ability: Pickup
 Level: 36
 Calm Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Spark
 - Baby-Doll Eyes
@@ -10653,8 +9814,7 @@ Ability: Run Away
 Level: 33
 Lax Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Spark
 - Baby-Doll Eyes
@@ -10666,8 +9826,7 @@ Ability: Pickup
 Level: 33
 Modest Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Spark
 - Baby-Doll Eyes
@@ -10679,8 +9838,7 @@ Ability: Swift Swim
 Level: 10
 Timid Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 
@@ -10690,8 +9848,7 @@ Ability: Swift Swim
 Level: 10
 Jolly Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 
@@ -10701,8 +9858,7 @@ Ability: Swift Swim
 Level: 10
 Rash Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 
@@ -10712,8 +9868,7 @@ Ability: Swift Swim
 Level: 11
 Calm Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 - Swift
@@ -10724,8 +9879,7 @@ Ability: Swift Swim
 Level: 13
 Gentle Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 - Swift
@@ -10736,8 +9890,7 @@ Ability: Swift Swim
 Level: 13
 Quiet Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 - Swift
@@ -10748,8 +9901,7 @@ Ability: Swift Swim
 Level: 9
 Quiet Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 
@@ -10759,8 +9911,7 @@ Ability: Swift Swim
 Level: 9
 Jolly Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 
@@ -10770,8 +9921,7 @@ Ability: Swift Swim
 Level: 12
 Serious Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 - Swift
@@ -10782,8 +9932,7 @@ Ability: Swift Swim
 Level: 12
 Lonely Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 - Swift
@@ -10794,8 +9943,7 @@ Ability: Swift Swim
 Level: 11
 Modest Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 - Swift
@@ -10806,8 +9954,7 @@ Ability: Swift Swim
 Level: 11
 Lonely Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Aqua Jet
 - Swift
@@ -10818,8 +9965,7 @@ Ability: Swift Swim
 Level: 59
 Modest Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Double Hit
 - Crunch
 - Aqua Tail
@@ -10831,8 +9977,7 @@ Ability: Swift Swim
 Level: 61
 Timid Nature
 .Met_Location=147
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Double Hit
 - Crunch
 - Aqua Tail
@@ -10844,8 +9989,7 @@ Ability: Chlorophyll
 Level: 23
 Gentle Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Stun Spore
 - Draining Kiss
@@ -10857,8 +10001,7 @@ Ability: Chlorophyll
 Level: 24
 Hasty Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Stun Spore
 - Draining Kiss
@@ -10871,8 +10014,7 @@ Ability: Flower Gift
 Level: 25
 Quirky Nature
 .Met_Location=74
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Stun Spore
 - Draining Kiss
@@ -10884,8 +10026,7 @@ Ability: Flower Gift
 Level: 45
 Gentle Nature
 .Met_Location=76
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Energy Ball
 - Sleep Powder
@@ -10897,8 +10038,7 @@ Ability: Storm Drain
 Level: 15
 Bashful Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud-Slap
 - Tackle
 - Water Pulse
@@ -10910,8 +10050,7 @@ Ability: Sticky Hold
 Level: 15
 Careful Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud-Slap
 - Tackle
 - Water Pulse
@@ -10923,8 +10062,7 @@ Ability: Sticky Hold
 Level: 16
 Bashful Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud-Slap
 - Tackle
 - Water Pulse
@@ -10936,8 +10074,7 @@ Ability: Sticky Hold
 Level: 15
 Calm Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud-Slap
 - Tackle
 - Water Pulse
@@ -10949,8 +10086,7 @@ Ability: Sticky Hold
 Level: 17
 Careful Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud-Slap
 - Tackle
 - Water Pulse
@@ -10962,8 +10098,7 @@ Ability: Storm Drain
 Level: 28
 Calm Nature
 .Met_Location=55
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Water Pulse
 - Ancient Power
@@ -10975,8 +10110,7 @@ Ability: Storm Drain
 Level: 27
 Bashful Nature
 .Met_Location=55
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Water Pulse
 - Ancient Power
@@ -10988,8 +10122,7 @@ Ability: Storm Drain
 Level: 26
 Jolly Nature
 .Met_Location=55
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Water Pulse
 - Ancient Power
@@ -11001,8 +10134,7 @@ Ability: Storm Drain
 Level: 36
 Naive Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Ancient Power
 - Mud Bomb
@@ -11014,8 +10146,7 @@ Ability: Sticky Hold
 Level: 32
 Gentle Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Ancient Power
 - Mud Bomb
@@ -11027,8 +10158,7 @@ Ability: Storm Drain
 Level: 36
 Bashful Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Ancient Power
 - Mud Bomb
@@ -11040,8 +10170,7 @@ Ability: Technician
 Level: 58
 Hardy Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -11053,8 +10182,7 @@ Ability: Pickup
 Level: 55
 Modest Nature
 .Met_Location=101
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -11066,8 +10194,7 @@ Ability: Technician
 Level: 56
 Modest Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -11079,8 +10206,7 @@ Ability: Pickup
 Level: 60
 Serious Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -11092,8 +10218,7 @@ Ability: Pickup
 Level: 58
 Mild Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -11105,8 +10230,7 @@ Ability: Pickup
 Level: 59
 Adamant Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mud Bomb
 - Double Hit
 - Iron Tail
@@ -11118,8 +10242,7 @@ Ability: Unburden
 Level: 2
 Quiet Nature
 .Met_Location=13
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 
 Drifloon (M)
@@ -11128,8 +10251,7 @@ Ability: Aftermath
 Level: 26
 Mild Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Astonish
 - Calm Mind
 - Hex
@@ -11141,8 +10263,7 @@ Ability: Unburden
 Level: 2
 Gentle Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 
 Drifloon (M)
@@ -11151,8 +10272,7 @@ Ability: Unburden
 Level: 3
 Quiet Nature
 .Met_Location=13
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 
 Drifloon (M)
@@ -11161,8 +10281,7 @@ Ability: Aftermath
 Level: 4
 Careful Nature
 .Met_Location=13
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 
 Drifloon (F)
@@ -11171,8 +10290,7 @@ Ability: Unburden
 Level: 24
 Lonely Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Astonish
 - Calm Mind
@@ -11184,8 +10302,7 @@ Ability: Unburden
 Level: 60
 Bold Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mystical Fire
 - Extrasensory
 - Shadow Ball
@@ -11197,8 +10314,7 @@ Ability: Aftermath
 Level: 60
 Lonely Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mystical Fire
 - Extrasensory
 - Shadow Ball
@@ -11210,8 +10326,7 @@ Ability: Unburden
 Level: 52
 Quirky Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mystical Fire
 - Extrasensory
 - Shadow Ball
@@ -11223,8 +10338,7 @@ Ability: Unburden
 Level: 50
 Mild Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mystical Fire
 - Extrasensory
 - Shadow Ball
@@ -11236,8 +10350,7 @@ Ability: Unburden
 Level: 50
 Rash Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mystical Fire
 - Extrasensory
 - Shadow Ball
@@ -11249,8 +10362,7 @@ Ability: Unburden
 Level: 30
 Lonely Nature
 .Met_Location=51
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Calm Mind
 - Hex
 - Mystical Fire
@@ -11262,8 +10374,7 @@ Ability: Run Away
 Level: 49
 Lonely Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Double Hit
 - Play Rough
@@ -11275,8 +10386,7 @@ Ability: Run Away
 Level: 46
 Calm Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Draining Kiss
 - Double Hit
 - Play Rough
@@ -11288,8 +10398,7 @@ Ability: Klutz
 Level: 15
 Serious Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Baby-Doll Eyes
 - Swift
@@ -11300,8 +10409,7 @@ Ability: Klutz
 Level: 15
 Careful Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Baby-Doll Eyes
 - Swift
@@ -11312,8 +10420,7 @@ Ability: Run Away
 Level: 16
 Docile Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Baby-Doll Eyes
 - Swift
@@ -11325,8 +10432,7 @@ Ability: Klutz
 Level: 14
 Hasty Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Baby-Doll Eyes
 - Swift
@@ -11338,8 +10444,7 @@ Level: 13
 Shiny: Yes
 Quirky Nature
 .Met_Location=20
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Quick Attack
 - Baby-Doll Eyes
 - Swift
@@ -11350,8 +10455,7 @@ Ability: Cute Charm
 Level: 57
 Careful Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Double Hit
 - Play Rough
 - Double-Edge
@@ -11363,8 +10467,7 @@ Ability: Cute Charm
 Level: 58
 Adamant Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Double Hit
 - Play Rough
 - Double-Edge
@@ -11376,8 +10479,7 @@ Ability: Cute Charm
 Level: 50
 Naughty Nature
 .Met_Location=142
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Double Hit
 - Play Rough
 - Double-Edge
@@ -11390,8 +10492,7 @@ Level: 61
 Hasty Nature
 Alpha: Yes
 .Met_Location=77
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Shadow Ball
 - Power Gem
@@ -11403,8 +10504,7 @@ Ability: Super Luck
 Level: 31
 Calm Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Roost
 - Aerial Ace
 - Night Slash
@@ -11416,8 +10516,7 @@ Ability: Super Luck
 Level: 32
 Gentle Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Roost
 - Aerial Ace
 - Night Slash
@@ -11430,8 +10529,7 @@ Level: 55
 Jolly Nature
 Alpha: Yes
 .Met_Location=42
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psychic
 - Brave Bird
 - Dark Pulse
@@ -11443,8 +10541,7 @@ Ability: Limber
 Level: 29
 Bold Nature
 .Met_Location=49
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Nasty Plot
 - Slash
@@ -11456,8 +10553,7 @@ Ability: Limber
 Level: 28
 Gentle Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Nasty Plot
 - Slash
@@ -11469,8 +10565,7 @@ Ability: Own Tempo
 Level: 28
 Modest Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Nasty Plot
 - Slash
@@ -11482,8 +10577,7 @@ Ability: Own Tempo
 Level: 34
 Lax Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Slash
 - Night Slash
@@ -11495,8 +10589,7 @@ Ability: Own Tempo
 Level: 30
 Rash Nature
 .Met_Location=54
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Nasty Plot
 - Slash
@@ -11508,8 +10601,7 @@ Ability: Own Tempo
 Level: 32
 Naughty Nature
 .Met_Location=54
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Slash
 - Night Slash
@@ -11521,8 +10613,7 @@ Ability: Limber
 Level: 37
 Jolly Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Slash
 - Night Slash
@@ -11534,8 +10625,7 @@ Ability: Thick Fat
 Level: 49
 Jolly Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Night Slash
 - Play Rough
@@ -11547,8 +10637,7 @@ Ability: Thick Fat
 Level: 50
 Lax Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Night Slash
 - Play Rough
@@ -11560,8 +10649,7 @@ Ability: Own Tempo
 Level: 51
 Calm Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Night Slash
 - Play Rough
@@ -11573,8 +10661,7 @@ Ability: Levitate
 Level: 55
 Timid Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Extrasensory
 - Recover
@@ -11586,8 +10673,7 @@ Ability: Levitate
 Level: 52
 Gentle Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Extrasensory
 - Recover
@@ -11599,8 +10685,7 @@ Ability: Levitate
 Level: 49
 Modest Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hypnosis
 - Extrasensory
 - Recover
@@ -11612,8 +10697,7 @@ Ability: Aftermath
 Level: 22
 Lax Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Acid Spray
 - Poison Gas
@@ -11625,8 +10709,7 @@ Ability: Stench
 Level: 22
 Lonely Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Acid Spray
 - Poison Gas
@@ -11638,8 +10721,7 @@ Ability: Aftermath
 Level: 20
 Mild Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Acid Spray
 - Poison Gas
@@ -11651,8 +10733,7 @@ Ability: Aftermath
 Level: 22
 Hasty Nature
 .Met_Location=38
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Acid Spray
 - Poison Gas
@@ -11664,8 +10745,7 @@ Ability: Aftermath
 Level: 20
 Gentle Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Acid Spray
 - Poison Gas
@@ -11677,8 +10757,7 @@ Ability: Aftermath
 Level: 36
 Naughty Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Night Slash
 - Poison Jab
@@ -11690,8 +10769,7 @@ Ability: Stench
 Level: 37
 Relaxed Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Night Slash
 - Poison Jab
@@ -11703,8 +10781,7 @@ Ability: Aftermath
 Level: 37
 Adamant Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Venoshock
 - Night Slash
 - Poison Jab
@@ -11716,8 +10793,7 @@ Ability: Heatproof
 Level: 29
 Lax Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Iron Defense
 - Hex
@@ -11729,8 +10805,7 @@ Ability: Heatproof
 Level: 29
 Bold Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Iron Defense
 - Hex
@@ -11742,8 +10817,7 @@ Ability: Heatproof
 Level: 30
 Sassy Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Iron Defense
 - Hex
@@ -11755,8 +10829,7 @@ Ability: Heatproof
 Level: 31
 Calm Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 - Iron Defense
 - Hex
@@ -11768,8 +10841,7 @@ Ability: Levitate
 Level: 51
 Relaxed Nature
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Hypnosis
 - Flash Cannon
@@ -11781,8 +10853,7 @@ Ability: Heatproof
 Level: 51
 Sassy Nature
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Hypnosis
 - Flash Cannon
@@ -11794,8 +10865,7 @@ Ability: Heatproof
 Level: 51
 Brave Nature
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Hypnosis
 - Flash Cannon
@@ -11807,8 +10877,7 @@ Ability: Levitate
 Level: 53
 Timid Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Hypnosis
 - Flash Cannon
@@ -11820,8 +10889,7 @@ Ability: Heatproof
 Level: 55
 Naughty Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Hypnosis
 - Flash Cannon
@@ -11833,8 +10901,7 @@ Ability: Levitate
 Level: 55
 Careful Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Hypnosis
 - Flash Cannon
@@ -11846,8 +10913,7 @@ Ability: Heatproof
 Level: 52
 Serious Nature
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Hypnosis
 - Flash Cannon
@@ -11859,8 +10925,7 @@ Ability: Sturdy
 Level: 20
 Rash Nature
 .Met_Location=148
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rollout
 - Tackle
 - Stealth Rock
@@ -11872,8 +10937,7 @@ Ability: Soundproof
 Level: 5
 Sassy Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Confusion
 
 Happiny (F)
@@ -11882,8 +10946,7 @@ Ability: Natural Cure
 Level: 41
 Lax Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Draining Kiss
 - Calm Mind
@@ -11895,8 +10958,7 @@ Ability: Natural Cure
 Level: 42
 Jolly Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Draining Kiss
 - Calm Mind
@@ -11908,8 +10970,7 @@ Ability: Natural Cure
 Level: 15
 Bashful Nature
 .Met_Location=18
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Fairy Wind
 - Baby-Doll Eyes
@@ -11920,8 +10981,7 @@ Ability: Tangled Feet
 Level: 30
 Sassy Nature
 .Met_Location=51
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Cutter
 - Roost
 - Air Slash
@@ -11933,8 +10993,7 @@ Ability: Tangled Feet
 Level: 31
 Bashful Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Cutter
 - Roost
 - Air Slash
@@ -11946,8 +11005,7 @@ Ability: Tangled Feet
 Level: 34
 Jolly Nature
 .Met_Location=129
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Roost
 - Air Slash
 - Mimic
@@ -11960,8 +11018,7 @@ Ability: Pressure
 Level: 60
 Jolly Nature
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Extrasensory
 - Dark Pulse
@@ -11973,8 +11030,7 @@ Ability: Sand Veil
 Level: 21
 Modest Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Twister
 - Bulldoze
 - Slash
@@ -11986,8 +11042,7 @@ Ability: Sand Veil
 Level: 21
 Naive Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Twister
 - Bulldoze
 - Slash
@@ -11999,8 +11054,7 @@ Ability: Sand Veil
 Level: 20
 Impish Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Twister
 - Bulldoze
@@ -12012,8 +11066,7 @@ Ability: Sand Veil
 Level: 22
 Quirky Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Twister
 - Bulldoze
 - Slash
@@ -12025,8 +11078,7 @@ Ability: Sand Veil
 Level: 23
 Gentle Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Twister
 - Bulldoze
 - Slash
@@ -12038,8 +11090,7 @@ Ability: Sand Veil
 Level: 45
 Quirky Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Dragon Claw
 - Earth Power
@@ -12051,8 +11102,7 @@ Ability: Sand Veil
 Level: 45
 Docile Nature
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Dragon Claw
 - Earth Power
@@ -12065,8 +11115,7 @@ Level: 85
 Serious Nature
 Alpha: Yes
 .Met_Location=98
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - Outrage
 - Double-Edge
@@ -12078,8 +11127,7 @@ Ability: Steadfast
 Level: 50
 Docile Nature
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aura Sphere
 - Crunch
 - Bulk Up
@@ -12091,8 +11139,7 @@ Ability: Steadfast
 Level: 50
 Jolly Nature
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aura Sphere
 - Crunch
 - Bulk Up
@@ -12104,8 +11151,7 @@ Ability: Steadfast
 Level: 49
 Naughty Nature
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aura Sphere
 - Crunch
 - Bulk Up
@@ -12118,8 +11164,7 @@ Level: 70
 Careful Nature
 Alpha: Yes
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Tail
 - Close Combat
 - Dragon Pulse
@@ -12132,8 +11177,7 @@ Level: 70
 Hardy Nature
 Alpha: Yes
 .Met_Location=97
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Flash Cannon
 - Close Combat
 - Dragon Pulse
@@ -12145,8 +11189,7 @@ Ability: Sand Stream
 Level: 22
 Mild Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rest
 - Bite
@@ -12158,8 +11201,7 @@ Ability: Sand Stream
 Level: 22
 Lonely Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rest
 - Bite
@@ -12171,8 +11213,7 @@ Ability: Sand Stream
 Level: 22
 Gentle Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rest
 - Bite
@@ -12184,8 +11225,7 @@ Ability: Sand Stream
 Level: 24
 Bold Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rest
 - Bite
@@ -12197,8 +11237,7 @@ Ability: Sand Stream
 Level: 22
 Serious Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tackle
 - Rest
 - Bite
@@ -12210,8 +11249,7 @@ Ability: Sand Stream
 Level: 34
 Jolly Nature
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Mud Bomb
 - Crunch
@@ -12224,8 +11262,7 @@ Level: 46
 Calm Nature
 Alpha: Yes
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bulldoze
 - Double-Edge
 - High Horsepower
@@ -12237,8 +11274,7 @@ Ability: Sniper
 Level: 27
 Adamant Nature
 .Met_Location=50
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Venoshock
 - Cross Poison
@@ -12250,8 +11286,7 @@ Ability: Sniper
 Level: 27
 Serious Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bite
 - Venoshock
 - Cross Poison
@@ -12263,8 +11298,7 @@ Ability: Battle Armor
 Level: 56
 Modest Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Cross Poison
 - Swords Dance
 - X-Scissor
@@ -12276,8 +11310,7 @@ Ability: Sniper
 Level: 57
 Quirky Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Cross Poison
 - Swords Dance
 - X-Scissor
@@ -12289,8 +11322,7 @@ Ability: Battle Armor
 Level: 57
 Quirky Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Cross Poison
 - Swords Dance
 - X-Scissor
@@ -12302,8 +11334,7 @@ Ability: Battle Armor
 Level: 55
 Rash Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Cross Poison
 - Swords Dance
 - X-Scissor
@@ -12315,8 +11346,7 @@ Ability: Battle Armor
 Level: 56
 Timid Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Cross Poison
 - Swords Dance
 - X-Scissor
@@ -12328,8 +11358,7 @@ Ability: Battle Armor
 Level: 57
 Naive Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Cross Poison
 - Swords Dance
 - X-Scissor
@@ -12342,8 +11371,7 @@ Level: 47
 Relaxed Nature
 Alpha: Yes
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Drain Punch
 - Close Combat
 - Earth Power
@@ -12355,8 +11383,7 @@ Ability: Dry Skin
 Level: 70
 Timid Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Poison Jab
 - Earth Power
@@ -12368,8 +11395,7 @@ Ability: Anticipation
 Level: 70
 Jolly Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Nasty Plot
 - Poison Jab
 - Earth Power
@@ -12381,8 +11407,7 @@ Ability: Levitate
 Level: 27
 Jolly Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Bite
 - Stun Spore
@@ -12394,8 +11419,7 @@ Ability: Levitate
 Level: 26
 Relaxed Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Bite
 - Stun Spore
@@ -12407,8 +11431,7 @@ Ability: Levitate
 Level: 20
 Lonely Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Acid Spray
 - Bite
@@ -12420,8 +11443,7 @@ Ability: Levitate
 Level: 23
 Sassy Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Absorb
 - Acid Spray
 - Bite
@@ -12433,8 +11455,7 @@ Ability: Levitate
 Level: 28
 Modest Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Bite
 - Stun Spore
@@ -12446,8 +11467,7 @@ Ability: Swift Swim
 Level: 30
 Bold Nature
 .Met_Location=55
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Water Pulse
 - Silver Wind
@@ -12459,8 +11479,7 @@ Ability: Storm Drain
 Level: 30
 Naughty Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Water Pulse
 - Silver Wind
@@ -12472,8 +11491,7 @@ Ability: Swift Swim
 Level: 29
 Relaxed Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Water Pulse
 - Silver Wind
@@ -12485,8 +11503,7 @@ Ability: Swift Swim
 Level: 27
 Rash Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Water Pulse
 - Silver Wind
@@ -12498,8 +11515,7 @@ Ability: Swift Swim
 Level: 28
 Serious Nature
 .Met_Location=55
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Water Pulse
 - Silver Wind
@@ -12511,8 +11527,7 @@ Ability: Storm Drain
 Level: 27
 Lax Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Water Pulse
 - Silver Wind
@@ -12524,8 +11539,7 @@ Ability: Storm Drain
 Level: 28
 Adamant Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Water Pulse
 - Silver Wind
@@ -12537,8 +11551,7 @@ Ability: Swift Swim
 Level: 28
 Careful Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Gust
 - Water Pulse
 - Silver Wind
@@ -12550,8 +11563,7 @@ Ability: Swift Swim
 Level: 44
 Lax Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Silver Wind
 - Air Slash
 - Roost
@@ -12563,8 +11575,7 @@ Ability: Swift Swim
 Level: 33
 Lax Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Water Pulse
 - Air Slash
@@ -12576,8 +11587,7 @@ Ability: Swift Swim
 Level: 34
 Hasty Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Water Pulse
 - Air Slash
@@ -12589,8 +11599,7 @@ Ability: Water Absorb
 Level: 31
 Quiet Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Water Pulse
 - Air Slash
@@ -12602,8 +11611,7 @@ Ability: Swift Swim
 Level: 34
 Brave Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Water Pulse
 - Air Slash
@@ -12615,8 +11623,7 @@ Ability: Swift Swim
 Level: 33
 Adamant Nature
 .Met_Location=9
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Aerial Ace
 - Water Pulse
 - Air Slash
@@ -12628,8 +11635,7 @@ Ability: Snow Warning
 Level: 39
 Bold Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Icicle Crash
 - Energy Ball
@@ -12641,8 +11647,7 @@ Ability: Snow Warning
 Level: 36
 Timid Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Icicle Crash
 - Energy Ball
@@ -12654,8 +11659,7 @@ Ability: Snow Warning
 Level: 50
 Lonely Nature
 .Met_Location=101
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icicle Crash
 - Energy Ball
 - Blizzard
@@ -12667,8 +11671,7 @@ Ability: Snow Warning
 Level: 49
 Hardy Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icicle Crash
 - Energy Ball
 - Blizzard
@@ -12680,8 +11683,7 @@ Ability: Snow Warning
 Level: 50
 Impish Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icicle Crash
 - Energy Ball
 - Blizzard
@@ -12693,8 +11695,7 @@ Ability: Snow Warning
 Level: 51
 Serious Nature
 .Met_Location=93
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icicle Crash
 - Energy Ball
 - Blizzard
@@ -12706,8 +11707,7 @@ EVs: 2 HP / 4 SpD
 Ability: Pressure
 Quirky Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -12719,8 +11719,7 @@ Ability: Sturdy
 Level: 46
 Jolly Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Flash Cannon
 - Tri Attack
 - Thunderbolt
@@ -12732,8 +11731,7 @@ Ability: Sturdy
 Level: 47
 Modest Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Flash Cannon
 - Tri Attack
 - Thunderbolt
@@ -12746,8 +11744,7 @@ Level: 52
 Sassy Nature
 Alpha: Yes
 .Met_Location=43
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Icy Wind
 - Giga Impact
 - Rollout
@@ -12759,8 +11756,7 @@ Ability: Oblivious
 Level: 57
 Hardy Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -12772,8 +11768,7 @@ Ability: Own Tempo
 Level: 60
 Mild Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Double-Edge
 - Rollout
@@ -12786,8 +11781,7 @@ Level: 74
 Naive Nature
 Alpha: Yes
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Iron Head
 - Giga Impact
 - Double-Edge
@@ -12800,8 +11794,7 @@ Level: 45
 Careful Nature
 Alpha: Yes
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Sludge Bomb
 - Ancient Power
 - Sleep Powder
@@ -12814,8 +11807,7 @@ Level: 45
 Jolly Nature
 Alpha: Yes
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Ancient Power
 - Sleep Powder
@@ -12828,8 +11820,7 @@ Level: 45
 Serious Nature
 Alpha: Yes
 .Met_Location=36
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rock Smash
 - Ancient Power
 - Sleep Powder
@@ -12842,8 +11833,7 @@ Level: 69
 Jolly Nature
 Alpha: Yes
 .Met_Location=84
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Punch
 - Thunder
 - Thunderbolt
@@ -12856,8 +11846,7 @@ Level: 69
 Hasty Nature
 Alpha: Yes
 .Met_Location=84
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Wild Charge
 - Thunder
 - Thunderbolt
@@ -12869,8 +11858,7 @@ EVs: 2 HP / 1 Atk / 1 SpA / 2 Spe
 Ability: Flame Body
 Lax Nature
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Gas
 - Fire Punch
 - Flamethrower
@@ -12882,8 +11870,7 @@ Ability: Flame Body
 Level: 58
 Impish Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Poison Gas
 - Fire Punch
 - Flamethrower
@@ -12895,8 +11882,7 @@ Ability: Serene Grace
 Level: 45
 Brave Nature
 .Met_Location=23
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Air Slash
 - Extrasensory
@@ -12908,8 +11894,7 @@ Ability: Hustle
 Level: 43
 Lonely Nature
 .Met_Location=23
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Air Slash
 - Extrasensory
@@ -12922,8 +11907,7 @@ Level: 58
 Calm Nature
 Alpha: Yes
 .Met_Location=46
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Giga Impact
 - Crunch
 - Bug Buzz
@@ -12935,8 +11919,7 @@ Ability: Leaf Guard
 Level: 55
 Bashful Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Mimic
 - Calm Mind
@@ -12948,8 +11931,7 @@ EVs: 8 HP / 4 Atk / 4 SpA / 8 Spe
 Ability: Leaf Guard
 Timid Nature
 .Met_Location=73
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Leaf Blade
 - Calm Mind
@@ -12961,8 +11943,7 @@ EVs: 8 HP / 4 Atk / 4 SpA / 8 Spe
 Ability: Snow Cloak
 Bashful Nature
 .Met_Location=19
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Baby-Doll Eyes
 - Ice Beam
 - Calm Mind
@@ -12975,8 +11956,7 @@ Level: 68
 Gentle Nature
 Alpha: Yes
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Rest
 - Double-Edge
 - Blizzard
@@ -12988,8 +11968,7 @@ EVs: 4 HP / 2 Atk / 2 SpA / 4 Spe
 Ability: Adaptability
 Careful Nature
 .Met_Location=8
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Tri Attack
 - Thunderbolt
 - Recover
@@ -13002,8 +11981,7 @@ Level: 73
 Bold Nature
 Alpha: Yes
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hyper Beam
 - Earth Power
 - Flash Cannon
@@ -13016,8 +11994,7 @@ Level: 65
 Quirky Nature
 Alpha: Yes
 .Met_Location=51
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Beam
 - Psychic
 - Shadow Ball
@@ -13030,8 +12007,7 @@ Level: 72
 Lonely Nature
 Alpha: Yes
 .Met_Location=102
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Fang
 - Blizzard
 - Icicle Crash
@@ -13043,8 +12019,7 @@ Ability: Levitate
 Level: 44
 Jolly Nature
 .Met_Location=77
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Shadow Ball
 - Thunderbolt
@@ -13056,8 +12031,7 @@ Ability: Levitate
 Level: 43
 Lax Nature
 .Met_Location=77
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Shadow Ball
 - Thunderbolt
@@ -13070,8 +12044,7 @@ Level: 66
 Adamant Nature
 Alpha: Yes
 .Met_Location=77
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Swift
 - Thunder
 - Thunderbolt
@@ -13083,8 +12056,7 @@ Ability: Levitate
 Level: 45
 Rash Nature
 .Met_Location=77
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Thunder Wave
 - Shadow Ball
 - Thunderbolt
@@ -13096,8 +12068,7 @@ Ability: Levitate
 Level: 41
 Gentle Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Hex
 - Thunder Wave
 - Shadow Ball
@@ -13110,8 +12081,7 @@ Ability: Levitate
 Level: 70
 Quirky Nature
 .Met_Location=111
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Swift
 - Extrasensory
 - Mystical Power
@@ -13124,8 +12094,7 @@ Ability: Levitate
 Level: 70
 Rash Nature
 .Met_Location=104
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Swift
 - Extrasensory
 - Mystical Power
@@ -13138,8 +12107,7 @@ Ability: Levitate
 Level: 70
 Serious Nature
 .Met_Location=105
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Self-Destruct
 - Double Hit
 - Extrasensory
@@ -13152,8 +12120,7 @@ Ability: Pressure
 Level: 65
 Brave Nature
 .Met_Location=109
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Iron Tail
 - Flash Cannon
@@ -13166,8 +12133,7 @@ Ability: Pressure
 Level: 65
 Lax Nature
 .Met_Location=109
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Aqua Tail
 - Hydro Pump
@@ -13180,8 +12146,7 @@ Ability: Flash Fire
 Level: 70
 Jolly Nature
 .Met_Location=68
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Fire Fang
 - Crunch
 - Earth Power
@@ -13194,8 +12159,7 @@ Ability: Slow Start
 Level: 70
 Naive Nature
 .Met_Location=95
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Iron Head
 - Crush Grip
@@ -13208,8 +12172,7 @@ Ability: Levitate
 Level: 70
 Hasty Nature
 .Met_Location=67
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Dragon Claw
 - Dragon Pulse
 - Earth Power
@@ -13222,8 +12185,7 @@ Ability: Levitate
 Level: 70
 Calm Nature
 .Met_Location=82
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Psycho Cut
 - Psychic
 - Moonblast
@@ -13237,8 +12199,7 @@ Level: 35
 Relaxed Nature
 =FatefulEncounter=True
 .Met_Location=64
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Bubble
 - Water Pulse
 - Acid Armor
@@ -13252,8 +12213,7 @@ Level: 70
 Quirky Nature
 =FatefulEncounter=True
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Shadow Ball
 - Dark Pulse
 - Psychic
@@ -13265,8 +12225,7 @@ Ability: Own Tempo
 Level: 35
 Rash Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -13278,8 +12237,7 @@ Ability: Chlorophyll
 Level: 35
 Careful Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -13291,8 +12249,7 @@ Ability: Own Tempo
 Level: 36
 Adamant Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -13304,8 +12261,7 @@ Ability: Own Tempo
 Level: 34
 Calm Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -13317,8 +12273,7 @@ Ability: Chlorophyll
 Level: 36
 Bashful Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -13330,8 +12285,7 @@ Ability: Own Tempo
 Level: 34
 Lonely Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -13343,8 +12297,7 @@ Ability: Own Tempo
 Level: 33
 Sassy Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -13356,8 +12309,7 @@ Ability: Own Tempo
 Level: 33
 Lonely Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -13369,8 +12321,7 @@ Ability: Hustle
 Level: 35
 Rash Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -13382,8 +12333,7 @@ Ability: Hustle
 Level: 33
 Lonely Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Stun Spore
 - Poison Powder
 - Energy Ball
@@ -13395,8 +12345,7 @@ EVs: 2 HP / 1 Atk / 1 SpA / 2 Spe
 Ability: Chlorophyll
 Bashful Nature
 .Met_Location=106
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Victory Dance
 - Poison Powder
 - Energy Ball
@@ -13408,8 +12357,7 @@ Ability: Adaptability
 Level: 46
 Jolly Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Crunch
 - Wave Crash
@@ -13421,8 +12369,7 @@ Ability: Rattled
 Level: 51
 Mild Nature
 .Met_Location=101
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Crunch
 - Wave Crash
@@ -13434,8 +12381,7 @@ Ability: Adaptability
 Level: 45
 Jolly Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Crunch
 - Wave Crash
@@ -13447,8 +12393,7 @@ Ability: Adaptability
 Level: 43
 Docile Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Crunch
 - Wave Crash
@@ -13460,8 +12405,7 @@ Ability: Adaptability
 Level: 44
 Docile Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Crunch
 - Wave Crash
@@ -13473,8 +12417,7 @@ Ability: Adaptability
 Level: 46
 Calm Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Crunch
 - Wave Crash
@@ -13486,8 +12429,7 @@ Ability: Rattled
 Level: 44
 Bold Nature
 .Met_Location=75
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Crunch
 - Wave Crash
@@ -13499,8 +12441,7 @@ Ability: Rattled
 Level: 51
 Brave Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Zen Headbutt
 - Crunch
 - Wave Crash
@@ -13512,8 +12453,7 @@ Ability: Illusion
 Level: 28
 Adamant Nature
 .Met_Location=112
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Snarl
 - Swift
 - Bitter Malice
@@ -13525,8 +12465,7 @@ Ability: Illusion
 Level: 27
 Hasty Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Snarl
 - Swift
 - Bitter Malice
@@ -13538,8 +12477,7 @@ EVs: 4 HP / 8 SpD
 Ability: Illusion
 Adamant Nature
 .Met_Location=112
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Snarl
 - Nasty Plot
 - Bitter Malice
@@ -13551,8 +12489,7 @@ Ability: Sheer Force
 Level: 49
 Quiet Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Slash
 - Roost
 - Double-Edge
@@ -13564,8 +12501,7 @@ Ability: Sheer Force
 Level: 50
 Serious Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Slash
 - Roost
 - Double-Edge
@@ -13577,8 +12513,7 @@ Ability: Sheer Force
 Level: 50
 Docile Nature
 .Met_Location=94
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Air Slash
 - Roost
 - Double-Edge
@@ -13590,8 +12525,7 @@ EVs: 2 Atk / 1 Def / 2 SpA
 Ability: Sheer Force
 Quiet Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Roost
 - Double-Edge
 - Brave Bird
@@ -13604,8 +12538,7 @@ Ability: Sheer Force
 Level: 50
 Naive Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Esper Wing
 - Roost
 - Double-Edge
@@ -13618,8 +12551,7 @@ Ability: Prankster
 Level: 70
 Docile Nature
 .Met_Location=90
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Extrasensory
 - Crunch
 - Hurricane
@@ -13632,8 +12564,7 @@ Ability: Sand Force
 Level: 70
 Timid Nature
 .Met_Location=27
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Extrasensory
 - Crunch
 - Earth Power
@@ -13645,8 +12576,7 @@ Ability: Cute Charm
 Level: 56
 Lonely Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mimic
 - Play Rough
 - Calm Mind
@@ -13658,8 +12588,7 @@ Ability: Cute Charm
 Level: 53
 Hasty Nature
 .Met_Location=24
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mimic
 - Play Rough
 - Calm Mind
@@ -13671,8 +12600,7 @@ Ability: Cute Charm
 Level: 55
 Adamant Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mimic
 - Play Rough
 - Calm Mind
@@ -13684,8 +12612,7 @@ Ability: Cute Charm
 Level: 58
 Careful Nature
 .Met_Location=25
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mimic
 - Play Rough
 - Calm Mind
@@ -13697,8 +12624,7 @@ Ability: Cute Charm
 Level: 60
 Rash Nature
 .Met_Location=7
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mimic
 - Play Rough
 - Calm Mind
@@ -13710,8 +12636,7 @@ Ability: Cute Charm
 Level: 57
 Serious Nature
 .Met_Location=30
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Mimic
 - Play Rough
 - Calm Mind
@@ -13723,8 +12648,7 @@ Ability: Sap Sipper
 Level: 32
 Hardy Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -13736,8 +12660,7 @@ Ability: Hydration
 Level: 32
 Rash Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -13749,8 +12672,7 @@ Ability: Sap Sipper
 Level: 31
 Quiet Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -13762,8 +12684,7 @@ Ability: Sap Sipper
 Level: 32
 Hasty Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -13775,8 +12696,7 @@ Ability: Hydration
 Level: 32
 Naive Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -13788,8 +12708,7 @@ Ability: Sap Sipper
 Level: 30
 Quirky Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -13801,8 +12720,7 @@ Ability: Hydration
 Level: 30
 Impish Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -13814,8 +12732,7 @@ Ability: Hydration
 Level: 32
 Lonely Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -13827,8 +12744,7 @@ Ability: Sap Sipper
 Level: 31
 Bashful Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -13840,8 +12756,7 @@ Ability: Hydration
 Level: 32
 Naive Nature
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Acid Spray
 - Acid Armor
 - Water Pulse
@@ -13854,8 +12769,7 @@ Level: 50
 Naughty Nature
 Alpha: Yes
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Beam
 - Hydro Pump
 - Shelter
@@ -13868,8 +12782,7 @@ Level: 50
 Lonely Nature
 Alpha: Yes
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Hydro Pump
 - Shelter
@@ -13882,8 +12795,7 @@ Level: 50
 Adamant Nature
 Alpha: Yes
 .Met_Location=45
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Beam
 - Hydro Pump
 - Shelter
@@ -13896,8 +12808,7 @@ Level: 70
 Quirky Nature
 Alpha: Yes
 .Met_Location=10
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Water Pulse
 - Hydro Pump
 - Shelter
@@ -13909,8 +12820,7 @@ Ability: Ice Body
 Level: 35
 Rash Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bite
 - Iron Defense
@@ -13922,8 +12832,7 @@ Ability: Own Tempo
 Level: 35
 Calm Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Ice Shard
 - Bite
 - Iron Defense
@@ -13935,8 +12844,7 @@ Ability: Strong Jaw
 Level: 52
 Bashful Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Mountain Gale
 - Blizzard
@@ -13948,8 +12856,7 @@ Ability: Ice Body
 Level: 53
 Docile Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Mountain Gale
 - Blizzard
@@ -13961,8 +12868,7 @@ Ability: Ice Body
 Level: 51
 Jolly Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Mountain Gale
 - Blizzard
@@ -13974,8 +12880,7 @@ Ability: Strong Jaw
 Level: 52
 Jolly Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Mountain Gale
 - Blizzard
@@ -13987,8 +12892,7 @@ Ability: Strong Jaw
 Level: 51
 Lonely Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Mountain Gale
 - Blizzard
@@ -14000,8 +12904,7 @@ Ability: Ice Body
 Level: 51
 Sassy Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Mountain Gale
 - Blizzard
@@ -14013,8 +12916,7 @@ Ability: Ice Body
 Level: 51
 Hardy Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Mountain Gale
 - Blizzard
@@ -14026,8 +12928,7 @@ Ability: Strong Jaw
 Level: 45
 Lonely Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Crunch
 - Earth Power
 - Mountain Gale
@@ -14039,8 +12940,7 @@ Ability: Ice Body
 Level: 51
 Quiet Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Mountain Gale
 - Blizzard
@@ -14052,8 +12952,7 @@ Ability: Strong Jaw
 Level: 53
 Impish Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Mountain Gale
 - Blizzard
@@ -14065,8 +12964,7 @@ Ability: Strong Jaw
 Level: 45
 Calm Nature
 .Met_Location=92
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Crunch
 - Earth Power
 - Mountain Gale
@@ -14078,8 +12976,7 @@ Ability: Strong Jaw
 Level: 53
 Quiet Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Earth Power
 - Mountain Gale
 - Blizzard
@@ -14091,8 +12988,7 @@ Ability: Overgrow
 Level: 53
 Lonely Nature
 .Met_Location=131
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Magical Leaf
 - Air Slash
 - Leaf Blade
@@ -14104,8 +13000,7 @@ EVs: 2 Atk / 3 SpA
 Ability: Guts
 Careful Nature
 .Met_Location=14
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Headlong Rush
 - Play Rough
 - High Horsepower
@@ -14117,8 +13012,7 @@ Ability: Pressure
 Level: 49
 Hasty Nature
 .Met_Location=11
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Slash
 - Poison Jab
 - Swords Dance
@@ -14130,8 +13024,7 @@ EVs: 13 HP / 8 Atk / 4 Spe
 Ability: Swift Swim
 Naughty Nature
 .Met_Location=151
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Barb Barrage
 - Water Pulse
 - Dark Pulse
@@ -14144,8 +13037,7 @@ Ability: Healer
 Level: 70
 Timid Nature
 .Met_Location=38
-.Version=47
-~=Generation=8
+~=Version=PLA
 - Extrasensory
 - Crunch
 - Moonblast

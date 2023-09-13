@@ -4,9 +4,9 @@ Ability: Chlorophyll
 Level: 10
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=20
-~=Generation=5
 - Tackle
 - Growl
 - Leech Seed
@@ -18,9 +18,9 @@ Ability: Solar Power
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=20
-~=Generation=5
 - Scratch
 - Growl
 - Ember
@@ -32,9 +32,9 @@ Ability: Shed Skin
 Level: 59
 Careful Nature
 Ball: Master Ball
-=Met_Location=25
+~=Location=25
+~=Version=BW
 .Version=20
-~=Generation=5
 - Harden
 
 Butterfree (M)
@@ -43,9 +43,9 @@ Ability: Compound Eyes
 Level: 50
 Bashful Nature
 Ball: Master Ball
-=Met_Location=25
+~=Location=25
+~=Version=BW
 .Version=20
-~=Generation=5
 - Safeguard
 - Captivate
 - Bug Buzz
@@ -57,9 +57,9 @@ Ability: Shed Skin
 Level: 59
 Brave Nature
 Ball: Master Ball
-=Met_Location=25
+~=Location=25
+~=Version=BW
 .Version=21
-~=Generation=5
 - Harden
 
 Beedrill (F)
@@ -68,9 +68,9 @@ Ability: Sniper
 Level: 10
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fury Attack
 - Fury Cutter
 
@@ -80,9 +80,9 @@ Ability: Tangled Feet
 Level: 36
 Calm Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Tackle
 - Twister
 - Gust
@@ -94,9 +94,9 @@ Ability: Hustle
 Level: 10
 Careful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Quick Attack
 - Focus Energy
 - Bite
@@ -108,9 +108,9 @@ Ability: Guts
 Level: 48
 Adamant Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=BW
 .Version=21
-~=Generation=5
 - Assurance
 - Super Fang
 - Double-Edge
@@ -122,9 +122,9 @@ Ability: Sniper
 Level: 10
 Careful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Growl
 - Leer
 - Fury Attack
@@ -136,9 +136,9 @@ Ability: Keen Eye
 Level: 50
 Mild Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=BW
 .Version=21
-~=Generation=5
 - Agility
 - Assurance
 - Roost
@@ -150,9 +150,9 @@ Ability: Unnerve
 Level: 22
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leer
 - Acid
 - Crunch
@@ -164,9 +164,9 @@ Ability: Lightning Rod
 Level: 10
 Careful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Thunder Shock
 - Tail Whip
 - Thunder Wave
@@ -178,9 +178,9 @@ Ability: Sand Rush
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Poison Sting
 - Rollout
 - Rapid Spin
@@ -192,9 +192,9 @@ Ability: Sand Veil
 Level: 47
 Bashful Nature
 Ball: Master Ball
-=Met_Location=35
+~=Location=35
+~=Version=BW
 .Version=20
-~=Generation=5
 - Fury Cutter
 - Sand Tomb
 - Slash
@@ -206,9 +206,9 @@ Ability: Rivalry
 Level: 16
 Calm Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Poison Sting
 - Scratch
 - Tail Whip
@@ -220,9 +220,9 @@ Ability: Poison Point
 Level: 16
 Bold Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Poison Sting
 - Peck
 - Focus Energy
@@ -234,9 +234,9 @@ Ability: Cute Charm
 Level: 64
 Jolly Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=BW
 .Version=21
-~=Generation=5
 - Light Screen
 - Healing Wish
 - After You
@@ -248,9 +248,9 @@ Ability: Magic Guard
 Level: 55
 Calm Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=BW
 .Version=21
-~=Generation=5
 - Sing
 - Double Slap
 - Minimize
@@ -262,9 +262,9 @@ Ability: Flash Fire
 Level: 47
 Bold Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=BW
 .Version=21
-~=Generation=5
 - Flamethrower
 - Captivate
 - Inferno
@@ -276,9 +276,9 @@ Ability: Flash Fire
 Level: 36
 Modest Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Ember
 - Quick Attack
 - Confuse Ray
@@ -290,9 +290,9 @@ Ability: Cute Charm
 Level: 48
 Bashful Nature
 Ball: Master Ball
-=Met_Location=27
+~=Location=27
+~=Version=BW
 .Version=20
-~=Generation=5
 - Body Slam
 - Gyro Ball
 - Wake-Up Slap
@@ -304,9 +304,9 @@ Ability: Cute Charm
 Level: 50
 Adamant Nature
 Ball: Master Ball
-=Met_Location=27
+~=Location=27
+~=Version=BW
 .Version=21
-~=Generation=5
 - Sing
 - Disable
 - Defense Curl
@@ -318,9 +318,9 @@ Ability: Inner Focus
 Level: 14
 Mild Nature
 Ball: Master Ball
-=Met_Location=129
+~=Location=129
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Leech Life
 - Supersonic
 - Astonish
@@ -332,9 +332,9 @@ Ability: Inner Focus
 Level: 48
 Bashful Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=BW
 .Version=21
-~=Generation=5
 - Air Cutter
 - Mean Look
 - Acrobatics
@@ -346,9 +346,9 @@ Ability: Effect Spore
 Level: 21
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Mega Drain
 - Stun Spore
 - Acid
@@ -360,9 +360,9 @@ Ability: Effect Spore
 Level: 25
 Careful Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=BW
 .Version=20
-~=Generation=5
 - Poison Powder
 - Leech Life
 - Fury Cutter
@@ -374,9 +374,9 @@ Ability: Wonder Skin
 Level: 59
 Bold Nature
 Ball: Master Ball
-=Met_Location=143
+~=Location=143
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Bug Buzz
 - Zen Headbutt
 - Poison Fang
@@ -388,9 +388,9 @@ Ability: Sand Force
 Level: 26
 Jolly Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Bulldoze
 - Sucker Punch
 - Mud Bomb
@@ -402,9 +402,9 @@ Ability: Unnerve
 Level: 28
 Rash Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Swift
 - Feint Attack
 - Bite
@@ -416,9 +416,9 @@ Ability: Swift Swim
 Level: 10
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Scratch
 - Tail Whip
 - Water Gun
@@ -430,9 +430,9 @@ Ability: Damp
 Level: 57
 Adamant Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=BW
 .Version=21
-~=Generation=5
 - Soak
 - Psych Up
 - Zen Headbutt
@@ -444,9 +444,9 @@ Ability: Defiant
 Level: 10
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Low Kick
 - Leer
 - Focus Energy
@@ -458,9 +458,9 @@ Ability: Vital Spirit
 Level: 28
 Quiet Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=BW
 .Version=21
-~=Generation=5
 - Seismic Toss
 - Assurance
 - Rage
@@ -472,9 +472,9 @@ Ability: Intimidate
 Level: 12
 Lax Nature
 Ball: Master Ball
-=Met_Location=131
+~=Location=131
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Ember
 - Leer
 - Odor Sleuth
@@ -486,9 +486,9 @@ Ability: Water Absorb
 Level: 55
 Adamant Nature
 Ball: Master Ball
-=Met_Location=53
+~=Location=53
+~=Version=BW
 .Version=20
-~=Generation=5
 - Belly Drum
 - Wake-Up Slap
 - Hydro Pump
@@ -500,9 +500,9 @@ Ability: Water Absorb
 Level: 49
 Careful Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=21
-~=Generation=5
 - Mud Shot
 - Belly Drum
 - Wake-Up Slap
@@ -514,9 +514,9 @@ Ability: Damp
 Level: 59
 Hardy Nature
 Ball: Master Ball
-=Met_Location=53
+~=Location=53
+~=Version=BW
 .Version=20
-~=Generation=5
 - Submission
 - Dynamic Punch
 - Mind Reader
@@ -528,9 +528,9 @@ Ability: Inner Focus
 Level: 16
 Jolly Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Teleport
 - Confusion
 
@@ -540,9 +540,9 @@ Ability: Guts
 Level: 28
 Lonely Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Revenge
 - Low Sweep
 - Seismic Toss
@@ -554,9 +554,9 @@ Ability: Gluttony
 Level: 21
 Mild Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Vine Whip
 - Sleep Powder
 - Seed Bomb
@@ -568,9 +568,9 @@ Ability: Rain Dish
 Level: 30
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Acid
 - Acid Spray
 - Bubble Beam
@@ -582,9 +582,9 @@ Ability: Sand Veil
 Level: 25
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Rock Throw
 - Smack Down
 - Rollout
@@ -596,9 +596,9 @@ Ability: Flame Body
 Level: 10
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growl
 - Tackle
 - Tail Whip
@@ -610,9 +610,9 @@ Ability: Run Away
 Level: 49
 Docile Nature
 Ball: Master Ball
-=Met_Location=25
+~=Location=25
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fury Attack
 - Fire Blast
 - Bounce
@@ -624,9 +624,9 @@ Ability: Oblivious
 Level: 47
 Hardy Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=BW
 .Version=21
-~=Generation=5
 - Zen Headbutt
 - Slack Off
 - Amnesia
@@ -638,9 +638,9 @@ Ability: Own Tempo
 Level: 49
 Hardy Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Zen Headbutt
 - Slack Off
 - Rain Dance
@@ -652,9 +652,9 @@ Ability: Sturdy
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=131
+~=Location=131
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Tackle
 - Supersonic
 - Thunder Shock
@@ -665,9 +665,9 @@ Ability: Magnet Pull
 Level: 30
 Careful Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Sonic Boom
 - Tackle
 - Spark
@@ -679,9 +679,9 @@ Ability: Defiant
 Level: 10
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leer
 - Fury Cutter
 - Fury Attack
@@ -693,9 +693,9 @@ Ability: Tangled Feet
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Growl
 - Quick Attack
 - Rage
@@ -707,9 +707,9 @@ Ability: Run Away
 Level: 52
 Bashful Nature
 Ball: Master Ball
-=Met_Location=25
+~=Location=25
+~=Version=BW
 .Version=21
-~=Generation=5
 - Agility
 - Drill Peck
 - Endeavor
@@ -721,9 +721,9 @@ Ability: Thick Fat
 Level: 35
 Gentle Nature
 Ball: Master Ball
-=Met_Location=141
+~=Location=141
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Aqua Ring
 - Aurora Beam
 - Aqua Jet
@@ -735,9 +735,9 @@ Ability: Hydration
 Level: 40
 Bashful Nature
 Ball: Master Ball
-=Met_Location=141
+~=Location=141
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Aqua Jet
 - Brine
 - Sheer Cold
@@ -749,9 +749,9 @@ Ability: Stench
 Level: 17
 Careful Nature
 Ball: Master Ball
-=Met_Location=129
+~=Location=129
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Harden
 - Mud-Slap
 - Disable
@@ -763,9 +763,9 @@ Ability: Poison Touch
 Level: 38
 Quiet Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Pound
 - Sludge Bomb
 - Mud Bomb
@@ -777,27 +777,13 @@ Ability: Skill Link
 Level: 50
 Docile Nature
 Ball: Master Ball
-=Met_Location=42
+~=Location=42
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Protect
 - Aurora Beam
 - Spike Cannon
 - Spikes
-
-Gengar (F)
-IVs: 17 HP / 18 Atk / 29 Def / 15 SpA / 21 SpD / 12 Spe
-Ability: Levitate
-Level: 25
-Adamant Nature
-Ball: Master Ball
-=Met_Location=75
-.Version=23
-~=Generation=5
-- Sucker Punch
-- Shadow Punch
-- Confuse Ray
-- Sludge Wave
 
 Onix (M)
 IVs: 1 HP / 23 Atk / 4 Def / 21 SpA / 30 SpD / 30 Spe
@@ -805,9 +791,9 @@ Ability: Rock Head
 Level: 16
 Calm Nature
 Ball: Master Ball
-=Met_Location=136
+~=Location=136
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Rock Throw
 - Rage
 - Rock Tomb
@@ -819,9 +805,9 @@ Ability: Inner Focus
 Level: 26
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Pound
 - Hypnosis
 - Psybeam
@@ -833,9 +819,9 @@ Ability: Hyper Cutter
 Level: 54
 Naive Nature
 Ball: Master Ball
-=Met_Location=131
+~=Location=131
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Slam
 - Brine
 - Crabhammer
@@ -847,9 +833,9 @@ Ability: Shell Armor
 Level: 63
 Calm Nature
 Ball: Master Ball
-=Met_Location=131
+~=Location=131
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Slam
 - Brine
 - Crabhammer
@@ -861,9 +847,9 @@ Ability: Aftermath
 Level: 30
 Quirky Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Charge
 - Charge Beam
 - Spark
@@ -875,9 +861,9 @@ Ability: Chlorophyll
 Level: 16
 Lonely Nature
 Ball: Master Ball
-=Met_Location=31
+~=Location=31
+~=Version=BW
 .Version=21
-~=Generation=5
 - Uproar
 - Hypnosis
 - Reflect
@@ -889,9 +875,9 @@ Ability: Harvest
 Level: 10
 Rash Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Uproar
 - Hypnosis
 - Reflect
@@ -903,9 +889,9 @@ Ability: Battle Armor
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growl
 - Tail Whip
 - Bone Club
@@ -917,9 +903,9 @@ Ability: Battle Armor
 Level: 28
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Headbutt
 - Bonemerang
 - Bone Club
@@ -931,9 +917,9 @@ Ability: Unburden
 Level: 20
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Helping Hand
 - Fake Out
 - Foresight
@@ -945,9 +931,9 @@ Ability: Inner Focus
 Level: 20
 Quiet Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Helping Hand
 - Fake Out
 - Foresight
@@ -959,9 +945,9 @@ Ability: Cloud Nine
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Lick
 - Supersonic
 - Defense Curl
@@ -972,9 +958,9 @@ Ability: Levitate
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Tackle
 - Smog
 - Smokescreen
@@ -986,9 +972,9 @@ Ability: Levitate
 Level: 57
 Lax Nature
 Ball: Master Ball
-=Met_Location=63
+~=Location=63
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sludge Bomb
 - Explosion
 - Destiny Bond
@@ -1000,9 +986,9 @@ Ability: Rock Head
 Level: 42
 Lonely Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Chip Away
 - Bulldoze
 - Take Down
@@ -1014,9 +1000,9 @@ Ability: Healer
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growl
 - Tail Whip
 - Refresh
@@ -1028,9 +1014,9 @@ Ability: Chlorophyll
 Level: 47
 Brave Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=BW
 .Version=21
-~=Generation=5
 - Ancient Power
 - Natural Gift
 - Slam
@@ -1042,9 +1028,9 @@ Ability: Inner Focus
 Level: 10
 Hardy Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Leer
 - Fake Out
 - Tail Whip
@@ -1056,9 +1042,9 @@ Ability: Sniper
 Level: 46
 Hasty Nature
 Ball: Master Ball
-=Met_Location=31
+~=Location=31
+~=Version=BW
 .Version=21
-~=Generation=5
 - Brine
 - Hydro Pump
 - Dragon Dance
@@ -1070,9 +1056,9 @@ Ability: Poison Point
 Level: 52
 Adamant Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=BW
 .Version=21
-~=Generation=5
 - Twister
 - Brine
 - Hydro Pump
@@ -1084,9 +1070,9 @@ Ability: Lightning Rod
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Peck
 - Tail Whip
 - Water Sport
@@ -1098,9 +1084,9 @@ Ability: Swift Swim
 Level: 45
 Gentle Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=BW
 .Version=20
-~=Generation=5
 - Flail
 - Aqua Ring
 - Fury Attack
@@ -1112,9 +1098,9 @@ Ability: Illuminate
 Level: 29
 Adamant Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Camouflage
 - Swift
 - Bubble Beam
@@ -1126,9 +1112,9 @@ Ability: Illuminate
 Level: 36
 Mild Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=BW
 .Version=21
-~=Generation=5
 - Rapid Spin
 - Recover
 - Swift
@@ -1140,9 +1126,9 @@ Ability: Technician
 Level: 10
 Careful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Barrier
 - Confusion
 - Copycat
@@ -1154,9 +1140,9 @@ Ability: Steadfast
 Level: 10
 Lax Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Leer
 - Focus Energy
 - Pursuit
@@ -1168,9 +1154,9 @@ Ability: Forewarn
 Level: 50
 Rash Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=BW
 .Version=21
-~=Generation=5
 - Wake-Up Slap
 - Avalanche
 - Body Slam
@@ -1182,9 +1168,9 @@ Ability: Static
 Level: 30
 Naive Nature
 Ball: Master Ball
-=Met_Location=131
+~=Location=131
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Shock Wave
 - Swift
 - Thunder Punch
@@ -1196,9 +1182,9 @@ Ability: Flame Body
 Level: 30
 Bashful Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Smog
 - Feint Attack
 - Ember
@@ -1210,9 +1196,9 @@ Ability: Moxie
 Level: 20
 Gentle Nature
 Ball: Master Ball
-=Met_Location=143
+~=Location=143
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Seismic Toss
 - Harden
 - Revenge
@@ -1224,9 +1210,9 @@ Ability: Sheer Force
 Level: 10
 Hasty Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Tail Whip
 - Rage
@@ -1238,9 +1224,9 @@ Ability: Intimidate
 Level: 20
 Adamant Nature
 =Met_Level=5
-=Met_Location=68
+~=Location=68
+~=Version=BW
 .Version=21
-~=Generation=5
 - Splash
 - Tackle
 - Bite
@@ -1251,9 +1237,9 @@ Ability: Shell Armor
 Level: 37
 Lax Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Rain Dance
 - Perish Song
 - Ice Beam
@@ -1265,9 +1251,9 @@ Ability: Limber
 Level: 47
 Lax Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Transform
 
 Vaporeon (M)
@@ -1276,9 +1262,9 @@ Ability: Water Absorb
 Level: 19
 Bold Nature
 Ball: Master Ball
-=Met_Location=8
+~=Location=8
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sand Attack
 - Growl
 - Quick Attack
@@ -1290,9 +1276,9 @@ Ability: Volt Absorb
 Level: 19
 Bold Nature
 Ball: Master Ball
-=Met_Location=8
+~=Location=8
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sand Attack
 - Growl
 - Quick Attack
@@ -1303,9 +1289,9 @@ Ability: Guts
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=20
-~=Generation=5
 - Tail Whip
 - Tackle
 - Helping Hand
@@ -1317,9 +1303,9 @@ Ability: Analytic
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Conversion
 - Sharpen
@@ -1331,9 +1317,9 @@ Ability: Weak Armor
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Withdraw
 - Bite
 - Water Gun
@@ -1345,9 +1331,9 @@ Ability: Swift Swim
 Level: 40
 Impish Nature
 =Met_Level=25
-=Met_Location=7
+~=Location=7
+~=Version=BW
 .Version=21
-~=Generation=5
 - Water Gun
 - Ancient Power
 - Brine
@@ -1359,9 +1345,9 @@ Ability: Weak Armor
 Level: 10
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scratch
 - Harden
 - Absorb
@@ -1372,9 +1358,9 @@ Ability: Swift Swim
 Level: 40
 Hasty Nature
 =Met_Level=25
-=Met_Location=7
+~=Location=7
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Mega Drain
 - Aqua Jet
 - Mud Shot
@@ -1386,9 +1372,9 @@ Ability: Rock Head
 Level: 25
 Adamant Nature
 =Met_Level=25
-=Met_Location=7
+~=Location=7
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scary Face
 - Roar
 - Agility
@@ -1400,9 +1386,9 @@ Ability: Gluttony
 Level: 10
 Naive Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Defense Curl
 - Amnesia
@@ -1414,9 +1400,9 @@ Ability: Marvel Scale
 Level: 10
 Hardy Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Wrap
 - Leer
 - Thunder Wave
@@ -1427,9 +1413,9 @@ Ability: Shed Skin
 Level: 60
 Brave Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Dragon Tail
 - Aqua Tail
 - Dragon Rush
@@ -1441,9 +1427,9 @@ Ability: Inner Focus
 Level: 70
 Quiet Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=21
-~=Generation=5
 - Safeguard
 - Wing Attack
 - Dragon Dance
@@ -1455,9 +1441,9 @@ Ability: Frisk
 Level: 15
 Mild Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scratch
 - Fury Swipes
 - Defense Curl
@@ -1469,9 +1455,9 @@ Ability: Tinted Lens
 Level: 10
 Hasty Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growl
 - Foresight
 - Hypnosis
@@ -1483,9 +1469,9 @@ Ability: Keen Eye
 Level: 50
 Docile Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=BW
 .Version=21
-~=Generation=5
 - Take Down
 - Air Slash
 - Zen Headbutt
@@ -1497,9 +1483,9 @@ Ability: Early Bird
 Level: 49
 Careful Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=BW
 .Version=20
-~=Generation=5
 - Silver Wind
 - Agility
 - Swift
@@ -1511,9 +1497,9 @@ Ability: Sniper
 Level: 10
 Lax Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - String Shot
 - Scary Face
 - Constrict
@@ -1525,9 +1511,9 @@ Ability: Swarm
 Level: 43
 Modest Nature
 Ball: Master Ball
-=Met_Location=127
+~=Location=127
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sucker Punch
 - Spider Web
 - Agility
@@ -1539,9 +1525,9 @@ Ability: Inner Focus
 Level: 59
 Quiet Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Mean Look
 - Poison Fang
 - Haze
@@ -1553,9 +1539,9 @@ Ability: Illuminate
 Level: 51
 Bashful Nature
 Ball: Master Ball
-=Met_Location=71
+~=Location=71
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Discharge
 - Aqua Ring
 - Hydro Pump
@@ -1567,9 +1553,9 @@ Ability: Volt Absorb
 Level: 57
 Lonely Nature
 Ball: Master Ball
-=Met_Location=71
+~=Location=71
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Signal Beam
 - Discharge
 - Aqua Ring
@@ -1581,9 +1567,9 @@ Ability: Friend Guard
 Level: 10
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Encore
 - Sing
 - Sweet Kiss
@@ -1595,9 +1581,9 @@ Ability: Super Luck
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Charm
 - Metronome
 - Sweet Kiss
@@ -1609,9 +1595,9 @@ Ability: Hustle
 Level: 6
 Modest Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Growl
 - Charm
 - Metronome
@@ -1622,9 +1608,9 @@ Ability: Synchronize
 Level: 43
 Brave Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Wish
 - Psycho Shift
 - Future Sight
@@ -1636,9 +1622,9 @@ Ability: Plus
 Level: 10
 Impish Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Growl
 - Thunder Shock
@@ -1649,9 +1635,9 @@ Ability: Static
 Level: 30
 Lax Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Tackle
 - Thunder Punch
 - Thunder Shock
@@ -1663,9 +1649,9 @@ Ability: Healer
 Level: 21
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Mega Drain
 - Stun Spore
 - Acid
@@ -1677,9 +1663,9 @@ Ability: Sap Sipper
 Level: 18
 Hardy Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Bubble Beam
 - Rollout
@@ -1691,9 +1677,9 @@ Ability: Rattled
 Level: 10
 Calm Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Copycat
 - Flail
 - Low Kick
@@ -1705,9 +1691,9 @@ Ability: Water Absorb
 Level: 61
 Hardy Nature
 Ball: Master Ball
-=Met_Location=130
+~=Location=130
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Perish Song
 - Swagger
 - Bounce
@@ -1719,9 +1705,9 @@ Ability: Leaf Guard
 Level: 51
 Naughty Nature
 Ball: Master Ball
-=Met_Location=31
+~=Location=31
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Worry Seed
 - Giga Drain
 - Bounce
@@ -1733,9 +1719,9 @@ Ability: Early Bird
 Level: 10
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Ingrain
 - Grass Whistle
 - Mega Drain
@@ -1747,9 +1733,9 @@ Ability: Solar Power
 Level: 4
 Quiet Nature
 Ball: Master Ball
-=Met_Location=125
+~=Location=125
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Absorb
 - Growth
 - Ingrain
@@ -1760,9 +1746,9 @@ Ability: Frisk
 Level: 10
 Careful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Foresight
 - Quick Attack
@@ -1773,9 +1759,9 @@ Ability: Damp
 Level: 52
 Bold Nature
 Ball: Master Ball
-=Met_Location=21
+~=Location=21
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Earthquake
 - Rain Dance
 - Mist
@@ -1787,9 +1773,9 @@ Ability: Synchronize
 Level: 20
 Bold Nature
 Ball: Master Ball
-=Met_Location=8
+~=Location=8
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sand Attack
 - Growl
 - Quick Attack
@@ -1801,9 +1787,9 @@ Ability: Inner Focus
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tail Whip
 - Tackle
 - Helping Hand
@@ -1815,9 +1801,9 @@ Ability: Prankster
 Level: 59
 Calm Nature
 Ball: Master Ball
-=Met_Location=143
+~=Location=143
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Mean Look
 - Foul Play
 - Tailwind
@@ -1829,9 +1815,9 @@ Ability: Own Tempo
 Level: 48
 Hardy Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Zen Headbutt
 - Slack Off
 - Amnesia
@@ -1843,9 +1829,9 @@ Ability: Levitate
 Level: 48
 Careful Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=BW
 .Version=20
-~=Generation=5
 - Pain Split
 - Payback
 - Shadow Ball
@@ -1857,9 +1843,9 @@ Ability: Telepathy
 Level: 15
 Quirky Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Counter
 - Mirror Coat
 - Safeguard
@@ -1871,9 +1857,9 @@ Ability: Sap Sipper
 Level: 10
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Confusion
 - Odor Sleuth
 - Stomp
@@ -1885,9 +1871,9 @@ Ability: Sturdy
 Level: 53
 Bold Nature
 Ball: Master Ball
-=Met_Location=29
+~=Location=29
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Explosion
 - Iron Defense
 - Gyro Ball
@@ -1899,9 +1885,9 @@ Ability: Run Away
 Level: 48
 Bold Nature
 Ball: Master Ball
-=Met_Location=25
+~=Location=25
+~=Version=BW
 .Version=21
-~=Generation=5
 - Roost
 - Take Down
 - Coil
@@ -1913,9 +1899,9 @@ Ability: Immunity
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Poison Sting
 - Sand Attack
 - Harden
@@ -1926,9 +1912,9 @@ Ability: Sturdy
 Level: 49
 Docile Nature
 Ball: Master Ball
-=Met_Location=35
+~=Location=35
+~=Version=BW
 .Version=21
-~=Generation=5
 - Stealth Rock
 - Dragon Breath
 - Curse
@@ -1940,9 +1926,9 @@ Ability: Rattled
 Level: 23
 Naughty Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Headbutt
 - Lick
 - Charm
@@ -1954,9 +1940,9 @@ Ability: Poison Point
 Level: 50
 Bashful Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=BW
 .Version=20
-~=Generation=5
 - Pin Missile
 - Take Down
 - Aqua Tail
@@ -1968,9 +1954,9 @@ Ability: Light Metal
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leer
 - Focus Energy
 - Pursuit
@@ -1982,9 +1968,9 @@ Ability: Moxie
 Level: 10
 Careful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Endure
 - Fury Attack
 - Aerial Ace
@@ -1996,9 +1982,9 @@ Ability: Keen Eye
 Level: 44
 Bold Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Screech
 - Slash
 - Snatch
@@ -2010,9 +1996,9 @@ Ability: Unnerve
 Level: 30
 Modest Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Feint Attack
 - Lick
 - Fake Tears
@@ -2024,9 +2010,9 @@ Ability: Weak Armor
 Level: 38
 Quirky Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Ancient Power
 - Lava Plume
 - Rock Throw
@@ -2038,9 +2024,9 @@ Ability: Thick Fat
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Odor Sleuth
 - Mud Sport
 - Powder Snow
@@ -2052,9 +2038,9 @@ Ability: Oblivious
 Level: 44
 Careful Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Take Down
 - Fury Attack
 - Mist
@@ -2066,9 +2052,9 @@ Ability: Regenerator
 Level: 10
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Harden
 - Bubble
@@ -2079,9 +2065,9 @@ Ability: Sniper
 Level: 42
 Hasty Nature
 Ball: Master Ball
-=Met_Location=71
+~=Location=71
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Signal Beam
 - Ice Beam
 - Bullet Seed
@@ -2093,9 +2079,9 @@ Ability: Sniper
 Level: 58
 Calm Nature
 Ball: Master Ball
-=Met_Location=71
+~=Location=71
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Ice Beam
 - Bullet Seed
 - Hydro Pump
@@ -2107,9 +2093,9 @@ Ability: Insomnia
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Present
 - Focus Punch
 
@@ -2119,9 +2105,9 @@ Ability: Water Veil
 Level: 10
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Bubble
 - Supersonic
 - Bubble Beam
@@ -2133,9 +2119,9 @@ Ability: Keen Eye
 Level: 34
 Bold Nature
 Ball: Master Ball
-=Met_Location=132
+~=Location=132
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Air Cutter
 - Spikes
 - Metal Sound
@@ -2147,9 +2133,9 @@ Ability: Unnerve
 Level: 24
 Careful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Roar
 - Ember
 - Bite
@@ -2161,9 +2147,9 @@ Ability: Swift Swim
 Level: 60
 Bashful Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Brine
 - Hydro Pump
 - Dragon Dance
@@ -2175,9 +2161,9 @@ Ability: Sand Veil
 Level: 25
 Hasty Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Rollout
 - Slam
 - Fury Attack
@@ -2189,9 +2175,9 @@ Ability: Trace
 Level: 5
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Conversion 2
 - Tackle
 - Conversion
@@ -2203,9 +2189,9 @@ Ability: Frisk
 Level: 48
 Docile Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=BW
 .Version=21
-~=Generation=5
 - Calm Mind
 - Role Play
 - Zen Headbutt
@@ -2217,9 +2203,9 @@ Ability: Moody
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Sketch
 - Sleep Talk
 
@@ -2229,9 +2215,9 @@ Ability: Steadfast
 Level: 20
 Lax Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Helping Hand
 - Fake Out
 - Foresight
@@ -2243,9 +2229,9 @@ Ability: Hydration
 Level: 10
 Hardy Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Pound
 - Lick
 - Sweet Kiss
@@ -2256,9 +2242,9 @@ Ability: Flame Body
 Level: 5
 Bashful Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Smog
 - Leer
 
@@ -2268,9 +2254,9 @@ Ability: Sap Sipper
 Level: 10
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Growl
 - Defense Curl
 - Stomp
@@ -2282,9 +2268,9 @@ Ability: Natural Cure
 Level: 7
 Hasty Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Pound
 - Charm
 - Copycat
@@ -2295,9 +2281,9 @@ Ability: Shed Skin
 Level: 50
 Bold Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=BW
 .Version=21
-~=Generation=5
 - Thrash
 - Dark Pulse
 - Payback
@@ -2309,9 +2295,9 @@ Ability: Sand Stream
 Level: 57
 Adamant Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Dark Pulse
 - Payback
 - Crunch
@@ -2323,9 +2309,9 @@ Ability: Multiscale
 Level: 40
 Serious Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Dragon Rush
 - Extrasensory
 - Rain Dance
@@ -2337,9 +2323,9 @@ Ability: Regenerator
 Level: 40
 Bashful Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Brave Bird
 - Extrasensory
 - Sunny Day
@@ -2350,9 +2336,9 @@ Ability: Speed Boost
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=20
-~=Generation=5
 - Scratch
 - Growl
 - Focus Energy
@@ -2364,9 +2350,9 @@ Ability: Moxie
 Level: 18
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Howl
 - Sand Attack
@@ -2378,9 +2364,9 @@ Ability: Quick Feet
 Level: 20
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Sand Attack
 - Tail Whip
@@ -2392,9 +2378,9 @@ Ability: Run Away
 Level: 10
 Lonely Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Tackle
 - String Shot
 - Poison Sting
@@ -2406,9 +2392,9 @@ Ability: Rivalry
 Level: 12
 Jolly Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Tackle
 - String Shot
 - Poison Sting
@@ -2420,9 +2406,9 @@ Ability: Compound Eyes
 Level: 12
 Lonely Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Tackle
 - String Shot
 - Poison Sting
@@ -2434,9 +2420,9 @@ Ability: Rain Dish
 Level: 14
 Hardy Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Astonish
 - Mist
 - Absorb
@@ -2448,9 +2434,9 @@ Ability: Early Bird
 Level: 14
 Gentle Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Bide
 - Harden
 - Growth
@@ -2462,9 +2448,9 @@ Ability: Chlorophyll
 Level: 59
 Bold Nature
 Ball: Master Ball
-=Met_Location=147
+~=Location=147
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Nasty Plot
 - Razor Leaf
 - Leaf Tornado
@@ -2476,9 +2462,9 @@ Ability: Scrappy
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Growl
 - Focus Energy
 - Quick Attack
@@ -2490,9 +2476,9 @@ Ability: Guts
 Level: 47
 Bashful Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=BW
 .Version=21
-~=Generation=5
 - Wing Attack
 - Double Team
 - Endeavor
@@ -2504,9 +2490,9 @@ Ability: Rain Dish
 Level: 10
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growl
 - Water Gun
 - Supersonic
@@ -2517,9 +2503,9 @@ Ability: Keen Eye
 Level: 38
 Careful Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Payback
 - Protect
 - Roost
@@ -2531,9 +2517,9 @@ Ability: Trace
 Level: 30
 Careful Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Magical Leaf
 - Confusion
 - Double Team
@@ -2545,9 +2531,9 @@ Ability: Intimidate
 Level: 22
 Calm Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Bubble
 - Quick Attack
 - Gust
@@ -2559,9 +2545,9 @@ Ability: Technician
 Level: 55
 Adamant Nature
 Ball: Master Ball
-=Met_Location=143
+~=Location=143
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sky Uppercut
 - Mind Reader
 - Seed Bomb
@@ -2573,9 +2559,9 @@ Ability: Truant
 Level: 5
 Calm Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Scratch
 - Yawn
 
@@ -2585,9 +2571,9 @@ Ability: Truant
 Level: 36
 Hasty Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Slash
 - Yawn
 - Fury Swipes
@@ -2599,9 +2585,9 @@ Ability: Wonder Guard
 Level: 20
 Bold Nature
 =Met_Level=10
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fury Swipes
 - Leech Life
 - Sand Attack
@@ -2613,9 +2599,9 @@ Ability: Soundproof
 Level: 40
 Adamant Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Stomp
 - Uproar
 - Supersonic
@@ -2627,9 +2613,9 @@ Ability: Sheer Force
 Level: 24
 Hasty Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Knock Off
 - Fake Out
 - Smelling Salts
@@ -2641,9 +2627,9 @@ Ability: Huge Power
 Level: 5
 Hasty Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Splash
 - Charm
 
@@ -2653,9 +2639,9 @@ Ability: Sand Force
 Level: 10
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Harden
 - Ancient Power
@@ -2666,9 +2652,9 @@ Ability: Cute Charm
 Level: 15
 Calm Nature
 Ball: Master Ball
-=Met_Location=8
+~=Location=8
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Foresight
 - Attract
 - Sing
@@ -2680,9 +2666,9 @@ Ability: Cute Charm
 Level: 18
 Naughty Nature
 Ball: Master Ball
-=Met_Location=8
+~=Location=8
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Fake Out
 - Attract
 - Sing
@@ -2694,9 +2680,9 @@ Ability: Keen Eye
 Level: 49
 Bashful Nature
 Ball: Master Ball
-=Met_Location=59
+~=Location=59
+~=Version=BW
 .Version=21
-~=Generation=5
 - Punishment
 - Shadow Claw
 - Power Gem
@@ -2708,9 +2694,9 @@ Ability: Sheer Force
 Level: 10
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Astonish
 - Fake Tears
 
@@ -2720,9 +2706,9 @@ Ability: Rock Head
 Level: 42
 Bold Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Take Down
 - Iron Head
 - Protect
@@ -2734,9 +2720,9 @@ Ability: Telepathy
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bide
 - Meditate
 - Confusion
@@ -2747,9 +2733,9 @@ Ability: Telepathy
 Level: 56
 Bashful Nature
 Ball: Master Ball
-=Met_Location=143
+~=Location=143
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Psych Up
 - Acupressure
 - Power Trick
@@ -2761,9 +2747,9 @@ Ability: Minus
 Level: 55
 Lax Nature
 Ball: Master Ball
-=Met_Location=143
+~=Location=143
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Thunder Fang
 - Roar
 - Discharge
@@ -2775,9 +2761,9 @@ Ability: Plus
 Level: 10
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Thunder Wave
 - Quick Attack
 - Helping Hand
@@ -2789,9 +2775,9 @@ Ability: Minus
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Thunder Wave
 - Quick Attack
 - Helping Hand
@@ -2803,9 +2789,9 @@ Ability: Prankster
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Tackle
 - Double Team
 - Confuse Ray
@@ -2817,9 +2803,9 @@ Ability: Oblivious
 Level: 32
 Calm Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=BW
 .Version=20
-~=Generation=5
 - Quick Attack
 - Wish
 - Encore
@@ -2831,9 +2817,9 @@ Ability: Leaf Guard
 Level: 10
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growth
 - Poison Sting
 - Stun Spore
@@ -2845,9 +2831,9 @@ Ability: Gluttony
 Level: 10
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Pound
 - Yawn
 - Poison Gas
@@ -2859,9 +2845,9 @@ Ability: Liquid Ooze
 Level: 54
 Mild Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Stockpile
 - Spit Up
 - Swallow
@@ -2873,9 +2859,9 @@ Ability: Speed Boost
 Level: 10
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Bite
 - Rage
 - Focus Energy
@@ -2887,9 +2873,9 @@ Ability: Rough Skin
 Level: 41
 Gentle Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=BW
 .Version=21
-~=Generation=5
 - Crunch
 - Slash
 - Aqua Jet
@@ -2901,9 +2887,9 @@ Ability: Oblivious
 Level: 25
 Bashful Nature
 Ball: Master Ball
-=Met_Location=71
+~=Location=71
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Whirlpool
 - Astonish
 - Water Pulse
@@ -2915,9 +2901,9 @@ Ability: Water Veil
 Level: 36
 Impish Nature
 Ball: Master Ball
-=Met_Location=71
+~=Location=71
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Mist
 - Rest
 - Brine
@@ -2929,9 +2915,9 @@ Ability: Own Tempo
 Level: 10
 Jolly Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growl
 - Tackle
 - Ember
@@ -2942,9 +2928,9 @@ Ability: Solid Rock
 Level: 35
 Docile Nature
 Ball: Master Ball
-=Met_Location=132
+~=Location=132
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Earth Power
 - Curse
 - Take Down
@@ -2956,9 +2942,9 @@ Ability: Shell Armor
 Level: 10
 Modest Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Ember
 - Smog
 - Withdraw
@@ -2970,9 +2956,9 @@ Ability: Gluttony
 Level: 32
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Confuse Ray
 - Psywave
 - Zen Headbutt
@@ -2984,9 +2970,9 @@ Ability: Contrary
 Level: 10
 Serious Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Uproar
 - Copycat
@@ -2997,9 +2983,9 @@ Ability: Sheer Force
 Level: 10
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sand Attack
 - Feint Attack
 - Sand Tomb
@@ -3011,9 +2997,9 @@ Ability: Levitate
 Level: 45
 Hardy Nature
 Ball: Master Ball
-=Met_Location=132
+~=Location=132
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Rock Slide
 - Dragon Tail
 - Earth Power
@@ -3025,9 +3011,9 @@ Ability: Water Absorb
 Level: 32
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Poison Sting
 - Feint Attack
 - Absorb
@@ -3038,9 +3024,9 @@ Ability: Cloud Nine
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=20
-~=Generation=5
 - Peck
 - Growl
 - Astonish
@@ -3052,9 +3038,9 @@ Ability: Natural Cure
 Level: 59
 Docile Nature
 Ball: Master Ball
-=Met_Location=27
+~=Location=27
+~=Version=BW
 .Version=20
-~=Generation=5
 - Dragon Breath
 - Dragon Dance
 - Cotton Guard
@@ -3066,9 +3052,9 @@ Ability: Immunity
 Level: 58
 Bold Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=BW
 .Version=20
-~=Generation=5
 - Detect
 - False Swipe
 - X-Scissor
@@ -3080,9 +3066,9 @@ Ability: Shed Skin
 Level: 48
 Adamant Nature
 Ball: Master Ball
-=Met_Location=67
+~=Location=67
+~=Version=BW
 .Version=21
-~=Generation=5
 - Poison Fang
 - Swagger
 - Haze
@@ -3094,9 +3080,9 @@ Ability: Levitate
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Confusion
 - Rock Throw
 - Hypnosis
@@ -3108,9 +3094,9 @@ Ability: Levitate
 Level: 48
 Lax Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=BW
 .Version=21
-~=Generation=5
 - Embargo
 - Cosmic Power
 - Heal Block
@@ -3122,9 +3108,9 @@ Ability: Anticipation
 Level: 37
 Brave Nature
 Ball: Master Ball
-=Met_Location=21
+~=Location=21
+~=Version=BW
 .Version=20
-~=Generation=5
 - Magnitude
 - Rest
 - Snore
@@ -3136,9 +3122,9 @@ Ability: Anticipation
 Level: 57
 Brave Nature
 Ball: Master Ball
-=Met_Location=21
+~=Location=21
+~=Version=BW
 .Version=20
-~=Generation=5
 - Aqua Tail
 - Earthquake
 - Future Sight
@@ -3150,9 +3136,9 @@ Ability: Adaptability
 Level: 10
 Hardy Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bubble
 - Harden
 - Vise Grip
@@ -3163,9 +3149,9 @@ Ability: Hyper Cutter
 Level: 57
 Rash Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Night Slash
 - Crabhammer
 - Swords Dance
@@ -3177,9 +3163,9 @@ Ability: Levitate
 Level: 48
 Docile Nature
 Ball: Master Ball
-=Met_Location=35
+~=Location=35
+~=Version=BW
 .Version=20
-~=Generation=5
 - Sandstorm
 - Hyper Beam
 - Extrasensory
@@ -3191,9 +3177,9 @@ Ability: Suction Cups
 Level: 40
 Adamant Nature
 =Met_Level=25
-=Met_Location=7
+~=Location=7
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Constrict
 - Acid
 - Gastro Acid
@@ -3205,9 +3191,9 @@ Ability: Battle Armor
 Level: 40
 Bold Nature
 =Met_Level=25
-=Met_Location=7
+~=Location=7
+~=Version=BW
 .Version=21
-~=Generation=5
 - Ancient Power
 - Water Gun
 - Metal Claw
@@ -3219,9 +3205,9 @@ Ability: Swift Swim
 Level: 47
 Bashful Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=BW
 .Version=21
-~=Generation=5
 - Splash
 - Tackle
 - Flail
@@ -3232,9 +3218,9 @@ Ability: Marvel Scale
 Level: 64
 Bashful Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=BW
 .Version=20
-~=Generation=5
 - Hydro Pump
 - Attract
 - Safeguard
@@ -3246,9 +3232,9 @@ Ability: Forecast
 Level: 26
 Hardy Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Headbutt
 - Rain Dance
 - Sunny Day
@@ -3260,9 +3246,9 @@ Ability: Color Change
 Level: 57
 Brave Nature
 Ball: Master Ball
-=Met_Location=147
+~=Location=147
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Substitute
 - Sucker Punch
 - Shadow Claw
@@ -3274,9 +3260,9 @@ Ability: Cursed Body
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Screech
 - Night Shade
 - Spite
@@ -3288,9 +3274,9 @@ Ability: Insomnia
 Level: 32
 Adamant Nature
 Ball: Master Ball
-=Met_Location=133
+~=Location=133
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Shadow Sneak
 - Feint Attack
 - Hex
@@ -3302,9 +3288,9 @@ Ability: Pressure
 Level: 37
 Lax Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Shadow Sneak
 - Shadow Punch
 - Astonish
@@ -3316,9 +3302,9 @@ Ability: Solar Power
 Level: 58
 Calm Nature
 Ball: Master Ball
-=Met_Location=27
+~=Location=27
+~=Version=BW
 .Version=21
-~=Generation=5
 - Synthesis
 - Leaf Tornado
 - Air Slash
@@ -3330,9 +3316,9 @@ Ability: Levitate
 Level: 10
 Calm Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Wrap
 - Growl
 - Astonish
@@ -3343,9 +3329,9 @@ Ability: Pressure
 Level: 48
 Docile Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=BW
 .Version=21
-~=Generation=5
 - Double Team
 - Slash
 - Future Sight
@@ -3357,9 +3343,9 @@ Ability: Shadow Tag
 Level: 55
 Careful Nature
 Ball: Master Ball
-=Met_Location=15
+~=Location=15
+~=Version=BW
 .Version=21
-~=Generation=5
 - Counter
 - Mirror Coat
 - Safeguard
@@ -3371,9 +3357,9 @@ Ability: Moody
 Level: 42
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Ice Fang
 - Headbutt
 - Crunch
@@ -3385,9 +3371,9 @@ Ability: Oblivious
 Level: 10
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growl
 - Water Gun
 - Encore
@@ -3399,9 +3385,9 @@ Ability: Ice Body
 Level: 37
 Docile Nature
 Ball: Master Ball
-=Met_Location=71
+~=Location=71
+~=Version=BW
 .Version=21
-~=Generation=5
 - Body Slam
 - Aurora Beam
 - Hail
@@ -3413,9 +3399,9 @@ Ability: Thick Fat
 Level: 30
 Jolly Nature
 Ball: Master Ball
-=Met_Location=71
+~=Location=71
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Encore
 - Ice Ball
 - Body Slam
@@ -3427,9 +3413,9 @@ Ability: Shell Armor
 Level: 54
 Adamant Nature
 Ball: Master Ball
-=Met_Location=17
+~=Location=17
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Water Gun
 - Whirlpool
 - Iron Defense
@@ -3441,9 +3427,9 @@ Ability: Swift Swim
 Level: 53
 Mild Nature
 Ball: Master Ball
-=Met_Location=17
+~=Location=17
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dive
 - Crunch
 - Aqua Tail
@@ -3455,9 +3441,9 @@ Ability: Swift Swim
 Level: 54
 Naughty Nature
 Ball: Master Ball
-=Met_Location=17
+~=Location=17
+~=Version=BW
 .Version=20
-~=Generation=5
 - Dive
 - Psychic
 - Aqua Tail
@@ -3469,9 +3455,9 @@ Ability: Rock Head
 Level: 55
 Docile Nature
 Ball: Master Ball
-=Met_Location=17
+~=Location=17
+~=Version=BW
 .Version=21
-~=Generation=5
 - Take Down
 - Mud Sport
 - Ancient Power
@@ -3483,9 +3469,9 @@ Ability: Swift Swim
 Level: 47
 Bashful Nature
 Ball: Master Ball
-=Met_Location=42
+~=Location=42
+~=Version=BW
 .Version=21
-~=Generation=5
 - Flail
 - Sweet Kiss
 - Hydro Pump
@@ -3497,9 +3483,9 @@ Ability: Intimidate
 Level: 50
 Careful Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Dragon Breath
 - Crunch
 - Fly
@@ -3511,9 +3497,9 @@ Ability: Light Metal
 Level: 10
 Calm Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Take Down
 
 Metang
@@ -3522,9 +3508,9 @@ Ability: Clear Body
 Level: 63
 Quirky Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=BW
 .Version=21
-~=Generation=5
 - Agility
 - Meteor Mash
 - Zen Headbutt
@@ -3536,9 +3522,9 @@ Ability: Clear Body
 Level: 47
 Hasty Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Agility
 - Psychic
 - Meteor Mash
@@ -3550,9 +3536,9 @@ Ability: Clear Body
 Level: 65
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=150
+~=Location=150
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Iron Defense
 - Charge Beam
 - Lock-On
@@ -3564,9 +3550,9 @@ Ability: Clear Body
 Level: 65
 Lonely Nature
 Ball: Master Ball
-=Met_Location=151
+~=Location=151
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Amnesia
 - Charge Beam
 - Lock-On
@@ -3578,9 +3564,9 @@ Ability: Clear Body
 Level: 65
 Bold Nature
 Ball: Master Ball
-=Met_Location=152
+~=Location=152
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Amnesia
 - Charge Beam
 - Lock-On
@@ -3592,9 +3578,9 @@ Ability: Levitate
 Level: 68
 Lax Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Psycho Shift
 - Charm
 - Psychic
@@ -3606,9 +3592,9 @@ Ability: Levitate
 Level: 68
 Lax Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Psycho Shift
 - Dragon Dance
 - Psychic
@@ -3619,9 +3605,9 @@ IVs: 23 HP / 10 Atk / 24 Def / 22 SpA / 5 SpD / 20 Spe
 Ability: Air Lock
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=21
-~=Generation=5
 - Extreme Speed
 - Hyper Beam
 - Dragon Pulse
@@ -3633,9 +3619,9 @@ Ability: Shell Armor
 Level: 32
 Mild Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Earthquake
 - Bite
 - Mega Drain
@@ -3647,9 +3633,9 @@ Ability: Iron Fist
 Level: 36
 Jolly Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Close Combat
 - Flame Wheel
 - Fury Swipes
@@ -3661,9 +3647,9 @@ Ability: Defiant
 Level: 36
 Mild Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Aqua Jet
 - Peck
 - Brine
@@ -3675,9 +3661,9 @@ Ability: Keen Eye
 Level: 5
 Bold Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Tackle
 - Growl
 - Quick Attack
@@ -3688,9 +3674,9 @@ Ability: Reckless
 Level: 34
 Naughty Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Close Combat
 - Take Down
 - Aerial Ace
@@ -3702,9 +3688,9 @@ Ability: Moody
 Level: 56
 Adamant Nature
 Ball: Master Ball
-=Met_Location=143
+~=Location=143
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Take Down
 - Super Fang
 - Superpower
@@ -3716,9 +3702,9 @@ Ability: Swarm
 Level: 48
 Docile Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=BW
 .Version=21
-~=Generation=5
 - Screech
 - Taunt
 - Night Slash
@@ -3730,9 +3716,9 @@ Ability: Intimidate
 Level: 30
 Bold Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Tackle
 - Bite
 - Roar
@@ -3744,9 +3730,9 @@ Ability: Natural Cure
 Level: 6
 Careful Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Absorb
 - Growth
 
@@ -3756,9 +3742,9 @@ Ability: Sheer Force
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leer
 - Focus Energy
 - Pursuit
@@ -3770,9 +3756,9 @@ Ability: Mold Breaker
 Level: 30
 Calm Nature
 =Met_Level=25
-=Met_Location=7
+~=Location=7
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Pursuit
 - Take Down
 - Chip Away
@@ -3784,9 +3770,9 @@ Ability: Soundproof
 Level: 10
 Lonely Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Protect
 - Taunt
 - Metal Sound
@@ -3798,9 +3784,9 @@ Ability: Sturdy
 Level: 30
 Naughty Nature
 =Met_Level=25
-=Met_Location=7
+~=Location=7
+~=Version=BW
 .Version=21
-~=Generation=5
 - Metal Sound
 - Take Down
 - Block
@@ -3812,9 +3798,9 @@ Ability: Overcoat
 Level: 20
 Lax Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Protect
 - Tackle
 - Hidden Power [Fighting]
@@ -3826,9 +3812,9 @@ Ability: Tinted Lens
 Level: 20
 Careful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Hidden Power [Water]
 - Tackle
 - Snore
@@ -3840,9 +3826,9 @@ Ability: Honey Gather
 Level: 39
 Jolly Nature
 Ball: Master Ball
-=Met_Location=25
+~=Location=25
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sweet Scent
 - Gust
 - Bug Bite
@@ -3854,9 +3840,9 @@ Ability: Pressure
 Level: 38
 Naughty Nature
 Ball: Master Ball
-=Met_Location=25
+~=Location=25
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Power Gem
 - Heal Order
 - Toxic
@@ -3868,9 +3854,9 @@ Ability: Volt Absorb
 Level: 59
 Hasty Nature
 Ball: Master Ball
-=Met_Location=143
+~=Location=143
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Super Fang
 - Discharge
 - Last Resort
@@ -3882,9 +3868,9 @@ Ability: Water Veil
 Level: 10
 Careful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sonic Boom
 - Growl
 - Water Sport
@@ -3896,9 +3882,9 @@ EVs: 252 Atk / 252 SpA / 6 Spe
 Ability: Swift Swim
 Hardy Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=BW
 .Version=21
-~=Generation=5
 - Surf
 - Waterfall
 - Ice Beam
@@ -3910,9 +3896,9 @@ Ability: Flower Gift
 Level: 25
 Bold Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Tackle
 - Helping Hand
 - Magical Leaf
@@ -3924,9 +3910,9 @@ Ability: Sand Force
 Level: 10
 Serious Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Mud-Slap
 - Mud Sport
 - Harden
@@ -3938,9 +3924,9 @@ Ability: Sand Force
 Level: 30
 Impish Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Mud-Slap
 - Body Slam
 - Hidden Power [Rock]
@@ -3953,9 +3939,9 @@ Level: 40
 Jolly Nature
 Language: English
 =OT_Name=Diana
-=Met_Location=30002
+~=Location=30002
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Agility
 - Double Hit
 - Fling
@@ -3967,9 +3953,9 @@ Ability: Flare Boost
 Level: 10
 Hardy Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Constrict
 - Minimize
 - Astonish
@@ -3980,9 +3966,9 @@ Ability: Unburden
 Level: 59
 Adamant Nature
 Ball: Master Ball
-=Met_Location=27
+~=Location=27
+~=Version=BW
 .Version=20
-~=Generation=5
 - Ominous Wind
 - Baton Pass
 - Shadow Ball
@@ -3994,9 +3980,9 @@ Ability: Run Away
 Level: 16
 Brave Nature
 Ball: Master Ball
-=Met_Location=8
+~=Location=8
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Foresight
 - Endure
 - Frustration
@@ -4008,9 +3994,9 @@ Ability: Limber
 Level: 11
 Sassy Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Pound
 - Defense Curl
 - Foresight
@@ -4022,9 +4008,9 @@ Ability: Levitate
 Level: 50
 Brave Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=BW
 .Version=20
-~=Generation=5
 - Growl
 - Psywave
 - Spite
@@ -4036,9 +4022,9 @@ Ability: Moxie
 Level: 59
 Calm Nature
 Ball: Master Ball
-=Met_Location=143
+~=Location=143
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Mean Look
 - Foul Play
 - Tailwind
@@ -4050,9 +4036,9 @@ Ability: Defiant
 Level: 38
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fake Out
 - Slash
 - Feint Attack
@@ -4064,9 +4050,9 @@ Ability: Keen Eye
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Poison Gas
 - Screech
 - Fury Swipes
@@ -4078,9 +4064,9 @@ Ability: Keen Eye
 Level: 34
 Hasty Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Slash
 - Toxic
 - Flamethrower
@@ -4092,9 +4078,9 @@ Ability: Heavy Metal
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Confusion
 - Hypnosis
@@ -4105,9 +4091,9 @@ Ability: Levitate
 Level: 50
 Lax Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=BW
 .Version=21
-~=Generation=5
 - Block
 - Gyro Ball
 - Future Sight
@@ -4119,9 +4105,9 @@ Ability: Natural Cure
 Level: 5
 Hasty Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Pound
 - Charm
 - Copycat
@@ -4132,9 +4118,9 @@ Ability: Big Pecks
 Level: 55
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=143
+~=Location=143
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Roost
 - Uproar
 - Synchronoise
@@ -4146,9 +4132,9 @@ Ability: Infiltrator
 Level: 10
 Sassy Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Confuse Ray
 - Spite
 - Shadow Sneak
@@ -4160,9 +4146,9 @@ Ability: Rough Skin
 Level: 24
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Take Down
 - Sandstorm
 - Dual Chop
@@ -4174,9 +4160,9 @@ Ability: Rough Skin
 Level: 48
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Slash
 - Dragon Claw
 - Dig
@@ -4188,9 +4174,9 @@ Ability: Inner Focus
 Level: 50
 Gentle Nature
 Ball: Master Ball
-=Met_Location=59
+~=Location=59
+~=Version=BW
 .Version=21
-~=Generation=5
 - Reversal
 - Screech
 - Copycat
@@ -4202,9 +4188,9 @@ Ability: Justified
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Detect
 - Metal Claw
 - Counter
@@ -4216,9 +4202,9 @@ Ability: Sand Stream
 Level: 30
 Gentle Nature
 Ball: Master Ball
-=Met_Location=17
+~=Location=17
+~=Version=BW
 .Version=21
-~=Generation=5
 - Yawn
 - Take Down
 - Dig
@@ -4230,9 +4216,9 @@ Ability: Sand Stream
 Level: 54
 Bold Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sand Tomb
 - Crunch
 - Earthquake
@@ -4244,9 +4230,9 @@ Ability: Battle Armor
 Level: 40
 Impish Nature
 Ball: Master Ball
-=Met_Location=132
+~=Location=132
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Bug Bite
 - Poison Fang
 - Venoshock
@@ -4258,9 +4244,9 @@ Ability: Dry Skin
 Level: 55
 Adamant Nature
 Ball: Master Ball
-=Met_Location=12
+~=Location=12
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Nasty Plot
 - Poison Jab
 - Sludge Bomb
@@ -4272,9 +4258,9 @@ Ability: Poison Touch
 Level: 37
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Venoshock
 - Mud Bomb
 - Revenge
@@ -4286,9 +4272,9 @@ Ability: Levitate
 Level: 10
 Lax Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Bind
 - Growth
 - Bite
@@ -4300,9 +4286,9 @@ Ability: Storm Drain
 Level: 48
 Adamant Nature
 Ball: Master Ball
-=Met_Location=31
+~=Location=31
+~=Version=BW
 .Version=21
-~=Generation=5
 - Aqua Ring
 - Whirlpool
 - U-turn
@@ -4314,9 +4300,9 @@ Ability: Swift Swim
 Level: 47
 Rash Nature
 Ball: Master Ball
-=Met_Location=31
+~=Location=31
+~=Version=BW
 .Version=21
-~=Generation=5
 - Captivate
 - Safeguard
 - Aqua Ring
@@ -4328,9 +4314,9 @@ Ability: Swift Swim
 Level: 39
 Brave Nature
 Ball: Master Ball
-=Met_Location=71
+~=Location=71
+~=Version=BW
 .Version=21
-~=Generation=5
 - Wing Attack
 - Water Pulse
 - Take Down
@@ -4342,9 +4328,9 @@ Ability: Soundproof
 Level: 40
 Naive Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Ice Shard
 - Wood Hammer
 - Icy Wind
@@ -4356,9 +4342,9 @@ Ability: Pressure
 Level: 45
 Bold Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Screech
 - Slash
 - Snatch
@@ -4370,9 +4356,9 @@ Ability: Magnet Pull
 Level: 31
 Careful Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Sonic Boom
 - Tackle
 - Spark
@@ -4384,9 +4370,9 @@ Ability: Oblivious
 Level: 59
 Mild Nature
 Ball: Master Ball
-=Met_Location=15
+~=Location=15
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Refresh
 - Screech
 - Power Whip
@@ -4398,9 +4384,9 @@ Ability: Solid Rock
 Level: 42
 Lonely Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Chip Away
 - Bulldoze
 - Take Down
@@ -4412,9 +4398,9 @@ Ability: Chlorophyll
 Level: 50
 Adamant Nature
 Ball: Master Ball
-=Met_Location=26
+~=Location=26
+~=Version=BW
 .Version=21
-~=Generation=5
 - Natural Gift
 - Slam
 - Tickle
@@ -4426,9 +4412,9 @@ Ability: Motor Drive
 Level: 30
 Naive Nature
 Ball: Master Ball
-=Met_Location=131
+~=Location=131
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Shock Wave
 - Swift
 - Thunder Punch
@@ -4440,9 +4426,9 @@ Ability: Flame Body
 Level: 30
 Bashful Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Smog
 - Feint Attack
 - Ember
@@ -4454,9 +4440,9 @@ Ability: Super Luck
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Extreme Speed
 - Aura Sphere
 - Air Slash
@@ -4468,9 +4454,9 @@ Ability: Speed Boost
 Level: 45
 Serious Nature
 Ball: Master Ball
-=Met_Location=27
+~=Location=27
+~=Version=BW
 .Version=21
-~=Generation=5
 - Pursuit
 - Ancient Power
 - Hypnosis
@@ -4481,9 +4467,9 @@ Ability: Chlorophyll
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=20
-~=Generation=5
 - Tail Whip
 - Tackle
 - Helping Hand
@@ -4495,9 +4481,9 @@ Ability: Snow Cloak
 Level: 20
 Bold Nature
 Ball: Master Ball
-=Met_Location=8
+~=Location=8
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Sand Attack
 - Growl
 - Quick Attack
@@ -4509,9 +4495,9 @@ Ability: Sand Veil
 Level: 51
 Lax Nature
 Ball: Master Ball
-=Met_Location=128
+~=Location=128
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Screech
 - X-Scissor
 - Sky Uppercut
@@ -4523,9 +4509,9 @@ Ability: Thick Fat
 Level: 34
 Docile Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Hail
 - Ice Fang
 - Take Down
@@ -4537,9 +4523,9 @@ Ability: Adaptability
 Level: 5
 Relaxed Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Conversion 2
 - Tackle
 - Conversion
@@ -4551,9 +4537,9 @@ Ability: Steadfast
 Level: 20
 Quirky Nature
 Ball: Master Ball
-=Met_Location=51
+~=Location=51
+~=Version=BW
 .Version=20
-~=Generation=5
 - Growl
 - Confusion
 - Double Team
@@ -4565,9 +4551,9 @@ Ability: Sand Force
 Level: 11
 Gentle Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Harden
 - Ancient Power
@@ -4578,9 +4564,9 @@ Ability: Pressure
 Level: 37
 Lax Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Shadow Sneak
 - Shadow Punch
 - Astonish
@@ -4592,9 +4578,9 @@ Ability: Cursed Body
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Astonish
 - Double Team
 - Bite
@@ -4606,9 +4592,9 @@ Ability: Levitate
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=21
-~=Generation=5
 - Thunder Wave
 - Thunder Shock
 - Confuse Ray
@@ -4620,9 +4606,9 @@ Ability: Levitate
 Level: 65
 Rash Nature
 Ball: Master Ball
-=Met_Location=7
+~=Location=7
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Future Sight
 - Amnesia
 - Extrasensory
@@ -4634,9 +4620,9 @@ Ability: Levitate
 Level: 65
 Naive Nature
 Ball: Master Ball
-=Met_Location=56
+~=Location=56
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Future Sight
 - Charm
 - Extrasensory
@@ -4648,9 +4634,9 @@ Ability: Levitate
 Level: 65
 Timid Nature
 Ball: Master Ball
-=Met_Location=128
+~=Location=128
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Future Sight
 - Nasty Plot
 - Extrasensory
@@ -4662,9 +4648,9 @@ Ability: Telepathy
 Level: 40
 Adamant Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Metal Burst
 - Dragon Claw
 - Earth Power
@@ -4676,9 +4662,9 @@ Ability: Telepathy
 Level: 40
 Timid Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Aqua Tail
 - Dragon Claw
 - Earth Power
@@ -4690,9 +4676,9 @@ Ability: Flash Fire
 Level: 68
 Careful Nature
 Ball: Master Ball
-=Met_Location=132
+~=Location=132
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Scary Face
 - Lava Plume
 - Fire Spin
@@ -4704,9 +4690,9 @@ Ability: Slow Start
 Level: 68
 Sassy Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Revenge
 - Wide Guard
 - Zen Headbutt
@@ -4718,9 +4704,9 @@ Ability: Telepathy
 Level: 40
 Calm Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Destiny Bond
 - Dragon Claw
 - Earth Power
@@ -4732,9 +4718,9 @@ Ability: Levitate
 Level: 68
 Brave Nature
 Ball: Master Ball
-=Met_Location=68
+~=Location=68
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Future Sight
 - Slash
 - Moonlight
@@ -4744,9 +4730,9 @@ Arceus
 Ability: Multitype
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=BW
 .Version=20
-~=Generation=5
 - Recover
 - Hyper Beam
 - Perish Song
@@ -4758,9 +4744,9 @@ Ability: Overgrow
 Level: 36
 Bold Nature
 =Met_Level=5
-=Met_Location=4
+~=Location=4
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Mega Drain
 - Vine Whip
@@ -4772,9 +4758,9 @@ Ability: Blaze
 Level: 36
 Naive Nature
 =Met_Level=5
-=Met_Location=4
+~=Location=4
+~=Version=BW
 .Version=21
-~=Generation=5
 - Take Down
 - Arm Thrust
 - Ember
@@ -4786,9 +4772,9 @@ Ability: Torrent
 Level: 5
 Lax Nature
 =Met_Level=5
-=Met_Location=4
+~=Location=4
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Tail Whip
 
@@ -4798,9 +4784,9 @@ Ability: Torrent
 Level: 36
 Serious Nature
 =Met_Level=5
-=Met_Location=4
+~=Location=4
+~=Version=BW
 .Version=20
-~=Generation=5
 - Slash
 - Razor Shell
 - Water Pulse
@@ -4812,9 +4798,9 @@ Ability: Keen Eye
 Level: 4
 Adamant Nature
 Ball: Master Ball
-=Met_Location=15
+~=Location=15
+~=Version=BW
 .Version=20
-~=Generation=5
 - Tackle
 - Leer
 
@@ -4824,9 +4810,9 @@ Ability: Keen Eye
 Level: 27
 Bashful Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=BW
 .Version=21
-~=Generation=5
 - Hypnosis
 - Confuse Ray
 - Super Fang
@@ -4838,9 +4824,9 @@ Ability: Vital Spirit
 Level: 4
 Adamant Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leer
 - Tackle
 
@@ -4850,9 +4836,9 @@ Ability: Sand Rush
 Level: 34
 Careful Nature
 Ball: Master Ball
-=Met_Location=23
+~=Location=23
+~=Version=BW
 .Version=21
-~=Generation=5
 - Work Up
 - Crunch
 - Roar
@@ -4864,9 +4850,9 @@ Ability: Sand Rush
 Level: 23
 Impish Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bite
 - Helping Hand
 - Take Down
@@ -4878,9 +4864,9 @@ Ability: Unburden
 Level: 11
 Bold Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scratch
 - Growl
 - Assist
@@ -4892,9 +4878,9 @@ Ability: Unburden
 Level: 38
 Bold Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=BW
 .Version=20
-~=Generation=5
 - Hone Claws
 - Assurance
 - Slash
@@ -4906,9 +4892,9 @@ Ability: Gluttony
 Level: 15
 Brave Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=20
-~=Generation=5
 - Leer
 - Lick
 - Vine Whip
@@ -4920,9 +4906,9 @@ Ability: Gluttony
 Level: 20
 Adamant Nature
 Ball: Master Ball
-=Met_Location=72
+~=Location=72
+~=Version=BW
 .Version=21
-~=Generation=5
 - Incinerate
 - Fury Swipes
 - Yawn
@@ -4934,9 +4920,9 @@ Ability: Gluttony
 Level: 15
 Careful Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leer
 - Lick
 - Water Gun
@@ -4948,9 +4934,9 @@ Ability: Synchronize
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=BW
 .Version=21
-~=Generation=5
 - Psywave
 - Defense Curl
 - Lucky Chant
@@ -4962,9 +4948,9 @@ Ability: Telepathy
 Level: 50
 Bold Nature
 Ball: Master Ball
-=Met_Location=32
+~=Location=32
+~=Version=BW
 .Version=21
-~=Generation=5
 - Defense Curl
 - Lucky Chant
 - Psybeam
@@ -4976,9 +4962,9 @@ Ability: Big Pecks
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=BW
 .Version=20
-~=Generation=5
 - Gust
 - Growl
 - Leer
@@ -4989,9 +4975,9 @@ Ability: Big Pecks
 Level: 23
 Adamant Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=21
-~=Generation=5
 - Quick Attack
 - Air Cutter
 - Roost
@@ -5003,9 +4989,9 @@ Ability: Big Pecks
 Level: 32
 Impish Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=21
-~=Generation=5
 - Quick Attack
 - Air Cutter
 - Roost
@@ -5017,9 +5003,9 @@ Ability: Motor Drive
 Level: 12
 Brave Nature
 Ball: Master Ball
-=Met_Location=16
+~=Location=16
+~=Version=BW
 .Version=20
-~=Generation=5
 - Quick Attack
 - Tail Whip
 - Charge
@@ -5031,9 +5017,9 @@ Ability: Lightning Rod
 Level: 27
 Gentle Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=BW
 .Version=20
-~=Generation=5
 - Shock Wave
 - Flame Charge
 - Pursuit
@@ -5045,9 +5031,9 @@ Ability: Sturdy
 Level: 13
 Brave Nature
 Ball: Master Ball
-=Met_Location=53
+~=Location=53
+~=Version=BW
 .Version=20
-~=Generation=5
 - Tackle
 - Harden
 - Sand Attack
@@ -5059,9 +5045,9 @@ Ability: Sturdy
 Level: 30
 Adamant Nature
 Ball: Master Ball
-=Met_Location=54
+~=Location=54
+~=Version=BW
 .Version=20
-~=Generation=5
 - Iron Defense
 - Smack Down
 - Power Gem
@@ -5074,9 +5060,9 @@ Level: 35
 Adamant Nature
 Language: English
 =OT_Name=Manny
-=Met_Location=30002
+~=Location=30002
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Iron Defense
 - Smack Down
 - Power Gem
@@ -5088,9 +5074,9 @@ Ability: Unaware
 Level: 14
 Adamant Nature
 Ball: Master Ball
-=Met_Location=53
+~=Location=53
+~=Version=BW
 .Version=21
-~=Generation=5
 - Confusion
 - Odor Sleuth
 - Gust
@@ -5102,9 +5088,9 @@ Ability: Mold Breaker
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Mud Sport
 - Rapid Spin
 - Mud-Slap
@@ -5116,9 +5102,9 @@ Ability: Sand Rush
 Level: 39
 Docile Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=BW
 .Version=21
-~=Generation=5
 - Slash
 - Rock Slide
 - Horn Drill
@@ -5130,9 +5116,9 @@ Ability: Regenerator
 Level: 13
 Adamant Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growl
 - Helping Hand
 - Refresh
@@ -5144,9 +5130,9 @@ Ability: Sheer Force
 Level: 13
 Adamant Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leer
 - Focus Energy
 - Bide
@@ -5158,9 +5144,9 @@ Ability: Sheer Force
 Level: 28
 Bold Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=BW
 .Version=21
-~=Generation=5
 - Low Kick
 - Rock Throw
 - Wake-Up Slap
@@ -5172,9 +5158,9 @@ Ability: Guts
 Level: 28
 Naive Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=BW
 .Version=21
-~=Generation=5
 - Low Kick
 - Rock Throw
 - Wake-Up Slap
@@ -5186,9 +5172,9 @@ Ability: Hydration
 Level: 12
 Bold Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=21
-~=Generation=5
 - Growl
 - Supersonic
 - Round
@@ -5200,9 +5186,9 @@ Ability: Hydration
 Level: 30
 Bashful Nature
 Ball: Master Ball
-=Met_Location=12
+~=Location=12
+~=Version=BW
 .Version=21
-~=Generation=5
 - Mud Shot
 - Aqua Ring
 - Uproar
@@ -5214,9 +5200,9 @@ Ability: Poison Touch
 Level: 57
 Bold Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Flail
 - Drain Punch
 - Echoed Voice
@@ -5228,9 +5214,9 @@ Ability: Guts
 Level: 36
 Hardy Nature
 Ball: Master Ball
-=Met_Location=23
+~=Location=23
+~=Version=BW
 .Version=21
-~=Generation=5
 - Revenge
 - Storm Throw
 - Body Slam
@@ -5242,9 +5228,9 @@ Ability: Sturdy
 Level: 17
 Brave Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bide
 - Focus Energy
 - Double Kick
@@ -5256,9 +5242,9 @@ Ability: Swarm
 Level: 16
 Bold Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - String Shot
 - Bug Bite
@@ -5270,9 +5256,9 @@ Ability: Leaf Guard
 Level: 23
 Adamant Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=21
-~=Generation=5
 - String Shot
 - Bug Bite
 - Razor Leaf
@@ -5284,9 +5270,9 @@ Ability: Swarm
 Level: 22
 Adamant Nature
 Ball: Master Ball
-=Met_Location=72
+~=Location=72
+~=Version=BW
 .Version=21
-~=Generation=5
 - String Shot
 - Bug Bite
 - Razor Leaf
@@ -5298,9 +5284,9 @@ Ability: Poison Point
 Level: 15
 Jolly Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=21
-~=Generation=5
 - Poison Sting
 - Screech
 - Pursuit
@@ -5312,9 +5298,9 @@ Ability: Poison Point
 Level: 55
 Bashful Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Steamroller
 - Toxic
 - Rock Climb
@@ -5326,9 +5312,9 @@ Ability: Poison Point
 Level: 30
 Bashful Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=21
-~=Generation=5
 - Protect
 - Poison Tail
 - Iron Defense
@@ -5340,9 +5326,9 @@ Ability: Chlorophyll
 Level: 10
 Adamant Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Growth
 - Leech Seed
 - Stun Spore
@@ -5354,9 +5340,9 @@ Ability: Infiltrator
 Level: 22
 Bashful Nature
 Ball: Master Ball
-=Met_Location=72
+~=Location=72
+~=Version=BW
 .Version=21
-~=Generation=5
 - Leech Seed
 - Mega Drain
 - Cotton Spore
@@ -5368,9 +5354,9 @@ Ability: Chlorophyll
 Level: 15
 Adamant Nature
 Ball: Master Ball
-=Met_Location=33
+~=Location=33
+~=Version=BW
 .Version=20
-~=Generation=5
 - Growth
 - Leech Seed
 - Sleep Powder
@@ -5382,9 +5368,9 @@ Ability: Own Tempo
 Level: 18
 Lonely Nature
 Ball: Master Ball
-=Met_Location=8
+~=Location=8
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Leech Seed
 - Mega Drain
 - Synthesis
@@ -5397,7 +5383,7 @@ Level: 25
 Adamant Nature
 Language: English
 =OT_Name=Kyle
-=Met_Location=30002
+~=Location=30002
 - Crunch
 - Aqua Jet
 - Chip Away
@@ -5410,9 +5396,9 @@ Level: 25
 Adamant Nature
 Language: English
 =OT_Name=Kyle
-=Met_Location=30002
+~=Location=30002
+~=Version=BW
 .Version=20
-~=Generation=5
 - Aqua Jet
 - Chip Away
 - Take Down
@@ -5424,9 +5410,9 @@ Ability: Adaptability
 Level: 33
 Docile Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=BW
 .Version=20
-~=Generation=5
 - Take Down
 - Crunch
 - Aqua Tail
@@ -5438,9 +5424,9 @@ Ability: Adaptability
 Level: 7
 Gentle Nature
 Ball: Master Ball
-=Met_Location=6
+~=Location=6
+~=Version=BW
 .Version=20
-~=Generation=5
 - Tackle
 - Water Gun
 - Uproar
@@ -5452,9 +5438,9 @@ Ability: Adaptability
 Level: 14
 Hardy Nature
 Ball: Master Ball
-=Met_Location=53
+~=Location=53
+~=Version=BW
 .Version=20
-~=Generation=5
 - Uproar
 - Headbutt
 - Bite
@@ -5466,9 +5452,9 @@ Ability: Adaptability
 Level: 43
 Naive Nature
 Ball: Master Ball
-=Met_Location=27
+~=Location=27
+~=Version=BW
 .Version=21
-~=Generation=5
 - Aqua Tail
 - Soak
 - Double-Edge
@@ -5480,9 +5466,9 @@ Ability: Mold Breaker
 Level: 10
 Rash Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Uproar
 - Headbutt
 - Bite
@@ -5494,9 +5480,9 @@ Ability: Adaptability
 Level: 43
 Timid Nature
 Ball: Master Ball
-=Met_Location=14
+~=Location=14
+~=Version=BW
 .Version=20
-~=Generation=5
 - Aqua Tail
 - Soak
 - Double-Edge
@@ -5508,9 +5494,9 @@ Ability: Intimidate
 Level: 40
 Bashful Nature
 Ball: Master Ball
-=Met_Location=35
+~=Location=35
+~=Version=BW
 .Version=21
-~=Generation=5
 - Embargo
 - Swagger
 - Crunch
@@ -5521,9 +5507,9 @@ Ability: Zen Mode
 Level: 35
 Adamant Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=BW
 .Version=20
-~=Generation=5
 - Thrash
 - Belly Drum
 - Flare Blitz
@@ -5535,9 +5521,9 @@ Ability: Water Absorb
 Level: 20
 Bashful Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=BW
 .Version=20
-~=Generation=5
 - Pin Missile
 - Mega Drain
 - Synthesis
@@ -5549,9 +5535,9 @@ Ability: Shell Armor
 Level: 22
 Hasty Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=BW
 .Version=21
-~=Generation=5
 - Sand Attack
 - Feint Attack
 - Smack Down
@@ -5563,9 +5549,9 @@ Ability: Weak Armor
 Level: 34
 Careful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Stealth Rock
 - Rock Slide
 - Slash
@@ -5577,9 +5563,9 @@ Ability: Moxie
 Level: 1
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40059
+~=Location=40059
+~=Version=BW
 .Version=20
-~=Generation=5
 - Leer
 - Low Kick
 - Headbutt
@@ -5591,9 +5577,9 @@ Ability: Shed Skin
 Level: 55
 Bold Nature
 Ball: Master Ball
-=Met_Location=28
+~=Location=28
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Scary Face
 - Crunch
 - Facade
@@ -5605,9 +5591,9 @@ Ability: Magic Guard
 Level: 20
 Adamant Nature
 Ball: Master Ball
-=Met_Location=34
+~=Location=34
+~=Version=BW
 .Version=20
-~=Generation=5
 - Psywave
 - Tailwind
 - Whirlwind
@@ -5619,9 +5605,9 @@ Ability: Mummy
 Level: 34
 Bashful Nature
 Ball: Master Ball
-=Met_Location=35
+~=Location=35
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Will-O-Wisp
 - Power Split
 - Ominous Wind
@@ -5633,9 +5619,9 @@ Ability: Sturdy
 Level: 37
 Naive Nature
 =Met_Level=25
-=Met_Location=7
+~=Location=7
+~=Version=BW
 .Version=21
-~=Generation=5
 - Aqua Jet
 - Ancient Power
 - Crunch
@@ -5647,9 +5633,9 @@ Ability: Defeatist
 Level: 25
 Brave Nature
 =Met_Level=25
-=Met_Location=7
+~=Location=7
+~=Version=BW
 .Version=20
-~=Generation=5
 - Pluck
 - Ancient Power
 - Agility
@@ -5661,9 +5647,9 @@ Ability: Defeatist
 Level: 37
 Gentle Nature
 =Met_Level=25
-=Met_Location=7
+~=Location=7
+~=Version=BW
 .Version=21
-~=Generation=5
 - Pluck
 - Ancient Power
 - Agility
@@ -5675,9 +5661,9 @@ Ability: Stench
 Level: 21
 Bashful Nature
 Ball: Master Ball
-=Met_Location=29
+~=Location=29
+~=Version=BW
 .Version=21
-~=Generation=5
 - Toxic Spikes
 - Acid Spray
 - Double Slap
@@ -5689,9 +5675,9 @@ Ability: Stench
 Level: 33
 Bashful Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=BW
 .Version=21
-~=Generation=5
 - Stockpile
 - Swallow
 - Body Slam
@@ -5703,9 +5689,9 @@ Ability: Illusion
 Level: 10
 Brave Nature
 Ball: Master Ball
-=Met_Location=8
+~=Location=8
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scratch
 - Leer
 - Pursuit
@@ -5717,9 +5703,9 @@ Ability: Illusion
 Level: 25
 Calm Nature
 Ball: Master Ball
-=Met_Location=72
+~=Location=72
+~=Version=BW
 .Version=20
-~=Generation=5
 - Fury Swipes
 - Feint Attack
 - Scary Face
@@ -5731,9 +5717,9 @@ Ability: Technician
 Level: 22
 Bold Nature
 Ball: Master Ball
-=Met_Location=29
+~=Location=29
+~=Version=BW
 .Version=21
-~=Generation=5
 - Double Slap
 - Encore
 - Swift
@@ -5745,9 +5731,9 @@ Ability: Cute Charm
 Level: 22
 Calm Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=BW
 .Version=20
-~=Generation=5
 - Helping Hand
 - Tickle
 - Sing
@@ -5759,9 +5745,9 @@ Ability: Frisk
 Level: 19
 Bashful Nature
 Ball: Master Ball
-=Met_Location=29
+~=Location=29
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fake Tears
 - Double Slap
 - Psybeam
@@ -5773,9 +5759,9 @@ Ability: Frisk
 Level: 38
 Brave Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=BW
 .Version=21
-~=Generation=5
 - Psyshock
 - Flatter
 - Future Sight
@@ -5787,9 +5773,9 @@ Ability: Frisk
 Level: 34
 Bashful Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=BW
 .Version=21
-~=Generation=5
 - Psyshock
 - Flatter
 - Future Sight
@@ -5801,9 +5787,9 @@ Ability: Overcoat
 Level: 21
 Brave Nature
 Ball: Master Ball
-=Met_Location=18
+~=Location=18
+~=Version=BW
 .Version=20
-~=Generation=5
 - Snatch
 - Hidden Power [Flying]
 - Light Screen
@@ -5815,9 +5801,9 @@ Ability: Overcoat
 Level: 32
 Modest Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=BW
 .Version=20
-~=Generation=5
 - Recover
 - Psyshock
 - Endeavor
@@ -5829,9 +5815,9 @@ Ability: Magic Guard
 Level: 34
 Brave Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=BW
 .Version=20
-~=Generation=5
 - Psyshock
 - Endeavor
 - Future Sight
@@ -5843,9 +5829,9 @@ Ability: Big Pecks
 Level: 22
 Docile Nature
 Ball: Master Ball
-=Met_Location=65
+~=Location=65
+~=Version=BW
 .Version=21
-~=Generation=5
 - Water Pulse
 - Aerial Ace
 - Bubble Beam
@@ -5857,9 +5843,9 @@ Ability: Keen Eye
 Level: 47
 Adamant Nature
 Ball: Master Ball
-=Met_Location=68
+~=Location=68
+~=Version=BW
 .Version=20
-~=Generation=5
 - Roost
 - Rain Dance
 - Tailwind
@@ -5871,9 +5857,9 @@ Ability: Ice Body
 Level: 21
 Hasty Nature
 Ball: Master Ball
-=Met_Location=36
+~=Location=36
+~=Version=BW
 .Version=21
-~=Generation=5
 - Uproar
 - Icy Wind
 - Mist
@@ -5885,9 +5871,9 @@ Ability: Ice Body
 Level: 47
 Jolly Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Acid Armor
 - Ice Beam
 - Hail
@@ -5899,9 +5885,9 @@ Ability: Ice Body
 Level: 47
 Quiet Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=21
-~=Generation=5
 - Ice Beam
 - Mirror Coat
 - Mirror Shot
@@ -5913,9 +5899,9 @@ Ability: Sap Sipper
 Level: 23
 Careful Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=21
-~=Generation=5
 - Double Kick
 - Leech Seed
 - Feint Attack
@@ -5927,9 +5913,9 @@ Ability: Chlorophyll
 Level: 23
 Hardy Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=21
-~=Generation=5
 - Double Kick
 - Leech Seed
 - Feint Attack
@@ -5941,9 +5927,9 @@ Ability: Chlorophyll
 Level: 22
 Hardy Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=21
-~=Generation=5
 - Double Kick
 - Leech Seed
 - Feint Attack
@@ -5955,9 +5941,9 @@ Ability: Chlorophyll
 Level: 23
 Hasty Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=20
-~=Generation=5
 - Double Kick
 - Leech Seed
 - Feint Attack
@@ -5969,9 +5955,9 @@ Ability: Sap Sipper
 Level: 31
 Jolly Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=21
-~=Generation=5
 - Feint Attack
 - Take Down
 - Jump Kick
@@ -5983,9 +5969,9 @@ Ability: Chlorophyll
 Level: 32
 Lax Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=20
-~=Generation=5
 - Take Down
 - Jump Kick
 - Aromatherapy
@@ -5997,9 +5983,9 @@ Ability: Sap Sipper
 Level: 22
 Mild Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=20
-~=Generation=5
 - Double Kick
 - Leech Seed
 - Feint Attack
@@ -6011,9 +5997,9 @@ Ability: Sap Sipper
 Level: 31
 Naive Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=20
-~=Generation=5
 - Feint Attack
 - Take Down
 - Jump Kick
@@ -6025,9 +6011,9 @@ Ability: Sap Sipper
 Level: 26
 Quiet Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=BW
 .Version=20
-~=Generation=5
 - Leech Seed
 - Feint Attack
 - Take Down
@@ -6039,9 +6025,9 @@ Ability: Chlorophyll
 Level: 26
 Quirky Nature
 Ball: Master Ball
-=Met_Location=20
+~=Location=20
+~=Version=BW
 .Version=20
-~=Generation=5
 - Leech Seed
 - Feint Attack
 - Take Down
@@ -6053,9 +6039,9 @@ Ability: Sap Sipper
 Level: 32
 Timid Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=21
-~=Generation=5
 - Take Down
 - Jump Kick
 - Aromatherapy
@@ -6067,9 +6053,9 @@ Ability: Chlorophyll
 Level: 23
 Bashful Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Double Kick
 - Leech Seed
 - Feint Attack
@@ -6081,9 +6067,9 @@ Ability: Chlorophyll
 Level: 58
 Bold Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Charm
 - Horn Leech
 - Nature Power
@@ -6095,9 +6081,9 @@ Ability: Chlorophyll
 Level: 34
 Gentle Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=21
-~=Generation=5
 - Take Down
 - Jump Kick
 - Aromatherapy
@@ -6109,9 +6095,9 @@ Ability: Static
 Level: 23
 Calm Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=20
-~=Generation=5
 - Spark
 - Pursuit
 - Double Team
@@ -6123,9 +6109,9 @@ Ability: Swarm
 Level: 59
 Bashful Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=BW
 .Version=21
-~=Generation=5
 - X-Scissor
 - Flail
 - Swords Dance
@@ -6137,9 +6123,9 @@ Ability: Swarm
 Level: 22
 Lonely Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=21
-~=Generation=5
 - Endure
 - Fury Cutter
 - Fury Attack
@@ -6151,9 +6137,9 @@ Ability: Effect Spore
 Level: 23
 Bashful Nature
 Ball: Master Ball
-=Met_Location=19
+~=Location=19
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bide
 - Mega Drain
 - Ingrain
@@ -6165,9 +6151,9 @@ Ability: Effect Spore
 Level: 58
 Bold Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=BW
 .Version=21
-~=Generation=5
 - Synthesis
 - Clear Smog
 - Solar Beam
@@ -6179,9 +6165,9 @@ Ability: Water Absorb
 Level: 12
 Adamant Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=BW
 .Version=21
-~=Generation=5
 - Bubble
 - Water Sport
 - Absorb
@@ -6193,9 +6179,9 @@ Ability: Cursed Body
 Level: 23
 Hardy Nature
 Ball: Master Ball
-=Met_Location=10
+~=Location=10
+~=Version=BW
 .Version=21
-~=Generation=5
 - Night Shade
 - Bubble Beam
 - Recover
@@ -6207,9 +6193,9 @@ Ability: Regenerator
 Level: 10
 Bashful Nature
 Ball: Master Ball
-=Met_Location=75
+~=Location=75
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Water Sport
 - Aqua Ring
 - Aqua Jet
@@ -6221,9 +6207,9 @@ Ability: Unnerve
 Level: 24
 Bashful Nature
 Ball: Master Ball
-=Met_Location=37
+~=Location=37
+~=Version=BW
 .Version=20
-~=Generation=5
 - Fury Cutter
 - Electroweb
 - Bug Bite
@@ -6235,9 +6221,9 @@ Ability: Compound Eyes
 Level: 36
 Brave Nature
 Ball: Master Ball
-=Met_Location=37
+~=Location=37
+~=Version=BW
 .Version=20
-~=Generation=5
 - Slash
 - Electro Ball
 - Signal Beam
@@ -6249,9 +6235,9 @@ Ability: Iron Barbs
 Level: 28
 Bashful Nature
 Ball: Master Ball
-=Met_Location=37
+~=Location=37
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Metal Claw
 - Pin Missile
 - Gyro Ball
@@ -6263,9 +6249,9 @@ Ability: Iron Barbs
 Level: 40
 Bashful Nature
 Ball: Master Ball
-=Met_Location=37
+~=Location=37
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Metal Claw
 - Power Whip
 - Self-Destruct
@@ -6277,9 +6263,9 @@ Ability: Minus
 Level: 38
 Calm Nature
 Ball: Master Ball
-=Met_Location=37
+~=Location=37
+~=Version=BW
 .Version=21
-~=Generation=5
 - Charge
 - Thunder Shock
 - Gear Grind
@@ -6291,9 +6277,9 @@ Ability: Plus
 Level: 59
 Calm Nature
 Ball: Master Ball
-=Met_Location=63
+~=Location=63
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Screech
 - Discharge
 - Metal Sound
@@ -6305,9 +6291,9 @@ Ability: Levitate
 Level: 40
 Bashful Nature
 Ball: Master Ball
-=Met_Location=37
+~=Location=37
+~=Version=BW
 .Version=21
-~=Generation=5
 - Tackle
 - Thunder Wave
 - Spark
@@ -6319,9 +6305,9 @@ Ability: Synchronize
 Level: 28
 Adamant Nature
 Ball: Master Ball
-=Met_Location=56
+~=Location=56
+~=Version=BW
 .Version=21
-~=Generation=5
 - Psybeam
 - Headbutt
 - Hidden Power [Rock]
@@ -6333,9 +6319,9 @@ Ability: Synchronize
 Level: 42
 Brave Nature
 Ball: Master Ball
-=Met_Location=56
+~=Location=56
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Headbutt
 - Hidden Power [Flying]
 - Psychic
@@ -6347,9 +6333,9 @@ Ability: Flame Body
 Level: 28
 Bashful Nature
 Ball: Master Ball
-=Met_Location=56
+~=Location=56
+~=Version=BW
 .Version=20
-~=Generation=5
 - Will-O-Wisp
 - Flame Burst
 - Imprison
@@ -6361,9 +6347,9 @@ Ability: Flash Fire
 Level: 41
 Impish Nature
 Ball: Master Ball
-=Met_Location=56
+~=Location=56
+~=Version=BW
 .Version=21
-~=Generation=5
 - Will-O-Wisp
 - Flame Burst
 - Imprison
@@ -6375,9 +6361,9 @@ Ability: Mold Breaker
 Level: 31
 Adamant Nature
 Ball: Master Ball
-=Met_Location=54
+~=Location=54
+~=Version=BW
 .Version=21
-~=Generation=5
 - Scary Face
 - Slash
 - False Swipe
@@ -6389,9 +6375,9 @@ Ability: Mold Breaker
 Level: 40
 Adamant Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=BW
 .Version=20
-~=Generation=5
 - False Swipe
 - Dragon Claw
 - Dragon Dance
@@ -6403,9 +6389,9 @@ Ability: Rivalry
 Level: 48
 Bashful Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=BW
 .Version=21
-~=Generation=5
 - False Swipe
 - Dragon Claw
 - Dragon Dance
@@ -6417,9 +6403,9 @@ Ability: Snow Cloak
 Level: 28
 Adamant Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=BW
 .Version=21
-~=Generation=5
 - Icy Wind
 - Fury Swipes
 - Brine
@@ -6431,9 +6417,9 @@ Ability: Snow Cloak
 Level: 56
 Lax Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Icicle Crash
 - Rest
 - Blizzard
@@ -6445,9 +6431,9 @@ Ability: Levitate
 Level: 57
 Jolly Nature
 Ball: Master Ball
-=Met_Location=38
+~=Location=38
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Confuse Ray
 - Recover
 - Solar Beam
@@ -6459,9 +6445,9 @@ Ability: Shell Armor
 Level: 31
 Adamant Nature
 Ball: Master Ball
-=Met_Location=21
+~=Location=21
+~=Version=BW
 .Version=21
-~=Generation=5
 - Struggle Bug
 - Mega Drain
 - Yawn
@@ -6473,9 +6459,9 @@ Ability: Hydration
 Level: 30
 Bold Nature
 Ball: Master Ball
-=Met_Location=12
+~=Location=12
+~=Version=BW
 .Version=21
-~=Generation=5
 - Struggle Bug
 - Mega Drain
 - Yawn
@@ -6487,9 +6473,9 @@ Ability: Limber
 Level: 31
 Adamant Nature
 Ball: Master Ball
-=Met_Location=21
+~=Location=21
+~=Version=BW
 .Version=20
-~=Generation=5
 - Camouflage
 - Mud Bomb
 - Discharge
@@ -6501,9 +6487,9 @@ Ability: Inner Focus
 Level: 31
 Bold Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=20
-~=Generation=5
 - Double Slap
 - Swift
 - Calm Mind
@@ -6515,9 +6501,9 @@ Ability: Inner Focus
 Level: 59
 Bashful Nature
 Ball: Master Ball
-=Met_Location=27
+~=Location=27
+~=Version=BW
 .Version=20
-~=Generation=5
 - U-turn
 - Wide Guard
 - Bounce
@@ -6529,9 +6515,9 @@ Ability: Sheer Force
 Level: 32
 Bold Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=20
-~=Generation=5
 - Slash
 - Crunch
 - Dragon Claw
@@ -6544,9 +6530,9 @@ Ability: Iron Fist
 Level: 61
 Adamant Nature
 Ball: Master Ball
-=Met_Location=39
+~=Location=39
+~=Version=BW
 .Version=20
-~=Generation=5
 - Earthquake
 - Shadow Punch
 - Hammer Arm
@@ -6559,9 +6545,9 @@ Ability: Defiant
 Level: 52
 Bashful Nature
 Ball: Master Ball
-=Met_Location=22
+~=Location=22
+~=Version=BW
 .Version=20
-~=Generation=5
 - Swords Dance
 - Night Slash
 - Brick Break
@@ -6573,9 +6559,9 @@ Ability: Sap Sipper
 Level: 40
 Brave Nature
 Ball: Master Ball
-=Met_Location=23
+~=Location=23
+~=Version=BW
 .Version=20
-~=Generation=5
 - Scary Face
 - Revenge
 - Head Charge
@@ -6587,9 +6573,9 @@ Ability: Defiant
 Level: 25
 Careful Nature
 Ball: Master Ball
-=Met_Location=17
+~=Location=17
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Wing Attack
 - Hone Claws
 - Scary Face
@@ -6601,9 +6587,9 @@ Ability: Big Pecks
 Level: 39
 Adamant Nature
 Ball: Master Ball
-=Met_Location=23
+~=Location=23
+~=Version=BW
 .Version=21
-~=Generation=5
 - Feint Attack
 - Punishment
 - Defog
@@ -6615,9 +6601,9 @@ Ability: Overcoat
 Level: 58
 Brave Nature
 Ball: Master Ball
-=Met_Location=24
+~=Location=24
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dark Pulse
 - Embargo
 - Bone Rush
@@ -6629,9 +6615,9 @@ Ability: Flash Fire
 Level: 37
 Adamant Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=BW
 .Version=21
-~=Generation=5
 - Fury Swipes
 - Snatch
 - Flame Burst
@@ -6643,9 +6629,9 @@ Ability: Swarm
 Level: 37
 Bashful Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=BW
 .Version=21
-~=Generation=5
 - Metal Claw
 - Bug Bite
 - Crunch
@@ -6657,9 +6643,9 @@ Ability: Hustle
 Level: 38
 Bold Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=BW
 .Version=20
-~=Generation=5
 - Crunch
 - Slam
 - Dragon Pulse
@@ -6671,9 +6657,9 @@ Ability: Levitate
 Level: 64
 Impish Nature
 Ball: Master Ball
-=Met_Location=40
+~=Location=40
+~=Version=BW
 .Version=21
-~=Generation=5
 - Crunch
 - Slam
 - Dragon Pulse
@@ -6685,9 +6671,9 @@ Ability: Flame Body
 Level: 35
 Bashful Nature
 Ball: Master Ball
-=Met_Location=35
+~=Location=35
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - String Shot
 - Leech Life
 - Gust
@@ -6699,9 +6685,9 @@ Ability: Justified
 Level: 42
 Careful Nature
 Ball: Master Ball
-=Met_Location=74
+~=Location=74
+~=Version=BW
 .Version=21
-~=Generation=5
 - Helping Hand
 - Retaliate
 - Iron Head
@@ -6713,9 +6699,9 @@ Ability: Justified
 Level: 42
 Adamant Nature
 Ball: Master Ball
-=Met_Location=73
+~=Location=73
+~=Version=BW
 .Version=21
-~=Generation=5
 - Helping Hand
 - Retaliate
 - Rock Slide
@@ -6727,9 +6713,9 @@ Ability: Justified
 Level: 42
 Adamant Nature
 Ball: Master Ball
-=Met_Location=55
+~=Location=55
+~=Version=BW
 .Version=20
-~=Generation=5
 - Helping Hand
 - Retaliate
 - Giga Drain
@@ -6741,9 +6727,9 @@ Ability: Prankster
 Level: 40
 Calm Nature
 Ball: Master Ball
-=Met_Location=25
+~=Location=25
+~=Version=BW
 .Version=21
-~=Generation=5
 - Revenge
 - Air Cutter
 - Extrasensory
@@ -6755,9 +6741,9 @@ Ability: Regenerator
 Level: 40
 Jolly Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Revenge
 - Air Cutter
 - Extrasensory
@@ -6769,9 +6755,9 @@ Ability: Prankster
 Level: 40
 Brave Nature
 Ball: Master Ball
-=Met_Location=25
+~=Location=25
+~=Version=BW
 .Version=20
-~=Generation=5
 - Revenge
 - Shock Wave
 - Heal Block
@@ -6783,9 +6769,9 @@ Ability: Volt Absorb
 Level: 40
 Mild Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Revenge
 - Shock Wave
 - Heal Block
@@ -6798,9 +6784,9 @@ Ability: Turboblaze
 Level: 50
 Brave Nature
 Ball: Master Ball
-=Met_Location=45
+~=Location=45
+~=Version=BW
 .Version=21
-~=Generation=5
 - Dragon Breath
 - Slash
 - Extrasensory
@@ -6812,9 +6798,9 @@ Ability: Sand Force
 Level: 70
 Adamant Nature
 Ball: Master Ball
-=Met_Location=70
+~=Location=70
+~=Version=BW
 .Version=21
-~=Generation=5
 - Rock Slide
 - Earthquake
 - Sandstorm
@@ -6826,9 +6812,9 @@ Ability: Intimidate
 Level: 40
 Jolly Nature
 Ball: Dream Ball
-=Met_Location=30015
+~=Location=30015
+~=Version=B2W2
 .Version=23
-~=Generation=5
 - Bulldoze
 - Rock Throw
 - Extrasensory
@@ -6840,9 +6826,9 @@ Ability: Pressure
 Level: 70
 Calm Nature
 Ball: Master Ball
-=Met_Location=61
+~=Location=61
+~=Version=B2W2
 .Version=22
-~=Generation=5
 - Scary Face
 - Glaciate
 - Dragon Pulse
@@ -6854,9 +6840,9 @@ Ability: Justified
 Level: 15
 Naive Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Aqua Jet
 - Leer
 - Double Kick
@@ -6868,9 +6854,9 @@ Ability: Serene Grace
 Level: 50
 Naughty Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=BW
 .Version=21
-~=Generation=5
 - Round
 - Teeter Dance
 - Psychic
@@ -6882,9 +6868,9 @@ Ability: Download
 Level: 15
 Adamant Nature
 Ball: Cherish Ball
-=Met_Location=40069
+~=Location=40069
+~=Version=BW
 .Version=21
-~=Generation=5
 - Techno Blast
 - Magnet Bomb
 - Solar Beam

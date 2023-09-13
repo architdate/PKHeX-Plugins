@@ -3,9 +3,9 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 Ability: Chlorophyll
 Level: 5
 Modest Nature
-=Met_Location=30018
+~=Location=30018
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Tackle
 - Growl
 - Vine Whip
@@ -15,9 +15,9 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 Ability: Solar Power
 Level: 5
 Timid Nature
-=Met_Location=30018
+~=Location=30018
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Scratch
 - Growl
 - Ember
@@ -28,9 +28,9 @@ Ability: Solar Power
 Level: 65
 Shiny: Yes
 Jolly Nature
-=Met_Location=244
+~=Location=244
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Fire Pledge
 - Dragon Pulse
 - Endure
@@ -42,9 +42,9 @@ Ability: Blaze
 Level: 50
 Adamant Nature
 Language: Korean
-=Met_Location=40003
+~=Location=40003
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Flamethrower
 - Dragon Tail
 - Slash
@@ -59,8 +59,8 @@ Shiny: Yes
 Adamant Nature
 Ball: Master Ball
 .Met_Location=154
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Flamethrower
 - Dragon Breath
 - Flare Blitz
@@ -72,9 +72,9 @@ Ability: Rain Dish
 Level: 5
 Quiet Nature
 Language: Japanese
-=Met_Location=30018
+~=Location=30018
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Tackle
 - Tail Whip
 - Water Gun
@@ -85,9 +85,9 @@ Ability: Lightning Rod
 Level: 25
 Bashful Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Sing
 - Encore
 - Celebrate
@@ -100,9 +100,9 @@ Level: 5
 Serious Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40012
+~=Location=40012
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Celebrate
 - Play Nice
 - Thunder Shock
@@ -114,9 +114,9 @@ Level: 10
 Gigantamax: Yes
 Adamant Nature
 =Met_Level=10
-=Met_Location=156
+~=Location=156
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Growl
 - Quick Attack
 - Thunder Wave
@@ -128,9 +128,9 @@ Ability: Lightning Rod
 Gigantamax: Yes
 Shiny: Square
 Jolly Nature
-=WasEgg=True
+~=EggEncounter=True
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Brick Break
 - Play Rough
 - Volt Tackle
@@ -143,9 +143,9 @@ Level: 5
 Gigantamax: Yes
 Bold Nature
 Ball: Cherish Ball
-=Met_Location=40044
+~=Location=40044
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Fake Out
 - Growl
 - Slash
@@ -160,8 +160,8 @@ Sassy Nature
 Language: English
 =OT_Name=Regina
 =Met_Location=30001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Feint
 - Scratch
 - Pay Day
@@ -172,9 +172,9 @@ IVs: 11 Atk / 19 Def
 Ability: Fur Coat
 Level: 65
 Calm Nature
-=Met_Location=244
+~=Location=244
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Assurance
 - Snarl
 - Feint
@@ -189,8 +189,8 @@ Docile Nature
 Language: English
 =OT_Name=Regina
 =Met_Location=30001
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Tail Whip
 - Ember
 - Flame Charge
@@ -205,8 +205,8 @@ Bold Nature
 Language: English
 =OT_Name=Regina
 =Met_Location=30001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Leer
 - Fury Cutter
 - Cut
@@ -221,8 +221,8 @@ Relaxed Nature
 Language: English
 =OT_Name=Regina
 =Met_Location=30001
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Hypnosis
 - Reflect
 - Leech Seed
@@ -237,8 +237,8 @@ Lonely Nature
 Language: English
 =OT_Name=Regina
 =Met_Location=30001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Tail Whip
 - Fire Spin
 - Flame Wheel
@@ -253,8 +253,8 @@ Modest Nature
 Language: English
 =OT_Name=Regina
 =Met_Location=30001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Smog
 - Smokescreen
 - Clear Smog
@@ -267,9 +267,9 @@ Level: 7
 Calm Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Present
 - Sweet Kiss
 - Charm
@@ -280,9 +280,9 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 Ability: Adaptability
 Level: 5
 Serious Nature
-=Met_Location=30018
+~=Location=30018
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Helping Hand
 - Tackle
 - Growl
@@ -295,9 +295,9 @@ Level: 74
 Gigantamax: Yes
 Bold Nature
 =Met_Level=10
-=Met_Location=156
+~=Location=156
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Retaliate
 - Body Slam
 - Copycat
@@ -308,9 +308,9 @@ IVs: 22 HP / 11 Def / 4 SpA
 Ability: Synchronize
 Level: 1
 Careful Nature
-=Met_Location=40085
+~=Location=40085
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Pound
 
 Corsola (F) @ Smoke Ball
@@ -322,8 +322,8 @@ Hasty Nature
 Language: English
 =OT_Name=Regina
 =Met_Location=30001
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Water Gun
 - Aqua Ring
 - Endure
@@ -336,9 +336,9 @@ Ability: Download
 Level: 50
 Sassy Nature
 Ball: Cherish Ball
-=Met_Location=40038
+~=Location=40038
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Recover
 - Trick Room
 - Ice Beam
@@ -350,7 +350,8 @@ Ability: Natural Cure
 Level: 15
 Shiny: Square
 Bold Nature
-=Met_Location=30012
+~=Location=30012
+~=Version=GO
 .Version=34
 - Confusion
 - Heal Bell
@@ -363,9 +364,9 @@ Level: 60
 Shiny: Square
 Quirky Nature
 Ball: Cherish Ball
-=Met_Location=40006
+~=Location=40006
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Magical Leaf
 - Future Sight
 - Life Dew
@@ -380,8 +381,8 @@ Hardy Nature
 Language: English
 =OT_Name=Regina
 =Met_Location=30001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Covet
 - Headbutt
 - Baby-Doll Eyes
@@ -396,8 +397,8 @@ Shiny: Square
 Adamant Nature
 Ball: Master Ball
 .Met_Location=186
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Avalanche
 - Liquidation
 - Aqua Ring
@@ -410,9 +411,9 @@ Level: 80
 Shiny: Square
 Sassy Nature
 Ball: Master Ball
-=Met_Location=186
+~=Location=186
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Rest
 - Amnesia
 - Hydro Pump
@@ -425,9 +426,9 @@ Level: 60
 Shiny: Square
 Quiet Nature
 Ball: Sport Ball
-=Met_Location=230
+~=Location=230
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Splash
 - Tackle
 - Flail
@@ -440,9 +441,9 @@ Level: 50
 Quiet Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40039
+~=Location=40039
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Protect
 - Surf
 - Ice Beam
@@ -453,9 +454,9 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 Ability: Levitate
 Level: 5
 Timid Nature
-=Met_Location=30018
+~=Location=30018
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Thunder Shock
 - Astonish
 - Double Team
@@ -467,9 +468,9 @@ Level: 20
 Shiny: Square
 Jolly Nature
 Ball: Sport Ball
-=Met_Location=44
+~=Location=44
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Flail
 - Aqua Jet
 - Bite
@@ -484,8 +485,8 @@ Quirky Nature
 Language: English
 =OT_Name=Regina
 =Met_Location=30001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Taunt
 - Bite
 - Incinerate
@@ -499,9 +500,9 @@ Shiny: Square
 Sassy Nature
 Ball: Cherish Ball
 Language: Korean
-=Met_Location=40039
+~=Location=40039
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Clear Smog
 - Spore
 - Protect
@@ -516,8 +517,8 @@ Modest Nature
 Language: English
 =OT_Name=Regina
 =Met_Location=30001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Endure
 - Mud Shot
 - Revenge
@@ -530,9 +531,9 @@ Level: 25
 Shiny: Square
 Careful Nature
 Ball: Master Ball
-=Met_Location=54
+~=Location=54
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Sucker Punch
 - Metal Sound
 - Revenge
@@ -545,9 +546,9 @@ Level: 60
 Gentle Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Techno Blast
 - X-Scissor
 - Metal Claw
@@ -559,7 +560,8 @@ Ability: Download
 Level: 20
 Shiny: Square
 Adamant Nature
-=Met_Location=30012
+~=Location=30012
+~=Version=GO
 .Version=34
 - Fury Cutter
 - Quick Attack
@@ -573,9 +575,9 @@ Level: 60
 Brave Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Steam Eruption
 - Flare Blitz
 - Incinerate
@@ -588,9 +590,9 @@ Ability: Leaf Guard
 Shiny: Yes
 Adamant Nature
 Ball: Master Ball
-=Met_Location=164
+~=Location=164
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Leaf Blade
 - Defog
 - Synthesis
@@ -603,9 +605,9 @@ Level: 34
 Shiny: Square
 Adamant Nature
 Ball: Master Ball
-=Met_Location=76
+~=Location=76
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Beat Up
 - Scary Face
 - Take Down
@@ -619,9 +621,9 @@ Level: 62
 Shiny: Square
 Hasty Nature
 Ball: Master Ball
-=Met_Location=178
+~=Location=178
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Shadow Ball
 - Earth Power
 - Shore Up
@@ -634,9 +636,9 @@ Level: 60
 Hardy Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40001
+~=Location=40001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Spectral Thief
 - Drain Punch
 - Force Palm
@@ -648,9 +650,9 @@ Ability: Iron Fist
 Gigantamax: Yes
 Brave Nature
 Ball: Cherish Ball
-=Met_Location=30018
+~=Location=30018
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Double Iron Bash
 - Hyper Beam
 - Dynamic Punch
@@ -663,9 +665,9 @@ Ability: Libero
 Gigantamax: Yes
 Shiny: Square
 Jolly Nature
-=Met_Location=30018
+~=Location=30018
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Iron Head
 - Pyro Ball
 - Sucker Punch
@@ -678,9 +680,9 @@ Level: 18
 Shiny: Square
 Modest Nature
 Ball: Master Ball
-=Met_Location=30
+~=Location=30
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Flame Charge
 - Rock Polish
 - Rapid Spin
@@ -693,9 +695,9 @@ Level: 60
 Shiny: Square
 Jolly Nature
 Ball: Master Ball
-=Met_Location=188
+~=Location=188
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Withdraw
 - Astonish
 
@@ -706,9 +708,9 @@ Level: 50
 Shiny: Square
 Rash Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Overdrive
 - Sludge Wave
 - Boomburst
@@ -720,6 +722,8 @@ Ability: Weak Armor
 Level: 61
 Shiny: Yes
 Serious Nature
+~=Version=SWSH
+.Version=44
 .RibbonMarkBlizzard=True
 - Nasty Plot
 - Shadow Ball
@@ -732,9 +736,8 @@ Ability: Natural Cure
 Level: 35
 Shiny: Yes
 Calm Nature
-=Met_Location=76
+~=Location=76
 .RibbonMarkCurry=True
-~=Generation=8
 - Hex
 - Growth
 - Horn Leech
@@ -747,9 +750,9 @@ Level: 31
 Shiny: Yes
 Rash Nature
 Ball: Master Ball
-=Met_Location=76
+~=Location=76
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Torment
 - Sucker Punch
 - Swagger
@@ -762,9 +765,9 @@ Ability: Aroma Veil
 Level: 50
 Gigantamax: Yes
 Modest Nature
-=Met_Location=40012
+~=Location=40012
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Dazzling Gleam
 - Recover
 - Misty Terrain
@@ -777,9 +780,9 @@ Level: 58
 Shiny: Yes
 Careful Nature
 Ball: Master Ball
-=Met_Location=162
+~=Location=162
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Freeze-Dry
 - Crunch
 - Bite
@@ -792,9 +795,9 @@ Level: 60
 Sassy Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40006
+~=Location=40006
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Close Combat
 - Power Whip
 - Swagger
@@ -806,9 +809,9 @@ Ability: Leaf Guard
 Level: 60
 Sassy Nature
 Ball: Cherish Ball
-=Met_Location=40001
+~=Location=40001
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Close Combat
 - Power Whip
 - Swagger
@@ -820,9 +823,9 @@ Ability: Leaf Guard
 Level: 60
 Sassy Nature
 Ball: Cherish Ball
-=Met_Location=40006
+~=Location=40006
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Close Combat
 - Power Whip
 - Swagger
@@ -835,9 +838,9 @@ Level: 70
 Adamant Nature
 Ball: Cherish Ball
 Language: Japanese
-=Met_Location=40006
+~=Location=40006
+~=Version=SWSH
 .Version=44
-~=Generation=8
 - Jungle Healing
 - Hammer Arm
 - Power Whip
@@ -849,9 +852,9 @@ Ability: Static
 Gigantamax: Yes
 Timid Nature
 =Met_Level=10
-=Met_Location=156
+~=Location=156
+~=Version=SWSH
 .Version=45
-~=Generation=8
 - Discharge
 - Thunder
 - Thunderbolt
@@ -865,9 +868,22 @@ Shiny: Square
 Dynamax Level: 0
 Bold Nature
 Ball: Master Ball
+~=Version=E
 .Version=3
-~=Generation=3
 - Incinerate
 - Rollout
 - Shock Wave
 - Mimic
+
+Magatsuhi (Gengar) (M)
+IVs: 0 Atk
+EVs: 6 Def / 252 SpA / 252 Spe
+Ability: Cursed Body
+Shiny: Yes
+Timid Nature
+~=Version=SM
+.Version=31
+- Taunt
+- Destiny Bond
+- Focus Blast
+- Shadow Ball

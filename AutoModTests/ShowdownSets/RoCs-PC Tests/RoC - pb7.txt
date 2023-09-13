@@ -3,9 +3,9 @@ IVs: 24 HP / 27 Atk / 6 Def / 29 SpA / 13 SpD / 26 Spe
 Ability: Overgrow
 Level: 7
 Calm Nature
-=Met_Location=39
+~=Location=39
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tackle
 - Growl
 - Vine Whip
@@ -15,7 +15,8 @@ IVs: 1 HP / 19 Def / 19 SpD / 7 Spe
 Ability: Overgrow
 Level: 1
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - Growl
@@ -27,9 +28,9 @@ IVs: 24 HP / 27 Atk / 6 Def / 29 SpA / 13 SpD / 26 Spe
 Ability: Overgrow
 Level: 32
 Calm Nature
-=Met_Location=39
+~=Location=39
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Take Down
 - Sleep Powder
 - Razor Leaf
@@ -40,9 +41,9 @@ IVs: 16 HP / 28 Atk / 30 Def / 2 SpA / 4 SpD / 9 Spe
 Ability: Blaze
 Level: 25
 Impish Nature
-=Met_Location=41
+~=Location=41
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Smokescreen
 - Ember
 - Fury Swipes
@@ -53,9 +54,9 @@ IVs: 8 HP / 11 Atk / 18 Def / 26 SpA / 24 SpD / 27 Spe
 Ability: Blaze
 Level: 57
 Bashful Nature
-=Met_Location=19
+~=Location=19
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Dragon Rage
 - Fire Spin
 - Slash
@@ -66,9 +67,9 @@ IVs: 25 HP / 25 Atk / 30 Def / 30 SpD / 25 Spe
 Ability: Torrent
 Level: 16
 Hardy Nature
-=Met_Location=33
+~=Location=33
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tackle
 - Tail Whip
 - Bubble
@@ -79,9 +80,9 @@ IVs: 29 HP / 23 Atk / 28 Def / 1 SpA / 22 SpD / 9 Spe
 Ability: Torrent
 Level: 42
 Relaxed Nature
-=Met_Location=44
+~=Location=44
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Bubble Beam
 - Protect
 - Headbutt
@@ -92,7 +93,8 @@ IVs: 1 HP / 23 Atk / 25 Def / 23 SpA / 25 SpD / 19 Spe
 Ability: Torrent
 Level: 15
 Lonely Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - Tail Whip
@@ -104,7 +106,8 @@ IVs: 1 HP / 25 Atk / 1 Def / 25 SpA / 1 SpD / 30 Spe
 Ability: Shield Dust
 Level: 27
 Lonely Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - String Shot
@@ -114,9 +117,9 @@ IVs: 24 HP / 18 Atk / 10 Def / 20 SpA / 18 SpD / 15 Spe
 Ability: Shed Skin
 Level: 4
 Jolly Nature
-=Met_Location=39
+~=Location=39
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Harden
 
 Butterfree (F)
@@ -124,9 +127,9 @@ IVs: 26 HP / 3 Atk / 1 Def / 3 SpA / 12 SpD / 22 Spe
 Ability: Compound Eyes
 Level: 7
 Docile Nature
-=Met_Location=39
+~=Location=39
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Gust
 - Confusion
 
@@ -135,9 +138,9 @@ IVs: 18 HP / 11 Atk / 15 Def / 14 SpA / 30 SpD / 25 Spe
 Ability: Shield Dust
 Level: 7
 Adamant Nature
-=Met_Location=39
+~=Location=39
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Poison Sting
 - String Shot
 
@@ -146,9 +149,9 @@ IVs: 19 HP / 3 Atk / 0 Def / 20 SpA / 7 SpD / 24 Spe
 Ability: Shed Skin
 Level: 6
 Hardy Nature
-=Met_Location=39
+~=Location=39
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Harden
 
 Beedrill (M)
@@ -156,9 +159,9 @@ IVs: 30 HP / 4 Atk / 23 Def / 11 SpD / 26 Spe
 Ability: Swarm
 Level: 7
 Impish Nature
-=Met_Location=39
+~=Location=39
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Twineedle
 - Peck
 
@@ -167,9 +170,9 @@ IVs: 23 HP / 23 Atk / 14 Def / 15 SpA / 9 SpD / 21 Spe
 Ability: Tangled Feet
 Level: 7
 Gentle Nature
-=Met_Location=39
+~=Location=39
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tackle
 - Sand Attack
 - Gust
@@ -179,7 +182,8 @@ IVs: 7 HP / 23 Atk / 11 Def / 23 SpA / 11 SpD / 7 Spe
 Ability: Keen Eye
 Level: 4
 Sassy Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - Sand Attack
@@ -189,7 +193,8 @@ IVs: 11 HP / 29 Def / 29 SpD
 Ability: Keen Eye
 Level: 3
 Careful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - Sand Attack
@@ -201,9 +206,9 @@ IVs: 17 HP / 14 Atk / 21 Def / 23 SpD / 6 Spe
 Ability: Tangled Feet
 Level: 16
 Timid Nature
-=Met_Location=8
+~=Location=8
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Gust
 - Quick Attack
 - Mirror Move
@@ -214,7 +219,8 @@ IVs: 27 HP / 17 Atk / 17 SpA / 17 Spe
 Ability: Keen Eye
 Level: 22
 Hardy Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Quick Attack
 - Mirror Move
@@ -226,9 +232,9 @@ IVs: 2 HP / 17 Atk / 11 Def / 17 SpD / 25 Spe
 Ability: Tangled Feet
 Level: 57
 Jolly Nature
-=Met_Location=3
+~=Location=3
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Whirlwind
 - Agility
 - Air Slash
@@ -239,9 +245,9 @@ IVs: 1 HP / 27 Atk / 29 Def / 22 SpA / 1 SpD / 20 Spe
 Ability: Guts
 Level: 5
 Calm Nature
-=Met_Location=3
+~=Location=3
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tackle
 - Tail Whip
 
@@ -250,7 +256,8 @@ IVs: 25 HP / 15 Atk / 27 Def / 15 SpA / 27 SpD / 30 Spe
 Ability: Run Away
 Level: 16
 Timid Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Quick Attack
 - Focus Energy
@@ -265,8 +272,8 @@ Bold Nature
 Language: English
 =OT_Name=Tatianna
 =Met_Location=30001
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Tail Whip
 - Quick Attack
 - Focus Energy
@@ -277,7 +284,8 @@ IVs: 9 HP / 3 Atk / 19 Def / 3 SpA / 19 SpD / 7 Spe
 Ability: Gluttony
 Level: 25
 Hardy Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Super Fang
 - Crunch
@@ -289,7 +297,8 @@ IVs: 27 HP / 25 Def / 25 SpD / 1 Spe
 Ability: Guts
 Level: 20
 Lonely Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Focus Energy
 - Bite
@@ -301,9 +310,9 @@ IVs: 11 HP / 14 Atk / 26 Def / 18 SpA / 16 SpD / 5 Spe
 Ability: Run Away
 Level: 18
 Relaxed Nature
-=Met_Location=13
+~=Location=13
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Focus Energy
 - Bite
 - Super Fang
@@ -317,8 +326,8 @@ Jolly Nature
 Language: English
 =OT_Name=Tatianna
 =Met_Location=30001
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Super Fang
 - Quick Attack
 - Focus Energy
@@ -329,9 +338,9 @@ IVs: 0 HP / 1 Atk / 5 Def / 15 SpA / 17 SpD / 22 Spe
 Ability: Keen Eye
 Level: 7
 Brave Nature
-=Met_Location=5
+~=Location=5
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Peck
 - Growl
 
@@ -340,7 +349,8 @@ IVs: 27 Atk / 25 Def / 27 SpA / 25 SpD / 12 Spe
 Ability: Keen Eye
 Level: 13
 Gentle Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Peck
 - Growl
@@ -352,7 +362,8 @@ IVs: 11 HP / 9 Def / 9 SpD / 24 Spe
 Ability: Shed Skin
 Level: 8
 Hasty Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Wrap
 - Poison Sting
@@ -364,9 +375,9 @@ IVs: 9 HP / 29 Atk / 16 Def / 30 SpA / 19 SpD / 7 Spe
 Ability: Intimidate
 Level: 22
 Serious Nature
-=Met_Location=5
+~=Location=5
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Crunch
 - Poison Sting
 - Leer
@@ -377,7 +388,8 @@ IVs: 23 HP / 19 Def / 19 SpD / 0 Spe
 Ability: Shed Skin
 Level: 21
 Timid Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Acid
 - Bite
@@ -389,9 +401,9 @@ IVs: 23 HP / 7 Atk / 0 Def / 12 SpA / 15 SpD / 23 Spe
 Ability: Static
 Level: 6
 Hasty Nature
-=Met_Location=39
+~=Location=39
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Thunder Shock
 - Thunder Punch
 - Tail Whip
@@ -405,8 +417,8 @@ Brave Nature
 Language: English
 =OT_Name=Psytrice
 =Met_Location=30001
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Thunder Shock
 - Growl
 - Tail Whip
@@ -417,9 +429,9 @@ IVs: 29 HP / 30 Atk / 24 Def / 24 SpA / 16 SpD
 Ability: Sand Veil
 Level: 5
 Gentle Nature
-=Met_Location=5
+~=Location=5
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Scratch
 - Defense Curl
 - Poison Sting
@@ -432,8 +444,8 @@ Modest Nature
 Language: English
 =OT_Name=Nicholice
 =Met_Location=30001
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Swift
 - Mirror Coat
 - Fury Swipes
@@ -444,9 +456,9 @@ IVs: 29 HP / 30 Atk / 24 Def / 24 SpA / 16 SpD
 Ability: Sand Veil
 Level: 22
 Gentle Nature
-=Met_Location=5
+~=Location=5
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Swift
 - Fury Swipes
 - Poison Sting
@@ -457,7 +469,8 @@ IVs: 23 HP / 21 Def / 21 SpD / 2 Spe
 Ability: Poison Point
 Level: 26
 Careful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Helping Hand
 - Toxic
@@ -469,9 +482,9 @@ IVs: 2 HP / 7 Atk / 3 Def / 28 SpA / 9 SpD / 20 Spe
 Ability: Rivalry
 Level: 21
 Naive Nature
-=Met_Location=11
+~=Location=11
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Bite
 - Helping Hand
 - Toxic
@@ -482,9 +495,9 @@ IVs: 6 Atk / 25 Def / 8 SpA / 6 SpD / 12 Spe
 Ability: Rivalry
 Level: 23
 Brave Nature
-=Met_Location=11
+~=Location=11
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Double Kick
 - Bite
 - Helping Hand
@@ -495,7 +508,8 @@ IVs: 23 HP / 21 Def / 21 SpD / 6 Spe
 Ability: Poison Point
 Level: 26
 Quiet Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Double Kick
 - Bite
@@ -507,7 +521,8 @@ IVs: 3 HP / 11 Atk / 15 Def / 11 SpA / 15 SpD / 7 Spe
 Ability: Rivalry
 Level: 17
 Hasty Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Growl
 - Scratch
@@ -519,9 +534,9 @@ IVs: 26 HP / 10 Atk / 20 Def / 23 SpA / 2 SpD / 29 Spe
 Ability: Poison Point
 Level: 5
 Docile Nature
-=Met_Location=24
+~=Location=24
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Leer
 - Peck
 - Focus Energy
@@ -531,9 +546,9 @@ IVs: 6 HP / 25 Atk / 21 Def / 20 SpA / 8 SpD / 9 Spe
 Ability: Rivalry
 Level: 47
 Lax Nature
-=Met_Location=25
+~=Location=25
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Toxic
 - Fury Attack
 - Poison Jab
@@ -544,7 +559,8 @@ IVs: 25 HP / 11 Atk / 23 Def / 11 SpA / 23 SpD / 15 Spe
 Ability: Poison Point
 Level: 25
 Modest Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Leer
 - Peck
@@ -556,9 +572,9 @@ IVs: 18 HP / 1 Atk / 2 Def / 3 SpA / 20 SpD / 27 Spe
 Ability: Rivalry
 Level: 47
 Quiet Nature
-=Met_Location=25
+~=Location=25
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Leer
 - Peck
 - Focus Energy
@@ -569,9 +585,9 @@ IVs: 2 HP / 26 Def / 4 SpA / 4 SpD / 2 Spe
 Ability: Magic Guard
 Level: 7
 Careful Nature
-=Met_Location=40
+~=Location=40
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Growl
 - Pound
 - Defense Curl
@@ -582,7 +598,8 @@ IVs: 23 HP / 27 Atk / 27 SpA / 5 Spe
 Ability: Cute Charm
 Level: 13
 Lonely Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Defense Curl
 - Sing
@@ -594,9 +611,9 @@ IVs: 17 HP / 18 Atk / 10 Def / 13 SpA / 16 SpD / 30 Spe
 Ability: Magic Guard
 Level: 11
 Modest Nature
-=Met_Location=40
+~=Location=40
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Growl
 - Pound
 - Defense Curl
@@ -607,9 +624,9 @@ IVs: 22 HP / 3 Atk / 1 Def / 6 SpA / 5 SpD / 9 Spe
 Ability: Flash Fire
 Level: 24
 Gentle Nature
-=Met_Location=9
+~=Location=9
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Confuse Ray
 - Will-O-Wisp
 - Fire Spin
@@ -620,7 +637,8 @@ IVs: 23 HP / 25 Def / 25 SpD / 3 Spe
 Ability: Snow Cloak
 Level: 20
 Brave Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Mist
 - Ice Shard
@@ -632,9 +650,9 @@ IVs: 3 HP / 28 Atk / 17 Def / 1 SpA / 10 SpD / 30 Spe
 Ability: Flash Fire
 Level: 28
 Calm Nature
-=Met_Location=10
+~=Location=10
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Tackle
 - Tail Whip
 - Ember
@@ -645,7 +663,8 @@ IVs: 29 HP / 27 Def / 27 SpD / 16 Spe
 Ability: Snow Cloak
 Level: 20
 Quirky Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - Tail Whip
@@ -657,7 +676,8 @@ IVs: 23 HP / 23 Atk / 29 Def / 23 SpA / 29 SpD / 19 Spe
 Ability: Competitive
 Level: 23
 Lax Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Double Slap
 - Disable
@@ -669,7 +689,8 @@ IVs: 29 HP / 27 Atk / 11 Def / 27 SpA / 11 SpD / 18 Spe
 Ability: Cute Charm
 Level: 4
 Modest Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Sing
 - Pound
@@ -681,9 +702,9 @@ IVs: 7 HP / 21 Atk / 0 Def / 10 SpA / 2 SpD / 10 Spe
 Ability: Competitive
 Level: 14
 Timid Nature
-=Met_Location=7
+~=Location=7
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Pound
 - Defense Curl
 - Bide
@@ -694,7 +715,8 @@ IVs: 13 HP / 29 Def / 29 SpD / 28 Spe
 Ability: Inner Focus
 Level: 27
 Bashful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Swift
 - Confuse Ray
@@ -706,7 +728,8 @@ IVs: 29 HP / 23 Atk / 27 Def / 23 SpA / 27 SpD / 27 Spe
 Ability: Inner Focus
 Level: 4
 Quirky Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Absorb
 - Supersonic
@@ -718,9 +741,9 @@ IVs: 10 HP / 12 Atk / 7 Def / 28 SpA / 2 SpD / 18 Spe
 Ability: Chlorophyll
 Level: 3
 Naughty Nature
-=Met_Location=3
+~=Location=3
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Absorb
 
 Gloom (F)
@@ -728,9 +751,9 @@ IVs: 22 HP / 3 Atk / 6 Def / 20 SpA / 6 SpD
 Ability: Chlorophyll
 Level: 39
 Brave Nature
-=Met_Location=17
+~=Location=17
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Sleep Powder
 - Razor Leaf
 - Mega Drain
@@ -741,9 +764,9 @@ IVs: 11 HP / 8 Atk / 1 Def / 16 SpA / 7 SpD / 29 Spe
 Ability: Chlorophyll
 Level: 43
 Careful Nature
-=Met_Location=23
+~=Location=23
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Absorb
 - Growth
 - Acid
@@ -754,9 +777,9 @@ IVs: 1 HP / 2 Atk / 2 Def / 6 SpA / 6 SpD / 7 Spe
 Ability: Dry Skin
 Level: 24
 Impish Nature
-=Met_Location=40
+~=Location=40
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Slash
 - Sleep Powder
 - Leech Life
@@ -767,7 +790,8 @@ IVs: 21 HP / 29 Atk / 19 Def / 29 SpA / 19 SpD / 7 Spe
 Ability: Effect Spore
 Level: 4
 Modest Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Scratch
 - Sleep Powder
@@ -779,9 +803,9 @@ IVs: 16 HP / 22 Atk / 18 Def / 29 SpA / 1 SpD / 9 Spe
 Ability: Tinted Lens
 Level: 10
 Adamant Nature
-=Met_Location=26
+~=Location=26
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tackle
 - Disable
 - Supersonic
@@ -791,9 +815,9 @@ IVs: 19 HP / 17 Atk / 18 Def / 18 SpA / 15 SpD / 16 Spe
 Ability: Tinted Lens
 Level: 35
 Naive Nature
-=Met_Location=17
+~=Location=17
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Stun Spore
 - Psybeam
 - Sleep Powder
@@ -804,9 +828,9 @@ IVs: 17 HP / 5 Atk / 17 Def / 17 SpA / 25 SpD / 20 Spe
 Ability: Sand Veil
 Level: 13
 Gentle Nature
-=Met_Location=43
+~=Location=43
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Scratch
 - Sand Attack
 - Growl
@@ -817,7 +841,8 @@ IVs: 7 Atk / 23 Def / 7 SpA / 23 SpD / 21 Spe
 Ability: Arena Trap
 Level: 9
 Lax Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Scratch
 - Sand Attack
@@ -831,8 +856,8 @@ Docile Nature
 Language: English
 =OT_Name=Diggette
 =Met_Location=30001
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Fury Swipes
 - Dig
 - Slash
@@ -843,7 +868,8 @@ IVs: 7 HP / 21 Atk / 23 Def / 21 SpA / 23 SpD / 29 Spe
 Ability: Sand Veil
 Level: 7
 Docile Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Scratch
 - Sand Attack
@@ -855,9 +881,9 @@ IVs: 22 HP / 8 Atk / 17 Def / 18 SpA / 25 SpD / 8 Spe
 Ability: Arena Trap
 Level: 19
 Naughty Nature
-=Met_Location=43
+~=Location=43
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Growl
 - Agility
 - Fury Swipes
@@ -871,8 +897,8 @@ Docile Nature
 Language: English
 =OT_Name=Diggette
 =Met_Location=30001
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tri Attack
 - Dig
 - Slash
@@ -883,7 +909,8 @@ IVs: 29 HP / 19 Def / 19 SpD / 20 Spe
 Ability: Tangling Hair
 Level: 33
 Lax Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Fury Swipes
 - Dig
@@ -895,7 +922,8 @@ IVs: 27 Def / 27 SpD / 2 Spe
 Ability: Pickup
 Level: 20
 Mild Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Taunt
 - Pay Day
@@ -907,7 +935,8 @@ IVs: 29 HP / 21 Def / 21 SpD / 5 Spe
 Ability: Pickup
 Level: 5
 Quiet Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Scratch
 - Growl
@@ -922,8 +951,8 @@ Sassy Nature
 Language: English
 =OT_Name=Darko
 =Met_Location=30001
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Screech
 - Slash
 - Nasty Plot
@@ -934,9 +963,9 @@ IVs: 30 HP / 30 Atk / 25 Def / 25 SpA / 25 SpD
 Ability: Technician
 Level: 16
 Mild Nature
-=Met_Location=33
+~=Location=33
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Fake Out
 - Taunt
 - Pay Day
@@ -947,7 +976,8 @@ IVs: 7 HP / 9 Atk / 27 Def / 9 SpA / 27 SpD / 17 Spe
 Ability: Limber
 Level: 9
 Rash Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Growl
 - Bite
@@ -959,7 +989,8 @@ IVs: 23 HP / 27 Def / 27 SpD
 Ability: Technician
 Level: 16
 Naive Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Fake Out
 - Taunt
@@ -971,9 +1002,9 @@ IVs: 28 HP / 18 Atk / 1 Def / 18 SpA / 14 SpD / 4 Spe
 Ability: Cloud Nine
 Level: 11
 Adamant Nature
-=Met_Location=27
+~=Location=27
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Scratch
 - Tail Whip
 - Water Gun
@@ -983,7 +1014,8 @@ IVs: 7 HP / 29 Def / 29 SpD / 11 Spe
 Ability: Damp
 Level: 5
 Careful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Scratch
 - Tail Whip
@@ -993,7 +1025,8 @@ IVs: 13 HP / 29 Atk / 27 Def / 29 SpA / 27 SpD / 2 Spe
 Ability: Cloud Nine
 Level: 13
 Modest Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Scratch
 - Tail Whip
@@ -1005,7 +1038,8 @@ IVs: 17 HP / 11 Atk / 11 Def / 11 SpA / 11 SpD / 13 Spe
 Ability: Vital Spirit
 Level: 18
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Focus Energy
 - Taunt
@@ -1017,9 +1051,9 @@ IVs: 17 HP / 17 Atk / 10 Def / 16 SpA / 9 SpD / 0 Spe
 Ability: Anger Point
 Level: 28
 Calm Nature
-=Met_Location=5
+~=Location=5
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Karate Chop
 - Scratch
 - Low Kick
@@ -1030,7 +1064,8 @@ IVs: 17 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 3 Spe
 Ability: Intimidate
 Level: 6
 Naive Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Bite
 - Roar
@@ -1041,7 +1076,8 @@ IVs: 27 Atk / 5 Def / 27 SpA / 5 SpD / 28 Spe
 Ability: Flash Fire
 Level: 9
 Adamant Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Bite
 - Roar
@@ -1053,9 +1089,9 @@ IVs: 20 HP / 15 Atk / 28 Def / 4 SpA / 14 SpD / 10 Spe
 Ability: Intimidate
 Level: 28
 Hasty Nature
-=Met_Location=9
+~=Location=9
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Bite
 - Roar
 - Ember
@@ -1066,9 +1102,9 @@ IVs: 25 HP / 30 Atk / 25 Def / 30 SpA / 25 SpD
 Ability: Flash Fire
 Level: 16
 Naive Nature
-=Met_Location=33
+~=Location=33
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Bite
 - Roar
 - Ember
@@ -1079,7 +1115,8 @@ IVs: 29 Atk / 21 Def / 29 SpA / 21 SpD / 25 Spe
 Ability: Damp
 Level: 27
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Water Gun
 - Double Slap
@@ -1091,9 +1128,9 @@ IVs: 3 HP / 19 Atk / 25 Def / 19 SpA / 7 SpD / 4 Spe
 Ability: Water Absorb
 Level: 55
 Sassy Nature
-=Met_Location=46
+~=Location=46
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Bubble Beam
 - Low Kick
 - Body Slam
@@ -1104,9 +1141,9 @@ IVs: 18 HP / 23 Atk / 5 Def / 1 SpA / 1 SpD / 16 Spe
 Ability: Water Absorb
 Level: 53
 Docile Nature
-=Met_Location=46
+~=Location=46
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Bubble Beam
 - Low Kick
 - Body Slam
@@ -1117,9 +1154,9 @@ IVs: 23 HP / 22 Atk / 22 Def / 5 SpA / 5 SpD / 5 Spe
 Ability: Water Absorb
 Level: 57
 Brave Nature
-=Met_Location=46
+~=Location=46
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Pound
 - Hypnosis
 - Water Gun
@@ -1130,7 +1167,8 @@ IVs: 25 HP / 17 Atk / 15 Def / 17 SpA / 15 SpD / 22 Spe
 Ability: Damp
 Level: 22
 Relaxed Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Bubble
 - Pound
@@ -1142,9 +1180,9 @@ IVs: 11 HP / 20 Atk / 19 Def / 25 SpA / 27 SpD / 1 Spe
 Ability: Inner Focus
 Level: 13
 Jolly Nature
-=Met_Location=8
+~=Location=8
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Teleport
 
 Abra (M)
@@ -1152,7 +1190,8 @@ IVs: 11 HP / 29 Atk / 3 Def / 29 SpA / 3 SpD / 29 Spe
 Ability: Synchronize
 Level: 19
 Lonely Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Teleport
 
@@ -1161,7 +1200,8 @@ IVs: 9 HP / 23 Atk / 23 Def / 23 SpA / 23 SpD / 2 Spe
 Ability: Inner Focus
 Level: 14
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Confusion
 - Teleport
@@ -1173,9 +1213,9 @@ IVs: 16 HP / 17 Atk / 5 Def / 25 SpA / 30 SpD / 1 Spe
 Ability: Inner Focus
 Level: 28
 Hasty Nature
-=Met_Location=9
+~=Location=9
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Disable
 - Flash
 - Night Shade
@@ -1186,7 +1226,8 @@ IVs: 19 HP / 29 Def / 29 SpD / 2 Spe
 Ability: No Guard
 Level: 17
 Hardy Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Focus Energy
 - Bide
@@ -1198,9 +1239,9 @@ IVs: 30 HP / 20 Atk / 11 Def / 19 SpA / 27 SpD / 20 Spe
 Ability: No Guard
 Level: 42
 Docile Nature
-=Met_Location=45
+~=Location=45
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Karate Chop
 - Brick Break
 - Submission
@@ -1211,7 +1252,8 @@ IVs: 15 HP / 27 Atk / 27 SpA / 3 Spe
 Ability: Guts
 Level: 10
 Hasty Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Low Kick
 - Leer
@@ -1223,9 +1265,9 @@ IVs: 30 HP / 20 Atk / 11 Def / 19 SpA / 27 SpD / 20 Spe
 Ability: No Guard
 Level: 42
 Docile Nature
-=Met_Location=45
+~=Location=45
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Karate Chop
 - Brick Break
 - Submission
@@ -1236,7 +1278,8 @@ IVs: 19 HP / 17 Atk / 11 Def / 17 SpA / 11 SpD / 12 Spe
 Ability: Guts
 Level: 5
 Serious Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Low Kick
 - Leer
@@ -1248,7 +1291,8 @@ IVs: 21 HP / 19 Atk / 27 Def / 19 SpA / 27 SpD / 20 Spe
 Ability: Chlorophyll
 Level: 26
 Adamant Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Poison Powder
 - Stun Spore
@@ -1260,7 +1304,8 @@ IVs: 21 HP / 29 Atk / 29 SpA / 21 Spe
 Ability: Chlorophyll
 Level: 15
 Careful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Vine Whip
 - Growth
@@ -1272,9 +1317,9 @@ IVs: 23 HP / 15 Atk / 9 Def / 19 SpA / 6 SpD / 7 Spe
 Ability: Chlorophyll
 Level: 43
 Bold Nature
-=Met_Location=23
+~=Location=23
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Vine Whip
 - Growth
 - Wrap
@@ -1285,7 +1330,8 @@ IVs: 21 HP / 29 Def / 29 SpD / 12 Spe
 Ability: Clear Body
 Level: 20
 Relaxed Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Constrict
 - Supersonic
@@ -1297,9 +1343,9 @@ IVs: 23 HP / 23 Atk / 0 Def / 11 SpA / 15 SpD / 13 Spe
 Ability: Liquid Ooze
 Level: 33
 Sassy Nature
-=Met_Location=14
+~=Location=14
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Bubble Beam
 - Wrap
 - Surf
@@ -1310,7 +1356,8 @@ IVs: 23 Atk / 25 Def / 23 SpA / 25 SpD / 6 Spe
 Ability: Liquid Ooze
 Level: 5
 Bashful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Poison Sting
 - Constrict
@@ -1322,9 +1369,9 @@ IVs: 15 HP / 13 Atk / 17 Def / 20 SpA / 11 SpD / 15 Spe
 Ability: Sturdy
 Level: 10
 Hasty Nature
-=Met_Location=40
+~=Location=40
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Defense Curl
 - Sand Attack
 - Bide
@@ -1335,7 +1382,8 @@ IVs: 17 HP / 15 Atk / 19 Def / 15 SpA / 19 SpD / 29 Spe
 Ability: Rock Head
 Level: 11
 Mild Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Defense Curl
 - Sand Attack
@@ -1350,8 +1398,8 @@ Careful Nature
 Language: English
 =OT_Name=Higeo
 =Met_Location=30001
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Bide
 - Rock Throw
 - Stealth Rock
@@ -1361,7 +1409,8 @@ Geodude-Alola (F)
 IVs: 23 HP / 17 Atk / 13 Def / 17 SpA / 13 SpD
 Ability: Magnet Pull
 Level: re
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Self-Destruct
 - Rock Slide
@@ -1373,7 +1422,8 @@ IVs: 17 HP / 29 Def / 29 SpD / 22 Spe
 Ability: Sturdy
 Level: 15
 Bashful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Bide
 - Rock Throw
@@ -1385,9 +1435,9 @@ IVs: 6 HP / 8 Atk / 19 Def / 28 SpA / 21 SpD / 29 Spe
 Ability: Rock Head
 Level: 18
 Serious Nature
-=Met_Location=41
+~=Location=41
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Bide
 - Rock Throw
 - Stealth Rock
@@ -1398,7 +1448,8 @@ IVs: 21 HP / 27 Atk / 23 Def / 27 SpA / 23 SpD / 8 Spe
 Ability: Magnet Pull
 Level: 20
 Rash Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Rock Throw
 - Stealth Rock
@@ -1410,7 +1461,8 @@ IVs: 21 HP / 23 Atk / 7 Def / 23 SpA / 7 SpD / 16 Spe
 Ability: Sturdy
 Level: 7
 Gentle Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - Defense Curl
@@ -1422,9 +1474,9 @@ IVs: 6 HP / 8 Atk / 19 Def / 28 SpA / 21 SpD / 29 Spe
 Ability: Rock Head
 Level: 18
 Serious Nature
-=Met_Location=41
+~=Location=41
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Bide
 - Rock Throw
 - Stealth Rock
@@ -1435,7 +1487,8 @@ IVs: 21 Atk / 29 Def / 21 SpA / 29 SpD / 10 Spe
 Ability: Sturdy
 Level: 32
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Take Down
 - Self-Destruct
@@ -1450,8 +1503,8 @@ Timid Nature
 Language: English
 =OT_Name=Higeo
 =Met_Location=30001
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Self-Destruct
 - Rock Slide
 - Stealth Rock
@@ -1462,9 +1515,9 @@ IVs: 24 HP / 10 Atk / 11 Def / 15 SpA / 13 SpD / 27 Spe
 Ability: Run Away
 Level: 37
 Modest Nature
-=Met_Location=19
+~=Location=19
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Double Kick
 - Stomp
 - Fire Spin
@@ -1475,9 +1528,9 @@ IVs: 9 HP / 12 Atk / 21 Def / 2 SpA / 3 SpD / 12 Spe
 Ability: Run Away
 Level: 39
 Naive Nature
-=Met_Location=19
+~=Location=19
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Stomp
 - Fire Spin
 - Agility
@@ -1489,9 +1542,9 @@ Ability: Flash Fire
 Level: 39
 Shiny: Yes
 Modest Nature
-=Met_Location=19
+~=Location=19
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Stomp
 - Fire Spin
 - Agility
@@ -1502,9 +1555,9 @@ IVs: 4 HP / 30 Atk / 6 Def / 16 SpA / 25 SpD / 8 Spe
 Ability: Own Tempo
 Level: 39
 Adamant Nature
-=Met_Location=44
+~=Location=44
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Confusion
 - Disable
 - Rest
@@ -1515,9 +1568,9 @@ IVs: 4 HP / 16 Atk / 18 Def / 26 SpA / 6 SpD / 0 Spe
 Ability: Own Tempo
 Level: 41
 Bold Nature
-=Met_Location=44
+~=Location=44
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Confusion
 - Disable
 - Rest
@@ -1528,9 +1581,9 @@ IVs: 25 HP / 28 Atk / 22 Def / 17 SpA / 8 SpD / 4 Spe
 Ability: Magnet Pull
 Level: 37
 Naive Nature
-=Met_Location=42
+~=Location=42
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Sonic Boom
 - Light Screen
 - Thunderbolt
@@ -1541,7 +1594,8 @@ IVs: 23 HP / 25 Atk / 21 Def / 25 SpA / 21 SpD / 18 Spe
 Ability: Sturdy
 Level: 5
 Rash Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - Supersonic
@@ -1552,7 +1606,8 @@ IVs: 29 Atk / 29 Def / 29 SpA / 29 SpD / 17 Spe
 Ability: Sturdy
 Level: 20
 Brave Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Thunder Shock
 - Thunder Wave
@@ -1564,9 +1619,9 @@ IVs: 11 HP / 2 Atk / 10 Def / 21 SpA / 4 SpD / 29 Spe
 Ability: Magnet Pull
 Level: 37
 Naive Nature
-=Met_Location=42
+~=Location=42
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Sonic Boom
 - Light Screen
 - Thunderbolt
@@ -1577,9 +1632,9 @@ IVs: 4 HP / 27 Atk / 4 Def / 0 SpA / 14 SpD / 23 Spe
 Ability: Keen Eye
 Level: 37
 Hardy Nature
-=Met_Location=14
+~=Location=14
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Agility
 - Slash
 - Air Slash
@@ -1590,7 +1645,8 @@ IVs: 23 HP / 19 Atk / 1 Def / 19 SpA / 1 SpD / 25 Spe
 Ability: Early Bird
 Level: 9
 Hasty Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Peck
 - Growl
@@ -1601,9 +1657,9 @@ IVs: 17 HP / 19 Atk / 14 Def / 23 SpA / 20 SpD / 6 Spe
 Ability: Run Away
 Level: 37
 Lonely Nature
-=Met_Location=19
+~=Location=19
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Fury Attack
 - Agility
 - Drill Peck
@@ -1614,7 +1670,8 @@ IVs: 23 HP / 25 Atk / 29 Def / 25 SpA / 29 SpD / 12 Spe
 Ability: Run Away
 Level: 20
 Adamant Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Growl
 - Quick Attack
@@ -1626,9 +1683,9 @@ IVs: 2 HP / 3 Atk / 17 Def / 25 SpA / 20 SpD / 25 Spe
 Ability: Early Bird
 Level: 31
 Naughty Nature
-=Met_Location=18
+~=Location=18
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Rage
 - Fury Attack
 - Agility
@@ -1639,9 +1696,9 @@ IVs: 4 HP / 16 Atk / 23 Def / 11 SpA / 7 SpD / 7 Spe
 Ability: Hydration
 Level: 41
 Naive Nature
-=Met_Location=44
+~=Location=44
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Rest
 - Aurora Beam
 - Waterfall
@@ -1652,7 +1709,8 @@ IVs: 25 HP / 13 Atk / 7 Def / 13 SpA / 7 SpD / 3 Spe
 Ability: Thick Fat
 Level: 27
 Rash Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Aqua Jet
 - Ice Shard
@@ -1664,9 +1722,9 @@ IVs: 25 HP / 29 Atk / 26 Def / 4 SpA / 30 SpD / 7 Spe
 Ability: Hydration
 Level: 43
 Naive Nature
-=Met_Location=44
+~=Location=44
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Rest
 - Aurora Beam
 - Waterfall
@@ -1677,7 +1735,8 @@ IVs: 5 HP / 15 Atk / 23 Def / 15 SpA / 23 SpD / 17 Spe
 Ability: Thick Fat
 Level: 4
 Serious Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Headbutt
 - Growl
@@ -1689,7 +1748,8 @@ IVs: 19 HP / 23 Atk / 9 Def / 23 SpA / 9 SpD / 20 Spe
 Ability: Stench
 Level: 10
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Pound
 - Poison Gas
@@ -1700,7 +1760,8 @@ IVs: 25 HP / 13 Atk / 13 SpA / 3 Spe
 Ability: Sticky Hold
 Level: 23
 Careful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Poison Gas
 - Harden
@@ -1712,9 +1773,9 @@ IVs: 21 HP / 3 Atk / 9 Def / 17 SpA / 7 SpD / 25 Spe
 Ability: Stench
 Level: 41
 Naughty Nature
-=Met_Location=42
+~=Location=42
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Disable
 - Sludge
 - Screech
@@ -1725,7 +1786,8 @@ IVs: 21 HP / 29 Atk / 25 Def / 29 SpA / 25 SpD / 18 Spe
 Ability: Gluttony
 Level: 20
 Brave Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Poison Gas
 - Harden
@@ -1737,7 +1799,8 @@ IVs: 27 Atk / 23 Def / 27 SpA / 23 SpD / 26 Spe
 Ability: Stench
 Level: 14
 Hasty Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Pound
 - Poison Gas
@@ -1749,9 +1812,9 @@ IVs: 20 HP / 7 Atk / 20 Def / 1 SpA / 15 SpD / 9 Spe
 Ability: Sticky Hold
 Level: 39
 Naughty Nature
-=Met_Location=42
+~=Location=42
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Disable
 - Sludge
 - Screech
@@ -1762,7 +1825,8 @@ IVs: 29 HP / 27 Atk / 25 Def / 27 SpA / 25 SpD / 19 Spe
 Ability: Gluttony
 Level: 20
 Bashful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Poison Gas
 - Harden
@@ -1774,9 +1838,9 @@ IVs: 24 HP / 26 Atk / 26 Def / 0 SpA / 23 SpD / 12 Spe
 Ability: Skill Link
 Level: 45
 Adamant Nature
-=Met_Location=44
+~=Location=44
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Protect
 - Ice Beam
 - Shell Smash
@@ -1787,7 +1851,8 @@ IVs: 25 HP / 19 Atk / 19 SpA / 30 Spe
 Ability: Shell Armor
 Level: 14
 Hardy Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Water Gun
 - Withdraw
@@ -1799,7 +1864,8 @@ IVs: 25 HP / 25 Atk / 19 Def / 25 SpA / 19 SpD / 14 Spe
 Ability: Skill Link
 Level: 24
 Careful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - Water Gun
@@ -1811,9 +1877,9 @@ IVs: 14 HP / 21 Atk / 22 Def / 21 SpA / 22 SpD / 18 Spe
 Ability: Shell Armor
 Level: 45
 Rash Nature
-=Met_Location=44
+~=Location=44
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tackle
 - Water Gun
 - Withdraw
@@ -1824,7 +1890,8 @@ IVs: 29 HP / 21 Atk / 23 Def / 21 SpA / 23 SpD / 12 Spe
 Ability: Levitate
 Level: 7
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Lick
 - Smog
@@ -1836,9 +1903,9 @@ IVs: 4 HP / 17 Atk / 16 Def / 6 SpA / 16 SpD / 4 Spe
 Ability: Levitate
 Level: 29
 Quiet Nature
-=Met_Location=47
+~=Location=47
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Night Shade
 - Will-O-Wisp
 - Sucker Punch
@@ -1849,7 +1916,8 @@ IVs: 21 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 15 Spe
 Ability: Cursed Body
 Level: 5
 Naive Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Hypnosis
 - Lick
@@ -1861,7 +1929,8 @@ IVs: 29 HP / 27 Atk / 27 Def / 27 SpA / 27 SpD / 11 Spe
 Ability: Sturdy
 Level: 14
 Docile Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Bind
 - Rock Throw
@@ -1873,7 +1942,8 @@ IVs: 9 HP / 1 Atk / 25 Def / 1 SpA / 25 SpD / 14 Spe
 Ability: Insomnia
 Level: 19
 Bold Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Disable
 - Confusion
@@ -1885,7 +1955,8 @@ IVs: 25 HP / 17 Def / 17 SpD / 20 Spe
 Ability: Forewarn
 Level: 24
 Relaxed Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Confusion
 - Poison Gas
@@ -1897,9 +1968,9 @@ IVs: 15 HP / 0 Atk / 21 Def / 29 SpA / 9 SpD / 10 Spe
 Ability: Insomnia
 Level: 26
 Sassy Nature
-=Met_Location=13
+~=Location=13
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Hypnosis
 - Psybeam
 - Confusion
@@ -1910,7 +1981,8 @@ IVs: 17 HP / 29 Atk / 17 Def / 29 SpA / 17 SpD / 24 Spe
 Ability: Hyper Cutter
 Level: 19
 Naughty Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Vise Grip
 - Leer
@@ -1922,9 +1994,9 @@ IVs: 22 HP / 27 Atk / 19 SpA / 25 SpD / 16 Spe
 Ability: Shell Armor
 Level: 37
 Careful Nature
-=Met_Location=14
+~=Location=14
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Bubble Beam
 - Stomp
 - Protect
@@ -1935,7 +2007,8 @@ IVs: 29 HP / 29 Atk / 19 Def / 29 SpA / 19 SpD / 6 Spe
 Ability: Hyper Cutter
 Level: 19
 Naive Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Vise Grip
 - Leer
@@ -1947,9 +2020,9 @@ IVs: 22 HP / 4 Atk / 12 Def / 17 SpA / 24 SpD / 2 Spe
 Ability: Static
 Level: 37
 Hasty Nature
-=Met_Location=42
+~=Location=42
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Swift
 - Self-Destruct
 - Screech
@@ -1960,9 +2033,9 @@ IVs: 25 Atk / 7 SpA
 Ability: Static
 Level: 42
 Adamant Nature
-=Met_Location=42
+~=Location=42
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Thunderbolt
 - Swift
 - Self-Destruct
@@ -1973,9 +2046,9 @@ IVs: 2 HP / 22 SpA / 10 SpD
 Ability: Soundproof
 Level: 42
 Careful Nature
-=Met_Location=42
+~=Location=42
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Thunderbolt
 - Swift
 - Self-Destruct
@@ -1986,9 +2059,9 @@ IVs: 13 Atk / 19 Def / 19 SpD
 Ability: Static
 Level: 42
 Timid Nature
-=Met_Location=42
+~=Location=42
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Thunderbolt
 - Swift
 - Self-Destruct
@@ -1999,7 +2072,8 @@ IVs: 29 HP / 29 Atk / 23 Def / 29 SpA / 23 SpD / 19 Spe
 Ability: Chlorophyll
 Level: 3
 Jolly Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Barrage
 
@@ -2008,7 +2082,8 @@ IVs: 7 HP / 23 Atk / 7 Def / 23 SpA / 7 SpD / 21 Spe
 Ability: Chlorophyll
 Level: 24
 Careful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Barrage
 - Hypnosis
@@ -2023,8 +2098,8 @@ Hasty Nature
 Language: English
 =OT_Name=Exemann
 =Met_Location=30001
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Barrage
 - Hypnosis
 - Confusion
@@ -2035,9 +2110,9 @@ IVs: 2 HP / 29 Atk / 4 Def / 10 SpA / 26 SpD / 24 Spe
 Ability: Lightning Rod
 Level: 18
 Quiet Nature
-=Met_Location=41
+~=Location=41
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Leer
 - Bone Club
 - Headbutt
@@ -2048,7 +2123,8 @@ IVs: 27 HP / 25 Atk / 15 Def / 25 SpA / 15 SpD / 17 Spe
 Ability: Rock Head
 Level: 11
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Growl
 - Tail Whip
@@ -2060,9 +2136,9 @@ IVs: 2 HP / 29 Atk / 4 Def / 10 SpA / 26 SpD / 24 Spe
 Ability: Lightning Rod
 Level: 28
 Quiet Nature
-=Met_Location=41
+~=Location=41
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Bonemerang
 - Bone Club
 - Headbutt
@@ -2073,7 +2149,8 @@ IVs: 29 HP / 23 Atk / 21 Def / 23 SpA / 21 SpD / 1 Spe
 Ability: Cursed Body
 Level: 20
 Brave Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Leer
 - Bone Club
@@ -2088,8 +2165,8 @@ Hasty Nature
 Language: English
 =OT_Name=Genmar
 =Met_Location=30001
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Rage
 - Will-O-Wisp
 - Bonemerang
@@ -2100,7 +2177,8 @@ IVs: 19 Atk / 9 Def / 19 SpA / 9 SpD / 22 Spe
 Ability: Limber
 Level: 32
 Lax Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Feint
 - Brick Break
@@ -2112,7 +2190,8 @@ IVs: 23 HP / 27 Atk / 3 Def / 27 SpA / 3 SpD / 6 Spe
 Ability: Iron Fist
 Level: 4
 Jolly Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Comet Punch
 
@@ -2121,9 +2200,9 @@ IVs: 24 Atk / 15 Def / 25 SpA / 10 SpD / 12 Spe
 Ability: Keen Eye
 Level: 47
 Rash Nature
-=Met_Location=45
+~=Location=45
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Fire Punch
 - Focus Energy
 - Mega Punch
@@ -2134,7 +2213,8 @@ IVs: 15 HP / 29 Atk / 29 SpA / 20 Spe
 Ability: Own Tempo
 Level: 14
 Bold Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Lick
 - Wrap
@@ -2145,7 +2225,8 @@ IVs: 27 HP / 21 Atk / 25 Def / 21 SpA / 25 SpD / 8 Spe
 Ability: Levitate
 Level: 1
 Modest Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Poison Gas
 - Tackle
@@ -2155,9 +2236,9 @@ IVs: 19 HP / 9 Atk / 18 Def / 27 SpA / 2 SpD / 25 Spe
 Ability: Levitate
 Level: 44
 Naughty Nature
-=Met_Location=51
+~=Location=51
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Sludge
 - Self-Destruct
 - Toxic
@@ -2168,9 +2249,9 @@ IVs: 8 HP / 24 Atk / 28 Def / 5 SpA / 20 SpD / 1 Spe
 Ability: Rock Head
 Level: 18
 Calm Nature
-=Met_Location=41
+~=Location=41
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tail Whip
 - Sand Attack
 - Fury Attack
@@ -2181,7 +2262,8 @@ IVs: 19 HP / 9 Def / 9 SpD / 2 Spe
 Ability: Rock Head
 Level: 5
 Adamant Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Horn Attack
 - Tail Whip
@@ -2193,9 +2275,9 @@ IVs: 22 HP / 13 Atk / 11 Def / 25 SpA / 8 SpD / 1 Spe
 Ability: Serene Grace
 Level: 28
 Brave Nature
-=Met_Location=10
+~=Location=10
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Double Slap
 - Soft-Boiled
 - Minimize
@@ -2206,7 +2288,8 @@ IVs: 3 HP / 27 Def / 27 SpD / 16 Spe
 Ability: Natural Cure
 Level: 20
 Naughty Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tail Whip
 - Double Slap
@@ -2218,9 +2301,9 @@ IVs: 12 HP / 7 Atk / 17 Def / 28 SpA / 23 SpD / 1 Spe
 Ability: Chlorophyll
 Level: 43
 Naive Nature
-=Met_Location=23
+~=Location=23
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Growth
 - Stun Spore
 - Mega Drain
@@ -2231,7 +2314,8 @@ IVs: 23 HP / 29 Atk / 27 Def / 29 SpA / 27 SpD / 12 Spe
 Ability: Leaf Guard
 Level: 15
 Naive Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Constrict
 - Sleep Powder
@@ -2243,9 +2327,9 @@ IVs: 7 Atk / 25 Def / 16 SpA / 16 SpD / 16 Spe
 Ability: Scrappy
 Level: 19
 Bold Nature
-=Met_Location=41
+~=Location=41
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Leer
 - Fake Out
 - Tail Whip
@@ -2256,9 +2340,9 @@ IVs: 6 HP / 8 Atk / 13 Def / 16 SpA / 18 SpD / 19 Spe
 Ability: Early Bird
 Level: 24
 Hardy Nature
-=Met_Location=41
+~=Location=41
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Fake Out
 - Tail Whip
 - Bite
@@ -2269,7 +2353,8 @@ IVs: 23 HP / 29 Atk / 27 Def / 29 SpA / 27 SpD / 11 Spe
 Ability: Scrappy
 Level: 26
 Relaxed Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Fake Out
 - Tail Whip
@@ -2281,7 +2366,8 @@ IVs: 29 HP / 27 Atk / 25 Def / 27 SpA / 25 SpD / 7 Spe
 Ability: Sniper
 Level: 19
 Careful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Smokescreen
 - Water Gun
@@ -2293,7 +2379,8 @@ IVs: 29 Atk / 13 Def / 29 SpA / 13 SpD / 13 Spe
 Ability: Poison Point
 Level: 7
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Bubble
 - Smokescreen
@@ -2305,9 +2392,9 @@ IVs: 28 HP / 20 Atk / 9 Def / 16 SpA / 5 SpD / 11 Spe
 Ability: Sniper
 Level: 35
 Lonely Nature
-=Met_Location=14
+~=Location=14
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Leer
 - Bubble Beam
 - Focus Energy
@@ -2318,7 +2405,8 @@ IVs: 25 HP / 29 Atk / 7 Def / 29 SpA / 7 SpD / 19 Spe
 Ability: Swift Swim
 Level: 14
 Bold Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tail Whip
 - Supersonic
@@ -2330,9 +2418,9 @@ IVs: 10 HP / 11 Atk / 16 Def / 2 SpA / 29 SpD / 3 Spe
 Ability: Water Veil
 Level: 14
 Timid Nature
-=Met_Location=8
+~=Location=8
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tail Whip
 - Supersonic
 - Quick Attack
@@ -2343,7 +2431,8 @@ IVs: 29 Atk / 27 Def / 29 SpA / 27 SpD / 11 Spe
 Ability: Water Veil
 Level: 5
 Relaxed Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Peck
 - Tail Whip
@@ -2355,9 +2444,9 @@ IVs: 8 HP / 15 Atk / 15 Def / 4 SpA / 2 SpD / 11 Spe
 Ability: Swift Swim
 Level: 17
 Sassy Nature
-=Met_Location=8
+~=Location=8
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tail Whip
 - Supersonic
 - Quick Attack
@@ -2368,9 +2457,9 @@ IVs: 12 HP / 23 Atk / 7 Def / 12 SpA / 3 SpD / 6 Spe
 Ability: Illuminate
 Level: 33
 Calm Nature
-=Met_Location=20
+~=Location=20
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Minimize
 - Confuse Ray
 - Bubble Beam
@@ -2381,9 +2470,9 @@ IVs: 3 HP / 2 Atk / 25 Def / 7 SpA / 23 SpD / 3 Spe
 Ability: Natural Cure
 Level: 43
 Naughty Nature
-=Met_Location=23
+~=Location=23
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Tackle
 - Harden
 - Psywave
@@ -2394,7 +2483,8 @@ IVs: 27 HP / 29 Def / 29 SpD / 27 Spe
 Ability: Illuminate
 Level: 23
 Rash Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - Harden
@@ -2406,9 +2496,9 @@ IVs: 29 HP / 20 Atk / 13 Def / 6 SpA / 25 SpD / 14 Spe
 Ability: Filter
 Level: 15
 Lax Nature
-=Met_Location=13
+~=Location=13
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Barrier
 - Confusion
 - Meditate
@@ -2419,7 +2509,8 @@ IVs: 21 Def / 21 SpD / 7 Spe
 Ability: Soundproof
 Level: 4
 Rash Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Pound
 - Barrier
@@ -2430,9 +2521,9 @@ IVs: 16 HP / 15 Atk / 20 Def / 7 SpA / 4 SpD / 0 Spe
 Ability: Swarm
 Level: 39
 Calm Nature
-=Met_Location=17
+~=Location=17
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Agility
 - Slash
 - Razor Wind
@@ -2443,9 +2534,9 @@ IVs: 18 HP / 12 Atk / 5 Def / 19 SpA / 19 SpD / 14 Spe
 Ability: Forewarn
 Level: 44
 Impish Nature
-=Met_Location=44
+~=Location=44
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Ice Punch
 - Body Slam
 - Lovely Kiss
@@ -2456,7 +2547,8 @@ IVs: 29 HP / 9 Atk / 21 Def / 9 SpA / 21 SpD / 21 Spe
 Ability: Oblivious
 Level: 7
 Serious Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Pound
 - Lick
@@ -2466,7 +2558,8 @@ IVs: 23 HP / 25 Atk / 29 Def / 25 SpA / 29 SpD / 24 Spe
 Ability: Static
 Level: 2
 Careful Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Thunder Shock
 - Leer
@@ -2476,7 +2569,8 @@ IVs: 21 HP / 29 Atk / 21 Def / 29 SpA / 21 SpD / 30 Spe
 Ability: Flame Body
 Level: 11
 Docile Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Ember
 - Leer
@@ -2488,7 +2582,8 @@ IVs: 29 HP / 29 Atk / 25 Def / 29 SpA / 25 SpD / 23 Spe
 Ability: Mold Breaker
 Level: 7
 Gentle Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Vise Grip
 - Focus Energy
@@ -2499,9 +2594,9 @@ IVs: 25 HP / 18 Atk / 11 Def / 4 SpA / 3 SpD / 15 Spe
 Ability: Hyper Cutter
 Level: 39
 Mild Nature
-=Met_Location=17
+~=Location=17
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - X-Scissor
 - Submission
 - Swords Dance
@@ -2512,9 +2607,9 @@ IVs: 22 HP / 11 Atk / 21 Def / 28 SpA / 8 SpD / 26 Spe
 Ability: Intimidate
 Level: 33
 Docile Nature
-=Met_Location=17
+~=Location=17
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Rage
 - Horn Attack
 - Leer
@@ -2525,7 +2620,8 @@ IVs: 29 Atk / 29 SpA / 18 Spe
 Ability: Anger Point
 Level: 22
 Sassy Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tackle
 - Tail Whip
@@ -2537,7 +2633,8 @@ IVs: 29 HP / 27 Atk / 27 SpA / 27 Spe
 Ability: Swift Swim
 Level: 21
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Splash
 - Tackle
@@ -2547,7 +2644,8 @@ IVs: 11 Atk / 1 Def / 11 SpA / 1 SpD / 24 Spe
 Ability: Intimidate
 Level: 4
 Jolly Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Thrash
 - Leer
@@ -2559,9 +2657,9 @@ IVs: 23 HP / 17 Def / 13 SpA / 14 SpD / 15 Spe
 Ability: Shell Armor
 Level: 45
 Lonely Nature
-=Met_Location=22
+~=Location=22
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Confuse Ray
 - Body Slam
 - Ice Beam
@@ -2572,7 +2670,8 @@ IVs: 17 HP / 19 Def / 19 SpD / 2 Spe
 Ability: Water Absorb
 Level: 23
 Rash Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Water Gun
 - Growl
@@ -2584,7 +2683,8 @@ IVs: 3 Atk / 11 Def / 3 SpA / 11 SpD / 23 Spe
 Ability: Limber
 Level: 17
 Mild Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Transform
 
@@ -2593,7 +2693,8 @@ IVs: 29 Def / 29 SpD / 18 Spe
 Ability: Adaptability
 Level: 11
 Gentle Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Growl
 - Tail Whip
@@ -2604,9 +2705,9 @@ Eevee (M)
 IVs: 26 HP / 16 Atk / 19 Def / 26 SpA / 22 SpD / 6 Spe
 Ability: Run Away
 Level: e
-=Met_Location=19
+~=Location=19
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Swift
 - Take Down
 - Double-Edge
@@ -2616,9 +2717,9 @@ Vaporeon (M)
 IVs: 26 HP / 16 Atk / 19 Def / 26 SpA / 22 SpD / 6 Spe
 Ability: Water Absorb
 Level: e
-=Met_Location=19
+~=Location=19
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Swift
 - Take Down
 - Double-Edge
@@ -2629,7 +2730,8 @@ IVs: 5 HP / 25 Def / 25 SpD / 9 Spe
 Ability: Volt Absorb
 Level: 16
 Gentle Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Tail Whip
 - Sand Attack
@@ -2640,9 +2742,9 @@ Flareon (M)
 IVs: 26 HP / 16 Atk / 19 Def / 26 SpA / 22 SpD / 6 Spe
 Ability: Flash Fire
 Level: e
-=Met_Location=19
+~=Location=19
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Swift
 - Take Down
 - Double-Edge
@@ -2653,9 +2755,9 @@ IVs: 24 HP / 4 Atk / 0 SpA / 3 SpD / 5 Spe
 Ability: Trace
 Level: 28
 Bashful Nature
-=Met_Location=9
+~=Location=9
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Agility
 - Barrier
 - Tri Attack
@@ -2666,9 +2768,9 @@ IVs: 14 Atk / 28 SpA / 22 SpD
 Ability: Shell Armor
 Level: 44
 Adamant Nature
-=Met_Location=36
+~=Location=36
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Rock Throw
 - Protect
 - Rock Slide
@@ -2679,7 +2781,8 @@ IVs: 23 HP / 15 Def / 15 SpD / 13 Spe
 Ability: Swift Swim
 Level: 13
 Calm Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Constrict
 - Withdraw
@@ -2690,9 +2793,9 @@ IVs: 14 Atk / 28 SpA / 22 SpD
 Ability: Shell Armor
 Level: 45
 Adamant Nature
-=Met_Location=36
+~=Location=36
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Rock Throw
 - Spike Cannon
 - Rock Slide
@@ -2703,7 +2806,8 @@ IVs: 27 Atk / 25 Def / 27 SpA / 25 SpD / 4 Spe
 Ability: Swift Swim
 Level: 21
 Naughty Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Constrict
 - Withdraw
@@ -2715,7 +2819,8 @@ IVs: 27 Atk / 29 Def / 27 SpA / 29 SpD / 1 Spe
 Ability: Swift Swim
 Level: 22
 Adamant Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Scratch
 - Harden
@@ -2727,9 +2832,9 @@ IVs: 13 HP / 3 SpD / 25 Spe
 Ability: Battle Armor
 Level: 45
 Bold Nature
-=Met_Location=36
+~=Location=36
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Aqua Jet
 - Slash
 - Sand Attack
@@ -2740,7 +2845,8 @@ IVs: 27 HP / 25 Def / 25 SpD / 15 Spe
 Ability: Swift Swim
 Level: 20
 Jolly Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Scratch
 - Harden
@@ -2752,7 +2858,8 @@ IVs: 27 Atk / 3 Def / 27 SpA / 3 SpD / 7 Spe
 Ability: Rock Head
 Level: 17
 Hardy Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Wing Attack
 - Bite
@@ -2764,9 +2871,9 @@ IVs: 26 HP / 0 Atk / 17 Spe
 Ability: Pressure
 Level: 44
 Quirky Nature
-=Met_Location=36
+~=Location=36
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Rock Throw
 - Agility
 - Crunch
@@ -2776,9 +2883,9 @@ Snorlax (M)
 IVs: 2 HP / 25 SpD
 Ability: Immunity
 Level: re
-=Met_Location=14
+~=Location=14
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Yawn
 - Lick
 - Headbutt
@@ -2788,9 +2895,9 @@ Snorlax (M)
 IVs: 5 Atk / 23 Def / 25 SpD
 Ability: Thick Fat
 Level: 
-=Met_Location=18
+~=Location=18
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Yawn
 - Lick
 - Headbutt
@@ -2800,9 +2907,9 @@ Snorlax (M)
 IVs: 8 HP / 26 Def / 24 Spe
 Ability: Immunity
 Level: 
-=Met_Location=18
+~=Location=18
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Yawn
 - Lick
 - Headbutt
@@ -2813,9 +2920,9 @@ IVs: 22 HP / 2 Atk / 5 Def / 9 SpA / 22 SpD / 1 Spe
 Ability: Thick Fat
 Level: 57
 Relaxed Nature
-=Met_Location=46
+~=Location=46
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Rest
 - Screech
 - Amnesia
@@ -2826,9 +2933,9 @@ IVs: 21 HP / 26 SpD / 26 Spe
 Ability: Pressure
 Level: 50
 Bold Nature
-=Met_Location=44
+~=Location=44
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Mirror Coat
 - Ice Beam
 - Agility
@@ -2839,9 +2946,9 @@ IVs: 8 Def / 25 SpD
 Ability: Pressure
 Level: 50
 Bold Nature
-=Met_Location=42
+~=Location=42
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Drill Peck
 - Thunderbolt
 - Agility
@@ -2852,9 +2959,9 @@ IVs: 9 HP / 21 Atk / 27 Def / 19 SpA / 9 SpD / 2 Spe
 Ability: Pressure
 Level: 57
 Careful Nature
-=Met_Location=19
+~=Location=19
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Flamethrower
 - Agility
 - Heat Wave
@@ -2865,9 +2972,9 @@ IVs: 3 HP / 4 Atk / 15 Def / 8 SpA / 16 SpD / 6 Spe
 Ability: Shed Skin
 Level: 24
 Mild Nature
-=Met_Location=12
+~=Location=12
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Leer
 - Thunder Wave
 - Dragon Rage
@@ -2878,9 +2985,9 @@ IVs: 6 HP / 6 Atk / 8 Def / 22 SpA / 9 SpD / 21 Spe
 Ability: Shed Skin
 Level: 24
 Hardy Nature
-=Met_Location=12
+~=Location=12
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Leer
 - Thunder Wave
 - Dragon Rage
@@ -2891,9 +2998,9 @@ IVs: 29 HP / 9 Atk / 2 Def / 12 SpA / 9 SpD / 4 Spe
 Ability: Inner Focus
 Level: 57
 Bold Nature
-=Met_Location=22
+~=Location=22
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Agility
 - Dragon Tail
 - Slam
@@ -2904,9 +3011,9 @@ IVs: 5 HP / 13 Def / 12 Spe
 Ability: Pressure
 Level: 70
 Quiet Nature
-=Met_Location=46
+~=Location=46
+~=Version=LGPE
 .Version=43
-~=Generation=7
 - Psychic
 - Recover
 - Amnesia
@@ -2917,9 +3024,9 @@ IVs: 11 HP / 29 Atk / 4 SpD
 Ability: Synchronize
 Level: 1
 Hardy Nature
-=Met_Location=40077
+~=Location=40077
+~=Version=LGPE
 .Version=42
-~=Generation=7
 - Pound
 
 Meltan
@@ -2927,7 +3034,8 @@ IVs: 27 HP / 29 Atk / 1 Def / 29 SpA / 1 SpD / 20 Spe
 Ability: Magnet Pull
 Level: 15
 Bold Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Headbutt
 - Harden
@@ -2938,7 +3046,8 @@ IVs: 13 HP / 29 Atk / 25 Def / 29 SpA / 25 SpD / 11 Spe
 Ability: Iron Fist
 Level: 29
 Naive Nature
-=Met_Location=50
+~=Location=50
+~=Version=GO
 .Version=34
 - Harden
 - Tail Whip
