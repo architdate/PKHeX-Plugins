@@ -98,6 +98,7 @@ namespace PKHeX.Core.AutoMod
 
                 if (enc is IFixedNature { IsFixedNature: true } fixedNature)
                     criteria = criteria with { Nature = Nature.Random };
+                criteria = SetSpecialCriteria(criteria, enc, set);
 
                 // Create the PKM from the template.
                 var tr = SimpleEdits.IsUntradeableEncounter(enc) ? dest : GetTrainer(regen, enc, set);
@@ -636,7 +637,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set">showdown set to base hypertraining on</param>
         private static void SetHyperTrainingFlags(this PKM pk, IBattleTemplate set, IEncounterable enc)
         {
-            if (pk is not IHyperTrain t)
+            if (pk is not IHyperTrain t || pk.Species == (ushort)Species.Stakataka)
                 return;
 
             // Game exceptions (IHyperTrain exists because of the field but game disallows hypertraining)
@@ -651,7 +652,7 @@ namespace PKHeX.Core.AutoMod
                 case (int)Species.Kartana when pk.Nature == (int)Nature.Timid && set.IVs[1] <= 21: // Speed boosting Timid Kartana ATK IVs <= 19
                     t.HT_ATK = false;
                     break;
-                case (int)Species.Stakataka when pk.Nature == (int)Nature.Lonely && set.IVs[2] <= 17: // Atk boosting Lonely Stakataka DEF IVs <= 15
+                case (int)Species.Stakataka when pk.StatNature == (int)Nature.Lonely && set.IVs[2] <= 17: // Atk boosting Lonely Stakataka DEF IVs <= 15
                     t.HT_DEF = false;
                     break;
                 case (int)Species.Pyukumuku when set.IVs[2] == 0 && set.IVs[5] == 0 && pk.Ability == (int)Ability.InnardsOut: // 0 Def / 0 Spd Pyukumuku with innards out
@@ -947,10 +948,10 @@ namespace PKHeX.Core.AutoMod
                         undefinedSize, undefinedSize, undefinedSize, undefinedSize, e.Ability, e.Shiny),
                     _ => throw new NotImplementedException("Unknown ITeraRaid9 type detected"),
                 };
-                enc.TryApply32(pk, seed, param, criteria);
-                if (IsMatchCriteria9(pk, set, criteria, compromise))
+                var valid = enc.TryApply32(pk, seed, param, criteria);
+                if (valid && IsMatchCriteria9(pk, set, criteria, compromise))
                     break;
-                if (count == 5_000)
+                if (count == 1_000)
                     compromise = true;
             } while (++count < 15_000);
         }
@@ -1396,6 +1397,27 @@ namespace PKHeX.Core.AutoMod
                         break;
                 }
             }
+        }
+
+        ///<summary>
+        /// Handle search criteria for very specific encounters
+        /// </summary>
+        /// 
+        public static EncounterCriteria SetSpecialCriteria(EncounterCriteria criteria, IEncounterable enc, IBattleTemplate set)
+        {
+            switch (enc.Species)
+            {
+                case (int)Species.Kartana when criteria.Nature == Nature.Timid && criteria.IV_ATK <= 21: // Speed boosting Timid Kartana ATK IVs <= 19
+                    return criteria with { IV_HP = -1, IV_ATK = criteria.IV_ATK, IV_DEF = -1, IV_SPA = -1, IV_SPD = -1, IV_SPE = -1 };
+
+                case (int)Species.Stakataka when criteria.Nature == Nature.Lonely && criteria.IV_DEF <= 17: // Atk boosting Lonely Stakataka DEF IVs <= 15
+                    return criteria with { IV_HP = -1, IV_ATK = -1, IV_DEF = criteria.IV_DEF, IV_SPA = -1, IV_SPD = -1, IV_SPE = criteria.IV_SPE };
+
+                case (int)Species.Pyukumuku when criteria.IV_DEF == 0 && criteria.IV_SPD == 0 && set.Ability == (int)Ability.InnardsOut: // 0 Def / 0 Spd Pyukumuku with innards out
+                    return criteria with { IV_HP = -1, IV_ATK = -1, IV_DEF = criteria.IV_DEF, IV_SPA = -1, IV_SPD = criteria.IV_SPD, IV_SPE = -1 };
+                default: break;
+            }
+            return criteria with { IV_ATK = criteria.IV_ATK == 0 ? 0 : -1, IV_DEF = -1, IV_HP = -1, IV_SPA = -1, IV_SPD = -1, IV_SPE = criteria.IV_SPE == 0 ? 0 : -1 };
         }
 
         /// <summary>
