@@ -515,8 +515,8 @@ namespace PKHeX.Core.AutoMod
             byte Form = set.Form;
             var language = regen.Extra.Language;
             var pidiv = MethodFinder.Analyze(pk);
-            var abilitypref = GetAbilityPreference(pk, enc);
 
+            pk.SetPINGA(set, pidiv.Type, set.HiddenPowerType, enc);
             pk.SetSpeciesLevel(set, Form, enc, language);
             pk.SetSpecialOverrides(enc, handler);
             pk.SetDateLocks(enc);
@@ -530,8 +530,6 @@ namespace PKHeX.Core.AutoMod
             // Legality Fixing
             pk.SetMovesEVs(set, enc);
             pk.SetCorrectMetLevel();
-            pk.SetNatureAbility(set, enc, abilitypref);
-            pk.SetIVsPID(set, pidiv.Type, set.HiddenPowerType, enc);
             pk.SetGVs();
             pk.SetHyperTrainingFlags(set, enc); // Hypertrain
             pk.SetEncryptionConstant(enc);
@@ -737,20 +735,24 @@ namespace PKHeX.Core.AutoMod
             pk.Egg_Location = Locations.TradedEggLocation(pk.Generation, (GameVersion)pk.Version);
         }
 
+
         /// <summary>
-        /// Set IV Values for the pokemon
+        /// Set IV Values for the Pokémon
         /// </summary>
         /// <param name="pk"></param>
         /// <param name="set"></param>
         /// <param name="method"></param>
         /// <param name="hpType"></param>
         /// <param name="enc"></param>
-        private static void SetIVsPID(this PKM pk, IBattleTemplate set, PIDType method, int hpType, IEncounterable enc)
+        private static void SetPINGA(this PKM pk, IBattleTemplate set, PIDType method, int hpType, IEncounterable enc)
         {
-            // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
-            var hascurry = set.GetBatchValue("RibbonMarkCurry");
-            var changeec = hascurry != null && string.Equals(hascurry, "true", StringComparison.OrdinalIgnoreCase) && AllowBatchCommands;
             var ivprop = enc.GetType().GetProperties().FirstOrDefault(z => z.GetType() == typeof(IndividualValueSet), null);
+            if (enc is not EncounterStatic4Pokewalker && enc.Generation > 2)
+                ShowdownEdits.SetNature(pk, set, enc);
+
+            // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
+            var hascurry = set.GetBatchValue(nameof(IRibbonSetMark8.RibbonMarkCurry));
+            var changeec = hascurry != null && string.Equals(hascurry, "true", StringComparison.OrdinalIgnoreCase) && AllowBatchCommands;
 
             if (IsPIDIVSet(pk, enc) && !changeec)
                 return;
@@ -768,7 +770,7 @@ namespace PKHeX.Core.AutoMod
                     return;
             }
 
-            else if (ivprop != null && ivprop.GetType().GetProperty("IVs") != null)
+            if (ivprop != null && ivprop.GetType().GetProperty("IVs") != null)
             {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
                 var ivset = ivprop.GetType()
@@ -779,7 +781,7 @@ namespace PKHeX.Core.AutoMod
                     return;
             }
 
-            if (enc.Generation is not (3 or 4) && enc is not MysteryGift)
+            if (enc.Generation is not (3 or 4))
             {
                 pk.IVs = set.IVs;
                 if (pk is IAwakened)
@@ -794,30 +796,19 @@ namespace PKHeX.Core.AutoMod
 
             switch (enc)
             {
-                case EncounterSlot3XD es3ps:
-                    var abil = pk.PersonalInfo.AbilityCount > 0 && enc is IPersonalAbility12 a ? (a.Ability1 == pk.Ability ? 0 : 1) : 1;
-                    while (pk.PID % 25 != pk.Nature)
-                        PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, abil, es3ps.SlotNumber);
-                    return;
-                case PCD d:
-                    {
-                        if (d.Gift.PK.PID != 1)
-                            pk.PID = d.Gift.PK.PID;
-                        else if (pk.Nature != pk.PID % 25)
-                            pk.SetPIDNature(pk.Nature);
-                        return;
-                    }
+                case EncounterSlot3XD:
+                case PCD:
                 case EncounterEgg:
-                    pk.SetPIDNature(pk.Nature);
                     return;
                 // EncounterTrade4 doesn't have fixed PIDs, so don't early return
                 case EncounterTrade3:
                 case EncounterTrade4PID:
                 case EncounterTrade4RanchGift:
-                    pk.SetEncounterTradeIVs();
+                    ShowdownEdits.SetEncounterTradeIVs(pk);
                     return; // Fixed PID, no need to mutate
                 default:
-                    FindPIDIV(pk, method, hpType, set.Shiny, enc);
+
+                    FindPIDIV(pk, method, hpType, set.Shiny, enc, set);
                     ValidateGender(pk);
                     break;
             }
@@ -1163,7 +1154,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="HPType">HPType INT for preserving Hidden powers</param>
         /// <param name="shiny">Only used for CHANNEL RNG type</param>
         /// <param name="enc"></param>
-        private static void FindPIDIV(PKM pk, PIDType Method, int HPType, bool shiny, IEncounterable enc)
+        private static void FindPIDIV(PKM pk, PIDType Method, int HPType, bool shiny, IEncounterable enc, IBattleTemplate set)
         {
             if (Method == PIDType.None)
             {
@@ -1185,10 +1176,17 @@ namespace PKHeX.Core.AutoMod
             }
 
             var iterPKM = pk.Clone();
+
+            if (iterPKM.Ability != set.Ability && set.Ability != -1)
+                iterPKM.SetAbility(set.Ability >> 1);
             var count = 0;
             var isWishmaker = Method == PIDType.BACD_R && shiny && enc is WC3 { OT_Name: "WISHMKR" };
+            var compromise = false;
+            var gr = pk.PersonalInfo.Gender;
             do
             {
+                if (count >= 2_500_000)
+                    compromise = true;
                 uint seed = Util.Rand32();
                 if (isWishmaker)
                 {
@@ -1198,13 +1196,15 @@ namespace PKHeX.Core.AutoMod
                 if (PokeWalkerSeedFail(seed, Method, pk, iterPKM))
                     continue;
                 PIDGenerator.SetValuesFromSeed(pk, Method, seed);
-                if (!(pk.Ability == iterPKM.Ability && pk.AbilityNumber == iterPKM.AbilityNumber && pk.Nature == iterPKM.Nature))
+                if (pk.AbilityNumber != iterPKM.AbilityNumber && !compromise && pk.Nature != iterPKM.Nature)
                     continue;
-                if (pk.PIDAbility != iterPKM.PIDAbility)
+                if (pk.PIDAbility != iterPKM.PIDAbility && !compromise)
                     continue;
                 if (HPType >= 0 && pk.HPType != HPType)
                     continue;
                 if (pk.PID % 25 != iterPKM.Nature) // Util.Rand32 is the way to go
+                    continue;
+                if (pk.Gender != EntityGender.GetFromPIDAndRatio(pk.PID, gr))
                     continue;
                 if (pk.Version == (int)GameVersion.CXD && Method == PIDType.CXD) // verify locks
                 {
@@ -1228,7 +1228,7 @@ namespace PKHeX.Core.AutoMod
                 if (Method == PIDType.Channel && (shiny != pk.IsShiny || pidxor))
                     continue;
                 break;
-            } while (++count < 1_000_000);
+            } while (++count < 5_000_000);
         }
 
         /// <summary>
@@ -1297,13 +1297,6 @@ namespace PKHeX.Core.AutoMod
             };
         }
 
-        /// <summary>
-        /// Method to get preferred ability number based on the encounter. Useful for when multiple ability numbers have the same ability
-        /// </summary>
-        /// <param name="pk">pokemon</param>
-        /// <param name="enc">encounter</param>
-        /// <returns>int indicating ability preference</returns>
-        private static AbilityPermission GetAbilityPreference(PKM pk, IEncounterable enc) => enc.Ability > 0 ? enc.Ability : (AbilityPermission)pk.AbilityNumber;
 
         /// <summary>
         /// Method to get the correct met level for a pokemon. Move up the met level till all moves are legal

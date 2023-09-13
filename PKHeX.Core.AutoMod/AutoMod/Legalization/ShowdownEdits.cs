@@ -31,24 +31,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Gender = pk.GetSaneGender();
         }
 
-        /// <summary>
-        /// Set Nature and Ability of the pokemon
-        /// </summary>
-        /// <param name="pk">PKM to modify</param>
-        /// <param name="set">Showdown Set to refer</param>
-        /// <param name="enc">Encounter to reference</param>
-        /// <param name="preference">Ability index (1/2/4) preferred; &lt;= 0 for any</param>
-        public static void SetNatureAbility(this PKM pk, IBattleTemplate set, IEncounterable enc, AbilityPermission preference = AbilityPermission.Any12H)
-        {
-            // TODO: drilldown on the root cause of this, ignore for now
-            if (enc is EncounterStatic4Pokewalker || enc.Generation is 2)
-                return;
-
-            SetNature(pk, set, enc);
-            SetAbility(pk, set, preference);
-        }
-
-        private static void SetNature(PKM pk, IBattleTemplate set, IEncounterable enc)
+        public static void SetNature(PKM pk, IBattleTemplate set, IEncounterable enc)
         {
             if (pk.Nature == set.Nature || set.Nature == -1)
                 return;
@@ -82,8 +65,8 @@ namespace PKHeX.Core.AutoMod
 
         private static void SetAbility(PKM pk, IBattleTemplate set, AbilityPermission preference)
         {
-            if (pk.Ability != set.Ability && set.Ability != -1)
-                pk.SetAbility(set.Ability);
+            if (pk.Ability != set.Ability)
+                pk.RefreshAbility(pk is PK5 { HiddenAbility: true } ? 2 : pk.AbilityNumber >> 1);
 
             if (preference <= 0)
                 return;
@@ -145,10 +128,13 @@ namespace PKHeX.Core.AutoMod
             }
 
             pk.SetSuggestedFormArgument(enc.Species);
-            if (evolutionRequired)
-                pk.RefreshAbility(pk.AbilityNumber >> 1);
-
-            pk.CurrentLevel = set.Level;
+            if (evolutionRequired || formchange)
+            {
+                var abilitypref = enc.Ability;
+                SetAbility(pk, set, abilitypref);
+            }
+            if (pk.CurrentLevel != set.Level)
+                pk.CurrentLevel = set.Level;
             if (pk.Met_Level > pk.CurrentLevel)
                 pk.Met_Level = pk.CurrentLevel;
             if (set.Level != 100 && set.Level == enc.LevelMin && pk.Format is 3 or 4)

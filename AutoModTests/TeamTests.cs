@@ -97,6 +97,7 @@ namespace AutoModTests
         [InlineData(AnubisPK8, new[] { SW })]
         [InlineData(AnubisPK9, new[] { SL })]
         [InlineData(AnubisNTPB7, new[] { GE })]
+        [InlineData(AnubisNTPK7, new[] { US })]
         [InlineData(AnubisTPK7, new[] { SW, US })]
         [InlineData(AnubisTPK8, new[] { SW })]
         [InlineData(AnubisVCPK7, new[] { SW, US })]
@@ -114,7 +115,9 @@ namespace AutoModTests
         [InlineData(RoCPK8, new[] { SW })]
         [InlineData(RoCPK9, new[] { SL })]
         [InlineData(RoCNTPK1, new[] { RD })]
+        [InlineData(RoCNTPK3, new[] { E })]
         [InlineData(RoCNTPK4, new[] { Pt })]
+        [InlineData(RoCNTPK5, new[] { B2, B })]
         [InlineData(RoCNTPK6, new[] { OR })]
         [InlineData(RoCNTPK7, new[] { US })]
         [InlineData(RoCVCPK7, new[] { SW, US })]
@@ -170,6 +173,7 @@ namespace AutoModTests
         private const string AnubisPK8 = "Anubis Tests/Anubis - pk8.txt";
         private const string AnubisPK9 = "Anubis Tests/Anubis - pk9.txt";
         private const string AnubisNTPB7 = "Anubis Tests/Anubis notransfer - pb7.txt";
+        private const string AnubisNTPK7 = "Anubis Tests/Anubis notransfer - pk7.txt";
         private const string AnubisTPK7 = "Anubis Tests/Anubis transferred - pk7.txt";
         private const string AnubisTPK8 = "Anubis Tests/Anubis transferred - pk8.txt";
         private const string AnubisVCPK7 = "Anubis Tests/Anubis VC - pk7.txt";
@@ -188,7 +192,9 @@ namespace AutoModTests
         private const string RoCPK8 = "RoCs-PC Tests/RoC - pk8.txt";
         private const string RoCPK9 = "RoCs-PC Tests/RoC - pk9.txt";
         private const string RoCNTPK1 = "RoCs-PC Tests/RoC notransfer - pk1.txt";
+        private const string RoCNTPK3 = "RoCs-PC Tests/RoC notransfer - pk3.txt";
         private const string RoCNTPK4 = "RoCs-PC Tests/RoC notransfer - pk4.txt";
+        private const string RoCNTPK5 = "RoCs-PC Tests/RoC notransfer - pk5.txt";
         private const string RoCNTPK6 = "RoCs-PC Tests/RoC notransfer - pk6.txt";
         private const string RoCNTPK7 = "RoCs-PC Tests/RoC notransfer - pk7.txt";
         private const string RoCVCPK7 = "RoCs-PC Tests/RoC VC - pk7.txt";
