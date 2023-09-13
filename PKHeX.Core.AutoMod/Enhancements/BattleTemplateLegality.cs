@@ -50,7 +50,7 @@ namespace PKHeX.Core.AutoMod
             var destVer = (GameVersion)sav.Game;
             if (destVer <= 0 && sav is SaveFile s)
                 destVer = s.Version;
-            var gamelist = APILegality.FilteredGameList(failed, destVer, batchedit ? filters : null);
+            var gamelist = APILegality.FilteredGameList(failed, destVer, APILegality.AllowBatchCommands, set);
 
             // Move checks
             List<IEnumerable<ushort>> move_combinations = new();

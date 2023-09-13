@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -70,14 +71,14 @@ namespace PKHeX.Core.AutoMod
                 destVer = s.Version;
 
             var timer = Stopwatch.StartNew();
-            var gamelist = FilteredGameList(template, destVer, batchedit ? regen.Batch.Filters : null, native);
+            var gamelist = FilteredGameList(template, destVer, AllowBatchCommands, set, native);
             if (dest.Generation <= 2)
                 template.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
 
             var encounters = GetAllEncounters(pk: template, moves: new ReadOnlyMemory<ushort>(set.Moves), gamelist);
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
             criteria.ForceMinLevelRange = true;
-            if (regen.EncounterFilters != null)
+            if (regen.EncounterFilters.Count() != 0)
                 encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(regen.EncounterFilters, enc));
 
             PKM? last = null;
@@ -138,8 +139,8 @@ namespace PKHeX.Core.AutoMod
                     var b = regen.Batch;
                     BatchEditing.ScreenStrings(b.Filters);
                     BatchEditing.ScreenStrings(b.Instructions);
-                    var modified = BatchEditing.TryModify(pk, b.Filters, b.Instructions) && b.Filters.Count > 0;
-                    if (!modified)
+                    var modified = BatchEditing.TryModify(pk, b.Filters, b.Instructions);
+                    if (!modified && b.Filters.Count > 0)
                         continue;
                     pk.ApplyPostBatchFixes();
                 }
@@ -226,31 +227,18 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="template">Template pokemon with basic details set</param>
         /// <param name="destVer">Version in which the pokemon needs to be imported</param>
-        /// <param name="filters">Optional list of filters to remove games</param>
+        /// <param name="batchEdit">Whether settings currently allow batch commands</param>
+        /// <param name="set">Set information to be used to filter the game list</param>
+        /// <param nativeOnly="set">Whether to only return encounters from the current version</param>
         /// <returns>List of filtered games to check encounters for</returns>
-        internal static GameVersion[] FilteredGameList(PKM template, GameVersion destVer, IReadOnlyList<StringInstruction>? filters, bool nativeOnly = false)
+        internal static GameVersion[] FilteredGameList(PKM template, GameVersion destVer, bool batchEdit, IBattleTemplate set, bool nativeOnly = false)
         {
+            if (batchEdit && set is RegenTemplate { Regen.VersionFilters: { Count: not 0 } x } && TryGetSingleVersion(x, out var single))
+                return single;
+
             var gamelist = !nativeOnly
                            ? GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray()
                            : GetPairedVersions(destVer);
-
-            if (filters != null)
-            {
-                foreach (var f in filters)
-                {
-                    if (f.PropertyName == nameof(PKM.Version) && int.TryParse(f.PropertyValue, out int gv))
-                        gamelist = f.Comparer switch
-                        {
-                            InstructionComparer.IsEqual => new[] { (GameVersion)gv },
-                            InstructionComparer.IsNotEqual => gamelist.Where(z => z != (GameVersion)gv).ToArray(),
-                            InstructionComparer.IsGreaterThan => gamelist.Where(z => (int)z > gv).ToArray(),
-                            InstructionComparer.IsGreaterThanOrEqual => gamelist.Where(z => (int)z >= gv).ToArray(),
-                            InstructionComparer.IsLessThan => gamelist.Where(z => (int)z < gv).ToArray(),
-                            InstructionComparer.IsLessThanOrEqual => gamelist.Where(z => (int)z <= gv).ToArray(),
-                            _ => gamelist,
-                        };
-                }
-            }
 
             if (PrioritizeGame && !nativeOnly)
                 gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, SimpleEdits.GetIsland(destVer)) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
@@ -258,6 +246,43 @@ namespace PKHeX.Core.AutoMod
             if (template.AbilityNumber == 4 && destVer.GetGeneration() < 8)
                 gamelist = gamelist.Where(z => z.GetGeneration() is not 3 and not 4).ToArray();
             return gamelist;
+        }
+
+        private static bool TryGetSingleVersion(IReadOnlyList<StringInstruction> filters, [NotNullWhen(true)] out GameVersion[]? gamelist)
+        {
+            gamelist = null;
+            foreach (var filter in filters)
+            {
+                if (filter.PropertyName != nameof(IVersion.Version))
+                    continue;
+
+                GameVersion value;
+                if (int.TryParse(filter.PropertyValue, out var i))
+                    value = (GameVersion)i;
+                else if (Enum.TryParse<GameVersion>(filter.PropertyValue, out var g))
+                    value = g;
+                else
+                    return false;
+
+                GameVersion[] result;
+                if (value.IsValidSavedVersion())
+                    result = new GameVersion[] { value };
+                else
+                    result = GameUtil.GameVersions.Where(z => value.Contains(z)).ToArray();
+
+                gamelist = filter.Comparer switch
+                {
+                    InstructionComparer.IsEqual => result,
+                    InstructionComparer.IsNotEqual => GameUtil.GameVersions.Where(z => !result.Contains(z)).ToArray(),
+                    InstructionComparer.IsGreaterThan => GameUtil.GameVersions.Where(z => result.Any(g => z > g)).ToArray(),
+                    InstructionComparer.IsGreaterThanOrEqual => GameUtil.GameVersions.Where(z => result.Any(g => z >= g)).ToArray(),
+                    InstructionComparer.IsLessThan => GameUtil.GameVersions.Where(z => result.Any(g => z < g)).ToArray(),
+                    InstructionComparer.IsLessThanOrEqual => GameUtil.GameVersions.Where(z => result.Any(g => z <= g)).ToArray(),
+                    _ => result,
+                };
+                return gamelist.Length != 0;
+            }
+            return false;
         }
 
         /// <summary>
@@ -334,6 +359,10 @@ namespace PKHeX.Core.AutoMod
 
             // Don't process if the requested set is Alpha and the Encounter is not
             if (!IsRequestedAlphaValid(set, enc))
+                return false;
+
+            // Don't process if the gender does not match the set
+            if (set.Gender != -1 && enc is IFixedGender { IsFixedGender: true } fg && fg.Gender != set.Gender)
                 return false;
 
             // Don't process if PKM is definitely Hidden Ability and the PKM is from Gen 3 or Gen 4 and Hidden Capsule doesn't exist
@@ -717,6 +746,7 @@ namespace PKHeX.Core.AutoMod
             // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
             var hascurry = set.GetBatchValue("RibbonMarkCurry");
             var changeec = hascurry != null && string.Equals(hascurry, "true", StringComparison.OrdinalIgnoreCase) && AllowBatchCommands;
+            var ivprop = enc.GetType().GetProperties().FirstOrDefault(z => z.GetType() == typeof(IndividualValueSet), null);
 
             if (IsPIDIVSet(pk, enc) && !changeec)
                 return;
@@ -734,16 +764,14 @@ namespace PKHeX.Core.AutoMod
                     return;
             }
 
-            else if (enc.GetType().GetProperty("IndividualValueSet") != null)
+            else if (ivprop != null && ivprop.GetType().GetProperty("IVs") != null)
             {
-#pragma warning disable CS8605 // Unboxing a possibly null value.
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-                IndividualValueSet ivset = (IndividualValueSet)enc.GetType()
-                    .GetProperty("IndividualValueSet")
+                var ivset = ivprop.GetType()
+                    .GetProperty("IVs")
                     .GetValue(enc, null);
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-#pragma warning restore CS8605 // Unboxing a possibly null value.
-                if (ivset.IsSpecified)
+                if (ivset != null && ((IndividualValueSet)ivset).IsSpecified)
                     return;
             }
 
@@ -763,9 +791,9 @@ namespace PKHeX.Core.AutoMod
             switch (enc)
             {
                 case EncounterSlot3XD es3ps:
-                    var abil = pk.PersonalInfo.AbilityCount > 0 && pk.PersonalInfo is IPersonalAbility12 a ? (a.Ability1 == pk.Ability ? 0 : 1) : 1;
-                    do PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, abil, es3ps.SlotNumber);
-                    while (pk.PID % 25 != pk.Nature);
+                    var abil = pk.PersonalInfo.AbilityCount > 0 && enc is IPersonalAbility12 a ? (a.Ability1 == pk.Ability ? 0 : 1) : 1;
+                    while (pk.PID % 25 != pk.Nature)
+                        PIDGenerator.SetRandomPokeSpotPID(pk, pk.Nature, pk.Gender, abil, es3ps.SlotNumber);
                     return;
                 case PCD d:
                     {
@@ -782,7 +810,7 @@ namespace PKHeX.Core.AutoMod
                 case EncounterTrade3:
                 case EncounterTrade4PID:
                 case EncounterTrade4RanchGift:
-                    enc.SetEncounterTradeIVs(pk);
+                    pk.SetEncounterTradeIVs();
                     return; // Fixed PID, no need to mutate
                 default:
                     FindPIDIV(pk, method, hpType, set.Shiny, enc);

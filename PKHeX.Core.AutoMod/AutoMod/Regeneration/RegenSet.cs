@@ -12,7 +12,8 @@ namespace PKHeX.Core.AutoMod
         public RegenSetting Extra { get; }
         public ITrainerInfo? Trainer { get; }
         public StringInstructionSet Batch { get; }
-        public IEnumerable<StringInstruction>? EncounterFilters { get; }
+        public IEnumerable<StringInstruction> EncounterFilters { get; }
+        public IReadOnlyList<StringInstruction> VersionFilters { get; }
 
         public readonly bool HasExtraSettings;
         public readonly bool HasTrainerSettings;
@@ -35,6 +36,7 @@ namespace PKHeX.Core.AutoMod
             Trainer = tr;
             Batch = new StringInstructionSet(modified.ToArray().AsSpan());
             EncounterFilters = RegenUtil.GetEncounterFilters(modified);
+            VersionFilters = RegenUtil.GetVersionFilters(modified);
         }
 
         public string GetSummary()
@@ -48,6 +50,8 @@ namespace PKHeX.Core.AutoMod
                 sb.AppendLine(RegenUtil.GetSummary(Batch));
             if (EncounterFilters != null)
                 sb.AppendLine(RegenUtil.GetSummary(EncounterFilters));
+            if (VersionFilters != null)
+                sb.AppendLine(RegenUtil.GetSummary(VersionFilters));
             return sb.ToString();
         }
     }

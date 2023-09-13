@@ -53,12 +53,23 @@ namespace PKHeX.Core.AutoMod
         private const char Splitter = ':';
         public const char EncounterFilterPrefix = '~';
 
-        public static IEnumerable<StringInstruction>? GetEncounterFilters(IEnumerable<string> lines)
+        public static IReadOnlyList<StringInstruction> GetEncounterFilters(IEnumerable<string> lines)
         {
-            var valid = lines.Where(z => z.StartsWith(EncounterFilterPrefix.ToString())).ToList();
-            if (valid.Count == 0)
-                return null;
-            var cleaned = valid.Select(z => z.TrimStart(EncounterFilterPrefix));
+            var valid = lines.Where(z => z.StartsWith(EncounterFilterPrefix.ToString()) && !z.Contains("Version")).ToList();
+            return CleanFilters(valid);
+        }
+
+        public static IReadOnlyList<StringInstruction> GetVersionFilters(IEnumerable<string> lines)
+        {
+            var valid = lines.Where(z => z.StartsWith(EncounterFilterPrefix.ToString()) && z.Contains("Version")).ToList();
+            return CleanFilters(valid);
+        }
+
+        private static IReadOnlyList<StringInstruction> CleanFilters(List<String> lines)
+        {
+            if (lines.Count == 0)
+                return Array.Empty<StringInstruction>();
+            var cleaned = lines.Select(z => z.TrimStart(EncounterFilterPrefix));
             var filters = StringInstruction.GetFilters(cleaned).ToArray();
             BatchEditing.ScreenStrings(filters);
             return filters;
