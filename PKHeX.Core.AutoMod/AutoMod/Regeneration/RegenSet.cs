@@ -48,9 +48,9 @@ namespace PKHeX.Core.AutoMod
                 sb.AppendLine(RegenUtil.GetSummary(Trainer));
             if (HasBatchSettings)
                 sb.AppendLine(RegenUtil.GetSummary(Batch));
-            if (EncounterFilters != null)
+            if (EncounterFilters.Count() > 0)
                 sb.AppendLine(RegenUtil.GetSummary(EncounterFilters));
-            if (VersionFilters != null)
+            if (VersionFilters.Count() > 0)
                 sb.AppendLine(RegenUtil.GetSummary(VersionFilters));
             return sb.ToString();
         }

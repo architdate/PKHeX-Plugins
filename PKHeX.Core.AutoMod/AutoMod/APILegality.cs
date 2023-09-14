@@ -812,6 +812,13 @@ namespace PKHeX.Core.AutoMod
                     ValidateGender(pk);
                     break;
             }
+
+            // Handle mismatching abilities due to a PID re-roll
+            if (set.Ability == -1 || set.Ability == pk.Ability)
+                return;
+
+            var abilitypref = enc.Ability;
+            ShowdownEdits.SetAbility(pk, set, abilitypref);
         }
 
         /// <summary>
