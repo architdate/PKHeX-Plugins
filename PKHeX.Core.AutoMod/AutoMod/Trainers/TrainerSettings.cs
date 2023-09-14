@@ -31,7 +31,8 @@ namespace PKHeX.Core.AutoMod
         {
             if (!ver.IsValidSavedVersion())
                 ver = GameUtil.GameVersions.First(z => ver.Contains(z));
-            var fallback = lang == null ? new SimpleTrainerInfo(ver) : new SimpleTrainerInfo(ver) { Language = (int)lang };
+            var ctx = ver.GetContext();
+            var fallback = lang == null ? new SimpleTrainerInfo(ver) { Context = ctx }  : new SimpleTrainerInfo(ver) { Language = (int)lang, Context = ctx };
             fallback.OT = DefaultOT;
             fallback.TID16 = DefaultTID16;
             fallback.SID16 = DefaultSID16;

@@ -102,7 +102,7 @@ namespace PKHeX.Core.AutoMod
 
                 // Create the PKM from the template.
                 var tr = SimpleEdits.IsUntradeableEncounter(enc) ? dest : GetTrainer(regen, enc, set);
-                var raw = enc.ConvertToPKM(tr, criteria);
+                var raw = enc.GetPokemonFromEncounter(tr, criteria, set);
                 if (raw.OT_Name.Length == 0)
                 {
                     raw.Language = tr.Language;
@@ -167,6 +167,21 @@ namespace PKHeX.Core.AutoMod
             }
             satisfied = LegalizationResult.Failed;
             return last ?? template;
+        }
+
+        private static PKM GetPokemonFromEncounter(this IEncounterable enc, ITrainerInfo tr, EncounterCriteria criteria, IBattleTemplate set)
+        {
+            var basepkm = enc.ConvertToPKM(tr, criteria);
+
+            // If the encounter is a Wurmple, we need to make sure the evolution is correct.
+            if (enc.Species == (int)Species.Wurmple && set.Species != (int)Species.Wurmple)
+            {
+                var wdest = WurmpleUtil.GetWurmpleEvoGroup(set.Species);
+                while (WurmpleUtil.GetWurmpleEvoVal(basepkm.PID) != wdest)
+                    basepkm = enc.ConvertToPKM(tr, criteria);
+            }
+
+            return basepkm;
         }
 
         private static IEnumerable<IEncounterable> GetAllEncounters(PKM pk, ReadOnlyMemory<ushort> moves, IReadOnlyList<GameVersion> vers)
@@ -300,17 +315,18 @@ namespace PKHeX.Core.AutoMod
         {
             var ver = enc.Version;
             var gen = enc.Generation;
+            var mutate = regen.Extra.Language;
 
             // Edge case override for Meister Magikarp
             var nicknames = new string[] { "", "ポッちゃん", "", "Bloupi", "Mossy", "Pador", "", "", "", "", "" };
             var idx = Array.IndexOf(nicknames, set.Nickname);
             if (idx > 0)
-                regen.Extra.Language = (LanguageID)idx;
+                mutate = (LanguageID)idx;
 
             if (AllowTrainerOverride && regen.HasTrainerSettings && regen.Trainer != null)
-                return regen.Trainer.MutateLanguage(regen.Extra.Language, ver);
+                return regen.Trainer.MutateLanguage(mutate, ver);
             if (UseTrainerData)
-                return TrainerSettings.GetSavedTrainerData(ver, gen).MutateLanguage(regen.Extra.Language, ver);
+                return TrainerSettings.GetSavedTrainerData(ver, gen).MutateLanguage(mutate, ver);
             return TrainerSettings.DefaultFallback(ver, regen.Extra.Language);
         }
 
@@ -518,7 +534,6 @@ namespace PKHeX.Core.AutoMod
 
             pk.SetPINGA(set, pidiv.Type, set.HiddenPowerType, enc);
             pk.SetSpeciesLevel(set, Form, enc, language);
-            pk.SetSpecialOverrides(enc, handler);
             pk.SetDateLocks(enc);
             pk.SetHeldItem(set);
 
@@ -770,13 +785,9 @@ namespace PKHeX.Core.AutoMod
                     return;
             }
 
-            if (ivprop != null)
+            if (ivprop != null && ivprop.PropertyType == typeof(IndividualValueSet))
             {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-                var ivset = ivprop.GetType()
-                    .GetProperty("IVs")
-                    .GetValue(enc);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                var ivset = ivprop.GetValue(enc);
                 if (ivset != null && ((IndividualValueSet)ivset).IsSpecified)
                     return;
             }

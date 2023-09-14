@@ -102,7 +102,7 @@ namespace PKHeX.Core.AutoMod
             pk.ApplySetGender(set);
             pk.SetRecordFlags(set.Moves); // Set record flags before evolution (TODO: what if middle evolution has exclusive record moves??)
 
-            var evolutionRequired = pk.Species != set.Species;
+            var evolutionRequired = enc.Species != set.Species;
             var formchange = Form != pk.Form;
             if (evolutionRequired)
                 pk.Species = set.Species;
@@ -178,17 +178,6 @@ namespace PKHeX.Core.AutoMod
                 pk.SetNickname(nickname);
             else
                 pk.ClearNickname();
-        }
-
-        public static void SetSpecialOverrides(this PKM pk, IEncounterable enc, ITrainerInfo handler)
-        {
-            // Set Meister Magikarp BDSP nickname in german or japanese based on language
-            if (enc is EncounterTrade8b { IsFixedNickname: true } t && t.Species == (int)Species.Magikarp)
-            {
-                var required = pk.Language == (int)LanguageID.German ? LanguageID.Japanese : LanguageID.German;
-                var nickname = t.GetNickname((int)required);
-                pk.Nickname = nickname;
-            }
         }
 
         /// <summary>

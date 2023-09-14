@@ -159,6 +159,7 @@ namespace PKHeX.Core.AutoMod
                     SID16 = s.SID16,
                     Gender = s.Gender,
                     Language = (int)lang,
+                    Context = s.Context,
                     ConsoleRegion = s.ConsoleRegion != 0 ? s.ConsoleRegion : (byte)1,
                     Region = s.Region != 0 ? s.Region : (byte)7,
                     Country = s.Country != 0 ? s.Country : (byte)49,
