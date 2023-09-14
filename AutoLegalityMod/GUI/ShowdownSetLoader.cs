@@ -209,6 +209,7 @@ namespace AutoModPlugins
             APILegality.SetBattleVersion = settings.SetBattleVersion;
             APILegality.AllowTrainerOverride = settings.AllowTrainerOverride;
             APILegality.Timeout = settings.Timeout;
+            APILegality.ForceLevel100for50 = settings.ForceLevel100for50;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
             ModLogic.IncludeForms = settings.IncludeForms;

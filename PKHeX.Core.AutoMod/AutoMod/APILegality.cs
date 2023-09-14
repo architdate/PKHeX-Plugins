@@ -30,6 +30,7 @@ namespace PKHeX.Core.AutoMod
         public static bool SetBattleVersion { get; set; }
         public static bool AllowTrainerOverride { get; set; }
         public static bool AllowBatchCommands { get; set; } = true;
+        public static bool ForceLevel100for50 { get; set; } = true;
         public static int Timeout { get; set; } = 15;
 
         /// <summary>
@@ -318,7 +319,7 @@ namespace PKHeX.Core.AutoMod
             var mutate = regen.Extra.Language;
 
             // Edge case override for Meister Magikarp
-            var nicknames = new string[] { "", "ポッちゃん", "", "Bloupi", "Mossy", "Pador", "", "", "", "", "" };
+            var nicknames = new string[] { "", "ポッちゃん", "Foppa", "Bloupi", "Mossy", "Pador", "", "", "", "", "" };
             var idx = Array.IndexOf(nicknames, set.Nickname);
             if (idx > 0)
                 mutate = (LanguageID)idx;

@@ -42,7 +42,7 @@ namespace PKHeX.Core.AutoMod
             Gender = set.Gender;
             HeldItem = set.HeldItem;
             Ability = set.Ability;
-            Level = set.Level == 50 ? 100 : set.Level;
+            Level = (set.Level == 50 && APILegality.ForceLevel100for50) ? 100 : set.Level;
             Shiny = set.Shiny;
             Friendship = set.Friendship;
             Nature = set.Nature;
