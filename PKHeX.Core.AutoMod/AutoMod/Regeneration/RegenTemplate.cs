@@ -64,6 +64,7 @@ namespace PKHeX.Core.AutoMod
         {
             this.SanitizeForm(gen);
             this.SanitizeBattleMoves();
+            this.SanitizeTeraTypes();
 
             var shiny = Shiny ? Core.Shiny.Always : Core.Shiny.Never;
             if (set.InvalidLines.Count == 0)

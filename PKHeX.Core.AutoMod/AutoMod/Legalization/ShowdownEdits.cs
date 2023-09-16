@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -354,6 +355,15 @@ namespace PKHeX.Core.AutoMod
                     break;
             }
         }
+
+        public static MoveType GetValidOpergonTeraType(byte form) => (form & 3) switch
+        {
+            0 => MoveType.Grass,
+            1 => MoveType.Water,
+            2 => MoveType.Fire,
+            3 => MoveType.Rock,
+            _ => (MoveType)TeraTypeUtil.OverrideNone,
+        };
 
         /// <summary>
         /// Randomizes the IVs within game constraints.
