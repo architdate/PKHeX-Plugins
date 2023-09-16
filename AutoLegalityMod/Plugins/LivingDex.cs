@@ -29,6 +29,8 @@ namespace AutoModPlugins
             var sav = SaveFileEditor.SAV;
             Span<PKM> pkms = sav.GenerateLivingDex().ToArray();
             Span<PKM> bd = sav.BoxData.ToArray();
+            if (pkms.Length > bd.Length)
+                pkms = pkms.Slice(0, bd.Length);
             pkms.CopyTo(bd);
             sav.BoxData = bd.ToArray();
             SaveFileEditor.ReloadSlots();

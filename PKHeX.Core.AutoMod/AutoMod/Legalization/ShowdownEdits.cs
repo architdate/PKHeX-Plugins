@@ -355,6 +355,15 @@ namespace PKHeX.Core.AutoMod
                 case Species.Palkia when pk.Form == 1 && pk.HeldItem != 1778:
                     pk.HeldItem = 1778;
                     break;
+                case Species.Ogerpon when pk.Form == 1 && pk.HeldItem != 2407:
+                    pk.HeldItem = 2407;
+                    break;
+                case Species.Ogerpon when pk.Form == 2 && pk.HeldItem != 2408:
+                    pk.HeldItem = 2408;
+                    break;
+                case Species.Ogerpon when pk.Form == 3 && pk.HeldItem != 2409:
+                    pk.HeldItem = 2409;
+                    break;
             }
         }
 
