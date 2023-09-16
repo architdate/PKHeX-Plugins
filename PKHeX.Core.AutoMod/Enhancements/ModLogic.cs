@@ -73,6 +73,9 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 var num_forms = pt[s].FormCount;
+                var str = GameInfo.Strings;
+                if (num_forms == 1 && cfg.IncludeForms) // Validate through form lists
+                    num_forms = (byte)FormConverter.GetFormList(s, str.types, str.forms, GameInfo.GenderSymbolUnicode, sav.Context).Length;
                 for (byte f = 0; f < num_forms; f++)
                 {
                     if (!sav.Personal.IsPresentInGame(s, f) || FormInfo.IsLordForm(s, f, sav.Context) || FormInfo.IsBattleOnlyForm(s, f, sav.Generation)

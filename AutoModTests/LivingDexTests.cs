@@ -54,7 +54,7 @@ namespace AutoModTests
 
         [Theory]
         [MemberData(nameof(GetLivingDexTestData))]
-        public static void VerifyManually(GameVersion s, LivingDexConfig cfg)
+        public static void VerifyDex(GameVersion game, LivingDexConfig cfg)
         {
             var dir = Directory.GetCurrentDirectory();
             APILegality.Timeout = 99999;
@@ -62,8 +62,8 @@ namespace AutoModTests
             APILegality.SetAllLegalRibbons = false;
             APILegality.EnableDevMode = true;
 
-            var res = s.SingleSaveTest(cfg);
-            res.Success.Should().BeTrue($"GameVersion: {s}\n{cfg}\nExpected: {res.Expected}\nGenerated: {res.Generated}");
+            var res = game.SingleSaveTest(cfg);
+            res.Success.Should().BeTrue($"GameVersion: {game}\n{cfg}\nExpected: {res.Expected}\nGenerated: {res.Generated}");
         }
 
         /// <summary>
