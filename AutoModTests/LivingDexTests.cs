@@ -95,6 +95,9 @@ namespace AutoModTests
 
                 List<byte> forms = new();
                 var formCount = personal[s].FormCount;
+                var str = GameInfo.Strings;
+                if (formCount == 1 && cfg.IncludeForms) // Validate through form lists
+                    formCount = (byte)FormConverter.GetFormList(s, str.types, str.forms, GameInfo.GenderSymbolUnicode, sav.Context).Length;
                 for (byte f = 0; f < formCount; f++)
                 {
                     if (!personal.IsPresentInGame(s, f) || FormInfo.IsFusedForm(s, f, sav.Generation) || FormInfo.IsBattleOnlyForm(s, f, sav.Generation)
