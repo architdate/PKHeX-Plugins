@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -10,6 +11,13 @@ namespace PKHeX.Core.AutoMod
     public static class ModLogic
     {
         // Living Dex Settings
+        public static LivingDexConfig cfg = new LivingDexConfig 
+        {
+            IncludeForms = false,
+            SetShiny = false,
+            SetAlpha = false,
+            NativeOnly = false,
+        };
         public static bool IncludeForms { get; set; }
         public static bool SetShiny { get; set; }
         public static bool SetAlpha { get; set; }
@@ -41,8 +49,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="sav">Save File to receive the generated <see cref="PKM"/>.</param>
         /// <param name="speciesIDs">Species IDs to generate</param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
-        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav) =>
-            sav.GenerateLivingDex(includeforms: IncludeForms, shiny: SetShiny, alpha: SetAlpha, nativeOnly: NativeOnly);
+        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav) => sav.GenerateLivingDex(cfg);
 
         /// <summary>
         /// Gets a living dex (one per species, not every form)
@@ -54,7 +61,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="alpha"></param>
         /// <param name="attempts"></param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
-        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, bool includeforms, bool shiny, bool alpha, bool nativeOnly)
+        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, LivingDexConfig cfg)
         {
             List<PKM> pklist = new();
             var tr = APILegality.UseTrainerData ? TrainerSettings.GetSavedTrainerData(sav.Version, sav.Generation, fallback: sav, lang: (LanguageID)sav.Language) : sav;
@@ -72,11 +79,11 @@ namespace PKHeX.Core.AutoMod
                         || FormInfo.IsFusedForm(s, f, sav.Generation) || (FormInfo.IsTotemForm(s, f) && sav.Context is not EntityContext.Gen7))
                         continue;
 
-                    var pk = AddPKM(sav, tr, s, f, shiny, alpha, nativeOnly);
+                    var pk = AddPKM(sav, tr, s, f, cfg.SetShiny, cfg.SetAlpha, cfg.NativeOnly);
                     if (pk is not null && pklist.FirstOrDefault(x => x.Species == pk.Species && x.Form == pk.Form) is null)
                     {
                         pklist.Add(pk);
-                        if (!includeforms)
+                        if (!cfg.IncludeForms)
                             break;
                     }
                 }

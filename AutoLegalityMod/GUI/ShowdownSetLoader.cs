@@ -212,10 +212,13 @@ namespace AutoModPlugins
             APILegality.AllowHOMETransferGeneration = settings.AllowHOMETransferGeneration;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
-            ModLogic.IncludeForms = settings.IncludeForms;
-            ModLogic.SetShiny = settings.SetShiny;
-            ModLogic.SetAlpha = settings.SetAlpha;
-            ModLogic.NativeOnly = settings.NativeOnly;
+            ModLogic.cfg = new LivingDexConfig
+            {
+                IncludeForms = settings.IncludeForms,
+                SetShiny = settings.SetShiny,
+                SetAlpha = settings.SetAlpha,
+                NativeOnly = settings.NativeOnly,
+            };
 
             if (APILegality.UseCompetitiveMarkings)
                 MarkingApplicator.MarkingMethod = APILegality.CompetitiveMarking;
