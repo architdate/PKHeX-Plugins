@@ -66,8 +66,10 @@ namespace PKHeX.Core.AutoMod
 
         public static void SetAbility(PKM pk, IBattleTemplate set, AbilityPermission preference)
         {
-            if (pk.Ability != set.Ability && set.Ability != -1)
-                pk.SetAbility(set.Ability);
+            if (pk.Ability != set.Ability)
+                pk.RefreshAbility(pk is PK5 { HiddenAbility: true } ? 2 : pk.AbilityNumber >> 1);
+            if (pk.Ability != set.Ability && pk.Context >= EntityContext.Gen8 && set.Ability != -1)
+                pk.RefreshAbility(pk is PK5 { HiddenAbility: true } ? 2 : pk.PersonalInfo.GetIndexOfAbility(set.Ability));
 
             if (preference <= 0)
                 return;
