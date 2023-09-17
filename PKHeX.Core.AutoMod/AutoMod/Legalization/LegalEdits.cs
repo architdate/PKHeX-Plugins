@@ -78,13 +78,11 @@ namespace PKHeX.Core.AutoMod
         /// <param name="allValid">Set all valid ribbons only</param>
         public static void SetSuggestedRibbons(this PKM pk, IBattleTemplate set, IEncounterable enc, bool allValid = true)
         {
-            if (allValid)
-            {
-                RibbonApplicator.SetAllValidRibbons(pk);
-                if (pk is PK8 pk8 && pk8.Species != (int)Species.Shedinja && pk8.GetRandomValidMark(set, enc, out var mark))
-                    pk8.SetRibbonIndex(mark);
-            }
-            else RibbonApplicator.RemoveAllValidRibbons(pk);
+            if (!allValid)
+                return;
+            RibbonApplicator.SetAllValidRibbons(pk);
+            if (pk is PK8 pk8 && pk8.Species != (int)Species.Shedinja && pk8.GetRandomValidMark(set, enc, out var mark))
+                pk8.SetRibbonIndex(mark);
         }
     }
 }
