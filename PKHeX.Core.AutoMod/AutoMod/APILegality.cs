@@ -125,10 +125,8 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 if (EntityConverter.IsIncompatibleGB(pk, template.Japanese, pk.Japanese))
                     continue;
-                var isNative = enc.Generation == 8 && pk.IsNative;
-                if (isNative && pk is PK8 pk8 && LocationsHOME.IsLocationSWSH(pk8.Met_Location))
-                    isNative = false;
-                if (!isNative && !AllowHOMETransferGeneration)
+
+                if (HomeTrackerUtil.IsRequired(enc, pk) && !AllowHOMETransferGeneration)
                     continue;
 
                 // Apply final details
@@ -385,13 +383,6 @@ namespace PKHeX.Core.AutoMod
 
             // Don't process if the requested set is Alpha and the Encounter is not
             if (!IsRequestedAlphaValid(set, enc))
-                return false;
-
-            // Don't process if AllowHOMETransferGeneration is false but enc needs a tracker
-            var trackerrequired = enc is EncounterSlot8GO or WC8 { IsHOMEGift: true } 
-                                  or WB8 { IsHOMEGift: true } or WA8 { IsHOMEGift: true }
-                                  or WC9 { IsHOMEGift: true };
-            if (trackerrequired && !AllowHOMETransferGeneration)
                 return false;
 
             // Don't process if the gender does not match the set
