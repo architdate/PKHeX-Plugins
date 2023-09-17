@@ -362,7 +362,7 @@ namespace PKHeX.Core.AutoMod
                     pk.HeldItem = 2408;
                     break;
                 case Species.Ogerpon when pk.Form == 3 && pk.HeldItem != 2406:
-                    pk.HeldItem = 2409;
+                    pk.HeldItem = 2406;
                     break;
             }
         }
