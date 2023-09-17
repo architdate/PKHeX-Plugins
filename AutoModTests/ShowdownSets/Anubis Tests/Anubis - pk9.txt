@@ -18319,3 +18319,92 @@ Hasty Nature
 - Shadow Ball
 - Hex
 - Power Gem
+
+Munchlax (M)
+IVs: 20 HP / 3 Atk / 18 Def / 22 SpA / 23 SpD / 6 Spe
+Ability: Gluttony
+Tera Type: Normal
+Level: 1
+Shiny: Square
+Impish Nature
+~=Level=1
+~=Location=142
+~=Version=SV
+.Version=50
+- Tackle
+- Lick
+
+Ogerpon-Wellspring (F) @ Wellspring Mask
+IVs: 20 Def / 20 SpA / 20 SpD
+Ability: Water Absorb
+Tera Type: Water
+Level: 70
+Lonely Nature
+Ball: Master Ball
+~=Location=146
+~=Version=SV
+.Version=50
+- Ivy Cudgel
+- Low Kick
+- Slam
+- Grassy Terrain
+
+Ogerpon (F)
+IVs: 20 Def / 20 SpA / 20 SpD
+Ability: Defiant
+Tera Type: Grass
+Level: 20
+Jolly Nature
+Ball: Master Ball
+~=Location=146
+~=Version=SV
+.Version=50
+- Ivy Cudgel
+- Slam
+- Growth
+- Vine Whip
+
+Fezandipiti (M)
+IVs: 5 SpA
+Ability: Technician
+Tera Type: Poison
+Level: 86
+Jolly Nature
+=Met_Level=70
+~=Location=144
+~=Version=VL
+- Brave Bird
+- Tera Blast
+- Acrobatics
+- Wing Attack
+
+Mew
+IVs: 20 HP / 26 Def / 0 Spe
+Ability: Synchronize
+Tera Type: Steel
+Level: 5
+Quiet Nature
+=FatefulEncounter=True
+~=Location=40001
+=TeraTypeOriginal=Steel
+~=Version=SV
+.Version=50
+- Flash Cannon
+- Swift
+- Light Screen
+- Life Dew
+
+Zoroark-Hisui (M)
+IVs: 30 HP / 13 Atk / 21 Def
+Ability: Illusion
+Tera Type: Dark
+Level: 50
+Naughty Nature
+Ball: Cherish Ball
+~=Location=40001
+~=Version=SV
+.Version=50
+- Happy Hour
+- Bitter Malice
+- Nasty Plot
+- Tera Blast
