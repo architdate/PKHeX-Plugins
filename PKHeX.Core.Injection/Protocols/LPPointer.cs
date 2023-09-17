@@ -22,7 +22,7 @@ namespace PKHeX.Core.Injection
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[[main+4622A30]+198]]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[[main+4622A30]+198]+C8]+40" },
-            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[[main+4622A30]+198]+80]+40" },
+            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[[main+4622A30]+198]+88]+40" },
         };
 
         public static readonly BlockData[] Blocks_SV_v132 =
