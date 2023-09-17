@@ -691,6 +691,7 @@ namespace AutoModPlugins
                 var s = txt switch
                 {
                     "Raid" => cc.Controls.Find("B_Raids", true)[0],
+                    "RaidKitakami" => cc.Controls.Find("B_Raids", true)[0],
                     "RaidArmor" => cc.Controls.Find("B_RaidArmor", true)[0],
                     _ => sender,
                 };

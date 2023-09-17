@@ -361,7 +361,7 @@ namespace PKHeX.Core.AutoMod
                 case Species.Ogerpon when pk.Form == 2 && pk.HeldItem != 2408:
                     pk.HeldItem = 2408;
                     break;
-                case Species.Ogerpon when pk.Form == 3 && pk.HeldItem != 2409:
+                case Species.Ogerpon when pk.Form == 3 && pk.HeldItem != 2406:
                     pk.HeldItem = 2409;
                     break;
             }

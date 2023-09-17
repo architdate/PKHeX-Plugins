@@ -23,6 +23,7 @@ namespace PKHeX.Core.Injection
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[[main+4622A30]+198]]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[[main+4622A30]+198]+C8]+40" },
             new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[[main+4622A30]+198]+88]+40" },
+            new() { Name = "KTeraRaids", Display = "RaidKitakami", SCBKey = 0xCAAC8800, Pointer = "[[[main+4622A30]+198]+88]+CC8"}
         };
 
         public static readonly BlockData[] Blocks_SV_v132 =
@@ -137,6 +138,7 @@ namespace PKHeX.Core.Injection
             { "Items", "B_OpenItemPouch_Click" },
             { "Pokedex", "B_OpenPokedex_Click" },
             { "Raid", "B_OpenRaids_Click" },
+            { "RaidKitakami", "B_OpenRaids_Click" },
             //{ "Trainer Data", "B_OpenTrainerInfo_Click" },
         };
 
