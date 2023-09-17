@@ -131,7 +131,7 @@ namespace PKHeX.Core.AutoMod
             }
 
             pk.SetSuggestedFormArgument(enc.Species);
-            if (evolutionRequired || formchange)
+            if (evolutionRequired || formchange || pk.Ability != set.Ability)
             {
                 var abilitypref = enc.Ability;
                 SetAbility(pk, set, abilitypref);
