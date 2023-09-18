@@ -22,43 +22,43 @@ namespace PKHeX.Core.Injection
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[[main+4622A30]+198]]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[[main+4622A30]+198]+C8]+40" },
-            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[[main+4622A30]+198]+88]+40" },
-            new() { Name = "KTeraRaids", Display = "RaidKitakami", SCBKey = 0xCAAC8800, Pointer = "[[[main+4622A30]+198]+88]+CC8"}
+            new() { Name = "KTeraRaidPaldea", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[[main+4622A30]+198]+88]+40" },
+            new() { Name = "KTeraRaidKitakami", Display = "RaidKitakami", SCBKey = 0x100B93DA, Pointer = "[[[main+4622A30]+198]+88]+CD8"}
         };
 
         public static readonly BlockData[] Blocks_SV_v132 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+44C1C18]+100]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+44C1C18]+1B0]+40" },
-            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+44C1C18]+180]+40" },
+            new() { Name = "KTeraRaidPaldea", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+44C1C18]+180]+40" },
         };
 
         public static readonly BlockData[] Blocks_SV_v130 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+44BFBA8]+100]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+44BFBA8]+1B0]+40" },
-            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+44BFBA8]+180]+40" },
+            new() { Name = "KTeraRaidPaldea", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+44BFBA8]+180]+40" },
         };
 
         public static readonly BlockData[] Blocks_SV_v120 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+44A98C8]+100]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+44A98C8]+1B0]+40" },
-            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+44A98C8]+180]+40" },
+            new() { Name = "KTeraRaidPaldea", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+44A98C8]+180]+40" },
         };
 
         public static readonly BlockData[] Blocks_SV_v101 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+42DA8E8]+148]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+42DA8E8]+1B0]+40" },
-            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+42DA8E8]+180]+40" },
+            new() { Name = "KTeraRaidPaldea", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+42DA8E8]+180]+40" },
         };
 
         public static readonly BlockData[] Blocks_SV_v110 =
         {
             new() { Name = "MyStatus", Display = "Trainer Data", SCBKey = 0xE3E89BD1, Pointer = "[[main+4384B18]+148]+40" },
             new() { Name = "KItem", Display = "Items", SCBKey = 0x21C9BD44, Pointer = "[[main+4384B18]+1B0]+40" },
-            new() { Name = "KTeraRaids", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+4384B18]+180]+40" },
+            new() { Name = "KTeraRaidPaldea", Display = "Raid", SCBKey = 0xCAAC8800, Pointer = "[[main+4384B18]+180]+40" },
         };
 
         public static readonly BlockData[] Blocks_LA_v100 =
