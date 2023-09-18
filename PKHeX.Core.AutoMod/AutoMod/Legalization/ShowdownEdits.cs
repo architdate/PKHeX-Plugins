@@ -1,7 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -17,7 +17,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM whose gender needs to be toggled</param>
         /// <param name="set">Showdown Set for Gender reference</param>
-        public static void FixGender(this PKM pk, IBattleTemplate set)
+        public static void FixGender(this PKM pk, IBattleTemplate set, List<ALMTraceback> tb)
         {
             pk.ApplySetGender(set);
             var la = new LegalityAnalysis(pk);
@@ -30,6 +30,7 @@ namespace PKHeX.Core.AutoMod
 
             if (pk.Gender is not 0 and not 1)
                 pk.Gender = pk.GetSaneGender();
+            tb.Add(new() { Identifier = TracebackType.Gender, Comment = $"Set Sane Gender as {(Gender)pk.Gender}" });
         }
 
         public static void SetNature(PKM pk, IBattleTemplate set, IEncounterable enc)
@@ -100,20 +101,27 @@ namespace PKHeX.Core.AutoMod
         /// <param name="Form">Form to apply</param>
         /// <param name="enc">Encounter detail</param>
         /// <param name="lang">Language to apply</param>
-        public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, byte Form, IEncounterable enc, LanguageID? lang = null)
+        public static void SetSpeciesLevel(this PKM pk, IBattleTemplate set, byte Form, IEncounterable enc, LanguageID? lang, List<ALMTraceback> tb)
         {
             pk.ApplySetGender(set);
-            pk.SetRecordFlags(set.Moves); // Set record flags before evolution (TODO: what if middle evolution has exclusive record moves??)
+            pk.SetRecordFlags(set.Moves, tb); // Set record flags before evolution (TODO: what if middle evolution has exclusive record moves??)
 
             var evolutionRequired = enc.Species != set.Species;
             var formchange = Form != pk.Form;
             if (evolutionRequired)
+            {
+                tb.Add(new() { Identifier = TracebackType.Species, Comment = $"Evolve Pre-Evolution to {set.Species}" });
                 pk.Species = set.Species;
+            }
             if (formchange)
+            {
+                tb.Add(new() { Identifier = TracebackType.Form, Comment = $"Fix Form to {Form}" });
                 pk.Form = Form;
+            }
 
             if ((evolutionRequired || formchange) && pk is IScaledSizeValue sv)
             {
+                tb.Add(new() { Identifier = TracebackType.Size, Comment = "Fix Evolution Height/Weight" });
                 sv.HeightAbsolute = sv.CalcHeightAbsolute;
                 sv.WeightAbsolute = sv.CalcWeightAbsolute;
             }
@@ -125,7 +133,10 @@ namespace PKHeX.Core.AutoMod
                 {
                     var result = EvolutionMethod.GetAmpLowKeyResult(pk.Nature);
                     if (result == pk.Form)
+                    {
+                        tb.Add(new() { Identifier = TracebackType.Nature, Comment = "Toxtricity Nature Reroll" });
                         break;
+                    }
                     pk.Nature = Util.Rand.Next(25);
                 }
             }
@@ -133,6 +144,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedFormArgument(enc.Species);
             if (evolutionRequired || formchange || pk.Ability != set.Ability)
             {
+                tb.Add(new() { Identifier = TracebackType.Ability, Comment = $"Set Ability after evolution to {set.Ability}" });
                 var abilitypref = enc.Ability;
                 SetAbility(pk, set, abilitypref);
             }
@@ -168,6 +180,7 @@ namespace PKHeX.Core.AutoMod
                 var nick = et.GetNickname(pk.Language);
                 if (nick != null)
                 {
+                    tb.Add(new() { Identifier = TracebackType.Encounter, Comment = $"Encounter Fixed Nickname set to {nick}" });
                     pk.Nickname = nick;
                     return;
                 }
@@ -249,11 +262,14 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">PKM to modify</param>
         /// <param name="set">Showdown Set to refer</param>
         /// <param name="enc">Encounter to reference</param>
-        public static void SetMovesEVs(this PKM pk, IBattleTemplate set, IEncounterable enc)
+        public static void SetMovesEVs(this PKM pk, IBattleTemplate set, IEncounterable enc, List<ALMTraceback> tb)
         {
             // If no moves are requested, just keep the encounter moves
             if (set.Moves[0] != 0)
+            {
+                tb.Add(new() { Identifier = TracebackType.Moves, Comment = $"Set Requested Moves: {set.Moves}" });
                 pk.SetMoves(set.Moves, pk is not PA8);
+            }
 
             var la = new LegalityAnalysis(pk);
             // Remove invalid encounter moves (eg. Kyurem Encounter -> Requested Kyurem black)
@@ -263,6 +279,7 @@ namespace PKHeX.Core.AutoMod
                 la.GetSuggestedCurrentMoves(moves);
                 pk.SetMoves(moves, pk is not PA8);
                 pk.FixMoves();
+                tb.Add(new() { Identifier = TracebackType.Moves, Comment = "Fix Invalid Moves based on suggested moves" });
             }
 
             if (la.Parsed && !pk.FatefulEncounter)
@@ -272,14 +289,19 @@ namespace PKHeX.Core.AutoMod
                 la.GetSuggestedRelearnMoves(moves, enc);
                 pk.ClearRelearnMoves();
                 pk.SetRelearnMoves(moves);
+                tb.Add(new() { Identifier = TracebackType.Moves, Comment = "Set Relearn Moves for encounter" });
             }
             la = new LegalityAnalysis(pk);
             if (la.Info.Relearn.Any(z => z.Judgement == Severity.Invalid))
+            {
                 pk.ClearRelearnMoves();
+                tb.Add(new() { Identifier = TracebackType.Moves, Comment = "Clear Invalid Relean Moves" });
+            }
 
             if (pk is IAwakened)
             {
                 pk.SetAwakenedValues(set);
+                tb.Add(new() { Identifier = TracebackType.AVs, Comment = "Set Awakened Values" });
                 return;
             }
             // In Generation 1/2 Format sets, when EVs are not specified at all, it implies maximum EVs instead!
@@ -287,10 +309,12 @@ namespace PKHeX.Core.AutoMod
             if (pk is GBPKM gb && set.EVs.All(z => z == 0))
             {
                 gb.EV_HP = gb.EV_ATK = gb.EV_DEF = gb.EV_SPC = gb.EV_SPE = gb.MaxEV;
+                tb.Add(new() { Identifier = TracebackType.EVs, Comment = "Set EVs for GBPKM" });
                 return;
             }
 
             pk.SetEVs(set.EVs);
+            tb.Add(new() { Identifier = TracebackType.EVs, Comment = "Set Requested EVs" });
         }
 
         /// <summary>
@@ -308,12 +332,14 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Pokemon to modify</param>
         /// <param name="set">IBattleset to grab the item</param>
-        public static void SetHeldItem(this PKM pk, IBattleTemplate set)
+        public static void SetHeldItem(this PKM pk, IBattleTemplate set, List<ALMTraceback> tb)
         {
             pk.ApplyHeldItem(set.HeldItem, set.Context);
             pk.FixInvalidFormItems(); // arceus, silvally, giratina, genesect fix
             if (!ItemRestrictions.IsHeldItemAllowed(pk) || pk is PB7)
                 pk.HeldItem = 0; // Remove the item if the item is illegal in its generation
+            if (set.HeldItem != pk.HeldItem)
+                tb.Add(new() { Identifier = TracebackType.Item, Comment = $"Modified item to {pk.HeldItem}"});
         }
 
         /// <summary>

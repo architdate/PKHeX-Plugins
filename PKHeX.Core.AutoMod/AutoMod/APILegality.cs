@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using static PKHeX.Core.AutoMod.TracebackType;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -41,9 +42,10 @@ namespace PKHeX.Core.AutoMod
         /// <param name="template">rough pkm that has all the <see cref="set"/> values entered</param>
         /// <param name="set">Showdown set object</param>
         /// <param name="satisfied">If the final result is legal or not</param>
-        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out LegalizationResult satisfied, bool nativeOnly = false)
+        public static PKM GetLegalFromTemplate(this ITrainerInfo dest, PKM template, IBattleTemplate set, out LegalizationResult satisfied, out List<ALMTraceback>? tb, bool nativeOnly = false)
         {
             RegenSet regen;
+            tb = null;
             if (set is RegenTemplate t)
             {
                 t.FixGender(template.PersonalInfo);
@@ -58,7 +60,7 @@ namespace PKHeX.Core.AutoMod
                 template.Version = dest.Game;
 
             template.ApplySetDetails(set);
-            template.SetRecordFlags(Array.Empty<ushort>()); // Validate TR/MS moves for the encounter
+            template.SetRecordFlags(Array.Empty<ushort>(), new List<ALMTraceback>()); // Validate TR/MS moves for the encounter
 
             if (template.Species == (ushort)Species.Unown) // Force unown form on template
                 template.Form = set.Form;
@@ -97,12 +99,14 @@ namespace PKHeX.Core.AutoMod
                 if (!IsEncounterValid(set, enc, abilityreq, destVer))
                     continue;
 
+                tb = new() { new() { Identifier = Encounter, Comment = $"Selected Encounter: {enc}" } };
                 if (enc is IFixedNature { IsFixedNature: true } fixedNature)
                     criteria = criteria with { Nature = Nature.Random };
                 criteria = SetSpecialCriteria(criteria, enc, set);
+                tb.Add(new() { Identifier = Encounter, Comment = criteria.ToString() });
 
                 // Create the PKM from the template.
-                var tr = SimpleEdits.IsUntradeableEncounter(enc) ? dest : GetTrainer(regen, enc, set);
+                var tr = SimpleEdits.IsUntradeableEncounter(enc) ? dest : GetTrainer(regen, enc, set, tb);
                 var raw = enc.GetPokemonFromEncounter(tr, criteria, set);
                 if (raw.OT_Name.Length == 0)
                 {
@@ -111,9 +115,9 @@ namespace PKHeX.Core.AutoMod
                 }
                 raw = raw.SanityCheckLocation(enc);
                 if (raw.IsEgg) // PGF events are sometimes eggs. Force hatch them before proceeding
-                    raw.HandleEggEncounters(enc, tr);
+                    raw.HandleEggEncounters(enc, tr, tb);
 
-                raw.PreSetPIDIV(enc, set, criteria);
+                raw.PreSetPIDIV(enc, set, criteria, tb);
 
                 // Transfer any VC1 via VC2, as there may be GSC exclusive moves requested.
                 if (dest.Generation >= 7 && raw is PK1 basepk1)
@@ -130,7 +134,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 // Apply final details
-                ApplySetDetails(pk, set, dest, enc, regen);
+                ApplySetDetails(pk, set, dest, enc, regen, tb);
 
                 // Apply final tweaks to the data.
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
@@ -315,7 +319,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="ver">Gameversion for the saved trainerdata</param>
         /// <param name="gen">Generation of the saved trainerdata</param>
         /// <returns>ITrainerInfo of the trainerdetails</returns>
-        private static ITrainerInfo GetTrainer(RegenSet regen, IEncounterable enc, IBattleTemplate set)
+        private static ITrainerInfo GetTrainer(RegenSet regen, IEncounterable enc, IBattleTemplate set, List<ALMTraceback>? tb = null)
         {
             var ver = enc.Version;
             var gen = enc.Generation;
@@ -326,6 +330,8 @@ namespace PKHeX.Core.AutoMod
             var idx = Array.IndexOf(nicknames, set.Nickname);
             if (idx > 0)
                 mutate = (LanguageID)idx;
+            if (mutate is not null && tb is not null)
+                tb.Add(new() { Identifier = Trainer, Comment = $"Mutated Language for Trainer to {nameof(mutate)}" });
 
             if (AllowTrainerOverride && regen.HasTrainerSettings && regen.Trainer != null)
                 return regen.Trainer.MutateLanguage(mutate, ver);
@@ -530,38 +536,38 @@ namespace PKHeX.Core.AutoMod
         /// <param name="handler">Trainer to handle the Pokémon</param>
         /// <param name="enc">Encounter details matched to the Pokémon</param>
         /// <param name="regen">Regeneration information</param>
-        private static void ApplySetDetails(PKM pk, IBattleTemplate set, ITrainerInfo handler, IEncounterable enc, RegenSet regen)
+        private static void ApplySetDetails(PKM pk, IBattleTemplate set, ITrainerInfo handler, IEncounterable enc, RegenSet regen, List<ALMTraceback> tb)
         {
             byte Form = set.Form;
             var language = regen.Extra.Language;
             var pidiv = MethodFinder.Analyze(pk);
 
-            pk.SetPINGA(set, pidiv.Type, set.HiddenPowerType, enc);
-            pk.SetSpeciesLevel(set, Form, enc, language);
+            pk.SetPINGA(set, pidiv.Type, set.HiddenPowerType, enc, tb);
+            pk.SetSpeciesLevel(set, Form, enc, language, tb);
             pk.SetDateLocks(enc);
-            pk.SetHeldItem(set);
+            pk.SetHeldItem(set, tb);
 
             // Actions that do not affect set legality
-            pk.SetHandlerandMemory(handler, enc);
-            pk.SetFriendship(enc);
-            pk.SetRecordFlags(set.Moves);
+            pk.SetHandlerandMemory(handler, enc, tb);
+            pk.SetFriendship(enc, tb);
+            pk.SetRecordFlags(set.Moves, tb);
 
             // Legality Fixing
-            pk.SetMovesEVs(set, enc);
-            pk.SetCorrectMetLevel();
-            pk.SetGVs();
-            pk.SetHyperTrainingFlags(set, enc); // Hypertrain
-            pk.SetEncryptionConstant(enc);
-            pk.SetShinyBoolean(set.Shiny, enc, regen.Extra.ShinyType);
-            pk.FixGender(set);
+            pk.SetMovesEVs(set, enc, tb);
+            pk.SetCorrectMetLevel(tb);
+            pk.SetGVs(tb);
+            pk.SetHyperTrainingFlags(set, enc, tb); // Hypertrain
+            pk.SetEncryptionConstant(enc, tb);
+            pk.SetShinyBoolean(set.Shiny, enc, regen.Extra.ShinyType, tb);
+            pk.FixGender(set, tb);
 
             // Final tweaks
-            pk.SetGimmicks(set);
+            pk.SetGimmicks(set, tb);
             pk.SetGigantamaxFactor(set, enc);
             pk.SetSuggestedRibbons(set, enc, SetAllLegalRibbons);
             pk.SetBelugaValues();
             pk.SetSuggestedContestStats(enc);
-            pk.FixEdgeCases(enc);
+            pk.FixEdgeCases(enc, tb);
 
             // Aesthetics
             pk.ApplyHeightWeight(enc);
@@ -652,7 +658,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">passed pkm object</param>
         /// <param name="set">showdown set to base hypertraining on</param>
-        private static void SetHyperTrainingFlags(this PKM pk, IBattleTemplate set, IEncounterable enc)
+        private static void SetHyperTrainingFlags(this PKM pk, IBattleTemplate set, IEncounterable enc, List<ALMTraceback> tb)
         {
             if (pk is not IHyperTrain t || pk.Species == (ushort)Species.Stakataka)
                 return;
@@ -662,19 +668,23 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             pk.HyperTrain(set.IVs);
+            tb.Add(new() { Identifier = HyperTrain, Comment = "HyperTrain IVs" });
 
             // Handle special cases here for ultrabeasts
             switch (pk.Species)
             {
                 case (int)Species.Kartana when pk.Nature == (int)Nature.Timid && set.IVs[1] <= 21: // Speed boosting Timid Kartana ATK IVs <= 19
                     t.HT_ATK = false;
+                    tb.Add(new() { Identifier = HyperTrain, Comment = "Remove ATK HyperTrain for Special Kartana" });
                     break;
                 case (int)Species.Stakataka when pk.StatNature == (int)Nature.Lonely && set.IVs[2] <= 17: // Atk boosting Lonely Stakataka DEF IVs <= 15
                     t.HT_DEF = false;
+                    tb.Add(new() { Identifier = HyperTrain, Comment = "Remove DEF HyperTrain for Special Stakataka" });
                     break;
                 case (int)Species.Pyukumuku when set.IVs[2] == 0 && set.IVs[5] == 0 && pk.Ability == (int)Ability.InnardsOut: // 0 Def / 0 Spd Pyukumuku with innards out
                     t.HT_DEF = false;
                     t.HT_SPD = false;
+                    tb.Add(new() { Identifier = HyperTrain, Comment = "Remove DEF, SPD HyperTrain for Special Pyukumuku" });
                     break;
             }
         }
@@ -738,11 +748,13 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pkm distributed as an egg</param>
         /// <param name="enc">encounter detail</param>
         /// <param name="tr">save file</param>
-        private static void HandleEggEncounters(this PKM pk, IEncounterable enc, ITrainerInfo tr)
+        private static void HandleEggEncounters(this PKM pk, IEncounterable enc, ITrainerInfo tr, List<ALMTraceback>? tb = null)
         {
             if (!pk.IsEgg)
                 return; // should be checked before, but condition added for future usecases
             // Handle egg encounters. Set them as traded and force hatch them before proceeding
+            if (tb is not null)
+                tb.Add(new() { Identifier = Encounter, Comment = "Force hatched egg encounter" });
             pk.ForceHatchPKM();
             if (enc is MysteryGift { IsEgg: true })
             {
@@ -763,7 +775,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="method"></param>
         /// <param name="hpType"></param>
         /// <param name="enc"></param>
-        private static void SetPINGA(this PKM pk, IBattleTemplate set, PIDType method, int hpType, IEncounterable enc)
+        private static void SetPINGA(this PKM pk, IBattleTemplate set, PIDType method, int hpType, IEncounterable enc, List<ALMTraceback> tb)
         {
             var ivprop = enc.GetType().GetProperty("IVs");
             if (enc is not EncounterStatic4Pokewalker && enc.Generation > 2)
@@ -786,14 +798,20 @@ namespace PKHeX.Core.AutoMod
                     ivs[i] = mg.IVs[i] > 31 ? set.IVs[i] : mg.IVs[i];
                 pk.IVs = ivs;
                 if (enc.Generation is not (3 or 4))
+                {
+                    tb.Add(new() { Identifier = PID_IV, Comment = "Mystery Gift Encounter (not Gen 3/4), early return" });
                     return;
+                }
             }
 
             if (ivprop != null && ivprop.PropertyType == typeof(IndividualValueSet))
             {
                 var ivset = ivprop.GetValue(enc);
                 if (ivset != null && ((IndividualValueSet)ivset).IsSpecified)
+                {
+                    tb.Add(new() { Identifier = PID_IV, Comment = "Fixed IV Encounter, early return" });
                     return;
+                }
             }
 
             if (enc.Generation is not (3 or 4))
@@ -801,9 +819,11 @@ namespace PKHeX.Core.AutoMod
                 pk.IVs = set.IVs;
                 if (pk is IAwakened)
                 {
+                    tb.Add(new() { Identifier = PID_IV, Comment = "IAwakened Encounter, early return" });
                     pk.SetAwakenedValues(set);
                     return;
                 }
+                tb.Add(new() { Identifier = PID_IV, Comment = "Newer Generation Encounter, early return" });
                 return;
             }
             // TODO: Something about the gen 5 events. Maybe check for nature and shiny val and not touch the PID in that case?
@@ -819,10 +839,11 @@ namespace PKHeX.Core.AutoMod
                 case EncounterTrade3:
                 case EncounterTrade4PID:
                 case EncounterTrade4RanchGift:
+                    tb.Add(new() { Identifier = PID_IV, Comment = "Encounter Trade IVs, early return" });
                     ShowdownEdits.SetEncounterTradeIVs(pk);
                     return; // Fixed PID, no need to mutate
                 default:
-
+                    tb.Add(new() { Identifier = PID_IV, Comment = $"Finding PID_IV with Method: {method}" });
                     FindPIDIV(pk, method, hpType, set.Shiny, enc, set);
                     ValidateGender(pk);
                     break;
@@ -844,11 +865,12 @@ namespace PKHeX.Core.AutoMod
         /// Set Ganbaru Values after IVs are fully set
         /// </summary>
         /// <param name="pk">PKM to set GVs on</param>
-        private static void SetGVs(this PKM pk)
+        private static void SetGVs(this PKM pk, List<ALMTraceback> tb)
         {
             if (pk is not IGanbaru g)
                 return;
             g.SetSuggestedGanbaruValues(pk);
+            tb.Add(new() { Identifier = TracebackType.PID_IV, Comment = "Set Ganbaru Values" });
         }
 
         /// <summary>
@@ -857,10 +879,12 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokemon to be edited</param>
         /// <param name="enc">Raid encounter encounterable</param>
         /// <param name="set">Set to pass in requested IVs</param>
-        private static void PreSetPIDIV(this PKM pk, IEncounterable enc, IBattleTemplate set, EncounterCriteria criteria)
+        private static void PreSetPIDIV(this PKM pk, IEncounterable enc, IBattleTemplate set, EncounterCriteria criteria, List<ALMTraceback> tb)
         {
+            var ivsetfor = string.Empty;
             if (enc is ITeraRaid9)
             {
+                ivsetfor = nameof(ITeraRaid9);
                 var pk9 = (PK9)pk;
                 switch (enc)
                 {
@@ -874,10 +898,12 @@ namespace PKHeX.Core.AutoMod
             else if (enc is EncounterStatic8U && set.Shiny)
             {
                 // Dynamax Adventure shinies are always XOR 1 (thanks santacrab!)
+                ivsetfor = nameof(EncounterStatic8U);
                 pk.PID = SimpleEdits.GetShinyPID(pk.TID16, pk.SID16, pk.PID, 1);
             }
             else if (enc is IOverworldCorrelation8 eo)
             {
+                ivsetfor = nameof(IOverworldCorrelation8);
                 var flawless = 0;
                 if (enc is EncounterStatic8 estatic8)
                 {
@@ -914,6 +940,7 @@ namespace PKHeX.Core.AutoMod
             }
             else if (enc is IStaticCorrelation8b esc)
             {
+                ivsetfor = nameof(IStaticCorrelation8b);
                 var flawless = 0;
                 if (enc is EncounterStatic8b estatic8b)
                     flawless = estatic8b.FlawlessIVCount;
@@ -932,6 +959,7 @@ namespace PKHeX.Core.AutoMod
             }
             else if (enc is EncounterEgg && GameVersion.BDSP.Contains(enc.Version))
             {
+                ivsetfor = nameof(EncounterEgg) + " (BDSP)";
                 pk.IVs = set.IVs;
                 Shiny shiny;
                 if (set is RegenTemplate r)
@@ -940,6 +968,8 @@ namespace PKHeX.Core.AutoMod
                     shiny = set.Shiny ? Shiny.Always : Shiny.Never;
                 FindEggPIDIV8b(pk, shiny, set.Gender);
             }
+            if (tb is not null && ivsetfor != string.Empty)
+                tb.Add(new() { Identifier = PID_IV, Comment = $"PreSet PID and IVs for encounter type: {ivsetfor}" });
         }
 
         private static void FindTeraPIDIV<T>(PK9 pk, T enc, IBattleTemplate set, EncounterCriteria criteria) where T : ITeraRaid9, IEncounterTemplate
@@ -1343,7 +1373,7 @@ namespace PKHeX.Core.AutoMod
         /// Method to get the correct met level for a pokemon. Move up the met level till all moves are legal
         /// </summary>
         /// <param name="pk">pokemon</param>
-        public static void SetCorrectMetLevel(this PKM pk)
+        public static void SetCorrectMetLevel(this PKM pk, List<ALMTraceback> tb)
         {
             var lvl = pk.CurrentLevel;
             if (pk.Met_Level > lvl)
@@ -1357,7 +1387,10 @@ namespace PKHeX.Core.AutoMod
             {
                 var la = new LegalityAnalysis(pk);
                 if (la.Info.Moves.All(z => z.Valid))
+                {
+                    tb.Add(new() { Identifier = Level, Comment = $"Set Level where all moves are valid: {pk.Met_Level}" });
                     return;
+                }
                 pk.Met_Level++;
             }
             pk.Met_Level = level; // Set back to normal if nothing legalized
@@ -1368,7 +1401,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Pokemon to edit</param>
         /// <param name="enc">Encounter the <see cref="pk"/> originated rom</param>
-        private static void FixEdgeCases(this PKM pk, IEncounterable enc)
+        private static void FixEdgeCases(this PKM pk, IEncounterable enc, List<ALMTraceback> tb)
         {
             if (pk.Nickname.Length == 0)
                 pk.ClearNickname();
@@ -1380,19 +1413,29 @@ namespace PKHeX.Core.AutoMod
                 if (pk.Format != 4)
                     return;
                 pk.Met_Location = pk.HGSS ? Locations.HatchLocationHGSS : Locations.HatchLocationDPPt;
+                tb.Add(new() { Identifier = Misc, Comment = $"Fix Met Location for Shiny Manaphy Egg" });
             }
 
             // CXD only has a male trainer
             if (pk.Version == (int)GameVersion.CXD && pk.OT_Gender == (int)Gender.Female) // Colosseum and XD are sexist games.
+            {
                 pk.OT_Gender = (int)Gender.Male;
+                tb.Add(new() { Identifier = TracebackType.Gender, Comment = $"Fix OT Gender for Colosseum/XD" });
+            }
 
             // VC Games are locked to console region (modify based on language)
             if (pk is PK7 { Generation: <= 2 } pk7)
+            {
                 pk7.FixVCRegion();
+                tb.Add(new() { Identifier = Misc, Comment = $"Fix VC Region based on Language" });
+            }
 
             // Vivillon pattern fixes if necessary
             if (pk is IGeoTrack && pk.Species is (int)Species.Vivillon or (int)Species.Spewpa or (int)Species.Scatterbug)
+            {
                 pk.FixVivillonRegion();
+                tb.Add(new() { Identifier = Misc, Comment = $"Fix Vivillon Region" });
+            }
         }
 
         /// <summary>
@@ -1499,14 +1542,14 @@ namespace PKHeX.Core.AutoMod
                 try
                 {
                     if (!EnableDevMode && ALMVersion.GetIsMismatch())
-                        return new(template, LegalizationResult.VersionMismatch);
+                        return new(template, LegalizationResult.VersionMismatch, null);
 
-                    var res = dest.GetLegalFromTemplate(template, set, out var s, nativeOnly);
-                    return new AsyncLegalizationResult(res, s);
+                    var res = dest.GetLegalFromTemplate(template, set, out var s, out var traceback, nativeOnly);
+                    return new AsyncLegalizationResult(res, s, traceback);
                 }
                 catch (MissingMethodException)
                 {
-                    return new AsyncLegalizationResult(template, LegalizationResult.VersionMismatch);
+                    return new AsyncLegalizationResult(template, LegalizationResult.VersionMismatch, null);
                 }
             }
 
@@ -1530,11 +1573,13 @@ namespace PKHeX.Core.AutoMod
         {
             public readonly PKM Created;
             public readonly LegalizationResult Status;
+            public readonly IEnumerable<ALMTraceback>? Traceback;
 
-            public AsyncLegalizationResult(PKM pk, LegalizationResult res)
+            public AsyncLegalizationResult(PKM pk, LegalizationResult res, IEnumerable<ALMTraceback>? traceback)
             {
                 Created = pk;
                 Status = res;
+                Traceback = traceback;
             }
         }
 
