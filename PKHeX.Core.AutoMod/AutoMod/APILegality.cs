@@ -263,9 +263,10 @@ namespace PKHeX.Core.AutoMod
             if (batchEdit && set is RegenTemplate { Regen.VersionFilters: { Count: not 0 } x } && TryGetSingleVersion(x, out var single))
                 return single;
 
+            var versionlist = GameUtil.GetVersionsWithinRange(template, template.Format);
             var gamelist = !nativeOnly
-                           ? GameUtil.GetVersionsWithinRange(template, template.Format).OrderByDescending(c => c.GetGeneration()).ToArray()
-                           : GetPairedVersions(destVer);
+                           ? versionlist.OrderByDescending(c => c.GetGeneration()).ToArray()
+                           : GetPairedVersions(destVer, versionlist);
 
             if (PrioritizeGame && !nativeOnly)
                 gamelist = PrioritizeGameVersion == GameVersion.Any ? PrioritizeVersion(gamelist, SimpleEdits.GetIsland(destVer)) : PrioritizeVersion(gamelist, PrioritizeGameVersion);
@@ -1589,7 +1590,7 @@ namespace PKHeX.Core.AutoMod
             return await task.ConfigureAwait(false); // will re-fire exception if present
         }
 
-        private static GameVersion[] GetPairedVersions(GameVersion version)
+        private static GameVersion[] GetPairedVersions(GameVersion version, IEnumerable<GameVersion> versionlist)
         {
             var group = version switch
             {
@@ -1597,25 +1598,10 @@ namespace PKHeX.Core.AutoMod
                 _ => GameUtil.GetMetLocationVersionGroup(version),
             };
 
-            return group switch
-            {
-                GameVersion.RBY => new[] { GameVersion.RD, GameVersion.GN, GameVersion.BU, GameVersion.YW },
-                GameVersion.RSE => new[] { GameVersion.R, GameVersion.S, GameVersion.E },
-                GameVersion.FRLG => new[] { GameVersion.SL, GameVersion.VL },
-                GameVersion.DPPt => new[] { GameVersion.D, GameVersion.P, GameVersion.Pt },
-                GameVersion.HGSS => new[] { GameVersion.HG, GameVersion.SS },
-                GameVersion.BW => new[] { GameVersion.B, GameVersion.W },
-                GameVersion.B2W2 => new[] { GameVersion.B2, GameVersion.W2 },
-                GameVersion.XY => new[] { GameVersion.X, GameVersion.Y },
-                GameVersion.ORAS => new[] { GameVersion.OR, GameVersion.AS },
-                GameVersion.SM => new[] { GameVersion.SN, GameVersion.MN },
-                GameVersion.USUM => new[] { GameVersion.US, GameVersion.UM },
-                GameVersion.GG => new[] { GameVersion.GP, GameVersion.GE },
-                GameVersion.SWSH => new[] { GameVersion.SW, GameVersion.SH },
-                GameVersion.BDSP => new[] { GameVersion.BD, GameVersion.SP },
-                GameVersion.SV => new[] { GameVersion.SL, GameVersion.VL },
-                _ => new[] { version },
-            };
+            var res = group.GetVersionsWithinRange(versionlist.ToArray());
+            if (res.Length > 0)
+                return res;
+            return new[] { version };
         }
     }
 }
