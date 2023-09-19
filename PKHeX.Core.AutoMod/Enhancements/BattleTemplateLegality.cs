@@ -20,6 +20,7 @@ namespace PKHeX.Core.AutoMod
         public static string BALL_INVALID { get; set; } = "{0} Ball is not possible for the given set.";
         public static string ONLY_HIDDEN_ABILITY_AVAILABLE { get; set; } = "You can only obtain {0} with hidden ability in this game.";
         public static string HIDDEN_ABILITY_UNAVAILABLE { get; set; } = "You cannot obtain {0} with hidden ability in this game.";
+        public static string HOME_TRANSFER_ONLY { get; set; } = "{0} is only available in this game through Home Transfer.";
 
         public static string SetAnalysis(this IBattleTemplate set, ITrainerInfo sav, PKM failed)
         {
@@ -104,6 +105,14 @@ namespace PKHeX.Core.AutoMod
                 return string.Format(ONLY_HIDDEN_ABILITY_AVAILABLE, species_name);
             if (abilityreq == AbilityRequest.Hidden && encounters.All(z => z.Generation is 3 or 4) && destVer.GetGeneration() < 8)
                 return string.Format(HIDDEN_ABILITY_UNAVAILABLE, species_name);
+
+            //Home Checks
+            if (!APILegality.AllowHOMETransferGeneration)
+            {
+                if (encounters.All(z => HomeTrackerUtil.IsRequired(z, failed)))
+                    return string.Format(HOME_TRANSFER_ONLY, species_name);
+                encounters.RemoveAll(enc => HomeTrackerUtil.IsRequired(enc, failed));
+            }
 
             // Ball checks
             if (set is RegenTemplate regt && regt.Regen.HasExtraSettings)
