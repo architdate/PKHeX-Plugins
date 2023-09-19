@@ -453,13 +453,16 @@ namespace PKHeX.Core.AutoMod
                 pkm.HT_Language = prefer;
         }
 
-        public static void SetGigantamaxFactor(this PKM pk, IBattleTemplate set, IEncounterable enc)
+        public static void SetGigantamaxFactor(this PKM pk, IBattleTemplate set, IEncounterable enc, List<ALMTraceback> tb)
         {
             if (pk is not IGigantamax gmax || gmax.CanGigantamax == set.CanGigantamax)
                 return;
 
             if (gmax.CanToggleGigantamax(pk.Species, pk.Form, enc.Species, enc.Form))
+            {
                 gmax.CanGigantamax = set.CanGigantamax; // soup hax
+                tb.Add(new() { Identifier = TracebackType.Misc, Comment = $"Add gigantamax factor through GMax soup" });
+            }
         }
 
         public static void SetGimmicks(this PKM pk, IBattleTemplate set, List<ALMTraceback> tb)
@@ -727,7 +730,7 @@ namespace PKHeX.Core.AutoMod
             _ => false,
         };
 
-        public static void SetRecordFlags(this PKM pk, ushort[] moves, List<ALMTraceback> tb)
+        public static void SetRecordFlags(this PKM pk, ushort[] moves, List<ALMTraceback>? tb = null)
         {
             if (pk is ITechRecord tr and not PA8)
             {
@@ -742,13 +745,15 @@ namespace PKHeX.Core.AutoMod
                             tr.SetMoveRecordFlag(i);
                     }
                 }
-                tb.Add(new() { Identifier = TracebackType.Moves, Comment = "Set Record flags (not PA8)" });
+                if (tb != null)
+                    tb.Add(new() { Identifier = TracebackType.Moves, Comment = "Set Record flags (not PA8)" });
                 return;
             }
 
             if (pk is IMoveShop8Mastery master) 
             {
-                tb.Add(new() { Identifier = TracebackType.Moves, Comment = "Set Move Shop Mastery Flags" });
+                if (tb != null)
+                    tb.Add(new() { Identifier = TracebackType.Moves, Comment = "Set Move Shop Mastery Flags" });
                 MoveShopRecordApplicator.SetMoveShopFlags(master, pk);
             }
         }

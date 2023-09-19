@@ -23,7 +23,6 @@ namespace PKHeX.Core.AutoMod
 
         public static string SetAnalysis(this IBattleTemplate set, ITrainerInfo sav, PKM failed)
         {
-            var tb = new List<ALMTraceback>();
             if (failed.Version == 0)
                 failed.Version = sav.Game;
             var species_name = SpeciesName.GetSpeciesNameGeneration(set.Species, (int)LanguageID.English, sav.Generation);
@@ -60,7 +59,7 @@ namespace PKHeX.Core.AutoMod
 
             ushort[] original_moves = new ushort[4];
             set.Moves.CopyTo(original_moves, 0);
-            ushort[] successful_combination = GetValidMoves(set, sav, move_combinations, failed, gamelist, tb);
+            ushort[] successful_combination = GetValidMoves(set, sav, move_combinations, failed, gamelist);
             if (!new HashSet<ushort>(original_moves.Where(z => z != 0)).SetEquals(successful_combination))
             {
                 var invalid_moves = string.Join(", ", original_moves.Where(z => !successful_combination.Contains(z) && z != 0).Select(z => $"{(Move)z}"));
@@ -70,7 +69,7 @@ namespace PKHeX.Core.AutoMod
             // All moves possible, get encounters
             failed.ApplySetDetails(set);
             failed.SetMoves(original_moves);
-            failed.SetRecordFlags(Array.Empty<ushort>(), tb);
+            failed.SetRecordFlags(Array.Empty<ushort>());
 
             var encounters = EncounterMovesetGenerator.GenerateEncounters(pk: failed, moves: original_moves, gamelist).ToList();
             var initialcount = encounters.Count;
@@ -118,7 +117,7 @@ namespace PKHeX.Core.AutoMod
             return string.Format(EXHAUSTED_ENCOUNTERS, initialcount - encounters.Count, initialcount);
         }
 
-        private static ushort[] GetValidMoves(IBattleTemplate set, ITrainerInfo sav, List<IEnumerable<ushort>> move_combinations, PKM blank, GameVersion[] gamelist, List<ALMTraceback> tb)
+        private static ushort[] GetValidMoves(IBattleTemplate set, ITrainerInfo sav, List<IEnumerable<ushort>> move_combinations, PKM blank, GameVersion[] gamelist)
         {
             ushort[] successful_combination = Array.Empty<ushort>();
             foreach (var c in move_combinations)
@@ -129,7 +128,7 @@ namespace PKHeX.Core.AutoMod
                 var new_moves = combination.Concat(Enumerable.Repeat<ushort>(0, 4 - combination.Length)).ToArray();
                 blank.ApplySetDetails(set);
                 blank.SetMoves(new_moves);
-                blank.SetRecordFlags(Array.Empty<ushort>(), tb);
+                blank.SetRecordFlags(Array.Empty<ushort>());
 
                 if (sav.Generation <= 2)
                     blank.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator

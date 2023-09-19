@@ -76,13 +76,17 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">Pokémon to modify</param>
         /// <param name="enc">Encounter matched to</param>
         /// <param name="allValid">Set all valid ribbons only</param>
-        public static void SetSuggestedRibbons(this PKM pk, IBattleTemplate set, IEncounterable enc, bool allValid = true)
+        public static void SetSuggestedRibbons(this PKM pk, IBattleTemplate set, IEncounterable enc, bool allValid, List<ALMTraceback> tb)
         {
             if (!allValid)
                 return;
             RibbonApplicator.SetAllValidRibbons(pk);
+            tb.Add(new() { Identifier = TracebackType.Misc, Comment = "Set all valid ribbons" });
             if (pk is PK8 pk8 && pk8.Species != (int)Species.Shedinja && pk8.GetRandomValidMark(set, enc, out var mark))
+            {
                 pk8.SetRibbonIndex(mark);
+                tb.Add(new() { Identifier = TracebackType.Misc, Comment = $"Set random valid mark {mark}" });
+            }
         }
     }
 }

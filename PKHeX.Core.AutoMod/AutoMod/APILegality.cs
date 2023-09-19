@@ -60,7 +60,7 @@ namespace PKHeX.Core.AutoMod
                 template.Version = dest.Game;
 
             template.ApplySetDetails(set);
-            template.SetRecordFlags(Array.Empty<ushort>(), new List<ALMTraceback>()); // Validate TR/MS moves for the encounter
+            template.SetRecordFlags(Array.Empty<ushort>()); // Validate TR/MS moves for the encounter
 
             if (template.Species == (ushort)Species.Unown) // Force unown form on template
                 template.Form = set.Form;
@@ -563,8 +563,8 @@ namespace PKHeX.Core.AutoMod
 
             // Final tweaks
             pk.SetGimmicks(set, tb);
-            pk.SetGigantamaxFactor(set, enc);
-            pk.SetSuggestedRibbons(set, enc, SetAllLegalRibbons);
+            pk.SetGigantamaxFactor(set, enc, tb);
+            pk.SetSuggestedRibbons(set, enc, SetAllLegalRibbons, tb);
             pk.SetBelugaValues();
             pk.SetSuggestedContestStats(enc);
             pk.FixEdgeCases(enc, tb);
