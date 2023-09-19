@@ -32,10 +32,12 @@ namespace PKHeX.Core.AutoMod
         public static PKM Legalize(this ITrainerInfo tr, PKM pk)
         {
             var set = new RegenTemplate(pk, tr.Generation);
-            var pkm = tr.GetLegalFromTemplateTimeout(pk, set, out LegalizationResult res);
+            var almres = tr.GetLegalFromTemplateTimeout(pk, set, out LegalizationResult res);
             if (res == LegalizationResult.VersionMismatch)
                 throw new MissingMethodException("PKHeX and Plugins have a version mismatch");
-            return pkm;
+            if (almres == null)
+                return pk;
+            return almres.Created;
         }
 
         /// <summary>
@@ -198,10 +200,14 @@ namespace PKHeX.Core.AutoMod
         /// <returns>bool if the pokemon was legalized</returns>
         public static LegalizationResult TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, out PKM pkm, bool nativeOnly = false)
         {
-            pkm = tr.GetLegalFromTemplateTimeout(template, set, out LegalizationResult satisfied, nativeOnly);
-            if (satisfied != LegalizationResult.Regenerated)
+            var almres = tr.GetLegalFromTemplateTimeout(template, set, out LegalizationResult satisfied, nativeOnly);
+            if (satisfied != LegalizationResult.Regenerated || almres == null)
+            {
+                pkm = template;
                 return satisfied;
+            }
 
+            pkm = almres.Created;
             var trainer = TrainerSettings.GetSavedTrainerData(pkm, tr);
             pkm.SetAllTrainerData(trainer);
             return satisfied;

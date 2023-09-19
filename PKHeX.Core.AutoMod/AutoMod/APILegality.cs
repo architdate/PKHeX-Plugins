@@ -1535,7 +1535,7 @@ namespace PKHeX.Core.AutoMod
         /// <summary>
         /// Wrapper function for GetLegalFromTemplate but with a Timeout
         /// </summary>
-        public static PKM GetLegalFromTemplateTimeout(this ITrainerInfo dest, PKM template, IBattleTemplate set, out LegalizationResult satisfied, bool nativeOnly = false)
+        public static AsyncLegalizationResult? GetLegalFromTemplateTimeout(this ITrainerInfo dest, PKM template, IBattleTemplate set, out LegalizationResult satisfied, bool nativeOnly = false)
         {
             AsyncLegalizationResult GetLegal()
             {
@@ -1558,18 +1558,18 @@ namespace PKHeX.Core.AutoMod
             if (first == null)
             {
                 satisfied = LegalizationResult.Timeout;
-                return template;
+                return null;
             }
 
             var result = first;
             satisfied = result.Status;
-            return result.Created;
+            return result;
         }
 
         /// <summary>
         /// Async Related actions for global timer.
         /// </summary>
-        private class AsyncLegalizationResult
+        public class AsyncLegalizationResult
         {
             public readonly PKM Created;
             public readonly LegalizationResult Status;
