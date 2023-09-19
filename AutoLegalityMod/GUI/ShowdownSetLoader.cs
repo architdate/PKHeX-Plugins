@@ -17,6 +17,7 @@ namespace AutoModPlugins
         // Initialized during plugin setup
         public static ISaveFileProvider SaveFileEditor { private get; set; } = null!;
         public static IPKMView PKMEditor { private get; set; } = null!;
+        public static bool DisplayLegalizationTraceback { get; set; }
 
         private static readonly EncounterTypeGroup[] EncounterPriority =
         {
@@ -62,7 +63,7 @@ namespace AutoModPlugins
             AutoModErrorCode result;
             if (sets.Count == 1)
             {
-                result = ImportSetToTabs(sets[0], skipDialog);
+                result = ImportSetToTabs(sets[0], skipDialog, DisplayLegalizationTraceback);
             }
             else
             {
@@ -75,7 +76,7 @@ namespace AutoModPlugins
                 WinFormsUtil.Alert(message);
         }
 
-        private static AutoModErrorCode ImportSetToTabs(ShowdownSet set, bool skipDialog = false)
+        private static AutoModErrorCode ImportSetToTabs(ShowdownSet set, bool skipDialog = false, bool showVerbose = false)
         {
             var regen = new RegenTemplate(set, SaveFileEditor.SAV.Generation);
             if (!skipDialog && DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", regen.Text))
@@ -88,7 +89,9 @@ namespace AutoModPlugins
             var timer = Stopwatch.StartNew();
 
             var sav = SaveFileEditor.SAV;
-            var legal = sav.GetLegalFromSet(regen, out var msg);
+            var almres = sav.GetLegalFromSet(regen);
+            var legal = almres.Created;
+            var msg = almres.Status;
             timer.Stop();
 
             if (msg is LegalizationResult.VersionMismatch)
@@ -129,6 +132,8 @@ namespace AutoModPlugins
 
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
+            if (showVerbose && almres.Traceback != null)
+                WinFormsUtil.Prompt(MessageBoxButtons.OK, string.Join(Environment.NewLine, almres.Traceback.Select(z => $"{z.Identifier}: {z.Comment}")));
 
             var timespan = timer.Elapsed;
             Debug.WriteLine($"Time to complete {nameof(ImportSetToTabs)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
@@ -212,6 +217,7 @@ namespace AutoModPlugins
             APILegality.AllowHOMETransferGeneration = settings.AllowHOMETransferGeneration;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
+            ShowdownSetLoader.DisplayLegalizationTraceback = settings.DisplayLegalizationTraceback;
             ModLogic.cfg = new LivingDexConfig
             {
                 IncludeForms = settings.IncludeForms,

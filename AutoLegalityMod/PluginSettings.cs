@@ -116,6 +116,9 @@ namespace AutoModPlugins
         [Category(Miscellaneous), Description("Sets IVs of 31 to blue and 30 to red if enabled. Otherwise, sets IVs of 31 to blue and 0 to red.")]
         public bool UseCompetitiveMarkings { get; set; } = true;
 
+        [Category(Miscellaneous), Description("Display legalization traceback for a particular Pokemon. Useful for debugging incorrectly generated sets.")]
+        public bool DisplayLegalizationTraceback { get; set; } = false;
+
         // Development
 
         [Category(Development), Description("If enabled, ignores version mismatch warnings until the next PKHeX.Core release. Also bypasses Switch connection checks.")]

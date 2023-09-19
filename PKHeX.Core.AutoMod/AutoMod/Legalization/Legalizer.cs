@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using static PKHeX.Core.AutoMod.APILegality;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -32,11 +33,9 @@ namespace PKHeX.Core.AutoMod
         public static PKM Legalize(this ITrainerInfo tr, PKM pk)
         {
             var set = new RegenTemplate(pk, tr.Generation);
-            var almres = tr.GetLegalFromTemplateTimeout(pk, set, out LegalizationResult res);
-            if (res == LegalizationResult.VersionMismatch)
+            var almres = tr.GetLegalFromTemplateTimeout(pk, set);
+            if (almres.Status == LegalizationResult.VersionMismatch)
                 throw new MissingMethodException("PKHeX and Plugins have a version mismatch");
-            if (almres == null)
-                return pk;
             return almres.Created;
         }
 
@@ -71,14 +70,15 @@ namespace PKHeX.Core.AutoMod
                     return AutoModErrorCode.InvalidLines;
 
                 Debug.WriteLine($"Generating Set: {GameInfo.Strings.Species[set.Species]}");
-                var pk = tr.GetLegalFromSet(regen, out var msg);
-                if (msg == LegalizationResult.VersionMismatch)
+                var almres = tr.GetLegalFromSet(regen);
+                if (almres.Status == LegalizationResult.VersionMismatch)
                     return AutoModErrorCode.VersionMismatch;
+                var pk = almres.Created;
                 pk.ResetPartyStats();
                 pk.SetBoxForm();
-                if (msg == LegalizationResult.Failed)
+                if (almres.Status == LegalizationResult.Failed)
                     invalidAPISets.Add(regen);
-                if (msg == LegalizationResult.Timeout)
+                if (almres.Status == LegalizationResult.Timeout)
                     timedoutSets.Add(regen);
 
                 var index = emptySlots[i];
@@ -110,16 +110,15 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="tr">Source/Destination trainer</param>
         /// <param name="set">Set data to import</param>
-        /// <param name="msg">Result code indicating success or failure</param>
-        /// <returns>Legalized PKM (hopefully legal)</returns>
-        public static PKM GetLegalFromSet(this ITrainerInfo tr, IBattleTemplate set, out LegalizationResult msg)
+        /// <returns>Legalization Result (hopefully legal)</returns>
+        public static AsyncLegalizationResult GetLegalFromSet(this ITrainerInfo tr, IBattleTemplate set)
         {
             var template = EntityBlank.GetBlank(tr);
             if (template.Version == 0)
                 template.Version = tr.Game;
             EncounterMovesetGenerator.OptimizeCriteria(template, tr);
             template.ApplySetDetails(set);
-            return tr.GetLegalFromSet(set, template, out msg);
+            return tr.GetLegalFromSet(set, template);
         }
 
         /// <summary>
@@ -128,20 +127,22 @@ namespace PKHeX.Core.AutoMod
         /// <param name="tr">Trainer Data that was passed in</param>
         /// <param name="set">Showdown set being used</param>
         /// <param name="template">template PKM to legalize</param>
-        /// <param name="msg">Legalization result</param>
-        /// <returns>Legalized pkm</returns>
-        private static PKM GetLegalFromSet(this ITrainerInfo tr, IBattleTemplate set, PKM template, out LegalizationResult msg)
+        /// <returns>Legalization Result</returns>
+        private static AsyncLegalizationResult GetLegalFromSet(this ITrainerInfo tr, IBattleTemplate set, PKM template)
         {
             if (set is ShowdownSet s)
                 set = new RegenTemplate(s, tr.Generation);
 
-            msg = tr.TryAPIConvert(set, template, out PKM pk);
-            if (msg == LegalizationResult.Regenerated)
-                return pk;
+            var almres = tr.TryAPIConvert(set, template);
+            if (almres.Status == LegalizationResult.Regenerated)
+                return almres;
 
             if (EnableEasterEggs)
-                return tr.GetEasterEggFromSet(set, template);
-            return pk;
+            {
+                var easteregg = tr.GetEasterEggFromSet(set, template);
+                return new AsyncLegalizationResult(easteregg, almres.Status, almres.Traceback);
+            }
+            return almres;
         }
 
         private static PKM GetEasterEggFromSet(this ITrainerInfo tr, IBattleTemplate set, PKM template)
@@ -196,21 +197,17 @@ namespace PKHeX.Core.AutoMod
         /// <param name="tr">trainer data</param>
         /// <param name="set">showdown set to legalize from</param>
         /// <param name="template">pkm file to legalize</param>
-        /// <param name="pkm">legalized pkm file</param>
-        /// <returns>bool if the pokemon was legalized</returns>
-        public static LegalizationResult TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, out PKM pkm, bool nativeOnly = false)
+        /// <returns>LegalizationResult</returns>
+        public static AsyncLegalizationResult TryAPIConvert(this ITrainerInfo tr, IBattleTemplate set, PKM template, bool nativeOnly = false)
         {
-            var almres = tr.GetLegalFromTemplateTimeout(template, set, out LegalizationResult satisfied, nativeOnly);
-            if (satisfied != LegalizationResult.Regenerated || almres == null)
-            {
-                pkm = template;
-                return satisfied;
-            }
+            var almres = tr.GetLegalFromTemplateTimeout(template, set, nativeOnly);
+            if (almres.Status != LegalizationResult.Regenerated)
+                return almres;
 
-            pkm = almres.Created;
+            var pkm = almres.Created;
             var trainer = TrainerSettings.GetSavedTrainerData(pkm, tr);
             pkm.SetAllTrainerData(trainer);
-            return satisfied;
+            return new AsyncLegalizationResult(pkm, almres.Status, almres.Traceback);
         }
 
         /// <summary>

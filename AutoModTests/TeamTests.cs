@@ -61,8 +61,8 @@ namespace AutoModTests
                     {
                         Debug.Write($"Checking Set {i:000} [Species: {(Species)set.Species}] from File {file} using Save {s}: ");
                         var regen = new RegenTemplate(set, sav.Generation);
-                        var pk = sav.GetLegalFromSet(regen, out _);
-                        var la = new LegalityAnalysis(pk);
+                        var almres = sav.GetLegalFromSet(regen);
+                        var la = new LegalityAnalysis(almres.Created);
                         if (la.Valid)
                         {
                             Debug.WriteLine("Valid");

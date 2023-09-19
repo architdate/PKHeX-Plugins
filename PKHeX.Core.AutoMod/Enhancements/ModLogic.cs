@@ -183,7 +183,9 @@ namespace PKHeX.Core.AutoMod
             template.ApplySetDetails(set);
 
             var t = template.Clone();
-            var success = tr.TryAPIConvert(set, t, out PKM pk, nativeOnly);
+            var almres = tr.TryAPIConvert(set, t, nativeOnly);
+            var pk = almres.Created;
+            var success = almres.Status;
             if (pk.Species == (ushort)Species.Unown && pk.Form != blank.Form)
                 pk.Form = blank.Form;
 
@@ -195,7 +197,9 @@ namespace PKHeX.Core.AutoMod
             template.ApplySetDetails(set);
 
             t = template.Clone();
-            success = tr.TryAPIConvert(set, t, out pk, nativeOnly);
+            almres = tr.TryAPIConvert(set, t, nativeOnly);
+            pk = almres.Created;
+            success = almres.Status;
             if (pk.Species is (ushort)Species.Gholdengo)
             {
                 pk.SetSuggestedFormArgument();

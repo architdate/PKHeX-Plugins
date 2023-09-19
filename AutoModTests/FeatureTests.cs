@@ -55,8 +55,8 @@ namespace AutoModTests
                 tr.Language.Should().Be((int)LanguageID.English);
 
                 // When we generate, our Extra instruction should force it to be generated as Japanese.
-                var pk = tr.GetLegalFromSet(showdown, out _);
-                pk.Language.Should().Be((int)LanguageID.Japanese);
+                var almres = tr.GetLegalFromSet(showdown);
+                almres.Created.Language.Should().Be((int)LanguageID.Japanese);
             }
             finally
             {
@@ -92,7 +92,8 @@ namespace AutoModTests
                 TrainerSettings.Register(sti);
 
                 // When we generate, our Extra instruction should force it to be generated as Japanese.
-                var pk = tr.GetLegalFromSet(showdown, out _);
+                var almres = tr.GetLegalFromSet(showdown);
+                var pk = almres.Created;
                 pk.Language.Should().Be((int)LanguageID.English);
                 pk.OT_Name.Should().Be(sti.OT);
 
@@ -132,7 +133,8 @@ namespace AutoModTests
                 TrainerSettings.Register(sti);
 
                 // When we generate, our Extra instruction should force it to be generated as Japanese.
-                var pk = tr.GetLegalFromSet(showdown, out _);
+                var almres = tr.GetLegalFromSet(showdown);
+                var pk = almres.Created;
                 pk.Language.Should().Be((int)LanguageID.Japanese);
                 pk.OT_Name.Should().Be(sti.OT);
 

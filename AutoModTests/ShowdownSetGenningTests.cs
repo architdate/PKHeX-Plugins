@@ -25,10 +25,10 @@ namespace AutoModTests
             RecentTrainerCache.SetRecentTrainer(trainer);
 
             var set = new ShowdownSet(txt);
-            var pkm = sav.GetLegalFromSet(set, out _);
+            var almres = sav.GetLegalFromSet(set);
             APILegality.EnableDevMode = dev;
 
-            var la = new LegalityAnalysis(pkm);
+            var la = new LegalityAnalysis(almres.Created);
             la.Valid.Should().BeTrue();
         }
 
