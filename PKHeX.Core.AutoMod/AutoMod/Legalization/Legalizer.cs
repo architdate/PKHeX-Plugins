@@ -142,6 +142,7 @@ namespace PKHeX.Core.AutoMod
                 var easteregg = tr.GetEasterEggFromSet(set, template);
                 return new AsyncLegalizationResult(easteregg, almres.Status, almres.Traceback);
             }
+
             return almres;
         }
 

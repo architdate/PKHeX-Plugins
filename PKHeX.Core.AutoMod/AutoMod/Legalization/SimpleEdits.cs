@@ -13,7 +13,7 @@ namespace PKHeX.Core.AutoMod
             MarkingApplicator.MarkingMethod = FlagIVsAutoMod;
         }
 
-        internal static readonly int[] Roaming_MetLocation_BDSP =
+        internal static readonly int[] RoamingMetLocationBDSP =
         {
             197, 201, 354, 355, 356, 357, 358, 359, 361, 362, 364, 365, 367, 373, 375, 377,
             378, 379, 383, 385, 392, 394, 395, 397, 400, 403, 404, 407, 411, 412, 414, 416,
@@ -48,77 +48,77 @@ namespace PKHeX.Core.AutoMod
         private static readonly HashSet<(Species, int)> ShinyLockedSpeciesForm = new()
         {
             // Cap Pikachus
-            ( Pikachu, 1 ),
-            ( Pikachu, 2 ),
-            ( Pikachu, 3 ),
-            ( Pikachu, 4 ),
-            ( Pikachu, 5 ),
-            ( Pikachu, 6 ),
-            ( Pikachu, 7 ),
-            ( Pikachu, 9 ),
+            (Pikachu, 1),
+            (Pikachu, 2),
+            (Pikachu, 3),
+            (Pikachu, 4),
+            (Pikachu, 5),
+            (Pikachu, 6),
+            (Pikachu, 7),
+            (Pikachu, 9),
 
-            ( Pichu, 1 ),
+            (Pichu, 1),
 
-            ( Victini, 0 ),
-            ( Keldeo, 0 ),
-            ( Keldeo, 1 ),
-            ( Meloetta, 0 ),
+            (Victini, 0),
+            (Keldeo, 0),
+            (Keldeo, 1),
+            (Meloetta, 0),
 
             // Vivillons
-            ( Scatterbug, 19 ),
-            ( Spewpa, 19 ),
-            ( Vivillon, 19 ),
+            (Scatterbug, 19),
+            (Spewpa, 19),
+            (Vivillon, 19),
 
             // Hoopa
-            ( Hoopa, 0 ),
-            ( Hoopa, 1 ),
+            (Hoopa, 0),
+            (Hoopa, 1),
 
-            ( Volcanion, 0 ),
-            ( Cosmog, 0 ),
-            ( Cosmoem, 0 ),
-            ( Magearna, 0 ),
-            ( Magearna, 1 ),
-            ( Marshadow, 0 ),
+            (Volcanion, 0),
+            (Cosmog, 0),
+            (Cosmoem, 0),
+            (Magearna, 0),
+            (Magearna, 1),
+            (Marshadow, 0),
 
-            ( Eternatus, 0 ),
+            (Eternatus, 0),
 
-            ( Kubfu, 0 ),
-            ( Urshifu, 0 ),
-            ( Urshifu, 1 ),
-            ( Zarude, 0 ),
-            ( Zarude, 1 ),
-            ( Glastrier, 0 ),
-            ( Spectrier, 0 ),
-            ( Calyrex, 0 ),
-            ( Calyrex, 1 ),
-            ( Calyrex, 2 ),
+            (Kubfu, 0),
+            (Urshifu, 0),
+            (Urshifu, 1),
+            (Zarude, 0),
+            (Zarude, 1),
+            (Glastrier, 0),
+            (Spectrier, 0),
+            (Calyrex, 0),
+            (Calyrex, 1),
+            (Calyrex, 2),
 
-            ( Enamorus, 0 ),
-            ( Enamorus, 1 ),
+            (Enamorus, 0),
+            (Enamorus, 1),
 
-            ( Gimmighoul, 1 ),
-            ( WoChien, 0 ),
-            ( ChienPao, 0 ),
-            ( TingLu, 0 ),
-            ( ChiYu, 0 ),
+            (Gimmighoul, 1),
+            (WoChien, 0),
+            (ChienPao, 0),
+            (TingLu, 0),
+            (ChiYu, 0),
 
-            ( Koraidon, 0 ),
-            ( Koraidon, 1 ),
-            ( Koraidon, 2 ),
-            ( Koraidon, 3 ),
-            ( Koraidon, 4 ),
+            (Koraidon, 0),
+            (Koraidon, 1),
+            (Koraidon, 2),
+            (Koraidon, 3),
+            (Koraidon, 4),
 
-            ( Miraidon, 0 ),
-            ( Miraidon, 1 ),
-            ( Miraidon, 2 ),
-            ( Miraidon, 3 ),
-            ( Miraidon, 4 ),
+            (Miraidon, 0),
+            (Miraidon, 1),
+            (Miraidon, 2),
+            (Miraidon, 3),
+            (Miraidon, 4),
 
-            ( WalkingWake, 0 ),
-            ( IronLeaves, 0 ),
+            (WalkingWake, 0),
+            (IronLeaves, 0),
         };
 
-        public static readonly HashSet<int> Gen1TradeEvos = new () { (int)Kadabra, (int)Machoke, (int)Graveler, (int)Haunter };
+        public static readonly HashSet<int> Gen1TradeEvos = new() { (int)Kadabra, (int)Machoke, (int)Graveler, (int)Haunter };
 
         private static Func<int, int, int> FlagIVsAutoMod(PKM pk)
         {
@@ -353,7 +353,7 @@ namespace PKHeX.Core.AutoMod
             if (enc is WC9 wc9)
             {
                 size.WeightScalar = (byte)wc9.WeightValue;
-                size.HeightScalar= (byte)wc9.HeightValue;
+                size.HeightScalar = (byte)wc9.HeightValue;
                 return;
             }
 
@@ -436,7 +436,7 @@ namespace PKHeX.Core.AutoMod
             Span<byte> result = stackalloc byte[6];
             AwakeningUtil.SetExpectedMinimumAVs(result, (PB7)pb7);
             var EVs = set.EVs;
-            pb7.AV_HP  = Math.Max(result[0], (byte)EVs[0]);
+            pb7.AV_HP = Math.Max(result[0], (byte)EVs[0]);
             pb7.AV_ATK = Math.Max(result[1], (byte)EVs[1]);
             pb7.AV_DEF = Math.Max(result[2], (byte)EVs[2]);
             pb7.AV_SPA = Math.Max(result[3], (byte)EVs[4]);
@@ -491,7 +491,7 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             IVs ??= pk.IVs;
-            t.HT_HP  = pk.IV_HP  != 31;
+            t.HT_HP = pk.IV_HP != 31;
             t.HT_ATK = pk.IV_ATK != 31 && IVs[1] > 2;
             t.HT_DEF = pk.IV_DEF != 31;
             t.HT_SPA = pk.IV_SPA != 31 && IVs[4] > 2;
@@ -701,15 +701,15 @@ namespace PKHeX.Core.AutoMod
                 GameVersion.GP or GameVersion.GE => GameVersion.GG,
                 GameVersion.SN or GameVersion.MN => GameVersion.SM,
                 GameVersion.US or GameVersion.UM => GameVersion.USUM,
-                GameVersion.X  or GameVersion.Y  => GameVersion.XY,
+                GameVersion.X or GameVersion.Y => GameVersion.XY,
                 GameVersion.OR or GameVersion.AS => GameVersion.ORAS,
-                GameVersion.B  or GameVersion.W  => GameVersion.BW,
+                GameVersion.B or GameVersion.W => GameVersion.BW,
                 GameVersion.B2 or GameVersion.W2 => GameVersion.B2W2,
                 GameVersion.HG or GameVersion.SS => GameVersion.HGSS,
                 GameVersion.FR or GameVersion.LG => GameVersion.FRLG,
-                GameVersion.D  or GameVersion.P  or GameVersion.Pt => GameVersion.DPPt,
-                GameVersion.R  or GameVersion.S  or GameVersion.E  => GameVersion.RSE,
-                GameVersion.GD or GameVersion.SI or GameVersion.C  => GameVersion.GSC,
+                GameVersion.D or GameVersion.P or GameVersion.Pt => GameVersion.DPPt,
+                GameVersion.R or GameVersion.S or GameVersion.E => GameVersion.RSE,
+                GameVersion.GD or GameVersion.SI or GameVersion.C => GameVersion.GSC,
                 GameVersion.RD or GameVersion.BU or GameVersion.YW or GameVersion.GN => GameVersion.Gen1,
                 _ => ver
             };
@@ -750,7 +750,7 @@ namespace PKHeX.Core.AutoMod
                 return;
             }
 
-            if (pk is IMoveShop8Mastery master) 
+            if (pk is IMoveShop8Mastery master)
             {
                 if (tb != null)
                     tb.Add(new() { Identifier = TracebackType.Moves, Comment = "Set Move Shop Mastery Flags" });

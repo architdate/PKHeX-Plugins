@@ -295,7 +295,7 @@ namespace AutoModPlugins
             {
                 pkm = SAV.SAV.GetDecryptedPKM(data);
             }
-            catch {}
+            catch { }
 
             bool valid = pkm is not null && pkm.Species <= pkm.MaxSpeciesID && pkm.ChecksumValid &&
                         ((pkm.Species == 0 && pkm.EncryptionConstant == 0) || (pkm.Species > 0 && pkm.Language != (int)LanguageID.Hacked && pkm.Language != (int)LanguageID.UNUSED_6));
@@ -622,10 +622,12 @@ namespace AutoModPlugins
                                 WinFormsUtil.Error("Size mismatch. Please report this issue on the discord server.");
                             }
                         }
+
                         var modifiedRAM = form.Bytes;
                         sb.WriteBytesAbsolute(modifiedRAM, address);
                     }
                 }
+
                 Debug.WriteLine("RAM Modified");
             }
             catch (Exception ex)
@@ -699,7 +701,7 @@ namespace AutoModPlugins
                 // Invoke function
                 cc.GetType().GetMethod(v, BindingFlags.NonPublic | BindingFlags.Instance)?.Invoke(cc, new[] { s, e });
 
-                for (var i = 0; i <  objects.Count; i++)
+                for (var i = 0; i < objects.Count; i++)
                 {
                     if (objects[i] is not SCBlock scb)
                         write = true;

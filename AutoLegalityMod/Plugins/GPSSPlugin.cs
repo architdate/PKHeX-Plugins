@@ -15,9 +15,9 @@ namespace AutoModPlugins
 
         protected override void AddPluginControl(ToolStripDropDownItem modmenu)
         {
-            var ctrl = new ToolStripMenuItem(Name) {Name = "Menu_GPSSPlugin", Image = Resources.flagbrew};
-            var c1 = new ToolStripMenuItem("Upload to GPSS") {Image = Resources.uploadgpss};
-            var c2 = new ToolStripMenuItem("Import from GPSS URL") {Image = Resources.mgdbdownload};
+            var ctrl = new ToolStripMenuItem(Name) { Name = "Menu_GPSSPlugin", Image = Resources.flagbrew };
+            var c1 = new ToolStripMenuItem("Upload to GPSS") { Image = Resources.uploadgpss };
+            var c2 = new ToolStripMenuItem("Import from GPSS URL") { Image = Resources.mgdbdownload };
             c1.Click += GPSSUpload;
             c1.Name = "Menu_UploadtoGPSS";
             c2.Click += GPSSDownload;
@@ -70,21 +70,24 @@ namespace AutoModPlugins
                         msg = $"Pokemon added to the GPSS database. Here is your URL (has been copied to the clipboard):\n https://{Url}/gpss/{decoded["code"]}";
                         copyToClipboard = true;
                     }
-                } else if (response.StatusCode == System.Net.HttpStatusCode.ServiceUnavailable)
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.ServiceUnavailable)
                 {
                     msg = "Uploading to GPSS is currently disabled, please try again later, or check the FlagBrew discord for more information.";
-                } else
+                }
+                else
                 {
                     msg = $"Uploading to GPSS returned an unexpected status code {response.StatusCode}\nError details (if any returned from server): {error}";
                 }
-                
+
 
                 if (copyToClipboard)
                 {
                     Clipboard.SetText($"https://{Url}/gpss/{decoded["code"]}");
                 }
                 WinFormsUtil.Alert(msg);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 WinFormsUtil.Alert($"Something went wrong uploading to GPSS.\nError details: {ex.Message}");
             }

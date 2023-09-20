@@ -1,10 +1,10 @@
-using AutoModPlugins.GUI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Media;
 using System.Windows.Forms;
+using AutoModPlugins.GUI;
 using static PKHeX.Core.AutoMod.ALMVersion;
 
 namespace AutoModPlugins

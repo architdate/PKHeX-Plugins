@@ -956,7 +956,7 @@ namespace PKHeX.Core.AutoMod
                     shiny = set.Shiny ? Shiny.Always : Shiny.Never;
 
                 Roaming8bRNG.ApplyDetails(pk, EncounterCriteria.Unrestricted, shiny, flawless);
-                pk.Met_Location = SimpleEdits.Roaming_MetLocation_BDSP[0];
+                pk.Met_Location = SimpleEdits.RoamingMetLocationBDSP[0];
             }
             else if (enc is EncounterEgg && GameVersion.BDSP.Contains(enc.Version))
             {
@@ -1477,10 +1477,10 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        ///<summary>
-        /// Handle search criteria for very specific encounters
+        /// <summary>
+        /// Handle search criteria for very specific encounters.
         /// </summary>
-        /// 
+        ///
         public static EncounterCriteria SetSpecialCriteria(EncounterCriteria criteria, IEncounterable enc, IBattleTemplate set)
         {
             switch (enc.Species)

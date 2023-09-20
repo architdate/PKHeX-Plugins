@@ -161,13 +161,13 @@ namespace PKHeX.Core.Injection
         {
             byte[] sizeOfReturn = new byte[4];
 
-            //read size, no error checking as of yet, should be the required 368 bytes
+            // read size, no error checking as of yet, should be the required 368 bytes
             if (reader == null)
                 throw new Exception("USB writer is null, you may have disconnected the device during previous function");
 
             reader.Read(sizeOfReturn, 5000, out _);
 
-            //read stack
+            // read stack
             reader.Read(buffer, 5000, out var lenVal);
             return lenVal;
         }

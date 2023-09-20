@@ -1,7 +1,7 @@
+using System;
 using FluentAssertions;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
-using System;
 using Xunit;
 
 namespace AutoModTests

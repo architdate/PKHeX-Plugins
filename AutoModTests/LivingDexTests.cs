@@ -1,9 +1,9 @@
-﻿using FluentAssertions;
-using PKHeX.Core;
-using PKHeX.Core.AutoMod;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using FluentAssertions;
+using PKHeX.Core;
+using PKHeX.Core.AutoMod;
 using Xunit;
 using static PKHeX.Core.GameVersion;
 
@@ -116,29 +116,29 @@ namespace AutoModTests
                 if (forms.Count > 0)
                     speciesDict.TryAdd(s, forms);
             }
+
             return cfg.IncludeForms ? speciesDict.Values.Sum(x => x.Count) : speciesDict.Count;
         }
 
         // const configs
+        private static LivingDexConfig CFG_TFFF = new() { IncludeForms = true, SetShiny = false, SetAlpha = false, NativeOnly = false };
+        private static LivingDexConfig CFG_TTFF = new() { IncludeForms = true, SetShiny = true, SetAlpha = false, NativeOnly = false };
+        private static LivingDexConfig CFG_TTTF = new() { IncludeForms = true, SetShiny = true, SetAlpha = true, NativeOnly = false };
+        private static LivingDexConfig CFG_TTTT = new() { IncludeForms = true, SetShiny = true, SetAlpha = true, NativeOnly = true };
 
-        private static LivingDexConfig CFG_TFFF = new() { IncludeForms = true , SetShiny = false, SetAlpha = false, NativeOnly = false };
-        private static LivingDexConfig CFG_TTFF = new() { IncludeForms = true , SetShiny = true , SetAlpha = false, NativeOnly = false };
-        private static LivingDexConfig CFG_TTTF = new() { IncludeForms = true , SetShiny = true , SetAlpha = true , NativeOnly = false };
-        private static LivingDexConfig CFG_TTTT = new() { IncludeForms = true , SetShiny = true , SetAlpha = true , NativeOnly = true  };
+        private static LivingDexConfig CFG_TFTF = new() { IncludeForms = true, SetShiny = false, SetAlpha = true, NativeOnly = false };
+        private static LivingDexConfig CFG_TFFT = new() { IncludeForms = true, SetShiny = false, SetAlpha = false, NativeOnly = true };
+        private static LivingDexConfig CFG_TFTT = new() { IncludeForms = true, SetShiny = false, SetAlpha = true, NativeOnly = true };
+        private static LivingDexConfig CFG_TTFT = new() { IncludeForms = true, SetShiny = true, SetAlpha = false, NativeOnly = true };
 
-        private static LivingDexConfig CFG_TFTF = new() { IncludeForms = true , SetShiny = false, SetAlpha = true , NativeOnly = false };
-        private static LivingDexConfig CFG_TFFT = new() { IncludeForms = true , SetShiny = false, SetAlpha = false, NativeOnly = true  };
-        private static LivingDexConfig CFG_TFTT = new() { IncludeForms = true , SetShiny = false, SetAlpha = true , NativeOnly = true  };
-        private static LivingDexConfig CFG_TTFT = new() { IncludeForms = true , SetShiny = true , SetAlpha = false, NativeOnly = true  };
-
-        private static LivingDexConfig CFG_FTTT = new() { IncludeForms = false, SetShiny = true , SetAlpha = true , NativeOnly = true  };
-        private static LivingDexConfig CFG_FFTT = new() { IncludeForms = false, SetShiny = false, SetAlpha = true , NativeOnly = true  };
-        private static LivingDexConfig CFG_FFFT = new() { IncludeForms = false, SetShiny = false, SetAlpha = false, NativeOnly = true  };
+        private static LivingDexConfig CFG_FTTT = new() { IncludeForms = false, SetShiny = true, SetAlpha = true, NativeOnly = true };
+        private static LivingDexConfig CFG_FFTT = new() { IncludeForms = false, SetShiny = false, SetAlpha = true, NativeOnly = true };
+        private static LivingDexConfig CFG_FFFT = new() { IncludeForms = false, SetShiny = false, SetAlpha = false, NativeOnly = true };
         private static LivingDexConfig CFG_FFFF = new() { IncludeForms = false, SetShiny = false, SetAlpha = false, NativeOnly = false };
 
-        private static LivingDexConfig CFG_FTFT = new() { IncludeForms = false, SetShiny = true , SetAlpha = false, NativeOnly = true  };
-        private static LivingDexConfig CFG_FTTF = new() { IncludeForms = false, SetShiny = true , SetAlpha = true , NativeOnly = false };
-        private static LivingDexConfig CFG_FTFF = new() { IncludeForms = false, SetShiny = true , SetAlpha = false, NativeOnly = false };
-        private static LivingDexConfig CFG_FFTF = new() { IncludeForms = false, SetShiny = false, SetAlpha = true , NativeOnly = false };
+        private static LivingDexConfig CFG_FTFT = new() { IncludeForms = false, SetShiny = true, SetAlpha = false, NativeOnly = true };
+        private static LivingDexConfig CFG_FTTF = new() { IncludeForms = false, SetShiny = true, SetAlpha = true, NativeOnly = false };
+        private static LivingDexConfig CFG_FTFF = new() { IncludeForms = false, SetShiny = true, SetAlpha = false, NativeOnly = false };
+        private static LivingDexConfig CFG_FFTF = new() { IncludeForms = false, SetShiny = false, SetAlpha = true, NativeOnly = false };
     }
 }

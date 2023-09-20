@@ -14,6 +14,7 @@ namespace PKHeX.Core.AutoMod
                     set.Form = 18;
                 return;
             }
+
             if (!FormInfo.IsBattleOnlyForm(set.Species, set.Form, gen))
                 return;
             set.Form = FormInfo.GetOutOfBattleForm(set.Species, set.Form, gen);

@@ -155,7 +155,7 @@ namespace PKHeX.Core.Injection
 
                     var magic = BitConverter.ToUInt32(buf, 0);
                     var seq = BitConverter.ToUInt32(buf, 4);
-                    //var type = BitConverter.ToUInt32(buf, 8);
+
                     var cmd = BitConverter.ToUInt32(buf, 12);
                     var t = 12;
                     for (var i = 0; i < args.Length; i++)
@@ -226,7 +226,7 @@ namespace PKHeX.Core.Injection
             }
             else if (requestDetails.IsCallback)
             {
-                //Copies the data, truncates if necessary
+                // Copies the data, truncates if necessary
                 var dataBufCopy = new byte[dataBuf.Length];
                 dataBuf.CopyTo(dataBufCopy, 0);
                 var e = new DataReadyEventArgs(seq, dataBufCopy);

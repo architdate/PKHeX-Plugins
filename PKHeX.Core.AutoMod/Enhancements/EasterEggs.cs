@@ -2,15 +2,15 @@
 {
     public static class EasterEggs
     {
-        private const int MaxSpeciesID_1 = 151;
-        private const int MaxSpeciesID_2 = 251;
-        private const int MaxSpeciesID_3 = 386;
-        private const int MaxSpeciesID_4 = 493;
-        private const int MaxSpeciesID_5 = 649;
-        private const int MaxSpeciesID_6 = 721;
-        private const int MaxSpeciesID_7 = 807;
-        private const int MaxSpeciesID_8 = 890;
-        private const int MaxSpeciesID_9 = 1010;
+        private const int MaxSpeciesID1 = 151;
+        private const int MaxSpeciesID2 = 251;
+        private const int MaxSpeciesID3 = 386;
+        private const int MaxSpeciesID4 = 493;
+        private const int MaxSpeciesID5 = 649;
+        private const int MaxSpeciesID6 = 721;
+        private const int MaxSpeciesID7 = 807;
+        private const int MaxSpeciesID8 = 890;
+        private const int MaxSpeciesID9 = 1010;
 
         public static Species GetMemeSpecies(int gen, PKM format) => gen switch
         {
@@ -29,15 +29,15 @@
 
         public static int GetGeneration(int species) => species switch
         {
-            <= MaxSpeciesID_1 => 1,
-            <= MaxSpeciesID_2 => 2,
-            <= MaxSpeciesID_3 => 3,
-            <= MaxSpeciesID_4 => 4,
-            <= MaxSpeciesID_5 => 5,
-            <= MaxSpeciesID_6 => 6,
-            <= MaxSpeciesID_7 => 7,
-            <= MaxSpeciesID_8 => 8,
-            <= MaxSpeciesID_9 => 9,
+            <= MaxSpeciesID1 => 1,
+            <= MaxSpeciesID2 => 2,
+            <= MaxSpeciesID3 => 3,
+            <= MaxSpeciesID4 => 4,
+            <= MaxSpeciesID5 => 5,
+            <= MaxSpeciesID6 => 6,
+            <= MaxSpeciesID7 => 7,
+            <= MaxSpeciesID8 => 8,
+            <= MaxSpeciesID9 => 9,
             _ => 1,
         };
 

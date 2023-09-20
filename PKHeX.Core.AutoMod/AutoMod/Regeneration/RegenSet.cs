@@ -30,7 +30,7 @@ namespace PKHeX.Core.AutoMod
         public RegenSet(ICollection<string> lines, int format, Shiny shiny = Shiny.Never)
         {
             var modified = lines.Select(z => z.Replace(">=", "≥").Replace("<=", "≤"));
-            Extra = new RegenSetting {ShinyType = shiny};
+            Extra = new RegenSetting { ShinyType = shiny };
             HasExtraSettings = Extra.SetRegenSettings(modified);
             HasTrainerSettings = RegenUtil.GetTrainerInfo(modified, format, out var tr);
             Trainer = tr;

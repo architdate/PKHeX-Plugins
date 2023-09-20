@@ -23,9 +23,9 @@ namespace PKHeX.Core.Injection
             new() { Name = "KRaidSpawnList", Display = "Raid", SCBKey = 0x9033eb7b, Offset = 0x450C8A70 },
             new() { Name = "KRaidSpawnListR1", Display = "RaidArmor", SCBKey = 0x158DA896, Offset = 0x450C94D8 },
             new() { Name = "KRaidSpawnListR2", Display = "RaidCrown", SCBKey = 0x148DA703, Offset = 0x450C9F40 },
-            new() { Name = "KZukan", Display = "Pokedex Base", SCBKey = 0x4716C404, Offset = 0x45069120},
-            new() { Name = "KZukanR1", Display = "Pokedex Armor", SCBKey = 0x3F936BA9, Offset = 0x45069120},
-            new() { Name = "KZukanR2", Display = "Pokedex Crown", SCBKey = 0x3C9366F0, Offset = 0x45069120},
+            new() { Name = "KZukan", Display = "Pokedex Base", SCBKey = 0x4716C404, Offset = 0x45069120 },
+            new() { Name = "KZukanR1", Display = "Pokedex Armor", SCBKey = 0x3F936BA9, Offset = 0x45069120 },
+            new() { Name = "KZukanR2", Display = "Pokedex Crown", SCBKey = 0x3C9366F0, Offset = 0x45069120 },
         };
 
         // LiveHexVersion -> Blockname -> List of <SCBlock Keys, OffsetValues>
@@ -59,6 +59,7 @@ namespace PKHeX.Core.Injection
                 allpkm.Add(stored);
                 currofs += psb.SlotSize + psb.GapSize;
             }
+
             return ArrayUtil.ConcatAll(allpkm.ToArray());
         }
 
@@ -111,6 +112,7 @@ namespace PKHeX.Core.Injection
                         read.Add(ram);
                     }
                 }
+
                 return true;
             }
             catch (Exception e)

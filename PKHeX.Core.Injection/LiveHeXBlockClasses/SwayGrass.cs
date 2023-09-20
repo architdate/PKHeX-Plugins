@@ -64,13 +64,13 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v130   => "[main+4C64DC0]+B8",
-                LiveHeXVersion.SP_v130   => "[main+4E7BE98]+B8",
+                LiveHeXVersion.BD_v130 => "[main+4C64DC0]+B8",
+                LiveHeXVersion.SP_v130 => "[main+4E7BE98]+B8",
                 LiveHeXVersion.BDSP_v120 => "[main+4E2CD08]+B8",
                 LiveHeXVersion.BDSP_v113 => "[main+4E4FD48]+B8",
                 LiveHeXVersion.BDSP_v112 => "[main+4E2AD38]+B8",
-                LiveHeXVersion.BD_v111   => "[main+4C13C60]+B8",
-                LiveHeXVersion.SP_v111   => "[main+4E2AD38]+B8",
+                LiveHeXVersion.BD_v111 => "[main+4C13C60]+B8",
+                LiveHeXVersion.SP_v111 => "[main+4E2AD38]+B8",
                 _ => null
             };
         }

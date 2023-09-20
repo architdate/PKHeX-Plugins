@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Timers;
 using System.Windows.Forms;
-using PKHeX.Core.Injection;
 using PKHeX.Core;
+using PKHeX.Core.Injection;
 
 namespace AutoModPlugins.GUI
 {
@@ -37,6 +37,7 @@ namespace AutoModPlugins.GUI
                 B_Update.Enabled = false;
                 RTB_RAM.ReadOnly = true;
             }
+
             block_key = decrypt_key;
             headersize = header;
             psb = bot;
@@ -54,6 +55,7 @@ namespace AutoModPlugins.GUI
                 refresh.Stop();
                 return;
             }
+
             try
             {
                 var length = Bytes.Length;
@@ -73,8 +75,10 @@ namespace AutoModPlugins.GUI
                     if (decrypt)
                         result = DecryptBlock(block_key, result)[headersize..];
                 }
+
                 var r_text = string.Join(" ", result.Select(z => $"{z:X2}"));
-                RTB_RAM.Invoke((MethodInvoker)delegate {
+                RTB_RAM.Invoke((MethodInvoker)delegate
+                {
                     if (RTB_RAM.Text != r_text) // Prevent text updates if there is no update since they hinder copying
                         RTB_RAM.Text = r_text;
                 });
@@ -82,7 +86,7 @@ namespace AutoModPlugins.GUI
                     RT_Timer.Invoke((MethodInvoker)delegate { refresh.Interval = (double)RT_Timer.Value; });
                 refresh.Start();
             }
-            catch // Execution stopped mid thread
+            catch
             {
                 refresh.Start();
             }
@@ -124,6 +128,7 @@ namespace AutoModPlugins.GUI
                     B_Update.Enabled = true;
                     RTB_RAM.ReadOnly = false;
                 }
+
                 // RTB_RAM.Text = string.Join(" ", Bytes.Select(z => $"{z:X2}")); // set back to the original value
                 refresh.Stop();
             }
@@ -167,6 +172,7 @@ namespace AutoModPlugins.GUI
                     Clipboard.SetText(string.Join(" ", split));
                 }
             }
+
             var handled = base.ProcessCmdKey(ref msg, e);
             if (method == CopyMethod.Integers)
             {
@@ -178,6 +184,7 @@ namespace AutoModPlugins.GUI
                     return true;
                 }
             }
+
             return handled;
         }
     }

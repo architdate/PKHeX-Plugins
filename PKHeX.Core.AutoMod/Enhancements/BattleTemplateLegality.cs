@@ -106,7 +106,7 @@ namespace PKHeX.Core.AutoMod
             if (abilityreq == AbilityRequest.Hidden && encounters.All(z => z.Generation is 3 or 4) && destVer.GetGeneration() < 8)
                 return string.Format(HIDDEN_ABILITY_UNAVAILABLE, species_name);
 
-            //Home Checks
+            // Home Checks
             if (!APILegality.AllowHOMETransferGeneration)
             {
                 if (encounters.All(z => HomeTrackerUtil.IsRequired(z, failed)))

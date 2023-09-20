@@ -32,7 +32,7 @@ namespace PKHeX.Core.AutoMod
             if (!ver.IsValidSavedVersion())
                 ver = GameUtil.GameVersions.First(z => ver.Contains(z));
             var ctx = ver.GetContext();
-            var fallback = lang == null ? new SimpleTrainerInfo(ver) { Context = ctx }  : new SimpleTrainerInfo(ver) { Language = (int)lang, Context = ctx };
+            var fallback = lang == null ? new SimpleTrainerInfo(ver) { Context = ctx } : new SimpleTrainerInfo(ver) { Language = (int)lang, Context = ctx };
             fallback.OT = DefaultOT;
             fallback.TID16 = DefaultTID16;
             fallback.SID16 = DefaultSID16;
@@ -116,7 +116,7 @@ namespace PKHeX.Core.AutoMod
             int origin = pk.Generation;
             int format = pk.Format;
             if (format != origin)
-                return GetSavedTrainerData(format, (GameVersion)template_save.Game, fallback:template_save, lang:lang);
+                return GetSavedTrainerData(format, (GameVersion)template_save.Game, fallback: template_save, lang: lang);
             return GetSavedTrainerData((GameVersion)pk.Version, origin, template_save, lang);
         }
 

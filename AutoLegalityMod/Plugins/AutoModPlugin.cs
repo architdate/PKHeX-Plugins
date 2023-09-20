@@ -1,3 +1,7 @@
+using AutoModPlugins.GUI;
+using AutoModPlugins.Properties;
+using PKHeX.Core;
+using PKHeX.Core.AutoMod;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,10 +11,6 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AutoModPlugins.GUI;
-using AutoModPlugins.Properties;
-using PKHeX.Core;
-using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
 {

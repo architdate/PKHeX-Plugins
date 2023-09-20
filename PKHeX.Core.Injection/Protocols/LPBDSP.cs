@@ -9,7 +9,7 @@ namespace PKHeX.Core.Injection
     public class LPBDSP : InjectionBase
     {
         private static readonly LiveHeXVersion[] BrilliantDiamond = { LiveHeXVersion.BD_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113, LiveHeXVersion.BDSP_v120, LiveHeXVersion.BD_v130 };
-        private static readonly LiveHeXVersion[] ShiningPearl     = { LiveHeXVersion.SP_v100, LiveHeXVersion.SP_v110, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113, LiveHeXVersion.BDSP_v120, LiveHeXVersion.SP_v130 };
+        private static readonly LiveHeXVersion[] ShiningPearl = { LiveHeXVersion.SP_v100, LiveHeXVersion.SP_v110, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113, LiveHeXVersion.BDSP_v120, LiveHeXVersion.SP_v130 };
         private static readonly LiveHeXVersion[] SupportedVersions = ArrayUtil.ConcatAll(BrilliantDiamond, ShiningPearl);
         public static LiveHeXVersion[] GetVersions() => SupportedVersions;
 
@@ -25,7 +25,7 @@ namespace PKHeX.Core.Injection
         private const int MYSTATUS_BLOCK_SIZE = 0x50;
         private const int MYSTATUS_BLOCK_SIZE_RAM = 0x34;
 
-        public static readonly Dictionary<string, (Func<PokeSysBotMini, byte[]?>, Action<PokeSysBotMini, byte[]>)> FunctionMap = new ()
+        public static readonly Dictionary<string, (Func<PokeSysBotMini, byte[]?>, Action<PokeSysBotMini, byte[]>)> FunctionMap = new()
         {
             { "Items",          (GetItemBlock, SetItemBlock) },
             { "MyStatus",       (GetMyStatusBlock, SetMyStatusBlock) },
@@ -66,13 +66,13 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v130   => "[[[main+4C64DC0]+B8]+10]+E0",
-                LiveHeXVersion.SP_v130   => "[[[main+4E7BE98]+B8]+10]+E0",
+                LiveHeXVersion.BD_v130 => "[[[main+4C64DC0]+B8]+10]+E0",
+                LiveHeXVersion.SP_v130 => "[[[main+4E7BE98]+B8]+10]+E0",
                 LiveHeXVersion.BDSP_v120 => "[[[main+4E36C58]+B8]+10]+E0",
                 LiveHeXVersion.BDSP_v113 => "[[[main+4E59E60]+B8]+10]+E0",
                 LiveHeXVersion.BDSP_v112 => "[[[main+4E34DD0]+B8]+10]+E0",
-                LiveHeXVersion.BD_v111   => "[[[main+4C1DCF8]+B8]+10]+E0",
-                LiveHeXVersion.SP_v111   => "[[[main+4E34DD0]+B8]+10]+E0",
+                LiveHeXVersion.BD_v111 => "[[[main+4C1DCF8]+B8]+10]+E0",
+                LiveHeXVersion.SP_v111 => "[[[main+4E34DD0]+B8]+10]+E0",
                 _ => null
             };
         }
@@ -82,13 +82,13 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v130   => "[[[[main+4C64DC0]+B8]+10]+48]+20",
-                LiveHeXVersion.SP_v130   => "[[[[main+4E7BE98]+B8]+10]+48]+20",
+                LiveHeXVersion.BD_v130 => "[[[[main+4C64DC0]+B8]+10]+48]+20",
+                LiveHeXVersion.SP_v130 => "[[[[main+4E7BE98]+B8]+10]+48]+20",
                 LiveHeXVersion.BDSP_v120 => "[[[[main+4E36C58]+B8]+10]+48]+20",
                 LiveHeXVersion.BDSP_v113 => "[[[[main+4E59E60]+B8]+10]+48]+20",
                 LiveHeXVersion.BDSP_v112 => "[[[[main+4E34DD0]+B8]+10]+48]+20",
-                LiveHeXVersion.BD_v111   => "[[[[main+4C1DCF8]+B8]+10]+48]+20",
-                LiveHeXVersion.SP_v111   => "[[[[main+4E34DD0]+B8]+10]+48]+20",
+                LiveHeXVersion.BD_v111 => "[[[[main+4C1DCF8]+B8]+10]+48]+20",
+                LiveHeXVersion.SP_v111 => "[[[[main+4E34DD0]+B8]+10]+48]+20",
                 _ => null
             };
         }
@@ -98,13 +98,13 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v130   => "[[[[main+4C64DC0]+B8]+10]+50]+20",
-                LiveHeXVersion.SP_v130   => "[[[[main+4E7BE98]+B8]+10]+50]+20",
+                LiveHeXVersion.BD_v130 => "[[[[main+4C64DC0]+B8]+10]+50]+20",
+                LiveHeXVersion.SP_v130 => "[[[[main+4E7BE98]+B8]+10]+50]+20",
                 LiveHeXVersion.BDSP_v120 => "[[[[main+4E36C58]+B8]+10]+50]+20",
                 LiveHeXVersion.BDSP_v113 => "[[[[main+4E59E60]+B8]+10]+50]+20",
                 LiveHeXVersion.BDSP_v112 => "[[[[main+4E34DD0]+B8]+10]+50]+20",
-                LiveHeXVersion.BD_v111   => "[[[[main+4C1DCF8]+B8]+10]+50]+20",
-                LiveHeXVersion.SP_v111   => "[[[[main+4E34DD0]+B8]+10]+50]+20",
+                LiveHeXVersion.BD_v111 => "[[[[main+4C1DCF8]+B8]+10]+50]+20",
+                LiveHeXVersion.SP_v111 => "[[[[main+4E34DD0]+B8]+10]+50]+20",
                 _ => null
             };
         }
@@ -114,13 +114,13 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v130   => "[[[main+4C64DC0]+B8]+10]+450",
-                LiveHeXVersion.SP_v130   => "[[[main+4E7BE98]+B8]+10]+450",
+                LiveHeXVersion.BD_v130 => "[[[main+4C64DC0]+B8]+10]+450",
+                LiveHeXVersion.SP_v130 => "[[[main+4E7BE98]+B8]+10]+450",
                 LiveHeXVersion.BDSP_v120 => "[[[main+4E36C58]+B8]+10]+450",
                 LiveHeXVersion.BDSP_v113 => "[[[main+4E59E60]+B8]+10]+450",
                 LiveHeXVersion.BDSP_v112 => "[[[main+4E34DD0]+B8]+10]+450",
-                LiveHeXVersion.BD_v111   => "[[[main+4C1DCF8]+B8]+10]+450",
-                LiveHeXVersion.SP_v111   => "[[[main+4E34DD0]+B8]+10]+450",
+                LiveHeXVersion.BD_v111 => "[[[main+4C1DCF8]+B8]+10]+450",
+                LiveHeXVersion.SP_v111 => "[[[main+4E34DD0]+B8]+10]+450",
                 _ => null
             };
         }
@@ -207,7 +207,8 @@ namespace PKHeX.Core.Injection
                 throw new Exception("Invalid Pointer string.");
 
             var item_blk = psb.com.ReadBytes(addr, ITEM_BLOCK_SIZE_RAM);
-            var items = Core.ArrayUtil.EnumerateSplit(item_blk, 0xC).Select(z => {
+            var items = Core.ArrayUtil.EnumerateSplit(item_blk, 0xC).Select(z =>
+            {
                 var retval = new byte[0x10];
                 z.Slice(0, 0x5).CopyTo(retval.AsSpan());
                 z.Slice(0x5, 0x1).CopyTo(retval, 0x8);
@@ -229,7 +230,8 @@ namespace PKHeX.Core.Injection
                 throw new Exception("Invalid Pointer string.");
 
             data = data.Slice(0, ITEM_BLOCK_SIZE);
-            var items = Core.ArrayUtil.EnumerateSplit(data, 0x10).Select(z => {
+            var items = Core.ArrayUtil.EnumerateSplit(data, 0x10).Select(z =>
+            {
                 var retval = new byte[0xC];
                 z.Slice(0, 0x5).CopyTo(retval.AsSpan());
                 z.Slice(0x8, 0x1).CopyTo(retval, 0x5);

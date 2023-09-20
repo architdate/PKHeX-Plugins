@@ -41,8 +41,10 @@ namespace PKHeX.Core.AutoMod
                     default:
                         continue;
                 }
+
                 any = true;
             }
+
             return any;
         }
 

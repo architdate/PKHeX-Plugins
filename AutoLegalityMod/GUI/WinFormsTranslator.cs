@@ -38,6 +38,7 @@ namespace AutoModPlugins
         {
             form.SuspendLayout();
             var formname = form.Name;
+
             // Translate Title
             form.Text = context.GetTranslatedText(formname, form.Text);
             var translatable = GetTranslatableControls(form);
@@ -58,18 +59,25 @@ namespace AutoModPlugins
                         t.Text = updated;
                 }
             }
+
             form.ResumeLayout();
         }
 
         private static IEnumerable<string> GetTranslationFile(string lang)
         {
             var file = GetTranslationFileNameInternal(lang);
+
             // Check to see if a the translation file exists in the same folder as the executable
             string externalLangPath = GetTranslationFileNameExternal(file);
             if (File.Exists(externalLangPath))
             {
-                try { return File.ReadAllLines(externalLangPath); }
-                catch { /* In use? Just return the internal resource. */ }
+                try
+                {
+                    return File.ReadAllLines(externalLangPath);
+                }
+                catch
+                { /* In use? Just return the internal resource. */
+                }
             }
 
             if (Util.IsStringListCached(file, out var result))
@@ -95,7 +103,7 @@ namespace AutoModPlugins
                         if (string.IsNullOrWhiteSpace(z.Name))
                             break;
 
-                        if (z.ContextMenuStrip != null) // control has attached menustrip
+                        if (z.ContextMenuStrip != null)
                         {
                             foreach (var obj in GetToolStripMenuItems(z.ContextMenuStrip))
                                 yield return obj;
@@ -111,7 +119,8 @@ namespace AutoModPlugins
             }
         }
 
-        private static IEnumerable<T> GetChildrenOfType<T>(this Control control) where T : class
+        private static IEnumerable<T> GetChildrenOfType<T>(this Control control)
+            where T : class
         {
             foreach (Control child in control.Controls)
             {
@@ -178,7 +187,11 @@ namespace AutoModPlugins
             {
                 var constructors = t.GetConstructors();
                 if (constructors.Length == 0)
-                { Console.WriteLine($"No constructors: {t.Name}"); continue; }
+                {
+                    Console.WriteLine($"No constructors: {t.Name}");
+                    continue;
+                }
+
                 var argCount = constructors[0].GetParameters().Length;
                 try
                 {
@@ -221,46 +234,46 @@ namespace AutoModPlugins
         public bool AddNew { private get; set; }
         public bool RemoveUsedKeys { private get; set; }
         public const char Separator = '=';
-        private readonly Dictionary<string, string> Translation = new();
+        private readonly Dictionary<string, string> translation = new();
 
         public TranslationContext(IEnumerable<string> content, char separator = Separator)
         {
             var entries = content.Select(z => z.Split(separator)).Where(z => z.Length == 2);
-            foreach (var kvp in entries.Where(z => !Translation.ContainsKey(z[0])))
-                Translation.Add(kvp[0], kvp[1]);
+            foreach (var kvp in entries.Where(z => !translation.ContainsKey(z[0])))
+                translation.Add(kvp[0], kvp[1]);
         }
 
         public string? GetTranslatedText(string val, string? fallback)
         {
             if (RemoveUsedKeys)
-                Translation.Remove(val);
+                translation.Remove(val);
 
-            if (Translation.TryGetValue(val, out var translated))
+            if (translation.TryGetValue(val, out var translated))
                 return translated;
 
             if (fallback != null && AddNew)
-                Translation.Add(val, fallback);
+                translation.Add(val, fallback);
             return fallback;
         }
 
         public IEnumerable<string> Write(char separator = Separator)
         {
-            return Translation.Select(z => $"{z.Key}{separator}{z.Value}").OrderBy(z => z.Contains('.')).ThenBy(z => z);
+            return translation.Select(z => $"{z.Key}{separator}{z.Value}").OrderBy(z => z.Contains('.')).ThenBy(z => z);
         }
 
         public void UpdateFrom(TranslationContext other)
         {
             bool oldAdd = AddNew;
             AddNew = true;
-            foreach (var kvp in other.Translation)
+            foreach (var kvp in other.translation)
                 GetTranslatedText(kvp.Key, kvp.Value);
             AddNew = oldAdd;
         }
 
         public void RemoveKeys(TranslationContext other)
         {
-            foreach (var kvp in other.Translation)
-                Translation.Remove(kvp.Key);
+            foreach (var kvp in other.translation)
+                translation.Remove(kvp.Key);
         }
     }
 }

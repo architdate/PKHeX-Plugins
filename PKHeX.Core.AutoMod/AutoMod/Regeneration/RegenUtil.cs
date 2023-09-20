@@ -38,6 +38,7 @@ namespace PKHeX.Core.AutoMod
 
                 any = true;
             }
+
             tr = sti;
             if (!any || (TID7 < 0 && SID7 < 0))
                 return any;

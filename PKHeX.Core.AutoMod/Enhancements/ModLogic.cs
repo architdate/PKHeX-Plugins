@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace PKHeX.Core.AutoMod
 {
@@ -11,7 +10,7 @@ namespace PKHeX.Core.AutoMod
     public static class ModLogic
     {
         // Living Dex Settings
-        public static LivingDexConfig cfg = new LivingDexConfig 
+        public static LivingDexConfig cfg = new LivingDexConfig
         {
             IncludeForms = false,
             SetShiny = false,

@@ -4,7 +4,7 @@ namespace PKHeX.Core.AutoMod
 {
     public static class Overworld8Search
     {
-        private static readonly Dictionary<int, uint> zero_fixed_ivs = new()
+        private static readonly Dictionary<int, uint> ZeroFixedIvs = new()
         {
             { ComputeIV32(new[] { 31, 31, 31, 31,  0,  0 }), 0x005DC65E },
             { ComputeIV32(new[] { 31,  0, 31,  0, 31, 31 }), 0x022F7135 },
@@ -305,7 +305,7 @@ namespace PKHeX.Core.AutoMod
                 3 => three_fixed_ivs,
                 4 => four_fixed_ivs,
                 5 => five_fixed_ivs,
-                _ => zero_fixed_ivs,
+                _ => ZeroFixedIvs,
             };
             return seeds.TryGetValue(iv32, out seed);
         }
@@ -337,12 +337,12 @@ namespace PKHeX.Core.AutoMod
             // { IV_HP, IV_ATK, IV_DEF, IV_SPE, IV_SPA, IV_SPD } (original order)
             // { IV_HP, IV_ATK, IV_DEF, IV_SPA, IV_SPD, IV_SPE } (corrected order)
             int result = 0;
-            result |= ivs[0] << (5*0);
-            result |= ivs[1] << (5*1);
-            result |= ivs[2] << (5*2);
-            result |= ivs[4] << (5*3);
-            result |= ivs[5] << (5*4);
-            result |= ivs[3] << (5*5);
+            result |= ivs[0] << (5 * 0);
+            result |= ivs[1] << (5 * 1);
+            result |= ivs[2] << (5 * 2);
+            result |= ivs[4] << (5 * 3);
+            result |= ivs[5] << (5 * 4);
+            result |= ivs[3] << (5 * 5);
             return result;
         }
     }

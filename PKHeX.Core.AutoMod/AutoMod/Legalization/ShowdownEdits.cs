@@ -48,6 +48,7 @@ namespace PKHeX.Core.AutoMod
             }
 
             pk.SetNature(val);
+
             // Try setting the actual nature (in the event the StatNature was set instead)
             var orig = pk.Nature;
             if (orig == val)
@@ -339,7 +340,7 @@ namespace PKHeX.Core.AutoMod
             if (!ItemRestrictions.IsHeldItemAllowed(pk) || pk is PB7)
                 pk.HeldItem = 0; // Remove the item if the item is illegal in its generation
             if (set.HeldItem != pk.HeldItem)
-                tb.Add(new() { Identifier = TracebackType.Item, Comment = $"Modified item to {pk.HeldItem}"});
+                tb.Add(new() { Identifier = TracebackType.Item, Comment = $"Modified item to {pk.HeldItem}" });
         }
 
         /// <summary>
