@@ -53,14 +53,22 @@ namespace PKHeX.Core.Injection
             return result;
         }
 
-        internal static T? ToClass<T>(this byte[] bytes) where T : class
+        internal static T? ToClass<T>(this byte[] bytes)
+            where T : class
         {
             var handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-            try { return Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T)) as T; }
-            finally { handle.Free(); }
+            try
+            {
+                return Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T)) as T;
+            }
+            finally
+            {
+                handle.Free();
+            }
         }
 
-        internal static byte[] ToBytesClass<T>(this T obj) where T : class
+        internal static byte[] ToBytesClass<T>(this T obj)
+            where T : class
         {
             int size = Marshal.SizeOf(obj);
             byte[] arr = new byte[size];

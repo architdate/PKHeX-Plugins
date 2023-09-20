@@ -24,13 +24,14 @@ namespace PKHeX.Core.Enhancements
         public readonly List<string> SetText = new();
         public readonly List<ShowdownSet> Sets = new();
 
-        public static readonly string[] IllegalFormats = {
+        public static readonly string[] IllegalFormats =
+        {
             "Almost Any Ability", // Generates illegal abilities
-            "BH",                 // Balanced Hackmons
-            "Mix and Mega",       // Assumes pokemon can mega evolve that cannot
-            "STABmons",           // Generates illegal movesets
-            "National Dex",       // Adds Megas to Generation VIII
-            "National Dex AG"     // Adds Megas to Generation VIII
+            "BH", // Balanced Hackmons
+            "Mix and Mega", // Assumes pokemon can mega evolve that cannot
+            "STABmons", // Generates illegal movesets
+            "National Dex", // Adds Megas to Generation VIII
+            "National Dex AG" // Adds Megas to Generation VIII
         };
 
         public string Summary => AlertText(ShowdownSpeciesName, SetText.Count, GetTitles());
@@ -76,7 +77,12 @@ namespace PKHeX.Core.Enhancements
                 var shiny = split1[i - 1].Contains("\"shiny\":true");
                 if (split1[i - 1].Contains("\"format\":\""))
                 {
-                    format = split1[i - 1][(split1[i - 1].IndexOf("\"format\":\"", StringComparison.Ordinal) + "\"format\":\"".Length)..].Split('\"')[0];
+                    format = split1[i - 1][
+                        (
+                            split1[i - 1].IndexOf("\"format\":\"", StringComparison.Ordinal)
+                            + "\"format\":\"".Length
+                        )..
+                    ].Split('\"')[0];
                 }
 
                 if (IllegalFormats.Any(s => s.Equals(format, StringComparison.OrdinalIgnoreCase)))
@@ -92,13 +98,28 @@ namespace PKHeX.Core.Enhancements
                 if (!split1[i - 1].Contains("\"name\":"))
                     continue;
 
-                var name = split1[i - 1][(split1[i - 1].LastIndexOf("\"name\":\"", StringComparison.Ordinal) + "\"name\":\"".Length)..].Split('\"')[0];
-                var setSpecies = split1[i - 1][(split1[i - 1].LastIndexOf("\"pokemon\":\"", StringComparison.Ordinal) + "\"pokemon\":\"".Length)..].Split('\"')[0];
+                var name = split1[i - 1][
+                    (
+                        split1[i - 1].LastIndexOf("\"name\":\"", StringComparison.Ordinal)
+                        + "\"name\":\"".Length
+                    )..
+                ].Split('\"')[0];
+                var setSpecies = split1[i - 1][
+                    (
+                        split1[i - 1].LastIndexOf("\"pokemon\":\"", StringComparison.Ordinal)
+                        + "\"pokemon\":\"".Length
+                    )..
+                ].Split('\"')[0];
                 SetFormat.Add(format);
                 SetName.Add(name);
 
                 if (!split1[i - 1].Contains("\"level\":0,") && split1[i - 1].Contains("\"level\":"))
-                    _ = int.TryParse(split1[i - 1].Split(new[] { "\"level\":" }, StringSplitOptions.None)[1].Split(',')[0], out level);
+                    _ = int.TryParse(
+                        split1[i - 1].Split(new[] { "\"level\":" }, StringSplitOptions.None)[
+                            1
+                        ].Split(',')[0],
+                        out level
+                    );
 
                 var split2 = split1[i].Split(new[] { "\"]}" }, StringSplitOptions.None);
                 var tmp = split2[0];
@@ -118,7 +139,10 @@ namespace PKHeX.Core.Enhancements
             {
                 nameof(PK1) => "https://www.smogon.com/dex/rb/pokemon",
                 nameof(PK2) or nameof(SK2) => "https://www.smogon.com/dex/gs/pokemon",
-                nameof(PK3) or nameof(CK3) or nameof(XK3) => "https://www.smogon.com/dex/rs/pokemon",
+                nameof(PK3)
+                or nameof(CK3)
+                or nameof(XK3)
+                    => "https://www.smogon.com/dex/rs/pokemon",
                 nameof(PK4) or nameof(BK4) => "https://www.smogon.com/dex/dp/pokemon",
                 nameof(PK5) => "https://www.smogon.com/dex/bw/pokemon",
                 nameof(PK6) => "https://www.smogon.com/dex/xy/pokemon",
@@ -129,7 +153,12 @@ namespace PKHeX.Core.Enhancements
             };
         }
 
-        private static string ConvertSetToShowdown(string set, string species, bool shiny, int level)
+        private static string ConvertSetToShowdown(
+            string set,
+            string species,
+            bool shiny,
+            int level
+        )
         {
             var result = GetSetLines(set, species, shiny, level);
             return string.Join(Environment.NewLine, result);
@@ -137,7 +166,12 @@ namespace PKHeX.Core.Enhancements
 
         private static readonly string[] statNames = { "HP", "Atk", "Def", "SpA", "SpD", "Spe" };
 
-        private static IEnumerable<string> GetSetLines(string set, string species, bool shiny, int level)
+        private static IEnumerable<string> GetSetLines(
+            string set,
+            string species,
+            bool shiny,
+            int level
+        )
         {
             TryGetToken(set, "\"items\":[\"", "\"", out var item);
             TryGetToken(set, "\"moveslots\":", ",\"evconfigs\":", out var movesets);
@@ -169,9 +203,13 @@ namespace PKHeX.Core.Enhancements
             if (!string.IsNullOrWhiteSpace(teratype))
                 result.Add($"Tera Type: {teratype}");
             if (evstr.Length >= 3)
-                result.Add($"EVs: {string.Join(" / ", statNames.Select((z, i) => $"{evs[i]} {z}"))}");
+                result.Add(
+                    $"EVs: {string.Join(" / ", statNames.Select((z, i) => $"{evs[i]} {z}"))}"
+                );
             if (ivstr.Length >= 3)
-                result.Add($"IVs: {string.Join(" / ", statNames.Select((z, i) => $"{ivs[i]} {z}"))}");
+                result.Add(
+                    $"IVs: {string.Join(" / ", statNames.Select((z, i) => $"{ivs[i]} {z}"))}"
+                );
             if (!string.IsNullOrWhiteSpace(nature))
                 result.Add($"{nature} Nature");
 
@@ -187,7 +225,12 @@ namespace PKHeX.Core.Enhancements
         /// <param name="suffix">Suffix</param>
         /// <param name="result">Substring within prefix-suffix.</param>
         /// <returns>True if found a substring, false if no prefix found.</returns>
-        private static bool TryGetToken(string line, string prefix, string suffix, out string result)
+        private static bool TryGetToken(
+            string line,
+            string prefix,
+            string suffix,
+            out string result
+        )
         {
             var prefixStart = line.IndexOf(prefix, StringComparison.Ordinal);
             if (prefixStart < 0)
@@ -211,14 +254,17 @@ namespace PKHeX.Core.Enhancements
             var slots = movesets.Split(new[] { "],[" }, StringSplitOptions.None);
             foreach (var slot in slots)
             {
-                var choices = slot.Split(new[] { "\"move\":\"" }, StringSplitOptions.None).Skip(1).ToArray();
+                var choices = slot.Split(new[] { "\"move\":\"" }, StringSplitOptions.None)
+                    .Skip(1)
+                    .ToArray();
                 foreach (var choice in choices)
                 {
                     var move = GetMove(choice);
                     if (moves.Contains(move))
                         continue;
                     if (move.Equals("Hidden Power", StringComparison.OrdinalIgnoreCase))
-                        move = $"{move} [{choice.Split(new[] { "\"type\":\"" }, StringSplitOptions.None)[1].Split('\"')[0]}]";
+                        move =
+                            $"{move} [{choice.Split(new[] { "\"type\":\"" }, StringSplitOptions.None)[1].Split('\"')[0]}]";
                     moves.Add(move);
                     break;
                 }
@@ -239,7 +285,8 @@ namespace PKHeX.Core.Enhancements
             if (string.IsNullOrWhiteSpace(liststring))
                 return val;
 
-            string getStat(string v) => liststring.Split(new[] { v }, StringSplitOptions.None)[1].Split(',')[0];
+            string getStat(string v) =>
+                liststring.Split(new[] { v }, StringSplitOptions.None)[1].Split(',')[0];
             val[0] = getStat("\"hp\":");
             val[1] = getStat("\"atk\":");
             val[2] = getStat("\"def\":");
@@ -323,36 +370,43 @@ namespace PKHeX.Core.Enhancements
 
                 default:
                     if (Totem_USUM.Contains(spec) && form == "Large")
-                        return Totem_Alolan.Contains(spec) && spec != (int)Core.Species.Mimikyu ? "Alola-Totem" : "Totem";
+                        return Totem_Alolan.Contains(spec) && spec != (int)Core.Species.Mimikyu
+                            ? "Alola-Totem"
+                            : "Totem";
                     return form.Replace(' ', '-');
             }
         }
 
-        internal static readonly HashSet<int> Totem_Alolan = new()
-        {
-            020, // Raticate (Normal, Alolan, Totem)
-            105, // Marowak (Normal, Alolan, Totem)
-            778, // Mimikyu (Normal, Busted, Totem, Totem_Busted)
-        };
+        internal static readonly HashSet<int> Totem_Alolan =
+            new()
+            {
+                020, // Raticate (Normal, Alolan, Totem)
+                105, // Marowak (Normal, Alolan, Totem)
+                778, // Mimikyu (Normal, Busted, Totem, Totem_Busted)
+            };
 
-        internal static readonly HashSet<int> Totem_USUM = new()
-        {
-            020, // Raticate
-            735, // Gumshoos
-            758, // Salazzle
-            754, // Lurantis
-            738, // Vikavolt
-            778, // Mimikyu
-            784, // Kommo-o
-            105, // Marowak
-            752, // Araquanid
-            777, // Togedemaru
-            743, // Ribombee
-        };
+        internal static readonly HashSet<int> Totem_USUM =
+            new()
+            {
+                020, // Raticate
+                735, // Gumshoos
+                758, // Salazzle
+                754, // Lurantis
+                738, // Vikavolt
+                778, // Mimikyu
+                784, // Kommo-o
+                105, // Marowak
+                752, // Araquanid
+                777, // Togedemaru
+                743, // Ribombee
+            };
 
         private static string GetURL(string speciesName, string form, string baseURL)
         {
-            if (string.IsNullOrWhiteSpace(form) || (ShowdownUtil.IsInvalidForm(form) && form != "Crowned")) // Crowned Formes have separate pages
+            if (
+                string.IsNullOrWhiteSpace(form)
+                || (ShowdownUtil.IsInvalidForm(form) && form != "Crowned")
+            ) // Crowned Formes have separate pages
             {
                 var spec = ConvertSpeciesToURLSpecies(speciesName).ToLower();
                 return $"{baseURL}/{spec}/";
@@ -382,7 +436,11 @@ namespace PKHeX.Core.Enhancements
             return titles;
         }
 
-        private static string AlertText(string showdownSpec, int count, Dictionary<string, List<string>> titles)
+        private static string AlertText(
+            string showdownSpec,
+            int count,
+            Dictionary<string, List<string>> titles
+        )
         {
             var sb = new StringBuilder();
             sb.Append(showdownSpec).Append(':');

@@ -33,6 +33,7 @@ namespace PKHeX.Core.AutoMod
             };
         }
 
-        public static bool IsSilent(this AutoModErrorCode code) => code <= AutoModErrorCode.CODE_SILENT;
+        public static bool IsSilent(this AutoModErrorCode code) =>
+            code <= AutoModErrorCode.CODE_SILENT;
     }
 }

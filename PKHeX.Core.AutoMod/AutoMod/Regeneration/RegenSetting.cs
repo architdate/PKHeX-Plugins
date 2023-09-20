@@ -33,7 +33,9 @@ namespace PKHeX.Core.AutoMod
                         Language = Aesthetics.GetLanguageId(value);
                         break;
                     case nameof(Ability):
-                        Ability = Enum.TryParse(value, out AbilityRequest ar) ? ar : AbilityRequest.Any;
+                        Ability = Enum.TryParse(value, out AbilityRequest ar)
+                            ? ar
+                            : AbilityRequest.Any;
                         break;
                     case nameof(Alpha):
                         Alpha = value == "Yes";

@@ -96,14 +96,26 @@ namespace PKHeX.Core.Injection
         }
 
         private void LastLog(string l) => Lastlog = l;
+
         private void OnDataReady(DataReadyEventArgs e) => DataReady.Invoke(this, e);
+
         private void OnConnected(EventArgs e) => Connected.Invoke(this, e);
+
         private void OnInfoReady(InfoReadyEventArgs e) => InfoReady.Invoke(this, e);
-        private static string ByteToHex(byte[] datBuf) => datBuf.Aggregate("", (current, b) => current + (b.ToString("X2") + " "));
-        public void AddWaitingForData(uint newkey, DataReadyWaiting newvalue) => _waitingForData.Add(newkey, newvalue);
+
+        private static string ByteToHex(byte[] datBuf) =>
+            datBuf.Aggregate("", (current, b) => current + (b.ToString("X2") + " "));
+
+        public void AddWaitingForData(uint newkey, DataReadyWaiting newvalue) =>
+            _waitingForData.Add(newkey, newvalue);
+
         public void ListProcess() => SendEmptyPacket(5);
-        public uint Data(uint addr, uint size = 0x100, int pid = -1) => SendReadMemPacket(addr, size, (uint)pid);
-        public void Write(uint addr, byte[] buf, int pid = -1) => SendWriteMemPacket(addr, (uint)pid, buf);
+
+        public uint Data(uint addr, uint size = 0x100, int pid = -1) =>
+            SendReadMemPacket(addr, size, (uint)pid);
+
+        public void Write(uint addr, byte[] buf, int pid = -1) =>
+            SendWriteMemPacket(addr, (uint)pid, buf);
 
         public void Connect(string host, int port)
         {
@@ -120,8 +132,7 @@ namespace PKHeX.Core.Injection
                 if (len == 0)
                     return 0;
                 index += len;
-            }
-            while (index < length);
+            } while (index < length);
             return length;
         }
 
@@ -135,8 +146,7 @@ namespace PKHeX.Core.Injection
                     continue;
                 SendHeartbeatPacket();
                 hbstarted = true;
-            }
-            while (!hbstarted || IsConnected);
+            } while (!hbstarted || IsConnected);
         }
 
         private void PacketRecvThreadStart()
@@ -240,7 +250,8 @@ namespace PKHeX.Core.Injection
 
         private void HandlePacket(uint cmd, uint seq, byte[] dataBuf)
         {
-            if (cmd == 9) HandleReadMem(seq, dataBuf);
+            if (cmd == 9)
+                HandleReadMem(seq, dataBuf);
         }
 
         private void SetServer(string serverHost, int serverPort)
@@ -270,7 +281,9 @@ namespace PKHeX.Core.Injection
             }
             catch
             {
-                Console.WriteLine("Could not connect, make sure the IP is correct, you're running NTR and you're online in-game!");
+                Console.WriteLine(
+                    "Could not connect, make sure the IP is correct, you're running NTR and you're online in-game!"
+                );
             }
         }
 
@@ -372,7 +385,18 @@ namespace PKHeX.Core.Injection
 
         private void GetGame(object? sender, InfoReadyEventArgs e)
         {
-            var pnamestr = new[] { "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc", "momiji", "momiji" };
+            var pnamestr = new[]
+            {
+                "kujira-1",
+                "kujira-2",
+                "sango-1",
+                "sango-2",
+                "salmon",
+                "niji_loc",
+                "niji_loc",
+                "momiji",
+                "momiji"
+            };
             string? pname;
             string log = e.Info;
             if ((pname = Array.Find(pnamestr, log.Contains)) == null)

@@ -15,7 +15,12 @@ namespace AutoModPlugins
         {
             SystemSounds.Asterisk.Play();
             string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
-            return MessageBox.Show(msg, nameof(Alert), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return MessageBox.Show(
+                msg,
+                nameof(Alert),
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
         public static DialogResult Prompt(MessageBoxButtons btn, params string[] lines)
@@ -40,10 +45,11 @@ namespace AutoModPlugins
         public static ALMError ALMErrorMismatch(AssemblyVersions versions)
         {
             // ReSharper disable once SuspiciousTypeConversion.Global
-            var msg = "Version mismatch between ALM and PKHeX.\n\n" +
-                     $"Current ALM version: {versions.AlmVersionCurrent}\n" +
-                     $"Current PKHeX version: {versions.CoreVersionCurrent}\n\n" +
-                      "Click the \"Wiki\" button to learn how to fix this error.";
+            var msg =
+                "Version mismatch between ALM and PKHeX.\n\n"
+                + $"Current ALM version: {versions.AlmVersionCurrent}\n"
+                + $"Current PKHeX version: {versions.CoreVersionCurrent}\n\n"
+                + "Click the \"Wiki\" button to learn how to fix this error.";
 
             return new ALMError(msg, new[] { "Wiki", "Cancel" });
         }
@@ -62,15 +68,20 @@ namespace AutoModPlugins
         /// <returns>Result of whether or not a file is to be loaded from the output path.</returns>
         public static bool OpenSAVPKMDialog(IEnumerable<string> Extensions, out string? path)
         {
-            string supported = string.Join(";", Extensions.Select(s => $"*.{s}").Concat(new[] { "*.pkm" }));
+            string supported = string.Join(
+                ";",
+                Extensions.Select(s => $"*.{s}").Concat(new[] { "*.pkm" })
+            );
             using var ofd = new OpenFileDialog
             {
-                Filter = "All Files|*.*" +
-                         $"|Supported Files (*.*)|main;*.bin;{supported};*.bak" +
-                         "|Save Files (*.sav)|main" +
-                         "|Decrypted PKM File (*.pkm)|" + supported +
-                         "|Binary File|*.bin" +
-                         "|Backup File|*.bak",
+                Filter =
+                    "All Files|*.*"
+                    + $"|Supported Files (*.*)|main;*.bin;{supported};*.bak"
+                    + "|Save Files (*.sav)|main"
+                    + "|Decrypted PKM File (*.pkm)|"
+                    + supported
+                    + "|Binary File|*.bin"
+                    + "|Backup File|*.bak",
             };
             if (ofd.ShowDialog() != DialogResult.OK)
             {
@@ -89,7 +100,10 @@ namespace AutoModPlugins
             child.Location = new Point(Math.Max(x, 0), Math.Max(y, 0));
         }
 
-        public static T? FirstFormOfType<T>() where T : Form => FormsOfType<T>().FirstOrDefault();
-        public static IEnumerable<T> FormsOfType<T>() where T : Form => Application.OpenForms.OfType<T>();
+        public static T? FirstFormOfType<T>()
+            where T : Form => FormsOfType<T>().FirstOrDefault();
+
+        public static IEnumerable<T> FormsOfType<T>()
+            where T : Form => Application.OpenForms.OfType<T>();
     }
 }

@@ -17,8 +17,23 @@ namespace PKHeX.Core.Enhancements
         public static bool IsTeamBackup(string paste) => paste.StartsWith("===");
 
         // TODO: Update form list with possibly invalid Calyrex forms (non battle)??
-        private static string[] InvalidFormes => new[] { "Primal", "Busted", "Crowned", "Noice", "Gulping", "Gorging", "Zen", "Galar-Zen", "Hangry", "Complete" };
-        public static bool IsInvalidForm(string form) => form.Contains("Mega") || InvalidFormes.Contains(form);
+        private static string[] InvalidFormes =>
+            new[]
+            {
+                "Primal",
+                "Busted",
+                "Crowned",
+                "Noice",
+                "Gulping",
+                "Gorging",
+                "Zen",
+                "Galar-Zen",
+                "Hangry",
+                "Complete"
+            };
+
+        public static bool IsInvalidForm(string form) =>
+            form.Contains("Mega") || InvalidFormes.Contains(form);
 
         /// <summary>
         /// A method to get a list of ShowdownSet(s) from a string paste

@@ -20,10 +20,12 @@ namespace PKHeX.Core.Enhancements
             var stream = GetStreamFromURL(address);
             return GetStringResponse(stream);
         }
+
         private static Stream GetStreamFromURL(string url)
         {
             using var client = new HttpClient();
-            const string agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36";
+            const string agent =
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36";
             client.DefaultRequestHeaders.Add("User-Agent", agent);
             var response = client.GetAsync(url).Result;
             return response.Content.ReadAsStreamAsync().Result;
@@ -68,7 +70,11 @@ namespace PKHeX.Core.Enhancements
         /// <param name="Url">location to fetch from</param>
         /// <param name="generation">The generation for the game the pokemon is being uploaded from.</param>
         /// <returns></returns>
-        public async static Task<HttpResponseMessage> GPSSPost(byte[] data, int generation, string Url = "flagbrew.org")
+        public async static Task<HttpResponseMessage> GPSSPost(
+            byte[] data,
+            int generation,
+            string Url = "flagbrew.org"
+        )
         {
             using var client = new HttpClient();
 
@@ -80,7 +86,10 @@ namespace PKHeX.Core.Enhancements
             uploadData.Headers.Add("source", "PKHeX AutoMod Plugins");
             uploadData.Headers.Add("generation", generation.ToString());
 
-            var response = await client.PostAsync($"https://{Url}/api/v2/gpss/upload/pokemon", uploadData);
+            var response = await client.PostAsync(
+                $"https://{Url}/api/v2/gpss/upload/pokemon",
+                uploadData
+            );
             return response;
         }
 

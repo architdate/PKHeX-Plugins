@@ -21,7 +21,11 @@ namespace AutoModPlugins
 
         private static readonly EncounterTypeGroup[] EncounterPriority =
         {
-            EncounterTypeGroup.Egg, EncounterTypeGroup.Static, EncounterTypeGroup.Trade, EncounterTypeGroup.Slot, EncounterTypeGroup.Mystery,
+            EncounterTypeGroup.Egg,
+            EncounterTypeGroup.Static,
+            EncounterTypeGroup.Trade,
+            EncounterTypeGroup.Slot,
+            EncounterTypeGroup.Mystery,
         };
 
         /// <summary>
@@ -34,7 +38,10 @@ namespace AutoModPlugins
             {
                 var teams = ShowdownTeamSet.GetTeams(source);
                 var names = teams.Select(z => z.Summary);
-                WinFormsUtil.Alert("Generating the following teams:", string.Join(Environment.NewLine, names));
+                WinFormsUtil.Alert(
+                    "Generating the following teams:",
+                    string.Join(Environment.NewLine, names)
+                );
                 Import(teams.SelectMany(z => z.Team).ToList());
                 return;
             }
@@ -76,10 +83,18 @@ namespace AutoModPlugins
                 WinFormsUtil.Alert(message);
         }
 
-        private static AutoModErrorCode ImportSetToTabs(ShowdownSet set, bool skipDialog = false, bool showVerbose = false)
+        private static AutoModErrorCode ImportSetToTabs(
+            ShowdownSet set,
+            bool skipDialog = false,
+            bool showVerbose = false
+        )
         {
             var regen = new RegenTemplate(set, SaveFileEditor.SAV.Generation);
-            if (!skipDialog && DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", regen.Text))
+            if (
+                !skipDialog
+                && DialogResult.Yes
+                    != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Import this set?", regen.Text)
+            )
                 return AutoModErrorCode.NoSingleImport;
 
             if (set.InvalidLines.Count > 0)
@@ -96,17 +111,25 @@ namespace AutoModPlugins
 
             if (msg is LegalizationResult.VersionMismatch)
             {
-                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version.\n\n" +
-                    $"Refer to the Wiki to fix this error.\n\n" +
-                    $"The current ALM Version is {ALMVersion.Versions.AlmVersionCurrent}\n" +
-                    $"The current PKHeX Version is {ALMVersion.Versions.CoreVersionCurrent}";
+                var errorstr =
+                    "The PKHeX-Plugins version does not match the PKHeX version.\n\n"
+                    + $"Refer to the Wiki to fix this error.\n\n"
+                    + $"The current ALM Version is {ALMVersion.Versions.AlmVersionCurrent}\n"
+                    + $"The current PKHeX Version is {ALMVersion.Versions.CoreVersionCurrent}";
 
                 var error = WinFormsUtil.ALMErrorBasic(errorstr);
                 error.ShowDialog();
 
                 var res = error.DialogResult;
                 if (res == DialogResult.Retry)
-                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins", UseShellExecute = true });
+                    Process.Start(
+                        new ProcessStartInfo
+                        {
+                            FileName =
+                                "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins",
+                            UseShellExecute = true
+                        }
+                    );
                 return AutoModErrorCode.VersionMismatch;
             }
 
@@ -118,25 +141,42 @@ namespace AutoModPlugins
                 if (msg is LegalizationResult.Failed)
                     analysis = regen.SetAnalysis(sav, legal);
 
-                var errorstr = msg == LegalizationResult.Failed ? "failed to generate" : "timed out";
-                var invalid_set_error = (analysis == null ? $"Set {errorstr}." : $"Set Invalid: {analysis}") +
-                    "\n\nRefer to the wiki for more help on generating sets correctly." +
-                    "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue.";
+                var errorstr =
+                    msg == LegalizationResult.Failed ? "failed to generate" : "timed out";
+                var invalid_set_error =
+                    (analysis == null ? $"Set {errorstr}." : $"Set Invalid: {analysis}")
+                    + "\n\nRefer to the wiki for more help on generating sets correctly."
+                    + "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue.";
                 var error = WinFormsUtil.ALMErrorBasic(invalid_set_error);
                 error.ShowDialog();
 
                 var res = error.DialogResult;
                 if (res == DialogResult.Retry)
-                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod", UseShellExecute = true });
+                    Process.Start(
+                        new ProcessStartInfo
+                        {
+                            FileName =
+                                "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod",
+                            UseShellExecute = true
+                        }
+                    );
             }
 
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
             if (showVerbose && almres.Traceback != null)
-                WinFormsUtil.Prompt(MessageBoxButtons.OK, string.Join(Environment.NewLine, almres.Traceback.Select(z => $"{z.Identifier}: {z.Comment}")));
+                WinFormsUtil.Prompt(
+                    MessageBoxButtons.OK,
+                    string.Join(
+                        Environment.NewLine,
+                        almres.Traceback.Select(z => $"{z.Identifier}: {z.Comment}")
+                    )
+                );
 
             var timespan = timer.Elapsed;
-            Debug.WriteLine($"Time to complete {nameof(ImportSetToTabs)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
+            Debug.WriteLine(
+                $"Time to complete {nameof(ImportSetToTabs)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds"
+            );
             return AutoModErrorCode.None;
         }
 
@@ -145,7 +185,10 @@ namespace AutoModPlugins
         /// </summary>
         /// <param name="sets">A list of ShowdownSet(s) that need to be generated</param>
         /// <param name="replace">A boolean that determines if current pokemon will be replaced or not</param>
-        private static AutoModErrorCode ImportSetsToBoxes(IReadOnlyList<ShowdownSet> sets, bool replace)
+        private static AutoModErrorCode ImportSetsToBoxes(
+            IReadOnlyList<ShowdownSet> sets,
+            bool replace
+        )
         {
             var timer = Stopwatch.StartNew();
             var sav = SaveFileEditor.SAV;
@@ -153,46 +196,73 @@ namespace AutoModPlugins
             var start = SaveFileEditor.CurrentBox * sav.BoxSlotCount;
 
             Debug.WriteLine($"Commencing Import of {sets.Count} set(s).");
-            var result = sav.ImportToExisting(sets, BoxData, out var invalid, out var timeout, start, replace);
+            var result = sav.ImportToExisting(
+                sets,
+                BoxData,
+                out var invalid,
+                out var timeout,
+                start,
+                replace
+            );
             if (timeout.Count > 0 || invalid.Count > 0)
             {
-                var errorstr = $"{timeout.Count} set(s) timed out and {invalid.Count} set(s) are invalid." +
-                                "\n\nRefer to the wiki for more help on generating sets correctly." +
-                                "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue.";
+                var errorstr =
+                    $"{timeout.Count} set(s) timed out and {invalid.Count} set(s) are invalid."
+                    + "\n\nRefer to the wiki for more help on generating sets correctly."
+                    + "\n\nIf you are sure this set is valid, please create an issue on GitHub and upload the error_log.txt file in the issue.";
 
                 var error = WinFormsUtil.ALMErrorBasic(errorstr);
                 error.ShowDialog();
 
                 var res = error.DialogResult;
                 if (res == DialogResult.Retry)
-                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod", UseShellExecute = true });
+                    Process.Start(
+                        new ProcessStartInfo
+                        {
+                            FileName =
+                                "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod",
+                            UseShellExecute = true
+                        }
+                    );
             }
 
             if (result is AutoModErrorCode.VersionMismatch)
             {
-                var errorstr = "The PKHeX-Plugins version does not match the PKHeX version.\nRefer to the Wiki for how to fix this error.\n\n" +
-                              $"The current ALM Version is {ALMVersion.Versions.AlmVersionCurrent}\n" +
-                              $"The current PKHeX Version is {ALMVersion.Versions.CoreVersionCurrent}";
+                var errorstr =
+                    "The PKHeX-Plugins version does not match the PKHeX version.\nRefer to the Wiki for how to fix this error.\n\n"
+                    + $"The current ALM Version is {ALMVersion.Versions.AlmVersionCurrent}\n"
+                    + $"The current PKHeX Version is {ALMVersion.Versions.CoreVersionCurrent}";
 
                 var error = WinFormsUtil.ALMErrorBasic(errorstr);
                 error.ShowDialog();
 
                 var res = error.DialogResult;
                 if (res == DialogResult.Retry)
-                    Process.Start(new ProcessStartInfo { FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins", UseShellExecute = true });
+                    Process.Start(
+                        new ProcessStartInfo
+                        {
+                            FileName =
+                                "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins",
+                            UseShellExecute = true
+                        }
+                    );
                 return AutoModErrorCode.VersionMismatch;
             }
 
             if (result != AutoModErrorCode.None)
                 return result;
 
-            Debug.WriteLine("Multi Set Genning Complete. Setting data to the save file and reloading view.");
+            Debug.WriteLine(
+                "Multi Set Genning Complete. Setting data to the save file and reloading view."
+            );
             SaveFileEditor.ReloadSlots();
 
             // Debug Statements
             timer.Stop();
             var timespan = timer.Elapsed;
-            Debug.WriteLine($"Time to complete {nameof(ImportSetsToBoxes)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds");
+            Debug.WriteLine(
+                $"Time to complete {nameof(ImportSetsToBoxes)}: {timespan.Minutes:00} minutes {timespan.Seconds:00} seconds {timespan.Milliseconds / 10:00} milliseconds"
+            );
             return AutoModErrorCode.None;
         }
 
@@ -231,14 +301,17 @@ namespace AutoModPlugins
 
             if (APILegality.EnableDevMode && settings.LatestAllowedVersion == "0.0.0.0")
             {
-                settings.LatestAllowedVersion = ALMVersion.Versions.CoreVersionLatest?.ToString() ?? "0.0.0.0";
+                settings.LatestAllowedVersion =
+                    ALMVersion.Versions.CoreVersionLatest?.ToString() ?? "0.0.0.0";
                 APILegality.LatestAllowedVersion = settings.LatestAllowedVersion;
             }
-            else APILegality.LatestAllowedVersion = settings.LatestAllowedVersion;
+            else
+                APILegality.LatestAllowedVersion = settings.LatestAllowedVersion;
 
             settings.PrioritizeEncounters ??= EncounterPriority.ToList();
             foreach (var ep in EncounterPriority)
-                if (!settings.PrioritizeEncounters.Contains(ep)) settings.PrioritizeEncounters.Add(ep);
+                if (!settings.PrioritizeEncounters.Contains(ep))
+                    settings.PrioritizeEncounters.Add(ep);
             settings.PrioritizeEncounters = settings.PrioritizeEncounters.Distinct().ToList();
             EncounterMovesetGenerator.PriorityList = settings.PrioritizeEncounters;
         }

@@ -18,7 +18,15 @@ namespace AutoModPlugins.GUI
         private readonly RWMethod method;
         private readonly PokeSysBotMini? psb;
 
-        public SimpleHexEditor(byte[] originalBytes, PokeSysBotMini? bot = null, ulong addr = 0, RWMethod rwm = RWMethod.Heap, bool decrypt_blk = false, uint decrypt_key = 0, int header = 0)
+        public SimpleHexEditor(
+            byte[] originalBytes,
+            PokeSysBotMini? bot = null,
+            ulong addr = 0,
+            RWMethod rwm = RWMethod.Heap,
+            bool decrypt_blk = false,
+            uint decrypt_key = 0,
+            int header = 0
+        )
         {
             InitializeComponent();
             this.TranslateInterface(WinFormsTranslator.CurrentLanguage);
@@ -77,13 +85,22 @@ namespace AutoModPlugins.GUI
                 }
 
                 var r_text = string.Join(" ", result.Select(z => $"{z:X2}"));
-                RTB_RAM.Invoke((MethodInvoker)delegate
-                {
-                    if (RTB_RAM.Text != r_text) // Prevent text updates if there is no update since they hinder copying
-                        RTB_RAM.Text = r_text;
-                });
+                RTB_RAM.Invoke(
+                    (MethodInvoker)
+                        delegate
+                        {
+                            if (RTB_RAM.Text != r_text) // Prevent text updates if there is no update since they hinder copying
+                                RTB_RAM.Text = r_text;
+                        }
+                );
                 if (RT_Timer.Enabled)
-                    RT_Timer.Invoke((MethodInvoker)delegate { refresh.Interval = (double)RT_Timer.Value; });
+                    RT_Timer.Invoke(
+                        (MethodInvoker)
+                            delegate
+                            {
+                                refresh.Interval = (double)RT_Timer.Value;
+                            }
+                    );
                 refresh.Start();
             }
             catch
@@ -144,9 +161,7 @@ namespace AutoModPlugins.GUI
                 {
                     refresh.Stop();
                 }
-                catch (Exception)
-                {
-                }
+                catch (Exception) { }
             }
         }
     }

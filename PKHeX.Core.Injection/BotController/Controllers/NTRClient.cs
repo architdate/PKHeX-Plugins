@@ -21,9 +21,21 @@ namespace PKHeX.Core.Injection
                 Connected = true;
         }
 
-        bool ICommunicator.Connected { get => Connected; set => Connected = value; }
-        int ICommunicator.Port { get => Port; set => Port = value; }
-        string ICommunicator.IP { get => IP; set => IP = value; }
+        bool ICommunicator.Connected
+        {
+            get => Connected;
+            set => Connected = value;
+        }
+        int ICommunicator.Port
+        {
+            get => Port;
+            set => Port = value;
+        }
+        string ICommunicator.IP
+        {
+            get => IP;
+            set => IP = value;
+        }
 
         public void Disconnect()
         {
@@ -44,7 +56,8 @@ namespace PKHeX.Core.Injection
         {
             lock (_sync)
             {
-                if (!Connected) Connect();
+                if (!Connected)
+                    Connect();
 
                 WriteLastLog("");
                 DataReadyWaiting myArgs = new(new byte[length], HandleMemoryRead, null);
@@ -52,7 +65,10 @@ namespace PKHeX.Core.Injection
                 {
                     Thread.Sleep(10);
                 }
-                clientNTR.AddWaitingForData(clientNTR.Data((uint)offset, (uint)length, clientNTR.PID), myArgs);
+                clientNTR.AddWaitingForData(
+                    clientNTR.Data((uint)offset, (uint)length, clientNTR.PID),
+                    myArgs
+                );
 
                 for (int readcount = 0; readcount < timeout * 100; readcount++)
                 {
@@ -68,13 +84,15 @@ namespace PKHeX.Core.Injection
         }
 
         private static void WriteLastLog(string str) => clientNTR.Lastlog = str;
+
         private static bool CompareLastLog(string str) => clientNTR.Lastlog.Contains(str);
 
         public void WriteBytes(byte[] data, ulong offset)
         {
             lock (_sync)
             {
-                if (!Connected) Connect();
+                if (!Connected)
+                    Connect();
                 while (clientNTR.PID == -1)
                 {
                     Thread.Sleep(10);

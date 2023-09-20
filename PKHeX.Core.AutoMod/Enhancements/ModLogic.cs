@@ -27,7 +27,8 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="provider">Save File to export from</param>
         /// <returns>Concatenated string of all sets in the current box.</returns>
-        public static string GetRegenSetsFromBoxCurrent(this ISaveFileProvider provider) => GetRegenSetsFromBox(provider.SAV, provider.CurrentBox);
+        public static string GetRegenSetsFromBoxCurrent(this ISaveFileProvider provider) =>
+            GetRegenSetsFromBox(provider.SAV, provider.CurrentBox);
 
         /// <summary>
         /// Exports the <see cref="box"/> to <see cref="ShowdownSet"/> as a single string.
@@ -48,7 +49,8 @@ namespace PKHeX.Core.AutoMod
         /// <param name="sav">Save File to receive the generated <see cref="PKM"/>.</param>
         /// <param name="speciesIDs">Species IDs to generate</param>
         /// <returns>Consumable list of newly generated <see cref="PKM"/> data.</returns>
-        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav) => sav.GenerateLivingDex(cfg);
+        public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav) =>
+            sav.GenerateLivingDex(cfg);
 
         /// <summary>
         /// Gets a living dex (one per species, not every form)
@@ -63,7 +65,14 @@ namespace PKHeX.Core.AutoMod
         public static IEnumerable<PKM> GenerateLivingDex(this SaveFile sav, LivingDexConfig cfg)
         {
             List<PKM> pklist = new();
-            var tr = APILegality.UseTrainerData ? TrainerSettings.GetSavedTrainerData(sav.Version, sav.Generation, fallback: sav, lang: (LanguageID)sav.Language) : sav;
+            var tr = APILegality.UseTrainerData
+                ? TrainerSettings.GetSavedTrainerData(
+                    sav.Version,
+                    sav.Generation,
+                    fallback: sav,
+                    lang: (LanguageID)sav.Language
+                )
+                : sav;
             var pt = sav.Personal;
             var species = Enumerable.Range(1, sav.MaxSpeciesID).Select(x => (ushort)x);
             foreach (var s in species)
@@ -74,15 +83,33 @@ namespace PKHeX.Core.AutoMod
                 var num_forms = pt[s].FormCount;
                 var str = GameInfo.Strings;
                 if (num_forms == 1 && cfg.IncludeForms) // Validate through form lists
-                    num_forms = (byte)FormConverter.GetFormList(s, str.types, str.forms, GameInfo.GenderSymbolUnicode, sav.Context).Length;
+                    num_forms = (byte)
+                        FormConverter
+                            .GetFormList(
+                                s,
+                                str.types,
+                                str.forms,
+                                GameInfo.GenderSymbolUnicode,
+                                sav.Context
+                            )
+                            .Length;
                 for (byte f = 0; f < num_forms; f++)
                 {
-                    if (!sav.Personal.IsPresentInGame(s, f) || FormInfo.IsLordForm(s, f, sav.Context) || FormInfo.IsBattleOnlyForm(s, f, sav.Generation)
-                        || FormInfo.IsFusedForm(s, f, sav.Generation) || (FormInfo.IsTotemForm(s, f) && sav.Context is not EntityContext.Gen7))
+                    if (
+                        !sav.Personal.IsPresentInGame(s, f)
+                        || FormInfo.IsLordForm(s, f, sav.Context)
+                        || FormInfo.IsBattleOnlyForm(s, f, sav.Generation)
+                        || FormInfo.IsFusedForm(s, f, sav.Generation)
+                        || (FormInfo.IsTotemForm(s, f) && sav.Context is not EntityContext.Gen7)
+                    )
                         continue;
 
                     var pk = AddPKM(sav, tr, s, f, cfg.SetShiny, cfg.SetAlpha, cfg.NativeOnly);
-                    if (pk is not null && pklist.FirstOrDefault(x => x.Species == pk.Species && x.Form == pk.Form) is null)
+                    if (
+                        pk is not null
+                        && pklist.FirstOrDefault(x => x.Species == pk.Species && x.Form == pk.Form)
+                            is null
+                    )
                     {
                         pklist.Add(pk);
                         if (!cfg.IncludeForms)
@@ -93,14 +120,43 @@ namespace PKHeX.Core.AutoMod
             return pklist;
         }
 
-        private static PKM? AddPKM(SaveFile sav, ITrainerInfo tr, ushort species, byte form, bool shiny, bool alpha, bool nativeOnly)
+        private static PKM? AddPKM(
+            SaveFile sav,
+            ITrainerInfo tr,
+            ushort species,
+            byte form,
+            bool shiny,
+            bool alpha,
+            bool nativeOnly
+        )
         {
-            if (tr.GetRandomEncounter(species, form, shiny, alpha, nativeOnly, out var pk) && pk != null && pk.Species > 0)
+            if (
+                tr.GetRandomEncounter(species, form, shiny, alpha, nativeOnly, out var pk)
+                && pk != null
+                && pk.Species > 0
+            )
             {
                 pk.Heal();
                 return pk;
             }
-            if (sav is SAV2 && GetRandomEncounter(new SAV1(GameVersion.Y) { Language = tr.Language, OT = tr.OT, TID16 = tr.TID16 }, species, form, shiny, false, nativeOnly, out var pkm) && pkm is PK1 pk1)
+            if (
+                sav is SAV2
+                && GetRandomEncounter(
+                    new SAV1(GameVersion.Y)
+                    {
+                        Language = tr.Language,
+                        OT = tr.OT,
+                        TID16 = tr.TID16
+                    },
+                    species,
+                    form,
+                    shiny,
+                    false,
+                    nativeOnly,
+                    out var pkm
+                )
+                && pkm is PK1 pk1
+            )
                 return pk1.ConvertToPK2();
             return null;
         }
@@ -116,7 +172,16 @@ namespace PKHeX.Core.AutoMod
         /// <param name="attempt"></param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this SaveFile sav, ushort species, byte form, bool shiny, bool alpha, bool nativeOnly, out PKM? pk) => ((ITrainerInfo)sav).GetRandomEncounter(species, form, shiny, alpha, nativeOnly, out pk);
+        public static bool GetRandomEncounter(
+            this SaveFile sav,
+            ushort species,
+            byte form,
+            bool shiny,
+            bool alpha,
+            bool nativeOnly,
+            out PKM? pk
+        ) =>
+            ((ITrainerInfo)sav).GetRandomEncounter(species, form, shiny, alpha, nativeOnly, out pk);
 
         /// <summary>
         /// Gets a legal <see cref="PKM"/> from a random in-game encounter's data.
@@ -129,7 +194,15 @@ namespace PKHeX.Core.AutoMod
         /// <param name="attempt"></param>
         /// <param name="pk">Result legal pkm</param>
         /// <returns>True if a valid result was generated, false if the result should be ignored.</returns>
-        public static bool GetRandomEncounter(this ITrainerInfo tr, ushort species, byte form, bool shiny, bool alpha, bool nativeOnly, out PKM? pk)
+        public static bool GetRandomEncounter(
+            this ITrainerInfo tr,
+            ushort species,
+            byte form,
+            bool shiny,
+            bool alpha,
+            bool nativeOnly,
+            out PKM? pk
+        )
         {
             var blank = EntityBlank.GetBlank(tr);
             pk = GetRandomEncounter(blank, tr, species, form, shiny, alpha, nativeOnly);
@@ -151,13 +224,22 @@ namespace PKHeX.Core.AutoMod
         /// <param name="alpha"></param>
         /// <param name="attempt"></param>
         /// <returns>Result legal pkm, null if data should be ignored.</returns>
-        private static PKM? GetRandomEncounter(PKM blank, ITrainerInfo tr, ushort species, byte form, bool shiny, bool alpha, bool nativeOnly)
+        private static PKM? GetRandomEncounter(
+            PKM blank,
+            ITrainerInfo tr,
+            ushort species,
+            byte form,
+            bool shiny,
+            bool alpha,
+            bool nativeOnly
+        )
         {
             blank.Species = species;
             blank.Gender = blank.GetSaneGender();
             if (species is ((ushort)Species.Meowstic) or ((ushort)Species.Indeedee))
                 blank.Form = (byte)blank.Gender;
-            else blank.Form = form;
+            else
+                blank.Form = form;
 
             var template = EntityBlank.GetBlank(tr.Generation, (GameVersion)tr.Game);
             var item = GetFormSpecificItem(tr.Game, blank.Species, blank.Form);
@@ -221,7 +303,9 @@ namespace PKHeX.Core.AutoMod
                     return true;
                 case Species.Floette when form == 5:
                     return true;
-                case Species.Shaymin or Species.Furfrou or Species.Hoopa when form != 0 && generation <= 6:
+                case Species.Shaymin
+                or Species.Furfrou
+                or Species.Hoopa when form != 0 && generation <= 6:
                     return true;
                 case Species.Arceus when generation == 4 && form == 9: // ??? form
                     return true;
@@ -247,7 +331,10 @@ namespace PKHeX.Core.AutoMod
             var generation = ((GameVersion)game).GetGeneration();
             return species switch
             {
-                (ushort)Species.Arceus => generation != 4 || form < 9 ? SimpleEdits.GetArceusHeldItemFromForm(form) : SimpleEdits.GetArceusHeldItemFromForm(form - 1),
+                (ushort)Species.Arceus
+                    => generation != 4 || form < 9
+                        ? SimpleEdits.GetArceusHeldItemFromForm(form)
+                        : SimpleEdits.GetArceusHeldItemFromForm(form - 1),
                 (ushort)Species.Silvally => SimpleEdits.GetSilvallyHeldItemFromForm(form),
                 (ushort)Species.Genesect => SimpleEdits.GetGenesectHeldItemFromForm(form),
                 (ushort)Species.Giratina => form == 1 ? 112 : null, // Griseous Orb

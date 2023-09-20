@@ -8,7 +8,12 @@ namespace PKHeX.Core.Injection
         public readonly IPKMView Editor;
         public PokeSysBotMini Bot;
 
-        public LiveHeXController(ISaveFileProvider boxes, IPKMView editor, InjectorCommunicationType ict, bool useCache = false)
+        public LiveHeXController(
+            ISaveFileProvider boxes,
+            IPKMView editor,
+            InjectorCommunicationType ict,
+            bool useCache = false
+        )
         {
             SAV = boxes;
             Editor = editor;
@@ -32,7 +37,9 @@ namespace PKHeX.Core.Injection
         public void ReadBox(int box)
         {
             var sav = SAV.SAV;
-            var len = sav.BoxSlotCount * (RamOffsets.GetSlotSize(Bot.Version) + RamOffsets.GetGapSize(Bot.Version));
+            var len =
+                sav.BoxSlotCount
+                * (RamOffsets.GetSlotSize(Bot.Version) + RamOffsets.GetGapSize(Bot.Version));
             var data = Bot.ReadBox(box, len).AsSpan();
             sav.SetBoxBinary(data, box);
             SAV.ReloadSlots();
@@ -48,7 +55,9 @@ namespace PKHeX.Core.Injection
         {
             var pkm = Editor.PreparePKM();
             pkm.ResetPartyStats();
-            var data = RamOffsets.WriteBoxData(Bot.Version) ? pkm.EncryptedBoxData : pkm.EncryptedPartyData;
+            var data = RamOffsets.WriteBoxData(Bot.Version)
+                ? pkm.EncryptedBoxData
+                : pkm.EncryptedPartyData;
             Bot.SendSlot(data, box, slot);
         }
 

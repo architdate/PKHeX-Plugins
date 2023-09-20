@@ -19,10 +19,16 @@ namespace PKHeX.Core.AutoMod
         public readonly bool HasTrainerSettings;
         public bool HasBatchSettings => Batch.Filters.Count != 0 || Batch.Instructions.Count != 0;
 
-        public RegenSet(PKM pk) : this(Array.Empty<string>(), pk.Format)
+        public RegenSet(PKM pk)
+            : this(Array.Empty<string>(), pk.Format)
         {
             Extra.Ball = (Ball)pk.Ball;
-            Extra.ShinyType = pk.ShinyXor == 0 ? Shiny.AlwaysSquare : pk.IsShiny ? Shiny.AlwaysStar : Shiny.Never;
+            Extra.ShinyType =
+                pk.ShinyXor == 0
+                    ? Shiny.AlwaysSquare
+                    : pk.IsShiny
+                        ? Shiny.AlwaysStar
+                        : Shiny.Never;
             if (pk is IAlphaReadOnly { IsAlpha: true })
                 Extra.Alpha = true;
         }

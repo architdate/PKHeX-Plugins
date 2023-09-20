@@ -26,10 +26,26 @@ namespace PKHeX.Core.Injection
 
         private readonly object _sync = new();
 
-        InjectorCommunicationType ICommunicatorNX.Protocol { get => Protocol; set => Protocol = value; }
-        bool ICommunicator.Connected { get => Connected; set => Connected = value; }
-        int ICommunicator.Port { get => Port; set => Port = value; }
-        string ICommunicator.IP { get => IP; set => IP = value; }
+        InjectorCommunicationType ICommunicatorNX.Protocol
+        {
+            get => Protocol;
+            set => Protocol = value;
+        }
+        bool ICommunicator.Connected
+        {
+            get => Connected;
+            set => Connected = value;
+        }
+        int ICommunicator.Port
+        {
+            get => Port;
+            set => Port = value;
+        }
+        string ICommunicator.IP
+        {
+            get => IP;
+            set => IP = value;
+        }
 
         public void Connect()
         {
@@ -199,16 +215,30 @@ namespace PKHeX.Core.Injection
 
             var buffer = new byte[17];
             var _ = ReadInternal(buffer);
-            return ulong.TryParse(Encoding.ASCII.GetString(buffer).Trim(), out var value) && value == 1;
+            return ulong.TryParse(Encoding.ASCII.GetString(buffer).Trim(), out var value)
+                && value == 1;
         }
 
-        public byte[] ReadBytes(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Heap);
-        public void WriteBytes(byte[] data, ulong offset) => WriteLargeBytes(data, offset, RWMethod.Heap);
-        public byte[] ReadBytesMain(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Main);
-        public void WriteBytesMain(byte[] data, ulong offset) => WriteLargeBytes(data, offset, RWMethod.Main);
-        public byte[] ReadBytesAbsolute(ulong offset, int length) => ReadLargeBytes(offset, length, RWMethod.Absolute);
-        public void WriteBytesAbsolute(byte[] data, ulong offset) => WriteLargeBytes(data, offset, RWMethod.Absolute);
-        public byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets) => ReadAbsoluteMulti(offsets);
+        public byte[] ReadBytes(ulong offset, int length) =>
+            ReadLargeBytes(offset, length, RWMethod.Heap);
+
+        public void WriteBytes(byte[] data, ulong offset) =>
+            WriteLargeBytes(data, offset, RWMethod.Heap);
+
+        public byte[] ReadBytesMain(ulong offset, int length) =>
+            ReadLargeBytes(offset, length, RWMethod.Main);
+
+        public void WriteBytesMain(byte[] data, ulong offset) =>
+            WriteLargeBytes(data, offset, RWMethod.Main);
+
+        public byte[] ReadBytesAbsolute(ulong offset, int length) =>
+            ReadLargeBytes(offset, length, RWMethod.Absolute);
+
+        public void WriteBytesAbsolute(byte[] data, ulong offset) =>
+            WriteLargeBytes(data, offset, RWMethod.Absolute);
+
+        public byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets) =>
+            ReadAbsoluteMulti(offsets);
 
         private byte[] FlexRead()
         {

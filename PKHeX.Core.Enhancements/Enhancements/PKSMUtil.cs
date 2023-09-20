@@ -35,7 +35,9 @@ namespace PKHeX.Core.Enhancements
                 var ofs = 16 + (ctr * pksmsize);
                 BitConverter.GetBytes((int)GetPKSMFormat(pk)).CopyTo(bank, ofs);
                 pk.DecryptedBoxData.CopyTo(bank, ofs + 4);
-                byte[] temp = Enumerable.Repeat((byte)0xFF, pksmsize - pk.DecryptedBoxData.Length - 8).ToArray();
+                byte[] temp = Enumerable
+                    .Repeat((byte)0xFF, pksmsize - pk.DecryptedBoxData.Length - 8)
+                    .ToArray();
                 temp.CopyTo(bank, ofs + pk.DecryptedBoxData.Length + 4);
                 temp = Enumerable.Repeat((byte)0x00, 4).ToArray();
                 temp.CopyTo(bank, ofs + pksmsize - 4);
@@ -77,7 +79,10 @@ namespace PKHeX.Core.Enhancements
                     continue;
                 var strings = GameInfo.Strings;
                 previews.Add(new PKMPreview(pk, strings));
-                File.WriteAllBytes(Path.Combine(dir, Util.CleanFileName(pk.FileName)), pk.DecryptedPartyData);
+                File.WriteAllBytes(
+                    Path.Combine(dir, Util.CleanFileName(pk.FileName)),
+                    pk.DecryptedPartyData
+                );
                 ctr++;
             }
             return ctr;
