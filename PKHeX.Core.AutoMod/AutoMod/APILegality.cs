@@ -1035,6 +1035,17 @@ namespace PKHeX.Core.AutoMod
                     break;
             }
 
+            if (!pk.IVs.SequenceEqual(set.IVs))
+            {
+                tb.Add(
+                    new()
+                    {
+                        Identifier = PID_IV,
+                        Comment = $"Fallback IVs being used instead of Specified IVs"
+                    }
+                );
+            }
+
             // Handle mismatching abilities due to a PID re-roll
             // Check against ability index because the pokemon could be a pre-evo at this point
             if (pk.Ability != set.Ability)
