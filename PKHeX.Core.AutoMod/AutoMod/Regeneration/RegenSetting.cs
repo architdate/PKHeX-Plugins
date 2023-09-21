@@ -24,7 +24,10 @@ namespace PKHeX.Core.AutoMod
                 switch (key)
                 {
                     case nameof(Ball):
-                        Ball = Aesthetics.GetBallFromString(value);
+                        var ball = Aesthetics.GetBallFromString(value);
+                        if (ball == Ball.Strange)
+                            continue;
+                        Ball = ball;
                         break;
                     case nameof(Shiny):
                         ShinyType = Aesthetics.GetShinyType(value);
