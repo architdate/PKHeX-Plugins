@@ -29,7 +29,8 @@ namespace PKHeX.Core.Injection
 
             if (!hasEntry)
                 Cache.Add(Version, new() { { ptr, pointer } });
-            else Cache[Version].Add(ptr, pointer);
+            else
+                Cache[Version].Add(ptr, pointer);
 
             return pointer;
         }

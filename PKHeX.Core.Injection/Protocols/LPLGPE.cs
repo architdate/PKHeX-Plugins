@@ -6,9 +6,11 @@ namespace PKHeX.Core.Injection
     public class LPLGPE : InjectionBase
     {
         private static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.LGPE_v102 };
+
         public static LiveHeXVersion[] GetVersions() => SupportedVersions;
 
-        public LPLGPE(LiveHeXVersion lv, bool useCache) : base(lv, useCache) { }
+        public LPLGPE(LiveHeXVersion lv, bool useCache)
+            : base(lv, useCache) { }
 
         public override byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
         {
@@ -41,7 +43,10 @@ namespace PKHeX.Core.Injection
             var slotofs = psb.GetSlotOffset(box, slot);
             var StoredLength = psb.SlotSize - 0x1C;
             psb.com.WriteBytes(data.Slice(0, StoredLength), slotofs);
-            psb.com.WriteBytes(data.AsSpan(StoredLength).ToArray(), slotofs + (ulong) StoredLength + 0x70);
+            psb.com.WriteBytes(
+                data.AsSpan(StoredLength).ToArray(),
+                slotofs + (ulong)StoredLength + 0x70
+            );
         }
 
         public override void SendBox(PokeSysBotMini psb, byte[] boxData, int box)

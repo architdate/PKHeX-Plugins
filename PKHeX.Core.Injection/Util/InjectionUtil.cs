@@ -6,7 +6,12 @@ namespace PKHeX.Core.Injection
     public static class InjectionUtil
     {
         public const ulong INVALID_PTR = 0;
-        public static ulong GetPointerAddress(this ICommunicatorNX sb, string ptr, bool heapRelative = true)
+
+        public static ulong GetPointerAddress(
+            this ICommunicatorNX sb,
+            string ptr,
+            bool heapRelative = true
+        )
         {
             if (string.IsNullOrWhiteSpace(ptr) || ptr.IndexOfAny(new[] { '-', '/', '*' }) != -1)
                 return INVALID_PTR;
@@ -18,7 +23,10 @@ namespace PKHeX.Core.Injection
                 finadd = Util.GetHexValue(ptr.Split('+').Last());
                 ptr = ptr[..ptr.LastIndexOf('+')];
             }
-            var jumps = ptr.Replace("main", "").Replace("[", "").Replace("]", "").Split(new[] { "+" }, StringSplitOptions.RemoveEmptyEntries);
+            var jumps = ptr.Replace("main", "")
+                .Replace("[", "")
+                .Replace("]", "")
+                .Split(new[] { "+" }, StringSplitOptions.RemoveEmptyEntries);
             if (jumps.Length == 0)
                 return INVALID_PTR;
 
@@ -73,10 +81,11 @@ namespace PKHeX.Core.Injection
             return 0;
         }
 
-        private static int GetBlockSizeSV(LiveHeXVersion version) => version switch
-        {
-            >= LiveHeXVersion.SV_v130 => 48,   // Thanks, santacrab!
-            _ => 32,
-        };
+        private static int GetBlockSizeSV(LiveHeXVersion version) =>
+            version switch
+            {
+                >= LiveHeXVersion.SV_v130 => 48, // Thanks, santacrab!
+                _ => 32,
+            };
     }
 }

@@ -7,6 +7,7 @@ namespace AutoModTests
     public static class TestUtil
     {
         static TestUtil() => InitializePKHeXEnvironment();
+
         private static bool Initialized;
 
         private static readonly object _lock = new();
@@ -31,7 +32,11 @@ namespace AutoModTests
             var folder = Directory.GetCurrentDirectory();
             while (!folder.EndsWith(nameof(AutoModTests)))
             {
-                var dir = Directory.GetParent(folder) ?? throw new DirectoryNotFoundException($"Unable to find a directory named {nameof(AutoModTests)}.");
+                var dir =
+                    Directory.GetParent(folder)
+                    ?? throw new DirectoryNotFoundException(
+                        $"Unable to find a directory named {nameof(AutoModTests)}."
+                    );
                 folder = dir.FullName;
             }
             return Path.Combine(folder, name);

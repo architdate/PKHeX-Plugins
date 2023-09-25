@@ -28,7 +28,10 @@ namespace AutoModPlugins
             }
             catch (Exception ex)
             {
-                WinFormsUtil.Error("An error occurred while trying to obtain the contents of the URL.", $"The exact error is as follows: {ex}");
+                WinFormsUtil.Error(
+                    "An error occurred while trying to obtain the contents of the URL.",
+                    $"The exact error is as follows: {ex}"
+                );
                 return;
             }
             if (!info.Valid)

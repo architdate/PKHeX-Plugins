@@ -25,12 +25,21 @@ namespace AutoModTests
             smogon.Valid.Should().BeTrue("Sets should exist for this setup");
             var count = smogon.Sets.Count;
             count.Should().BeGreaterThan(0, "At least one set should exist");
-            smogon.SetConfig.Count.Should().Be(count, "Unparsed text should be captured and match result count");
-            smogon.SetText.Count.Should().Be(count, "Reformatted text should be captured and match result count");
+            smogon.SetConfig.Count
+                .Should()
+                .Be(count, "Unparsed text should be captured and match result count");
+            smogon.SetText.Count
+                .Should()
+                .Be(count, "Reformatted text should be captured and match result count");
         }
 
         [Theory]
-        [InlineData("https://pokepast.es/73c130c81caab03e", "STING LIKE A BEE", (ushort)Species.Beedrill, (ushort)Species.Magearna)] // Beedrill, Magearna
+        [InlineData(
+            "https://pokepast.es/73c130c81caab03e",
+            "STING LIKE A BEE",
+            (ushort)Species.Beedrill,
+            (ushort)Species.Magearna
+        )] // Beedrill, Magearna
         public static void HasPokePasteSets(string url, string name, params ushort[] speciesPresent)
         {
             var tpi = new TeamPasteInfo(url);
@@ -39,7 +48,12 @@ namespace AutoModTests
         }
 
         [Theory]
-        [InlineData("https://pastebin.com/0x7jJvB4", "Untitled", (ushort)Species.Miltank, (ushort)Species.Braviary)] // Miltank...Braviary
+        [InlineData(
+            "https://pastebin.com/0x7jJvB4",
+            "Untitled",
+            (ushort)Species.Miltank,
+            (ushort)Species.Braviary
+        )] // Miltank...Braviary
         public static void HasPastebinSets(string url, string name, params ushort[] speciesPresent)
         {
             var tpi = new TeamPasteInfo(url);
@@ -47,7 +61,11 @@ namespace AutoModTests
             tpi.VerifyContents(name, speciesPresent);
         }
 
-        private static void VerifyContents(this TeamPasteInfo tpi, string name, ushort[] speciesPresent)
+        private static void VerifyContents(
+            this TeamPasteInfo tpi,
+            string name,
+            ushort[] speciesPresent
+        )
         {
             tpi.Valid.Should().BeTrue("Data should exist for this paste");
             tpi.Title.Should().Be(name, "Data should have a title present");

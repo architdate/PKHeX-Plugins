@@ -14,7 +14,8 @@ namespace PKHeX.Core.Injection
         public readonly InjectionBase Injector;
         public bool Connected => com.Connected;
 
-        public PokeSysBotMini(LiveHeXVersion lv, ICommunicator communicator, bool useCache) : base(lv, useCache)
+        public PokeSysBotMini(LiveHeXVersion lv, ICommunicator communicator, bool useCache)
+            : base(lv, useCache)
         {
             Version = lv;
             com = communicator;
@@ -25,17 +26,23 @@ namespace PKHeX.Core.Injection
             GapSize = RamOffsets.GetGapSize(lv);
         }
 
-        public ulong GetSlotOffset(int box, int slot) => GetBoxOffset(box) + (ulong)((SlotSize + GapSize) * slot);
-        public ulong GetBoxOffset(int box) => (ulong)BoxStart + (ulong)((SlotSize + GapSize) * SlotCount * box);
+        public ulong GetSlotOffset(int box, int slot) =>
+            GetBoxOffset(box) + (ulong)((SlotSize + GapSize) * slot);
+
+        public ulong GetBoxOffset(int box) =>
+            (ulong)BoxStart + (ulong)((SlotSize + GapSize) * SlotCount * box);
 
         public byte[] ReadSlot(int box, int slot) => Injector.ReadSlot(this, box, slot);
+
         public byte[] ReadBox(int box, int len)
         {
             var allpkm = new List<byte[]>();
             return Injector.ReadBox(this, box, len, allpkm);
         }
 
-        public void SendSlot(byte[] data, int box, int slot) => Injector.SendSlot(this, data, box, slot);
+        public void SendSlot(byte[] data, int box, int slot) =>
+            Injector.SendSlot(this, data, box, slot);
+
         public void SendBox(byte[] boxData, int box)
         {
             ReadOnlySpan<byte> bytes = boxData;

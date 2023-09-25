@@ -20,7 +20,10 @@ namespace AutoModTests
         private static void VerifyAll(string folder, string name, bool isValid)
         {
             var path = Path.Combine(folder, name);
-            Directory.Exists(path).Should().BeTrue($"the specified test directory at '{path}' should exist");
+            Directory
+                .Exists(path)
+                .Should()
+                .BeTrue($"the specified test directory at '{path}' should exist");
 
             var dev = APILegality.EnableDevMode;
             APILegality.EnableDevMode = true;
@@ -36,12 +39,19 @@ namespace AutoModTests
                     // double check initial state
                     var la = new LegalityAnalysis(pk);
                     var dir = fi.Directory!;
-                    la.Valid.Should().Be(isValid, $"because the file '{dir.Name}\\{fi.Name}' should be {(isValid ? "Valid" : "Invalid")}");
+                    la.Valid
+                        .Should()
+                        .Be(
+                            isValid,
+                            $"because the file '{dir.Name}\\{fi.Name}' should be {(isValid ? "Valid" : "Invalid")}"
+                        );
 
                     // try legalizing, should end up as legal
                     var updated = pk.Legalize();
                     var la2 = new LegalityAnalysis(updated);
-                    la2.Valid.Should().Be(true, $"because the file '{dir.Name}\\{fi.Name}' should be legal");
+                    la2.Valid
+                        .Should()
+                        .Be(true, $"because the file '{dir.Name}\\{fi.Name}' should be legal");
                 }
             }
             finally
@@ -53,7 +63,10 @@ namespace AutoModTests
         private static PKM GetPKM(string file, FileInfo fi)
         {
             fi.Should().NotBeNull($"the test file '{file}' should be a valid file");
-            EntityDetection.IsSizePlausible(fi.Length).Should().BeTrue($"the test file '{file}' should have a valid file length");
+            EntityDetection
+                .IsSizePlausible(fi.Length)
+                .Should()
+                .BeTrue($"the test file '{file}' should have a valid file length");
 
             var data = File.ReadAllBytes(file);
             var prefer = EntityFileExtension.GetContextFromExtension(file, EntityContext.None);

@@ -5,6 +5,7 @@ namespace PKHeX.Core.Injection
     public static class Decoder
     {
         private static bool IsNum(char c) => (uint)(c - '0') <= 9;
+
         private static bool IsHexUpper(char c) => (uint)(c - 'A') <= 5;
 
         public static byte[] ConvertHexByteStringToBytes(byte[] bytes)
@@ -48,4 +49,3 @@ namespace PKHeX.Core.Injection
         }
     }
 }
-

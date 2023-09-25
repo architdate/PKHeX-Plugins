@@ -19,10 +19,16 @@ namespace PKHeX.Core.AutoMod
         public readonly bool HasTrainerSettings;
         public bool HasBatchSettings => Batch.Filters.Count != 0 || Batch.Instructions.Count != 0;
 
-        public RegenSet(PKM pk) : this(Array.Empty<string>(), pk.Format)
+        public RegenSet(PKM pk)
+            : this(Array.Empty<string>(), pk.Format)
         {
             Extra.Ball = (Ball)pk.Ball;
-            Extra.ShinyType = pk.ShinyXor == 0 ? Shiny.AlwaysSquare : pk.IsShiny ? Shiny.AlwaysStar : Shiny.Never;
+            Extra.ShinyType =
+                pk.ShinyXor == 0
+                    ? Shiny.AlwaysSquare
+                    : pk.IsShiny
+                        ? Shiny.AlwaysStar
+                        : Shiny.Never;
             if (pk is IAlphaReadOnly { IsAlpha: true })
                 Extra.Alpha = true;
         }
@@ -30,7 +36,7 @@ namespace PKHeX.Core.AutoMod
         public RegenSet(ICollection<string> lines, int format, Shiny shiny = Shiny.Never)
         {
             var modified = lines.Select(z => z.Replace(">=", "≥").Replace("<=", "≤"));
-            Extra = new RegenSetting {ShinyType = shiny};
+            Extra = new RegenSetting { ShinyType = shiny };
             HasExtraSettings = Extra.SetRegenSettings(modified);
             HasTrainerSettings = RegenUtil.GetTrainerInfo(modified, format, out var tr);
             Trainer = tr;

@@ -9,6 +9,7 @@ namespace AutoModPlugins.GUI
     public partial class ALMSettings : Form
     {
         private PluginSettings pluginSettings;
+
         public ALMSettings(PluginSettings obj)
         {
             pluginSettings = obj;
@@ -39,13 +40,16 @@ namespace AutoModPlugins.GUI
         {
             var lang = WinFormsTranslator.CurrentLanguage;
             var translation = WinFormsTranslator.GetContext(lang);
-            var type_descriptor = TypeDescriptor.GetProvider(_settings).GetTypeDescriptor(_settings);
+            var type_descriptor = TypeDescriptor
+                .GetProvider(_settings)
+                .GetTypeDescriptor(_settings);
             if (type_descriptor == null)
                 return;
             var ctd = new PropertyOverridingTypeDescriptor(type_descriptor);
             foreach (var pd in TypeDescriptor.GetProperties(_settings).OfType<PropertyDescriptor>())
             {
-                var desc = "Property Description needs to be defined. Please raise this issue on GitHub or at the discord: https://discord.gg/tDMvSRv";
+                var desc =
+                    "Property Description needs to be defined. Please raise this issue on GitHub or at the discord: https://discord.gg/tDMvSRv";
                 if (pd.Description != null)
                     desc = translation.GetTranslatedText($"{pd.Name}_description", pd.Description);
 
@@ -54,7 +58,12 @@ namespace AutoModPlugins.GUI
                     category = translation.GetTranslatedText($"{pd.Name}_category", pd.Category);
                 if (desc == null || category == null)
                     throw new Exception("Category / Description translations are null");
-                PropertyDescriptor pd2 = TypeDescriptor.CreateProperty(_settings.GetType(), pd, new DescriptionAttribute(desc), new CategoryAttribute(category));
+                PropertyDescriptor pd2 = TypeDescriptor.CreateProperty(
+                    _settings.GetType(),
+                    pd,
+                    new DescriptionAttribute(desc),
+                    new CategoryAttribute(category)
+                );
                 ctd.OverrideProperty(pd2);
             }
             TypeDescriptor.AddProvider(new TypeDescriptorOverridingProvider(ctd), _settings);
@@ -66,8 +75,7 @@ namespace AutoModPlugins.GUI
         private readonly Dictionary<string, PropertyDescriptor> overridePds = new();
 
         public PropertyOverridingTypeDescriptor(ICustomTypeDescriptor parent)
-            : base(parent)
-        { }
+            : base(parent) { }
 
         public void OverrideProperty(PropertyDescriptor pd)
         {

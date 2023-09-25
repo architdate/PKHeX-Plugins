@@ -17,10 +17,14 @@ namespace AutoModTests
     public static class TeamTests
     {
         static TeamTests() => TestUtil.InitializePKHeXEnvironment();
+
         private static string TestPath => TestUtil.GetTestFolder("ShowdownSets");
         private static string LogDirectory => Path.Combine(Directory.GetCurrentDirectory(), "logs");
 
-        private static Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>> RunVerification(string file, GameVersion[] saves)
+        private static Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>> RunVerification(
+            string file,
+            GameVersion[] saves
+        )
         {
             var results = new Dictionary<GameVersion, Dictionary<string, RegenTemplate[]>>();
             foreach (var s in saves)
@@ -43,12 +47,19 @@ namespace AutoModTests
                     var noMoves = lines.Where(z => !z.StartsWith("- "));
 
                     // Giratina Origin from PLA has no item so will fail in BDSP
-                    setsTransfer = ShowdownParsing.GetShowdownSets(noMoves).Where(z => !(z.Species == (ushort)Species.Giratina && z.Form == 1)).ToList();
+                    setsTransfer = ShowdownParsing
+                        .GetShowdownSets(noMoves)
+                        .Where(z => !(z.Species == (ushort)Species.Giratina && z.Form == 1))
+                        .ToList();
                 }
 
                 // Filter sets based on if they are present in destination game
-                var filter = !paTransfer ? sets.Distinct(new ShowdownSetComparator()).Where(z => sav.Personal.IsPresentInGame(z.Species, z.Form))
-                                         : setsTransfer.Distinct(new ShowdownSetComparator()).Where(z => sav.Personal.IsPresentInGame(z.Species, z.Form));
+                var filter = !paTransfer
+                    ? sets.Distinct(new ShowdownSetComparator())
+                        .Where(z => sav.Personal.IsPresentInGame(z.Species, z.Form))
+                    : setsTransfer
+                        .Distinct(new ShowdownSetComparator())
+                        .Where(z => sav.Personal.IsPresentInGame(z.Species, z.Form));
 
                 sets = filter.ToList();
                 for (int i = 0; i < sets.Count; i++)
@@ -59,10 +70,12 @@ namespace AutoModTests
 
                     try
                     {
-                        Debug.Write($"Checking Set {i:000} [Species: {(Species)set.Species}] from File {file} using Save {s}: ");
+                        Debug.Write(
+                            $"Checking Set {i:000} [Species: {(Species)set.Species}] from File {file} using Save {s}: "
+                        );
                         var regen = new RegenTemplate(set, sav.Generation);
-                        var pk = sav.GetLegalFromSet(regen, out _);
-                        var la = new LegalityAnalysis(pk);
+                        var almres = sav.GetLegalFromSet(regen);
+                        var la = new LegalityAnalysis(almres.Created);
                         if (la.Valid)
                         {
                             Debug.WriteLine("Valid");
@@ -71,15 +84,23 @@ namespace AutoModTests
                         else
                         {
                             illegalsets.Add(regen);
-                            Debug.WriteLine($"Invalid Set for {(Species)set.Species} in file {file} with set: {set.Text}");
+                            Debug.WriteLine(
+                                $"Invalid Set for {(Species)set.Species} in file {file} with set: {set.Text}"
+                            );
                         }
                     }
                     catch
                     {
-                        Debug.WriteLine($"Exception for {(Species)set.Species} in file {file} with set: {set.Text}");
+                        Debug.WriteLine(
+                            $"Exception for {(Species)set.Species} in file {file} with set: {set.Text}"
+                        );
                     }
                 }
-                results[s] = new Dictionary<string, RegenTemplate[]> { { "legal", legalsets.ToArray() }, { "illegal", illegalsets.ToArray() } };
+                results[s] = new Dictionary<string, RegenTemplate[]>
+                {
+                    { "legal", legalsets.ToArray() },
+                    { "illegal", illegalsets.ToArray() }
+                };
             }
             return results;
         }
@@ -101,7 +122,6 @@ namespace AutoModTests
         [InlineData(AnubisTPK7, new[] { SW, US })]
         [InlineData(AnubisTPK8, new[] { SW })]
         [InlineData(AnubisVCPK7, new[] { SW, US })]
-
         [InlineData(RoCPA8, new[] { PLA, BD })]
         [InlineData(RoCPB7, new[] { SW, GP })]
         [InlineData(RoCPB8, new[] { BD })]
@@ -121,7 +141,6 @@ namespace AutoModTests
         [InlineData(RoCNTPK6, new[] { OR })]
         [InlineData(RoCNTPK7, new[] { US })]
         [InlineData(RoCVCPK7, new[] { SW, US })]
-
         [InlineData(UnderlevelPK1, new[] { RD, C })]
         [InlineData(UnderlevelPK2, new[] { C })]
         [InlineData(UnderlevelPK3, new[] { SW, US, SN, OR, X, B2, B, Pt, E })]
@@ -150,11 +169,13 @@ namespace AutoModTests
                 if (illegalcount == 0)
                     continue;
                 testfailed = true;
-                msg += $"GameVersion {gv} : Illegal: {illegalcount} | Legal: {sets["legal"].Length}\n";
+                msg +=
+                    $"GameVersion {gv} : Illegal: {illegalcount} | Legal: {sets["legal"].Length}\n";
                 error += $"\n\n=============== GameVersion: {gv} ===============\n\n";
                 error += string.Join("\n\n", sets["illegal"].Select(x => x.Text));
             }
-            var fileName = $"{Path.GetFileName(path).Replace('.', '_')}{DateTime.Now:_yyyy-MM-dd-HH-mm-ss}.log";
+            var fileName =
+                $"{Path.GetFileName(path).Replace('.', '_')}{DateTime.Now:_yyyy-MM-dd-HH-mm-ss}.log";
             if (error.Trim().Length > 0)
                 File.WriteAllText(Path.Combine(LogDirectory, fileName), error);
             testfailed.Should().BeFalse(msg);

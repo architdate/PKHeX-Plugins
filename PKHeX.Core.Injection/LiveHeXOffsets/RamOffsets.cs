@@ -6,10 +6,47 @@
         {
             return sf switch
             {
-                SAV9SV => new[] { LiveHeXVersion.SV_v101, LiveHeXVersion.SV_v110, LiveHeXVersion.SV_v120, LiveHeXVersion.SV_v130, LiveHeXVersion.SV_v131, LiveHeXVersion.SV_v132 },
-                SAV8LA => new[] { LiveHeXVersion.LA_v100 , LiveHeXVersion.LA_v101, LiveHeXVersion.LA_v102, LiveHeXVersion.LA_v111 },
-                SAV8BS => new[] { LiveHeXVersion.BD_v100, LiveHeXVersion.SP_v100, LiveHeXVersion.BD_v110, LiveHeXVersion.SP_v110, LiveHeXVersion.BD_v111, LiveHeXVersion.SP_v111, LiveHeXVersion.BDSP_v112, LiveHeXVersion.BDSP_v113, LiveHeXVersion.BDSP_v120, LiveHeXVersion.BD_v130, LiveHeXVersion.SP_v130 },
-                SAV8SWSH => new[] { LiveHeXVersion.SWSH_v111, LiveHeXVersion.SWSH_v121, LiveHeXVersion.SWSH_v132 },
+                SAV9SV
+                    => new[]
+                    {
+                        LiveHeXVersion.SV_v101,
+                        LiveHeXVersion.SV_v110,
+                        LiveHeXVersion.SV_v120,
+                        LiveHeXVersion.SV_v130,
+                        LiveHeXVersion.SV_v131,
+                        LiveHeXVersion.SV_v132,
+                        LiveHeXVersion.SV_v201
+                    },
+                SAV8LA
+                    => new[]
+                    {
+                        LiveHeXVersion.LA_v100,
+                        LiveHeXVersion.LA_v101,
+                        LiveHeXVersion.LA_v102,
+                        LiveHeXVersion.LA_v111
+                    },
+                SAV8BS
+                    => new[]
+                    {
+                        LiveHeXVersion.BD_v100,
+                        LiveHeXVersion.SP_v100,
+                        LiveHeXVersion.BD_v110,
+                        LiveHeXVersion.SP_v110,
+                        LiveHeXVersion.BD_v111,
+                        LiveHeXVersion.SP_v111,
+                        LiveHeXVersion.BDSP_v112,
+                        LiveHeXVersion.BDSP_v113,
+                        LiveHeXVersion.BDSP_v120,
+                        LiveHeXVersion.BD_v130,
+                        LiveHeXVersion.SP_v130
+                    },
+                SAV8SWSH
+                    => new[]
+                    {
+                        LiveHeXVersion.SWSH_v111,
+                        LiveHeXVersion.SWSH_v121,
+                        LiveHeXVersion.SWSH_v132
+                    },
                 SAV7b => new[] { LiveHeXVersion.LGPE_v102 },
                 SAV7USUM => new[] { LiveHeXVersion.UM_v120, LiveHeXVersion.US_v120 },
                 SAV7SM => new[] { LiveHeXVersion.SM_v120 },
@@ -19,28 +56,30 @@
             };
         }
 
-        public static bool IsLiveHeXSupported(SaveFile sav) => sav switch
-        {
-            SAV9SV => true,
-            SAV8LA => true,
-            SAV8BS => true,
-            SAV8SWSH => true,
-            SAV7b => true,
-            SAV7USUM => true,
-            SAV7SM => true,
-            SAV6AO => true,
-            SAV6XY => true,
-            _ => false,
-        };
+        public static bool IsLiveHeXSupported(SaveFile sav) =>
+            sav switch
+            {
+                SAV9SV => true,
+                SAV8LA => true,
+                SAV8BS => true,
+                SAV8SWSH => true,
+                SAV7b => true,
+                SAV7USUM => true,
+                SAV7SM => true,
+                SAV6AO => true,
+                SAV6XY => true,
+                _ => false,
+            };
 
-        public static bool IsSwitchTitle(SaveFile sav) => sav switch
-        {
-            SAV7USUM => false,
-            SAV7SM => false,
-            SAV6AO => false,
-            SAV6XY => false,
-            _ => true,
-        };
+        public static bool IsSwitchTitle(SaveFile sav) =>
+            sav switch
+            {
+                SAV7USUM => false,
+                SAV7SM => false,
+                SAV6AO => false,
+                SAV6XY => false,
+                _ => true,
+            };
 
         public static ICommunicator GetCommunicator(SaveFile sav, InjectorCommunicationType ict)
         {
@@ -170,17 +209,17 @@
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v130   => ("[[[[main+4C64DC0]+B8]+10]+A0]+20", 40),
-                LiveHeXVersion.SP_v130   => ("[[[[main+4E7BE98]+B8]+10]+A0]+20", 40),
+                LiveHeXVersion.BD_v130 => ("[[[[main+4C64DC0]+B8]+10]+A0]+20", 40),
+                LiveHeXVersion.SP_v130 => ("[[[[main+4E7BE98]+B8]+10]+A0]+20", 40),
                 LiveHeXVersion.BDSP_v120 => ("[[[[main+4E36C58]+B8]+10]+A0]+20", 40),
                 LiveHeXVersion.BDSP_v113 => ("[[[[main+4E59E60]+B8]+10]+A0]+20", 40),
                 LiveHeXVersion.BDSP_v112 => ("[[[[main+4E34DD0]+B8]+10]+A0]+20", 40),
-                LiveHeXVersion.BD_v111   => ("[[[[main+4C1DCF8]+B8]+10]+A0]+20", 40),
-                LiveHeXVersion.BD_v110   => ("[[[main+4E27C50]+B8]+170]+20", 40),
-                LiveHeXVersion.BD_v100   => ("[[[main+4C0ABD8]+520]+C0]+5E0", 40),
-                LiveHeXVersion.SP_v111   => ("[[[[main+4E34DD0]+B8]+10]+A0]+20", 40),
-                LiveHeXVersion.SP_v110   => ("[[[main+4E27C50]+B8]+170]+20", 40),      // untested
-                LiveHeXVersion.SP_v100   => ("[[[main+4C0ABD8]+520]+C0]+5E0", 40),     // untested
+                LiveHeXVersion.BD_v111 => ("[[[[main+4C1DCF8]+B8]+10]+A0]+20", 40),
+                LiveHeXVersion.BD_v110 => ("[[[main+4E27C50]+B8]+170]+20", 40),
+                LiveHeXVersion.BD_v100 => ("[[[main+4C0ABD8]+520]+C0]+5E0", 40),
+                LiveHeXVersion.SP_v111 => ("[[[[main+4E34DD0]+B8]+10]+A0]+20", 40),
+                LiveHeXVersion.SP_v110 => ("[[[main+4E27C50]+B8]+170]+20", 40), // untested
+                LiveHeXVersion.SP_v100 => ("[[[main+4C0ABD8]+520]+C0]+5E0", 40), // untested
                 _ => (string.Empty, 0)
             };
         }

@@ -10,13 +10,17 @@ namespace PKHeX.Core.Enhancements
     /// </summary>
     public static class EventsGallery
     {
-        private const string RepoURL = "https://github.com/projectpokemon/EventsGallery/archive/master.zip";
-        private const string RepoReleaseURL = "https://api.github.com/repos/projectpokemon/EventsGallery/releases/latest";
+        private const string RepoURL =
+            "https://github.com/projectpokemon/EventsGallery/archive/master.zip";
+        private const string RepoReleaseURL =
+            "https://api.github.com/repos/projectpokemon/EventsGallery/releases/latest";
 
         public static string GetMGDBDownloadURL()
         {
             var json_data = NetUtil.DownloadString(RepoReleaseURL);
-            return json_data.Split(new[] { "browser_download_url" }, StringSplitOptions.None)[1][3..].Split('"')[0];
+            return json_data.Split(new[] { "browser_download_url" }, StringSplitOptions.None)[1][
+                3..
+            ].Split('"')[0];
         }
 
         /// <summary>

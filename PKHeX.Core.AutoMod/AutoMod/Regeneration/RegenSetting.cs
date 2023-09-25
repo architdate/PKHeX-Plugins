@@ -24,7 +24,10 @@ namespace PKHeX.Core.AutoMod
                 switch (key)
                 {
                     case nameof(Ball):
-                        Ball = Aesthetics.GetBallFromString(value);
+                        var ball = Aesthetics.GetBallFromString(value);
+                        if (ball == Ball.Strange)
+                            continue;
+                        Ball = ball;
                         break;
                     case nameof(Shiny):
                         ShinyType = Aesthetics.GetShinyType(value);
@@ -33,7 +36,9 @@ namespace PKHeX.Core.AutoMod
                         Language = Aesthetics.GetLanguageId(value);
                         break;
                     case nameof(Ability):
-                        Ability = Enum.TryParse(value, out AbilityRequest ar) ? ar : AbilityRequest.Any;
+                        Ability = Enum.TryParse(value, out AbilityRequest ar)
+                            ? ar
+                            : AbilityRequest.Any;
                         break;
                     case nameof(Alpha):
                         Alpha = value == "Yes";
@@ -41,8 +46,10 @@ namespace PKHeX.Core.AutoMod
                     default:
                         continue;
                 }
+
                 any = true;
             }
+
             return any;
         }
 

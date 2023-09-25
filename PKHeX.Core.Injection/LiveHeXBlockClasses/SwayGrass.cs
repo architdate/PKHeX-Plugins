@@ -8,19 +8,54 @@ namespace PKHeX.Core.Injection
         private const int SWAYGRASS_BLOCK_SIZE = 0xC0;
 
         public readonly byte[] Data;
+
         public SwayGrass(byte[] data) => Data = data;
 
-        public bool IsSwayGrassFlag { get => Data[0x00] != 0; set => Data[0x00] = (byte)(value ? 1 : 0); }
-        public uint SwayZone { get => BitConverter.ToUInt32(Data, 0x04); set => BitConverter.GetBytes(value).CopyTo(Data, 0x04); }
+        public bool IsSwayGrassFlag
+        {
+            get => Data[0x00] != 0;
+            set => Data[0x00] = (byte)(value ? 1 : 0);
+        }
+        public uint SwayZone
+        {
+            get => BitConverter.ToUInt32(Data, 0x04);
+            set => BitConverter.GetBytes(value).CopyTo(Data, 0x04);
+        }
+
         // 0x10 - AudioInstance[] _grassAudio
         // 0x18 - SwayGrass.GrassData work_data
-        public uint ChainCount { get => BitConverter.ToUInt32(Data, 0x08); set => BitConverter.GetBytes(value).CopyTo(Data, 0x08); }
-        public uint ChainEncounterSpecies { get => BitConverter.ToUInt32(Data, 0x0C); set => BitConverter.GetBytes(value).CopyTo(Data, 0x0C); }
-        public uint ChainEncounterLevel { get => BitConverter.ToUInt32(Data, 0x10); set => BitConverter.GetBytes(value).CopyTo(Data, 0x10); }
-        public bool BattleEndChainStart { get => Data[0x14] != 0; set => Data[0x14] = (byte)(value ? 1 : 0); }
+        public uint ChainCount
+        {
+            get => BitConverter.ToUInt32(Data, 0x08);
+            set => BitConverter.GetBytes(value).CopyTo(Data, 0x08);
+        }
+        public uint ChainEncounterSpecies
+        {
+            get => BitConverter.ToUInt32(Data, 0x0C);
+            set => BitConverter.GetBytes(value).CopyTo(Data, 0x0C);
+        }
+        public uint ChainEncounterLevel
+        {
+            get => BitConverter.ToUInt32(Data, 0x10);
+            set => BitConverter.GetBytes(value).CopyTo(Data, 0x10);
+        }
+        public bool BattleEndChainStart
+        {
+            get => Data[0x14] != 0;
+            set => Data[0x14] = (byte)(value ? 1 : 0);
+        }
+
         // 0x30 - GameObject RootGrass
-        public bool CallSwayBGM { get => Data[0x15] != 0; set => Data[0x15] = (byte)(value ? 1 : 0); }
-        public bool CallStopSwayBGM { get => Data[0x16] != 0; set => Data[0x16] = (byte)(value ? 1 : 0); }
+        public bool CallSwayBGM
+        {
+            get => Data[0x15] != 0;
+            set => Data[0x15] = (byte)(value ? 1 : 0);
+        }
+        public bool CallStopSwayBGM
+        {
+            get => Data[0x16] != 0;
+            set => Data[0x16] = (byte)(value ? 1 : 0);
+        }
         public Grass[] GrassData
         {
             get
@@ -35,7 +70,6 @@ namespace PKHeX.Core.Injection
                 }
                 return result;
             }
-
             set
             {
                 for (int i = 0; i < value.Length; i++)
@@ -64,13 +98,13 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
-                LiveHeXVersion.BD_v130   => "[main+4C64DC0]+B8",
-                LiveHeXVersion.SP_v130   => "[main+4E7BE98]+B8",
+                LiveHeXVersion.BD_v130 => "[main+4C64DC0]+B8",
+                LiveHeXVersion.SP_v130 => "[main+4E7BE98]+B8",
                 LiveHeXVersion.BDSP_v120 => "[main+4E2CD08]+B8",
                 LiveHeXVersion.BDSP_v113 => "[main+4E4FD48]+B8",
                 LiveHeXVersion.BDSP_v112 => "[main+4E2AD38]+B8",
-                LiveHeXVersion.BD_v111   => "[main+4C13C60]+B8",
-                LiveHeXVersion.SP_v111   => "[main+4E2AD38]+B8",
+                LiveHeXVersion.BD_v111 => "[main+4C13C60]+B8",
+                LiveHeXVersion.SP_v111 => "[main+4E2AD38]+B8",
                 _ => null
             };
         }
