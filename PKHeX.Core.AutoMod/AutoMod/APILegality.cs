@@ -181,10 +181,6 @@ namespace PKHeX.Core.AutoMod
                     return pk;
                 }
                 // Verify the Legality of what we generated, and exit if it is valid.
-                if(!AllowHOMETransferGeneration)
-                    typeof(ParseSettings).GetProperty(nameof(ParseSettings.Gen8TransferTrackerNotPresent))!.SetValue(null, Severity.Invalid);
-                else
-                    typeof(ParseSettings).GetProperty(nameof(ParseSettings.Gen8TransferTrackerNotPresent))!.SetValue(null, Severity.Fishy);
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid && pk.Species == set.Species) // Encounter Trades that evolve may cause higher tahn expected species
                 {
