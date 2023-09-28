@@ -36,9 +36,9 @@ LiveHeXUI.L_Block=ブロック:
 SimpleHexEditor=RAMを編集
 SimpleHexEditor.B_Update=アップデート
 
-Main.Menu_AutoLegality=自動合法化 MOD
+Main.Menu_AutoLegality=自動合法化MOD
 Main.Menu_ExportBoxtoShowdown=ボックスをALM Showdownテンプレートにエクスポート
-Main.Menu_PasteImporter=自動合法化 MODにインポート
+Main.Menu_PasteImporter=自動合法化MODにインポート
 Main.Menu_PKSMBank=PKSM Bankツール
 Main.Menu_CreatePKSMBank=PKMをPKSM Bankに統合
 Main.Menu_ExportPKSMBank=PKSM BankをPKMに分割
