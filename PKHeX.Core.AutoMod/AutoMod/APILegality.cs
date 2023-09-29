@@ -150,7 +150,7 @@ namespace PKHeX.Core.AutoMod
 
                 if (HomeTrackerUtil.IsRequired(enc, pk) && !AllowHOMETransferGeneration)
                     continue;
-
+                
                 // Apply final details
                 ApplySetDetails(pk, set, dest, enc, regen, tb);
 
@@ -174,13 +174,12 @@ namespace PKHeX.Core.AutoMod
                         continue;
                     pk.ApplyPostBatchFixes();
                 }
-
+                
                 if (pk is PK1 pk1 && pk1.TradebackValid())
                 {
                     satisfied = LegalizationResult.Regenerated;
                     return pk;
                 }
-
                 // Verify the Legality of what we generated, and exit if it is valid.
                 var la = new LegalityAnalysis(pk);
                 if (la.Valid && pk.Species == set.Species) // Encounter Trades that evolve may cause higher tahn expected species
@@ -301,7 +300,7 @@ namespace PKHeX.Core.AutoMod
                 return single;
 
             var versionlist = GameUtil.GetVersionsWithinRange(template, template.Format);
-            var gamelist = !nativeOnly
+            var gamelist = (!nativeOnly && AllowHOMETransferGeneration)
                 ? versionlist.OrderByDescending(c => c.GetGeneration()).ToArray()
                 : GetPairedVersions(destVer, versionlist);
 
