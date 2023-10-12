@@ -60,7 +60,7 @@ namespace PKHeX.Core.AutoMod
         Misc
     }
 
-    public enum HandlerType: byte
+    public enum HandlerType : byte
     {
         Disabled,
         Debug,
@@ -69,13 +69,14 @@ namespace PKHeX.Core.AutoMod
 
     public static class HandlerTypeExtensions
     {
-        public static ITracebackHandler GetTracebackHandler(this HandlerType ht) => ht switch
-        {
-            HandlerType.Disabled => new DisabledTBHandler(),
-            HandlerType.Debug => new DebugTBHandler(),
-            HandlerType.Verbose => new VerboseTBHandler(),
-            _ => throw new NotImplementedException("Traceback Handler is not implemented"),
-        };
+        public static ITracebackHandler GetTracebackHandler(this HandlerType ht) =>
+            ht switch
+            {
+                HandlerType.Disabled => new DisabledTBHandler(),
+                HandlerType.Debug => new DebugTBHandler(),
+                HandlerType.Verbose => new VerboseTBHandler(),
+                _ => throw new NotImplementedException("Traceback Handler is not implemented"),
+            };
     }
 
     public class DisabledTBHandler : ITracebackHandler
@@ -109,6 +110,7 @@ namespace PKHeX.Core.AutoMod
     public class VerboseTBHandler : ITracebackHandler
     {
         private List<ALMTraceback> tb = new();
+
         public void Handle(ALMTraceback traceback)
         {
             tb.Add(traceback);
@@ -116,7 +118,7 @@ namespace PKHeX.Core.AutoMod
 
         public void Handle(TracebackType ident, string comment)
         {
-            var almtb = new ALMTraceback(ident, comment); 
+            var almtb = new ALMTraceback(ident, comment);
             tb.Add(almtb);
         }
 

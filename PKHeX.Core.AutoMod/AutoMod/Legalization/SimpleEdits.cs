@@ -295,7 +295,10 @@ namespace PKHeX.Core.AutoMod
                 if (mg.IsEgg || mg is PGT { IsManaphyEgg: true })
                 {
                     pk.SetShinySID(); // not SID locked
-                    tb.Handle(TracebackType.Shiny, "Set MysteryGift Shiny SID since SID is not locked");
+                    tb.Handle(
+                        TracebackType.Shiny,
+                        "Set MysteryGift Shiny SID since SID is not locked"
+                    );
                     return;
                 }
 
@@ -493,7 +496,10 @@ namespace PKHeX.Core.AutoMod
             else if (neverOT)
             {
                 pk.OT_Friendship = GetBaseFriendship(enc);
-                tb.Handle(TracebackType.Friendship, $"Set friendship based for non OT: {pk.OT_Friendship}");
+                tb.Handle(
+                    TracebackType.Friendship,
+                    $"Set friendship based for non OT: {pk.OT_Friendship}"
+                );
             }
             else
                 pk.CurrentFriendship = pk.HasMove(218) ? 0 : 255;
@@ -831,11 +837,7 @@ namespace PKHeX.Core.AutoMod
                 _ => false,
             };
 
-        public static void SetRecordFlags(
-            this PKM pk,
-            ushort[] moves,
-            ITracebackHandler? tb
-        )
+        public static void SetRecordFlags(this PKM pk, ushort[] moves, ITracebackHandler? tb)
         {
             if (pk is ITechRecord tr and not PA8)
             {

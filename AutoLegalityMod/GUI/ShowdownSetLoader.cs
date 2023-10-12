@@ -82,10 +82,7 @@ namespace AutoModPlugins
                 WinFormsUtil.Alert(message);
         }
 
-        private static AutoModErrorCode ImportSetToTabs(
-            ShowdownSet set,
-            bool skipDialog = false
-        )
+        private static AutoModErrorCode ImportSetToTabs(ShowdownSet set, bool skipDialog = false)
         {
             var regen = new RegenTemplate(set, SaveFileEditor.SAV.Generation);
             if (

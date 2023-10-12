@@ -410,7 +410,12 @@ namespace PKHeX.Core.AutoMod
                 case Species.Arceus:
                 case Species.Silvally:
                 case Species.Genesect:
-                    bool valid = FormItem.TryGetForm(pk.Species, pk.HeldItem, pk.Format, out byte pkform);
+                    bool valid = FormItem.TryGetForm(
+                        pk.Species,
+                        pk.HeldItem,
+                        pk.Format,
+                        out byte pkform
+                    );
                     pk.HeldItem = pk.Form != pkform ? 0 : pk.HeldItem;
                     pk.Form = pk.Form != pkform ? (byte)0 : pkform;
                     break;

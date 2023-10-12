@@ -149,7 +149,7 @@ namespace PKHeX.Core.AutoMod
                 pk = pk.Clone(); // Handle Nickname-Trash issues (weedle word filter)
                 if (HomeTrackerUtil.IsRequired(enc, pk) && !AllowHOMETransferGeneration)
                     continue;
-                
+
                 // Apply final details
                 ApplySetDetails(pk, set, dest, enc, regen, tb);
 
@@ -173,7 +173,7 @@ namespace PKHeX.Core.AutoMod
                         continue;
                     pk.ApplyPostBatchFixes();
                 }
-                
+
                 if (pk is PK1 pk1 && pk1.TradebackValid())
                 {
                     satisfied = LegalizationResult.Regenerated;
@@ -299,9 +299,10 @@ namespace PKHeX.Core.AutoMod
                 return single;
 
             var versionlist = GameUtil.GetVersionsWithinRange(template, template.Format);
-            var gamelist = (!nativeOnly && AllowHOMETransferGeneration)
-                ? versionlist.OrderByDescending(c => c.GetGeneration()).ToArray()
-                : GetPairedVersions(destVer, versionlist);
+            var gamelist =
+                (!nativeOnly && AllowHOMETransferGeneration)
+                    ? versionlist.OrderByDescending(c => c.GetGeneration()).ToArray()
+                    : GetPairedVersions(destVer, versionlist);
 
             if (PrioritizeGame && !nativeOnly)
                 gamelist =

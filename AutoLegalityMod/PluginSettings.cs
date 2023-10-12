@@ -162,9 +162,7 @@ namespace AutoModPlugins
         public bool UseCompetitiveMarkings { get; set; } = true;
 
         [Category(Miscellaneous)]
-        [Description(
-            "Configures way to display legalization traceback."
-        )]
+        [Description("Configures way to display legalization traceback.")]
         public HandlerType TracebackHandlerType { get; set; } = HandlerType.Disabled;
 
         // Development
