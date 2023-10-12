@@ -17,7 +17,7 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">PKM whose gender needs to be toggled</param>
         /// <param name="set">Showdown Set for Gender reference</param>
-        public static void FixGender(this PKM pk, IBattleTemplate set, List<ALMTraceback> tb)
+        public static void FixGender(this PKM pk, IBattleTemplate set, ITracebackHandler tb)
         {
             pk.ApplySetGender(set);
             var la = new LegalityAnalysis(pk);
@@ -30,13 +30,7 @@ namespace PKHeX.Core.AutoMod
 
             if (pk.Gender is not 0 and not 1)
                 pk.Gender = pk.GetSaneGender();
-            tb.Add(
-                new()
-                {
-                    Identifier = TracebackType.Gender,
-                    Comment = $"Set Sane Gender as {(Gender)pk.Gender}"
-                }
-            );
+            tb.Handle(TracebackType.Gender, $"Set Sane Gender as {(Gender)pk.Gender}");
         }
 
         public static void SetNature(PKM pk, IBattleTemplate set, IEncounterable enc)
@@ -46,7 +40,7 @@ namespace PKHeX.Core.AutoMod
             var val = Math.Min((int)Nature.Quirky, Math.Max((int)Nature.Hardy, set.Nature));
             if (pk.Species == (ushort)Species.Toxtricity)
             {
-                if (pk.Form == EvolutionMethod.GetAmpLowKeyResult(val))
+                if (pk.Form == ToxtricityUtil.GetAmpLowKeyResult(val))
                     pk.Nature = val; // StatNature already set
                 if (
                     pk.Format >= 8
@@ -144,7 +138,7 @@ namespace PKHeX.Core.AutoMod
             byte Form,
             IEncounterable enc,
             LanguageID? lang,
-            List<ALMTraceback> tb
+            ITracebackHandler tb
         )
         {
             pk.ApplySetGender(set);
@@ -154,30 +148,18 @@ namespace PKHeX.Core.AutoMod
             var formchange = Form != pk.Form;
             if (evolutionRequired)
             {
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Species,
-                        Comment = $"Evolve Pre-Evolution to {set.Species}"
-                    }
-                );
+                tb.Handle(TracebackType.Species, $"Evolve Pre-Evolution to {set.Species}");
                 pk.Species = set.Species;
             }
             if (formchange)
             {
-                tb.Add(new() { Identifier = TracebackType.Form, Comment = $"Fix Form to {Form}" });
+                tb.Handle(TracebackType.Form, $"Fix Form to {Form}");
                 pk.Form = Form;
             }
 
             if ((evolutionRequired || formchange) && pk is IScaledSizeValue sv)
             {
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Size,
-                        Comment = "Fix Evolution Height/Weight"
-                    }
-                );
+                tb.Handle(TracebackType.Size, "Fix Evolution Height/Weight");
                 sv.HeightAbsolute = sv.CalcHeightAbsolute;
                 sv.WeightAbsolute = sv.CalcWeightAbsolute;
             }
@@ -187,16 +169,10 @@ namespace PKHeX.Core.AutoMod
             {
                 while (true)
                 {
-                    var result = EvolutionMethod.GetAmpLowKeyResult(pk.Nature);
+                    var result = ToxtricityUtil.GetAmpLowKeyResult(pk.Nature);
                     if (result == pk.Form)
                     {
-                        tb.Add(
-                            new()
-                            {
-                                Identifier = TracebackType.Nature,
-                                Comment = "Toxtricity Nature Reroll"
-                            }
-                        );
+                        tb.Handle(TracebackType.Nature, "Toxtricity Nature Reroll");
                         break;
                     }
                     pk.Nature = Util.Rand.Next(25);
@@ -206,13 +182,7 @@ namespace PKHeX.Core.AutoMod
             pk.SetSuggestedFormArgument(enc.Species);
             if (evolutionRequired || formchange || pk.Ability != set.Ability)
             {
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Ability,
-                        Comment = $"Set Ability after evolution to {set.Ability}"
-                    }
-                );
+                tb.Handle(TracebackType.Ability, $"Set Ability after evolution to {set.Ability}");
                 var abilitypref = enc.Ability;
                 SetAbility(pk, set, abilitypref);
             }
@@ -250,13 +220,7 @@ namespace PKHeX.Core.AutoMod
                 var nick = et.GetNickname(pk.Language);
                 if (nick != null)
                 {
-                    tb.Add(
-                        new()
-                        {
-                            Identifier = TracebackType.Encounter,
-                            Comment = $"Encounter Fixed Nickname set to {nick}"
-                        }
-                    );
+                    tb.Handle(TracebackType.Encounter, $"Encounter Fixed Nickname set to {nick}");
                     pk.Nickname = nick;
                     return;
                 }
@@ -350,19 +314,13 @@ namespace PKHeX.Core.AutoMod
             this PKM pk,
             IBattleTemplate set,
             IEncounterable enc,
-            List<ALMTraceback> tb
+            ITracebackHandler tb
         )
         {
             // If no moves are requested, just keep the encounter moves
             if (set.Moves[0] != 0)
             {
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Moves,
-                        Comment = $"Set Requested Moves: {set.Moves}"
-                    }
-                );
+                tb.Handle(TracebackType.Moves, $"Set Requested Moves: {set.Moves}");
                 pk.SetMoves(set.Moves, pk is not PA8);
             }
 
@@ -374,13 +332,7 @@ namespace PKHeX.Core.AutoMod
                 la.GetSuggestedCurrentMoves(moves);
                 pk.SetMoves(moves, pk is not PA8);
                 pk.FixMoves();
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Moves,
-                        Comment = "Fix Invalid Moves based on suggested moves"
-                    }
-                );
+                tb.Handle(TracebackType.Moves, "Fix Invalid Moves based on suggested moves");
             }
 
             if (la.Parsed && !pk.FatefulEncounter)
@@ -390,31 +342,19 @@ namespace PKHeX.Core.AutoMod
                 la.GetSuggestedRelearnMoves(moves, enc);
                 pk.ClearRelearnMoves();
                 pk.SetRelearnMoves(moves);
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Moves,
-                        Comment = "Set Relearn Moves for encounter"
-                    }
-                );
+                tb.Handle(TracebackType.Moves, "Set Relearn Moves for encounter");
             }
             la = new LegalityAnalysis(pk);
             if (la.Info.Relearn.Any(z => z.Judgement == Severity.Invalid))
             {
                 pk.ClearRelearnMoves();
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Moves,
-                        Comment = "Clear Invalid Relean Moves"
-                    }
-                );
+                tb.Handle(TracebackType.Moves, "Clear Invalid Relean Moves");
             }
 
             if (pk is IAwakened)
             {
                 pk.SetAwakenedValues(set);
-                tb.Add(new() { Identifier = TracebackType.AVs, Comment = "Set Awakened Values" });
+                tb.Handle(TracebackType.AVs, "Set Awakened Values");
                 return;
             }
             // In Generation 1/2 Format sets, when EVs are not specified at all, it implies maximum EVs instead!
@@ -422,12 +362,12 @@ namespace PKHeX.Core.AutoMod
             if (pk is GBPKM gb && set.EVs.All(z => z == 0))
             {
                 gb.EV_HP = gb.EV_ATK = gb.EV_DEF = gb.EV_SPC = gb.EV_SPE = gb.MaxEV;
-                tb.Add(new() { Identifier = TracebackType.EVs, Comment = "Set EVs for GBPKM" });
+                tb.Handle(TracebackType.EVs, "Set EVs for GBPKM");
                 return;
             }
 
             pk.SetEVs(set.EVs);
-            tb.Add(new() { Identifier = TracebackType.EVs, Comment = "Set Requested EVs" });
+            tb.Handle(TracebackType.EVs, "Set Requested EVs");
         }
 
         /// <summary>
@@ -445,20 +385,14 @@ namespace PKHeX.Core.AutoMod
         /// </summary>
         /// <param name="pk">Pokemon to modify</param>
         /// <param name="set">IBattleset to grab the item</param>
-        public static void SetHeldItem(this PKM pk, IBattleTemplate set, List<ALMTraceback> tb)
+        public static void SetHeldItem(this PKM pk, IBattleTemplate set, ITracebackHandler tb)
         {
             pk.ApplyHeldItem(set.HeldItem, set.Context);
             pk.FixInvalidFormItems(); // arceus, silvally, giratina, genesect fix
             if (!ItemRestrictions.IsHeldItemAllowed(pk) || pk is PB7)
                 pk.HeldItem = 0; // Remove the item if the item is illegal in its generation
             if (set.HeldItem != pk.HeldItem)
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Item,
-                        Comment = $"Modified item to {pk.HeldItem}"
-                    }
-                );
+                tb.Handle(TracebackType.Item, $"Modified item to {pk.HeldItem}");
         }
 
         /// <summary>
@@ -474,19 +408,11 @@ namespace PKHeX.Core.AutoMod
             switch ((Species)pk.Species)
             {
                 case Species.Arceus:
-                    byte forma = FormVerifier.GetArceusFormFromHeldItem(pk.HeldItem, pk.Format);
-                    pk.HeldItem = pk.Form != forma ? 0 : pk.HeldItem;
-                    pk.Form = pk.Form != forma ? (byte)0 : forma;
-                    break;
                 case Species.Silvally:
-                    byte forms = FormVerifier.GetSilvallyFormFromHeldItem(pk.HeldItem);
-                    pk.HeldItem = pk.Form != forms ? 0 : pk.HeldItem;
-                    pk.Form = pk.Form != forms ? (byte)0 : forms;
-                    break;
                 case Species.Genesect:
-                    byte formg = FormVerifier.GetGenesectFormFromHeldItem(pk.HeldItem);
-                    pk.HeldItem = pk.Form != formg ? 0 : pk.HeldItem;
-                    pk.Form = pk.Form != formg ? (byte)0 : formg;
+                    bool valid = FormItem.TryGetForm(pk.Species, pk.HeldItem, pk.Format, out byte pkform);
+                    pk.HeldItem = pk.Form != pkform ? 0 : pk.HeldItem;
+                    pk.Form = pk.Form != pkform ? (byte)0 : pkform;
                     break;
                 case Species.Giratina
                     when pk.Form == 1 && pk.HeldItem != 112 && pk.HeldItem != 1779:
@@ -501,14 +427,8 @@ namespace PKHeX.Core.AutoMod
                 case Species.Palkia when pk.Form == 1 && pk.HeldItem != 1778:
                     pk.HeldItem = 1778;
                     break;
-                case Species.Ogerpon when pk.Form == 1 && pk.HeldItem != 2407:
-                    pk.HeldItem = 2407;
-                    break;
-                case Species.Ogerpon when pk.Form == 2 && pk.HeldItem != 2408:
-                    pk.HeldItem = 2408;
-                    break;
-                case Species.Ogerpon when pk.Form == 3 && pk.HeldItem != 2406:
-                    pk.HeldItem = 2406;
+                case Species.Ogerpon:
+                    pk.HeldItem = FormItem.GetItemOgerpon(pk.Form);
                     break;
             }
         }
