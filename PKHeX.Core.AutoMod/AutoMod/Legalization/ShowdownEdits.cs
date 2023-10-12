@@ -46,7 +46,7 @@ namespace PKHeX.Core.AutoMod
             var val = Math.Min((int)Nature.Quirky, Math.Max((int)Nature.Hardy, set.Nature));
             if (pk.Species == (ushort)Species.Toxtricity)
             {
-                if (pk.Form == EvolutionMethod.GetAmpLowKeyResult(val))
+                if (pk.Form == ToxtricityUtil.GetAmpLowKeyResult(val))
                     pk.Nature = val; // StatNature already set
                 if (
                     pk.Format >= 8
@@ -187,7 +187,7 @@ namespace PKHeX.Core.AutoMod
             {
                 while (true)
                 {
-                    var result = EvolutionMethod.GetAmpLowKeyResult(pk.Nature);
+                    var result = ToxtricityUtil.GetAmpLowKeyResult(pk.Nature);
                     if (result == pk.Form)
                     {
                         tb.Add(
@@ -474,17 +474,17 @@ namespace PKHeX.Core.AutoMod
             switch ((Species)pk.Species)
             {
                 case Species.Arceus:
-                    byte forma = FormVerifier.GetArceusFormFromHeldItem(pk.HeldItem, pk.Format);
+                    byte forma = FormItem.GetFormArceus(pk.HeldItem, pk.Format);
                     pk.HeldItem = pk.Form != forma ? 0 : pk.HeldItem;
                     pk.Form = pk.Form != forma ? (byte)0 : forma;
                     break;
                 case Species.Silvally:
-                    byte forms = FormVerifier.GetSilvallyFormFromHeldItem(pk.HeldItem);
+                    byte forms = FormItem.GetFormSilvally(pk.HeldItem);
                     pk.HeldItem = pk.Form != forms ? 0 : pk.HeldItem;
                     pk.Form = pk.Form != forms ? (byte)0 : forms;
                     break;
                 case Species.Genesect:
-                    byte formg = FormVerifier.GetGenesectFormFromHeldItem(pk.HeldItem);
+                    byte formg = FormItem.GetFormGenesect(pk.HeldItem);
                     pk.HeldItem = pk.Form != formg ? 0 : pk.HeldItem;
                     pk.Form = pk.Form != formg ? (byte)0 : formg;
                     break;
