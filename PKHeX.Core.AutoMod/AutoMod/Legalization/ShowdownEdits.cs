@@ -416,6 +416,8 @@ namespace PKHeX.Core.AutoMod
                         pk.Format,
                         out byte pkform
                     );
+                    if (!valid)
+                        break;
                     pk.HeldItem = pk.Form != pkform ? 0 : pk.HeldItem;
                     pk.Form = pk.Form != pkform ? (byte)0 : pkform;
                     break;
