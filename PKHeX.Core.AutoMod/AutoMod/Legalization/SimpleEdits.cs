@@ -169,7 +169,7 @@ namespace PKHeX.Core.AutoMod
         public static void SetEncryptionConstant(
             this PKM pk,
             IEncounterable enc,
-            List<ALMTraceback> tb
+            ITracebackHandler tb
         )
         {
             if (pk.Format < 6)
@@ -185,26 +185,14 @@ namespace PKHeX.Core.AutoMod
                 var pidxor =
                     ((pk.TID16 ^ pk.SID16 ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
                 pk.PID = pidxor ? ec ^ 0x80000000 : ec;
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.EC,
-                        Comment = $"Set EC as PID for Generation {gen}"
-                    }
-                );
+                tb.Handle(TracebackType.EC, $"Set EC as PID for Generation {gen}");
                 return;
             }
             var wIndex = WurmpleUtil.GetWurmpleEvoGroup(pk.Species);
             if (wIndex != WurmpleEvolution.None)
             {
                 pk.EncryptionConstant = WurmpleUtil.GetWurmpleEncryptionConstant(wIndex);
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.EC,
-                        Comment = $"Set Wurmple EC for evolution matching"
-                    }
-                );
+                tb.Handle(TracebackType.EC, $"Set Wurmple EC for evolution matching");
                 return;
             }
 
@@ -217,13 +205,7 @@ namespace PKHeX.Core.AutoMod
             )
             {
                 pk.EncryptionConstant = pk.EncryptionConstant / 100 * 100;
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.EC,
-                        Comment = $"Set Special EC for {(Species)pk.Species} form"
-                    }
-                );
+                tb.Handle(TracebackType.EC, $"Set Special EC for {(Species)pk.Species} form");
                 return;
             }
 
@@ -234,7 +216,7 @@ namespace PKHeX.Core.AutoMod
                 is WC8 { PIDType: ShinyType8.FixedValue, EncryptionConstant: 0 }
                 ? 0
                 : Util.Rand32();
-            tb.Add(new() { Identifier = TracebackType.EC, Comment = $"Set random EC" });
+            tb.Handle(TracebackType.EC, $"Set random EC");
         }
 
         /// <summary>
@@ -249,7 +231,7 @@ namespace PKHeX.Core.AutoMod
             bool isShiny,
             IEncounterable enc,
             Shiny shiny,
-            List<ALMTraceback> tb
+            ITracebackHandler tb
         )
         {
             if (pk.IsShiny == isShiny)
@@ -258,13 +240,7 @@ namespace PKHeX.Core.AutoMod
             if (!isShiny)
             {
                 pk.SetUnshiny();
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Shiny,
-                        Comment = "Set Pokemon to be non shiny"
-                    }
-                );
+                tb.Handle(TracebackType.Shiny, "Set Pokemon to be non shiny");
                 return;
             }
 
@@ -277,9 +253,7 @@ namespace PKHeX.Core.AutoMod
             )
             {
                 pk.SetRaidShiny(shiny, enc);
-                tb.Add(
-                    new() { Identifier = TracebackType.Shiny, Comment = "Set Raid Shiny values" }
-                );
+                tb.Handle(TracebackType.Shiny, "Set Raid Shiny values");
                 return;
             }
 
@@ -291,13 +265,7 @@ namespace PKHeX.Core.AutoMod
                     // Set XOR as 0 so SID comes out as 8 or less, Set TID based on that (kinda like a setshinytid)
                     pk.TID16 = (ushort)(0 ^ (pk.PID & 0xFFFF) ^ (pk.PID >> 16));
                     pk.SID16 = (ushort)Util.Rand.Next(8);
-                    tb.Add(
-                        new()
-                        {
-                            Identifier = TracebackType.Shiny,
-                            Comment = "Set TID/SID for HOME Gift"
-                        }
-                    );
+                    tb.Handle(TracebackType.Shiny, "Set TID/SID for HOME Gift");
                     return;
                 }
             }
@@ -317,13 +285,7 @@ namespace PKHeX.Core.AutoMod
                         case Shiny.AlwaysStar when pk.ShinyXor == 0:
                             continue;
                     }
-                    tb.Add(
-                        new()
-                        {
-                            Identifier = TracebackType.Shiny,
-                            Comment = $"Set Shiny to {shiny}"
-                        }
-                    );
+                    tb.Handle(TracebackType.Shiny, $"Set Shiny to {shiny}");
                     return;
                 }
             }
@@ -333,20 +295,15 @@ namespace PKHeX.Core.AutoMod
                 if (mg.IsEgg || mg is PGT { IsManaphyEgg: true })
                 {
                     pk.SetShinySID(); // not SID locked
-                    tb.Add(
-                        new()
-                        {
-                            Identifier = TracebackType.Shiny,
-                            Comment = "Set MysteryGift Shiny SID since SID is not locked"
-                        }
+                    tb.Handle(
+                        TracebackType.Shiny,
+                        "Set MysteryGift Shiny SID since SID is not locked"
                     );
                     return;
                 }
 
                 pk.SetShiny();
-                tb.Add(
-                    new() { Identifier = TracebackType.Shiny, Comment = "Set MysteryGift Shiny" }
-                );
+                tb.Handle(TracebackType.Shiny, "Set MysteryGift Shiny");
                 if (pk.Format < 6)
                     return;
 
@@ -363,7 +320,7 @@ namespace PKHeX.Core.AutoMod
             }
 
             pk.SetShinySID(); // no mg = no lock
-            tb.Add(new() { Identifier = TracebackType.Shiny, Comment = "Set Shiny SID" });
+            tb.Handle(TracebackType.Shiny, "Set Shiny SID");
 
             if (pk.Generation != 5)
                 return;
@@ -390,13 +347,7 @@ namespace PKHeX.Core.AutoMod
                 if ((validg5sid == (pk.SID16 & 1)) && result == 0)
                     break;
             }
-            tb.Add(
-                new()
-                {
-                    Identifier = TracebackType.Shiny,
-                    Comment = "Reroll PID till for Gen 5 valid SID"
-                }
-            );
+            tb.Handle(TracebackType.Shiny, "Reroll PID till for Gen 5 valid SID");
         }
 
         public static void SetRaidShiny(this PKM pk, Shiny shiny, IEncounterable enc)
@@ -537,7 +488,7 @@ namespace PKHeX.Core.AutoMod
             return null;
         }
 
-        public static void SetFriendship(this PKM pk, IEncounterable enc, List<ALMTraceback> tb)
+        public static void SetFriendship(this PKM pk, IEncounterable enc, ITracebackHandler tb)
         {
             bool neverOT = !HistoryVerifier.GetCanOTHandle(enc, pk, enc.Generation);
             if (enc.Generation <= 2)
@@ -545,12 +496,9 @@ namespace PKHeX.Core.AutoMod
             else if (neverOT)
             {
                 pk.OT_Friendship = GetBaseFriendship(enc);
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Friendship,
-                        Comment = $"Set friendship based for non OT: {pk.OT_Friendship}"
-                    }
+                tb.Handle(
+                    TracebackType.Friendship,
+                    $"Set friendship based for non OT: {pk.OT_Friendship}"
                 );
             }
             else
@@ -591,7 +539,7 @@ namespace PKHeX.Core.AutoMod
             this PKM pk,
             IBattleTemplate set,
             IEncounterable enc,
-            List<ALMTraceback> tb
+            ITracebackHandler tb
         )
         {
             if (pk is not IGigantamax gmax || gmax.CanGigantamax == set.CanGigantamax)
@@ -600,41 +548,23 @@ namespace PKHeX.Core.AutoMod
             if (gmax.CanToggleGigantamax(pk.Species, pk.Form, enc.Species, enc.Form))
             {
                 gmax.CanGigantamax = set.CanGigantamax; // soup hax
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Misc,
-                        Comment = $"Add gigantamax factor through GMax soup"
-                    }
-                );
+                tb.Handle(TracebackType.Misc, "Add gigantamax factor through GMax soup");
             }
         }
 
-        public static void SetGimmicks(this PKM pk, IBattleTemplate set, List<ALMTraceback> tb)
+        public static void SetGimmicks(this PKM pk, IBattleTemplate set, ITracebackHandler tb)
         {
             if (pk is IDynamaxLevel d)
             {
                 d.DynamaxLevel = d.GetSuggestedDynamaxLevel(pk, requested: set.DynamaxLevel);
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Misc,
-                        Comment = $"Set Suggested Dynamax Level"
-                    }
-                );
+                tb.Handle(TracebackType.Misc, "Set Suggested Dynamax Level");
             }
             if (
                 pk is ITeraType t && set.TeraType != MoveType.Any && t.GetTeraType() != set.TeraType
             )
             {
                 t.SetTeraType(set.TeraType);
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Gender,
-                        Comment = $"Set TeraType to {set.TeraType}"
-                    }
-                );
+                tb.Handle(TracebackType.Gender, $"Set TeraType to {set.TeraType}");
             }
         }
 
@@ -735,7 +665,7 @@ namespace PKHeX.Core.AutoMod
             this PKM pk,
             ITrainerInfo trainer,
             IEncounterable enc,
-            List<ALMTraceback> tb
+            ITracebackHandler tb
         )
         {
             if (IsUntradeableEncounter(enc))
@@ -750,9 +680,7 @@ namespace PKHeX.Core.AutoMod
             pk.HT_Gender = trainer.Gender;
             pk.SetHTLanguage((byte)trainer.Language);
             pk.SetSuggestedMemories();
-            tb.Add(
-                new() { Identifier = TracebackType.Trainer, Comment = "Modified handler to HT" }
-            );
+            tb.Handle(TracebackType.Trainer, "Modified handler to HT");
         }
 
         /// <summary>
@@ -909,11 +837,7 @@ namespace PKHeX.Core.AutoMod
                 _ => false,
             };
 
-        public static void SetRecordFlags(
-            this PKM pk,
-            ushort[] moves,
-            List<ALMTraceback>? tb = null
-        )
+        public static void SetRecordFlags(this PKM pk, ushort[] moves, ITracebackHandler? tb)
         {
             if (pk is ITechRecord tr and not PA8)
             {
@@ -929,26 +853,14 @@ namespace PKHeX.Core.AutoMod
                     }
                 }
                 if (tb != null)
-                    tb.Add(
-                        new()
-                        {
-                            Identifier = TracebackType.Moves,
-                            Comment = "Set Record flags (not PA8)"
-                        }
-                    );
+                    tb.Handle(TracebackType.Moves, "Set Record flags (not PA8)");
                 return;
             }
 
             if (pk is IMoveShop8Mastery master)
             {
                 if (tb != null)
-                    tb.Add(
-                        new()
-                        {
-                            Identifier = TracebackType.Moves,
-                            Comment = "Set Move Shop Mastery Flags"
-                        }
-                    );
+                    tb.Handle(TracebackType.Moves, "Set Move Shop Mastery Flags");
                 MoveShopRecordApplicator.SetMoveShopFlags(master, pk);
             }
         }

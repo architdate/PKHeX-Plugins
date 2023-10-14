@@ -93,13 +93,13 @@ namespace PKHeX.Core.AutoMod
             IBattleTemplate set,
             IEncounterable enc,
             bool allValid,
-            List<ALMTraceback> tb
+            ITracebackHandler tb
         )
         {
             if (!allValid)
                 return;
             RibbonApplicator.SetAllValidRibbons(pk);
-            tb.Add(new() { Identifier = TracebackType.Misc, Comment = "Set all valid ribbons" });
+            tb.Handle(TracebackType.Misc, "Set all valid ribbons");
             if (
                 pk is PK8 pk8
                 && pk8.Species != (int)Species.Shedinja
@@ -107,13 +107,7 @@ namespace PKHeX.Core.AutoMod
             )
             {
                 pk8.SetRibbonIndex(mark);
-                tb.Add(
-                    new()
-                    {
-                        Identifier = TracebackType.Misc,
-                        Comment = $"Set random valid mark {mark}"
-                    }
-                );
+                tb.Handle(TracebackType.Misc, $"Set random valid mark {mark}");
             }
         }
     }

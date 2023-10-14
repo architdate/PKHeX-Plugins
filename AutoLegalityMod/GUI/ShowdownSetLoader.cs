@@ -17,7 +17,6 @@ namespace AutoModPlugins
         // Initialized during plugin setup
         public static ISaveFileProvider SaveFileEditor { private get; set; } = null!;
         public static IPKMView PKMEditor { private get; set; } = null!;
-        public static bool DisplayLegalizationTraceback { get; set; }
 
         private static readonly EncounterTypeGroup[] EncounterPriority =
         {
@@ -70,7 +69,7 @@ namespace AutoModPlugins
             AutoModErrorCode result;
             if (sets.Count == 1)
             {
-                result = ImportSetToTabs(sets[0], skipDialog, DisplayLegalizationTraceback);
+                result = ImportSetToTabs(sets[0], skipDialog);
             }
             else
             {
@@ -83,11 +82,7 @@ namespace AutoModPlugins
                 WinFormsUtil.Alert(message);
         }
 
-        private static AutoModErrorCode ImportSetToTabs(
-            ShowdownSet set,
-            bool skipDialog = false,
-            bool showVerbose = false
-        )
+        private static AutoModErrorCode ImportSetToTabs(ShowdownSet set, bool skipDialog = false)
         {
             var regen = new RegenTemplate(set, SaveFileEditor.SAV.Generation);
             if (
@@ -164,12 +159,13 @@ namespace AutoModPlugins
 
             Debug.WriteLine("Single Set Genning Complete. Loading final data to tabs.");
             PKMEditor.PopulateFields(legal);
-            if (showVerbose && almres.Traceback != null)
+            var tracebackout = almres.Traceback != null ? almres.Traceback.Output() : null;
+            if (tracebackout != null)
                 WinFormsUtil.Prompt(
                     MessageBoxButtons.OK,
                     string.Join(
                         Environment.NewLine,
-                        almres.Traceback.Select(z => $"{z.Identifier}: {z.Comment}")
+                        tracebackout.Select(z => $"{z.Identifier}: {z.Comment}")
                     )
                 );
 
@@ -285,9 +281,9 @@ namespace AutoModPlugins
             APILegality.Timeout = settings.Timeout;
             APILegality.ForceLevel100for50 = settings.ForceLevel100for50;
             APILegality.AllowHOMETransferGeneration = settings.AllowHOMETransferGeneration;
+            APILegality.TracebackHandlerType = settings.TracebackHandlerType;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
-            ShowdownSetLoader.DisplayLegalizationTraceback = settings.DisplayLegalizationTraceback;
             ModLogic.cfg = new LivingDexConfig
             {
                 IncludeForms = settings.IncludeForms,

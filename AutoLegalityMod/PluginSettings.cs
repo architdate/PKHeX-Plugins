@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Text.Json;
 using PKHeX.Core;
+using PKHeX.Core.AutoMod;
 
 namespace AutoModPlugins
 {
@@ -161,10 +162,8 @@ namespace AutoModPlugins
         public bool UseCompetitiveMarkings { get; set; } = true;
 
         [Category(Miscellaneous)]
-        [Description(
-            "Display legalization traceback for a particular Pokemon. Useful for debugging incorrectly generated sets."
-        )]
-        public bool DisplayLegalizationTraceback { get; set; } = false;
+        [Description("Configures way to display legalization traceback.")]
+        public HandlerType TracebackHandlerType { get; set; } = HandlerType.Disabled;
 
         // Development
         [Category(Development)]

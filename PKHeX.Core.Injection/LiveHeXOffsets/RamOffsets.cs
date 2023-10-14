@@ -15,7 +15,8 @@
                         LiveHeXVersion.SV_v130,
                         LiveHeXVersion.SV_v131,
                         LiveHeXVersion.SV_v132,
-                        LiveHeXVersion.SV_v201
+                        LiveHeXVersion.SV_v201,
+                        LiveHeXVersion.SV_v202
                     },
                 SAV8LA
                     => new[]
