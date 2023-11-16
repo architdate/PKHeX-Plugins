@@ -72,9 +72,7 @@ namespace PKHeX.Core.Injection
                     throw new Exception("USB device not found.");
 
                 if (SwDevice is not IUsbDevice usb)
-                    throw new Exception(
-                        "Device is using a WinUSB driver. Use libusbK and create a filter."
-                    );
+                    throw new Exception("Device is using a WinUSB driver. Use libusbK and create a filter.");
                 if (!usb.UsbRegistryInfo.IsAlive)
                     usb.ResetDevice();
 
@@ -196,9 +194,7 @@ namespace PKHeX.Core.Injection
 
             // read size, no error checking as of yet, should be the required 368 bytes
             if (reader == null)
-                throw new Exception(
-                    "USB writer is null, you may have disconnected the device during previous function"
-                );
+                throw new Exception("USB writer is null, you may have disconnected the device during previous function");
 
             reader.Read(sizeOfReturn, 5000, out _);
 
@@ -210,9 +206,7 @@ namespace PKHeX.Core.Injection
         private int SendInternal(byte[] buffer)
         {
             if (writer == null)
-                throw new Exception(
-                    "USB writer is null, you may have disconnected the device during previous function"
-                );
+                throw new Exception("USB writer is null, you may have disconnected the device during previous function");
 
             uint pack = (uint)buffer.Length + 2;
             var ec = writer.Write(BitConverter.GetBytes(pack), 2000, out _);

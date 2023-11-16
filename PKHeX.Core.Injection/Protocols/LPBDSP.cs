@@ -6,10 +6,10 @@ using System.Reflection;
 
 namespace PKHeX.Core.Injection
 {
-    public class LPBDSP : InjectionBase
+    public class LPBDSP(LiveHeXVersion lv, bool useCache) : InjectionBase(lv, useCache)
     {
         private static readonly LiveHeXVersion[] BrilliantDiamond =
-        {
+        [
             LiveHeXVersion.BD_v100,
             LiveHeXVersion.BD_v110,
             LiveHeXVersion.BD_v111,
@@ -17,9 +17,9 @@ namespace PKHeX.Core.Injection
             LiveHeXVersion.BDSP_v113,
             LiveHeXVersion.BDSP_v120,
             LiveHeXVersion.BD_v130
-        };
+        ];
         private static readonly LiveHeXVersion[] ShiningPearl =
-        {
+        [
             LiveHeXVersion.SP_v100,
             LiveHeXVersion.SP_v110,
             LiveHeXVersion.SP_v111,
@@ -27,7 +27,7 @@ namespace PKHeX.Core.Injection
             LiveHeXVersion.BDSP_v113,
             LiveHeXVersion.BDSP_v120,
             LiveHeXVersion.SP_v130
-        };
+        ];
         private static readonly LiveHeXVersion[] SupportedVersions = ArrayUtil.ConcatAll(
             BrilliantDiamond,
             ShiningPearl
@@ -66,15 +66,9 @@ namespace PKHeX.Core.Injection
                 { "Underground", "B_OpenUGSEditor_Click" }
             };
 
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-        public static readonly IEnumerable<Type> types = Assembly
-            .GetAssembly(typeof(ICustomBlock))
+        public static readonly IEnumerable<Type> types = Assembly.GetAssembly(typeof(ICustomBlock))!
             .GetTypes()
             .Where(t => typeof(ICustomBlock).IsAssignableFrom(t) && !t.IsInterface);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
-
-        public LPBDSP(LiveHeXVersion lv, bool useCache)
-            : base(lv, useCache) { }
 
         private static ulong[] GetPokemonPointers(PokeSysBotMini psb, int box)
         {
@@ -409,7 +403,7 @@ namespace PKHeX.Core.Injection
         )
         {
             read = null;
-            if (!FunctionMap.ContainsKey(block))
+            if (!FunctionMap.TryGetValue(block, out var value))
             {
                 // Check for custom blocks
                 foreach (Type t in types)
@@ -423,7 +417,7 @@ namespace PKHeX.Core.Injection
 
                     var funcout = (byte[]?)m.Invoke(null, new object[] { psb });
                     if (funcout is not null)
-                        read = new List<byte[]> { funcout };
+                        read = [funcout];
                     return true;
                 }
                 return false;
@@ -436,13 +430,13 @@ namespace PKHeX.Core.Injection
 
                 if (data is IDataIndirect sb)
                 {
-                    var getter = FunctionMap[block].Item1;
+                    var getter = value.Item1;
                     var funcout = getter.Invoke(psb);
                     if (funcout is null)
                         return false;
 
                     funcout.CopyTo(sb.Data, sb.Offset);
-                    read = new List<byte[]> { funcout };
+                    read = [funcout];
                 }
                 else
                 {
@@ -464,13 +458,13 @@ namespace PKHeX.Core.Injection
             object sb
         )
         {
-            if (!FunctionMap.ContainsKey(block))
+            if (!FunctionMap.TryGetValue(block, out var value))
             {
                 // Custom Blocks
                 ((ICustomBlock)sb).Setter(psb, data);
                 return;
             }
-            var setter = FunctionMap[block].Item2;
+            var setter = value.Item2;
             var offset = ((IDataIndirect)sb).Offset;
             setter.Invoke(psb, data.AsSpan(offset).ToArray());
         }

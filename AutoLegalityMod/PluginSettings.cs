@@ -55,11 +55,11 @@ namespace AutoModPlugins
 
         [Category(Connection)]
         [Description("Allows LiveHeX to use USB-Botbase instead of sys-botbase.")]
-        public bool USBBotBasePreferred { get; set; } = false;
+        public bool USBBotBasePreferred { get; set; }
 
         [Category(Connection)]
         [Description("Stores pointer addresses to cache for faster lookups.")]
-        public bool UseCachedPointers { get; set; } = false;
+        public bool UseCachedPointers { get; set; }
 
         // Customization
         [Category(Customization)]
@@ -70,7 +70,7 @@ namespace AutoModPlugins
         [Description(
             "If enabled, tries to generate a Pokémon based on PrioritizeGameVersion first."
         )]
-        public bool PrioritizeGame { get; set; } = false;
+        public bool PrioritizeGame { get; set; }
 
         [Category(Customization)]
         [Description(
@@ -102,19 +102,16 @@ namespace AutoModPlugins
         [Category(Legality)]
         [Description("Defines the order in which Pokémon encounters are prioritized")]
         public List<EncounterTypeGroup> PrioritizeEncounters { get; set; } =
-            new()
-            {
-                EncounterTypeGroup.Egg,
-                EncounterTypeGroup.Static,
-                EncounterTypeGroup.Trade,
-                EncounterTypeGroup.Slot,
-                EncounterTypeGroup.Mystery
-            };
+        [
+            EncounterTypeGroup.Egg,
+            EncounterTypeGroup.Static,
+            EncounterTypeGroup.Trade,
+            EncounterTypeGroup.Slot,
+            EncounterTypeGroup.Mystery,
+        ];
 
         [Category(Legality)]
-        [Description(
-            "Disabling this will force ALM to not generate Pokemon which require a HOME tracker."
-        )]
+        [Description("Disabling this will force ALM to not generate Pokemon which require a HOME tracker.")]
         public bool AllowHOMETransferGeneration { get; set; } = true;
 
         [Category(Legality)]
@@ -123,18 +120,16 @@ namespace AutoModPlugins
 
         // Living Dex
         [Category(LivingDex)]
-        [Description(
-            "Generate all forms of the Pokémon. Note that some generations may not have enough box space for all forms."
-        )]
-        public bool IncludeForms { get; set; } = false;
+        [Description("Generate all forms of the Pokémon. Note that some generations may not have enough box space for all forms.")]
+        public bool IncludeForms { get; set; }
 
         [Category(LivingDex)]
         [Description("Try to generate the shiny version of the Pokémon if possible.")]
-        public bool SetShiny { get; set; } = false;
+        public bool SetShiny { get; set; }
 
         [Category(LivingDex)]
         [Description("Try to generate the alpha version of the Pokémon if possible.")]
-        public bool SetAlpha { get; set; } = false;
+        public bool SetAlpha { get; set; }
 
         [Category(LivingDex)]
         [Description("Only generate Pokémon natively available in the game version pair.")]
@@ -149,7 +144,7 @@ namespace AutoModPlugins
         [Description(
             "Used for \"Generate Smogon Sets\". If set to true, ALM will ask for approval for each set before attempting to generate it."
         )]
-        public bool PromptForSmogonImport { get; set; } = false;
+        public bool PromptForSmogonImport { get; set; }
 
         [Category(Miscellaneous)]
         [Description("Sets markings on the Pokémon based on IVs.")]
@@ -170,7 +165,7 @@ namespace AutoModPlugins
         [Description(
             "If enabled, ignores version mismatch warnings until the next PKHeX.Core release. Also bypasses Switch connection checks."
         )]
-        public bool EnableDevMode { get; set; } = false;
+        public bool EnableDevMode { get; set; }
 
         [Browsable(false)]
         public string LatestAllowedVersion { get; set; } = "0.0.0.0";
@@ -179,14 +174,8 @@ namespace AutoModPlugins
         {
             JsonSerializerOptions options = new() { WriteIndented = true };
             string output = JsonSerializer.Serialize(this, options);
-            using StreamWriter sw =
-                new(
-                    ConfigPath
-                        ?? Path.Combine(
-                            Path.GetDirectoryName(Environment.ProcessPath)!,
-                            "almconfig.json"
-                        )
-                );
+            var path = ConfigPath ?? Path.Combine(Path.GetDirectoryName(Environment.ProcessPath)!, "almconfig.json");
+            using StreamWriter sw = new(path);
             sw.WriteLine(output);
         }
     }

@@ -77,7 +77,7 @@ namespace PKHeX.Core.Injection
                         break;
                 }
 
-                byte[] result = _lastMemoryRead ?? System.Array.Empty<byte>();
+                byte[] result = _lastMemoryRead ?? [];
                 _lastMemoryRead = null;
                 return result;
             }

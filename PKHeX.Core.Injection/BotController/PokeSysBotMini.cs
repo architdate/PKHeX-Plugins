@@ -3,28 +3,17 @@ using System.Collections.Generic;
 
 namespace PKHeX.Core.Injection
 {
-    public class PokeSysBotMini : InjectionBase
+    public class PokeSysBotMini(LiveHeXVersion lv, ICommunicator communicator, bool useCache)
+        : InjectionBase(lv, useCache)
     {
-        public readonly long BoxStart;
-        public readonly int SlotSize;
-        public readonly int SlotCount;
-        public readonly int GapSize;
-        public readonly LiveHeXVersion Version;
-        public readonly ICommunicator com;
-        public readonly InjectionBase Injector;
+        public readonly long BoxStart = RamOffsets.GetB1S1Offset(lv);
+        public readonly int SlotSize = RamOffsets.GetSlotSize(lv);
+        public readonly int SlotCount = RamOffsets.GetSlotCount(lv);
+        public readonly int GapSize = RamOffsets.GetGapSize(lv);
+        public readonly LiveHeXVersion Version = lv;
+        public readonly ICommunicator com = communicator;
+        public readonly InjectionBase Injector = GetInjector(lv, useCache);
         public bool Connected => com.Connected;
-
-        public PokeSysBotMini(LiveHeXVersion lv, ICommunicator communicator, bool useCache)
-            : base(lv, useCache)
-        {
-            Version = lv;
-            com = communicator;
-            Injector = GetInjector(lv, useCache);
-            BoxStart = RamOffsets.GetB1S1Offset(lv);
-            SlotSize = RamOffsets.GetSlotSize(lv);
-            SlotCount = RamOffsets.GetSlotCount(lv);
-            GapSize = RamOffsets.GetGapSize(lv);
-        }
 
         public ulong GetSlotOffset(int box, int slot) =>
             GetBoxOffset(box) + (ulong)((SlotSize + GapSize) * slot);

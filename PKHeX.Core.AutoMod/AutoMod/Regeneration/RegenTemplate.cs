@@ -122,12 +122,11 @@ namespace PKHeX.Core.AutoMod
         private string GetSummary()
         {
             var sb = new StringBuilder();
-            var text = ParentLines;
             var regen = Regen.GetSummary();
             bool hasRegen = !string.IsNullOrWhiteSpace(regen);
 
             // Add Showdown content except moves
-            var split = text.Split(
+            var split = ParentLines.Split(
                 new[] { Environment.NewLine },
                 StringSplitOptions.RemoveEmptyEntries
             );

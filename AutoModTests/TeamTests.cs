@@ -36,10 +36,10 @@ namespace AutoModTests
                 var sav = SaveUtil.GetBlankSAV(s.GetContext(), "ALMUT");
                 RecentTrainerCache.SetRecentTrainer(sav);
 
-                var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("====="));
+                var lines = File.ReadAllLines(file).Where(z => !z.StartsWith("=====")).ToList();
                 var sets = ShowdownParsing.GetShowdownSets(lines).ToList();
 
-                bool paTransfer = file.Contains("pa8") && (s is BD || s is SP);
+                bool paTransfer = file.Contains("pa8") && s is BD or SP;
                 if (paTransfer)
                 {
                     // Edge case checks for transfers
@@ -49,7 +49,7 @@ namespace AutoModTests
                     // Giratina Origin from PLA has no item so will fail in BDSP
                     setsTransfer = ShowdownParsing
                         .GetShowdownSets(noMoves)
-                        .Where(z => !(z.Species == (ushort)Species.Giratina && z.Form == 1))
+                        .Where(z => z is not { Species: (ushort)Species.Giratina, Form: 1 })
                         .ToList();
                 }
 

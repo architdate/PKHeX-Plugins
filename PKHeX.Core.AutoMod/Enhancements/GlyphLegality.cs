@@ -10,7 +10,7 @@ namespace PKHeX.Core.AutoMod
 
         static GlyphLegality()
         {
-            CharDictionary = new Dictionary<char, char>();
+            CharDictionary = [];
             const string full =
                 "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンッァィゥェォャュョ゙゚ー０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ～！＠＃＄％＾＆＊（）＿＋－＝｛｝［］｜＼：；＂＇＜＞，．？／";
             const string half =

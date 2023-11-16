@@ -3,13 +3,11 @@ using System.Runtime.InteropServices;
 
 namespace PKHeX.Core.Injection
 {
-    public class SwayGrass : ICustomBlock
+    public class SwayGrass(byte[] data) : ICustomBlock
     {
         private const int SWAYGRASS_BLOCK_SIZE = 0xC0;
 
-        public readonly byte[] Data;
-
-        public SwayGrass(byte[] data) => Data = data;
+        public readonly byte[] Data = data;
 
         public bool IsSwayGrassFlag
         {

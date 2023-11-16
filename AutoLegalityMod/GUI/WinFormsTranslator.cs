@@ -12,7 +12,7 @@ namespace AutoModPlugins
     // Code borrowed from PKHeX.WinForms with permission from kwsch, with adaptations
     public static class WinFormsTranslator
     {
-        private static readonly Dictionary<string, TranslationContext> Context = new();
+        private static readonly Dictionary<string, TranslationContext> Context = [];
 
         internal static void TranslateInterface(this Control form, string lang) =>
             TranslateForm(form, GetContext(lang));
@@ -70,7 +70,7 @@ namespace AutoModPlugins
         {
             var file = GetTranslationFileNameInternal(lang);
 
-            // Check to see if a the translation file exists in the same folder as the executable
+            // Check to see if the translation file exists in the same folder as the executable
             string externalLangPath = GetTranslationFileNameExternal(file);
             if (File.Exists(externalLangPath))
             {
@@ -112,14 +112,7 @@ namespace AutoModPlugins
                                 yield return obj;
                         }
 
-                        if (
-                            z
-                            is ListControl
-                                or TextBoxBase
-                                or LinkLabel
-                                or NumericUpDown
-                                or ContainerControl
-                        )
+                        if (z is ListControl or TextBoxBase or LinkLabel or NumericUpDown or ContainerControl)
                             break; // undesirable to modify, ignore
 
                         if (!string.IsNullOrWhiteSpace(z.Text))
@@ -150,10 +143,7 @@ namespace AutoModPlugins
             {
                 if (!string.IsNullOrWhiteSpace(i.Text))
                     yield return i;
-                foreach (
-                    var sub in GetToolsStripDropDownItems(i)
-                        .Where(z => !string.IsNullOrWhiteSpace(z.Text))
-                )
+                foreach (var sub in GetToolsStripDropDownItems(i).Where(z => !string.IsNullOrWhiteSpace(z.Text)))
                     yield return sub;
             }
         }
@@ -260,7 +250,7 @@ namespace AutoModPlugins
         public bool AddNew { private get; set; }
         public bool RemoveUsedKeys { private get; set; }
         public const char Separator = '=';
-        private readonly Dictionary<string, string> translation = new();
+        private readonly Dictionary<string, string> translation = [];
 
         public TranslationContext(IEnumerable<string> content, char separator = Separator)
         {

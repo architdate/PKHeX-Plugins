@@ -76,7 +76,7 @@ namespace PKHeX.Core.AutoMod
             );
 
             // Move checks
-            List<IEnumerable<ushort>> move_combinations = new();
+            List<IEnumerable<ushort>> move_combinations = [];
             for (int i = count; i >= 1; i--)
                 move_combinations.AddRange(GetKCombs(moves, i));
 
@@ -109,13 +109,13 @@ namespace PKHeX.Core.AutoMod
             // All moves possible, get encounters
             failed.ApplySetDetails(set);
             failed.SetMoves(original_moves);
-            failed.SetRecordFlags(Array.Empty<ushort>(), null);
+            failed.SetRecordFlags([], null);
 
             var encounters = EncounterMovesetGenerator
                 .GenerateEncounters(pk: failed, moves: original_moves, gamelist)
                 .ToList();
             var initialcount = encounters.Count;
-            if (set is RegenTemplate rt && rt.Regen.EncounterFilters is { } x)
+            if (set is RegenTemplate { Regen.EncounterFilters: { } x })
                 encounters.RemoveAll(enc => !BatchEditing.IsFilterMatch(x, enc));
 
             // No available encounters
@@ -142,18 +142,9 @@ namespace PKHeX.Core.AutoMod
 
             // Ability checks
             var abilityreq = APILegality.GetRequestedAbility(failed, set);
-            if (
-                abilityreq == AbilityRequest.NotHidden
-                && encounters.All(
-                    z => z is IEncounterable { Ability: AbilityPermission.OnlyHidden }
-                )
-            )
+            if (abilityreq == AbilityRequest.NotHidden && encounters.All(z => z is { Ability: AbilityPermission.OnlyHidden }))
                 return string.Format(ONLY_HIDDEN_ABILITY_AVAILABLE, species_name);
-            if (
-                abilityreq == AbilityRequest.Hidden
-                && encounters.All(z => z.Generation is 3 or 4)
-                && destVer.GetGeneration() < 8
-            )
+            if (abilityreq == AbilityRequest.Hidden && encounters.All(z => z.Generation is 3 or 4) && destVer.GetGeneration() < 8)
                 return string.Format(HIDDEN_ABILITY_UNAVAILABLE, species_name);
 
             // Home Checks
@@ -188,7 +179,7 @@ namespace PKHeX.Core.AutoMod
             GameVersion[] gamelist
         )
         {
-            ushort[] successful_combination = Array.Empty<ushort>();
+            ushort[] successful_combination = [];
             foreach (var c in move_combinations)
             {
                 var combination = c.ToArray();
@@ -199,7 +190,7 @@ namespace PKHeX.Core.AutoMod
                     .ToArray();
                 blank.ApplySetDetails(set);
                 blank.SetMoves(new_moves);
-                blank.SetRecordFlags(Array.Empty<ushort>(), null);
+                blank.SetRecordFlags([], null);
 
                 if (sav.Generation <= 2)
                     blank.EXP = 0; // no relearn moves in gen 1/2 so pass level 1 to generator
@@ -212,7 +203,7 @@ namespace PKHeX.Core.AutoMod
                 if (set is RegenTemplate r && r.Regen.EncounterFilters is { } x)
                     encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(x, enc));
                 if (encounters.Any())
-                    successful_combination = combination.ToArray();
+                    successful_combination = [.. combination];
             }
             return successful_combination;
         }

@@ -205,7 +205,7 @@ namespace PKHeX.Core.Injection
             SendInternal(cmd);
 
             var data = FlexRead();
-            return Encoding.UTF8.GetString(data).Trim(new char[] { '\0', '\n' });
+            return Encoding.UTF8.GetString(data).Trim(['\0', '\n']);
         }
 
         public bool IsProgramRunning(ulong pid)
@@ -244,7 +244,7 @@ namespace PKHeX.Core.Injection
         {
             lock (_sync)
             {
-                List<byte> flexBuffer = new();
+                List<byte> flexBuffer = [];
                 int available = Connection.Available;
                 Connection.ReceiveTimeout = 1_000;
 
@@ -254,12 +254,12 @@ namespace PKHeX.Core.Injection
                     Connection.Receive(buffer, available, SocketFlags.None);
                     flexBuffer.AddRange(buffer);
 
-                    Thread.Sleep(0x1C0 / 256 + 64);
+                    Thread.Sleep((0x1C0 / 256) + 64);
                     available = Connection.Available;
                 } while (flexBuffer.Count == 0 || flexBuffer.Last() != (byte)'\n');
 
                 Connection.ReceiveTimeout = 0;
-                return flexBuffer.ToArray();
+                return [.. flexBuffer];
             }
         }
     }

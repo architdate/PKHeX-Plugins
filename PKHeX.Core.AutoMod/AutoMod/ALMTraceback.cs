@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace PKHeX.Core.AutoMod
 {
-    [System.Diagnostics.DebuggerDisplay($"{{{nameof(Identifier)}}}: {{{nameof(Comment)}}}")]
+    [DebuggerDisplay($"{{{nameof(Identifier)}}}: {{{nameof(Comment)}}}")]
     public readonly record struct ALMTraceback(TracebackType Identifier, string Comment);
 
     public interface ITracebackHandler
@@ -109,7 +108,7 @@ namespace PKHeX.Core.AutoMod
 
     public class VerboseTBHandler : ITracebackHandler
     {
-        private List<ALMTraceback> tb = new();
+        private readonly List<ALMTraceback> tb = [];
 
         public void Handle(ALMTraceback traceback)
         {
@@ -122,7 +121,7 @@ namespace PKHeX.Core.AutoMod
             tb.Add(almtb);
         }
 
-        public IEnumerable<ALMTraceback>? Output() => tb;
+        public IEnumerable<ALMTraceback> Output() => tb;
 
         HandlerType ITracebackHandler.GetType() => HandlerType.Verbose;
     }

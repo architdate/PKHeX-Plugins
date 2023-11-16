@@ -94,13 +94,7 @@ namespace AutoModPlugins.GUI
                         }
                 );
                 if (RT_Timer.Enabled)
-                    RT_Timer.Invoke(
-                        (MethodInvoker)
-                            delegate
-                            {
-                                refresh.Interval = (double)RT_Timer.Value;
-                            }
-                    );
+                    RT_Timer.Invoke((MethodInvoker)delegate { refresh.Interval = (double)RT_Timer.Value; });
                 refresh.Start();
             }
             catch
@@ -127,7 +121,7 @@ namespace AutoModPlugins.GUI
 
         private void ChangeCopyMethod(object sender, EventArgs e)
         {
-            RTB_RAM.method = (CopyMethod)CB_CopyMethod.SelectedItem;
+            RTB_RAM.method = (CopyMethod)CB_CopyMethod.SelectedItem!;
         }
 
         private void CB_AutoRefresh_CheckedChanged(object sender, EventArgs e)
@@ -140,7 +134,7 @@ namespace AutoModPlugins.GUI
             }
             else
             {
-                if (decrypt == false)
+                if (!decrypt)
                 {
                     B_Update.Enabled = true;
                     RTB_RAM.ReadOnly = false;
@@ -157,11 +151,11 @@ namespace AutoModPlugins.GUI
             refresh.Stop();
             while (refresh.Enabled)
             {
-                try
+                try { refresh.Stop(); }
+                catch
                 {
-                    refresh.Stop();
+                    // ignored
                 }
-                catch (Exception) { }
             }
         }
     }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
 
 namespace PKHeX.Core.AutoMod
@@ -39,11 +38,7 @@ namespace PKHeX.Core.AutoMod
                 return false;
 
             var latestAllowed = new Version(APILegality.LatestAllowedVersion);
-            if (
-                APILegality.EnableDevMode
-                && (latestCore > latestAllowed)
-                && (latestCore > currentCore)
-            )
+            if (APILegality.EnableDevMode && (latestCore > latestAllowed) && (latestCore > currentCore))
                 return true;
             return !APILegality.EnableDevMode && (currentCore > currentALM);
         }
@@ -54,7 +49,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>A version representing the current version of the specified assembly, or null if the assembly cannot be found or has no version available.</returns>
         private static Version? GetCurrentVersion(string assemblyName)
         {
-            var assembly = assemblies.FirstOrDefault(x => x.GetName().Name == assemblyName);
+            var assembly = Array.Find(assemblies, x => x.GetName().Name == assemblyName);
             return assembly?.GetName().Version;
         }
 

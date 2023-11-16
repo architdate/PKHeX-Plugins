@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace PKHeX.Core.AutoMod
@@ -10,13 +8,12 @@ namespace PKHeX.Core.AutoMod
     /// </summary>
     public static class ShowdownEdits
     {
-        private static readonly CompareInfo CompareInfo = CultureInfo.CurrentCulture.CompareInfo;
-
         /// <summary>
         /// Quick Gender Toggle
         /// </summary>
         /// <param name="pk">PKM whose gender needs to be toggled</param>
         /// <param name="set">Showdown Set for Gender reference</param>
+        /// <param name="tb"></param>
         public static void FixGender(this PKM pk, IBattleTemplate set, ITracebackHandler tb)
         {
             pk.ApplySetGender(set);
@@ -42,13 +39,11 @@ namespace PKHeX.Core.AutoMod
             {
                 if (pk.Form == ToxtricityUtil.GetAmpLowKeyResult(val))
                     pk.Nature = val; // StatNature already set
-                if (
-                    pk.Format >= 8
-                    && pk.StatNature != pk.Nature
-                    && pk.StatNature != 12
-                    && (pk.StatNature > 24 || pk.StatNature % 6 == 0)
-                ) // Only Serious Mint for Neutral Natures
+                if (pk.Format >= 8 && pk.StatNature != pk.Nature && pk.StatNature != 12 && (pk.StatNature > 24 || pk.StatNature % 6 == 0))
+                {
+                    // Only Serious Mint for Neutral Natures
                     pk.StatNature = 12;
+                }
                 return;
             }
 
@@ -64,25 +59,13 @@ namespace PKHeX.Core.AutoMod
             var la2 = new LegalityAnalysis(pk);
             var enc1 = la.EncounterMatch;
             var enc2 = la2.EncounterMatch;
-            if (
-                (
-                    (!ReferenceEquals(enc1, enc2) && enc1 is not EncounterEgg)
-                    || la2.Results.Any(
-                        z =>
-                            (
-                                z.Identifier == CheckIdentifier.Nature
-                                || z.Identifier == CheckIdentifier.Encounter
-                            ) && !z.Valid
-                    )
-                ) && enc is not EncounterEgg
-            )
+            if (((!ReferenceEquals(enc1, enc2) && enc1 is not EncounterEgg) || la2.Results.Any(z => z.Identifier is CheckIdentifier.Nature or CheckIdentifier.Encounter && !z.Valid)) && enc is not EncounterEgg)
                 pk.Nature = orig;
-            if (
-                pk.Format >= 8
-                && pk.StatNature != pk.Nature
-                && pk.StatNature is 0 or 6 or 18 or >= 24
-            ) // Only Serious Mint for Neutral Natures
+            if (pk.Format >= 8 && pk.StatNature != pk.Nature && pk.StatNature is 0 or 6 or 18 or >= 24)
+            {
+                // Only Serious Mint for Neutral Natures
                 pk.StatNature = (int)Nature.Serious;
+            }
         }
 
         public static void SetAbility(PKM pk, IBattleTemplate set, AbilityPermission preference)
@@ -90,11 +73,7 @@ namespace PKHeX.Core.AutoMod
             if (pk.Ability != set.Ability)
                 pk.RefreshAbility(pk is PK5 { HiddenAbility: true } ? 2 : pk.AbilityNumber >> 1);
             if (pk.Ability != set.Ability && pk.Context >= EntityContext.Gen8 && set.Ability != -1)
-                pk.RefreshAbility(
-                    pk is PK5 { HiddenAbility: true }
-                        ? 2
-                        : pk.PersonalInfo.GetIndexOfAbility(set.Ability)
-                );
+                pk.RefreshAbility(pk is PK5 { HiddenAbility: true } ? 2 : pk.PersonalInfo.GetIndexOfAbility(set.Ability));
 
             if (preference <= 0)
                 return;
@@ -112,15 +91,7 @@ namespace PKHeX.Core.AutoMod
             if (pref == 2 && pi is IPersonalAbility12H h && h.AbilityH == set.Ability)
                 pk.AbilityNumber = (int)preference;
             // 3/4/5 transferred to 6+ will have ability 1 if both abilitynum 1 and 2 are the same. Capsule cant convert 1 -> 2 if the abilities arnt unique
-            if (
-                pk.Format >= 6
-                && pk.Generation is 3 or 4 or 5
-                && pk.AbilityNumber != 4
-                && pi is IPersonalAbility12 a
-                && a.Ability1 == a.Ability2
-            )
-                pk.AbilityNumber = 1;
-            if (pk is G3PKM && pi is IPersonalAbility12 b && b.Ability1 == b.Ability2)
+            if (pk.Format >= 6 && pk.Generation is 3 or 4 or 5 && pk.AbilityNumber != 4 && pi is IPersonalAbility12 a && a.Ability1 == a.Ability2) pk.AbilityNumber = 1; if (pk is G3PKM && pi is IPersonalAbility12 b && b.Ability1 == b.Ability2)
                 pk.AbilityNumber = 1;
         }
 
@@ -132,6 +103,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="Form">Form to apply</param>
         /// <param name="enc">Encounter detail</param>
         /// <param name="lang">Language to apply</param>
+        /// <param name="tb"></param>
         public static void SetSpeciesLevel(
             this PKM pk,
             IBattleTemplate set,
@@ -191,9 +163,7 @@ namespace PKHeX.Core.AutoMod
             if (pk.Met_Level > pk.CurrentLevel)
                 pk.Met_Level = pk.CurrentLevel;
             if (set.Level != 100 && set.Level == enc.LevelMin && pk.Format is 3 or 4)
-                pk.EXP =
-                    Experience.GetEXP(enc.LevelMin + 1, PersonalTable.HGSS[enc.Species].EXPGrowth)
-                    - 1;
+                pk.EXP = Experience.GetEXP(enc.LevelMin + 1, PersonalTable.HGSS[enc.Species].EXPGrowth) - 1;
 
             var currentlang = (LanguageID)pk.Language;
             var finallang = lang ?? currentlang;
@@ -205,9 +175,9 @@ namespace PKHeX.Core.AutoMod
             if (set.Nickname.Length == 0 && finallang == currentlang && !evolutionRequired)
                 return;
 
-            if (enc is IFixedTrainer { IsFixedTrainer: true } ft)
+            if (enc is IFixedTrainer { IsFixedTrainer: true })
             {
-                // Set this before hand incase it is true. Will early return if it is also IFixedNickname
+                // Set this beforehand in case it is true. Will early return if it is also IFixedNickname
                 // Wait for PKHeX to expose this instead of using reflection
             }
             // don't bother checking encountertrade nicknames for length validity
@@ -218,12 +188,9 @@ namespace PKHeX.Core.AutoMod
                     return;
                 // This should be illegal except Meister Magikarp in BDSP, however trust the user and set corresponding OT
                 var nick = et.GetNickname(pk.Language);
-                if (nick != null)
-                {
-                    tb.Handle(TracebackType.Encounter, $"Encounter Fixed Nickname set to {nick}");
-                    pk.Nickname = nick;
-                    return;
-                }
+                tb.Handle(TracebackType.Encounter, $"Encounter Fixed Nickname set to {nick}");
+                pk.Nickname = nick;
+                return;
             }
 
             var gen = enc.Generation;
@@ -410,12 +377,7 @@ namespace PKHeX.Core.AutoMod
                 case Species.Arceus:
                 case Species.Silvally:
                 case Species.Genesect:
-                    bool valid = FormItem.TryGetForm(
-                        pk.Species,
-                        pk.HeldItem,
-                        pk.Format,
-                        out byte pkform
-                    );
+                    bool valid = FormItem.TryGetForm(pk.Species, pk.HeldItem, pk.Format, out byte pkform);
                     if (!valid)
                         break;
                     pk.HeldItem = pk.Form != pkform ? 0 : pk.HeldItem;

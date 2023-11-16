@@ -5,11 +5,9 @@ namespace PKHeX.Core.AutoMod
     /// <summary>
     /// Wrapper for a <see cref="PKM"/> to provide details as if it were a <see cref="ITrainerInfo"/>
     /// </summary>
-    public class PokeTrainerDetails : ITrainerInfo, IRegionOrigin
+    public class PokeTrainerDetails(PKM pk) : ITrainerInfo, IRegionOrigin
     {
-        private readonly PKM pkm;
-
-        public PokeTrainerDetails(PKM pk) => pkm = pk;
+        private readonly PKM pkm = pk;
 
         public ushort TID16
         {

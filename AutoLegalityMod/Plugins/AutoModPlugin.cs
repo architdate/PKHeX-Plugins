@@ -70,8 +70,7 @@ namespace AutoModPlugins
             Task.Run(
                 async () =>
                 {
-                    var (hasError, error) = await SetUpEnvironment(Source.Token)
-                        .ConfigureAwait(false);
+                    var (hasError, error) = await SetUpEnvironment(Source.Token).ConfigureAwait(false);
                     if (hasError && error is not null)
                     {
                         if (error.InvokeRequired)
@@ -88,15 +87,15 @@ namespace AutoModPlugins
         {
             SystemSounds.Hand.Play();
             var res = error.ShowDialog(menu);
-            if (res == DialogResult.Retry)
-                Process.Start(
-                    new ProcessStartInfo
-                    {
-                        FileName =
-                            "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins#manual-installation-or-installing-older-releases",
-                        UseShellExecute = true
-                    }
-                );
+            if (res != DialogResult.Retry)
+                return;
+
+            var pi = new ProcessStartInfo
+            {
+                FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins#manual-installation-or-installing-older-releases",
+                UseShellExecute = true,
+            };
+            Process.Start(pi);
         }
 
         private async Task<(bool, ALMError?)> SetUpEnvironment(CancellationToken token)

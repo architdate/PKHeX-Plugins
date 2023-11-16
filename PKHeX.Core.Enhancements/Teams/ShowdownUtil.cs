@@ -59,7 +59,7 @@ namespace PKHeX.Core.Enhancements
             source = source.Trim();
             if (IsTeamBackup(source))
                 return true;
-            string[] stringSeparators = { "\n\r" };
+            string[] stringSeparators = ["\n\r"];
 
             var result = source.Split(stringSeparators, StringSplitOptions.None);
             return new ShowdownSet(result[0]).Species > 0;
