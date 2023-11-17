@@ -156,7 +156,7 @@ namespace PKHeX.Core.AutoMod
                 // Apply final tweaks to the data.
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
-                    if (!gmax.CanToggleGigantamax(pk.Species, pk.Form, enc.Species, enc.Form))
+                    if (!Gigantamax.CanToggle(pk.Species, pk.Form, enc.Species, enc.Form))
                         continue;
                     gmax.CanGigantamax = set.CanGigantamax; // soup hax
                 }
