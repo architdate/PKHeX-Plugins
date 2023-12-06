@@ -90,7 +90,7 @@ namespace PKHeX.Core.Injection
         public uint Data(uint addr, uint size = 0x100, int pid = -1) =>
             SendReadMemPacket(addr, size, (uint)pid);
 
-        public void Write(uint addr, byte[] buf, int pid = -1) =>
+        public void Write(uint addr, ReadOnlySpan<byte> buf, int pid = -1) =>
             SendWriteMemPacket(addr, (uint)pid, buf);
 
         public void Connect(string host, int port)
@@ -282,7 +282,7 @@ namespace PKHeX.Core.Injection
             IsConnected = false;
         }
 
-        private void SendPacket(uint type, uint cmd, IReadOnlyList<uint>? args, uint dataLen)
+        private void SendPacket(uint type, uint cmd, Span<uint> args, uint dataLen)
         {
             _currentSeq += 1000;
             var buf = new byte[84];
@@ -295,7 +295,7 @@ namespace PKHeX.Core.Injection
             {
                 t += 4;
                 uint arg = 0;
-                if (args != null)
+                if (args.Length != 0)
                     arg = args[i];
                 BitConverter.GetBytes(arg).CopyTo(buf, t);
             }
@@ -311,15 +311,15 @@ namespace PKHeX.Core.Injection
             return _currentSeq;
         }
 
-        private void SendWriteMemPacket(uint addr, uint pid, byte[] buf)
+        private void SendWriteMemPacket(uint addr, uint pid, ReadOnlySpan<byte> buf)
         {
-            uint[] args = new uint[16];
+            Span<uint> args = stackalloc uint[16];
             args[0] = pid;
             args[1] = addr;
             args[2] = (uint)buf.Length;
             SendPacket(1, 10, args, args[2]);
             var stream = _netStream ?? throw new ArgumentNullException(nameof(_netStream));
-            stream.Write(buf, 0, buf.Length);
+            stream.Write(buf);
         }
 
         private void SendHeartbeatPacket()

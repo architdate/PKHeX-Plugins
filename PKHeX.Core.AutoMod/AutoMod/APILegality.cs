@@ -112,7 +112,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 tb.Handle(Encounter, $"Selected Encounter: {enc}");
-                if (enc is IFixedNature { IsFixedNature: true } fixedNature)
+                if (enc is IFixedNature { IsFixedNature: true })
                     criteria = criteria with { Nature = Nature.Random };
                 criteria = SetSpecialCriteria(criteria, enc, set);
                 tb.Handle(Encounter, criteria.ToString());
@@ -154,7 +154,7 @@ namespace PKHeX.Core.AutoMod
                 // Apply final tweaks to the data.
                 if (pk is IGigantamax gmax && gmax.CanGigantamax != set.CanGigantamax)
                 {
-                    if (!gmax.CanToggleGigantamax(pk.Species, pk.Form, enc.Species, enc.Form))
+                    if (!Gigantamax.CanToggle(pk.Species, pk.Form, enc.Species, enc.Form))
                         continue;
                     gmax.CanGigantamax = set.CanGigantamax; // soup hax
                 }
@@ -1725,7 +1725,7 @@ namespace PKHeX.Core.AutoMod
             switch (enc.Species)
             {
                 case (int)Species.Kartana
-                    when criteria.Nature == Nature.Timid && criteria.IV_ATK <= 21: // Speed boosting Timid Kartana ATK IVs <= 19
+                    when criteria is { Nature: Nature.Timid, IV_ATK: <= 21 }: // Speed boosting Timid Kartana ATK IVs <= 19
                     return criteria with
                     {
                         IV_HP = -1,
@@ -1733,11 +1733,11 @@ namespace PKHeX.Core.AutoMod
                         IV_DEF = -1,
                         IV_SPA = -1,
                         IV_SPD = -1,
-                        IV_SPE = -1
+                        IV_SPE = -1,
                     };
 
                 case (int)Species.Stakataka
-                    when criteria.Nature == Nature.Lonely && criteria.IV_DEF <= 17: // Atk boosting Lonely Stakataka DEF IVs <= 15
+                    when criteria is { Nature: Nature.Lonely, IV_DEF: <= 17 }: // Atk boosting Lonely Stakataka DEF IVs <= 15
                     return criteria with
                     {
                         IV_HP = -1,
@@ -1749,7 +1749,7 @@ namespace PKHeX.Core.AutoMod
                     };
 
                 case (int)Species.Pyukumuku
-                    when criteria.IV_DEF == 0 && criteria.IV_SPD == 0 && set.Ability == (int)Ability.InnardsOut: // 0 Def / 0 Spd Pyukumuku with innards out
+                    when criteria is { IV_DEF: 0, IV_SPD: 0 } && set.Ability == (int)Ability.InnardsOut: // 0 Def / 0 Spd Pyukumuku with innards out
                     return criteria with
                     {
                         IV_HP = -1,

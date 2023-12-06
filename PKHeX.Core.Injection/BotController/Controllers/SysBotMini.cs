@@ -66,17 +66,23 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        private int ReadInternal(byte[] buffer)
+        private int ReadInternal(Span<byte> buffer)
         {
-            int br = Connection.Receive(buffer, 0, 1, SocketFlags.None);
-            while (buffer[br - 1] != (byte)'\n')
-                br += Connection.Receive(buffer, br, 1, SocketFlags.None);
-            return br;
+            int i = 0;
+            int br = 0;
+            while (true)
+            {
+                var slice = buffer.Slice(i++, 1);
+                int read = Connection.Receive(slice, SocketFlags.None);
+                if (read == 0 || slice[0] == '\n')
+                    return br;
+                br += read;
+            }
         }
 
-        private int SendInternal(byte[] buffer) => Connection.Send(buffer);
+        private int SendInternal(ReadOnlySpan<byte> buffer) => Connection.Send(buffer);
 
-        public int Read(byte[] buffer)
+        public int Read(Span<byte> buffer)
         {
             lock (_sync)
                 return ReadInternal(buffer);
@@ -120,7 +126,7 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        public void WriteBytes(byte[] data, ulong offset, RWMethod method)
+        public void WriteBytes(ReadOnlySpan<byte> data, ulong offset, RWMethod method)
         {
             lock (_sync)
             {
@@ -153,7 +159,7 @@ namespace PKHeX.Core.Injection
             return ArrayUtil.ConcatAll(concatlist.ToArray());
         }
 
-        public void WriteLargeBytes(byte[] data, ulong offset, RWMethod method)
+        public void WriteLargeBytes(ReadOnlySpan<byte> data, ulong offset, RWMethod method)
         {
             const int maxlength = 344 * 30;
             if (data.Length <= maxlength)
@@ -161,10 +167,11 @@ namespace PKHeX.Core.Injection
                 WriteBytes(data, offset, method);
                 return;
             }
-            int i = 0;
-            var split = data.GroupBy(_ => i++ / maxlength).Select(g => g.ToArray()).ToArray();
-            foreach (var ba in split)
+
+            int chunk = 0;
+            while (data.Length != 0)
             {
+                var ba = data.Slice(chunk++ * maxlength, maxlength);
                 WriteBytes(ba, offset, method);
                 offset += maxlength;
             }
@@ -222,19 +229,19 @@ namespace PKHeX.Core.Injection
         public byte[] ReadBytes(ulong offset, int length) =>
             ReadLargeBytes(offset, length, RWMethod.Heap);
 
-        public void WriteBytes(byte[] data, ulong offset) =>
+        public void WriteBytes(ReadOnlySpan<byte> data, ulong offset) =>
             WriteLargeBytes(data, offset, RWMethod.Heap);
 
         public byte[] ReadBytesMain(ulong offset, int length) =>
             ReadLargeBytes(offset, length, RWMethod.Main);
 
-        public void WriteBytesMain(byte[] data, ulong offset) =>
+        public void WriteBytesMain(ReadOnlySpan<byte> data, ulong offset) =>
             WriteLargeBytes(data, offset, RWMethod.Main);
 
         public byte[] ReadBytesAbsolute(ulong offset, int length) =>
             ReadLargeBytes(offset, length, RWMethod.Absolute);
 
-        public void WriteBytesAbsolute(byte[] data, ulong offset) =>
+        public void WriteBytesAbsolute(ReadOnlySpan<byte> data, ulong offset) =>
             WriteLargeBytes(data, offset, RWMethod.Absolute);
 
         public byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets) =>

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
 namespace PKHeX.Core.Injection
 {
@@ -87,7 +88,7 @@ namespace PKHeX.Core.Injection
 
         private static bool CompareLastLog(string str) => clientNTR.Lastlog.Contains(str);
 
-        public void WriteBytes(byte[] data, ulong offset)
+        public void WriteBytes(ReadOnlySpan<byte> data, ulong offset)
         {
             lock (_sync)
             {

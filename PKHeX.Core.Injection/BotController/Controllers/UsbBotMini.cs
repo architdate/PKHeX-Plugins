@@ -133,19 +133,19 @@ namespace PKHeX.Core.Injection
         public byte[] ReadBytes(ulong offset, int length) =>
             ReadBytesUSB(offset, length, RWMethod.Heap);
 
-        public void WriteBytes(byte[] data, ulong offset) =>
+        public void WriteBytes(ReadOnlySpan<byte> data, ulong offset) =>
             WriteBytesUSB(data, offset, RWMethod.Heap);
 
         public byte[] ReadBytesMain(ulong offset, int length) =>
             ReadBytesUSB(offset, length, RWMethod.Main);
 
-        public void WriteBytesMain(byte[] data, ulong offset) =>
+        public void WriteBytesMain(ReadOnlySpan<byte> data, ulong offset) =>
             WriteBytesUSB(data, offset, RWMethod.Main);
 
         public byte[] ReadBytesAbsolute(ulong offset, int length) =>
             ReadBytesUSB(offset, length, RWMethod.Absolute);
 
-        public void WriteBytesAbsolute(byte[] data, ulong offset) =>
+        public void WriteBytesAbsolute(ReadOnlySpan<byte> data, ulong offset) =>
             WriteBytesUSB(data, offset, RWMethod.Absolute);
 
         public byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets) =>
@@ -296,7 +296,7 @@ namespace PKHeX.Core.Injection
             return buffer;
         }
 
-        public void WriteBytesUSB(byte[] data, ulong offset, RWMethod method)
+        public void WriteBytesUSB(ReadOnlySpan<byte> data, ulong offset, RWMethod method)
         {
             if (data.Length > MaximumTransferSize)
                 WriteBytesLarge(data, offset, method);
@@ -304,7 +304,7 @@ namespace PKHeX.Core.Injection
                 WriteSmall(data, offset, method);
         }
 
-        public void WriteSmall(byte[] data, ulong offset, RWMethod method)
+        public void WriteSmall(ReadOnlySpan<byte> data, ulong offset, RWMethod method)
         {
             lock (_sync)
             {
@@ -321,7 +321,7 @@ namespace PKHeX.Core.Injection
             }
         }
 
-        private void WriteBytesLarge(byte[] data, ulong offset, RWMethod method)
+        private void WriteBytesLarge(ReadOnlySpan<byte> data, ulong offset, RWMethod method)
         {
             int byteCount = data.Length;
             for (int i = 0; i < byteCount; i += MaximumTransferSize)
@@ -332,15 +332,13 @@ namespace PKHeX.Core.Injection
         }
 
         // Taken from SysBot.
-        private static byte[] SliceSafe(byte[] src, int offset, int length)
+        private static ReadOnlySpan<byte> SliceSafe(ReadOnlySpan<byte> src, int offset, int length)
         {
             var delta = src.Length - offset;
             if (delta < length)
                 length = delta;
 
-            byte[] data = new byte[length];
-            Buffer.BlockCopy(src, offset, data, 0, data.Length);
-            return data;
+            return src.Slice(offset, length);
         }
     }
 }
