@@ -545,7 +545,7 @@ namespace PKHeX.Core.AutoMod
             if (pk is not IGigantamax gmax || gmax.CanGigantamax == set.CanGigantamax)
                 return;
 
-            if (gmax.CanToggleGigantamax(pk.Species, pk.Form, enc.Species, enc.Form))
+            if (Gigantamax.CanToggle(pk.Species, pk.Form, enc.Species, enc.Form))
             {
                 gmax.CanGigantamax = set.CanGigantamax; // soup hax
                 tb.Handle(TracebackType.Misc, "Add gigantamax factor through GMax soup");
