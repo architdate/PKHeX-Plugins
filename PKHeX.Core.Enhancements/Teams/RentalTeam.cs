@@ -20,18 +20,18 @@ namespace PKHeX.Core.Enhancements
             Debug.WriteLine(data.Length);
             Team = new[]
             {
-                new QRPK7(data.Slice(0x00, 0x30)),
-                new QRPK7(data.Slice(0x30, 0x30)),
-                new QRPK7(data.Slice(0x60, 0x30)),
-                new QRPK7(data.Slice(0x90, 0x30)),
-                new QRPK7(data.Slice(0xC0, 0x30)),
-                new QRPK7(data.Slice(0xF0, 0x30)),
+                new QRPK7(data[..0x30]),
+                new QRPK7(data[0x30..0x60]),
+                new QRPK7(data[0x60..0x90]),
+                new QRPK7(data[0x90..0xC0]),
+                new QRPK7(data[0xC0..0xF0]),
+                new QRPK7(data[0xF0..0x120]),
             };
 
             Debug.WriteLine(string.Join(Environment.NewLine, ConvertedTeam.Select(z => z.Text)));
 
-            GlobalLinkID = data.Slice(0x120, 8);
-            UnknownData = data.AsSpan(0x128).ToArray();
+            GlobalLinkID = data[0x120..0x128];
+            UnknownData = data[0x128..];
         }
 
         public IEnumerable<ShowdownSet> ConvertedTeam =>

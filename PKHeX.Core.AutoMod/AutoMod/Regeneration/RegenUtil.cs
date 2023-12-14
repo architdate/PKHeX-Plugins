@@ -78,7 +78,7 @@ namespace PKHeX.Core.AutoMod
             return CleanFilters(valid);
         }
 
-        private static IReadOnlyList<StringInstruction> CleanFilters(List<String> lines)
+        private static IReadOnlyList<StringInstruction> CleanFilters(List<string> lines)
         {
             if (lines.Count == 0)
                 return Array.Empty<StringInstruction>();
@@ -130,9 +130,7 @@ namespace PKHeX.Core.AutoMod
         {
             var result = new List<string>();
             foreach (var s in set.Filters)
-                result.Add(
-                    $"{StringInstruction.Prefixes[(int)s.Comparer]}{s.PropertyName}={s.PropertyValue}"
-                );
+                result.Add($"{StringInstruction.Prefixes[(int)s.Comparer]}{s.PropertyName}={s.PropertyValue}");
             foreach (var s in set.Instructions)
                 result.Add($".{s.PropertyName}={s.PropertyValue}");
             return string.Join(Environment.NewLine, result);
@@ -145,9 +143,7 @@ namespace PKHeX.Core.AutoMod
         {
             var result = new List<string>();
             foreach (var s in filters)
-                result.Add(
-                    $"{prefix}{StringInstruction.Prefixes[(int)s.Comparer]}{s.PropertyName}={s.PropertyValue}"
-                );
+                result.Add($"{prefix}{StringInstruction.Prefixes[(int)s.Comparer]}{s.PropertyName}={s.PropertyValue}");
             return string.Join(Environment.NewLine, result);
         }
 

@@ -10,10 +10,7 @@ namespace PKHeX.Core.AutoMod
             if (gen is 9)
             {
                 // Scatterbug and Spewpa must be Fancy
-                if (
-                    set.Species == (ushort)Species.Scatterbug
-                    || set.Species == (ushort)Species.Spewpa
-                )
+                if (set.Species is (ushort)Species.Scatterbug or (ushort)Species.Spewpa)
                     set.Form = 18;
                 return;
             }
@@ -54,10 +51,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="set"></param>
         public static void SanitizeTeraTypes(this RegenTemplate set)
         {
-            if (
-                set.Species == (int)Species.Ogerpon
-                && !TeraTypeUtil.IsValidOgerpon((byte)set.TeraType, set.Form)
-            )
+            if (set.Species == (int)Species.Ogerpon && !TeraTypeUtil.IsValidOgerpon((byte)set.TeraType, set.Form))
                 set.TeraType = ShowdownEdits.GetValidOpergonTeraType(set.Form);
         }
 

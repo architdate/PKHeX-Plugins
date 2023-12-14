@@ -19,13 +19,13 @@ namespace AutoModPlugins
         public static IPKMView PKMEditor { private get; set; } = null!;
 
         private static readonly EncounterTypeGroup[] EncounterPriority =
-        {
+        [
             EncounterTypeGroup.Egg,
             EncounterTypeGroup.Static,
             EncounterTypeGroup.Trade,
             EncounterTypeGroup.Slot,
             EncounterTypeGroup.Mystery,
-        };
+        ];
 
         /// <summary>
         /// Imports <see cref="ShowdownSet"/> list(s) originating from a concatenated list.
@@ -108,7 +108,7 @@ namespace AutoModPlugins
             {
                 var errorstr =
                     "The PKHeX-Plugins version does not match the PKHeX version.\n\n"
-                    + $"Refer to the Wiki to fix this error.\n\n"
+                    + "Refer to the Wiki to fix this error.\n\n"
                     + $"The current ALM Version is {ALMVersion.Versions.AlmVersionCurrent}\n"
                     + $"The current PKHeX Version is {ALMVersion.Versions.CoreVersionCurrent}";
 
@@ -284,7 +284,7 @@ namespace AutoModPlugins
             APILegality.TracebackHandlerType = settings.TracebackHandlerType;
             Legalizer.EnableEasterEggs = settings.EnableEasterEggs;
             SmogonGenner.PromptForImport = settings.PromptForSmogonImport;
-            ModLogic.cfg = new LivingDexConfig
+            ModLogic.Config = new LivingDexConfig
             {
                 IncludeForms = settings.IncludeForms,
                 SetShiny = settings.SetShiny,
@@ -297,18 +297,25 @@ namespace AutoModPlugins
 
             if (APILegality.EnableDevMode && settings.LatestAllowedVersion == "0.0.0.0")
             {
-                settings.LatestAllowedVersion =
-                    ALMVersion.Versions.CoreVersionLatest?.ToString() ?? "0.0.0.0";
+                settings.LatestAllowedVersion = ALMVersion.Versions.CoreVersionLatest?.ToString() ?? "0.0.0.0";
                 APILegality.LatestAllowedVersion = settings.LatestAllowedVersion;
             }
             else
                 APILegality.LatestAllowedVersion = settings.LatestAllowedVersion;
 
-            settings.PrioritizeEncounters ??= EncounterPriority.ToList();
-            foreach (var ep in EncounterPriority)
-                if (!settings.PrioritizeEncounters.Contains(ep))
-                    settings.PrioritizeEncounters.Add(ep);
-            settings.PrioritizeEncounters = settings.PrioritizeEncounters.Distinct().ToList();
+            if (settings.PrioritizeEncounters is null or [])
+            {
+                settings.PrioritizeEncounters = [.. EncounterPriority];
+            }
+            else
+            {
+                foreach (var ep in EncounterPriority)
+                {
+                    if (!settings.PrioritizeEncounters.Contains(ep))
+                        settings.PrioritizeEncounters.Add(ep);
+                }
+                settings.PrioritizeEncounters = settings.PrioritizeEncounters.Distinct().ToList();
+            }
             EncounterMovesetGenerator.PriorityList = settings.PrioritizeEncounters;
         }
     }

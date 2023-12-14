@@ -63,8 +63,8 @@ namespace PKHeX.Core.AutoMod
             var emptySlots = overwrite
                 ? Enumerable.Range(start, sets.Count).Where(set => set < arr.Count).ToList()
                 : FindAllEmptySlots(arr, start);
-            invalidAPISets = new List<RegenTemplate>();
-            timedoutSets = new List<RegenTemplate>();
+            invalidAPISets = [];
+            timedoutSets = [];
 
             if (emptySlots.Count < sets.Count)
                 return AutoModErrorCode.NotEnoughSpace;

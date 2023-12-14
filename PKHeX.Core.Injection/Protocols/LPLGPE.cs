@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PKHeX.Core.Injection
 {
-    public class LPLGPE : InjectionBase
+    public class LPLGPE(LiveHeXVersion lv, bool useCache) : InjectionBase(lv, useCache)
     {
-        private static readonly LiveHeXVersion[] SupportedVersions = { LiveHeXVersion.LGPE_v102 };
+        private static readonly LiveHeXVersion[] SupportedVersions = [LiveHeXVersion.LGPE_v102];
 
         public static LiveHeXVersion[] GetVersions() => SupportedVersions;
-
-        public LPLGPE(LiveHeXVersion lv, bool useCache)
-            : base(lv, useCache) { }
 
         public override byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
         {
@@ -21,32 +19,29 @@ namespace PKHeX.Core.Injection
             for (int i = 0; i < psb.SlotCount; i++)
             {
                 var StoredLength = psb.SlotSize - 0x1C;
-                var stored = bytes.Slice(currofs, StoredLength);
-                var party = bytes.Slice(currofs + StoredLength + 0x70, 0x1C);
-                allpkm.Add(ArrayUtil.ConcatAll(stored, party));
+                var stored = bytes.AsSpan(currofs, psb.SlotSize).ToArray();
+                var party = bytes.AsSpan(StoredLength + 0x70, 0x1C).ToArray();
+                allpkm.Add([.. stored, .. party]);
                 currofs += psb.SlotSize + psb.GapSize;
             }
-            return ArrayUtil.ConcatAll(allpkm.ToArray());
+            return [..allpkm.SelectMany(z => z)];
         }
 
         public override byte[] ReadSlot(PokeSysBotMini psb, int box, int slot)
         {
-            var bytes = psb.com.ReadBytes(psb.GetSlotOffset(box, slot), psb.SlotSize + psb.GapSize);
+            ReadOnlySpan<byte> bytes = psb.com.ReadBytes(psb.GetSlotOffset(box, slot), psb.SlotSize + psb.GapSize);
             var StoredLength = psb.SlotSize - 0x1C;
-            var stored = bytes.Slice(0, StoredLength);
+            var stored = bytes[..StoredLength];
             var party = bytes.Slice(StoredLength + 0x70, 0x1C);
-            return ArrayUtil.ConcatAll(stored, party);
+            return [..stored, ..party];
         }
 
         public override void SendSlot(PokeSysBotMini psb, byte[] data, int box, int slot)
         {
             var slotofs = psb.GetSlotOffset(box, slot);
             var StoredLength = psb.SlotSize - 0x1C;
-            psb.com.WriteBytes(data.Slice(0, StoredLength), slotofs);
-            psb.com.WriteBytes(
-                data.AsSpan(StoredLength).ToArray(),
-                slotofs + (ulong)StoredLength + 0x70
-            );
+            psb.com.WriteBytes(data[..StoredLength], slotofs);
+            psb.com.WriteBytes(data.AsSpan(StoredLength).ToArray(), slotofs + (ulong)StoredLength + 0x70);
         }
 
         public override void SendBox(PokeSysBotMini psb, byte[] boxData, int box)

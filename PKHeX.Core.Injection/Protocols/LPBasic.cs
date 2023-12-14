@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace PKHeX.Core.Injection
 {
-    public class LPBasic : InjectionBase
+    public class LPBasic(LiveHeXVersion lv, bool useCache) : InjectionBase(lv, useCache)
     {
         private static readonly LiveHeXVersion[] SupportedVersions =
-        {
+        [
             LiveHeXVersion.SWSH_v132,
             LiveHeXVersion.SWSH_v121,
             LiveHeXVersion.SWSH_v111,
@@ -18,12 +18,12 @@ namespace PKHeX.Core.Injection
             LiveHeXVersion.US_v120,
             LiveHeXVersion.UM_v120,
             LiveHeXVersion.SM_v120
-        };
+        ];
 
         public static LiveHeXVersion[] GetVersions() => SupportedVersions;
 
         public static readonly BlockData[] Blocks_Rigel2 =
-        {
+        [
             new()
             {
                 Name = "KMyStatus",
@@ -101,26 +101,22 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0x3C9366F0,
                 Offset = 0x45069120
             },
-        };
+        ];
 
         // LiveHexVersion -> Blockname -> List of <SCBlock Keys, OffsetValues>
         public static readonly Dictionary<LiveHeXVersion, BlockData[]> SCBlocks =
             new() { { LiveHeXVersion.SWSH_v132, Blocks_Rigel2 }, };
 
-        public override Dictionary<string, string> SpecialBlocks { get; } =
-            new()
-            {
-                { "Items", "B_OpenItemPouch_Click" },
-                { "Raid", "B_OpenRaids_Click" },
-                { "RaidArmor", "B_OpenRaids_Click" },
-                { "RaidCrown", "B_OpenRaids_Click" },
-                { "Pokedex Base", "B_OpenPokedex_Click" },
-                { "Pokedex Armor", "B_OpenPokedex_Click" },
-                { "Pokedex Crown", "B_OpenPokedex_Click" },
-            };
-
-        public LPBasic(LiveHeXVersion lv, bool useCache)
-            : base(lv, useCache) { }
+        public override Dictionary<string, string> SpecialBlocks { get; } = new()
+        {
+            { "Items", "B_OpenItemPouch_Click" },
+            { "Raid", "B_OpenRaids_Click" },
+            { "RaidArmor", "B_OpenRaids_Click" },
+            { "RaidCrown", "B_OpenRaids_Click" },
+            { "Pokedex Base", "B_OpenPokedex_Click" },
+            { "Pokedex Armor", "B_OpenPokedex_Click" },
+            { "Pokedex Crown", "B_OpenPokedex_Click" },
+        };
 
         public override byte[] ReadBox(PokeSysBotMini psb, int box, int len, List<byte[]> allpkm)
         {
@@ -130,7 +126,7 @@ namespace PKHeX.Core.Injection
             var currofs = 0;
             for (int i = 0; i < psb.SlotCount; i++)
             {
-                var stored = bytes.Slice(currofs, psb.SlotSize);
+                var stored = bytes.AsSpan(currofs, psb.SlotSize).ToArray();
                 allpkm.Add(stored);
                 currofs += psb.SlotSize + psb.GapSize;
             }
@@ -190,7 +186,7 @@ namespace PKHeX.Core.Injection
                     ram.CopyTo(scb.Data, 0);
                     if (read == null)
                     {
-                        read = new List<byte[]> { ram };
+                        read = [ram];
                     }
                     else
                     {

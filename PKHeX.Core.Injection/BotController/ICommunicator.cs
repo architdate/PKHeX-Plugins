@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PKHeX.Core.Injection
 {
@@ -12,7 +13,7 @@ namespace PKHeX.Core.Injection
     {
         void Connect();
         void Disconnect();
-        void WriteBytes(byte[] data, ulong offset);
+        void WriteBytes(ReadOnlySpan<byte> data, ulong offset);
         byte[] ReadBytes(ulong offset, int length);
         bool Connected { get; set; }
         int Port { get; set; }
@@ -29,10 +30,10 @@ namespace PKHeX.Core.Injection
         string GetTitleID();
         string GetGameInfo(string info);
         bool IsProgramRunning(ulong pid);
-        void WriteBytesMain(byte[] data, ulong offset);
-        void WriteBytesAbsolute(byte[] data, ulong offset);
+        void WriteBytesMain(ReadOnlySpan<byte> data, ulong offset);
+        void WriteBytesAbsolute(ReadOnlySpan<byte> data, ulong offset);
         byte[] ReadBytesAbsoluteMulti(Dictionary<ulong, int> offsets);
     }
 
-    public interface IPokeBlocks : ICommunicator { }
+    public interface IPokeBlocks : ICommunicator;
 }

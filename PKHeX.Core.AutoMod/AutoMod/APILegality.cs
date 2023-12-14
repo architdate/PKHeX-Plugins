@@ -23,7 +23,7 @@ namespace PKHeX.Core.AutoMod
         public static bool SetAllLegalRibbons { get; set; } = true;
         public static bool UseCompetitiveMarkings { get; set; }
         public static bool UseMarkings { get; set; } = true;
-        public static bool EnableDevMode { get; set; } = false;
+        public static bool EnableDevMode { get; set; }
         public static string LatestAllowedVersion { get; set; } = "0.0.0.0";
         public static bool PrioritizeGame { get; set; } = true;
         public static GameVersion PrioritizeGameVersion { get; set; }
@@ -68,14 +68,14 @@ namespace PKHeX.Core.AutoMod
                 template.Version = dest.Game;
 
             template.ApplySetDetails(set);
-            template.SetRecordFlags(Array.Empty<ushort>(), tb); // Validate TR/MS moves for the encounter
+            template.SetRecordFlags([], tb); // Validate TR/MS moves for the encounter
 
             if (template.Species == (ushort)Species.Unown) // Force unown form on template
                 template.Form = set.Form;
 
             var abilityreq = GetRequestedAbility(template, set);
             var batchedit = AllowBatchCommands && regen.HasBatchSettings;
-            var native = ModLogic.cfg.NativeOnly && nativeOnly;
+            var native = ModLogic.Config.NativeOnly && nativeOnly;
             var destType = template.GetType();
             var destVer = (GameVersion)dest.Game;
             if (destVer <= 0 && dest is SaveFile s)
@@ -93,10 +93,8 @@ namespace PKHeX.Core.AutoMod
             );
             var criteria = EncounterCriteria.GetCriteria(set, template.PersonalInfo);
             criteria.ForceMinLevelRange = true;
-            if (regen.EncounterFilters.Count() != 0)
-                encounters = encounters.Where(
-                    enc => BatchEditing.IsFilterMatch(regen.EncounterFilters, enc)
-                );
+            if (regen.EncounterFilters.Count != 0)
+                encounters = encounters.Where(enc => BatchEditing.IsFilterMatch(regen.EncounterFilters, enc));
 
             PKM? last = null;
             foreach (var enc in encounters)
@@ -114,7 +112,7 @@ namespace PKHeX.Core.AutoMod
                     continue;
 
                 tb.Handle(Encounter, $"Selected Encounter: {enc}");
-                if (enc is IFixedNature { IsFixedNature: true } fixedNature)
+                if (enc is IFixedNature { IsFixedNature: true })
                     criteria = criteria with { Nature = Nature.Random };
                 criteria = SetSpecialCriteria(criteria, enc, set);
                 tb.Handle(Encounter, criteria.ToString());
@@ -282,6 +280,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="batchEdit">Whether settings currently allow batch commands</param>
         /// <param name="set">Set information to be used to filter the game list</param>
         /// <param nativeOnly="set">Whether to only return encounters from the current version</param>
+        /// <param name="nativeOnly"></param>
         /// <returns>List of filtered games to check encounters for</returns>
         internal static GameVersion[] FilteredGameList(
             PKM template,
@@ -291,25 +290,27 @@ namespace PKHeX.Core.AutoMod
             bool nativeOnly = false
         )
         {
-            if (
-                batchEdit
-                && set is RegenTemplate { Regen.VersionFilters: { Count: not 0 } x }
-                && TryGetSingleVersion(x, out var single)
-            )
-                return single;
+            if (batchEdit)
+            {
+                if (set is RegenTemplate { Regen.VersionFilters: { Count: not 0 } x })
+                {
+                    if (TryGetSingleVersion(x, out var single))
+                        return single;
+                }
+            }
 
             var versionlist = GameUtil.GetVersionsWithinRange(template, template.Format);
             var gamelist =
                 (!nativeOnly && AllowHOMETransferGeneration)
-                    ? versionlist.OrderByDescending(c => c.GetGeneration()).ToArray()
+                    ? [.. versionlist.OrderByDescending(c => c.GetGeneration())]
                     : GetPairedVersions(destVer, versionlist);
 
             if (PrioritizeGame && !nativeOnly)
-                gamelist =
-                    PrioritizeGameVersion == GameVersion.Any
-                        ? PrioritizeVersion(gamelist, SimpleEdits.GetIsland(destVer))
-                        : PrioritizeVersion(gamelist, PrioritizeGameVersion);
-
+            {
+                gamelist = PrioritizeGameVersion == GameVersion.Any
+                    ? PrioritizeVersion(gamelist, destVer.GetIsland())
+                    : PrioritizeVersion(gamelist, PrioritizeGameVersion);
+            }
             if (template.AbilityNumber == 4 && destVer.GetGeneration() < 8)
                 gamelist = gamelist.Where(z => z.GetGeneration() is not 3 and not 4).ToArray();
             return gamelist;
@@ -336,7 +337,7 @@ namespace PKHeX.Core.AutoMod
 
                 GameVersion[] result;
                 if (value.IsValidSavedVersion())
-                    result = new GameVersion[] { value };
+                    result = [value];
                 else
                     result = GameUtil.GameVersions.Where(z => value.Contains(z)).ToArray();
 
@@ -364,8 +365,9 @@ namespace PKHeX.Core.AutoMod
         /// Grab a trainer from trainer database with mutated language
         /// </summary>
         /// <param name="regen">Regenset</param>
-        /// <param name="ver">Gameversion for the saved trainerdata</param>
-        /// <param name="gen">Generation of the saved trainerdata</param>
+        /// <param name="enc"></param>
+        /// <param name="set"></param>
+        /// <param name="tb"></param>
         /// <returns>ITrainerInfo of the trainerdetails</returns>
         private static ITrainerInfo GetTrainer(
             RegenSet regen,
@@ -379,8 +381,8 @@ namespace PKHeX.Core.AutoMod
             var mutate = regen.Extra.Language;
 
             // Edge case override for Meister Magikarp
-            var nicknames = new string[]
-            {
+            string[] nicknames =
+            [
                 "",
                 "ポッちゃん",
                 "Foppa",
@@ -392,7 +394,7 @@ namespace PKHeX.Core.AutoMod
                 "",
                 "",
                 ""
-            };
+            ];
             var idx = Array.IndexOf(nicknames, set.Nickname);
             if (idx > 0)
                 mutate = (LanguageID)idx;
@@ -428,7 +430,7 @@ namespace PKHeX.Core.AutoMod
                     retval.Add(poss);
                 }
             }
-            return retval.ToArray();
+            return [.. retval];
         }
 
         /// <summary>
@@ -463,11 +465,7 @@ namespace PKHeX.Core.AutoMod
                 return false;
 
             // Don't process if the gender does not match the set
-            if (
-                set.Gender != -1
-                && enc is IFixedGender { IsFixedGender: true } fg
-                && fg.Gender != set.Gender
-            )
+            if (set.Gender != -1 && enc is IFixedGender { IsFixedGender: true } fg && fg.Gender != set.Gender)
                 return false;
 
             // Don't process if PKM is definitely Hidden Ability and the PKM is from Gen 3 or Gen 4 and Hidden Capsule doesn't exist
@@ -579,23 +577,11 @@ namespace PKHeX.Core.AutoMod
             // If PID and IV is handled in PreSetPIDIV, don't set it here again and return out
             if (enc is ITeraRaid9)
                 return true;
-            if (
-                enc
-                is EncounterStatic8N
-                    or EncounterStatic8NC
-                    or EncounterStatic8ND
-                    or EncounterStatic8U
-            )
+            if (enc is EncounterStatic8N or EncounterStatic8NC or EncounterStatic8ND or EncounterStatic8U)
                 return true;
-            if (
-                enc is IOverworldCorrelation8 o
-                && o.GetRequirement(pk) == OverworldCorrelation8Requirement.MustHave
-            )
+            if (enc is IOverworldCorrelation8 o && o.GetRequirement(pk) == OverworldCorrelation8Requirement.MustHave)
                 return true;
-            if (
-                enc is IStaticCorrelation8b s
-                && s.GetRequirement(pk) == StaticCorrelation8bRequirement.MustHave
-            )
+            if (enc is IStaticCorrelation8b s && s.GetRequirement(pk) == StaticCorrelation8bRequirement.MustHave)
                 return true;
             if (enc is EncounterEgg && GameVersion.BDSP.Contains(enc.Version))
                 return true;
@@ -708,7 +694,7 @@ namespace PKHeX.Core.AutoMod
                 if (SpeciesCategory.IsFixedGenderFromDual(pk.Species) && pk.Gender != 2) // shedinja
                 {
                     pk.Gender = EntityGender.GetFromPID(
-                        new LegalInfo(pk, new List<CheckResult>()).EncounterMatch.Species,
+                        new LegalInfo(pk, []).EncounterMatch.Species,
                         pk.EncryptionConstant
                     );
                     // genderValid = true; already true if we reach here
@@ -871,6 +857,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pkm distributed as an egg</param>
         /// <param name="enc">encounter detail</param>
         /// <param name="tr">save file</param>
+        /// <param name="tb"></param>
         private static void HandleEggEncounters(
             this PKM pk,
             IEncounterable enc,
@@ -881,8 +868,7 @@ namespace PKHeX.Core.AutoMod
             if (!pk.IsEgg)
                 return; // should be checked before, but condition added for future usecases
             // Handle egg encounters. Set them as traded and force hatch them before proceeding
-            if (tb is not null)
-                tb.Handle(Encounter, "Force hatched egg encounter");
+            tb.Handle(Encounter, "Force hatched egg encounter");
             pk.ForceHatchPKM();
             if (enc is MysteryGift { IsEgg: true })
             {
@@ -977,7 +963,7 @@ namespace PKHeX.Core.AutoMod
                 case EncounterTrade4PID:
                 case EncounterTrade4RanchGift:
                     tb.Handle(PID_IV, "Encounter Trade IVs, early return");
-                    ShowdownEdits.SetEncounterTradeIVs(pk);
+                    pk.SetEncounterTradeIVs();
                     return; // Fixed PID, no need to mutate
                 default:
                     tb.Handle(PID_IV, $"Finding PID_IV with Method: {method}");
@@ -988,7 +974,7 @@ namespace PKHeX.Core.AutoMod
 
             if (!pk.IVs.SequenceEqual(set.IVs))
             {
-                tb.Handle(PID_IV, $"Fallback IVs being used instead of Specified IVs");
+                tb.Handle(PID_IV, "Fallback IVs being used instead of Specified IVs");
             }
 
             // Handle mismatching abilities due to a PID re-roll
@@ -996,12 +982,7 @@ namespace PKHeX.Core.AutoMod
             if (pk.Ability != set.Ability)
                 pk.RefreshAbility(pk is PK5 { HiddenAbility: true } ? 2 : pk.AbilityNumber >> 1);
             var ability_idx = GetRequiredAbilityIdx(pk, set);
-            if (
-                set.Ability == -1
-                || set.Ability == pk.Ability
-                || pk.AbilityNumber >> 1 == ability_idx
-                || ability_idx == -1
-            )
+            if (set.Ability == -1 || set.Ability == pk.Ability || pk.AbilityNumber >> 1 == ability_idx || ability_idx == -1)
                 return;
 
             var abilitypref = enc.Ability;
@@ -1127,7 +1108,7 @@ namespace PKHeX.Core.AutoMod
                     shiny = set.Shiny ? Shiny.Always : Shiny.Never;
                 FindEggPIDIV8b(pk, shiny, set.Gender);
             }
-            if (tb is not null && ivsetfor != string.Empty)
+            if (ivsetfor != string.Empty)
                 tb.Handle(PID_IV, $"PreSet PID and IVs for encounter type: {ivsetfor}");
         }
 
@@ -1376,14 +1357,14 @@ namespace PKHeX.Core.AutoMod
                     ivs[stat] = required_ivs[stat];
                     inherited++;
                 }
-                Span<uint> ivs2 = stackalloc[] {
+                Span<uint> ivs2 = [
                     rng.NextUInt(32),
                     rng.NextUInt(32),
                     rng.NextUInt(32),
                     rng.NextUInt(32),
                     rng.NextUInt(32),
                     rng.NextUInt(32),
-                };
+                ];
                 for (int i = 0; i < 6; i++)
                 {
                     if (ivs[i] == -1)
@@ -1404,12 +1385,7 @@ namespace PKHeX.Core.AutoMod
                 if (shiny is Shiny.Never or Shiny.Random)
                     pk.SetUnshiny();
                 else
-                    pk.PID = SimpleEdits.GetShinyPID(
-                        pk.TID16,
-                        pk.SID16,
-                        pk.PID,
-                        shiny == Shiny.AlwaysSquare ? 0 : 1
-                    );
+                    pk.PID = SimpleEdits.GetShinyPID(pk.TID16, pk.SID16, pk.PID, shiny == Shiny.AlwaysSquare ? 0 : 1);
                 break;
             }
         }
@@ -1422,25 +1398,15 @@ namespace PKHeX.Core.AutoMod
         )
         {
             // compromise on nature since they can be minted
-            if (
-                criteria.Nature != Nature.Random
-                && criteria.Nature != (Nature)pk.Nature
-                && !compromise
-            ) // match nature
+            if (criteria.Nature != Nature.Random && criteria.Nature != (Nature)pk.Nature && !compromise) // match nature
                 return false;
             if ((uint)template.Gender < 2 && template.Gender != pk.Gender) // match gender
                 return false;
-            if (
-                template.Form != pk.Form
-                && !FormInfo.IsFormChangeable(
-                    pk.Species,
-                    pk.Form,
-                    template.Form,
-                    EntityContext.Gen9,
-                    pk.Context
-                )
-            ) // match form -- Toxtricity etc
-                return false;
+            if (template.Form != pk.Form)
+            {
+                if (!FormInfo.IsFormChangeable(pk.Species, pk.Form, template.Form, EntityContext.Gen9, pk.Context))
+                    return false;
+            }
             if (template.Shiny != pk.IsShiny)
                 return false;
             return true;
@@ -1506,11 +1472,7 @@ namespace PKHeX.Core.AutoMod
                 if (PokeWalkerSeedFail(seed, Method, pk, iterPKM))
                     continue;
                 PIDGenerator.SetValuesFromSeed(pk, Method, seed);
-                if (
-                    pk.AbilityNumber != iterPKM.AbilityNumber
-                    && !compromise
-                    && pk.Nature != iterPKM.Nature
-                )
+                if (pk.AbilityNumber != iterPKM.AbilityNumber && !compromise && pk.Nature != iterPKM.Nature)
                     continue;
                 if (pk.PIDAbility != iterPKM.PIDAbility && !compromise)
                     continue;
@@ -1526,21 +1488,10 @@ namespace PKHeX.Core.AutoMod
                     var ec = pk.PID;
                     bool xorPID =
                         ((pk.TID16 ^ pk.SID16 ^ (int)(ec & 0xFFFF) ^ (int)(ec >> 16)) & ~0x7) == 8;
-                    if (
-                        enc is EncounterStatic3XD
-                        && enc.Species == (int)Species.Eevee
-                        && (shiny != pk.IsShiny || xorPID)
-                    ) // Starter Correlation
+                    if (enc is EncounterStatic3XD && enc.Species == (int)Species.Eevee && (shiny != pk.IsShiny || xorPID)) // Starter Correlation
                         continue;
                     var la = new LegalityAnalysis(pk);
-                    if (
-                        (
-                            la.Info.PIDIV.Type != PIDType.CXD
-                            && la.Info.PIDIV.Type != PIDType.CXD_ColoStarter
-                        )
-                        || !la.Info.PIDIVMatches
-                        || !pk.IsValidGenderPID(enc)
-                    )
+                    if ((la.Info.PIDIV.Type != PIDType.CXD && la.Info.PIDIV.Type != PIDType.CXD_ColoStarter) || !la.Info.PIDIVMatches || !pk.IsValidGenderPID(enc))
                         continue;
                 }
                 if (pk.Species == (int)Species.Unown)
@@ -1602,7 +1553,7 @@ namespace PKHeX.Core.AutoMod
                 pk.Egg_Location = Locations.LinkTrade4; // todo: really shouldn't be doing this, don't modify pkm
                 return PIDType.Method_1;
             }
-            var info = new LegalInfo(pk, new List<CheckResult>());
+            var info = new LegalInfo(pk, []);
             EncounterFinder.FindVerifiedEncounter(pk, info);
             return pk.Generation switch
             {
@@ -1655,16 +1606,7 @@ namespace PKHeX.Core.AutoMod
             var lvl = pk.CurrentLevel;
             if (pk.Met_Level > lvl)
                 pk.Met_Level = lvl;
-            if (
-                pk.Met_Location
-                is not (
-                    Locations.Transfer1
-                    or Locations.Transfer2
-                    or Locations.Transfer3
-                    or Locations.Transfer4
-                    or Locations.GO8
-                )
-            )
+            if (pk.Met_Location is not (Locations.Transfer1 or Locations.Transfer2 or Locations.Transfer3 or Locations.Transfer4 or Locations.GO8))
                 return;
             var level = pk.Met_Level;
             if (lvl <= level)
@@ -1783,7 +1725,7 @@ namespace PKHeX.Core.AutoMod
             switch (enc.Species)
             {
                 case (int)Species.Kartana
-                    when criteria.Nature == Nature.Timid && criteria.IV_ATK <= 21: // Speed boosting Timid Kartana ATK IVs <= 19
+                    when criteria is { Nature: Nature.Timid, IV_ATK: <= 21 }: // Speed boosting Timid Kartana ATK IVs <= 19
                     return criteria with
                     {
                         IV_HP = -1,
@@ -1791,11 +1733,11 @@ namespace PKHeX.Core.AutoMod
                         IV_DEF = -1,
                         IV_SPA = -1,
                         IV_SPD = -1,
-                        IV_SPE = -1
+                        IV_SPE = -1,
                     };
 
                 case (int)Species.Stakataka
-                    when criteria.Nature == Nature.Lonely && criteria.IV_DEF <= 17: // Atk boosting Lonely Stakataka DEF IVs <= 15
+                    when criteria is { Nature: Nature.Lonely, IV_DEF: <= 17 }: // Atk boosting Lonely Stakataka DEF IVs <= 15
                     return criteria with
                     {
                         IV_HP = -1,
@@ -1807,9 +1749,7 @@ namespace PKHeX.Core.AutoMod
                     };
 
                 case (int)Species.Pyukumuku
-                    when criteria.IV_DEF == 0
-                        && criteria.IV_SPD == 0
-                        && set.Ability == (int)Ability.InnardsOut: // 0 Def / 0 Spd Pyukumuku with innards out
+                    when criteria is { IV_DEF: 0, IV_SPD: 0 } && set.Ability == (int)Ability.InnardsOut: // 0 Def / 0 Spd Pyukumuku with innards out
                     return criteria with
                     {
                         IV_HP = -1,
@@ -1817,10 +1757,8 @@ namespace PKHeX.Core.AutoMod
                         IV_DEF = criteria.IV_DEF,
                         IV_SPA = -1,
                         IV_SPD = criteria.IV_SPD,
-                        IV_SPE = -1
+                        IV_SPE = -1,
                     };
-                default:
-                    break;
             }
             return criteria with
             {
@@ -1906,31 +1844,20 @@ namespace PKHeX.Core.AutoMod
 
             var task = Task.Run(GetLegal);
             var first = task.TimeoutAfter(new TimeSpan(0, 0, 0, Timeout))?.Result;
-            if (first == null)
-                return new AsyncLegalizationResult(template, LegalizationResult.Timeout, null);
-
-            return first;
+            return first ?? new AsyncLegalizationResult(template, LegalizationResult.Timeout, null);
         }
 
         /// <summary>
         /// Async Related actions for global timer.
         /// </summary>
-        public class AsyncLegalizationResult
+        public class AsyncLegalizationResult(
+            PKM pk,
+            LegalizationResult res,
+            ITracebackHandler? traceback)
         {
-            public readonly PKM Created;
-            public readonly LegalizationResult Status;
-            public readonly ITracebackHandler? Traceback;
-
-            public AsyncLegalizationResult(
-                PKM pk,
-                LegalizationResult res,
-                ITracebackHandler? traceback
-            )
-            {
-                Created = pk;
-                Status = res;
-                Traceback = traceback;
-            }
+            public readonly PKM Created = pk;
+            public readonly LegalizationResult Status = res;
+            public readonly ITracebackHandler? Traceback = traceback;
         }
 
         private static async Task<AsyncLegalizationResult?>? TimeoutAfter(
@@ -1961,7 +1888,7 @@ namespace PKHeX.Core.AutoMod
             var res = group.GetVersionsWithinRange(versionlist.ToArray());
             if (res.Length > 0)
                 return res;
-            return new[] { version };
+            return [version];
         }
     }
 }
