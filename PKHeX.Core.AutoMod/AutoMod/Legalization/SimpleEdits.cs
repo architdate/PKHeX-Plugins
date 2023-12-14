@@ -104,7 +104,6 @@ namespace PKHeX.Core.AutoMod
                 (Magearna, 0),
                 (Magearna, 1),
                 (Marshadow, 0),
-                (Eternatus, 0),
                 (Kubfu, 0),
                 (Urshifu, 0),
                 (Urshifu, 1),

@@ -72,7 +72,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (pk.Ability != set.Ability)
                 pk.RefreshAbility(pk is PK5 { HiddenAbility: true } ? 2 : pk.AbilityNumber >> 1);
-            if (pk.Ability != set.Ability && pk.Context >= EntityContext.Gen8 && set.Ability != -1)
+            if (pk.Ability != set.Ability && pk.Context >= EntityContext.Gen6 && set.Ability != -1)
                 pk.RefreshAbility(pk is PK5 { HiddenAbility: true } ? 2 : pk.PersonalInfo.GetIndexOfAbility(set.Ability));
 
             if (preference <= 0)

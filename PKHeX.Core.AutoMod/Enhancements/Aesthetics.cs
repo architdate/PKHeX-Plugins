@@ -1029,6 +1029,14 @@ namespace PKHeX.Core.AutoMod
                 { Munkidori, Black },
                 { Fezandipiti, Black },
                 { Ogerpon, Green },
+                // { Archaludon, Gray },
+                // { Hydrapple, Yellow },
+                // { GougingFire, Brown },
+                // { RagingBolt, Yellow },
+                // { IronBoulder, Gray },
+                // { IronCrown, Gray },
+                // { Terapagos, Blue },
+                // { Pecharunt, Pink },
             };
 
         public static Ball GetBallFromString(string ballstr)
