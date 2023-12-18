@@ -819,6 +819,7 @@ public partial class LiveHeXUI : Form, ISlotViewer<PictureBox>
             {
                 "Raid" => cc.Controls.Find("B_Raids", true)[0],
                 "RaidKitakami" => cc.Controls.Find("B_RaidKitakami", true)[0],
+                "RaidBlueberry" => cc.Controls.Find("B_RaidBlueberry", true)[0],
                 "RaidArmor" => cc.Controls.Find("B_RaidArmor", true)[0],
                 _ => sender,
             };

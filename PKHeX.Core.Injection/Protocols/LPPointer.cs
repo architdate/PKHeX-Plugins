@@ -531,6 +531,7 @@ namespace PKHeX.Core.Injection
                 { "Pokedex", "B_OpenPokedex_Click" },
                 { "Raid", "B_OpenRaids_Click" },
                 { "RaidKitakami", "B_OpenRaids_Click" },
+                { "RaidBlueberry", "B_OpenRaids_Click" },
                 //{ "Trainer Data", "B_OpenTrainerInfo_Click" },
             };
 
