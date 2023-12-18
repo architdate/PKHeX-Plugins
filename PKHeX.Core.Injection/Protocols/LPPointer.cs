@@ -63,7 +63,7 @@ namespace PKHeX.Core.Injection
             {
                 Name = "KTeraRaidBlueberry",
                 Display = "RaidBlueberry",
-                SCBKey = 0x100B93DA, // to change
+                SCBKey = 0x0C62D416,
                 Pointer = "[[[main+4741FA0]+198]+88]+1958"
             }
         ];
