@@ -23,9 +23,7 @@ namespace AutoModPlugins
 
         // Trainer
         [Category(Trainer)]
-        [Description(
-            "Allows overriding trainer data with \"OT\", \"TID\", \"SID\", and \"OTGender\" as part of a Showdown set."
-        )]
+        [Description("Allows overriding trainer data with \"OT\", \"TID\", \"SID\", and \"OTGender\" as part of a Showdown set.")]
         public bool AllowTrainerOverride { get; set; } = true;
 
         [Category(Trainer)]
@@ -67,15 +65,11 @@ namespace AutoModPlugins
         public bool ForceSpecifiedBall { get; set; } = true;
 
         [Category(Customization)]
-        [Description(
-            "If enabled, tries to generate a Pokémon based on PrioritizeGameVersion first."
-        )]
+        [Description("If enabled, tries to generate a Pokémon based on PrioritizeGameVersion first.")]
         public bool PrioritizeGame { get; set; }
 
         [Category(Customization)]
-        [Description(
-            "Setting this to \"Any\" prioritizes the current save game, and setting a specific game prioritizes that instead."
-        )]
+        [Description("Setting this to \"Any\" prioritizes the current save game, and setting a specific game prioritizes that instead.")]
         public GameVersion PriorityGameVersion { get; set; } = GameVersion.Any;
 
         [Category(Customization)]
@@ -141,9 +135,7 @@ namespace AutoModPlugins
         public string GPSSBaseURL { get; set; } = "flagbrew.org";
 
         [Category(Miscellaneous)]
-        [Description(
-            "Used for \"Generate Smogon Sets\". If set to true, ALM will ask for approval for each set before attempting to generate it."
-        )]
+        [Description("Used for \"Generate Smogon Sets\". If set to true, ALM will ask for approval for each set before attempting to generate it.")]
         public bool PromptForSmogonImport { get; set; }
 
         [Category(Miscellaneous)]
@@ -151,9 +143,7 @@ namespace AutoModPlugins
         public bool UseMarkings { get; set; } = true;
 
         [Category(Miscellaneous)]
-        [Description(
-            "Sets IVs of 31 to blue and 30 to red if enabled. Otherwise, sets IVs of 31 to blue and 0 to red."
-        )]
+        [Description("Sets IVs of 31 to blue and 30 to red if enabled. Otherwise, sets IVs of 31 to blue and 0 to red.")]
         public bool UseCompetitiveMarkings { get; set; } = true;
 
         [Category(Miscellaneous)]
@@ -162,9 +152,7 @@ namespace AutoModPlugins
 
         // Development
         [Category(Development)]
-        [Description(
-            "If enabled, ignores version mismatch warnings until the next PKHeX.Core release. Also bypasses Switch connection checks."
-        )]
+        [Description("If enabled, ignores version mismatch warnings until the next PKHeX.Core release. Also bypasses Switch connection checks.")]
         public bool EnableDevMode { get; set; }
 
         [Browsable(false)]
