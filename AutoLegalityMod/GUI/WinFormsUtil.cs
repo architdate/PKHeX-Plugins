@@ -51,13 +51,13 @@ namespace AutoModPlugins
                 + $"Current PKHeX version: {versions.CoreVersionCurrent}\n\n"
                 + "Click the \"Wiki\" button to learn how to fix this error.";
 
-            return new ALMError(msg, new[] { "Wiki", "Cancel" });
+            return new ALMError(msg, ["Wiki", "Cancel"]);
         }
 
         public static ALMError ALMErrorBasic(string msg, bool updateButton = false)
         {
             SystemSounds.Hand.Play();
-            return new ALMError(msg, new[] { updateButton ? "Update" : "Wiki", "Cancel" });
+            return new ALMError(msg, [updateButton ? "Update" : "Wiki", "Cancel"]);
         }
 
         /// <summary>
@@ -65,24 +65,21 @@ namespace AutoModPlugins
         /// </summary>
         /// <param name="Extensions">Misc extensions of files supported.</param>
         /// <param name="path">Output result path</param>
-        /// <returns>Result of whether or not a file is to be loaded from the output path.</returns>
+        /// <returns>Result of whether a file is to be loaded from the output path.</returns>
         public static bool OpenSAVPKMDialog(IEnumerable<string> Extensions, out string? path)
         {
             string supported = string.Join(
                 ";",
-                Extensions.Select(s => $"*.{s}").Concat(new[] { "*.pkm" })
+                Extensions.Select(s => $"*.{s}").Concat(["*.pkm"])
             );
-            using var ofd = new OpenFileDialog
-            {
-                Filter =
-                    "All Files|*.*"
-                    + $"|Supported Files (*.*)|main;*.bin;{supported};*.bak"
-                    + "|Save Files (*.sav)|main"
-                    + "|Decrypted PKM File (*.pkm)|"
-                    + supported
-                    + "|Binary File|*.bin"
-                    + "|Backup File|*.bak",
-            };
+            using var ofd = new OpenFileDialog();
+            ofd.Filter = "All Files|*.*"
+                         + $"|Supported Files (*.*)|main;*.bin;{supported};*.bak"
+                         + "|Save Files (*.sav)|main"
+                         + "|Decrypted PKM File (*.pkm)|"
+                         + supported
+                         + "|Binary File|*.bin"
+                         + "|Backup File|*.bak";
             if (ofd.ShowDialog() != DialogResult.OK)
             {
                 path = null;

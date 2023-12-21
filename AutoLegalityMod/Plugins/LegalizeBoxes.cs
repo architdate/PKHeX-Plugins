@@ -49,14 +49,14 @@ namespace AutoModPlugins
 
                 var res = error.DialogResult;
                 if (res == DialogResult.Retry)
-                    Process.Start(
-                        new ProcessStartInfo
-                        {
-                            FileName =
-                                "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins",
-                            UseShellExecute = true
-                        }
-                    );
+                {
+                    var pi = new ProcessStartInfo
+                    {
+                        FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Installing-PKHeX-Plugins",
+                        UseShellExecute = true,
+                    };
+                    Process.Start(pi);
+                }
             }
         }
 
@@ -90,29 +90,28 @@ namespace AutoModPlugins
             var sav = SaveFileEditor.SAV;
             var result = sav.Legalize(pk);
 
-            // let's double check
+            // let's double-check
 
             la = new LegalityAnalysis(result);
             if (!la.Valid)
             {
-                var errorstr =
-                    "Unable to make the Active Pokemon legal!\n\n"
-                    + "No legal Pokémon matches the provided traits.\n\n"
-                    + "Visit the Wiki to learn how to import Showdown Sets.";
+                const string errorstr = "Unable to make the Active Pokemon legal!\n\n"
+                                        + "No legal Pokémon matches the provided traits.\n\n"
+                                        + "Visit the Wiki to learn how to import Showdown Sets.";
 
                 var error = WinFormsUtil.ALMErrorBasic(errorstr);
                 error.ShowDialog();
 
                 var res = error.DialogResult;
-                if (res == DialogResult.Retry)
-                    Process.Start(
-                        new ProcessStartInfo
-                        {
-                            FileName =
-                                "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod",
-                            UseShellExecute = true
-                        }
-                    );
+                if (res != DialogResult.Retry)
+                    return;
+
+                var pi = new ProcessStartInfo
+                {
+                    FileName = "https://github.com/architdate/PKHeX-Plugins/wiki/Getting-Started-with-Auto-Legality-Mod",
+                    UseShellExecute = true,
+                };
+                Process.Start(pi);
                 return;
             }
 

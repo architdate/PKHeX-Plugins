@@ -17,11 +17,11 @@ namespace PKHeX.Core.AutoMod
         private static readonly SimpleTrainerInfo DefaultFallback8 = new(GameVersion.SW);
         private static readonly SimpleTrainerInfo DefaultFallback7 = new(GameVersion.UM);
         private static readonly GameVersion[] FringeVersions =
-        {
+        [
             GameVersion.GG,
             GameVersion.BDSP,
             GameVersion.PLA
-        };
+        ];
 
         public static string DefaultOT { get; set; } = "ALM";
         public static ushort DefaultTID16 { get; set; } = 54321; // reverse of PKHeX defaults
@@ -67,7 +67,7 @@ namespace PKHeX.Core.AutoMod
                 if (!EntityDetection.IsSizePlausible(len))
                     return;
                 var data = File.ReadAllBytes(f);
-                var prefer = EntityFileExtension.GetContextFromExtension(f, EntityContext.None);
+                var prefer = EntityFileExtension.GetContextFromExtension(f);
                 var pk = EntityFormat.GetFromBytes(data, prefer);
                 if (pk != null)
                     Database.Register(new PokeTrainerDetails(pk.Clone()));
@@ -96,9 +96,11 @@ namespace PKHeX.Core.AutoMod
                 return trainer;
 
             if (fallback == null)
+            {
                 return special_version
                     ? DefaultFallback(ver, lang)
                     : DefaultFallback(generation, lang);
+            }
             if (lang == null)
                 return fallback;
             if (lang == (LanguageID)fallback.Language)
@@ -122,9 +124,7 @@ namespace PKHeX.Core.AutoMod
         )
         {
             var byVer = Database.GetTrainer(version, lang);
-            if (byVer is not null)
-                return byVer;
-            return GetSavedTrainerData(gen, version, fallback, lang);
+            return byVer ?? GetSavedTrainerData(gen, version, fallback, lang);
         }
 
         /// <summary>
@@ -143,12 +143,7 @@ namespace PKHeX.Core.AutoMod
             int origin = pk.Generation;
             int format = pk.Format;
             if (format != origin)
-                return GetSavedTrainerData(
-                    format,
-                    (GameVersion)template_save.Game,
-                    fallback: template_save,
-                    lang: lang
-                );
+                return GetSavedTrainerData(format, (GameVersion)template_save.Game, fallback: template_save, lang: lang);
             return GetSavedTrainerData((GameVersion)pk.Version, origin, template_save, lang);
         }
 

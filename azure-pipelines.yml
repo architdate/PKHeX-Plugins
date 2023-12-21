@@ -16,10 +16,10 @@ variables:
 
 steps:
 - task: UseDotNet@2
-  displayName: Use .NET 7.0
+  displayName: Use .NET 8.0
   inputs:
     packageType: 'sdk'
-    version: '7.0.x'
+    version: '8.0.x'
     
 - task: NuGetToolInstaller@1
   inputs:
@@ -48,7 +48,7 @@ steps:
 
 - powershell: |
     $nugetver = (Get-ChildItem "$(UserProfile)/.nuget/packages/pkhex.core" | Sort-Object -Property LastWriteTime -Descending)[0].Name
-    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Any CPU\Release\net7.0\PKHeX.Core.dll" "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\net7.0"
+    Copy-Item "$(Build.SourcesDirectory)\pkhex\PKHeX.Core\bin\Any CPU\Release\net8.0\PKHeX.Core.dll" "$(UserProfile)\.nuget\packages\pkhex.core\$nugetver\lib\net8.0"
 
 - task: VSBuild@1
   inputs:
@@ -61,7 +61,7 @@ steps:
   inputs:
     script: |
       mkdir bin
-      xcopy $(Agent.BuildDirectory)\s\AutoLegalityMod\bin\Release\net7.0-windows\AutoModPlugins.dll $(Agent.BuildDirectory)\s\bin
+      xcopy $(Agent.BuildDirectory)\s\AutoLegalityMod\bin\Release\net8.0-windows\AutoModPlugins.dll $(Agent.BuildDirectory)\s\bin
 
 - task: PublishBuildArtifacts@1
   inputs:

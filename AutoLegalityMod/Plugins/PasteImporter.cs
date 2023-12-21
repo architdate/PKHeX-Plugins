@@ -25,9 +25,9 @@ namespace AutoModPlugins
             ctrl.Click += ImportPaste;
             ctrl.Name = "Menu_PasteImporter";
             modmenu.DropDownItems.Add(ctrl);
-            ToolStripItem parent = modmenu.OwnerItem;
+            var parent = modmenu.OwnerItem;
             var form = (
-                parent.GetCurrentParent().Parent ?? throw new Exception("Parent not found")
+                parent?.GetCurrentParent()?.Parent ?? throw new Exception("Parent not found")
             ).FindForm();
             if (form is not null)
                 form.Icon = Resources.icon;
@@ -42,7 +42,7 @@ namespace AutoModPlugins
             var text = GetTextShowdownData();
             if (string.IsNullOrWhiteSpace(text))
                 return;
-            ShowdownSetLoader.Import(text!);
+            ShowdownSetLoader.Import(text);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace AutoModPlugins
                     return txt;
             }
 
-            if (!WinFormsUtil.OpenSAVPKMDialog(new[] { "txt" }, out var path))
+            if (!WinFormsUtil.OpenSAVPKMDialog(["txt"], out var path))
             {
                 WinFormsUtil.Alert("No data provided.");
                 return null;

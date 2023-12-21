@@ -12,7 +12,7 @@ namespace PKHeX.Core.AutoMod
         public RegenSetting Extra { get; }
         public ITrainerInfo? Trainer { get; }
         public StringInstructionSet Batch { get; }
-        public IEnumerable<StringInstruction> EncounterFilters { get; }
+        public IReadOnlyList<StringInstruction> EncounterFilters { get; }
         public IReadOnlyList<StringInstruction> VersionFilters { get; }
 
         public readonly bool HasExtraSettings;
@@ -23,19 +23,26 @@ namespace PKHeX.Core.AutoMod
             : this(Array.Empty<string>(), pk.Format)
         {
             Extra.Ball = (Ball)pk.Ball;
-            Extra.ShinyType =
-                pk.ShinyXor == 0
-                    ? Shiny.AlwaysSquare
-                    : pk.IsShiny
-                        ? Shiny.AlwaysStar
-                        : Shiny.Never;
+            Extra.ShinyType = GetShinyType(pk);
             if (pk is IAlphaReadOnly { IsAlpha: true })
                 Extra.Alpha = true;
         }
 
+        private static Shiny GetShinyType(PKM pk)
+        {
+            if (pk.ShinyXor == 0)
+                return Shiny.AlwaysSquare;
+            if (pk.IsShiny)
+                return Shiny.AlwaysStar;
+            return Shiny.Never;
+        }
+
         public RegenSet(ICollection<string> lines, int format, Shiny shiny = Shiny.Never)
         {
-            var modified = lines.Select(z => z.Replace(">=", "≥").Replace("<=", "≤"));
+            var modified = lines
+                .Select(z => z.Replace(">=", "≥").Replace("<=", "≤"))
+                .ToList();
+
             Extra = new RegenSetting { ShinyType = shiny };
             HasExtraSettings = Extra.SetRegenSettings(modified);
             HasTrainerSettings = RegenUtil.GetTrainerInfo(modified, format, out var tr);
@@ -54,9 +61,9 @@ namespace PKHeX.Core.AutoMod
                 sb.AppendLine(RegenUtil.GetSummary(Trainer));
             if (HasBatchSettings)
                 sb.AppendLine(RegenUtil.GetSummary(Batch));
-            if (EncounterFilters.Count() > 0)
+            if (EncounterFilters.Count > 0)
                 sb.AppendLine(RegenUtil.GetSummary(EncounterFilters));
-            if (VersionFilters.Count() > 0)
+            if (VersionFilters.Count > 0)
                 sb.AppendLine(RegenUtil.GetSummary(VersionFilters));
             return sb.ToString();
         }

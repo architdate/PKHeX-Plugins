@@ -7,18 +7,11 @@ namespace PKHeX.Core.Enhancements
     /// <summary>
     /// Full party worth of <see cref="ShowdownSet"/> data, and page metadata.
     /// </summary>
-    public class ShowdownTeamSet
+    public class ShowdownTeamSet(string name, List<ShowdownSet> sets, string format)
     {
-        public readonly List<ShowdownSet> Team;
-        public readonly string Format;
-        public readonly string TeamName;
-
-        public ShowdownTeamSet(string name, List<ShowdownSet> sets, string format)
-        {
-            TeamName = name;
-            Team = sets;
-            Format = format;
-        }
+        public readonly List<ShowdownSet> Team = sets;
+        public readonly string Format = format;
+        public readonly string TeamName = name;
 
         public string Summary => $"{Format}: {TeamName}";
 

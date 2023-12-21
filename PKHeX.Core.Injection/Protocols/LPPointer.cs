@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace PKHeX.Core.Injection
 {
-    public class LPPointer : InjectionBase
+    public class LPPointer(LiveHeXVersion lv, bool useCache) : InjectionBase(lv, useCache)
     {
         private static readonly LiveHeXVersion[] SupportedVersions =
-        {
+        [
             LiveHeXVersion.SV_v101,
             LiveHeXVersion.SV_v110,
             LiveHeXVersion.SV_v120,
@@ -17,19 +17,59 @@ namespace PKHeX.Core.Injection
             LiveHeXVersion.SV_v132,
             LiveHeXVersion.SV_v201,
             LiveHeXVersion.SV_v202,
+            LiveHeXVersion.SV_v300,
             LiveHeXVersion.LA_v100,
             LiveHeXVersion.LA_v101,
             LiveHeXVersion.LA_v102,
-            LiveHeXVersion.LA_v111
-        };
+            LiveHeXVersion.LA_v111,
+        ];
 
         public static LiveHeXVersion[] GetVersions() => SupportedVersions;
 
         private const int LA_MYSTATUS_BLOCK_SIZE = 0x80;
         private const int SV_MYSTATUS_BLOCK_SIZE = 0x68;
 
+        public static readonly BlockData[] Blocks_SV_v300 =
+        [
+            new()
+            {
+                Name = "MyStatus",
+                Display = "Trainer Data",
+                SCBKey = 0xE3E89BD1,
+                Pointer = "[[[main+4741FA0]+198]]+40"
+            },
+            new()
+            {
+                Name = "KItem",
+                Display = "Items",
+                SCBKey = 0x21C9BD44,
+                Pointer = "[[[main+4741FA0]+198]+C8]+40"
+            },
+            new()
+            {
+                Name = "KTeraRaidPaldea",
+                Display = "Raid",
+                SCBKey = 0xCAAC8800,
+                Pointer = "[[[main+4741FA0]+198]+88]+40"
+            },
+            new()
+            {
+                Name = "KTeraRaidKitakami",
+                Display = "RaidKitakami",
+                SCBKey = 0x100B93DA,
+                Pointer = "[[[main+4741FA0]+198]+88]+CD8"
+            },
+            new()
+            {
+                Name = "KTeraRaidBlueberry",
+                Display = "RaidBlueberry",
+                SCBKey = 0x0C62D416,
+                Pointer = "[[[main+4741FA0]+198]+88]+1958"
+            }
+        ];
+
         public static readonly BlockData[] Blocks_SV_v202 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -58,10 +98,10 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0x100B93DA,
                 Pointer = "[[[main+4623A30]+198]+88]+CD8"
             }
-        };
+        ];
 
         public static readonly BlockData[] Blocks_SV_v201 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -90,10 +130,10 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0x100B93DA,
                 Pointer = "[[[main+4622A30]+198]+88]+CD8"
             }
-        };
+        ];
 
         public static readonly BlockData[] Blocks_SV_v132 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -115,10 +155,10 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0xCAAC8800,
                 Pointer = "[[main+44C1C18]+180]+40"
             },
-        };
+        ];
 
         public static readonly BlockData[] Blocks_SV_v130 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -140,10 +180,10 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0xCAAC8800,
                 Pointer = "[[main+44BFBA8]+180]+40"
             },
-        };
+        ];
 
         public static readonly BlockData[] Blocks_SV_v120 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -165,10 +205,10 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0xCAAC8800,
                 Pointer = "[[main+44A98C8]+180]+40"
             },
-        };
+        ];
 
         public static readonly BlockData[] Blocks_SV_v101 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -190,10 +230,10 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0xCAAC8800,
                 Pointer = "[[main+42DA8E8]+180]+40"
             },
-        };
+        ];
 
         public static readonly BlockData[] Blocks_SV_v110 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -215,10 +255,10 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0xCAAC8800,
                 Pointer = "[[main+4384B18]+180]+40"
             },
-        };
+        ];
 
         public static readonly BlockData[] Blocks_LA_v100 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -277,10 +317,10 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0x02168706,
                 Pointer = "[[[[main+4275470]+248]+58]+18]+1C"
             },
-        };
+        ];
 
         public static readonly BlockData[] Blocks_LA_v101 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -339,10 +379,10 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0x02168706,
                 Pointer = "[[[[main+427B470]+248]+58]+18]+1C"
             },
-        };
+        ];
 
         public static readonly BlockData[] Blocks_LA_v102 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -401,10 +441,10 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0x02168706,
                 Pointer = "[[[[main+427C470]+248]+58]+18]+1C"
             },
-        };
+        ];
 
         public static readonly BlockData[] Blocks_LA_v110 =
-        {
+        [
             new()
             {
                 Name = "MyStatus",
@@ -463,12 +503,13 @@ namespace PKHeX.Core.Injection
                 SCBKey = 0x02168706,
                 Pointer = "[[[[main+42BA6B0]+248]+58]+18]+1C"
             },
-        };
+        ];
 
         // LiveHexVersion -> Blockname -> List of <SCBlock Keys, OffsetValues>
         public static readonly Dictionary<LiveHeXVersion, BlockData[]> SCBlocks =
             new()
             {
+                { LiveHeXVersion.SV_v300, Blocks_SV_v300 },
                 { LiveHeXVersion.SV_v202, Blocks_SV_v202 },
                 { LiveHeXVersion.SV_v201, Blocks_SV_v201 },
                 { LiveHeXVersion.SV_v132, Blocks_SV_v132 },
@@ -490,16 +531,15 @@ namespace PKHeX.Core.Injection
                 { "Pokedex", "B_OpenPokedex_Click" },
                 { "Raid", "B_OpenRaids_Click" },
                 { "RaidKitakami", "B_OpenRaids_Click" },
+                { "RaidBlueberry", "B_OpenRaids_Click" },
                 //{ "Trainer Data", "B_OpenTrainerInfo_Click" },
             };
-
-        public LPPointer(LiveHeXVersion lv, bool useCache)
-            : base(lv, useCache) { }
 
         private static string GetB1S1Pointer(LiveHeXVersion lv)
         {
             return lv switch
             {
+                LiveHeXVersion.SV_v300 => "[[[[main+4741FA0]+198]+30]+9D0]",
                 LiveHeXVersion.SV_v202 => "[[[[main+4623A30]+198]+30]+9D0]",
                 LiveHeXVersion.SV_v201 => "[[[[main+4622A30]+198]+30]+9D0]",
                 LiveHeXVersion.SV_v132 => "[[[main+44C1C18]+130]+9B0]",
@@ -519,6 +559,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
+                LiveHeXVersion.SV_v300 => "[[[[[main+4735BB8]+D8]]]+30]",
                 LiveHeXVersion.SV_v202 => "[[[[[main+4617648]+D8]]]+30]",
                 LiveHeXVersion.SV_v201 => "[[[[[main+4616648]+D8]]]+30]",
                 LiveHeXVersion.SV_v132 => "[[[[[main+44B71A8]+D8]]]+30]",
@@ -607,7 +648,7 @@ namespace PKHeX.Core.Injection
                     ram.CopyTo(scb.Data, 0);
                     if (read is null)
                     {
-                        read = new List<byte[]> { ram };
+                        read = [ram];
                         continue;
                     }
 

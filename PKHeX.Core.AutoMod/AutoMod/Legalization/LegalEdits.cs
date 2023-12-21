@@ -44,11 +44,7 @@ namespace PKHeX.Core.AutoMod
 
             if (ball != Ball.None)
             {
-                if (
-                    pk.LA
-                    && ReplaceBallPrefixLA
-                    && LABallMapping.TryGetValue(ball, out var modified)
-                )
+                if (pk.LA && ReplaceBallPrefixLA && LABallMapping.TryGetValue(ball, out var modified))
                     ball = modified;
                 pk.Ball = (int)ball;
                 if (!force && !pk.ValidBall())

@@ -5,11 +5,8 @@ using System.Text;
 
 namespace PKHeX.Core.Enhancements
 {
-    public sealed class PKMPreview : EntitySummary
+    public sealed class PKMPreview(PKM p, GameStrings strings) : EntitySummary(p, strings)
     {
-        public PKMPreview(PKM p, GameStrings strings)
-            : base(p, strings) { }
-
         public static void ExportCSV(IEnumerable<PKMPreview> pklist, string path)
         {
             var sortedprev = pklist.OrderBy(p => p.Species).ToList();

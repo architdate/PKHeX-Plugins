@@ -7,8 +7,8 @@
             return sf switch
             {
                 SAV9SV
-                    => new[]
-                    {
+                    =>
+                    [
                         LiveHeXVersion.SV_v101,
                         LiveHeXVersion.SV_v110,
                         LiveHeXVersion.SV_v120,
@@ -16,19 +16,20 @@
                         LiveHeXVersion.SV_v131,
                         LiveHeXVersion.SV_v132,
                         LiveHeXVersion.SV_v201,
-                        LiveHeXVersion.SV_v202
-                    },
+                        LiveHeXVersion.SV_v202,
+                        LiveHeXVersion.SV_v300,
+                    ],
                 SAV8LA
-                    => new[]
-                    {
+                    =>
+                    [
                         LiveHeXVersion.LA_v100,
                         LiveHeXVersion.LA_v101,
                         LiveHeXVersion.LA_v102,
                         LiveHeXVersion.LA_v111
-                    },
+                    ],
                 SAV8BS
-                    => new[]
-                    {
+                    =>
+                    [
                         LiveHeXVersion.BD_v100,
                         LiveHeXVersion.SP_v100,
                         LiveHeXVersion.BD_v110,
@@ -40,20 +41,20 @@
                         LiveHeXVersion.BDSP_v120,
                         LiveHeXVersion.BD_v130,
                         LiveHeXVersion.SP_v130
-                    },
+                    ],
                 SAV8SWSH
-                    => new[]
-                    {
+                    =>
+                    [
                         LiveHeXVersion.SWSH_v111,
                         LiveHeXVersion.SWSH_v121,
                         LiveHeXVersion.SWSH_v132
-                    },
-                SAV7b => new[] { LiveHeXVersion.LGPE_v102 },
-                SAV7USUM => new[] { LiveHeXVersion.UM_v120, LiveHeXVersion.US_v120 },
-                SAV7SM => new[] { LiveHeXVersion.SM_v120 },
-                SAV6AO => new[] { LiveHeXVersion.ORAS_v140 },
-                SAV6XY => new[] { LiveHeXVersion.XY_v150 },
-                _ => new[] { LiveHeXVersion.SWSH_v132 },
+                    ],
+                SAV7b => [LiveHeXVersion.LGPE_v102],
+                SAV7USUM => [LiveHeXVersion.UM_v120, LiveHeXVersion.US_v120],
+                SAV7SM => [LiveHeXVersion.SM_v120],
+                SAV6AO => [LiveHeXVersion.ORAS_v140],
+                SAV6XY => [LiveHeXVersion.XY_v150],
+                _ => [LiveHeXVersion.SWSH_v132],
             };
         }
 

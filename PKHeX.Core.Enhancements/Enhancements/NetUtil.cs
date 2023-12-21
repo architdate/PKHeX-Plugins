@@ -67,10 +67,9 @@ namespace PKHeX.Core.Enhancements
         /// GPSS upload function. POST request using multipart form-data
         /// </summary>
         /// <param name="data">pkm data in bytes.</param>
+        /// <param name="generation">The generation for the game the Pokémon is being uploaded from.</param>
         /// <param name="Url">location to fetch from</param>
-        /// <param name="generation">The generation for the game the pokemon is being uploaded from.</param>
-        /// <returns></returns>
-        public async static Task<HttpResponseMessage> GPSSPost(
+        public static async Task<HttpResponseMessage> GPSSPost(
             byte[] data,
             int generation,
             string Url = "flagbrew.org"

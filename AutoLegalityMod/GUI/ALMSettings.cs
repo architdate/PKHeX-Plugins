@@ -48,8 +48,7 @@ namespace AutoModPlugins.GUI
             var ctd = new PropertyOverridingTypeDescriptor(type_descriptor);
             foreach (var pd in TypeDescriptor.GetProperties(_settings).OfType<PropertyDescriptor>())
             {
-                var desc =
-                    "Property Description needs to be defined. Please raise this issue on GitHub or at the discord: https://discord.gg/tDMvSRv";
+                var desc = "Property Description needs to be defined. Please raise this issue on GitHub or at the discord: https://discord.gg/tDMvSRv";
                 if (pd.Description != null)
                     desc = translation.GetTranslatedText($"{pd.Name}_description", pd.Description);
 
@@ -70,12 +69,9 @@ namespace AutoModPlugins.GUI
         }
     }
 
-    public class PropertyOverridingTypeDescriptor : CustomTypeDescriptor
+    public class PropertyOverridingTypeDescriptor(ICustomTypeDescriptor parent) : CustomTypeDescriptor(parent)
     {
-        private readonly Dictionary<string, PropertyDescriptor> overridePds = new();
-
-        public PropertyOverridingTypeDescriptor(ICustomTypeDescriptor parent)
-            : base(parent) { }
+        private readonly Dictionary<string, PropertyDescriptor> overridePds = [];
 
         public void OverrideProperty(PropertyDescriptor pd)
         {
@@ -93,9 +89,9 @@ namespace AutoModPlugins.GUI
             var pdl = new List<PropertyDescriptor>(pdc.Count + 1);
 
             foreach (PropertyDescriptor pd in pdc)
-                pdl.Add(overridePds.TryGetValue(pd.Name, out var value) ? value : pd);
+                pdl.Add(overridePds.GetValueOrDefault(pd.Name, pd));
 
-            return new PropertyDescriptorCollection(pdl.ToArray());
+            return new PropertyDescriptorCollection([.. pdl]);
         }
 
         public override PropertyDescriptorCollection GetProperties()
@@ -109,18 +105,8 @@ namespace AutoModPlugins.GUI
         }
     }
 
-    public class TypeDescriptorOverridingProvider : TypeDescriptionProvider
+    public class TypeDescriptorOverridingProvider(ICustomTypeDescriptor ctd) : TypeDescriptionProvider
     {
-        private readonly ICustomTypeDescriptor ctd;
-
-        public TypeDescriptorOverridingProvider(ICustomTypeDescriptor ctd)
-        {
-            this.ctd = ctd;
-        }
-
-        public override ICustomTypeDescriptor GetTypeDescriptor(Type? objectType, object? instance)
-        {
-            return ctd;
-        }
+        public override ICustomTypeDescriptor GetTypeDescriptor(Type? objectType, object? instance) => ctd;
     }
 }

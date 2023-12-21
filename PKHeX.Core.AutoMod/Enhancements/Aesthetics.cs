@@ -1029,6 +1029,14 @@ namespace PKHeX.Core.AutoMod
                 { Munkidori, Black },
                 { Fezandipiti, Black },
                 { Ogerpon, Green },
+                { Archaludon, Gray },
+                { Hydrapple, Yellow },
+                { GougingFire, Brown },
+                { RagingBolt, Yellow },
+                { IronBoulder, Gray },
+                { IronCrown, Gray },
+                { Terapagos, Blue },
+                { Pecharunt, Pink },
             };
 
         public static Ball GetBallFromString(string ballstr)
@@ -1063,7 +1071,7 @@ namespace PKHeX.Core.AutoMod
                 var vals = BallColors[c];
                 var extra = allBalls.Except(vals).ToArray();
                 Util.Rand.Shuffle(extra.AsSpan());
-                BallColors[c] = vals.Concat(extra).Concat(end).ToArray();
+                BallColors[c] = [.. vals, .. extra, .. end];
             }
         }
 
@@ -1097,12 +1105,12 @@ namespace PKHeX.Core.AutoMod
         private static readonly Dictionary<PersonalColor, Ball[]> BallColors =
             new()
             {
-                [Red] = new[] { LAOrigin, Cherish, Repeat, Fast, Heal, Great, Dream, Lure },
-                [Blue] = new[] { Dive, LAFeather, Net, LAGreat, Great, Beast, Lure, LAJet },
-                [Yellow] = new[] { Level, LAUltra, Ultra, Repeat, Quick, Moon },
-                [Green] = new[] { Safari, Friend, Nest, Dusk, Strange },
-                [Black] = new[]
-                {
+                [Red] = [LAOrigin, Cherish, Repeat, Fast, Heal, Great, Dream, Lure],
+                [Blue] = [Dive, LAFeather, Net, LAGreat, Great, Beast, Lure, LAJet],
+                [Yellow] = [Level, LAUltra, Ultra, Repeat, Quick, Moon],
+                [Green] = [Safari, Friend, Nest, Dusk, Strange],
+                [Black] =
+                [
                     Luxury,
                     LAGigaton,
                     LALeaden,
@@ -1113,12 +1121,12 @@ namespace PKHeX.Core.AutoMod
                     Moon,
                     Net,
                     Beast
-                },
-                [Brown] = new[] { Level, Heavy },
-                [Purple] = new[] { Master, Love, Dream, Heal },
-                [Gray] = new[] { Heavy, LAGigaton, LALeaden, LAHeavy, Premier, Luxury },
-                [White] = new[] { Premier, LAWing, LAJet, Timer, Luxury, Ultra },
-                [Pink] = new[] { Love, Dream, Heal },
+                ],
+                [Brown] = [Level, Heavy],
+                [Purple] = [Master, Love, Dream, Heal],
+                [Gray] = [Heavy, LAGigaton, LALeaden, LAHeavy, Premier, Luxury],
+                [White] = [Premier, LAWing, LAJet, Timer, Luxury, Ultra],
+                [Pink] = [Love, Dream, Heal],
             };
 
         public static int ApplyFirstLegalBall(PKM pkm, IEnumerable<Ball> balls)
