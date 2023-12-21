@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PKHeX.Core.AutoMod
@@ -12,7 +12,6 @@ namespace PKHeX.Core.AutoMod
                 // Scatterbug and Spewpa must be Fancy
                 if (set.Species is (ushort)Species.Scatterbug or (ushort)Species.Spewpa)
                     set.Form = 18;
-                return;
             }
 
             if (!FormInfo.IsBattleOnlyForm(set.Species, set.Form, gen))
