@@ -1,13 +1,13 @@
 # About  
-This project uses `PKHeX.Core` and PKHeX's `IPlugin` interface to add enhancements to the PKHeX program, namely **Auto**mated **Mod**ifications to simplify creation of legal Pokémon.
+This project uses `PKHeX.Core` and PKHeX's `IPlugin` interface to add enhancements to the [PKHeX](https://github.com/kwsch/PKHeX) program, namely **Auto**mated **Mod**ifications to simplify creation of legal Pokémon.
 
-This project is owned by [@architdate](https://github.com/architdate) (Discord: thecommondude#8240) and [@kwsch](https://github.com/kwsch) (Discord: Kurt#6024).
+This project is owned by [@architdate](https://github.com/architdate) (Discord: thecommondude) and [@kwsch](https://github.com/kwsch) (Discord: kwsch).
 
 [Feature Demonstration Video](https://www.youtube.com/watch?v=pKuElH0hWWA) by AAron#2420.  
 This is an older video but features are still largely similar.
 
 ## Building  
-This project requires an IDE that supports compiling .NET based code, such as Visual Studio 2022, and the [.NET 7.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0).
+This project requires an IDE that supports compiling .NET based code, such as Visual Studio 2022, and the [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 
 **Regular Builds**  
 Regular builds will usually succeed unless there are changes that are incompatible with the NuGet [PKHeX.Core](https://www.nuget.org/packages/PKHeX.Core) package dependency specified in the `.csproj` files of the projects. If building fails, use the bleeding edge method instead.
@@ -15,7 +15,7 @@ Regular builds will usually succeed unless there are changes that are incompatib
 - Clone the PKHeX-Plugins repository using: `$ git clone https://github.com/architdate/PKHeX-Plugins.git`.
 - Right-click on the solution and click `Rebuild All`.
 - These DLLs should be placed into a `plugins` directory where the PKHeX executable is.
-   - The compiled DLL `AutoModPlugins.dll` for AutoLegality will be in the `AutoLegalityMod\bin\Release\net7.0-windows` directory.
+   - The compiled DLL `AutoModPlugins.dll` for AutoLegality will be in the `AutoLegalityMod\bin\Release\net8.0-windows` directory.
 
 **Bleeding Edge Builds**  
 Use this build method only if the regular builds fail. The Azure Pipelines CI will always use the bleeding edge build method. More details regarding this can be seen in the [azure-pipelines.yml](https://github.com/architdate/PKHeX-Plugins/blob/master/azure-pipelines.yml) file.
@@ -25,8 +25,8 @@ Use this build method only if the regular builds fail. The Azure Pipelines CI wi
 - Open the PKHeX solution, change your environment to `Release`, right-click on the `PKHeX.Core` project, and click `Rebuild` to build the project.
 - Open the PKHeX-Plugins solution and right-click to `Restore NuGet Packages`.
 - Next, replace the most recent NuGet packages with the newly-built `PKHeX.Core.dll` files.
-   - Copy the `PKHeX.Core.dll` file located in `PKHeX.Core\bin\Release\net7.0` to the following folder with the most recent date:
-       * `C:\Users\%USERNAME%\.nuget\packages\pkhex.core\YY.MM.DD\lib\net7.0`
+   - Copy the `PKHeX.Core.dll` file located in `PKHeX.Core\bin\Release\net8.0` to the following folder with the most recent date:
+       * `C:\Users\%USERNAME%\.nuget\packages\pkhex.core\YY.MM.DD\lib\net8.0`
 - Right click the PKHeX-Plugins solution and `Rebuild All`. This should build the mod with the latest `PKHeX.Core` version so that it can be used with the latest commit of PKHeX.
 - The compiled DLLs will be in the same location as with the regular builds. 
 
