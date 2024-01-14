@@ -268,7 +268,7 @@ namespace PKHeX.Core.AutoMod
         {
             var valid = new LegalityAnalysis(pk1).Valid;
             if (!valid)
-                pk1.Catch_Rate = (byte)pk1.Gen2Item;
+                pk1.CatchRate = (byte)pk1.Gen2Item;
             return valid;
         }
 
