@@ -26,6 +26,21 @@ namespace PKHeX.Core.Enhancements
                     region = gt.Region.ToString();
                     DSRegion = gt.ConsoleRegion.ToString();
                 }
+
+                var markings = "N/A";
+                switch (p.pk)
+                {
+                    case IAppliedMarkings7 m7:
+                        markings = m7.MarkingValue.ToString();
+                        break;
+                    case IAppliedMarkings4 m4:
+                        markings = m4.MarkingValue.ToString();
+                        break;
+                    case IAppliedMarkings3 m3:
+                        markings = m3.MarkingValue.ToString();
+                        break;
+                }
+
                 sb.AppendLine(
                     string.Join(
                         ",",
@@ -67,7 +82,7 @@ namespace PKHeX.Core.Enhancements
                         p.SPE_IV.ToString(),
                         p.EXP.ToString(),
                         p.Level.ToString(),
-                        p.Markings.ToString(),
+                        markings,
                         p.NotOT,
                         p.MetLevel.ToString(),
                         p.IsShiny.ToString(),
