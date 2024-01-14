@@ -818,9 +818,10 @@ public partial class LiveHeXUI : Form, ISlotViewer<PictureBox>
             var s = txt switch
             {
                 "Raid" => cc.Controls.Find("B_Raids", true)[0],
-                "RaidKitakami" => cc.Controls.Find("B_RaidKitakami", true)[0],
-                "RaidBlueberry" => cc.Controls.Find("B_RaidBlueberry", true)[0],
-                "RaidArmor" => cc.Controls.Find("B_RaidArmor", true)[0],
+                "RaidKitakami" => cc.Controls.Find("B_RaidsDLC1", true)[0],
+                "RaidBlueberry" => cc.Controls.Find("B_RaidsDLC2", true)[0],
+                "RaidArmor" => cc.Controls.Find("B_RaidsDLC1", true)[0],
+                "RaidCrown" => cc.Controls.Find("B_RaidsDLC2", true)[0],
                 _ => sender,
             };
 
