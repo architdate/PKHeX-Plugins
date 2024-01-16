@@ -272,7 +272,7 @@ namespace PKHeX.Core.AutoMod
                     return true;
                 case Species.Arceus when generation == 4 && form == 9: // ??? form
                     return true;
-                case Species.Scatterbug or Species.Spewpa when form > Vivillon3DS.MaxWildFormID:
+                case Species.Scatterbug or Species.Spewpa when generation != 9 && form > Vivillon3DS.MaxWildFormID || generation == 9 && form != Vivillon3DS.FancyFormID:
                     return true;
             }
             if (FormInfo.IsBattleOnlyForm(pk.Species, form, generation))
