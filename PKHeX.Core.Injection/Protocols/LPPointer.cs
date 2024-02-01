@@ -18,6 +18,7 @@ namespace PKHeX.Core.Injection
             LiveHeXVersion.SV_v201,
             LiveHeXVersion.SV_v202,
             LiveHeXVersion.SV_v300,
+            LiveHeXVersion.SV_v301,
             LiveHeXVersion.LA_v100,
             LiveHeXVersion.LA_v101,
             LiveHeXVersion.LA_v102,
@@ -509,6 +510,7 @@ namespace PKHeX.Core.Injection
         public static readonly Dictionary<LiveHeXVersion, BlockData[]> SCBlocks =
             new()
             {
+                { LiveHeXVersion.SV_v301, Blocks_SV_v300 },
                 { LiveHeXVersion.SV_v300, Blocks_SV_v300 },
                 { LiveHeXVersion.SV_v202, Blocks_SV_v202 },
                 { LiveHeXVersion.SV_v201, Blocks_SV_v201 },
@@ -539,7 +541,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
-                LiveHeXVersion.SV_v300 => "[[[[main+4741FA0]+198]+30]+9D0]",
+                LiveHeXVersion.SV_v300 or LiveHeXVersion.SV_v301 => "[[[[main+4741FA0]+198]+30]+9D0]",
                 LiveHeXVersion.SV_v202 => "[[[[main+4623A30]+198]+30]+9D0]",
                 LiveHeXVersion.SV_v201 => "[[[[main+4622A30]+198]+30]+9D0]",
                 LiveHeXVersion.SV_v132 => "[[[main+44C1C18]+130]+9B0]",
@@ -559,7 +561,7 @@ namespace PKHeX.Core.Injection
         {
             return lv switch
             {
-                LiveHeXVersion.SV_v300 => "[[[[[main+4735BB8]+D8]]]+30]",
+                LiveHeXVersion.SV_v300 or LiveHeXVersion.SV_v301 => "[[[[[main+4735BB8]+D8]]]+30]",
                 LiveHeXVersion.SV_v202 => "[[[[[main+4617648]+D8]]]+30]",
                 LiveHeXVersion.SV_v201 => "[[[[[main+4616648]+D8]]]+30]",
                 LiveHeXVersion.SV_v132 => "[[[[[main+44B71A8]+D8]]]+30]",
