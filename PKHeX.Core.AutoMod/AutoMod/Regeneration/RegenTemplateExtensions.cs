@@ -5,7 +5,7 @@ namespace PKHeX.Core.AutoMod
 {
     public static class RegenTemplateExtensions
     {
-        public static void SanitizeForm(this RegenTemplate set, int gen)
+        public static void SanitizeForm(this RegenTemplate set, byte gen)
         {
             if (gen is 9)
             {

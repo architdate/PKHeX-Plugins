@@ -5,7 +5,7 @@ Ability: Overgrow
 Level: 6
 Shiny: Yes
 Bold Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=FRLG
 .Version=5
 - Body Slam
@@ -189,7 +189,7 @@ Ability: Run Away
 Level: 10
 Shiny: Yes
 Modest Nature
-=Met_Level=10
+=MetLevel=10
 ~=Version=CXD
 - Tackle
 - Tail Whip
@@ -593,7 +593,7 @@ Ability: Overgrow
 Level: 5
 Shiny: Yes
 Timid Nature
-=Met_Level=5
+=MetLevel=5
 .Version=1
 - Pound
 - Leer
@@ -605,7 +605,7 @@ Ability: Overgrow
 Level: 6
 Shiny: Yes
 Timid Nature
-=Met_Level=5
+=MetLevel=5
 .Version=1
 - Pound
 - Leer
@@ -618,7 +618,7 @@ Ability: Blaze
 Level: 8
 Shiny: Yes
 Adamant Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=E
 .Version=3
 - Scratch
@@ -632,7 +632,7 @@ Ability: Blaze
 Level: 5
 Shiny: Yes
 Adamant Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=RS
 .Version=2
 - Scratch
@@ -645,7 +645,7 @@ Ability: Torrent
 Level: 5
 Shiny: Yes
 Relaxed Nature
-=Met_Level=5
+=MetLevel=5
 .Version=1
 - Defense Curl
 
@@ -927,7 +927,7 @@ Ability: Forecast
 Level: 25
 Shiny: Yes
 Modest Nature
-=Met_Level=25
+=MetLevel=25
 ~=Version=E
 .Version=3
 - Powder Snow
@@ -1021,7 +1021,7 @@ Level: 15
 Adamant Nature
 Ball: Master Ball
 Shiny: Yes
-=Met_Level=15
+=MetLevel=15
 =Gen3=True
 - Mirror Coat
 - Safeguard
@@ -1118,7 +1118,7 @@ Ability: Clear Body
 Level: 5
 Shiny: Yes
 Adamant Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=E
 .Version=3
 - Take Down

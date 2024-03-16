@@ -133,7 +133,7 @@ namespace PKHeX.Core.AutoMod
         {
             var template = EntityBlank.GetBlank(tr);
             if (template.Version == 0)
-                template.Version = tr.Game;
+                template.Version = tr.Version;
             EncounterMovesetGenerator.OptimizeCriteria(template, tr);
             template.ApplySetDetails(set);
             return tr.GetLegalFromSet(set, template);

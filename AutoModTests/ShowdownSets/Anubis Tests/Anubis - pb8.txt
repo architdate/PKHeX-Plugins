@@ -1501,7 +1501,7 @@ Ball: Safari Ball
 
 Foppa (Magikarp) (F) @ Lum Berry
 IVs: 3 HP / 3 Atk / 11 SpA / 3 SpD / 2 Spe
-=Met_Location=30001
+=MetLocation=30001
 .Language=5
 Level: 45
 ~=Version=BDSP
@@ -1510,7 +1510,7 @@ Level: 45
 
 Pador (Magikarp) (F) @ Lum Berry
 IVs: 3 HP / 3 Atk / 11 SpA / 3 SpD / 2 Spe
-=Met_Location=30001
+=MetLocation=30001
 .Language=1
 Level: 45
 ~=Version=BDSP
@@ -1523,8 +1523,8 @@ Ability: Swift Swim
 Level: 45
 Mild Nature
 Language: German
-=OT_Name=マイスター
-=Met_Location=30001
+=OriginalTrainerName=マイスター
+=MetLocation=30001
 ~=Version=BDSP
 .Version=48
 - Splash
@@ -1588,7 +1588,7 @@ IVs: 13 HP / 7 SpD / 27 Spe
 EVs: 45 HP / 106 Atk / 75 Def / 102 SpA / 37 SpD / 145 Spe
 Ability: Synchronize
 Mild Nature
-=Met_Level=1
+=MetLevel=1
 =FatefulEncounter=True
 ~=Location=438
 ~=Version=BDSP
@@ -1603,7 +1603,7 @@ IVs: 0 Atk
 Ability: Synchronize
 Level: 1
 Timid Nature
-=Met_Level=1
+=MetLevel=1
 =FatefulEncounter=True
 ~=Location=438
 ~=Version=BDSP
@@ -4687,7 +4687,7 @@ IVs: 10 HP / 6 SpA / 10 Spe
 EVs: 45 HP / 106 Atk / 75 Def / 102 SpA / 37 SpD / 145 Spe
 Ability: Serene Grace
 Bold Nature
-=Met_Level=5
+=MetLevel=5
 =FatefulEncounter=True
 ~=Location=438
 ~=Version=BDSP
@@ -4702,7 +4702,7 @@ IVs: 9 HP / 5 SpA / 18 SpD
 Ability: Serene Grace
 Level: 5
 Hardy Nature
-=Met_Level=5
+=MetLevel=5
 =FatefulEncounter=True
 ~=Location=438
 ~=Version=BDSP
@@ -4715,7 +4715,7 @@ IVs: 0 SpA
 Ability: Serene Grace
 Level: 5
 Jolly Nature
-=Met_Level=5
+=MetLevel=5
 =FatefulEncounter=True
 ~=Location=438
 ~=Version=BDSP
@@ -4769,7 +4769,7 @@ IVs: 20 HP / 22 Atk / 4 Def / 8 SpA / 26 SpD / 16 Spe
 EVs: 48 HP / 100 Atk / 79 Def / 99 SpA / 34 SpD / 150 Spe
 Ability: Blaze
 Naive Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=323
 ~=Version=BDSP
 Version=49
@@ -4784,7 +4784,7 @@ EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Torrent
 Level: 27
 Modest Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=323
 ~=Version=BDSP
 Version=49
@@ -4800,7 +4800,7 @@ Ability: Torrent
 Level: 19
 Shiny: Yes
 Naive Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=323
 ~=Version=BDSP
 Version=49
@@ -4813,7 +4813,7 @@ Empoleon (F) @ Expert Belt
 EVs: 252 SpA / 6 SpD / 252 Spe
 Ability: Torrent
 Modest Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=323
 ~=Version=BDSP
 .Version=48
@@ -6071,7 +6071,7 @@ Ability: Levitate
 Level: 50
 Docile Nature
 Ball: Master Ball
-.Met_Location=400
+.MetLocation=400
 ~=Version=BDSP
 .Version=48
 - Slash

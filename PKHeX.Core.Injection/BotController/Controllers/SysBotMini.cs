@@ -169,9 +169,9 @@ namespace PKHeX.Core.Injection
             }
 
             int chunk = 0;
-            while (data.Length != 0)
+            while (chunk * maxlength < data.Length)
             {
-                var ba = data.Slice(chunk++ * maxlength, maxlength);
+                var ba = data.Slice(chunk++ * maxlength, chunk * maxlength > data.Length ? (chunk * maxlength) % data.Length : maxlength);
                 WriteBytes(ba, offset, method);
                 offset += maxlength;
             }

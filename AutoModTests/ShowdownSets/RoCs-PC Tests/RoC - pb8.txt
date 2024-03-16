@@ -535,8 +535,8 @@ Ability: Synchronize
 Level: 9
 Quiet Nature
 Language: English
-=OT_Name=Hilary
-=Met_Location=30001
+=OriginalTrainerName=Hilary
+=MetLocation=30001
 ~=Version=BDSP
 .Version=48
 - Teleport
@@ -547,8 +547,8 @@ Ability: Synchronize
 Level: 9
 Quiet Nature
 Language: English
-=OT_Name=Hilary
-=Met_Location=30001
+=OriginalTrainerName=Hilary
+=MetLocation=30001
 ~=Version=BDSP
 .Version=49
 - Teleport
@@ -834,8 +834,8 @@ Ability: Levitate
 Level: 33
 Hasty Nature
 Language: English
-=OT_Name=Mindy
-=Met_Location=30001
+=OriginalTrainerName=Mindy
+=MetLocation=30001
 ~=Version=BDSP
 .Version=48
 - Shadow Ball
@@ -849,8 +849,8 @@ Ability: Levitate
 Level: 33
 Hasty Nature
 Language: English
-=OT_Name=Mindy
-=Met_Location=30001
+=OriginalTrainerName=Mindy
+=MetLocation=30001
 ~=Version=BDSP
 .Version=49
 - Shadow Ball
@@ -1226,8 +1226,8 @@ Ability: Swift Swim
 Level: 45
 Mild Nature
 Language: German
-=OT_Name=Meister
-=Met_Location=30001
+=OriginalTrainerName=Meister
+=MetLocation=30001
 ~=Version=BDSP
 .Version=48
 - Splash
@@ -1238,8 +1238,8 @@ Ability: Swift Swim
 Level: 45
 Mild Nature
 Language: German
-=OT_Name=Meister
-=Met_Location=30001
+=OriginalTrainerName=Meister
+=MetLocation=30001
 ~=Version=BDSP
 .Version=49
 - Splash
@@ -1299,7 +1299,7 @@ IVs: 17 HP / 17 Atk / 29 Def / 1 SpA / 9 SpD / 28 Spe
 Ability: Run Away
 Level: 5
 Hasty Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=104
 ~=Version=BDSP
 .Version=48
@@ -1327,7 +1327,7 @@ IVs: 9 HP / 16 Atk / 8 Def / 1 SpA / 14 Spe
 Ability: Adaptability
 Level: 5
 Jolly Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=104
 ~=Version=BDSP
 .Version=49
@@ -1397,7 +1397,7 @@ IVs: 12 HP / 20 Def
 Ability: Shell Armor
 Level: 40
 Mild Nature
-=Met_Level=1
+=MetLevel=1
 ~=Location=49
 ~=Version=BDSP
 .Version=48
@@ -1411,7 +1411,7 @@ IVs: 22 Atk / 14 SpA / 3 Spe
 Ability: Swift Swim
 Level: 40
 Calm Nature
-=Met_Level=1
+=MetLevel=1
 ~=Location=49
 ~=Version=BDSP
 .Version=48
@@ -1425,7 +1425,7 @@ IVs: 12 Atk / 29 Def / 16 SpD
 Ability: Pressure
 Level: 1
 Modest Nature
-=Met_Level=1
+=MetLevel=1
 ~=Location=49
 ~=Version=BDSP
 .Version=48
@@ -1549,7 +1549,7 @@ IVs: 5 Atk / 8 SpA / 29 Spe
 Ability: Synchronize
 Level: 1
 Bashful Nature
-=Met_Level=1
+=MetLevel=1
 =FatefulEncounter=True
 ~=Location=438
 ~=Version=BDSP
@@ -1562,7 +1562,7 @@ IVs: 22 Def / 11 SpA / 18 Spe
 Ability: Synchronize
 Level: 1
 Brave Nature
-=Met_Level=1
+=MetLevel=1
 =FatefulEncounter=True
 ~=Location=438
 ~=Version=BDSP
@@ -3835,7 +3835,7 @@ IVs: 10 Atk / 29 Def / 30 SpD
 Ability: Suction Cups
 Level: 40
 Timid Nature
-=Met_Level=1
+=MetLevel=1
 ~=Location=49
 ~=Version=BDSP
 .Version=48
@@ -3849,7 +3849,7 @@ IVs: 14 HP / 18 Atk / 30 Def
 Ability: Battle Armor
 Level: 40
 Quiet Nature
-=Met_Level=1
+=MetLevel=1
 ~=Location=49
 ~=Version=BDSP
 .Version=48
@@ -4362,7 +4362,7 @@ IVs: 28 HP / 21 Atk / 5 Def
 Ability: Serene Grace
 Level: 5
 Adamant Nature
-=Met_Level=5
+=MetLevel=5
 =FatefulEncounter=True
 ~=Location=438
 ~=Version=BDSP
@@ -4375,7 +4375,7 @@ IVs: 29 Def / 25 SpA / 22 Spe
 Ability: Serene Grace
 Level: 5
 Bold Nature
-=Met_Level=5
+=MetLevel=5
 =FatefulEncounter=True
 ~=Location=438
 ~=Version=BDSP
@@ -4416,7 +4416,7 @@ EVs: 1 Spe
 Ability: Overgrow
 Level: 5
 Naive Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=323
 ~=Version=BDSP
 .Version=49
@@ -4441,7 +4441,7 @@ Franklin (Torterra) (M) @ Miracle Seed
 EVs: 252 Atk / 252 SpA / 6 Spe
 Ability: Overgrow
 Naive Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=323
 ~=Version=BDSP
 .Version=49
@@ -4470,7 +4470,7 @@ EVs: 1 Spe
 Ability: Blaze
 Level: 5
 Lax Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=323
 ~=Version=BDSP
 .Version=49
@@ -4495,7 +4495,7 @@ Wukong (Infernape) (M) @ Charcoal
 EVs: 6 HP / 252 Atk / 252 Spe
 Ability: Blaze
 Mild Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=323
 ~=Version=BDSP
 .Version=48
@@ -4510,7 +4510,7 @@ EVs: 1 Spe
 Ability: Torrent
 Level: 5
 Quiet Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=323
 ~=Version=BDSP
 .Version=49
@@ -4535,7 +4535,7 @@ Jeeves (Empoleon) (M) @ Mystic Water
 EVs: 6 HP / 252 SpA / 252 Spe
 Ability: Torrent
 Quiet Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=323
 ~=Version=BDSP
 .Version=49
@@ -4755,7 +4755,7 @@ IVs: 11 HP / 30 SpD / 1 Spe
 Ability: Mold Breaker
 Level: 30
 Lonely Nature
-=Met_Level=1
+=MetLevel=1
 ~=Location=49
 ~=Version=BDSP
 .Version=48
@@ -4769,7 +4769,7 @@ IVs: 6 HP / 8 Def / 25 Spe
 Ability: Sturdy
 Level: 30
 Bashful Nature
-=Met_Level=1
+=MetLevel=1
 ~=Location=49
 ~=Version=BDSP
 .Version=48
@@ -5159,8 +5159,8 @@ Ability: Tangled Feet
 Level: 15
 Lonely Nature
 Language: English
-=OT_Name=Norton
-=Met_Location=30001
+=OriginalTrainerName=Norton
+=MetLocation=30001
 ~=Version=BDSP
 .Version=48
 - Chatter
@@ -5174,8 +5174,8 @@ Ability: Tangled Feet
 Level: 15
 Lonely Nature
 Language: English
-=OT_Name=Norton
-=Met_Location=30001
+=OriginalTrainerName=Norton
+=MetLocation=30001
 ~=Version=BDSP
 .Version=49
 - Chatter
@@ -5271,7 +5271,7 @@ IVs: 23 HP / 4 Atk / 4 Def / 5 SpA / 27 SpD / 3 Spe
 Ability: Inner Focus
 Level: 2
 Calm Nature
-=Met_Level=1
+=MetLevel=1
 ~=Version=BDSP
 .Version=48
 - Quick Attack
@@ -5716,7 +5716,7 @@ Ability: Levitate
 Level: 50
 Quiet Nature
 Ball: Master Ball
-.Met_Location=359
+.MetLocation=359
 ~=Version=BDSP
 .Version=48
 - Imprison
@@ -5730,7 +5730,7 @@ Ability: Levitate
 Level: 50
 Serious Nature
 Ball: Master Ball
-.Met_Location=392
+.MetLocation=392
 ~=Version=BDSP
 .Version=49
 - Imprison
@@ -5884,7 +5884,7 @@ Ability: Levitate
 Level: 50
 Gentle Nature
 Ball: Master Ball
-.Met_Location=359
+.MetLocation=359
 ~=Version=BDSP
 .Version=48
 - Slash

@@ -238,7 +238,7 @@ Ability: Damp
 Level: 5
 Hardy Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Scratch
 - Stun Spore
 - Leech Life
@@ -282,7 +282,7 @@ Ability: Sand Force
 Level: 5
 Hardy Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Scratch
 - Growl
 - Dig
@@ -439,7 +439,7 @@ Ability: Steadfast
 Level: 5
 Timid Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Karate Chop
 - Low Kick
 - Leer
@@ -546,7 +546,7 @@ Ability: Analytic
 Level: 5
 Hardy Nature
 Language: English
-=OT_Name=FOREST
+=OriginalTrainerName=FOREST
 ~=Generation=2
 - Tackle
 - Thunder Shock
@@ -559,7 +559,7 @@ Ability: Tangled Feet
 Level: 10
 Hardy Nature
 Language: English
-=OT_Name=EMY
+=OriginalTrainerName=EMY
 ~=Generation=2
 - Peck
 - Growl
@@ -602,7 +602,7 @@ Ability: Ice Body
 Level: 5
 Hardy Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Headbutt
 - Growl
 - Aurora Beam
@@ -624,7 +624,7 @@ Ability: Poison Touch
 Level: 5
 Hardy Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Pound
 - Disable
 - Poison Gas
@@ -721,7 +721,7 @@ Ability: Aftermath
 Level: 3
 Brave Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Tackle
 - Screech
 - Sonic Boom
@@ -786,7 +786,7 @@ Ability: Reckless
 Level: 15
 Bashful Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Horn Attack
 - Stomp
 - Tail Whip
@@ -809,7 +809,7 @@ Ability: Reckless
 Level: 10
 Hardy Nature
 Language: English
-=OT_Name=EMY
+=OriginalTrainerName=EMY
 ~=Generation=2
 - Horn Attack
 - Tail Whip
@@ -883,7 +883,7 @@ Ability: Dry Skin
 Level: 10
 Hardy Nature
 Language: French
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Pound
 - Lovely Kiss
 
@@ -904,7 +904,7 @@ Ability: Dry Skin
 Level: 20
 Hardy Nature
 Language: French
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Pound
 - Lovely Kiss
 - Lick

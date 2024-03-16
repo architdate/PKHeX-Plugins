@@ -146,7 +146,7 @@ Level: 16
 KENYA (Spearow) (M) @ Flower Mail
 IVs: 2 HP / 12 Atk / 14 Def / 0 SpA / 0 SpD / 9 Spe
 Level: 10
-=OT_Name=RANDY
+=OriginalTrainerName=RANDY
 - Peck
 - Growl
 - Leer
@@ -500,7 +500,7 @@ Level: 12
 MUSCLE (Machop) (F) @ Gold Berry
 IVs: 12 HP / 3 Atk / 7 Def / 6 SpA / 6 SpD / 6 Spe
 Level: 10
-=OT_Name=MIKE
+=OriginalTrainerName=MIKE
 - Low Kick
 - Leer
 - Focus Energy
@@ -508,7 +508,7 @@ Level: 10
 MUSCLE (Machop) (F) @ Gold Berry
 IVs: 12 HP / 3 Atk / 7 Def / 6 SpA / 6 SpD / 6 Spe
 Level: 14
-=OT_Name=MIKE
+=OriginalTrainerName=MIKE
 - Low Kick
 - Leer
 - Focus Energy
@@ -740,7 +740,7 @@ Level: 6
 ROCKY (Onix) (M) @ Bitter Berry
 IVs: 8 HP / 9 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Level: 7
-=OT_Name=KYLE
+=OriginalTrainerName=KYLE
 - Tackle
 - Screech
 
@@ -786,7 +786,7 @@ Level: 23
 VOLTY (Voltorb) @ PRZCureBerry
 IVs: 8 HP / 9 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 Level: 22
-=OT_Name=TIM
+=OriginalTrainerName=TIM
 - Tackle
 - Screech
 - Sonic Boom
@@ -1114,7 +1114,7 @@ Level: 40
 AEROY (Aerodactyl) (M) @ Gold Berry
 IVs: 8 HP / 9 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Level: 28
-=OT_Name=KIM
+=OriginalTrainerName=KIM
 - Wing Attack
 - Agility
 - Bite
@@ -1679,7 +1679,7 @@ Level: 13
 SHUCKIE (Shuckle) (M) @ Berry
 IVs: 11 HP / 9 Atk / 4 Def / 5 SpA / 5 SpD / 7 Spe
 Level: 15
-=OT_Name=MANIA
+=OriginalTrainerName=MANIA
 - Constrict
 - Withdraw
 - Wrap

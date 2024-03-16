@@ -280,7 +280,7 @@ Ability: Sniper
 Level: 10
 Hardy Nature
 Language: English
-=OT_Name=RANDY
+=OriginalTrainerName=RANDY
 ~=Generation=2
 - Peck
 - Growl
@@ -453,7 +453,7 @@ Ability: Hustle
 Level: 23
 Hardy Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Tackle
 - Scratch
 - Poison Sting
@@ -1177,7 +1177,7 @@ Ability: Steadfast
 Level: 10
 Timid Nature
 Language: English
-=OT_Name=MIKE
+=OriginalTrainerName=MIKE
 ~=Generation=2
 - Low Kick
 - Leer
@@ -1409,7 +1409,7 @@ Ability: Flame Body
 Level: 14
 Rash Nature
 Language: English
-=OT_Name=CHRIS
+=OriginalTrainerName=CHRIS
 ~=Generation=2
 - Tackle
 - Growl
@@ -1521,7 +1521,7 @@ Ability: Defiant
 Level: 8
 Serious Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Peck
 - Sand Attack
 - Leer
@@ -1574,7 +1574,7 @@ Ability: Ice Body
 Level: 28
 Brave Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Headbutt
 
 Seel (M)
@@ -1754,7 +1754,7 @@ Ability: Weak Armor
 Level: 7
 Bashful Nature
 Language: English
-=OT_Name=KYLE
+=OriginalTrainerName=KYLE
 ~=Generation=2
 - Tackle
 - Screech
@@ -1871,7 +1871,7 @@ Ability: Aftermath
 Level: 22
 Careful Nature
 Language: English
-=OT_Name=TIM
+=OriginalTrainerName=TIM
 ~=Generation=2
 - Tackle
 - Screech
@@ -2042,7 +2042,7 @@ Ability: Cloud Nine
 Level: 37
 Adamant Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Stomp
 - Disable
 - Defense Curl
@@ -2188,7 +2188,7 @@ Ability: Regenerator
 Level: 16
 Gentle Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Constrict
 - Bind
 
@@ -2367,7 +2367,7 @@ Ability: Technician
 Level: 11
 Docile Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Confusion
 - Barrier
 
@@ -2377,7 +2377,7 @@ Ability: Technician
 Level: 19
 Lax Nature
 Language: English
-=OT_Name=Trainer
+=OriginalTrainerName=Trainer
 - Confusion
 - Barrier
 
@@ -2733,7 +2733,7 @@ Ability: Unnerve
 Level: 28
 Modest Nature
 Language: English
-=OT_Name=KIM
+=OriginalTrainerName=KIM
 ~=Generation=2
 - Wing Attack
 - Agility
@@ -3198,7 +3198,7 @@ Ability: Magic Bounce
 Level: 17
 Jolly Nature
 Language: English
-=OT_Name=CHRIS
+=OriginalTrainerName=CHRIS
 ~=Generation=2
 - Peck
 - Leer
@@ -3793,7 +3793,7 @@ Ability: Contrary
 Level: 15
 Timid Nature
 Language: English
-=OT_Name=MANIA
+=OriginalTrainerName=MANIA
 ~=Generation=2
 - Constrict
 - Withdraw

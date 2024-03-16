@@ -58,7 +58,7 @@ Gigantamax: Yes
 Shiny: Yes
 Adamant Nature
 Ball: Master Ball
-.Met_Location=154
+.MetLocation=154
 ~=Version=SWSH
 .Version=44
 - Flamethrower
@@ -113,7 +113,7 @@ Ability: Static
 Level: 10
 Gigantamax: Yes
 Adamant Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=156
 ~=Version=SWSH
 .Version=45
@@ -158,8 +158,8 @@ Level: 15
 Shiny: Yes
 Sassy Nature
 Language: English
-=OT_Name=Regina
-=Met_Location=30001
+=OriginalTrainerName=Regina
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Feint
@@ -187,8 +187,8 @@ Level: 15
 Shiny: Yes
 Docile Nature
 Language: English
-=OT_Name=Regina
-=Met_Location=30001
+=OriginalTrainerName=Regina
+=MetLocation=30001
 ~=Version=SWSH
 .Version=45
 - Tail Whip
@@ -203,8 +203,8 @@ Level: 15
 Shiny: Yes
 Bold Nature
 Language: English
-=OT_Name=Regina
-=Met_Location=30001
+=OriginalTrainerName=Regina
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Leer
@@ -219,8 +219,8 @@ Level: 15
 Shiny: Square
 Relaxed Nature
 Language: English
-=OT_Name=Regina
-=Met_Location=30001
+=OriginalTrainerName=Regina
+=MetLocation=30001
 ~=Version=SWSH
 .Version=45
 - Hypnosis
@@ -235,8 +235,8 @@ Level: 15
 Shiny: Yes
 Lonely Nature
 Language: English
-=OT_Name=Regina
-=Met_Location=30001
+=OriginalTrainerName=Regina
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Tail Whip
@@ -251,8 +251,8 @@ Level: 15
 Shiny: Yes
 Modest Nature
 Language: English
-=OT_Name=Regina
-=Met_Location=30001
+=OriginalTrainerName=Regina
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Smog
@@ -294,7 +294,7 @@ Ability: Run Away
 Level: 74
 Gigantamax: Yes
 Bold Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=156
 ~=Version=SWSH
 .Version=44
@@ -320,8 +320,8 @@ Level: 15
 Shiny: Yes
 Hasty Nature
 Language: English
-=OT_Name=Regina
-=Met_Location=30001
+=OriginalTrainerName=Regina
+=MetLocation=30001
 ~=Version=SWSH
 .Version=45
 - Water Gun
@@ -379,8 +379,8 @@ Level: 15
 Shiny: Yes
 Hardy Nature
 Language: English
-=OT_Name=Regina
-=Met_Location=30001
+=OriginalTrainerName=Regina
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Covet
@@ -396,7 +396,7 @@ Level: 69
 Shiny: Square
 Adamant Nature
 Ball: Master Ball
-.Met_Location=186
+.MetLocation=186
 ~=Version=SWSH
 .Version=45
 - Avalanche
@@ -483,8 +483,8 @@ Level: 15
 Shiny: Yes
 Quirky Nature
 Language: English
-=OT_Name=Regina
-=Met_Location=30001
+=OriginalTrainerName=Regina
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Taunt
@@ -515,8 +515,8 @@ Level: 15
 Shiny: Yes
 Modest Nature
 Language: English
-=OT_Name=Regina
-=Met_Location=30001
+=OriginalTrainerName=Regina
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Endure
@@ -851,7 +851,7 @@ EVs: 43 HP / 117 Atk / 91 Def / 76 SpA / 77 SpD / 106 Spe
 Ability: Static
 Gigantamax: Yes
 Timid Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=156
 ~=Version=SWSH
 .Version=45

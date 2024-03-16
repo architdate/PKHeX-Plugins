@@ -3,7 +3,7 @@ IVs: 20 HP / 26 Atk / 16 Def / 28 SpA / 8 SpD / 25 Spe
 Ability: Overgrow
 Level: 32
 Mild Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=FRLG
 .Version=5
 - Tackle
@@ -16,7 +16,7 @@ IVs: 18 HP / 18 Atk / 12 Def / 0 SpA / 20 SpD / 14 Spe
 Ability: Blaze
 Level: 36
 Brave Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=FRLG
 .Version=4
 - Scratch
@@ -29,7 +29,7 @@ IVs: 23 HP / 22 Atk / 24 Def / 23 SpA / 15 SpD / 9 Spe
 Ability: Torrent
 Level: 36
 Quiet Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=FRLG
 .Version=5
 - Tackle
@@ -240,7 +240,7 @@ Ability: Poison Point
 Level: 22
 Bold Nature
 Language: English
-=OT_Name=SAIGE
+=OriginalTrainerName=SAIGE
 ~=Version=FRLG
 .Version=4
 - Tail Whip
@@ -267,7 +267,7 @@ Ability: Poison Point
 Level: 30
 Lonely Nature
 Language: English
-=OT_Name=SAIGE
+=OriginalTrainerName=SAIGE
 ~=Version=FRLG
 .Version=5
 - Poison Sting
@@ -281,7 +281,7 @@ Ability: Poison Point
 Level: 30
 Bold Nature
 Language: English
-=OT_Name=TURNER
+=OriginalTrainerName=TURNER
 ~=Version=FRLG
 .Version=5
 - Double Kick
@@ -777,7 +777,7 @@ Ability: Keen Eye
 Level: 3
 Adamant Nature
 Language: English
-=OT_Name=ELYSSA
+=OriginalTrainerName=ELYSSA
 ~=Version=FRLG
 .Version=4
 - Peck
@@ -814,7 +814,7 @@ Ability: Thick Fat
 Level: 34
 Bold Nature
 Language: English
-=OT_Name=GARETT
+=OriginalTrainerName=GARETT
 ~=Version=FRLG
 .Version=4
 - Growl
@@ -1012,7 +1012,7 @@ IVs: 12 HP / 13 Def / 21 SpD / 25 Spe
 Ability: Limber
 Level: 25
 Brave Nature
-=Met_Level=25
+=MetLevel=25
 ~=Version=FRLG
 .Version=4
 - Rolling Kick
@@ -1124,7 +1124,7 @@ Ability: Swift Swim
 Level: 30
 Brave Nature
 Language: English
-=OT_Name=SKYLAR
+=OriginalTrainerName=SKYLAR
 ~=Version=E
 .Version=3
 - Smokescreen
@@ -1280,7 +1280,7 @@ IVs: 10 HP / 23 Atk / 8 Def / 10 SpA / 16 SpD / 24 Spe
 Ability: Shell Armor
 Level: 25
 Adamant Nature
-=Met_Level=25
+=MetLevel=25
 ~=Version=FRLG
 .Version=4
 - Mist
@@ -1303,7 +1303,7 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Run Away
 Level: 25
 Bold Nature
-=Met_Level=25
+=MetLevel=25
 ~=Version=FRLG
 .Version=4
 - Helping Hand
@@ -1316,7 +1316,7 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Water Absorb
 Level: 25
 Bold Nature
-=Met_Level=25
+=MetLevel=25
 ~=Version=FRLG
 .Version=4
 - Helping Hand
@@ -1329,7 +1329,7 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Volt Absorb
 Level: 25
 Bold Nature
-=Met_Level=25
+=MetLevel=25
 ~=Version=FRLG
 .Version=4
 - Helping Hand
@@ -1342,7 +1342,7 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Flash Fire
 Level: 25
 Bold Nature
-=Met_Level=25
+=MetLevel=25
 ~=Version=FRLG
 .Version=4
 - Helping Hand
@@ -1355,7 +1355,7 @@ IVs: 13 HP / 0 Atk / 20 Def / 1 SpA / 14 SpD / 16 Spe
 Ability: Trace
 Level: 26
 Bashful Nature
-=Met_Level=26
+=MetLevel=26
 ~=Version=FRLG
 .Version=4
 - Agility
@@ -1368,7 +1368,7 @@ IVs: 6 HP / 14 Atk / 11 Def / 24 SpA / 28 SpD / 29 Spe
 Ability: Shell Armor
 Level: 40
 Naughty Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=FRLG
 .Version=4
 - Spike Cannon
@@ -1381,7 +1381,7 @@ IVs: 15 HP / 24 Atk / 19 Def / 22 SpA / 19 SpD / 21 Spe
 Ability: Battle Armor
 Level: 40
 Docile Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=FRLG
 .Version=5
 - Slash
@@ -1394,7 +1394,7 @@ IVs: 6 HP / 4 Atk / 23 Def / 23 SpA / 29 Spe
 Ability: Pressure
 Level: 5
 Quirky Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=FRLG
 .Version=4
 - Wing Attack
@@ -1504,7 +1504,7 @@ IVs: 17 HP / 22 Def / 20 SpA / 13 SpD / 30 Spe
 Ability: Overgrow
 Level: 5
 Quirky Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=CXD
 - Ancient Power
 - Tackle
@@ -1527,7 +1527,7 @@ IVs: 19 HP / 21 Atk / 24 Def / 27 SpA / 14 Spe
 Ability: Overgrow
 Level: 32
 Serious Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=E
 .Version=3
 - Body Slam
@@ -1540,7 +1540,7 @@ IVs: 12 HP / 11 Atk / 19 Def / 16 SpA / 3 SpD / 2 Spe
 Ability: Blaze
 Level: 5
 Hasty Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=CXD
 - Reversal
 - Tackle
@@ -1563,7 +1563,7 @@ IVs: 3 HP / 12 Atk / 17 Def / 6 SpA / 25 SpD / 14 Spe
 Ability: Blaze
 Level: 36
 Naive Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=E
 .Version=3
 - Tackle
@@ -1576,7 +1576,7 @@ IVs: 6 HP / 29 Atk / 13 Def / 7 SpA / 16 SpD / 2 Spe
 Ability: Torrent
 Level: 5
 Lax Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=CXD
 - Crunch
 - Scratch
@@ -1599,7 +1599,7 @@ IVs: 9 HP / 4 Atk / 20 Def / 14 SpA / 11 SpD / 10 Spe
 Ability: Torrent
 Level: 30
 Naive Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=E
 .Version=3
 - Scratch
@@ -1819,7 +1819,7 @@ IVs: 27 HP / 10 Atk / 3 Def / 4 SpA / 22 SpD / 10 Spe
 Ability: Sturdy
 Level: 40
 Modest Nature
-=Met_Level=40
+=MetLevel=40
 ~=Version=E
 .Version=3
 - Flail
@@ -1939,7 +1939,7 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Synchronize
 Level: 26
 Bold Nature
-=Met_Level=25
+=MetLevel=25
 ~=Version=FRLG
 .Version=4
 - Helping Hand
@@ -1952,7 +1952,7 @@ IVs: 8 HP / 21 Atk / 2 Def / 6 SpA / 10 SpD / 7 Spe
 Ability: Synchronize
 Level: 26
 Bold Nature
-=Met_Level=25
+=MetLevel=25
 ~=Version=FRLG
 .Version=4
 - Helping Hand
@@ -2521,7 +2521,7 @@ Ability: Natural Cure
 Level: 25
 Calm Nature
 Language: English
-=OT_Name=LANE
+=OriginalTrainerName=LANE
 .Version=1
 - Bubble
 - Recover
@@ -2632,7 +2632,7 @@ IVs: 13 HP / 0 Atk / 20 Def / 1 SpA / 14 SpD / 16 Spe
 Ability: Trace
 Level: 26
 Bashful Nature
-=Met_Level=26
+=MetLevel=26
 ~=Version=FRLG
 .Version=4
 - Agility
@@ -2810,7 +2810,7 @@ EVs: 1 Atk
 Ability: Overgrow
 Level: 36
 Quiet Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=RS
 .Version=2
 - Pound
@@ -2824,7 +2824,7 @@ EVs: 1 Spe
 Ability: Blaze
 Level: 36
 Brave Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=E
 .Version=3
 - Quick Attack
@@ -2838,7 +2838,7 @@ EVs: 1 Atk
 Ability: Torrent
 Level: 36
 Rash Nature
-=Met_Level=5
+=MetLevel=5
 .Version=1
 - Mud Shot
 - Take Down
@@ -3599,7 +3599,7 @@ IVs: 1 HP / 9 Atk / 28 Def / 8 SpA / 11 SpD / 25 Spe
 Ability: Suction Cups
 Level: 40
 Hasty Nature
-=Met_Level=20
+=MetLevel=20
 ~=Version=E
 .Version=3
 - Astonish
@@ -3612,7 +3612,7 @@ IVs: 9 HP / 25 Atk / 12 Def / 24 SpA / 4 SpD / 10 Spe
 Ability: Battle Armor
 Level: 40
 Lonely Nature
-=Met_Level=20
+=MetLevel=20
 ~=Version=E
 .Version=3
 - Metal Claw
@@ -3637,7 +3637,7 @@ IVs: 28 HP / 6 Atk / 21 Def / 24 SpA / 29 SpD / 12 Spe
 Ability: Forecast
 Level: 25
 Adamant Nature
-=Met_Level=25
+=MetLevel=25
 ~=Version=E
 .Version=3
 - Powder Snow
@@ -3859,7 +3859,7 @@ IVs: 9 HP / 4 Atk / 20 Def / 11 SpA / 27 SpD / 2 Spe
 Ability: Clear Body
 Level: 20
 Serious Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=E
 .Version=3
 - Take Down
@@ -3882,7 +3882,7 @@ IVs: 13 HP / 14 Atk / 18 Def / 0 SpA / 14 SpD / 18 Spe
 Ability: Clear Body
 Level: 40
 Brave Nature
-=Met_Level=40
+=MetLevel=40
 ~=Version=E
 .Version=3
 - Rock Throw
@@ -3895,7 +3895,7 @@ IVs: 19 HP / 4 Atk / 14 Def / 7 SpA / 1 SpD / 10 Spe
 Ability: Clear Body
 Level: 40
 Relaxed Nature
-=Met_Level=40
+=MetLevel=40
 ~=Version=E
 .Version=3
 - Icy Wind
@@ -3908,7 +3908,7 @@ IVs: 28 HP / 8 Atk / 28 Def / 13 SpA / 0 SpD / 28 Spe
 Ability: Clear Body
 Level: 40
 Sassy Nature
-=Met_Level=40
+=MetLevel=40
 ~=Version=E
 .Version=3
 - Metal Claw
@@ -3921,7 +3921,7 @@ IVs: 9 HP / 23 Atk / 24 Def / 5 SpA / 20 SpD / 11 Spe
 Ability: Levitate
 Level: 40
 Brave Nature
-=Met_Level=40
+=MetLevel=40
 ~=Version=E
 .Version=3
 - Water Sport
@@ -3947,7 +3947,7 @@ IVs: 28 HP / 26 Atk / 7 Def / 2 SpA / 29 SpD / 1 Spe
 Ability: Drizzle
 Level: 70
 Mild Nature
-=Met_Level=70
+=MetLevel=70
 ~=Version=E
 .Version=3
 - Hydro Pump
@@ -3960,7 +3960,7 @@ IVs: 30 HP / 27 Atk / 4 Def / 25 SpA / 27 SpD / 30 Spe
 Ability: Drought
 Level: 70
 Impish Nature
-=Met_Level=70
+=MetLevel=70
 ~=Version=E
 .Version=3
 - Fire Blast
@@ -3973,7 +3973,7 @@ IVs: 24 HP / 27 Atk / 2 Def / 3 SpA / 15 SpD / 6 Spe
 Ability: Air Lock
 Level: 70
 Relaxed Nature
-=Met_Level=70
+=MetLevel=70
 ~=Version=E
 .Version=3
 - Fly

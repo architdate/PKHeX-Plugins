@@ -473,7 +473,7 @@ IVs: 27 HP / 1 Atk / 14 Def / 1 SpA / 1 SpD / 0 Spe
 Ability: Weak Armor
 Level: 25
 Impish Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=17
 ~=Version=B2W2
 .Version=23

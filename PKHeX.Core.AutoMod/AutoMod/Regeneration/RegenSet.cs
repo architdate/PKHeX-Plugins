@@ -7,7 +7,7 @@ namespace PKHeX.Core.AutoMod
 {
     public class RegenSet
     {
-        public static readonly RegenSet Default = new(Array.Empty<string>(), PKX.Generation);
+        public static readonly RegenSet Default = new([], PKX.Generation);
 
         public RegenSetting Extra { get; }
         public ITrainerInfo? Trainer { get; }
@@ -20,7 +20,7 @@ namespace PKHeX.Core.AutoMod
         public bool HasBatchSettings => Batch.Filters.Count != 0 || Batch.Instructions.Count != 0;
 
         public RegenSet(PKM pk)
-            : this(Array.Empty<string>(), pk.Format)
+            : this([], pk.Format)
         {
             Extra.Ball = (Ball)pk.Ball;
             Extra.ShinyType = GetShinyType(pk);
@@ -37,7 +37,7 @@ namespace PKHeX.Core.AutoMod
             return Shiny.Never;
         }
 
-        public RegenSet(ICollection<string> lines, int format, Shiny shiny = Shiny.Never)
+        public RegenSet(ICollection<string> lines, byte format, Shiny shiny = Shiny.Never)
         {
             var modified = lines
                 .Select(z => z.Replace(">=", "≥").Replace("<=", "≤"))

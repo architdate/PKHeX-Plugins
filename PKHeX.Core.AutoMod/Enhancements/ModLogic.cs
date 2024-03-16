@@ -204,8 +204,8 @@ namespace PKHeX.Core.AutoMod
             else
                 blank.Form = form;
 
-            var template = EntityBlank.GetBlank(tr.Generation, (GameVersion)tr.Game);
-            var item = GetFormSpecificItem(tr.Game, blank.Species, blank.Form);
+            var template = EntityBlank.GetBlank(tr.Generation, tr.Version);
+            var item = GetFormSpecificItem(tr.Version, blank.Species, blank.Form);
             if (item is not null)
                 blank.HeldItem = (int)item;
 
@@ -219,7 +219,7 @@ namespace PKHeX.Core.AutoMod
             if (shiny && !SimpleEdits.IsShinyLockedSpeciesForm(blank.Species, blank.Form))
                 setText += Environment.NewLine + "Shiny: Yes";
 
-            if (template is IAlphaReadOnly && alpha && tr.Game == (int)GameVersion.PLA)
+            if (template is IAlphaReadOnly && alpha && tr.Version == GameVersion.PLA)
                 setText += Environment.NewLine + "Alpha: Yes";
 
             var sset = new ShowdownSet(setText);
@@ -282,16 +282,16 @@ namespace PKHeX.Core.AutoMod
 
             if (species == 25 || SimpleEdits.AlolanOriginForms.Contains(species))
             {
-                if (generation >= 7 && pk.Generation is < 7 and not -1)
+                if (generation >= 7 && pk.Generation is < 7 and not 0)
                     return true;
             }
 
             return false;
         }
 
-        private static int? GetFormSpecificItem(int game, int species, int form)
+        private static int? GetFormSpecificItem(GameVersion game, int species, int form)
         {
-            if (game == (int)GameVersion.PLA)
+            if (game == GameVersion.PLA)
                 return null;
             var generation = ((GameVersion)game).GetGeneration();
             return species switch

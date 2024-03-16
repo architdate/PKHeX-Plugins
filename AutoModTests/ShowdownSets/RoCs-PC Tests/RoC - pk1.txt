@@ -280,7 +280,7 @@ Level: 41
 TERRY (Nidorina) (F)
 IVs: 3 HP / 8 Atk / 8 Def / 3 SpA / 3 SpD / 13 Spe
 Level: 23
-=OT_Name=*
+=OriginalTrainerName=*
 - Tackle
 - Scratch
 - Poison Sting
@@ -662,7 +662,7 @@ Level: 38
 DUX (Farfetch’d) (M)
 IVs: 5 HP / 10 Atk / 11 Def / 3 SpA / 3 SpD / 0 Spe
 Level: 8
-=OT_Name=*
+=OriginalTrainerName=*
 - Peck
 - Sand Attack
 - Leer
@@ -693,7 +693,7 @@ Level: 32
 SAILOR (Seel) (M)
 IVs: 12 HP / 11 Atk / 3 Def / 2 SpA / 2 SpD / 8 Spe
 Level: 28
-=OT_Name=*
+=OriginalTrainerName=*
 - Headbutt
 
 Seel (M)
@@ -856,7 +856,7 @@ Level: 50
 MARC (Lickitung) (M)
 IVs: 3 HP / 14 Atk / 6 Def / 11 SpA / 11 SpD / 7 Spe
 Level: 37
-=OT_Name=*
+=OriginalTrainerName=*
 - Stomp
 - Disable
 - Defense Curl
@@ -900,7 +900,7 @@ Level: 56
 CRINKLES (Tangela) (M)
 IVs: 8 HP / 14 Def / 8 SpA / 8 SpD / 12 Spe
 Level: 16
-=OT_Name=*
+=OriginalTrainerName=*
 - Constrict
 - Bind
 
@@ -962,14 +962,14 @@ Level: 30
 MARCEL (Mr. Mime) (F)
 IVs: 3 HP / 6 Atk / 6 Def / 7 Spe
 Level: 19
-=OT_Name=*
+=OriginalTrainerName=*
 - Confusion
 - Barrier
 
 MILES (Mr. Mime) (M)
 IVs: 9 Atk / 13 Def / 13 SpA / 13 SpD / 5 Spe
 Level: 11
-=OT_Name=*
+=OriginalTrainerName=*
 - Confusion
 - Barrier
 
@@ -984,7 +984,7 @@ Level: 30
 LOLA (Jynx) (F)
 IVs: 0 HP / 14 Atk / 6 Def / 12 SpA / 12 SpD / 2 Spe
 Level: 30
-=OT_Name=*
+=OriginalTrainerName=*
 - Pound
 - Lovely Kiss
 - Lick

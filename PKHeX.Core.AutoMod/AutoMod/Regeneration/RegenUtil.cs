@@ -8,7 +8,7 @@ namespace PKHeX.Core.AutoMod
     {
         public static bool GetTrainerInfo(
             IEnumerable<string> lines,
-            int format,
+            byte format,
             out ITrainerInfo tr
         )
         {
@@ -34,7 +34,7 @@ namespace PKHeX.Core.AutoMod
                         SID7 = sid;
                         break;
                     case "OTGender":
-                        sti.Gender = value is "Female" or "F" ? 1 : 0;
+                        sti.Gender = (byte)(value is "Female" or "F" ? 1 : 0);
                         break;
                     default:
                         continue;
@@ -78,10 +78,10 @@ namespace PKHeX.Core.AutoMod
             return CleanFilters(valid);
         }
 
-        private static IReadOnlyList<StringInstruction> CleanFilters(List<string> lines)
+        private static StringInstruction[] CleanFilters(List<string> lines)
         {
             if (lines.Count == 0)
-                return Array.Empty<StringInstruction>();
+                return [];
             var cleaned = lines.Select(z => z.TrimStart(EncounterFilterPrefix));
             var filters = StringInstruction.GetFilters(cleaned).ToArray();
             BatchEditing.ScreenStrings(filters);

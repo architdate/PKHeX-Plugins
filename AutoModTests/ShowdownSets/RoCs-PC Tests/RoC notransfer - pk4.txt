@@ -174,7 +174,7 @@ IVs: 7 HP / 15 Atk / 13 Def / 28 SpA / 23 SpD
 EVs: 252 HP / 252 Atk / 6 Spe
 Ability: Overgrow
 Naughty Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=HGSS
 .Version=8
 - Cut
@@ -213,7 +213,7 @@ IVs: 16 HP / 29 Atk / 30 Def / 18 SpD / 9 Spe
 Ability: Static
 Level: 30
 Naughty Nature
-=Met_Level=30
+=MetLevel=30
 ~=Version=HGSS
 .Version=7
 - Helping Hand

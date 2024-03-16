@@ -148,7 +148,7 @@ Gentle Nature
 ロモたん (Poliwag) (M)
 IVs: 12 HP / 17 Atk / 13 SpD
 Ability: Swift Swim
-=OT_Name=トレーナー
+=OriginalTrainerName=トレーナー
 Language: Japanese
 Level: 2
 Shiny: Square

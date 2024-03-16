@@ -1223,7 +1223,7 @@ IVs: 25 HP / 9 Atk / 23 Def / 0 SpA / 19 SpD
 Ability: Intimidate
 Level: 20
 Adamant Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=68
 ~=Version=BW
 .Version=21
@@ -1330,7 +1330,7 @@ IVs: 27 HP / 24 Atk / 24 Def / 6 SpA / 24 SpD / 28 Spe
 Ability: Swift Swim
 Level: 40
 Impish Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=7
 ~=Version=BW
 .Version=21
@@ -1357,7 +1357,7 @@ IVs: 6 HP / 7 Atk / 14 Def / 14 SpA / 23 SpD / 13 Spe
 Ability: Swift Swim
 Level: 40
 Hasty Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=7
 ~=Version=B2W2
 .Version=23
@@ -1371,7 +1371,7 @@ IVs: 27 HP / 3 Atk / 18 SpA / 12 SpD / 4 Spe
 Ability: Rock Head
 Level: 25
 Adamant Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=7
 ~=Version=BW
 .Version=21
@@ -2584,7 +2584,7 @@ IVs: 2 HP / 28 Atk / 12 Def / 23 SpA / 24 SpD / 7 Spe
 Ability: Wonder Guard
 Level: 20
 Bold Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=75
 ~=Version=BW
 .Version=21
@@ -3176,7 +3176,7 @@ IVs: 5 HP / 12 Atk / 0 Def / 24 SpA / 12 SpD / 28 Spe
 Ability: Suction Cups
 Level: 40
 Adamant Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=7
 ~=Version=B2W2
 .Version=23
@@ -3190,7 +3190,7 @@ IVs: 14 HP / 11 Def / 19 SpA / 16 SpD / 9 Spe
 Ability: Battle Armor
 Level: 40
 Bold Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=7
 ~=Version=BW
 .Version=21
@@ -3755,7 +3755,7 @@ IVs: 3 HP / 27 Atk / 6 Def / 26 SpA / 26 SpD / 30 Spe
 Ability: Mold Breaker
 Level: 30
 Calm Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=7
 ~=Version=B2W2
 .Version=23
@@ -3783,7 +3783,7 @@ IVs: 20 HP / 10 Atk / 28 Def / 8 SpD / 5 Spe
 Ability: Sturdy
 Level: 30
 Naughty Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=7
 ~=Version=BW
 .Version=21
@@ -3938,7 +3938,7 @@ Ability: Pickup
 Level: 40
 Jolly Nature
 Language: English
-=OT_Name=Diana
+=OriginalTrainerName=Diana
 ~=Location=30002
 ~=Version=B2W2
 .Version=22
@@ -4743,7 +4743,7 @@ IVs: 16 HP / 7 Atk / 7 Def / 16 SpA / 3 SpD / 13 Spe
 Ability: Overgrow
 Level: 36
 Bold Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=4
 ~=Version=BW
 .Version=21
@@ -4757,7 +4757,7 @@ IVs: 0 HP / 6 Atk / 9 Def / 28 SpA / 1 SpD
 Ability: Blaze
 Level: 36
 Naive Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=4
 ~=Version=BW
 .Version=21
@@ -4771,7 +4771,7 @@ IVs: 18 HP / 29 Atk / 13 Def / 30 SpA / 11 SpD / 12 Spe
 Ability: Torrent
 Level: 5
 Lax Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=4
 ~=Version=BW
 .Version=21
@@ -4783,7 +4783,7 @@ IVs: 17 HP / 0 Atk / 16 Def / 16 SpA / 0 SpD / 28 Spe
 Ability: Torrent
 Level: 36
 Serious Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=4
 ~=Version=BW
 .Version=20
@@ -5059,7 +5059,7 @@ Ability: Sturdy
 Level: 35
 Adamant Nature
 Language: English
-=OT_Name=Manny
+=OriginalTrainerName=Manny
 ~=Location=30002
 ~=Version=B2W2
 .Version=22
@@ -5382,7 +5382,7 @@ Ability: Reckless
 Level: 25
 Adamant Nature
 Language: English
-=OT_Name=Kyle
+=OriginalTrainerName=Kyle
 ~=Location=30002
 - Crunch
 - Aqua Jet
@@ -5395,7 +5395,7 @@ Ability: Rock Head
 Level: 25
 Adamant Nature
 Language: English
-=OT_Name=Kyle
+=OriginalTrainerName=Kyle
 ~=Location=30002
 ~=Version=BW
 .Version=20
@@ -5618,7 +5618,7 @@ IVs: 30 HP / 12 Atk / 3 Def / 25 SpA / 19 SpD / 21 Spe
 Ability: Sturdy
 Level: 37
 Naive Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=7
 ~=Version=BW
 .Version=21
@@ -5632,7 +5632,7 @@ IVs: 23 HP / 26 Atk / 27 SpA / 18 SpD / 26 Spe
 Ability: Defeatist
 Level: 25
 Brave Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=7
 ~=Version=BW
 .Version=20
@@ -5646,7 +5646,7 @@ IVs: 3 HP / 21 Atk / 26 Def / 24 SpA / 20 SpD / 19 Spe
 Ability: Defeatist
 Level: 37
 Gentle Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=7
 ~=Version=BW
 .Version=21

@@ -270,8 +270,8 @@ Ability: Hustle
 Level: 12
 Bold Nature
 Language: English
-=OT_Name=Tatianna
-=Met_Location=30001
+=OriginalTrainerName=Tatianna
+=MetLocation=30001
 ~=Version=LGPE
 .Version=43
 - Tail Whip
@@ -324,8 +324,8 @@ Ability: Gluttony
 Level: 20
 Jolly Nature
 Language: English
-=OT_Name=Tatianna
-=Met_Location=30001
+=OriginalTrainerName=Tatianna
+=MetLocation=30001
 ~=Version=LGPE
 .Version=42
 - Super Fang
@@ -415,8 +415,8 @@ Ability: Surge Surfer
 Level: 30
 Brave Nature
 Language: English
-=OT_Name=Psytrice
-=Met_Location=30001
+=OriginalTrainerName=Psytrice
+=MetLocation=30001
 ~=Version=LGPE
 .Version=42
 - Thunder Shock
@@ -442,8 +442,8 @@ Ability: Snow Cloak
 Level: 27
 Modest Nature
 Language: English
-=OT_Name=Nicholice
-=Met_Location=30001
+=OriginalTrainerName=Nicholice
+=MetLocation=30001
 ~=Version=LGPE
 .Version=42
 - Swift
@@ -854,8 +854,8 @@ Ability: Sand Veil
 Level: 25
 Docile Nature
 Language: English
-=OT_Name=Diggette
-=Met_Location=30001
+=OriginalTrainerName=Diggette
+=MetLocation=30001
 ~=Version=LGPE
 .Version=42
 - Fury Swipes
@@ -895,8 +895,8 @@ Ability: Sand Veil
 Level: 26
 Docile Nature
 Language: English
-=OT_Name=Diggette
-=Met_Location=30001
+=OriginalTrainerName=Diggette
+=MetLocation=30001
 ~=Version=LGPE
 .Version=42
 - Tri Attack
@@ -949,8 +949,8 @@ Ability: Technician
 Level: 44
 Sassy Nature
 Language: English
-=OT_Name=Darko
-=Met_Location=30001
+=OriginalTrainerName=Darko
+=MetLocation=30001
 ~=Version=LGPE
 .Version=43
 - Screech
@@ -1396,8 +1396,8 @@ Ability: Sturdy
 Level: 16
 Careful Nature
 Language: English
-=OT_Name=Higeo
-=Met_Location=30001
+=OriginalTrainerName=Higeo
+=MetLocation=30001
 ~=Version=LGPE
 .Version=43
 - Bide
@@ -1501,8 +1501,8 @@ Ability: Magnet Pull
 Level: 25
 Timid Nature
 Language: English
-=OT_Name=Higeo
-=Met_Location=30001
+=OriginalTrainerName=Higeo
+=MetLocation=30001
 ~=Version=LGPE
 .Version=42
 - Self-Destruct
@@ -2096,8 +2096,8 @@ Ability: Frisk
 Level: 46
 Hasty Nature
 Language: English
-=OT_Name=Exemann
-=Met_Location=30001
+=OriginalTrainerName=Exemann
+=MetLocation=30001
 ~=Version=LGPE
 .Version=43
 - Barrage
@@ -2163,8 +2163,8 @@ Ability: Lightning Rod
 Level: 38
 Hasty Nature
 Language: English
-=OT_Name=Genmar
-=Met_Location=30001
+=OriginalTrainerName=Genmar
+=MetLocation=30001
 ~=Version=LGPE
 .Version=42
 - Rage

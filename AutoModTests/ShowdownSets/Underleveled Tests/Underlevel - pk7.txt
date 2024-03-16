@@ -82,7 +82,7 @@ IVs: 9 Atk / 10 Def / 10 SpA / 26 SpD / 14 Spe
 Ability: Damp
 Level: 22
 Naughty Nature
-=Met_Location=30001
+=MetLocation=30001
 ~=Version=SM
 .Version=30
 - Bubble
@@ -549,7 +549,7 @@ Ability: Cursed Body
 Level: 35
 Hasty Nature
 ~=Version=DPPt
-=OT_Name=Mindy
+=OriginalTrainerName=Mindy
 - Sucker Punch
 - Shadow Punch
 - Payback

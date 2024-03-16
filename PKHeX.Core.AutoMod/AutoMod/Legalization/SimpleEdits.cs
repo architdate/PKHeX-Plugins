@@ -13,7 +13,7 @@ namespace PKHeX.Core.AutoMod
             MarkingApplicator.MarkingMethod = FlagIVsAutoMod;
         }
 
-        internal static readonly int[] RoamingMetLocationBDSP =
+        internal static readonly ushort[] RoamingMetLocationBDSP =
         [
             197,
             201,
@@ -482,16 +482,16 @@ namespace PKHeX.Core.AutoMod
             bool neverOT = !HistoryVerifier.GetCanOTHandle(enc, pk, enc.Generation);
             if (enc.Generation <= 2)
             {
-                pk.OT_Friendship = GetBaseFriendship(EntityContext.Gen7, pk.Species, pk.Form); // VC transfers use SM personal info
+                pk.OriginalTrainerFriendship = GetBaseFriendship(EntityContext.Gen7, pk.Species, pk.Form); // VC transfers use SM personal info
             }
             else if (neverOT)
             {
-                pk.OT_Friendship = GetBaseFriendship(enc);
-                tb.Handle(TracebackType.Friendship, $"Set friendship based for non OT: {pk.OT_Friendship}");
+                pk.OriginalTrainerFriendship = GetBaseFriendship(enc);
+                tb.Handle(TracebackType.Friendship, $"Set friendship based for non OT: {pk.OriginalTrainerFriendship}");
             }
             else
             {
-                pk.CurrentFriendship = pk.HasMove(218) ? 0 : 255;
+                pk.CurrentFriendship = pk.HasMove(218) ? (byte)0 : (byte)255;
             }
         }
 
@@ -522,7 +522,7 @@ namespace PKHeX.Core.AutoMod
             if (pref_lang == LanguageID.Hacked || pref_lang == LanguageID.UNUSED_6)
                 prefer = 2; // prefer english
             if (pk is IHandlerLanguage pkm)
-                pkm.HT_Language = prefer;
+                pkm.HandlingTrainerLanguage = prefer;
         }
 
         public static void SetGigantamaxFactor(
@@ -606,16 +606,16 @@ namespace PKHeX.Core.AutoMod
             }
         }
 
-        private static int GetBaseFriendship(IEncounterTemplate enc) =>
+        private static byte GetBaseFriendship(IEncounterTemplate enc) =>
             enc switch
             {
-                IFixedOTFriendship f => f.OT_Friendship,
+                IFixedOTFriendship f => f.OriginalTrainerFriendship,
                 { Version: GameVersion.BD or GameVersion.SP }
                     => PersonalTable.SWSH.GetFormEntry(enc.Species, enc.Form).BaseFriendship,
                 _ => GetBaseFriendship(enc.Context, enc.Species, enc.Form),
             };
 
-        private static int GetBaseFriendship(EntityContext context, ushort species, byte form)
+        private static byte GetBaseFriendship(EntityContext context, ushort species, byte form)
         {
             return context switch
             {
@@ -643,7 +643,7 @@ namespace PKHeX.Core.AutoMod
         {
             pk.TID16 = trainer.TID16;
             pk.SID16 = pk.Generation >= 3 ? trainer.SID16 : (ushort)0;
-            pk.OT_Name = trainer.OT;
+            pk.OriginalTrainerName = trainer.OT;
         }
 
         /// <summary>
@@ -668,8 +668,8 @@ namespace PKHeX.Core.AutoMod
                 return;
 
             pk.CurrentHandler = 1;
-            pk.HT_Name = trainer.OT;
-            pk.HT_Gender = trainer.Gender;
+            pk.HandlingTrainerName = trainer.OT;
+            pk.HandlingTrainerGender = trainer.Gender;
             pk.SetHTLanguage((byte)trainer.Language);
             pk.SetSuggestedMemories();
             tb.Handle(TracebackType.Trainer, "Modified handler to HT");

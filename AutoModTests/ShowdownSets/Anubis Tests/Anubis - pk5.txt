@@ -494,7 +494,7 @@ Ability: Synchronize
 Level: 30
 Shiny: Yes
 Adamant Nature
-=Met_Location=30001
+=MetLocation=30001
 Language: Japanese
 ~=Version=E
 .Version=3
@@ -624,7 +624,7 @@ Ability: Pressure
 Level: 40
 Shiny: Yes
 Adamant Nature
-=Met_Location=30001
+=MetLocation=30001
 ~=Version=CXD
 - Sunny Day
 - Leer
@@ -738,7 +738,7 @@ Ability: Early Bird
 Level: 38
 Shiny: Yes
 Hasty Nature
-=Met_Location=30001
+=MetLocation=30001
 ~=Version=HGSS
 .Version=8
 - Synthesis
@@ -1073,7 +1073,7 @@ Ability: Drought
 Level: 45
 Shiny: Yes
 Adamant Nature
-=Met_Location=30001
+=MetLocation=30001
 ~=Version=RS
 .Version=2
 - Counter
@@ -1132,7 +1132,7 @@ Ability: Air Lock
 Level: 70
 Shiny: Yes
 Adamant Nature
-=Met_Location=30001
+=MetLocation=30001
 ~=Version=RS
 .Version=2
 - Body Slam
@@ -1324,7 +1324,7 @@ Ability: Levitate
 Level: 20
 Shiny: Yes
 Timid Nature
-=Met_Location=30001
+=MetLocation=30001
 ~=Version=Pt
 - Mud-Slap
 - Sucker Punch
@@ -1618,7 +1618,7 @@ Ability: Blaze
 Level: 5
 Shiny: Yes
 Adamant Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=117
 ~=Version=B2W2
 .Version=22
@@ -1644,7 +1644,7 @@ Ability: Torrent
 Level: 5
 Shiny: Yes
 Adamant Nature
-=Met_Level=5
+=MetLevel=5
 Language: Japanese
 ~=Location=4
 ~=Version=BW
@@ -1699,7 +1699,7 @@ Ability: Gluttony
 Level: 10
 Shiny: Yes
 Timid Nature
-=Met_Level=10
+=MetLevel=10
 Language: Japanese
 ~=Location=32
 ~=Version=BW
@@ -1789,7 +1789,7 @@ Ability: Shell Armor
 Level: 42
 Shiny: Yes
 Gentle Nature
-=Met_Level=42
+=MetLevel=42
 ~=Location=141
 ~=Version=B2W2
 .Version=23
