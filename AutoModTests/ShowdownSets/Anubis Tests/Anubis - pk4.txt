@@ -16,7 +16,7 @@ Level: 15
 Shiny: Yes
 Bold Nature
 Ball: Poke Ball
-=Met_Level=15
+=MetLevel=15
 ~=Version=HGSS
 .Version=7
 - Supersonic
@@ -128,7 +128,7 @@ Ability: Overgrow
 Level: 5
 Shiny: Yes
 Calm Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=HGSS
 .Version=7
 - Tackle
@@ -140,7 +140,7 @@ Ability: Blaze
 Level: 5
 Shiny: Yes
 Timid Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=HGSS
 .Version=7
 - Tackle
@@ -152,7 +152,7 @@ Ability: Torrent
 Level: 5
 Shiny: Yes
 Jolly Nature
-=Met_Level=5
+=MetLevel=5
 ~=Version=HGSS
 .Version=7
 - Scratch
@@ -543,7 +543,7 @@ Ability: Pressure
 Level: 1
 Shiny: Yes
 Modest Nature
-=Met_Level=1
+=MetLevel=1
 ~=Version=HGSS
 .Version=8
 - Dragon Breath
@@ -567,7 +567,7 @@ Ability: Pressure
 Level: 1
 Shiny: Yes
 Modest Nature
-=Met_Level=1
+=MetLevel=1
 ~=Version=HGSS
 .Version=7
 - Dragon Breath
@@ -618,7 +618,7 @@ Ability: Pressure
 Level: 1
 Shiny: Yes
 Modest Nature
-=Met_Level=1
+=MetLevel=1
 ~=Version=HGSS
 .Version=8
 - Dragon Breath

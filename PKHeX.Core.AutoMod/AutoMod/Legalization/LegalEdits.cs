@@ -46,7 +46,7 @@ namespace PKHeX.Core.AutoMod
             {
                 if (pk.LA && ReplaceBallPrefixLA && LABallMapping.TryGetValue(ball, out var modified))
                     ball = modified;
-                pk.Ball = (int)ball;
+                pk.Ball = (byte)ball;
                 if (!force && !pk.ValidBall())
                     pk.Ball = orig;
             }
@@ -62,7 +62,7 @@ namespace PKHeX.Core.AutoMod
             if (force || la.Valid)
                 return;
 
-            if (pk.Generation == 5 && pk.Met_Location == 75)
+            if (pk.Generation == 5 && pk.MetLocation == 75)
                 pk.Ball = (int)Ball.Dream;
             else
                 pk.Ball = orig;

@@ -2310,7 +2310,7 @@ Ability: Hydration
 Tera Type: Water
 Level: 3
 Careful Nature
-.Met_Location=80
+.MetLocation=80
 ~=Version=SV
 .Version=51
 - Growl
@@ -3746,7 +3746,7 @@ Ability: Sand Veil
 Tera Type: Ground
 Level: 57
 Naive Nature
-.Met_Location=50
+.MetLocation=50
 ~=Version=SV
 .Version=50
 - Bite
@@ -4253,7 +4253,7 @@ Ability: Illusion
 Tera Type: Dark
 Level: 39
 Adamant Nature
-.Met_Location=107
+.MetLocation=107
 ~=Version=SV
 .Version=50
 - Encore
@@ -4431,7 +4431,7 @@ Ability: Healer
 Tera Type: Water
 Level: 47
 Jolly Nature
-.Met_Location=40
+.MetLocation=40
 ~=Version=SV
 .Version=50
 - Soak
@@ -5457,7 +5457,7 @@ Ability: Tough Claws
 Tera Type: Psychic
 Naughty Nature
 Ball: Master Ball
-.Met_Location=101
+.MetLocation=101
 ~=Version=SV
 .Version=50
 - Mud-Slap
@@ -5553,7 +5553,7 @@ Ability: Leaf Guard
 Tera Type: Grass
 Level: 40
 Lax Nature
-.Met_Location=109
+.MetLocation=109
 ~=Version=SV
 .Version=50
 - Sweet Scent
@@ -5641,7 +5641,7 @@ Tera Type: Grass
 Level: 34
 Bold Nature
 Ball: Master Ball
-.Met_Location=34
+.MetLocation=34
 ~=Version=SV
 .Version=50
 - Stomp
@@ -5669,7 +5669,7 @@ Ability: Leaf Guard
 Tera Type: Psychic
 Level: 65
 Relaxed Nature
-.Met_Location=109
+.MetLocation=109
 ~=Version=SV
 .Version=50
 - Zen Headbutt
@@ -6531,7 +6531,7 @@ Ability: Overgrow
 Tera Type: Grass
 Level: 41
 Jolly Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=80
 ~=Version=SV
 .Version=51
@@ -6546,7 +6546,7 @@ EVs: 252 HP / 252 Atk / 6 Def
 Ability: Torrent
 Tera Type: Water
 Adamant Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=80
 ~=Version=SV
 .Version=50
@@ -6638,7 +6638,7 @@ Ability: Insomnia
 Tera Type: Bug
 Level: 3
 Lax Nature
-.Met_Location=80
+.MetLocation=80
 ~=Version=SV
 .Version=51
 - Tackle
@@ -7971,7 +7971,7 @@ Ability: Commander
 Tera Type: Dragon
 Level: 45
 Quiet Nature
-=Met_Level=45
+=MetLevel=45
 ~=Location=40
 ~=Version=SV
 .Version=50
@@ -8060,7 +8060,7 @@ Ability: Commander
 Tera Type: Dragon
 Level: 45
 Gentle Nature
-=Met_Level=45
+=MetLevel=45
 ~=Location=40
 ~=Version=SV
 .Version=50
@@ -8120,7 +8120,7 @@ Ability: Commander
 Tera Type: Dragon
 Level: 45
 Relaxed Nature
-=Met_Level=45
+=MetLevel=45
 ~=Location=40
 ~=Version=SV
 .Version=51
@@ -8380,7 +8380,7 @@ Ability: Intimidate
 Tera Type: Normal
 Level: 2
 Docile Nature
-.Met_Location=80
+.MetLocation=80
 ~=Version=SV
 .Version=51
 - Growl
@@ -8393,7 +8393,7 @@ Ability: Intimidate
 Tera Type: Flying
 Level: 2
 Gentle Nature
-.Met_Location=80
+.MetLocation=80
 ~=Version=SV
 .Version=51
 - Growl
@@ -8526,7 +8526,7 @@ Ability: Anger Shell
 Tera Type: Rock
 Level: 16
 Gentle Nature
-=Met_Level=16
+=MetLevel=16
 ~=Location=20
 ~=Version=SV
 .Version=51
@@ -8869,7 +8869,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 40
 Bashful Nature
-=Met_Level=40
+=MetLevel=40
 ~=Location=16
 ~=Version=SV
 .Version=50
@@ -8883,7 +8883,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 46
 Bold Nature
-=Met_Level=35
+=MetLevel=35
 ~=Location=38
 ~=Version=SV
 .Version=50
@@ -8896,7 +8896,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 50
 Docile Nature
-=Met_Level=50
+=MetLevel=50
 ~=Location=40
 ~=Version=SV
 .Version=50
@@ -8909,7 +8909,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 35
 Hardy Nature
-=Met_Level=35
+=MetLevel=35
 ~=Location=38
 ~=Version=SV
 .Version=50
@@ -8922,7 +8922,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 15
 Hasty Nature
-=Met_Level=15
+=MetLevel=15
 ~=Location=14
 ~=Version=SV
 .Version=50
@@ -8935,7 +8935,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 50
 Impish Nature
-=Met_Level=50
+=MetLevel=50
 ~=Location=40
 ~=Version=SV
 .Version=50
@@ -8961,7 +8961,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 20
 Naive Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=24
 ~=Version=SV
 .Version=51
@@ -8974,7 +8974,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 50
 Relaxed Nature
-=Met_Level=50
+=MetLevel=50
 ~=Location=40
 ~=Version=SV
 .Version=50
@@ -8987,7 +8987,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 50
 Sassy Nature
-=Met_Level=50
+=MetLevel=50
 ~=Location=40
 ~=Version=SV
 .Version=50
@@ -9000,7 +9000,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 20
 Timid Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=24
 ~=Version=SV
 .Version=51
@@ -9013,7 +9013,7 @@ Ability: Rattled
 Tera Type: Ghost
 Level: 10
 Timid Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=20
 ~=Version=SV
 .Version=51
@@ -9039,7 +9039,7 @@ Ability: Protosynthesis
 Tera Type: Fighting
 Level: 45
 Naughty Nature
-=Met_Level=45
+=MetLevel=45
 ~=Location=24
 ~=Version=SV
 .Version=50
@@ -9237,7 +9237,7 @@ EVs: 2 Atk / 2 Def
 Ability: Vessel of Ruin
 Tera Type: Dark
 Rash Nature
-=Met_Level=60
+=MetLevel=60
 ~=Location=109
 ~=Version=SV
 .Version=50
@@ -9267,7 +9267,7 @@ Ability: Tablets of Ruin
 Tera Type: Dark
 Level: 60
 Naughty Nature
-=Met_Level=60
+=MetLevel=60
 ~=Location=6
 ~=Version=SV
 .Version=50
@@ -9298,7 +9298,7 @@ Ability: Orichalcum Pulse
 Tera Type: Fighting
 Level: 72
 Adamant Nature
-=Met_Level=72
+=MetLevel=72
 ~=Location=124
 ~=Version=SV
 .Version=50
@@ -9313,14 +9313,14 @@ Ability: Protosynthesis
 Tera Type: Water
 Level: 75
 Hasty Nature
-.Met_Location=30024
+.MetLocation=30024
 - Hydro Steam
 - Dragon Pulse
 - Noble Roar
 - Flamethrower
 
 Pikachu
-.Met_Location=40001
+.MetLocation=40001
 - Fly
 
 Pikachu
@@ -9465,7 +9465,7 @@ Tera Type: Fire
 Level: 35
 Shiny: Yes
 Relaxed Nature
-.Met_Location=54
+.MetLocation=54
 ~=Version=PLA
 - Helping Hand
 - Fire Fang
@@ -9617,7 +9617,7 @@ Tera Type: Electric
 Level: 50
 Shiny: Yes
 Careful Nature
-.Met_Location=131
+.MetLocation=131
 ~=Version=PLA
 - Seed Bomb
 - Explosion
@@ -9647,7 +9647,7 @@ Tera Type: Electric
 Level: 76
 Shiny: Yes
 Brave Nature
-.Met_Location=70
+.MetLocation=70
 ~=Version=PLA
 - Chloroblast
 - Thunderbolt
@@ -9814,7 +9814,7 @@ Ability: Defiant
 Tera Type: Fighting
 Level: 70
 Jolly Nature
-.Met_Location=124
+.MetLocation=124
 ~=Version=SWSH
 .Version=45
 - Counter
@@ -9874,7 +9874,7 @@ Ability: Pressure
 Tera Type: Psychic
 Shiny: Square
 Modest Nature
-.Met_Location=507
+.MetLocation=507
 ~=Version=BDSP
 .Version=48
 - Psystrike
@@ -9889,7 +9889,7 @@ Ability: Pressure
 Tera Type: Psychic
 Shiny: Square
 Modest Nature
-.Met_Location=507
+.MetLocation=507
 ~=Version=BDSP
 .Version=48
 - Psystrike
@@ -11591,7 +11591,7 @@ Tera Type: Grass
 Level: 37
 Shiny: Yes
 Adamant Nature
-.Met_Location=45
+.MetLocation=45
 ~=Version=PLA
 - After You
 - Petal Blizzard
@@ -12116,7 +12116,7 @@ Tera Type: Psychic
 Level: 77
 Shiny: Yes
 Hasty Nature
-.Met_Location=90
+.MetLocation=90
 ~=Version=PLA
 - Dazzling Gleam
 - Esper Wing
@@ -12645,7 +12645,7 @@ Tera Type: Steel
 Shiny: Yes
 Bold Nature
 Ball: Master Ball
-.Met_Location=103
+.MetLocation=103
 ~=Version=SV
 .Version=51
 - Calm Mind
@@ -12846,7 +12846,7 @@ Tera Type: Dragon
 Level: 39
 Shiny: Yes
 Bashful Nature
-.Met_Location=147
+.MetLocation=147
 ~=Version=PLA
 - Flail
 - Water Pulse
@@ -12874,7 +12874,7 @@ Ability: Sap Sipper
 Tera Type: Steel
 Shiny: Yes
 Sassy Nature
-.Met_Location=147
+.MetLocation=147
 ~=Version=PLA
 - Shelter
 - Body Press
@@ -13812,7 +13812,7 @@ Ability: Guts
 Tera Type: Ground
 Shiny: Yes
 Brave Nature
-.Met_Location=106
+.MetLocation=106
 ~=Version=PLA
 - Headlong Rush
 - Play Rough
@@ -16269,7 +16269,7 @@ Tera Type: Fire
 Level: 75
 Shiny: Yes
 Brave Nature
-.Met_Location=30024
+.MetLocation=30024
 ~=Version=SV
 .Version=50
 - Take Down
@@ -16527,7 +16527,7 @@ Ability: Orichalcum Pulse
 Tera Type: Fighting
 Level: 72
 Adamant Nature
-=Met_Level=72
+=MetLevel=72
 ~=Location=124
 ~=Version=SV
 .Version=50
@@ -16725,7 +16725,7 @@ Tera Type: Dragon
 Level: 39
 Shiny: Yes
 Bashful Nature
-.Met_Location=147
+.MetLocation=147
 ~=Version=PLA
 - Flail
 - Water Pulse
@@ -16858,7 +16858,7 @@ Ability: Surge Surfer
 Tera Type: Electric
 Level: 30
 Rash Nature
-=Met_Location=30001
+=MetLocation=30001
 ~=Version=LGPE
 .Version=42
 - Electro Ball
@@ -16920,7 +16920,7 @@ Ability: Flash Fire
 Tera Type: Fire
 Level: 41
 Rash Nature
-.Met_Location=61
+.MetLocation=61
 ~=Version=PLA
 - Retaliate
 - Crunch
@@ -16933,7 +16933,7 @@ Ability: Intimidate
 Tera Type: Fire
 Level: 41
 Hardy Nature
-.Met_Location=61
+.MetLocation=61
 ~=Version=PLA
 - Flare Blitz
 - Fire Fang
@@ -16974,7 +16974,7 @@ Ability: Static
 Tera Type: Electric
 Level: 62
 Calm Nature
-.Met_Location=131
+.MetLocation=131
 ~=Version=PLA
 - Seed Bomb
 - Explosion
@@ -16987,7 +16987,7 @@ Ability: Static
 Tera Type: Electric
 Level: 75
 Lax Nature
-.Met_Location=131
+.MetLocation=131
 ~=Version=PLA
 - Seed Bomb
 - Explosion
@@ -17069,7 +17069,7 @@ Ability: Competitive
 Tera Type: Psychic
 Level: 70
 Quirky Nature
-.Met_Location=214
+.MetLocation=214
 ~=Version=SWSH
 .Version=44
 - Hurricane
@@ -17111,7 +17111,7 @@ Ability: Defiant
 Tera Type: Fighting
 Level: 70
 Careful Nature
-.Met_Location=128
+.MetLocation=128
 ~=Version=SWSH
 .Version=44
 - Counter
@@ -17277,7 +17277,7 @@ Ability: Keen Eye
 Tera Type: Fighting
 Level: 61
 Brave Nature
-.Met_Location=73
+.MetLocation=73
 ~=Version=PLA
 - Slash
 - Agility
@@ -17612,7 +17612,7 @@ Ability: Torrent
 Tera Type: Water
 Level: 64
 Jolly Nature
-.Met_Location=99
+.MetLocation=99
 ~=Version=PLA
 - Aqua Tail
 - Retaliate
@@ -17652,7 +17652,7 @@ Ability: Illusion
 Tera Type: Ghost
 Level: 26
 Docile Nature
-.Met_Location=112
+.MetLocation=112
 ~=Version=PLA
 - Shadow Sneak
 - Curse
@@ -18092,7 +18092,7 @@ Ability: Frisk
 Tera Type: Psychic
 Level: 42
 Mild Nature
-.Met_Location=16
+.MetLocation=16
 ~=Version=PLA
 - Confuse Ray
 - Calm Mind
@@ -18118,7 +18118,7 @@ Ability: Bulletproof
 Tera Type: Ground
 Level: 41
 Docile Nature
-.Met_Location=147
+.MetLocation=147
 ~=Version=PLA
 - Play Rough
 - Scary Face
@@ -18132,7 +18132,7 @@ Ability: Adaptability
 Tera Type: Water
 Level: 67
 Lax Nature
-.Met_Location=11
+.MetLocation=11
 ~=Version=PLA
 - Wave Crash
 - Thrash
@@ -18146,7 +18146,7 @@ Ability: Swift Swim
 Tera Type: Water
 Level: 65
 Sassy Nature
-.Met_Location=11
+.MetLocation=11
 ~=Version=PLA
 - Wave Crash
 - Thrash
@@ -18186,7 +18186,7 @@ Ability: Cute Charm
 Tera Type: Fairy
 Level: 70
 Timid Nature
-.Met_Location=38
+.MetLocation=38
 ~=Version=PLA
 - Superpower
 - Healing Wish
@@ -18200,7 +18200,7 @@ Tera Type: Steel
 Level: 65
 Modest Nature
 Ball: Origin Ball
-.Met_Location=109
+.MetLocation=109
 ~=Version=PLA
 - Dragon Claw
 - Aura Sphere
@@ -18269,7 +18269,7 @@ Ability: Good as Gold
 Tera Type: Ghost
 Level: 1
 Lonely Nature
-.Met_Location=30012
+.MetLocation=30012
 ~=Version=GO
 .Version=34
 - Tackle
@@ -18297,7 +18297,7 @@ Ability: Rattled
 Tera Type: Psychic
 Level: 45
 Quiet Nature
-.Met_Location=30024
+.MetLocation=30024
 ~=Version=SV
 .Version=50
 - Take Down
@@ -18370,7 +18370,7 @@ Ability: Technician
 Tera Type: Poison
 Level: 86
 Jolly Nature
-=Met_Level=70
+=MetLevel=70
 ~=Location=144
 ~=Version=VL
 - Brave Bird

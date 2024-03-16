@@ -108,8 +108,8 @@ Ability: Surge Surfer
 Shiny: Yes
 Timid Nature
 Language: English
-=OT_Name=Psytrice
-=Met_Location=30001
+=OriginalTrainerName=Psytrice
+=MetLocation=30001
 ~=Version=LGPE
 .Version=42
 - Nasty Plot
@@ -1050,7 +1050,7 @@ Ability: Levitate
 Level: 1
 Shiny: Yes
 Adamant Nature
-=Met_Level=1
+=MetLevel=1
 ~=Version=HGSS
 .Version=8
 - Dragon Breath

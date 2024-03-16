@@ -1134,7 +1134,7 @@ namespace PKHeX.Core.AutoMod
             var orig_ball = pkm.Ball;
             foreach (var b in balls)
             {
-                pkm.Ball = (int)b;
+                pkm.Ball = (byte)b;
                 if (new LegalityAnalysis(pkm).Valid)
                     return pkm.Ball;
             }

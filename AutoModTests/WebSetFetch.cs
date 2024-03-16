@@ -17,7 +17,7 @@ namespace AutoModTests
         public static void HasSmogonSets(Type t, GameVersion game, ushort species, byte form = 0)
         {
             var blank = EntityBlank.GetBlank(t);
-            blank.Version = (int)game;
+            blank.Version = game;
             blank.Species = species;
             blank.Form = form;
 

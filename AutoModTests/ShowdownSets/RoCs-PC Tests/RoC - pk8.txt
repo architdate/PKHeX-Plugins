@@ -4,7 +4,7 @@ Ability: Overgrow
 Level: 5
 Gigantamax: Yes
 Rash Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=196
 ~=Version=SWSH
 .Version=45
@@ -18,7 +18,7 @@ Ability: Overgrow
 Level: 32
 Gigantamax: Yes
 Timid Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=196
 ~=Version=SWSH
 .Version=44
@@ -57,7 +57,7 @@ Ability: Torrent
 Level: 36
 Gigantamax: Yes
 Lax Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=196
 ~=Version=SWSH
 .Version=44
@@ -239,7 +239,7 @@ IVs: 30 Atk / 24 SpA / 9 SpD
 Ability: Surge Surfer
 Level: 30
 Quiet Nature
-=Met_Level=30
+=MetLevel=30
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -267,7 +267,7 @@ IVs: 19 HP / 1 Def / 17 SpD
 Ability: Slush Rush
 Level: 5
 Brave Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -420,7 +420,7 @@ IVs: 11 Atk / 21 SpA / 30 Spe
 Ability: Snow Warning
 Level: 5
 Modest Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -558,7 +558,7 @@ Diglett-Alola (M)
 Ability: Sand Force
 Level: 20
 Jolly Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -587,8 +587,8 @@ Ability: Technician
 Level: 18
 Timid Nature
 Language: English
-=OT_Name=Mattia
-=Met_Location=30001
+=OriginalTrainerName=Mattia
+=MetLocation=30001
 ~=Version=SWSH
 .Version=45
 - Scratch
@@ -601,7 +601,7 @@ IVs: 24 Atk / 28 SpD / 25 Spe
 Ability: Rattled
 Level: 5
 Lonely Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -629,8 +629,8 @@ Ability: Technician
 Level: 28
 Timid Nature
 Language: English
-=OT_Name=Mattia
-=Met_Location=30001
+=OriginalTrainerName=Mattia
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Power Gem
@@ -823,7 +823,7 @@ IVs: 22 Atk / 6 Def / 16 SpA
 Ability: Regenerator
 Level: 10
 Brave Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -865,7 +865,7 @@ IVs: 22 Atk / 6 Def / 16 SpA
 Ability: Regenerator
 Level: 37
 Brave Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -1061,7 +1061,7 @@ IVs: 16 Atk / 13 SpA / 4 Spe
 Ability: Harvest
 Level: 30
 Naughty Nature
-=Met_Level=30
+=MetLevel=30
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -1103,7 +1103,7 @@ IVs: 15 Def / 8 SpA / 2 Spe
 Ability: Rock Head
 Level: 30
 Careful Nature
-=Met_Level=30
+=MetLevel=30
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -1328,8 +1328,8 @@ Ability: Soundproof
 Level: 40
 Calm Nature
 Language: English
-=OT_Name=Edmund
-=Met_Location=30001
+=OriginalTrainerName=Edmund
+=MetLocation=30001
 ~=Version=SWSH
 .Version=45
 - Light Screen
@@ -1466,8 +1466,8 @@ Ability: Shell Armor
 Level: 60
 Mild Nature
 Ball: Master Ball
-.Met_Location=130
-=Met_Level=56
+.MetLocation=130
+=MetLevel=56
 ~=Version=SWSH
 .Version=44
 - Ice Beam
@@ -1547,7 +1547,7 @@ IVs: 21 Atk / 22 SpA / 21 SpD
 Ability: Analytic
 Level: 25
 Naive Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=196
 ~=Version=SWSH
 .Version=44
@@ -1659,7 +1659,7 @@ Ability: Competitive
 Level: 70
 Careful Nature
 Ball: Master Ball
-.Met_Location=214
+.MetLocation=214
 ~=Version=SWSH
 .Version=45
 - Freezing Glare
@@ -1713,7 +1713,7 @@ Ability: Berserk
 Level: 70
 Hardy Nature
 Ball: Master Ball
-.Met_Location=188
+.MetLocation=188
 ~=Version=SWSH
 .Version=45
 - Fiery Wrath
@@ -1928,7 +1928,7 @@ Ability: Huge Power
 Level: 60
 Hardy Nature
 Ball: Master Ball
-.Met_Location=166
+.MetLocation=166
 ~=Version=SWSH
 .Version=44
 - Rain Dance
@@ -1942,7 +1942,7 @@ Ability: Thick Fat
 Level: 60
 Gentle Nature
 Ball: Master Ball
-.Met_Location=168
+.MetLocation=168
 ~=Version=SWSH
 .Version=44
 - Rain Dance
@@ -2039,7 +2039,7 @@ IVs: 22 Atk / 6 Def / 16 SpA
 Ability: Regenerator
 Level: 10
 Brave Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -2302,7 +2302,7 @@ IVs: 21 Atk / 22 SpA / 21 SpD
 Ability: Analytic
 Level: 25
 Naive Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=196
 ~=Version=SWSH
 .Version=44
@@ -4165,7 +4165,7 @@ IVs: 21 Atk / 22 SpA / 21 SpD
 Ability: Analytic
 Level: 25
 Naive Nature
-=Met_Level=25
+=MetLevel=25
 ~=Location=196
 ~=Version=SWSH
 .Version=44
@@ -4632,8 +4632,8 @@ Ability: Inner Focus
 Level: 37
 Adamant Nature
 Language: English
-=OT_Name=Grimm
-=Met_Location=30001
+=OriginalTrainerName=Grimm
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Revenge
@@ -4647,8 +4647,8 @@ Ability: Sturdy
 Level: 37
 Adamant Nature
 Language: English
-=OT_Name=Grimm
-=Met_Location=30001
+=OriginalTrainerName=Grimm
+=MetLocation=30001
 ~=Version=SWSH
 .Version=45
 - Low Sweep
@@ -4830,8 +4830,8 @@ Ability: Mummy
 Level: 35
 Bold Nature
 Language: English
-=OT_Name=Eve
-=Met_Location=30001
+=OriginalTrainerName=Eve
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Hex
@@ -4859,8 +4859,8 @@ Ability: Mummy
 Level: 36
 Bold Nature
 Language: English
-=OT_Name=Eve
-=Met_Location=30001
+=OriginalTrainerName=Eve
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Hex
@@ -5630,7 +5630,7 @@ Ability: Big Pecks
 Level: 60
 Modest Nature
 Ball: Master Ball
-.Met_Location=148
+.MetLocation=148
 ~=Version=SWSH
 .Version=45
 - Whirlwind
@@ -6460,7 +6460,7 @@ IVs: 27 HP / 28 Def / 2 SpA
 Ability: Long Reach
 Level: 34
 Rash Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -6474,7 +6474,7 @@ IVs: 10 Atk / 26 SpA
 Ability: Intimidate
 Level: 34
 Hasty Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -6488,7 +6488,7 @@ IVs: 30 Def / 20 SpA / 6 Spe
 Ability: Liquid Voice
 Level: 34
 Bold Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=164
 ~=Version=SWSH
 .Version=44
@@ -6933,7 +6933,7 @@ IVs: 30 HP / 21 Atk / 6 SpA
 Ability: RKS System
 Level: 51
 Lonely Nature
-=Met_Level=50
+=MetLevel=50
 ~=Location=158
 ~=Version=SWSH
 .Version=44
@@ -7111,7 +7111,7 @@ IVs: 4 Def / 12 SpA / 5 Spe
 Ability: Sturdy
 Level: 43
 Hasty Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=206
 ~=Version=SWSH
 .Version=44
@@ -7346,7 +7346,7 @@ IVs: 24 HP / 7 Atk / 8 Def / 28 SpA / 14 SpD / 28 Spe
 Ability: Overgrow
 Level: 35
 Docile Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=6
 ~=Version=SWSH
 .Version=44
@@ -7371,7 +7371,7 @@ IVs: 13 HP / 4 Atk / 27 Def / 21 SpA / 26 SpD / 13 Spe
 Ability: Blaze
 Level: 35
 Relaxed Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=6
 ~=Version=SWSH
 .Version=44
@@ -7385,7 +7385,7 @@ IVs: 10 HP / 12 Atk / 30 Def / 17 SpA / 11 SpD / 19 Spe
 Ability: Torrent
 Level: 35
 Bashful Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=6
 ~=Version=SWSH
 .Version=44
@@ -7400,8 +7400,8 @@ Ability: Cheek Pouch
 Level: 10
 Mild Nature
 Language: English
-=OT_Name=Haley
-=Met_Location=30001
+=OriginalTrainerName=Haley
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Tackle
@@ -7920,8 +7920,8 @@ Ability: Prankster
 Level: 30
 Brave Nature
 Language: English
-=OT_Name=Romeo
-=Met_Location=30001
+=OriginalTrainerName=Romeo
+=MetLocation=30001
 ~=Version=SWSH
 .Version=45
 - Swagger
@@ -8187,7 +8187,7 @@ IVs: 26 HP / 1 Def
 Ability: Volt Absorb
 Level: 10
 Gentle Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=68
 ~=Version=SWSH
 .Version=44
@@ -8200,7 +8200,7 @@ IVs: 28 Def / 25 SpD / 11 Spe
 Ability: Static
 Level: 10
 Lonely Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=68
 ~=Version=SWSH
 .Version=44
@@ -8213,7 +8213,7 @@ IVs: 23 SpA / 2 SpD / 4 Spe
 Ability: Water Absorb
 Level: 10
 Mild Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=68
 ~=Version=SWSH
 .Version=44
@@ -8226,7 +8226,7 @@ IVs: 0 HP / 28 SpA / 19 SpD
 Ability: Water Absorb
 Level: 10
 Gentle Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=68
 ~=Version=SWSH
 .Version=44
@@ -8240,8 +8240,8 @@ Ability: Heavy Metal
 Level: 50
 Adamant Nature
 Language: English
-=OT_Name=Kapoor
-=Met_Location=30001
+=OriginalTrainerName=Kapoor
+=MetLocation=30001
 ~=Version=SWSH
 .Version=44
 - Iron Defense
@@ -8310,7 +8310,7 @@ IVs: 16 Atk / 22 SpD / 17 Spe
 Ability: Pressure
 Level: 60
 Mild Nature
-=Met_Level=60
+=MetLevel=60
 ~=Location=66
 ~=Version=SWSH
 .Version=44
@@ -8325,7 +8325,7 @@ EVs: 3 HP / 2 Atk / 1 Def / 3 SpA / 3 Spe
 Ability: Unseen Fist
 Level: 70
 Quirky Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=196
 ~=Version=SWSH
 .Version=44

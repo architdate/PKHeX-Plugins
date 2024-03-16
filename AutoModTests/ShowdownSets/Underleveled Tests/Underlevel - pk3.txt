@@ -24,7 +24,7 @@ Ability: Pickup
 Level: 3
 Naive Nature
 Language: Spanish
-=OT_Name=ISA
+=OriginalTrainerName=ISA
 ~=Version=E
 .Version=3
 - Scratch
@@ -244,7 +244,7 @@ Ability: Static
 Level: 3
 Hasty Nature
 Language: French
-=OT_Name=ALBAN
+=OriginalTrainerName=ALBAN
 ~=Version=FRLG
 .Version=5
 - Charge
@@ -323,7 +323,7 @@ Ability: Oblivious
 Level: 20
 Mild Nature
 Language: Spanish
-=OT_Name=CELESTO
+=OriginalTrainerName=CELESTO
 ~=Version=FRLG
 .Version=5
 - Pound
@@ -337,7 +337,7 @@ Ability: Oblivious
 Level: 25
 Mild Nature
 Language: English
-=OT_Name=DONTAE
+=OriginalTrainerName=DONTAE
 ~=Version=FRLG
 .Version=5
 - Lovely Kiss
@@ -351,7 +351,7 @@ Ability: Oblivious
 Level: 20
 Mild Nature
 Language: French
-=OT_Name=JOHAN
+=OriginalTrainerName=JOHAN
 ~=Version=FRLG
 .Version=4
 - Pound
@@ -434,7 +434,7 @@ Ability: Cute Charm
 Level: 3
 Timid Nature
 Language: Spanish
-=OT_Name=DALILA
+=OriginalTrainerName=DALILA
 ~=Version=RS
 .Version=2
 - Growl

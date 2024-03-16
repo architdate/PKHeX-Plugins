@@ -65,7 +65,7 @@ namespace PKHeX.Core.AutoMod
             }
 
             if (template.Version == 0)
-                template.Version = dest.Game;
+                template.Version = dest.Version;
 
             template.ApplySetDetails(set);
             template.SetRecordFlags([], tb); // Validate TR/MS moves for the encounter
@@ -77,7 +77,7 @@ namespace PKHeX.Core.AutoMod
             var batchedit = AllowBatchCommands && regen.HasBatchSettings;
             var native = ModLogic.Config.NativeOnly && nativeOnly;
             var destType = template.GetType();
-            var destVer = (GameVersion)dest.Game;
+            var destVer = dest.Version;
             if (destVer <= 0 && dest is SaveFile s)
                 destVer = s.Version;
 
@@ -122,7 +122,7 @@ namespace PKHeX.Core.AutoMod
                     ? dest
                     : GetTrainer(regen, enc, set, tb);
                 var raw = enc.GetPokemonFromEncounter(tr, criteria, set);
-                if (raw.OT_Name.Length == 0)
+                if (raw.OriginalTrainerName.Length == 0)
                 {
                     raw.Language = tr.Language;
                     tr.ApplyTo(raw);
@@ -598,11 +598,11 @@ namespace PKHeX.Core.AutoMod
         {
             const int SharedNest = 162; // Shared Nest for online encounter
             const int MaxLair = 244; // Dynamax Adventures
-            pk.Met_Location = enc switch
+            pk.MetLocation = enc switch
             {
                 EncounterStatic8N or EncounterStatic8ND or EncounterStatic8NC => SharedNest,
                 EncounterStatic8U => MaxLair,
-                _ => pk.Met_Location,
+                _ => pk.MetLocation,
             };
             return pk;
         }
@@ -777,12 +777,12 @@ namespace PKHeX.Core.AutoMod
             // Handle special cases here for ultrabeasts
             switch (pk.Species)
             {
-                case (int)Species.Kartana when pk.Nature == (int)Nature.Timid && set.IVs[1] <= 21: // Speed boosting Timid Kartana ATK IVs <= 19
+                case (int)Species.Kartana when pk.Nature == Nature.Timid && set.IVs[1] <= 21: // Speed boosting Timid Kartana ATK IVs <= 19
                     t.HT_ATK = false;
                     tb.Handle(HyperTrain, "Remove ATK HyperTrain for Special Kartana");
                     break;
                 case (int)Species.Stakataka
-                    when pk.StatNature == (int)Nature.Lonely && set.IVs[2] <= 17: // Atk boosting Lonely Stakataka DEF IVs <= 15
+                    when pk.StatNature == Nature.Lonely && set.IVs[2] <= 17: // Atk boosting Lonely Stakataka DEF IVs <= 15
                     t.HT_DEF = false;
                     tb.Handle(HyperTrain, "Remove DEF HyperTrain for Special Stakataka");
                     break;
@@ -815,7 +815,7 @@ namespace PKHeX.Core.AutoMod
             var relearn = pk.RelearnMoves;
 
             pk.ClearRelearnMoves();
-            bvPk.BattleVersion = (byte)trainer.Game;
+            bvPk.BattleVersion = trainer.Version;
 
             var la = new LegalityAnalysis(pk);
             if (!la.Valid)
@@ -873,11 +873,11 @@ namespace PKHeX.Core.AutoMod
             if (enc is MysteryGift { IsEgg: true })
             {
                 if (enc is WC3)
-                    pk.Met_Level = 0; // hatched
+                    pk.MetLevel = 0; // hatched
                 pk.Language = tr.Language;
                 pk.SetTrainerData(tr);
             }
-            pk.Egg_Location = Locations.TradedEggLocation(pk.Generation, (GameVersion)pk.Version);
+            pk.EggLocation = Locations.TradedEggLocation(pk.Generation, (GameVersion)pk.Version);
         }
 
         /// <summary>
@@ -916,10 +916,13 @@ namespace PKHeX.Core.AutoMod
 
             if (enc is MysteryGift mg)
             {
-                var ivs = pk.IVs;
-                for (int i = 0; i < mg.IVs.Length; i++)
-                    ivs[i] = mg.IVs[i] > 31 ? set.IVs[i] : mg.IVs[i];
-                pk.IVs = ivs;
+                if (mg is PGF pgf)
+                {
+                    var ivs = pk.IVs;
+                    for (int i = 0; i < pgf.IVs.Length; i++)
+                        ivs[i] = pgf.IVs[i] > 31 ? set.IVs[i] : pgf.IVs[i];
+                    pk.IVs = ivs;
+                }
                 if (enc.Generation is not (3 or 4))
                 {
                     tb.Handle(PID_IV, "Mystery Gift Encounter (not Gen 3/4), early return");
@@ -1095,7 +1098,7 @@ namespace PKHeX.Core.AutoMod
                     shiny = set.Shiny ? Shiny.Always : Shiny.Never;
 
                 Roaming8bRNG.ApplyDetails(pk, EncounterCriteria.Unrestricted, shiny, flawless);
-                pk.Met_Location = SimpleEdits.RoamingMetLocationBDSP[0];
+                pk.MetLocation = SimpleEdits.RoamingMetLocationBDSP[0];
             }
             else if (enc is EncounterEgg && GameVersion.BDSP.Contains(enc.Version))
             {
@@ -1280,7 +1283,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="pk">pokemon to edit</param>
         /// <param name="shiny">Shinytype requested</param>
         /// <param name="gender"></param>
-        public static void FindEggPIDIV8b(PKM pk, Shiny shiny, int gender)
+        public static void FindEggPIDIV8b(PKM pk, Shiny shiny, byte? gender)
         {
             var ivs = new[] { -1, -1, -1, -1, -1, -1 };
             var IVs = pk.IVs;
@@ -1400,7 +1403,7 @@ namespace PKHeX.Core.AutoMod
             // compromise on nature since they can be minted
             if (criteria.Nature != Nature.Random && criteria.Nature != (Nature)pk.Nature && !compromise) // match nature
                 return false;
-            if ((uint)template.Gender < 2 && template.Gender != pk.Gender) // match gender
+            if (template.Gender is not null && (uint)template.Gender < 2 && template.Gender != pk.Gender) // match gender
                 return false;
             if (template.Form != pk.Form)
             {
@@ -1436,7 +1439,7 @@ namespace PKHeX.Core.AutoMod
                 else
                     Method = FindLikelyPIDType(pk);
 
-                if (pk.Version == (int)GameVersion.CXD && Method != PIDType.PokeSpot)
+                if (pk.Version == GameVersion.CXD && Method != PIDType.PokeSpot)
                     Method = PIDType.CXD;
                 if (Method == PIDType.None && pk.Generation >= 3)
                     pk.SetPIDGender(pk.Gender);
@@ -1444,7 +1447,7 @@ namespace PKHeX.Core.AutoMod
             switch (Method)
             {
                 case PIDType.Method_1_Roamer when pk.HPType != (int)MoveType.Fighting - 1: // M1 Roamers can only be HP fighting
-                case PIDType.Pokewalker when (pk.Nature >= 24 || pk.AbilityNumber == 4): // No possible pokewalker matches
+                case PIDType.Pokewalker when (pk.Nature >= Nature.Quirky || pk.AbilityNumber == 4): // No possible pokewalker matches
                     return;
             }
 
@@ -1456,7 +1459,7 @@ namespace PKHeX.Core.AutoMod
                 iterPKM.SetAbilityIndex(ability_idx);
             var count = 0;
             var isWishmaker =
-                Method == PIDType.BACD_R && shiny && enc is WC3 { OT_Name: "WISHMKR" };
+                Method == PIDType.BACD_R && shiny && enc is WC3 { OriginalTrainerName: "WISHMKR" };
             var compromise = false;
             var gr = pk.PersonalInfo.Gender;
             do
@@ -1478,11 +1481,11 @@ namespace PKHeX.Core.AutoMod
                     continue;
                 if (HPType >= 0 && pk.HPType != HPType)
                     continue;
-                if (pk.PID % 25 != iterPKM.Nature) // Util.Rand32 is the way to go
+                if (pk.PID % 25 != (uint)iterPKM.Nature) // Util.Rand32 is the way to go
                     continue;
                 if (pk.Gender != EntityGender.GetFromPIDAndRatio(pk.PID, gr))
                     continue;
-                if (pk.Version == (int)GameVersion.CXD && Method == PIDType.CXD) // verify locks
+                if (pk.Version == GameVersion.CXD && Method == PIDType.CXD) // verify locks
                 {
                     pk.EncryptionConstant = pk.PID;
                     var ec = pk.PID;
@@ -1534,7 +1537,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (method != PIDType.Pokewalker)
                 return false;
-            if (seed % 24 != original.Nature)
+            if (seed % 24 != (uint)original.Nature)
                 return true;
             pk.TID16 = (ushort)Util.Rand.Next(65535);
             pk.SID16 = (ushort)Util.Rand.Next(65535);
@@ -1550,7 +1553,7 @@ namespace PKHeX.Core.AutoMod
         {
             if (pk.Species == (int)Species.Manaphy && pk.Gen4)
             {
-                pk.Egg_Location = Locations.LinkTrade4; // todo: really shouldn't be doing this, don't modify pkm
+                pk.EggLocation = Locations.LinkTrade4; // todo: really shouldn't be doing this, don't modify pkm
                 return PIDType.Method_1;
             }
             var info = new LegalInfo(pk, []);
@@ -1562,19 +1565,19 @@ namespace PKHeX.Core.AutoMod
                     {
                         WC3 g => g.Method,
 
-                        EncounterStatic3 when pk.Version == (int)GameVersion.CXD => PIDType.CXD,
-                        EncounterStatic3Colo when pk.Version == (int)GameVersion.CXD => PIDType.CXD,
-                        EncounterStatic3XD when pk.Version == (int)GameVersion.CXD => PIDType.CXD,
+                        EncounterStatic3 when pk.Version == GameVersion.CXD => PIDType.CXD,
+                        EncounterStatic3Colo when pk.Version == GameVersion.CXD => PIDType.CXD,
+                        EncounterStatic3XD when pk.Version == GameVersion.CXD => PIDType.CXD,
                         EncounterStatic3
                             => pk.Version switch
                             {
-                                (int)GameVersion.E => PIDType.Method_1,
-                                (int)GameVersion.FR or (int)GameVersion.LG => PIDType.Method_1, // roamer glitch
+                                GameVersion.E => PIDType.Method_1,
+                                GameVersion.FR or GameVersion.LG => PIDType.Method_1, // roamer glitch
                                 _ => PIDType.Method_1,
                             },
 
-                        EncounterSlot3 when pk.Version == (int)GameVersion.CXD => PIDType.PokeSpot,
-                        EncounterSlot3XD when pk.Version == (int)GameVersion.CXD
+                        EncounterSlot3 when pk.Version == GameVersion.CXD => PIDType.PokeSpot,
+                        EncounterSlot3XD when pk.Version == GameVersion.CXD
                             => PIDType.PokeSpot,
                         EncounterSlot3
                             => pk.Species == (int)Species.Unown
@@ -1604,24 +1607,24 @@ namespace PKHeX.Core.AutoMod
         public static void SetCorrectMetLevel(this PKM pk, ITracebackHandler tb)
         {
             var lvl = pk.CurrentLevel;
-            if (pk.Met_Level > lvl)
-                pk.Met_Level = lvl;
-            if (pk.Met_Location is not (Locations.Transfer1 or Locations.Transfer2 or Locations.Transfer3 or Locations.Transfer4 or Locations.GO8))
+            if (pk.MetLevel > lvl)
+                pk.MetLevel = lvl;
+            if (pk.MetLocation is not (Locations.Transfer1 or Locations.Transfer2 or Locations.Transfer3 or Locations.Transfer4 or Locations.GO8))
                 return;
-            var level = pk.Met_Level;
+            var level = pk.MetLevel;
             if (lvl <= level)
                 return;
-            while (lvl >= pk.Met_Level)
+            while (lvl >= pk.MetLevel)
             {
                 var la = new LegalityAnalysis(pk);
                 if (la.Info.Moves.All(z => z.Valid))
                 {
-                    tb.Handle(Level, $"Set Level where all moves are valid: {pk.Met_Level}");
+                    tb.Handle(Level, $"Set Level where all moves are valid: {pk.MetLevel}");
                     return;
                 }
-                pk.Met_Level++;
+                pk.MetLevel++;
             }
-            pk.Met_Level = level; // Set back to normal if nothing legalized
+            pk.MetLevel = level; // Set back to normal if nothing legalized
         }
 
         /// <summary>
@@ -1637,19 +1640,19 @@ namespace PKHeX.Core.AutoMod
             // Shiny Manaphy Egg
             if (enc is MysteryGift { Species: (int)Species.Manaphy, Generation: 4 } && pk.IsShiny)
             {
-                pk.Egg_Location = Locations.LinkTrade4;
+                pk.EggLocation = Locations.LinkTrade4;
                 if (pk.Format != 4)
                     return;
-                pk.Met_Location = pk.HGSS
+                pk.MetLocation = pk.HGSS
                     ? Locations.HatchLocationHGSS
                     : Locations.HatchLocationDPPt;
                 tb.Handle(Misc, "Fix Met Location for Shiny Manaphy Egg");
             }
 
             // CXD only has a male trainer
-            if (pk.Version == (int)GameVersion.CXD && pk.OT_Gender == (int)Gender.Female) // Colosseum and XD are sexist games.
+            if (pk.Version == GameVersion.CXD && pk.OriginalTrainerGender == (byte)Gender.Female) // Colosseum and XD are sexist games.
             {
-                pk.OT_Gender = (int)Gender.Male;
+                pk.OriginalTrainerGender = (byte)Gender.Male;
                 tb.Handle(TracebackType.Gender, "Fix OT Gender for Colosseum/XD");
             }
 

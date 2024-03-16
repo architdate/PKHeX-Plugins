@@ -3,7 +3,7 @@ IVs: 27 HP / 13 Atk / 3 Def / 27 SpA / 3 SpD / 10 Spe
 Ability: Overgrow
 Level: 10
 Quirky Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=22
 ~=Version=XY
 .Version=25
@@ -46,7 +46,7 @@ IVs: 23 HP / 4 Atk / 15 Def / 20 SpA / 21 SpD / 3 Spe
 Ability: Blaze
 Level: 10
 Brave Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=22
 ~=Version=XY
 .Version=24
@@ -74,7 +74,7 @@ IVs: 25 HP / 14 Atk / 2 Def / 11 SpA / 23 SpD / 16 Spe
 Ability: Torrent
 Level: 10
 Bold Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=22
 ~=Version=XY
 .Version=25
@@ -103,7 +103,7 @@ EVs: 64 HP / 124 Atk / 58 Def / 82 SpA / 42 SpD / 140 Spe
 Ability: Torrent
 Level: 60
 Quiet Nature
-=Met_Level=10
+=MetLevel=10
 ~=Location=22
 ~=Version=XY
 .Version=24
@@ -1341,8 +1341,8 @@ Ability: Swift Swim
 Level: 5
 Adamant Nature
 Language: English
-=OT_Name=Caveat
-=Met_Location=30001
+=OriginalTrainerName=Caveat
+=MetLocation=30001
 ~=Version=XY
 .Version=24
 - Splash
@@ -1461,7 +1461,7 @@ IVs: 8 HP / 7 Atk / 23 Def / 4 SpA / 22 Spe
 Ability: Shell Armor
 Level: 20
 Naughty Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=44
 ~=Version=XY
 .Version=24
@@ -1476,7 +1476,7 @@ EVs: 9 HP / 36 Atk / 27 Def / 23 SpA / 30 SpD / 22 Spe
 Ability: Swift Swim
 Level: 43
 Careful Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=44
 ~=Version=XY
 .Version=25
@@ -1490,7 +1490,7 @@ IVs: 1 HP / 5 Atk / 19 Def / 11 SpA / 7 SpD / 13 Spe
 Ability: Swift Swim
 Level: 20
 Careful Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=190
 ~=Version=ORAS
 .Version=27
@@ -1505,7 +1505,7 @@ EVs: 10 HP / 26 Atk / 22 Def / 15 SpA / 18 SpD / 12 Spe
 Ability: Swift Swim
 Level: 43
 Brave Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=44
 ~=Version=XY
 .Version=25
@@ -1519,7 +1519,7 @@ IVs: 30 HP / 1 Atk / 24 Def / 28 SpA / 8 Spe
 Ability: Rock Head
 Level: 20
 Adamant Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=190
 ~=Version=ORAS
 .Version=27
@@ -1656,7 +1656,7 @@ IVs: 3 HP / 5 Atk / 6 Def / 30 SpA / 28 SpD / 13 Spe
 Ability: Overgrow
 Level: 32
 Bold Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=26
@@ -1670,7 +1670,7 @@ IVs: 18 HP / 18 Atk / 8 Def / 8 SpA / 23 SpD / 24 Spe
 Ability: Blaze
 Level: 36
 Lax Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=27
@@ -1684,7 +1684,7 @@ IVs: 21 HP / 17 Def / 1 SpA / 10 SpD / 20 Spe
 Ability: Torrent
 Level: 30
 Calm Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=26
@@ -2654,8 +2654,8 @@ Ability: Regenerator
 Level: 50
 Calm Nature
 Language: English
-=OT_Name=Lane
-=Met_Location=30001
+=OriginalTrainerName=Lane
+=MetLocation=30001
 ~=Version=ORAS
 .Version=27
 - Power Gem
@@ -3016,7 +3016,7 @@ EVs: 1 Atk
 Ability: Overgrow
 Level: 16
 Serious Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=26
@@ -3044,7 +3044,7 @@ IVs: 20 HP / 5 Def / 24 SpA / 4 SpD / 0 Spe
 EVs: 6 HP / 252 Atk / 252 Spe
 Ability: Blaze
 Gentle Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=27
@@ -3058,7 +3058,7 @@ IVs: 28 HP / 14 Atk / 0 Def / 29 SpA / 17 SpD / 13 Spe
 EVs: 6 HP / 252 SpA / 252 Spe
 Ability: Torrent
 Brave Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=26
@@ -3422,8 +3422,8 @@ Ability: Guts
 Level: 9
 Brave Nature
 Language: English
-=OT_Name=Darrell
-=Met_Location=30001
+=OriginalTrainerName=Darrell
+=MetLocation=30001
 ~=Version=ORAS
 .Version=27
 - Tackle
@@ -3716,7 +3716,7 @@ IVs: 0 HP / 16 Atk / 27 Def / 23 SpA / 21 Spe
 Ability: Rough Skin
 Level: 40
 Adamant Nature
-=Met_Level=40
+=MetLevel=40
 ~=Location=318
 ~=Version=ORAS
 .Version=27
@@ -4025,7 +4025,7 @@ IVs: 6 HP / 1 Atk / 2 Def / 8 SpA / 7 SpD / 25 Spe
 Ability: Suction Cups
 Level: 40
 Quiet Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=190
 ~=Version=ORAS
 .Version=27
@@ -4039,7 +4039,7 @@ IVs: 9 HP / 29 Atk / 7 Def / 21 SpA / 2 SpD / 7 Spe
 Ability: Battle Armor
 Level: 40
 Hardy Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=44
 ~=Version=XY
 .Version=24
@@ -4067,7 +4067,7 @@ EVs: 3 Atk
 Ability: Forecast
 Level: 30
 Lax Nature
-=Met_Level=30
+=MetLevel=30
 ~=Location=240
 ~=Version=ORAS
 .Version=27
@@ -4291,7 +4291,7 @@ IVs: 0 HP / 0 Atk / 1 SpA / 15 Spe
 Ability: Clear Body
 Level: 45
 Jolly Nature
-=Met_Level=1
+=MetLevel=1
 ~=Location=196
 ~=Version=ORAS
 .Version=27
@@ -4363,7 +4363,7 @@ IVs: 29 HP / 23 Def / 21 Spe
 Ability: Levitate
 Level: 30
 Bold Nature
-=Met_Level=30
+=MetLevel=30
 ~=Location=320
 ~=Version=ORAS
 .Version=27
@@ -4445,7 +4445,7 @@ IVs: 21 HP / 18 Atk / 2 Def / 14 SpA / 27 SpD / 28 Spe
 Ability: Overgrow
 Level: 18
 Docile Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=27
@@ -4459,7 +4459,7 @@ IVs: 7 HP / 2 Atk / 10 Def / 20 SpA / 7 SpD / 0 Spe
 Ability: Blaze
 Level: 36
 Lax Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=27
@@ -4473,7 +4473,7 @@ IVs: 16 HP / 8 Atk / 24 Def / 8 SpA / 21 SpD / 15 Spe
 Ability: Torrent
 Level: 36
 Lax Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=27
@@ -4595,7 +4595,7 @@ IVs: 28 HP / 6 Atk / 21 Def / 25 SpA / 1 SpD / 20 Spe
 Ability: Mold Breaker
 Level: 30
 Bold Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=44
 ~=Version=XY
 .Version=24
@@ -4609,7 +4609,7 @@ IVs: 16 Atk / 4 Def / 14 SpA / 3 Spe
 Ability: Sturdy
 Level: 30
 Adamant Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=44
 ~=Version=XY
 .Version=24
@@ -4972,7 +4972,7 @@ EVs: 49 HP / 130 Atk / 46 Def / 77 SpA / 34 SpD / 174 Spe
 Ability: Steadfast
 Level: 93
 Hasty Nature
-=Met_Level=32
+=MetLevel=32
 ~=Location=60
 ~=Version=XY
 .Version=24
@@ -5240,7 +5240,7 @@ IVs: 3 HP / 12 Atk / 15 SpA / 22 SpD / 5 Spe
 Ability: Hustle
 Level: 2
 Adamant Nature
-=Met_Level=1
+=MetLevel=1
 =Egg_Location=60004
 ~=Version=ORAS
 .Version=27
@@ -5570,7 +5570,7 @@ IVs: 4 HP / 15 Atk / 25 Def / 24 SpA / 21 SpD / 28 Spe
 Ability: Overgrow
 Level: 17
 Mild Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=27
@@ -5584,7 +5584,7 @@ IVs: 13 HP / 11 Def / 14 SpA / 5 SpD / 6 Spe
 Ability: Blaze
 Level: 36
 Bold Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=27
@@ -5598,7 +5598,7 @@ IVs: 25 HP / 16 Atk / 24 Def / 25 SpA / 17 SpD / 1 Spe
 Ability: Torrent
 Level: 36
 Hardy Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=204
 ~=Version=ORAS
 .Version=27
@@ -6145,7 +6145,7 @@ IVs: 30 HP / 0 Atk / 19 SpA / 8 SpD / 5 Spe
 Ability: Solid Rock
 Level: 20
 Hasty Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=190
 ~=Version=ORAS
 .Version=27
@@ -6160,7 +6160,7 @@ EVs: 11 HP / 33 Atk / 14 Def / 23 SpA / 16 SpD / 20 Spe
 Ability: Sturdy
 Level: 37
 Brave Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=44
 ~=Version=XY
 .Version=24
@@ -6174,7 +6174,7 @@ IVs: 4 Atk / 23 Def / 26 SpA / 9 SpD / 20 Spe
 Ability: Defeatist
 Level: 37
 Careful Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=44
 ~=Version=XY
 .Version=24
@@ -6722,8 +6722,8 @@ Ability: Defiant
 Level: 50
 Adamant Nature
 Language: English
-=OT_Name=Punky
-=Met_Location=30001
+=OriginalTrainerName=Punky
+=MetLocation=30001
 ~=Version=XY
 .Version=25
 - Metal Sound
@@ -7031,8 +7031,8 @@ Ability: Overgrow
 Level: 5
 Adamant Nature
 Language: English
-=OT_Name=Shauna
-=Met_Location=30001
+=OriginalTrainerName=Shauna
+=MetLocation=30001
 ~=Version=XY
 .Version=24
 - Tackle
@@ -7044,7 +7044,7 @@ IVs: 7 HP / 6 Atk / 7 Def / 10 SpA / 25 SpD / 11 Spe
 Ability: Overgrow
 Level: 16
 Adamant Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=10
 ~=Version=XY
 .Version=25
@@ -7060,8 +7060,8 @@ Ability: Overgrow
 Level: 38
 Adamant Nature
 Language: English
-=OT_Name=Shauna
-=Met_Location=30001
+=OriginalTrainerName=Shauna
+=MetLocation=30001
 ~=Version=XY
 .Version=24
 - Tackle
@@ -7074,7 +7074,7 @@ IVs: 20 HP / 13 Atk / 0 Def / 17 SpA / 20 SpD / 7 Spe
 EVs: 252 HP / 252 SpA / 6 Spe
 Ability: Blaze
 Docile Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=10
 ~=Version=XY
 .Version=24
@@ -7089,8 +7089,8 @@ Ability: Torrent
 Level: 5
 Jolly Nature
 Language: English
-=OT_Name=Shauna
-=Met_Location=30001
+=OriginalTrainerName=Shauna
+=MetLocation=30001
 ~=Version=XY
 .Version=25
 - Pound
@@ -7102,7 +7102,7 @@ IVs: 5 HP / 26 Atk / 6 Def / 26 SpA / 3 SpD / 15 Spe
 Ability: Torrent
 Level: 16
 Mild Nature
-=Met_Level=5
+=MetLevel=5
 ~=Location=10
 ~=Version=XY
 .Version=25
@@ -7677,7 +7677,7 @@ IVs: 27 HP / 3 Atk / 6 Def / 2 SpA / 23 SpD / 27 Spe
 Ability: Strong Jaw
 Level: 20
 Quiet Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=190
 ~=Version=ORAS
 .Version=27
@@ -7692,7 +7692,7 @@ EVs: 50 HP / 33 Atk / 12 Def / 12 SpA / 22 SpD / 38 Spe
 Ability: Strong Jaw
 Level: 42
 Docile Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=44
 ~=Version=XY
 .Version=24
@@ -7706,7 +7706,7 @@ IVs: 7 HP / 6 Atk / 7 Def / 11 SpA / 3 SpD / 11 Spe
 Ability: Refrigerate
 Level: 39
 Hasty Nature
-=Met_Level=20
+=MetLevel=20
 ~=Location=190
 ~=Version=ORAS
 .Version=27

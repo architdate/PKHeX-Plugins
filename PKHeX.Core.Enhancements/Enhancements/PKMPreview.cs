@@ -74,12 +74,12 @@ namespace PKHeX.Core.Enhancements
                         DSRegion,
                         p.PID,
                         p.EC,
-                        p.HP_IV.ToString(),
-                        p.ATK_IV.ToString(),
-                        p.DEF_IV.ToString(),
-                        p.SPA_IV.ToString(),
-                        p.SPD_IV.ToString(),
-                        p.SPE_IV.ToString(),
+                        p.IV_HP.ToString(),
+                        p.IV_ATK.ToString(),
+                        p.IV_DEF.ToString(),
+                        p.IV_SPA.ToString(),
+                        p.IV_SPD.ToString(),
+                        p.IV_SPE.ToString(),
                         p.EXP.ToString(),
                         p.Level.ToString(),
                         markings,
@@ -89,9 +89,9 @@ namespace PKHeX.Core.Enhancements
                         p.TID16.ToString(),
                         p.SID16.ToString(),
                         p.Friendship.ToString(),
-                        p.Met_Year.ToString(),
-                        p.Met_Month.ToString(),
-                        p.Met_Day.ToString()
+                        p.MetYear.ToString(),
+                        p.MetMonth.ToString(),
+                        p.MetDay.ToString()
                     )
                 );
             }

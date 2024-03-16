@@ -11,13 +11,13 @@ namespace PKHeX.Core.AutoMod
         public ushort Species { get; set; }
         public EntityContext Context { get; set; }
         public string Nickname { get; set; }
-        public int Gender { get; set; }
+        public byte? Gender { get; set; }
         public int HeldItem { get; set; }
         public int Ability { get; set; }
-        public int Level { get; set; }
+        public byte Level { get; set; }
         public bool Shiny { get; set; }
-        public int Friendship { get; set; }
-        public int Nature { get; set; }
+        public byte Friendship { get; set; }
+        public Nature Nature { get; set; }
         public string FormName { get; set; }
         public byte Form { get; set; }
         public int HiddenPowerType { get; set; }
@@ -42,7 +42,7 @@ namespace PKHeX.Core.AutoMod
             Gender = set.Gender;
             HeldItem = set.HeldItem;
             Ability = set.Ability;
-            Level = (set.Level == 50 && APILegality.ForceLevel100for50) ? 100 : set.Level;
+            Level = (set.Level == 50 && APILegality.ForceLevel100for50) ? (byte)100 : set.Level;
             Shiny = set.Shiny;
             Friendship = set.Friendship;
             Nature = set.Nature;
@@ -60,7 +60,7 @@ namespace PKHeX.Core.AutoMod
             SanitizeMoves(set, Moves);
         }
 
-        public RegenTemplate(ShowdownSet set, int gen = PKX.Generation)
+        public RegenTemplate(ShowdownSet set, byte gen = PKX.Generation)
             : this(set, gen, set.Text)
         {
             this.SanitizeForm(gen);

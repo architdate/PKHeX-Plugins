@@ -32,7 +32,7 @@ namespace PKHeX.Core.AutoMod
             var fallback = gen > 7 ? DefaultFallback8 : DefaultFallback7;
             if (lang == null)
                 return fallback;
-            return new SimpleTrainerInfo((GameVersion)fallback.Game) { Language = (int)lang };
+            return new SimpleTrainerInfo(fallback.Version) { Language = (int)lang };
         }
 
         public static ITrainerInfo DefaultFallback(GameVersion ver, LanguageID? lang = null)
@@ -82,7 +82,7 @@ namespace PKHeX.Core.AutoMod
         /// <param name="lang">Language to request for</param>
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
         public static ITrainerInfo GetSavedTrainerData(
-            int generation,
+            byte generation,
             GameVersion ver = GameVersion.Any,
             ITrainerInfo? fallback = null,
             LanguageID? lang = null
@@ -118,7 +118,7 @@ namespace PKHeX.Core.AutoMod
         /// <returns>Parent trainer data that originates from the <see cref="PKM.Version"/>. If none found, will return the <see cref="fallback"/>.</returns>
         public static ITrainerInfo GetSavedTrainerData(
             GameVersion version,
-            int gen,
+            byte gen,
             ITrainerInfo? fallback = null,
             LanguageID? lang = null
         )
@@ -140,11 +140,11 @@ namespace PKHeX.Core.AutoMod
             LanguageID? lang = null
         )
         {
-            int origin = pk.Generation;
-            int format = pk.Format;
+            byte origin = pk.Generation;
+            byte format = pk.Format;
             if (format != origin)
-                return GetSavedTrainerData(format, (GameVersion)template_save.Game, fallback: template_save, lang: lang);
-            return GetSavedTrainerData((GameVersion)pk.Version, origin, template_save, lang);
+                return GetSavedTrainerData(format, template_save.Version, fallback: template_save, lang: lang);
+            return GetSavedTrainerData(pk.Version, origin, template_save, lang);
         }
 
         /// <summary>

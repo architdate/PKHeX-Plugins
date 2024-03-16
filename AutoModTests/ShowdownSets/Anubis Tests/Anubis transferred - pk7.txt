@@ -1252,7 +1252,7 @@ Ability: Levitate
 Level: 30
 Shiny: Yes
 Timid Nature
-=Met_Level=30
+=MetLevel=30
 ~=Location=320
 ~=Version=ORAS
 .Version=27
