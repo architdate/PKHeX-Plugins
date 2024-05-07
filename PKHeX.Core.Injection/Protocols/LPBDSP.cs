@@ -79,14 +79,13 @@ namespace PKHeX.Core.Injection
                 throw new Exception("Invalid Pointer string.");
 
             var b = psb.com.ReadBytes(addr, count * 8);
-            var boxptr =
-                Core.ArrayUtil
+            var boxptr = ArrayUtil
                     .EnumerateSplit(b, 8)
                     .Select(z => BitConverter.ToUInt64(z, 0))
                     .ToArray()[box] + 0x20; // add 0x20 to remove vtable bytes
             b = sb.ReadBytesAbsolute(boxptr, psb.SlotCount * 8);
 
-            var pkmptrs = Core.ArrayUtil
+            var pkmptrs = ArrayUtil
                 .EnumerateSplit(b, 8)
                 .Select(z => BitConverter.ToUInt64(z, 0))
                 .ToArray();
@@ -239,7 +238,7 @@ namespace PKHeX.Core.Injection
                 throw new Exception("Invalid Pointer string.");
 
             var item_blk = psb.com.ReadBytes(addr, ITEM_BLOCK_SIZE_RAM);
-            var items = Core.ArrayUtil
+            var items = ArrayUtil
                 .EnumerateSplit(item_blk, 0xC)
                 .Select(z =>
                 {
@@ -267,7 +266,7 @@ namespace PKHeX.Core.Injection
                 throw new Exception("Invalid Pointer string.");
 
             data = data.AsSpan(0, ITEM_BLOCK_SIZE).ToArray();
-            var items = Core.ArrayUtil
+            var items = ArrayUtil
                 .EnumerateSplit(data, 0x10)
                 .Select(z =>
                 {
@@ -297,7 +296,7 @@ namespace PKHeX.Core.Injection
 
             var item_blk = psb.com.ReadBytes(addr, UG_ITEM_BLOCK_SIZE_RAM);
             var extra_data = new byte[] { 0x0, 0x0, 0x0, 0x0 };
-            var items = Core.ArrayUtil
+            var items = ArrayUtil
                 .EnumerateSplit(item_blk, 0x8)
                 .Select(z => z.Concat(extra_data).ToArray())
                 .ToArray();
@@ -316,7 +315,7 @@ namespace PKHeX.Core.Injection
                 throw new Exception("Invalid Pointer string.");
 
             data = data.AsSpan(0, UG_ITEM_BLOCK_SIZE).ToArray();
-            var items = Core.ArrayUtil
+            var items = ArrayUtil
                 .EnumerateSplit(data, 0xC)
                 .Select(z => z.AsSpan(0, 0x8).ToArray())
                 .ToArray();
@@ -366,7 +365,7 @@ namespace PKHeX.Core.Injection
             var parent_one = psb.com.ReadBytes(p1ptr, 0x158);
             var parent_two = psb.com.ReadBytes(p2ptr, 0x158);
             var extra = psb.com.ReadBytes(addr + 0x8, 0x18);
-            var extra_arr = Core.ArrayUtil.EnumerateSplit(extra, 0x8).ToArray();
+            var extra_arr = ArrayUtil.EnumerateSplit(extra, 0x8).ToArray();
             var block = new byte[DAYCARE_BLOCK_SIZE];
 
             parent_one.CopyTo(block, 0);

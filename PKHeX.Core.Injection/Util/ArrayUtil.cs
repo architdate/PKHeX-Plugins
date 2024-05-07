@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace PKHeX.Core.Injection
@@ -32,6 +33,12 @@ namespace PKHeX.Core.Injection
             for (int i = 0; i < data.Length; i += size)
                 result[i / size] = data.Slice(i, size).ToArray();
             return result;
+        }
+
+        public static IEnumerable<T[]> EnumerateSplit<T>(T[] bin, int size, int start = 0)
+        {
+            for (int i = start; i < bin.Length; i += size)
+                yield return bin.AsSpan(i, size).ToArray();
         }
 
         internal static T[] ConcatAll<T>(T[] arr1, T[] arr2)
