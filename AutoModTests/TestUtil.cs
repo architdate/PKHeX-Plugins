@@ -12,6 +12,8 @@ namespace AutoModTests
 
         private static readonly object _lock = new();
 
+        private static readonly NicknameRestriction NicknameRestriction = new() { NicknamedTrade = Severity.Fishy, NicknamedMysteryGift = Severity.Fishy };
+
         public static void InitializePKHeXEnvironment()
         {
             lock (_lock)
@@ -23,6 +25,19 @@ namespace AutoModTests
                 Legalizer.EnableEasterEggs = false;
                 APILegality.SetAllLegalRibbons = false;
                 APILegality.Timeout = 99999;
+                ParseSettings.Settings.Handler.CheckActiveHandler = false;
+                ParseSettings.Settings.HOMETransfer.HOMETransferTrackerNotPresent = Severity.Fishy;
+                ParseSettings.Settings.Nickname.Nickname12 = NicknameRestriction;
+                ParseSettings.Settings.Nickname.Nickname3 = NicknameRestriction;
+                ParseSettings.Settings.Nickname.Nickname4 = NicknameRestriction;
+                ParseSettings.Settings.Nickname.Nickname5 = NicknameRestriction;
+                ParseSettings.Settings.Nickname.Nickname6 = NicknameRestriction;
+                ParseSettings.Settings.Nickname.Nickname7 = NicknameRestriction;
+                ParseSettings.Settings.Nickname.Nickname7b = NicknameRestriction;
+                ParseSettings.Settings.Nickname.Nickname8 = NicknameRestriction;
+                ParseSettings.Settings.Nickname.Nickname8a = NicknameRestriction;
+                ParseSettings.Settings.Nickname.Nickname8b = NicknameRestriction;
+                ParseSettings.Settings.Nickname.Nickname9 = NicknameRestriction;
                 Initialized = true;
             }
         }
